@@ -92,8 +92,9 @@
 
       <!-- isolated roll specific happenings -->
       <div class="js-isolated-roll-welcome notifications-wrapper welcome-message__wrapper"></div>
-		<% end %>
+    <% end %>
 
+    <%= render :partial => "/home/shelf/footer" %>
   </div> <!-- eo ~application -->
 	<% if (Rails.env == 'production' or Rails.env == 'staging') %>
 	  <script>

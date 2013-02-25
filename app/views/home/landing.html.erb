@@ -150,61 +150,7 @@
 
     <% #------------ /Shelf Content --------------- %>
 
-    <footer class="shelf shelf--footer clearfix">
-      <div class="shelf__lining clearfix">
-        <nav>
-          <ul class="shelf__list--inline shelf__list--footer clearfix">
-            <li>
-              <a href="http://shelby.tv" class="shelf__link js-track-event" data-ga_action="Click Homepage" title="Home">
-                Shelby.tv
-              </a>
-            </li>
-
-            <li>
-              <a href="http://nytm.org/made" class="shelf__link js-track-event" data-ga_action="Click Made in NYC" title="Proudly Made in New York City">
-                Made in NYC
-              </a>
-            </li>
-
-            <li>
-              <a href="http://shelby.tv/blog" class="shelf__link js-track-event" data-ga_action="Click Blog" title="">
-                Blog
-              </a>
-            </li>
-
-            <li>
-              <a href="http://shelby.tv/blog/hiring" class="shelf__link js-track-event" data-ga_action="Click Hiring Page" title="Want to work with us?">
-                We're hiring!
-              </a>
-            </li>
-
-            <li>
-              <a href="tou.html" class="shelf__link js-track-event" data-ga_action="Click Terms" title="Legal …stuff">
-                Terms
-              </a>
-            </li>
-
-            <li>
-              <a href="mailto:feedback@shelby.tv" class="shelf__link js-track-event" data-ga_action="Click Report Issue" title="Report a bug or just tell us what you think!">
-                Report an issue
-              </a>
-            </li>
-          </ul>
-
-         <ul class="shelf__list--inline shelf__list--social">
-            <li>
-              <div class="fb-like" data-href="http://facebook.com/shelbytv" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-colorscheme="dark" data-font="verdana"></div>
-            </li>
-            <li>
-              <a href="https://twitter.com/shelby" class="twitter-follow-button" data-show-count="true" data-dnt="true">Follow @shelby</a>
-            </li>
-            <li>
-              <div class="g-plusone" data-href="http://shelby.tv"></div>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </footer>
+    <%= render :partial => "/home/shelf/footer" %>
   </div><!-- /shelby-wrapper -->
 
   <!-- Facebook widget -->
