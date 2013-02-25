@@ -1,5 +1,9 @@
 libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
 
+  events : {
+    "click .js-follow-button:not(.js-busy)" : "_followOrUnfollowRoll"
+  },
+
   template : function(obj){
     return SHELBYJST['user-profile-info'](obj);
   },
@@ -37,6 +41,7 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
         showNextFrame : false,
         userDesires : shelby.models.userDesires
       }));
+      this._updateFollowButton();
     }
   },
 
@@ -54,6 +59,50 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
   _onActiveFrameModelChange : function(guideModel, activeFrameModel) {
     var rollTitle = activeFrameModel && activeFrameModel.has('roll') && activeFrameModel.get('roll').get('title');
     this.$('.js-youre-watching').text("You're watching: " + (rollTitle ? rollTitle : 'shelby.tv'));
-  }
+    this._updateFollowButton();
+  },
+
+  _followOrUnfollowRoll : function(e) {
+    var self = this;
+    var currentRollModel = this.options.guideModel.get('activeFrameModel').get('roll');
+
+    var $thisButton = $(e.currentTarget);
+    // immediately toggle the button - if the ajax fails, we'll update the next time we render
+    var isUnfollow = $thisButton.toggleClass('js-roll-unfollow button_green button_gray-medium').hasClass('js-roll-unfollow');
+    var wasUnfollow = !isUnfollow;
+    // even though the inverse action is now described by the button, we prevent click handling
+    // with class js-busy until the ajax completes
+    $thisButton.text(isUnfollow ? 'Unfollow' : 'Follow').addClass('js-busy');
+    // now that we've told the user that their action has succeeded, let's fire off the ajax to
+    // actually do what they want, which will very likely succeed
+    var clearBusyFunction = function() {
+      $thisButton.removeClass('js-busy');
+    };
+    if (wasUnfollow) {
+      currentRollModel.leaveRoll(clearBusyFunction, clearBusyFunction);
+    } else {
+      currentRollModel.joinRoll(clearBusyFunction, clearBusyFunction);
+    }
+  },
+
+  _updateFollowButton : function() {
+     var activeFrameModel = this.options.guideModel.get('activeFrameModel');
+     var currentRoll = activeFrameModel && activeFrameModel.get('roll');
+     if (currentRoll) {
+       if (libs.shelbyGT.viewHelpers.roll.isFaux(currentRoll)){
+         this.$('.js-follow-button').hide();
+       } else if (currentRoll.get('creator_id') === shelby.models.user.id ||
+                  !shelby.models.rollFollowings.has('initialized')){
+         this.$('.js-follow-button').hide();
+       } else {
+         var userFollowingRoll = shelby.models.rollFollowings.containsRoll(currentRoll);
+         this.$('.js-follow-button').toggleClass('js-roll-unfollow button_gray-medium', userFollowingRoll)
+           .toggleClass('button_green', !userFollowingRoll)
+           .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
+       }
+    } else {
+      this.$('.js-follow-button').hide();
+    }
+   }
 
 });
