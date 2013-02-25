@@ -1,0 +1,31 @@
+/*
+    Spinner!!!!
+*/
+
+.busy {
+  background-color: transparent;
+  background-image: url('/images/assets/loading-medium.gif');
+  background-position: center center;
+  background-repeat: no-repeat;
+//   background-size: 100%;
+}
+
+.busy--small {
+  background-image: url('/images/assets/loading-small.gif');
+}
+
+.busy--large_dark {
+  background-image: url('/images/assets/loading-large.gif');
+}
+
+.busy--large_light {
+  background-image: url('/images/assets/loading-explore.gif');
+}
+
+.busy--fill {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
