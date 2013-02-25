@@ -47,25 +47,30 @@
       </h2>
 
       <div class="media_module persistent_video_info__body">
-        <% if (!currentFrame.get('isSearchResultFrame')) { %>
-          <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
-            <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
-          </div>
-        <% } else { %>
-          <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
+        <% if (showNextFrame) { %>
+          <% if (!currentFrame.get('isSearchResultFrame')) { %>
+            <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+              <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
+            </div>
+          <% } else { %>
+            <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
+          <% } %>
         <% } %>
-        <div class="media_body">
-          <h3 class="xuser-data persistent_video_info__h4--light">
-            <% if (!currentFrame.get('isSearchResultFrame')) { %>
-              <strong><%= currentCreatorNickname %></strong>
-            <% } else { %>
-              <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
-            <% } %>
 
-            <% if (fauxUserOrigin) { %>
-              via <span class="capitalize"><%= fauxUserOrigin %></span>
-            <% } %>
-          </h3>
+        <div class="media_body">
+          <% if (showNextFrame) { %>
+            <h3 class="xuser-data persistent_video_info__h4--light">
+              <% if (!currentFrame.get('isSearchResultFrame')) { %>
+                <strong><%= currentCreatorNickname %></strong>
+              <% } else { %>
+                <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
+              <% } %>
+
+              <% if (fauxUserOrigin) { %>
+                via <span class="capitalize"><%= fauxUserOrigin %></span>
+              <% } %>
+            </h3>
+          <% } %>
 
           <% if((currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame')) { %>
             <p>

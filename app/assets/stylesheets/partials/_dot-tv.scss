@@ -6,19 +6,18 @@
 //  Block
 //------------------------------------------------------------------------------
 .shelby--dot-tv {
+  background-color: white;
   overflow: visible;
 
-  .user_info,
-  .user-channel-guide {
-    display: block;
+  //hack layout panels
+  .shelby-wrapper {
+    height: 100%;
   }
 
   .shelby-header {
     display: none;
   }
 
-
-  //hack layout panels
   .action-layout {
     margin-top: 0;
     position: fixed;
@@ -40,24 +39,37 @@
   }
   //eo hack layout panels
 
-
-  .videoplayer__wrapper {
-    background-color: $base;
-    padding: 0 10px 0 0;
-  }
-
-  .videoplayer__badge {
+  //user-profile page! ---------------------------------------------------------
+  .user_info,
+  .user-channel-guide {
     display: block;
-    margin-bottom: -3px;
-    margin-right: 2px;
-    margin-top: 4px;
   }
 
-  .videoplayer {
-    height: 470px;
-  }
+    //PVI
+    .persistent_video_info__foot {
+      .hr {
+        display: none;
+      }
+    }
 
-  .videoplayer-viewport {
-    bottom: 0;
-  }
+    //videoplayer stuff
+    .videoplayer__wrapper {
+      background-color: $base;
+      padding: 0 10px 0 0;
+    }
+
+    .videoplayer__badge {
+      display: block;
+      margin-bottom: -3px;
+      margin-right: 2px;
+      margin-top: 4px;
+    }
+
+    .videoplayer {
+      height: 470px;
+    }
+
+    .videoplayer-viewport {
+      bottom: 0;
+    }
 }
