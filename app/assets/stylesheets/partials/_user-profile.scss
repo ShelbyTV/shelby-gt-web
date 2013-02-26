@@ -36,9 +36,8 @@
 
 .user-channel {
   width : 3000px;
-  // TODO when load more is not broken, show it
   .load-more {
-    display: none !important;
+    float: left;
   }
 }
 
