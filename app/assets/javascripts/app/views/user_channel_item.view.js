@@ -4,10 +4,10 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
-      activeClassName : 'user-channel-item--active'
+      activeClassName : 'user_roll__item--active'
   }),
 
-  className : 'list_item user-channel-item',
+  className : 'list_item user_roll__item clearfix',
 
   events : {
     'click .js-button-previous' : '_scrollPrevious',
