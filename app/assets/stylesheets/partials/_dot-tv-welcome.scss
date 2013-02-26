@@ -47,8 +47,8 @@
   background-color: rgba(0,0,0,0.75);
   bottom: 0;
   display: none;
-  height: auto;
-  position: absolute;
+  height: 100%;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 3;
@@ -59,10 +59,11 @@
   font-size: 1.2em;
   left: 50%;
   margin-left: -220px;
+  margin-top: -60px;
   min-height: 36px;
   padding: 6px;
   position: absolute;
-  top: 45%;
+  top: 50%;
   width: 440px;
 }
 
