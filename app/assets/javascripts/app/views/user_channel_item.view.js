@@ -3,17 +3,25 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   _channelListView : null,
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
-      activationStateProperty : 'activeFrameModel'
+      activationStateProperty : 'activeFrameModel',
+      activeClassName : 'user-channel-item--active'
   }),
 
   className : 'list_item user-channel-item',
 
+  events : {
+    'click .js-button-previous' : '_scrollPrevious',
+    'click .js-button-next'     : '_scrollNext'
+  },
+
   initialize : function() {
     this.model.bind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
+    libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function() {
     this.model.unbind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
+    libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 
   template : function(obj){
@@ -62,6 +70,14 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   doActivateThisItem : function(guideModel){
     var activeFrameModel = guideModel.get('activeFrameModel');
     return activeFrameModel && activeFrameModel.has('roll') && this.model.id == activeFrameModel.get('roll').id;
+  },
+
+  _scrollPrevious : function(){
+    console.log('scrolling', this.$('.js-user-channel-wrapper').scrollLeft());
+  },
+
+  _scrollNext : function(){
+    console.log('scrolling', this.$('.js-user-channel-wrapper').scrollLeft());
   },
 
   _onFetchComplete : function(rollModel, resp){
