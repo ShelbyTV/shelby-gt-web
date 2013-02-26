@@ -4,7 +4,7 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
-      className : 'user-channel__item',
+      className : 'user-channel__item js-user-channel-item',
       guideOverlayModel : null,
       // playlistXxx options MUST be supplied by the parent list view
       playlistFrameGroupCollection : null, // the playlist collection that this view's frame model belongs to
