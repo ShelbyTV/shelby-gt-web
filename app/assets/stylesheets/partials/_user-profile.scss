@@ -23,6 +23,21 @@
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//  User Roll
+//------------------------------------------------------------------------------
+//  Block
+.user_roll {}
+
+//  Elements
+.user_roll__item {
+  background-color: $base;
+}
+  .user_roll__item--active {
+    background-color: $base-frame;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.5);
+  }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //------------------------------------------------------------------------------
@@ -36,7 +51,14 @@
 
 //User channel Framework--------------------------------------------------------
 .user-channel__wrapper {
-  margin: 10px;
+  position: relative;
+}
+
+.user-channel__head {
+
+}
+
+.user-channel__body {
   overflow-x: auto;
   position: relative;
 }
@@ -45,10 +67,6 @@
 .user-channel {
   width: 3000px;
 
-  .list {
-    margin-top: 3.2em;
-  }
-
   .load-more {
     float: left;
   }
@@ -56,11 +74,7 @@
 
 //User channel Elements---------------------------------------------------------
 .user-channel__title {
-  left: 0;
-  margin: 1em 0;
-  position: absolute;
-  top: 0;
-  z-index: 1;
+  line-height: 2.5;
 }
 
 .user-channel__item {
@@ -71,6 +85,11 @@
     .explore-frame-menu {
       display: block;
     }
+  }
+
+  //NON-NORMATIVE OVERRIDE
+  .explore-frame {
+    height: 18em;
   }
 }
 

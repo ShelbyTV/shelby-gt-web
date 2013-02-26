@@ -1,4 +1,4 @@
-<div class="media_module">
+<div class="media_module clearfix">
   <button class="media_image user-channel__button js-button-previous">
     <i class="icon-arrow_left"></i>
     <span class="visuallyhidden">Previous</span>
@@ -9,11 +9,16 @@
     <span class="visuallyhidden">Next</span>
   </button>
 
-  <div class="media_body user-channel__wrapper js-user-channel-wrapper">
-    <div class="user-channel js-user-channel clearfix">
+  <div class="media_body user-channel__wrapper clearfix">
+    <div class="user-channel__head">
       <h3 class="user-channel__title js-user-channel-title">
         <%= roll.get('title') %>
       </h3>
-    </div><!-- eo user-channel block -->
-  </div><!-- eo media_body -->
+    </div>
+
+    <div class="media_body user-channel__body js-user-channel-wrapper">
+      <div class="user-channel js-user-channel clearfix">
+        <!-- Filled in by … -->
+      </div><!-- eo user-channel block -->
+    </div><!-- eo media_body -->
 </div><!-- eo media_module -->
