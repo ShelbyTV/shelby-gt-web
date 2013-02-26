@@ -15,14 +15,20 @@
         </p>
 
         <p class="xuser-message">
-          Dwarf elephants are prehistoric members of the order Proboscidea that, through the process of allopatric speciation on islands, evolved much smaller body sizes in comparison with their immediate ancestors.
+          <% if (user.has('dot_tv_description')) { %>
+            <%= user.get('dot_tv_description') %>
+          <% } else { %>
+            <%= user.get('nickname') %> curates this collection of video, powered by Shelby.tv
+          <% } %>
         </p>
 
         <div class="frame-subsection clearfix">
           <ul class="list list--inline">
-            <li class="left">
-              <a class="list__link" href="#">vincentvondoom.com</a>
-            </li>
+            <% if (user.has('website')) { %>
+              <li class="left">
+                <a class="list__link" href="//<%= user.get('website') %>" target="_blank"><%= user.get('website') %></a>
+              </li>
+            <% } %>
 
             <% var tw = _.find(user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
             <% if (typeof tw !== 'undefined'){ %>
