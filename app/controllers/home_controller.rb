@@ -138,6 +138,10 @@ class HomeController < ApplicationController
   def channel
     render '/home/app'
   end
+  
+  # Static page of information
+  def learn_more
+  end
 
   ##
   # Handles "make the web" (allowing logged-out users to see it)
