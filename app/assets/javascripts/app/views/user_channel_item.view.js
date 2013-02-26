@@ -73,11 +73,23 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   },
 
   _scrollPrevious : function(){
-    console.log('scrolling', this.$('.js-user-channel-wrapper').scrollLeft());
+    this._scrollPage(-1);
   },
 
   _scrollNext : function(){
-    console.log('scrolling', this.$('.js-user-channel-wrapper').scrollLeft());
+    this._scrollPage(1);
+  },
+
+  // scroll by the width of the wrapper, in other words pages forward or backwards
+  // parameter direction is an integer - positive integer means scroll forward, negative integer
+  // means scroll backward; magnitude of direction is the number of pages that will be scrolled
+  _scrollPage : function(direction){
+    var $wrapper = this.$('.js-user-channel-wrapper');
+    var newLeft = $wrapper.scrollLeft() + (direction * $wrapper.width());
+    if (newLeft < 0) {
+      newLeft = 0;
+    }
+    $wrapper.scrollTo(newLeft, 500);
   },
 
   _onFetchComplete : function(rollModel, resp){
