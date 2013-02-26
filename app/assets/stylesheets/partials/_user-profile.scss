@@ -40,6 +40,17 @@
     z-index: 1;
   }
 
+  .user_roll__item--alpha {
+    .user-channel__button_prev {
+      display: none;
+    }
+  }
+
+  .user_roll__item--omega {
+    .user-channel__button_next {
+      display: none;
+    }
+  }
 
 ////////////////////////////////////////////////////////////////////////////////
 //------------------------------------------------------------------------------
@@ -95,7 +106,7 @@
   }
 }
 
-.user-channel__button {
+.user-channel__button_prev,
+.user-channel__button_next {
   height: 255px;
-
 }
