@@ -21,87 +21,8 @@
 </head>
 <body class="shelby shelby--landing<%= ' shelby--mobile' if @mobile_os %>">
   <div class="shelby__wrapper">
-    <header class="shelby__header clearfix" role="banner">
-      <button class="button_primer shelby-logo js-home">
-        <% if Rails.env != "staging" %>
-          <h1 class="shelby_logo">
-            <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
-          </h1>
-        <% else %>
-          <h1 class="shelby-title-staging">
-            <%= Settings::Branch.branch %>
-          </h1>
-        <% end %>
-      </button>
 
-      <nav class="guide-presentation-selector">
-        <ul class="guide-nav-list clearfix">
-          <li class="dropdown_module guide-nav-item secondary-item guide-login">
-            <button class="dropdown_button nav-button">
-              <i class="dropdown_icon">
-                Log In
-              </i>
-            </button>
-
-            <section class="dropdown_section login-section">
-              <div class="dropdown_lining login-section-lining clearfix">
-
-                <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module form_module--login-form js-track-submit" data-ga_action="Email login">
-                  <fieldset class="form_fieldset">
-                    <label for="username" class="form_label">Username</label>
-                    <input id="username" name="username" placeholder="Username or Email address" class="form_input" />
-                  </fieldset>
-
-                  <fieldset class="form_fieldset">
-                    <label for="password" class="form_label">Password</label>
-                    <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
-                  </fieldset>
-
-                  <fieldset class="form_fieldset">
-                    <input name="commit" type="submit" value="Login" class="button_primer button_gray-medium form_submit" />
-                    <a href="<%= "#{Settings::ShelbyAPI.url}/user/password/new" %>" class="login-forgot-password">Forgot your password?</a>
-                  </fieldset>
-                </form>
-
-                <hr class="hr--double" />
-
-                <div class="form_fieldset form_fieldset--login-social clearfix">
-                  <h4 class="form_legend">
-                    Log in with
-                  </h4>
-
-                  <a href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>"
-                     class="button_primer button_twitter-blue button_primer--twitter js-track-event js-authorize"
-                     data-ga_action="Login with Twitter"
-                     data-popup_height="700"
-                     data-popup_width="600">
-                    <i class="icon-social_twitter"></i>
-                    Twitter
-                  </a>
-
-                  <a href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>"
-                     class="button_primer button_facebook-blue button_primer--facebook js-track-event js-authorize"
-                     data-ga_action="Login with Facebook"
-                     data-popup_height="650"
-                     data-popup_width="1000">
-                    <i class="icon-social_facebook"></i>
-                    Facebook
-                  </a>
-                </div>
-              </div>
-            </section>
-          </li><!-- eo login button/dropdown -->
-
-          <li class="guide-nav-item secondary-item guide-search">
-            <form id="js-nav-search-form" class="nav-search-form" action="/search">
-              <span class="button_icon icon_search icon nav-search-form-text js-nav-search-form-text-wrapper">
-                <input name="query" type="text" placeholder="Search the Videoverse" class="js-nav-search-form-text" id="js-nav-search-form-text" tabindex="0"/>
-              </span>
-            </form>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <%= render :partial => '/home/landing_header' %>
 
     <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
       <section class="shelf shelf--error clearfix">
@@ -145,143 +66,18 @@
       <%= render :partial => "/home/shelf/sign_up" %>
       <%= render :partial => "/home/shelf/community" %>
       <%= render :partial => "/home/shelf/network" %>
+      <%= render :partial => "/home/shelf/learn_more_teaser" %>
       <%= render :partial => "/home/shelf/about" %>
     <% end %>
 
     <% #------------ /Shelf Content --------------- %>
 
-    <%= render :partial => "/home/shelf/footer" %>
+    <%= render :partial => '/home/landing_footer' %>
+
   </div><!-- /shelby-wrapper -->
 
-  <!-- Facebook widget -->
-  <div id="fb-root"></div>
+  <%= render :partial => '/home/landing_scripts' %>
 
-  <script>
-    // Twitter widget -->
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
-    // Facebook widget -->
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    // G +1 widget -->
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-
-    <% if ("production" == Rails.env or "staging" == Rails.env) %>
-      //Track loading of landing page separate from loading of app -->
-      var shortLink = $.getUrlParam('awesm');
-      if (typeof viaShortLink != 'undefined') { shortLink = 'via Short Link: ' + shortLink; }
-      else { shortLink = "Direct"; }
-      var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_setCustomVar', 1, 'Visit Type', shortLink, 3],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s);}(document,'script'));
-		<% end %>
-
-		<% if Rails.env == 'production' %>
-      var _kmq = _kmq || [];
-      var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
-      function _kms(u){
-        setTimeout(function(){
-          var d = document, f = d.getElementsByTagName('script')[0],
-          s = d.createElement('script');
-          s.type = 'text/javascript'; s.async = true; s.src = u;
-          f.parentNode.insertBefore(s, f);
-        }, 1);
-      }
-      _kms('//i.kissmetrics.com/i.js');
-      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
-
-      var action = "Visit landing page";
-      var shortLink = $.getUrlParam('awesm');
-      if (typeof shortLink != 'undefined') {  action += ' via Short Link'; }
-      else { shortLink = null; }
-      _kmq.push(['record', action, {shortLink: shortLink}]);
-    <% end %>
-
-    $(document).ready(function(){
-      //fanciness on focussing searching in header
-      $('.js-nav-search-form-text').focus(function(){
-        $(this).parent().toggleClass('focused',true);
-      }).blur(function(){
-        $(this).parent().toggleClass('focused',false);
-      });
-
-      // Email submit (used by many shelves) -->
-      $('#js-email-form').on('submit', function(){
-        $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
-          $('#js-email-form-submit').addClass('hidden');
-          $('#js-email-form-feedback').removeClass('hidden');
-        }, 'jsonp');
-        return false;
-      });
-
-      $('.js-search-form, #js-nav-search-form').on('submit', function(e){
-        e.preventDefault();
-        var searchQuery = $(e.currentTarget).find("#query").val() || $(e.currentTarget).find("#js-nav-search-form-text").val();
-        if (searchQuery) {
-          if("<%= @is_mobile %>" !== "") {
-            var params = {
-              "q" : searchQuery,
-              "max-results" : "50",
-              "orderby" : "relevance"
-            };
-
-              // Create a callback
-              var cb = function(res){
-              // Create array of returned YouTube video URLs
-              var urls = new Array();
-              if (typeof res !== 'undefined'){
-                res.forEach(function(r){
-                  if (r.link != undefined) {
-                    r.link.forEach(function(l){
-                      if(l.rel != undefined && l.rel == "alternate") {
-                        if(l.href != undefined) {
-                          urls.push(l.href);
-                        }
-                      }
-                    });
-                  }
-                });
-              }
-
-              if (urls.length !== 0) {
-                // Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
-                $.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': searchQuery, 'urls': JSON.stringify(urls)}, function(data){
-                  if (data.status == 200){
-                    var _rollUrl = '<%= Settings::Application.mobile_url %>' + "/roll/" + data.result.id;
-                    window.location.href = _rollUrl;
-                  }
-                  else { alert("Something went wrong, please try again."); }
-                });
-              }
-              else { //if no URLs:
-                $('.js-search__input').val('').attr('placeholder','sorry, nothing turned up');
-              }
-            };
-
-            // Call ytQuery.query, passing params and your callback
-            ytQuery.query(params, cb);
-
-          } else {
-            window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
-          }
-
-          try {
-          _gaq.push(['_trackEvent', 'Landing Page', 'search', searchQuery.toLowerCase()]);
-          } catch(e) {}
-        }
-      });
-    });
-  </script>
 </body>
 </html>

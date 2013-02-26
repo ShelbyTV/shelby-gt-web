@@ -127,12 +127,10 @@
       if(this.$("#share-on-twitter").is(':checked')){ shareDests.push('twitter'); }
       if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
 
-      this._checkForAndRollToHashtag(message);
-
       // if we are in a search result, add to roll via url
       if (shelby.models.guide.get('displayState') === "search") {
-        var newFrame = new libs.shelbyGT.FrameModel();
         this._addViaUrl(message, roll, shareDests);
+        this._checkForAndRollToHashtag(message, true);
       }
       else {
         // elsere roll the frame
@@ -149,6 +147,7 @@
             });
           }
         });
+        this._checkForAndRollToHashtag(message, false);
       }
     },
 
@@ -197,16 +196,14 @@
       });
     },
 
-    _checkForAndRollToHashtag : function(message){
+    _checkForAndRollToHashtag : function(message, via_search){
       // parsing message to see if a hashtag is there
       var _hashtag;
       if ((_hashtag = /\#(\w*)/.exec(message)) && _hashtag[1] === "amazing") {
         // add video to another special roll owned by user.nickname = amazing, roll title = "amazing"
         var hashtagRoll = new libs.shelbyGT.RollModel({id: '5127bb0bb415cc0a9b0f4fa5'});
-        this._frame.reRoll(hashtagRoll, message, function(newFrame){
-          //rolling is done (don't need to wait for add message to complete)
-          console.log("rolled to #amazing: ", newFrame);
-        });
+        if (via_search){ this._addViaUrl(message, hashtagRoll, []); }
+        else { this._frame.reRoll(hashtagRoll, message, null); }
       }
     }
 

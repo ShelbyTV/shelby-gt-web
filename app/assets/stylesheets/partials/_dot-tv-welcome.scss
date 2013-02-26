@@ -58,8 +58,8 @@
 .welcome-message {
   font-size: 1.2em;
   left: 50%;
-  margin-left: -220px;
-  margin-top: -60px;
+  margin-left: -220px; // half the width
+  margin-top: -120px; // same as height, helps optical vertical align
   min-height: 36px;
   padding: 6px;
   position: absolute;
@@ -87,10 +87,6 @@
 
 .welcome-message__body {
   padding: 6px 5px 3px 6px;
-
-  .media_image {
-    padding: 1px;
-  }
 
   .welcome-message__button {
     margin: 1px;//fixes overflow:hidden; ugliness

@@ -148,6 +148,12 @@ $landing-page-footer-font-color: #EFEFEF;
 }
 
 .shelf__h3 {
+  color: darken($inset,50%);
+  font-family: $font-family;
+  font-size: 2.3em;
+  font-weight: bold;
+  margin: 0.5em 0.5em 0.3em 0em;
+  text-align: left;
 }
 
 .shelf__h4 {
@@ -176,7 +182,8 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 }
 
-.shelf__link {
+.shelf__link,
+.shelf__link-light {
   &,
   &:active,
   &:visited {
@@ -185,6 +192,12 @@ $landing-page-footer-font-color: #EFEFEF;
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+.shelf__link-light {
+  &, &:hover, &:visited {
+    color: white;
   }
 }
 
@@ -299,6 +312,7 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 //  Search + Signup
 //------------------------------------------------------------------------------
+.shelf--learn-more-banner,
 .shelf--signup,
 .shelf--search {
   background-color: #444;
@@ -311,7 +325,7 @@ $landing-page-footer-font-color: #EFEFEF;
   //----- Block -----------------------------------------
   .shelf__lining {
     color: $button-color;
-    padding: 7em 0 9em;
+    padding: 7em 0  6em;
     text-align: center;
   }
 
@@ -343,6 +357,7 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 //  Signup, extended by .shelf--search above
 //------------------------------------------------------------------------------
+.shelf--learn-more-banner,
 .shelf--signup{
   background-image: url('/images/landing/network.jpg');
   // background-image: url('/images/landing/network.jpg');
@@ -376,7 +391,7 @@ $landing-page-footer-font-color: #EFEFEF;
       font-size: inherit;
       margin: 0;
     }
-    
+
     &.shelf__form-tall {
       height: 8em;
     }
@@ -605,6 +620,95 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 }
 
+//------------------------------------------------------------------------------
+//  Learn More Shelf CTA
+//------------------------------------------------------------------------------
+.shelf--learn-more-teaser {
+  text-align: center;
+
+  .shelf__lining {
+    padding-bottom: 5.5em;
+  }
+
+  a {
+    font-size: 3em;
+    margin-top: 1em;
+    padding: 0.5em 1.5em;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Learn More Page
+//------------------------------------------------------------------------------
+
+.shelf--learn-more-banner {
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .shelf__lining {
+    padding: 4em 0 3em;
+  }
+}
+
+.shelf--learn-more {
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .shelf__lining {
+    &:first-child {
+      padding-top: 5em;
+    }
+  }
+
+  .shelf__h2 {
+    padding: 0 1em .5em;
+
+    .icon-heart {
+      line-height: 1;
+      vertical-align: -4px;
+    }
+  }
+
+  .shelf__list {
+  }
+}
+
+.shelf__list--learn-more {
+  margin: 0 auto 5em;
+  max-width: 56em;
+  padding: 1em 2em;
+
+  .shelf__list--learn-more-entry {
+    margin-bottom: 4em;
+
+    .shelf__list--learn-more-definition {
+      font-size: 1.4em;
+      line-height: 1.5;
+      margin: 0 0 0.5em 0em;
+    }
+  }
+}
+
+.shelf__list--reserve-username {
+
+  .shelf__list--learn-more-entry {
+    margin-bottom: 0;
+  }
+
+  .shelf__form--learn-more {
+    font-size: 1.5em;
+    margin: 0.8em 0 1.5em;
+
+    .button_primer {
+      margin: 0 0 0 1em;
+      padding: 0 2em;
+    }
+  }
+}
 
 //------------------------------------------------------------------------------
 //  Footer
