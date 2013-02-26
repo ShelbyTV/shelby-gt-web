@@ -18,7 +18,7 @@ libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
   _cleanup : function(){
     this.model.unbind('change:currentUser', this._onCurrentUserChange, this);
     if (this.model.has('currentUser')) {
-      this.model.get('currentUser').unbind('change', this.render, this);
+      this.model.get('currentUser').unbind('change:id nickname', this.render, this);
     }
   },
 
@@ -45,11 +45,11 @@ libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
   _onCurrentUserChange : function(userProfileModel, currentUser) {
     this.render();
     if (currentUser) {
-      currentUser.bind('change', this.render, this);
+      currentUser.bind('change:id nickname', this.render, this);
     }
     var previousUser = userProfileModel.previous('currentUser');
     if (previousUser) {
-      previousUser.unbind('change', this.render, this);
+      previousUser.unbind('change:id nickname', this.render, this);
     }
   }
 
