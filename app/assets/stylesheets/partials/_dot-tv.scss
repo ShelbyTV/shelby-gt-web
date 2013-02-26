@@ -2,6 +2,11 @@
     Global DotTV Overrides
 */
 
+//non-normative
+.shelf--footer {
+  display: none;
+}
+
 //------------------------------------------------------------------------------
 //  Block
 //------------------------------------------------------------------------------
@@ -21,6 +26,10 @@
   .action-layout {
     margin-top: 0;
     position: fixed;
+
+    .guide-overlay {
+      border-right: 1px solid #aaa;
+    }
   }
 
   .main-layout,
@@ -48,7 +57,6 @@
   .user-channel-guide {
     display: block;
   }
-
     //PVI
     .persistent_video_info__foot {
       .hr {
@@ -80,5 +88,19 @@
     //gross hack
     .shelf__list--social {
       display: none;
+    }
+
+    //videoplayer adjustments --------------------------------------------------
+    .videoplayer-nav__btn {
+      margin-top: -22px;
+    }
+
+    .videoplayer-nav__btn--fullscreen {
+      margin-top: 2em;
+    }
+
+    //enable footer ------------------------------------------------------------
+    .shelf--footer {
+      display: block;
     }
 }
