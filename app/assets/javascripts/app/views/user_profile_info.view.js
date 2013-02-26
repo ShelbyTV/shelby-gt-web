@@ -1,7 +1,8 @@
 libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
 
   events : {
-    "click .js-follow-button:not(.js-busy)" : "_followOrUnfollowRoll"
+    "click .js-follow-button:not(.js-busy)" : "_followOrUnfollowRoll",
+    "click .js-subscribe-button"            : "_onSubscribe",
   },
 
   template : function(obj){
@@ -103,6 +104,26 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
     } else {
       this.$('.js-follow-button').hide();
     }
-   }
+   },
+
+  _onSubscribe: function(){
+    var currentRoll = this.options.guideModel.get('activeFrameModel').get('roll');
+
+    var href = "/subscribe-via-email/roll/"+currentRoll.id+"?roll_title="+currentRoll.get('title')+"&curator="+currentRoll.get('creator_nickname'),
+    width = 700,
+    height = 500,
+    left = (screen.width/2)-(width/2),
+    top = (screen.height/2)-(height/2);
+    window.open(href,
+      "subscribePopup",
+      "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top);
+
+    shelby.trackEx({
+     providers : ['ga'],
+     gaCategory : 'User Profile',
+     gaAction : 'subscribe-via-email-click',
+     gaLabel : shelby.models.user.get('nickname')});
+    return false;
+  }
 
 });
