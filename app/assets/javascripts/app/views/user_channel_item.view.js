@@ -84,12 +84,25 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   // parameter direction is an integer - positive integer means scroll forward, negative integer
   // means scroll backward; magnitude of direction is the number of pages that will be scrolled
   _scrollPage : function(direction){
+    // figure out how many frames are already scrolled off to the left of the wrapper's viewable area
     var $wrapper = this.$('.js-user-channel-wrapper');
-    var newLeft = $wrapper.scrollLeft() + (direction * $wrapper.width());
+    var frameWidth = this.$('.js-user-channel-item').outerWidth(true);
+    var currentScrolledLeftFrames = Math.floor($wrapper.scrollLeft() / frameWidth);
+    // figure out how many frames need to be scrolled past to move by one width of the wrapper
+    var newLeft = ($wrapper.scrollLeft() + (direction * $wrapper.width()));
     if (newLeft < 0) {
       newLeft = 0;
     }
-    $wrapper.scrollTo(newLeft, 500);
+    var framesToBeScrolled = (newLeft - $wrapper.scrollLeft()) / frameWidth;
+    // figure out which will be the leftmost viewable item after the desired amount of scrolling
+    var leftMostFrame = Math.round(currentScrolledLeftFrames + framesToBeScrolled);
+    if (leftMostFrame < 0) {
+      leftMostFrame = 0;
+    }
+
+    // scroll to a particular child item so that the resulting state has one of the children
+    // flush against either the left or right edge of the wrapper, as appropriate
+    $wrapper.scrollTo(this.$('.js-user-channel-item:eq(' + leftMostFrame + ')'), 500);
   },
 
   _onFetchComplete : function(rollModel, resp){
