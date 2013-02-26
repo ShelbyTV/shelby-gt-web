@@ -45,7 +45,7 @@
 
           <li class="menu_item" role="menuitem">
             <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
-              <button class="button_primer button_default frame-command command-queue js-queue-frame
+              <button class="button_primer button_default frame-command command-queue<%= (userIsAnonymous) ? '--anonymous' : '' %> js-queue-frame
                              <%= (videoIsInQueue) ? ' queued' : ' button_default' %>">
                 <i class="icon-heart<%= videoIsInQueue ? ' icon-heart--red': '' %>">
                 </i>
