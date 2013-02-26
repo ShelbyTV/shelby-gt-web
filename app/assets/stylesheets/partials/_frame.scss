@@ -24,6 +24,26 @@ $active-list-item: $shelby-blue;
         color: #156B86;
       }
     }
+
+    .menu_module {
+      display: block;
+    }
+
+    .command-queue,
+    .command-roll {
+      font-size: 1.4em;
+      margin-left: 0.7em;
+      margin-top: 0.7em;
+    }
+
+    .command-queue--anonymous {
+      height: 2.8em;
+      font-size: 3.9em;
+      margin: 0.1em;
+      padding: 0;
+      width: 8em;
+
+    }
   }
 }
 
@@ -44,6 +64,10 @@ $active-list-item: $shelby-blue;
       display: block;
     }
   }
+
+  .frame-body-wrapper {
+    margin-top: 0.7em;
+  }
 }
 
 .frame-list-item {
@@ -58,10 +82,12 @@ $active-list-item: $shelby-blue;
   &:visited{
     color: $text;
   }
+
   text-decoration:none;
 }
 
 .frame-title {
+  display: inline;
   font-size: 1.3em;
   line-height: 1.45;
   margin-bottom: .35em;
@@ -271,9 +297,10 @@ $active-list-item: $shelby-blue;
 //------------------------------------------------------------------------------
 //  specific command button stylings
 //------------------------------------------------------------------------------
+.command-queue--anonymous,
 .command-queue {
   padding-left: 0.7em;
-  width: 71px;
+  width: 6.5em;
 
   &.queued {
     &:not(.remove-frame) {
@@ -333,6 +360,7 @@ $active-list-item: $shelby-blue;
   padding: 0.8em;
 
   .frame-title {
+    display: block;
     height: 40px;
     overflow: hidden;
   }
