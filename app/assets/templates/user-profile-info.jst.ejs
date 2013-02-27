@@ -23,7 +23,7 @@
         </p>
 
         <div class="frame-subsection clearfix">
-          <ul class="list list--inline">
+          <ul class="list list--inline list--social_badges social-icon--hover">
             <% if (user.has('website')) { %>
               <li class="left">
                 <a class="list__link" href="//<%= user.get('website') %>" target="_blank"><%= user.get('website') %></a>
@@ -32,7 +32,7 @@
 
             <% var tw = _.find(user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
             <% if (typeof tw !== 'undefined'){ %>
-              <li class="l">
+              <li class="">
                 <a class="list__link" href="http://twitter.com/<%= tw.nickname %>" target="_blank">
                   <i class="icon-social_twitter"></i>
                   <span class="visuallyhidden">Twitter</span>
@@ -59,7 +59,6 @@
             <% } %>
           </ul>
         </div><!-- eo frame-subsection -->
-
       </div><!-- eo media_body -->
     </div><!-- eo user_card__body -->
   </div><!-- eo user_card -->

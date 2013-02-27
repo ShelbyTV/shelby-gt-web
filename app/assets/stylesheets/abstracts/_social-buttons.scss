@@ -1,37 +1,39 @@
 /*
-  Need a social icon stamped somewhere? Somehow?
+    Need a social icon stamped somewhere? Somehow?
 
-  Examples:
+    Examples:
 
-  <i class="social-icon icon-social__twitter"></i>
+    <i class="social-icon icon-social__twitter"></i>
 
-  <i class="social-icon icon-social__tumblr"></i>
+    <i class="social-icon icon-social__tumblr"></i>
 
-  <i class="social-icon icon-social__facebook"></i>
+    <i class="social-icon icon-social__facebook"></i>
 
-  Sizing and positioning should be set in a class for the partial
-  that you've applied this to..
+    Sizing and positioning should be set in a class for the partial
+    that you've applied this to..
 
-  e.g. HTML
+    e.g. HTML
 
-    <div class="frame-footer">
-      ...
-      <div class="media_body">
-        <i class="social-icon icon-social__twitter"></i>
+      <div class="frame-footer">
         ...
-      </div><!-- eo media_body -->
-    </div><!-- eo frame-footer -->
+        <div class="media_body">
+          <i class="social-icon icon-social__twitter"></i>
+          ...
+        </div><!-- eo media_body -->
+      </div><!-- eo frame-footer -->
 
-  e.q. SCSS
+    e.q. SCSS
 
-    .frame-footer {
-      .social-icon {
-        font-size: 2em;
-        margin: 1px;
-        …
+      .frame-footer {
+        .social-icon {
+          font-size: 2em;
+          margin: 1px;
+          …
+        }
       }
-    }
 */
+
+//branded color always:
 
 .social-icon {
   &.icon-social__twitter {
@@ -44,5 +46,50 @@
 
   &.icon-social__facebook {
     color: $facebook-blue;
+  }
+}
+
+//branded color on :hover:
+
+.social-icon--hover {
+  .icon-social_twitter {
+    &:hover {
+      color: $twitter-blue;
+    }
+  }
+
+  .icon-social_tumblr {
+    &:hover {
+      color: $tumblr-blue;
+    }
+  }
+
+  .icon-social_facebook {
+    &:hover {
+      color: $facebook-blue;
+    }
+  }
+}
+
+/*
+    Social Badge List
+
+    i.e. User Card, social outlets
+    Extends the .list, .list__item structure:
+
+    <ul class="list list--social_badges">
+      <li>
+        <a class="list__link icon-social__twitter" href="http://twitter.com/username" target="_blank">
+          <span class="visuallyhidden">Twitter</span>
+        </a>
+      </li>
+    </ul>
+*/
+
+.list--social_badges {
+  .icon-social_facebook,
+  .icon-social_tumblr,
+  .icon-social_twitter {
+    display: block; //fixes the 'unclickable area problem'
   }
 }

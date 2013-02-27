@@ -89,13 +89,17 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   .persistent_video_info__wrapper--dot-tv {
     // background-color: rgba(239, 239, 239, 1);
     bottom: 0;
-    height: 200px;
+    height: 225px;
     left: 0;
     margin: 0;
     overflow: hidden;
     position: relative;
     right: 0;
     z-index: 1;
+
+    .persistent_video_info__foot {
+      margin: 0;
+    }
   }
 
 .persistent_video_info {

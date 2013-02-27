@@ -42,4 +42,11 @@
     height: 50px;
     width: 50px;
   }
+
+  .list--social_badges {
+    .list__link {
+      padding: 0 2px;
+      display: block;
+    }
+  }
 }
