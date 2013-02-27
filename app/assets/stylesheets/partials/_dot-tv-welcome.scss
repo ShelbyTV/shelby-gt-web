@@ -44,7 +44,8 @@
 
 //positioning wrapper
 .welcome-message__wrapper {
-  bottom: 200px;
+  background-color: rgba(0,0,0,0.75);
+  bottom: 0;
   display: none;
   height: auto;
   position: absolute;
@@ -57,11 +58,12 @@
 .welcome-message {
   font-size: 1.2em;
   left: 50%;
-  margin-left: -220px;
+  margin-left: -220px; // half the width
+  margin-top: -120px; // same as height, helps optical vertical align
   min-height: 36px;
   padding: 6px;
   position: absolute;
-  top: 45%;
+  top: 50%;
   width: 440px;
 }
 

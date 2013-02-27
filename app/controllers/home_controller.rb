@@ -74,6 +74,16 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles team page
+  #
+  # GET /team
+  #
+  def team
+    @team = :true
+    render '/home/landing'
+  end
+
+  ##
   # Handles invite landing page
   #
   # GET /invite/:invite_id
@@ -182,8 +192,10 @@ class HomeController < ApplicationController
           when "syria.shelby.tv" then "4fccffc188ba6b7a82000b92"
           when "trololo.shelby.tv" then "4fccc6e4b415cc7f2100092d"
           when "yvynyl.tv" then "4fa2908088ba6b61770010af"
-          when "nextlevelguy.tv" then "50d4f19ab415cc3807015105"    # requested via NF.tv, added 01/07/13
-          when "missouriquiltco.tv" then "51190f1eb415cc77f308eb22" # requested via Al Doan, added 02/10/13
+          when "nextlevelguy.tv" then "50d4f19ab415cc3807015105"    # requested via NF.tv, added 01/07/13 -hs
+          when "missouriquiltco.tv" then "51190f1eb415cc77f308eb22" # requested via Al Doan, added 02/10/13 -hs
+          when "mobilona.tv" then "511a6296b415cc12d0057dcf"        # requested by Julie, added 2/14/13 -ds
+          when "theadventurous.tv" then "511a62d4b415cc06c70a771b"  # requested by J.McFaddan, added 2/18/13 -hs
           when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
           else

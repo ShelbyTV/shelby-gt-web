@@ -6,7 +6,7 @@ libs.utils.channels = {
       // or waiting to be played as soon as the channel data finishes downloading,
       // so that's the current channel
       return shelby.models.guide.get('currentChannelId');
-    } else if (shelby.models.playlistManager.get('playingState') == libs.shelbyGT.PlayingState.channel) {
+    } else if (shelby.models.playlistManager.get('playingState') == libs.shelbyGT.PlaylistType.channel) {
       // if there's no channel shown in the guide, we may still be playing a channel
       // if so, that's the current channel
       return shelby.models.playlistManager.get('playingChannelId');

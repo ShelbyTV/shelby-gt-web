@@ -37,17 +37,17 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   options : {
     collection : null,
     collectionAttribute : 'listCollection',
-    
+
     /* TODO: need documentation on this... */
     comparator : null,
-    
+
     /* TODO: need documentation on these two... */
     doDynamicRender : true,
     doStaticRender : false,
-    
+
     /*
-      Where should new listItemViews be rendered?  
-      Valid options are 'append' (default), 'prepend', and 'before'.  
+      Where should new listItemViews be rendered?
+      Valid options are 'append' (default), 'prepend', and 'before'.
       'before' behaves like 'append' but you must also include an element selector (which shoud only
       match one element) that the child is appended just before.
     */
@@ -55,7 +55,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       position : 'append',
       selector : null
     },
-    
+
     /*
       isIntervalComplete - a callback function that can be overriden to return true when client wants
       to insert special view items at certain points in the list, for example:
@@ -76,7 +76,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
      * It indicates we need to insert interval views for the group of item views as a whole, not individually.
      */
     insertIntervalViewsIncrementally : true,
-    
+
     /*
       listItemView - a factory method for creating the view for each individual list item given its model
       this can be either:
@@ -88,7 +88,8 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     listItemView : 'ListItemView',
     /*
       listItemViewAdditionalParams - additional parameters to pass to the constructors of the listItemViews
-        this can be an object or a function that returns an object
+        this can be an object or a function that returns an object, if its a function, the function will be
+        passed a reference to the view (parent list view) that is calling it
     */
     listItemViewAdditionalParams : {},
     masterCollection : null,
@@ -96,7 +97,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     simulateAddTrue : true,
     maxDisplayedItems : null // can be null or an integer 1 to infinity
   },
-  
+
   initialize : function(){
     if (this.options.doDynamicRender) {
       if (this.options.collection) {
@@ -122,11 +123,11 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     } else {
       this._displayCollection = new Backbone.Collection();
     }
- 
+
     if (this.options.comparator) {
       this._displayCollection.comparator = this.options.comparator;
     }
-    
+
     if(this.model){
       this.model.bind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
     }
@@ -149,11 +150,11 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
         this.model.unbind('remove:'+this.options.collectionAttribute, this.sourceRemoveOne, this);
       }
     }
-    
+
     if(this.model){
       this.model.unbind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
     }
-    
+
     this._displayCollection.unbind('add', this.internalAddOne, this);
     this._displayCollection.unbind('remove', this.internalRemoveOne, this);
     this._displayCollection.unbind('reset', this.internalReset, this);
@@ -258,7 +259,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this._insertIntervalViews(null);
     }
   },
-  
+
   /*
    * When our item views are not simply appended in natural order, we can't simply append the interval views.
    *
@@ -267,7 +268,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
    */
   _insertIntervalViewsForGroup: function(){
     if(this.options.insertIntervalViewsIncrementally){ return; }
-    
+
     //check for promo insertion from end of last group to end of this group
     for(var i = this._insertedIntervalsUpToIndex; i < this._listItemViews.length; ++i){
       if(this.options.isIntervalComplete(i+1)){
@@ -277,7 +278,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     }
     this._insertedIntervalsUpToIndex = this._listItemViews.length;
   },
-  
+
   _insertIntervalViews: function(loc){
     var intervalViews = [];
     if (this.options.intervalInsertViewProto) {
@@ -360,14 +361,19 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _constructListItemView : function(item){
-    var params = _(this.options).result('listItemViewAdditionalParams');
+    var params;
+    if (typeof this.options.listItemViewAdditionalParams === 'function') {
+      params = this.options.listItemViewAdditionalParams(this);
+    } else {
+      params = this.options.listItemViewAdditionalParams;
+    }
     if (typeof this.options.listItemView === 'function'){
       return this.options.listItemView(item, params);
     } else {
       return new libs.shelbyGT[this.options.listItemView](_(params).extend({model:item}));
     }
   },
-  
+
   _onFetchComplete : function(){
     this._insertIntervalViewsForGroup();
   }

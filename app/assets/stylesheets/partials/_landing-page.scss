@@ -376,6 +376,10 @@ $landing-page-footer-font-color: #EFEFEF;
       font-size: inherit;
       margin: 0;
     }
+    
+    &.shelf__form-tall {
+      height: 8em;
+    }
   }
 
   //----- Non-normativeElements -----------------------------------------
@@ -435,6 +439,82 @@ $landing-page-footer-font-color: #EFEFEF;
     &:active:before {
       opacity: 1;
     }
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Team
+//------------------------------------------------------------------------------
+.shelf--team {
+  //----- Block -----------------------------------------
+  .shelf__lining {
+    margin-bottom: 1em;
+  }
+    .shelf__lining--banner {
+      background-image: url('/images/team/MAIN.jpg');
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+      background-size: cover;
+      background-position: center center;
+      height: 360px;
+    }
+
+  //----- Elements -----------------------------------------
+
+  .shelf__h2 {
+  }
+
+  .shelf__list {
+  }
+
+  .shelf__item {
+    float: left;
+  }
+
+  .frame--shelf {
+    .xuser-data {
+      font-size: 1em;
+      font-weight: bold;
+      font-family: $font-family;
+      margin-bottom: 1em;
+    }
+
+    .xuser-data-timestamp {
+      padding-right: 2px;
+    }
+
+    .xuser-message {
+      min-height: 4em;
+    }
+
+    .frame-thumbnail {
+      height: 230px;
+    }
+
+    .frame-subline {
+      margin-bottom: 0;
+    }
+
+    a {
+      &,
+      &:visited {
+        text-decoration: none;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .left {
+      float: left;
+    }
+  }
+
+  .icon-email,
+  .icon-social_twitter {
+    display: inline-block;
+    width: 1.5em;
   }
 }
 

@@ -21,6 +21,8 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/inline_explore_promo.view.js
 //= require ./views/inline_roll_promo.view.js
 //= require ./views/inline_donate_promo.view.js
+//= require ./collections/frame_groups.coll.js
+//= require ./utils/playlist_type.js
 //= require ./views/frame_group_play_paging_list.view.js
 //= require ./views/dashboard_empty_indicator.view.js
 //= require ./views/search_empty_indicator.view.js

@@ -83,7 +83,12 @@
             $.ajax({
               url: 'http://api.shelby.tv/v1/frame/'+_frameId+'/short_link',
               dataType: 'json',
-              success: function(r){ shelby.alert({message: r.result.short_link}); }
+              success: function(r){ shelby.dialog({
+                message: '<p>Shortlink</p><p>'+r.result.short_link+'</p>',
+                button_primary: {
+                  title: "Done"
+                }
+              }); }
             });
           }
         },

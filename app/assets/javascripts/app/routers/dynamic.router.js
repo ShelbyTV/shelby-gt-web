@@ -23,7 +23,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "likes"                                : "displaySaves",
     "saves"                                : "displaySaves",
     "stream"                               : "displayDashboard",
-    "team"                                 : "displayTeam",
     "tools"                                : "displayTools",
     ""                                     : "displayDashboard",
     "*url"                                 : "doNothing"
@@ -89,11 +88,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       defaultOnRollFetch = this._checkPlayRollFrame;
     }
 
-    if (shelby.models.routingState.get('forceFramePlay')) {
-      // responded to the forceFramePlay state, so reset it
-      shelby.models.routingState.unset('forceFramePlay');
-    }
-
     options = _.chain({}).extend(options).defaults({
       updateRollTitle: true,
       onRollFetch: defaultOnRollFetch,
@@ -105,6 +99,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       data: options.data,
       onRollFetch: options.onRollFetch
     }, topLevelViewsOptions);
+
+    if (shelby.models.routingState.get('forceFramePlay')) {
+      // responded to the forceFramePlay state, so reset it
+      shelby.models.routingState.unset('forceFramePlay');
+    }
   },
 
   displaySearch : function(params){
@@ -346,7 +345,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         isIsolatedRoll : false
       });
     } else {
-      shelby.alert({message: "Could not roll view to your Queue"});
+      shelby.alert({message: "<p>Could not roll view to your Queue</p>"});
       this.navigate('', {trigger:true, replace:true});
     }
   },
@@ -359,11 +358,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayHelp : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.help);
-  },
-
-  displayTeam : function(){
-    this._setupTopLevelViews();
-    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.team);
   },
 
   displayLegal : function(){
@@ -437,16 +431,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           shelby.models.guide.set('activeFrameModel', frame);
         }
       } else {
-        // under normal circumstances we can just set the frame to active because we are not
-        // specifically concerned with whether it will play or not, just that it will be
-        // selected and displayed
-        shelby.models.guide.set('activeFrameModel', frame);
-      }
-      if (showCommentOverlay) {
-        shelby.models.guideOverlay.set({
-          activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.conversation,
-          activeGuideOverlayFrame : frame
-        });
+        // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
+        shelby.alert({message: "<p>Sorry, the video you were looking for doesn't exist in this roll.</p>"});
+        this.navigateToRoll(rollModel, {trigger:true, replace:true});
       }
       if (shelby.models.routingState.get('forceFramePlay')) {
         // responded to the forceFramePlay state, so reset it
@@ -464,14 +451,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _activateEntryInDashboardById : function(dashboardModel, entryId) {
-    var entry = dashboardModel.get('dashboard_entries').get(entryId);
-    // for compatibility reasons, we only show videos from certain providers on mobile
-    if (entry && (!Browser.isMobile() || entry.get('frame').get('video').canPlayMobile())) {
-      shelby.models.guide.set('activeFrameModel', entry.get('frame'));
-    } else {
-      // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
-      shelby.alert({message: "Sorry, the entry you were looking for doesn't exist in your stream."});
-      this.navigate("/", {trigger:true, replace:true});
+    // don't want to activate the video if we've switched to explore view during the asynchronous load
+    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
+      var entry = dashboardModel.get('dashboard_entries').get(entryId);
+      // for compatibility reasons, we only show videos from certain providers on mobile
+      if (entry && (!Browser.isMobile() || entry.get('frame').get('video').canPlayMobile())) {
+        shelby.models.guide.set('activeFrameModel', entry.get('frame'));
+      } else {
+        // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
+        shelby.alert({message: "<p>Sorry, the entry you were looking for doesn't exist in your stream.</p>"});
+        this.navigate("/", {trigger:true, replace:true});
+      }
     }
   },
 

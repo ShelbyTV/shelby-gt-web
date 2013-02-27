@@ -139,7 +139,9 @@
 
     <%= render :partial => "/home/shelf/invite" if @invite_id %>
 
-    <% if (!@share_type) and !@invite_id %>
+    <%= render :partial => "/home/shelf/team" if @team %>
+
+    <% if (!@share_type) and !@invite_id and !@team %>
       <%= render :partial => "/home/shelf/sign_up" %>
       <%= render :partial => "/home/shelf/community" %>
       <%= render :partial => "/home/shelf/network" %>
@@ -277,10 +279,9 @@
         return false;
       });
 
-      $('.js-search-form').on('submit', function(e){
+      $('.js-search-form, #js-nav-search-form').on('submit', function(e){
         e.preventDefault();
-        var searchQuery = $(e.currentTarget).find("#query").val();
-
+        var searchQuery = $(e.currentTarget).find("#query").val() || $(e.currentTarget).find("#js-nav-search-form-text").val();
         if (searchQuery) {
           if("<%= @is_mobile %>" !== "") {
             var params = {

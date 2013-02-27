@@ -1,18 +1,12 @@
 libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
-  _conversationDisplayed : false,
-
-  _grewForFrameRolling : false,
-
-  _frameRollingView : null,
-
-  _conversationView : null,
-
-  _frameSharingInGuideView : null,
-
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
-      guideOverlayModel : null
+      guideOverlayModel : null,
+      // playlistXxx options MUST be supplied by the parent list view
+      playlistFrameGroupCollection : null, // the playlist collection that this view's frame model belongs to
+      playlistManagerModel : null, // the app-wide model used to interact with the PlaylistManager
+      playlistType : null // the type of playlist that this view's frame model is on: dashboard, roll, etc
   }),
 
   events : {
@@ -123,18 +117,18 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
           //so, JST should only .get() object vals from models
 
       this.$el.html(this.template({
+        creator           : frame.get('creator'),
+        dupeFrames        : this.model.getDuplicateFramesToDisplay(),
+        frameGroup        : this.model,
+        frame             : frame,
+        likers            : likersToDisplay,
+        messages          : messages,
         queuedVideosModel : shelby.models.queuedVideos,
-        frameGroup : this.model,
-        frame : frame,
-        video : frame.get('video'),
-        user : shelby.models.user,
-        creator : frame.get('creator'),
-        messages : messages,
-        likers : likersToDisplay,
-        options : this.options,
-        dupeFrames : this.model.getDuplicateFramesToDisplay(),
-        remainingLikes : remainingLikes,
-        totalLikes : likeInfo.totalLikes
+        options           : this.options,
+        remainingLikes    : remainingLikes,
+        totalLikes        : likeInfo.totalLikes,
+        user              : shelby.models.user,
+        video             : frame.get('video')
       }));
 
       if (likersToDisplay.length) {
@@ -170,7 +164,16 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       this._expand();
       return false;
     }
-    shelby.models.guide.set('activeFrameModel', this.model.getFirstFrame());
+
+    var frame = this.model.getFirstFrame();
+    // activate the current frame
+    shelby.models.guide.set('activeFrameModel', frame);
+    // register the playlist this frame is on as the current playlist with the playlist manager
+    this.options.playlistManagerModel.set({
+      playlistFrameGroupCollection : this.options.playlistFrameGroupCollection,
+      playlistType : this.options.playlistType,
+      playlistRollId : this.options.playlistType == libs.shelbyGT.PlaylistType.roll ? frame.get('roll').id : null
+    });
   },
 
   // override ActiveHighlightListItemView abstract method
@@ -235,7 +238,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
     shelby.dialog(
       {
-        message: 'Are you sure you want to <strong>remove</strong> this video?',
+        message: '<p>Are you sure you want to <strong>remove</strong> this video?</p>',
         button_primary : {
           title: 'Remove Video'
         },
@@ -324,12 +327,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _toggleComment : function(e){
-    e.preventDefault();
-
-    $(e.currentTarget).text(function(e,i){
-      return (i == 'more…') ? 'Hide' : 'more…';
-    });
-    this.$('.xuser-message-remainder').toggle();
+    // if the click was on an anchor within the frame comment just let the normal
+    // link handling occur without showing/hiding the rest of the comment
+    if (!$(e.target).is('a')) {
+      $(e.currentTarget).toggleClass('line-clamp--open');
+    }
   },
 
   requestFBPostUI : function(e){

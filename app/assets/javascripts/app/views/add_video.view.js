@@ -107,7 +107,7 @@ libs.shelbyGT.addVideoView = Support.CompositeView.extend({
   },
 
   _addVideoError: function(message){
-    shelby.alert({message: _.escape(message)});
+    shelby.alert({message:"<p>"+_.escape(message)+"</p>"});
   },
 
   _onEnterInInputArea : function(event){

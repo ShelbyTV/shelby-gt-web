@@ -3,6 +3,8 @@
   // shorten names of included library prototypes
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
   var SearchEmptyIndicatorView = libs.shelbyGT.SearchEmptyIndicatorView;
+  var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
+  var PlaylistType = libs.shelbyGT.PlaylistType;
 
   libs.shelbyGT.VideoSearchView = FrameGroupPlayPagingListView.extend({
 
@@ -13,7 +15,8 @@
       emptyIndicatorViewProto : SearchEmptyIndicatorView,
       fetchParams : {
         include_children : true
-      }
+      },
+      playlistType : PlaylistType.search
     }),
 
     initialize : function(){

@@ -83,7 +83,7 @@
       validates = true;
 
       if( this.$("#js-rolling-message").val().length < 1 ){
-        shelby.alert({message: "Please enter a comment"});
+        shelby.alert({message: "<p>Please enter a comment</p>"});
         this.$('#js-rolling-message').addClass('error');
         validates = false;
       }
@@ -129,8 +129,8 @@
 
       // if we are in a search result, add to roll via url
       if (shelby.models.guide.get('displayState') === "search") {
-        var newFrame = new libs.shelbyGT.FrameModel();
         this._addViaUrl(message, roll, shareDests);
+        this._checkForAndRollToHashtag(message, true);
       }
       else {
         // elsere roll the frame
@@ -147,6 +147,7 @@
             });
           }
         });
+        this._checkForAndRollToHashtag(message, false);
       }
     },
 
@@ -154,7 +155,7 @@
       this.parent.done();
       //N.B. This link is picked up by NotificationOverlayView for routing
       shelby.alert({
-        message: 'Video successfully rolled!',
+        message: '<p>Video successfully rolled!</p>',
         button_secondary: {
           title: 'Go to Roll'
           }
@@ -189,10 +190,21 @@
           }
         },
         error: function(a,b,c){
-          if (b.status == 404) { shelby.alert({message: "404 error"}); }
-          else { shelby.alert({message: "sorry, something went wrong."}); }
+          if (b.status == 404) { shelby.alert({message: "<p>404 error</p>"}); }
+          else { shelby.alert({message: "<p>sorry, something went wrong.</p>"}); }
         }
       });
+    },
+
+    _checkForAndRollToHashtag : function(message, via_search){
+      // parsing message to see if a hashtag is there
+      var _hashtag;
+      if ((_hashtag = /\#(\w*)/.exec(message)) && _hashtag[1] === "amazing") {
+        // add video to another special roll owned by user.nickname = amazing, roll title = "amazing"
+        var hashtagRoll = new libs.shelbyGT.RollModel({id: '5127bb0bb415cc0a9b0f4fa5'});
+        if (via_search){ this._addViaUrl(message, hashtagRoll, []); }
+        else { this._frame.reRoll(hashtagRoll, message, null); }
+      }
     }
 
   });

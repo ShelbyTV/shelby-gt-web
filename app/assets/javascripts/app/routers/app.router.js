@@ -93,6 +93,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           shelby.models.promoRollCategories.fetch();
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: shelby.models.user.get('nickname')});
+          libs.utils.flash.detectFlash();
         }
       });
     }
@@ -108,6 +109,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       this._reroute();
       shelby.track('identify', {nickname: 'anonymous'});
       shelby.models.promoRollCategories.fetch();
+      libs.utils.flash.detectFlash();
     }
   },
 

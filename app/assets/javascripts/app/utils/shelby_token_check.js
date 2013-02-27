@@ -17,7 +17,7 @@ _(shelby).extend({
         .success(function(r){
           if (r.status == 200 && !r.result.token_valid){
             shelby.alert({
-              message: "In order to provide a great experience we need you to re-authenticate with facebook. Don't worry, you'll be re-directed back to Shelby. Yay!",
+              message: "<p>In order to provide a great experience we need you to re-authenticate with facebook. Don't worry, you'll be re-directed back to Shelby. Yay!</p>",
               button_primary: {
                 title: 'Re-authenticate Facebook'
                 },

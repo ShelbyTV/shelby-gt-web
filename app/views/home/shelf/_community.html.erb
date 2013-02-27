@@ -64,7 +64,7 @@
       <% frames.each do |frame| %>
         <li class="shelf__item">
           <article class="frame frame--shelf">
-            <a href="<%= frame["url"] %>" class="shelf__link js-track-event" data-ga_category="Homepage" data-ga_action="Click community roll" title="Click to watch!">
+            <a href="<%= frame["url"] %>" class="shelf__link js-track-event" data-ga_category="Homepage" data-ga_action="Click community roll" data-ga_label="<%= frame['title'] %>" title="Click to watch!">
               <div class="frame-body-wrapper clearfix">
                 <div class="image_module frame-thumbnail icon-player_play" style="background-image: url('<%= frame["thumbnail"] %>');" role="img">
                   <img class="visuallyhidden" src="<%= frame["thumbnail"] %>" title="<%= frame["thumbnail"] %>" alt="<%= frame["thumbnail"] %> thumbnail">

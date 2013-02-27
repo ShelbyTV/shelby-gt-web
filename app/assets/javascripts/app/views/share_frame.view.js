@@ -108,7 +108,7 @@
       var href = shelby.config.appUrl+'/mail/'+selectedRollId+'?u='+shelby.models.user.id+'&t='+token;
       shelby.alert(
         {
-          message: 'Message Sent!',
+          message: '<p>Message Sent!</p>',
           button_secondary: {
             title: 'Open Conversation'
           }

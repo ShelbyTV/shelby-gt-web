@@ -49,6 +49,7 @@ group :assets do
   gem 'compass-rails', '~> 1.0.3'
   gem 'ejs'
   gem 'yui-compressor'
+  gem 'turbo-sprockets-rails3'
 end
 
 gem 'jquery-rails'
