@@ -1,8 +1,10 @@
 libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
 
+  _personalRollGlobalInstance : null,
+
   events : {
     "click .js-follow-button:not(.js-busy)" : "_followOrUnfollowRoll",
-    "click .js-subscribe-button"            : "_onSubscribe",
+    "click .js-subscribe-button"            : "_onSubscribe"
   },
 
   template : function(obj){
@@ -23,14 +25,43 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
       this.model.get('currentUser').unbind('change', this.render, this);
     }
     this.options.guideModel.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
+    if (this._personalRollGlobalInstance) {
+      this._personalRollGlobalInstance.unbind('change:header_image_file_name', this.render, this);
+    }
   },
 
   render : function(){
     var currentUser = this.model.get('currentUser');
     this._leaveChildren();
+
+    // nasty hack to get around backbone relational not delivering us the header image file info via
+    // the events we expect it to: whenever we render we will explicitly grab the roll model in the global
+    // Relational store that matches the current user's personal roll id, and add bindings to it to
+    // re render if that global instance later gets the header_image_file_name
+    // ----------------------------
+    // FOR NERDS: we should be able to bind as follows for a much simpler way to handle this:
+    //   -> this.model.get('current_user').get('personal_roll').bind('change:header_image_file_name', this._rerenderHeaderImage, this);
+    // since the model bound to should be the instance in the global relational store, but doing so does not ever trigger
+    // an event which gives us the header_image_file_name
+    if (this._personalRollGlobalInstance) {
+      this._personalRollGlobalInstance.unbind('change:header_image_file_name', this.render, this);
+    }
+    this._personalRollGlobalInstance = currentUser && Backbone.Relational.store.find(libs.shelbyGT.RollModel, currentUser.get('personal_roll_id'));
+    var userPersonalRollForDisplay = null;
+    if (this._personalRollGlobalInstance) {
+      // we're only going to display info about the user's personal roll if it has the attributes that we're interested
+      // in - that's the only way we have to know that it's already loaded, so we can avoid, for example, rendering the
+      // the default header image while we're waiting for the real header image info to be fetched
+      if (_(this._personalRollGlobalInstance.attributes).has('header_image_file_name')) {
+        userPersonalRollForDisplay = this._personalRollGlobalInstance;
+      }
+      this._personalRollGlobalInstance.bind('change:header_image_file_name', this.render, this);
+    }
+
     this.$el.html(this.template({
       user : currentUser,
-      frame : this.options.guideModel.get('activeFrameModel')
+      frame : this.options.guideModel.get('activeFrameModel'),
+      userPersonalRoll : userPersonalRollForDisplay
     }));
     if (currentUser && !currentUser.isNew()) {
       this.appendChild(new libs.shelbyGT.PersistentVideoInfoView({
