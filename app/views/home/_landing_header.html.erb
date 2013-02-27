@@ -1,0 +1,81 @@
+<header class="shelby__header clearfix" role="banner">
+  <a href="/" class="button_primer shelby-logo">
+    <% if Rails.env != "staging" %>
+      <h1 class="shelby_logo">
+        <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+      </h1>
+    <% else %>
+      <h1 class="shelby-title-staging">
+        <%= Settings::Branch.branch %>
+      </h1>
+    <% end %>
+  </a>
+
+  <nav class="guide-presentation-selector">
+    <ul class="guide-nav-list clearfix">
+      <li class="dropdown_module guide-nav-item secondary-item guide-login">
+        <button class="dropdown_button nav-button">
+          <i class="dropdown_icon">
+            Log In
+          </i>
+        </button>
+
+        <section class="dropdown_section login-section">
+          <div class="dropdown_lining login-section-lining clearfix">
+
+            <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module form_module--login-form js-track-submit" data-ga_action="Email login">
+              <fieldset class="form_fieldset">
+                <label for="username" class="form_label">Username</label>
+                <input id="username" name="username" placeholder="Username or Email address" class="form_input" />
+              </fieldset>
+
+              <fieldset class="form_fieldset">
+                <label for="password" class="form_label">Password</label>
+                <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
+              </fieldset>
+
+              <fieldset class="form_fieldset">
+                <input name="commit" type="submit" value="Login" class="button_primer button_gray-medium form_submit" />
+                <a href="<%= "#{Settings::ShelbyAPI.url}/user/password/new" %>" class="login-forgot-password">Forgot your password?</a>
+              </fieldset>
+            </form>
+
+            <hr class="hr--double" />
+
+            <div class="form_fieldset form_fieldset--login-social clearfix">
+              <h4 class="form_legend">
+                Log in with
+              </h4>
+
+              <a href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>"
+                 class="button_primer button_twitter-blue button_primer--twitter js-track-event js-authorize"
+                 data-ga_action="Login with Twitter"
+                 data-popup_height="700"
+                 data-popup_width="600">
+                <i class="icon-social_twitter"></i>
+                Twitter
+              </a>
+
+              <a href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>"
+                 class="button_primer button_facebook-blue button_primer--facebook js-track-event js-authorize"
+                 data-ga_action="Login with Facebook"
+                 data-popup_height="650"
+                 data-popup_width="1000">
+                <i class="icon-social_facebook"></i>
+                Facebook
+              </a>
+            </div>
+          </div>
+        </section>
+      </li><!-- eo login button/dropdown -->
+
+      <li class="guide-nav-item secondary-item guide-search">
+        <form id="js-nav-search-form" class="nav-search-form" action="/search">
+          <span class="button_icon icon_search icon nav-search-form-text js-nav-search-form-text-wrapper">
+            <input name="query" type="text" placeholder="Search the Videoverse" class="js-nav-search-form-text" id="js-nav-search-form-text" tabindex="0"/>
+          </span>
+        </form>
+      </li>
+    </ul>
+  </nav>
+</header>

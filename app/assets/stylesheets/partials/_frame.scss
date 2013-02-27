@@ -28,22 +28,6 @@ $active-list-item: $shelby-blue;
     .menu_module {
       display: block;
     }
-
-    .command-queue,
-    .command-roll {
-      font-size: 1.4em;
-      margin-left: 0.7em;
-      margin-top: 0.7em;
-    }
-
-    .command-queue--anonymous {
-      height: 2.8em;
-      font-size: 3.9em;
-      margin: 0.1em;
-      padding: 0;
-      width: 8em;
-
-    }
   }
 }
 
@@ -264,60 +248,24 @@ $active-list-item: $shelby-blue;
   margin-left: 1em;
   margin-top: 1em;
 }
-    // ////////////////////////////////////////////////////////////////////////////
-    // //  dropdown sublist:
-    // //  children options of a spcific frame command (more button)
-    // ////////////////////////////////////////////////////////////////////////////
-    // .frame-sublist {
-    //   margin-top: 1px;
-    //   box-shadow: $shadow;
-
-    //   .frame-command {
-    //     background-color: #efefef;
-    //     border-bottom: none;
-    //     border-left: 1px solid $inset;
-    //     border-right: 1px solid $inset;
-    //     border-top: none;
-    //     margin: 0;
-    //     padding: .75em 1em .8em;
-    //     text-align: left;
-    //     width: 100%;
-
-    //     &:hover {
-    //       background-color: adjust-lightness(#efefef,-5%);
-    //     }
-    //   }
-    // }
-
-    // .frame-shortlink {
-    //   @include roundies(input);
-
-    //   display: inline;
-    //   font-size: 1.1em;
-    //   height: 1.4em;
-    //   margin: -2px 0;
-    //   padding: 0.3em;
-    //   width: 115px;
-    //   background: transparent;
-    //   border: 1px solid #aaa;
-
-    //   &:focus {
-    //     outline: none;
-    //     border: 1px solid black;
-    //   }
-    // }
 
 //------------------------------------------------------------------------------
 //  specific command button stylings
 //------------------------------------------------------------------------------
-.command-queue--anonymous,
+.command-queue,
+.command-roll {
+  font-size: 1.1em;
+  margin-left: 0.7em;
+  margin-top: 0.7em;
+}
+
+
 .command-queue {
   padding-left: 0.7em;
   width: 6.5em;
 
   &.queued {
-    &:not(.remove-frame) {
-    }
+    &:not(.remove-frame) {}
 
     .icon-videocard_queue {
       display: none;
@@ -325,14 +273,9 @@ $active-list-item: $shelby-blue;
   }
 }
 
-.command-roll {
-  .icon {
-    padding-left: $button-padding-left;
-  }
-}
+.command-roll {}
 
-.command-more {
-}
+.command-more {}
 
 .command-share {
   .icon {
@@ -343,9 +286,7 @@ $active-list-item: $shelby-blue;
 }
 
 .command-remove {
-  .icon-cancel {
-    // vertical-align: -0.1em;
-  }
+  .icon-cancel {}
 }
 
 .command-link,
