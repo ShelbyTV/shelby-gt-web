@@ -15,7 +15,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
     "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
     "click .persistent_video_info__current-frame  .js-facebook-share"             : "_shareCurrentToFacebook",
-    "click .js-next-video"                                                        : "_skipToNextVideo"
+    "click .js-next-video"                                                        : "_skipToNextVideo",
+    "click .js-toggle-comment"                                                    : "_toggleComment"
   },
 
   initialize: function(){
@@ -184,6 +185,13 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         }
       );
     }
-  }
+  },
 
+  _toggleComment : function(e){
+    // if the click was on an anchor within the frame comment just let the normal
+    // link handling occur without showing/hiding the rest of the comment
+    if (!$(e.target).is('a')) {
+      $(e.currentTarget).toggleClass('line-clamp--open');
+    }
+  }
 });

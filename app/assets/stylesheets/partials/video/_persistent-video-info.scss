@@ -100,6 +100,34 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
     .persistent_video_info__foot {
       margin: 0;
     }
+
+    .persistent_video_info__body {
+      //non-normative overrides
+      .media_body {
+        max-height: 9.5em;
+        // overflow-y: auto;
+      }
+    }
+
+    .line-clamp {
+      box-shadow: none;
+      height: 9em;
+
+      &:after {
+        background-color: $base;
+      }
+    }
+
+    .line-clamp--open {
+      height: 9.5em;
+      overflow-y: auto;
+
+      &:after {
+        display: block;
+        position: relative;
+        text-align: center;
+      }
+    }
   }
 
 .persistent_video_info {
