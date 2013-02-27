@@ -13,3 +13,12 @@
   border-bottom: 1px solid $outset;
   border-top: 1px solid $inset;
 }
+
+.hr--spacer,
+.hr--spacer-double {
+  height: 2em;
+  border: none;
+}
+.hr--spacer-double {
+  height: 4em;
+}

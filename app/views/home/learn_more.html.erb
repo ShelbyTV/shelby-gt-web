@@ -1,0 +1,41 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#" profile="http://www.w3.org/2005/10/profile">
+  <meta charset="utf-8">
+
+  <title>Learn More about Shelby</title>
+
+  <%= render :partial => "/home/meta_info" %>
+  <meta name="viewport" content="width=device-width">
+
+  <%= stylesheet_link_tag "landing", :media => "screen" %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+  <%= javascript_include_tag "common", "landing" %>
+
+  <script>
+    var shelbyTrackingCategory = "Learn More Page";
+  </script>
+</head>
+<body class="shelby shelby--landing<%= ' shelby--mobile' if @mobile_os %>">
+  <div class="shelby__wrapper">
+
+    <%= render :partial => '/home/landing_header' %>
+
+    <% #------------ Shelf Content --------------- %>
+
+    <%= render :partial => "/home/content_shelf/learn_more" %>
+    
+    <%= render :partial => "/home/shelf/about" %>
+
+    <% #------------ /Shelf Content --------------- %>
+
+    <%= render :partial => '/home/landing_footer' %>
+    
+  </div><!-- /shelby-wrapper -->
+
+  <%= render :partial => '/home/landing_scripts' %>
+  
+</body>
+</html>
