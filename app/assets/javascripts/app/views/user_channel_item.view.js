@@ -87,22 +87,39 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
     // figure out how many frames are already scrolled off to the left of the wrapper's viewable area
     var $wrapper = this.$('.js-user-channel-wrapper');
     var frameWidth = this.$('.js-user-channel-item').outerWidth(true);
-    var currentScrolledLeftFrames = Math.floor($wrapper.scrollLeft() / frameWidth);
-    // figure out how many frames need to be scrolled past to move by one width of the wrapper
-    var newLeft = ($wrapper.scrollLeft() + (direction * $wrapper.width()));
-    if (newLeft < 0) {
-      newLeft = 0;
+    var currentScrolledLeftFrames = $wrapper.scrollLeft() / frameWidth;
+    // figure out which should be the leftmost viewable item after the desired amount of scrolling
+    var framesPerPage = $wrapper.width() / frameWidth;
+    var newScrolledLeftFrames = Math.round(currentScrolledLeftFrames + (framesPerPage * direction));
+    if (newScrolledLeftFrames < 0) {
+     newScrolledLeftFrames = 0;
     }
-    var framesToBeScrolled = (newLeft - $wrapper.scrollLeft()) / frameWidth;
-    // figure out which will be the leftmost viewable item after the desired amount of scrolling
-    var leftMostFrame = Math.round(currentScrolledLeftFrames + framesToBeScrolled);
-    if (leftMostFrame < 0) {
-      leftMostFrame = 0;
+    var numFrames = this.$('.js-user-channel-item').length;
+    if (newScrolledLeftFrames > numFrames - 1) {
+      newScrolledLeftFrames = numFrames - 1;
     }
 
     // scroll to a particular child item so that the resulting state has one of the children
     // flush against either the left or right edge of the wrapper, as appropriate
-    $wrapper.scrollTo(this.$('.js-user-channel-item:eq(' + leftMostFrame + ')'), 500);
+
+    // figure out what would be the rightmost viewable item after the desired amount of scrolling
+    var rightMostFrame = Math.ceil(newScrolledLeftFrames + framesPerPage);
+    var $itemToScrollTo;
+    if (rightMostFrame > numFrames) {
+      //if we would have scrolled past the rightmost frame, scroll to the point that the
+      //rightmost frame is snapped to the right hand side of the wrapper
+      $itemToScrollTo = this.$('.js-user-channel-item:eq(' + (numFrames - 1) + ')');
+      if ($itemToScrollTo.length) {
+        $wrapper.scrollTo($itemToScrollTo, 500, {offset: {left: -($wrapper.width()) + $itemToScrollTo.outerWidth(true)}});
+      }
+    } else {
+      //otherwise, scroll to position the calculated desired leftmostframe at the left hand
+      //edge of the wrapper
+      $itemToScrollTo = this.$('.js-user-channel-item:eq(' + newScrolledLeftFrames + ')');
+      if ($itemToScrollTo.length) {
+        $wrapper.scrollTo($itemToScrollTo, 500);
+      }
+    }
   },
 
   _onFetchComplete : function(rollModel, resp){
