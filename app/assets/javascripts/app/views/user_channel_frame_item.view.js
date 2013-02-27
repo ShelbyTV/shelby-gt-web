@@ -46,6 +46,12 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
   _displayVideo : function() {
     // activate the current frame
     shelby.models.guide.set('activeFrameModel', this._frame);
+    // if the video player has been obscured at all,
+    // scroll to the top so you can see the new video that's been selected
+    var $body = $('body');
+    if ($body.scrollTop() > $('.js-videoplayer').offset().top) {
+      $body.scrollTo(0, 500);
+    }
     // register the playlist this frame is on as the current playlist with the playlist manager
     this.options.playlistManagerModel.set({
       playlistFrameGroupCollection : this.options.playlistFrameGroupCollection,
