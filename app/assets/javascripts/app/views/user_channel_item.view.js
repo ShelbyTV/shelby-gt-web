@@ -87,22 +87,28 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
     // figure out how many frames are already scrolled off to the left of the wrapper's viewable area
     var $wrapper = this.$('.js-user-channel-wrapper');
     var frameWidth = this.$('.js-user-channel-item').outerWidth(true);
-    var currentScrolledLeftFrames = Math.floor($wrapper.scrollLeft() / frameWidth);
-    // figure out how many frames need to be scrolled past to move by one width of the wrapper
-    var newLeft = ($wrapper.scrollLeft() + (direction * $wrapper.width()));
-    if (newLeft < 0) {
-      newLeft = 0;
+    var currentScrolledLeftFrames = $wrapper.scrollLeft() / frameWidth;
+    // figure out what would be the leftmost viewable item after the desired amount of scrolling
+    var framesPerPage = $wrapper.width() / frameWidth;
+    var newScrolledLeftFrames = Math.round(currentScrolledLeftFrames + (framesPerPage * direction));
+    if (newScrolledLeftFrames < 0) {
+     newScrolledLeftFrames = 0;
     }
-    var framesToBeScrolled = (newLeft - $wrapper.scrollLeft()) / frameWidth;
-    // figure out which will be the leftmost viewable item after the desired amount of scrolling
-    var leftMostFrame = Math.round(currentScrolledLeftFrames + framesToBeScrolled);
-    if (leftMostFrame < 0) {
-      leftMostFrame = 0;
+    // if we would have scrolled past the very last frame, just make the very last frame be the
+    // one we are scrolling to
+    var numFrames = this.$('.js-user-channel-item').length;
+    if (newScrolledLeftFrames > numFrames - 1) {
+      newScrolledLeftFrames = numFrames - 1;
     }
 
-    // scroll to a particular child item so that the resulting state has one of the children
-    // flush against either the left or right edge of the wrapper, as appropriate
-    $wrapper.scrollTo(this.$('.js-user-channel-item:eq(' + leftMostFrame + ')'), 500);
+    // scroll to a particular child item so that the resulting state has the item we targeted
+    // flush with the left edge of the wrapper, or alternatively the wrapper scrolled
+    // all the way to the right if having the particular element we want on the left isn't
+    // possible because it's too close to the end of the list
+    var $itemToScrollTo = this.$('.js-user-channel-item:eq(' + newScrolledLeftFrames + ')');
+    if ($itemToScrollTo.length) {
+      $wrapper.scrollTo($itemToScrollTo, 500);
+    }
   },
 
   _onFetchComplete : function(rollModel, resp){
@@ -113,8 +119,11 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   // to match the combined width of its contents when that quantity changes
   _sizeToContents : function(){
     var $userChannels = this.$('.js-user-channel-item');
-    var newWidth = ($userChannels.length * $userChannels.outerWidth(true)) +
-                this.$('.js-user-channel-title').outerWidth(true) + this.$('.js-load-more').outerWidth(true);
+    var newWidth = ($userChannels.length * $userChannels.outerWidth(true));
+    var $loadMoreIndicator = this.$('.js-load-more:visible');
+    if ($loadMoreIndicator.length) {
+      newWidth += this.$('.js-load-more').outerWidth(true);
+    }
     this.$('.js-user-channel').width(newWidth);
   }
 
