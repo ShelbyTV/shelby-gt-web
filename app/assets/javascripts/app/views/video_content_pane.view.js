@@ -38,22 +38,11 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       model : shelby.models.notificationState
     }));
 
-<<<<<<< HEAD
     this.renderChild(new libs.shelbyGT.ChannelInfoOverlayView({
       el: this.$('#js-channel-info-overlay-wrapper'),
       model : shelby.models.guide,
       playlistManagerModel : shelby.models.playlistManager
     }));
-    this.renderChild(new libs.shelbyGT.PersistentVideoInfoView({
-      el: this.$('#js-persistent-video-info-wrapper'),
-      guide : shelby.models.guide,
-      guideOverlayModel : shelby.models.guideOverlay,
-      playlistManager : shelby.models.playlistManager,
-      queuedVideos : shelby.models.queuedVideos,
-      userDesires : shelby.models.userDesires
-    }));
-=======
->>>>>>> staging
     this.renderChild(new libs.shelbyGT.VideoDisplayView({
       model : shelby.models.guide,
       playbackState : shelby.models.playbackState,

@@ -13,11 +13,7 @@
   }
 }
 
-<<<<<<< HEAD
-@mixin fin-left($bg-color, $fin-left){
-=======
-@mixin fin-left($bg-color: $base){
->>>>>>> staging
+@mixin fin-left($bg-color: $base, $fin-left : 24px){
   &:after {
     @include rotate(45deg);
 

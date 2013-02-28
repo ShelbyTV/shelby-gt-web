@@ -97,7 +97,7 @@
       var viewingChannel = this.options.playlistType == PlaylistType.channel;
 
       if (!isAnythingPlaying || forceFramePlay || reloadingCurrentPlaylist || viewingChannel) {
-        this._registerPlaylist();
+        this.registerPlaylist();
       }
 
     },
