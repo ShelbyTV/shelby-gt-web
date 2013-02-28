@@ -25,7 +25,7 @@ class HomeController < ApplicationController
         # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
         # controller, but until that's built, we just short-circuit right here
         if @isolated_roll_id = get_isolated_roll_id_from_domain_of_request(request)
-          @roll = Shelby::API.get_roll(@isolated_roll_id)
+          @roll = Shelby::API.get_roll_with_frames(@isolated_roll_id)
           @user = Shelby::API.get_user(@roll['creator_id']) if @roll
           @analytics_account = get_account_analytics_info(@user)
           @frame_id = get_frame_from_path(params[:path])
@@ -231,7 +231,7 @@ class HomeController < ApplicationController
         @video = Shelby::API.get_video() if @frame
       elsif path_match = /roll\/(\w*)(\/.*)*/.match(path) or path_match = /user\/(\w*)\/personal_roll/.match(path)
         # the url is a roll or personal roll
-        @roll = Shelby::API.get_roll(path_match[1])
+        @roll = Shelby::API.get_roll_with_frames(path_match[1])
         @user = Shelby::API.get_user(@roll['creator_id']) if @roll
       end
     end

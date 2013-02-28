@@ -31,7 +31,19 @@ module ApplicationHelper
   end
   
   def page_title_for_roll(roll, user=nil)
-    "#{roll['subdomain']} tv #{user ? "| curated by #{user['name']}" : ''} | powered by Shelby"
+    "#{roll['subdomain']} tv#{user ? ", curated by #{user['name']}" : ''} on Shelby"
+  end
+  
+  def page_description_for_roll_with_frames(roll_with_frames, user=nil)
+    desc = user ? "Latest video from #{user['name']} (#{user['nickname']})... " : ""
+    if roll_with_frames['frames'] and roll_with_frames['frames'][0]
+      msg = roll_with_frames['frames'][0]['conversation']['messages'][0]
+      if msg and msg['user_id'] == roll_with_frames['creator_id']
+        desc += roll_with_frames['frames'][0]['conversation']['messages'][0]['text']
+      end
+    end
+    
+    return desc.blank? ? nil : desc
   end
   
 end
