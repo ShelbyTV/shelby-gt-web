@@ -32,23 +32,39 @@
 //  Elements
 .user_roll__item {
   background-color: $base;
+
+  &:hover {
+    .user-channel__button_prev,
+    .user-channel__button_next {
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 }
   .user_roll__item--active {
     background-color: $base-frame;
     box-shadow: 0 0 8px 0 rgba(0,0,0,0.5);
     position: relative;
     z-index: 1;
+
+    .user-channel__button_prev,
+    .user-channel__button_next {
+      opacity: 1;
+    }
   }
 
   .user_roll__item--alpha {
     .user-channel__button_prev {
-      display: none;
+      opacity: 0;
     }
   }
 
   .user_roll__item--omega {
     .user-channel__button_next {
-      display: none;
+      opacity: 0;
     }
   }
 
@@ -83,6 +99,14 @@
   .load-more {
     float: left;
   }
+
+  .load-more-button {
+    height: 130px;
+    background-color: $base;
+    background-image: url('/images/assets/loading-explore.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
 }
 
 //User channel Elements---------------------------------------------------------
@@ -108,5 +132,11 @@
 
 .user-channel__button_prev,
 .user-channel__button_next {
+
   height: 255px;
+  opacity: 0;
+
+  &:hover {
+    opacity: 1;
+  }
 }
