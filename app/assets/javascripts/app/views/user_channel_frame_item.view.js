@@ -37,7 +37,8 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
 
   render : function(){
     this.$el.html(this.template({
-      frame : this._frame
+      frame : this._frame,
+      showFrameLikes : true
     }));
 
     if (shelby.models.queuedVideos.videoIsInQueue(this._frame.get('video'))) {

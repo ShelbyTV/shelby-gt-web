@@ -21,7 +21,10 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({frame : this.model}));
+    this.$el.html(this.template({
+      frame : this.model,
+      showFrameLikes : false
+    }));
     if (shelby.models.queuedVideos.videoIsInQueue(this.model.get('video'))) {
       this._updateQueueButton(true);
     }

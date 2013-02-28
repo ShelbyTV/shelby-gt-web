@@ -36,7 +36,9 @@
     </h3>
   </a>
 
-  <div class="frame-likes frame-external-subline icon-heart icon-heart--red js-frame-likes">
-    <!-- Filled in by the FrameLikesView -->
-  </div><!-- eo frame-likes -->
+  <% if (showFrameLikes) { %>
+    <div class="frame-likes frame-external-subline icon-heart icon-heart--red js-frame-likes">
+      <!-- Filled in by the FrameLikesView -->
+    </div><!-- eo frame-likes -->
+  <% } %>
 </article>
