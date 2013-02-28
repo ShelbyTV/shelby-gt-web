@@ -110,11 +110,15 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
     }
 
     .line-clamp {
-      box-shadow: none;
       height: 9em;
 
       &:after {
         background-color: $base;
+        box-shadow: 0 0 2px 4px $base;
+        left: 0;
+        opacity: 0.8;
+        overflow: hidden;
+        text-align: right;
       }
     }
 
@@ -125,7 +129,6 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
       &:after {
         display: block;
         position: relative;
-        text-align: center;
       }
     }
   }
