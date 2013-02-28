@@ -34,6 +34,11 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       model : shelby.models.notificationState
     }));
 
+    this.renderChild(new libs.shelbyGT.ChannelInfoOverlayView({
+      el: this.$('#js-channel-info-overlay-wrapper'),
+      model : shelby.models.guide,
+      playlistManagerModel : shelby.models.playlistManager
+    }));
     this.renderChild(new libs.shelbyGT.PersistentVideoInfoView({
       el: this.$('#js-persistent-video-info-wrapper'),
       guide : shelby.models.guide,
