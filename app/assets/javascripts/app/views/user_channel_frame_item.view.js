@@ -56,6 +56,8 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
   },
 
   _displayVideo : function() {
+    // dismiss the dot tv welcome banner if its still there
+    shelby.models.dotTvWelcome.trigger('dismiss');
     // activate the current frame
     shelby.models.guide.set('activeFrameModel', this._frame);
     // if the video player has been obscured at all,
