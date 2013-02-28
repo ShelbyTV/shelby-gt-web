@@ -26,14 +26,29 @@
 ////////////////////////////////////////////////////////////////////////////////
 //  User Roll
 //------------------------------------------------------------------------------
+// whoa!
+// KUDOS for DOM-less list re-ordering:
+// http://tanalin.com/en/articles/css-block-order/
+
 //  Block
 .user_roll {}
 
+.user_roll__list { //whoa!
+  display: table;
+  width: 100%;
+}
+
 //  Elements
 .user_roll__item {
+  display: table-row-group; //whoa!
   background-color: $base;
   border-bottom: 1px solid #CCC;
   border-top: 1px solid #EFEFEF;
+
+  & > .user_roll__item_lining {
+    width: 1300px;
+    margin: 0 auto;
+  }
 
   &:hover {
     .user-channel__button_prev,
@@ -49,6 +64,7 @@
   .user_roll__item--active {
     background-color: $base-frame;
     box-shadow: 0 0 8px 0 rgba(0,0,0,0.5);
+    display: table-header-group; //whoa!
     position: relative;
     z-index: 1;
 
