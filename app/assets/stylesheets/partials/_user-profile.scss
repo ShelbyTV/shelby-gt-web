@@ -128,9 +128,15 @@
   width: 300px;
 
   &:hover {
+    background-color: darken($base,5%);
+
     .explore-frame-menu {
       display: block;
     }
+  }
+
+  &:active {
+    background-color: darken($base, 20%);
   }
 
   //NON-NORMATIVE OVERRIDE
@@ -140,6 +146,12 @@
 
   .explore-frame-title {
     min-height: 4.2em;
+  }
+
+  .explore-frame-link {
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
