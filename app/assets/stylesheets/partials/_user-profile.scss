@@ -50,6 +50,13 @@
     position: relative;
     z-index: 1;
 
+    &:hover {
+      .user-channel__button_prev,
+      .user-channel__button_next {
+        opacity: 1;
+      }
+    }
+
     .user-channel__button_prev,
     .user-channel__button_next {
       opacity: 1;
@@ -78,7 +85,7 @@
 }
 ////////////////////////////////////////////////////////////////////////////////
 
-//User channel Framework--------------------------------------------------------
+//Framework--------------------------------------------------------
 .user-channel__wrapper {
   position: relative;
 }
@@ -92,7 +99,7 @@
   position: relative;
 }
 
-//User channel Block------------------------------------------------------------
+//Block------------------------------------------------------------
 .user-channel {
   width: 3000px;
 
@@ -109,9 +116,11 @@
   }
 }
 
-//User channel Elements---------------------------------------------------------
+//Elements---------------------------------------------------------
 .user-channel__title {
-  line-height: 2.5;
+  font-size: 1.7em;
+  line-height: 2;
+  padding: 0 0.5em;
 }
 
 .user-channel__item {
@@ -132,8 +141,9 @@
 
 .user-channel__button_prev,
 .user-channel__button_next {
-
+  border-radius: 0;
   height: 255px;
+  margin: 0;
   opacity: 0;
 
   &:hover {
