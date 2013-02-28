@@ -19,6 +19,11 @@
         attr : 'playbackStatus',
         val : function(){
           var playbackState = shelby.models.playbackState.get('activePlayerState');
+          shelby.trackEx({
+            gaCategory : 'Keyboard',
+            gaAction : 'spacebar',
+            gaLabel : shelby.models.user.get('nickname')
+          });
           if (playbackState) {
             return playbackState.get('playbackStatus') === 'playing' ?
             libs.shelbyGT.PlaybackStatus.paused :
@@ -34,6 +39,11 @@
         model : 'userDesires',
         attr : 'guideShown',
         val : function(){
+          shelby.trackEx({
+            gaCategory : 'Keyboard',
+            gaAction : 'guide',
+            gaLabel : shelby.models.user.get('nickname')
+          });
           return !shelby.models.userDesires.get('guideShown');
         }
       },
@@ -42,6 +52,11 @@
         model : 'userDesires',
         attr : 'mute',
         val : function(){
+          shelby.trackEx({
+            gaCategory : 'Keyboard',
+            gaAction : 'mute',
+            gaLabel : shelby.models.user.get('nickname')
+          });
           return !shelby.models.userDesires.get('mute');
         }
       },
@@ -49,28 +64,57 @@
       39 : {
         model : 'userDesires',
         attr : 'changeVideo',
-        val : 1,
+        val : function(){
+          console.log("right");
+          shelby.trackEx({
+            gaCategory : 'Keyboard',
+            gaAction : 'right',
+            gaLabel : shelby.models.user.get('nickname')
+          });
+          return 1;
+        },
         is_transient : true
       },
       // (<-) left
       37 : {
         model : 'userDesires',
         attr : 'changeVideo',
-        val : -1,
+        val : function(){
+          shelby.trackEx({
+            gaCategory : 'Keyboard',
+            gaAction : 'left',
+            gaLabel : shelby.models.user.get('nickname')
+          });
+          return -1;
+        },
         is_transient : true
       },
       // up
       38 : {
         model : 'userDesires',
         attr : 'changeChannel',
-        val : 1,
+        val : function(){
+          shelby.trackEx({
+            gaCategory : 'Keyboard',
+            gaAction : 'up',
+            gaLabel : shelby.models.user.get('nickname')
+          });
+          return 1;
+        },
         is_transient : true
       },
       // down
       40 : {
         model : 'userDesires',
         attr : 'changeChannel',
-        val : -1,
+        val : function(){
+          shelby.trackEx({
+            gaCategory : 'Keyboard',
+            gaAction : 'down',
+            gaLabel : shelby.models.user.get('nickname')
+          });
+          return -1;
+        },
         is_transient : true
       },
       // (l)ink
@@ -78,6 +122,11 @@
         model : 'userDesires',
         attr : 'shortLink',
         val : function(){
+          shelby.trackEx({
+            gaCategory : 'Keyboard',
+            gaAction : 'link',
+            gaLabel : shelby.models.user.get('nickname')
+          });
           if (shelby.models.guide.get('activeFrameModel')){
             var _frameId = shelby.models.guide.get('activeFrameModel').id;
             $.ajax({
