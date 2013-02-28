@@ -12,11 +12,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "fb/genius/roll/:rollId"               : "displayFacebookGeniusRoll",
     "fb/genius/roll/:rollId/frame/:frameId": "displayFacebookGeniusRoll",
     "user/:id/personal_roll"               : "displayUserPersonalRoll",
-    "explore"                              : "displayRandomChannel",
+    "channels"                              : "displayRandomChannel",
     "help"                                 : "displayHelp",
     "legal"                                : "displayLegal",
     "search"                               : "displaySearch",
-    "explore/:channel"                     : "displayChannel",
+    "channels/:channel"                     : "displayChannel",
     "me"                                   : "displayRollList",
     "onboarding/:stage"                    : "displayOnboardingView",
     "preferences"                          : "displayUserPreferences",
@@ -170,7 +170,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       this.displayDashboard(params, {channel: channel});
     } else {
       // if the requested channel doesn't exist, just go to the first channel
-      this.navigate('explore/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
+      this.navigate('channels/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
     }
     // dont show the guide initially when navigating to explore directly
     if(shelby.routeHistory.length === 0){

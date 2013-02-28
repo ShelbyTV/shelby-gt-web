@@ -15,7 +15,7 @@ libs.shelbyGT.SearchEmptyIndicatorView = Support.CompositeView.extend({
   },
 
   _goToExplore : function() {
-    shelby.router.navigate('explore', {trigger:true});
+    shelby.router.navigate('channels', {trigger:true});
   }
 
 });

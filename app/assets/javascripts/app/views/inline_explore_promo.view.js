@@ -17,9 +17,9 @@ libs.shelbyGT.InlineExplorePromoView = Support.CompositeView.extend({
 
   _gotoExplore : function(){
     if (shelby.models.guide.get('displayIsolatedRoll')) {
-      window.top.location.href = shelby.config.appUrl + '/explore';
+      window.top.location.href = shelby.config.appUrl + '/channels';
     } else {
-      shelby.router.navigate('explore', {trigger:true});
+      shelby.router.navigate('channels', {trigger:true});
     }
     shelby.track('Click explore promo');
   }

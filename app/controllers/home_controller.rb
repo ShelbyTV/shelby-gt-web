@@ -105,11 +105,11 @@ class HomeController < ApplicationController
   end
 
   ##
-  # Handles explore view when visited directly (allowing logged-out users to see it)
+  # Handles channels view when visited directly (allowing logged-out users to see it)
   #
-  # GET /explore
+  # GET /channels
   #
-  def explore
+  def channels
     render '/home/app'
   end
 
@@ -138,7 +138,7 @@ class HomeController < ApplicationController
   def channel
     render '/home/app'
   end
-  
+
   # Static page of information
   def learn_more
   end

@@ -65,7 +65,6 @@
         model : 'userDesires',
         attr : 'changeVideo',
         val : function(){
-          console.log("right");
           shelby.trackEx({
             gaCategory : 'Keyboard',
             gaAction : 'right',

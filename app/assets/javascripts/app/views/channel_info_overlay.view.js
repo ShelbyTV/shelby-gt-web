@@ -22,13 +22,15 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
     this.$el.html(this.template({
       channels : shelby.config.channels
     }));
-    this.$('.channel-info-section').show();
     this._findHighlightActiveChannel();
+    if (shelby.models.guide.get('displayState') == "channel"){
+        this.$('.channel-info-section').show();
+      }
   },
 
   _onClickChannel : function(e) {
     shelby.router.navigate(
-      "explore/" + $(e.currentTarget).data('channel'),
+      "channels/" + $(e.currentTarget).data('channel'),
       {trigger:true}
     );
   },
@@ -46,12 +48,18 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
     var _changedAttrs = _(playlistManagerModel.changedAttributes());
     if (!_changedAttrs.has('playingState') &&
         !_changedAttrs.has('playingChannelId')) {
+      if (shelby.models.guide.get('displayState') !== "channel"){
+        this.$('.channel-info-section').hide();
+      }
       return;
     }
     this._onCurrentChannelChanged();
   },
 
   _onCurrentChannelChanged : function(){
+    if (shelby.models.guide.get('displayState') == "channel") {
+      this.$('.channel-info-section').show();
+    }
     // remove the active channel highlight
     this.$('.channel-info-section-channel').removeClass('channel-info-section-channel--active');
     // set the highlight on the new active channel

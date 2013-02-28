@@ -44,9 +44,8 @@ ShelbyGtWeb::Application.routes.draw do
   # HOME
   get '/team' => 'home#team'
   get '/hash_app' => 'home#hash_app'
-  get '/explore(*path)' => "home#explore"
+  get '/channels(*path)' => "home#channels"
   get '/search' => "home#search"
-  get '/channel/:channel' => "home#channel"
   get '/learn_more' => "home#learn_more"
 
   get '/experience' => "home#experience"

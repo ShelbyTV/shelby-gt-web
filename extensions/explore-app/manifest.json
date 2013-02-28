@@ -5,10 +5,10 @@
   "manifest_version": 3,
   "app": {
     "urls": [
-      "http://shelby.tv/explore"
+      "http://shelby.tv/channels"
     ],
     "launch": {
-      "web_url": "http://shelby.tv/explore?src=chrome-explore-app"
+      "web_url": "http://shelby.tv/channels?src=chrome-explore-app"
     }
   },
   "icons": {

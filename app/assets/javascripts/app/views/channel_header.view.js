@@ -15,9 +15,10 @@ libs.shelbyGT.ChannelHeaderView = Support.CompositeView.extend({
   },
 
   render : function(){
-    chId = libs.utils.channels.getCurrentChannel();
-    chName = libs.utils.channels.getChannelName(chId);
-    this.$el.html(this.template({channelName: chName}));
+    if (chId = libs.utils.channels.getCurrentChannel()){
+      chName = libs.utils.channels.getChannelName(chId);
+      this.$el.html(this.template({channelName: chName}));
+    }
   },
 
   _onChannelChange : function(chModel){
