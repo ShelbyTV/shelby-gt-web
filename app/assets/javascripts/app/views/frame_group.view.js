@@ -101,15 +101,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this._leaveChildren();
 
     if (this.model.get('frames').length){
-      var likeInfo = this.model.getCombinedLikeInfo();
-      var likersCollection = new libs.shelbyGT.UserCollection();
-      var likersToDisplay = likeInfo.likers.models.slice(0, 9);
-      if (likersToDisplay.length) {
-        likersCollection.add(likersToDisplay);
-      }
 
-      var remainingLikes = likeInfo.totalLikes - likersToDisplay.length,
-          frame = this.model.get('frames').at(0),
+      var frame = this.model.get('frames').at(0),
           messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection());
 
           //N.B. template({}) receives Models.
@@ -121,26 +114,17 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         dupeFrames        : this.model.getDuplicateFramesToDisplay(),
         frameGroup        : this.model,
         frame             : frame,
-        likers            : likersToDisplay,
         messages          : messages,
         queuedVideosModel : shelby.models.queuedVideos,
         options           : this.options,
-        remainingLikes    : remainingLikes,
-        totalLikes        : likeInfo.totalLikes,
         user              : shelby.models.user,
         video             : frame.get('video')
       }));
 
-      if (likersToDisplay.length) {
-        // render the likers' avatars, now if they've already arrived, or via event handling
-        // later if the ajax hasn't returned yet
-        this.renderChild(new libs.shelbyGT.ListView({
-          collection : likersCollection,
-          doStaticRender : true,
-          el : this.$('.js-liker-avatars-list'),
-          listItemView : 'LikerAvatarItemView'
-        }));
-      }
+      this.renderChild(new libs.shelbyGT.FrameLikesView({
+        el : this.$('.js-frame-likes'),
+        model : this.model
+      }));
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }

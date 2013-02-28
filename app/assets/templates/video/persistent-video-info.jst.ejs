@@ -7,36 +7,33 @@
 <% var currentMessages = (currentFrame.get('conversation') && currentFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
 <% var currentVideoIsInQueue = queuedVideosModel.videoIsInQueue(currentVideo) %>
 
-<% var nextCreator = nextFrame.get('creator') %>
-<% var nextCreatorNickname = nextCreator ? nextCreator.get('nickname') : null %>
-<% var nextCreatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(nextCreator) %>
 <% var nextVideo = nextFrame.get('video') %>
-<% var nextMessages = (nextFrame.get('conversation') && nextFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
-<% var nextVideoIsInQueue = queuedVideosModel.videoIsInQueue(nextVideo) %>
 
 <% var isFauxUser = currentCreator && currentCreator.get('faux') !== 1 %>
 <% var fauxUserOrigin = isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
 
 <div class="persistent_video_info animate_module">
-  <div class="media_image--rev persistent_video_info__next-frame">
-    <a class="persistent_video_info__anchor js-track-event js-next-video"
-              data-ga_category="Persistent Video Info"
-              data-ga_action="Click on next frame"
-              data-ga_label="<%= shelby.models.user.get('nickname') %>">
+  <% if (showNextFrame) { %>
+    <div class="media_image--rev persistent_video_info__next-frame">
+      <a class="persistent_video_info__anchor js-track-event js-next-video"
+                data-ga_category="Persistent Video Info"
+                data-ga_action="Click on next frame"
+                data-ga_label="<%= shelby.models.user.get('nickname') %>">
 
-      <h3 class="persistent_video_info__h2">
-        Up Next
-      </h3>
+        <h3 class="persistent_video_info__h2">
+          Up Next
+        </h3>
 
-      <%= SHELBYJST['thumbnail-module']({
-        thumbnail: nextVideo.get('thumbnail_url'),
-        title: nextVideo.get('title') }) %>
+        <%= SHELBYJST['thumbnail-module']({
+          thumbnail: nextVideo.get('thumbnail_url'),
+          title: nextVideo.get('title') }) %>
 
-      <h2 class="persistent_video_info__h3">
-        <%= nextVideo.get('title') %>
-      </h2>
-    </a>
-  </div><!-- eo .persistent_video_info__next-frame -->
+        <h2 class="persistent_video_info__h3">
+          <%= nextVideo.get('title') %>
+        </h2>
+      </a>
+    </div><!-- eo .persistent_video_info__next-frame -->
+  <% } %>
 
   <div class="media_body persistent_video_info__current-frame">
     <div class="persistent_video_info__lining">
@@ -50,30 +47,39 @@
       </h2>
 
       <div class="media_module persistent_video_info__body">
-        <% if (!currentFrame.get('isSearchResultFrame')) { %>
-          <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
-            <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
-          </div>
-        <% } else { %>
-          <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
+        <% if (showNextFrame) { %>
+          <% if (!currentFrame.get('isSearchResultFrame')) { %>
+            <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+              <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
+            </div>
+          <% } else { %>
+            <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
+          <% } %>
         <% } %>
+
         <div class="media_body">
-          <h3 class="xuser-data persistent_video_info__h4--light">
-            <% if (!currentFrame.get('isSearchResultFrame')) { %>
-              <strong><%= currentCreatorNickname %></strong>
-            <% } else { %>
-              <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
-            <% } %>
+          <% if (showNextFrame) { %>
+            <h3 class="xuser-data persistent_video_info__h4--light">
+              <% if (!currentFrame.get('isSearchResultFrame')) { %>
+                <strong><%= currentCreatorNickname %></strong>
+              <% } else { %>
+                <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
+              <% } %>
 
-            <% if (fauxUserOrigin) { %>
-              via <span class="capitalize"><%= fauxUserOrigin %></span>
-            <% } %>
-          </h3>
+              <% if (fauxUserOrigin) { %>
+                via <span class="capitalize"><%= fauxUserOrigin %></span>
+              <% } %>
+            </h3>
+          <% } %>
 
-          <% if((currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame')) { %>
-            <p>
+          <% var hasComment = (currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame') %>
+          <% var comment = currentMessages.models[0].get('text') %>
+          <% var commentOverflow = comment && comment.length > 256  %>
+
+          <% if(hasComment) { %>
+            <p<%= commentOverflow ? ' class="line-clamp js-toggle-comment"' : '' %>>
               <%=
-                libs.utils.String.linkifySafeWithClickTracking(currentMessages.models[0].get('text'),
+                libs.utils.String.linkifySafeWithClickTracking(comment,
                   {gaCategory: 'Persistent Video Info', gaAction: 'Click on link in comment'})
               %>
             </p>

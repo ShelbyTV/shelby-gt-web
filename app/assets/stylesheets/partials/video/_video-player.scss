@@ -1,7 +1,14 @@
-@import "base";
- 
 .videoplayer{
 	background: #000;
+}
+
+.videoplayer__badge {
+  display: none;
+  text-align: right;
+
+  .shelby_logo {
+    font-size: 1.3em;
+  }
 }
 
 .videoplayer.full-width {

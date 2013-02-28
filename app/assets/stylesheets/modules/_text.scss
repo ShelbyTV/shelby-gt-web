@@ -8,6 +8,7 @@
 
 
 //multi-line ellipsis magic
+.line-clamp--open,
 .line-clamp {
   position: relative;
   height: 4em;
@@ -34,8 +35,6 @@
 }
 
 .line-clamp--open {
-  @extend .line-clamp;
-
   height: auto;
 
   &:after {

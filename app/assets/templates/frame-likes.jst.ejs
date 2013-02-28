@@ -1,0 +1,11 @@
+<ul class="list frame-likes-avatars js-liker-avatars-list<%= !likers.length ? ' no-liker-avatars' : ''%>">
+</ul>
+<% if (remainingLikes) { %>
+  <span class="frame-likes-count frame-external-subline-text">
+    <% if (likers.length) { %>
+      +<%= remainingLikes %>
+    <% } else { %>
+      <%= _('like').pluralize(remainingLikes, true) %>
+    <% } %>
+  </span>
+<% } %>

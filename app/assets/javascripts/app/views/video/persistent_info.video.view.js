@@ -15,17 +15,21 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
     "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
     "click .persistent_video_info__current-frame  .js-facebook-share"             : "_shareCurrentToFacebook",
-    "click .js-next-video"                                                        : "_skipToNextVideo"
+    "click .js-next-video"                                                        : "_skipToNextVideo",
+    "click .js-toggle-comment"                                                    : "_toggleComment"
   },
 
-  initialize: function(opts){
-    this._userDesires = opts.userDesires;
+  initialize: function(){
+    this._currentFrame = this.options.guide.get('activeFrameModel');
+    this._playlistFrameGroupCollection = this.options.playlistManager.get('playlistFrameGroupCollection');
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playlistFrameGroupCollection", this._onplaylistFrameGroupCollectionChange, this);
     shelby.collections.videoSearchResultFrames.bind('add', this.render, this);
     shelby.models.queuedVideos.bind('add:queued_videos', this._onQueuedVideosAdd, this);
     shelby.models.queuedVideos.bind('remove:queued_videos', this._onQueuedVideosRemove, this);
+
+    this.render();
   },
 
   _cleanup : function() {
@@ -54,6 +58,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         currentFrame      : this._currentFrame,
         nextFrame         : this._nextFrame,
         queuedVideosModel : this.options.queuedVideos,
+        showNextFrame     : this.options.showNextFrame,
         user              : shelby.models.user
       }));
     }
@@ -157,8 +162,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _skipToNextVideo : function(){
-    this._userDesires.set('changeVideo', 1);
-    this._userDesires.unset('changeVideo');
+    this.options.userDesires.set('changeVideo', 1);
+    this.options.userDesires.unset('changeVideo');
   },
 
   _shareCurrentToFacebook : function(e){
@@ -180,6 +185,13 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         }
       );
     }
-  }
+  },
 
+  _toggleComment : function(e){
+    // if the click was on an anchor within the frame comment just let the normal
+    // link handling occur without showing/hiding the rest of the comment
+    if (!$(e.target).is('a')) {
+      $(e.currentTarget).toggleClass('line-clamp--open');
+    }
+  }
 });

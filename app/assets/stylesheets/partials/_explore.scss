@@ -82,12 +82,6 @@
 
   float:right;
   margin: 0 .25em 0 .75em;
-
-  &.command-active {
-    //state for the follow/unfollow button,
-    //if other modes/states arise this classname probably won't cut it
-    @include button(blue,$shelby-blue);
-  }
 }
 
 //------------------------------------------------------------------------------
@@ -194,12 +188,12 @@
   //  accounts for the lack of the header.
   ////////////////////////////////////////////////////////////////////////////
   .guide-list {
-    margin-top: $list-module-spacing;
+    margin-top: 1em;
   }
 }
 
 .guide-list {
-  margin: 0 $list-module-spacing;
+  margin: 0 1em;
 }
 
 .guide-item {
@@ -272,8 +266,4 @@
   position: absolute;
   right: 0;
   top: 0;
-
-  &.re-follow {
-    @include button-primer($shelby-blue, dark);
-  }
 }

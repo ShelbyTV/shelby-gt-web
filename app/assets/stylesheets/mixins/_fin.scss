@@ -1,6 +1,4 @@
-$bg-color: $nav-dropdown-bg !default;
-$fin-left: 24px !default;
-@mixin fin($bg-color) {
+@mixin fin($bg-color: $base) {
   &:after {
     @include rotate(45deg);
 
@@ -15,7 +13,11 @@ $fin-left: 24px !default;
   }
 }
 
+<<<<<<< HEAD
 @mixin fin-left($bg-color, $fin-left){
+=======
+@mixin fin-left($bg-color: $base){
+>>>>>>> staging
   &:after {
     @include rotate(45deg);
 
@@ -30,7 +32,7 @@ $fin-left: 24px !default;
   }
 }
 
-@mixin bottom-fin($bg-color) {
+@mixin bottom-fin($bg-color: $base) {
   @include fin($bg-color);
   &:after {
     top: auto;

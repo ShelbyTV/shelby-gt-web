@@ -13,10 +13,12 @@
 }
 
 .video_progress--mini {
+  height: inherit;
   margin: 0;
 
   > div {
     border-radius: 0;
+    height: inherit;
     margin: 0;
     position: absolute;
   }

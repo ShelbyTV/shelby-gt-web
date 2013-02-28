@@ -5,15 +5,42 @@
 .rolls-list,
 .form-rolls-list,
 .existing-rolls-list > ul {
+  list-style: none;
   margin: 0;
   padding: 0;
 
   li {
-    list-style-type: none;
     &:first-child {
       .frame {
         border-top: none;
       }
     }
+  }
+}
+
+.list--inline {
+  & > li {
+    display: inline;
+  }
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+}
+
+.list__link {
+  &,
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
   }
 }

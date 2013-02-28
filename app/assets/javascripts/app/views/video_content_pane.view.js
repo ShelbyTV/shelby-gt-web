@@ -8,6 +8,8 @@
 */
 libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
 
+  _persistentVideoInfoView : null,
+
   tagName: 'section',
 
   className: 'content_module videoplayer js-videoplayer animate-easein',
@@ -17,10 +19,12 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
     playbackState : null //injected
   },
 
-  initialize: function(opts){
+  initialize : function(){
+    shelby.models.guide.bind('change:displayState', this._onDisplayStateChange, this);
   },
 
   _cleanup : function(){
+    shelby.models.guide.unbind('change:displayState', this._onDisplayStateChange, this);
   },
 
   template : function(obj){
@@ -34,6 +38,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       model : shelby.models.notificationState
     }));
 
+<<<<<<< HEAD
     this.renderChild(new libs.shelbyGT.ChannelInfoOverlayView({
       el: this.$('#js-channel-info-overlay-wrapper'),
       model : shelby.models.guide,
@@ -47,6 +52,8 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       queuedVideos : shelby.models.queuedVideos,
       userDesires : shelby.models.userDesires
     }));
+=======
+>>>>>>> staging
     this.renderChild(new libs.shelbyGT.VideoDisplayView({
       model : shelby.models.guide,
       playbackState : shelby.models.playbackState,
@@ -63,6 +70,28 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       el: this.$('#js-mini-video-progress'),
       playbackState : shelby.models.playbackState
     }));
+  },
+
+  _onDisplayStateChange : function(guideModel, displayState) {
+    if (displayState) {
+      if (displayState != libs.shelbyGT.DisplayState.dotTv) {
+        if (!this._persistentVideoInfoView) {
+          this._persistentVideoInfoView = new libs.shelbyGT.PersistentVideoInfoView({
+            className : 'animate_module media_module js-inactivity-preemption persistent_video_info__wrapper',
+            guide : shelby.models.guide,
+            guideOverlayModel : shelby.models.guideOverlay,
+            playlistManager : shelby.models.playlistManager,
+            queuedVideos : shelby.models.queuedVideos,
+            showNextFrame : true,
+            userDesires : shelby.models.userDesires
+          });
+          this.insertChildBefore(this._persistentVideoInfoView, '.js-videoplayer-viewport');
+        }
+      } else if (this._persistentVideoInfoView) {
+        this._persistentVideoInfoView.leave();
+        this._persistentVideoInfoView = null;
+      }
+    }
   }
 
 });

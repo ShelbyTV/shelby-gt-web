@@ -9,6 +9,7 @@ $active-list-item: $shelby-blue;
   .active-list-item {
     background-color: rgba(5, 144, 196, .8);//shelby-blue, rbga style
 
+    .explore-frame-title,
     .frame-title,
     .frame-external-subline-text {
       color: white;
@@ -131,20 +132,7 @@ $active-list-item: $shelby-blue;
     }
   }
 }
-
-.frame-comment-link {
-  display: block;
-  float: right;
-  line-height: 1;
-  opacity: $videocard-faux-tint;
-  padding-left: $button-padding-left;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
+å
 //------------------------------------------------------------------------------
 //  frame creator block,
 //  base: media obj.

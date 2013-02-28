@@ -25,6 +25,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "stream"                               : "displayDashboard",
     "tools"                                : "displayTools",
     ""                                     : "displayDashboard",
+    ":userName"                            : "displayUserProfile",
     "*url"                                 : "doNothing"
   },
 
@@ -124,7 +125,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayIsolatedRoll : function(rollId, params){
-    this._prepIsolatedRoll({rollId: rollId, params: params});
+    // TODO: turn this back on before production deploy
+    // if (_(shelby.config.dotTvNetworks.userProfileViewRollIds).contains(rollId)) {
+    if (true) {
+      this._setupUserProfileView({
+        rollId : rollId,
+        params : params
+      });
+    } else {
+      this._prepIsolatedRoll({rollId: rollId, params: params});
+    }
   },
 
   displayIsolatedRollwithFrame : function(rollId, frameId, params) {
@@ -373,6 +383,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.tools);
   },
 
+  displayUserProfile : function(userName, params) {
+    this._setupUserProfileView({
+      params : params,
+      userName : userName
+    });
+  },
+
   doNothing : function(url){
     console.log('unhandled url', url);
   },
@@ -588,9 +605,15 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     // show dot-tv-welcome-message if on an isolated roll
     if (topLevelViewsOptions.isIsolatedRoll){
-
+      // don't auto play the video - the user will have to click on the
+      // dot tv welcome banner to start playback
+      shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
       shelby.views.dotTVWelcome = shelby.views.dotTVWelcome ||
-          new libs.shelbyGT.dotTVWelcome({ model : rollModel });
+          new libs.shelbyGT.dotTVWelcome({
+            el : '.js-isolated-roll-welcome',
+            model : rollModel,
+            dotTvWelcomeModel : shelby.models.dotTvWelcome
+          });
     }
 
 
@@ -612,6 +635,99 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         }
       }
     }, topLevelViewsOptions);
+  },
+
+  _setupUserProfileView : function(options){
+    var self = this;
+
+    this._fetchViewedVideos();
+    this._fetchQueuedVideos();
+    this._setupTopLevelViews();
+    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.dotTv);
+    var dotTvLanding = !shelby.views.dotTVWelcome;
+    // only show the .tv welcome banner once
+    if (dotTvLanding) {
+      // don't auto play the video - the user will have to click on the
+      // dot tv welcome banner to start playback
+      shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
+    }
+
+    if (options.userName) {
+      // if the route parameters included the user name we have everything we need to proceed
+      // and fetch that user's info, but we'll wait until we have the user's roll info
+      // to show the .tv welcome banner
+      this._getUserByNicknameThenAssociatedRolls(options.userName, dotTvLanding);
+    } else {
+      var roll = libs.shelbyGT.RollModel.findOrCreate({id: options.rollId});
+      if (dotTvLanding) {
+        // we have the roll id and the dot tv welcome banner keys off of the roll,
+        // so we can create it now
+        shelby.views.dotTVWelcome = new libs.shelbyGT.dotTVWelcome({
+          el : '.js-isolated-roll-welcome--dot-tv',
+          model : roll,
+          dotTvWelcomeModel : shelby.models.dotTvWelcome
+        });
+      }
+      // if the route params only included a roll id (for an isolated roll), we need
+      // to get the nickname of the user who created that roll
+      if (roll.has('creator_nickname')) {
+        // if we already have the roll info, we can just get the creator nickname and load
+        // the user info based on that
+        this._getUserByNicknameThenAssociatedRolls(roll.get('creator_nickname'));
+      } else {
+        // if we don't have the roll info, fetch the roll and then use the creator nickname from
+        // the fetched data to fetch the info for that creating user
+        roll.fetch({success : function(rollModel, response){
+          self._getUserByNicknameThenAssociatedRolls(rollModel.get('creator_nickname'));
+        }});
+      }
+    }
+  },
+
+  _getUserByNicknameThenAssociatedRolls : function(nickname, doShowWelcomeBanner){
+
+    var userForProfile = shelby.models.userProfile.get('currentUser');
+    if (!userForProfile || userForProfile.get('nickname') != nickname) {
+      userForProfile = new libs.shelbyGT.UserModel({nickname: nickname});
+      shelby.models.userProfile.set('currentUser', userForProfile);
+      // we're completely switching users so we need to get rid of the old user's
+      // rolls in preparation for getting the new user's
+      shelby.models.userChannels.get('rolls').reset();
+    }
+    if (userForProfile.isNew()) {
+      // if we don't have the user info yet, we need to fetch it, then use the user's personal roll id
+      // to fetch their associated rolls
+      userForProfile.fetch({success: function(userModel, response){
+        var userPersonalRollId = userForProfile.get('personal_roll_id');
+        // we now have the user's personal roll, so we create the .tv welcome banner if requested
+        if (doShowWelcomeBanner) {
+          var roll = libs.shelbyGT.RollModel.findOrCreate({id: userPersonalRollId});
+          shelby.views.dotTVWelcome = new libs.shelbyGT.dotTVWelcome({
+            model : roll,
+            dotTvWelcomeModel : shelby.models.dotTvWelcome,
+            el : '.js-isolated-roll-welcome--dot-tv'
+          });
+        }
+        shelby.models.userChannels.fetch({
+          url: shelby.config.apiRoot + '/roll/' + userPersonalRollId + '/associated'
+        });
+      }});
+    } else {
+      // if we already have the user info, we know their personal roll id, so just fetch their
+      // associated rolls, and optionally create the .tv welcome banner, immediately
+      var userPersonalRollId = userForProfile.get('personal_roll_id');
+      if (doShowWelcomeBanner) {
+        var roll = libs.shelbyGT.RollModel.findOrCreate({id: userPersonalRollId});
+        shelby.views.dotTVWelcome = new libs.shelbyGT.dotTVWelcome({
+          model : roll,
+          dotTvWelcomeModel : shelby.models.dotTvWelcome,
+          el : '.js-isolated-roll-welcome--dot-tv'
+        });
+      }
+      shelby.models.userChannels.fetch({
+          url: shelby.config.apiRoot + '/roll/' + userPersonalRollId + '/associated'
+      });
+    }
   }
 
 });

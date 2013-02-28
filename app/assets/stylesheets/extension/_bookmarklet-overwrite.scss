@@ -92,29 +92,6 @@ button {
   text-align: center;
 }
 
-.notify-cancel {
-  @include button-primer($shelby-gray,dark);
-
-  border-radius: 20px;
-  left: -10px;
-  padding: .5em;
-  position: absolute;
-  top: -10px;
-
-  &:hover {
-    border-radius: 20px;
-  }
-
-  .cancel-icon {
-    background-size: contain;
-    color: transparent;
-    display: block;
-    font: 0/0 a;
-    height: 7px;
-    width: 7px;
-  }
-}
-
 //------------------------------------------------------------------------------
 //  Process completion Feedback
 //------------------------------------------------------------------------------
@@ -166,16 +143,7 @@ button {
 //------------------------------------------------------------------------------
 //  LOGIN
 //------------------------------------------------------------------------------
-#login-guide-window {
-  .shelby-login-cancel {
-    @include button-primer($shelby-gray);
-  }
-
-  .login-explanation {
-    margin: 20px 0 0 10px;
-    font-size: 1.2em;
-  }
-}
+#login-guide-window {}
 
 //--- SOCIAL LOGIN -------------------------------------------------------------
 .button_primer--twitter,

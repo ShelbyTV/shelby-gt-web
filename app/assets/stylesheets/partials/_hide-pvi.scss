@@ -1,0 +1,12 @@
+//------------------------------------------------------------------------------
+// Hide PVI Overrides, should be nested or compounded.
+//------------------------------------------------------------------------------
+.hide-player-pvi {
+	.persistent_video_info__wrapper {
+    display: none;
+  }
+
+  .video_controls__wrapper {
+    bottom: 0;
+  }
+}

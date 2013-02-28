@@ -1,0 +1,55 @@
+/*
+  Card detailing a User and information about them
+
+  Used on the new User Profile
+
+*/
+
+//------------------------------------------------------------------------------
+//  Block
+//------------------------------------------------------------------------------
+.user_card {
+  margin: 8px;
+}
+
+//------------------------------------------------------------------------------
+//  Elements
+//------------------------------------------------------------------------------
+.user_card__h1 {
+  color: $button-color;
+}
+
+.user_card__avatar {
+  border-radius: 5px;
+}
+
+
+//------------------------------------------------------------------------------
+//  Framework
+//------------------------------------------------------------------------------
+.user_card__head {
+  height: 100px;
+  position: relative;
+
+  .user_card__h1 {
+    bottom: 0;
+    left: 0;
+    margin: 1em;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+.user_card__body {
+  .xuser-avatar {
+    height: 50px;
+    width: 50px;
+  }
+
+  .list--social_badges {
+    .list__link {
+      padding: 0 2px;
+      display: block;
+    }
+  }
+}

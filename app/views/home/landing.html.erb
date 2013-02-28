@@ -21,7 +21,7 @@
 </head>
 <body class="shelby shelby--landing<%= ' shelby--mobile' if @mobile_os %>">
   <div class="shelby__wrapper">
-    
+
     <%= render :partial => '/home/landing_header' %>
 
     <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
@@ -73,7 +73,7 @@
     <% #------------ /Shelf Content --------------- %>
 
     <%= render :partial => '/home/landing_footer' %>
-    
+
   </div><!-- /shelby-wrapper -->
 
   <%= render :partial => '/home/landing_scripts' %>

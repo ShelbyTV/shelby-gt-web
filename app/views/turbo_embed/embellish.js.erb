@@ -1,18 +1,4 @@
-(function($){
-  
-  /* HACK
-   * The native Array.prototype.push accepts variable arguments.
-   * But on avc.com there is a script (http://avc.fm/js/widget.js) that is overriding [].push
-   * Correctly implementing [].push here, restoring the fucked up version at the end of this scope.
-   */
-  var origPush = Array.prototype.push;
-  Array.prototype.push = function(varargs){
-    for(var i = 0; i < arguments.length; i++) {
-      this[this.length] = arguments[i];
-    }
-    return this.length;
-  };
-  
+(function($){  
   var embedEl = $("[<%= @embed_attr_key %>=<%= @embed_attr_val %>]");
   
   //embed an iFrame
@@ -31,8 +17,5 @@
 
   //render content in iframe
   $embedFooterIframe[0].contentWindow.contents = embedFooter;
-  $embedFooterIframe[0].src = 'javascript:window["contents"]';
-  
-  //HACK - restore fucked up push (see discussion above)
-  Array.prototype.push = origPush;
+  $embedFooterIframe[0].src = 'javascript:window["contents"]';  
 })(__shelbyTurbo.$);

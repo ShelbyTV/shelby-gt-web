@@ -1,58 +1,20 @@
-////////////////////////////////////////////////////////////////////////////
-//  TODO: comment this shit up.
-//        verify which classes are still being used.
-////////////////////////////////////////////////////////////////////////////
-.roll-action-menu {
-  display: none;
-}
-////////////////////////////////////////////////////////////////////////////
-//  the roll menu is a list
-//  it houses the buttons that appear in the roll header
-////////////////////////////////////////////////////////////////////////////
-.roll-menu {
-  margin: 0;
-  padding: 0;
+//TODO: it appears that this partial needs a new name.
 
-  & > li {
-    display: inline;
-    list-style-type: none;
-    margin: 0;
-  }
+//------------------------------------------------------------------------------
+//  List of Buttons/Actions in guide_head
+//------------------------------------------------------------------------------
+//Block
+.guide__list {
 }
-////////////////////////////////////////////////////////////////////////////
-//  all buttons should compound with this roll-menu-button
-////////////////////////////////////////////////////////////////////////////
-.roll-menu-button {
+
+  //Modifier
+  .guide__list--rolls {
+    .guide__button {}
+  }
+
+//Elements
+.guide__button {
   float: right;
   margin: 4px 6px 4px 0;
   padding: 0.5em 1em;
-}
-  ////////////////////////////////////////////////////////////////////////////
-  //  roll buttons
-  ////////////////////////////////////////////////////////////////////////////
-  .roll-menu-add {
-
-  }
-
-//  TODO: overlays need better partial abstraction
-//------------------------------------------------------------------------------
-//  guide overlay share…
-//------------------------------------------------------------------------------
-.share-overlay-body {
-  border-top: none;
-  padding-top: 0;
-}
-
-.share-overlay-cancel {
-  position: absolute;
-  left: 7px;
-  top: 7px;
-}
-
-.share-submit {
-  text-align: right;
-}
-
-.share-submit-button {
-  font-size: 1.1em;
 }

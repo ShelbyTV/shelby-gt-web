@@ -31,7 +31,6 @@ body.facebook-genius{
     @include roundies(input);
   }
   .landing-form-submit {
-    @include button-primer(#3B5998);
     @include roundies(input);
     height: 45px;
     border: 1px solid #3B5998;
@@ -252,7 +251,6 @@ section.fb-genius {
     width: 180px;
     margin: 0px 580px 0px;
     button {
-      @include button-primer($shelby-blue, dark);
       zoom: 1.5;
       width: 275px;
       a {

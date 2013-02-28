@@ -19,13 +19,13 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
       relatedModel : 'libs.shelbyGT.AppProgressModel'
     }
   ],
-  
+
   // could generalize this.apiRoot and this.useSecureUrl into ShelbyBaseModel to use it elsewhere/DRY up code
   useSecureUrl : false,
-  
+
   url : function() {
     var apiRoot = this.useSecureUrl ? shelby.config.secure.apiRoot : shelby.config.apiRoot;
-    return apiRoot + '/user/' + (this.isNew() ? '' : this.id);
+    return apiRoot + '/user/' + (this.isNew() ? this.get('nickname') || '' : this.id);
   },
 
   getFirstName : function(){
@@ -65,12 +65,12 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var self = this;
     self.get('autocomplete')[key] = _.union(self.get('autocomplete')[key], entriesArray);
   },
-  
+
   hasAbility: function(ability){
     return this.get('additional_abilities') &&
       _.contains(this.get('additional_abilities'), ability);
   },
-  
+
   isAnonymous : function(){
     return this.get('anon');
   }
