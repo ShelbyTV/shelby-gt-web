@@ -172,7 +172,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if the requested channel doesn't exist, just go to the first channel
       this.navigate('explore/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
     }
-
+    // dont show the guide initially when navigating to explore directly
+    if(shelby.routeHistory.length === 0){
+      shelby.models.userDesires.set({guideShown: false});
+    }
   },
 
   displayFacebookGeniusRoll : function(rollId, frameId, params){

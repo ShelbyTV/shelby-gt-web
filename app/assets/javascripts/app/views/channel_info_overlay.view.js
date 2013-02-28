@@ -22,6 +22,7 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
     this.$el.html(this.template({
       channels : shelby.config.channels
     }));
+    this.$('.channel-info-section').show();
     this._findHighlightActiveChannel();
   },
 
@@ -52,7 +53,7 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
 
   _onCurrentChannelChanged : function(){
     // remove the active channel highlight
-    this.$('.explore-section-channel').removeClass('explore-section-channel--active');
+    this.$('.channel-info-section-channel').removeClass('channel-info-section-channel--active');
     // set the highlight on the new active channel
     this._findHighlightActiveChannel();
   },
@@ -60,8 +61,8 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
   _findHighlightActiveChannel : function(){
     // highlight the active channel if there is one
     var activeChannel = libs.utils.channels.getCurrentChannel();
-    this.$('.explore-section-channel[data-channel=' + activeChannel + ']')
-      .addClass('explore-section-channel--active').find('.title').text('#'+activeChannel);
+    this.$('.channel-info-section-channel[data-channel=' + activeChannel + ']')
+      .addClass('channel-info-section-channel--active').find('.title').text('#'+activeChannel);
   }
 
 });
