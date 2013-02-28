@@ -6,7 +6,9 @@
     <ul class="list">
       <% _(channels).each(function(channel, key) { %>
         <li class="explore-section-channel js-channel" data-channel="<%= key %>">
-          <%= channel.title %>
+          <span class="title"><%= channel.title %></span>
+          <span class="play-button"><i class="icon-player_play"></i></span>
+          <span class="now-playing"><small> playing</small></span>
         </li>
       <% }); %>
     </ul>

@@ -61,7 +61,7 @@ libs.shelbyGT.ExploreDropdownView = Support.CompositeView.extend({
     // highlight the active channel if there is one
     var activeChannel = libs.utils.channels.getCurrentChannel();
     this.$('.explore-section-channel[data-channel=' + activeChannel + ']')
-      .addClass('explore-section-channel--active');
+      .addClass('explore-section-channel--active').find('.title').text('#'+activeChannel);
   }
 
 });

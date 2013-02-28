@@ -153,7 +153,7 @@
   box-shadow: 0px 0px 5px 0px black;
   margin-top: 5px;
   text-align: left;
-  width: 165px;
+  width: 200px;
 }
 
 .explore-section-channel {
@@ -181,6 +181,14 @@
       @include fin-left(#b9b9b9, 29px);
     }
   }
+
+  .play-button {
+    position: absolute;
+    right: 25px;
+  }
+  .now-playing {
+    display: none
+  }
 }
 
 .explore-section-channel--active {
@@ -189,6 +197,15 @@
 
   &:first-child {
     @include fin-left(#74C042, 29px);
+  }
+
+  .now-playing {
+    display: inline-block;
+    right: 10px;
+    position: absolute;
+  }
+  .play-button {
+    display: none;
   }
 }
 
