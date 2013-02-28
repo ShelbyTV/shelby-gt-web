@@ -143,8 +143,10 @@
 .user-channel__button_next {
   border-radius: 0;
   height: 255px;
+  font-size: 2.1em;
   margin: 0;
   opacity: 0;
+  padding: 0.5em;
 
   &:hover {
     opacity: 1;
