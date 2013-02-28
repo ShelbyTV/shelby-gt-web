@@ -52,6 +52,13 @@
 //branded color on :hover:
 
 .social-icon--hover {
+  .list__link {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+
   .icon-social_twitter {
     &:hover {
       color: $twitter-blue;
