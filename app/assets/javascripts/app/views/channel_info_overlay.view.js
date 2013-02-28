@@ -46,20 +46,21 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
 
   _onPlaylistChanged : function(playlistManagerModel) {
     var _changedAttrs = _(playlistManagerModel.changedAttributes());
+    if (playlistManagerModel.get('playlistType') !== "channel"){
+      this.$('.channel-info-section').hide();
+    }
+    else {
+      this.$('.channel-info-section').show();
+    }
     if (!_changedAttrs.has('playingState') &&
         !_changedAttrs.has('playingChannelId')) {
-      if (shelby.models.guide.get('displayState') !== "channel"){
-        this.$('.channel-info-section').hide();
-      }
       return;
     }
+
     this._onCurrentChannelChanged();
   },
 
   _onCurrentChannelChanged : function(){
-    if (shelby.models.guide.get('displayState') == "channel") {
-      this.$('.channel-info-section').show();
-    }
     // remove the active channel highlight
     this.$('.channel-info-section-channel').removeClass('channel-info-section-channel--active');
     // set the highlight on the new active channel

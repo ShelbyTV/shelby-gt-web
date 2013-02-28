@@ -80,12 +80,15 @@
         case DisplayState.channel :
           var doSmartRefresh;
           var masterCollection;
+          var _playlistType;
           if (currentDisplayState == DisplayState.dashboard) {
             doSmartRefresh = !this._dashboardMasterCollection.isEmpty();
             masterCollection = this._dashboardMasterCollection;
+            _playlistType = libs.shelbyGT.PlaylistType.dashboard;
           } else {
             doSmartRefresh = false;
             masterCollection = this._currentChannelMasterCollection = new Backbone.Collection();
+            _playlistType = libs.shelbyGT.PlaylistType.channel;
           }
           displayParams = {
             viewProto : DashboardView,
@@ -96,6 +99,7 @@
               fetchParams : {
                 include_children : true
               },
+              playlistType : _playlistType,
               firstFetchLimit : shelby.config.pageLoadSizes.dashboard,
               limit : shelby.config.pageLoadSizes.dashboard + 1,
               masterCollection : masterCollection
