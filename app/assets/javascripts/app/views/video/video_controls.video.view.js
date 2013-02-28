@@ -5,6 +5,7 @@
 libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   events : {
+    "click"                                                   : "_dismissWelcomeBanner",
     "click .js-videoplayer-roll"                              : "_requestFrameRollView",
     "click .js-videoplayer-playback"                          : "_togglePlayback",
     "click .js-videoplayer-mute"                              : "_toggleMute",
@@ -193,6 +194,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   //--------------------------------------
   // Handle user events on the player controls
   //--------------------------------------
+
+  _dismissWelcomeBanner : function(){
+    // dismiss the dot tv welcome banner if its still there
+    shelby.models.dotTvWelcome.trigger('dismiss');
+  },
 
   _requestFrameRollView : function(){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){

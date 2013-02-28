@@ -45,11 +45,13 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.playlistManager = new libs.shelbyGT.PlaylistManagerModel();
     shelby.models.guideOverlay = new libs.shelbyGT.GuideOverlayModel();
     shelby.models.exploreGuide = new libs.shelbyGT.ExploreGuideModel();
+    shelby.models.dotTvWelcome = new libs.shelbyGT.DotTvWelcomeModel();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.viewedVideos = new libs.shelbyGT.ViewedVideosModel();
     shelby.models.queuedVideos = new libs.shelbyGT.QueuedVideosModel();
     shelby.models.invite = new libs.shelbyGT.InviteModel();
     shelby.models.videoSearch = new libs.shelbyGT.VideoSearchModel();
+    shelby.models.userProfile = new libs.shelbyGT.UserProfileModel();
     shelby.models.multiplexedVideo = new libs.shelbyGT.MultiplexedVideoModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
@@ -59,6 +61,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.exploreRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'explore'});
     shelby.models.onboardingRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});
     shelby.models.promoRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'in_line_promos'});
+    shelby.models.userChannels = new libs.shelbyGT.AssociatedRollsCollectionModel();
 
     shelby.collections.videoSearchResultFrames = new libs.shelbyGT.FramesCollection();
     shelby.collections.multiplexedVideoFrames = new libs.shelbyGT.MultiplexedVideoCollection();

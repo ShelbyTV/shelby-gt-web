@@ -51,6 +51,7 @@
 @import "partials/explore";
 @import "partials/onboarding";
 @import "partials/action";
+@import "partials/user-profile";
 
 @import "partials/frame";
 @import "partials/external-tools";
@@ -92,6 +93,7 @@
 //  isolated roll styles
 //------------------------------------------------------------------------------
 @import "partials/isolated-roll";
+@import "partials/dot-tv";
 @import "partials/dot-tv-welcome";
 
 //------------------------------------------------------------------------------
@@ -108,6 +110,7 @@
 //  Overrides
 //------------------------------------------------------------------------------
 @import "partials/hide-guide";
+@import "partials/hide-pvi";
 @import "partials/user-inactive";
 @import "partials/touch";
 

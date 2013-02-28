@@ -1,0 +1,188 @@
+//------------------------------------------------------------------------------
+//  User Info Panel
+//------------------------------------------------------------------------------
+//N.B. hacky shit; hide upon render because we're
+//      dumping this straight into the DOM regardless of whether we need it.
+//      .shelby--dot-tv overrides these to reveal.
+.user_info,
+.user-channel-guide {
+  display: none;
+}
+//------------------------------------------------------------------------------
+//  Block
+//------------------------------------------------------------------------------
+.user_info {
+  background-color: $base;
+  // height: 100%;
+  float: left;
+  width: $guide-width;
+
+  // NON-NORMATIVE OVERRIDES
+  .user_card {
+    margin: 0 8px 8px 0;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//  User Roll
+//------------------------------------------------------------------------------
+// whoa!
+// KUDOS for DOM-less list re-ordering:
+// http://tanalin.com/en/articles/css-block-order/
+
+//  Block
+.user_roll {}
+
+.user_roll__list { //whoa!
+  display: table;
+  width: 100%;
+}
+
+//  Elements
+.user_roll__item {
+  display: table-row-group; //whoa!
+  background-color: $base;
+  border-bottom: 1px solid #CCC;
+  border-top: 1px solid #EFEFEF;
+
+  & > .user_roll__item_lining {
+    width: 1300px;
+    margin: 0 auto;
+  }
+
+  &:hover {
+    .user-channel__button_prev,
+    .user-channel__button_next {
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+  .user_roll__item--active {
+    background-color: $base-frame;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.5);
+    display: table-header-group; //whoa!
+    position: relative;
+    z-index: 1;
+
+    &:hover {
+      .user-channel__button_prev,
+      .user-channel__button_next {
+        opacity: 1;
+      }
+    }
+
+    .user-channel__button_prev,
+    .user-channel__button_next {
+      opacity: 1;
+    }
+  }
+
+  .user_roll__item--alpha {
+    .user-channel__button_prev {
+      opacity: 0;
+    }
+  }
+
+  .user_roll__item--omega {
+    .user-channel__button_next {
+      opacity: 0;
+    }
+  }
+
+////////////////////////////////////////////////////////////////////////////////
+//------------------------------------------------------------------------------
+//  user channel section specific
+//------------------------------------------------------------------------------
+.user-channel-guide {
+  background-color: $base-frame;
+  box-shadow: $shadow;
+}
+////////////////////////////////////////////////////////////////////////////////
+
+//Framework--------------------------------------------------------
+.user-channel__wrapper {
+  position: relative;
+}
+
+.user-channel__head {
+
+}
+
+.user-channel__body {
+  overflow-x: auto;
+  position: relative;
+}
+
+//Block------------------------------------------------------------
+.user-channel {
+  width: 3000px;
+
+  .load-more {
+    float: left;
+  }
+
+  .load-more-button {
+    height: 130px;
+    background-color: $base;
+    background-image: url('/images/assets/loading-explore.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+//Elements---------------------------------------------------------
+.user-channel__title {
+  font-size: 1.7em;
+  line-height: 2;
+  padding: 0 0.5em;
+}
+
+.user-channel__item {
+  float: left;
+  width: 300px;
+
+  &:hover {
+    background-color: darken($base,5%);
+
+    .explore-frame-menu {
+      display: block;
+    }
+  }
+
+  &:active {
+    background-color: darken($base, 20%);
+  }
+
+  //NON-NORMATIVE OVERRIDE
+  .explore-frame {
+    height: 21.1em;
+  }
+
+  .explore-frame-title {
+    min-height: 4.2em;
+  }
+
+  .explore-frame-link {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.user-channel__button_prev,
+.user-channel__button_next {
+  border-radius: 0;
+  height: 10.9em;
+  font-size: 2.1em;
+  margin: 1.65em 0 0;
+  opacity: 0;
+  padding: 0.5em;
+
+  &:hover {
+    opacity: 1;
+  }
+}

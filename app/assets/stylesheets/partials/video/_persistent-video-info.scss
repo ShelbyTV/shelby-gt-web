@@ -86,6 +86,52 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
     z-index: 1;
   }
 }
+  .persistent_video_info__wrapper--dot-tv {
+    // background-color: rgba(239, 239, 239, 1);
+    bottom: 0;
+    height: 225px;
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    right: 0;
+    z-index: 1;
+
+    .persistent_video_info__foot {
+      margin: 0;
+    }
+
+    .persistent_video_info__body {
+      //non-normative overrides
+      .media_body {
+        max-height: 9.5em;
+        // overflow-y: auto;
+      }
+    }
+
+    .line-clamp {
+      height: 9em;
+
+      &:after {
+        background-color: $base;
+        box-shadow: 0 0 2px 4px $base;
+        left: 0;
+        opacity: 0.8;
+        overflow: hidden;
+        text-align: right;
+      }
+    }
+
+    .line-clamp--open {
+      height: 9.5em;
+      overflow-y: auto;
+
+      &:after {
+        display: block;
+        position: relative;
+      }
+    }
+  }
 
 .persistent_video_info {
   display: block;

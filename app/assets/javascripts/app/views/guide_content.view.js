@@ -50,9 +50,11 @@
         return;
       }
       if (model.get('displayState') != libs.shelbyGT.DisplayState.explore &&
-          model.get('displayState') != libs.shelbyGT.DisplayState.onboarding) {
+          model.get('displayState') != libs.shelbyGT.DisplayState.onboarding &&
+          model.get('displayState') != libs.shelbyGT.DisplayState.dotTv) {
         this._updateChild(model);
       }
+      $('.js-guide').addClass('animate_module');
     },
 
     _updateChild : function(guideModel) {

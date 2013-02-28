@@ -10,3 +10,16 @@
   background-repeat: no-repeat;
   display: block;
 }
+
+.image_glow--bottom {
+  overflow: hidden;
+
+  &:after {
+    bottom: -1px;
+    box-shadow: 0 0 70px 30px rgba(0,0,0,1);
+    content: "\0020";
+    height: 1px;
+    position: absolute;
+    width: 100%;
+  }
+}

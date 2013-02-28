@@ -6,8 +6,6 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
     'click .js-roll-command'                  : '_displayRollVideo'
   },
 
-  className : 'explore-roll-item',
-
   initialize : function() {
     shelby.models.queuedVideos.bind('add:queued_videos', this._onQueuedVideosAdd, this);
     shelby.models.queuedVideos.bind('remove:queued_videos', this._onQueuedVideosRemove, this);
@@ -23,7 +21,10 @@ libs.shelbyGT.ExploreFrameItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({frame : this.model}));
+    this.$el.html(this.template({
+      frame : this.model,
+      showFrameLikes : false
+    }));
     if (shelby.models.queuedVideos.videoIsInQueue(this.model.get('video'))) {
       this._updateQueueButton(true);
     }

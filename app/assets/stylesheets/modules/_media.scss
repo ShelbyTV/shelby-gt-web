@@ -30,3 +30,26 @@
     margin: 0 0 .5em 0;
   }
 }
+
+//------------------------------------------------------------------------------
+//  Panel extends: .media_module.panel
+//------------------------------------------------------------------------------
+.panel {
+  padding: 1em;
+}
+
+  .panel__h1 {
+    @include ellipsis;
+
+    font-weight: bold;
+    font-size: 1.2em;
+    line-height: 2.3;
+  }
+
+  .panel__button {
+    @include button-sizing;
+  }
+
+.panel--left {
+  margin-left: 0;
+}

@@ -77,3 +77,11 @@ libs.shelbyGT.ShelbyBaseModel = Backbone.RelationalModel.extend({
   }
 
 });
+
+//class methods
+libs.shelbyGT.ShelbyBaseModel.findOrCreate = function(attributes, options){
+  //check if the model already exists in the backbone relational store
+  //if it does, return the existing model, otherwise, create a new one
+  //and return that
+  return Backbone.Relational.store.find(this, attributes.id) || new this(attributes, options);
+};

@@ -74,10 +74,12 @@ $persistent_video_info--height : 180px;
 //------------------------------------------------------------------------------
 //  COLORS: base
 $base          : #e2e2e2;
+$base-frame    : #F2F0F0;
 $base-bg-color : #000;
-$highlight     : rgba(255,255,255,.3) !default;
-$shadow        : 0 0 2px 0 rgba(0,0,0,.3);
-$shadow-text   : 0px -1px 0px rgba(0,0,0,.6);
+$highlight     : rgba(255,255,255,0.3) !default;
+$shadow        : 0 0 2px 0 rgba(0,0,0,0.3);
+$shadow-text   : 0px -1px 0px rgba(0,0,0,0.6);
+$outline       : #222;
 $outset        : adjust-lightness($base, 7%);
 $inset         : adjust-lightness($base, -10%);
 //  COLORS: fonts

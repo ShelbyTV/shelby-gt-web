@@ -26,6 +26,7 @@ libs.shelbyGT.ExploreFrameListView = libs.shelbyGT.ListView.extend({
       }),
       listItemView : function(item, params){
           params = _.extend({}, params, {
+            className : 'explore-roll-item',
             roll : this.model
           });
           return new libs.shelbyGT.ExploreFrameItemView(_(params).extend({model:item}));

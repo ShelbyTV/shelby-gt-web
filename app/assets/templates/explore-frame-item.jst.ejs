@@ -15,7 +15,7 @@
         </li>
       <% } %>
       <li class="menu_item" role="menuitem">
-        <button class="button_primer button_default frame-command command-queue js-queue-command js-track-event" data-ga_category="Explore" data-ga_action="Click to queue frame" data-ga_label="<%= videoTitle %>">
+        <button class="button_primer button_default frame-command command-queue js-queue-command js-track-event" data-ga_category="Explore" data-ga_action="Click to like frame" data-ga_label="<%= videoTitle %>">
           <i class="icon-heart js-command-icon">
           </i>
 
@@ -35,4 +35,10 @@
       <%= videoTitle %>
     </h3>
   </a>
+
+  <% if (showFrameLikes) { %>
+    <div class="frame-likes frame-external-subline icon-heart icon-heart--red js-frame-likes">
+      <!-- Filled in by the FrameLikesView -->
+    </div><!-- eo frame-likes -->
+  <% } %>
 </article>

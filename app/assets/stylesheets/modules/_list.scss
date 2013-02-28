@@ -18,9 +18,29 @@
   }
 }
 
-
 .list--inline {
-  li {
+  & > li {
     display: inline;
+  }
+
+  .left {
+    float: left;
+  }
+
+  .right {
+    float: right;
+  }
+}
+
+.list__link {
+  &,
+  &:link,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
   }
 }

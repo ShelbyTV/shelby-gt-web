@@ -2,6 +2,45 @@
 //  Overrides
 //------------------------------------------------------------------------------
 
+// USER PROFILE HACK -----------------------------------------------------------
+//  Screens that MORE THAN 1620px wide.
+@media screen and (min-width: 1620px) {
+  .user_roll__item {
+    & > .user_roll__item_lining {
+      width: 1610px;
+    }
+  }
+}
+
+//  Screens that LESS THAN 1300px wide.
+@media screen and (max-width: 1300px) {
+  .user_roll__item {
+    & > .user_roll__item_lining {
+      width: 1010px;
+    }
+  }
+}
+
+//  Screens that LESS THAN 1000px wide.
+@media screen and (max-width: 1000px) {
+  .user_roll__item {
+    & > .user_roll__item_lining {
+      width: 710px;
+    }
+  }
+}
+
+//  Screens that LESS THAN 710px wide.
+@media screen and (max-width: 700px) {
+  .user_roll__item {
+    & > .user_roll__item_lining {
+      width: 410px;
+    }
+  }
+}
+// EO USER PROFILE HACK --------------------------------------------------------
+
+
 //  Screens that LESS THAN 1100px wide.
 @media screen and (max-width: 1100px) {
   //icon normalization, compensates for small typeface proportions
