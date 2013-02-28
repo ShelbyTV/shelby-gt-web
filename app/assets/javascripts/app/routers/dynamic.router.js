@@ -125,7 +125,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayIsolatedRoll : function(rollId, params){
-    if (_(shelby.config.dotTvNetworks.userProfileViewRollIds).contains(rollId)) {
+    // TODO: turn this back on before production deploy
+    // if (_(shelby.config.dotTvNetworks.userProfileViewRollIds).contains(rollId)) {
+    if (true) {
       this._setupUserProfileView({
         rollId : rollId,
         params : params
