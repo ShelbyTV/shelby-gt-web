@@ -32,6 +32,8 @@
 //  Elements
 .user_roll__item {
   background-color: $base;
+  border-bottom: 1px solid #CCC;
+  border-top: 1px solid #EFEFEF;
 
   &:hover {
     .user-channel__button_prev,
