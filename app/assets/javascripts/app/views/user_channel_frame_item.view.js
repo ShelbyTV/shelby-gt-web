@@ -36,10 +36,21 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
   },
 
   render : function(){
-    this.$el.html(this.template({frame : this._frame}));
+    this.$el.html(this.template({
+      frame : this._frame
+    }));
+
     if (shelby.models.queuedVideos.videoIsInQueue(this._frame.get('video'))) {
       this._updateQueueButton(true);
     }
+
+    this.renderChild(new libs.shelbyGT.FrameLikesView({
+      el : this.$('.js-frame-likes'),
+      model : this.model,
+      numAvatarsDisplayed : 7,
+      selfBindAndUpdate : true
+    }));
+
     return this;
   },
 

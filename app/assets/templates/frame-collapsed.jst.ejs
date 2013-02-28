@@ -63,21 +63,8 @@
     </footer><!-- eo .media_module-->
   </div><!-- eo .frame-body-wrapper -->
 
-  <div class="frame-likes frame-external-subline icon-heart icon-heart--red<%= totalLikes == 0 ? ' frame-likes--hide' : ''%>">
-    <ul class="list frame-likes-avatars js-liker-avatars-list<%= !likers.length ? ' no-liker-avatars' : ''%>">
-      <!-- Filled in by the LikerAvatar..somethingsomething -->
-    </ul>
-
-    <% if (remainingLikes) { %>
-      <span class="frame-likes-count frame-external-subline-text">
-        <% if (likers.length) { %>
-          +<%= remainingLikes %>
-        <% } else { %>
-          <%= _('like').pluralize(remainingLikes, true) %>
-        <% } %>
-      </span>
-    <% } %>
-
+  <div class="frame-likes frame-external-subline icon-heart icon-heart--red js-frame-likes">
+    <!-- Filled in by the FrameLikesView -->
   </div><!-- eo frame-likes -->
 
   <% if (!frameGroup.get('collapsed') && !_(dupeFrames).isEmpty()) { %>
