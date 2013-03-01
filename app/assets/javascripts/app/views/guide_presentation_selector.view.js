@@ -10,6 +10,7 @@
     events : {
       "click .js-stream:not(.active-item)"   : "_goToStream",
       "click .js-queue:not(.active-item)"    : "_goToQueue",
+      "click .js-channels"                   : "_goToChannels",
       "click .js-me:not(.active-item)"       : "_goToMe",
       "click .js-mail"                       : "_goToMail",
       "click .js-admin"                      : "_goToAdmin"
@@ -31,11 +32,6 @@
 
     render : function(){
       this.$el.html(this.template({user:shelby.models.user}));
-      this.renderChild(new libs.shelbyGT.ExploreDropdownView({
-        el : this.$('.js-guide-explore'),
-        model : shelby.models.guide,
-        playlistManagerModel : shelby.models.playlistManager
-      }));
       this.renderChild(new libs.shelbyGT.InviteFormView({
         el : this.$('.js-guide-invite'),
         model : shelby.models.invite,
@@ -53,6 +49,13 @@
         shelby.router.navigate('stream', {trigger: true});
         shelby.models.userDesires.set({guideShown: true});
       }
+    },
+    
+    _goToChannels : function(e) {
+      shelby.router.navigate(
+        "channels",
+        {trigger:true}
+      );
     },
 
     _goToQueue : function(e){
