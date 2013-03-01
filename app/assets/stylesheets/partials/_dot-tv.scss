@@ -104,6 +104,8 @@
 
     .notification {
       @include roundies;
+
+      margin: 10px 10px;
     }
 
     //enable footer ------------------------------------------------------------
