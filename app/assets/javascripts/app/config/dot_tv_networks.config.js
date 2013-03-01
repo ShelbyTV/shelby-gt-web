@@ -6,6 +6,7 @@ shelby.config.dotTvNetworks = {
     '4f900d56b415cc6614056681', // reecepacheco.tv
     '51190f1eb415cc77f308eb22', // missouriquiltco.tv
     '4f901d4bb415cc661405fde9', // chriskurdziel.tv
-    '4f8f7ef6b415cc476200004a'  // henrysztul.tv
+    '4f8f7ef6b415cc476200004a', // henrysztul.tv
+    '51214bf2b415cc1c5c004c03'  // food52.shelby.tv
   ]
 };

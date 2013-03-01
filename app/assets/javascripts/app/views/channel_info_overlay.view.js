@@ -35,7 +35,6 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
 
   _onPlaylistChanged : function(playlistManagerModel) {
     var _changedAttrs = _(playlistManagerModel.changedAttributes());
-    console.log('changed', _changedAttrs);
     if (playlistManagerModel.get('playlistType') !== "channel"){
       this.$('.channel-info-section').hide();
     }
