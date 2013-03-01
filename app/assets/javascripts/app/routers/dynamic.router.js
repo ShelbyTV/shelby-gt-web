@@ -453,9 +453,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           shelby.models.guide.set('activeFrameModel', frame);
         }
       } else {
-        // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
-        shelby.alert({message: "<p>Sorry, the video you were looking for doesn't exist in this roll.</p>"});
-        this.navigateToRoll(rollModel, {trigger:true, replace:true});
+        // under normal circumstances we can just set the frame to active because we are not
+        // specifically concerned with whether it will play or not, just that it will be
+        // selected and displayed
+        shelby.models.guide.set('activeFrameModel', frame);
       }
       if (shelby.models.routingState.get('forceFramePlay')) {
         // responded to the forceFramePlay state, so reset it
