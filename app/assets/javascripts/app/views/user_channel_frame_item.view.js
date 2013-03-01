@@ -55,16 +55,16 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
     return this;
   },
 
-  _displayVideo : function() {
+  _displayVideo : function(e) {
     // dismiss the dot tv welcome banner if its still there
     shelby.models.dotTvWelcome.trigger('dismiss');
     // activate the current frame
     shelby.models.guide.set('activeFrameModel', this._frame);
     // if the video player has been obscured at all,
     // scroll to the top so you can see the new video that's been selected
-    var $body = $('body');
-    if ($body.scrollTop() > $('.js-videoplayer').offset().top) {
-      $body.scrollTo(0, 500);
+    var videoPlayerTop = $('.js-videoplayer').offset().top;
+    if ($('body').scrollTop() > videoPlayerTop || $('html').scrollTop() > videoPlayerTop) {
+      $('html, body').scrollTo(0, 500);
     }
     // register the playlist this frame is on as the current playlist with the playlist manager
     this.options.playlistManagerModel.set({
