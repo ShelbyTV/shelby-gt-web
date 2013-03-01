@@ -125,9 +125,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayIsolatedRoll : function(rollId, params){
-    // TODO: turn this back on before production deploy
-    // if (_(shelby.config.dotTvNetworks.userProfileViewRollIds).contains(rollId)) {
-    if (!_(shelby.config.dotTvNetworks.oldDotTvRollIds).contains(rollId)) {
+    if (shelby.abTests.dotTvLayout == 'user_profile' && _(shelby.config.dotTvNetworks.userProfileViewRollIds).contains(rollId)) {
+      // save current referrer host name in shelby config
+      if (params && params.src) {
+        shelby.config.hostName = params.src;
+      }
       this._setupUserProfileView({
         rollId : rollId,
         params : params
