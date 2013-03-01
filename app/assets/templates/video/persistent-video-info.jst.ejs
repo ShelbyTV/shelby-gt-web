@@ -73,10 +73,10 @@
           <% } %>
 
           <% var hasComment = (currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame') %>
-          <% var comment = currentMessages.models[0].get('text') %>
-          <% var commentOverflow = comment && comment.length > 256  %>
 
           <% if(hasComment) { %>
+            <% var comment = currentMessages.models[0].get('text') %>
+            <% var commentOverflow = comment && comment.length > 256  %>
             <p<%= commentOverflow ? ' class="line-clamp js-toggle-comment"' : '' %>>
               <%=
                 libs.utils.String.linkifySafeWithClickTracking(comment,
