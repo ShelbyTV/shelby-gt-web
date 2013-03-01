@@ -7,7 +7,7 @@
     <ul class="menu_list frame-command-menu xframe-list" role="menubar">
       <% if (!shelby.models.user.isAnonymous()) { %>
         <li class="menu_item" role="menuitem">
-          <button class="button_primer button_default frame-command command-roll js-roll-command js-track-event" data-ga_category="Explore" data-ga_action="Click to roll frame" data-ga_label="<%= videoTitle %>">
+          <button class="button_primer button_default frame-command command-roll js-roll-command js-track-event" data-ga_category="User Profile" data-ga_action="Click to roll frame" data-ga_label="<%= videoTitle %>">
             <i class="button_primer icon-videocard_roll">
             </i>
               Roll…
@@ -15,7 +15,7 @@
         </li>
       <% } %>
       <li class="menu_item" role="menuitem">
-        <button class="button_primer button_default frame-command command-queue js-queue-command js-track-event" data-ga_category="Explore" data-ga_action="Click to like frame" data-ga_label="<%= videoTitle %>">
+        <button class="button_primer button_default frame-command command-queue js-queue-command js-track-event" data-ga_category="User Profile" data-ga_action="Click to like frame" data-ga_label="<%= videoTitle %>">
           <i class="icon-heart js-command-icon">
           </i>
 
@@ -26,11 +26,11 @@
       </li>
     </ul>
   </div><!-- eo .xframe-menu -->
-  <a href="#" onclick="return false;" class="image_module frame-thumbnail js-play-explore-frame<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %> js-track-event" data-ga_category="Explore" data-ga_action="Click thumbnail to play frame" data-ga_label="<%= videoTitle %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
+  <a href="#" onclick="return false;" class="image_module frame-thumbnail js-play-explore-frame<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %> js-track-event" data-ga_category="User Profile" data-ga_action="Click thumbnail to play frame" data-ga_label="<%= videoTitle %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
     <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail" onload="$(this).parents('.explore-frame').first().removeClass('transparent');">
   </a>
 
-  <a href="#" onclick="return false;" class="explore-frame-link js-play-explore-frame js-track-event" data-ga_category="Explore" data-ga_action="Click title to play frame" data-ga_label="<%= videoTitle %>">
+  <a href="#" onclick="return false;" class="explore-frame-link js-play-explore-frame js-track-event" data-ga_category="User Profile" data-ga_action="Click title to play frame" data-ga_label="<%= videoTitle %>">
     <h3 class="explore-frame-title">
       <%= videoTitle %>
     </h3>
