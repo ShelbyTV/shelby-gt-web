@@ -16,7 +16,7 @@
   <% if (showNextFrame) { %>
     <div class="media_image--rev persistent_video_info__next-frame">
       <a class="persistent_video_info__anchor js-track-event js-next-video"
-                data-ga_category="Persistent Video Info"
+                data-ga_category="<%= eventTrackingCategory %>"
                 data-ga_action="Click on next frame"
                 data-ga_label="<%= shelby.models.user.get('nickname') %>">
 
@@ -80,7 +80,7 @@
             <p<%= commentOverflow ? ' class="line-clamp js-toggle-comment"' : '' %>>
               <%=
                 libs.utils.String.linkifySafeWithClickTracking(comment,
-                  {gaCategory: 'Persistent Video Info', gaAction: 'Click on link in comment'})
+                  {gaCategory: eventTrackingCategory, gaAction: 'Click on link in comment'})
               %>
             </p>
           <% } %>
@@ -96,7 +96,7 @@
         <% if (!user.isAnonymous()) { %>
           <li class="persistent_video_info__item clearfix">
             <button class="button_primer button_blue persistent_video_info__button--roll js-roll-frame js-track-event"
-                    data-ga_category="Persistent Video Info"
+                    data-ga_category="<%= eventTrackingCategory %>"
                     data-ga_action="Click roll on current frame"
                     data-ga_label="<%= shelby.models.user.get('nickname') %>">
               <i class="icon icon-videocard_roll">
@@ -108,7 +108,7 @@
 
         <li class="persistent_video_info__item clearfix">
           <button class="button_primer button_default persistent_video_info__button--queue js-queue-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
-              data-ga_category="Persistent Video Info"
+              data-ga_category="<%= eventTrackingCategory %>"
               data-ga_action="Click like on current frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
             <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon">
@@ -122,7 +122,7 @@
         <% if (!user.isAnonymous()) { %>
           <li class="persistent_video_info__item clearfix">
             <button class="button_primer button_default persistent_video_info__button--share js-share-frame js-track-event"
-                    data-ga_category="Persistent Video Info"
+                    data-ga_category="<%= eventTrackingCategory %>"
                     data-ga_action="Click share on current frame"
                     data-ga_label="<%= shelby.models.user.get('nickname') %>">
               <i class="icon icon-email">
@@ -133,7 +133,7 @@
         <% } else { %>
           <li class="persistent_video_info__item clearfix">
             <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= currentFramePermalink %>?utm_campaign=email-share">
-              <button class="button_primer button_default persistent_video_info__button--share js-track-event" data-ga_category="Persistent Video Info" data-ga_action="Share frame via email link" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+              <button class="button_primer button_default persistent_video_info__button--share js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame via email link" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                 <i class="icon-email">
                 </i>
                   Email
@@ -141,7 +141,7 @@
             </a>
           </li>
           <li class="persistent_video_info__item clearfix">
-            <button class="button_primer button_default persistent_video_info__button--facebook js-facebook-share js-track-event" data-ga_category="Persistent Video Info" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+            <button class="button_primer button_default persistent_video_info__button--facebook js-facebook-share js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
               <i class="button_icon_center icon_share_facebook icon">
                 &nbsp;
               </i>
@@ -149,7 +149,7 @@
           </li>
           <li class="persistent_video_info__item clearfix">
             <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20video&url=<%= currentFramePermalink %>">
-              <button class="button_primer button_default persistent_video_info__button--twitter js-share-to-twitter js-track-event" data-ga_category="Persistent Video Info" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+              <button class="button_primer button_default persistent_video_info__button--twitter js-share-to-twitter js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                 <i class="button_icon_center icon_share_twitter icon">
                   &nbsp;
                 </i>

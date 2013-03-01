@@ -1,5 +1,9 @@
 libs.shelbyGT.LikerAvatarItemView = libs.shelbyGT.ListItemView.extend({
 
+  options : {
+    eventTrackingCategory : 'Frame' // what category events in this view will be tracked under
+  },
+
   initialize : function(){
     this.model.bind('change:has_shelby_avatar', this.render, this);
     this.model.bind('change:personal_roll_subdomain', this.render, this);
@@ -15,7 +19,10 @@ libs.shelbyGT.LikerAvatarItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({user : this.model}));
+    this.$el.html(this.template({
+      user : this.model,
+      eventTrackingCategory : this.options.eventTrackingCategory
+    }));
     return this;
   }
 

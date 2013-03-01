@@ -132,7 +132,7 @@
               url: 'http://api.shelby.tv/v1/frame/'+_frameId+'/short_link',
               dataType: 'json',
               success: function(r){ shelby.dialog({
-                message: '<p>Shortlink</p><p>'+r.result.short_link+'</p>',
+                message: '<p>Shortlink</p><p><input type="text" value="'+r.result.short_link+'" class="form_input one-half" autofocus/></p>',
                 button_primary: {
                   title: "Done"
                 }
