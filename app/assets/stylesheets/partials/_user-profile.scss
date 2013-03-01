@@ -42,12 +42,25 @@
 .user_roll__item {
   display: table-row-group; //whoa!
   background-color: $base;
-  border-bottom: 1px solid #CCC;
-  border-top: 1px solid #EFEFEF;
 
   & > .user_roll__item_lining {
+    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #EFEFEF;
     width: 1300px;
     margin: 0 auto;
+
+  }
+
+  &:first-child {
+    .user_roll__item_lining {
+      border-top: none;
+    }
+  }
+
+  &:last-child {
+    .user_roll__item_lining {
+      border-bottom: none;
+    }
   }
 
   &:hover {
