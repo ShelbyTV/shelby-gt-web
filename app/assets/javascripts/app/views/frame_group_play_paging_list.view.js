@@ -103,10 +103,18 @@
     },
 
     registerPlaylist : function() {
+
+      var _playlistRollId = null;
+      if (this.options.playlistType == PlaylistType.roll) {
+        _playlistRollId = this.model.id;
+      } else if (this.options.playlistType == PlaylistType.channel) {
+        _playlistRollId = this.model.get('channel');
+      }
+
       shelby.models.playlistManager.set({
         playlistFrameGroupCollection : this.frameGroupCollection,
         playlistType : this.options.playlistType,
-        playlistRollId : this.options.playlistType == PlaylistType.roll ? this.model.id : null
+        playlistRollId : _playlistRollId
       });
     },
 

@@ -9,12 +9,10 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    this.model.bind('change', this._onGuideModelChanged, this);
     this.options.playlistManagerModel.bind('change', this._onPlaylistChanged, this);
   },
 
   _cleanup : function(){
-    this.model.unbind('change', this._onGuideModelChanged, this);
     this.options.playlistManagerModel.unbind('change', this._onPlaylistChanged, this);
   },
 
@@ -23,7 +21,7 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
       channels : shelby.config.channels
     }));
     this._findHighlightActiveChannel();
-    if (shelby.models.guide.get('displayState') == "channel"){
+    if (this.options.playlistManagerModel.get('playlistType') == "channel"){
         this.$('.channel-info-section').show();
       }
   },
@@ -35,15 +33,6 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
     );
   },
 
-  _onGuideModelChanged : function(guideModel) {
-    var _changedAttrs = _(guideModel.changedAttributes());
-    if (!_changedAttrs.has('displayState') &&
-        !_changedAttrs.has('currentChannelId')) {
-      return;
-    }
-    this._onCurrentChannelChanged();
-  },
-
   _onPlaylistChanged : function(playlistManagerModel) {
     var _changedAttrs = _(playlistManagerModel.changedAttributes());
     if (playlistManagerModel.get('playlistType') !== "channel"){
@@ -52,8 +41,8 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
     else {
       this.$('.channel-info-section').show();
     }
-    if (!_changedAttrs.has('playingState') &&
-        !_changedAttrs.has('playingChannelId')) {
+    if (!_changedAttrs.has('playlistType') &&
+        !_changedAttrs.has('playlistRollId')) {
       return;
     }
 
