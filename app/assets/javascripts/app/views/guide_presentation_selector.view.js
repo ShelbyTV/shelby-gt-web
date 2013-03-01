@@ -50,7 +50,7 @@
         shelby.models.userDesires.set({guideShown: true});
       }
     },
-    
+
     _goToChannels : function(e) {
       shelby.router.navigate(
         "channels",
@@ -105,7 +105,7 @@
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
         $setSelectedClassOn = this.$('.js-stream');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
-        $setSelectedClassOn = this.$('.js-explore');
+        $setSelectedClassOn = this.$('.js-channels');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-queue');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.search) {
