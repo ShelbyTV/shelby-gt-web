@@ -5,6 +5,10 @@
  */
 libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
+  options : {
+    eventTrackingCategory : 'Persistent Video Info' // what category events in this view will be tracked under
+  },
+
   events : {
     "click .persistent_video_info__current-frame  .js-roll-frame"                 : "_requestCurrentFrameRollView",
     "click .persistent_video_info__next-frame     .js-roll-frame"                 : "_requestNextFrameRollView",
@@ -55,11 +59,12 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
     if(this._currentFrame && this._nextFrame){
       this.$el.html(this.template({
-        currentFrame      : this._currentFrame,
-        nextFrame         : this._nextFrame,
-        queuedVideosModel : this.options.queuedVideos,
-        showNextFrame     : this.options.showNextFrame,
-        user              : shelby.models.user
+        eventTrackingCategory : this.options.eventTrackingCategory,
+        currentFrame          : this._currentFrame,
+        nextFrame             : this._nextFrame,
+        queuedVideosModel     : this.options.queuedVideos,
+        showNextFrame         : this.options.showNextFrame,
+        user                  : shelby.models.user
       }));
     }
   },
@@ -141,7 +146,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _queueFrame : function(frame, el){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-      frame.like({likeOrigin: 'Persistent Video Info'});
+      frame.like({likeOrigin: this.options.eventTrackingCategory});
       var $target = $(el.currentTarget);
       $target.toggleClass('queued js-queued').find('.label').text('Liked');
       $target.find('i').addClass('icon-heart--red');

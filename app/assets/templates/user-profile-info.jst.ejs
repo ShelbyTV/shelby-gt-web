@@ -26,14 +26,14 @@
           <ul class="list list--inline list--social_badges social-icon--hover">
             <% if (user.has('website')) { %>
               <li class="left">
-                <a class="list__link" href="//<%= user.get('website') %>" target="_blank"><%= user.get('website') %></a>
+                <a class="list__link js-track-event" href="//<%= user.get('website') %>" target="_blank" data-ga_category="User Profile" data-ga_action="Click curator website link" data-ga_label="<%= shelby.models.user.get('nickname') %>"><%= user.get('website') %></a>
               </li>
             <% } %>
 
             <% var tw = _.find(user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
             <% if (typeof tw !== 'undefined'){ %>
               <li class="">
-                <a class="list__link" href="http://twitter.com/<%= tw.nickname %>" target="_blank">
+                <a class="list__link js-track-event" href="http://twitter.com/<%= tw.nickname %>" target="_blank" data-ga_category="User Profile" data-ga_action="Click twitter icon" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                   <i class="icon-social_twitter"></i>
                   <span class="visuallyhidden">Twitter</span>
                 </a>
@@ -42,7 +42,7 @@
             <% var fb = _.find(user.get('authentications'),function(a){ return a.provider == 'facebook' }) %>
             <% if (typeof fb !== 'undefined'){ %>
               <li class="">
-               <a class="list__link" href="http://facebook.com/<%= fb.nickname %>" target="_blank">
+               <a class="list__link js-track-event" href="http://facebook.com/<%= fb.nickname %>" target="_blank" data-ga_category="User Profile" data-ga_action="Click facebook icon" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                   <i class="icon-social_facebook"></i>
                   <span class="visuallyhidden">Facebook</span>
                 </a>
@@ -51,7 +51,7 @@
             <% var tu = _.find(user.get('authentications'),function(a){ return a.provider == 'tumblr' }) %>
             <% if (typeof tu !== 'undefined'){ %>
               <li class="">
-                <a class="list__link" href="http://<%= tu.uid %>.tumblr.com" target="_blank">
+                <a class="list__link js-track-event" href="http://<%= tu.uid %>.tumblr.com" target="_blank" data-ga_category="User Profile" data-ga_action="Click tumblr icon" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                   <i class="icon-social_tumblr"></i>
                   <span class="visuallyhidden">Tumblr</span>
                 </a>

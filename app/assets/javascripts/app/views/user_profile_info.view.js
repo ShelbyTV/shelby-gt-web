@@ -66,6 +66,7 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
     if (currentUser && !currentUser.isNew()) {
       this.appendChild(new libs.shelbyGT.PersistentVideoInfoView({
         className : 'animate_module media_module js-inactivity-preemption persistent_video_info__wrapper--dot-tv',
+        eventTrackingCategory : 'User Profile',
         guide : shelby.models.guide,
         guideOverlayModel : shelby.models.guideOverlay,
         playlistManager : shelby.models.playlistManager,
