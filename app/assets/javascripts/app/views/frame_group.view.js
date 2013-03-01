@@ -153,10 +153,16 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     // activate the current frame
     shelby.models.guide.set('activeFrameModel', frame);
     // register the playlist this frame is on as the current playlist with the playlist manager
+    var _playlistRollId = null;
+    if (this.options.playlistType == libs.shelbyGT.PlaylistType.roll) {
+      _playlistRollId = frame.get('roll').id;
+    } else if (this.options.playlistType == libs.shelbyGT.PlaylistType.channel) {
+      _playlistRollId = shelby.models.dashboard.get('channel');
+    }
     this.options.playlistManagerModel.set({
       playlistFrameGroupCollection : this.options.playlistFrameGroupCollection,
       playlistType : this.options.playlistType,
-      playlistRollId : this.options.playlistType == libs.shelbyGT.PlaylistType.roll ? frame.get('roll').id : null
+      playlistRollId : _playlistRollId
     });
   },
 
