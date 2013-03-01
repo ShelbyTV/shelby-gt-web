@@ -45,7 +45,7 @@
   font-family: $font-family-display;
   font-weight: 100;
   line-height: 2;
-  padding: 0.5em 0;
+  padding: 0.5em 1.8em;
   width:100%;
 
   &:active,
@@ -75,7 +75,7 @@
 }
 
 .guide-nav-item {
-  width: 70px;
+  width: auto;
 }
 
 //------------------------------------------------------------------------------
