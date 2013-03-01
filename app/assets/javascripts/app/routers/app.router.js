@@ -44,7 +44,6 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.guide = new libs.shelbyGT.GuideModel();
     shelby.models.playlistManager = new libs.shelbyGT.PlaylistManagerModel();
     shelby.models.guideOverlay = new libs.shelbyGT.GuideOverlayModel();
-    shelby.models.exploreGuide = new libs.shelbyGT.ExploreGuideModel();
     shelby.models.dotTvWelcome = new libs.shelbyGT.DotTvWelcomeModel();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.viewedVideos = new libs.shelbyGT.ViewedVideosModel();
@@ -52,19 +51,16 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.invite = new libs.shelbyGT.InviteModel();
     shelby.models.videoSearch = new libs.shelbyGT.VideoSearchModel();
     shelby.models.userProfile = new libs.shelbyGT.UserProfileModel();
-    shelby.models.multiplexedVideo = new libs.shelbyGT.MultiplexedVideoModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
 
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
-    shelby.models.exploreRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'explore'});
     shelby.models.onboardingRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});
     shelby.models.promoRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'in_line_promos'});
     shelby.models.userChannels = new libs.shelbyGT.AssociatedRollsCollectionModel();
 
     shelby.collections.videoSearchResultFrames = new libs.shelbyGT.FramesCollection();
-    shelby.collections.multiplexedVideoFrames = new libs.shelbyGT.MultiplexedVideoCollection();
 
     libs.utils.rhombus.login.init_login();
     libs.utils.rhombus.videos_watched.init_videos_watched();
@@ -97,7 +93,6 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
             self._reroute();
           }
           shelby.models.rollFollowings.fetch();
-          libs.shelbyGT.RouterUtils.fetchRollCategoriesAndCheckAutoSelect();
           shelby.models.promoRollCategories.fetch();
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: shelby.models.user.get('nickname')});

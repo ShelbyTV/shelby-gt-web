@@ -170,10 +170,11 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
   },
 
   _changeChannel : function(attr, dir) {
-    if (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel) { return; }
-    var _currCh = shelby.models.multiplexedVideo.get('channel');
-    var _chArray = _.keys(shelby.config.multiplexedVideoRolls);
+    if (!dir){ return; }
+    var _currCh = libs.utils.channels.getCurrentChannel();
+    if (!_currCh){ return; }
 
+    var _chArray = _.keys(shelby.config.channels);
     var _currChIndex = _.indexOf(_chArray, _currCh);
     var _nextChIndex;
     if (_currChIndex == 0 && dir == -1){ _nextChIndex = _chArray.length - 1; }
@@ -182,9 +183,8 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
 
     var _nextCh = _chArray[_nextChIndex];
 
-    if (_nextCh != null || typeof _nextCh != "undefined"){
-      shelby.models.multiplexedVideo.set('channel', _nextCh);
-      shelby.router.navigate("channel/"+_nextCh, {trigger: true, replace: true});
+    if (_nextCh){
+      shelby.router.navigate("channels/"+_nextCh, {trigger: true, replace: true});
     }
   }
 });

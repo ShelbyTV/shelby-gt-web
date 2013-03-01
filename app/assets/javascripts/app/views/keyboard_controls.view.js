@@ -65,7 +65,6 @@
         model : 'userDesires',
         attr : 'changeVideo',
         val : function(){
-          console.log("right");
           shelby.trackEx({
             gaCategory : 'Keyboard',
             gaAction : 'right',
@@ -99,7 +98,7 @@
             gaAction : 'up',
             gaLabel : shelby.models.user.get('nickname')
           });
-          return 1;
+          return -1;
         },
         is_transient : true
       },
@@ -113,11 +112,11 @@
             gaAction : 'down',
             gaLabel : shelby.models.user.get('nickname')
           });
-          return -1;
+          return 1;
         },
         is_transient : true
       },
-      // (l)ink
+      // (s)hort link
       76 : {
         model : 'userDesires',
         attr : 'shortLink',

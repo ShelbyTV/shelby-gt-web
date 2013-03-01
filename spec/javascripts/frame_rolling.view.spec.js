@@ -5,6 +5,9 @@ describe("FrameRollingView", function() {
     this.shareActionStateModel = new Backbone.Model({doShare:libs.shelbyGT.ShareActionState.none});
     this.shareActionStateModelStub = sinon.stub(libs.shelbyGT, 'ShareActionStateModel');
     this.shareActionStateModelStub.returns(this.shareActionStateModel);
+    shelby.models = {
+      user : BackboneFactory.create('user')
+    };
     this.view = new libs.shelbyGT.FrameRollingView({
       model : this.frame,
       guideOverlayModel : this.guideOverlayModel
@@ -20,9 +23,9 @@ describe("FrameRollingView", function() {
       expect(this.view.el.nodeName).toEqual("DIV");
     });
 
-    it("should have the classes 'js-rolling-frame rolling-frame guide-overlay'", function() {
+    it("should have the classes 'guide-overlay__rolling-frame js-rolling-frame guide-overlay'", function() {
+      expect(this.view.$el).toHaveClass("guide-overlay__rolling-frame");
       expect(this.view.$el).toHaveClass("js-rolling-frame");
-      expect(this.view.$el).toHaveClass("rolling-frame");
       expect(this.view.$el).toHaveClass("guide-overlay");
     });
   });

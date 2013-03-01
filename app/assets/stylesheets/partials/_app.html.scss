@@ -72,7 +72,7 @@ a{
   top: 0;
   width: 100%;
 
-  &.explore-layout {
+  &.onboarding-layout {
     display:none;
   }
 }
@@ -90,11 +90,6 @@ a{
 
 .sidebar_module {
   width: $guide-width;
-}
-
-.main-layout,
-.explore-layout {
-  background: $base-bg-color;
 }
 
 .guide-wrapper{

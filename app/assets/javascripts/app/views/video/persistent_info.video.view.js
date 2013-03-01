@@ -88,7 +88,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       if (frameVideo.id == video.id ||
           (this._currentFrame.get('isSearchResultFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
         // this video is the one being added/removed
-        // in case it got updated from somewhere else like the explore view, update my button
+        // in case it got updated from somewhere else, update my button
         var $button = this.$('.persistent_video_info__current-frame .js-queue-frame');
         $button.toggleClass('queued', !removeVideo).find('.label').text(!removeVideo ? 'Liked' : 'Like');
         $button.find('i').toggleClass('icon-heart--red', !removeVideo);

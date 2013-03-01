@@ -1,0 +1,70 @@
+@import "base";
+/*
+ *  Local variables
+ */
+$persistent_video_info__height: 180px;
+$persistent_video_info--next-frame-width: 180px;
+$persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
+
+//------------------------------------------------------------------------------
+// Structure, Beginning of Feature
+//------------------------------------------------------------------------------
+.channel_info__wrapper {
+  position:absolute;
+  right: 0px;
+  z-index: 1;
+}
+
+.channel-info-section {
+  display: none;
+}
+
+.channel-info-section-lining {
+  background-color: $base;
+  box-shadow: 0px 0px 5px 0px black;
+  margin-top: 5px;
+  text-align: left;
+  width: 200px;
+  opacity: 0.9;
+}
+
+.channel-info-section-channel {
+  color: #666;
+  font-family: $font-family-display;
+  font-size: 1.25em;
+  font-weight: 300;
+  height: 3.335em;
+  line-height: 3.335em;
+  padding: 0 .6em;
+
+  & + .channel-info-section-channel {
+    border-top: solid #adadad 1px;
+  }
+
+  &:hover{
+    background-color: #b9b9b9;
+    cursor: pointer;
+  }
+
+  .play-button {
+    position: absolute;
+    right: 25px;
+  }
+  .now-playing {
+    display: none
+  }
+}
+
+.channel-info-section-channel--active {
+  background-color: #74C042;
+  color: #FFF;
+
+  .now-playing {
+    display: inline-block;
+    right: 10px;
+    position: absolute;
+  }
+  .play-button {
+    display: none;
+  }
+}

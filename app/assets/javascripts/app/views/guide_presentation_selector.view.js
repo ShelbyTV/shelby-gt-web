@@ -12,7 +12,6 @@
       "click .js-queue:not(.active-item)"    : "_goToQueue",
       "click .js-me:not(.active-item)"       : "_goToMe",
       "click .js-mail"                       : "_goToMail",
-      "click .js-explore:not(.active-item)"  : "_goToExplore",
       "click .js-admin"                      : "_goToAdmin"
     },
 
@@ -32,6 +31,11 @@
 
     render : function(){
       this.$el.html(this.template({user:shelby.models.user}));
+      this.renderChild(new libs.shelbyGT.ExploreDropdownView({
+        el : this.$('.js-guide-explore'),
+        model : shelby.models.guide,
+        playlistManagerModel : shelby.models.playlistManager
+      }));
       this.renderChild(new libs.shelbyGT.InviteFormView({
         el : this.$('.js-guide-invite'),
         model : shelby.models.invite,
@@ -75,11 +79,6 @@
       document.location = "http://api.shelby.tv/admin/new_users";
     },
 
-    _goToExplore : function(){
-      shelby.router.navigate('explore', {trigger:true});
-      shelby.models.userDesires.set({guideShown: true});
-    },
-
     _onGuideModelChanged : function(model){
       var _changedAttrs = _(model.changedAttributes());
       // only update selection rendering if relevant attribtues have been updated
@@ -102,7 +101,7 @@
         $setSelectedClassOn = this.$('.js-me');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
         $setSelectedClassOn = this.$('.js-stream');
-      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.explore) {
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
         $setSelectedClassOn = this.$('.js-explore');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-queue');

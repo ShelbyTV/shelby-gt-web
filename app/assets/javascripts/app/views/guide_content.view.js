@@ -8,7 +8,6 @@
   var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
   var RollView = libs.shelbyGT.RollView;
   var VideoSearchView = libs.shelbyGT.VideoSearchView;
-  var MultiplexedVideoView = libs.shelbyGT.MultiplexedVideoView;
   var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
@@ -23,6 +22,9 @@
     _listView : null,
 
     _dashboardMasterCollection : null,
+
+    _currentChannelMasterCollection : null,
+    _currentChannelView : null,
 
     _currentRollMasterCollection : null,
 
@@ -46,11 +48,11 @@
       if (!_changedAttrs.has('displayState') &&
           !_changedAttrs.has('currentRollModel') &&
           !_changedAttrs.has('sinceId') &&
-          !_changedAttrs.has('displayIsolatedRoll')) {
+          !_changedAttrs.has('displayIsolatedRoll') &&
+          !_changedAttrs.has('currentChannelId')) {
         return;
       }
-      if (model.get('displayState') != libs.shelbyGT.DisplayState.explore &&
-          model.get('displayState') != libs.shelbyGT.DisplayState.onboarding &&
+      if (model.get('displayState') != libs.shelbyGT.DisplayState.onboarding &&
           model.get('displayState') != libs.shelbyGT.DisplayState.dotTv) {
         this._updateChild(model);
       }
@@ -77,18 +79,32 @@
 
       switch (currentDisplayState) {
         case DisplayState.dashboard :
+        case DisplayState.channel :
+          var doSmartRefresh;
+          var masterCollection;
+          var _playlistType;
+          if (currentDisplayState == DisplayState.dashboard) {
+            doSmartRefresh = !this._dashboardMasterCollection.isEmpty();
+            masterCollection = this._dashboardMasterCollection;
+            _playlistType = libs.shelbyGT.PlaylistType.dashboard;
+          } else {
+            doSmartRefresh = false;
+            masterCollection = this._currentChannelMasterCollection = new Backbone.Collection();
+            _playlistType = libs.shelbyGT.PlaylistType.channel;
+          }
           displayParams = {
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
-              doSmartRefresh : !this._dashboardMasterCollection.isEmpty(),
+              doSmartRefresh : doSmartRefresh,
               doStaticRender : true,
               fetchParams : {
                 include_children : true
               },
+              playlistType : _playlistType,
               firstFetchLimit : shelby.config.pageLoadSizes.dashboard,
               limit : shelby.config.pageLoadSizes.dashboard + 1,
-              masterCollection : this._dashboardMasterCollection
+              masterCollection : masterCollection
             },
             spinner : true
           };
@@ -167,19 +183,6 @@
               doStaticRender : true,
               masterCollection : this._currentRollMasterCollection,
               videoSearchModel : shelby.models.videoSearch
-            }
-          };
-          break;
-        case DisplayState.channel :
-          this._currentRollMasterCollection = new Backbone.Collection();
-          displayParams = {
-            viewProto : MultiplexedVideoView,
-            collection : shelby.collections.multiplexedVideoFrames,
-            options : {
-              collapseViewedFrameGroups : false,
-              doStaticRender : true,
-              masterCollection : this._currentRollMasterCollection,
-              multiplexedVideoModel : shelby.models.multiplexedVideo
             }
           };
           break;

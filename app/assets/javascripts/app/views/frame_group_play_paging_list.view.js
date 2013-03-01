@@ -94,8 +94,9 @@
         shelby.models.playlistManager.get('playlistType') == PlaylistType.roll &&
         shelby.models.playlistManager.get('playlistRollId') == this.model.id;
       var reloadingCurrentPlaylist = returningToDashboard || returningToRoll;
+      var viewingChannel = this.options.playlistType == PlaylistType.channel;
 
-      if (!isAnythingPlaying || forceFramePlay || reloadingCurrentPlaylist) {
+      if (!isAnythingPlaying || forceFramePlay || reloadingCurrentPlaylist || viewingChannel) {
         this.registerPlaylist();
       }
 

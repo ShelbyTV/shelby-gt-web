@@ -1,5 +1,5 @@
 libs.shelbyGT.DashboardEmptyIndicatorView = Support.CompositeView.extend({
-  
+
   tagName : 'li',
 
   events : {
@@ -16,7 +16,7 @@ libs.shelbyGT.DashboardEmptyIndicatorView = Support.CompositeView.extend({
   },
 
   _goToExplore : function() {
-    shelby.router.navigate('explore', {trigger:true});
+    shelby.router.navigate('channels', {trigger:true});
   },
 
   _goToPreferences : function() {

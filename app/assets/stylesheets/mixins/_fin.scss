@@ -13,7 +13,7 @@
   }
 }
 
-@mixin fin-left($bg-color: $base){
+@mixin fin-left($bg-color: $base, $fin-left : 24px){
   &:after {
     @include rotate(45deg);
 
@@ -22,7 +22,7 @@
     display: block;
     height: 10px;
     position: absolute;
-    left: 24px;
+    left: $fin-left;
     top: -5px;
     width: 10px;
   }

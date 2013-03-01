@@ -13,8 +13,8 @@ describe("FrameConversationView", function() {
       expect(this.view.el.nodeName).toEqual("DIV");
     });
 
-    it("should have the classes 'conversation-overlay guide-overlay'", function() {
-      expect(this.view.$el).toHaveClass("conversation-overlay");
+    it("should have the classes 'guide-overlay--conversation guide-overlay'", function() {
+      expect(this.view.$el).toHaveClass("guide-overlay--conversation");
       expect(this.view.$el).toHaveClass('guide-overlay');
     });
   });

@@ -9,8 +9,6 @@
       "click .js-secondary"  : "_handleSecondary"
     },
 
-    _listView : null,
-
     template : function(obj){
       return SHELBYJST['notification-overlay'](obj);
     },
