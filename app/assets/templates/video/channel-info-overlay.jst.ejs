@@ -2,7 +2,7 @@
   <div class="channel-info-section-lining clearfix">
     <ul class="list">
       <% _(channels).each(function(channel, key) { %>
-        <li class="channel-info-section-channel js-channel js-track-event" data-ga_category="Channel verlay" data-ga_action="Click channel" data-ga_label='<%= channel.title %> data-channel="<%= key %>">
+        <li class="channel-info-section-channel js-channel js-track-event" data-ga_category="Channel Overlay" data-ga_action="Click channel" data-ga_label='<%= channel.title %>' data-channel="<%= key %>">
           <span class="title"><%= channel.title %></span>
           <span class="play-button"><i class="icon-player_play"></i></span>
           <span class="now-playing"><small> now playing</small></span>
