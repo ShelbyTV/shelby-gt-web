@@ -15,8 +15,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
     "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-roll-frame"                  : "requestFrameRollView",
-    "click .js-frame-post"                  : "requestFBPostUI",
-    "click .js-frame-send"                  : "requestFBSendUI",
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-copy-link"                   : "_copyFrameLink",
     "click .js-remove-frame"                : "_onClickRemoveFrame",
@@ -30,11 +28,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   template : function(obj){
     try {
-      // show different frame if coming from fb-genius app
-      if (obj.options.activationStateModel.get('displayFBGeniusRoll')){
-        return SHELBYJST['fb-genius-frame'](obj);
-      }
-      else if (obj.frameGroup.get('collapsed')) {
+    if (obj.frameGroup.get('collapsed')) {
         return SHELBYJST['frame-collapsed'](obj);
       }
       else {
@@ -322,39 +316,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     if (!$(e.target).is('a')) {
       $(e.currentTarget).toggleClass('line-clamp--open');
     }
-  },
-
-  requestFBPostUI : function(e){
-    var _id = $(e.currentTarget).parents('article').attr('id');
-    var _frame = this.model.get('frames').models[0];
-    FB.ui(
-      {
-        method: 'feed',
-        name: _frame.get('video').get('title'),
-        link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
-        picture: _frame.get('video').get('thumbnail_url'),
-        description: _frame.get('video').get('description'),
-        caption: ':: a shelby genius video ::'
-      },
-      function(response) {
-        if (response && response.post_id) {
-          // TODO:we should record that this happened.
-        }
-      }
-    );
-
-  },
-
-  requestFBSendUI : function(e) {
-    var _frame = this.model.get('frames').models[0];
-    FB.ui({
-      method: 'send',
-      name: _frame.get('video').get('title'),
-      link: 'http://apps.facebook.com/shelbygenius/?frame='+_frame.id+'&roll='+_frame.get('roll').id,
-      picture: _frame.get('video').get('thumbnail_url'),
-      description: _frame.get('video').get('description'),
-      caption: ':: a shelby genius video ::'
-    });
   },
 
   _shareToFacebook : function(e){

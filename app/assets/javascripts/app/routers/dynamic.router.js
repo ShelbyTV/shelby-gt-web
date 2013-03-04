@@ -9,8 +9,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/:title"                  : "displayRoll",
     "roll/:rollId"                         : "displayRoll",
     "rollFromFrame/:frameId"               : "displayRollFromFrame",
-    "fb/genius/roll/:rollId"               : "displayFacebookGeniusRoll",
-    "fb/genius/roll/:rollId/frame/:frameId": "displayFacebookGeniusRoll",
     "user/:id/personal_roll"               : "displayUserPersonalRoll",
     "channels"                              : "displayRandomChannel",
     "help"                                 : "displayHelp",
@@ -188,20 +186,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if(shelby.routeHistory.length === 0){
       shelby.models.userDesires.set({guideShown: false});
     }
-  },
-
-  displayFacebookGeniusRoll : function(rollId, frameId, params){
-    // Adjust *how* a few details are displayed via CSS
-    $('body').addClass('facebook-genius');
-    // Adjust *what* is displayed
-    var options = {updateRollTitle:false};
-
-    if (frameId){
-      this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
-    } else {
-      this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
-    }
-
   },
 
   displayRollFromFrame : function(frameId, params) {
@@ -492,13 +476,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // default options
     options = _.chain({}).extend(options).defaults({
       isIsolatedRoll : false,
-      isFBGeniusRoll : false,
       openInvite : false
     }).value();
 
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
     shelby.models.guide.set('hostName', options.hostName);
-    shelby.models.guide.set('displayFBGeniusRoll', options.isFBGeniusRoll);
 
     this._setupAnonUserViews(options);
     //--------------------------------------//

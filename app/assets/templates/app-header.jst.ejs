@@ -1,114 +1,17 @@
-  <button class="button_primer shelby-logo <%= shelby.models.guide.get('displayFBGeniusRoll') ? 'js-fb-home' : 'visuallydisabled js-home' %>">
-    <% if (shelby.config.environment != "staging") { %>
-      <h1 class="shelby_logo">
-		    <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
-      </h1>
-    <% } else { %>
-      <h1 class="shelby-title-staging">
-        <%= shelby.config.branch %>
-      </h1>
-    <% } %>
-  </button>
+<button class="button_primer shelby-logo visuallydisabled js-home">
+  <% if (shelby.config.environment != "staging") { %>
+    <h1 class="shelby_logo">
+	    <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+    </h1>
+  <% } else { %>
+    <h1 class="shelby-title-staging">
+      <%= shelby.config.branch %>
+    </h1>
+  <% } %>
+</button>
 
-  <nav id="js-guide-presentation-selector" class="guide-presentation-selector">
-    <!-- content filled in by GuidePresentationSelectorView -->
-  </nav>
-
-	<% if (shelby.models.guide.get('displayFBGeniusRoll')) { %>
-		<!--
-		<section id="facebook-genius-login">
-			<div class="fb-login-button" data-show-faces="false" data-width="250" data-max-rows="1"></div>
-		</section>
-		-->
-
-		<section id="fb-header-search">
-			<form id="js-email-form" class="genius-search-form" data-ga_action="Genius search">
-				<input name="search" type="text" id="js-email-input" class="roll-page-form-input" placeholder="what will you find next?" /><!--
-			  --><input type="submit" value="GO" id="js-genius-search-submit" class="header-form-submit button_primer" />
-				<div id="genius-search-spinner" class="genius-search-spinner">
-			</form>
-			<script>
-				$(function(){
-
-					$('.genius-search-form').submit(function() {
-
-				    $('#js-genius-search-submit').prop('disabled', true);
-
-				    $('body').addClass('loading');
-
-						var opts = {
-				      lines: 13, // The number of lines to draw
-				      length: 3, // The length of each line
-				      width: 2, // The line thickness
-				      radius: 3, // The radius of the inner circle
-				      rotate: 0, // The rotation offset
-				      color: '#111', // #rgb or #rrggbb
-				      speed: 1, // Rounds per second
-				      trail: 60, // Afterglow percentage
-				      shadow: false, // Whether to render a shadow
-				      hwaccel: false, // Whether to use hardware acceleration
-				      className: 'genius-spinner', // The CSS class to assign to the spinner
-				      zIndex: 2e9, // The z-index (defaults to 2000000000)
-				      top: -19, // Top position relative to parent in px
-				      left: 82 // Left position relative to parent in px
-				    };
-
-						var target = document.getElementById('genius-search-spinner');
-						var spinner = new Spinner(opts).spin(target);
-						$('#js-genius-search-submit').attr('value','');
-
-						var search = $('.genius-search-form').find('input').val();
-
-						var params = {
-					    "q" : search,
-				    	"max-results" : "50",
-				      "orderby" : "relevance"
-				    };
-
-						// Create a callback
-						 var cb = function(res){
-						 	// Create array of returned YouTube video URLs
-						 	var urls = new Array();
-							res.forEach(function(r){
-								if (r.link != undefined) {
-								  r.link.forEach(function(l){
-								  	if(l.rel != undefined && l.rel == "alternate") {
-									    if(l.href != undefined) {
-									      urls.push(l.href);
-											}
-								  	}
-								  });
-								}
-							});
-
-							// Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
-							$.ajax({
-								type: 'POST',
-								url: 'http://api.shelby.tv/v1/roll/genius',
-								data: {'search': search, 'urls': JSON.stringify(urls)},
-								success: function(data){
-								  if (data.status == 200){
-										var _rollUrl = '<%= shelby.config.fbAppUrl %>' + "/fb/genius/roll/" + data.result.id;
-					  			  if (!window.cache){
-											window.cache = kizzy('history');
-										}
-										var _searchHistory = window.cache.get('searchHistory');
-				  					_searchHistory[search] = _rollUrl;
-				  					cache.set('searchHistory', _searchHistory);
-					  				window.location.href = _rollUrl;
-									}
-									else{ alert("something went wrong."); }
-								}
-							});
-				    };
+<nav id="js-guide-presentation-selector" class="guide-presentation-selector">
+  <!-- content filled in by GuidePresentationSelectorView -->
+</nav>
 
 
-				    // Call ytQuery.query, passing params and your callback
-				    ytQuery.query(params, cb);
-
-					  return false;
-					});
-				});
-			</script>
-		</section>
-	<% } %>
