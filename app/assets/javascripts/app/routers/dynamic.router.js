@@ -1,32 +1,32 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
-    "send-invite"                          : "openInviteDisplayDashboard",
-    "isolated-roll/:rollId"                : "displayIsolatedRoll",
-    "isolated-roll/:rollId/frame/:frameId" : "displayIsolatedRollwithFrame",
-    "roll/:rollId/frame/:frameId/comments" : "displayFrameInRollWithComments",
-    "roll/:rollId/frame/:frameId"          : "displayFrameInRoll",
-    "roll/:rollId/:title"                  : "displayRoll",
-    "roll/:rollId"                         : "displayRoll",
-    "rollFromFrame/:frameId"               : "displayRollFromFrame",
-    "fb/genius/roll/:rollId"               : "displayFacebookGeniusRoll",
-    "fb/genius/roll/:rollId/frame/:frameId": "displayFacebookGeniusRoll",
-    "user/:id/personal_roll"               : "displayUserPersonalRoll",
+    "send-invite"                           : "openInviteDisplayDashboard",
+    "isolated-roll/:rollId"                 : "displayIsolatedRoll",
+    "isolated-roll/:rollId/frame/:frameId"  : "displayIsolatedRollwithFrame",
+    "roll/:rollId/frame/:frameId/comments"  : "displayFrameInRollWithComments",
+    "roll/:rollId/frame/:frameId"           : "displayFrameInRoll",
+    "roll/:rollId/:title"                   : "displayRoll",
+    "roll/:rollId"                          : "displayRoll",
+    "rollFromFrame/:frameId"                : "displayRollFromFrame",
+    "fb/genius/roll/:rollId"                : "displayFacebookGeniusRoll",
+    "fb/genius/roll/:rollId/frame/:frameId" : "displayFacebookGeniusRoll",
+    "user/:id/personal_roll"                : "displayUserPersonalRoll",
     "channels"                              : "displayRandomChannel",
-    "help"                                 : "displayHelp",
-    "legal"                                : "displayLegal",
-    "search"                               : "displaySearch",
+    "help"                                  : "displayHelp",
+    "legal"                                 : "displayLegal",
+    "search"                                : "displaySearch",
     "channels/:channel"                     : "displayChannel",
-    "me"                                   : "displayRollList",
-    "onboarding/:stage"                    : "displayOnboardingView",
-    "preferences"                          : "displayUserPreferences",
-    "likes"                                : "displaySaves",
-    "saves"                                : "displaySaves",
-    "stream"                               : "displayDashboard",
-    "tools"                                : "displayTools",
-    ""                                     : "displayDashboard",
-    // ":userName"                            : "displayUserProfile", we're not rolling out the user profiles at /userName yet
-    "*url"                                 : "doNothing"
+    "me"                                    : "displayRollList",
+    "onboarding/:stage"                     : "displayOnboardingView",
+    "preferences"                           : "displayUserPreferences",
+    "likes"                                 : "displaySaves",
+    "saves"                                 : "displaySaves",
+    "stream"                                : "displayDashboard",
+    "tools"                                 : "displayTools",
+    ""                                      : "displayDashboard",
+    ":userName"                             : "displayUserProfile", //we're not rolling out the user profiles at /userName yet
+    "*url"                                  : "doNothing"
   },
 
   //---
@@ -126,21 +126,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayIsolatedRoll : function(rollId, params){
     if (shelby.abTests.dotTvLayout == 'user_profile' && _(shelby.config.dotTvNetworks.userProfileViewRollIds).contains(rollId)) {
-      // save current referrer host name in shelby config
-      if (params && params.src) {
-        shelby.config.hostName = params.src;
-      }
       this._setupUserProfileView({
-        rollId : rollId,
-        params : params
-      });
+        rollId : rollId
+      }, params);
     } else {
       this._prepIsolatedRoll({rollId: rollId, params: params});
     }
   },
 
   displayIsolatedRollwithFrame : function(rollId, frameId, params) {
-    this._prepIsolatedRoll({rollId: rollId, frameId: frameId, params: params});
+    if (shelby.abTests.dotTvLayout == 'user_profile' && _(shelby.config.dotTvNetworks.userProfileViewRollIds).contains(rollId)) {
+      this._setupUserProfileView({
+        frameId : frameId,
+        rollId : rollId
+      }, params);
+    } else {
+      this._prepIsolatedRoll({rollId: rollId, frameId: frameId, params: params});
+    }
   },
 
   _prepIsolatedRoll : function(opts) {
@@ -387,9 +389,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayUserProfile : function(userName, params) {
     this._setupUserProfileView({
-      params : params,
       userName : userName
-    });
+    }, params);
   },
 
   doNothing : function(url){
@@ -640,13 +641,31 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }, topLevelViewsOptions);
   },
 
-  _setupUserProfileView : function(options){
+  _setupUserProfileView : function(options, params){
     var self = this;
+
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      frameId: null,
+      rollId: null,
+      userName: null
+    }).value();
+
+    // save current referrer host name in shelby config
+    if (params && params.src) {
+      shelby.config.hostName = params.src;
+    }
 
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.dotTv);
+    // if a specific roll and frame has been requested we need to pass the information on to the
+    // user profile view so that it can load up the right frame
+    shelby.models.userProfile.set({
+      autoLoadFrameId : options.frameId,
+      autoLoadRollId : options.rollId
+    });
     var dotTvLanding = !shelby.views.dotTVWelcome;
     // only show the .tv welcome banner once
     if (dotTvLanding) {
@@ -659,7 +678,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if the route parameters included the user name we have everything we need to proceed
       // and fetch that user's info, but we'll wait until we have the user's roll info
       // to show the .tv welcome banner
-      this._getUserByNicknameThenAssociatedRolls(options.userName, dotTvLanding);
+      this._getUserByNicknameThenAssociatedRolls({
+        doShowWelcomeBanner : dotTvLanding,
+        userNickname : options.userName
+      });
     } else {
       var roll = libs.shelbyGT.RollModel.findOrCreate({id: options.rollId});
       if (dotTvLanding) {
@@ -676,22 +698,29 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       if (roll.has('creator_nickname')) {
         // if we already have the roll info, we can just get the creator nickname and load
         // the user info based on that
-        this._getUserByNicknameThenAssociatedRolls(roll.get('creator_nickname'));
+        this._getUserByNicknameThenAssociatedRolls({userNickname: roll.get('creator_nickname')});
       } else {
         // if we don't have the roll info, fetch the roll and then use the creator nickname from
         // the fetched data to fetch the info for that creating user
         roll.fetch({success : function(rollModel, response){
-          self._getUserByNicknameThenAssociatedRolls(rollModel.get('creator_nickname'));
+          self._getUserByNicknameThenAssociatedRolls({userNickname: rollModel.get('creator_nickname')});
         }});
       }
     }
   },
 
-  _getUserByNicknameThenAssociatedRolls : function(nickname, doShowWelcomeBanner){
+  _getUserByNicknameThenAssociatedRolls : function(options){
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      doShowWelcomeBanner: false,
+      frameId: null,
+      userNickname: null
+    }).value();
+
 
     var userForProfile = shelby.models.userProfile.get('currentUser');
-    if (!userForProfile || userForProfile.get('nickname') != nickname) {
-      userForProfile = new libs.shelbyGT.UserModel({nickname: nickname});
+    if (!userForProfile || userForProfile.get('nickname') != options.userNickname) {
+      userForProfile = new libs.shelbyGT.UserModel({nickname: options.userNickname});
       shelby.models.userProfile.set('currentUser', userForProfile);
       // we're completely switching users so we need to get rid of the old user's
       // rolls in preparation for getting the new user's
@@ -703,7 +732,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       userForProfile.fetch({success: function(userModel, response){
         var userPersonalRollId = userForProfile.get('personal_roll_id');
         // we now have the user's personal roll, so we create the .tv welcome banner if requested
-        if (doShowWelcomeBanner) {
+        if (options.doShowWelcomeBanner) {
           var roll = libs.shelbyGT.RollModel.findOrCreate({id: userPersonalRollId});
           shelby.views.dotTVWelcome = new libs.shelbyGT.dotTVWelcome({
             model : roll,
@@ -719,7 +748,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if we already have the user info, we know their personal roll id, so just fetch their
       // associated rolls, and optionally create the .tv welcome banner, immediately
       var userPersonalRollId = userForProfile.get('personal_roll_id');
-      if (doShowWelcomeBanner) {
+      if (options.doShowWelcomeBanner) {
         var roll = libs.shelbyGT.RollModel.findOrCreate({id: userPersonalRollId});
         shelby.views.dotTVWelcome = new libs.shelbyGT.dotTVWelcome({
           model : roll,

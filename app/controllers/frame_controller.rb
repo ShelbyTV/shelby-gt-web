@@ -35,6 +35,7 @@ class FrameController < ApplicationController
   # to allow linking to a frame within a subdomain'd iso roll
   #
   def show_frame_in_isolated_roll
+    @dot_tv_layout = ab_test :dot_tv_layout
     render '/home/app'
   end
 
