@@ -1,7 +1,14 @@
-@import "base";
+
 /*
  *  Local variables
  */
+ $channel-menu-height: 87px;
+
+.shelby--channels {
+  .content_wrapper {
+    margin-top: $channel-menu-height;
+  }
+}
 
 //------------------------------------------------------------------------------
 // Structure, Beginning of Feature
@@ -13,6 +20,9 @@
 
 .channel-info-section {
   display: none;
+  left: 0;
+  position: absolute;
+  width: 100%;
 }
 
 .channel-info-section-lining {
@@ -23,7 +33,8 @@
 
 .channel-info-list {
   margin: 0 auto !important;
-  width: 50%;
+  // width: 50%;
+  text-align: center;
 }
 
 .channel-info-section-channel {
