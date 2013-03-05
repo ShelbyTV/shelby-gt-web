@@ -194,6 +194,23 @@ $active-list-item: $shelby-blue;
     font-size: 1.4em;
     line-height: 1;
   }
+
+  .line-clamp {
+    height: 4.1em;
+
+    &:after {
+      @include transparent-fade($videocard-footer-bg-color,40%,right);
+    }
+  }
+
+  .line-clamp--open {
+    height: auto;
+
+    &:after {
+      display: block;
+      position: relative;
+    }
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -366,7 +383,7 @@ $active-list-item: $shelby-blue;
     background-color: rgba(0, 0, 0, 0.5);
     color: #EFEFEF;
     display: block;
-    font-family: ubuntu;
+    font-family: $font-family-display;
     font-size: 1.5em;
     font-weight: 500;
     height: 130px;

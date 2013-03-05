@@ -46,7 +46,6 @@
   .main-layout {
     background-color: $base;
     box-shadow: $shadow;
-    // box-shadow: 0 0 9px 0px rgba(0,0,0,.5);
     height: 500px;
     z-index: 1;
   }
@@ -59,7 +58,19 @@
   }
     //PVI
     .persistent_video_info__body {
+      .media_body {
+        overflow: hidden;
+      }
 
+      .line-clamp {
+        &:after {
+          display: block;
+        }
+      }
+
+      .line-clamp--open {
+
+      }
     }
 
     .persistent_video_info__foot {

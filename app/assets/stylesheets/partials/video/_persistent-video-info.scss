@@ -104,7 +104,6 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
       //non-normative overrides
       .media_body {
         max-height: 9.5em;
-        // overflow-y: auto;
       }
     }
 
@@ -112,17 +111,14 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
       height: 9em;
 
       &:after {
-        background-color: $base;
-        box-shadow: 0 0 2px 4px $base;
-        left: 0;
-        opacity: 0.8;
-        overflow: hidden;
-        text-align: right;
+        // left: 0;
+        // overflow: hidden;
+        // text-align: right;
       }
     }
 
     .line-clamp--open {
-      height: 9.5em;
+      height: 9em;
       overflow-y: auto;
 
       &:after {
@@ -135,8 +131,6 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 .persistent_video_info {
   display: block;
   height: inherit;
-  // margin: 0 auto;
-  // max-width: 2000px;
 }
 /*
  * Current Frame
