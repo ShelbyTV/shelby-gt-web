@@ -13,6 +13,8 @@ libs.shelbyGT.viewHelpers.frame = {
   permalink: function(frame){
     if( frame.has('roll') && frame.get('roll').has('subdomain') ){
       return this._subdomainPermalink(frame);
+    } else if (frame.has('roll') && frame.get('roll').has('id')) {
+      return this._isolatedRollPermalink(frame);
     } else {
       return this._videoPagePermalink(frame);
     }
@@ -20,6 +22,10 @@ libs.shelbyGT.viewHelpers.frame = {
 
   _subdomainPermalink: function(frame){
     return 'http://'+frame.get('roll').get('subdomain')+'.shelby.tv/'+frame.id;
+  },
+
+  _isolatedRollPermalink: function(frame){
+    return 'http://shelby.tv/isolated-roll/' + frame.get('roll').id + '/frame/' + frame.id;
   },
 
   _videoPagePermalink: function(frame){

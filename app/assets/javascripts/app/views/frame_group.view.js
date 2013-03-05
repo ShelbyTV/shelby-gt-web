@@ -361,8 +361,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var _id = $(e.currentTarget).parents('article').attr('id');
     var _frame = this.model.getFirstFrame();
     var _caption;
-    if (_frame.has('roll')) {
-      _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
+    if (shelby.config.hostName) {
+      _caption = 'a video from '+shelby.config.hostname;
+    } else if (_frame.has('roll')) {
+      if (_frame.get('roll').has('subdomain')) {
+        _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
+      } else {
+        _caption = 'a video from shelby.tv';
+      }
     }
     else {
       _caption = 'a video found with Shelby Video Search';
@@ -372,7 +378,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         {
           method: 'feed',
           name: _frame.get('video').get('title'),
-          link: _frame.getSubdomainPermalink(),
+          link: libs.shelbyGT.viewHelpers.frame.permalink(_frame),
           picture: _frame.get('video').get('thumbnail_url'),
           description: _frame.get('video').get('description'),
           caption: _caption

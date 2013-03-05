@@ -173,15 +173,28 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _shareCurrentToFacebook : function(e){
     var _frame = this._currentFrame;
+    var _caption;
+    if (shelby.config.hostName) {
+      _caption = 'a video from '+shelby.config.hostname;
+    } else if (_frame.has('roll')) {
+      if (_frame.get('roll').has('subdomain')) {
+        _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
+      } else {
+        _caption = 'a video from shelby.tv';
+      }
+    }
+    else {
+      _caption = 'a video found with Shelby Video Search';
+    }
     if (typeof FB != "undefined"){
       FB.ui(
         {
           method: 'feed',
           name: _frame.get('video').get('title'),
-          link: _frame.getSubdomainPermalink(),
+          link: libs.shelbyGT.viewHelpers.frame.permalink(_frame),
           picture: _frame.get('video').get('thumbnail_url'),
           description: _frame.get('video').get('description'),
-          caption: 'a video from '+ shelby.config.hostName
+          caption: _caption
         },
         function(response) {
           if (response && response.post_id) {
