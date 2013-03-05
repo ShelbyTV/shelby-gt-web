@@ -101,7 +101,10 @@
 
         // show the channel  info header nav
         if (model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
-          console.log('Channel info should be visible');
+          $('.channel-info-section').slideDown('fast');
+        }
+        else {
+          $('.channel-info-section').slideUp('fast');
         }
       }
     },

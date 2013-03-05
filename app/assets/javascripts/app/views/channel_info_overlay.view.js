@@ -17,7 +17,6 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
   },
 
   render : function(){
-    console.log(this.$el, this.el);
     this.$el.append(this.template({
       channels : shelby.config.channels
     }));
