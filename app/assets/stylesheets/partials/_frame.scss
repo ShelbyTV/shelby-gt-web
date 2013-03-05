@@ -335,6 +335,10 @@ $active-list-item: $shelby-blue;
     }
   }
 
+  .xuser-data {
+    @include ellipsis;
+  }
+
   .xuser-message--faux {
     margin-bottom: 0;
 
