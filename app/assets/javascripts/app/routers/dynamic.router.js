@@ -192,7 +192,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.views.channelWelcome = shelby.views.channelWelcome ||
           new libs.shelbyGT.channelWelcome({
             el : '.js-channels-welcome',
-            dotTvWelcomeModel : shelby.models.dotTvWelcome
+            channelWelcomeModel : shelby.models.dotTvWelcome
           });
 
   },

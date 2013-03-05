@@ -9,13 +9,11 @@ libs.shelbyGT.channelWelcome = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    this.model.bind('change', this.render, this);
     this.options.channelWelcomeModel.bind('dismiss', this._startPlaying, this);
     this.render();
   },
 
   cleanup : function(){
-    this.model.unbind('change', this.render, this);
     this.options.channelWelcomeModel.unbind('dismiss', this._startPlaying, this);
   },
 
