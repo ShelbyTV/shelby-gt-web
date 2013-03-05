@@ -29,5 +29,6 @@ libs.shelbyGT.channelWelcome = Support.CompositeView.extend({
     shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
     // already dismissed so don't want to respond to events on the model anymore
     this.options.channelWelcomeModel.unbind('dismiss', this._startPlaying, this);
+    shelby.userInactivity.enableUserActivityDetection();
   }
 });

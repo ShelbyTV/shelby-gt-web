@@ -189,6 +189,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     // ultimatly this should only be shown the first visit which we can track via a cookie
       shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
+      shelby.userInactivity.disableUserActivityDetection();
       shelby.views.channelWelcome = shelby.views.channelWelcome ||
           new libs.shelbyGT.channelWelcome({
             el : '.js-channels-welcome',
