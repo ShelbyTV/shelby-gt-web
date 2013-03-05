@@ -125,7 +125,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayIsolatedRoll : function(rollId, params){
-    if (shelby.abTests.dotTvLayout == 'user_profile' && _(shelby.config.dotTvNetworks.userProfileViewRollIds).contains(rollId)) {
+    if (shelby.abTests.dotTvLayout == 'user_profile' && this._checkIsoRollCreatorHasUserProfile(rollId)) {
       this._setupUserProfileView({
         rollId : rollId
       }, params);
@@ -135,13 +135,25 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayIsolatedRollwithFrame : function(rollId, frameId, params) {
-    if (shelby.abTests.dotTvLayout == 'user_profile' && _(shelby.config.dotTvNetworks.userProfileViewRollIds).contains(rollId)) {
+    if (shelby.abTests.dotTvLayout == 'user_profile' && this._checkIsoRollCreatorHasUserProfile(rollId)) {
       this._setupUserProfileView({
         frameId : frameId,
         rollId : rollId
       }, params);
     } else {
       this._prepIsolatedRoll({rollId: rollId, frameId: frameId, params: params});
+    }
+  },
+
+  _checkIsoRollCreatorHasUserProfile : function(rollId) {
+    var rollModel = libs.shelbyGT.RollModel.findOrCreate({id:rollId});
+    if (rollModel.has('creator_id')) {
+      return _(shelby.config.dotTvNetworks.userProfileViewCreatorIds).contains(rollModel.get('creator_id'));
+    } else {
+      //have to know the roll's creator before we can decide what layout to load,
+      //so fetch this information synchronously
+      rollModel.fetch({async:false});
+      return _(shelby.config.dotTvNetworks.userProfileViewCreatorIds).contains(rollModel.get('creator_id'));
     }
   },
 
