@@ -5,7 +5,7 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-      return SHELBYJST['video/channel-info-overlay'](obj);
+      return SHELBYJST['channels/channel-info-overlay'](obj);
   },
 
   initialize : function(){

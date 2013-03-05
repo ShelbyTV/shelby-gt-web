@@ -3,7 +3,7 @@ libs.shelbyGT.ChannelHeaderView = Support.CompositeView.extend({
   className : 'channel-header clearfix',
 
   template : function(obj){
-    return SHELBYJST['channel-header'](obj);
+    return SHELBYJST['channels/channel-header'](obj);
   },
 
   initialize : function(){
