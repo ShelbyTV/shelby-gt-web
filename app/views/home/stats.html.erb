@@ -1,0 +1,78 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<% # if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#" profile="http://www.w3.org/2005/10/profile">
+  <meta charset="utf-8">
+
+  <title><%= render :partial => "/home/title_tag" %></title>
+
+  <%= render :partial => "/home/meta_info" %>
+  <meta name="viewport" content="width=device-width">
+
+  <%= stylesheet_link_tag "landing", :media => "screen" %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+  <%= javascript_include_tag "common", "landing" %>
+
+  <script>
+    var shelbyTrackingCategory = "User Stats Page";
+  </script>
+</head>
+<body class="shelby shelby--landing shelby--user-stats<%= ' shelby--mobile' if @mobile_os %>">
+  <div class="shelby__wrapper">
+
+    <%= render :partial => '/home/landing_header' %>
+
+    <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
+      <section class="shelf shelf--error clearfix">
+        <div class="shelf__lining">
+          <% if @access_error %>
+            <p class="shelf__block shelf__block--noaccess js-signin-error">
+              Sorry, you do not have access to the beta…<br>
+              <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
+            </p>
+          <% end %>
+
+          <% if @invite_error %>
+            <p class="shelf__block shelf__block--invalid-invite js-signin-error">
+              Sorry, that invite is no longer valid.  Please <a href="mailto:contact+invite@shelby.tv">contact us</a> if you have questions.
+            </p>
+          <% end %>
+
+          <% if @auth_failure %>
+            <p class="shelf__block shelf__block--error js-signin-error">
+              There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.
+              <br/>Please try again.
+            </p>
+          <% end %>
+
+          <% if (flash[:error] == "401") %>
+            <p class="shelf__block shelf__block--error js-signin-error">
+              Session expired, please log in again!
+            </p>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+
+    <% #------------ Shelf Content --------------- %>
+
+    <% if (!@share_type) and !@invite_id and !@team %>
+      <%= render :partial => "/home/shelf/user_stats_welcome" %>
+      <%= render :partial => "/home/shelf/user_stats_frames" %>
+      <%= render :partial => "/home/shelf/network" %>
+      <%= render :partial => "/home/shelf/about" %>
+    <% end %>
+
+    <% #------------ /Shelf Content --------------- %>
+
+    <%= render :partial => '/home/landing_footer' %>
+
+  </div><!-- /shelby-wrapper -->
+
+  <%#= render :partial => '/home/landing_scripts' %>
+
+
+</body>
+</html>

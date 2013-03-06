@@ -143,6 +143,11 @@ class HomeController < ApplicationController
   def learn_more
   end
 
+  # Static page with stats on a users recent activity
+  def stats
+    # lookup user stats via api
+  end
+
   ##
   # Handles "make the web" (allowing logged-out users to see it)
   #
