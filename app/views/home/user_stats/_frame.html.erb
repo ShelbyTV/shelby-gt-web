@@ -1,0 +1,36 @@
+<article id="test" class="animate_module frame frame-list-item">
+  <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+    <h1 class="frame-title" title="<%= frame['title'] %>">
+     <%= frame['title'] %>
+    </h1>
+  </a>
+
+  <div class="frame-body-wrapper clearfix">
+    <div class="frame-body">
+
+      <!-- TODO: should maybe use the thumbnail module JST -->
+      <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate" style="background-image: url('<%= frame['thumbnail'] %>');" role="img">
+        <img class="visuallyhidden" src="<%= frame['thumbnail'] %>" title="<%= frame['title'] %>" alt="<%= frame['title'] %> thumbnail">
+      </a>
+
+      </div><!-- eo .frame-body -->
+      <footer class="media_module frame-footer clearfix">
+         <span class="image_module xuser-avatar media_image" style="background-image: url(<%= frame['creatorAvatar'] %>);" role="img">
+           <img src="<%= frame['creatorAvatar'] %>" class="visuallyhidden" title="<%= frame['creatorNickname'] %>" alt="<%= frame['creatorNickname'] %>">
+         </span>
+
+         <div class="media_body">
+          <span class="xuser-data-timestamp">
+             <%= frame['created_at'] %>
+          </span>
+
+          <p class="xuser-data">
+            <%= frame['creatorNickname'] %>
+          </p>
+
+          <p class="xuser-message">
+            <%= frame['comment'] %>
+          </p>
+      </footer>
+  </div><!-- eo .frame-body-wrapper -->
+</article>

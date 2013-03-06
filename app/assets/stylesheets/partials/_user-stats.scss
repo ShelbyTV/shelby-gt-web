@@ -1,0 +1,32 @@
+//------------------------------------------------------------------------------
+//  OVERRIDES
+//------------------------------------------------------------------------------
+//----- Override App Base Styles -----------------------------------------
+//----- Modifiers --------------------------------------------------------
+.shelby--user-stats {
+  .shelf__lining {
+    padding: 3em 0 1em;
+  }
+
+  .shelf--community .shelf__item {
+    float: none;
+    margin: 0 100px;
+  }
+
+  article {
+    border-bottom: none;
+  }
+}
+
+.all-frame-info {
+  float: left;
+  width: 900px;
+  margin: 2em auto;
+}
+
+.stats-list {
+  float: left;
+  width: 33.333%;
+  background: #e2e2e2;
+  height: 220px;
+}
