@@ -148,7 +148,11 @@ _(shelby).extend({
 
     if (_(options.providers).contains('ga') && options.gaCategory) {
       try {
-        _gaq.push(['_trackEvent', options.gaCategory, options.gaAction, options.gaLabel]);
+        if (_(options).has('gaValue')) {
+          _gaq.push(['_trackEvent', options.gaCategory, options.gaAction, options.gaLabel, options.gaValue]);
+        } else {
+          _gaq.push(['_trackEvent', options.gaCategory, options.gaAction, options.gaLabel]);
+        }
       } catch(e) {
         $.noop();
       }
