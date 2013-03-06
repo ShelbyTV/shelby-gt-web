@@ -87,12 +87,6 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
     }
   },
 
-  getSubdomainPermalink : function(){
-    var url;
-    var _firstFrame = this.getFirstFrame();
-    return _firstFrame.getSubdomainPermalink();
-  },
-
   getCombinedLikeInfo : function() {
     var result = {
       likers : new libs.shelbyGT.UserCollection(),

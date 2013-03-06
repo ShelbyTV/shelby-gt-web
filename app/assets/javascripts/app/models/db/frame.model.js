@@ -199,14 +199,6 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     return url ? url : null;
   },
 
-  getSubdomainPermalink : function(){
-    var url;
-    if (this.has('roll') && this.get('roll').has('subdomain')){
-      url = this.get('roll').get('subdomain') + '.shelby.tv/' + this.id  ;
-    }
-    return url ? url : null;
-  },
-
   convertUpvoterIdsToUserCollection : function(){
     // change the upvoters from an array of id strings to a collection of user models with those ids
     // CAN'T GET RELATIONAL TO DO THIS THE WAY I WANT SO DOING IT MYSELF

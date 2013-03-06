@@ -109,6 +109,16 @@ libs.shelbyGT.viewHelpers.roll = {
       //consistently index 5 default images, sequentially named (ie: 0.jpg, 1.jpg, 2.jpg...)
       return '/images/assets/roll_headers/'+parseInt(roll.id, 16)%5+'.jpg';
     }
+  },
+
+  rollNameForDotTv : function(roll) {
+    if (shelby.config.hostName) {
+      return shelby.config.hostName;
+    } else if (roll.has('subdomain')) {
+      return roll.get('subdomain') + '.shelby.tv';
+    } else {
+      return roll.get('title');
+    }
   }
 
 };
