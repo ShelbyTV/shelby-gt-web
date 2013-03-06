@@ -160,6 +160,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _prepIsolatedRoll : function(opts) {
     // Adjust *how* a few details are displayed via CSS
     $('body').addClass('isolated-roll');
+    $('body').addClass('js-isolated-roll');
 
     // save current referrer host name in shelby config
     if (opts.params && opts.params.src){ shelby.config.hostName = opts.params.src; }

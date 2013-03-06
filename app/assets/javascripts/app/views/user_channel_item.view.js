@@ -7,7 +7,7 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
       activeClassName : 'user_roll__item--active'
   }),
 
-  className : 'list_item user_roll__item clearfix',
+  className : 'list_item user_roll__item js-user_roll__item clearfix',
 
   events : {
     'click .js-button-previous' : '_scrollPrevious',
