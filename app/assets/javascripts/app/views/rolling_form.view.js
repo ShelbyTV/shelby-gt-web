@@ -197,13 +197,46 @@
     },
 
     _checkForAndRollToHashtag : function(message, via_search){
-      // parsing message to see if a hashtag is there
-      var _hashtag;
-      if ((_hashtag = /\#(\w*)/.exec(message)) && _hashtag[1] === "amazing") {
-        // add video to another special roll owned by user.nickname = amazing, roll title = "amazing"
-        var hashtagRoll = new libs.shelbyGT.RollModel({id: '5127bb0bb415cc0a9b0f4fa5'});
-        if (via_search){ this._addViaUrl(message, hashtagRoll, []); }
-        else { this._frame.reRoll(hashtagRoll, message, null); }
+      // parsing message to see if a 'special' hashtag is there
+      var _hashtag, _rollId;
+      if ((_hashtag = /\#(\w*)/.exec(message))) {
+        switch (_hashtag[1]) {
+          case 'exists' :
+          case 'thisexists':
+            _rollId = shelby.config.hashtagRolls.thisexists;
+            break;
+          case 'movies' :
+          case 'greatmoviemoments':
+            _rollId = shelby.config.hashtagRolls.greatmoviemoments;
+            break;
+          case 'storytellers':
+            _rollId = shelby.config.hashtagRolls.storytellers;
+            break;
+          case 'laugh' :
+          case 'lol':
+            _rollId = shelby.config.hashtagRolls.laugh;
+            break;
+          case 'adrenaline' :
+            _rollId = shelby.config.hashtagRolls.adrenaline;
+            break;
+          case 'learn':
+          case 'learnaboutyourworld':
+            _rollId = shelby.config.hashtagRolls.learnaboutyourworld;
+            break;
+          case 'natureisrad':
+          case 'nature':
+            _rollId = shelby.config.hashtagRolls.natureisrad;
+            break;
+          default:
+            _rollId = null;
+        }
+
+        if (_rollId !== null) {
+          // add video to another special shelby hashtag roll
+          var hashtagRoll = new libs.shelbyGT.RollModel({id: _rollId});
+          if (via_search){ this._addViaUrl(message, hashtagRoll, []); }
+          else { this._frame.reRoll(hashtagRoll, message, null); }
+        }
       }
     }
 

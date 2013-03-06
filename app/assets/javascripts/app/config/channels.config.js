@@ -14,5 +14,21 @@ shelby.config.channels = {
   'adrenaline' : {
     title : '#adrenaline',
     id : '5112fb95b415cc1ded0d8c89'
+  },
+  'thisexists' : {
+    title : '#thisexists',
+    id: '5137560bb415cc636c035769'
+  },
+  'greatmoviemoments' : {
+    title : '#greatmoviemoments',
+    id: '51375788b415cc68d804aa71'
+  },
+  'storytellers' : {
+    title : '#storytellers',
+    id: '51375863b415cc57fe02eea9'
+  },
+  'nature' : {
+    title : '#natureisrad',
+    id: '5112fae1b415cc1e0b0e4d6e'
   }
 };
