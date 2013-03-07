@@ -32,6 +32,15 @@
   }
 }
 
+.list--fit {
+  display: table;
+  width: 100%;
+
+  & > li {
+    display: table-cell;
+  }
+}
+
 .list__link {
   &,
   &:link,

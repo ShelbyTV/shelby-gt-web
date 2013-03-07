@@ -41,7 +41,7 @@
         el : this.$('.js-guide-search')
       }));
       this.renderChild(new libs.shelbyGT.ChannelInfoOverlayView({
-        el: this.$('.js-channel-menu'),
+        el: this.$('.js-channels-menu'),
         model : shelby.models.guide,
         playlistManagerModel : shelby.models.playlistManager
       }));
