@@ -21,18 +21,19 @@
 .all-frame-info {
   float: left;
   width: 900px;
-  margin: 2em auto;
+  margin: 1em auto;
+  background: #e2e2e2;
+  border-radius: 4px;
 }
 
 .stats-list {
   float: left;
   width: 33.333%;
-  background: #e2e2e2;
   height: 220px;
 }
 
 section.stats {
-  margin: 8px auto;
+  margin: 61px auto;
   width: 260px;
 
   h1 {
@@ -40,4 +41,34 @@ section.stats {
     line-height: 1.45;
     margin-bottom: .35em;
   }
+}
+
+.icon-likes {
+  float: left;
+  background-image:url(/images/assets/heart.svg);
+  background-repeat: no-repeat;
+  height: 85px;
+  width: 95px;
+  margin-top: 7px;
+}
+
+.like-count {
+  font-size: 8em;
+  font-weight: bold;
+  margin: 12px 117px;
+}
+
+.icon-views {
+  float: left;
+  background-image:url(/images/assets/eye.svg);
+  background-repeat: no-repeat;
+  height: 66px;
+  width: 95px;
+  margin-top: 10px;
+}
+
+.view-count {
+  font-size: 8em;
+  font-weight: bold;
+  margin: 0 110px;
 }

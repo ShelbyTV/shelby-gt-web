@@ -147,7 +147,7 @@ class HomeController < ApplicationController
   def stats
     # lookup user + stats via api
     if @user = Shelby::API.get_user(params['user_id'])
-      # get stats
+      @frames = Shelby::API.get_user_stats(params['user_id'], request.headers['HTTP_COOKIE'])
     else
       # message user info could not be found
     end

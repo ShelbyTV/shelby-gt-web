@@ -17,31 +17,28 @@
           #   'thumbnail'   => "/images/landing/shortformblog.jpg"
           # },
           {
-            'title'       => "Learn About Your World",
-            'location'    => "spinosa.shelby.tv",
-            'description' => "Ever wonder why Congress sucks or why things are cute? Watch this channel and learn about your world.",
-            'url'         => "http://spinosa.shelby.tv",
-            'thumbnail'   => "http://i.ytimg.com/vi/0sEUdmtyJ3U/0.jpg",
             'creatorAvatar' => "http://a2.twimg.com/profile_images/1255945891/henry2.jpg",
             'creatorNickname' => "henry",
             'created_at' => '1 day ago',
-            'comment' => '#thisexists and it is #amazing',
             'like_count' => 3,
             'view_count' => 10,
             'video' => {
+              'title'       => "Learn About Your World",
+              'thumbnail'   => "http://i.ytimg.com/vi/0sEUdmtyJ3U/0.jpg",
               'view_count' => 20
             }
           }
         ]
       %>
 
-      <% [frames, frames, frames].flatten.each do |frame| %>
+      <% @frames.each do |frame| %>
+      <% frame=frame['frame'] %>
         <li class="shelf__item">
           <ul class="list all-frame-info">
             <li class="stats-list">
               <%= render :partial => '/home/user_stats/frame', :locals => { :frame => frame } %>
             </li>
-            <li class="stats-list">
+            <li class="stats-list ">
               <%= render :partial => '/home/user_stats/watch_stats', :locals => { :frame => frame }  %>
             </li>
             <li class="stats-list">
