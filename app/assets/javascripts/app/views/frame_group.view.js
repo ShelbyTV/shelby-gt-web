@@ -158,6 +158,31 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       playlistType : this.options.playlistType,
       playlistRollId : _playlistRollId
     });
+
+    // if we're on a .tv, track clicks on frames
+    if ($('body').hasClass('js-isolated-roll')) {
+      // determine whether this frame is on the user's personal roll or some other roll they created
+      // for GA tracking purposes we'll use a binary integer value - 0 means on personal roll, 1 means on some other roll
+      var onSecondaryRollBinary;
+      if (frame.has('roll')) {
+        var rollType = frame.get('roll').get('roll_type');
+        if (rollType == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
+            rollType == libs.shelbyGT.RollModel.TYPES.special_public_upgraded) {
+          onSecondaryRollBinary = 0;
+        } else {
+          onSecondaryRollBinary = 1;
+        }
+      } else {
+        onSecondaryRollBinary = 1;
+      }
+      // now call the event tracking code, using the binary we calculated as the event value
+      shelby.trackEx({
+        gaCategory : '.TV',
+        gaAction : 'Click on frame',
+        gaLabel : shelby.models.user.get('nickname'),
+        gaValue : onSecondaryRollBinary
+      });
+    }
   },
 
   // override ActiveHighlightListItemView abstract method
@@ -322,8 +347,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var _id = $(e.currentTarget).parents('article').attr('id');
     var _frame = this.model.getFirstFrame();
     var _caption;
-    if (_frame.has('roll')) {
-      _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
+    if (shelby.config.hostName) {
+      _caption = 'a video from '+shelby.config.hostname;
+    } else if (_frame.has('roll')) {
+      if (_frame.get('roll').has('subdomain')) {
+        _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
+      } else {
+        _caption = 'a video from shelby.tv';
+      }
     }
     else {
       _caption = 'a video found with Shelby Video Search';
@@ -333,7 +364,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         {
           method: 'feed',
           name: _frame.get('video').get('title'),
-          link: _frame.getSubdomainPermalink(),
+          link: libs.shelbyGT.viewHelpers.frame.permalink(_frame),
           picture: _frame.get('video').get('thumbnail_url'),
           description: _frame.get('video').get('description'),
           caption: _caption

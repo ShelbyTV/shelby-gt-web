@@ -72,6 +72,13 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
       playlistType : this.options.playlistType,
       playlistRollId : this.options.playlistType == libs.shelbyGT.PlaylistType.roll ? this._frame.get('roll').id : null
     });
+
+    shelby.trackEx({
+      gaCategory : '.TV',
+      gaAction : 'Click on frame',
+      gaLabel : shelby.models.user.get('nickname'),
+      gaValue : this.parent.parent.parent.$('.js-user_roll__item').index(this.parent.parent.el)
+    });
   },
 
   _queueVideo : function() {

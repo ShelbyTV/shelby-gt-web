@@ -9,6 +9,12 @@
   //------------------------------------------------------------------------------
   //  Frame
 
+  .explore-frame {
+    .menu_module {
+      display: block;
+    }
+  }
+
   .frame-body-wrapper {
     box-shadow: none;
     border: 1px solid rgba(0,0,0,.2);

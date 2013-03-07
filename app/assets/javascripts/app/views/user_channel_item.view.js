@@ -7,7 +7,7 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
       activeClassName : 'user_roll__item--active'
   }),
 
-  className : 'list_item user_roll__item clearfix',
+  className : 'list_item user_roll__item js-user_roll__item clearfix',
 
   events : {
     'click .js-button-previous' : '_scrollPrevious',
@@ -16,11 +16,13 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
 
   initialize : function() {
     this.model.bind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
+    this.options.userProfileModel.bind('change:autoLoadFrameId', this._onChangeAutoLoadFrameId, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function() {
     this.model.unbind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
+    this.options.userProfileModel.unbind('change:autoLoadFrameId', this._onChangeAutoLoadFrameId, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
   },
 
@@ -48,18 +50,44 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
     });
     this.appendChildInto(this._channelListView, '.js-user-channel');
     this._sizeToContents();
+
+    var autoLoadRollId = this.options.userProfileModel.get('autoLoadRollId');
+    var autoLoadFrameId = this.options.userProfileModel.get('autoLoadFrameId');
+    var doPlaySpecificFrame = autoLoadRollId && autoLoadFrameId;
+    var fetchData = {
+      limit : shelby.config.pageLoadSizes.rollOnUserProfile.initialLoad
+    };
+    if (doPlaySpecificFrame && this.model.id == autoLoadRollId) {
+      fetchData.since_id = autoLoadFrameId;
+    }
     this.model.fetch({
-      data : {
-        limit : shelby.config.pageLoadSizes.rollOnUserProfile.initialLoad
-      },
+      data : fetchData,
       success : function(rollModel, resp){
-        // if this is the current user's personal roll and nothing is playing,
-        // register this roll as the current playlist and start playing the first frame in the roll
-        var currentUserPublicRollId = self.options.userProfileModel.get('currentUser') &&
-                                      self.options.userProfileModel.get('currentUser').get('personal_roll_id');
-        if (currentUserPublicRollId && (currentUserPublicRollId == rollModel.id) && !shelby.models.guide.get('activeFrameModel')) {
+        // if nothing is playing start playing something
+        // if no special roll and frame was specifed, we want to start playing the user's personal roll from the beginning, otherwise
+        // we want to play the specified roll and frame
+
+        // if this is the desired roll and nothing is playing,
+        // register this roll as the current playlist and start playing the desired frame
+        var rollToPlayId = (doPlaySpecificFrame && autoLoadRollId) || (self.options.userProfileModel.get('currentUser') && self.options.userProfileModel.get('currentUser').get('personal_roll_id'));
+        if (rollToPlayId && (rollToPlayId == rollModel.id) && !shelby.models.guide.get('activeFrameModel')) {
+          // if this is the roll to play and nothing else is playing, register it as the current playlist
           self._channelListView.registerPlaylist();
-          shelby.models.playlistManager.trigger('playlist:start');
+          if (doPlaySpecificFrame) {
+            // if a particular frame was specified, start playing it
+            var frame = rollModel.get('frames').get(autoLoadFrameId);
+            // for compatibility reasons, we only show videos from certain providers on mobile
+            if (frame && (!Browser.isMobile() || frame.get('video').canPlayMobile())) {
+              shelby.models.guide.set('activeFrameModel', frame);
+            } else {
+              // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the user profile
+              shelby.alert({message: "Sorry, the video you were looking for doesn't exist in this roll."});
+              shelby.router.navigate('isolated-roll/' + rollToPlayId, {trigger: true, replace: true});
+            }
+          } else {
+            // otherwise start playing from the beginning of the playlist
+            shelby.models.playlistManager.trigger('playlist:start');
+          }
         }
       }
     });
@@ -113,6 +141,14 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
 
   _onFetchComplete : function(rollModel, resp){
     this._sizeToContents();
+  },
+
+  _onChangeAutoLoadFrameId : function(userProfileModel, autoLoadFrameId){
+    // if we dropped from a situation where we loaded a specific frame in this roll
+    // to loading the default view of this roll, we need to reload this roll
+    if(!autoLoadFrameId && userProfileModel.previous('autoLoadRollId') == this.model.id) {
+      this.render();
+    }
   },
 
   // _sizeToContents - since this is a horizontal scrolling container, we need to explicitly set its width

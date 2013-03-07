@@ -1,12 +1,12 @@
 shelby.config.dotTvNetworks = {
-  userProfileViewRollIds : [
-    '4f8f7fb0b415cc4762000c42', // fredwilson.tv
-    '4fdee5f91c1cf4714200a607', // nerdfitness.tv
-    '4f8f7ef2b415cc4762000002', // danspinosa.tv
-    '4f900d56b415cc6614056681', // reecepacheco.tv
-    '51190f1eb415cc77f308eb22', // missouriquiltco.tv
-    '4f901d4bb415cc661405fde9', // chriskurdziel.tv
-    '4f8f7ef6b415cc476200004a', // henrysztul.tv
-    '51214bf2b415cc1c5c004c03'  // food52.shelby.tv
+  userProfileViewCreatorIds : [
+    '4d9b3486f6db24104e000001', // fredwilson
+    '4fdee5f91c1cf4714200a605', // nerdfitness
+    '4d7a882df6db246de0000001', // spinosa
+    '4d7d154ff6db244f5e000001', // reece
+    '51190f1db415cc77f308eb1c', // quilting
+    '4d7ac94af6db241b5d000002', // chris
+    '4dc0add6f6db246d8f000001', // henry
+    '51214bf1b415cc1c5c004bb7'  // food52
   ]
 };
