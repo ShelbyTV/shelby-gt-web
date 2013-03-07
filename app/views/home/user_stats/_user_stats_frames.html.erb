@@ -33,9 +33,15 @@
       <% [frames, frames, frames].flatten.each do |frame| %>
         <li class="shelf__item">
           <ul class="list all-frame-info">
-            <li class="stats-list"><%= render :partial => '/home/user_stats/frame', :locals => { :frame => frame } %></li>
-            <li class="stats-list">Watches</li>
-            <li class="stats-list">Likes</li>
+            <li class="stats-list">
+              <%= render :partial => '/home/user_stats/frame', :locals => { :frame => frame } %>
+            </li>
+            <li class="stats-list">
+              <%= render :partial => '/home/user_stats/watch_stats', :locals => { :frame => frame }  %>
+            </li>
+            <li class="stats-list">
+              <%= render :partial => '/home/user_stats/like_stats', :locals => { :frame => frame }  %>
+            </li>
           </ul>
 
         </li>
