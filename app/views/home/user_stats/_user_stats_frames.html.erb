@@ -17,9 +17,10 @@
             <li class="stats">
               <%= render :partial => '/home/user_stats/watch_stats', :locals => { :frame => frame }  %>
               <%= render :partial => '/home/user_stats/like_stats', :locals => { :frame => frame }  %>
+              <%= render :partial => '/home/user_stats/shelby_score', :locals => { :frame => frame }  %>
             </li>
             <li class="extras">
-              <%= render :partial => '/home/user_stats/shelby_score', :locals => { :frame => frame }  %>
+              <%= render :partial => '/home/user_stats/share_frame', :locals => { :frame => frame }  %>
             </li>
           </ul>
 
