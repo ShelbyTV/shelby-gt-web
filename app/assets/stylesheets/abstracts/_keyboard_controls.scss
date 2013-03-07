@@ -1,0 +1,16 @@
+/* text styling for keyboard looking iconography */
+
+.keyboard_button {
+  @include roundies;
+
+  border: 2px solid $text;
+  display: inline-block;
+  font-family: $font-family;
+  font-weight: bold;
+  height: 2em;
+  line-height: 1.5;
+  margin: 0 0.1em;
+  padding: 0.1em;
+  text-align: center;
+  width: 2em;
+}
