@@ -184,6 +184,7 @@ private
       message = conversation["messages"].first
       next if !message
       next if !message["text"]
+      next if !message["public"]
 
       case message["origin_network"]
         when "shelby"   then @messages[:shelby].push(message)
