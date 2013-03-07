@@ -49,11 +49,7 @@
 
 .fin {
   background-color: $base;
-  height: 100px;
-  margin: 5em;
-  padding: 1em;
   position: relative;
-  width: 100px;
 
   &:before {
     @include rotate(45deg);
