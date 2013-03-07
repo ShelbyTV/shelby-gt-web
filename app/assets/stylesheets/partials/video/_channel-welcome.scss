@@ -1,0 +1,38 @@
+/*
+*   Local Variables
+*/
+
+
+//------------------------------------------------------------------------------
+//  Channel Welcome Pane
+//------------------------------------------------------------------------------
+.welcome-message__wrapper--channels {
+  //ToolTip Block
+  .tooltip {
+    // background-color: lighten($shelby-green,20%);
+    background-color: orange;
+    position: absolute;
+    font-size: 1.3em;
+  }
+}
+    //no unnecessary nesting!
+      .tooltip--channels {
+        left: 7em;
+        top: 8em;
+      }
+      .tooltip--prev-video {
+        margin-top: -9em;
+        left: 7em;
+        top: 50%;
+      }
+      .tooltip--next-video {
+        margin-top: -7em;
+        right: 7em;
+        top: 50%;
+      }
+      .tooltip--hide-guide {
+        margin-top: -1.8em;
+        left: 7em;
+        top: 50%;
+      }
+
