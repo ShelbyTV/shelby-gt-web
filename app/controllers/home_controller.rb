@@ -145,7 +145,12 @@ class HomeController < ApplicationController
 
   # Static page with stats on a users recent activity
   def stats
-    # lookup user stats via api
+    # lookup user + stats via api
+    if @user = Shelby::API.get_user(params['user_id'])
+      # get stats
+    else
+      # message user info could not be found
+    end
   end
 
   ##
