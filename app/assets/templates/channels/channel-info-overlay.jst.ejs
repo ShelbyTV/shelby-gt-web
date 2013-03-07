@@ -1,12 +1,11 @@
-<section class="channel-info-section">
-  <div class="channel-info-section-lining clearfix">
-    <ul class="list list--inline channel-info-list clearfix">
-      <% _(channels).each(function(channel, key) { %>
-        <li class="channel-info-section-channel js-channel js-track-event" data-ga_category="Channel Overlay" data-ga_action="Click channel" data-ga_label='<%= channel.title %>' data-channel="<%= key %>">
-          <span class="title"><%= channel.title %></span>
-          <span class="now-playing"><small> now playing</small></span>
-        </li>
-      <% }); %>
-    </ul>
-  </div>
+<section class="channel_menu fin fin--top_left clearfix">
+  <ul class="list list--inline channel_menu__list clearfix">
+    <% _(channels).each(function(channel, key) { %>
+      <li class="channel_menu__item js-channel js-track-event" data-ga_category="Channel Overlay" data-ga_action="Click channel" data-ga_label='<%= channel.title %>' data-channel="<%= key %>">
+        <button class="button_primer button_default channel_menu__button">
+          <%= channel.title %>
+        </button>
+      </li>
+    <% }); %>
+  </ul>
 </section>

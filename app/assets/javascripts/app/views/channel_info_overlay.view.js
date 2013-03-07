@@ -22,7 +22,7 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
     }));
     this._findHighlightActiveChannel();
     if (this.options.playlistManagerModel.get('playlistType') == "channel"){
-        this.$('.channel-info-section').show();
+        this.$('.channel_menu').show();
       }
   },
 
@@ -36,10 +36,10 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
   _onPlaylistChanged : function(playlistManagerModel) {
     var _changedAttrs = _(playlistManagerModel.changedAttributes());
     if (playlistManagerModel.get('playlistType') !== "channel"){
-      this.$('.channel-info-section').hide();
+      this.$('.channel_menu').hide();
     }
     else {
-      this.$('.channel-info-section').show();
+      this.$('.channel_menu').show();
     }
     if (!_changedAttrs.has('playlistType') &&
         !_changedAttrs.has('playlistRollId')) {
@@ -51,7 +51,10 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
 
   _onCurrentChannelChanged : function(){
     // remove the active channel highlight
-    this.$('.channel-info-section-channel').removeClass('channel-info-section-channel--active');
+    this.$('.channel_menu__item')
+          .children('.channel_menu__button')
+            .toggleClass('button_default',true)
+            .toggleClass('button_green-soft',false);
     // set the highlight on the new active channel
     this._findHighlightActiveChannel();
   },
@@ -59,8 +62,10 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
   _findHighlightActiveChannel : function(){
     // highlight the active channel if there is one
     var activeChannel = libs.utils.channels.getCurrentChannel();
-    this.$('.channel-info-section-channel[data-channel=' + activeChannel + ']')
-      .addClass('channel-info-section-channel--active').find('.title').text('#'+activeChannel);
+    this.$('.channel_menu__item[data-channel=' + activeChannel + ']')
+          .children('.channel_menu__button')
+            .toggleClass('button_default',false)
+            .toggleClass('button_green-soft',true);
   }
 
 });

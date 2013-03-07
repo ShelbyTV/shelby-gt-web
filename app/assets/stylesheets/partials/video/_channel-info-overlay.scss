@@ -11,63 +11,41 @@
 }
 
 //------------------------------------------------------------------------------
-// Structure, Beginning of Feature
+// channel menu block
 //------------------------------------------------------------------------------
-.channel_info__wrapper {
-  width: 100%;
-  z-index: 1;
-}
-
-.channel-info-section {
+.channel_menu {
+  background-color: $base;
   display: none;
   left: 0;
+  padding: 6px;
   position: absolute;
-  width: 100%;
-}
-
-.channel-info-section-lining {
-  background-color: $base;
   text-align: left;
   width: 100%;
+
+  //non-normative overrides
+  &.fin--top_left { //compound selector, menu must have fin.
+    &:before {
+      left: 316px; //positioning pertains to --top_left modifier
+      z-index: 1;
+    }
+  }
 }
 
-.channel-info-list {
+//elements
+.channel_menu__list {
   margin: 0 auto !important;
-  // width: 50%;
-  text-align: center;
 }
 
-.channel-info-section-channel {
-  color: #666;
-  font-family: $font-family-display;
-  font-size: 1.25em;
-  font-weight: 300;
-  height: 3.335em;
-  line-height: 3.335em;
-  padding: 0 .6em;
-  width: 200px;
-  text-align: center;
+.channel_menu__item {}
 
-  & + .channel-info-section-channel {
-    border-top: solid #adadad 1px;
-  }
+.channel_menu__button {
+  font-size: 1.15em;
+  margin-right: 6px;
+  padding-top: 0.8em;
+  padding-bottom: 0.75em;
+  width: 9em;
 
-  &:hover{
-    background-color: #b9b9b9;
-    cursor: pointer;
-  }
-
-  .now-playing {
-    display: none
-  }
-}
-
-.channel-info-section-channel--active {
-  background-color: #74C042;
-  color: #FFF;
-
-  .now-playing {
-    display: inline-block;
-    margin-left: 15px;
+  &:first-child {
+    margin-left: 3px;
   }
 }
