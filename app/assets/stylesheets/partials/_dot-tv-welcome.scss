@@ -58,14 +58,14 @@
 
 //positioning wrapper
 .welcome-message__wrapper {
-  background-color: rgba(0,0,0,0.75);
+  background-color: rgba(0,0,0,0.5);
   bottom: 0;
   display: none;
   height: 100%;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 3;
+  z-index: 4;
 }
 
 //root

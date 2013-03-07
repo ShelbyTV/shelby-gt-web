@@ -13,6 +13,13 @@
     background-color: orange;
     position: absolute;
     font-size: 1.3em;
+    -webkit-user-select: none; /* Safari, Chrome */
+    -moz-user-select: none; /* Firefox */
+    user-select: none; /* CSS3 */
+
+    &:hover {
+      cursor: default;
+    }
   }
 }
     //no unnecessary nesting!
