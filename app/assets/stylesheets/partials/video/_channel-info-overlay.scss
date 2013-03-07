@@ -8,6 +8,10 @@
   .content_wrapper {
     margin-top: $channel-menu-height;
   }
+
+  .channel_menu {
+    display: block;
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -16,7 +20,7 @@
 .channel_menu {
   background-color: $base;
   border-bottom: 1px solid $inset;
-  // display: none;
+  display: none;
   left: 0;
   padding: 8px;
   position: absolute;
