@@ -7,42 +7,19 @@
     <hr class="shelf__hr" />
 
     <ul class="list shelf__list clearfix">
-      <%
-        frames = [
-          # {
-          #   'title'       => "Shortformblog",
-          #   'location'    => "shortformblog.shelby.tv",
-          #   'description' => "A collection of sometimes funny, sometimes educational, always entertaining video curated by the folks at ShortformBlog.",
-          #   'url'         => "http://shortformblog.shelby.tv",
-          #   'thumbnail'   => "/images/landing/shortformblog.jpg"
-          # },
-          {
-            'creatorAvatar' => "http://a2.twimg.com/profile_images/1255945891/henry2.jpg",
-            'creatorNickname' => "henry",
-            'created_at' => '1 day ago',
-            'like_count' => 3,
-            'view_count' => 10,
-            'video' => {
-              'title'       => "Learn About Your World",
-              'thumbnail'   => "http://i.ytimg.com/vi/0sEUdmtyJ3U/0.jpg",
-              'view_count' => 20
-            }
-          }
-        ]
-      %>
-
       <% @frames.each do |frame| %>
-      <% frame=frame['frame'] %>
+        <% frame = frame['frame'] %>
         <li class="shelf__item">
           <ul class="list all-frame-info">
-            <li class="stats-list">
+            <li class="frames">
               <%= render :partial => '/home/user_stats/frame', :locals => { :frame => frame } %>
             </li>
-            <li class="stats-list ">
+            <li class="stats">
               <%= render :partial => '/home/user_stats/watch_stats', :locals => { :frame => frame }  %>
-            </li>
-            <li class="stats-list">
               <%= render :partial => '/home/user_stats/like_stats', :locals => { :frame => frame }  %>
+            </li>
+            <li class="extras">
+              <%= render :partial => '/home/user_stats/shelby_score', :locals => { :frame => frame }  %>
             </li>
           </ul>
 

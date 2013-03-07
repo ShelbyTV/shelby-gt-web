@@ -26,20 +26,32 @@
   border-radius: 4px;
 }
 
-.stats-list {
+.frames {
   float: left;
   width: 33.333%;
-  height: 220px;
 }
 
-section.stats {
-  margin: 61px auto;
-  width: 260px;
+.stats {
+  float: left;
+  margin-left: 20px;
 
-  h1 {
-    font-size: 1.3em;
-    line-height: 1.45;
-    margin-bottom: .35em;
+  section {
+    margin: 10px auto;
+    width: 230px;
+  }
+}
+
+.extras {
+  float: left;
+  width: 33.333%;
+  section {
+    margin: 10px auto;
+    width: 290px;
+  }
+  .shelby-logo .icon-mark {
+    font-size: 7.3em;
+    color: #6cbc45;
+    margin-left: 7px;
   }
 }
 
@@ -70,5 +82,5 @@ section.stats {
 .view-count {
   font-size: 8em;
   font-weight: bold;
-  margin: 0 110px;
+  margin: 0 117px;
 }

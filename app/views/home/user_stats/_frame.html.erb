@@ -29,7 +29,7 @@
           </p>
 
           <p class="xuser-message">
-            <%= frame['comment'] %>
+            <%= frame['conversation']['messages'][0]['text'] if frame['conversation']['messages']%>
           </p>
       </footer>
   </div><!-- eo .frame-body-wrapper -->
