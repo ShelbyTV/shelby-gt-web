@@ -27,6 +27,8 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
   },
 
   _onClickChannel : function(e) {
+    shelby.models.userDesires.set({guideShown: true});
+
     shelby.router.navigate(
       "channels/" + $(e.currentTarget).data('channel'),
       {trigger:true}
