@@ -21,12 +21,12 @@
   position: absolute;
   text-align: left;
   width: 100%;
+  z-index: 1;
 
   //non-normative overrides
   &.fin--top_left { //compound selector, menu must have fin.
     &:before {
       left: 316px; //positioning pertains to --top_left modifier
-      z-index: 1;
     }
   }
 }
