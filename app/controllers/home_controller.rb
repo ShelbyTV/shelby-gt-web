@@ -35,11 +35,6 @@ class HomeController < ApplicationController
           render '/home/isolated_roll' and return
         end
 
-        #XXX FB GENIOUS ROLL
-        if @genius_roll_id = get_genius_roll_id_from_path(params[:path])
-          render '/home/app' and return
-        end
-
         if user_signed_in?
           render '/home/app'
 
@@ -219,10 +214,6 @@ class HomeController < ApplicationController
 
     def get_genius_roll_id_from_path(path)
       return @roll_id[1] if @roll_id = /fb\/genius\/roll\/(\w*)/i.match(path)
-    end
-
-    def is_from_fb_genius_frame_share(path)
-      /fb\/genius\/roll\/(\w*)\/frame\/(\w*)/i.match(path)
     end
 
     def get_info_for_meta_tags(path)

@@ -1,0 +1,33 @@
+/*
+
+    Tool Tip!
+
+//----------------------------------------------------------------------------*/
+
+//block
+
+.tooltip {
+  padding: 1.1em 1.5em 1em;
+}
+  .tooltip--inline {
+    .tooltip__h1 {
+      margin-right: 1em;
+    }
+
+    .tooltip__h1,
+    .tooltip__block {
+      display: inline;
+    }
+  }
+//elements
+
+.tooltip__h1 {
+  font-family: $font-family;
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.6;
+}
+.tooltip__block {
+  margin: 0.25em 0 0;
+  font-size: 1em;
+}

@@ -29,11 +29,6 @@ class RollController < ApplicationController
     render '/home/app'
   end
 
-  def show_fb_genius_roll
-    @genius_roll_id = params[:roll_id]
-    render '/home/app'
-  end
-
   def subscribe_via_email
     @roll_id = params[:roll_id]
     @roll_title = params[:roll_title]
