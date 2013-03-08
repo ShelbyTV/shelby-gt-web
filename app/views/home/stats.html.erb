@@ -58,12 +58,15 @@
 
     <% #------------ Shelf Content --------------- %>
 
-    <% if (!@share_type) and !@invite_id and !@team %>
+    <% if @user %>
       <%= render :partial => "/home/user_stats/user_stats_welcome" %>
       <%= render :partial => "/home/user_stats/user_stats_frames" %>
-      <%= render :partial => "/home/shelf/network" %>
-      <%= render :partial => "/home/shelf/about" %>
+    <% else %>
+      <%= render :partial => "/home/user_stats/not_loggged_in" %>
     <% end %>
+
+    <%= render :partial => "/home/shelf/network" %>
+    <%= render :partial => "/home/shelf/about" %>
 
     <% #------------ /Shelf Content --------------- %>
 

@@ -1,6 +1,15 @@
+<% messages = {
+    :low_watches => ["Want some feedback! Why not share that thang?", "Start letting the world know if this greatness..."],
+    :high_watches => ["You did great! Why not share the love?", "People like it! Get more people in!"]
+  } %>
+
 <section>
   <h1 class="share-message">
-    You did great! Why not share the love?
+    <% if frame['view_count'] < 5 %>
+      <%= messages[:low_watches][rand(messages[:low_watches].length)] %>
+    <% else %>
+      <%= messages[:high_watches][rand(messages[:high_watches].length)] %>
+    <% end -%>
   </h1>
 </section>
 <section>
@@ -11,7 +20,7 @@ src="//widgets.awe.sm/v3/tweet_button?data-url=http://<%= user["personal_roll_su
 style="border:none; overflow:hidden; width:55px; height:25px;"></iframe>
     </div>
     <div class="facebook-holder">
-      <div class="fb-like" data-send="true" data-layout="button_count" data-width="100" data-show-faces="true" data-font="arial" data-href='http://<%= user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>' data-ref="stats-page"></div>
+      <div class="fb-like" data-send="true" data-layout="button_count" data-width="100" data-show-faces="true" data-font="arial" data-href='http://<%= user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>/' data-ref="stats-page"></div>
     </div>
   </div>
 </section>

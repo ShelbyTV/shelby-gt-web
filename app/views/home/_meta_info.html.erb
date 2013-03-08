@@ -31,7 +31,7 @@
 <% elsif @roll and @user %>
 	<% user_roll_title = "#{@roll['subdomain']}.shelby.tv" %>
 	<meta property="og:type" 		content="video.other" />
-	<meta property="og:url"			content="http://<%= @roll['subdomain'] %>.shelby.tv" />
+	<meta property="og:url"			content="http://<%= @roll['subdomain'] %>.shelby.tv<%= @frame ? "/"+@frame['id'] : '' %>" />
 	<meta property="og:title" content="<%= user_roll_title %>" />
 	<meta property="og:description" content="<%= page_description_for_roll_with_frames(@roll, @user) %>" />
 	<meta property="og:image" content="<%= @roll['first_frame_thumbnail_url'] %>" />
