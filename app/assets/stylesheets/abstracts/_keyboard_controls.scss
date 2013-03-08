@@ -4,12 +4,13 @@
   @include roundies;
 
   border: 2px solid $text;
+  box-shadow: 1px 1px 0 0 black;
   display: inline-block;
   font-family: $font-family;
   font-weight: bold;
   height: 2em;
   line-height: 1.5;
-  margin: 0 0.1em;
+  margin: 0 0.2em 0 0.1em;
   padding: 0.1em;
   text-align: center;
   width: 2em;

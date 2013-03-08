@@ -17,8 +17,12 @@
         model : 'userDesires',
         attr : 'keyboardShortcuts',
         val : function(){
-          $('.js-channels-welcome').hide();
-          return !shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
+          if(libs.shelbyGT.DisplayState.channel) {
+            shelby.userInactivity.enableUserActivityDetection();
+            shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
+            $('.js-channels-welcome').hide();
+            return !shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
+          }
         },
         is_transient : true
       },
@@ -158,6 +162,7 @@
         attr : 'keyboardShortcuts',
         val : function(){
           if(libs.shelbyGT.DisplayState.channel) {
+            shelby.userInactivity.disableUserActivityDetection();
             $('.js-channels-welcome').toggle();
           }
         },
