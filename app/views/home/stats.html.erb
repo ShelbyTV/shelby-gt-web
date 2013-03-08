@@ -62,8 +62,10 @@
       <%= render :partial => "/home/user_stats/user_stats_welcome" %>
       <%= render :partial => "/home/user_stats/user_stats_frames" %>
     <% elsif @user %>
+      <% # user doesnt have access to see the info %>
       <%= render :partial => "/home/user_stats/not_authorized" %>
     <% else %>
+      <% # not logged in %>
       <%= render :partial => "/home/user_stats/not_loggged_in" %>
     <% end %>
 
