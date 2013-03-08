@@ -125,7 +125,11 @@
                 <% } %>
               </p>
             <% } else { %>
-                <p class="xuser-data xuser-message--faux">
+
+                <% var hasComment = messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id') %>
+                <% var comment = hasComment && messages.models[0].get('text') %>
+
+                <p<% if(comment) { %> title="<%= creatorNickname + ' said: ' + comment %>"<% } %> class="xuser-data xuser-message--faux">
                   <a href="#" class="js-creator-personal-roll no-faux-link see-all" onclick="return false;">
                     <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
                     <% if (clickableCreator) { %><strong><%= creatorNickname %></strong>
