@@ -22,7 +22,7 @@
 <body class="shelby shelby--landing shelby--user-stats<%= ' shelby--mobile' if @mobile_os %>">
   <div class="shelby__wrapper">
 
-    <%= render :partial => '/home/landing_header' %>
+    <%= render :partial => '/home/landing_header', :locals => {:user_stats =>  true} %>
 
     <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
       <section class="shelf shelf--error clearfix">
@@ -58,9 +58,11 @@
 
     <% #------------ Shelf Content --------------- %>
 
-    <% if @user %>
+    <% if @user and @frames %>
       <%= render :partial => "/home/user_stats/user_stats_welcome" %>
       <%= render :partial => "/home/user_stats/user_stats_frames" %>
+    <% elsif @user %>
+      <%= render :partial => "/home/user_stats/not_authorized" %>
     <% else %>
       <%= render :partial => "/home/user_stats/not_loggged_in" %>
     <% end %>
