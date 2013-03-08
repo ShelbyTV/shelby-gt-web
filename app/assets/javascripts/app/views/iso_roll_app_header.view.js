@@ -23,12 +23,18 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
   },
 
   initialize: function(){
-    this.options.guide.on('change:currentRollModel', this._onNewCurrentRollModel, this);
+    this.options.guide.on('change:currentRollModel', this._onChangeCurrentRollModel, this);
+    if (this.options.guide.has('currentRollModel')) {
+      this.options.guide.has('currentRollModel').bind('change', this.render, this);
+    }
     this.options.rollFollowings.on('change:initialized', this._onRollFollowingsInitialized, this);
   },
 
   _cleanup: function(){
     this.options.guide.off('change:currentRollModel', this._onChangeCurrentRollModel);
+    if (this.options.guide.has('currentRollModel')) {
+      this.options.guide.has('currentRollModel').unbind('change', this.render, this);
+    }
     this.options.rollFollowings.off('change:initialized', this._onRollFollowingsInitialized, this);
   },
 
@@ -45,16 +51,19 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
     }
   },
 
-  _onNewCurrentRollModel: function(guideModel, currentRollModel){
-    currentRollModel.on('change', this._onChangeCurrentRollModel, this);
-    this._currentRoll = currentRollModel;
-    this.render();
-  },
-
-  _onChangeCurrentRollModel: function(){
+  _onChangeCurrentRollModel: function(guideModel, currentRollModel){
     var self = this;
 
-    this._currentRoll = this.options.guide.get('currentRollModel');
+    if (currentRollModel) {
+      currentRollModel.bind('change', this.render, this);
+    }
+    var previousRollModel = guideModel.previous('currentRollModel');
+    if (previousRollModel) {
+      previousRollModel.unbind('change', this.render, this);
+    }
+
+    this._currentRoll = currentRollModel;
+    this.render();
 
     if( !this._associatedRolls ){
       var rollsCollection = new libs.shelbyGT.RollsCollectionModel();
@@ -66,8 +75,6 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
           self.render();
         }
       });
-    } else {
-      this.render();
     }
   },
 
@@ -98,7 +105,7 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
        this._currentRoll.leaveRoll(clearBusyFunction, clearBusyFunction);
      }
    },
-   
+
    _onSubscribe: function(){
      var href = "/subscribe-via-email/roll/"+this._currentRoll.id+"?roll_title="+this._currentRoll.get('title')+"&curator="+this._currentRoll.get('creator_nickname'),
      width = 700,
@@ -106,7 +113,7 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
      left = (screen.width/2)-(width/2),
      top = (screen.height/2)-(height/2);
      window.open(href,
-        "subscribePopup", 
+        "subscribePopup",
         "menubar=no,toolbar=no,status=no,width="+width+",height="+height+",toolbar=no,left="+left+",top="+top);
 
      shelby.trackEx({
