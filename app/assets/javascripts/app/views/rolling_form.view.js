@@ -200,7 +200,7 @@
       // parsing message to see if a 'special' hashtag is there
       var _hashtag, _rollId;
       if ((_hashtag = /\#(\w*)/.exec(message))) {
-        switch (_hashtag[1]) {
+        switch (_hashtag[1].toLowerCase()) {
           case 'exists' :
           case 'thisexists':
             _rollId = shelby.config.hashtagRolls.thisexists;
