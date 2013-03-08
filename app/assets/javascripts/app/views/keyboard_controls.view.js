@@ -20,7 +20,7 @@
           if(libs.shelbyGT.DisplayState.channel) {
             shelby.userInactivity.enableUserActivityDetection();
             shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
-            $('.js-channels-welcome').hide();
+            $('.js-channels-welcome').toggleClass('hidden', true);
             return !shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
           }
         },
@@ -162,8 +162,14 @@
         attr : 'keyboardShortcuts',
         val : function(){
           if(libs.shelbyGT.DisplayState.channel) {
-            shelby.userInactivity.disableUserActivityDetection();
-            $('.js-channels-welcome').toggle();
+            if ($('.js-channels-welcome').hasClass('hidden')){
+              shelby.userInactivity.disableUserActivityDetection();
+              shelby.models.userDesires.set({guideShown: false});
+            }
+            else {
+              shelby.userInactivity.enableUserActivityDetection();
+            }
+            $('.js-channels-welcome').toggleClass('hidden', !$('.js-channels-welcome').hasClass('hidden'));
           }
         },
         is_transient : true

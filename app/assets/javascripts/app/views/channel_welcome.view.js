@@ -19,17 +19,17 @@ libs.shelbyGT.channelWelcome = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
-    this.$el.show();
+    this.$el.toggleClass('hidden', true);
   },
 
   _startPlaying : function(){
-    this.$el.hide();
+    this.$el.toggleClass('hidden', true);
     // now play the video and reset autoplay to true.
     shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
     shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
     // already dismissed so don't want to respond to events on the model anymore
     this.options.channelWelcomeModel.unbind('dismiss', this._startPlaying, this);
     shelby.userInactivity.enableUserActivityDetection();
-    //cookies.set('channel-welcome', 1, 1000);
+    cookies.set('channel-welcome', 1, 1000);
   }
 });

@@ -199,21 +199,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if the requested channel doesn't exist, just go to the first channel
       this.navigate('channels/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
     }
-    // dont show the guide initially when navigating to explore directly
-    if(shelby.routeHistory.length === 0){
-      shelby.models.userDesires.set({guideShown: false});
-    }
 
-    // ultimatly this should only be shown the first visit which we can track via a cookie
-    if (cookies.get('channel-welcome') != "1") {
-      shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
-      shelby.userInactivity.disableUserActivityDetection();
-      shelby.views.channelWelcome = shelby.views.channelWelcome ||
+    shelby.views.channelWelcome = shelby.views.channelWelcome ||
           new libs.shelbyGT.channelWelcome({
             el : '.js-channels-welcome',
             channelWelcomeModel : shelby.models.dotTvWelcome
           });
-      }
+
+    // ultimatly this should only be shown the first visit which we can track via a cookie
+    if (cookies.get('channel-welcome') != "1") {
+      shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
+      shelby.models.userDesires.set({guideShown: false});
+      shelby.userInactivity.disableUserActivityDetection();
+      $('.js-channels-welcome').toggleClass('hidden', false);
+    }
+    else {
+      $('.js-channels-welcome').toggleClass('hidden', true);
+    }
   },
 
   displayRollFromFrame : function(frameId, params) {
