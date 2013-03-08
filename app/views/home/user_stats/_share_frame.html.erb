@@ -1,6 +1,18 @@
 <section>
-  <h2>Share yo video:</h2>
+  <h1 class="share-message">
+    You did great! Why not share the love?
+  </h1>
+</section>
+<section>
   <div class="share-buttons">
-
+    <div class="twitter-holder">
+      <iframe allowTransparency="true" frameborder="0" scrolling="no"
+src="//widgets.awe.sm/v3/tweet_button?data-url=http://<%= user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>&data-text=you%20have%20to%20see%20this%20video&data-count=horizontal&data-via=shelby&awesm_key=f12748410531715013799111011faecae481d592388431170984c908fde92c30"
+style="border:none; overflow:hidden; width:55px; height:25px;"></iframe>
+    </div>
+    <div class="facebook-holder">
+      <div class="fb-like" data-send="true" data-layout="button_count" data-width="100" data-show-faces="true" data-font="arial" data-href='http://<%= user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>' data-ref="stats-page"></div>
+    </div>
   </div>
 </section>
+
