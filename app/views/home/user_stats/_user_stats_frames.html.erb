@@ -1,0 +1,31 @@
+<div class="shelf shelf--community clearfix">
+  <div class="shelf__lining">
+    <h3 class="shelf__h2">
+      Here are the most recent videos you added
+    </h3>
+
+    <hr class="shelf__hr" />
+
+    <ul class="list shelf__list clearfix">
+      <% @frames.each do |frame| %>
+        <% frame = frame['frame'] %>
+        <li class="shelf__item">
+          <ul class="list all-frame-info">
+            <li class="frames">
+              <%= render :partial => '/home/user_stats/frame', :locals => { :frame => frame } %>
+            </li>
+            <li class="stats">
+              <%= render :partial => '/home/user_stats/watch_stats', :locals => { :frame => frame }  %>
+              <%= render :partial => '/home/user_stats/like_stats', :locals => { :frame => frame }  %>
+              <%#= render :partial => '/home/user_stats/shelby_score', :locals => { :frame => frame }  %>
+            </li>
+            <li class="extras">
+              <%= render :partial => '/home/user_stats/share_frame', :locals => { :frame => frame, :user => @user }  %>
+            </li>
+          </ul>
+
+        </li>
+      <% end %>
+    </ul>
+  </div><!-- eo shelf__lining -->
+</div><!-- eo shelf -->

@@ -48,6 +48,9 @@ ShelbyGtWeb::Application.routes.draw do
 
   get '/signout' => "home#signout", :as => :signout
 
+  #STATS
+  get '/user/:user_id/stats' => "home#stats"
+
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'
 

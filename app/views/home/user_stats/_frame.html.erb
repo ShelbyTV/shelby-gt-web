@@ -1,0 +1,36 @@
+<article id="<%= frame['id'] %>" class="animate_module frame frame-list-item">
+  <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+    <h1 class="frame-title" title="<%= frame['video']['title'] %>">
+     <%= frame['video']['title'] %>
+    </h1>
+  </a>
+
+  <div class="frame-body-wrapper clearfix">
+    <div class="frame-body">
+
+      <!-- TODO: should maybe use the thumbnail module JST -->
+      <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate" style="background-image: url('<%= frame['video']['thumbnail_url'] %>');" role="img">
+        <img class="visuallyhidden" src="<%= frame['video']['thumbnail_url'] %>" title="<%= frame['video']['title'] %>" alt="<%= frame['video']['title'] %> thumbnail">
+      </a>
+
+      </div><!-- eo .frame-body -->
+      <footer class="media_module frame-footer clearfix">
+         <span class="image_module xuser-avatar media_image" style="background-image: url(<%= frame['creator']['user_image_original'] %>);" role="img">
+           <img src="<%= frame['creator']['user_image'] %>" class="visuallyhidden" title="<%= frame['creator']['nickname'] %>" alt="<%= frame['creator']['nickname'] %>">
+         </span>
+
+         <div class="media_body">
+          <span class="xuser-data-timestamp">
+             <%= frame['created_at'] %>
+          </span>
+
+          <p class="xuser-data">
+            <%= frame['creator']['nickname'] %>
+          </p>
+
+          <p class="xuser-message">
+            <%= frame['conversation']['messages'][0]['text'] if frame['conversation']['messages']%>
+          </p>
+      </footer>
+  </div><!-- eo .frame-body-wrapper -->
+</article>

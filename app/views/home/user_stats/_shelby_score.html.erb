@@ -1,0 +1,9 @@
+<section>
+  <div class="shelby-logo">
+    <span class="icon-mark"></span>
+  </div>
+  <div class="view-count">
+    <% shelby_score =  (frame['view_count'] / frame['video']['view_count'].to_f ) + ((frame['like_count'] == 0 ? 1 : frame['like_count'])/2.to_f )  %>
+    <%= shelby_score.round(1) %> <span> <%= link_to "(?)", '#', :class => 'shelby-score-info' %></span>
+  </div>
+</section>

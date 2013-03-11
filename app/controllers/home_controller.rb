@@ -138,6 +138,14 @@ class HomeController < ApplicationController
   def learn_more
   end
 
+  # Static page with stats on a users recent activity
+  def stats
+    # lookup user + stats via api
+    if request.headers['HTTP_COOKIE'] and @user = Shelby::API.get_user(params['user_id'])
+      @frames = Shelby::API.get_user_stats(params['user_id'], request.headers['HTTP_COOKIE'])
+    end
+  end
+
   ##
   # Handles "make the web" (allowing logged-out users to see it)
   #
