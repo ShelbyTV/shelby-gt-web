@@ -11,7 +11,8 @@ module Shelby
     def self.get_user_stats(id, cookie)
       s = get("/user/#{id}/stats?num_frames=4", :headers => {'Cookie' => cookie}).parsed_response
       return s['status'] == 200 ? s['result'] : nil
-    end4
+    end
+
     def self.get_roll(id)
       r = get( "/roll/#{id}" ).parsed_response
       return r['status'] == 200 ? r['result'] : nil

@@ -21,21 +21,21 @@
 <body class="shelby shelby--landing<%= ' shelby--mobile' if @mobile_os %>">
   <div class="shelby__wrapper">
 
-    <%= render :partial => '/home/landing_header' %>
+    <%= render :partial => '/home/landing_header', :locals => {:show_login => false} %>
 
     <% #------------ Shelf Content --------------- %>
 
     <%= render :partial => "/home/content_shelf/learn_more" %>
-    
+
     <%= render :partial => "/home/shelf/about" %>
 
     <% #------------ /Shelf Content --------------- %>
 
     <%= render :partial => '/home/landing_footer' %>
-    
+
   </div><!-- /shelby-wrapper -->
 
   <%= render :partial => '/home/landing_scripts' %>
-  
+
 </body>
 </html>
