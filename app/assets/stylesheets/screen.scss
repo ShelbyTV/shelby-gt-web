@@ -65,6 +65,7 @@
 @import "partials/video/video-player";
 @import "partials/video/persistent-video-info";
 @import "partials/video/channel-info-overlay";
+@import "partials/video/channel-welcome";
 @import "partials/video/video-controls";
 @import "partials/video/video-mini-progress";
 @import "partials/preroll-video-info";
@@ -103,13 +104,9 @@
 @import "partials/discussion_roll";
 
 //------------------------------------------------------------------------------
-// Facebook Genius App styles
-//------------------------------------------------------------------------------
-@import "partials/facebook-genius";
-
-//------------------------------------------------------------------------------
 //  Overrides
 //------------------------------------------------------------------------------
+@import "partials/user-anonymous";
 @import "partials/hide-guide";
 @import "partials/hide-pvi";
 @import "partials/user-inactive";

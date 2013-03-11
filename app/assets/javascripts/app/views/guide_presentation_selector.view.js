@@ -40,6 +40,11 @@
       this.renderChild(new libs.shelbyGT.GuidePresentationSearchView({
         el : this.$('.js-guide-search')
       }));
+      this.renderChild(new libs.shelbyGT.ChannelInfoOverlayView({
+        el: this.$('.js-channels-menu'),
+        model : shelby.models.guide,
+        playlistManagerModel : shelby.models.playlistManager
+      }));
       if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
       this._setSelected();
     },
@@ -92,6 +97,14 @@
           this.$('.js-content-selector').hide();
         } else {
           this.$('.js-content-selector').show();
+        }
+
+        // show the channel  info header nav
+        if (model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
+          $('.channel-info-section').slideDown('fast');
+        }
+        else {
+          $('.channel-info-section').slideUp('fast');
         }
       }
     },

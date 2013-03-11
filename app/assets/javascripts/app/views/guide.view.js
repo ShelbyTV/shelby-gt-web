@@ -67,9 +67,14 @@ libs.shelbyGT.GuideView = Support.CompositeView.extend({
   },
 
   _onChangeDisplayState : function(guideModel, displayState) {
-    var isDotTvState = displayState == libs.shelbyGT.DisplayState.dotTv;
+    var isDotTvState = displayState == libs.shelbyGT.DisplayState.dotTv,
+        isChannelState = displayState == libs.shelbyGT.DisplayState.channel;
+
     this.$el.toggleClass('hide-guide--user-profile', isDotTvState);
-    $('body').toggleClass('shelby--dot-tv', isDotTvState);
+
+    $('body').toggleClass('shelby--dot-tv', isDotTvState)
+             .toggleClass('shelby--channels', isChannelState);
+
   }
 
 });

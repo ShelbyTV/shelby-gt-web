@@ -52,17 +52,4 @@ class FrameController < ApplicationController
       redirect_to root_path
     end
   end
-
-  def show_fb_genius_frame
-    # Get all pertinent info from the API
-    @roll = Shelby::API.get_roll(params[:roll_id])
-    @frame = Shelby::API.get_frame(params[:frame_id], true)
-    @video = Shelby::API.get_video(@frame['video_id']) if @frame
-
-    @share_type = :fb_genius
-
-    # And render it
-    render '/home/landing'
-  end
-
 end

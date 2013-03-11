@@ -19,5 +19,5 @@ var cookies = {
 			}
 		}
 		return "";
-	}	
+	}
 };

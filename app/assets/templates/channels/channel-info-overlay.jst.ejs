@@ -1,0 +1,11 @@
+<div class="channel_menu fin fin--top_left js-channel-block clearfix">
+  <ul class="list list--inline channel_menu__list clearfix">
+    <% _(channels).each(function(channel, key) { %>
+      <li class="channel_menu__item one-eighth js-channel js-track-event" data-ga_category="Channel Overlay" data-ga_action="Click channel" data-ga_label='<%= channel.title %>' data-channel="<%= key %>">
+        <button class="button_primer button_default channel_menu__button">
+          <%= channel.title %>
+        </button>
+      </li>
+    <% }); %>
+  </ul>
+</div>

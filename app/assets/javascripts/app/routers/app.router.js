@@ -106,7 +106,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       // when the DOM is ready load the social libraries that we use for logged out users to interact with
       // twitter and facebook
       $(document).ready(function(){
-        $('body').append(SHELBYJST['social-libs']());
+        $('body').append(SHELBYJST['social-libs']()).toggleClass('shelby--user-anonymous', true);
       });
 
       this._reroute();
