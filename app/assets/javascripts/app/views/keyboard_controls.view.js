@@ -12,7 +12,20 @@
     el : 'body',
 
     _keyCodeActionMap : {
-
+      //  esc
+      27 : {
+        model : 'userDesires',
+        attr : 'keyboardShortcuts',
+        val : function(){
+          if(libs.shelbyGT.DisplayState.channel) {
+            shelby.userInactivity.enableUserActivityDetection();
+            shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
+            $('.js-channels-welcome').toggleClass('hidden', true);
+            return !shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
+          }
+        },
+        is_transient : true
+      },
       //  spacebar
       32 : {
         model : 'userDesires',
@@ -141,6 +154,25 @@
           }
         },
         is_transient : true
+      },
+
+      // ? (question mark)
+      191 : {
+        model : 'userDesires',
+        attr : 'keyboardShortcuts',
+        val : function(){
+          if(libs.shelbyGT.DisplayState.channel) {
+            if ($('.js-channels-welcome').hasClass('hidden')){
+              shelby.userInactivity.disableUserActivityDetection();
+              shelby.models.userDesires.set({guideShown: false});
+            }
+            else {
+              shelby.userInactivity.enableUserActivityDetection();
+            }
+            $('.js-channels-welcome').toggleClass('hidden', !$('.js-channels-welcome').hasClass('hidden'));
+          }
+        },
+        is_transient : true
       }
     },
 
@@ -175,8 +207,15 @@
         var actionData = self._getActionData(event.keyCode);
         if(!actionData) return false;
         if(!actionData.is_transient){
+            // is_transient == false,
+            //    it just sets it to the new value and leaves it that way
+            //    (it's changing a value permanently, which will possibly influence future actions repeatedly)
           shelby.models[actionData.model].set(actionData.attr, actionData.val);
         } else {
+            // is_transient == true,
+            //    it sets whatever it's going to set to the value it wants,
+            //    then immediately sets it back to null
+            //    (the change it makes is more like an immediate signal for something to happen)
           shelby.models[actionData.model].triggerTransientChange(actionData.attr, actionData.val);
         }
         return false;

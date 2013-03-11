@@ -5,7 +5,7 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-      return SHELBYJST['video/channel-info-overlay'](obj);
+      return SHELBYJST['channels/channel-info-overlay'](obj);
   },
 
   initialize : function(){
@@ -17,16 +17,18 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({
+    this.$el.append(this.template({
       channels : shelby.config.channels
     }));
     this._findHighlightActiveChannel();
     if (this.options.playlistManagerModel.get('playlistType') == "channel"){
-        this.$('.channel-info-section').show();
+        this.$('.js-channel-block').show();
       }
   },
 
   _onClickChannel : function(e) {
+    shelby.models.userDesires.set({guideShown: true});
+
     shelby.router.navigate(
       "channels/" + $(e.currentTarget).data('channel'),
       {trigger:true}
@@ -36,10 +38,10 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
   _onPlaylistChanged : function(playlistManagerModel) {
     var _changedAttrs = _(playlistManagerModel.changedAttributes());
     if (playlistManagerModel.get('playlistType') !== "channel"){
-      this.$('.channel-info-section').hide();
+      this.$('.js-channel-block').hide();
     }
     else {
-      this.$('.channel-info-section').show();
+      this.$('.js-channel-block').show();
     }
     if (!_changedAttrs.has('playlistType') &&
         !_changedAttrs.has('playlistRollId')) {
@@ -51,7 +53,10 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
 
   _onCurrentChannelChanged : function(){
     // remove the active channel highlight
-    this.$('.channel-info-section-channel').removeClass('channel-info-section-channel--active');
+    this.$('.js-channel')
+          .children('.channel_menu__button')
+            .toggleClass('button_default',true)
+            .toggleClass('button_green-soft',false);
     // set the highlight on the new active channel
     this._findHighlightActiveChannel();
   },
@@ -59,8 +64,10 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
   _findHighlightActiveChannel : function(){
     // highlight the active channel if there is one
     var activeChannel = libs.utils.channels.getCurrentChannel();
-    this.$('.channel-info-section-channel[data-channel=' + activeChannel + ']')
-      .addClass('channel-info-section-channel--active').find('.title').text('#'+activeChannel);
+    this.$('.js-channel[data-channel=' + activeChannel + ']')
+          .children('.channel_menu__button')
+            .toggleClass('button_default',false)
+            .toggleClass('button_green-soft',true);
   }
 
 });

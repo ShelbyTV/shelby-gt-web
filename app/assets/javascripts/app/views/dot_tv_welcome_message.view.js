@@ -19,6 +19,8 @@ libs.shelbyGT.dotTVWelcome = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind('change', this.render, this);
     this.options.dotTvWelcomeModel.bind('dismiss', this._startPlaying, this);
+
+    this.render();
   },
 
   cleanup : function(){

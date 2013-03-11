@@ -13,16 +13,20 @@
     $color-names :
     blue         ,
     blue-dark    ,
+
     default      ,
+
     gray         ,
     gray-light   ,
     gray-medium  ,
     gray-seven   ,
+
     green        ,
     green-soft   ,
     purple       ,
     red          ,
     yellow       ,
+
     twitter-blue ,
     facebook-blue,
     tumblr-blue  ;
@@ -30,16 +34,21 @@
     $color-values      :
     #0590c4            ,
     darken(#0590c4,10%),
+
     #eeeeee            ,
+
     #27292A            ,
     #a0a0a0            ,
     #dddddd            ,
     #777777            ,
+
     #428e3a            ,
-    #6cbc45            ,
+    darken(#6cbc45,5%) ,
+
     #693a7b            ,
     #cc1235            ,
     #d5cd39            ,
+
     #2CAAE1            ,
     #013e80            ,
     #2f445b            ;

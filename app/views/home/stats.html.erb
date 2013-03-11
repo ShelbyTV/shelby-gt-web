@@ -20,9 +20,12 @@
   </script>
 </head>
 <body class="shelby shelby--landing shelby--user-stats<%= ' shelby--mobile' if @mobile_os %>">
+  <!-- Facebook widget -->
+  <div id="fb-root"></div>
+
   <div class="shelby__wrapper">
 
-    <%= render :partial => '/home/landing_header', :locals => {:user_stats =>  true} %>
+    <%= render :partial => '/home/landing_header', :locals => {:show_login =>  false} %>
 
     <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
       <section class="shelf shelf--error clearfix">

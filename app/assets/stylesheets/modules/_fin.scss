@@ -1,0 +1,153 @@
+//------------------------------------------------------------------------------
+//  Fin for tooltips and dropdowns!
+//------------------------------------------------------------------------------
+
+/*
+    Samples:
+    http://jsfiddle.net/matyus/qw97Q/
+
+    Example:
+
+    <div class="tooltip fin fin--bottom-left">
+        This is a tooltip.
+    </div>
+
+    Renders as:
+
+    .---------------------.
+    |                     |
+    |                     |
+    |  this is a tooltip  |
+    |                     |
+    |                     |
+    `-  ------------------`
+      \/
+
+    Class naming:
+
+    .fin--[edge]_[position on edge]
+
+    .fin--[left]_[top] == upper left hand corner, etc.
+
+    <div class="fin fin--top">         Fin Top</div>
+    <div class="fin fin--top_left">    Fin Top/Left</div>
+    <div class="fin fin--top_right">   Fin Top/Right</div>
+
+    <div class="fin fin--right">       Fin Right</div>
+    <div class="fin fin--right_bottom">Fin Right/Bottom</div>
+    <div class="fin fin--right_top">   Fin Right/Top</div>
+
+    <div class="fin fin--bottom">      Fin Bottom</div>
+    <div class="fin fin--bottom_right">Fin Bottom/Right</div>
+    <div class="fin fin--bottom_left"> Fin Bottom/Left</div>
+
+    <div class="fin fin--left">        Fin Left</div>
+    <div class="fin fin--left_bottom"> Fin Left/Bottom</div>
+    <div class="fin fin--left_top">    Fin Left/Top</div>
+
+*/
+
+.fin {
+  background-color: $base;
+  position: relative;
+
+  &:before {
+    @include rotate(45deg);
+
+    background-color: inherit;
+    content: "\0020";
+    display: block;
+    height: 1em;
+    position: absolute;
+    width: 1em;
+    z-index: -1;
+  }
+}
+
+.fin--top {
+  &:before {
+    left:50%;
+    margin-left: -0.5em;
+    top:-0.5em;
+  }
+}
+    .fin--top_left {
+      &:before {
+        left:2em;
+        margin-left: -0.5em;
+        top:-0.5em;
+      }
+    }
+    .fin--top_right {
+      &:before {
+        margin-left: -0.5em;
+        right:2em;
+        top:-0.5em;
+      }
+    }
+
+.fin--bottom {
+  &:before {
+    bottom:-0.5em;
+    left:50%;
+    margin-left: -0.5em;
+  }
+}
+    .fin--bottom_right {
+      &:before {
+        bottom:-0.5em;
+        margin-left: -0.5em;
+        right: 2em;
+      }
+    }
+    .fin--bottom_left {
+      &:before {
+        bottom:-0.5em;
+        left:2em;
+        margin-left: -0.5em;
+      }
+    }
+
+.fin--left {
+  &:before {
+    left:-0.5em;
+    margin-top: -0.5em;
+    top:50%;
+  }
+}
+    .fin--left_top {
+      &:before {
+        left:-0.5em;
+        margin-top: -0.5em;
+        top:2em;
+      }
+    }
+    .fin--left_bottom {
+      &:before {
+        bottom: 2em;
+        left:-0.5em;
+        margin-top: -0.5em;
+      }
+    }
+
+.fin--right {
+  &:before {
+    margin-top: -0.5em;
+    right: -0.5em;
+    top:50%;
+  }
+}
+    .fin--right_top {
+      &:before {
+        margin-top: -0.5em;
+        right: -0.5em;
+        top:2em;
+      }
+    }
+    .fin--right_bottom {
+      &:before {
+        bottom:2em;
+        margin-top: -0.5em;
+        right: -0.5em;
+      }
+    }

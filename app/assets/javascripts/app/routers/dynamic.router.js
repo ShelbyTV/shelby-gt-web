@@ -199,24 +199,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if the requested channel doesn't exist, just go to the first channel
       this.navigate('channels/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
     }
-    // dont show the guide initially when navigating to explore directly
-    if(shelby.routeHistory.length === 0){
+
+    shelby.views.channelWelcome = shelby.views.channelWelcome ||
+          new libs.shelbyGT.channelWelcome({
+            el : '.js-channels-welcome',
+            channelWelcomeModel : shelby.models.dotTvWelcome
+          });
+
+    // ultimatly this should only be shown the first visit which we can track via a cookie
+    if (cookies.get('channel-welcome') != "1") {
+      shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
       shelby.models.userDesires.set({guideShown: false});
+      shelby.userInactivity.disableUserActivityDetection();
+      $('.js-channels-welcome').toggleClass('hidden', false);
     }
-  },
-
-  displayFacebookGeniusRoll : function(rollId, frameId, params){
-    // Adjust *how* a few details are displayed via CSS
-    $('body').addClass('facebook-genius');
-    // Adjust *what* is displayed
-    var options = {updateRollTitle:false};
-
-    if (frameId){
-      this.displayFrameInRoll(rollId, frameId, params, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
-    } else {
-      this.displayRoll(rollId, null, null, options, {isIsolatedRoll : true, isFBGeniusRoll : true});
+    else {
+      $('.js-channels-welcome').toggleClass('hidden', true);
     }
-
   },
 
   displayRollFromFrame : function(frameId, params) {
@@ -506,13 +505,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // default options
     options = _.chain({}).extend(options).defaults({
       isIsolatedRoll : false,
-      isFBGeniusRoll : false,
       openInvite : false
     }).value();
 
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
     shelby.models.guide.set('hostName', options.hostName);
-    shelby.models.guide.set('displayFBGeniusRoll', options.isFBGeniusRoll);
 
     this._setupAnonUserViews(options);
     //--------------------------------------//

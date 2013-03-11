@@ -54,7 +54,7 @@
           link: 'http://<%= user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>',
           picture: "<%= frame['video']['thumbnail_url'] %>",
           description: "<%= frame['video']['description'] %>",
-          caption: ':: a video I shared on <%= user["personal_roll_subdomain"] %>.shelby.tv ::'
+          caption: '<%= frame["conversation"]["messages"][0]["text"] if frame["conversation"]["messages"]%>'
         },
         function(response) {
           if (response && response.post_id) {
