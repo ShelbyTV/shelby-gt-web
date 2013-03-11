@@ -1,5 +1,5 @@
 <article id="<%= frame['id'] %>" class="animate_module frame frame-list-item">
-  <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+  <a href="http://<%= @user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>" target="_blank" class="frame-header js-frame-activate">
     <h1 class="frame-title" title="<%= frame['video']['title'] %>">
      <%= frame['video']['title'] %>
     </h1>
@@ -9,7 +9,7 @@
     <div class="frame-body">
 
       <!-- TODO: should maybe use the thumbnail module JST -->
-      <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate" style="background-image: url('<%= frame['video']['thumbnail_url'] %>');" role="img">
+      <a href="http://<%= @user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>" target="_blank"  class="image_module frame-thumbnail js-frame-activate" style="background-image: url('<%= frame['video']['thumbnail_url'] %>');" role="img">
         <img class="visuallyhidden" src="<%= frame['video']['thumbnail_url'] %>" title="<%= frame['video']['title'] %>" alt="<%= frame['video']['title'] %> thumbnail">
       </a>
 
