@@ -207,9 +207,13 @@
             break;
           case 'movies' :
           case 'greatmoviemoments':
+          case 'greatmoviemoment':
             _rollId = shelby.config.hashtagRolls.greatmoviemoments;
             break;
           case 'storytellers':
+          case 'storyteller':
+          case 'stories':
+          case 'story':
             _rollId = shelby.config.hashtagRolls.storytellers;
             break;
           case 'laugh' :
