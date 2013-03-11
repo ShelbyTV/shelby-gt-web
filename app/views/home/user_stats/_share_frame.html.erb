@@ -1,11 +1,11 @@
 <% messages = {
     :low_watches => ["Want some feedback? Why not share that thang?", "Tell the world about this great video.", "Hrm. Low engagement? Get the word out...", "Good work this week, but try sharing. Video is mean to be shared, right?"],
-    :high_watches => ["Great job! Why not share the love?", "People like it! They Like it!", "Nice Job. You're a regular Ted Turner. Tell someone!"]
+    :high_watches => ["Great job! Why not share the love?", "People like it! They Like it!", "Nice job. You're a regular Ted Turner. Tell someone!"]
   } %>
 
 <section>
   <h1 class="share-message">
-    <% if frame['view_count'] < 8 %>
+    <% if frame['view_count'] < 5 %>
       <%= messages[:low_watches][rand(messages[:low_watches].length)] %>
     <% else %>
       <%= messages[:high_watches][rand(messages[:high_watches].length)] %>
