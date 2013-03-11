@@ -1,5 +1,5 @@
 {
-  "name": "Shelby Lean Back",
+  "name": "Shelby #Channels",
   "description": "Watch online video just like TV. Enjoy an amazing, fullscreen playback experience. Online video as it should be!",
   "version": "0.1",
   "manifest_version": 3,
@@ -8,7 +8,7 @@
       "http://shelby.tv/channels"
     ],
     "launch": {
-      "web_url": "http://shelby.tv/channels?src=chrome-explore-app"
+      "web_url": "http://shelby.tv/channels?src=chrome-channels-app"
     }
   },
   "icons": {
