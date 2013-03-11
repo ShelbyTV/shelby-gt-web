@@ -13,7 +13,7 @@
   window.fbAsyncInit = function() {
     console.log("fbAsyncInit");
     FB.init({
-      appId      : '<%= Settings::Facebook.facebook_app_id %>', // App ID
+      appId      : '<%= shelby.config.facebookAppId %>', // App ID
       channelURL : '//shelby.tv/channel.html', // Channel File
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
