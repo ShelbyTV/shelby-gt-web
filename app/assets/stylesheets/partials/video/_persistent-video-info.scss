@@ -91,10 +91,15 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
     height: 225px;
     left: 0;
     margin: 0;
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
     right: 0;
     z-index: 1;
+
+    .persistent_video_info__current-frame {
+      box-shadow: none;
+      overflow: visible;
+    }
 
     .persistent_video_info__foot {
       margin: 0;
@@ -206,6 +211,11 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   // AB TEST classes to test position of buttons in footer
   &.left { text-align: left; }
   &.right { text-align: right; }
+
+  //non-normative overrides
+  .share_menu {
+    position: absolute;
+  }
 }
 
 
@@ -218,38 +228,21 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   }
 
   .button_command {
-    // padding: 0.75em 1em 0.8em;
     margin-right: 0.25em;
   }
       .button_command--roll {
-        // padding: 0.75em 1em 0.8em;
       }
       .button_command--queue {
-        // padding: 0.75em 1em 0.8em;
       }
       .button_command--share {
-        // padding: 0.75em 1em 0.8em;
       }
       .button_command--comment {
-        // padding: 0.75em 1em 0.8em;
       }
       .button_command--twitter {
-        // .icon {
-        //   background-size: 1.8em;
-        //   padding-left: 0.8em;
-        // }
       }
       .button_command--facebook {
-        // .icon {
-        //   background-size: 1.8em;
-        //   padding-left: 0.8em;
-        // }
       }
       .button_command--email {
-        // .icon {
-        //   background-size: 1.8em;
-        //   padding-left: 0.8em;
-        // }
       }
 }
 

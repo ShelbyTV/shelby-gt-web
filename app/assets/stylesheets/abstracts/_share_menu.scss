@@ -1,0 +1,65 @@
+/*
+  This is an example of how you should use the Share Menu:
+
+  <div class="share_menu frame-body-wrapper">
+    <ul class="list">
+      <li class="list__item">
+        <button class="button_primer button_default button_share button_share--embed">
+          <i class="icon icon-embed">
+          </i>
+            Embed
+        </button>
+      </li>
+      <li>
+        <button class="button_primer button_default button_share button_share--email">
+          <i class="icon icon-email">
+          </i>
+            Email
+        </button>
+      </li>
+      <li>
+        <button class="button_primer button_default button_share button_share--twitter">
+          <i class="icon icon-social_twitter">
+          </i>
+            Twitter
+        </button>
+      </li>
+      <li>
+        <button class="button_primer button_default button_share button_share--facebook">
+          <i class="icon icon-social_facebook">
+          </i>
+            Facebook
+        </button>
+      </li>
+      <li>
+        <button class="button_primer button_default button_share button_share--shortlink">
+          <i class="icon icon-">
+          </i>
+            Shortlink
+        </button>
+      </li>
+    </ul>
+  </div>
+
+*/
+
+.share_menu {
+  bottom: 130%;
+  margin-left: -20%;
+  padding: 13px 15px 8px;
+  position: absolute;
+  width: 18em;
+
+  .list {
+    margin: auto;
+    width: 80%;
+  }
+
+  .list__item {
+    position: relative;
+  }
+
+  .button_primer {
+    margin-bottom: 0.5em;
+  }
+}
