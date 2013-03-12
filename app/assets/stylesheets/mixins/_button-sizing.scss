@@ -39,10 +39,14 @@
     @include button-sizing(frame-command);
 }
     //alphabetical
+    .button_command--cancel {}
     .button_command--email {}
     .button_command--embed {}
     .button_command--facebook {}
-    .button_command--like {}
+    .button_command--like {
+      width: 6.5em;
+    }
+    .button_command--remove {}
     .button_command--roll {}
     .button_command--share {}
     .button_command--shortlink {}
