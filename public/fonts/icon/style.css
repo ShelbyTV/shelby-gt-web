@@ -2,9 +2,9 @@
 	font-family: 'Shelby';
 	src:url('fonts/Shelby.eot');
 	src:url('fonts/Shelby.eot?#iefix') format('embedded-opentype'),
-		url('fonts/Shelby.svg#Shelby') format('svg'),
 		url('fonts/Shelby.woff') format('woff'),
-		url('fonts/Shelby.ttf') format('truetype');
+		url('fonts/Shelby.ttf') format('truetype'),
+		url('fonts/Shelby.svg#Shelby') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -15,6 +15,8 @@
 	content: attr(data-icon);
 	speak: none;
 	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
@@ -25,28 +27,24 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"]:before {
 */
-.icon-whole:before, .icon-type:before, .icon-mark:before, .icon-videocard_roll:before, .icon-videocard_queue:before, .icon-videocard_comment:before, .icon-star:before, .icon-social_twitter:before, .icon-social_tumblr:before, .icon-social_facebook:before, .icon-shortlink:before, .icon-search:before, .icon-player_sound_on:before, .icon-player_sound_off:before, .icon-player_play:before, .icon-player_pause:before, .icon-player_fullscreen_enable:before, .icon-player_fullscreen_disable:before, .icon-missing_thumb:before, .icon-iphone:before, .icon-heart:before, .icon-HD:before, .icon-email:before, .icon-comment_reply:before, .icon-chevron:before, .icon-carrot:before, .icon-cancel:before, .icon-avatar:before, .icon-arrow_up:before, .icon-arrow_right:before, .icon-arrow_left:before, .icon-arrow_down:before {
+.icon-whole:before, .icon-mark:before, .icon-videocard_roll:before, .icon-videocard_comment:before, .icon-star:before, .icon-social_twitter:before, .icon-social_tumblr:before, .icon-social_facebook:before, .icon-shortlink:before, .icon-search:before, .icon-player_sound_on:before, .icon-player_sound_off:before, .icon-player_play:before, .icon-player_pause:before, .icon-player_fullscreen_enable:before, .icon-player_fullscreen_disable:before, .icon-missing_thumb:before, .icon-iphone:before, .icon-heart:before, .icon-HD:before, .icon-email:before, .icon-comment_reply:before, .icon-chevron:before, .icon-carrot:before, .icon-cancel:before, .icon-avatar:before, .icon-arrow_up:before, .icon-arrow_right:before, .icon-arrow_left:before, .icon-arrow_down:before, .icon-type:before, .icon-share:before, .icon-embed:before, .icon-videocard_queue:before {
 	font-family: 'Shelby';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
 .icon-whole:before {
 	content: "\e000";
 }
-.icon-type:before {
-	content: "\e001";
-}
 .icon-mark:before {
 	content: "\e002";
 }
 .icon-videocard_roll:before {
 	content: "\e003";
-}
-.icon-videocard_queue:before {
-	content: "\e004";
 }
 .icon-videocard_comment:before {
 	content: "\e005";
@@ -128,4 +126,16 @@ you can use the generic selector below, but it's slower:
 }
 .icon-arrow_down:before {
 	content: "\e01f";
+}
+.icon-type:before {
+	content: "\e001";
+}
+.icon-share:before {
+	content: "\e020";
+}
+.icon-embed:before {
+	content: "\e021";
+}
+.icon-videocard_queue:before {
+	content: "\e004";
 }
