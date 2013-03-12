@@ -125,7 +125,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayIsolatedRoll : function(rollId, params){
-    if (shelby.abTests.dotTvLayout == 'user_profile' && this._checkIsoRollCreatorHasUserProfile(rollId)) {
+    if (true && this._checkIsoRollCreatorHasUserProfile(rollId)) {
       this._setupUserProfileView({
         rollId : rollId
       }, params);
@@ -135,7 +135,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayIsolatedRollwithFrame : function(rollId, frameId, params) {
-    if (shelby.abTests.dotTvLayout == 'user_profile' && this._checkIsoRollCreatorHasUserProfile(rollId)) {
+    if (true && this._checkIsoRollCreatorHasUserProfile(rollId)) {
       this._setupUserProfileView({
         frameId : frameId,
         rollId : rollId
