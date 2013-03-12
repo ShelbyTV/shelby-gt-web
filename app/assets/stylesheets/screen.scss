@@ -36,6 +36,7 @@
 //  Shelby.tv App
 //------------------------------------------------------------------------------
 @import "partials/app.html";
+@import "partials/app_banner";
 @import "partials/banner_notification";
 @import "partials/notifications";
 @import "partials/app-header";
@@ -118,6 +119,11 @@
 
 // REMOVE PREVIOUS EASTEREGGS IN PARTIAL BEFORE UNCOMMENTING:
 // @import "partials/eastereggs";
+
+//------------------------------------------------------------------------------
+//  CORPORATE
+//------------------------------------------------------------------------------
+@import "partials/corporate/chips-ahoy";
 
 //------------------------------------------------------------------------------
 //  non-semantic boilerplater helper classes

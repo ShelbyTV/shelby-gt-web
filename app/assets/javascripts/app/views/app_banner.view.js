@@ -14,6 +14,10 @@ libs.shelbyGT.AppBannerView = Support.CompositeView.extend({
     }
   },
 
+  template : function(obj){
+    return SHELBYJST['banner--chips-ahoy'](obj);
+  },
+
   render : function(){
     var currentUser = this.model.get('currentUser');
     if (!currentUser || !currentUser.has('id')) {
@@ -23,7 +27,7 @@ libs.shelbyGT.AppBannerView = Support.CompositeView.extend({
       if (specialConfig && specialConfig.showAppBanner) {
         this.$el.html('Show a banner');
       } else {
-        this.$el.html("Don't show a banner");
+        this.$el.html(this.template());
       }
     }
   },
