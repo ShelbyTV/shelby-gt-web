@@ -9,8 +9,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/:title"                   : "displayRoll",
     "roll/:rollId"                          : "displayRoll",
     "rollFromFrame/:frameId"                : "displayRollFromFrame",
-    "fb/genius/roll/:rollId"                : "displayFacebookGeniusRoll",
-    "fb/genius/roll/:rollId/frame/:frameId" : "displayFacebookGeniusRoll",
     "user/:id/personal_roll"                : "displayUserPersonalRoll",
     "channels"                              : "displayRandomChannel",
     "help"                                  : "displayHelp",
@@ -365,6 +363,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayRollList : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.rollList});
+    // send page view to GA
+      if(shelby.routeHistory.length !== 0){
+        try {
+          _gaq.push(['_trackPageview', '/me']);
+        } catch(e) {}
+      }
   },
 
   displayExploreView : function(){
@@ -389,6 +393,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }, {
         isIsolatedRoll : false
       });
+      // send page view to GA
+      if(shelby.routeHistory.length !== 0){
+        try {
+          _gaq.push(['_trackPageview', '/likes']);
+        } catch(e) {}
+      }
     } else {
       shelby.alert({message: "<p>Could not roll view to your Queue</p>"});
       this.navigate('', {trigger:true, replace:true});
@@ -398,6 +408,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayUserPreferences : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.userPreferences);
+    // send page view to GA
+    if(shelby.routeHistory.length !== 0){
+      try {
+        _gaq.push(['_trackPageview', '/preferences']);
+      } catch(e) {}
+    }
   },
 
   displayHelp : function(){
