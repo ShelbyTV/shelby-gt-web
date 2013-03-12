@@ -53,6 +53,22 @@
     .button_command--tumblr {}
     .button_command--twitter {}
 
+.button_share {
+  padding-bottom: 0.8em;
+  padding-right: 1em;
+  padding-top: 0.8em;
+  padding-left: 2.1em;
+  position: relative;
+  width: 100%;
+
+  .icon {
+    left: 0;
+    margin: 0.8em;
+    position: absolute;
+    top: 0;
+  }
+}
+
 .button_explore {
     @include button-sizing(explore-rolls);
 }

@@ -20,7 +20,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
     "click .persistent_video_info__current-frame  .js-facebook-share"             : "_shareCurrentToFacebook",
     "click .js-next-video"                                                        : "_skipToNextVideo",
-    "click .js-toggle-comment"                                                    : "_toggleComment"
+    "click .js-toggle-comment"                                                    : "_toggleComment",
+    "click .js-share-menu"                                                        : "_toggleShareMenu"
   },
 
   initialize: function(){
@@ -211,5 +212,18 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     if (!$(e.target).is('a')) {
       $(e.currentTarget).toggleClass('line-clamp--open');
     }
+  },
+
+  _toggleShareMenu : function(e){
+    var $this = $(e.currentTarget),
+        block = $this.siblings('.js-share-menu-block'),
+        blockHasClass = block.hasClass('hidden');
+
+    //  toggle the "button pressed" state
+    $this.toggleClass('button_default',!blockHasClass)
+         .toggleClass('button_gray-light',blockHasClass);
+
+    //  show/hide the panel
+    block.toggleClass('hidden',!blockHasClass);
   }
 });
