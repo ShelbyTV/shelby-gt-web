@@ -76,6 +76,13 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
       }));
       this._updateFollowButton();
     }
+    // if this roll belongs to the currently logged in user, give them the ability to change
+    // the header image
+    if (this._personalRollGlobalInstance && currentUser && currentUser.id == shelby.models.user.id) {
+      this.appendChildInto(new libs.shelbyGT.HeaderImageUploaderView({
+        model : this._personalRollGlobalInstance
+      }), '.js-user-card-header-image');
+    }
   },
 
   _onCurrentUserChange : function(userProfileModel, currentUser) {

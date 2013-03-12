@@ -42,6 +42,7 @@ libs.shelbyGT.HeaderImageUploaderView = Support.CompositeView.extend({
     var self = this;
 
     this.$el.fileupload({
+      fileInput: this.$('.js-file-upload'),
       xhrFields: { withCredentials: true },
       dataType: 'json',
       type: 'put',
