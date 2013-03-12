@@ -41,7 +41,7 @@
           // This page needs to send a heart beat to let GA know the user is still heere. -hs
           setInterval(function(){
             try {
-              _gaq.push(['_trackEvent', ".TV Hostpage", "Heartbeat", <%= @hostname %>]);
+              _gaq.push(['_trackEvent', ".TV Hostpage", "Heartbeat", '<%= @hostname %>']);
             } catch(e) {}
           }, 60000);
 	  </script>
