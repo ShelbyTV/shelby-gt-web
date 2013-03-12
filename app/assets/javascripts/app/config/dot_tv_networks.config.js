@@ -10,9 +10,11 @@ shelby.config.dotTvNetworks = {
     '51214bf1b415cc1c5c004bb7', // food52
     '513f4963b415cc143a00ec85' // chipsahoy
   ],
-  dotTvAppBannerEnabledUsers : [
+  dotTvCuratorSpecialConfig : [
     {
-      id : '513f4963b415cc143a00ec85' // chipsahoy
+      id : '513f4963b415cc143a00ec85', // chipsahoy
+      showAppBanner : true,
+      bodyClass : 'shelby--chips-ahoy'
     }
   ]
 };
