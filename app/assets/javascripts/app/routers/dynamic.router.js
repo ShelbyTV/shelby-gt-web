@@ -122,6 +122,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (query) {
       shelby.models.videoSearch.trigger('search');
     }
+
+    // send page view to GA
+    if(shelby.routeHistory.length !== 0){
+      try {
+        _gaq.push(['_trackPageview', '/search']);
+      } catch(e) {}
+    }
   },
 
   displayIsolatedRoll : function(rollId, params){
@@ -189,6 +196,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayRandomChannel : function(params) {
     var channelKeys = _.keys(shelby.config.channels);
     var randomChannelKey = channelKeys[_.random(channelKeys.length - 1)];
+    this.navigate('channels/' + randomChannelKey, {trigger: false, replace: true});
     this.displayChannel(randomChannelKey, params);
   },
 
@@ -199,6 +207,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if the requested channel doesn't exist, just go to the first channel
       this.navigate('channels/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
     }
+
+    // send page view to GA
+    if(shelby.routeHistory.length !== 0){
+      try {
+        _gaq.push(['_trackPageview', '/channels/'+channel]);
+      } catch(e) {}
+    }
+
 
     shelby.views.channelWelcome = shelby.views.channelWelcome ||
           new libs.shelbyGT.channelWelcome({
@@ -397,6 +413,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayTools : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.tools);
+
+    // send page view to GA
+    try { _gaq.push(['_trackPageview', '/tools']); } catch(e) {}
   },
 
   displayUserProfile : function(userName, params) {
