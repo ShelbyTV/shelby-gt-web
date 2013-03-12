@@ -91,8 +91,43 @@
     <div class="persistent_video_info__foot <%= (shelby.models.user.isAnonymous() && shelby.abTests) ? shelby.abTests.dotTvFooterButtonPositions : "" %>">
       <hr class="hr hr--double" />
 
+      <ul class="list list--inline persistent_video_info__commands">
+        <% if (!user.isAnonymous()) { %>
+          <li class="list__item">
+            <button class="button_primer button_blue button_command button_command--roll js-roll-frame js-track-event"
+                    data-ga_category="<%= eventTrackingCategory %>"
+                    data-ga_action="Click roll on current frame"
+                    data-ga_label="<%= shelby.models.user.get('nickname') %>">
+              <i class="icon icon-videocard_roll">
+              </i>
+                Roll…
+            </button>
+          </li>
+        <% } %>
 
-      <ul class="persistent_video_info__list persistent_video_info__list--actions">
+        <li class="list__item clearfix">
+          <button class="button_primer button_default button_command button_command--like js-queue-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
+              data-ga_category="<%= eventTrackingCategory %>"
+              data-ga_action="Click like on current frame"
+              data-ga_label="<%= shelby.models.user.get('nickname') %>">
+            <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon">
+            </i>
+            <span class="label">
+              <%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %>
+            </span>
+          </button>
+        </li>
+
+        <li class="list__item clearfix">
+          <button class="button_primer button_default button_command button_command--share js-share-frame">
+            <i class="icon icon-share">
+            </i>
+              Share…
+            </button>
+        </li>
+      </ul>
+
+      <ul style="display: none;" class="persistent_video_info__list persistent_video_info__list--actions">
         <% if (!user.isAnonymous()) { %>
           <li class="persistent_video_info__item clearfix">
             <button class="button_primer button_blue persistent_video_info__button--roll js-roll-frame js-track-event"
