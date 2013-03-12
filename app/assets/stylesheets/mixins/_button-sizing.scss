@@ -1,8 +1,8 @@
 @mixin button-sizing($use: generic) {
     @if $use == frame-command {
-    padding-bottom: .8em;
+    padding-bottom: 0.8em;
     padding-right: 1em;
-    padding-top: .8em;
+    padding-top: 0.8em;
     padding-left: 1em;
   } @elseif $use == explore-rolls {
     padding-top: .8em;
@@ -38,6 +38,16 @@
 .button_command {
     @include button-sizing(frame-command);
 }
+    //alphabetical
+    .button_command--email {}
+    .button_command--embed {}
+    .button_command--facebook {}
+    .button_command--like {}
+    .button_command--roll {}
+    .button_command--share {}
+    .button_command--shortlink {}
+    .button_command--tumblr {}
+    .button_command--twitter {}
 
 .button_explore {
     @include button-sizing(explore-rolls);
