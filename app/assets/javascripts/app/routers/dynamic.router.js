@@ -25,7 +25,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "stream"                                : "displayDashboard",
     "tools"                                 : "displayTools",
     ""                                      : "displayDashboard",
- // ":userName"                             : "displayUserProfile", we're not rolling out the user profiles at /userName yet
+    ":userName"                             : "displayUserProfile", //we're not rolling out the user profiles at /userName yet
     "*url"                                  : "doNothing"
   },
 

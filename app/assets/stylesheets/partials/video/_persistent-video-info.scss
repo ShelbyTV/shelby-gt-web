@@ -210,52 +210,47 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 
 //list of actions for current frame
-.persistent_video_info__list--actions {
+.persistent_video_info__commands {
   font-size: 1.2em;
   padding-left: 10px;
 
-  .persistent_video_info__item {
+  .list__item {
   }
 
-  .button_primer {
-    padding: 0.75em 1em 0.8em;
+  .button_command {
+    // padding: 0.75em 1em 0.8em;
     margin-right: 0.25em;
   }
-
-  .persistent_video_info__button--roll {
-    padding: 0.75em 1em 0.8em;
-  }
-
-  .persistent_video_info__button--queue {
-    padding: 0.75em 1em 0.8em;
-  }
-
-  .persistent_video_info__button--share {
-    padding: 0.75em 1em 0.8em;
-  }
-
-  .persistent_video_info__button--comment {
-    padding: 0.75em 1em 0.8em;
-  }
-  .persistent_video_info__button--twitter {
-    .icon {
-      background-size: 1.8em;
-      padding-left: 0.8em;
-    }
-  }
-  .persistent_video_info__button--facebook {
-    .icon {
-      background-size: 1.8em;
-      padding-left: 0.8em;
-    }
-  }
-
-  .persistent_video_info__button--email {
-    .icon {
-      background-size: 1.8em;
-      padding-left: 0.8em;
-    }
-  }
+      .button_command--roll {
+        // padding: 0.75em 1em 0.8em;
+      }
+      .button_command--queue {
+        // padding: 0.75em 1em 0.8em;
+      }
+      .button_command--share {
+        // padding: 0.75em 1em 0.8em;
+      }
+      .button_command--comment {
+        // padding: 0.75em 1em 0.8em;
+      }
+      .button_command--twitter {
+        // .icon {
+        //   background-size: 1.8em;
+        //   padding-left: 0.8em;
+        // }
+      }
+      .button_command--facebook {
+        // .icon {
+        //   background-size: 1.8em;
+        //   padding-left: 0.8em;
+        // }
+      }
+      .button_command--email {
+        // .icon {
+        //   background-size: 1.8em;
+        //   padding-left: 0.8em;
+        // }
+      }
 }
 
 // FreshPlay "new" frame
