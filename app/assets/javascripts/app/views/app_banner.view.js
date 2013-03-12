@@ -18,10 +18,13 @@ libs.shelbyGT.AppBannerView = Support.CompositeView.extend({
     var currentUser = this.model.get('currentUser');
     if (!currentUser || !currentUser.has('id')) {
       this.$el.html('Waiting for user info');
-    } else if (_(shelby.config.dotTvNetworks.dotTvAppBannerEnabledUsers).chain().pluck('id').contains(currentUser.id).value()) {
-      this.$el.html('Show a banner');
     } else {
-      this.$el.html("Don't show a banner");
+      var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: currentUser.id});
+      if (specialConfig && specialConfig.showAppBanner) {
+        this.$el.html('Show a banner');
+      } else {
+        this.$el.html("Don't show a banner");
+      }
     }
   },
 

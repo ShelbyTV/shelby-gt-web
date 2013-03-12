@@ -712,9 +712,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       } else {
         // if we don't have the roll info, fetch the roll and then use the creator nickname from
         // the fetched data to fetch the info for that creating user
-        roll.fetch({success : function(rollModel, response){
-          self._getUserByNicknameThenAssociatedRolls({userNickname: rollModel.get('creator_nickname')});
-        }});
+        roll.fetch({
+          url : shelby.config.apiRoot + '/roll/' + roll.id,
+          success : function(rollModel, response){
+            self._getUserByNicknameThenAssociatedRolls({userNickname: rollModel.get('creator_nickname')});
+          }
+        });
       }
     }
   },
