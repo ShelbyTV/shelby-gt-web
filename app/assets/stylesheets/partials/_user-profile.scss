@@ -44,11 +44,10 @@
   background-color: $base;
 
   & > .user_roll__item_lining {
-    border-bottom: 1px solid #CCC;
     border-top: 1px solid #EFEFEF;
+    box-shadow: 0 -1px 0 0 rgba(0,0,0,0.1);
     width: 1300px;
     margin: 0 auto;
-
   }
 
   &:first-child {

@@ -33,7 +33,10 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   render : function(){
     var self = this;
 
-    this.$el.html(this.template({roll : this.model}));
+    this.$el.html(this.template({
+      roll : this.model,
+      defaultButtonColor: false
+    }));
     this._channelListView = new libs.shelbyGT.RollView({
       collapseViewedFrameGroups : false,
       fetchParams : {
