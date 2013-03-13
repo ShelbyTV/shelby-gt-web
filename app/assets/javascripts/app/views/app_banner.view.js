@@ -19,6 +19,8 @@ libs.shelbyGT.AppBannerView = Support.CompositeView.extend({
   },
 
   render : function(){
+    this.$el.toggleClass('hidden',false);
+
     var currentUser = this.model.get('currentUser');
     if (!currentUser || !currentUser.has('id')) {
       this.$el.html('Waiting for user info');
