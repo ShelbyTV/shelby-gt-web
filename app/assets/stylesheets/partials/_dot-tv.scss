@@ -80,22 +80,15 @@
       }
     }
 
-    //videoplayer stuff
-    .videoplayer__wrapper {
-      background-color: $base;
-      padding: 0 10px 0 0;
-    }
-
     .videoplayer__badge {
       display: block;
       margin-bottom: -3px;
-      margin-right: 20px;
       margin-top: 4px;
     }
 
     .videoplayer {
       height: 90%;
-      margin: 0 20px;
+      margin: 0 0 0 20px;
     }
 
     .videoplayer-viewport {
