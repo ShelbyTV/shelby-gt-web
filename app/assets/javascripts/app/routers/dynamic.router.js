@@ -9,8 +9,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/:title"                   : "displayRoll",
     "roll/:rollId"                          : "displayRoll",
     "rollFromFrame/:frameId"                : "displayRollFromFrame",
-    "fb/genius/roll/:rollId"                : "displayFacebookGeniusRoll",
-    "fb/genius/roll/:rollId/frame/:frameId" : "displayFacebookGeniusRoll",
     "user/:id/personal_roll"                : "displayUserPersonalRoll",
     "channels"                              : "displayRandomChannel",
     "help"                                  : "displayHelp",
@@ -122,6 +120,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (query) {
       shelby.models.videoSearch.trigger('search');
     }
+
+    // send page view to GA
+    if(shelby.routeHistory.length !== 0){
+      try {
+        _gaq.push(['_trackPageview', '/search']);
+      } catch(e) {}
+    }
   },
 
   displayIsolatedRoll : function(rollId, params){
@@ -147,14 +152,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   _checkIsoRollCreatorHasUserProfile : function(rollId) {
     var rollModel = libs.shelbyGT.RollModel.findOrCreate({id:rollId});
-    if (rollModel.has('creator_id')) {
-      return _(shelby.config.dotTvNetworks.userProfileViewCreatorIds).contains(rollModel.get('creator_id'));
-    } else {
+    if (!rollModel.has('creator_id')) {
       //have to know the roll's creator before we can decide what layout to load,
       //so fetch this information synchronously
       rollModel.fetch({async:false});
-      return _(shelby.config.dotTvNetworks.userProfileViewCreatorIds).contains(rollModel.get('creator_id'));
     }
+      return _(shelby.config.dotTvNetworks.userProfileViewAbOverrideCreatorIds).contains(rollModel.get('creator_id')) ||
+              (shelby.abTests.dotTvLayout == 'user_profile' &&
+              _(shelby.config.dotTvNetworks.userProfileViewCreatorIds).contains(rollModel.get('creator_id')));
   },
 
   _prepIsolatedRoll : function(opts) {
@@ -189,6 +194,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayRandomChannel : function(params) {
     var channelKeys = _.keys(shelby.config.channels);
     var randomChannelKey = channelKeys[_.random(channelKeys.length - 1)];
+    this.navigate('channels/' + randomChannelKey, {trigger: false, replace: true});
     this.displayChannel(randomChannelKey, params);
   },
 
@@ -199,6 +205,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // if the requested channel doesn't exist, just go to the first channel
       this.navigate('channels/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
     }
+
+    // send page view to GA
+    if(shelby.routeHistory.length !== 0){
+      try {
+        _gaq.push(['_trackPageview', '/channels/'+channel]);
+      } catch(e) {}
+    }
+
 
     shelby.views.channelWelcome = shelby.views.channelWelcome ||
           new libs.shelbyGT.channelWelcome({
@@ -349,6 +363,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayRollList : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.rollList});
+    // send page view to GA
+      if(shelby.routeHistory.length !== 0){
+        try {
+          _gaq.push(['_trackPageview', '/me']);
+        } catch(e) {}
+      }
   },
 
   displayExploreView : function(){
@@ -373,6 +393,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }, {
         isIsolatedRoll : false
       });
+      // send page view to GA
+      if(shelby.routeHistory.length !== 0){
+        try {
+          _gaq.push(['_trackPageview', '/likes']);
+        } catch(e) {}
+      }
     } else {
       shelby.alert({message: "<p>Could not roll view to your Queue</p>"});
       this.navigate('', {trigger:true, replace:true});
@@ -382,6 +408,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayUserPreferences : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.userPreferences);
+    // send page view to GA
+    if(shelby.routeHistory.length !== 0){
+      try {
+        _gaq.push(['_trackPageview', '/preferences']);
+      } catch(e) {}
+    }
   },
 
   displayHelp : function(){
@@ -397,6 +429,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayTools : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.tools);
+
+    // send page view to GA
+    try { _gaq.push(['_trackPageview', '/tools']); } catch(e) {}
   },
 
   displayUserProfile : function(userName, params) {
