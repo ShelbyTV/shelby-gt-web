@@ -26,9 +26,9 @@ class RollController < ApplicationController
     get_roll_and_roll_creator_by_roll_id
     @dot_tv_footer_button_positions = ab_test :dot_tv_footer_button_positions unless user_signed_in?
     # TODO: remove all of this when new dot tvs go live across the site
-    Vanity.playground.experiments[:dot_tv_layout].chooses(:user_profile) if @roll && @roll['creator_id'] == '4d7ac94af6db241b5d000002'
-    @dot_tv_layout = ab_test :dot_tv_layout
-    Vanity.playground.experiments[:dot_tv_layout].chooses(nil) if @roll && @roll['creator_id'] == '4d7ac94af6db241b5d000002'
+    unless @roll && @roll['creator_id'] == '4d7ac94af6db241b5d000002'
+      @dot_tv_layout = ab_test :dot_tv_layout
+    end
     # END TODO: remove all of this when new dot tvs go live
     render '/home/app'
   end
