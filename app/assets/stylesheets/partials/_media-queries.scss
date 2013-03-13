@@ -3,10 +3,21 @@
 //------------------------------------------------------------------------------
 
 // USER PROFILE HACK -----------------------------------------------------------
+//  Screens that MORE THAN 900px tall.
+@media screen and (min-height: 900px) {
+  .shelby--dot-tv {
+    .hide-guide {
+      &.main-layout {
+        height: 800px;
+      }
+    }
+  }
+}
+
 //  Screens that MORE THAN 1620px wide.
 @media screen and (min-width: 1620px) {
   .app-banner__lining,
-  .main-layout {
+  .shelby--dot-tv .main-layout {
     width: 1610px;
     margin: auto;
   }
@@ -21,7 +32,7 @@
 //  Screens that LESS THAN 1300px wide.
 @media screen and (max-width: 1300px) {
   .app-banner__lining,
-  .main-layout {
+  .shelby--dot-tv .main-layout {
     width: 1010px;
     margin: auto;
   }
@@ -36,7 +47,7 @@
 //  Screens that LESS THAN 1000px wide.
 @media screen and (max-width: 1000px) {
   .app-banner__lining,
-  .main-layout {
+  .shelby--dot-tv .main-layout {
     width: 710px;
     margin: auto;
   }
