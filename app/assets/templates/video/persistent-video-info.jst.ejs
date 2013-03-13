@@ -119,7 +119,7 @@
         </li>
 
         <li class="list__item clearfix">
-          <button class="button_primer button_default button_command button_command--share js-share-menu">
+          <button class="button_primer button_default button_command button_command--share js-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Click share menu on current frame" data-ga_label="<%= shelby.models.user.get('nickname') %>">
             <i class="icon icon-share">
             </i>
               Share…
