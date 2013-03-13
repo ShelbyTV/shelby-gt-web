@@ -97,6 +97,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: shelby.models.user.get('nickname')});
           libs.utils.flash.detectFlash();
+          libs.utils.intercom.boot(userModel);
         }
       });
     }

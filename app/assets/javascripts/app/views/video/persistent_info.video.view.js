@@ -20,9 +20,11 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
     "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
     "click .persistent_video_info__current-frame  .js-facebook-share"             : "_shareCurrentToFacebook",
+    "click .js-button_share--facebook"                                            : "_shareCurrentToFacebook",
     "click .js-next-video"                                                        : "_skipToNextVideo",
     "click .js-toggle-comment"                                                    : "_toggleComment",
-    "click .js-share-menu"                                                        : "_toggleShareMenu"
+    "click .js-share-menu"                                                        : "_toggleShareMenu",
+    "click .js-hide-share-menu"                                                   : "_toggleShareMenu"
   },
 
   initialize: function(){
@@ -215,8 +217,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     }
   },
 
-  _toggleShareMenu : function(e){
-    var $this = $(e.currentTarget),
+  _toggleShareMenu : function(){
+    var $this = this.$('.js-share-menu'),
         block = $this.siblings('.js-share-menu-block'),
         blockHasClass = block.hasClass('hidden');
 
@@ -227,4 +229,5 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     //  show/hide the panel
     block.toggleClass('hidden',!blockHasClass);
   }
+
 });
