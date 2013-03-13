@@ -12,6 +12,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   events : {
     "click .persistent_video_info__current-frame  .js-roll-frame"                 : "_requestCurrentFrameRollView",
     "click .persistent_video_info__next-frame     .js-roll-frame"                 : "_requestNextFrameRollView",
+    "click .js-button_share--email"                                               : "_requestCurrentFrameShareView",
     "click .persistent_video_info__current-frame  .js-share-frame"                : "_requestCurrentFrameShareView",
     "click .persistent_video_info__next-frame     .js-share-frame"                : "_requestNextFrameShareView",
     "click .persistent_video_info__current-frame  .js-queue-frame:not(.queued)"   : "_queueCurrentFrame",
