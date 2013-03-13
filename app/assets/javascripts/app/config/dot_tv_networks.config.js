@@ -7,7 +7,8 @@ shelby.config.dotTvNetworks = {
     '51190f1db415cc77f308eb1c', // quilting
     '4dc0add6f6db246d8f000001', // henry
     '51214bf1b415cc1c5c004bb7', // food52
-    '513f4963b415cc143a00ec85'  // chipsahoy
+    '513f4963b415cc143a00ec85', // chipsahoy
+    '4f32e49fad9f11053b00020a'  // iceberg901
   ],
   userProfileViewAbOverrideCreatorIds : [
     '4d7ac94af6db241b5d000002' // chris
