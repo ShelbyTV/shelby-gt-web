@@ -148,10 +148,15 @@
 }
 
 //Elements---------------------------------------------------------
+.user-channel__avatar {
+  height: 1.5em;
+  width: 1.5em;
+}
+
 .user-channel__title {
   font-size: 1.7em;
   line-height: 2;
-  padding: 0 0.5em;
+  padding: 0.5em;
 }
 
 .user-channel__item {
@@ -189,7 +194,7 @@
 .user-channel__button_prev,
 .user-channel__button_next {
   border-radius: 0;
-  height: 12.55em;
+  height: 13.375em;
   font-size: 2.1em;
   margin: 0;
   opacity: 0.2;

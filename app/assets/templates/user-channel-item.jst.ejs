@@ -12,7 +12,8 @@
   <div class="media_body user-channel__wrapper clearfix">
     <div class="user-channel__head">
       <h3 class="user-channel__title js-user-channel-title">
-        <%= roll.get('title') %>
+        <% console.log(roll) %>
+        <%= roll.get('title') %> by <img class="user-channel__avatar" src="<%= roll.get('thumbnail_url') %>"/ > Chips Ahoy!
       </h3>
     </div>
 
