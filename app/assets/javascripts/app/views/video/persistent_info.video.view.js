@@ -20,6 +20,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
     "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
     "click .persistent_video_info__current-frame  .js-facebook-share"             : "_shareCurrentToFacebook",
+    "click .js-button_share--facebook"                                            : "_shareCurrentToFacebook",
     "click .js-next-video"                                                        : "_skipToNextVideo",
     "click .js-toggle-comment"                                                    : "_toggleComment",
     "click .js-share-menu"                                                        : "_toggleShareMenu",
