@@ -11,7 +11,7 @@
 //  Block
 //------------------------------------------------------------------------------
 .shelby--dot-tv {
-  background-color: white;
+  background-color: $base;
   overflow: visible;
 
   //hack layout panels
@@ -45,8 +45,9 @@
 
   .main-layout {
     background-color: $base;
-    box-shadow: $shadow;
     height: 500px;
+    margin: 0 auto 1px;
+    width: 1300px;
     z-index: 2;
   }
   //eo hack layout panels

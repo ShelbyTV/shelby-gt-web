@@ -5,6 +5,12 @@
 // USER PROFILE HACK -----------------------------------------------------------
 //  Screens that MORE THAN 1620px wide.
 @media screen and (min-width: 1620px) {
+  .app-banner,
+  .main-layout {
+    width: 1610px;
+    margin: auto;
+  }
+
   .user_roll__item {
     & > .user_roll__item_lining {
       width: 1610px;
@@ -14,6 +20,12 @@
 
 //  Screens that LESS THAN 1300px wide.
 @media screen and (max-width: 1300px) {
+  .app-banner,
+  .main-layout {
+    width: 1010px;
+    margin: auto;
+  }
+
   .user_roll__item {
     & > .user_roll__item_lining {
       width: 1010px;
@@ -23,6 +35,12 @@
 
 //  Screens that LESS THAN 1000px wide.
 @media screen and (max-width: 1000px) {
+  .app-banner,
+  .main-layout {
+    width: 710px;
+    margin: auto;
+  }
+
   .user_roll__item {
     & > .user_roll__item_lining {
       width: 710px;
