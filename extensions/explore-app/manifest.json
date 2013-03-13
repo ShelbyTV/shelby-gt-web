@@ -1,8 +1,8 @@
 {
   "name": "Shelby #Channels",
   "description": "Watch online video just like TV. Enjoy an amazing, fullscreen playback experience. Online video as it should be!",
-  "version": "0.1",
-  "manifest_version": 3,
+  "version": "0.2.6",
+  "manifest_version": 2,
   "app": {
     "urls": [
       "http://shelby.tv/channels"
@@ -14,5 +14,8 @@
   "icons": {
     "128": "icon_128.png"
   },
-  "permissions": []
+  "permissions": ["notifications", "background"],
+  "background": {
+    "page" : "https://shelby.tv/chrome_background.html"
+  }
 }
