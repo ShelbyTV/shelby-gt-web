@@ -35,7 +35,12 @@ class FrameController < ApplicationController
   # to allow linking to a frame within a subdomain'd iso roll
   #
   def show_frame_in_isolated_roll
+    roll = BSON::ObjectId.legal?(params[:roll_id]) ? Shelby::API.get_roll(params[:roll_id]) : nil
+    # TODO: remove all of this when new dot tvs go live across the site
+    Vanity.playground.experiments[:dot_tv_layout].chooses(:user_profile) if roll && roll['creator_id'] == '4d7ac94af6db241b5d000002'
     @dot_tv_layout = ab_test :dot_tv_layout
+    Vanity.playground.experiments[:dot_tv_layout].chooses(nil) if roll && roll['creator_id'] == '4d7ac94af6db241b5d000002'
+    # END TODO: remove all of this when new dot tvs go live
     render '/home/app'
   end
 
