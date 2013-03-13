@@ -1,0 +1,14 @@
+<html>
+<body>
+  <script>
+  if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
+    // function defined in step 2
+    notification = window.webkitNotifications.createNotification(
+      '', 'Notification Title', 'Notification content...');
+    notification.ondisplay = function() { console.log("onDisplay"); };
+    notification.onclose = function() { console.log("onClose"); };
+    notification.show();
+  }
+</script>
+</body>
+</html>

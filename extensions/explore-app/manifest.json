@@ -5,7 +5,7 @@
   "manifest_version": 2,
   "app": {
     "urls": [
-      "http://shelby.tv/channels"
+      "*://shelby.tv/channels/",
     ],
     "launch": {
       "web_url": "http://shelby.tv/channels?src=chrome-channels-app"
@@ -16,6 +16,6 @@
   },
   "permissions": ["notifications", "background"],
   "background": {
-    "page" : "https://shelby.tv/chrome_background.html"
+    "page" : "https://shelby.tv/channels/chrome_background.html#0"
   }
 }
