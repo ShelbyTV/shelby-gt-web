@@ -5,6 +5,8 @@
  */
 libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
+  _currentFrameShortlink : null,
+
   options : {
     eventTrackingCategory : 'Persistent Video Info' // what category events in this view will be tracked under
   },
@@ -24,7 +26,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .js-next-video"                                                        : "_skipToNextVideo",
     "click .js-toggle-comment"                                                    : "_toggleComment",
     "click .js-share-menu"                                                        : "_toggleShareMenu",
-    "click .js-hide-share-menu"                                                   : "_toggleShareMenu"
+    "click .js-hide-share-menu"                                                   : "_toggleShareMenu",
+    "click .js-frame-shortlink"                                                   : "_selectShortLinkText"
   },
 
   initialize: function(){
@@ -33,6 +36,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playlistFrameGroupCollection", this._onplaylistFrameGroupCollectionChange, this);
+    //TODO : figure out why we have this binding
     shelby.collections.videoSearchResultFrames.bind('add', this.render, this);
     shelby.models.queuedVideos.bind('add:queued_videos', this._onQueuedVideosAdd, this);
     shelby.models.queuedVideos.bind('remove:queued_videos', this._onQueuedVideosRemove, this);
@@ -75,11 +79,14 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _onActiveFrameModelChange : function(guideModel, activeFrameModel){
     this._currentFrame = activeFrameModel;
+    // current frame changed, so we don't have the right shortlink anymore
+    this._currentFrameShortlink = null;
     this.render();
   },
 
   _onplaylistFrameGroupCollectionChange : function(playlistManagerModel, playlistFrameGroupCollection){
     this._playlistFrameGroupCollection = playlistFrameGroupCollection;
+    //TODO : the menu should stay open and we don't need to reload the shortlink
     this.render();
   },
 
@@ -222,12 +229,49 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         block = $this.siblings('.js-share-menu-block'),
         blockHasClass = block.hasClass('hidden');
 
+    // if we're opening the menu and we don't have the shortlink
+    // yet, we need to get it now
+    if (blockHasClass && !this._currentFrameShortlink) {
+      this._getFrameShortlink();
+    }
+
     //  toggle the "button pressed" state
     $this.toggleClass('button_default',!blockHasClass)
          .toggleClass('button_gray-light',blockHasClass);
 
     //  show/hide the panel
     block.toggleClass('hidden',!blockHasClass);
+
+    // if we open the menu and we already have the shortlink,
+    // highlight it
+    if (blockHasClass && this._currentFrameShortlink) {
+      this.$('.js-frame-shortlink').select();
+    }
+
+  },
+
+  _getFrameShortlink : function() {
+    var self = this;
+    var $shortlinkTextInput = this.$('.js-frame-shortlink');
+    // fetch the short link
+    $.ajax({
+      url: 'http://api.shelby.tv/v1/frame/'+this._currentFrame.id+'/short_link',
+      dataType: 'jsonp',
+      success: function(r){
+        $shortlinkTextInput.val(r.result.short_link).select();
+        // save the link for future reference in case we are going to
+        // re-render without changing frames
+        self._currentFrameShortlink = r.result.short_link;
+      },
+      error: function(){
+        $shortlinkTextInput.val("Link Unavailable").select();
+      }
+    });
+  },
+
+  _selectShortLinkText : function(){
+    this.$('.js-frame-shortlink').select();
   }
+
 
 });
