@@ -61,15 +61,17 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
     var showDotTvNetworkBanner = true;
     // if there is relevant special configuration for this dot tv network, use it
     if (currentUser && !currentUser.isNew()) {
-      var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: currentUser.id});
-      if (specialConfig && _(specialConfig).has('showDotTvNetworkBanner')) {
-        showDotTvNetworkBanner = specialConfig.showDotTvNetworkBanner;
+      var userSpecialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: currentUser.id});
+      if (userSpecialConfig && _(userSpecialConfig).has('showDotTvNetworkBanner')) {
+        showDotTvNetworkBanner = userSpecialConfig.showDotTvNetworkBanner;
       }
     }
 
+    var activeFrameModel = this.options.guideModel.get('activeFrameModel');
+
     this.$el.html(this.template({
       user : currentUser,
-      frame : this.options.guideModel.get('activeFrameModel'),
+      frame : activeFrameModel,
       showDotTvNetworkBanner : showDotTvNetworkBanner,
       userPersonalRoll : userPersonalRollForDisplay
     }));
@@ -85,6 +87,7 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
         userDesires : shelby.models.userDesires
       }));
       this._updateFollowButton();
+      this._updateRollInfo(activeFrameModel);
     }
     // if this roll belongs to the currently logged in user, give them the ability to change
     // the header image
@@ -107,8 +110,7 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
   },
 
   _onActiveFrameModelChange : function(guideModel, activeFrameModel) {
-    var rollTitle = activeFrameModel && activeFrameModel.has('roll') && activeFrameModel.get('roll').get('title');
-    this.$('.js-youre-watching').text("You're watching: " + (rollTitle ? rollTitle : 'shelby.tv'));
+    this._updateRollInfo(activeFrameModel);
     this._updateFollowButton();
   },
 
@@ -133,6 +135,33 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
     } else {
       currentRollModel.joinRoll(clearBusyFunction, clearBusyFunction);
     }
+  },
+
+  _updateRollInfo : function(frame) {
+    var showRollAttribution = false;
+    var attribution = {};
+    var rollTitleOverride = null;
+
+    // if there is relevant special configuration for this roll, use it
+    if (frame && frame.has('roll')) {
+      var rollSpecialConfig = _(shelby.config.dotTvNetworks.dotTvRollSpecialConfig).findWhere({id: frame.get('roll').id});
+      if (rollSpecialConfig && _(rollSpecialConfig).has('showAttribution')) {
+        showRollAttribution = rollSpecialConfig.showAttribution;
+        attribution = rollSpecialConfig.attribution;
+      }
+      if (rollSpecialConfig && _(rollSpecialConfig).has('rollTitleOverride')) {
+        rollTitleOverride = rollSpecialConfig.rollTitleOverride;
+      }
+    }
+
+    var rollTitle = rollTitleOverride || (frame && frame.has('roll') && frame.get('roll').get('title'));
+    var rollInfoText;
+    if (showRollAttribution) {
+      rollInfoText = "You're watching: " + (rollTitle ? rollTitle : 'shelby.tv') + " by " + attribution.authorName;
+    } else {
+      rollInfoText = "You're watching: " + (rollTitle ? rollTitle : 'shelby.tv');
+    }
+    this.$('.js-youre-watching').text(rollInfoText);
   },
 
   _updateFollowButton : function() {
