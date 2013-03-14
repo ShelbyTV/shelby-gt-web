@@ -1,0 +1,74 @@
+/*
+*   Local Variables
+*/
+
+
+//------------------------------------------------------------------------------
+//  Search Welcome Pane
+//------------------------------------------------------------------------------
+.welcome-message__wrapper--search {
+  //ToolTip Block
+  .tooltip {
+    // background-color: lighten($shelby-green,20%);
+    background-color: orange;
+    position: absolute;
+    font-size: 1.3em;
+    -webkit-user-select: none; /* Safari, Chrome */
+    -moz-user-select: none; /* Firefox */
+    user-select: none; /* CSS3 */
+
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  // welcome message
+  .welcome-message {
+    top: 190px;
+    margin-left: -90px;
+  }
+
+  .search-header {
+    width: 367px;
+    top: 38px;
+    position: absolute;
+    left: 2px;
+    font-size: 1.1em;
+    line-height: 1.5;
+
+    .search_module__input {
+      font-weight: bold;
+    }
+  }
+
+//unnecessary nesting!
+      .tooltip--search {
+        left: 3.5em;
+        top: 8em;
+      }
+      .tooltip--prev-video {
+        margin-top: -10em;
+        left: 35em;
+        top: 50%;
+      }
+      .tooltip--next-video {
+        margin-top: -10em;
+        right: 7em;
+        top: 50%;
+      }
+      .tooltip--hide-guide {
+        margin-top: -2.8em;
+        left: 35em;
+        top: 50%;
+      }
+      .tooltip--play-video {
+        bottom: 245px;
+        left: 29em;
+      }
+      .tooltip--toggle-tooltips {
+        bottom: 1em;
+        right: 1em;
+      }
+
+
+}
