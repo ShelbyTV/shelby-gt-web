@@ -9,7 +9,7 @@
     <div class="welcome-message__body">
       <!-- <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) %>"/> -->
       <div class="media_image media_image--rev">
-        <button autofocus="autofocus" tabindex="0" class="button_primer button_blue welcome-message__button js-start-playing js-track-event" data-ga_category=".TV Welcome" data-ga_action="Click play button" data-ga_label="anonymous">
+        <button autofocus="autofocus" tabindex="0" class="button_primer button_blue welcome-message__button js-start-playing js-track-event" data-ga_category=".TV Welcome" data-ga_action="Click play button" data-ga_label="<%= shelby.models.user.get('nickname') %>">
           Play
         </button>
       </div>
