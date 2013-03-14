@@ -120,22 +120,22 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (query) {
       shelby.models.videoSearch.trigger('search');
     }
-
-    shelby.views.searchWelcome = shelby.views.searchWelcome ||
+    else {
+      shelby.views.searchWelcome = shelby.views.searchWelcome ||
           new libs.shelbyGT.searchWelcome({
             el : '.js-search-welcome',
             searchWelcomeModel : shelby.models.dotTvWelcome
           });
 
-    // ultimatly this should only be shown the first visit which we can track via a cookie
-    if (cookies.get('search-welcome') != "1") {
-      shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
-      shelby.models.userDesires.set({guideShown: false});
-      shelby.userInactivity.disableUserActivityDetection();
-      $('.js-welcome').toggleClass('hidden', false);
-    }
-    else {
-      $('.js-welcome').toggleClass('hidden', true);
+      // this should only be shown the first visit which we can track via a cookie
+      if (cookies.get('search-welcome') != "1") {
+        shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
+        shelby.userInactivity.disableUserActivityDetection();
+        $('#js-welcome, .js-search-welcome').toggleClass('hidden', false);
+      }
+      else {
+        $('#js-welcome, .js-search-welcome').toggleClass('hidden', true);
+      }
     }
 
     // send page view to GA
@@ -238,14 +238,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           });
 
     // ultimatly this should only be shown the first visit which we can track via a cookie
-    if (cookies.get('channel-welcome') != "1") {
+    if (cookies.get('channel-welcome') !== "1") {
       shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
       shelby.models.userDesires.set({guideShown: false});
       shelby.userInactivity.disableUserActivityDetection();
-      $('.js-welcome').toggleClass('hidden', false);
+      $('#js-welcome, .js-channels-welcome').toggleClass('hidden', false);
     }
     else {
-      $('.js-welcome').toggleClass('hidden', true);
+      $('#js-welcome, .js-channels-welcome').toggleClass('hidden', true);
     }
   },
 

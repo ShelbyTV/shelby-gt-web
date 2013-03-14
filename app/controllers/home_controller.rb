@@ -119,9 +119,6 @@ class HomeController < ApplicationController
     #   # A/B test - only for anonymous users
     #   @search_landing_banner_appear = ab_test :search_landing_banner_appear
     # end
-
-    # A/B test
-    @search_promote_repeat = ab_test :search_promote_repeat
     render '/home/app'
   end
 
