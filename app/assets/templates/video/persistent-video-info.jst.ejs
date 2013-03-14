@@ -140,7 +140,7 @@
                 <% } %>
                 <li>
                   <% if (user.isAnonymous()) { %>
-                    <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= anonUserShareEmailBody %>?utm_campaign=email-share">
+                    <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= encodeURIComponent(anonUserShareEmailBody) %>">
                   <% } %>
                     <button class="button_primer button_default button_share button_share--email js-hide-share-menu js-track-event<%= !user.isAnonymous() ? ' js-button_share--email' : ''%>" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                       <i class="icon icon-email">
@@ -153,7 +153,7 @@
                 </li>
                 <% if (user.isAnonymous()) { %>
                   <li>
-                    <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20video&url=<%= currentFramePermalink %>">
+                    <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
                       <button class="button_primer button_default button_share button_share--twitter js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                         <i class="icon icon-social_twitter">
                         </i>

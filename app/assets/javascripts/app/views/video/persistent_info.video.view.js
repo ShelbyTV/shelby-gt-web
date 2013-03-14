@@ -67,24 +67,40 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
     if(this._currentFrame && this._nextFrame){
       var emailBody;
+      var tweetIntentParams = {};
       if (shelby.models.user.isAnonymous()) {
-        // check if there is a special message for the anonymous email share,
-        // if so, use it
+        var permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
+        // check if there is a special configuration for frame's roll's creator
         var rollCreatorId = this._currentFrame.has('roll') && this._currentFrame.get('roll').has('creator_id') && this._currentFrame.get('roll').get('creator_id');
         var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: rollCreatorId});
-        var permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
+
+        // if there is a special message for the anonymous email share, use it
         if (specialConfig && specialConfig.customShareMessages && specialConfig.customShareMessages.email) {
           emailBody = _.template(specialConfig.customShareMessages.email, {
-            link : permalink
+            link : permalink + "?utm_campaign=email-share"
           });
         } else {
           //if not, just use the permalink as the entire email message
-          emailBody = permalink;
+          emailBody = permalink + "?utm_campaign=email-share";
+        }
+
+        // if there is a special message for the twitter text, use it
+        if (specialConfig && specialConfig.customShareMessages && specialConfig.customShareMessages.twitter) {
+          tweetIntentParams = {
+            text : _.template(specialConfig.customShareMessages.twitter, {link : permalink})
+          };
+        } else {
+          //if not, use the default twitter message
+          tweetIntentParams = {
+            text : 'Check out this video',
+            url : permalink
+          };
         }
       }
 
       this.$el.html(this.template({
         anonUserShareEmailBody : emailBody,
+        tweetIntentQueryString : $.param(tweetIntentParams),
         currentFrame           : this._currentFrame,
         eventTrackingCategory  : this.options.eventTrackingCategory,
         nextFrame              : this._nextFrame,
