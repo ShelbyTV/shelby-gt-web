@@ -16,8 +16,11 @@ shelby.config.dotTvNetworks = {
   dotTvCuratorSpecialConfig : [
     {
       id : '513f4963b415cc143a00ec85', // chipsahoy
-      showAppBanner : true,
-      bodyClass : 'shelby--chips-ahoy'
+      customShareMessages : {
+        email : 'Check this sweet video I found on ChipsAhoy.TV via Shelby.tv: <%= link %>'
+      },
+      bodyClass : 'shelby--chips-ahoy',
+      showAppBanner : true
     }
   ]
 };
