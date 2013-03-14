@@ -157,11 +157,15 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
     var rollTitle = rollTitleOverride || (frame && frame.has('roll') && frame.get('roll').get('title'));
     var rollInfoText;
     if (showRollAttribution) {
-      rollInfoText = "You're watching: " + (rollTitle ? rollTitle : 'shelby.tv') + " by " + attribution.authorName;
+      rollInfoText = SHELBYJST['dot-tv-roll-info']({
+        attribution : attribution,
+        rollTitle : (rollTitle ? rollTitle : 'shelby.tv')
+      });
     } else {
       rollInfoText = "You're watching: " + (rollTitle ? rollTitle : 'shelby.tv');
     }
-    this.$('.js-youre-watching').text(rollInfoText);
+    this.$('.js-panel').toggleClass('panel--with-attribution', showRollAttribution);
+    this.$('.js-youre-watching').html(rollInfoText);
   },
 
   _updateFollowButton : function() {

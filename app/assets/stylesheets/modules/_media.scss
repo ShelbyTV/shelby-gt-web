@@ -37,6 +37,15 @@
 .panel {
   padding: 1em;
 }
+    .panel--with-attribution {
+      .panel__h1 {
+        font-weight: normal;
+      }
+    }
+
+    .panel--left {
+      margin-left: 0;
+    }
 
   .panel__h1 {
     @include ellipsis;
@@ -49,7 +58,3 @@
   .panel__button {
     @include button-sizing;
   }
-
-.panel--left {
-  margin-left: 0;
-}

@@ -33,7 +33,7 @@ shelby.config.dotTvNetworks = {
         authorName : 'Chips Ahoy!'
       },
       showAttribution : true,
-      rollTitleOverride : 'March Madness'
+      rollTitleOverride : 'The Sweetest Bracket'
     },
     {
       id : '513f8019b415cc3b3900000d', // #sweetestbracket
