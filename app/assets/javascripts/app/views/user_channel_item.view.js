@@ -33,7 +33,26 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   render : function(){
     var self = this;
 
-    this.$el.html(this.template({roll : this.model}));
+    var attribution = {};
+    var showAttribution = false;
+    var rollTitleOverride = null;
+    // if there is relevant special configuration for this roll, use it
+    var specialConfig = _(shelby.config.dotTvNetworks.dotTvRollSpecialConfig).findWhere({id: this.model.id});
+    if (specialConfig && _(specialConfig).has('showAttribution')) {
+      showAttribution = specialConfig.showAttribution;
+      attribution = specialConfig.attribution;
+    }
+    if (specialConfig && _(specialConfig).has('rollTitleOverride')) {
+      rollTitleOverride = specialConfig.rollTitleOverride;
+    }
+
+    this.$el.html(this.template({
+      attribution : attribution,
+      roll : this.model,
+      customButtonColor: shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig[0].buttonColor,
+      rollTitleOverride : rollTitleOverride,
+      showAttribution : showAttribution
+    }));
     this._channelListView = new libs.shelbyGT.RollView({
       collapseViewedFrameGroups : false,
       fetchParams : {

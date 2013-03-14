@@ -1,0 +1,70 @@
+//  Chips Ahoy Overrides
+
+.shelby--chips-ahoy { }
+
+.app-banner--chips-ahoy {
+///////////////////////////
+//  dev crap
+  // margin: auto;
+///////////////////////////
+
+  background-image: url('/images/chips-ahoy/banner.png');
+  background-position: center center;
+  background-repeat: repeat-x;
+  height: 97px;
+
+  .media_image:first-child {
+    height: 83px;
+    width: 230px;
+  }
+
+  .media_image--rev {
+    .brand__flourish {
+      margin-right: 1em;
+    }
+  }
+
+    .brand__logo {
+      background-image: url('/images/chips-ahoy/logo.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 73px;
+      float: left;
+      margin-top: 5px;
+      width: 176px;
+    }
+
+    .brand__logo + .brand__flourish {
+      margin-left: 20px;
+      margin-top: 50px;
+    }
+
+    .brand__flourish {
+      display: inline-block;
+    }
+
+    .brand__h1 {
+      color: $button-color;
+      margin-top: 0.7em;
+      text-shadow: $shadow-text;
+      text-align: center;
+
+      a {
+        color: inherit;
+      }
+    }
+
+    .brand__social_button {
+      font-size: 2em;
+      margin: 0.5em 0 0.3em 0.5em;
+      padding: 0.6em 0.7em;
+
+      .icon-social_facebook {
+        color: $facebook-blue;
+      }
+
+      .icon-social_twitter {
+        color: $twitter-blue;
+      }
+    }
+}

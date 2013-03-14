@@ -23,7 +23,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "stream"                                : "displayDashboard",
     "tools"                                 : "displayTools",
     ""                                      : "displayDashboard",
- // ":userName"                             : "displayUserProfile", we're not rolling out the user profiles at /userName yet
+    ":userName"                             : "displayUserProfile", //we're not rolling out the user profiles at /userName yet
     "*url"                                  : "doNothing"
   },
 
@@ -147,7 +147,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayIsolatedRoll : function(rollId, params){
-    if (this._checkIsoRollCreatorHasUserProfile(rollId)) {
+    if (true && this._checkIsoRollCreatorHasUserProfile(rollId)) {
       this._setupUserProfileView({
         rollId : rollId
       }, params);
@@ -157,7 +157,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayIsolatedRollwithFrame : function(rollId, frameId, params) {
-    if (this._checkIsoRollCreatorHasUserProfile(rollId)) {
+    if (true && this._checkIsoRollCreatorHasUserProfile(rollId)) {
       this._setupUserProfileView({
         frameId : frameId,
         rollId : rollId
@@ -584,8 +584,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     if(!Browser.isIos()){
       //irrelevant views for iOS devices.
-      shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
-        new libs.shelbyGT.ExtensionBannerNotification();
+      if( !shelby.models.user.isAnonymous() ) {
+        shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
+          new libs.shelbyGT.ExtensionBannerNotification({
+            guideModel : shelby.models.guide
+          });
+      }
 
       shelby.views.keyboardControls = shelby.views.keyboardControls ||
           new libs.shelbyGT.KeyboardControlsView();
@@ -764,9 +768,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       } else {
         // if we don't have the roll info, fetch the roll and then use the creator nickname from
         // the fetched data to fetch the info for that creating user
-        roll.fetch({success : function(rollModel, response){
-          self._getUserByNicknameThenAssociatedRolls({userNickname: rollModel.get('creator_nickname')});
-        }});
+        roll.fetch({
+          url : shelby.config.apiRoot + '/roll/' + roll.id,
+          success : function(rollModel, response){
+            self._getUserByNicknameThenAssociatedRolls({userNickname: rollModel.get('creator_nickname')});
+          }
+        });
       }
     }
   },

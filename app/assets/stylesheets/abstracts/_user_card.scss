@@ -10,6 +10,15 @@
 //------------------------------------------------------------------------------
 .user_card {
   margin: 8px;
+
+  //NON-NORMATIVE, not really part of the user card but should be applied
+  //when it's in the user_card context
+  .guide-header-roll-header-uploader {
+    background-color: $base;
+    font-size: 0.95em;
+    margin: 5px;
+    z-index: 1;
+  }
 }
 
 //------------------------------------------------------------------------------

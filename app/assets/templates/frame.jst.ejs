@@ -35,7 +35,7 @@
         <ul class="menu_list frame-command-menu frame-list" role="menubar">
           <% if (!user.isAnonymous()) { %>
             <li class="menu_item" role="menuitem">
-              <button class="button_primer button_default frame-command command-roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
+              <button class="button_primer button_default button_command button_command--roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
                 <i class="icon-videocard_roll">
                 </i>
                   Roll…
@@ -45,7 +45,7 @@
 
           <li class="menu_item" role="menuitem">
             <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
-              <button class="button_primer button_default frame-command command-queue js-queue-frame
+              <button class="button_primer button_default button_command button_command--like js-queue-frame
                              <%= (videoIsInQueue) ? ' queued' : ' button_default' %>">
                 <i class="icon-heart<%= videoIsInQueue ? ' icon-heart--red': '' %>">
                 </i>
@@ -54,7 +54,7 @@
                 </span>
               </button>
             <% } else { %>
-              <button class="button_primer button_default frame-command command-queue js-queue-frame remove-frame js-remove-frame queued">
+              <button class="button_primer button_default button_command button_command--remove js-queue-frame remove-frame js-remove-frame queued">
                 <span class="label">
                   Remove
                 </span>
@@ -64,7 +64,7 @@
 
           <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
             <li class="menu_item right" role="menuitem">
-              <button class="button_primer <%= shelby.models.user.get('admin') ? 'button_red' : 'button_gray' %> frame-command command-remove js-remove-frame">
+              <button class="button_primer <%= shelby.models.user.get('admin') ? 'button_red' : 'button_gray' %> button_command button_command--remove js-remove-frame">
                 <i class="icon-cancel"></i>
               </button>
             </li>

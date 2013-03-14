@@ -58,9 +58,21 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
       this._personalRollGlobalInstance.bind('change:header_image_file_name', this.render, this);
     }
 
+    var showDotTvNetworkBanner = true;
+    // if there is relevant special configuration for this dot tv network, use it
+    if (currentUser && !currentUser.isNew()) {
+      var userSpecialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: currentUser.id});
+      if (userSpecialConfig && _(userSpecialConfig).has('showDotTvNetworkBanner')) {
+        showDotTvNetworkBanner = userSpecialConfig.showDotTvNetworkBanner;
+      }
+    }
+
+    var activeFrameModel = this.options.guideModel.get('activeFrameModel');
+
     this.$el.html(this.template({
       user : currentUser,
-      frame : this.options.guideModel.get('activeFrameModel'),
+      frame : activeFrameModel,
+      showDotTvNetworkBanner : showDotTvNetworkBanner,
       userPersonalRoll : userPersonalRollForDisplay
     }));
     if (currentUser && !currentUser.isNew()) {
@@ -75,6 +87,14 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
         userDesires : shelby.models.userDesires
       }));
       this._updateFollowButton();
+      this._updateRollInfo(activeFrameModel);
+    }
+    // if this roll belongs to the currently logged in user, give them the ability to change
+    // the header image
+    if (this._personalRollGlobalInstance && currentUser && currentUser.id == shelby.models.user.id) {
+      this.appendChildInto(new libs.shelbyGT.HeaderImageUploaderView({
+        model : this._personalRollGlobalInstance
+      }), '.js-user-card-header-image');
     }
   },
 
@@ -90,8 +110,7 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
   },
 
   _onActiveFrameModelChange : function(guideModel, activeFrameModel) {
-    var rollTitle = activeFrameModel && activeFrameModel.has('roll') && activeFrameModel.get('roll').get('title');
-    this.$('.js-youre-watching').text("You're watching: " + (rollTitle ? rollTitle : 'shelby.tv'));
+    this._updateRollInfo(activeFrameModel);
     this._updateFollowButton();
   },
 
@@ -118,6 +137,37 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
     }
   },
 
+  _updateRollInfo : function(frame) {
+    var showRollAttribution = false;
+    var attribution = {};
+    var rollTitleOverride = null;
+
+    // if there is relevant special configuration for this roll, use it
+    if (frame && frame.has('roll')) {
+      var rollSpecialConfig = _(shelby.config.dotTvNetworks.dotTvRollSpecialConfig).findWhere({id: frame.get('roll').id});
+      if (rollSpecialConfig && _(rollSpecialConfig).has('showAttribution')) {
+        showRollAttribution = rollSpecialConfig.showAttribution;
+        attribution = rollSpecialConfig.attribution;
+      }
+      if (rollSpecialConfig && _(rollSpecialConfig).has('rollTitleOverride')) {
+        rollTitleOverride = rollSpecialConfig.rollTitleOverride;
+      }
+    }
+
+    var rollTitle = rollTitleOverride || (frame && frame.has('roll') && frame.get('roll').get('title'));
+    var rollInfoText;
+    if (showRollAttribution) {
+      rollInfoText = SHELBYJST['dot-tv-roll-info']({
+        attribution : attribution,
+        rollTitle : (rollTitle ? rollTitle : 'shelby.tv')
+      });
+    } else {
+      rollInfoText = "You're watching: " + (rollTitle ? rollTitle : 'shelby.tv');
+    }
+    this.$('.js-panel').toggleClass('panel--with-attribution', showRollAttribution);
+    this.$('.js-youre-watching').html(rollInfoText);
+  },
+
   _updateFollowButton : function() {
      var activeFrameModel = this.options.guideModel.get('activeFrameModel');
      var currentRoll = activeFrameModel && activeFrameModel.get('roll');
@@ -141,7 +191,25 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
   _onSubscribe: function(){
     var currentRoll = this.options.guideModel.get('activeFrameModel').get('roll');
 
-    var href = "/subscribe-via-email/roll/"+currentRoll.id+"?roll_title="+currentRoll.get('title')+"&curator="+currentRoll.get('creator_nickname'),
+    var showRollAttribution = false;
+    var attribution = {};
+    var rollTitleOverride = null;
+
+    // if there is relevant special configuration for this roll, use it
+    var rollSpecialConfig = _(shelby.config.dotTvNetworks.dotTvRollSpecialConfig).findWhere({id: currentRoll.id});
+    if (rollSpecialConfig && _(rollSpecialConfig).has('showAttribution')) {
+      showRollAttribution = rollSpecialConfig.showAttribution;
+      attribution = rollSpecialConfig.attribution;
+    }
+    if (rollSpecialConfig && _(rollSpecialConfig).has('rollTitleOverride')) {
+      rollTitleOverride = rollSpecialConfig.rollTitleOverride;
+    }
+
+    var params = {
+      'roll_title' : rollTitleOverride || currentRoll.get('title'),
+      curator : showRollAttribution ? attribution.authorName : currentRoll.get('creator_nickname')
+    };
+    var href = "/subscribe-via-email/roll/"+currentRoll.id+"?"+$.param(params);
     width = 700,
     height = 500,
     left = (screen.width/2)-(width/2),

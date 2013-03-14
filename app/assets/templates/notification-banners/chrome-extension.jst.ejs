@@ -10,7 +10,7 @@
   </div><!-- eo notification_action -->
 
   <div class="notification_body">
-    <a class="button_primer faux_button button_gray-medium extension-notification-radar-button" href="https://chrome.google.com/webstore/detail/shelbytv-video-radar/ifdmhakojchpihfoebiihdjcphmmhcol" title="Click here to install the Shelby Video Radar!" target="_blank">
+    <a class="button_primer faux_button button_gray-medium extension-notification-radar-button" href="<%= shelby.config.chromeExtensionWebStoreUrl %>" title="Click here to install the Shelby Video Radar!" target="_chromeExt">
       <i class="button_icon_left icon">
         Shelby Video Radar
       </i>
@@ -20,16 +20,3 @@
     </h1>
   </div>
 </div><!-- eo extension-notification -->
-
-
-
-<div class="chrome-extension-notification video-radar-lining clearfix">
-	<div class="notification-banner-left">
-		<h1 class="video-radar-title">Video Radar</h1>
-		<h2 class="video-radar-subtitle">Add video to Shelby! <em>Queue</em> and <em>Roll</em> while you browse the web.</h2>
-		<button class="js-dismiss-extension-banner dismiss-banner-notification">✕</button>
-	</div>
-	<div class="notification-banner-right get-extension-wrapper dropdown_module">
-		<a href="<%= shelby.config.chromeExtensionWebStoreUrl %>" target="_chromeExt" class="get-extension">✚ Get the Chrome Extension</a>
-	</div>
-</div>
