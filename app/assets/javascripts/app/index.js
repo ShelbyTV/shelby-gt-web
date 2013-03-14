@@ -55,6 +55,7 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./browser.js
 //= require ./utils/disqus.js
 //= require ./models/db/user.model.js
+//= require ./models/db/app_progress.model.js
 //
 //shelby backbone app - all other assets
 //= require_tree ./config

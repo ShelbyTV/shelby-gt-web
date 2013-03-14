@@ -14,6 +14,14 @@
   background-color: $base;
   overflow: visible;
 
+  //notifications: shelby radar && chrome extension
+  .notification-banner-wrapper {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
   //hack layout panels
   .shelby-wrapper {
     height: 100%;

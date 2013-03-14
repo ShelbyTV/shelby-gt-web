@@ -567,8 +567,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     if(!Browser.isIos()){
       //irrelevant views for iOS devices.
-      shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
-        new libs.shelbyGT.ExtensionBannerNotification();
+      if( !shelby.models.user.isAnonymous() ) {
+        shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
+          new libs.shelbyGT.ExtensionBannerNotification({
+            guideModel : shelby.models.guide
+          });
+      }
 
       shelby.views.keyboardControls = shelby.views.keyboardControls ||
           new libs.shelbyGT.KeyboardControlsView();
