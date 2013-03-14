@@ -30,6 +30,6 @@ libs.shelbyGT.channelWelcome = Support.CompositeView.extend({
     // already dismissed so don't want to respond to events on the model anymore
     this.options.channelWelcomeModel.unbind('dismiss', this._startPlaying, this);
     shelby.userInactivity.enableUserActivityDetection();
-   //cookies.set('channel-welcome', 1, 1000);
+   cookies.set('channel-welcome', 1, 1000);
   }
 });
