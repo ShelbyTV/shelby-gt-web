@@ -40,7 +40,7 @@ libs.shelbyGT.searchWelcome = Support.CompositeView.extend({
     // already dismissed so don't want to respond to events on the model anymore
     this.options.searchWelcomeModel.unbind('dismiss', this._startPlaying, this);
     shelby.userInactivity.enableUserActivityDetection();
-    //cookies.set('search-welcome', 1, 1000);
+    cookies.set('search-welcome', 1, 1000);
     this.$('#js-video-search-query-input').val('');
     return false;
   }
