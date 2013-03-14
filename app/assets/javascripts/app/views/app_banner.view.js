@@ -23,13 +23,13 @@ libs.shelbyGT.AppBannerView = Support.CompositeView.extend({
 
     var currentUser = this.model.get('currentUser');
     if (!currentUser || !currentUser.has('id')) {
-      this.$el.html('Waiting for user info');
+      this.$el.html('');
     } else {
       var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: currentUser.id});
       if (specialConfig && specialConfig.showAppBanner) {
-        this.$el.html('Show a banner');
-      } else {
         this.$el.html(this.template());
+      } else {
+        this.$el.html('');
       }
     }
   },

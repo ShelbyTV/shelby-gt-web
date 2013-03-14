@@ -204,6 +204,7 @@ class HomeController < ApplicationController
           when "mobilona.tv" then "511a6296b415cc12d0057dcf"        # requested by Julie, added 2/14/13 -ds
           when "theadventurous.tv" then "511a62d4b415cc06c70a771b"  # requested by J.McFaddan, added 2/18/13 -hs
           when "journeyful.tv" then "5114657bb415cc1ded5a399c" # requested by Moe I., added 3/7/13 -hs
+          when "chipsahoy.tv" then "513f4964b415cc143a00ec8b"
           when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
           else
