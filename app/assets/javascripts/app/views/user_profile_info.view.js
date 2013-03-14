@@ -58,9 +58,19 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
       this._personalRollGlobalInstance.bind('change:header_image_file_name', this.render, this);
     }
 
+    var showDotTvNetworkBanner = true;
+    // if there is relevant special configuration for this dot tv network, use it
+    if (currentUser && !currentUser.isNew()) {
+      var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: currentUser.id});
+      if (specialConfig && _(specialConfig).has('showDotTvNetworkBanner')) {
+        showDotTvNetworkBanner = specialConfig.showDotTvNetworkBanner;
+      }
+    }
+
     this.$el.html(this.template({
       user : currentUser,
       frame : this.options.guideModel.get('activeFrameModel'),
+      showDotTvNetworkBanner : showDotTvNetworkBanner,
       userPersonalRoll : userPersonalRollForDisplay
     }));
     if (currentUser && !currentUser.isNew()) {

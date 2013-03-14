@@ -1,8 +1,10 @@
 <% if (user && !user.isNew()) { %>
   <div class="user_card frame-body-wrapper clearfix">
-    <div class="image_module image_glow--bottom user_card__head js-user-card-header-image"<% if (userPersonalRoll) { %>style="background-image:url(<%= libs.shelbyGT.viewHelpers.roll.guideHeaderImageURL(userPersonalRoll) %>);"<% } %>>
-      <h1 class="user_card__h1"><%= user.get('name') || user.get('nickname') %> Network</h1>
-    </div>
+    <% if (showDotTvNetworkBanner) { %>
+      <div class="image_module image_glow--bottom user_card__head js-user-card-header-image"<% if (userPersonalRoll) { %>style="background-image:url(<%= libs.shelbyGT.viewHelpers.roll.guideHeaderImageURL(userPersonalRoll) %>);"<% } %>>
+        <h1 class="user_card__h1"><%= user.get('name') || user.get('nickname') %> Network</h1>
+      </div>
+    <% } %>
 
     <div class="user_card__body media_module clearfix">
       <div class="xuser-avatar media_image image_module" style="background-image: url(<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user, libs.shelbyGT.UserAvatarSizes.large) %>);">

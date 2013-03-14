@@ -21,7 +21,8 @@ shelby.config.dotTvNetworks = {
         twitter : 'Do you have the #sweetestbracket? Check this sweet video I found on @ChipsAhoy TV <%= link %> via @Shelby'
       },
       bodyClass : 'shelby--chips-ahoy',
-      showAppBanner : true
+      showAppBanner : true,
+      showDotTvNetworkBanner : false
     }
   ]
 };
