@@ -157,11 +157,15 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
     var rollTitle = rollTitleOverride || (frame && frame.has('roll') && frame.get('roll').get('title'));
     var rollInfoText;
     if (showRollAttribution) {
-      rollInfoText = "You're watching: " + (rollTitle ? rollTitle : 'shelby.tv') + " by " + attribution.authorName;
+      rollInfoText = SHELBYJST['dot-tv-roll-info']({
+        attribution : attribution,
+        rollTitle : (rollTitle ? rollTitle : 'shelby.tv')
+      });
     } else {
       rollInfoText = "You're watching: " + (rollTitle ? rollTitle : 'shelby.tv');
     }
-    this.$('.js-youre-watching').text(rollInfoText);
+    this.$('.js-panel').toggleClass('panel--with-attribution', showRollAttribution);
+    this.$('.js-youre-watching').html(rollInfoText);
   },
 
   _updateFollowButton : function() {
@@ -187,7 +191,25 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
   _onSubscribe: function(){
     var currentRoll = this.options.guideModel.get('activeFrameModel').get('roll');
 
-    var href = "/subscribe-via-email/roll/"+currentRoll.id+"?roll_title="+currentRoll.get('title')+"&curator="+currentRoll.get('creator_nickname'),
+    var showRollAttribution = false;
+    var attribution = {};
+    var rollTitleOverride = null;
+
+    // if there is relevant special configuration for this roll, use it
+    var rollSpecialConfig = _(shelby.config.dotTvNetworks.dotTvRollSpecialConfig).findWhere({id: currentRoll.id});
+    if (rollSpecialConfig && _(rollSpecialConfig).has('showAttribution')) {
+      showRollAttribution = rollSpecialConfig.showAttribution;
+      attribution = rollSpecialConfig.attribution;
+    }
+    if (rollSpecialConfig && _(rollSpecialConfig).has('rollTitleOverride')) {
+      rollTitleOverride = rollSpecialConfig.rollTitleOverride;
+    }
+
+    var params = {
+      'roll_title' : rollTitleOverride || currentRoll.get('title'),
+      curator : showRollAttribution ? attribution.authorName : currentRoll.get('creator_nickname')
+    };
+    var href = "/subscribe-via-email/roll/"+currentRoll.id+"?"+$.param(params);
     width = 700,
     height = 500,
     left = (screen.width/2)-(width/2),

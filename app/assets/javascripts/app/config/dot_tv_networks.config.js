@@ -30,15 +30,16 @@ shelby.config.dotTvNetworks = {
     {
       id : '513f4964b415cc143a00ec8b', // chipsahoy.tv aka March Madness
       attribution : {
-        authorAvatar : '//s3.amazonaws.com/shelby-gt-user-avatars/sq192x192/513f4963b415cc143a00ec85?1363269645000',
+        authorAvatar : '//s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/513f4963b415cc143a00ec85?1363269645000',
         authorName : 'Chips Ahoy!'
       },
       showAttribution : true,
-      rollTitleOverride : 'March Madness'
+      rollTitleOverride : 'The Sweetest Bracket'
     },
     {
       id : '513f8019b415cc3b3900000d', // #sweetestbracket
       attribution : {
+        authorAvatar : '//s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/51420e57b415cc7c7c064a1d?1363283581000',
         authorName : 'The videoverse'
       },
       showAttribution : true
@@ -46,6 +47,7 @@ shelby.config.dotTvNetworks = {
     {
       id : '50f6d51cb415cc7ebd000007', // #MarchMadness
       attribution : {
+        authorAvatar : '//s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/51420e57b415cc7c7c064a1d?1363283581000',
         authorName : 'The videoverse'
       },
       showAttribution : true
