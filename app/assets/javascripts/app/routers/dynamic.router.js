@@ -121,6 +121,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.models.videoSearch.trigger('search');
     }
 
+    shelby.views.searchWelcome = shelby.views.searchWelcome ||
+          new libs.shelbyGT.searchWelcome({
+            el : '.js-search-welcome',
+            searchWelcomeModel : shelby.models.dotTvWelcome
+          });
+
+    // ultimatly this should only be shown the first visit which we can track via a cookie
+    if (cookies.get('search-welcome') != "1") {
+      shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
+      shelby.models.userDesires.set({guideShown: false});
+      shelby.userInactivity.disableUserActivityDetection();
+      $('.js-welcome').toggleClass('hidden', false);
+    }
+    else {
+      $('.js-welcome').toggleClass('hidden', true);
+    }
+
     // send page view to GA
     if(shelby.routeHistory.length !== 0){
       try {
@@ -225,10 +242,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
       shelby.models.userDesires.set({guideShown: false});
       shelby.userInactivity.disableUserActivityDetection();
-      $('.js-channels-welcome').toggleClass('hidden', false);
+      $('.js-welcome').toggleClass('hidden', false);
     }
     else {
-      $('.js-channels-welcome').toggleClass('hidden', true);
+      $('.js-welcome').toggleClass('hidden', true);
     }
   },
 
