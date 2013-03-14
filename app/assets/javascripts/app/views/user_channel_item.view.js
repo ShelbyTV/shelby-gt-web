@@ -49,7 +49,7 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
     this.$el.html(this.template({
       attribution : attribution,
       roll : this.model,
-      defaultButtonColor: false,
+      customButtonColor: shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig[0].buttonColor,
       rollTitleOverride : rollTitleOverride,
       showAttribution : showAttribution
     }));
