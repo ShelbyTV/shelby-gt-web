@@ -44,11 +44,7 @@
 */
 
 .share_menu {
-  margin-left: -20%;
   padding: 13px 15px 8px;
-  position: absolute;
-  bottom: 140%;
-  width: 18em;
 
   .list {
     margin: auto;
@@ -77,6 +73,7 @@
     }
 
     .form_input {
+      background-color: transparent;
       height: 2.8em;
       font-size: 1em;
       padding: 0.8em 0.8em 0.8em 1.8em;

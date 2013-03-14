@@ -138,7 +138,7 @@
                   </li>
                   <!-- END TODO : Put this in once we have an embed to supply -->
                 <% } %>
-                <li>
+                <li class="list__item">
                   <% if (user.isAnonymous()) { %>
                     <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= encodeURIComponent(anonUserShareEmailBody) %>">
                   <% } %>
@@ -152,7 +152,7 @@
                   <% } %>
                 </li>
                 <% if (user.isAnonymous()) { %>
-                  <li>
+                  <li class="list__item">
                     <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
                       <button class="button_primer button_default button_share button_share--twitter js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                         <i class="icon icon-social_twitter">
@@ -161,7 +161,7 @@
                       </button>
                     </a>
                   </li>
-                <li>
+                <li class="list__item">
                   <button class="button_primer button_default button_share button_share--facebook js-button_share--facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                     <i class="icon icon-social_facebook">
                     </i>
@@ -169,7 +169,7 @@
                   </button>
                 </li>
                 <% } %>
-                <li>
+                <li class="list__item nudge">
                   <span class="share_menu__permalink clearfix js-button_share--shortlink">
                     <i class="icon icon-shortlink">
                     </i>
