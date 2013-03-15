@@ -24,11 +24,6 @@ class RollController < ApplicationController
 
   def show_isolated_roll
     get_roll_and_roll_creator_by_roll_id
-    # TODO: remove all of this when new dot tvs go live across the site
-    unless @roll && @roll['creator_id'] == '4d7ac94af6db241b5d000002'
-      @dot_tv_layout = ab_test :dot_tv_layout
-    end
-    # END TODO: remove all of this when new dot tvs go live
     render '/home/app'
   end
 
