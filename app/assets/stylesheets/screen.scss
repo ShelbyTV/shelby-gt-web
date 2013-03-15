@@ -104,6 +104,11 @@
 @import "partials/discussion_roll";
 
 //------------------------------------------------------------------------------
+//  Embed
+//------------------------------------------------------------------------------
+@import "partials/embed-frame";
+
+//------------------------------------------------------------------------------
 //  Overrides
 //------------------------------------------------------------------------------
 @import "partials/user-anonymous";
@@ -111,8 +116,6 @@
 @import "partials/hide-pvi";
 @import "partials/user-inactive";
 @import "partials/touch";
-
-@import "partials/embed-frame";
 
 @import "partials/lt-ie9";
 

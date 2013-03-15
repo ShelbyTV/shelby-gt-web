@@ -63,14 +63,16 @@
     }
   }
 
-  .frame-footer {
-    margin: 5px 5px 2px;
+  .frame {
+    .frame-footer {
+      margin: 5px 5px 2px;
 
-    .xuser-avatar {
-      // display: inline-block;
-      height: 18px;
-      width: 18px;
-      margin-right: 5px;
+      .xuser-avatar {
+        // display: inline-block;
+        height: 18px;
+        width: 18px;
+        margin-right: 5px;
+      }
     }
   }
 

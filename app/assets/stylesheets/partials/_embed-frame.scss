@@ -27,18 +27,48 @@ $play_button_diameter: 88px;
     bottom: 0;
     height: $footer_height;
     background:#f2f0f0;
+    
+    .frame-footer {
+      font-size: 1.3em;
+    }
+    
+    .xuser-avatar {
+      height: 3.5em;
+      width: 3.5em;
+    }
   }
   
   /**********************
    * Boards over the video
    **********************/
    .player-overlay-board {
+     display: none;
      padding: 2em 2em 0;
      background-color: rgba(0,0,0,0.5);
      
      .now-playing {
        position: absolute;
        top: 35%;
+     }
+     
+     .play_button {
+       background-color: rgba(106,184,67,0.8);
+       border-radius: $play_button_diameter/2;
+       color: white;
+       cursor: pointer;
+       font-size: 3em;
+       height:$play_button_diameter;
+       left: 50%;
+       margin-left: -($play_button_diameter/2);
+       margin-top: -($play_button_diameter/2);
+       padding: 25px 0 0 32px;
+       position: absolute;
+       top: 50%;
+       width: $play_button_diameter;
+
+       &:hover {
+         background-color: rgba(106,184,67,1.0);
+       }
      }
      
      .channel-name-h1 {
@@ -62,27 +92,29 @@ $play_button_diameter: 88px;
        position: absolute;
        top: 70%;
      }
+     
+     .frame-social-share {
+       font-size: 2em;
+       padding: 0.4em 2em;
+       margin-right: .25em;
+     }
+     
+     .frame-shortlink {
+       display: inline-block;
+       font-size: 1.8em;
+       width: 200px;
+     }
    } 
+   
+  .before-play-board,
+  .play-paused-board,
+  .play-complete-board {
+    display: block;
+  }
     
   .before-play-board {
-    .play_button {
-      background-color: rgba(106,184,67,0.8);
-      border-radius: $play_button_diameter/2;
-      color: white;
-      cursor: pointer;
-      font-size: 3em;
-      height:$play_button_diameter;
-      left: 50%;
-      margin-left: -($play_button_diameter/2);
-      margin-top: -($play_button_diameter/2);
-      padding: 25px 0 0 32px;
-      position: absolute;
-      top: 50%;
-      width: $play_button_diameter;
-      
-      &:hover {
-        background-color: rgba(106,184,67,1.0);
-      }
+    .now-playing {
+      display: none;
     }
   }
   
@@ -90,7 +122,10 @@ $play_button_diameter: 88px;
   .play-complete-board {
     /* push it above the player controls */
     bottom: $footer_height + 44px;
-    display: none;
+    
+    .play_button {
+      display: none;
+    }
   }
   
   .video-title-h1 {
