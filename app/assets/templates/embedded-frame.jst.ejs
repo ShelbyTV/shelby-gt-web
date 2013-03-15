@@ -14,6 +14,16 @@
 
 <div class="embed-top-section player-overlay-board play-paused-board">
   <h1 class="video-title-h1"><%= video.get('title') %></h1>
+  
+  <div class="now-playing">
+    <h2 class="overlay-board-h2">You’re watching this on</h2>
+    <h1 class="channel-name-h1 js-creator-personal-roll"><%= creator.get('nickname') %>.shelby.tv</h1>
+  </div>
+  
+  <div class="share-video">
+    <h2 class="overlay-board-h2">Share this video</h2>
+    FB, TWT, SHORTLINK
+  </div>
 </div>
 
 <div class="embed-top-section player-overlay-board play-complete-board">

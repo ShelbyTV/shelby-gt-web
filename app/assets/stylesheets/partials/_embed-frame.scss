@@ -1,4 +1,5 @@
 $footer_height: 100px;
+$play_button_diameter: 88px;
 
 .embedded-frame-view-wrapper {
   position: absolute;
@@ -34,19 +35,50 @@ $footer_height: 100px;
    .player-overlay-board {
      padding: 2em 2em 0;
      background-color: rgba(0,0,0,0.5);
+     
+     .now-playing {
+       position: absolute;
+       top: 35%;
+     }
+     
+     .channel-name-h1 {
+       color: white;
+       cursor:pointer;
+       font-size: 2.5em;
+       font-weight: 600;
+       
+       &:hover {
+         text-decoration: underline
+       };
+     }
+     
+     .overlay-board-h2 {
+       color: #aaa;
+       font-size: 2em;
+       font-weight: 300;
+     }
+     
+     .share-video {
+       position: absolute;
+       top: 65%;
+     }
    } 
     
   .before-play-board {
     .play_button {
       background-color: rgba(106,184,67,0.8);
-      border-radius: 44px;
+      border-radius: $play_button_diameter/2;
       color: white;
       cursor: pointer;
       font-size: 3em;
-      height: 88px;
-      margin: 55px auto 0;
+      height:$play_button_diameter;
+      left: 50%;
+      margin-left: -($play_button_diameter/2);
+      margin-top: -($play_button_diameter/2);
       padding: 25px 0 0 32px;
-      width: 88px;
+      position: absolute;
+      top: 50%;
+      width: $play_button_diameter;
       
       &:hover {
         background-color: rgba(106,184,67,1.0);
