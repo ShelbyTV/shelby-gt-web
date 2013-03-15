@@ -19,6 +19,10 @@
     height: 2em;
     margin: -1em 0 0 0;
 
+    a {
+      color: inherit;
+    }
+
     .icon-mark {
       color: $button-color;
     }

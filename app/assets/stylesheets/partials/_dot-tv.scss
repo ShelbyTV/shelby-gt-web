@@ -92,6 +92,11 @@
       display: block;
       margin-bottom: -3px;
       margin-top: 4px;
+
+      a:hover,
+      a {
+        text-decoration: none;
+      }
     }
 
     .videoplayer {
