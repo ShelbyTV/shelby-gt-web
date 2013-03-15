@@ -53,6 +53,7 @@ ShelbyGtWeb::Application.routes.draw do
 
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'
+  get '/embed/:frame_id' => 'turbo_embed#embed'
 
   # used by vanity (A/B testing) to register partcipants via javascript
   match '/vanity/add_participant' => 'vanity#add_participant', :as => :add_participant

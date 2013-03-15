@@ -1,0 +1,43 @@
+<div class="image_module embed-top-section preview-video-thumbnail js-start-playback" style="background-image: url('<%= video.get('thumbnail_url') %>');"></div>
+
+<div id="js-video-section" class="embed-top-section">
+  <!-- Filled in by VideoContentPaneView -->
+</div>
+
+<div class="embed-top-section player-overlay-board before-play-board">
+  <h1 class="video-title-h1"><%= video.get('title') %></h1>
+  
+  <h1 class="shelby_logo play_button js-start-playback">
+    <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+  </h1>
+</div>
+
+<div class="embed-top-section player-overlay-board play-paused-board">
+  <h1 class="video-title-h1"><%= video.get('title') %></h1>
+</div>
+
+<div class="embed-top-section player-overlay-board play-complete-board">
+  <h1 class="video-title-h1"><%= video.get('title') %></h1>
+</div>
+
+<div class="embed-footer-wrapper">
+  <footer class="media_module frame-footer clearfix">
+    <a href="#" onclick="return false;" class="js-creator-personal-roll">
+      <span class="image_module xuser-avatar media_image" style="background-image: url(<%= libs.shelbyGT.viewHelpers.user.avatarUrl(creator) %>);" role="img">
+        <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(creator) %>" class="visuallyhidden" title="henry" alt="henry">
+      </span>
+    </a>
+
+    <div class="media_body">
+      <span class="xuser-data-timestamp">
+        <%= frame.get('created_at') %>
+      </span>
+      <p class="xuser-data">
+        <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creator.get('nickname') %></strong></a>
+      </p>
+      <p class="xuser-message">
+        <%= conversation.get('messages').at(0).get('text') %>
+      </p>
+    </div><!-- eo .media_body -->
+  </footer>
+</div>

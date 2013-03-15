@@ -9,6 +9,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "roll/:rollId/:title"                   : "displayRoll",
     "roll/:rollId"                          : "displayRoll",
     "rollFromFrame/:frameId"                : "displayRollFromFrame",
+    "embed/:frameId"                        : "displayEmbeddedFrame",
     "user/:id/personal_roll"                : "displayUserPersonalRoll",
     "channels"                              : "displayRandomChannel",
     "help"                                  : "displayHelp",
@@ -245,6 +246,19 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         }
       }
     });
+  },
+  
+  displayEmbeddedFrame : function(frameId, params){
+    //frame (with children) is already on the page
+    var frame = new libs.shelbyGT.FrameModel(shelby.embedBootstrapModels.frame);
+
+    shelby.views.embeddedFrame = shelby.views.embeddedFrame || 
+      new libs.shelbyGT.EmbeddedFrameView({
+        el : "#embedded-view",
+        model: frame,
+        guide : shelby.models.guide,
+        playbackState : shelby.models.playbackState,
+      });    
   },
 
   displayUserPersonalRoll : function(userId, params){

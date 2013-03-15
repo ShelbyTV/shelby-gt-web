@@ -1,0 +1,84 @@
+$footer_height: 100px;
+
+.embedded-frame-view-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  
+  .embed-top-section {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: $footer_height;
+  }
+  
+  .preview-video-thumbnail {
+    
+  }
+  
+  .embed-footer-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: $footer_height;
+    background:#f2f0f0;
+  }
+  
+  /**********************
+   * Boards over the video
+   **********************/
+   .player-overlay-board {
+     padding: 2em 2em 0;
+     background-color: rgba(0,0,0,0.5);
+   } 
+    
+  .before-play-board {
+  }
+  
+  .play-paused-board,
+  .play-complete-board {
+    /* push it above the player controls */
+    bottom: $footer_height + 44px;
+    display: none;
+  }
+  
+  .video-title-h1 {
+    color: #fff;
+  }
+  
+  /**********************
+   * Adjustments to standard styles
+   **********************/
+  /* no PVI: make video and controls to full height */
+  .video_controls__wrapper,
+  .videoplayer-viewport {
+    bottom:0;
+  }
+  
+  /* no prev/next/hide-guide */
+  .videoplayer-nav__btn {
+    display: none;
+  }
+  
+}
+
+/**********************
+ * Without the footer
+ **********************/
+.embedded-frame-view-wrapper.no-footer {
+  .embed-top-section {
+    bottom: 0;
+  }
+  .embed-footer-wrapper {
+    display: none;
+  }
+  .play-paused-board,
+  .play-complete-board {
+    /* only have to push it above the player controls */
+    bottom: 44px;
+  }
+}

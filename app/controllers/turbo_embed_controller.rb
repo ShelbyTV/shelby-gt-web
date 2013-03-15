@@ -44,5 +44,25 @@ class TurboEmbedController < ApplicationController
     render :nothing => true
   end
 
+  # GET /embed/:frame_id
+  #
+  # Renders the frame identified, loads player and begins playback (using our universal player integration) on click.
+  #
+  # Designed to be placed inside of an iframe like
+  # <iframe width="560" height="315" src="http://shelby.tv/embed/87234ab98de09f098f" frameborder="0" allowfullscreen></iframe>
+  #
+  # Can be shown without the footer with query param "footer=0"
+  #
+  # Implementing generically. First deployment Chips Ahoy March Madness partnership 2013.
+  #
+  def embed
+    if @frame = Shelby::API.get_frame(params[:frame_id], true)
+      @footer_control_class = (params[:footer] == "0" ? "no-footer" : "with-footer")
+      
+      render :layout => 'embed'
+    else
+      render :nothing => true
+    end
+  end
 
 end

@@ -1,0 +1,11 @@
+<script>
+  if (typeof(shelby) == 'undefined') {
+    shelby = {};
+  }
+  shelby.embedBootstrapModels = {};
+  shelby.embedBootstrapModels.frame = <%= raw @frame.to_json %>;
+</script>
+
+<div id="embedded-view" class="embedded-frame-view-wrapper <%= @footer_control_class %>">
+  <!-- Filled in by EmbeddedFrameView -->
+</div>
