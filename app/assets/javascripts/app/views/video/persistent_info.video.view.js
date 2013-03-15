@@ -270,8 +270,9 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     }
 
     //  toggle the "button pressed" state
-    $this.toggleClass('button_default',!blockHasClass)
-         .toggleClass('button_gray-light',blockHasClass);
+    // $this.toggleClass('button_default',!blockHasClass)
+    //      .toggleClass('button_gray-light',blockHasClass);
+    $this.toggleClass('button_active',blockHasClass);
 
     //  show/hide the panel
     block.toggleClass('hidden',!blockHasClass);
