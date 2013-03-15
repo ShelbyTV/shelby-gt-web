@@ -705,6 +705,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.config.hostName = params.src;
     }
 
+    if (!shelby.config.socialLibsLoaded) {
+      $(document).ready(function(){
+        $('body').append(SHELBYJST['social-libs']());
+      });
+      shelby.config.socialLibsLoaded = true;
+    }
+
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._setupTopLevelViews();

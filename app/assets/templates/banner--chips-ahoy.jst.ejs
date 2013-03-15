@@ -10,12 +10,14 @@
     <div class="media_image media_image--rev">
       <img class="brand__flourish" src="/images/chips-ahoy/chips.png" />
 
-      <button class="button_primer button_default brand__social_button">
-        <i class="icon icon-social_twitter"></i>
-        <span class="visuallyhidden">@chipsahoy</span>
-      </button>
+      <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
+        <button class="button_primer button_default brand__social_button">
+          <i class="icon icon-social_twitter"></i>
+          <span class="visuallyhidden">@chipsahoy</span>
+        </button>
+      </a>
 
-      <button class="button_primer button_default brand__social_button">
+      <button class="button_primer button_default brand__social_button js-facebook-share">
         <i class="icon icon-social_facebook"></i>
         <span class="visuallyhidden">facebook.com/chipsahoy</span>
       </button>
