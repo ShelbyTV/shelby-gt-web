@@ -8,7 +8,8 @@ $app-background-color : #e2e2e2;
 //  ICONS, these aren't worth taking the time to update right now.
 //------------------------------------------------------------------------------
 $extension: ".svg" !default;
-$path: "/images/assets/" !default;
+$images: "/images/" !default;
+$path: "#{$images}assets/" !default;
 
 $icon-carrot                    : "#{$path}carrot#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";

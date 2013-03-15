@@ -59,6 +59,20 @@
 
 //  Screens that LESS THAN 1000px wide.
 @media screen and (max-width: 1000px) {
+  .app-banner--chips-ahoy {
+    .media_image:first-child {
+      width: 187px;
+    }
+
+    .brand__flourish {
+      display: none;
+    }
+
+    .brand__h1 {
+      margin-top: 0.3em;
+    }
+  }
+
   .app-banner__lining {
     max-width: 710px;
   }
@@ -77,6 +91,7 @@
 
 //  Screens that LESS THAN 710px wide.
 @media screen and (max-width: 700px) {
+
   .user_roll__item {
     & > .user_roll__item_lining {
       width: 410px;
