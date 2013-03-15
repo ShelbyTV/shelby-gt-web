@@ -1,6 +1,5 @@
 libs.utils.intercom = {
   boot : function(userModel){
-<<<<<<< HEAD
     if(typeof(Intercom) !== "undefined"){
       try {
         created_at = new Date(userModel.get('created_at').slice(0,10));
