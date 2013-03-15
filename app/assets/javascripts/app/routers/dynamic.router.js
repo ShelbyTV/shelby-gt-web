@@ -248,6 +248,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayEmbeddedFrame : function(frameId, params){
     //frame (with children) is already on the page
     var frame = new libs.shelbyGT.FrameModel(shelby.embedBootstrapModels.frame);
+    
+    if (!shelby.config.socialLibsLoaded) {
+      $(document).ready(function(){
+        $('body').append(SHELBYJST['social-libs']());
+      });
+      shelby.config.socialLibsLoaded = true;
+    }
 
     shelby.views.embeddedFrame = shelby.views.embeddedFrame || 
       new libs.shelbyGT.EmbeddedFrameView({

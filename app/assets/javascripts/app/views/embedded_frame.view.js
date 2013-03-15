@@ -6,7 +6,9 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   events : {
     "click .js-start-playback"        : "_startPlayback",
     "click .js-creator-personal-roll" : "_openCreatorPersonalRoll",
-    "click .js-has-shortlink-value"   : "_selectInputContent"
+    "click .js-has-shortlink-value"   : "_selectInputContent",
+    "click .js-facebook-share"        : "_facebookShare",
+    "click .js-twitter-share"         : "_twitterShare"
   },
   
   initialize : function(opts){
@@ -105,6 +107,33 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   
   _selectInputContent : function(el){
     $(el.currentTarget).select();
+  },
+  
+  _facebookShare : function(){
+    if (typeof FB != "undefined"){
+      FB.ui(
+        {
+          method: 'feed',
+          display: 'popup',
+          name: this.model.get('creator').get('nickname')+".shelby.tv",
+          link: this.shortlink,
+          picture: this.model.get('video').get('thumbnail_url'),
+          description: "I’m watching \""+this.model.get('video').get('title')+"\" on @Shelby"
+        },
+        function(response) {
+          if (response && response.post_id) {
+            // TODO:we should record that this happened.
+          }
+        }
+      );
+    }
+    return false;
+  },
+  
+  _twitterShare : function(){
+    var url = "https://twitter.com/intent/tweet?text=I%E2%80%99m+watching+\""+encodeURIComponent(this.model.get('video').get('title'))+"\"+via+%40Shelby&url="+this._shortlink;
+    window.open(url, "twitterShare", "");
+    return false;
   }
   
 });
