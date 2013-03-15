@@ -231,6 +231,16 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     else {
       _caption = 'a video found with Shelby Video Search';
     }
+
+    var rollCreatorId = this._currentFrame.has('roll') && this._currentFrame.get('roll').has('creator_id') && this._currentFrame.get('roll').get('creator_id');
+    var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: rollCreatorId});
+    var description = _frame.get('video').get('description');
+
+    // if there is a special message for the facebook share, use it
+    if (specialConfig && specialConfig.customShareMessages && specialConfig.customShareMessages.facebook) {
+      description = specialConfig.customShareMessages.facebook;
+    }
+
     if (typeof FB != "undefined"){
       FB.ui(
         {
@@ -238,7 +248,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
           name: _frame.get('video').get('title'),
           link: libs.shelbyGT.viewHelpers.frame.permalink(_frame),
           picture: _frame.get('video').get('thumbnail_url'),
-          description: _frame.get('video').get('description'),
+          description: description,
           caption: _caption
         },
         function(response) {

@@ -18,6 +18,7 @@ shelby.config.dotTvNetworks = {
       id : '513f4963b415cc143a00ec85', // chipsahoy
       customShareMessages : {
         email : 'Check this sweet video I found on ChipsAhoy.TV via Shelby.tv: <%= link %>',
+        facebook : 'Do you have the #sweetestbracket? Check this sweet video I found on ChipsAhoy.TV via @Shelby',
         twitter : 'Do you have the #sweetestbracket? Check this sweet video I found on @ChipsAhoy TV <%= link %> via @Shelby'
       },
       bodyClass : 'shelby--chips-ahoy',
