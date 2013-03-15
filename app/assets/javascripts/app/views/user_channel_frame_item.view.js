@@ -32,7 +32,7 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
   },
 
   template : function(obj){
-    return SHELBYJST['explore-frame-item'](obj);
+    return SHELBYJST['user-channel-frame-item'](obj);
   },
 
   render : function(){
