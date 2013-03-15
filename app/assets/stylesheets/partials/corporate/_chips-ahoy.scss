@@ -4,15 +4,20 @@
   .persistent_video_info__wrapper--dot-tv {
     height: 288px;
   }
+
+  .video_progress__scrubber {
+    background-image: url('#{$images}chips-ahoy/scrubber.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 1.9em;
+    height: 1.9em;
+    margin-top: -1.3em;
+    width: 1.9em;
+  }
 }
 
 .app-banner--chips-ahoy {
-///////////////////////////
-//  dev crap
-  // margin: auto;
-///////////////////////////
-
-  background-image: url('/images/chips-ahoy/banner.png');
+  background-image: url('#{$images}chips-ahoy/banner.png');
   background-position: center center;
   background-repeat: repeat-x;
   height: 97px;
@@ -29,7 +34,7 @@
   }
 
     .brand__logo {
-      background-image: url('/images/chips-ahoy/logo.png');
+      background-image: url('#{$images}chips-ahoy/logo.png');
       background-position: center;
       background-repeat: no-repeat;
       height: 73px;
