@@ -57,7 +57,7 @@ class TurboEmbedController < ApplicationController
   #
   def embed
     if @frame = Shelby::API.get_frame(params[:frame_id], true)
-      @footer_control_class = (params[:footer] == "0" ? "no-footer" : "with-footer")
+      @footer_control_class = (params[:footer] == "0" ? "embedded-frame--no-footer" : "embedded-frame--with-footer")
       
       render :layout => 'embed'
     else

@@ -41,7 +41,7 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   },
   
   _startPlayback : function(){
-    this.$(".player-overlay-board").toggleClass("before-play-board", false);
+    this.$(".embed_board").toggleClass("embed_board--unplayed", false);
     this._renderVideo();
   },
   
@@ -62,23 +62,23 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   },
   
   _onPlaybackStatusChange: function(attr, curState){
-    var playBoard = this.$(".player-overlay-board");
+    var embedBoard = this.$(".embed_board");
     
     switch(curState){
       case libs.shelbyGT.PlaybackStatus.paused:
         shelby.userInactivity.disableUserActivityDetection();
-        playBoard.toggleClass("play-paused-board", true);
-        playBoard.toggleClass("play-complete-board", false);
+        embedBoard.toggleClass("embed_board--paused", true);
+        embedBoard.toggleClass("embed_board--complete", false);
         break;
       case libs.shelbyGT.PlaybackStatus.playing:
         shelby.userInactivity.enableUserActivityDetection();
-        playBoard.toggleClass("play-paused-board", false);
-        playBoard.toggleClass("play-complete-board", false);
+        embedBoard.toggleClass("embed_board--paused", false);
+        embedBoard.toggleClass("embed_board--complete", false);
         break;
       case libs.shelbyGT.PlaybackStatus.ended:
         shelby.userInactivity.disableUserActivityDetection();
-        playBoard.toggleClass("play-paused-board", false);
-        playBoard.toggleClass("play-complete-board", true);
+        embedBoard.toggleClass("embed_board--paused", false);
+        embedBoard.toggleClass("embed_board--complete", true);
         break;
     }
   },
