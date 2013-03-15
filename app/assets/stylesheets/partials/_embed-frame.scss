@@ -37,6 +37,21 @@ $footer_height: 100px;
    } 
     
   .before-play-board {
+    .play_button {
+      background-color: rgba(106,184,67,0.8);
+      border-radius: 44px;
+      color: white;
+      cursor: pointer;
+      font-size: 3em;
+      height: 88px;
+      margin: 55px auto 0;
+      padding: 25px 0 0 32px;
+      width: 88px;
+      
+      &:hover {
+        background-color: rgba(106,184,67,1.0);
+      }
+    }
   }
   
   .play-paused-board,
