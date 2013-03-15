@@ -1,6 +1,10 @@
 //  Chips Ahoy Overrides
 
-.shelby--chips-ahoy { }
+.shelby--chips-ahoy {
+  .persistent_video_info__wrapper--dot-tv {
+    height: 288px;
+  }
+}
 
 .app-banner--chips-ahoy {
 ///////////////////////////
