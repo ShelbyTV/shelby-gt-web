@@ -5,6 +5,8 @@
  */
 libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
+  _currentFrameShortlink : null,
+
   options : {
     eventTrackingCategory : 'Persistent Video Info' // what category events in this view will be tracked under
   },
@@ -12,6 +14,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   events : {
     "click .persistent_video_info__current-frame  .js-roll-frame"                 : "_requestCurrentFrameRollView",
     "click .persistent_video_info__next-frame     .js-roll-frame"                 : "_requestNextFrameRollView",
+    "click .js-button_share--email"                                               : "_requestCurrentFrameShareView",
     "click .persistent_video_info__current-frame  .js-share-frame"                : "_requestCurrentFrameShareView",
     "click .persistent_video_info__next-frame     .js-share-frame"                : "_requestNextFrameShareView",
     "click .persistent_video_info__current-frame  .js-queue-frame:not(.queued)"   : "_queueCurrentFrame",
@@ -19,8 +22,12 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
     "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
     "click .persistent_video_info__current-frame  .js-facebook-share"             : "_shareCurrentToFacebook",
+    "click .js-button_share--facebook"                                            : "_shareCurrentToFacebook",
     "click .js-next-video"                                                        : "_skipToNextVideo",
-    "click .js-toggle-comment"                                                    : "_toggleComment"
+    "click .js-toggle-comment"                                                    : "_toggleComment",
+    "click .js-share-menu"                                                        : "_toggleShareMenu",
+    "click .js-hide-share-menu"                                                   : "_toggleShareMenu",
+    "click .js-frame-shortlink"                                                   : "_selectShortLinkText"
   },
 
   initialize: function(){
@@ -29,6 +36,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playlistFrameGroupCollection", this._onplaylistFrameGroupCollectionChange, this);
+    //TODO : figure out why we have this binding
     shelby.collections.videoSearchResultFrames.bind('add', this.render, this);
     shelby.models.queuedVideos.bind('add:queued_videos', this._onQueuedVideosAdd, this);
     shelby.models.queuedVideos.bind('remove:queued_videos', this._onQueuedVideosRemove, this);
@@ -58,24 +66,61 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     }
 
     if(this._currentFrame && this._nextFrame){
+      var emailBody;
+      var tweetIntentParams = {};
+      if (shelby.models.user.isAnonymous()) {
+        var permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
+        // check if there is a special configuration for frame's roll's creator
+        var rollCreatorId = this._currentFrame.has('roll') && this._currentFrame.get('roll').has('creator_id') && this._currentFrame.get('roll').get('creator_id');
+        var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: rollCreatorId});
+
+        // if there is a special message for the anonymous email share, use it
+        if (specialConfig && specialConfig.customShareMessages && specialConfig.customShareMessages.email) {
+          emailBody = _.template(specialConfig.customShareMessages.email, {
+            link : permalink + "?utm_campaign=email-share"
+          });
+        } else {
+          //if not, just use the permalink as the entire email message
+          emailBody = permalink + "?utm_campaign=email-share";
+        }
+
+        // if there is a special message for the twitter text, use it
+        if (specialConfig && specialConfig.customShareMessages && specialConfig.customShareMessages.twitter) {
+          tweetIntentParams = {
+            text : _.template(specialConfig.customShareMessages.twitter, {link : permalink})
+          };
+        } else {
+          //if not, use the default twitter message
+          tweetIntentParams = {
+            text : 'Check out this video',
+            url : permalink
+          };
+        }
+      }
+
       this.$el.html(this.template({
-        eventTrackingCategory : this.options.eventTrackingCategory,
-        currentFrame          : this._currentFrame,
-        nextFrame             : this._nextFrame,
-        queuedVideosModel     : this.options.queuedVideos,
-        showNextFrame         : this.options.showNextFrame,
-        user                  : shelby.models.user
+        anonUserShareEmailBody : emailBody,
+        tweetIntentQueryString : $.param(tweetIntentParams),
+        currentFrame           : this._currentFrame,
+        eventTrackingCategory  : this.options.eventTrackingCategory,
+        nextFrame              : this._nextFrame,
+        queuedVideosModel      : this.options.queuedVideos,
+        showNextFrame          : this.options.showNextFrame,
+        user                   : shelby.models.user
       }));
     }
   },
 
   _onActiveFrameModelChange : function(guideModel, activeFrameModel){
     this._currentFrame = activeFrameModel;
+    // current frame changed, so we don't have the right shortlink anymore
+    this._currentFrameShortlink = null;
     this.render();
   },
 
   _onplaylistFrameGroupCollectionChange : function(playlistManagerModel, playlistFrameGroupCollection){
     this._playlistFrameGroupCollection = playlistFrameGroupCollection;
+    //TODO : the menu should stay open and we don't need to reload the shortlink
     this.render();
   },
 
@@ -211,5 +256,56 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     if (!$(e.target).is('a')) {
       $(e.currentTarget).toggleClass('line-clamp--open');
     }
+  },
+
+  _toggleShareMenu : function(){
+    var $this = this.$('.js-share-menu'),
+        block = $this.siblings('.js-share-menu-block'),
+        blockHasClass = block.hasClass('hidden');
+
+    // if we're opening the menu and we don't have the shortlink
+    // yet, we need to get it now
+    if (blockHasClass && !this._currentFrameShortlink) {
+      this._getFrameShortlink();
+    }
+
+    //  toggle the "button pressed" state
+    $this.toggleClass('button_default',!blockHasClass)
+         .toggleClass('button_gray-light',blockHasClass);
+
+    //  show/hide the panel
+    block.toggleClass('hidden',!blockHasClass);
+
+    // if we open the menu and we already have the shortlink,
+    // highlight it
+    if (blockHasClass && this._currentFrameShortlink) {
+      this.$('.js-frame-shortlink').select();
+    }
+
+  },
+
+  _getFrameShortlink : function() {
+    var self = this;
+    var $shortlinkTextInput = this.$('.js-frame-shortlink');
+    // fetch the short link
+    $.ajax({
+      url: 'http://api.shelby.tv/v1/frame/'+this._currentFrame.id+'/short_link',
+      dataType: 'jsonp',
+      success: function(r){
+        $shortlinkTextInput.val(r.result.short_link).select();
+        // save the link for future reference in case we are going to
+        // re-render without changing frames
+        self._currentFrameShortlink = r.result.short_link;
+      },
+      error: function(){
+        $shortlinkTextInput.val("Link Unavailable").select();
+      }
+    });
+  },
+
+  _selectShortLinkText : function(){
+    this.$('.js-frame-shortlink').select();
   }
+
+
 });

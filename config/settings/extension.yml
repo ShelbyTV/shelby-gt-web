@@ -1,7 +1,7 @@
 defaults: &defaults
   api_domain: 'api.shelby.tv'
   web_domain: 'shelby.tv'
-  chrome_web_store_url: 'https://chrome.google.com/webstore/detail/acdkmkoajagjnpgpabodfllcdemembjl?hl=en-US&gl=US'
+  chrome_web_store_url: 'https://chrome.google.com/webstore/detail/shelbytv-video-radar/ifdmhakojchpihfoebiihdjcphmmhcol'
 
 development:
   <<: *defaults

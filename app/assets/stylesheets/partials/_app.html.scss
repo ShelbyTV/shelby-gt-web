@@ -1,5 +1,3 @@
-@import "base";
-
 //---------------------------
 //  boilerplate stuff
 //
@@ -94,7 +92,7 @@ a{
 
 .guide-wrapper{
   background-color: $guide-bg-color; //should technically be on .guide or something.
-  border-right: 1px solid #ccc;
+  // border-right: 1px solid #ccc;
   float: left;
   height:100%;
   opacity: 1;

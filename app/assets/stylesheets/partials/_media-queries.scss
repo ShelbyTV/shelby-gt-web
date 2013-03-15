@@ -3,8 +3,25 @@
 //------------------------------------------------------------------------------
 
 // USER PROFILE HACK -----------------------------------------------------------
+//  Screens that MORE THAN 900px tall.
+@media screen and (min-height: 900px) {
+  .shelby--dot-tv {
+    .hide-guide {
+      &.main-layout {
+        height: 800px;
+      }
+    }
+  }
+}
+
 //  Screens that MORE THAN 1620px wide.
 @media screen and (min-width: 1620px) {
+  .app-banner__lining,
+  .shelby--dot-tv .main-layout {
+    width: 1610px;
+    margin: auto;
+  }
+
   .user_roll__item {
     & > .user_roll__item_lining {
       width: 1610px;
@@ -14,6 +31,12 @@
 
 //  Screens that LESS THAN 1300px wide.
 @media screen and (max-width: 1300px) {
+  .app-banner__lining,
+  .shelby--dot-tv .main-layout {
+    width: 1010px;
+    margin: auto;
+  }
+
   .user_roll__item {
     & > .user_roll__item_lining {
       width: 1010px;
@@ -23,6 +46,12 @@
 
 //  Screens that LESS THAN 1000px wide.
 @media screen and (max-width: 1000px) {
+  .app-banner__lining,
+  .shelby--dot-tv .main-layout {
+    width: 710px;
+    margin: auto;
+  }
+
   .user_roll__item {
     & > .user_roll__item_lining {
       width: 710px;
@@ -74,7 +103,7 @@
     }
   }
 
-  .frame-command {
+  .button_command {
     margin: .75em 0 0 .75em;
     padding: .55em .8em .6em;
   }
@@ -82,7 +111,7 @@
   .frame-command-menu {
     .menu_item {
       &.right {
-        .frame-command {
+        .button_command {
           margin: .75em .75em 0 0;
         }
       }
@@ -92,7 +121,7 @@
   .frame-subsection {
     margin-top: 0.25em;
 
-    .frame-command {
+    .button_command {
       margin: 0;
       padding: .55em .8em .6em 0;
     }

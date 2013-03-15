@@ -1,10 +1,10 @@
 <div class="media_module user_roll__item_lining clearfix">
-  <button class="button_primer button_gray media_image animate_module user-channel__button_prev js-button-previous">
+  <button class="button_primer<%= (customButtonColor) ? ' ' + customButtonColor : ' button_gray' %> media_image animate_module user-channel__button_prev js-button-previous">
     <i class="icon-arrow_left"></i>
     <span class="visuallyhidden">Previous</span>
   </button>
 
-  <button class="button_primer button_gray media_image media_image--rev animate_module user-channel__button_next js-button-next">
+  <button class="button_primer<%= (customButtonColor) ? ' ' + customButtonColor : ' button_gray' %> media_image media_image--rev animate_module user-channel__button_next js-button-next">
     <i class="icon-arrow_right"></i>
     <span class="visuallyhidden">Next</span>
   </button>
@@ -12,7 +12,12 @@
   <div class="media_body user-channel__wrapper clearfix">
     <div class="user-channel__head">
       <h3 class="user-channel__title js-user-channel-title">
-        <%= roll.get('title') %>
+        <% var rollTitle = rollTitleOverride || roll.get('title') %>
+        <% if (showAttribution) { %>
+          <%= rollTitle %> by <img class="user-channel__avatar" src="<%= attribution.authorAvatar %>"/ > <%= attribution.authorName %>
+        <% } else { %>
+          <%= rollTitle %>
+        <% } %>
       </h3>
     </div>
 
