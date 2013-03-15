@@ -32,28 +32,25 @@
               </li>
             <% } %>
 
-            <% var tw = _.find(user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
-            <% if (typeof tw !== 'undefined'){ %>
+            <% if (socialLinks['twitter']) { %>
               <li class="">
-                <a class="list__link js-track-event" href="http://twitter.com/<%= tw.nickname %>" target="_blank" data-ga_category="User Profile" data-ga_action="Click twitter icon" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                <a class="list__link js-track-event" href="<%= socialLinks['twitter'] %>" target="_blank" data-ga_category="User Profile" data-ga_action="Click twitter icon" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                   <i class="icon-social_twitter"></i>
                   <span class="visuallyhidden">Twitter</span>
                 </a>
               </li>
             <% } %>
-            <% var fb = _.find(user.get('authentications'),function(a){ return a.provider == 'facebook' }) %>
-            <% if (typeof fb !== 'undefined'){ %>
+            <% if (socialLinks['facebook']) { %>
               <li class="">
-               <a class="list__link js-track-event" href="http://facebook.com/<%= fb.nickname %>" target="_blank" data-ga_category="User Profile" data-ga_action="Click facebook icon" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+               <a class="list__link js-track-event" href="<%= socialLinks['facebook'] %>" target="_blank" data-ga_category="User Profile" data-ga_action="Click facebook icon" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                   <i class="icon-social_facebook"></i>
                   <span class="visuallyhidden">Facebook</span>
                 </a>
               </li>
             <% } %>
-            <% var tu = _.find(user.get('authentications'),function(a){ return a.provider == 'tumblr' }) %>
-            <% if (typeof tu !== 'undefined'){ %>
+            <% if (socialLinks['tumblr']) { %>
               <li class="">
-                <a class="list__link js-track-event" href="http://<%= tu.uid %>.tumblr.com" target="_blank" data-ga_category="User Profile" data-ga_action="Click tumblr icon" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                <a class="list__link js-track-event" href="<%= socialLinks['tumblr'] %>" target="_blank" data-ga_category="User Profile" data-ga_action="Click tumblr icon" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                   <i class="icon-social_tumblr"></i>
                   <span class="visuallyhidden">Tumblr</span>
                 </a>

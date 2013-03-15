@@ -59,12 +59,36 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
     }
 
     var showDotTvNetworkBanner = true;
-    // if there is relevant special configuration for this dot tv network, use it
+    var socialLinks = {};
+
     if (currentUser && !currentUser.isNew()) {
+      // if there is relevant special configuration for this dot tv network, use it
       var userSpecialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: currentUser.id});
       if (userSpecialConfig && _(userSpecialConfig).has('showDotTvNetworkBanner')) {
         showDotTvNetworkBanner = userSpecialConfig.showDotTvNetworkBanner;
       }
+      if (userSpecialConfig && userSpecialConfig.socialLinks) {
+        _(['twitter', 'facebook', 'tumblr']).each(function(network) {
+          if (userSpecialConfig.socialLinks[network]) {
+            socialLinks[network] = userSpecialConfig.socialLinks[network];
+          }
+        });
+      }
+
+      // generate social links from the user's data for any networks that didn't
+      // have a social link specifed in the user special config
+      _(['twitter', 'facebook', 'tumblr']).each(function(network) {
+        if (!_(socialLinks).has(network)) {
+          var networkAuth = _(currentUser.get('authentications')).findWhere({provider: network});
+          if (networkAuth) {
+            if (network != 'tumblr') {
+              socialLinks[network] = 'http://'+network+'.com/'+(networkAuth.nickname || networkAuth.uid);
+            } else {
+              socialLinks[network] = 'http://'+networkAuth.uid+'.tumblr.com';
+            }
+          }
+        }
+      });
     }
 
     var activeFrameModel = this.options.guideModel.get('activeFrameModel');
@@ -73,6 +97,7 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
       user : currentUser,
       frame : activeFrameModel,
       showDotTvNetworkBanner : showDotTvNetworkBanner,
+      socialLinks : socialLinks,
       userPersonalRoll : userPersonalRollForDisplay
     }));
     if (currentUser && !currentUser.isNew()) {
