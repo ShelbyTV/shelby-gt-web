@@ -5,7 +5,8 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
 
   events : {
     "click .js-start-playback"        : "_startPlayback",
-    "click .js-creator-personal-roll" : "_openCreatorPersonalRoll"
+    "click .js-creator-personal-roll" : "_openCreatorPersonalRoll",
+    "click .js-has-shortlink-value"   : "_selectInputContent"
   },
   
   initialize : function(opts){
@@ -13,6 +14,10 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
     this._guide = opts.guide;
     
     this._playbackState.bind('change:activePlayerState', this._onNewPlayerState, this);
+    
+    //fallback shortlink
+    this._shortlink = "http://"+this.model.get('creator').get('nickname')+"shelby.tv";
+    this._prefetchShortlink();
     
     this.render();
   },
@@ -30,7 +35,8 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
       frame: this.model,
       video: this.model.get('video'),
       conversation: this.model.get('conversation'),
-      creator: this.model.get('creator')
+      creator: this.model.get('creator'),
+      shortlink: this._shortlink
     }));
   },
   
@@ -77,6 +83,25 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   _openCreatorPersonalRoll : function(){
     var creator = this.model.get('creator');
     window.open("http://shelby.tv/user/"+creator.id+"/personal_roll", "shelby", "");
+  },
+  
+  _prefetchShortlink : function(){
+    var self = this;
+    $.ajax({
+      url: 'http://api.shelby.tv/v1/frame/'+this.model.id+'/short_link',
+      dataType: 'jsonp',
+      success: function(r){
+        self._shortlink = r.result.short_link;
+        self.$(".js-has-shortlink-value").attr('value', self._shortlink);
+      },
+      error: function(){
+        //ignoring, shortlink is just profile page which is fine for fallback
+      }
+    });
+  },
+  
+  _selectInputContent : function(el){
+    $(el.currentTarget).select();
   }
   
 });
