@@ -50,8 +50,6 @@
 }
 
 .notification_message {
-  @include ellipsis;
-
   display: inline-block;
 }
 

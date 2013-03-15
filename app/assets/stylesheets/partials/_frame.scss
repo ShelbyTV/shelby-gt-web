@@ -236,64 +236,23 @@ $active-list-item: $shelby-blue;
 
   .menu_item {
     &.right {
-      .frame-command {
+      .button_command {
         margin: 1em 1em 0 0;
       }
     }
   }
+
+  .button_command {
+    font-size: 1.1em;
+    margin-left: 0.7em;
+    margin-top: 0.7em;
+  }
 }
 
-////////////////////////////////////////////////////////////////////////////
-//  styling of the command buttons,
-//  queue, roll, share, etc.
-////////////////////////////////////////////////////////////////////////////
-.frame-command {
-  @include button-sizing(frame-command);
-
-  margin-left: 1em;
-  margin-top: 1em;
-}
 
 //------------------------------------------------------------------------------
 //  specific command button stylings
 //------------------------------------------------------------------------------
-.command-queue,
-.command-roll {
-  font-size: 1.1em;
-  margin-left: 0.7em;
-  margin-top: 0.7em;
-}
-
-
-.command-queue {
-  padding-left: 0.7em;
-  width: 6.5em;
-
-  &.queued {
-    &:not(.remove-frame) {}
-
-    .icon-videocard_queue {
-      display: none;
-    }
-  }
-}
-
-.command-roll {}
-
-.command-more {}
-
-.command-share {
-  .icon {
-    -webkit-background-size: contain;
-    background-size: contain;
-    padding-left: 1.8em;
-  }
-}
-
-.command-remove {
-  .icon-cancel {}
-}
-
 .command-link,
 .command-share {
   background: transparent;

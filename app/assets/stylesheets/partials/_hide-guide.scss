@@ -4,8 +4,9 @@
 .hide-guide {
   .user_info,
 	&.guide-wrapper{
-	  margin-left:-($guide-width);
+	  margin-left:-100%;
 	}
+
   .video_controls__wrapper,
   .persistent_video_info__wrapper {
     // background-color: rgba(239, 239, 239, 0);
@@ -47,7 +48,7 @@
 
 .hide-guide--user-profile {
   &.guide-wrapper{
-    margin-left:-($guide-width);
+    margin-left:-($guide-width + 1);
   }
 }
 .shelby--dot-tv {

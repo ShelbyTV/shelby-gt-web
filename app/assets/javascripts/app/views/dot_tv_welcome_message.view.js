@@ -1,5 +1,7 @@
 libs.shelbyGT.dotTVWelcome = Support.CompositeView.extend({
 
+  _dismissed : false,
+
   events : function() {
     if (this.$el.hasClass('js-isolated-roll-welcome--dot-tv')) {
       return {
@@ -29,12 +31,15 @@ libs.shelbyGT.dotTVWelcome = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({roll:this.model}));
-    this.$el.show();
+    if (!this._dismissed) {
+      this.$el.html(this.template({roll:this.model}));
+      this.$el.show();
+    }
   },
 
   _startPlaying : function(){
     this.$el.hide();
+    this._dismissed = true;
     // now play the video and reset autoplay to true.
     shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
     shelby.models.playbackState.set('autoplayOnVideoDisplay', true);

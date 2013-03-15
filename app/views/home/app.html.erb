@@ -40,6 +40,9 @@
 <body class="shelby">
   <div id="fb-root"></div>
   <section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
+  <div class="app-banner__wrapper js-app-banner hidden">
+    <!-- content filled in by AppBannerView -->
+  </div>
   <div id="js-shelby-wrapper" class="shelby-wrapper">
 
     <% unless @empty_shelby_wrapper %>
@@ -60,9 +63,9 @@
         </section><!-- eo .user-info-lining -->
 
         <section class="content_lining videoplayer__wrapper animate_module" role="main">
-          <span class="videoplayer__badge">
+          <a href="http://shelby.tv" class="videoplayer__badge" target="_top">
             Powered by <span class="shelby_logo shelby_logo--inverted shelby_logo--plain"><span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span></span>
-          </span>
+          </a>
           <!-- content filled in by children of MainLayoutView -->
         </section><!-- eo .content_lining -->
 
@@ -86,7 +89,10 @@
       <div class="js-isolated-roll-welcome notifications-wrapper welcome-message__wrapper"></div>
 
       <!-- channels specific happenings -->
-      <div class="js-channels-welcome welcome-message__wrapper welcome-message__wrapper--channels hidden"></div>
+      <div id="js-welcome" class="hidden">
+        <div class="js-channels-welcome welcome-message__wrapper welcome-message__wrapper--channels hidden"></div>
+        <div class="js-search-welcome welcome-message__wrapper welcome-message__wrapper--search hidden"></div>
+      </div>
 
       <!-- Need this at the base level so it's always in the DOM -->
       <div id="js-notifications-wrapper" class="notification__wrapper hide animate_module"></div>

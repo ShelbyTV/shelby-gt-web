@@ -1,6 +1,5 @@
 libs.shelbyGT.AnonUserModel = libs.shelbyGT.UserModel.extend({
-  defaults : function(){
-    return {
+  defaults : {
       additional_abilities : [],
       anon : true,
       app_progress : new libs.shelbyGT.AppProgressModel(),
@@ -10,7 +9,12 @@ libs.shelbyGT.AnonUserModel = libs.shelbyGT.UserModel.extend({
       faux : 1,
       id : '',
       nickname : 'anonymous',
-      preferences : this._getPreferences(),
+      preferences : {
+        email_updates : false,
+        like_notifications : false,
+        quiet_mode : null,
+        watched_notifications : false
+      },
       primary_email : null,
       user_image: "",
       user_image_original: "",
@@ -20,20 +24,11 @@ libs.shelbyGT.AnonUserModel = libs.shelbyGT.UserModel.extend({
       personal_roll : {
         id : 'anon'
       }
-    };
   },
   getRollFollowings : function(){
     return [{
       //@vimeo
       id : "4f900cf5b415cc466a0005bb"
     }];
-  },
-  _getPreferences : function(){
-    return {
-      email_updates : false,
-      like_notifications : false,
-      quiet_mode : null,
-      watched_notifications : false
-    };
   }
 });

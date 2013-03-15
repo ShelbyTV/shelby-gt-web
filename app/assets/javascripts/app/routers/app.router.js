@@ -109,6 +109,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       $(document).ready(function(){
         $('body').append(SHELBYJST['social-libs']()).toggleClass('shelby--user-anonymous', true);
       });
+      shelby.config.socialLibsLoaded = true;
 
       this._reroute();
       shelby.track('identify', {nickname: 'anonymous'});

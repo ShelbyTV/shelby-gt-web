@@ -222,21 +222,23 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _copyFrameLink : function(e){
-    var buttonEl = $(e.currentTarget);
-    buttonEl.text("[fetching...]");
+    var $buttonEl = $(e.currentTarget);
+    $buttonEl.text("[fetching...]");
 
     var frameId = this.model.getFirstFrame().id;
     $.ajax({
       url: 'http://api.shelby.tv/v1/frame/'+frameId+'/short_link',
       dataType: 'jsonp',
       success: function(r){
-        var inputEl = $('<input type="text" value="'+r.result.short_link+'" class="frame-option frame-shortlink" />');
-        buttonEl.replaceWith(inputEl);
-        inputEl.click(function(){ inputEl.select(); });
-        inputEl.select();
+        var $inputEl = $(SHELBYJST['shortlink-text-input']({
+          shortLink : r.result.short_link
+        }));
+        $buttonEl.replaceWith($inputEl);
+        $inputEl.click(function(){ $inputEl.select(); });
+        $inputEl.select();
       },
       error: function(){
-        buttonEl.text("Link Unavailable");
+        $buttonEl.text("Link Unavailable");
         shelby.alert({message:"Shortlinks are currently unavailable."});
       }
     });

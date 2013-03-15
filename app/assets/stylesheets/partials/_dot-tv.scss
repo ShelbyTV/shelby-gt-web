@@ -11,8 +11,16 @@
 //  Block
 //------------------------------------------------------------------------------
 .shelby--dot-tv {
-  background-color: white;
+  background-color: $base;
   overflow: visible;
+
+  //notifications: shelby radar && chrome extension
+  .notification-banner-wrapper {
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 
   //hack layout panels
   .shelby-wrapper {
@@ -45,9 +53,10 @@
 
   .main-layout {
     background-color: $base;
-    box-shadow: $shadow;
     height: 500px;
-    z-index: 1;
+    margin: 0 auto 1px;
+    width: 1300px;
+    z-index: 2;
   }
   //eo hack layout panels
 
@@ -79,22 +88,15 @@
       }
     }
 
-    //videoplayer stuff
-    .videoplayer__wrapper {
-      background-color: $base;
-      padding: 0 10px 0 0;
-    }
-
     .videoplayer__badge {
       display: block;
       margin-bottom: -3px;
-      margin-right: 20px;
       margin-top: 4px;
     }
 
     .videoplayer {
       height: 90%;
-      margin: 0 20px;
+      margin: 0 0 0 20px;
     }
 
     .videoplayer-viewport {

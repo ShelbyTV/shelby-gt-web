@@ -8,20 +8,22 @@
 
     Example:
 
-    <div class="tooltip fin fin--bottom-left">
+    <div class="tooltip fin fin--bottom_left">
         This is a tooltip.
     </div>
 
     Renders as:
 
-    .---------------------.
-    |                     |
-    |                     |
-    |  this is a tooltip  |
-    |                     |
-    |                     |
-    `-  ------------------`
-      \/
+                    top
+          .---------------------.
+          |                     |
+          |                     |
+    left  |  this is a tooltip  |  right
+          |                     |
+          |                     |
+          `-  ------------------`
+            \/
+                  bottom
 
     Class naming:
 

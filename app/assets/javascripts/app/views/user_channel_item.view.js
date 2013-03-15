@@ -15,12 +15,22 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   },
 
   initialize : function() {
+    this.options.userProfileModel.bind('change:currentUser', this._onCurrentUserChange, this);
+    if (this.options.userProfileModel.has('currentUser')) {
+      this.options.userProfileModel.get('currentUser').bind('change:id', this.render, this);
+    }
+
     this.model.bind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
     this.options.userProfileModel.bind('change:autoLoadFrameId', this._onChangeAutoLoadFrameId, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
   },
 
   _cleanup : function() {
+    this.options.userProfileModel.unbind('change:currentUser', this._onCurrentUserChange, this);
+    if (this.options.userProfileModel.has('currentUser')) {
+      this.options.userProfileModel.get('currentUser').unbind('change:id', this.render, this);
+    }
+
     this.model.unbind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
     this.options.userProfileModel.unbind('change:autoLoadFrameId', this._onChangeAutoLoadFrameId, this);
     libs.shelbyGT.ActiveHighlightListItemView.prototype._cleanup.call(this);
@@ -33,7 +43,38 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   render : function(){
     var self = this;
 
-    this.$el.html(this.template({roll : this.model}));
+    var attribution = {},
+        showAttribution = false,
+        rollTitleOverride = null,
+        customButtonColor;
+
+    // if there is relevant special configuration for this roll, use it
+    var specialConfig = _(shelby.config.dotTvNetworks.dotTvRollSpecialConfig).findWhere({id: this.model.id});
+
+    if (specialConfig && _(specialConfig).has('showAttribution')) {
+      showAttribution = specialConfig.showAttribution;
+      attribution = specialConfig.attribution;
+    }
+    if (specialConfig && _(specialConfig).has('rollTitleOverride')) {
+      rollTitleOverride = specialConfig.rollTitleOverride;
+    }
+
+    if(this.options.userProfileModel.get('currentUser') && this.options.userProfileModel.get('currentUser').has('id')) {
+      var specialCuratorConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: this.options.userProfileModel.get('currentUser').get('id')});
+
+      if (specialCuratorConfig && _(specialCuratorConfig).has('buttonColor')) {
+        // rollTitleOverride = specialConfig.rollTitleOverride;
+        customButtonColor = specialCuratorConfig.buttonColor;
+      }
+    }
+
+    this.$el.html(this.template({
+      attribution : attribution,
+      roll : this.model,
+      customButtonColor: customButtonColor,
+      rollTitleOverride : rollTitleOverride,
+      showAttribution : showAttribution
+    }));
     this._channelListView = new libs.shelbyGT.RollView({
       collapseViewedFrameGroups : false,
       fetchParams : {
@@ -93,6 +134,18 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
     });
     return libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
   },
+
+  _onCurrentUserChange : function(userProfileModel, currentUser) {
+    this.render();
+    if (currentUser) {
+      currentUser.bind('change', this.render, this);
+    }
+    var previousUser = this.options.userProfileModel.previous('currentUser');
+    if (previousUser) {
+      previousUser.unbind('change', this.render, this);
+    }
+  },
+
 
   // override ActiveHighlightListItemView abstract method
   doActivateThisItem : function(guideModel){

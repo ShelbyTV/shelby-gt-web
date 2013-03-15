@@ -20,7 +20,7 @@
           if(libs.shelbyGT.DisplayState.channel) {
             shelby.userInactivity.enableUserActivityDetection();
             shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
-            $('.js-channels-welcome').toggleClass('hidden', true);
+            $('#js-welcome').toggleClass('hidden', true);
             return !shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
           }
         },
@@ -161,15 +161,25 @@
         model : 'userDesires',
         attr : 'keyboardShortcuts',
         val : function(){
-          if(libs.shelbyGT.DisplayState.channel) {
-            if ($('.js-channels-welcome').hasClass('hidden')){
+          if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.channel) {
+            if ($('#js-welcome').hasClass('hidden')){
               shelby.userInactivity.disableUserActivityDetection();
               shelby.models.userDesires.set({guideShown: false});
             }
             else {
               shelby.userInactivity.enableUserActivityDetection();
             }
-            $('.js-channels-welcome').toggleClass('hidden', !$('.js-channels-welcome').hasClass('hidden'));
+            $('#js-welcome, .js-channels-welcome').toggleClass('hidden', !$('#js-welcome').hasClass('hidden'));
+          }
+          else if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) {
+            if ($('#js-welcome').hasClass('hidden')){
+              shelby.userInactivity.disableUserActivityDetection();
+              shelby.models.userDesires.set({guideShown: true});
+            }
+            else {
+              shelby.userInactivity.enableUserActivityDetection();
+            }
+            $('#js-welcome, .js-search-welcome').toggleClass('hidden', !$('#js-welcome').hasClass('hidden'));
           }
         },
         is_transient : true

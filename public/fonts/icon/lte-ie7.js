@@ -1,4 +1,4 @@
-/* Use this script if you need to support IE 7 and IE 6. */
+/* Load this script using conditional IE comments if you need to support IE 7 and IE 6. */
 
 window.onload = function() {
 	function addIcon(el, entity) {
@@ -7,10 +7,8 @@ window.onload = function() {
 	}
 	var icons = {
 			'icon-whole' : '&#xe000;',
-			'icon-type' : '&#xe001;',
 			'icon-mark' : '&#xe002;',
 			'icon-videocard_roll' : '&#xe003;',
-			'icon-videocard_queue' : '&#xe004;',
 			'icon-videocard_comment' : '&#xe005;',
 			'icon-star' : '&#xe006;',
 			'icon-social_twitter' : '&#xe007;',
@@ -37,7 +35,11 @@ window.onload = function() {
 			'icon-arrow_up' : '&#xe01c;',
 			'icon-arrow_right' : '&#xe01d;',
 			'icon-arrow_left' : '&#xe01e;',
-			'icon-arrow_down' : '&#xe01f;'
+			'icon-arrow_down' : '&#xe01f;',
+			'icon-type' : '&#xe001;',
+			'icon-share' : '&#xe020;',
+			'icon-embed' : '&#xe021;',
+			'icon-videocard_queue' : '&#xe004;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;
