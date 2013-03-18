@@ -1,3 +1,17 @@
+//  WARNING:
+//  As per the html5 spec:
+//  <hr> elements are "text-level dividers" and should not really be used
+//  to divide anything that's NOT text-level (ie. h1..h6, p, span, strong, em, etc.)
+
+
+/*
+    Example:
+
+    <hr class="hr--double" />
+
+*/
+
+
 .hr--double,
 .hr--double-rev {
   height: 0;

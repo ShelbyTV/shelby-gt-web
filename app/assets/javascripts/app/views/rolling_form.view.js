@@ -241,6 +241,13 @@
           var hashtagRoll = new libs.shelbyGT.RollModel({id: _rollId});
           if (via_search){ this._addViaUrl(message, hashtagRoll, []); }
           else { this._frame.reRoll(hashtagRoll, message, null); }
+          // track adding of video via hashtag
+          shelby.trackEx({
+            providers : ['ga', 'kmq'],
+            gaCategory : "Frame",
+            gaAction : "Rolled with hashtag",
+            gaLabel : _hashtag[1].toLowerCase()
+          });
         }
       }
     },

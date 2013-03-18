@@ -36,7 +36,14 @@
 }
 
 .button_command {
-    @include button-sizing(frame-command);
+  @include button-sizing(frame-command);
+
+  .icon{
+    &:before {
+      font-size: 1.2em;
+      vertical-align: -0.15em;
+    }
+  }
 }
     //alphabetical
     .button_command--cancel {}

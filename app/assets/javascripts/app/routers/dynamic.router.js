@@ -23,7 +23,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "stream"                                : "displayDashboard",
     "tools"                                 : "displayTools",
     ""                                      : "displayDashboard",
-    ":userName"                             : "displayUserProfile", //we're not rolling out the user profiles at /userName yet
+//    ":userName"                             : "displayUserProfile", //we're not rolling out the user profiles at /userName yet
     "*url"                                  : "doNothing"
   },
 
@@ -193,6 +193,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var randomChannelKey = channelKeys[_.random(channelKeys.length - 1)];
     this.navigate('channels/' + randomChannelKey, {trigger: false, replace: true});
     this.displayChannel(randomChannelKey, params);
+
+    // track page view
+    if (params && params.src == "chrome-channels-app"){
+      shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : "#Channels Chrome App",
+        gaAction : 'Loaded',
+        gaLabel : shelby.models.user.get('nickname'),
+        kmqProperties : { channel : randomChannelKey }
+      });
+      try {
+        _gaq.push(['_trackPageview', '/channels?src='+params.src]);
+      } catch(e) {}
+    }
   },
 
   displayChannel : function(channel, params){
