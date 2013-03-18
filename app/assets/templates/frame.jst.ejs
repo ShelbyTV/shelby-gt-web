@@ -36,7 +36,7 @@
           <% if (!user.isAnonymous()) { %>
             <li class="menu_item" role="menuitem">
               <button class="button_primer button_default button_command button_command--roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
-                <i class="icon-videocard_roll">
+                <i class="icon icon-videocard_roll">
                 </i>
                   Roll…
               </button>
@@ -47,7 +47,7 @@
             <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
               <button class="button_primer button_default button_command button_command--like js-queue-frame
                              <%= (videoIsInQueue) ? ' queued' : ' button_default' %>">
-                <i class="icon-heart<%= videoIsInQueue ? ' icon-heart--red': '' %>">
+                <i class="icon icon-heart<%= videoIsInQueue ? ' icon-heart--red': '' %>">
                 </i>
                 <span class="label">
                     <%= (videoIsInQueue ) ? 'Liked' : 'Like' %>
@@ -65,7 +65,8 @@
           <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
             <li class="menu_item right" role="menuitem">
               <button class="button_primer <%= shelby.models.user.get('admin') ? 'button_red' : 'button_gray' %> button_command button_command--remove js-remove-frame">
-                <i class="icon-cancel"></i>
+                <i class="icon icon-cancel">
+                </i>
               </button>
             </li>
           <% } %>
@@ -156,8 +157,10 @@
           <div class="frame-subsection clearfix">
             <ul class="menu_list">
               <li class="menu_item" role="menuitem">
-                <div class="frame-command-wrapper icon-shortlink">
+                <div class="frame-command-wrapper">
                   <button class="frame-command command-link js-copy-link">
+                    <i class="icon icon-shortlink">
+                    </i>
                     Get Shortlink
                   </button>
                 </div>
@@ -165,8 +168,10 @@
               </li>
 
               <li class="menu_item" role="menuitem">
-                <div class="frame-command-wrapper icon-email">
+                <div class="frame-command-wrapper">
                   <button class="frame-command command-share js-share-frame">
+                    <i class="icon icon-email">
+                    </i>
                     Email…
                   </button>
                 </div>
