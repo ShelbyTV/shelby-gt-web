@@ -203,6 +203,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         gaLabel : shelby.models.user.get('nickname'),
         kmqProperties : { channel : randomChannelKey }
       });
+      try {
+        _gaq.push(['_trackPageview', '/channels?src='+params.src]);
+      } catch(e) {}
     }
   },
 
