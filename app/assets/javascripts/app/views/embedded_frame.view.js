@@ -1,5 +1,13 @@
 /*
-
+ * Displays a single frame suitable for embeddedin via an iframe.
+ *
+ * Example iFrame embed code:
+ * <iframe width="560" height="415" 
+ *  src="http://shelby.tv/embed/:frame_id?footer=1"
+ *  frameborder="0" allowfullscreen></iframe>
+ *
+ * Rendered via views/turbo_embed/embed.html.erb (inside the embed layout) which loads the
+ * full app where the DynamicRouter creates one of these EmbeddedFrameView.
 */
 libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
 
