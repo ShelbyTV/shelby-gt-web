@@ -88,6 +88,7 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   _openCreatorPersonalRoll : function(){
     var creator = this.model.get('creator');
     window.open("http://shelby.tv/user/"+creator.id+"/personal_roll", "shelby", "");
+    return false;
   },
   
   _prefetchShortlink : function(){
