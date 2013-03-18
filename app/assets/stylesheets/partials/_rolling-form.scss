@@ -36,7 +36,7 @@
   font-family: $font-family-display;
   font-size: 1.2em;
   font-weight: 300;
-  margin: 0 5px;
+  margin: 0;
 }
 
 .hashtag-option__list {
@@ -46,14 +46,14 @@
 .hashtag-option__list-item {
   float : left;
   width : 50%;
-}
 
-.hashtag-option__list-item--left {
-  text-align: left;
-}
+  &:nth-child(odd) {
+    text-align: left;
+  }
 
-.hashtag-option__list-item--right {
-  text-align: right;
+  &:nth-child(even) {
+   text-align: right;
+  }
 }
 
 .hashtag-option__button {
