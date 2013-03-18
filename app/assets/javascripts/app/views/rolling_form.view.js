@@ -246,8 +246,13 @@
     },
 
     _insertHashtag : function(e) {
-      this.$('#js-rolling-message').replaceSelectedText($(e.currentTarget).val());
       e.preventDefault();
+      var $button = $(e.currentTarget);
+      var currentRollingMessage = this.$('#js-rolling-message').val();
+      var doPrependSpace = currentRollingMessage.length && !_(currentRollingMessage).endsWith(' ');
+      //insert the hashtag at the end of the currently entered rolling message
+      this.$('#js-rolling-message').insertText((doPrependSpace ? ' ' : '') + $button.val(), currentRollingMessage.length, true);
+      $button.addClass('button_green button_active');
     }
 
   });
