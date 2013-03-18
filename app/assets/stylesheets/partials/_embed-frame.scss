@@ -1,0 +1,164 @@
+$footer_height: 100px;
+$play_button_diameter: 88px;
+$player_controls_height: 44px;
+
+.embedded-frame {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+    
+  /**********************
+   * Adjustments to standard styles
+   **********************/
+  /* no PVI: make video and controls to full height */
+  .video_controls__wrapper,
+  .videoplayer-viewport {
+    bottom:0;
+  }
+  
+  /* no prev/next/hide-guide */
+  .videoplayer-nav__btn {
+    display: none;
+  }
+  
+}
+
+  .embedded-frame__body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: $footer_height;
+  }
+  
+  .embedded-frame__footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: $footer_height;
+    background:#f2f0f0;
+    
+    .frame-footer {
+      font-size: 1.3em;
+    }
+    
+    .xuser-avatar {
+      height: 3.5em;
+      width: 3.5em;
+    }
+  }
+
+/**********************
+ * Without the footer
+ **********************/
+.embedded-frame--no-footer {
+  .embedded-frame__body {
+    bottom: 0;
+  }
+  .embedded-frame__footer {
+    display: none;
+  }
+  .embed_board--paused,
+  .embed_board--complete {
+    bottom: $player_controls_height;
+  }
+}
+
+/**********************
+ * Boards over the video
+ **********************/
+.embed_board {
+   display: none;
+   padding: 2em 2em 0;
+   background-color: rgba(0,0,0,0.5);
+}
+
+  .embed_board--unplayed,
+  .embed_board--paused,
+  .embed_board--complete {
+    display: block;
+  }
+  
+  .embed_board--unplayed {
+    .embed_board__head {
+      display: none;
+    }
+  }
+ 
+  .embed_board--paused,
+  .embed_board--complete {
+    bottom: $footer_height + $player_controls_height;
+
+    .embed_board__play-button {
+      display: none;
+    }
+  }
+  
+.embed_board__a {
+  text-decoration: none;
+  &:hover {
+    color: #fff;
+    text-decoration: underline;
+  };
+}
+
+.embed_board__h1 {
+  color: #fff;
+}
+
+.embed_board__h2 {
+  color: white;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.embed_board__h3 {
+  color: #aaa;
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.embed_board__play-button {
+  background-color: rgba(106,184,67,0.8);
+  border-radius: $play_button_diameter/2;
+  color: white;
+  cursor: pointer;
+  font-size: 3em;
+  height:$play_button_diameter;
+  left: 50%;
+  margin-left: -($play_button_diameter/2);
+  margin-top: -($play_button_diameter/2);
+  padding: 25px 0 0 32px;
+  position: absolute;
+  top: 50%;
+  width: $play_button_diameter;
+
+  &:hover {
+    background-color: rgba(106,184,67,1.0);
+  }
+}
+
+.embed_board__head {
+  position: absolute;
+  top: 35%;
+}
+
+.embed_board__body {
+  position: absolute;
+  top: 70%;
+}
+
+.embed_board__button {
+  font-size: 2em;
+  padding: 0.4em 2em;
+  margin-right: .25em;
+}
+
+.embed_board__input {
+  display: inline-block;
+  font-size: 1.8em;
+  width: 200px;
+}
