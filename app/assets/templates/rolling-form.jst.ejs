@@ -36,48 +36,50 @@
 %>
 
 <div class="rolling-option">
-  <fieldset class="hashtag-option">
-    <p class="hashtag-option__legend form_legend">
-      Tag your video and be seen by our community.
-    </p>
-    <ul class="hashtag-option__list list">
-      <li class="hashtag-option__list-item hashtag-option__list-item--left">
-        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#thisexists">
-          #thisexists
-        </button>
-      </li>
+  <% if (showHashtagButtons) { %>
+    <fieldset class="hashtag-option">
+      <p class="hashtag-option__legend form_legend">
+        Tag your video and be seen by our community.
+      </p>
+      <ul class="hashtag-option__list list">
+        <li class="hashtag-option__list-item hashtag-option__list-item--left">
+          <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#thisexists">
+            #thisexists
+          </button>
+        </li>
 
-      <li class="hashtag-option__list-item hashtag-option__list-item--right">
-        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#natureisrad">
-          #natureisrad
-        </button>
-      </li>
+        <li class="hashtag-option__list-item hashtag-option__list-item--right">
+          <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#natureisrad">
+            #natureisrad
+          </button>
+        </li>
 
-      <li class="hashtag-option__list-item hashtag-option__list-item--left">
-        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#greatmoviemoments">
-          #greatmoviemoments
-        </button>
-      </li>
+        <li class="hashtag-option__list-item hashtag-option__list-item--left">
+          <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#greatmoviemoments">
+            #greatmoviemoments
+          </button>
+        </li>
 
-      <li class="hashtag-option__list-item hashtag-option__list-item--right">
-        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#adrenaline">
-          #adrenaline
-        </button>
-      </li>
+        <li class="hashtag-option__list-item hashtag-option__list-item--right">
+          <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#adrenaline">
+            #adrenaline
+          </button>
+        </li>
 
-      <li class="hashtag-option__list-item hashtag-option__list-item--left">
-        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#laugh">
-          #laugh
-        </button>
-      </li>
+        <li class="hashtag-option__list-item hashtag-option__list-item--left">
+          <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#laugh">
+            #laugh
+          </button>
+        </li>
 
-      <li class="hashtag-option__list-item hashtag-option__list-item--right">
-        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#storytellers">
-          #storytellers
-        </button>
-      </li>
-    </ul>
-  </fieldset>
+        <li class="hashtag-option__list-item hashtag-option__list-item--right">
+          <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#storytellers">
+            #storytellers
+          </button>
+        </li>
+      </ul>
+    </fieldset>
+  <% } %>
 
   <fieldset class="share_module share-option">
     <% if(twitter_enabled) { %>

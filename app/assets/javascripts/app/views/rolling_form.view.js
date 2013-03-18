@@ -42,16 +42,16 @@
       var self = this;
 
       this.$el.html(this.template({
-                      roll:this._roll,
-                      frame:this._frame,
-                      user: shelby.models.user,
-                      rollOptions: {
-                        pathForDisplay:RollViewHelpers.pathForDisplay(this._roll),
-                        titleWithoutPath:RollViewHelpers.titleWithoutPath(this._roll),
-                        urlForRoll:RollViewHelpers.urlForRoll(this._roll)
-                      }
-                    }
-                ));
+        frame : this._frame,
+        roll : this._roll,
+        rollOptions : {
+          pathForDisplay : RollViewHelpers.pathForDisplay(this._roll),
+          titleWithoutPath : RollViewHelpers.titleWithoutPath(this._roll),
+          urlForRoll : RollViewHelpers.urlForRoll(this._roll)
+        },
+        showHashtagButtons : true,
+        user : shelby.models.user
+      }));
 
       this._shelbyAutocompleteView = new ShelbyAutocompleteView({
         el : this.$('#js-rolling-message')[0],
@@ -70,7 +70,7 @@
     },
 
     _doRoll : function(e){
-      e.preventDefault;
+      e.preventDefault();
 
       if(!this._validate()){ return; }
       if(this._roll){
