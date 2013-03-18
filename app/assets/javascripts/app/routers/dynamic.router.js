@@ -193,6 +193,19 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var randomChannelKey = channelKeys[_.random(channelKeys.length - 1)];
     this.navigate('channels/' + randomChannelKey, {trigger: false, replace: true});
     this.displayChannel(randomChannelKey, params);
+
+    // track page view
+    var _page = "/channels?src=";
+    if (params && params.src == "chrome-channels-app"){
+      _page += params.src;
+    }
+    else {
+      _page += "direct";
+    }
+
+    try {
+      _gaq.push(['_trackPageview', '/channels?src=direct']);
+    } catch(e) {}
   },
 
   displayChannel : function(channel, params){
