@@ -18,6 +18,7 @@
 //  video card and rolling message
 //---------------------------
 .rolling-option {
+  padding-top: 4px;
   position: absolute;
   width: 100%;
 }
@@ -28,7 +29,7 @@
 //---------------------------
 
 .hashtag-option {
-  margin-top: 18px;
+  margin-top: 10px;
 }
 
 .hashtag-option__legend {
@@ -63,12 +64,8 @@
   width: 97%;
 }
 
-.hashtag-option__button--left {
-  margin-right: 5px;
-}
-
-.hashtag-option__button--right {
-  margin-left: 5px;
+.hashtag-option__button--bottom {
+  margin-bottom: 8px;
 }
 
 //---------------------------

@@ -37,9 +37,10 @@
 
 <div class="rolling-option">
   <% if (showHashtagButtons) { %>
-    <fieldset class="hashtag-option">
+    <hr class="hr--double-rev" />
+    <fieldset class="hashtag-option clearfix">
       <p class="hashtag-option__legend form_legend">
-        Tag your video and be seen by our community.
+        Tag your video to get featured in <a href="/channels" target="_blank">#channels</a>.
       </p>
       <ul class="hashtag-option__list list">
         <li class="hashtag-option__list-item hashtag-option__list-item--left">
@@ -67,18 +68,19 @@
         </li>
 
         <li class="hashtag-option__list-item hashtag-option__list-item--left">
-          <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#laugh">
+          <button class="button_primer button_gray-medium button_command hashtag-option__button hashtag-option__button--bottom js-hashtag-button" value="#laugh">
             #laugh
           </button>
         </li>
 
         <li class="hashtag-option__list-item hashtag-option__list-item--right">
-          <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#storytellers">
+          <button class="button_primer button_gray-medium button_command hashtag-option__button hashtag-option__button--bottom js-hashtag-button" value="#storytellers">
             #storytellers
           </button>
         </li>
       </ul>
     </fieldset>
+    <hr class="hr--double-rev" />
   <% } %>
 
   <fieldset class="share_module share-option">
