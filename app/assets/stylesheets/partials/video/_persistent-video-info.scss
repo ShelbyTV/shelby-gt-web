@@ -271,7 +271,10 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
       }
       .button_command--email {
       }
-}
+      .icon {
+        vertical-align: -0.1em;
+      }
+}//eo .persistent_video_info__commands
 
 // FreshPlay "new" frame
 .persistent_video_info__sash {
