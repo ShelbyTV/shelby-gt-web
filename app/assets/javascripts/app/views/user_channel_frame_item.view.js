@@ -32,7 +32,7 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
   },
 
   template : function(obj){
-    return SHELBYJST['explore-frame-item'](obj);
+    return SHELBYJST['user-channel-frame-item'](obj);
   },
 
   render : function(){
@@ -52,7 +52,10 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
       selfBindAndUpdate : true
     }));
 
-    return this;
+    // if this video has any missing attributes, request that it be fixed in the database
+    this._frame.get('video').checkRequestDbFix();
+
+    return libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
   },
 
   _displayVideo : function(e) {
