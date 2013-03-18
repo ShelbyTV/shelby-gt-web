@@ -21,6 +21,7 @@ libs.shelbyGT.Ajax = {
     '/short_link',
     '/watched',
     shelby.config.apiRoot+'/video/search',
+    '/fix_if_necessary',
     shelby.config.apiRoot+'/js_err'
   ],
 
