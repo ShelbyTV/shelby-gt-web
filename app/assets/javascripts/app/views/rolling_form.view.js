@@ -253,6 +253,13 @@
       //insert the hashtag at the end of the currently entered rolling message
       this.$('#js-rolling-message').insertText((doPrependSpace ? ' ' : '') + $button.val(), currentRollingMessage.length, true);
       $button.addClass('button_green button_active');
+
+      shelby.trackEx({
+        providers : ['ga'],
+        gaCategory : 'Rolling',
+        gaAction : 'click hashtag',
+        gaLabel : $button.val()
+      });
     }
 
   });
