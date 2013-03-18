@@ -73,6 +73,7 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   
   _onPlaybackStatusChange: function(attr, curState){
     var embedBoard = this.$(".embed_board");
+    this.$("#js-video-section .videoplayer-viewport").show();
     
     switch(curState){
       case libs.shelbyGT.PlaybackStatus.paused:
@@ -89,13 +90,20 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
         shelby.userInactivity.disableUserActivityDetection();
         embedBoard.toggleClass("embed_board--paused", false);
         embedBoard.toggleClass("embed_board--complete", true);
+        this.$("#js-video-section .videoplayer-viewport").hide();
         break;
     }
   },
   
   _openCreatorPersonalRoll : function(){
-    var creator = this.model.get('creator');
-    window.open("http://shelby.tv/user/"+creator.id+"/personal_roll", "shelby", "");
+    var creator = this.model.get('creator'),
+    url;
+    if(creator.has('nickname')){
+      url = "http://"+creator.get('nickname')+".shelby.tv";
+    } else {
+      url = "http://shelby.tv/user/"+creator.id+"/personal_roll";
+    }
+    window.open(url, "", "");
     return false;
   },
   

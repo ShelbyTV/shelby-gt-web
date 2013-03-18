@@ -18,6 +18,11 @@ $player_controls_height: 44px;
     bottom:0;
   }
   
+  /* allow the thumbnail as background instead of player */
+  .videoplayer {
+    background: transparent;
+  }
+  
   /* no prev/next/hide-guide */
   .videoplayer-nav__btn {
     display: none;
