@@ -25,9 +25,9 @@
 /*
 Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
-[class*="icon-"]:before {
+[class*="icon-"] {
 */
-.icon-whole:before, .icon-mark:before, .icon-videocard_roll:before, .icon-videocard_comment:before, .icon-star:before, .icon-social_twitter:before, .icon-social_tumblr:before, .icon-social_facebook:before, .icon-shortlink:before, .icon-search:before, .icon-player_sound_on:before, .icon-player_sound_off:before, .icon-player_play:before, .icon-player_pause:before, .icon-player_fullscreen_enable:before, .icon-player_fullscreen_disable:before, .icon-missing_thumb:before, .icon-iphone:before, .icon-heart:before, .icon-HD:before, .icon-email:before, .icon-comment_reply:before, .icon-chevron:before, .icon-carrot:before, .icon-cancel:before, .icon-avatar:before, .icon-arrow_up:before, .icon-arrow_right:before, .icon-arrow_left:before, .icon-arrow_down:before, .icon-type:before, .icon-share:before, .icon-embed:before, .icon-videocard_queue:before {
+.icon-videocard_roll, .icon-videocard_queue, .icon-videocard_comment, .icon-star, .icon-social_twitter, .icon-social_tumblr, .icon-social_facebook, .icon-shortlink, .icon-share, .icon-search, .icon-player_sound_on, .icon-player_sound_off, .icon-player_play, .icon-player_pause, .icon-player_fullscreen_enable, .icon-player_fullscreen_disable, .icon-missing_thumb, .icon-iphone, .icon-heart, .icon-HD, .icon-embed, .icon-email, .icon-comment_reply, .icon-chevron, .icon-carrot, .icon-cancel, .icon-avatar, .icon-arrow_up, .icon-arrow_right, .icon-arrow_left, .icon-arrow_down, .icon-whole, .icon-type, .icon-mark {
 	font-family: 'Shelby';
 	speak: none;
 	font-style: normal;
@@ -37,105 +37,105 @@ you can use the generic selector below, but it's slower:
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
 }
-.icon-whole:before {
+.icon-videocard_roll:before {
 	content: "\e000";
 }
-.icon-mark:before {
-	content: "\e002";
-}
-.icon-videocard_roll:before {
-	content: "\e003";
+.icon-videocard_queue:before {
+	content: "\e001";
 }
 .icon-videocard_comment:before {
-	content: "\e005";
+	content: "\e002";
 }
 .icon-star:before {
-	content: "\e006";
+	content: "\e003";
 }
 .icon-social_twitter:before {
-	content: "\e007";
+	content: "\e004";
 }
 .icon-social_tumblr:before {
-	content: "\e008";
+	content: "\e005";
 }
 .icon-social_facebook:before {
-	content: "\e009";
+	content: "\e006";
 }
 .icon-shortlink:before {
-	content: "\e00a";
+	content: "\e007";
+}
+.icon-share:before {
+	content: "\e008";
 }
 .icon-search:before {
-	content: "\e00b";
+	content: "\e009";
 }
 .icon-player_sound_on:before {
-	content: "\e00c";
+	content: "\e00a";
 }
 .icon-player_sound_off:before {
-	content: "\e00d";
+	content: "\e00b";
 }
 .icon-player_play:before {
-	content: "\e00e";
+	content: "\e00c";
 }
 .icon-player_pause:before {
-	content: "\e00f";
+	content: "\e00d";
 }
 .icon-player_fullscreen_enable:before {
-	content: "\e010";
+	content: "\e00e";
 }
 .icon-player_fullscreen_disable:before {
-	content: "\e011";
+	content: "\e00f";
 }
 .icon-missing_thumb:before {
-	content: "\e012";
+	content: "\e010";
 }
 .icon-iphone:before {
-	content: "\e013";
+	content: "\e011";
 }
 .icon-heart:before {
-	content: "\e014";
+	content: "\e012";
 }
 .icon-HD:before {
-	content: "\e015";
+	content: "\e013";
+}
+.icon-embed:before {
+	content: "\e014";
 }
 .icon-email:before {
-	content: "\e016";
+	content: "\e015";
 }
 .icon-comment_reply:before {
-	content: "\e017";
+	content: "\e016";
 }
 .icon-chevron:before {
-	content: "\e018";
+	content: "\e017";
 }
 .icon-carrot:before {
-	content: "\e019";
+	content: "\e018";
 }
 .icon-cancel:before {
-	content: "\e01a";
+	content: "\e019";
 }
 .icon-avatar:before {
-	content: "\e01b";
+	content: "\e01a";
 }
 .icon-arrow_up:before {
-	content: "\e01c";
+	content: "\e01b";
 }
 .icon-arrow_right:before {
-	content: "\e01d";
+	content: "\e01c";
 }
 .icon-arrow_left:before {
-	content: "\e01e";
+	content: "\e01d";
 }
 .icon-arrow_down:before {
+	content: "\e01e";
+}
+.icon-whole:before {
 	content: "\e01f";
 }
 .icon-type:before {
-	content: "\e001";
-}
-.icon-share:before {
 	content: "\e020";
 }
-.icon-embed:before {
+.icon-mark:before {
 	content: "\e021";
-}
-.icon-videocard_queue:before {
-	content: "\e004";
 }
