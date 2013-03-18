@@ -5,16 +5,70 @@
 @import "base";
 
 //---------------------------
-//  submit button currently resides in
-//  media-module JST, 
 //  submit button subclasses share_submit
 //---------------------------
 
 .rolling-submit {
   font-size: 1.1em;
-  margin: 18px 0;
+  float: right;
+}
+
+//---------------------------
+//  wrapper for all UI below the
+//  video card and rolling message
+//---------------------------
+.rolling-option {
   position: absolute;
-  right: -($media-module-margin);
+  width: 100%;
+}
+
+//---------------------------
+//  interface elements for adding
+//  hashtags to the rolling message
+//---------------------------
+
+.hashtag-option {
+  margin-top: 18px;
+}
+
+.hashtag-option__legend {
+  font-family: $font-family-display;
+  font-size: 1.2em;
+  font-weight: 300;
+  margin: 0 5px;
+}
+
+.hashtag-option__list {
+  margin-top: 10px;
+}
+
+.hashtag-option__list-item {
+  float : left;
+  width : 50%;
+}
+
+.hashtag-option__list-item--left {
+  text-align: left;
+}
+
+.hashtag-option__list-item--right {
+  text-align: right;
+}
+
+.hashtag-option__button {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align :center;
+  width: 97%;
+}
+
+.hashtag-option__button--left {
+  margin-right: 5px;
+}
+
+.hashtag-option__button--right {
+  margin-left: 5px;
 }
 
 //---------------------------
@@ -23,8 +77,7 @@
 //---------------------------
 
 .share-option {
-	margin-top: 18px;
-  position: absolute;
+	margin-top: 8px;
 }
 
 .share-option-twitter,

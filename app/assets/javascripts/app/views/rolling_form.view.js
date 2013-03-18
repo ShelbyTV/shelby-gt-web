@@ -21,6 +21,7 @@
 
     events : {
       "click #js-roll-it"         : '_doRoll',
+      "click .js-hashtag-button"  : '_insertHashtag',
       "focus #new-roll-name"      : '_clearErrors',
       "focus #js-rolling-message" : '_clearErrors'
     },
@@ -242,6 +243,11 @@
           else { this._frame.reRoll(hashtagRoll, message, null); }
         }
       }
+    },
+
+    _insertHashtag : function(e) {
+      this.$('#js-rolling-message').replaceSelectedText($(e.currentTarget).val());
+      e.preventDefault();
     }
 
   });

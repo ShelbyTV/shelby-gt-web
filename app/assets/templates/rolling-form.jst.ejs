@@ -1,4 +1,4 @@
-<%  
+<%
   var creator = frame.get('creator');
   var creatorNickname = creator ? frame.get('creator').get('nickname') : '';
   var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
@@ -19,7 +19,6 @@
     userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrl(user),
     userNickname : user.get('nickname') || '',
     messageText  : messageText,
-    action       : 'rolling',
     subline      : false
   })
 %>
@@ -36,18 +35,67 @@
   var facebook_enabled = _.include(active_networks, 'facebook') ? true : false;
 %>
 
-<fieldset class="share_module share-option">
-  <% if(twitter_enabled) { %>
-    <label class="share_label js-toggle-twitter-sharing" for="share-on-twitter" title="Share to Twitter">
-      <input id="share-on-twitter" class="share_input share-option-twitter visuallyhidden" name="share-option-twitter" type="checkbox" />
-      <span class="ir share_label_icon share-button-twitter">Share to Twitter</span>
-    </label>
-  <% } %>
+<div class="rolling-option">
+  <fieldset class="hashtag-option">
+    <p class="hashtag-option__legend form_legend">
+      Tag your video and be seen by our community.
+    </p>
+    <ul class="hashtag-option__list list">
+      <li class="hashtag-option__list-item hashtag-option__list-item--left">
+        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#thisexists">
+          #thisexists
+        </button>
+      </li>
 
-  <% if(facebook_enabled) { %>
-    <label class="share_label js-toggle-facebook-sharing" for="share-on-facebook" title="Share to Facebook">
-      <input id="share-on-facebook" class="share_input share-option-facebook visuallyhidden" name="share-option-facebook" type="checkbox" />
-      <span class="ir share_label_icon share-button-facebook">Share to Facebook</span>
-    </label>
-  <% } %>
-</fieldset>
+      <li class="hashtag-option__list-item hashtag-option__list-item--right">
+        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#natureisrad">
+          #natureisrad
+        </button>
+      </li>
+
+      <li class="hashtag-option__list-item hashtag-option__list-item--left">
+        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#greatmoviemoments">
+          #greatmoviemoments
+        </button>
+      </li>
+
+      <li class="hashtag-option__list-item hashtag-option__list-item--right">
+        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#adrenaline">
+          #adrenaline
+        </button>
+      </li>
+
+      <li class="hashtag-option__list-item hashtag-option__list-item--left">
+        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#laugh">
+          #laugh
+        </button>
+      </li>
+
+      <li class="hashtag-option__list-item hashtag-option__list-item--right">
+        <button class="button_primer button_gray-medium button_command hashtag-option__button js-hashtag-button" value="#storytellers">
+          #storytellers
+        </button>
+      </li>
+    </ul>
+  </fieldset>
+
+  <fieldset class="share_module share-option">
+    <% if(twitter_enabled) { %>
+      <label class="share_label js-toggle-twitter-sharing" for="share-on-twitter" title="Share to Twitter">
+        <input id="share-on-twitter" class="share_input share-option-twitter visuallyhidden" name="share-option-twitter" type="checkbox" />
+        <span class="ir share_label_icon share-button-twitter">Share to Twitter</span>
+      </label>
+    <% } %>
+
+    <% if(facebook_enabled) { %>
+      <label class="share_label js-toggle-facebook-sharing" for="share-on-facebook" title="Share to Facebook">
+        <input id="share-on-facebook" class="share_input share-option-facebook visuallyhidden" name="share-option-facebook" type="checkbox" />
+        <span class="ir share_label_icon share-button-facebook">Share to Facebook</span>
+      </label>
+    <% } %>
+
+    <button id="js-roll-it" class="form_submit button_primer button_blue rolling-submit" type="submit" tabindex="0" onclick="return false;">
+      Roll It!
+    </button>
+  </fieldset>
+</div>
