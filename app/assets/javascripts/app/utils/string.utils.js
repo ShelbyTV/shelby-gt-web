@@ -24,19 +24,28 @@ libs.utils.String = {
           if(href[0] == '#') {
             //special handling for hashtag links, which are not straight anchor links
             //but instead use javascript
-            var linkAttributes = ' ';
-            _(options.hashtag_link_attribs).chain().extend({'data-ga_label': href}).each(function(value, name) {
-              linkAttributes += name + '="' + value + '" ';
-              linkAttributes = linkAttributes.replace(/ $/,'');
-            });
             //find the channel which this hashtag refers to
             var channelKey = _(shelby.config.channels).chain().pairs().find(function(channelPair) {
               return _(channelPair[1].hashTags).contains(href.slice(1));
             }).value()[0];
-            var jsLink = "javascript:shelby.router.navigate('/channels/" + channelKey + "', {trigger : true})";
-            return '<a href="' + encodeURI(jsLink) + '" title="Go to channel ' + channelKey + '"' +
-                            (options ? linkAttributes : '') + '>' + text + '</a>';
+            var linkAttributesString = ' ';
+            if (_(options.hashtag_link_attribs).has('class')) {
+              options.hashtag_link_attribs.class += ' js-hashtag-link';
+            } else {
+              options.hashtag_link_attribs.class = 'js-hashtag-link';
+            }
+            _(options.hashtag_link_attribs).chain().extend({
+              'data-channel_key' : channelKey,
+              'data-ga_label' : href,
+              target : '_blank'
+            }).each(function(value, name) {
+              linkAttributesString += name + '="' + value + '" ';
+              linkAttributesString = linkAttributesString.replace(/ $/,'');
+            });
+            return '<a href="/channels/' + channelKey + '" title="Go to channel ' + channelKey + '"' +
+                            (options ? linkAttributesString : '') + '>' + text + '</a>';
           } else {
+            //regular link, just do the same thing that the default callback does in ba-linkify
             var s = " ";
             if (options) {
               for (var key in options.attribs) {
