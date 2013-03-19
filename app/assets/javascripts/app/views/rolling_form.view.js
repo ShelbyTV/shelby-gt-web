@@ -199,41 +199,17 @@
 
     _checkForAndRollToHashtag : function(message, via_search){
       // parsing message to see if a 'special' hashtag is there
-      var _hashtag, _rollId;
+      var _hashtag, _rollId = null;
       if ((_hashtag = /\#(\w*)/.exec(message))) {
-        switch (_hashtag[1].toLowerCase()) {
-          case 'exists' :
-          case 'thisexists':
-            _rollId = shelby.config.channels.thisexists.hashtagRollId;
+        // see if this hashtag matches any of the hashtags for our channels
+        var _hashTagToMatch = _hashtag[1].toLowerCase();
+        var channelsArray = _(shelby.config.channels).pairs();
+        for (var i = 0; i < channelsArray.length; i++) {
+          var channel = channelsArray[i][1];
+          if (_(channel.hashTags).contains(_hashTagToMatch)) {
+            _rollId = channel.hashtagRollId;
             break;
-          case 'movies' :
-          case 'greatmoviemoments':
-          case 'greatmoviemoment':
-            _rollId = shelby.config.channels.greatmoviemoments.hashtagRollId;
-            break;
-          case 'storytellers':
-          case 'storyteller':
-          case 'stories':
-          case 'story':
-            _rollId = shelby.config.channels.storytellers.hashtagRollId;
-            break;
-          case 'laugh' :
-          case 'lol':
-            _rollId = shelby.config.channels.laugh.hashtagRollId;
-            break;
-          case 'adrenaline' :
-            _rollId = shelby.config.channels.adrenaline.hashtagRollId;
-            break;
-          case 'learn':
-          case 'learnaboutyourworld':
-            _rollId = shelby.config.channels.learn.hashtagRollId;
-            break;
-          case 'natureisrad':
-          case 'nature':
-            _rollId = shelby.config.channels.nature.hashtagRollId;
-            break;
-          default:
-            _rollId = null;
+          }
         }
 
         if (_rollId !== null) {
