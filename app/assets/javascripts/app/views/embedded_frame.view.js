@@ -84,8 +84,10 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   },
   
   _onPlaybackStatusChange: function(attr, curState){
-    var embedBoard = this.$(".embed_board");
-    this.$("#js-video-section .videoplayer-viewport").show();
+    var embedBoard = this.$(".embed_board"),
+    videoPlayer = this.$("#js-video-section .videoplayer-viewport"),
+    backgroundThumb = this.$(".preview-video-thumbnail");
+    videoPlayer.show();
     
     switch(curState){
       case libs.shelbyGT.PlaybackStatus.paused:
@@ -93,19 +95,22 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
         embedBoard.toggleClass("embed_board--unplayed", false);
         embedBoard.toggleClass("embed_board--paused", true);
         embedBoard.toggleClass("embed_board--complete", false);
+        backgroundThumb.hide();
         break;
       case libs.shelbyGT.PlaybackStatus.playing:
         shelby.userInactivity.enableUserActivityDetection();
         embedBoard.toggleClass("embed_board--unplayed", false);
         embedBoard.toggleClass("embed_board--paused", false);
         embedBoard.toggleClass("embed_board--complete", false);
+        backgroundThumb.hide();
         break;
       case libs.shelbyGT.PlaybackStatus.ended:
         shelby.userInactivity.disableUserActivityDetection();
         embedBoard.toggleClass("embed_board--unplayed", false);
         embedBoard.toggleClass("embed_board--paused", false);
         embedBoard.toggleClass("embed_board--complete", true);
-        this.$("#js-video-section .videoplayer-viewport").hide();
+        backgroundThumb.show();
+        videoPlayer.hide();
         break;
     }
   },
