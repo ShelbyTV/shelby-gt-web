@@ -167,3 +167,21 @@ $player_controls_height: 44px;
   font-size: 1.8em;
   width: 200px;
 }
+
+/**********************
+ * On touch we don't show player controls
+ * Adjust boards appropriately
+ **********************/
+.touch {
+  .embed_board--paused,
+  .embed_board--complete {
+    bottom: $footer_height;
+  }
+  
+  .embedded-frame--no-footer {
+    .embed_board--paused,
+    .embed_board--complete {
+      bottom: 0;
+    }
+  }
+}
