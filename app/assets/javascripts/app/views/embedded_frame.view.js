@@ -136,6 +136,7 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   
   _selectInputContent : function(el){
     $(el.currentTarget).select();
+    return false;
   },
   
   _facebookShare : function(){
