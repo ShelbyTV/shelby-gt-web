@@ -204,33 +204,33 @@
         switch (_hashtag[1].toLowerCase()) {
           case 'exists' :
           case 'thisexists':
-            _rollId = shelby.config.hashtagRolls.thisexists;
+            _rollId = shelby.config.channels.thisexists.hashtagRollId;
             break;
           case 'movies' :
           case 'greatmoviemoments':
           case 'greatmoviemoment':
-            _rollId = shelby.config.hashtagRolls.greatmoviemoments;
+            _rollId = shelby.config.channels.greatmoviemoments.hashtagRollId;
             break;
           case 'storytellers':
           case 'storyteller':
           case 'stories':
           case 'story':
-            _rollId = shelby.config.hashtagRolls.storytellers;
+            _rollId = shelby.config.channels.storytellers.hashtagRollId;
             break;
           case 'laugh' :
           case 'lol':
-            _rollId = shelby.config.hashtagRolls.laugh;
+            _rollId = shelby.config.channels.laugh.hashtagRollId;
             break;
           case 'adrenaline' :
-            _rollId = shelby.config.hashtagRolls.adrenaline;
+            _rollId = shelby.config.channels.adrenaline.hashtagRollId;
             break;
           case 'learn':
           case 'learnaboutyourworld':
-            _rollId = shelby.config.hashtagRolls.learnaboutyourworld;
+            _rollId = shelby.config.channels.learn.hashtagRollId;
             break;
           case 'natureisrad':
           case 'nature':
-            _rollId = shelby.config.hashtagRolls.natureisrad;
+            _rollId = shelby.config.channels.nature.hashtagRollId;
             break;
           default:
             _rollId = null;
