@@ -90,16 +90,19 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
     switch(curState){
       case libs.shelbyGT.PlaybackStatus.paused:
         shelby.userInactivity.disableUserActivityDetection();
+        embedBoard.toggleClass("embed_board--unplayed", false);
         embedBoard.toggleClass("embed_board--paused", true);
         embedBoard.toggleClass("embed_board--complete", false);
         break;
       case libs.shelbyGT.PlaybackStatus.playing:
         shelby.userInactivity.enableUserActivityDetection();
+        embedBoard.toggleClass("embed_board--unplayed", false);
         embedBoard.toggleClass("embed_board--paused", false);
         embedBoard.toggleClass("embed_board--complete", false);
         break;
       case libs.shelbyGT.PlaybackStatus.ended:
         shelby.userInactivity.disableUserActivityDetection();
+        embedBoard.toggleClass("embed_board--unplayed", false);
         embedBoard.toggleClass("embed_board--paused", false);
         embedBoard.toggleClass("embed_board--complete", true);
         this.$("#js-video-section .videoplayer-viewport").hide();
