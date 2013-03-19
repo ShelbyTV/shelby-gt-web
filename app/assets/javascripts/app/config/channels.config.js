@@ -46,3 +46,8 @@ shelby.config.channels = {
     hashTags : ['natureisrad', 'nature']
   }
 };
+
+// create a flat array of all shelby channel hashtags
+shelby.config.hashTags = _(shelby.config.channels).chain().map(function(channel){
+  return channel.hashTags;
+}).flatten().compact().value();
