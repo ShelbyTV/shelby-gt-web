@@ -25,7 +25,7 @@ libs.utils.String = {
             //special handling for hashtag links, which are not straight anchor links
             //but instead use javascript
             var linkAttributes = ' ';
-            _(options.hashtag_link_attribs).each(function(value, name) {
+            _(options.hashtag_link_attribs).chain().extend({'data-ga_label': href}).each(function(value, name) {
               linkAttributes += name + '="' + value + '" ';
               linkAttributes = linkAttributes.replace(/ $/,'');
             });
@@ -65,25 +65,39 @@ libs.utils.String = {
   // adding attributes to each link so that they can be tracked by GA
   linkifySafeWithClickTracking : function(s, trackingOptions, linkifyOptions){
     // default options
-    trackingOptions = _.chain({}).extend(trackingOptions).defaults({
+    var defaults = {
+      link : {
         gaCategory : 'Frame',
         gaAction : 'Click',
         gaLabel : shelby.models.user.get('nickname')
-    }).value();
+      },
+      hashtag : {
+        gaCategory : 'Frame',
+        gaAction : 'Click on hashtag link'
+      }
+    };
+    trackingOptions = $.extend(true, {}, defaults, trackingOptions);
 
     var attribs = {
       target: "blank",
       'class': "js-track-event"
     };
-    attribs['data-ga_category'] = trackingOptions.gaCategory;
-    attribs['data-ga_action'] = trackingOptions.gaAction;
-    attribs['data-ga_label'] = trackingOptions.gaLabel;
+    attribs['data-ga_category'] = trackingOptions.link.gaCategory;
+    attribs['data-ga_action'] = trackingOptions.link.gaAction;
+    attribs['data-ga_label'] = trackingOptions.link.gaLabel;
+
+    var hashtag_link_attribs = {
+      'class': "js-track-event"
+    };
+    hashtag_link_attribs['data-ga_category'] = trackingOptions.hashtag.gaCategory;
+    hashtag_link_attribs['data-ga_action'] = trackingOptions.hashtag.gaAction;
 
     // mix the link attributes for tracking in with any other link attributes specified
     // in the linkifyOptions params, which allows the caller to pass any additional
     // options to ba-linkify that they wish
     linkifyOptions = _({}).extend(linkifyOptions);
     linkifyOptions.attribs = _.chain({}).extend(linkifyOptions.attribs).extend(attribs).value();
+    linkifyOptions.hashtag_link_attribs = _.chain({}).extend(linkifyOptions.hashtag_link_attribs).extend(hashtag_link_attribs).value();
 
     return this.linkifySafe(s, linkifyOptions);
   }
