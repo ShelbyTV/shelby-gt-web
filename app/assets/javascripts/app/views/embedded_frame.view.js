@@ -11,6 +11,8 @@
 */
 libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
 
+  _hasRenderedVideo: false,
+
   events : {
     "click .js-start-playback"        : "_startPlayback",
     "click .js-creator-personal-roll" : "_openCreatorPersonalRoll",
@@ -30,6 +32,12 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
     this._prefetchShortlink();
     
     this.render();
+    
+    //mobile video doesn't auto-play
+    //first user tap will (1) hide our unplayed board and (2) start video playing
+    if(Browser.isMobile()){
+      this._renderVideo();
+    }
   },
   
   _cleanup: function() {
@@ -56,15 +64,19 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   },
   
   _renderVideo : function(){
-    //this guys does all the video work
-    this.renderChildInto(new libs.shelbyGT.VideoContentPaneView({
-                          guide : this._guide,
-                          playbackState : this._playbackState,
-                          }),
-                          this.$("#js-video-section"));
+    if(!this._hasRenderedVideo){
+      this._hasRenderedVideo = true;
+      
+      //this guys does all the video work
+      this.renderChildInto(new libs.shelbyGT.VideoContentPaneView({
+                            guide : this._guide,
+                            playbackState : this._playbackState,
+                            }),
+                            this.$("#js-video-section"));
 
-    //setting the active frame starts playback
-    this._guide.set({activeFrameModel: this.model});
+      //setting the active frame starts playback
+      this._guide.set({activeFrameModel: this.model});
+    }
   },
   
   _onNewPlayerState: function(playbackState, newPlayerState){
