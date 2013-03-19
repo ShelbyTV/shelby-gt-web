@@ -128,8 +128,6 @@
     return function( txt, options ) {
       options = options || {};
 
-      URI_RE = new RegExp( "(?:" + URI_RE_LIST.join("|") + ")", "ig" );
-
       // Temp variables.
       var arr,
         i,
@@ -161,8 +159,11 @@
         }
       }
 
-      if (options.twitter) URI_RE_LIST.push("@[a-zA-Z0-9_]+");
-      if (options.hashtags) URI_RE_LIST.push("#[a-zA-Z0-9_]+");
+      var RE_LIST = [].concat(URI_RE_LIST);
+      if (options.twitter) RE_LIST.push("@[a-zA-Z0-9_]+");
+      if (options.hashtags) RE_LIST.push("#[a-zA-Z0-9_]+");
+
+      var URI_RE = new RegExp( "(?:" + RE_LIST.join("|") + ")", "ig" );
 
       // Find links.
       while ( arr = URI_RE.exec( txt ) ) {
