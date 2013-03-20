@@ -30,9 +30,9 @@ libs.utils.String = {
             }).value()[0];
             var linkAttributesString = ' ';
             if (_(options.hashtag_link_attribs).has('class')) {
-              options.hashtag_link_attribs.class += ' js-hashtag-link';
+              options.hashtag_link_attribs['class'] += ' js-hashtag-link';
             } else {
-              options.hashtag_link_attribs.class = 'js-hashtag-link';
+              options.hashtag_link_attribs['class'] = 'js-hashtag-link';
             }
             _(options.hashtag_link_attribs).chain().extend({
               'data-channel_key' : channelKey,
