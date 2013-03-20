@@ -1,3 +1,9 @@
+// NOTE: in the hashTags array for a channel, the first hastag in the
+// array is considered the canonical hashtag for that channel, so in
+// any case where the app is looking for a hashtag for that channel
+// and has not been supplied one by the user, it will use the canonical
+// (first) hashtag
+
 shelby.config.channels = {
   'laugh' : {
     title : '#laugh',
@@ -13,7 +19,7 @@ shelby.config.channels = {
     title : '#learnaboutyourworld',
     id : '5112fb5db415cc1ded0d79a1',
     hashtagRollId : '51375a3bb415cc6617000090',
-    hashTags : ['learn', 'learnaboutyourworld']
+    hashTags : ['learnaboutyourworld', 'learn']
   },
   'adrenaline' : {
     title : '#adrenaline',
@@ -25,13 +31,13 @@ shelby.config.channels = {
     title : '#thisexists',
     id: '5137560bb415cc636c035769',
     hashtagRollId : '513756efb415cc6617000008',
-    hashTags : ['exists', 'thisexists']
+    hashTags : ['thisexists', 'exists']
   },
   'greatmoviemoments' : {
     title : '#greatmoviemoments',
     id: '51375788b415cc68d804aa71',
     hashtagRollId : '513757cbb415cc661700001a',
-    hashTags : ['movies', 'greatmoviemoments', 'greatmoviemoment']
+    hashTags : ['greatmoviemoments', 'movies', 'greatmoviemoment']
   },
   'storytellers' : {
     title : '#storytellers',

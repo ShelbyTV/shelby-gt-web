@@ -43,47 +43,15 @@
         Tag your video to add to #Channels
       </p>
       <ul class="hashtag-option__list list">
-        <li class="hashtag-option__list-item">
-          <button class="button_primer button_gray-medium button_standard hashtag-option__button js-hashtag-button" value="#laugh">
-            #laugh
-          </button>
-        </li>
-
-        <li class="hashtag-option__list-item">
-          <button class="button_primer button_gray-medium button_standard hashtag-option__button js-hashtag-button" value="#learnaboutyourworld">
-            #learnaboutyourworld
-          </button>
-        </li>
-
-        <li class="hashtag-option__list-item">
-          <button class="button_primer button_gray-medium button_standard hashtag-option__button js-hashtag-button" value="#adrenaline">
-            #adrenaline
-          </button>
-        </li>
-
-        <li class="hashtag-option__list-item">
-          <button class="button_primer button_gray-medium button_standard hashtag-option__button js-hashtag-button" value="#thisexists">
-            #thisexists
-          </button>
-        </li>
-
-        <li class="hashtag-option__list-item">
-          <button class="button_primer button_gray-medium button_standard hashtag-option__button js-hashtag-button" value="#greatmoviemoments">
-            #greatmoviemoments
-          </button>
-        </li>
-
-        <li class="hashtag-option__list-item">
-          <button class="button_primer button_gray-medium button_standard hashtag-option__button js-hashtag-button" value="#storytellers">
-            #storytellers
-          </button>
-
-        <li class="hashtag-option__list-item">
-          <button class="button_primer button_gray-medium button_standard hashtag-option__button hashtag-option__button--bottom js-hashtag-button" value="#natureisrad">
-            #natureisrad
-          </button>
-        </li>
-        </li>
+        <% _(shelby.config.channels).chain().values().each(function(channel, index, values){ %>
+          <% if (_(channel).has('hashTags') && channel.hashTags.length) { %>
+            <li class="hashtag-option__item">
+              <button class="button_primer button_gray-medium button_standard hashtag-option__button <%= index == values.length - 1 ? 'hashtag-option__button--bottom ' : '' %>js-hashtag-button" value="#<%= channel.hashTags[0] %>">
+                #<%= channel.hashTags[0] %>
+              </button>
+            </li>
+          <% } %>
+        <% }); %>
       </ul>
     </fieldset>
     <hr class="hr--double-rev" />
