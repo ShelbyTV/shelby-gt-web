@@ -18,6 +18,11 @@ $player_controls_height: 44px;
     bottom:0;
   }
   
+  /* allow the thumbnail as background instead of player */
+  .videoplayer {
+    background: transparent;
+  }
+  
   /* no prev/next/hide-guide */
   .videoplayer-nav__btn {
     display: none;
@@ -161,4 +166,33 @@ $player_controls_height: 44px;
   display: inline-block;
   font-size: 1.8em;
   width: 200px;
+}
+
+/**********************
+ * On touch we need to adjust boards
+ * 1) For one-tap playback
+ * 2) Because we don't show player controls
+ **********************/
+.touch {
+  /* 1) for one-tap playback */
+  .embed_board--unplayed {
+    height: 70px;
+    .embed_board__play-button,
+    .embed_board__body {
+      display: none;
+    } 
+  }
+  
+  /* 2) Because we don't show player controls */
+  .embed_board--paused,
+  .embed_board--complete {
+    bottom: $footer_height;
+  }
+  
+  .embedded-frame--no-footer {
+    .embed_board--paused,
+    .embed_board--complete {
+      bottom: 0;
+    }
+  }
 }

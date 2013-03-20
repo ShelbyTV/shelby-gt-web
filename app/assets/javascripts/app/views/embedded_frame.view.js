@@ -11,6 +11,8 @@
 */
 libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
 
+  _hasRenderedVideo: false,
+
   events : {
     "click .js-start-playback"        : "_startPlayback",
     "click .js-creator-personal-roll" : "_openCreatorPersonalRoll",
@@ -30,6 +32,12 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
     this._prefetchShortlink();
     
     this.render();
+    
+    //mobile video doesn't auto-play
+    //first user tap will (1) hide our unplayed board and (2) start video playing
+    if(Browser.isMobile()){
+      this._renderVideo();
+    }
   },
   
   _cleanup: function() {
@@ -56,15 +64,19 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   },
   
   _renderVideo : function(){
-    //this guys does all the video work
-    this.renderChildInto(new libs.shelbyGT.VideoContentPaneView({
-                          guide : this._guide,
-                          playbackState : this._playbackState,
-                          }),
-                          this.$("#js-video-section"));
+    if(!this._hasRenderedVideo){
+      this._hasRenderedVideo = true;
+      
+      //this guys does all the video work
+      this.renderChildInto(new libs.shelbyGT.VideoContentPaneView({
+                            guide : this._guide,
+                            playbackState : this._playbackState,
+                            }),
+                            this.$("#js-video-section"));
 
-    //setting the active frame starts playback
-    this._guide.set({activeFrameModel: this.model});
+      //setting the active frame starts playback
+      this._guide.set({activeFrameModel: this.model});
+    }
   },
   
   _onNewPlayerState: function(playbackState, newPlayerState){
@@ -72,30 +84,46 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   },
   
   _onPlaybackStatusChange: function(attr, curState){
-    var embedBoard = this.$(".embed_board");
+    var embedBoard = this.$(".embed_board"),
+    videoPlayer = this.$("#js-video-section .videoplayer-viewport"),
+    backgroundThumb = this.$(".preview-video-thumbnail");
+    videoPlayer.show();
     
     switch(curState){
       case libs.shelbyGT.PlaybackStatus.paused:
         shelby.userInactivity.disableUserActivityDetection();
+        embedBoard.toggleClass("embed_board--unplayed", false);
         embedBoard.toggleClass("embed_board--paused", true);
         embedBoard.toggleClass("embed_board--complete", false);
+        backgroundThumb.hide();
         break;
       case libs.shelbyGT.PlaybackStatus.playing:
         shelby.userInactivity.enableUserActivityDetection();
+        embedBoard.toggleClass("embed_board--unplayed", false);
         embedBoard.toggleClass("embed_board--paused", false);
         embedBoard.toggleClass("embed_board--complete", false);
+        backgroundThumb.hide();
         break;
       case libs.shelbyGT.PlaybackStatus.ended:
         shelby.userInactivity.disableUserActivityDetection();
+        embedBoard.toggleClass("embed_board--unplayed", false);
         embedBoard.toggleClass("embed_board--paused", false);
         embedBoard.toggleClass("embed_board--complete", true);
+        backgroundThumb.show();
+        videoPlayer.hide();
         break;
     }
   },
   
   _openCreatorPersonalRoll : function(){
-    var creator = this.model.get('creator');
-    window.open("http://shelby.tv/user/"+creator.id+"/personal_roll", "shelby", "");
+    var creator = this.model.get('creator'),
+    url;
+    if(creator.has('nickname')){
+      url = "http://"+creator.get('nickname')+".shelby.tv";
+    } else {
+      url = "http://shelby.tv/user/"+creator.id+"/personal_roll";
+    }
+    window.open(url, "", "");
     return false;
   },
   
@@ -116,6 +144,7 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   
   _selectInputContent : function(el){
     $(el.currentTarget).select();
+    return false;
   },
   
   _facebookShare : function(){

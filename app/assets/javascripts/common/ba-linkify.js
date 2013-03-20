@@ -113,15 +113,20 @@
         },
         punct_regexp: /(?:[!?.,:;'"]|(?:&|&amp;)(?:lt|gt|quot|apos|raquo|laquo|rsaquo|lsaquo);)$/,
         twitter: false,
+        hashtags: false,
+        // hastag_link_prefix and hashtag_link_postfix: the generated href for a hashtag #hashtag
+        //  will be hashtag_link_prefix + "#hashtag" + hashtag_link_postfix
+        hashtag_link_prefix: 'http://www.example.com/',
+        hashtag_link_postfix: '',
+        // hashtag_whitelist: an array of hashtags that should be linkified, if null linkify all hashtags found
+        //   the entries can be strings with or without the leading '#''
+        //   so, either ['hashtag'] or ['#hashtag'] means #hashtag is a valid hashtag
+        hashtag_whitelist : null,
         attribs: {}
       };
 
     return function( txt, options ) {
       options = options || {};
-
-      if (options.twitter) URI_RE_LIST.push("@[a-zA-Z0-9_]+");
-
-      URI_RE = new RegExp( "(?:" + URI_RE_LIST.join("|") + ")", "ig" );
 
       // Temp variables.
       var arr,
@@ -153,6 +158,12 @@
           options[ i ] = default_options[ i ];
         }
       }
+
+      var RE_LIST = [].concat(URI_RE_LIST);
+      if (options.twitter) RE_LIST.push("@[a-zA-Z0-9_]+");
+      if (options.hashtags) RE_LIST.push("#[a-zA-Z0-9_]+");
+
+      var URI_RE = new RegExp( "(?:" + RE_LIST.join("|") + ")", "ig" );
 
       // Find links.
       while ( arr = URI_RE.exec( txt ) ) {
@@ -198,9 +209,19 @@
         href = link;
 
         // Add appropriate protocol to naked links.
-        if (options.twitter && href.indexOf( '@' ) == 0)
+        if (options.twitter && href.indexOf( '@' ) == 0) {
             href = 'http://twitter.com/' + href.substr(1);
-        else if ( !SCHEME_RE.test( href ) ) {
+        } else if (options.hashtags && href.indexOf( '#' ) == 0) {
+            // if we have a hashtag whitelist, skip hashtags that aren't on the list
+            // NOTE: the entries in our whitelist may or may not be prefixed with the '#' so if our hashtag
+            // is #hashtag, check the whitelist for both 'hashtag' and '#hashtag'
+            if (options.hashtag_whitelist &&
+                options.hashtag_whitelist.indexOf(href.slice(1)) == -1 &&
+                options.hashtag_whitelist.indexOf(href == -1)) {
+              continue;
+            }
+            href = options.hashtag_link_prefix + href + options.hashtag_link_postfix;
+        } else if ( !SCHEME_RE.test( href ) ) {
           href = ( href.indexOf( '@' ) !== -1 ? ( !href.indexOf( MAILTO ) ? '' : MAILTO )
             : !href.indexOf( 'irc.' ) ? 'irc://'
             : !href.indexOf( 'ftp.' ) ? 'ftp://'
