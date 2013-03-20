@@ -224,7 +224,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         _gaq.push(['_trackPageview', '/channels/'+channel]);
       } catch(e) {}
     }
-
+    shelby.trackEx({
+      providers : ['kmq'],
+      kmqName : "Visit Channel",
+      kmqProperties: {'Channel' : channel}
+    });
 
     shelby.views.channelWelcome = shelby.views.channelWelcome ||
           new libs.shelbyGT.channelWelcome({
@@ -258,11 +262,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     });
   },
-  
+
   displayEmbeddedFrame : function(frameId, params){
     //frame (with children) is already on the page
     var frame = new libs.shelbyGT.FrameModel(shelby.embedBootstrapModels.frame);
-    
+
     if (!shelby.config.socialLibsLoaded) {
       $(document).ready(function(){
         $('body').append(SHELBYJST['social-libs']());
@@ -270,13 +274,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.config.socialLibsLoaded = true;
     }
 
-    shelby.views.embeddedFrame = shelby.views.embeddedFrame || 
+    shelby.views.embeddedFrame = shelby.views.embeddedFrame ||
       new libs.shelbyGT.EmbeddedFrameView({
         el : "#embedded-view",
         model: frame,
         guide : shelby.models.guide,
         playbackState : shelby.models.playbackState,
-      });    
+      });
   },
 
   displayUserPersonalRoll : function(userId, params){
