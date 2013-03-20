@@ -20,6 +20,13 @@ libs.shelbyGT.channelWelcome = Support.CompositeView.extend({
   render : function(){
     this.$el.html(this.template());
     $('#js-welcome, .js-channels-welcome').toggleClass('hidden', true);
+    shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : "Channel Welcome",
+        gaAction : 'Loaded',
+        gaLabel : shelby.models.user.get('nickname'),
+        kmName : "Channel welcome banner loaded"
+      });
   },
 
   _startPlaying : function(){
