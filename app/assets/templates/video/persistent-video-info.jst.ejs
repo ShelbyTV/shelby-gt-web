@@ -79,8 +79,16 @@
             <% var commentOverflow = comment && comment.length > 256  %>
             <p<%= commentOverflow ? ' class="line-clamp js-toggle-comment"' : '' %>>
               <%=
-                libs.utils.String.linkifySafeWithClickTracking(comment,
-                  {gaCategory: eventTrackingCategory, gaAction: 'Click on link in comment'})
+                libs.utils.String.linkifySafeWithClickTracking(comment, {
+                  link : {
+                    gaCategory : eventTrackingCategory,
+                    gaAction : 'Click on link in comment'
+                  },
+                  hashtag : {
+                    gaCategory : eventTrackingCategory,
+                    gaAction : 'Click on hashtag link'
+                  }
+                })
               %>
             </p>
           <% } %>
