@@ -251,9 +251,9 @@
         return false;
       });
       $(document).on('keydown', function(e){
-        if(shelby.models.userDesires.get('typing')) return false;
+        if(shelby.models.userDesires.get('typing')) return true;
         var actionData = self._getActionData(e.keyCode);
-        if(!actionData) return false;
+        if(!actionData) return true;
         if (_(actionData).has('preventDefault') && _(actionData.preventDefault).has('keyDown')) {
           if (_(actionData.preventDefault).result('keyDown')) {
             e.preventDefault();
