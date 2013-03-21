@@ -16,6 +16,7 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
 
   initialize : function() {
     this.options.userProfileModel.bind('change:currentUser', this._onCurrentUserChange, this);
+    this.options.userProfileModel.bind('playRoll:' + this.model.id, this._onPlayThisRoll, this);
     if (this.options.userProfileModel.has('currentUser')) {
       this.options.userProfileModel.get('currentUser').bind('change:id', this.render, this);
     }
@@ -27,6 +28,7 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
 
   _cleanup : function() {
     this.options.userProfileModel.unbind('change:currentUser', this._onCurrentUserChange, this);
+    this.options.userProfileModel.unbind('playRoll:' + this.model.id, this._onPlayThisRoll, this);
     if (this.options.userProfileModel.has('currentUser')) {
       this.options.userProfileModel.get('currentUser').unbind('change:id', this.render, this);
     }
@@ -146,6 +148,11 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
     }
   },
 
+  _onPlayThisRoll : function() {
+    if (this._channelListView) {
+      this._channelListView.registerPlaylist();
+    }
+  },
 
   // override ActiveHighlightListItemView abstract method
   doActivateThisItem : function(guideModel){
