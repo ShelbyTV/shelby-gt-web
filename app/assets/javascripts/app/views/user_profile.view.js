@@ -32,7 +32,8 @@ libs.shelbyGT.UserProfileView = Support.CompositeView.extend({
       el: '.js-user-channel-guide',
       guideModel: shelby.models.guide,
       model: this.model,
-      userChannelsCollectionModel: shelby.models.userChannels
+      userChannelsCollectionModel: shelby.models.userChannels,
+      userDesiresModel : shelby.models.userDesires
     }));
   },
 

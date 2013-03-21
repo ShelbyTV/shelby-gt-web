@@ -160,6 +160,12 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
     } else {
       currentRollModel.joinRoll(clearBusyFunction, clearBusyFunction);
     }
+
+    shelby.trackEx({
+      gaCategory : 'User Profile',
+      gaAction : 'Click to ' + (wasUnfollow ? 'unfollow' : 'follow') + ' roll',
+      gaLabel : currentRollModel.id
+    });
   },
 
   _updateRollInfo : function(frame) {

@@ -10,12 +10,13 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   className : 'list_item user_roll__item js-user_roll__item clearfix',
 
   events : {
-    'click .js-button-previous' : '_scrollPrevious',
-    'click .js-button-next'     : '_scrollNext'
+    'click .js-button-previous:not(.js-busy)' : '_scrollPrevious',
+    'click .js-button-next:not(.js-busy)'     : '_scrollNext'
   },
 
   initialize : function() {
     this.options.userProfileModel.bind('change:currentUser', this._onCurrentUserChange, this);
+    this.options.userProfileModel.bind('playRoll:' + this.model.id, this._onPlayThisRoll, this);
     if (this.options.userProfileModel.has('currentUser')) {
       this.options.userProfileModel.get('currentUser').bind('change:id', this.render, this);
     }
@@ -27,6 +28,7 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
 
   _cleanup : function() {
     this.options.userProfileModel.unbind('change:currentUser', this._onCurrentUserChange, this);
+    this.options.userProfileModel.unbind('playRoll:' + this.model.id, this._onPlayThisRoll, this);
     if (this.options.userProfileModel.has('currentUser')) {
       this.options.userProfileModel.get('currentUser').unbind('change:id', this.render, this);
     }
@@ -146,6 +148,11 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
     }
   },
 
+  _onPlayThisRoll : function() {
+    if (this._channelListView) {
+      this._channelListView.registerPlaylist();
+    }
+  },
 
   // override ActiveHighlightListItemView abstract method
   doActivateThisItem : function(guideModel){
@@ -165,6 +172,10 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   // parameter direction is an integer - positive integer means scroll forward, negative integer
   // means scroll backward; magnitude of direction is the number of pages that will be scrolled
   _scrollPage : function(direction){
+    var self = this;
+    //disable the function of the scrolling buttons until the scroll is complete
+    this.$('.js-button-previous,.js-button-next').addClass('js-busy');
+
     // figure out how many frames are already scrolled off to the left of the wrapper's viewable area
     var $wrapper = this.$('.js-user-channel-wrapper');
     var frameWidth = this.$('.js-user-channel-item').outerWidth(true);
@@ -188,7 +199,10 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
     // possible because it's too close to the end of the list
     var $itemToScrollTo = this.$('.js-user-channel-item:eq(' + newScrolledLeftFrames + ')');
     if ($itemToScrollTo.length) {
-      $wrapper.scrollTo($itemToScrollTo, 500);
+      $wrapper.scrollTo($itemToScrollTo, 500, {onAfter: function(){
+        //scrolling is finished, re-enable the scrolling buttons
+        self.$('.js-button-previous,.js-button-next').removeClass('js-busy');
+      }});
     }
   },
 
