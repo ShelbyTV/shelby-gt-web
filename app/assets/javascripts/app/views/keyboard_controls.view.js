@@ -85,7 +85,12 @@
           });
           return 1;
         },
-        is_transient : true
+        is_transient : true,
+        preventDefault : {
+          keyDown : function () {
+            return shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dotTv;
+          }
+        }
       },
       // (<-) left
       37 : {
@@ -99,7 +104,12 @@
           });
           return -1;
         },
-        is_transient : true
+        is_transient : true,
+        preventDefault : {
+          keyDown : function () {
+            return shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dotTv;
+          }
+        }
       },
       // up
       38 : {
@@ -113,7 +123,12 @@
           });
           return -1;
         },
-        is_transient : true
+        is_transient : true,
+        preventDefault : {
+          keyDown : function () {
+            return shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dotTv;
+          }
+        }
       },
       // down
       40 : {
@@ -127,7 +142,12 @@
           });
           return 1;
         },
-        is_transient : true
+        is_transient : true,
+        preventDefault : {
+          keyDown : function () {
+            return shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dotTv;
+          }
+        }
       },
       // (s)hort link
       76 : {
@@ -212,9 +232,9 @@
 
     _setupKeyboardBindings : function(){
       var self = this;
-      $(document).on('keyup', function(event){
+      $(document).on('keyup', function(e){
         if(shelby.models.userDesires.get('typing')) return false;
-        var actionData = self._getActionData(event.keyCode);
+        var actionData = self._getActionData(e.keyCode);
         if(!actionData) return false;
         if(!actionData.is_transient){
             // is_transient == false,
@@ -229,6 +249,16 @@
           shelby.models[actionData.model].triggerTransientChange(actionData.attr, actionData.val);
         }
         return false;
+      });
+      $(document).on('keydown', function(e){
+        if(shelby.models.userDesires.get('typing')) return true;
+        var actionData = self._getActionData(e.keyCode);
+        if(!actionData) return true;
+        if (_(actionData).has('preventDefault') && _(actionData.preventDefault).has('keyDown')) {
+          if (_(actionData.preventDefault).result('keyDown')) {
+            e.preventDefault();
+          }
+        }
       });
     },
 
