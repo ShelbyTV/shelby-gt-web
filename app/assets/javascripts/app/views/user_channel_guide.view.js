@@ -69,6 +69,11 @@ libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
         changeToRoll = this.options.userChannelsCollectionModel.get('rolls').first();
       }
 
+      // if the roll we're supposd to change to is the same roll we're already playing, do nothing
+      if ((shelby.models.playlistManager.get('playlistRollId') == changeToRoll.id)) {
+        return;
+      }
+
       var changeToFrame = null;
       if (changeToRoll) {
         changeToFrame = changeToRoll.get('frames').first();
