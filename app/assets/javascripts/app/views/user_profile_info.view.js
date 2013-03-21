@@ -64,8 +64,11 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
     if (currentUser && !currentUser.isNew()) {
       // if there is relevant special configuration for this dot tv network, use it
       var userSpecialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: currentUser.id});
-      if (userSpecialConfig && _(userSpecialConfig).has('showDotTvNetworkBanner')) {
-        showDotTvNetworkBanner = userSpecialConfig.showDotTvNetworkBanner;
+      // regardless of config, we always show the dot tv network banner if this roll belongs the logged in user
+      if (currentUser.id != shelby.models.user.id) {
+        if (userSpecialConfig && _(userSpecialConfig).has('showDotTvNetworkBanner')) {
+          showDotTvNetworkBanner = userSpecialConfig.showDotTvNetworkBanner;
+        }
       }
       if (userSpecialConfig && userSpecialConfig.socialLinks) {
         _(['twitter', 'facebook', 'tumblr']).each(function(network) {
