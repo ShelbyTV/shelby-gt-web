@@ -150,7 +150,9 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
 
   _onPlayThisRoll : function() {
     if (this._channelListView) {
+      // register this channel as the current playlist and start playing it from the beginning
       this._channelListView.registerPlaylist();
+      shelby.models.playlistManager.trigger('playlist:start');
     }
   },
 
