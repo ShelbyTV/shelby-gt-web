@@ -74,24 +74,18 @@ libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
         return;
       }
 
-      var changeToFrame = null;
       if (changeToRoll) {
-        changeToFrame = changeToRoll.get('frames').first();
-      }
-
-      if (changeToFrame) {
         // dismiss the dot tv welcome banner if its still there
         shelby.models.dotTvWelcome.trigger('dismiss');
-        // activate the current frame
-        shelby.models.guide.set('activeFrameModel', changeToFrame);
+        // signal the roll view for the new playing roll to register itself as the current playlist
+        // and start playing
+        this.model.trigger('playRoll:' + changeToRoll.id);
         // if the video player has been obscured at all,
         // scroll to the top so you can see the new video that's been selected
         var videoPlayerTop = $('.js-videoplayer').offset().top;
         if ($('body').scrollTop() > videoPlayerTop || $('html').scrollTop() > videoPlayerTop) {
           $('html, body').scrollTo(0, 500);
         }
-        // signal the roll view for the new playing roll to register itself as the current playlist
-        this.model.trigger('playRoll:' + changeToRoll.id);
       }
     }
   }
