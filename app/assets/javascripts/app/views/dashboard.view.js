@@ -31,6 +31,7 @@
       '0' : {view: libs.shelbyGT.FrameGroupView},
       '1' : {view: libs.shelbyGT.FrameGroupView},
       '2' : {view: libs.shelbyGT.FrameGroupView},
+      '4' : {view: libs.shelbyGT.FrameGroupView},
       '8' : {view: libs.shelbyGT.FrameGroupView},
       '9' : {view: libs.shelbyGT.FrameGroupView},
       '10' : {view: libs.shelbyGT.FrameGroupView}

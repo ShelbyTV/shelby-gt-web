@@ -131,7 +131,6 @@
       // if we are in a search result, add to roll via url
       if (shelby.models.guide.get('displayState') === "search") {
         this._addViaUrl(message, roll, shareDests);
-        this._checkForAndRollToHashtag(message, true);
       }
       else {
         // elsere roll the frame
@@ -148,7 +147,6 @@
             });
           }
         });
-        this._checkForAndRollToHashtag(message, false);
       }
     },
 
@@ -195,37 +193,6 @@
           else { shelby.alert({message: "<p>sorry, something went wrong.</p>"}); }
         }
       });
-    },
-
-    _checkForAndRollToHashtag : function(message, via_search){
-      // parsing message to see if a 'special' hashtag is there
-      var _hashtag, _rollId = null;
-      if ((_hashtag = /\#(\w*)/.exec(message))) {
-        // see if this hashtag matches any of the hashtags for our channels
-        var _hashTagToMatch = _hashtag[1].toLowerCase();
-        var channelsArray = _(shelby.config.channels).pairs();
-        for (var i = 0; i < channelsArray.length; i++) {
-          var channel = channelsArray[i][1];
-          if (_(channel.hashTags).contains(_hashTagToMatch)) {
-            _rollId = channel.hashtagRollId;
-            break;
-          }
-        }
-
-        if (_rollId !== null) {
-          // add video to another special shelby hashtag roll
-          var hashtagRoll = new libs.shelbyGT.RollModel({id: _rollId});
-          if (via_search){ this._addViaUrl(message, hashtagRoll, []); }
-          else { this._frame.reRoll(hashtagRoll, message, null); }
-          // track adding of video via hashtag
-          shelby.trackEx({
-            providers : ['ga', 'kmq'],
-            gaCategory : "Frame",
-            gaAction : "Rolled with hashtag",
-            gaLabel : _hashtag[1].toLowerCase()
-          });
-        }
-      }
     },
 
     _insertHashtag : function(e) {
