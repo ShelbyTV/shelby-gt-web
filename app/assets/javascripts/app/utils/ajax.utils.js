@@ -4,8 +4,15 @@ libs.shelbyGT.Ajax = {
     if(!shelby.views.notificationOverlayView){ new libs.shelbyGT.notificationOverlayView({model:shelby.models.notificationState}); }
     switch(jqXHR.status){
       case 401:
-        //need to log them out immediately so app can't continue to make requests resulting in 401s
-        document.location = "/signout?error=401";
+        if (shelby.userSignedIn()) {
+          // if we thought there was a user signed in, their session may have expired
+          // need to log them out immediately so app can't continue to make requests resulting in 401s
+          document.location = "/signout?error=401";
+        } else {
+          // if there's no user signed in, this just means that a logged out user
+          // tried to make a request to a route that requires authentication
+          shelby.alert({message: "<p>You are not authorized to do that</p>"});
+        }
         break;
       case 403:
         shelby.alert({message: "<p>You are not authorized to do that</p>"});
