@@ -10,13 +10,11 @@
 <% var isGenius = frameHasRoll && frame.get('roll').get('genius') %>
 <% var isViaSearch = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) ? true : false %>
 
-<% var frameIsOnHeartedRoll = !user.get('anon') && frame.isOnRoll(user.get('heart_roll_id')) %>
-<% var frameIsOnWatchLaterRoll = !user.get('anon') && frame.isOnRoll(user.get('watch_later_roll_id')) %>
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
-<% var isFauxUser = creator && creator.get('faux') !== 1 %>
-<% var fauxUserOrigin = isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
+<% var isFauxUser = creator && creator.get('faux') == 1 %>
+<% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
 
 <% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- collapsed videocard -->
@@ -33,12 +31,9 @@
       <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
     </div><!-- eo .frame-body -->
 
-  <% if (!isGenius && creator) {
+  <%
+    if (!isGenius && creator) {
        var creatorNickname = creator.get('nickname');
-       var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator);
-       var clickableCreator = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard ||
-                                                                          frameIsOnHeartedRoll ||
-                                                                          frameIsOnWatchLaterRoll);
     }
   %>
     <footer class="media_module frame-footer clearfix">

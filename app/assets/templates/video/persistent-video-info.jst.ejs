@@ -9,8 +9,8 @@
 
 <% var nextVideo = nextFrame.get('video') %>
 
-<% var isFauxUser = currentCreator && currentCreator.get('faux') !== 1 %>
-<% var fauxUserOrigin = isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
+<% var isFauxUser = currentCreator && currentCreator.get('faux') == 1 %>
+<% var fauxUserOrigin = !isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
 
 <div class="persistent_video_info animate_module">
   <% if (showNextFrame) { %>
