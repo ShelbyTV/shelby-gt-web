@@ -2,6 +2,8 @@ require 'shelby_api'
 
 class FrameController < ApplicationController
 
+  helper :meta_tag
+
   # GET /roll/:roll_id/frame/:frame_id
   #
   # optional params:
@@ -25,7 +27,19 @@ class FrameController < ApplicationController
     @frame = Shelby::API.get_frame(params[:frame_id], true)
     if @frame
       @video = Shelby::API.get_video(@frame['video_id'])
-      redirect_to "/video/#{@video["provider_name"]}/#{@video["provider_id"]}"
+      if params[:frame_action]
+        if user_signed_in?
+          render '/home/app'
+        else
+          @share_type = nil
+          @mobile_os = detect_mobile_os
+          @is_mobile = is_mobile?
+          view_context.get_info_for_meta_tags(params[:path])
+          render '/home/landing'
+        end
+      else
+        redirect_to "/video/#{@video["provider_name"]}/#{@video["provider_id"]}"
+      end
     else
       render '/home/app'
     end
