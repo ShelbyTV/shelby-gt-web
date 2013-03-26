@@ -3,9 +3,11 @@
 </h2>
 
 <div class="share-buttons">
-  <button class="button_primer button_default menu_button--twitter js-track-event" data-ga_category="User Stats" data-ga_action="Click to roll frame" data-ga_label="<%= @user['nickname'] %>">
-    <i class="icon-videocard_roll">
-    </i>
-      Roll to #Channels
-  </button>
+  <a href="<%= "/roll/#{frame['roll_id']}/frame/#{frame['id']}/rolling" %>">
+    <button class="button_primer button_default menu_button--twitter js-track-event" data-ga_category="User Stats" data-ga_action="Click to roll frame" data-ga_label="<%= @user['nickname'] %>">
+      <i class="icon-videocard_roll">
+      </i>
+        Roll to #Channels
+    </button>
+  </a>
 </div><!-- eo share-buttons -->
