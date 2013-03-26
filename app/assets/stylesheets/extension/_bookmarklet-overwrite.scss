@@ -28,7 +28,7 @@ button {
 .all-frame-creator{
   -webkit-background-size: cover;
   background-size: cover;
-  border-radius: 5px 0 0 0;
+  border-radius: 0 0 0 5px;
   height: 100%;
   left: 0;
   margin: 0;
@@ -334,9 +334,11 @@ button {
           background-image: url($icon-videocard-roll-on);
         }
       }
-      .video-tab__button--avatar {}
-      .video-tab__button--avatar_label {
+      .video-tab__button--avatar {
         border-radius: 0 0 0 5px;
+      }
+      .video-tab__button--avatar_label {
+        border-radius: 5px 0 0 0;
       }
 
 .embedded-buttons {
@@ -467,6 +469,8 @@ button {
   background-image: url('/images/assets/cancel.svg');
   background-repeat: no-repeat;
   background-position: center center;
+  -webkit-background-size: contain;
+  background-size: contain;
   display: block;
   height: 1em;
   width: 1em;

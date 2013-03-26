@@ -728,6 +728,7 @@ window.shelbyBookmarklet = {
                 var message = shelbyJ("#js-rolling-message").val();
                 if (!message || message.length === 0) {
                   utilObject.htmlTemplate.notifyMessage("Please enter a comment");
+                  shelbyJ('#js-rolling-message').addClass('form_textarea--error');
                   return;
                 }
 
@@ -839,20 +840,17 @@ window.shelbyBookmarklet = {
                 },
 
                 notifyMessage: function(message) {
-                    var buttonOne = {
-                        text: "Ok",
-                        visible: true,
-                        color: "blue"
-                    };
-                    var buttonTwo = {
-                        visible: false
-                    };
-                    var model = {
-                                  "class" : "default",
-                                  "message": message,
-                                  "number_of_buttons": 'one',
-                                  "button_one": buttonOne,
-                                  "button_two": buttonTwo};
+                    alert(message);
+                      var model = notificationOpts = {
+                        message: message,
+                        button_primary: {
+                          title: 'Ok'
+                        },
+                        button_secondary: {
+                          title: 'Dismiss'
+                        }
+                      }
+
                     shelbyJ(".ext-elements #js-notifications").remove();
                     utilObject.shelbyDocElements['ext-elements'].append(SHELBYJST['notification-overlay']({model: utilObject.shelbyCreateModel(model)}));
                     utilObject.shelbyDocElements['ext-elements'].on("click", "#js-notification-confirm", function() {
