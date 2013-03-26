@@ -2,6 +2,8 @@ require 'shelby_api'
 
 class HomeController < ApplicationController
 
+  helper :meta_tag
+
   # In non-pushstate browsers, Backone redirects to shelby.tv/hash_app#<the original fragment>
   # Need to load the app in that case and let routing take place like normal on the hash fragment
   def hash_app
@@ -47,7 +49,7 @@ class HomeController < ApplicationController
           @mobile_os = detect_mobile_os
           @is_mobile = is_mobile?
 
-          get_info_for_meta_tags(params[:path])
+          view_context.get_info_for_meta_tags(params[:path])
 
           # if @mobile_os
           #   render '/mobile/search', :layout => 'mobile'
@@ -222,18 +224,6 @@ class HomeController < ApplicationController
 
     def get_genius_roll_id_from_path(path)
       return @roll_id[1] if @roll_id = /fb\/genius\/roll\/(\w*)/i.match(path)
-    end
-
-    def get_info_for_meta_tags(path)
-      if path_match = /roll\/\w*\/frame\/(\w*)/.match(path)
-        # the url is a frame
-        @frame = Shelby::API.get_first_frame_on_roll(path_match[1])
-        @video = Shelby::API.get_video() if @frame
-      elsif path_match = /roll\/(\w*)(\/.*)*/.match(path) or path_match = /user\/(\w*)\/personal_roll/.match(path)
-        # the url is a roll or personal roll
-        @roll = Shelby::API.get_roll_with_frames(path_match[1])
-        @user = Shelby::API.get_user(@roll['creator_id']) if @roll
-      end
     end
 
     def get_frame_from_path(path)

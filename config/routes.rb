@@ -22,6 +22,7 @@ ShelbyGtWeb::Application.routes.draw do
   # FRAMES
   get '/frame/:frame_id' => 'frame#just_frame'
   get '/roll/:roll_id/frame/:frame_id' => 'frame#show'
+  get '/roll/:roll_id/frame/:frame_id/:frame_action' => 'frame#show'
   get '/isolated-roll/:roll_id/frame/:frame_id' => 'frame#show_frame_in_isolated_roll'
 
   # ROLLS

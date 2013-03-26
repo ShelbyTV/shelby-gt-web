@@ -1,31 +1,32 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
-    "send-invite"                           : "openInviteDisplayDashboard",
-    "isolated-roll/:rollId"                 : "displayIsolatedRoll",
-    "isolated-roll/:rollId/frame/:frameId"  : "displayIsolatedRollwithFrame",
-    "roll/:rollId/frame/:frameId/comments"  : "displayFrameInRollWithComments",
-    "roll/:rollId/frame/:frameId"           : "displayFrameInRoll",
-    "roll/:rollId/:title"                   : "displayRoll",
-    "roll/:rollId"                          : "displayRoll",
-    "rollFromFrame/:frameId"                : "displayRollFromFrame",
-    "embed/:frameId"                        : "displayEmbeddedFrame",
-    "user/:id/personal_roll"                : "displayUserPersonalRoll",
-    "channels"                              : "displayRandomChannel",
-    "help"                                  : "displayHelp",
-    "legal"                                 : "displayLegal",
-    "search"                                : "displaySearch",
-    "channels/:channel"                     : "displayChannel",
-    "me"                                    : "displayRollList",
-    "onboarding/:stage"                     : "displayOnboardingView",
-    "preferences"                           : "displayUserPreferences",
-    "likes"                                 : "displaySaves",
-    "saves"                                 : "displaySaves",
-    "stream"                                : "displayDashboard",
-    "tools"                                 : "displayTools",
-    ""                                      : "displayDashboard",
-//    ":userName"                             : "displayUserProfile", //we're not rolling out the user profiles at /userName yet
-    "*url"                                  : "doNothing"
+    "send-invite"                                  : "openInviteDisplayDashboard",
+    "isolated-roll/:rollId"                        : "displayIsolatedRoll",
+    "isolated-roll/:rollId/frame/:frameId"         : "displayIsolatedRollwithFrame",
+    "roll/:rollId/frame/:frameId/comments"         : "displayFrameInRollWithConversationOverlay", // legacy route, let's kill it if we can
+    "roll/:rollId/frame/:frameId/:showOverlayType" : "displayFrameInRollAndShowOverlay",
+    "roll/:rollId/frame/:frameId"                  : "displayFrameInRoll",
+    "roll/:rollId/:title"                          : "displayRoll",
+    "roll/:rollId"                                 : "displayRoll",
+    "rollFromFrame/:frameId"                       : "displayRollFromFrame",
+    "embed/:frameId"                               : "displayEmbeddedFrame",
+    "user/:id/personal_roll"                       : "displayUserPersonalRoll",
+    "channels"                                     : "displayRandomChannel",
+    "help"                                         : "displayHelp",
+    "legal"                                        : "displayLegal",
+    "search"                                       : "displaySearch",
+    "channels/:channel"                            : "displayChannel",
+    "me"                                           : "displayRollList",
+    "onboarding/:stage"                            : "displayOnboardingView",
+    "preferences"                                  : "displayUserPreferences",
+    "likes"                                        : "displaySaves",
+    "saves"                                        : "displaySaves",
+    "stream"                                       : "displayDashboard",
+    "tools"                                        : "displayTools",
+    ""                                             : "displayDashboard",
+//  ":userName"                                    : "displayUserProfile", //we're not rolling out the user profiles at /userName yet
+    "*url"                                         : "doNothing"
   },
 
   //---
@@ -50,15 +51,26 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this.displayDashboard(params, {openInvite: true});
   },
 
-  displayFrameInRollWithComments : function(rollId, frameId, params){
-    this.displayFrameInRoll(rollId, frameId, params, {showCommentOverlay:true});
+  displayFrameInRollWithConversationOverlay : function(rollId, frameId, params){
+    this.displayFrameInRollAndShowOverlay(rollId, frameId, libs.shelbyGT.GuideOverlayType.conversation, params);
+  },
+
+  displayFrameInRollAndShowOverlay : function(rollId, frameId, showOverlayType, params){
+    // make sure this is a type of overlay we support displaying on page load via the router
+    if (showOverlayType == libs.shelbyGT.GuideOverlayType.conversation || showOverlayType == libs.shelbyGT.GuideOverlayType.rolling) {
+      this.displayFrameInRoll(rollId, frameId, params, {showOverlayType: showOverlayType});
+    } else {
+      // if not supported, don't pass the overlay parameter on, and take the overlay type segment off the end of the url
+      shelby.router.navigate('roll/' + rollId + '/frame/' + frameId, {trigger: false, replace: true});
+      this.displayFrameInRoll(rollId, frameId, params);
+    }
   },
 
   displayFrameInRoll : function(rollId, frameId, params, options, topLevelViewsOptions){
     // default options
     options = _.chain({}).extend(options).defaults({
       rerollSuccess : (params && params.reroll_success === "true"),
-      showCommentOverlay : false
+      showOverlayType : null
     }).value();
 
     var self = this;
@@ -522,8 +534,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.playlistManager.trigger('playlist:start');
   },
 
-  _activateFrameInRollById : function(rollModel, frameId, showCommentOverlay) {
-    var frame = rollModel.get('frames').get(frameId);
+  _activateFrameInRollById : function(rollModel, frameId, showOverlayType) {
+    var frame = shelby.models.playlistManager.get('playlistFrameGroupCollection').getFrameById(frameId);
     // for compatibility reasons, we only show videos from certain providers on mobile
     if (frame && (!Browser.isMobile() || frame.get('video').canPlayMobile())) {
       var activeFrameModel = shelby.models.guide.get('activeFrameModel');
@@ -545,6 +557,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       if (shelby.models.routingState.get('forceFramePlay')) {
         // responded to the forceFramePlay state, so reset it
         shelby.models.routingState.unset('forceFramePlay');
+      }
+      // if we got a valid frame and the parameters request showing an overlay for this
+      // frame, show that overlay
+      // NOTE: validity of the overlay type has been checked earlier so here we just assume it's
+      // a type of overlay we support
+      if (showOverlayType) {
+        shelby.models.guideOverlay.switchOrHideOverlay(showOverlayType, frame);
       }
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll
@@ -720,7 +739,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       },
       onRollFetch: function(rollModel, response){
         if(!options.rerollSuccess){
-          self._activateFrameInRollById(rollModel, frameId, options.showCommentOverlay);
+          self._activateFrameInRollById(rollModel, frameId, options.showOverlayType);
         }
       }
     }, topLevelViewsOptions);
