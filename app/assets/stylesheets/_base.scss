@@ -13,6 +13,9 @@ $path: "#{$images}assets/" !default;
 
 $icon-carrot                    : "#{$path}carrot#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";
+$icon-heart                     : "#{$path}heart#{$extension}";
+$icon-heart-on                  : "#{$path}heart_on#{$extension}";
+$icon-heart-active              : "#{$path}heart_active#{$extension}";
 $icon-missing-avatar            : "#{$path}missing_avatar.png";
 $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
 $icon-onboarding-facebook-add   : "#{$path}onboarding_facebook_add#{$extension}";
@@ -29,6 +32,7 @@ $icon-social-facebook           : "#{$path}social_facebook#{$extension}";
 $icon-social-tumblr             : "#{$path}social_tumblr#{$extension}";
 $icon-social-twitter            : "#{$path}social_twitter#{$extension}";
 $icon-videocard-roll            : "#{$path}videocard_roll#{$extension}";
+$icon-videocard-roll-on         : "#{$path}videocard_roll_on#{$extension}";
 
 //------------------------------------------------------------------------------
 //  ANIMATION VALUES
