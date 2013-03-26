@@ -35,7 +35,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
   add: function(models, options) {
 
-    options || (options = {});
+    options = options || {};
 
     models = _.isArray(models) ? models.slice() : [models];
 
@@ -100,6 +100,25 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     }
 
     return this;
+  },
+
+  getFrameById : function(frameId) {
+    var frame = null;
+    for (var i = 0; i < this.length; i++) {
+      var frameGroupFrames = this.at(i).get('frames');
+      for (var j = 0; j < frameGroupFrames.length; j++) {
+        var checkFrame = frameGroupFrames.at(j);
+        if (checkFrame.id == frameId) {
+          frame = checkFrame;
+          break;
+        }
+      }
+      if (frame) {
+        break;
+      }
+    }
+
+    return frame;
   },
 
   getNextPlayableFrame : function(currentFrame, skip, returnFirstOnFail) {
