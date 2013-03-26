@@ -4,7 +4,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "send-invite"                                  : "openInviteDisplayDashboard",
     "isolated-roll/:rollId"                        : "displayIsolatedRoll",
     "isolated-roll/:rollId/frame/:frameId"         : "displayIsolatedRollwithFrame",
-    "roll/:rollId/frame/:frameId/comments"         : "displayFrameInRollWithComments", // legacy route, let's kill it if we can
+    "roll/:rollId/frame/:frameId/comments"         : "displayFrameInRollWithConversationOverlay", // legacy route, let's kill it if we can
     "roll/:rollId/frame/:frameId/:showOverlayType" : "displayFrameInRollAndShowOverlay",
     "roll/:rollId/frame/:frameId"                  : "displayFrameInRoll",
     "roll/:rollId/:title"                          : "displayRoll",
@@ -51,13 +51,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this.displayDashboard(params, {openInvite: true});
   },
 
-  displayFrameInRollWithComments : function(rollId, frameId, params){
+  displayFrameInRollWithConversationOverlay : function(rollId, frameId, params){
     this.displayFrameInRollAndShowOverlay(rollId, frameId, libs.shelbyGT.GuideOverlayType.conversation, params);
   },
 
   displayFrameInRollAndShowOverlay : function(rollId, frameId, showOverlayType, params){
-    // make sure this is a type of overlay we support
-    if (_(libs.shelbyGT.GuideOverlayType).has(showOverlayType)) {
+    // make sure this is a type of overlay we support displaying on page load via the router
+    if (showOverlayType == libs.shelbyGT.GuideOverlayType.conversation || showOverlayType == libs.shelbyGT.GuideOverlayType.rolling) {
       this.displayFrameInRoll(rollId, frameId, params, {showOverlayType: showOverlayType});
     } else {
       // if not supported, don't pass the overlay parameter on, and take the overlay type segment off the end of the url
