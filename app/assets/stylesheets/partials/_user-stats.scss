@@ -1,116 +1,103 @@
-//------------------------------------------------------------------------------
-//  OVERRIDES
-//------------------------------------------------------------------------------
-//----- Override App Base Styles -----------------------------------------
-//----- Modifiers --------------------------------------------------------
+/*
+    User Stats Page extends the Landing Shelves stuff
+*/
+//app-wide-overrides
 .shelby--user-stats {
-  .shelf__lining {
-    padding: 3em 0 1em;
+
+}
+
+//shelby specific
+.shelby--stats {
+  .shelby__lining {
+
   }
 
-  .shelf--community .shelf__item {
+  .shelf__item {
     float: none;
     margin: 0 160px;
-  }
-
-  article {
-    border-bottom: none;
+    width: auto;
   }
 }
 
-
-.all-frame-info {
-  float: left;
-  width: 800px;
+.frame_stats__list {
   margin: 1em auto;
-  background: #e2e2e2;
-  border-radius: 4px;
-}
 
-.frames {
-  float: left;
-  width: 300px;
-}
-
-.stats {
-  float: left;
-  width: 200px;
-  margin-left: 10px;
-  margin-top: 35px;
-
-  section {
-    margin: 0px auto;
-    display: inline-block;
-    height: 75px;
+  //non-normative overrides
+  .frame-title {
+    display: block;
+    min-height: 3em;
   }
 
-  .shelby-logo .icon-mark {
-    font-size: 5.3em;
-    color: #6cbc45;
-    margin-left: 7px;
+  .frame-body-wrapper {
+    min-height: 18em;
+  }
+
+  .shelby-logo {
+    .icon-mark {
+      font-size: 5.3em;
+      color: #6cbc45;
+      margin-left: 7px;
+    }
+  }
+}
+  .frame_stats__item {
+    float: left;
+    font-size: 1.1em;
+  }
+      .frame_stats__item--frame {
+        width: 330px;
+      }
+      .frame_stats__item--stats {
+        width: 33.3333%;
+      }
+      .frame_stats__item--extras {
+        width: 33.3333%;
+      }
+
+  .frame_stats__item_lining {
+    padding: 0.8em;
+  }
+
+.stats__list {
+  font-size: 3.6em;
+  padding: 0.5em;
+
+  .icon {
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    background-size: contain;
+    display: inline-block;
+    font-size: inherit;
+    vertical-align: -0.1em;
+  }
+
+  .icon-views {
+    background-image: url(/images/assets/eye.svg);
+    height: 1em;
+    width: 1em;
+  }
+
+  .icon-heart {
+    color: $shelby-red;
   }
 }
 
 .extras {
-  float: left;
-  width: 230px;
-  margin-top: 35px;
-
-  section {
-    margin-top: 10px;
+  .extras__h1 {
+    font-size: 2em;
   }
 
-  .share-message {
-    font-size: 2.5em;
+  //non-normative
+  .frame-body-wrapper {
+    padding: 0.8em;
   }
-}
 
-.icon-likes {
-  float: left;
-  background-image:url(/images/assets/heart.svg);
-  background-repeat: no-repeat;
-  height: 55px;
-  width: 75px;
-  margin-top: 2px;
-  background-size: 90%;
-}
-
-.like-count {
-  font-size: 5em;
-  font-weight: bold;
-  float: left;
-  margin: 1px 20px;
-}
-
-.icon-views {
-  float: left;
-  background-image:url(/images/assets/eye.svg);
-  background-repeat: no-repeat;
-  height: 56px;
-  width: 75px;
-  margin-top: 10px;
-  background-size: 90%;
-}
-
-.view-count {
-  font-size: 5em;
-  font-weight: bold;
-  float: left;
-  margin: 5px 20px;
-}
-
-a.shelby-score-info {
-  font-size: 0.35em;
-  vertical-align: middle;
-}
-
-section {
   .share-buttons {
-    margin-top: 25px;
-
-    .twitter-holder {
-      float: left;
-      margin-right: 5px;
-    }
+    bottom: 1em;
+    left: 0;
+    margin: 1em;
+    position: absolute;
+    right: 0;
   }
 }
