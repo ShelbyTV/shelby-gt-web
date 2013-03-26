@@ -7,7 +7,7 @@
     <hr class="shelf__hr" />
 
     <ul class="list shelf__list clearfix">
-      <% @frames.each do |frame| %>
+      <% @frames.each_with_index do |frame, i| %>
         <% frame = frame['frame'] %>
         <li class="shelf__item clearfix">
           <ul class="list frame_stats__list clearfix">
@@ -56,7 +56,7 @@
                 </h2>
 
                 <div class="frame-body-wrapper clearfix">
-                  <%= render :partial => '/home/user_stats/share_frame', :locals => { :frame => frame, :user => @user }  %>
+                  <%= render :partial => "/home/user_stats/#{Settings::StatsPage.frame_actions[i % Settings::StatsPage.frame_actions.length]}", :locals => { :frame => frame, :user => @user }  %>
                 </div>
               </div><!-- eo frame_stats__item_lining -->
             </li>
