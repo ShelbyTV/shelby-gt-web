@@ -3,7 +3,7 @@
     :high_watches => ["Great job! Why not share the love?", "People like it! They Like it!", "Nice job. You're a regular Ted Turner. Tell someone!"]
   } %>
 
-<h2 class="extras__h1 ">
+<h2 class="extras__h1">
   <% if frame['view_count'] < 5 %>
     <%= messages[:low_watches][rand(messages[:low_watches].length)] %>
   <% else %>
@@ -11,7 +11,7 @@
   <% end -%>
 </h2>
 
-<div class="share-buttons">
+<div class="action_menu">
   <ul class="menu_list menu_list--share-frame">
     <li class="menu_item">
       <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20video%20I%20found&url=http://<%= user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>&via=shelby">

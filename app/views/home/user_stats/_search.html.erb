@@ -2,13 +2,14 @@
   You should search.
 </h2>
 
-<div class="share-buttons">
-  <form>
-  <input class="form_input" type="text" />
-  <button class="button_primer button_default menu_button--twitter js-track-event" data-ga_category="User Stats" data-ga_action="Click to roll frame" data-ga_label="<%= @user['nickname'] %>">
-    <i class="icon-videocard_roll">
-    </i>
+<div class="action_menu">
+  <form class="search_module">
+    <button class="search_module__submit button_primer button_blue button_standard action_menu__button action_menu__button--search js-track-event" data-ga_category="User Stats" data-ga_action="Click to roll frame" data-ga_label="<%= @user['nickname'] %>">
       Search
-  </button>
+    </button>
+
+    <span class="search_module__input_wrapper">
+      <input class="search_module__input form_input" type="text" />
+    </span>
   </form>
 </div><!-- eo share-buttons -->

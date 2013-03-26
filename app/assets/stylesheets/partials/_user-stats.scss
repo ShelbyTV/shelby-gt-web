@@ -3,7 +3,12 @@
 */
 //app-wide-overrides
 .shelby--user-stats {
-
+  .icon-mark {
+    &:before {
+      font-family: 'Shelby' !important;
+      margin: 0.3em 0.5em;
+    }
+  }
 }
 
 //shelby specific
@@ -12,11 +17,6 @@
     width: 1080px;
   }
 
-  .shelf__item {
-    // float: none;
-    // margin: 0 160px;
-    // width: auto;
-  }
 }
 
 .frame_stats__list {
@@ -90,14 +90,31 @@
 
   //non-normative
   .frame-body-wrapper {
-    padding: 0.8em;
-  }
-
-  .share-buttons {
-    bottom: 1em;
-    left: 0;
-    margin: 1em;
-    position: absolute;
-    right: 0;
+    padding: 1.1em 1.4em;
   }
 }
+
+/*
+    Share Actions Block
+*/
+//block
+.action_menu {
+  bottom: 1em;
+  left: 0;
+  margin: .5em 1.4em;
+  position: absolute;
+  right: 0;
+}
+  //elements
+  .action_menu__button {
+    display: block;
+    padding: 0.8em 1.6em;
+  }
+
+  .action_menu__button--search {
+  }
+
+  .action_menu__button--roll {
+    font-size: 1.5em;
+    margin: 0 auto;
+  }
