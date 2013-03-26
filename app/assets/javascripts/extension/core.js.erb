@@ -367,8 +367,8 @@ window.shelbyBookmarklet = {
 
             resizeFunction: function (vids, vidIndex, videoId) {
                 var vid = vids[vidIndex];
-                var tabWidth = shelbyJ('.bookmarklet-video-tab-' + videoId).width();
-                shelbyJ('.bookmarklet-video-tab-' + videoId).css("left", utilObject.getTabHpos(vid.embed.offset().left, tabWidth)).css("top", utilObject.getTabVpos(vid.embed.offset().top));
+                var tabWidth = shelbyJ('.js-video-tab-' + videoId).width();
+                shelbyJ('.js-video-tab-' + videoId).css("left", utilObject.getTabHpos(vid.embed.offset().left, tabWidth)).css("top", utilObject.getTabVpos(vid.embed.offset().top));
             },
 
             resizeArray: [],
@@ -463,7 +463,7 @@ window.shelbyBookmarklet = {
                                       for (var i = 0; i < queuedVids.length; i++) {
                                         var queuedVid = queuedVids[i];
                                         if (queuedVid.id === vidShelbyId) {
-                                          shelbyJ(".button-" + videoId + ".js-queue").addClass("queued");
+                                          shelbyJ(".button-" + videoId + ".js-queue").addClass("video-tab__button--liked");
                                           break;
                                         }
                                       }
@@ -485,14 +485,14 @@ window.shelbyBookmarklet = {
                       var queueButton = event.currentTarget;
                       var frameContextClass = queueButton.getAttribute("data-frameclass");
                       var videoId = queueButton.getAttribute("data-videoId");
-                      if (shelbyJ(".button-" + videoId + ".js-queue").hasClass("queued")) {
+                      if (shelbyJ(".button-" + videoId + ".js-queue").hasClass("video-tab__button--liked")) {
                         return;
                       }
                       utilObject.shelbyAjaxCall.shelbyApiQueue(
                         queueButton.getAttribute("data-videourl"),
                         videoId,
                         function(response) {
-                          shelbyJ(".button-" + videoId + ".js-queue").addClass("queued");
+                          shelbyJ(".button-" + videoId + ".js-queue").addClass("video-tab__button--liked");
                           utilObject.htmlTemplate.notifyQueued();
                           if (!utilObject.videoInformation[videoId].frame) {
                             utilObject.videoInformation[videoId].frame = response.result;
@@ -711,7 +711,7 @@ window.shelbyBookmarklet = {
                           }
                       });
                     } else {
-                      var comment = "Queued from " + utilObject.videoInformation[video_id].domain;
+                      var comment = "Liked from " + utilObject.videoInformation[video_id].domain;
                       utilObject.shelbyAjaxCall.shelbyApiRoll (vid_url,
                           utilObject.shelbyBkmkltUser.watch_later_roll_id, comment, callback);
                     }
@@ -728,6 +728,7 @@ window.shelbyBookmarklet = {
                 var message = shelbyJ("#js-rolling-message").val();
                 if (!message || message.length === 0) {
                   utilObject.htmlTemplate.notifyMessage("Please enter a comment");
+                  shelbyJ('#js-rolling-message').addClass('form_textarea--error');
                   return;
                 }
 
@@ -839,20 +840,17 @@ window.shelbyBookmarklet = {
                 },
 
                 notifyMessage: function(message) {
-                    var buttonOne = {
-                        text: "Ok",
-                        visible: true,
-                        color: "blue"
-                    };
-                    var buttonTwo = {
-                        visible: false
-                    };
-                    var model = {
-                                  "class" : "default",
-                                  "message": message,
-                                  "number_of_buttons": 'one',
-                                  "button_one": buttonOne,
-                                  "button_two": buttonTwo};
+                    alert(message);
+                      var model = notificationOpts = {
+                        message: message,
+                        button_primary: {
+                          title: 'Ok'
+                        },
+                        button_secondary: {
+                          title: 'Dismiss'
+                        }
+                      }
+
                     shelbyJ(".ext-elements #js-notifications").remove();
                     utilObject.shelbyDocElements['ext-elements'].append(SHELBYJST['notification-overlay']({model: utilObject.shelbyCreateModel(model)}));
                     utilObject.shelbyDocElements['ext-elements'].on("click", "#js-notification-confirm", function() {

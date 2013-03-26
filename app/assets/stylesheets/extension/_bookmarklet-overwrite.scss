@@ -28,7 +28,7 @@ button {
 .all-frame-creator{
   -webkit-background-size: cover;
   background-size: cover;
-  border-radius: 5px 0 0 0;
+  border-radius: 0 0 0 5px;
   height: 100%;
   left: 0;
   margin: 0;
@@ -149,12 +149,21 @@ button {
 .button_primer--twitter,
 .button_primer--facebook {
   font-weight: bold;
+  padding-left: 2em;
+  position: relative;
+  text-align: center;
+  width: 9em;
 
-  i {
+  .icon {
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center center;
+    display: inline-block;
     height: 15px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0.57em 0.3em;
     width: 18px;
 
     &:before {
@@ -164,8 +173,8 @@ button {
 }
 
 .button_primer--twitter {
-  i {
-    background-image: url($icon-social-twitter);
+  .icon {
+    background-image: url($icon-share-twitter-on);
     -webkit-background-size: 100%;
     background-size: 100%;
 
@@ -176,10 +185,10 @@ button {
 }
 
 .button_primer--facebook {
-  i {
+  .icon {
     -webkit-background-size: contain;
     background-size: contain;
-    background-image: url($icon-social-facebook);
+    background-image: url($icon-share-facebook-on);
   }
 }
 
@@ -232,24 +241,47 @@ button {
 //------------------------------------------------------------------------------
 //  BUTTONS
 //------------------------------------------------------------------------------
-.bookmarklet-video-tab {
+.video-tab {
   height: 300px;
   overflow: hidden;
   position: absolute;
   width: 85px;
   z-index: 2147483646;
 }
+  .video-tab__menu {
+    background-image: none;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    list-style-type: none;
+    margin: 2px 0 25px 100%;
+    padding: 0;
+    width: 80px;
 
-.embedded-buttons {
-  background-image: none;
-  border: none;
-  border-radius: 5px 0 0 5px;
-  list-style-type: none;
-  margin: 2px 0 25px 100%;
-  padding: 0;
-  width: 80px;
+    &.buttons-animate{
+      @include transition-property('margin-left');
+      @include transition-duration(.5s);
+      @include transition-timing-function(ease-in-out);
+      @include transition-delay(0s);
+    }
 
-  li {
+    &.buttons-show {
+      margin-left: 6%;
+    }
+  }
+      .video-tab__menu--controls {
+        .video-tab__item {
+          border-radius: 5px 0 0 5px;
+          font-size: 13px;
+        }
+
+        .video-tab__button {
+          border-radius: 5px 0 0 5px;
+        }
+      }
+      .video-tab__menu--context {}
+
+
+  .video-tab__item {
     background-color: #EEE;
     background-image: none;
     border: none;
@@ -264,27 +296,56 @@ button {
     width: 100%;
 
     &:last-child {
-      button {
+      .video-tab__button {
 //        border-top: none;
       }
     }
 
-    button {
+    .video-tab__button {
 //      border: 1px solid #adadad;
       border-right: 0;
     }
-
   }
+      .video-tab__item--creator {
+        height: 60px;
+      }
+      .video-tab__item--comment {}
 
+  .video-tab__button {
+    .icon {
+      background-color: transparent;
+      background-position: center 2px;
+      background-repeat: no-repeat;
+      -webkit-background-size: contain;
+      background-size: contain;
+      display: inline-block;
+      font-size: 1.1em;
+      height: 1em;
+      width: 1em;
+    }
+  }
+      .video-tab__button--like {
+        .icon-heart {
+          background-image: url($icon-heart-on);
+        }
+      }
+      .video-tab__button--roll {
+        .icon-videocard_roll {
+          background-image: url($icon-videocard-roll-on);
+        }
+      }
+      .video-tab__button--avatar {
+        border-radius: 0 0 0 5px;
+      }
+      .video-tab__button--avatar_label {
+        border-radius: 5px 0 0 0;
+      }
+
+.embedded-buttons {
   .creator-list-item {
-    height: 60px;
   }
 
-  &.buttons-animate{
-    @include transition-property('margin-left');
-    @include transition-duration(.5s);
-    @include transition-timing-function(ease-in-out);
-    @include transition-delay(0s);
+  .buttons-animate{
   }
 
   &.buttons-show {
@@ -306,58 +367,70 @@ button {
   }
 }
 
-.video-card-context {
-  button,
-  li {
+.video-tab__menu--context {
+  .video-tab__button,
+  .video-tab__item {
     margin: 0;
   }
 
-  li:first-child {
+  .video-tab__item:first-child {
     border-radius: 5px 0 0 0;
 
-    button {
+    .video-tab__button {
       border-radius: 5px 0 0 0;
     }
   }
 
-  li:last-child {
+  .video-tab__item:last-child {
     border-radius: 0 0 0 5px;
 
-    button {
+    .video_tab__button {
       border-radius: 0 0 0 5px;
     }
   }
 }
 
-.bookmarklet-button {
+.video-tab__button {
   box-shadow: none !important;
   font-family: $font-family !important;
   font-size: 11px !important;
   font-weight: bold !important;
   height: 100% !important;
   outline: 0 !important;
-  padding: 0 !important;
-  text-align: center !important;
+  padding: 0.25em 1em !important;
+  text-align: left !important;
   text-shadow: none !important;
   text-transform: none !important;
   width: 100% !important;
 
-  &.queued {
+  .button_label {
+    font-family: $font-family-display;
+  }
+}
+  .video-tab__button--like {
+    .button_label--like {
+      content: "Like";
+    }
+
+    .icon-heart {
+      padding-left: 15px;
+    }
+  }
+
+  .video-tab__button--liked {
     background-color: darken(#eee,10%) !important;
     cursor: default;
 
     .icon {
-      padding-left: 15px;
+      background-image: url($icon-heart-active);
+    }
 
+    .button_label--like {
       &:before {
-        content: "Queued";
-        font-family: "Ubuntu", Trebuchet MS, sans-serif;
+        content: "Liked";
       }
-
-      font-style: normal;
     }
   }
-}
 
 .comment-button-content {
   &:before {
@@ -375,15 +448,15 @@ button {
   font-style: normal;
 }
 
-.icon-queue,
+.icon-heart,
 .icon-roll {
   background-color: transparent;
   padding-left: 1.3em;
 }
 
-.icon-queue {
+.button_label--like {
   &:before {
-    content: "Queue";
+    content: "Like";
     font-family: "Ubuntu", Trebuchet MS, sans-serif;
     font-weight: bold;
   }
@@ -396,6 +469,8 @@ button {
   background-image: url('/images/assets/cancel.svg');
   background-repeat: no-repeat;
   background-position: center center;
+  -webkit-background-size: contain;
+  background-size: contain;
   display: block;
   height: 1em;
   width: 1em;
