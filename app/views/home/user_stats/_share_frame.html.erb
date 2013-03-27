@@ -3,46 +3,43 @@
     :high_watches => ["Great job! Why not share the love?", "People like it! They Like it!", "Nice job. You're a regular Ted Turner. Tell someone!"]
   } %>
 
-<section>
-  <h1 class="share-message">
-    <% if frame['view_count'] < 5 %>
-      <%= messages[:low_watches][rand(messages[:low_watches].length)] %>
-    <% else %>
-      <%= messages[:high_watches][rand(messages[:high_watches].length)] %>
-    <% end -%>
-  </h1>
-</section>
-<section>
-  <div class="share-buttons">
-    <ul class="menu_list menu_list--share-frame">
-  <li class="menu_item">
-    <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20video%20I%20found&url=http://<%= user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>&via=shelby">
-      <button class="button_primer button_default menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="User Stats" data-ga_action="Share frame on Twitter" data-ga_label="<%= @user['nickname'] %>">
-        <i class="icon-social_twitter">
+<h2 class="extras__h1">
+  <% if frame['view_count'] < 5 %>
+    <%= messages[:low_watches][rand(messages[:low_watches].length)] %>
+  <% else %>
+    <%= messages[:high_watches][rand(messages[:high_watches].length)] %>
+  <% end -%>
+</h2>
+
+<div class="action_menu">
+  <ul class="menu_list menu_list--share-frame">
+    <li class="menu_item">
+      <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20video%20I%20found&url=http://<%= user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>&via=shelby">
+        <button class="button_primer button_default menu_button menu_button--twitter js-share-to-twitter js-track-event" data-ga_category="User Stats" data-ga_action="Share frame on Twitter" data-ga_label="<%= @user['nickname'] %>">
+          <i class="icon-social_twitter">
+          </i>
+            Tweet
+        </button>
+      </a>
+    </li>
+    <li class="menu_item">
+      <button class="button_primer button_default menu_button menu_button--facebook js-share-to-facebook-<%= frame['id'] %> js-track-event" data-ga_category="User Stats" data-ga_action="Share frame on Facebook" data-ga_label="<%= @user['nickname'] %>">
+        <i class="icon-social_facebook">
         </i>
-          Tweet
+          Share
       </button>
-    </a>
-  </li>
-  <li class="menu_item">
-    <button class="button_primer button_default menu_button--facebook js-share-to-facebook-<%= frame['id'] %> js-track-event" data-ga_category="User Stats" data-ga_action="Share frame on Facebook" data-ga_label="<%= @user['nickname'] %>">
-      <i class="icon-social_facebook">
-      </i>
-        Share
-    </button>
-  </li>
-  <li class="menu_item">
-    <a href="mailto:?subject=Check%20out%20this%20great%20video&body=http://<%= user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>?utm_campaign=email-share">
-      <button class="button_primer button_default menu_button--email js-track-event" data-ga_category="User Stats" data-ga_action="Share frame via email link" data-ga_label="<%= @user['nickname'] %>">
-        <i class="icon-email">
-        </i>
-          Email
-      </button>
-    </a>
-  </li>
-</ul>
-  </div>
-</section>
+    </li>
+    <li class="menu_item">
+      <a href="mailto:?subject=Check%20out%20this%20great%20video&body=http://<%= user["personal_roll_subdomain"] %>.shelby.tv/<%= frame["id"] %>?utm_campaign=email-share">
+        <button class="button_primer button_default menu_button menu_button--email js-track-event" data-ga_category="User Stats" data-ga_action="Share frame via email link" data-ga_label="<%= @user['nickname'] %>">
+          <i class="icon-email">
+          </i>
+            Email
+        </button>
+      </a>
+    </li>
+  </ul>
+</div><!-- eo share-buttons -->
 
 <script>
   $(document).ready(function(){

@@ -1,4 +1,4 @@
-<div class="shelf shelf--community clearfix">
+<div class="shelf shelf--stats clearfix">
   <div class="shelf__lining">
     <h3 class="shelf__h2">
       Here are the most recent videos you added
@@ -7,20 +7,58 @@
     <hr class="shelf__hr" />
 
     <ul class="list shelf__list clearfix">
-      <% @frames.each do |frame| %>
+      <% @frames.each_with_index do |frame, i| %>
         <% frame = frame['frame'] %>
-        <li class="shelf__item">
-          <ul class="list all-frame-info">
-            <li class="frames">
+        <li class="shelf__item clearfix">
+          <ul class="list frame_stats__list clearfix">
+            <li class="frame_stats__item frame_stats__item--frame">
               <%= render :partial => '/home/user_stats/frame', :locals => { :frame => frame } %>
             </li>
-            <li class="stats">
-              <%= render :partial => '/home/user_stats/watch_stats', :locals => { :frame => frame }  %>
-              <%= render :partial => '/home/user_stats/like_stats', :locals => { :frame => frame }  %>
-              <%#= render :partial => '/home/user_stats/shelby_score', :locals => { :frame => frame }  %>
+
+            <li class="frame_stats__item frame_stats__item--stats">
+              <div class="frame_stats__item_lining clearfix">
+                <h2 class="frame-title">
+                  Stats
+                </h2>
+
+                <div class="frame-body-wrapper clearfix">
+                  <ul class="list list--stacked stats__list clearfix">
+                    <li class="list__item clearfix">
+                      <h2 class="stats__h1">
+                        <span class="icon icon-views">
+                        </span>
+
+                        <span class="view-count">
+                          <%= frame['view_count'] %>
+                        </span>
+                      </h2>
+                    </li>
+
+                    <li class="list__item clearfix">
+                      <h2 class="stats__h1">
+                        <span class="icon icon-heart">
+                        </span>
+
+                        <span class="like-count">
+                          <%= frame['like_count'] %>
+                        </span>
+                      </h2>
+                    </li>
+                  </ul>
+                </div><!-- frame-body-wrapper -->
+              </div><!-- eo frame_stats__item_lining -->
             </li>
-            <li class="extras">
-              <%= render :partial => '/home/user_stats/share_frame', :locals => { :frame => frame, :user => @user }  %>
+
+            <li class="frame_stats__item frame_stats__item--extras">
+              <div class="frame_stats__item_lining extras clearfix">
+                <h2 class="frame-title">
+                  Henry says…
+                </h2>
+
+                <div class="frame-body-wrapper clearfix">
+                  <%= render :partial => "/home/user_stats/#{frame_actions[i % frame_actions.length]}", :locals => { :frame => frame, :user => @user }  %>
+                </div>
+              </div><!-- eo frame_stats__item_lining -->
             </li>
           </ul>
 

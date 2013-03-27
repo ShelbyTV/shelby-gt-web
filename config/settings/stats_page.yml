@@ -1,0 +1,14 @@
+defaults: &defaults
+  frame_actions: ['share_frame', 'roll_to_channel', 'search']
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
