@@ -9,7 +9,7 @@ module Shelby
     end
 
     def self.get_user_stats(id, cookie)
-      s = get("/user/#{id}/stats?num_frames=4", :headers => {'Cookie' => cookie}).parsed_response
+      s = get("/user/#{id}/stats?num_frames=3", :headers => {'Cookie' => cookie}).parsed_response
       return s['status'] == 200 ? s['result'] : nil
     end
 
