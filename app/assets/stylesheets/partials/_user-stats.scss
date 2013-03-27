@@ -25,6 +25,12 @@
   margin: 1em auto;
 
   //non-normative overrides
+  .frame {
+    .frame-body-wrapper {
+      margin-top: 0.5em;
+    }
+  }
+
   .frame-title {
     display: block;
     min-height: 3em;
