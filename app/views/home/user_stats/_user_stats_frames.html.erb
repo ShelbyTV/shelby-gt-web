@@ -56,7 +56,7 @@
                 </h2>
 
                 <div class="frame-body-wrapper clearfix">
-                  <%= render :partial => "/home/user_stats/#{Settings::StatsPage.frame_actions[i % Settings::StatsPage.frame_actions.length]}", :locals => { :frame => frame, :user => @user }  %>
+                  <%= render :partial => "/home/user_stats/#{frame_actions[i % frame_actions.length]}", :locals => { :frame => frame, :user => @user }  %>
                 </div>
               </div><!-- eo frame_stats__item_lining -->
             </li>
