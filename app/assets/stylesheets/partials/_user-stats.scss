@@ -3,10 +3,12 @@
 */
 //app-wide-overrides
 .shelby--user-stats {
-  .icon-mark {
-    &:before {
-      font-family: 'Shelby' !important;
-      margin: 0.3em 0.5em;
+  .shelf--about {
+    .icon-mark {
+      &:before {
+        font-family: 'Shelby' !important;
+        margin: 0.3em 0.5em;
+      }
     }
   }
 }
@@ -101,12 +103,34 @@
 //block
 .action_menu {
   bottom: 1em;
+    font-size: 1.5em;
   left: 0;
-  margin: .5em 1.4em;
+  margin: 0.5em 1em;
   position: absolute;
-    text-align: center;
+  text-align: center;
   right: 0;
+
+  .menu_list--share-frame {
+    // font-size: 1.3em;
+  }
+
+  .icon-social_twitter {
+    color: $twitter-blue;
+  }
+
+  .icon-social_facebook {
+    color: $facebook-blue;
+  }
+
+  .icon-email {
+    color: $shelby-green;
+  }
 }
+    //modifier
+    .action_menu--small {
+      font-size: 1.1em;
+    }
+
   //elements
   .action_menu__button {
     display: block;
@@ -118,6 +142,5 @@
   }
 
   .action_menu__button--roll {
-    font-size: 1.5em;
     margin: 0 auto;
   }
