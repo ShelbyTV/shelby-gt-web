@@ -359,10 +359,13 @@ $landing-page-footer-font-color: #EFEFEF;
 //  Signup, extended by .shelf--search above
 //------------------------------------------------------------------------------
 .shelf--learn-more-banner,
+.shelf--signup, {
+  background-image: url('/images/landing/header.jpg');
+}
+
+.shelf--learn-more-banner,
 .shelf--signup,
 .shelf--stats-banner {
-  background-image: url('/images/landing/header.jpg');
-  // background-image: url('/images/landing/network.jpg');
 
   //----- Block -----------------------------------------
   .shelf__lining {
