@@ -61,7 +61,8 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 
   .shelf--signup,
-  .shelf--search {
+  .shelf--search,
+  .shelf--stats-banner {
     .shelf__form {
       font-size: inherit;
     }
@@ -313,7 +314,8 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 .shelf--learn-more-banner,
 .shelf--signup,
-.shelf--search {
+.shelf--search,
+.shelf--stats-banner {
   background-color: #444;
   background-image: url('/images/landing/invite_landing.jpg');
   background-position: center center;
@@ -357,9 +359,13 @@ $landing-page-footer-font-color: #EFEFEF;
 //  Signup, extended by .shelf--search above
 //------------------------------------------------------------------------------
 .shelf--learn-more-banner,
-.shelf--signup{
+.shelf--signup, {
   background-image: url('/images/landing/header.jpg');
-  // background-image: url('/images/landing/network.jpg');
+}
+
+.shelf--learn-more-banner,
+.shelf--signup,
+.shelf--stats-banner {
 
   //----- Block -----------------------------------------
   .shelf__lining {
@@ -847,7 +853,8 @@ $landing-page-footer-font-color: #EFEFEF;
     }
   }
 
-  .shelf--signup {
+  .shelf--signup,
+  .shelf--stats-banner {
     .shelf__block {
       br {
         display: none;
