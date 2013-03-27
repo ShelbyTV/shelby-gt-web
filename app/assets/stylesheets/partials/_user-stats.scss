@@ -16,6 +16,23 @@
 //shelby specific
 .shelf--stats-banner {
   background-image: url('/images/stats/drsztul.jpg');
+  position: relative;
+
+  &:before {
+    background-color: rgba(0,0,0,.3);
+    content: "\0020";
+    height: 100%;
+    left:0;
+    position: absolute;
+    top:0;
+    width: 100%;
+    z-index: 0;
+  }
+
+  .shelf__lining {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .shelf--stats {
