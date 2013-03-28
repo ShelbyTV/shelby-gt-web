@@ -68,7 +68,7 @@
     },
 
     _lookupDonatePromo : function() {
-      self = this;
+      var self = this;
       return _(shelby.config.donatePromos).find(function(promoInfo) {
         return promoInfo.rollId == self.model.id;
       });
