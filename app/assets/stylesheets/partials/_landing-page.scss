@@ -754,6 +754,11 @@ $landing-page-footer-font-color: #EFEFEF;
     padding-top: 0.5em;
   }
 
+  .shelf__list--disclaimer {
+    float: right;
+    display: none;
+  }
+
   .shelf__item {
   }
 
@@ -761,6 +766,12 @@ $landing-page-footer-font-color: #EFEFEF;
     font-weight: bold;
     display: block;
     padding: 1em;
+  }
+
+  .shelf__disclaimer-text {
+    font-size: .5em;
+    display: block;
+    padding: 1.85em 1em;
   }
 
   // NON-NORMATIVE

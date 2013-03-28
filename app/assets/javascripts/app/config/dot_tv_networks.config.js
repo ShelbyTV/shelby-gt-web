@@ -31,7 +31,7 @@ shelby.config.dotTvNetworks = {
       id : '513f8019b415cc3b3900000d', // #sweetestbracket
       attribution : {
         authorAvatar : '//s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/51420e57b415cc7c7c064a1d?1363283581000',
-        authorName : 'The videoverse'
+        authorName : 'the social web'
       },
       showAttribution : true
     },
@@ -39,7 +39,7 @@ shelby.config.dotTvNetworks = {
       id : '50f6d51cb415cc7ebd000007', // #MarchMadness
       attribution : {
         authorAvatar : '//s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/51420e57b415cc7c7c064a1d?1363283581000',
-        authorName : 'The videoverse'
+        authorName : 'the social web'
       },
       showAttribution : true
     }
