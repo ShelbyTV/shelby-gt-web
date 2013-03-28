@@ -244,6 +244,8 @@
     background-image: url($icon-chevron-right);
     background-repeat: no-repeat;
     background-position: 100% 60%;
+    -webkit-background-size: contain;
+    background-size: contain;
     display: block;
     font-style: normal;
     padding-right: 1em;
