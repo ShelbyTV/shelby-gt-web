@@ -49,6 +49,7 @@ class FrameController < ApplicationController
   # to allow linking to a frame within a subdomain'd iso roll
   #
   def show_frame_in_isolated_roll
+    @roll = Shelby::API.get_roll_with_frames(params[:roll_id])
     render '/home/app'
   end
 
