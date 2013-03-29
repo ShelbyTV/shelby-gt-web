@@ -92,12 +92,14 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           } else {
             self._reroute();
           }
+
           shelby.models.rollFollowings.fetch();
           shelby.models.promoRollCategories.fetch();
           shelby.checkFbTokenValidity();
-          shelby.track('identify', {nickname: shelby.models.user.get('nickname')});
+          shelby.track('identify', {nickname: userModel.get('nickname')});
           libs.utils.flash.detectFlash();
           libs.utils.intercom.boot(userModel);
+          libs.utils.userNotifications.init(userModel);
         }
       });
     }
