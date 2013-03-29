@@ -99,7 +99,9 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           shelby.track('identify', {nickname: userModel.get('nickname')});
           libs.utils.flash.detectFlash();
           libs.utils.intercom.boot(userModel);
-          libs.utils.userNotifications.init(userModel);
+          if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.dotTv) {
+            libs.utils.userNotifications.init(userModel);
+          }
         }
       });
     }

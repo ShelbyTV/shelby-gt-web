@@ -25,17 +25,7 @@ libs.utils.userNotifications = {
         }
 
         var countsObj = _({}).extend(user.get('rolled_since_last_notification'),{email: 0 });
-        user.save({ rolled_since_last_notification : countsObj},
-          {
-            success: function(){
-              console.log('successly saved');
-            },
-            error: function(){
-              console.log('failed save');
-            },
-            wait : true
-          }
-        );
+        user.save({ rolled_since_last_notification : countsObj});
       });
     }
   }//eo init();
