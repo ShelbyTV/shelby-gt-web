@@ -1,8 +1,7 @@
 libs.utils.userNotifications = {
   init : function(user){
 
-    // var newlyRolledVideos = user.rolled_since_last_notification.email || 1;
-    var newlyRolledVideos = 14;
+    var newlyRolledVideos = (user.rolled_since_last_notification) ? user.rolled_since_last_notification.email : 0;
 
     if(newlyRolledVideos > 0) {
       var opts = {
@@ -25,10 +24,18 @@ libs.utils.userNotifications = {
           //do nothing, just dismiss
         }
 
-
-        // user.save({})
+        user.save({ rolled_since_last_notification : { email : 0 }},
+          {
+            success: function(){
+              console.log('successly saved');
+            },
+            error: function(){
+              console.log('failed save');
+            },
+            wait : true
+          }
+        );
       });
     }
-
-  }
+  }//eo init();
 };
