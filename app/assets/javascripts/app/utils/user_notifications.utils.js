@@ -1,7 +1,7 @@
 libs.utils.userNotifications = {
   init : function(user){
 
-    var newlyRolledVideos = (user.rolled_since_last_notification) ? user.rolled_since_last_notification.email : 0;
+    var newlyRolledVideos = (user.has('rolled_since_last_notification') && user.get('rolled_since_last_notification').email) || 0;
 
     if(newlyRolledVideos > 0) {
       var opts = {
@@ -15,7 +15,7 @@ libs.utils.userNotifications = {
       };
 
       shelby.dialog(opts, function(returnVal){
-        console.log(this, user);
+
         if (returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary) {
           //primary button clicked
           shelby.router.navigate('roll/' + user.get('personal_roll_id'), {trigger: true});
@@ -24,7 +24,8 @@ libs.utils.userNotifications = {
           //do nothing, just dismiss
         }
 
-        user.save({ rolled_since_last_notification : { email : 0 }},
+        var countsObj = _({}).extend(user.get('rolled_since_last_notification'),{email: 0 });
+        user.save({ rolled_since_last_notification : countsObj},
           {
             success: function(){
               console.log('successly saved');
