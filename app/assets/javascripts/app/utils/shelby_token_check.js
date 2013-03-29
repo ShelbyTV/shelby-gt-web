@@ -9,7 +9,8 @@ _(shelby).extend({
   },
 
   checkFbTokenValidity : function(){
-    if (shelby.userHasProvider('facebook')){
+    var fbReauthDismissed = cookies.get('fb_reauth_dismissed');
+    if (shelby.userHasProvider('facebook') && fbReauthDismissed != 'true'){
       // do ajax request to see if token is valid
       var _url = shelby.config.apiRoot + '/user/' +  shelby.models.user.id + '/is_token_valid?provider=facebook';
       var _fbAuth = shelby.config.apiBase + "/auth/facebook";
@@ -29,6 +30,8 @@ _(shelby).extend({
                 if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary) {
                   document.location.href = _fbAuth;
                 }
+
+                cookies.set('fb_reauth_dismissed','true',90);
               }
             );
           }
