@@ -184,11 +184,12 @@
           if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.channel) {
             if ($('#js-welcome').hasClass('hidden')){
               shelby.userInactivity.disableUserActivityDetection();
-              shelby.models.userDesires.set({guideShown: false});
-              $('.tooltip').show();
+              //shelby.models.userDesires.set({guideShown: false});
+              // $('.tooltip').show();
+              // $('.welcome-message').hide();
             }
             else {
-              $('.tooltip').hide();
+              // $('.tooltip').hide();
               shelby.userInactivity.enableUserActivityDetection();
             }
             $('#js-welcome, .js-channels-welcome').toggleClass('hidden', !$('#js-welcome').hasClass('hidden'));

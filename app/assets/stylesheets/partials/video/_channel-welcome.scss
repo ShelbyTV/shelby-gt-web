@@ -7,6 +7,10 @@
 //  Channel Welcome Pane
 //------------------------------------------------------------------------------
 .welcome-message__wrapper--channels {
+  .media_image--rev {
+    margin-top: 19px;
+  }
+
   //ToolTip Block
   .tooltip {
     display: none;
