@@ -59,7 +59,9 @@ _(shelby).extend({
   dialog: function(notificationOpts, callback){
     if(this._notificationTimer){ clearTimeout(this._notificationTimer); }
 
-    opts = _.extend(shelby.models.notificationState.defaults, {
+    var master = _.clone(shelby.models.notificationState.defaults);
+
+    var opts = _.extend(master, {
       'class'    : 'notification--dialog',
       'visible'  : true
     }, notificationOpts);
@@ -78,7 +80,9 @@ _(shelby).extend({
   alert: function(alertOpts, callback){
     if(this._notificationTimer){ clearTimeout(this._notificationTimer); }
 
-    opts = _.extend(shelby.models.notificationState.defaults, {
+    var master = _.clone(shelby.models.notificationState.defaults);
+
+    var opts = _.extend(master, {
       'class'    : 'notification--alert',
       'visible'  : true
     }, alertOpts);
