@@ -9,6 +9,7 @@
 .welcome-message__wrapper--channels {
   //ToolTip Block
   .tooltip {
+    display: none;
     // background-color: lighten($shelby-green,20%);
     background-color: orange;
     position: absolute;
