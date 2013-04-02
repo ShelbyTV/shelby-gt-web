@@ -68,20 +68,22 @@
       <!-- Channels are curated just for you by the Shelby community and our featured  -->
       <!-- Click play, lean back, and watch videos from our community supported channels -->
 
-      Click Play, lean back, and watch videos curated by our community
+      Click Play to watch videos curated by the Shelby.tv community
     </h3>
   </div><!-- eo welcome-message__head -->
 
   <div class="welcome-message__body clearfix">
     <div class="media_image media_image--rev">
-      <button autofocus="autofocus" tabindex="0" class="button_primer button_blue welcome-message__button js-start-playing js-track-event" data-ga_category="Channel Welcome" data-ga_action="Click play button" data-ga_label="anonymous">
+      <button autofocus="autofocus" tabindex="0" class="button_primer button_blue welcome-message__button js-start-playing js-track-event" data-ga_category="Channel Welcome" data-ga_action="Click play button" data-ga_label="<%= shelby.models.user.get('nickname') %>">
         Play
       </button>
     </div>
 
     <div class="media_body">
       <p class="welcome-message__subline">
-        Powered by Shelby.tv
+        <p class="tooltip__block">
+          try <span class="keyboard_button">&uarr;</span>, <span class="keyboard_button">&darr;</span>, <span class="keyboard_button">&larr;</span>, <span class="keyboard_button">&rarr;</span>, <span class="keyboard_button">G</span> to navigate
+        </p>
       </p>
     </div>
   </div><!-- eo welcome-message__body -->
