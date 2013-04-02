@@ -69,6 +69,9 @@
         this._currentFrame.watched(this._startTime, curTime);
         this._startTime = curTime;
 
+        // HOOK TEST
+        Backbone.Events.trigger('hooks:partialWatch');
+
         // If this hasn't been already marked as watched (in the eyes of ourevent tracking), do so.
         if (!this._markedAsWatched) {this.trackWatchedEvent(curTime);}
       }
