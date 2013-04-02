@@ -215,7 +215,6 @@ libs.shelbyGT.ESPNVideoPlayerView = Support.CompositeView.extend({
 
 //Global function called by Ooyala player
 function receiveEspnEvent(playerId, eventName, params){
-  if (eventName != "playheadTimeChanged") console.log('ESPN', arguments);
   switch(eventName){
     case 'playComplete':
       Backbone.Events.trigger("espn:onFinish");
