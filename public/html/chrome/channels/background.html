@@ -46,13 +46,13 @@
     var _now = new Date();
     var _notification;
     // DISPLAY Notifications at specific times of day, IF NOT seen already, and NOT too often
-    if(12 <= _now.getHours() && _now.getHours() < 13 && (helpers.getCookie('lunchNotificationDisplayed') != "true" ) && helpers.shouldNotify(0.75)) {
+    if(12 <= _now.getHours() && _now.getHours() < 13 && (helpers.getCookie('lunchNotificationDisplayed') != "true" ) && helpers.shouldNotify(0.5)) {
       helpers.displayNotification('laugh', "It's time for a #LAUGH!", 'lunch')
     }
-    else if(18 <= _now.getHours() && _now.getHours() < 19 && (helpers.getCookie('dinnerNotificationDisplayed') != "true") && helpers.shouldNotify(0.75)) {
+    else if(18 <= _now.getHours() && _now.getHours() < 19 && (helpers.getCookie('dinnerNotificationDisplayed') != "true") && helpers.shouldNotify(0.95)) {
       helpers.displayNotification('happenings', "See whats #HAPPENING in the world", 'dinner');
     }
-    else if(20 <= _now.getHours() && _now.getHours() < 22 && (helpers.getCookie('nightcapNotificationDisplayed') != "true") && helpers.shouldNotify(0.75)) {
+    else if(20 <= _now.getHours() && _now.getHours() < 22 && (helpers.getCookie('nightcapNotificationDisplayed') != "true") && helpers.shouldNotify(0.95)) {
       helpers.displayNotification('learn', "Sit back, #LEARN something new!", 'nightcap');
     }
   }

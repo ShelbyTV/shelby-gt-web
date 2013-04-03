@@ -627,8 +627,9 @@ window.shelbyBookmarklet = {
 
                 shelbyApiRoll: function (vid_url, roll_id, comment, callback) {
                     var reqData = {
-                      'url': vid_url,
-                      'text': comment
+                      'source': window.isShelbyBookmarklet ? 'bookmarklet' : 'extension',
+                      'text': comment,
+                      'url': vid_url
                     };
 
                     shelbyJ.ajax({

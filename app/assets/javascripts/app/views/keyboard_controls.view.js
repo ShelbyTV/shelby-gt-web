@@ -150,7 +150,7 @@
         }
       },
       // (s)hort link
-      76 : {
+      83 : {
         model : 'userDesires',
         attr : 'shortLink',
         val : function(){
@@ -184,9 +184,12 @@
           if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.channel) {
             if ($('#js-welcome').hasClass('hidden')){
               shelby.userInactivity.disableUserActivityDetection();
-              shelby.models.userDesires.set({guideShown: false});
+              //shelby.models.userDesires.set({guideShown: false});
+              // $('.tooltip').show();
+              // $('.welcome-message').hide();
             }
             else {
+              // $('.tooltip').hide();
               shelby.userInactivity.enableUserActivityDetection();
             }
             $('#js-welcome, .js-channels-welcome').toggleClass('hidden', !$('#js-welcome').hasClass('hidden'));
@@ -252,7 +255,7 @@
       });
       $(document).on('keydown', function(e){
         if(shelby.models.userDesires.get('typing')) return true;
-        var actionData = self._getActionData(e.keyCode);
+        var actionData = self._keyCodeActionMap[e.keyCode];
         if(!actionData) return true;
         if (_(actionData).has('preventDefault') && _(actionData.preventDefault).has('keyDown')) {
           if (_(actionData.preventDefault).result('keyDown')) {

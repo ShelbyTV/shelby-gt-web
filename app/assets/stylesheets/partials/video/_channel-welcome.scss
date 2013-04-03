@@ -7,8 +7,13 @@
 //  Channel Welcome Pane
 //------------------------------------------------------------------------------
 .welcome-message__wrapper--channels {
+  .media_image--rev {
+    margin-top: 19px;
+  }
+
   //ToolTip Block
   .tooltip {
+    display: none;
     // background-color: lighten($shelby-green,20%);
     background-color: orange;
     position: absolute;
