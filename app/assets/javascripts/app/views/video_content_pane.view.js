@@ -72,7 +72,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
           this.insertChildBefore(this._persistentVideoInfoView, '.js-videoplayer-viewport');
         }
         if (!this._dynamicVideoInfoView) {
-          console.log("_dynamicVideoInfoView");
+          console.log("loading _dynamicVideoInfoView...");
           this._dynamicVideoInfoView = new libs.shelbyGT.DynamicVideoInfoView({
             className : 'animate_module media_module js-inactivity-preemption dynamic_video_info__wrapper',
             guide : shelby.models.guide,

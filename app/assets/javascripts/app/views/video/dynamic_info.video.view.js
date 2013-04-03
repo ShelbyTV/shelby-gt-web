@@ -5,6 +5,7 @@
  */
 libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
+  _previousFrame : null,
   _currentFrameShortlink : null,
 
   options : {
@@ -49,17 +50,17 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   render : function() {
-    //TODO FIXME
     this.$el.html(this.template({
       currentFrame           : this._currentFrame,
+      //previousFrame         : this._previousFrame,
       eventTrackingCategory  : this.options.eventTrackingCategory,
       queuedVideosModel      : this.options.queuedVideos,
-      showNextFrame          : this.options.showNextFrame,
       user                   : shelby.models.user
     }));
   },
 
   _onActiveFrameModelChange : function(guideModel, activeFrameModel){
+    //this._previousFrame = this._currentFrame;
     this._currentFrame = activeFrameModel;
     // current frame changed, so we don't have the right shortlink anymore
     this._currentFrameShortlink = null;
@@ -77,16 +78,27 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   /*************************************************************/
   _onPartialWatch : function(){
     var self = this;
-    console.log("partialWatch hook");
+    console.log("partialWatch hook!");
+    // show
     this.$el.toggleClass('visible', !this.$el.hasClass('visible'));
+    // prompt to share or like currentVideo
+
+    // hide
     setTimeout(function(){
       self.$el.toggleClass('visible', !self.$el.hasClass('visible'));
     }, 4000);
   },
 
   _onCompleteWatch : function(){
-    console.log("completeWatch hook");
-    this.$el.toggleClass('visible');
+    console.log("completeWatch hook!");
+    // show
+    this.$el.toggleClass('visible', !this.$el.hasClass('visible'));
+    // prompt to like previousVideo
+
+    // hide
+    setTimeout(function(){
+      self.$el.toggleClass('visible', !self.$el.hasClass('visible'));
+    }, 4000);
   },
 
   _onLike : function(){
