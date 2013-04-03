@@ -166,20 +166,22 @@
                   </button>
                 </li>
                 <% } %>
-                <li class="list__item js-share-embed-item">
-                  <button class="button_primer button_default button_share button_share--embed js-button_share--embed js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Get embed code" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                    <i class="icon icon-embed">
-                    </i>
-                      Embed
-                  </button>
-                </li>
-                <li class="list__item nudge">
-                  <span class="share_menu__faux-button clearfix">
-                    <i class="icon icon-shortlink">
-                    </i>
-                    <input type="text" value="Fetching..." class="form_input js-frame-shortlink js-input-select-on-focus" />
-                  </span>
-                </li>
+                <% if (!currentFrame.get('isSearchResultFrame')) { %>
+                  <li class="list__item js-share-embed-item">
+                    <button class="button_primer button_default button_share button_share--embed js-button_share--embed js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Get embed code" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                      <i class="icon icon-embed">
+                      </i>
+                        Embed
+                    </button>
+                  </li>
+                  <li class="list__item nudge">
+                    <span class="share_menu__faux-button clearfix">
+                      <i class="icon icon-shortlink">
+                      </i>
+                      <input type="text" value="Fetching..." class="form_input js-frame-shortlink js-input-select-on-focus" />
+                    </span>
+                  </li>
+                <% } %>
               </ul>
             </div>
         </li>
