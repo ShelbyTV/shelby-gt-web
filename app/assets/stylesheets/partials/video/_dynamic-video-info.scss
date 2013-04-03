@@ -1,0 +1,349 @@
+/*
+ *  Local variables
+ */
+$dynamic_video_info__height: 180px;
+$dynamic_video_info__bottom: 228px;
+$dynamic_video_info--next-frame-width: 180px;
+$dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
+
+/*
+ * Abstracts
+ */
+.dynamic_video_info__list {
+  margin: 0;
+  padding: 0;
+
+  & > .dynamic_video_info__item {
+    list-style-type: none;
+    display: inline-block;
+  }
+}
+
+.dynamic_video_info__h1 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.dynamic_video_info__h2 {
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.dynamic_video_info__h3 {
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.dynamic_video_info__h4 {
+  font-family: $font-family;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.dynamic_video_info__h4--light {
+  font-family: $font-family;
+  font-size: 1em;
+  font-weight: normal;
+}
+
+.dynamic_video_info__anchor {
+  &,
+  &:link {
+    text-decoration: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+//------------------------------------------------------------------------------
+// Structure, Beginning of Feature
+//------------------------------------------------------------------------------
+.dynamic_video_info__wrapper {
+  // background-color: rgba(239, 239, 239, 1);
+  bottom: $dynamic_video_info__bottom;
+  height: $dynamic_video_info__height;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  right: -$dynamic_video_info--next-frame-width;
+  width: $dynamic_video_info--next-frame-width;
+  z-index: 1;
+
+
+  // class to toggle visibility on screen
+  &.visible {
+    right: 0px;
+  }
+
+  &:before {
+    background-color: transparent;
+    box-shadow: $dynamic_video_info__shadow;
+    content: "\0020";
+    display: block;
+    height: inherit;
+    left: -1px;
+    position: absolute;
+    top: 0;
+    width: 1px;
+    z-index: 1;
+  }
+
+  //non-normative //////////////
+  .share_menu {
+    bottom: 3.4em;
+    left: 6.7em;
+    max-width: 600px;
+
+    .list {
+      margin: 0;
+      width: auto;
+    }
+
+    .list__item {
+      display: inline-block;
+      width: 10em;
+
+      &.nudge {
+        vertical-align: 1px;
+      }
+    }
+  }
+}
+    .dynamic_video_info__wrapper--dot-tv {
+      bottom: 0;
+      height: 200px;
+      left: 0;
+      margin: 0;
+      position: relative;
+      right: 0;
+      z-index: 1;
+
+      .dynamic_video_info__lining {
+        margin: 10px 18px 10px 8px;
+      }
+
+      .dynamic_video_info__current-frame {
+        box-shadow: none;
+        overflow: visible;
+      }
+
+      .dynamic_video_info__foot {
+        margin: 0;
+      }
+
+      .dynamic_video_info__body {
+        //non-normative overrides
+        .media_body {
+          max-height: 9.5em;
+        }
+      }
+
+      //non-normative overrides //////////
+      .line-clamp {
+        height: 9em;
+
+        &:after {}
+      }
+
+      .line-clamp--open {
+        height: 9em;
+        overflow-y: auto;
+
+        &:after {
+          display: block;
+          position: relative;
+        }
+      }
+
+      .share_menu {
+        margin-left: -20%;
+        position: absolute;
+        bottom: 140%;
+        width: 18em;
+      }
+    }
+
+.dynamic_video_info {
+  display: block;
+  height: inherit;
+}
+/*
+ * Current Frame
+ */
+.dynamic_video_info__current-frame { //structured by media_module
+  background: $guide-bg-color;
+  box-shadow: $dynamic_video_info__shadow;
+  height: inherit;
+  margin: 0;
+  position: relative;
+
+  .dynamic_video_info__h1 {
+    @include ellipsis;
+
+    margin: 0 0 1em;
+  }
+
+  //xuser-* carried over from the frame.jst
+  .xuser-data {
+    margin-bottom: .5em;
+  }
+
+  .xuser-avatar {
+    height: 3.5em;
+    width: 3.5em;
+  }
+}
+
+//current frame structure
+.dynamic_video_info__lining {
+  margin: 13px 15px;
+
+}
+
+.dynamic_video_info__body {
+  font-size: 1.2em;
+  margin: 0 0 10px;
+
+  //if there ends up being more than one instance of .dynamic_video_info__body
+  //then it may be worth it to abstract the styles; extend this media_body style
+  //to the one that needs it:
+  //ie. .dynamic_video_info__body--A
+  //    .dynamic_video_info__body--B
+  //if only one instance uses this media body style, then apply it to the respective
+  //modifying class. basically we're forking styles when we need to limit needless
+  //style calculations on the browser's part.
+  .media_body {
+    max-width: 40em;
+    // max-height: 6em;
+    max-height: 5.1em;
+    overflow-y: auto;
+  }
+
+  //non-normative overrides
+  .line-clamp {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.dynamic_video_info__foot {
+  background-color: $base;
+  bottom: 0;
+  margin: 0 0 1em;
+  position: absolute;
+  width: 100%;
+
+  .hr {
+    margin-bottom: 1em;
+  }
+
+  // AB TEST classes to test position of buttons in footer
+  &.left { text-align: left; }
+  &.right { text-align: right; }
+
+  //non-normative overrides
+  .share_menu {
+    position: absolute;
+  }
+}
+
+
+//list of actions for current frame
+.dynamic_video_info__commands {
+  font-size: 1.2em;
+  padding-left: 10px;
+
+  .list__item {
+  }
+
+  .button_command {
+    margin-right: 0.25em;
+  }
+      .button_command--roll {
+      }
+      .button_command--queue {
+      }
+      .button_command--share {
+      }
+      .button_command--comment {
+      }
+      .button_command--twitter {
+      }
+      .button_command--facebook {
+      }
+      .button_command--email {
+      }
+      .icon {
+        vertical-align: -0.1em;
+      }
+}//eo .dynamic_video_info__commands
+
+// FreshPlay "new" frame
+.dynamic_video_info__sash {
+  @include rotate(45deg);
+  @include sash-primer();
+
+  position: absolute;
+  right: -25px;
+  top: 10px;
+  width: 90px;
+}
+
+/*
+ * Next Frame
+ */
+.dynamic_video_info__next-frame { //structured by media_module
+  background-color: lighten($guide-bg-color,5%);
+  height: inherit;
+  margin: 0;
+  width: $dynamic_video_info--next-frame-width;
+
+  &:hover {
+    background-color: lighten($guide-bg-color,8%);
+
+    .frame-thumbnail {
+      opacity: 1;
+    }
+  }
+
+  &:active {
+    background-color: $guide-bg-color;
+  }
+
+  .dynamic_video_info__h2 {
+    margin: 10px 12px;
+  }
+
+  .dynamic_video_info__h3 {
+    margin: 10px 12px;
+  }
+
+  .dynamic_video_info__anchor {
+    display: block;
+    height: inherit;
+
+    &,
+    &:link {
+      color: lighten($text, 25%);
+    }
+
+    &:active {
+      color: lighten($text, 10%);
+    }
+
+    &:hover {
+      color: $text;
+      text-decoration: none;
+    }
+  }
+  //non-normative
+  .frame-thumbnail {
+    height: 80px;
+    opacity: 0.75;
+  }
+}
