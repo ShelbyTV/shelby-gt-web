@@ -13,7 +13,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   events : {
-
+    "click .js-share-menu"          : "_toggleShareMenu"
   },
 
   initialize: function(){
@@ -27,8 +27,6 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playlistFrameGroupCollection", this._onplaylistFrameGroupCollectionChange, this);
-
-    this.render();
   },
 
   _cleanup : function() {
@@ -49,14 +47,27 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     }
   },
 
-  render : function() {
-    this.$el.html(this.template({
-      currentFrame           : this._currentFrame,
-      //previousFrame         : this._previousFrame,
-      eventTrackingCategory  : this.options.eventTrackingCategory,
-      queuedVideosModel      : this.options.queuedVideos,
-      user                   : shelby.models.user
-    }));
+  render : function(opts) {
+    var permalink,
+          tweetIntentParams = {};
+    if (this._currentFrame){
+      permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
+      tweetIntentParams = {
+        text : 'Check out this video',
+        url : permalink
+      };
+
+      this.$el.html(this.template({
+        currentFrame           : this._currentFrame,
+        previousFrame         : this._previousFrame,
+        tweetIntentQueryString : $.param(tweetIntentParams),
+        frameRelativeTo       : (opts && opts.frameRelativeTo) ? opts.frameRelativeTo : "current",
+        type                         : (opts && opts.type) ? opts.type : null,
+        eventTrackingCategory  : this.options.eventTrackingCategory,
+        queuedVideosModel      : this.options.queuedVideos,
+        user                   : shelby.models.user
+      }));
+    }
   },
 
   _onActiveFrameModelChange : function(guideModel, activeFrameModel){
@@ -78,15 +89,15 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   /*************************************************************/
   _onPartialWatch : function(){
     var self = this;
-    console.log("partialWatch hook!");
-    // show
-    this.$el.toggleClass('visible', !this.$el.hasClass('visible'));
-    // prompt to share or like currentVideo
+    var _type = Math.random() <= 0.5 ?  'like' : 'share';
+    var _timeout = _type == 'share' ? 7000 : 5000;
 
-    // hide
+    this.render({type: _type, frameRelativeTo: "current"});
+    this.$el.toggleClass('visible', !this.$el.hasClass('visible'));
+
     setTimeout(function(){
       self.$el.toggleClass('visible', !self.$el.hasClass('visible'));
-    }, 4000);
+    }, _timeout);
   },
 
   _onCompleteWatch : function(){
@@ -112,8 +123,54 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   /*************************************************************
-  / HOOKS
+  / ACTIONS
   /*************************************************************/
+  _toggleShareMenu : function(){
+    var $this = this.$('.js-share-menu'),
+        block = $this.siblings('.js-share-menu-block'),
+        blockHasClass = block.hasClass('hidden');
+
+    // if we're opening the menu and we don't have the shortlink
+    // yet, we need to get it now
+    if (blockHasClass && !this._currentFrameShortlink) {
+      this._getFrameShortlink();
+    }
+
+    //  toggle the "button pressed" state
+    // $this.toggleClass('button_default',!blockHasClass)
+    //      .toggleClass('button_gray-light',blockHasClass);
+    $this.toggleClass('button_active',blockHasClass);
+
+    //  show/hide the panel
+    block.toggleClass('hidden',!blockHasClass);
+
+    // if we open the menu and we already have the shortlink,
+    // highlight it
+    if (blockHasClass && this._currentFrameShortlink) {
+      this.$('.js-frame-shortlink').select();
+    }
+
+  },
+
+  _getFrameShortlink : function() {
+    var self = this;
+    var $shortlinkTextInput = this.$('.js-frame-shortlink');
+    // fetch the short link
+    $.ajax({
+      url: 'http://api.shelby.tv/v1/frame/'+this._currentFrame.id+'/short_link',
+      dataType: 'jsonp',
+      success: function(r){
+        $shortlinkTextInput.val(r.result.short_link).select();
+        // save the link for future reference in case we are going to
+        // re-render without changing frames
+        self._currentFrameShortlink = r.result.short_link;
+      },
+      error: function(){
+        $shortlinkTextInput.val("Link Unavailable").select();
+      }
+    });
+  },
+
   _likeFrame : function(frame, el){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
       // do like

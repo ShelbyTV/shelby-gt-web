@@ -18,8 +18,13 @@
     WATCHED_PCT : 0.20,
     //when to mark video as watched (by percent) for js based even tracking
     EVENT_TRACKING_PCT_THRESHOLD : 10,
+    // when to message a user about liking/sharing/rolling
+    ENGAGED_INTERVAL : 60,
+    ENGAGED_WATCHER_PCT : 0.40,
+    ENGAGED_WATCHER_PCT_THRESHOLD : 40,
 
     _markedAsWatched : null,
+    _markedAsEngaged : null,
 
     initialize: function(playbackState, guideModel, userDesires) {
       this._playbackState = playbackState;
@@ -69,11 +74,13 @@
         this._currentFrame.watched(this._startTime, curTime);
         this._startTime = curTime;
 
-        // HOOK TEST
-        //Backbone.Events.trigger('userHook:partialWatch');
-
         // If this hasn't been already marked as watched (in the eyes of ourevent tracking), do so.
         if (!this._markedAsWatched) {this.trackWatchedEvent(curTime);}
+      }
+
+      if (!this._markedAsEngaged && (curTime > this._requiredEngagedPct || curTime > this.ENGAGED_INTERVAL)) {
+        Backbone.Events.trigger('userHook:partialWatch');
+        this._markedAsEngaged = true;
       }
 
     },
@@ -126,8 +133,10 @@
     _videoChanged: function( guideModel, frame ){
       this._currentFrame = frame;
       this._startTime = 0;
-      this._requireWatchPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.WATCHED_PCT) : this.WATCHED_INTERVAL;
+      this._requiredWatchPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.WATCHED_PCT) : this.WATCHED_INTERVAL;
+      this._requiredEngagedPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.ENGAGED_WATCHER_PCT) : this.ENGAGED_INTERVAL;
       this._markedAsWatched = null;
+      this._markedAsEngaged = null;
     },
 
     //----------------------------------

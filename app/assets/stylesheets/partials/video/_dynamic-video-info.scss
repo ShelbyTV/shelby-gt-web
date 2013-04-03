@@ -1,8 +1,8 @@
 /*
  *  Local variables
  */
-$dynamic_video_info__height: 180px;
-$dynamic_video_info__bottom: 228px;
+$dynamic_video_info__height: 130px;
+$dynamic_video_info__bottom: 238px;
 $dynamic_video_info--next-frame-width: 180px;
 $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
@@ -20,7 +20,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 }
 
 .dynamic_video_info__h1 {
-  font-size: 1.5em;
+  font-size: 1.45em;
   font-weight: 500;
 }
 
@@ -73,7 +73,6 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   width: $dynamic_video_info--next-frame-width;
   z-index: 1;
 
-
   // class to toggle visibility on screen
   &.visible {
     right: 0px;
@@ -94,8 +93,8 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
   //non-normative //////////////
   .share_menu {
-    bottom: 3.4em;
-    left: 6.7em;
+    bottom: 11.9em;
+    left: 0em;
     max-width: 600px;
 
     .list {
@@ -113,59 +112,6 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
     }
   }
 }
-    .dynamic_video_info__wrapper--dot-tv {
-      bottom: 0;
-      height: 200px;
-      left: 0;
-      margin: 0;
-      position: relative;
-      right: 0;
-      z-index: 1;
-
-      .dynamic_video_info__lining {
-        margin: 10px 18px 10px 8px;
-      }
-
-      .dynamic_video_info__current-frame {
-        box-shadow: none;
-        overflow: visible;
-      }
-
-      .dynamic_video_info__foot {
-        margin: 0;
-      }
-
-      .dynamic_video_info__body {
-        //non-normative overrides
-        .media_body {
-          max-height: 9.5em;
-        }
-      }
-
-      //non-normative overrides //////////
-      .line-clamp {
-        height: 9em;
-
-        &:after {}
-      }
-
-      .line-clamp--open {
-        height: 9em;
-        overflow-y: auto;
-
-        &:after {
-          display: block;
-          position: relative;
-        }
-      }
-
-      .share_menu {
-        margin-left: -20%;
-        position: absolute;
-        bottom: 140%;
-        width: 18em;
-      }
-    }
 
 .dynamic_video_info {
   display: block;
@@ -176,6 +122,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
  */
 .dynamic_video_info__current-frame { //structured by media_module
   background: $guide-bg-color;
+  opacity: 0.9;
   box-shadow: $dynamic_video_info__shadow;
   height: inherit;
   margin: 0;
@@ -242,10 +189,6 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
     margin-bottom: 1em;
   }
 
-  // AB TEST classes to test position of buttons in footer
-  &.left { text-align: left; }
-  &.right { text-align: right; }
-
   //non-normative overrides
   .share_menu {
     position: absolute;
@@ -266,7 +209,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   }
       .button_command--roll {
       }
-      .button_command--queue {
+      .button_command--like {
       }
       .button_command--share {
       }
@@ -282,6 +225,16 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
         vertical-align: -0.1em;
       }
 }//eo .dynamic_video_info__commands
+
+.button_command {
+  &.button_command--like {
+    margin: 20px;
+    width: 10.5em;
+  }
+  &.button_command--share {
+    margin: 20px;
+  }
+}
 
 // FreshPlay "new" frame
 .dynamic_video_info__sash {
