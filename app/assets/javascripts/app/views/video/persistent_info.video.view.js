@@ -104,6 +104,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         anonUserShareEmailBody : emailBody,
         tweetIntentQueryString : $.param(tweetIntentParams),
         currentFrame           : this._currentFrame,
+        currentFrameShortlink  : this._currentFrameShortlink,
         eventTrackingCategory  : this.options.eventTrackingCategory,
         nextFrame              : this._nextFrame,
         queuedVideosModel      : this.options.queuedVideos,
@@ -303,22 +304,24 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _getFrameShortlink : function() {
-    var self = this;
-    var $shortlinkTextInput = this.$('.js-frame-shortlink');
-    // fetch the short link
-    $.ajax({
-      url: 'http://api.shelby.tv/v1/frame/'+this._currentFrame.id+'/short_link',
-      dataType: 'jsonp',
-      success: function(r){
-        $shortlinkTextInput.val(r.result.short_link).select();
-        // save the link for future reference in case we are going to
-        // re-render without changing frames
-        self._currentFrameShortlink = r.result.short_link;
-      },
-      error: function(){
-        $shortlinkTextInput.val("Link Unavailable").select();
-      }
-    });
+    if (!this._currentFrame.get('isSearchResultFrame')) {
+      var self = this;
+      var $shortlinkTextInput = this.$('.js-frame-shortlink');
+      // fetch the short link
+      $.ajax({
+        url: 'http://api.shelby.tv/v1/frame/'+this._currentFrame.id+'/short_link',
+        dataType: 'jsonp',
+        success: function(r){
+          $shortlinkTextInput.val(r.result.short_link).select();
+          // save the link for future reference in case we are going to
+          // re-render without changing frames
+          self._currentFrameShortlink = r.result.short_link;
+        },
+        error: function(){
+          $shortlinkTextInput.val("Link Unavailable").select();
+        }
+      });
+    }
   },
 
   _selectInputText : function(e){
