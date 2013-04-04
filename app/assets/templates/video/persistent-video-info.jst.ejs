@@ -106,8 +106,7 @@
                     data-ga_category="<%= eventTrackingCategory %>"
                     data-ga_action="Click roll on current frame"
                     data-ga_label="<%= shelby.models.user.get('nickname') %>">
-              <i class="icon icon-videocard_roll">
-              </i>
+              <i class="icon icon-videocard_roll"></i>
                 Roll…
             </button>
           </li>
@@ -118,8 +117,7 @@
               data-ga_category="<%= eventTrackingCategory %>"
               data-ga_action="Click like on current frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon">
-            </i>
+            <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon"></i>
             <span class="label">
               <%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %>
             </span>
@@ -128,8 +126,7 @@
 
         <li class="list__item clearfix">
           <button class="button_primer<%= (user.isAnonymous()) ? ' button_blue' : ' button_default' %> button_command button_command--share js-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Click share menu on current frame" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="icon icon-share">
-            </i>
+            <i class="icon icon-share"></i>
               Share…
           </button>
 
@@ -139,8 +136,7 @@
                   <!-- TODO : Put this in once we have an embed to supply -->
                   <li class="list__item">
                     <button class="button_primer button_default button_share button_share--embed js-hide-share-menu">
-                      <i class="icon icon-embed">
-                      </i>
+                      <i class="icon icon-embed"></i>
                         Embed
                     </button>
                   </li>
@@ -151,8 +147,7 @@
                     <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= encodeURIComponent(anonUserShareEmailBody) %>">
                   <% } %>
                     <button class="button_primer button_default button_share button_share--email js-hide-share-menu js-track-event<%= !user.isAnonymous() ? ' js-button_share--email' : ''%>" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                      <i class="icon icon-email">
-                      </i>
+                      <i class="icon icon-email"></i>
                         Email
                     </button>
                   <% if (user.isAnonymous()) { %>
@@ -163,24 +158,21 @@
                   <li class="list__item">
                     <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
                       <button class="button_primer button_default button_share button_share--twitter js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                        <i class="icon icon-social_twitter">
-                        </i>
+                        <i class="icon icon-social_twitter"></i>
                           Twitter
                       </button>
                     </a>
                   </li>
                 <li class="list__item">
                   <button class="button_primer button_default button_share button_share--facebook js-button_share--facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                    <i class="icon icon-social_facebook">
-                    </i>
+                    <i class="icon icon-social_facebook"></i>
                       Facebook
                   </button>
                 </li>
                 <% } %>
                 <li class="list__item nudge">
                   <span class="share_menu__permalink clearfix js-button_share--shortlink">
-                    <i class="icon icon-shortlink">
-                    </i>
+                    <i class="icon icon-shortlink"></i>
                     <input type="text" value="Fetching..." class="form_input js-frame-shortlink" />
                   </span>
                 </li>
@@ -196,8 +188,7 @@
                     data-ga_category="<%= eventTrackingCategory %>"
                     data-ga_action="Click roll on current frame"
                     data-ga_label="<%= shelby.models.user.get('nickname') %>">
-              <i class="icon icon-videocard_roll">
-              </i>
+              <i class="icon icon-videocard_roll"></i>
                 Roll…
             </button>
           </li>
@@ -208,8 +199,7 @@
               data-ga_category="<%= eventTrackingCategory %>"
               data-ga_action="Click like on current frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon">
-            </i>
+            <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon"></i>
             <span class="label">
               <%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %>
             </span>
@@ -222,8 +212,7 @@
                     data-ga_category="<%= eventTrackingCategory %>"
                     data-ga_action="Click share on current frame"
                     data-ga_label="<%= shelby.models.user.get('nickname') %>">
-              <i class="icon icon-email">
-              </i>
+              <i class="icon icon-email"></i>
                 Email…
             </button>
           </li>
@@ -231,25 +220,20 @@
           <li class="persistent_video_info__item clearfix">
             <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= currentFramePermalink %>?utm_campaign=email-share">
               <button class="button_primer button_default persistent_video_info__button--share js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame via email link" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                <i class="icon-email">
-                </i>
+                <i class="icon-email"></i>
                   Email
               </button>
             </a>
           </li>
           <li class="persistent_video_info__item clearfix">
             <button class="button_primer button_default persistent_video_info__button--facebook js-facebook-share js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-              <i class="button_icon_center icon_share_facebook icon">
-                &nbsp;
-              </i>
+              <i class="button_icon_center icon_share_facebook icon">&nbsp;</i>
             </button>
           </li>
           <li class="persistent_video_info__item clearfix">
             <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20video&url=<%= currentFramePermalink %>">
               <button class="button_primer button_default persistent_video_info__button--twitter js-share-to-twitter js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                <i class="button_icon_center icon_share_twitter icon">
-                  &nbsp;
-                </i>
+                <i class="button_icon_center icon_share_twitter icon">&nbsp;</i>
               </button>
             </a>
           </li>
