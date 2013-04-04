@@ -9,6 +9,7 @@
 libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
 
   _persistentVideoInfoView : null,
+  _dynamicVideoInfoView : null,
 
   tagName: 'section',
 
@@ -69,6 +70,16 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
             userDesires : shelby.models.userDesires
           });
           this.insertChildBefore(this._persistentVideoInfoView, '.js-videoplayer-viewport');
+        }
+        if (!this._dynamicVideoInfoView) {
+          console.log("loading _dynamicVideoInfoView...");
+          this._dynamicVideoInfoView = new libs.shelbyGT.DynamicVideoInfoView({
+            className : 'animate_module media_module js-inactivity-preemption dynamic_video_info__wrapper',
+            guide : shelby.models.guide,
+            playlistManager : shelby.models.playlistManager,
+            queuedVideos : shelby.models.queuedVideos
+          });
+          this.insertChildBefore(this._dynamicVideoInfoView, '.js-videoplayer-viewport');
         }
       } else if (this._persistentVideoInfoView) {
         this._persistentVideoInfoView.leave();
