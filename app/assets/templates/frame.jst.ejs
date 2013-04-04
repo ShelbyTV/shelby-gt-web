@@ -141,7 +141,7 @@
       <footer class="media_module frame-footer clearfix">
          <% if (clickableCreator) { %>
            <a href="#" onclick="return false;" class="js-creator-personal-roll">
-             <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
+             <span class="image_module xuser-avatar<% if (fauxUserOrigin) { %> xuser-avatar--<%= fauxUserOrigin %> icon-social_<%= fauxUserOrigin %><% } %> media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
                <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
              </span>
            </a>
@@ -155,7 +155,6 @@
             <% var hasComment = messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id') %>
             <% var comment = hasComment && messages.models[0].get('text') %>
             <% var commentOverflow = comment && comment.length > 265 %>
-            <% if (!fauxUserOrigin) { %>
               <span class="xuser-data-timestamp">
                  <%= frame.get('created_at') %>
               </span>
@@ -166,6 +165,8 @@
                 <% } else { %>
                   <%= creatorNickname %>
                 <% } %>
+
+                <% if (fauxUserOrigin) { %>via <span class="capitalize"><%= fauxUserOrigin %></span><% } %>
               </p>
 
               <p class="xuser-message<%= commentOverflow ? ' line-clamp js-toggle-comment' : '' %>">
@@ -182,42 +183,9 @@
                   %>
                 <% } %>
               </p>
-            <% } else { %>
-                <p class="xuser-data xuser-message--faux">
-                  <% if (clickableCreator) { %>
-                    <a href="#" class="js-creator-personal-roll no-faux-link see-all" onclick="return false;">
-                      <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
-                      <strong><%= creatorNickname %></strong>
-                    </a>
-                  <% } else { %>
-                    <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
-                    <%= creatorNickname %>
-                  <% } %>
-
-                  via <span class="capitalize"><%= fauxUserOrigin %></span>
-                </p>
-
-              <% if (!clickableCreator) { %>
-                <p class="xuser-message<%= commentOverflow ? ' line-clamp js-toggle-comment' : '' %>">
-                  <% if(hasComment) { %>
-                    <%=
-                      libs.utils.String.linkifySafeWithClickTracking(comment, {
-                        link : {
-                          gaAction : 'Click on link in comment'
-                        },
-                        hashtag : {
-                          gaAction : 'Click on hashtag link'
-                        }
-                      })
-                    %>
-                  <% } %>
-                </p>
-              <% } %>
-
-              <% } %>
           </div><!-- eo .media_body -->
 
-        <% if (!user.isAnonymous()) { %>
+        <% if (false && !user.isAnonymous()) { %>
           <hr class="hr--double" />
           <div class="frame-subsection clearfix">
             <ul class="menu_list">
