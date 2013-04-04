@@ -24,7 +24,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById",
     "click .js-toggle-comment"              : "_toggleComment",
     "click .js-share-to-facebook"           : "_shareToFacebook",
-    "click .js-hashtag-link"                : '_followHashtagLink'
+    "click .js-hashtag-link"                : '_followHashtagLink',
+    "click .js-share-menu"                  : "_toggleShareMenu"
   },
 
   template : function(obj){
@@ -105,15 +106,20 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
           //so, JST should only .get() object vals from models
 
       this.$el.html(this.template({
-        creator           : frame.get('creator'),
-        dupeFrames        : this.model.getDuplicateFramesToDisplay(),
-        frameGroup        : this.model,
-        frame             : frame,
-        messages          : messages,
-        queuedVideosModel : shelby.models.queuedVideos,
-        options           : this.options,
-        user              : shelby.models.user,
-        video             : frame.get('video')
+        anonUserShareEmailBody : '',
+        creator                : frame.get('creator'),
+        currentFrame           : frame,
+        currentFrameShortlink  : '',
+        dupeFrames             : this.model.getDuplicateFramesToDisplay(),
+        eventTrackingCategory  : '',
+        frameGroup             : this.model,
+        frame                  : frame,
+        messages               : messages,
+        queuedVideosModel      : shelby.models.queuedVideos,
+        options                : this.options,
+        tweetIntentQueryString : '',
+        user                   : shelby.models.user,
+        video                  : frame.get('video')
       }));
 
       this.renderChild(new libs.shelbyGT.FrameLikesView({
@@ -379,6 +385,17 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         }
       );
     }
+  },
+
+  _toggleShareMenu : function(e){
+    console.log(this);
+    console.log(this.el);
+    console.log(this.$el);
+    console.log(e);
+    var $dropdown = this.$el.find('.js-share-menu-block');
+    var $button = $(e.currentTarget).toggleClass('button_active', $dropdown.hasClass('hidden'));
+
+    $dropdown.toggleClass('hidden', !$dropdown.hasClass('hidden'));
   },
 
   //ListItemView overrides
