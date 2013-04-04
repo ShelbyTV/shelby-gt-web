@@ -3,7 +3,7 @@
  */
 $dynamic_video_info__height: 130px;
 $dynamic_video_info__bottom: 238px;
-$dynamic_video_info--next-frame-width: 180px;
+$dynamic_video_info--next-frame-width: 200px;
 $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 /*
@@ -69,13 +69,13 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   margin: 0;
   overflow: hidden;
   position: absolute;
-  right: -$dynamic_video_info--next-frame-width;
-  width: $dynamic_video_info--next-frame-width;
+  right: 0px;
+  width: 0px;
   z-index: 1;
 
   // class to toggle visibility on screen
   &.visible {
-    right: 0px;
+    width: $dynamic_video_info--next-frame-width;
   }
 
   &:before {
@@ -109,6 +109,15 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
       &.nudge {
         vertical-align: 1px;
       }
+    }
+  }
+  .button_command {
+    &.button_command--like {
+      margin: 20px;
+      width: 10.5em;
+    }
+    &.button_command--share {
+      margin: 20px;
     }
   }
 }
@@ -226,15 +235,6 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
       }
 }//eo .dynamic_video_info__commands
 
-.button_command {
-  &.button_command--like {
-    margin: 20px;
-    width: 10.5em;
-  }
-  &.button_command--share {
-    margin: 20px;
-  }
-}
 
 // FreshPlay "new" frame
 .dynamic_video_info__sash {

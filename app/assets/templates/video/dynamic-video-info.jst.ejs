@@ -1,13 +1,11 @@
 <% var currentVideo = currentFrame.get('video') %>
 <% var currentVideoIsInQueue = queuedVideosModel.videoIsInQueue(currentVideo) %>
 
-<% console.log(type, frameRelativeTo) %>
-
 <div class="dynamic_video_info animate_module">
   <div class="media_body dynamic_video_info__current-frame">
     <div class="dynamic_video_info__lining">
       <% if (type && type == "share") { %>
-        <h1 class="dynamic_video_info__h1">Like what you're watching?</h1>
+        <h1 class="dynamic_video_info__h1">Enjoying this?</h1>
         <h2 class="dynamic_video_info__h2">Share it with a friend!</h2>
         <button class="button_primer<%= (user.isAnonymous()) ? ' button_blue' : ' button_default' %> button_command button_command--share js-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Click share menu on current frame" data-ga_label="<%= shelby.models.user.get('nickname') %>">
             <i class="icon icon-share">
@@ -68,7 +66,7 @@
             </div>
       <% } else if (type && type == "like") { %>
         <h1 class="dynamic_video_info__h1">Enjoying this video?</h1>
-        <button class="button_primer button_red button_command button_command--like js-queue-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
+        <button class="button_primer button_red button_command button_command--like js-like-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
               data-ga_category="<%= eventTrackingCategory %>"
               data-ga_action="Click like on current frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">

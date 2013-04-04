@@ -13,6 +13,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   events : {
+    "click .js-like-frame"          : "_likeFrame",
     "click .js-share-menu"          : "_toggleShareMenu"
   },
 
@@ -48,8 +49,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   render : function(opts) {
-    var permalink,
-          tweetIntentParams = {};
+    var permalink, tweetIntentParams = {};
+
     if (this._currentFrame){
       permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
       tweetIntentParams = {
@@ -58,11 +59,11 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
       };
 
       this.$el.html(this.template({
-        currentFrame           : this._currentFrame,
-        previousFrame         : this._previousFrame,
-        tweetIntentQueryString : $.param(tweetIntentParams),
-        frameRelativeTo       : (opts && opts.frameRelativeTo) ? opts.frameRelativeTo : "current",
-        type                         : (opts && opts.type) ? opts.type : null,
+        currentFrame            : this._currentFrame,
+        previousFrame           : this._previousFrame,
+        tweetIntentQueryString  : $.param(tweetIntentParams),
+        frameRelativeTo         : (opts && opts.frameRelativeTo) ? opts.frameRelativeTo : "current",
+        type                    : (opts && opts.type) ? opts.type : null,
         eventTrackingCategory  : this.options.eventTrackingCategory,
         queuedVideosModel      : this.options.queuedVideos,
         user                   : shelby.models.user
@@ -89,12 +90,17 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   /*************************************************************/
   _onPartialWatch : function(){
     var self = this;
-    var _type = Math.random() <= 0.5 ?  'like' : 'share';
+    // don't always show this, should not be probabilistic in the end. should be "smart"
+    if (this._chooseRandom(1, true, false)) return;
+
+    var _type = this._chooseRandom(0.5, 'like', 'share');
     var _timeout = _type == 'share' ? 7000 : 5000;
 
+    // show it
     this.render({type: _type, frameRelativeTo: "current"});
     this.$el.toggleClass('visible', !this.$el.hasClass('visible'));
 
+    // hide it eventually
     setTimeout(function(){
       self.$el.toggleClass('visible', !self.$el.hasClass('visible'));
     }, _timeout);
@@ -171,15 +177,21 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     });
   },
 
-  _likeFrame : function(frame, el){
+  _likeFrame : function(el){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
       // do like
-      frame.like({likeOrigin: this.options.eventTrackingCategory});
+      this._currentFrame.like({likeOrigin: this.options.eventTrackingCategory});
       // update UI that like occured
-      // var $target = $(el.currentTarget);
-      // $target.toggleClass('queued js-queued').find('.label').text('Liked');
-      // $target.find('i').addClass('icon-heart--red');
+      var $target = $(el.currentTarget);
+      $target.toggleClass('queued js-queued').find('.label').text('Liked');
+      $target.find('i').addClass('icon-heart--red');
     }
-  }
+  },
 
+  /*************************************************************
+  / HELPER
+  /*************************************************************/
+  _chooseRandom : function(probability, option1, option2){
+    return Math.random() <= probability ? option2 : option1;
+  }
 });
