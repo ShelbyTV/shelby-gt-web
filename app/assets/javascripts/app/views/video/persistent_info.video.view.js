@@ -23,11 +23,12 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
     "click .persistent_video_info__current-frame  .js-facebook-share"             : "_shareCurrentToFacebook",
     "click .js-button_share--facebook"                                            : "_shareCurrentToFacebook",
+    "click .js-button_share--embed"                                               : "_showEmbedCode",
     "click .js-next-video"                                                        : "_skipToNextVideo",
     "click .js-toggle-comment"                                                    : "_toggleComment",
     "click .js-share-menu"                                                        : "_toggleShareMenu",
     "click .js-hide-share-menu"                                                   : "_toggleShareMenu",
-    "click .js-frame-shortlink"                                                   : "_selectShortLinkText",
+    "click .js-input-select-on-focus"                                             : "_selectInputText",
     "click .js-hashtag-link"                                                      : '_followHashtagLink'
   },
 
@@ -103,6 +104,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         anonUserShareEmailBody : emailBody,
         tweetIntentQueryString : $.param(tweetIntentParams),
         currentFrame           : this._currentFrame,
+        currentFrameShortlink  : this._currentFrameShortlink,
         eventTrackingCategory  : this.options.eventTrackingCategory,
         nextFrame              : this._nextFrame,
         queuedVideosModel      : this.options.queuedVideos,
@@ -261,6 +263,11 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     }
   },
 
+  _showEmbedCode : function() {
+    this.$('.js-share-embed-item').html(SHELBYJST['embed-input']({frame : this._currentFrame}))
+      .addClass('nudge').find('.js-input-select-on-focus').select();
+  },
+
   _toggleComment : function(e){
     // if the click was on an anchor within the frame comment just let the normal
     // link handling occur without showing/hiding the rest of the comment
@@ -297,26 +304,28 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _getFrameShortlink : function() {
-    var self = this;
-    var $shortlinkTextInput = this.$('.js-frame-shortlink');
-    // fetch the short link
-    $.ajax({
-      url: 'http://api.shelby.tv/v1/frame/'+this._currentFrame.id+'/short_link',
-      dataType: 'jsonp',
-      success: function(r){
-        $shortlinkTextInput.val(r.result.short_link).select();
-        // save the link for future reference in case we are going to
-        // re-render without changing frames
-        self._currentFrameShortlink = r.result.short_link;
-      },
-      error: function(){
-        $shortlinkTextInput.val("Link Unavailable").select();
-      }
-    });
+    if (!this._currentFrame.get('isSearchResultFrame')) {
+      var self = this;
+      var $shortlinkTextInput = this.$('.js-frame-shortlink');
+      // fetch the short link
+      $.ajax({
+        url: 'http://api.shelby.tv/v1/frame/'+this._currentFrame.id+'/short_link',
+        dataType: 'jsonp',
+        success: function(r){
+          $shortlinkTextInput.val(r.result.short_link).select();
+          // save the link for future reference in case we are going to
+          // re-render without changing frames
+          self._currentFrameShortlink = r.result.short_link;
+        },
+        error: function(){
+          $shortlinkTextInput.val("Link Unavailable").select();
+        }
+      });
+    }
   },
 
-  _selectShortLinkText : function(){
-    this.$('.js-frame-shortlink').select();
+  _selectInputText : function(e){
+    e.currentTarget.select();
   },
 
   _followHashtagLink : function(e){

@@ -57,6 +57,7 @@
   @include roundies(input);
 
   font-family: $font-family-display;
+  position: relative;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
