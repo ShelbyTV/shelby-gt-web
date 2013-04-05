@@ -7,7 +7,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
   _previousFrame : null,
   _currentFrameShortlink : null,
-  _alreadyShown : false,
+  _displayedDVI : false,
 
   options : {
     eventTrackingCategory : 'Dynamic Video Info' // what category events in this view will be tracked under
@@ -94,6 +94,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     var self = this;
     // don't always show this, should not be probabilistic in the end. should be "smart"
     if (!this._shouldShowDVI(1)) return;
+    this._displayedDVI = true;
 
     var _type = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.5, 'like', 'share');
     var _timeout = this._currentFrame.get('video').get('duration')*200;
@@ -117,8 +118,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     if (!this._shouldShowDVI(1)) return;
 
     var _type = 'share';
-    var _delay = this._currentFrame.get('video').get('duration')*200;
-    var _timeout = this._currentFrame.get('video').get('duration')*200;
+    var _delay = this._currentFrame.get('video').get('duration')*500;
+    var _timeout = this._currentFrame.get('video').get('duration')*300;
 
     // show it after a slight delay
     this.render({type: _type, frameRelativeTo: "current"});
@@ -205,7 +206,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   _shouldShowDVI : function(probability){
     var _byProb = this._chooseRandom(probability, true, false);
     var _byDuration = this._currentFrame.get('video').get('duration');
-    return (!this._alreadyShown && _byProb && _byDuration > 10);
+    return (!this._displayedDVI && _byProb && _byDuration > 10);
   },
 
   _videoAlreadyLiked : function(currentFrame) {
