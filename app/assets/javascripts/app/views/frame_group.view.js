@@ -2,6 +2,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   _currentFrameShortlink : null,
 
+  // _frame : this.model.get('frame'),
+
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
       guideOverlayModel : null,
@@ -398,13 +400,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
     // if we're opening the menu and we don't have the shortlink
     // yet, we need to get it now
-    // if (blockHasClass && !this._currentFrameShortlink) {
-    //   this._getFrameShortlink();
-    // }
+    if (blockHasClass && !this._currentFrameShortlink) {
+      this._getFrameShortlink();
+    }
 
     //  toggle the "button pressed" state
-    // $this.toggleClass('button_default',!blockHasClass)
-    //      .toggleClass('button_gray-light',blockHasClass);
     $this.toggleClass('button_active',blockHasClass);
 
     //  show/hide the panel
@@ -412,9 +412,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
     // if we open the menu and we already have the shortlink,
     // highlight it
-    // if (blockHasClass && this._currentFrameShortlink) {
-    //   this.$('.js-frame-shortlink').select();
-    // }
+    if (blockHasClass && this._currentFrameShortlink) {
+      this.$('.js-frame-shortlink').select();
+    }
 
   },
 
@@ -424,6 +424,29 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       .addClass('nudge').find('.js-input-select-on-focus').select();
   },
 
+  _getFrameShortlink : function() {
+    // console.log(this.model.get('frames').at(0));
+    var frame = this.model.get('frame');
+
+    if (!frame.get('isSearchResultFrame')) {
+      var self = this;
+      var $shortlinkTextInput = this.$('.js-frame-shortlink');
+      // fetch the short link
+      $.ajax({
+        url: 'http://api.shelby.tv/v1/frame/' + frame.id + '/short_link',
+        dataType: 'jsonp',
+        success: function(r){
+          $shortlinkTextInput.val(r.result.short_link).select();
+          // save the link for future reference in case we are going to
+          // re-render without changing frames
+          self._currentFrameShortlink = r.result.short_link;
+        },
+        error: function(){
+          $shortlinkTextInput.val("Link Unavailable").select();
+        }
+      });
+    }
+  },
 
   //ListItemView overrides
   isMyModel : function(model) {
