@@ -166,7 +166,11 @@
                   <%= creatorNickname %>
                 <% } %>
 
-                <% if (fauxUserOrigin) { %>via <span class="capitalize"><%= fauxUserOrigin %></span><% } %>
+                <% if (fauxUserOrigin) { %>
+                  via <span class="capitalize"><%= fauxUserOrigin %></span>
+                <% } else if(frameAncestor && frameAncestor.originator.faux == 0) { %>
+                  via <a class="no-faux-link" href="<%= '/user/' + frameAncestor.originator.id + '/personal_roll' %>"><%= frameAncestor.originator.name %></a>
+                  <% } %>
               </p>
 
               <p class="xuser-message<%= commentOverflow ? ' line-clamp js-toggle-comment' : '' %>">
