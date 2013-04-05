@@ -7,6 +7,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
   _previousFrame : null,
   _currentFrameShortlink : null,
+  _alreadyShown : false,
 
   options : {
     eventTrackingCategory : 'Dynamic Video Info' // what category events in this view will be tracked under
@@ -94,7 +95,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     // don't always show this, should not be probabilistic in the end. should be "smart"
     if (!this._shouldShowDVI(1)) return;
 
-    var _type = this._chooseRandom(0.5, 'like', 'share');
+    var _type = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.5, 'like', 'share');
     var _timeout = this._currentFrame.get('video').get('duration')*200;
 
     // show it now
@@ -108,31 +109,37 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
   _onCompleteWatch : function(){
     console.log("completeWatch hook!");
-    // show
-    this.$el.toggleClass('visible', !this.$el.hasClass('visible'));
-    // prompt to like previousVideo
-
-    // hide
-    setTimeout(function(){
-      self.$el.toggleClass('visible', !self.$el.hasClass('visible'));
-    }, 4000);
   },
 
   _onLike : function(){
-    console.log("like hook");
-    this.$el.toggleClass('visible');
+    var self = this;
+    // don't always show this, should not be probabilistic in the end. should be "smart"
+    if (!this._shouldShowDVI(1)) return;
+
+    var _type = 'share';
+    var _delay = this._currentFrame.get('video').get('duration')*200;
+    var _timeout = this._currentFrame.get('video').get('duration')*200;
+
+    // show it after a slight delay
+    this.render({type: _type, frameRelativeTo: "current"});
+    setTimeout(function(){
+      self.$el.addClass('visible '+_type);
+    }, _delay);
+    // hide it eventually
+    setTimeout(function(){
+      self._closeDVI(_type);
+    }, _timeout);
   },
 
   _onRoll : function(){
     console.log("roll hook");
-    this.$el.toggleClass('visible');
   },
 
   /*************************************************************
   / ACTIONS
   /*************************************************************/
-  _closeDVI : function(){
-    this.$el.removeClass('visible');
+  _closeDVI : function(type){
+    this.$el.removeClass('visible '+type);
   },
 
   _toggleShareMenu : function(){
@@ -198,7 +205,11 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   _shouldShowDVI : function(probability){
     var _byProb = this._chooseRandom(probability, true, false);
     var _byDuration = this._currentFrame.get('video').get('duration');
-    return (_byProb && _byDuration > 10);
+    return (!this._alreadyShown && _byProb && _byDuration > 10);
+  },
+
+  _videoAlreadyLiked : function(currentFrame) {
+    return this.options.queuedVideos.videoIsInQueue(currentFrame.get('video'));
   },
 
   _chooseRandom : function(probability, option1, option2){

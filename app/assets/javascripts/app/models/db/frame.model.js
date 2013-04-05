@@ -146,6 +146,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
         }
       });
     }
+    Backbone.Events.trigger('userHook:like');
   },
 
   reRoll : function(roll, text, onSuccess) {
