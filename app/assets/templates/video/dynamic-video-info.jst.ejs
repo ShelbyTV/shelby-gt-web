@@ -4,6 +4,7 @@
 <div class="dynamic_video_info animate_module">
   <div class="media_body dynamic_video_info__current-frame">
     <div class="dynamic_video_info__lining">
+      <span class="icon-cancel js-close-dvi"></span>
       <% if (type && type == "share") { %>
         <h1 class="dynamic_video_info__h1">Enjoying this?</h1>
         <h2 class="dynamic_video_info__h2">Share it with a friend!</h2>
@@ -70,12 +71,11 @@
               data-ga_category="<%= eventTrackingCategory %>"
               data-ga_action="Click like on current frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon">
-            </i>
-            <span class="label">
-              <%= (currentVideoIsInQueue) ? 'Liked' : 'Like it!' %>
-            </span>
-          </button>
+          <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon"></i>
+          <span class="label">
+            <%= (currentVideoIsInQueue) ? 'Liked' : 'Like it!' %>
+          </span>
+        </button>
       <% } %>
     </div><!-- eo .dynamic_video_info__foot -->
   </div><!-- eo .dynamic_video_info__current-frame -->

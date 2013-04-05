@@ -14,7 +14,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
   events : {
     "click .js-like-frame"          : "_likeFrame",
-    "click .js-share-menu"          : "_toggleShareMenu"
+    "click .js-share-menu"          : "_toggleShareMenu",
+    "click .js-close-dvi"           : "_closeDVI"
   },
 
   initialize: function(){
@@ -91,18 +92,17 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   _onPartialWatch : function(){
     var self = this;
     // don't always show this, should not be probabilistic in the end. should be "smart"
-    if (this._chooseRandom(1, true, false)) return;
+    if (!this._shouldShowDVI(1)) return;
 
     var _type = this._chooseRandom(0.5, 'like', 'share');
-    var _timeout = _type == 'share' ? 7000 : 5000;
+    var _timeout = this._currentFrame.get('video').get('duration')*200;
 
-    // show it
+    // show it now
     this.render({type: _type, frameRelativeTo: "current"});
-    this.$el.toggleClass('visible', !this.$el.hasClass('visible'));
-
+    this.$el.addClass('visible '+_type);
     // hide it eventually
     setTimeout(function(){
-      self.$el.toggleClass('visible', !self.$el.hasClass('visible'));
+      self._closeDVI();
     }, _timeout);
   },
 
@@ -131,6 +131,10 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   /*************************************************************
   / ACTIONS
   /*************************************************************/
+  _closeDVI : function(){
+    this.$el.removeClass('visible');
+  },
+
   _toggleShareMenu : function(){
     var $this = this.$('.js-share-menu'),
         block = $this.siblings('.js-share-menu-block'),
@@ -191,7 +195,13 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   /*************************************************************
   / HELPER
   /*************************************************************/
+  _shouldShowDVI : function(probability){
+    var _byProb = this._chooseRandom(probability, true, false);
+    var _byDuration = this._currentFrame.get('video').get('duration');
+    return (_byProb && _byDuration > 10);
+  },
+
   _chooseRandom : function(probability, option1, option2){
-    return Math.random() <= probability ? option2 : option1;
+    return Math.random() <= probability ? option1 : option2;
   }
 });

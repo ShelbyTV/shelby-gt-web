@@ -158,6 +158,10 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 .dynamic_video_info__lining {
   margin: 13px 15px;
 
+  .icon-cancel {
+    float: right;
+  }
+
 }
 
 .dynamic_video_info__body {

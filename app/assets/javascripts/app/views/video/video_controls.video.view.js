@@ -146,7 +146,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     // set video duration if there is none.
     if (this._currentFrame && this._currentFrame.get('video') && this._currentFrame.get('video').get('duration') === null){
       this._currentFrame.get('video').set('duration', this._currentDuration);
-      console.log(this._currentFrame.get('video').get('duration'), "set!");
     }
   },
 

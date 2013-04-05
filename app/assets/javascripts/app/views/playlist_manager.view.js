@@ -20,6 +20,7 @@ libs.shelbyGT.PlaylistManagerView = Support.CompositeView.extend({
 
   _onPlaybackNext : function(){
     this._skipVideo(1);
+
   },
 
   _onPlaylistStart : function(){
@@ -42,6 +43,11 @@ libs.shelbyGT.PlaylistManagerView = Support.CompositeView.extend({
     this.model.set('nowSkippingVideo', true);
     this.options.guideModel.set({activeFrameModel: nextFrame});
     this.model.set('nowSkippingVideo', false);
+    this._hideDVI();
+  },
+
+  _hideDVI : function(){
+    $('.dynamic_video_info__wrapper').removeClass('visible');
   }
 
 });

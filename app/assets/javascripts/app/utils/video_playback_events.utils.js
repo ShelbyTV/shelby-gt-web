@@ -19,7 +19,7 @@
     //when to mark video as watched (by percent) for js based even tracking
     EVENT_TRACKING_PCT_THRESHOLD : 10,
     // when to message a user about liking/sharing/rolling
-    ENGAGED_INTERVAL : 10,
+    ENGAGED_INTERVAL : 60,
     ENGAGED_WATCHER_PCT : 0.40,
     ENGAGED_WATCHER_PCT_THRESHOLD : 40,
 
@@ -78,9 +78,13 @@
         if (!this._markedAsWatched) {this.trackWatchedEvent(curTime);}
       }
 
-      if (!this._markedAsEngaged && (curTime > this._requiredEngagedPct)) {
-        Backbone.Events.trigger('userHook:partialWatch');
-        this._markedAsEngaged = true;
+      // wait till a video has a duration then trigger a hook
+      if (!this._markedAsEngaged && this._currentFrame.get('video').get('duration')) {
+        this._requiredEngagedPct = this._currentFrame.get('video').get('duration') * this.ENGAGED_WATCHER_PCT;
+        if (curTime > this._requiredEngagedPct){
+          Backbone.Events.trigger('userHook:partialWatch');
+          this._markedAsEngaged = true;
+        }
       }
 
     },
