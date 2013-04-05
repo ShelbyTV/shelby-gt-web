@@ -1,9 +1,9 @@
 /*
  *  Local variables
  */
-$dynamic_video_info__height: 130px;
-$dynamic_video_info__bottom: 238px;
-$dynamic_video_info--next-frame-width: 200px;
+$dynamic_video_info__height: 180px;
+$dynamic_video_info__bottom: 0px;
+$dynamic_video_info--next-frame-width: 180px;
 $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 /*
@@ -131,7 +131,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
  */
 .dynamic_video_info__current-frame { //structured by media_module
   background: $guide-bg-color;
-  opacity: 0.9;
+  opacity: 1;
   box-shadow: $dynamic_video_info__shadow;
   height: inherit;
   margin: 0;
