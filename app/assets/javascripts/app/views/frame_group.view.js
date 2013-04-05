@@ -1,5 +1,7 @@
 libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
+  _currentFrameShortlink : null,
+
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
       guideOverlayModel : null,
@@ -10,22 +12,24 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   }),
 
   events : {
-    "click .js-frame-activate"              : "_activate",
+    "click .js-button_share--email"         : "requestFrameShareView",
+    "click .js-button_share--embed"         : "_showEmbedCode",
+    "click .js-copy-link"                   : "_copyFrameLink",
     "click .js-creation-date"               : "_expand",
     "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
+    "click .js-frame-activate"              : "_activate",
     "click .js-frame-source"                : "_goToSourceRoll",
-    "click .js-roll-frame"                  : "requestFrameRollView",
-    "click .js-share-frame"                 : "requestFrameShareView",
-    "click .js-copy-link"                   : "_copyFrameLink",
-    "click .js-remove-frame"                : "_onClickRemoveFrame",
-    "click .js-video-activity-toggle"       : "_requestConversationView",
-    "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById",
-    "click .js-toggle-comment"              : "_toggleComment",
-    "click .js-share-to-facebook"           : "_shareToFacebook",
     "click .js-hashtag-link"                : '_followHashtagLink',
-    "click .js-share-menu"                  : "_toggleShareMenu"
+    "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
+    "click .js-remove-frame"                : "_onClickRemoveFrame",
+    "click .js-roll-frame"                  : "requestFrameRollView",
+    "click .js-share-frame"                 : "requestFrameShareView",
+    "click .js-share-menu"                  : "_toggleShareMenu",
+    "click .js-share-to-facebook"           : "_shareToFacebook",
+    "click .js-toggle-comment"              : "_toggleComment",
+    "click .js-video-activity-toggle"       : "_requestConversationView"
   },
 
   template : function(obj){
@@ -109,7 +113,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         anonUserShareEmailBody : '',
         creator                : frame.get('creator'),
         currentFrame           : frame,
-        currentFrameShortlink  : '',
+        currentFrameShortlink  : this._currentFrameShortlink,
         dupeFrames             : this.model.getDuplicateFramesToDisplay(),
         eventTrackingCategory  : '',
         frameGroup             : this.model,
@@ -388,15 +392,38 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _toggleShareMenu : function(e){
-    console.log(this);
-    console.log(this.el);
-    console.log(this.$el);
-    console.log(e);
-    var $dropdown = this.$el.find('.js-share-menu-block');
-    var $button = $(e.currentTarget).toggleClass('button_active', $dropdown.hasClass('hidden'));
+    var $this = this.$('.js-share-menu'),
+        block = $this.siblings('.js-share-menu-block'),
+        blockHasClass = block.hasClass('hidden');
 
-    $dropdown.toggleClass('hidden', !$dropdown.hasClass('hidden'));
+    // if we're opening the menu and we don't have the shortlink
+    // yet, we need to get it now
+    // if (blockHasClass && !this._currentFrameShortlink) {
+    //   this._getFrameShortlink();
+    // }
+
+    //  toggle the "button pressed" state
+    // $this.toggleClass('button_default',!blockHasClass)
+    //      .toggleClass('button_gray-light',blockHasClass);
+    $this.toggleClass('button_active',blockHasClass);
+
+    //  show/hide the panel
+    block.toggleClass('hidden',!blockHasClass);
+
+    // if we open the menu and we already have the shortlink,
+    // highlight it
+    // if (blockHasClass && this._currentFrameShortlink) {
+    //   this.$('.js-frame-shortlink').select();
+    // }
+
   },
+
+  _showEmbedCode : function() {
+    this.$('.js-share-embed-item')
+      .html(SHELBYJST['embed-input']({frame : this.model.get('frames').at(0)}))
+      .addClass('nudge').find('.js-input-select-on-focus').select();
+  },
+
 
   //ListItemView overrides
   isMyModel : function(model) {

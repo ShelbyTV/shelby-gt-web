@@ -264,7 +264,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _showEmbedCode : function() {
-    this.$('.js-share-embed-item').html(SHELBYJST['embed-input']({frame : this._currentFrame}))
+    this.$('.js-share-embed-item')
+      .html(SHELBYJST['embed-input']({frame : this._currentFrame}))
       .addClass('nudge').find('.js-input-select-on-focus').select();
   },
 
