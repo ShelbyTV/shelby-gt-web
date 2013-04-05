@@ -146,6 +146,8 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
         }
       });
     }
+
+    // do things that should be done after a user likes a video
     Backbone.Events.trigger('userHook:like');
   },
 

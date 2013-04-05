@@ -5,8 +5,8 @@
   <div class="media_body dynamic_video_info__current-frame">
     <div class="dynamic_video_info__lining">
       <span class="icon-cancel js-close-dvi"></span>
-      <% if (type && type == "share") { %>
-        <h1 class="dynamic_video_info__h1">Enjoying this?</h1>
+      <% if (type && (type == "share" || type =="liked-share")) { %>
+        <h1 class="dynamic_video_info__h1"><%= type == "share" ? "Enjoying this?" : "You like it!" %></h1>
         <h2 class="dynamic_video_info__h2">Share it with a friend!</h2>
         <button class="button_primer<%= (user.isAnonymous()) ? ' button_blue' : ' button_default' %> button_command button_command--share js-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Click share menu on current frame" data-ga_label="<%= shelby.models.user.get('nickname') %>">
             <i class="icon icon-share">

@@ -76,6 +76,7 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
           this._dynamicVideoInfoView = new libs.shelbyGT.DynamicVideoInfoView({
             className : 'animate_module media_module js-inactivity-preemption dynamic_video_info__wrapper',
             guide : shelby.models.guide,
+            guideOverlayModel: shelby.models.guideOverlay,
             playlistManager : shelby.models.playlistManager,
             queuedVideos : shelby.models.queuedVideos
           });
@@ -84,6 +85,8 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
       } else if (this._persistentVideoInfoView) {
         this._persistentVideoInfoView.leave();
         this._persistentVideoInfoView = null;
+        this._dynamicVideoInfoView.leave();
+        this._dynamicVideoInfoView = null;
       }
     }
   }

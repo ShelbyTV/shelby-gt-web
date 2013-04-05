@@ -14,9 +14,11 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   events : {
-    "click .js-like-frame"          : "_likeFrame",
-    "click .js-share-menu"          : "_toggleShareMenu",
-    "click .js-close-dvi"           : "_closeDVI"
+    "click .js-like-frame"              : "_likeFrame",
+    "click .js-share-menu"              : "_toggleShareMenu",
+    "click .js-button_share--email"     : "_requestFrameEmailView",
+    "click .js-button_share--facebook"  : "_shareCurrentToFacebook",
+    "click .js-close-dvi"               : "_closeDVI"
   },
 
   initialize: function(){
@@ -54,6 +56,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     var permalink, tweetIntentParams = {};
 
     if (this._currentFrame){
+      this._displayedDVI = false;
+
       permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
       tweetIntentParams = {
         text : 'Check out this video',
@@ -117,7 +121,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     // don't always show this, should not be probabilistic in the end. should be "smart"
     if (!this._shouldShowDVI(1)) return;
 
-    var _type = 'share';
+    var _type = 'liked-share';
     var _delay = this._currentFrame.get('video').get('duration')*500;
     var _timeout = this._currentFrame.get('video').get('duration')*300;
 
@@ -198,6 +202,54 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
       $target.toggleClass('queued js-queued').find('.label').text('Liked');
       $target.find('i').addClass('icon-heart--red');
     }
+  },
+
+  _shareCurrentToFacebook : function(e){
+    var _frame = this._currentFrame;
+    var _caption;
+    if (shelby.config.hostName) {
+      _caption = 'a video from '+shelby.config.hostname;
+    } else if (_frame.has('roll')) {
+      if (_frame.get('roll').has('subdomain')) {
+        _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
+      } else {
+        _caption = 'a video from shelby.tv';
+      }
+    }
+    else {
+      _caption = 'a video found with Shelby Video Search';
+    }
+
+    var rollCreatorId = this._currentFrame.has('roll') && this._currentFrame.get('roll').has('creator_id') && this._currentFrame.get('roll').get('creator_id');
+    var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: rollCreatorId});
+    var description = _frame.get('video').get('description');
+
+    // if there is a special message for the facebook share, use it
+    if (specialConfig && specialConfig.customShareMessages && specialConfig.customShareMessages.facebook) {
+      description = specialConfig.customShareMessages.facebook;
+    }
+
+    if (typeof FB != "undefined"){
+      FB.ui(
+        {
+          method: 'feed',
+          name: _frame.get('video').get('title'),
+          link: libs.shelbyGT.viewHelpers.frame.permalink(_frame),
+          picture: _frame.get('video').get('thumbnail_url'),
+          description: description,
+          caption: _caption
+        },
+        function(response) {
+          if (response && response.post_id) {
+            // TODO:we should record that this happened.
+          }
+        }
+      );
+    }
+  },
+
+  _requestFrameEmailView : function(){
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, this._currentFrame);
   },
 
   /*************************************************************

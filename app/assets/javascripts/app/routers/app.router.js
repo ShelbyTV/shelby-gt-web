@@ -69,6 +69,10 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
     var self = this;
 
+    $(document).ready(function(){
+      $('body').append(SHELBYJST['social-libs']()).toggleClass('shelby--user-anonymous', true);
+      shelby.config.socialLibsLoaded = true;
+    });
 
     if (shelby.userSignedIn()){
       shelby.models.user.fetch({
@@ -111,9 +115,8 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       // when the DOM is ready load the social libraries that we use for logged out users to interact with
       // twitter and facebook
       $(document).ready(function(){
-        $('body').append(SHELBYJST['social-libs']()).toggleClass('shelby--user-anonymous', true);
+        $('body').toggleClass('shelby--user-anonymous', true);
       });
-      shelby.config.socialLibsLoaded = true;
 
       this._reroute();
       shelby.track('identify', {nickname: 'anonymous'});
