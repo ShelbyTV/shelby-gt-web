@@ -425,8 +425,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _getFrameShortlink : function() {
-    // console.log(this.model.get('frames').at(0));
-    var frame = this.model.get('frame');
+    var frame = this.model.get('frames').at(0);
 
     if (!frame.get('isSearchResultFrame')) {
       var self = this;
