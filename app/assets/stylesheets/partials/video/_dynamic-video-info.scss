@@ -3,7 +3,7 @@
  */
 $dynamic_video_info__height: 180px;
 $dynamic_video_info__bottom: 0px;
-$dynamic_video_info--next-frame-width: 180px;
+$dynamic_video_info--next-frame-width: 181px;
 $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 /*
@@ -62,20 +62,21 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 //------------------------------------------------------------------------------
 // Structure, Beginning of Feature
 //------------------------------------------------------------------------------
+
 .dynamic_video_info__wrapper {
   // background-color: rgba(239, 239, 239, 1);
-  bottom: $dynamic_video_info__bottom;
   height: $dynamic_video_info__height;
   margin: 0;
+  bottom: -$dynamic_video_info__height;
   overflow: hidden;
   position: absolute;
   right: 0px;
-  width: 0px;
+  width: $dynamic_video_info--next-frame-width;
   z-index: 1;
 
   // class to toggle visibility on screen
   &.visible {
-    width: $dynamic_video_info--next-frame-width;
+    bottom: 0;
   }
 
   &:before {
