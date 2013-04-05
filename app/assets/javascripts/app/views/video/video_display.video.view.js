@@ -174,7 +174,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     var _currCh = libs.utils.channels.getCurrentChannel();
     if (!_currCh){ return; }
 
-    var _chArray = _.keys(shelby.config.channels);
+    var _chArray = _.keys(shelby.config.channelsForNav);
     var _currChIndex = _.indexOf(_chArray, _currCh);
     var _nextChIndex;
     if (_currChIndex == 0 && dir == -1){ _nextChIndex = _chArray.length - 1; }

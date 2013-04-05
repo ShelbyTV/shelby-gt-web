@@ -202,7 +202,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRandomChannel : function(params) {
-    var channelKeys = _.keys(shelby.config.channels);
+    var channelKeys = _.keys(shelby.config.channelsForNav);
     var randomChannelKey = channelKeys[_.random(channelKeys.length - 1)];
     this.navigate('channels/' + randomChannelKey, {trigger: false, replace: true});
     this.displayChannel(randomChannelKey, params);
@@ -223,11 +223,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayChannel : function(channel, params){
-    if (_(shelby.config.channels).has(channel)) {
+    if (_(shelby.config.channelsForNav).has(channel)) {
       this.displayDashboard(params, {channel: channel});
     } else {
       // if the requested channel doesn't exist, just go to the first channel
-      this.navigate('channels/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
+      this.navigate('channels/' + _.keys(shelby.config.channelsForNav)[0], {trigger: true, replace: true});
     }
 
     // send page view to GA
