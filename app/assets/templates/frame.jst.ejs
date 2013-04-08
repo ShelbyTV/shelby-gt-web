@@ -14,7 +14,7 @@
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
-<% var isFauxUser = creator && creator.get('faux') == 1 %>
+<% var isFauxUser = creator && creator.get('user_type') == 1 %>
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
 
 <% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
