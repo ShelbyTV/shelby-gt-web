@@ -330,6 +330,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._fetchDashboard(options);
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "App",
+      gaAction : 'Load stream',
+      gaLabel : shelby.models.user.get('nickname'),
+      kmqName : 'Load stream in app',
+      kmqProperties : { user : shelby.models.user.get('nickname') }
+    });
   },
 
   _fetchViewedVideos : function() {
