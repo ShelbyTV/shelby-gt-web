@@ -47,7 +47,7 @@
             <div class="xuser-data">
               <%= creatorNickname %><% if (!_(dupeFrames).isEmpty()) { %><%= ", " + _('other').pluralize(dupeFrames.length, true) %>
               <% } else if (frameOriginator && (frameOriginator.faux != 1)) { %>
-                <%= 'via ' + frameOriginator.name %>
+                <%= 'via ' + frameOriginator.nickname %>
               <% } %>
             </div>
           <% } else { %>
