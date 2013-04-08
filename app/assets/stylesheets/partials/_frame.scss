@@ -174,8 +174,7 @@ $active-list-item: $shelby-blue;
 }
 
 .xuser-avatar {
-  @include roundies;
-
+  border-radius: 3px;
   height: 33px;
   width: 33px;
   position: relative;
@@ -201,7 +200,7 @@ $active-list-item: $shelby-blue;
         right: -4px;
         width: 1.2em;
         text-align: center;
-        text-shadow: $shadow-text;
+        // text-shadow: $shadow-text;
         z-index: 1;
       }
     }
@@ -483,8 +482,7 @@ $active-list-item: $shelby-blue;
 }
 
 .frame-likes-avatar {
-  @include roundies;
-
+  border-radius: 3px;
   height: 26px;
   width: 26px;
 }

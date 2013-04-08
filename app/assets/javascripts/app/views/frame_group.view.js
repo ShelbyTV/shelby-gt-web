@@ -105,16 +105,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     if (this.model.get('frames').length){
 
       var frame = this.model.get('frames').at(0),
-          messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection());
+          messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection()),
+          frameOriginator = (frame.has('originator_id')) ? frame.get('originator') : null;
 
-          var frameAncestor = {
-            originator : {
-              'id'   : '515e0674d1041223f5334396',
-              'name' : 'matyus',
-              'faux' : 0
-            }
-          };
-
+          // console.log(frame, frame.has('originator_id') && frame.get('originator')['name']);
           // console.log(frame.get('video'));
           //N.B. template({}) receives Models.
           //i.e. frame, video, user, creator, messages, etc.
@@ -127,9 +121,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         currentFrameShortlink  : this._currentFrameShortlink,
         dupeFrames             : this.model.getDuplicateFramesToDisplay(),
         eventTrackingCategory  : '',
-        frameGroup             : this.model,
-        frameAncestor          : frameAncestor,
         frame                  : frame,
+        frameGroup             : this.model,
+        frameOriginator        : frameOriginator,
         messages               : messages,
         queuedVideosModel      : shelby.models.queuedVideos,
         options                : this.options,
