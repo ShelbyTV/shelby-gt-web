@@ -168,7 +168,7 @@
 
                 <% if (fauxUserOrigin) { %>
                   via <span class="capitalize"><%= fauxUserOrigin %></span>
-                <% } else if(frameOriginator && frameOriginator.faux != 1) { %>
+                <% } else if(frameOriginator && (frameOriginator.nickname != creatorNickname) && (frameOriginator.faux != 1)) { %>
                   via <a class="no-faux-link" href="<%= '/user/' + frameOriginator.id + '/personal_roll' %>"><%= frameOriginator.nickname %></a>
                   <% } %>
               </p>
