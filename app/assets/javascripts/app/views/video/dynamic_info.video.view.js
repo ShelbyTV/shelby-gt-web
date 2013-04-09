@@ -7,6 +7,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
   _previousFrame : null,
   _currentFrameShortlink : null,
+  _cardType : null,
   _displayedDVI : false,
 
   options : {
@@ -78,6 +79,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   _onActiveFrameModelChange : function(guideModel, activeFrameModel){
+    this._closeDVI(this._cardType);
     //this._previousFrame = this._currentFrame;
     this._currentFrame = activeFrameModel;
     // current frame changed, so we don't have the right shortlink anymore
@@ -88,6 +90,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   _onplaylistFrameGroupCollectionChange : function(playlistManagerModel, playlistFrameGroupCollection){
     this._playlistFrameGroupCollection = playlistFrameGroupCollection;
     //TODO : the menu should stay open and we don't need to reload the shortlink
+    this._closeDVI(this._cardType);
     this.render();
   },
 
@@ -100,15 +103,15 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     if (!this._shouldShowDVI(1)) return;
     this._displayedDVI = true;
 
-    var _type = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.5, 'like', 'share');
+    this._cardType = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.5, 'like', 'share');
     var _timeout = this._currentFrame.get('video').get('duration')*200;
 
     // show it now
-    this.render({type: _type, frameRelativeTo: "current"});
-    this.$el.addClass('visible '+_type);
+    this.render({type: this._cardType, frameRelativeTo: "current"});
+    this.$el.addClass('visible '+this._cardType);
     // hide it eventually
     setTimeout(function(){
-      self._closeDVI();
+      self._closeDVI(self._cardType);
     }, _timeout);
   },
 
@@ -121,18 +124,18 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     // don't always show this, should not be probabilistic in the end. should be "smart"
     if (!this._shouldShowDVI(1)) return;
 
-    var _type = 'liked-share';
+    this._cardType = 'liked-share';
     var _delay = this._currentFrame.get('video').get('duration')*500;
     var _timeout = this._currentFrame.get('video').get('duration')*300;
 
     // show it after a slight delay
-    this.render({type: _type, frameRelativeTo: "current"});
+    this.render({type: this._cardType, frameRelativeTo: "current"});
     setTimeout(function(){
-      self.$el.addClass('visible '+_type);
+      self.$el.addClass('visible '+self._cardType);
     }, _delay);
     // hide it eventually
     setTimeout(function(){
-      self._closeDVI(_type);
+      self._closeDVI(self._cardType);
     }, _timeout);
   },
 
@@ -144,7 +147,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   / ACTIONS
   /*************************************************************/
   _closeDVI : function(type){
-    this.$el.removeClass('visible '+type);
+    this.$el.removeClass('visible '+this._cardType);
   },
 
   _toggleShareMenu : function(){
