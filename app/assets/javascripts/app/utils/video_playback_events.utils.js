@@ -9,6 +9,7 @@
 
     _currentFrame : null,
     _startTime : 0,
+    _currentPlayerInfo : null,
 
     _userSeeked : false,
 
@@ -20,8 +21,8 @@
     EVENT_TRACKING_PCT_THRESHOLD : 10,
     // when to message a user about liking/sharing/rolling
     ENGAGED_INTERVAL : 60,
-    ENGAGED_WATCHER_PCT : 0.20,
-    ENGAGED_WATCHER_PCT_THRESHOLD : 20,
+    ENGAGED_WATCHER_PCT : 0.40,
+    ENGAGED_WATCHER_PCT_THRESHOLD : 40,
 
     _markedAsWatched : null,
     _markedAsEngaged : null,
@@ -46,6 +47,10 @@
     //--------------------------------------
     // The real work
     //--------------------------------------
+
+    getCurrentPlayerInfo : function(){
+      return this._currentPlayerInfo;
+    },
 
     /*
     * If the user watches WATCHED_INTERVAL seconds or WATHCHED_PCT % of the video, count that as a watch
@@ -87,6 +92,12 @@
         }
       }
 
+      if (this._currentFrame.get('video').get('duration')) {
+        this._currentPlayerInfo = {
+          currentTime: curTime, duration: this._currentFrame.get('video').get('duration')
+        };
+      }
+
     },
 
     /*
@@ -96,6 +107,7 @@
       if(status === libs.shelbyGT.PlaybackStatus.ended){
         this._currentFrame.watched();
         this.trackWatchedCompleteEvent();
+        Backbone.Events.trigger('userHook:completeWatch');
       }
 
       // marking videos as unplayable on specific player errors
@@ -141,6 +153,7 @@
       this._requiredEngagedPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.ENGAGED_WATCHER_PCT) : this.ENGAGED_INTERVAL;
       this._markedAsWatched = null;
       this._markedAsEngaged = null;
+      this._currentPlayerInfo = null;
     },
 
     //----------------------------------
