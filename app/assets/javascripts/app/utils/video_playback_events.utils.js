@@ -20,8 +20,8 @@
     EVENT_TRACKING_PCT_THRESHOLD : 10,
     // when to message a user about liking/sharing/rolling
     ENGAGED_INTERVAL : 60,
-    ENGAGED_WATCHER_PCT : 0.40,
-    ENGAGED_WATCHER_PCT_THRESHOLD : 40,
+    ENGAGED_WATCHER_PCT : 0.20,
+    ENGAGED_WATCHER_PCT_THRESHOLD : 20,
 
     _markedAsWatched : null,
     _markedAsEngaged : null,
