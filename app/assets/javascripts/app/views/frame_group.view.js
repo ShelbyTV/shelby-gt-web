@@ -1,5 +1,9 @@
 libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
+  _currentFrameShortlink : null,
+
+  // _frame : this.model.get('frame'),
+
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
       guideOverlayModel : null,
@@ -10,21 +14,24 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   }),
 
   events : {
-    "click .js-frame-activate"              : "_activate",
+    "click .js-button_share--email"         : "requestFrameShareView",
+    "click .js-button_share--embed"         : "_showEmbedCode",
+    "click .js-copy-link"                   : "_copyFrameLink",
     "click .js-creation-date"               : "_expand",
     "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
+    "click .js-frame-activate"              : "_activate",
     "click .js-frame-source"                : "_goToSourceRoll",
-    "click .js-roll-frame"                  : "requestFrameRollView",
-    "click .js-share-frame"                 : "requestFrameShareView",
-    "click .js-copy-link"                   : "_copyFrameLink",
-    "click .js-remove-frame"                : "_onClickRemoveFrame",
-    "click .js-video-activity-toggle"       : "_requestConversationView",
-    "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById",
-    "click .js-toggle-comment"              : "_toggleComment",
+    "click .js-hashtag-link"                : '_followHashtagLink',
+    "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
+    "click .js-remove-frame"                : "_onClickRemoveFrame",
+    "click .js-roll-frame"                  : "requestFrameRollView",
+    "click .js-share-frame"                 : "requestFrameShareView",
+    "click .js-share-menu"                  : "_toggleShareMenu",
     "click .js-share-to-facebook"           : "_shareToFacebook",
-    "click .js-hashtag-link"                : '_followHashtagLink'
+    "click .js-toggle-comment"              : "_toggleComment",
+    "click .js-video-activity-toggle"       : "_requestConversationView"
   },
 
   template : function(obj){
@@ -98,22 +105,29 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     if (this.model.get('frames').length){
 
       var frame = this.model.get('frames').at(0),
-          messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection());
+          messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection()),
+          frameOriginator = (frame.has('originator_id')) ? frame.get('originator') : null;
 
           //N.B. template({}) receives Models.
           //i.e. frame, video, user, creator, messages, etc.
           //so, JST should only .get() object vals from models
 
       this.$el.html(this.template({
-        creator           : frame.get('creator'),
-        dupeFrames        : this.model.getDuplicateFramesToDisplay(),
-        frameGroup        : this.model,
-        frame             : frame,
-        messages          : messages,
-        queuedVideosModel : shelby.models.queuedVideos,
-        options           : this.options,
-        user              : shelby.models.user,
-        video             : frame.get('video')
+        anonUserShareEmailBody : '',
+        creator                : frame.get('creator'),
+        currentFrame           : frame,
+        currentFrameShortlink  : this._currentFrameShortlink,
+        dupeFrames             : this.model.getDuplicateFramesToDisplay(),
+        eventTrackingCategory  : '',
+        frame                  : frame,
+        frameGroup             : this.model,
+        frameOriginator        : frameOriginator,
+        messages               : messages,
+        queuedVideosModel      : shelby.models.queuedVideos,
+        options                : this.options,
+        tweetIntentQueryString : '',
+        user                   : shelby.models.user,
+        video                  : frame.get('video')
       }));
 
       this.renderChild(new libs.shelbyGT.FrameLikesView({
@@ -378,6 +392,60 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
           }
         }
       );
+    }
+  },
+
+  _toggleShareMenu : function(e){
+    var $this = this.$('.js-share-menu'),
+        block = $this.siblings('.js-share-menu-block'),
+        blockHasClass = block.hasClass('hidden');
+
+    // if we're opening the menu and we don't have the shortlink
+    // yet, we need to get it now
+    if (blockHasClass && !this._currentFrameShortlink) {
+      this._getFrameShortlink();
+    }
+
+    //  toggle the "button pressed" state
+    $this.toggleClass('button_active',blockHasClass);
+
+    //  show/hide the panel
+    block.toggleClass('hidden',!blockHasClass);
+
+    // if we open the menu and we already have the shortlink,
+    // highlight it
+    if (blockHasClass && this._currentFrameShortlink) {
+      this.$('.js-frame-shortlink').select();
+    }
+
+  },
+
+  _showEmbedCode : function() {
+    this.$('.js-share-embed-item')
+      .html(SHELBYJST['embed-input']({frame : this.model.get('frames').at(0)}))
+      .addClass('nudge').find('.js-input-select-on-focus').select();
+  },
+
+  _getFrameShortlink : function() {
+    var frame = this.model.get('frames').at(0);
+
+    if (!frame.get('isSearchResultFrame')) {
+      var self = this;
+      var $shortlinkTextInput = this.$('.js-frame-shortlink');
+      // fetch the short link
+      $.ajax({
+        url: 'http://api.shelby.tv/v1/frame/' + frame.id + '/short_link',
+        dataType: 'jsonp',
+        success: function(r){
+          $shortlinkTextInput.val(r.result.short_link).select();
+          // save the link for future reference in case we are going to
+          // re-render without changing frames
+          self._currentFrameShortlink = r.result.short_link;
+        },
+        error: function(){
+          $shortlinkTextInput.val("Link Unavailable").select();
+        }
+      });
     }
   },
 

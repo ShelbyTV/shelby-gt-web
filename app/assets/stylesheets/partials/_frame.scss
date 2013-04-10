@@ -53,6 +53,11 @@ $active-list-item: $shelby-blue;
   .frame-body-wrapper {
     margin-top: 0.7em;
   }
+
+  .share_menu {
+    margin-left: -4.5em;
+    position: absolute;
+  }
 }
 
 .frame-list-item {
@@ -169,13 +174,51 @@ $active-list-item: $shelby-blue;
 }
 
 .xuser-avatar {
+  border-radius: 3px;
   height: 33px;
   width: 33px;
+  position: relative;
+  overflow: visible;
 
   &.missing-avatar {
     background-image: url($icon-missing-avatar) !important;
   }
 }
+    .xuser-avatar--facebook,
+    .xuser-avatar--twitter,
+    .xuser-avatar--tumblr {
+      &:before {
+        background-color: $base-frame;
+        border-radius: 4px;
+        // box-shadow: -1px -1px 1px 0 rgba(0,0,0,0.1);
+        bottom: -4px;
+        color: $button-color;
+        height: 1.2em;
+        font-size: 1.2em;
+        padding: 0.3em;
+        position: absolute;
+        right: -4px;
+        width: 1.2em;
+        text-align: center;
+        // text-shadow: $shadow-text;
+        z-index: 1;
+      }
+    }
+    .xuser-avatar--facebook {
+      &:before {
+        background-color: $facebook-blue;
+      }
+    }
+    .xuser-avatar--twitter {
+      &:before {
+        background-color: $twitter-blue;
+      }
+    }
+    .xuser-avatar--tumblr {
+      &:before {
+        background-color: $tumblr-blue;
+      }
+    }
 
 //------------------------------------------------------------------------------
 //  faux users have special frames
@@ -237,7 +280,7 @@ $active-list-item: $shelby-blue;
   .menu_item {
     &.right {
       .button_command {
-        margin: 1em 1em 0 0;
+        margin: 0.7em 0.7em 0 0;
       }
     }
   }
@@ -439,6 +482,7 @@ $active-list-item: $shelby-blue;
 }
 
 .frame-likes-avatar {
+  border-radius: 3px;
   height: 26px;
   width: 26px;
 }
