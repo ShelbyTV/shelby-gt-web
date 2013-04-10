@@ -143,13 +143,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     this._cardType = 'liked-share';
     var _video = libs.utils.VideoPlaybackEvents.getCurrentPlayerInfo();
     var _delay, _timeout;
-    if (_video.duration - _video.currentTime >= 5) {
-      _delay = 2000;
-      _timeout = (_video.duration - _video.currentTime) * 800;
-    } else {
-      _delay = 0;
-      _timeout = (_video.duration - _video.currentTime) * 800;
-    }
+    _delay = _video.duration - _video.currentTime >= 5 ? 2000 : 0;
+    _timeout = (_video.duration - _video.currentTime) * 800;
 
     this._showCard(_delay, _timeout);
   },
