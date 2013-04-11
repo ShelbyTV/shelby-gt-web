@@ -54,6 +54,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
+    shelby.models.userActivity = new libs.shelbyGT.UserActivityModel();
 
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
     shelby.models.onboardingRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});

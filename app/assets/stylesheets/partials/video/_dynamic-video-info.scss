@@ -155,6 +155,14 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   }
 }
 
+
+// card specific styleingz
+.like {
+  .dynamic_video_info__current-frame { //structured by media_module
+    background: #ee4c4c;
+  }
+}
+
 //current frame structure
 .dynamic_video_info__lining {
   margin: 13px 15px;

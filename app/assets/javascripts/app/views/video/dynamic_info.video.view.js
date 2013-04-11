@@ -32,6 +32,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     this._currentFrame = this.options.guide.get('activeFrameModel');
     this._currentVideoInfo = libs.utils.VideoPlaybackEvents.getCurrentPlayerInfo();
     this._playlistFrameGroupCollection = this.options.playlistManager.get('playlistFrameGroupCollection');
+    this._userActivity = this.options.userActivityModel;
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playlistFrameGroupCollection", this._onplaylistFrameGroupCollectionChange, this);
@@ -91,6 +92,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     // current frame changed, so we don't have the right shortlink anymore
     this._currentFrameShortlink = null;
     this.render();
+    console.log("activity counts:", this._userActivity);
   },
 
   _onplaylistFrameGroupCollectionChange : function(playlistManagerModel, playlistFrameGroupCollection){
@@ -125,6 +127,9 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   / HOOKS
   /*************************************************************/
   _onPartialWatch : function(){
+    // update user activity
+    this._userActivity.set('partialWatchCount', this._userActivity.get('partialWatchCount') + 1);
+
     // don't always show this, should not be probabilistic in the end. should be "smart"
     if (!this._shouldShowDVI(1)) return;
 
@@ -135,10 +140,15 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   _onCompleteWatch : function(){
+    // update user activity
+    this._userActivity.set('completeWatchCount', this._userActivity.get('completeWatchCount') + 1);
     console.log("completeWatch hook!");
   },
 
   _onLike : function(){
+    // update user activity
+    this._userActivity.set('likeCount', this._userActivity.get('likeCount') + 1);
+
     var self = this;
     // don't always show this, should not be probabilistic in the end. should be "smart"
     if (!this._shouldShowDVI(1)) return;
@@ -152,6 +162,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   _onRoll : function(){
+    // update user activity
+    this._userActivity.set('rollCount', this._userActivity.get('rollCount') + 1);
     console.log("roll hook");
   },
 

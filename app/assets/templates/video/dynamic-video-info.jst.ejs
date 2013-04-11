@@ -66,14 +66,14 @@
               </ul>
             </div>
       <% } else if (type && type == "like") { %>
-        <h1 class="dynamic_video_info__h2">Liking this video?</h1>
-        <button class="button_primer button_red button_command button_command--like js-like-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
+        <h1 class="dynamic_video_info__h2">Like what you're watching?</h1>
+        <button class="button_primer button_default button_command button_command--like js-like-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
               data-ga_category="<%= eventTrackingCategory %>"
               data-ga_action="Click like on current frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
           <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon"></i>
           <span class="label">
-            <%= (currentVideoIsInQueue) ? 'Liked' : 'Like it!' %>
+            <%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %>
           </span>
         </button>
         <h2 class="dynamic_video_info__h3">
