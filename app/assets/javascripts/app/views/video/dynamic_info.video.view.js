@@ -32,7 +32,9 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     this._currentFrame = this.options.guide.get('activeFrameModel');
     this._currentVideoInfo = libs.utils.VideoPlaybackEvents.getCurrentPlayerInfo();
     this._playlistFrameGroupCollection = this.options.playlistManager.get('playlistFrameGroupCollection');
+
     this._userActivity = this.options.userActivityModel;
+    this._userActivity.bind('change', this._onUserActivityChange, this);
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playlistFrameGroupCollection", this._onplaylistFrameGroupCollectionChange, this);
@@ -43,6 +45,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     Backbone.Events.unbind('userHook:completeWatch', this._onCompleteWatch, this);
     Backbone.Events.unbind('userHook:like', this._onLike, this);
     Backbone.Events.unbind('userHook:roll', this._onRoll, this);
+
+    this._userActivity.unbind('change', this._onUserActivityChange, this);
 
     this.options.guide.unbind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.unbind("change:playlistFrameGroupCollection", this._onplaylistFrameGroupCollectionChange, this);
@@ -106,12 +110,12 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     var self = this;
     this._displayedDVI = true;
 
-    // show it after a potential delay
+    // render it initially hiden and show after a potential delay
     this.render({type: this._cardType, frameRelativeTo: "current"});
-
     setTimeout(function(){
       self.$el.addClass('visible '+self._cardType);
     }, delay);
+
     // hide it eventually
     setTimeout(function(){
       self._hideDVI();
@@ -167,6 +171,17 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     console.log("roll hook");
   },
 
+  /*************************************************************
+  / USER ACTIVITY
+  /*************************************************************/
+  _onUserActivityChange : function(){
+    if (this._userActivity.get('partialWatchCount') == 2) {
+      // prompt the user to signup because they're a watcher
+    }
+    else if (this._userActivity.get('likeCount') == 2) {
+      // prompt the user to signup because they're a liker
+    }
+  },
   /*************************************************************
   / ACTIONS
   /*************************************************************/

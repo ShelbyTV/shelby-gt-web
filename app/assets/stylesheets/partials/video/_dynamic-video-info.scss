@@ -25,14 +25,14 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 }
 
 .dynamic_video_info__h2 {
-  font-size: 1.2em;
+  font-size: 1.15em;
   font-weight: 500;
 }
 
 .dynamic_video_info__h3 {
   font-size: 1em;
   font-weight: 300;
-  line-height: 2.4;
+  line-height: 1.4;
 }
 
 .dynamic_video_info__h4 {
@@ -137,6 +137,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   height: inherit;
   margin: 0;
   position: relative;
+  text-align: center;
 
   .dynamic_video_info__h1 {
     @include ellipsis;
@@ -158,16 +159,25 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 // card specific styleingz
 .like {
-  .dynamic_video_info__current-frame { //structured by media_module
+  .dynamic_video_info__current-frame {
     background: #ee4c4c;
+    color: white;
+  }
+}
+
+.share, .liked-share {
+  .dynamic_video_info__current-frame {
+    background: #0090c6;
+    color: white;
   }
 }
 
 //current frame structure
 .dynamic_video_info__lining {
-  margin: 13px 15px;
+  margin: 13px 10px;
 
   .icon-cancel {
+    display: none;
     float: right;
   }
 

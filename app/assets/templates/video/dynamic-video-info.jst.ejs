@@ -6,83 +6,32 @@
     <div class="dynamic_video_info__lining">
       <span class="icon-cancel js-close-dvi"></span>
       <% if (type && (type == "share" || type =="liked-share")) { %>
-        <h1 class="dynamic_video_info__h2"><%= type == "share" ? "Enjoying this video?" : "You like it!" %></h1>
-        <h2 class="dynamic_video_info__h3">Share it with a friend!</h2>
-        <button class="button_primer<%= (user.isAnonymous()) ? ' button_blue' : ' button_default' %> button_command button_command--share js-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Click share menu on current frame" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="icon icon-share">
-            </i>
-              Share…
-          </button>
-
-            <div class="share_menu frame-body-wrapper js-share-menu-block hidden">
-              <ul class="list">
-                <% if (false) { %>
-                  <!-- TODO : Put this in once we have an embed to supply -->
-                  <li class="list__item">
-                    <button class="button_primer button_default button_share button_share--embed js-hide-share-menu">
-                      <i class="icon icon-embed">
-                      </i>
-                        Embed
-                    </button>
-                  </li>
-                  <!-- END TODO : Put this in once we have an embed to supply -->
-                <% } %>
-                <li class="list__item">
-                  <% if (user.isAnonymous()) { %>
-                    <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= encodeURIComponent(anonUserShareEmailBody) %>">
-                  <% } %>
-                    <button class="button_primer button_default button_share button_share--email js-hide-share-menu js-track-event<%= !user.isAnonymous() ? ' js-button_share--email' : ''%>" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                      <i class="icon icon-email">
-                      </i>
-                        Email
-                    </button>
-                  <% if (user.isAnonymous()) { %>
-                    </a>
-                  <% } %>
-                </li>
-                <li class="list__item">
-                  <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
-                    <button class="button_primer button_default button_share button_share--twitter js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                      <i class="icon icon-social_twitter">
-                      </i>
-                        Twitter
-                    </button>
-                  </a>
-                </li>
-                <li class="list__item">
-                  <button class="button_primer button_default button_share button_share--facebook js-button_share--facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                    <i class="icon icon-social_facebook">
-                    </i>
-                      Facebook
-                  </button>
-                </li>
-                <li class="list__item nudge">
-                  <span class="share_menu__permalink clearfix js-button_share--shortlink">
-                    <i class="icon icon-shortlink">
-                    </i>
-                    <input type="text" value="Fetching..." class="form_input js-frame-shortlink" />
-                  </span>
-                </li>
-              </ul>
-            </div>
+        <%= SHELBYJST['video/dvi-cards/share']({
+          type : type,
+          currentFrame : currentFrame,
+          previousFrame : previousFrame,
+          anonUserShareEmailBody : anonUserShareEmailBody,
+          tweetIntentQueryString  : tweetIntentQueryString,
+          frameRelativeTo : frameRelativeTo,
+          type : type,
+          eventTrackingCategory : eventTrackingCategory,
+          queuedVideosModel : queuedVideosModel,
+          user : shelby.models.user,
+          currentVideoIsInQueue: currentVideoIsInQueue
+        }) %>
       <% } else if (type && type == "like") { %>
-        <h1 class="dynamic_video_info__h2">Like what you're watching?</h1>
-        <button class="button_primer button_default button_command button_command--like js-like-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
-              data-ga_category="<%= eventTrackingCategory %>"
-              data-ga_action="Click like on current frame"
-              data-ga_label="<%= shelby.models.user.get('nickname') %>">
-          <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon"></i>
-          <span class="label">
-            <%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %>
-          </span>
-        </button>
-        <h2 class="dynamic_video_info__h3">
-          <% if (user.isAnonymous()) { %>
-            All your likes are saved for you when you sign up!
-          <% } else { %>
-            <b>Protip:</b> View all your liked videos in the <a onclick="return false;" href="#" class="js-likes-section">Likes</a> section!
-          <% } %>
-        </h2>
+        <%= SHELBYJST['video/dvi-cards/like']({
+          currentFrame : currentFrame,
+          previousFrame : previousFrame,
+          anonUserShareEmailBody : anonUserShareEmailBody,
+          tweetIntentQueryString  : tweetIntentQueryString,
+          frameRelativeTo : frameRelativeTo,
+          type : type,
+          eventTrackingCategory : eventTrackingCategory,
+          queuedVideosModel : queuedVideosModel,
+          user : shelby.models.user,
+          currentVideoIsInQueue: currentVideoIsInQueue
+        }) %>
       <% } %>
     </div><!-- eo .dynamic_video_info__foot -->
   </div><!-- eo .dynamic_video_info__current-frame -->
