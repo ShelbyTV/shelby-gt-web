@@ -6,8 +6,8 @@
     <div class="dynamic_video_info__lining">
       <span class="icon-cancel js-close-dvi"></span>
       <% if (type && (type == "share" || type =="liked-share")) { %>
-        <h1 class="dynamic_video_info__h1"><%= type == "share" ? "Enjoying this?" : "You like it!" %></h1>
-        <h2 class="dynamic_video_info__h2">Share it with a friend!</h2>
+        <h1 class="dynamic_video_info__h2"><%= type == "share" ? "Enjoying this video?" : "You like it!" %></h1>
+        <h2 class="dynamic_video_info__h3">Share it with a friend!</h2>
         <button class="button_primer<%= (user.isAnonymous()) ? ' button_blue' : ' button_default' %> button_command button_command--share js-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Click share menu on current frame" data-ga_label="<%= shelby.models.user.get('nickname') %>">
             <i class="icon icon-share">
             </i>
@@ -66,7 +66,7 @@
               </ul>
             </div>
       <% } else if (type && type == "like") { %>
-        <h1 class="dynamic_video_info__h1">Like it?</h1>
+        <h1 class="dynamic_video_info__h2">Liking this video?</h1>
         <button class="button_primer button_red button_command button_command--like js-like-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
               data-ga_category="<%= eventTrackingCategory %>"
               data-ga_action="Click like on current frame"
@@ -76,6 +76,13 @@
             <%= (currentVideoIsInQueue) ? 'Liked' : 'Like it!' %>
           </span>
         </button>
+        <h2 class="dynamic_video_info__h3">
+          <% if (user.isAnonymous()) { %>
+            All your likes are saved for you when you sign up!
+          <% } else { %>
+            <b>Protip:</b> View all your liked videos in the <a onclick="return false;" href="#" class="js-likes-section">Likes</a> section!
+          <% } %>
+        </h2>
       <% } %>
     </div><!-- eo .dynamic_video_info__foot -->
   </div><!-- eo .dynamic_video_info__current-frame -->

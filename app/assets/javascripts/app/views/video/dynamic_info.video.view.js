@@ -16,6 +16,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
   events : {
     "click .js-like-frame"              : "_likeFrame",
+    "click .js-likes-section"          : "_navigateToLikes",
     "click .js-share-menu"              : "_toggleShareMenu",
     "click .js-button_share--email"     : "_requestFrameEmailView",
     "click .js-button_share--facebook"  : "_shareCurrentToFacebook",
@@ -29,6 +30,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     Backbone.Events.bind('userHook:roll', this._onRoll, this);
 
     this._currentFrame = this.options.guide.get('activeFrameModel');
+    this._currentVideoInfo = libs.utils.VideoPlaybackEvents.getCurrentPlayerInfo();
     this._playlistFrameGroupCollection = this.options.playlistManager.get('playlistFrameGroupCollection');
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
@@ -84,6 +86,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     this._hideDVI();
     //this._previousFrame = this._currentFrame;
     this._currentFrame = activeFrameModel;
+    this._currentVideoInfo = libs.utils.VideoPlaybackEvents.getCurrentPlayerInfo();
+
     // current frame changed, so we don't have the right shortlink anymore
     this._currentFrameShortlink = null;
     this.render();
@@ -125,8 +129,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     if (!this._shouldShowDVI(1)) return;
 
     this._cardType = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.5, 'like', 'share');
-    var _video = libs.utils.VideoPlaybackEvents.getCurrentPlayerInfo();
-    var _timeout = (_video.duration - _video.currentTime) * 800;
+    var _timeout = this._currentVideoInfo && this._currentVideoInfo.duration ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 5000;
 
     this._showCard(0, _timeout);
   },
@@ -141,10 +144,9 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     if (!this._shouldShowDVI(1)) return;
 
     this._cardType = 'liked-share';
-    var _video = libs.utils.VideoPlaybackEvents.getCurrentPlayerInfo();
     var _delay, _timeout;
-    _delay = _video.duration - _video.currentTime >= 5 ? 2000 : 0;
-    _timeout = (_video.duration - _video.currentTime) * 800;
+    _delay = this._currentVideoInfo.duration - this._currentVideoInfo.currentTime >= 5 ? 2000 : 0;
+    _timeout = (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800;
 
     this._showCard(_delay, _timeout);
   },
@@ -156,6 +158,11 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   /*************************************************************
   / ACTIONS
   /*************************************************************/
+
+  _navigateToLikes : function(){
+    shelby.router.navigate('likes', {trigger: true, replace: true});
+  },
+
   _toggleShareMenu : function(){
     var $this = this.$('.js-share-menu'),
         block = $this.siblings('.js-share-menu-block'),
@@ -266,7 +273,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   /*************************************************************/
   _shouldShowDVI : function(probability){
     var _byProb = this._chooseRandom(probability, true, false);
-    var _byDuration = this._currentFrame.get('video').get('duration');
+    var _byDuration = this._currentFrame.get('video').get('duration') || this._currentVideoInfo.duration;
     return (!this._displayedDVI && _byProb && _byDuration > 10);
   },
 
