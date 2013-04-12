@@ -115,6 +115,11 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       });
       shelby.config.socialLibsLoaded = true;
 
+      shelby.views.emailCollection = shelby.views.emailCollection ||
+        new libs.shelbyGT.emailCollection({
+          el : '.js-email-collection'
+      });
+
       this._reroute();
       shelby.track('identify', {nickname: 'anonymous'});
       shelby.models.promoRollCategories.fetch();
