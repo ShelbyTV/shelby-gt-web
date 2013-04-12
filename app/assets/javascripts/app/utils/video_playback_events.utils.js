@@ -14,7 +14,7 @@
     _userSeeked : false,
 
     //how much playback (in seconds) should eached "watched" interval represent
-    WATCHED_INTERVAL : 5,
+    WATCHED_INTERVAL : 15,
     //how much playback (by percent) should eached "watched" interval represent
     WATCHED_PCT : 0.20,
     //when to mark video as watched (by percent) for js based even tracking
@@ -76,6 +76,7 @@
       // did they watch the mininum amount in seconds or by percentage?
       var watchedSeconds = curTime - this._startTime;
       if( watchedSeconds > this.WATCHED_INTERVAL || watchedSeconds > this._requiredWatchPct) {
+        //API intelligently handles multiple "watched" posts for same frame
         this._currentFrame.watched(this._startTime, curTime);
         this._startTime = curTime;
 

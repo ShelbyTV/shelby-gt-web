@@ -16,6 +16,7 @@
 
 <% var isFauxUser = creator && creator.get('faux') == 1 %>
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
+<% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
 
 <% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- videocard -->
@@ -33,7 +34,7 @@
         <ul class="menu_list frame-command-menu frame-list" role="menubar">
           <% if (!user.isAnonymous()) { %>
             <li class="menu_item" role="menuitem">
-              <button class="button_primer button_default button_command button_command--roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
+              <button class="button_primer button_blue button_command button_command--roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
                 <i class="icon icon-videocard_roll"></i>
                   Roll…
               </button>
@@ -58,7 +59,63 @@
             <% } %>
           </li>
 
-          <% if (creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
+          <li class="menu_item" role="menuitem">
+            <button class="button_primer button_default button_command button_comand--share js-share-menu">
+              <i class="icon icon-share"></i>
+              Share…
+            </button>
+
+            <div class="share_menu frame-body-wrapper js-share-menu-block hidden">
+              <ul class="list">
+                <li class="list__item">
+                  <% if (user.isAnonymous()) { %>
+                    <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= encodeURIComponent(anonUserShareEmailBody) %>">
+                  <% } %>
+                    <button class="button_primer button_default button_share button_share--email js-hide-share-menu js-track-event<%= !user.isAnonymous() ? ' js-button_share--email' : ''%>" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                      <i class="icon icon-email"></i>
+                        Email
+                    </button>
+                  <% if (user.isAnonymous()) { %>
+                    </a>
+                  <% } %>
+                </li>
+                <% if (user.isAnonymous()) { %>
+                  <li class="list__item">
+                    <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
+                      <button class="button_primer button_default button_share button_share--twitter js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                        <i class="icon icon-social_twitter"></i>
+                          Twitter
+                      </button>
+                    </a>
+                  </li>
+                <li class="list__item">
+                  <button class="button_primer button_default button_share button_share--facebook js-button_share--facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                    <i class="icon icon-social_facebook"></i>
+                      Facebook
+                  </button>
+                </li>
+                <% } %>
+                <% if (!currentFrame.get('isSearchResultFrame')) { %>
+                  <li class="list__item js-share-embed-item">
+                    <button class="button_primer button_default button_share button_share--embed js-button_share--embed js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Get embed code" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                      <i class="icon icon-embed">
+                      </i>
+                        Embed
+                    </button>
+                  </li>
+                  <li class="list__item nudge">
+                    <span class="share_menu__faux-button clearfix">
+                      <i class="icon icon-shortlink">
+                      </i>
+                      <input type="text" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
+                    </span>
+                  </li>
+                <% } %>
+              </ul>
+            </div><!-- eo share_menu -->
+          </li>
+
+          <% if (false && creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
             <li class="menu_item right" role="menuitem">
               <button class="button_primer <%= shelby.models.user.get('admin') ? 'button_red' : 'button_gray' %> button_command button_command--remove js-remove-frame">
                 <i class="icon icon-cancel"></i>
@@ -78,14 +135,14 @@
       </div><!-- eo .frame-body -->
 
     <% if (!isGenius && creator) {
-         var creatorNickname = creator.get('nickname');
+         var creatorNickname = fauxUserOrigin && fauxUserNickname ? fauxUserNickname : creator.get('nickname');
          var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator);
          var clickableCreator = (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.standardRoll);
     %>
       <footer class="media_module frame-footer clearfix">
          <% if (clickableCreator) { %>
            <a href="#" onclick="return false;" class="js-creator-personal-roll">
-             <span class="image_module xuser-avatar media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
+             <span class="image_module xuser-avatar<% if (fauxUserOrigin) { %> xuser-avatar--<%= fauxUserOrigin %> icon-social_<%= fauxUserOrigin %><% } %> media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
                <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
              </span>
            </a>
@@ -99,7 +156,6 @@
             <% var hasComment = messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id') %>
             <% var comment = hasComment && messages.models[0].get('text') %>
             <% var commentOverflow = comment && comment.length > 265 %>
-            <% if (!fauxUserOrigin) { %>
               <span class="xuser-data-timestamp">
                  <%= frame.get('created_at') %>
               </span>
@@ -110,6 +166,12 @@
                 <% } else { %>
                   <%= creatorNickname %>
                 <% } %>
+
+                <% if (fauxUserOrigin) { %>
+                  via <span class="capitalize"><%= fauxUserOrigin %></span>
+                <% } else if(frameOriginator && (frameOriginator.nickname != creatorNickname) && (frameOriginator.faux != 1)) { %>
+                  via <a class="no-faux-link" href="<%= '/user/' + frameOriginator.id + '/personal_roll' %>"><%= frameOriginator.nickname %></a>
+                  <% } %>
               </p>
 
               <p class="xuser-message<%= commentOverflow ? ' line-clamp js-toggle-comment' : '' %>">
@@ -126,42 +188,9 @@
                   %>
                 <% } %>
               </p>
-            <% } else { %>
-                <p class="xuser-data xuser-message--faux">
-                  <% if (clickableCreator) { %>
-                    <a href="#" class="js-creator-personal-roll no-faux-link see-all" onclick="return false;">
-                      <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
-                      <strong><%= creatorNickname %></strong>
-                    </a>
-                  <% } else { %>
-                    <i class="social-icon icon-social_<%= fauxUserOrigin%>"></i>
-                    <%= creatorNickname %>
-                  <% } %>
-
-                  via <span class="capitalize"><%= fauxUserOrigin %></span>
-                </p>
-
-              <% if (!clickableCreator) { %>
-                <p class="xuser-message<%= commentOverflow ? ' line-clamp js-toggle-comment' : '' %>">
-                  <% if(hasComment) { %>
-                    <%=
-                      libs.utils.String.linkifySafeWithClickTracking(comment, {
-                        link : {
-                          gaAction : 'Click on link in comment'
-                        },
-                        hashtag : {
-                          gaAction : 'Click on hashtag link'
-                        }
-                      })
-                    %>
-                  <% } %>
-                </p>
-              <% } %>
-
-              <% } %>
           </div><!-- eo .media_body -->
 
-        <% if (!user.isAnonymous()) { %>
+        <% if (false && !user.isAnonymous()) { %>
           <hr class="hr--double" />
           <div class="frame-subsection clearfix">
             <ul class="menu_list">
