@@ -137,8 +137,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     // don't always show this, should not be probabilistic in the end. should be "smart"
     if (!this._shouldShowDVI(1)) return;
 
-    this._cardType = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.5, 'like', 'share');
-    var _timeout = this._currentVideoInfo && this._currentVideoInfo.duration ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 5000;
+    this._cardType = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.0, 'like', 'share');
+    var _timeout = (this._currentVideoInfo && this._currentVideoInfo.duration) ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 5000;
 
     this._showCard(0, _timeout);
   },
@@ -146,21 +146,19 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   _onCompleteWatch : function(){
     // update user activity
     this._userActivity.set('completeWatchCount', this._userActivity.get('completeWatchCount') + 1);
-    console.log("completeWatch hook!");
   },
 
   _onLike : function(){
     // update user activity
     this._userActivity.set('likeCount', this._userActivity.get('likeCount') + 1);
 
-    var self = this;
     // don't always show this, should not be probabilistic in the end. should be "smart"
     if (!this._shouldShowDVI(1)) return;
 
     this._cardType = 'liked-share';
     var _delay, _timeout;
-    _delay = this._currentVideoInfo.duration - this._currentVideoInfo.currentTime >= 5 ? 2000 : 0;
-    _timeout = (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800;
+    _delay = this._currentVideoInfo && this._currentVideoInfo.duration ? this._currentVideoInfo.duration - this._currentVideoInfo.currentTime >= 5 ? 2000 : 0 : 2000;
+    _timeout = this._currentVideoInfo && this._currentVideoInfo.duration ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 5000;
 
     this._showCard(_delay, _timeout);
   },
@@ -168,24 +166,17 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   _onRoll : function(){
     // update user activity
     this._userActivity.set('rollCount', this._userActivity.get('rollCount') + 1);
-    console.log("roll hook");
   },
 
   /*************************************************************
   / USER ACTIVITY
   /*************************************************************/
   _onUserActivityChange : function(){
-    if (this._userActivity.get('partialWatchCount') == 2) {
-      // prompt the user to signup because they're a watcher
-    }
-    else if (this._userActivity.get('likeCount') == 2) {
-      // prompt the user to signup because they're a liker
-    }
+    // prompt the user to signup because they're a liker
   },
   /*************************************************************
   / ACTIONS
   /*************************************************************/
-
   _navigateToLikes : function(){
     shelby.router.navigate('likes', {trigger: true, replace: true});
   },

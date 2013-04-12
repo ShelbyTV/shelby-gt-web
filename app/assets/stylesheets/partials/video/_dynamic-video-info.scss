@@ -25,7 +25,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 }
 
 .dynamic_video_info__h2 {
-  font-size: 1.15em;
+  font-size: 1.25em;
   font-weight: 500;
 }
 
@@ -94,9 +94,11 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
   //non-normative //////////////
   .share_menu {
-    bottom: 11.9em;
-    left: 0em;
-    max-width: 135px;
+    bottom: 11.7em;
+    left: -0.9em;
+    width: 180px;
+    padding-top: 15px;
+    color: #333;
 
     .list {
       margin: 0;
@@ -105,7 +107,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
     .list__item {
       display: inline-block;
-      width: 9.5em;
+      width: 11.5em;
 
       &.nudge {
         vertical-align: 1px;
@@ -114,7 +116,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   }
   .button_command {
     &.button_command--like {
-      margin: 30px 0;
+      margin: 25px 0;
       width: 10.5em;
     }
     &.button_command--share {
@@ -139,11 +141,11 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   position: relative;
   text-align: center;
 
-  .dynamic_video_info__h1 {
-    @include ellipsis;
+  // .dynamic_video_info__h1 {
+  //   @include ellipsis;
 
-    margin: 0 0 1em;
-  }
+  //   margin: 0 0 1em;
+  // }
 
   //xuser-* carried over from the frame.jst
   .xuser-data {
@@ -169,12 +171,13 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   .dynamic_video_info__current-frame {
     background: #0090c6;
     color: white;
+    padding-top: 10px;
   }
 }
 
 //current frame structure
 .dynamic_video_info__lining {
-  margin: 13px 10px;
+  margin: 12px 10px;
 
   .icon-cancel {
     display: none;
