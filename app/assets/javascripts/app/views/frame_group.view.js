@@ -107,7 +107,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       var frame = this.model.get('frames').at(0),
           messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection()),
           frameOriginator = (frame.has('originator_id')) ? frame.get('originator') : null;
-
           //N.B. template({}) receives Models.
           //i.e. frame, video, user, creator, messages, etc.
           //so, JST should only .get() object vals from models
