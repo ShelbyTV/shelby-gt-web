@@ -7,10 +7,10 @@
       var self = this;
       this._notification = window.webkitNotifications.createNotification("/favicon.png","Shelby.tv: #Channels", message);
       this._notification.ondisplay = function() {
-        self.setCookie(type+'NotificationDisplayed','true', 1);
+        self.setCookie(type+'NotificationDisplayed','true', 0);
       };
       this._notification.onclick = function() {
-        var _win = window.open("http://shelby.tv/channels/"+channel+"?src=chrome-channels-app-"+type+"-notification", "_blank");
+        var _win = window.open("http://shelby.tv/channels/"+channel+"?src=chrome-channels-app&notification="+type+"-notification", "_blank");
         _win.focus();
         this.cancel();
       };
@@ -46,7 +46,7 @@
     var _now = new Date();
     var _notification;
     // DISPLAY Notifications at specific times of day, IF NOT seen already, and NOT too often
-    if(12 <= _now.getHours() && _now.getHours() < 13 && (helpers.getCookie('lunchNotificationDisplayed') != "true" ) && helpers.shouldNotify(0.5)) {
+    if(12 <= _now.getHours() && _now.getHours() < 13 && (helpers.getCookie('lunchNotificationDisplayed') != "true" ) && helpers.shouldNotify(0.75)) {
       helpers.displayNotification('laugh', "It's time for a #LAUGH!", 'lunch')
     }
     else if(18 <= _now.getHours() && _now.getHours() < 19 && (helpers.getCookie('dinnerNotificationDisplayed') != "true") && helpers.shouldNotify(0.95)) {
