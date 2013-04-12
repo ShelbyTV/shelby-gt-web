@@ -15,6 +15,7 @@
 
 <% var isFauxUser = creator && creator.get('faux') == 1 %>
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
+<% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
 
 <% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- collapsed videocard -->
@@ -33,7 +34,7 @@
 
   <%
     if (!isGenius && creator) {
-       var creatorNickname = creator.get('nickname');
+       var creatorNickname = fauxUserOrigin && fauxUserNickname ? fauxUserNickname : creator.get('nickname');;
     }
   %>
     <footer class="media_module frame-footer clearfix">

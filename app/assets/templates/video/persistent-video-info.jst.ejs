@@ -11,6 +11,12 @@
 
 <% var isFauxUser = currentCreator && currentCreator.get('faux') == 1 %>
 <% var fauxUserOrigin = !isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
+<% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(currentCreator) : null %>
+<%
+  if (fauxUserNickname) {
+    currentCreatorNickname = fauxUserNickname;
+  }
+%>
 
 <div class="persistent_video_info animate_module">
   <% if (showNextFrame) { %>
