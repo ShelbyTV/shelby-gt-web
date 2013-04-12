@@ -1,7 +1,7 @@
 libs.shelbyGT.emailCollection = Support.CompositeView.extend({
 
   events : {
-      "click .js-start-playing" : "_startPlaying"
+
   },
 
   template : function(obj){
