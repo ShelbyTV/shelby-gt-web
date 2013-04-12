@@ -97,7 +97,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
     bottom: 11.7em;
     left: -0.9em;
     width: 180px;
-    padding-top: 15px;
+    padding-top: 8px;
     color: #333;
 
     .list {
@@ -112,6 +112,10 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
       &.nudge {
         vertical-align: 1px;
       }
+    }
+
+    h3 {
+      padding-bottom: 4px;
     }
   }
   .button_command {

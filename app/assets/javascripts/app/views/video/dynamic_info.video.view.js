@@ -137,8 +137,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     // don't always show this, should not be probabilistic in the end. should be "smart"
     if (!this._shouldShowDVI(1)) return;
 
-    this._cardType = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.0, 'like', 'share');
-    var _timeout = (this._currentVideoInfo && this._currentVideoInfo.duration) ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 5000;
+    this._cardType = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.5, 'like', 'share');
+    var _timeout = (this._currentVideoInfo && this._currentVideoInfo.duration) ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 6000;
 
     this._showCard(0, _timeout);
   },
@@ -172,8 +172,9 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   / USER ACTIVITY
   /*************************************************************/
   _onUserActivityChange : function(){
-    // prompt the user to signup because they're a liker
+    // prompt the user to signup because they're a XXX-er
   },
+
   /*************************************************************
   / ACTIONS
   /*************************************************************/
