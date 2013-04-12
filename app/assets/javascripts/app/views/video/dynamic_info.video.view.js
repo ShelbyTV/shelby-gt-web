@@ -96,7 +96,6 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     // current frame changed, so we don't have the right shortlink anymore
     this._currentFrameShortlink = null;
     this.render();
-    console.log("activity counts:", this._userActivity);
   },
 
   _onplaylistFrameGroupCollectionChange : function(playlistManagerModel, playlistFrameGroupCollection){
@@ -112,6 +111,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
     // render it initially hiden and show after a potential delay
     this.render({type: this._cardType, frameRelativeTo: "current"});
+
     setTimeout(function(){
       self.$el.addClass('visible '+self._cardType);
     }, delay);
@@ -125,6 +125,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   _hideDVI : function(){
     this._displayedDVI = false;
     this.$el.removeClass('visible '+this._cardType);
+    this.$el.find('.share_menu').toggleClass('hidden', true);
   },
 
   /*************************************************************
@@ -157,8 +158,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
     this._cardType = 'liked-share';
     var _delay, _timeout;
-    _delay = this._currentVideoInfo && this._currentVideoInfo.duration ? this._currentVideoInfo.duration - this._currentVideoInfo.currentTime >= 5 ? 2000 : 0 : 2000;
-    _timeout = this._currentVideoInfo && this._currentVideoInfo.duration ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 5000;
+    _delay = this._currentVideoInfo && this._currentVideoInfo.duration ? this._currentVideoInfo.duration - this._currentVideoInfo.currentTime >= 5 ? 2000 : 1000 : 2000;
+    _timeout = this._currentVideoInfo && this._currentVideoInfo.duration ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 10000;
 
     this._showCard(_delay, _timeout);
   },
