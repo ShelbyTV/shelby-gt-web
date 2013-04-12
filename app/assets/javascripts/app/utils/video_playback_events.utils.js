@@ -67,7 +67,7 @@
       var watchedSeconds = curTime - this._startTime;
       if( watchedSeconds > this.WATCHED_INTERVAL || watchedSeconds > this._requiredWatchPct) {
         //API intelligently handles multiple "watched" posts for same frame
-        this._currentFrame.watched(this._startTime, curTime);
+        this._currentFrame.watched(false, this._startTime, curTime);
         this._startTime = curTime;
 
         // If this hasn't been already marked as watched (in the eyes of ourevent tracking), do so.
@@ -81,7 +81,7 @@
     */
     _onPlaybackStatusChange: function(attr, status){
       if(status === libs.shelbyGT.PlaybackStatus.ended){
-        this._currentFrame.watched();
+        this._currentFrame.watched(true);
         this.trackWatchedCompleteEvent();
       }
 
