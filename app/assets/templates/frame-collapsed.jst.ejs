@@ -13,7 +13,7 @@
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
-<% var isFauxUser = creator && creator.get('faux') == 1 %>
+<% var isFauxUser = creator && creator.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.faux %>
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
 
