@@ -54,6 +54,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
+    shelby.models.userActivity = new libs.shelbyGT.UserActivityModel();
 
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
     shelby.models.onboardingRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});
@@ -69,6 +70,10 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
     var self = this;
 
+    $(document).ready(function(){
+      $('body').append(SHELBYJST['social-libs']()).toggleClass('shelby--user-anonymous', true);
+      shelby.config.socialLibsLoaded = true;
+    });
 
     if (shelby.userSignedIn()){
       shelby.models.user.fetch({
@@ -111,9 +116,8 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       // when the DOM is ready load the social libraries that we use for logged out users to interact with
       // twitter and facebook
       $(document).ready(function(){
-        $('body').append(SHELBYJST['social-libs']()).toggleClass('shelby--user-anonymous', true);
+        $('body').toggleClass('shelby--user-anonymous', true);
       });
-      shelby.config.socialLibsLoaded = true;
 
       shelby.views.emailCollection = shelby.views.emailCollection ||
         new libs.shelbyGT.emailCollection({

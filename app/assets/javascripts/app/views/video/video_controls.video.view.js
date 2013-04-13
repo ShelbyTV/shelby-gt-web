@@ -17,6 +17,7 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     "click .js-videoplayer-prev"                              : "_prevVideo"
   },
 
+  _currentFrame : null,
   _currentDuration: 0,
 
   _shouldUpdateScrubHandle: true,
@@ -53,6 +54,8 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
     if( this._playbackState.get('activePlayerState') === null ) {
       this.$el.addClass('js-disabled');
     }
+
+    this._currentFrame = this.options.guide.get('activeFrameModel');
 
     var self = this;
     this.$('.video_progress__scrubber').draggable({
@@ -139,6 +142,11 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
     this.$('.video_progress__elapsed').width(pct+"%");
     this.$('.js-videoplayer-timeline  span:first-child').text(prettyTime(curTimeH, curTimeM, curTimeS));
+
+    // set video duration if there is none.
+    if (this._currentFrame && this._currentFrame.get('video') && this._currentFrame.get('video').get('duration') === null){
+      this._currentFrame.get('video').set('duration', this._currentDuration);
+    }
   },
 
   _onBufferTimeChange: function(attr, bufferTime){

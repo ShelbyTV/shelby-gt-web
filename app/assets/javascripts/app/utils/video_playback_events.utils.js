@@ -9,6 +9,7 @@
 
     _currentFrame : null,
     _startTime : 0,
+    _currentPlayerInfo : null,
 
     _userSeeked : false,
 
@@ -18,8 +19,13 @@
     WATCHED_PCT : 0.20,
     //when to mark video as watched (by percent) for js based even tracking
     EVENT_TRACKING_PCT_THRESHOLD : 10,
+    // when to message a user about liking/sharing/rolling
+    ENGAGED_INTERVAL : 60,
+    ENGAGED_WATCHER_PCT : 0.40,
+    ENGAGED_WATCHER_PCT_THRESHOLD : 40,
 
     _markedAsWatched : null,
+    _markedAsEngaged : null,
 
     initialize: function(playbackState, guideModel, userDesires) {
       this._playbackState = playbackState;
@@ -41,6 +47,10 @@
     //--------------------------------------
     // The real work
     //--------------------------------------
+
+    getCurrentPlayerInfo : function(){
+      return this._currentPlayerInfo;
+    },
 
     /*
     * If the user watches WATCHED_INTERVAL seconds or WATHCHED_PCT % of the video, count that as a watch
@@ -74,6 +84,21 @@
         if (!this._markedAsWatched) {this.trackWatchedEvent(curTime);}
       }
 
+      // wait till a video has a duration then trigger a hook
+      if (!this._markedAsEngaged && this._currentFrame.get('video').get('duration')) {
+        this._requiredEngagedPct = this._currentFrame.get('video').get('duration') * this.ENGAGED_WATCHER_PCT;
+        if (curTime > this._requiredEngagedPct){
+          Backbone.Events.trigger('userHook:partialWatch');
+          this._markedAsEngaged = true;
+        }
+      }
+
+      if (this._currentFrame.get('video').get('duration')) {
+        this._currentPlayerInfo = {
+          currentTime: curTime, duration: this._currentFrame.get('video').get('duration')
+        };
+      }
+
     },
 
     /*
@@ -83,6 +108,7 @@
       if(status === libs.shelbyGT.PlaybackStatus.ended){
         this._currentFrame.watched(true);
         this.trackWatchedCompleteEvent();
+        Backbone.Events.trigger('userHook:completeWatch');
       }
 
       // marking videos as unplayable on specific player errors
@@ -125,7 +151,10 @@
       this._currentFrame = frame;
       this._startTime = 0;
       this._requiredWatchPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.WATCHED_PCT) : this.WATCHED_INTERVAL;
+      this._requiredEngagedPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.ENGAGED_WATCHER_PCT) : this.ENGAGED_INTERVAL;
       this._markedAsWatched = null;
+      this._markedAsEngaged = null;
+      this._currentPlayerInfo = null;
     },
 
     //----------------------------------
