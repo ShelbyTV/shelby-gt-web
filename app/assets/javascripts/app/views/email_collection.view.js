@@ -1,7 +1,8 @@
 libs.shelbyGT.emailCollection = Support.CompositeView.extend({
 
   events : {
-      "click .js-close" : "_close"
+      "submit #js-email-form"     : "_onEmailSubmit",
+      "click .js-close"                   : "_close"
   },
 
   template : function(obj){
@@ -28,6 +29,20 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
         gaLabel : 'Channels',
         kmName : "Email collection modal loaded on channels"
       });
+  },
+
+  _onEmailSubmit : function(){
+    var self = this;
+     var email = _(this.$el.find('#js-email-input').val()).clean();
+    $.get(shelby.config.apiRoot+'/POST/gt_interest', {email: email}, function(data) {
+        $('#js-email-form-submit').addClass('hidden');
+        $('#js-email-form-feedback').removeClass('hidden');
+        setTimeout(function(){
+          self.$el.toggleClass('hidden', false);
+        }, 3000);
+        // TODO this view to know not to render again during this users session, maybe include cookie tracking of this?
+      }, 'jsonp');
+      return false;
   },
 
   _onShowEmailCollection : function(){
