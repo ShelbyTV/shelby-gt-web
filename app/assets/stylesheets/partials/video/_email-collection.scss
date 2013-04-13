@@ -6,7 +6,7 @@
 //------------------------------------------------------------------------------
 //  Email Collection Pane
 //------------------------------------------------------------------------------
-.email-collection__wrapper--email-collection {
+.welcome-message__wrapper--email_collection {
 
   .welcome-message--large {
     width: 490px;
@@ -16,9 +16,15 @@
     padding: 1em;
   }
 
-  input.search_module__submit {
+  form .search_module__submit {
     margin-left: 0.5em;
   }
 
+  .welcome-message-dismiss {
+    position: absolute;
+    right: 1em;
+    top: 1.0em;
+    font-size: 0.85em;
+  }
 
 }
