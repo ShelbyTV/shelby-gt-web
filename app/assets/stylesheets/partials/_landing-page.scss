@@ -127,7 +127,7 @@ $landing-page-footer-font-color: #EFEFEF;
 
 .shelf__lining {
   margin: 0 auto;
-  width: $landing-page-width;
+  max-width: $landing-page-width;
 }
 
 //------------------------------------------------------------------------------
@@ -869,6 +869,11 @@ $landing-page-footer-font-color: #EFEFEF;
 @media screen and (max-width: 600px) { //Based on shelf--community content
   //----- Block ----------------------------------------------------------
   .shelf {
+        //non-normative overrides
+        .frame-likes {
+          height: 2.6em;
+        }
+
     .shelf__lining {
       padding: 2em;
     }
