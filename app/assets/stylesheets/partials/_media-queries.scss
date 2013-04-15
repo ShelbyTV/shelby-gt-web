@@ -137,6 +137,14 @@
         width: 18px;
         margin-right: 5px;
       }
+
+      .xuser-avatar--facebook,
+      .xuser-avatar--twitter,
+      .xuser-avatar--tumblr {
+        &:before {
+          font-size: 0.9em;
+        }
+      }
     }
   }
 
