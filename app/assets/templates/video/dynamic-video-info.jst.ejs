@@ -1,0 +1,38 @@
+<% var currentVideo = currentFrame.get('video') %>
+<% var currentVideoIsInQueue = queuedVideosModel.videoIsInQueue(currentVideo) %>
+
+<div class="dynamic_video_info animate_module">
+  <div class="media_body dynamic_video_info__current-frame">
+    <div class="dynamic_video_info__lining">
+      <span class="icon-cancel js-close-dvi"></span>
+      <% if (type && (type == "share" || type =="liked-share")) { %>
+        <%= SHELBYJST['video/dvi-cards/share']({
+          type : type,
+          currentFrame : currentFrame,
+          previousFrame : previousFrame,
+          anonUserShareEmailBody : anonUserShareEmailBody,
+          tweetIntentQueryString  : tweetIntentQueryString,
+          frameRelativeTo : frameRelativeTo,
+          type : type,
+          eventTrackingCategory : eventTrackingCategory,
+          queuedVideosModel : queuedVideosModel,
+          user : shelby.models.user,
+          currentVideoIsInQueue: currentVideoIsInQueue
+        }) %>
+      <% } else if (type && type == "like") { %>
+        <%= SHELBYJST['video/dvi-cards/like']({
+          currentFrame : currentFrame,
+          previousFrame : previousFrame,
+          anonUserShareEmailBody : anonUserShareEmailBody,
+          tweetIntentQueryString  : tweetIntentQueryString,
+          frameRelativeTo : frameRelativeTo,
+          type : type,
+          eventTrackingCategory : eventTrackingCategory,
+          queuedVideosModel : queuedVideosModel,
+          user : shelby.models.user,
+          currentVideoIsInQueue: currentVideoIsInQueue
+        }) %>
+      <% } %>
+    </div><!-- eo .dynamic_video_info__foot -->
+  </div><!-- eo .dynamic_video_info__current-frame -->
+</div><!-- eo .dynamic_video_info -->

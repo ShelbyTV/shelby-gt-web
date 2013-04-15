@@ -1,0 +1,30 @@
+/*
+*   Local Variables
+*/
+
+
+//------------------------------------------------------------------------------
+//  Email Collection Pane
+//------------------------------------------------------------------------------
+.welcome-message__wrapper--email_collection {
+
+  .welcome-message--large {
+    width: 490px;
+  }
+
+  .welcome-message__body {
+    padding: 1em;
+  }
+
+  form .search_module__submit {
+    margin-left: 0.5em;
+  }
+
+  .welcome-message-dismiss {
+    position: absolute;
+    right: 1em;
+    top: 1.0em;
+    font-size: 0.85em;
+  }
+
+}
