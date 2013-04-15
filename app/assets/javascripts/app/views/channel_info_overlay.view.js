@@ -18,7 +18,7 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.append(this.template({
-      channels : shelby.config.channels
+      channels : shelby.config.channelsForNav
     }));
     this._findHighlightActiveChannel();
     if (this.options.playlistManagerModel.get('playlistType') == "channel"){

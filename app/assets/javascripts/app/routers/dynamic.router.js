@@ -12,11 +12,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "rollFromFrame/:frameId"                       : "displayRollFromFrame",
     "embed/:frameId"                               : "displayEmbeddedFrame",
     "user/:id/personal_roll"                       : "displayUserPersonalRoll",
-    "channels"                                     : "displayRandomChannel",
+    "channels"                                     : "displayChannel",
+    "channels/:channel"                            : "displayChannel",
     "help"                                         : "displayHelp",
     "legal"                                        : "displayLegal",
     "search"                                       : "displaySearch",
-    "channels/:channel"                            : "displayChannel",
     "me"                                           : "displayRollList",
     "onboarding/:stage"                            : "displayOnboardingView",
     "preferences"                                  : "displayUserPreferences",
@@ -201,8 +201,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayRandomChannel : function(params) {
-    var channelKeys = _.keys(shelby.config.channels);
+  // currently not in use but may become useful again
+  _displayRandomChannel : function(params) {
+    var channelKeys = _.keys(shelby.config.channelsForNav);
     var randomChannelKey = channelKeys[_.random(channelKeys.length - 1)];
     this.navigate('channels/' + randomChannelKey, {trigger: false, replace: true});
     this.displayChannel(randomChannelKey, params);
@@ -227,7 +228,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       this.displayDashboard(params, {channel: channel});
     } else {
       // if the requested channel doesn't exist, just go to the first channel
-      this.navigate('channels/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
+      this.navigate('channels/' + _.keys(shelby.config.channelsForNav)[0], {trigger: true, replace: true});
     }
 
     // send page view to GA
