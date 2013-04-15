@@ -224,7 +224,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayChannel : function(channel, params){
-    if (_(shelby.config.channelsForNav).has(channel)) {
+    if (_(shelby.config.channels).has(channel)) {
       this.displayDashboard(params, {channel: channel});
     } else {
       // if the requested channel doesn't exist, just go to the first channel

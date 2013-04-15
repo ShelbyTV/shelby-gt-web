@@ -5,8 +5,8 @@
 // (first) hashtag
 
 shelby.config.channels = {
-  'zero' : {
-    title : 'zero',
+  'trending' : {
+    title : 'trending',
     id: '515d83ecb415cc0d1a025bfe',
     includeInNav : true
   },
@@ -19,7 +19,8 @@ shelby.config.channels = {
   },
   'happenings' : {
     title : '#happenings',
-    id : '5112fb26b415cc1e160cb0e5'
+    id : '5112fb26b415cc1e160cb0e5',
+    includeInNav : true
   },
   'learn' : {
     title : '#learnaboutyourworld',
@@ -53,8 +54,7 @@ shelby.config.channels = {
     title : '#storytellers',
     id: '51375863b415cc57fe02eea9',
     hashtagRollId : '5137587eb415cc661700002a',
-    hashTags : ['storytellers', 'storyteller', 'stories', 'story'],
-    includeInNav : true
+    hashTags : ['storytellers', 'storyteller', 'stories', 'story']
   },
   'nature' : {
     title : '#natureisrad',
