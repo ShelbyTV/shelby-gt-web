@@ -12,7 +12,7 @@
           {
             'title'       => "Trending",
             'location'    => "#trending",
-            'description' => "The most-watched and shared videos by our community",
+            'description' => "The most-watched and shared videos by our community.",
             'url'         => "/channels/zero",
             'thumbnail'   => "/images/landing/trending.jpg",
             'liker_count' => "34",
@@ -46,7 +46,7 @@
           {
             'title'       => "Laugh",
             'location'    => "#laugh",
-            'description' => "Get into some serious LOLs with the creme of comedy",
+            'description' => "Get into some serious LOLs with the creme of comedy.",
             'url'         => "/channels/laugh",
             'thumbnail'   => "/images/landing/laugh.jpg",
             'liker_count' => "40",
@@ -65,7 +65,7 @@
           {
             'title'       => "Adrenaline",
             'location'    => "#adrenaline",
-            'description' => "Mind-blowing bravery from the sky, snow, and sea",
+            'description' => "Mind-blowing bravery from the sky, snow, surf, and sea.",
             'url'         => "/channels/adrenaline",
             'thumbnail'   => "/images/landing/adren.jpg",
             'liker_count' => "25",
@@ -98,7 +98,7 @@
       <% channels.each do |channel| %>
         <li class="shelf__item">
           <article class="frame frame--shelf">
-            <a href="<%= channel["url"] %>" class="shelf__link js-track-event" data-ga_category="Homepage" data-ga_action="Click community roll" data-ga_label="<%= channel['title'] %>" title="Click to watch!">
+            <a href="<%= channel["url"] %>" class="shelf__link js-track-event" data-ga_category="Homepage" data-ga_action="Click channel" data-ga_label="<%= channel['title'] %>" title="Click to watch!">
               <div class="frame-body-wrapper clearfix">
                 <div class="image_module frame-thumbnail icon-player_play" style="background-image: url('<%= channel["thumbnail"] %>');" role="img">
                   <img class="visuallyhidden" src="<%= channel["thumbnail"] %>" title="<%= channel["thumbnail"] %>" alt="<%= channel["thumbnail"] %> thumbnail">
@@ -123,7 +123,7 @@
               <ul class="list frame-likes-avatars js-liker-avatars-list">
                 <% channel["likers"].each do |liker| %>
                   <li>
-                    <span class="frame-likes-link" data-ga_category="Frame" data-ga_action="click liker" data-ga_label="<%= liker["name"] %>">
+                    <span class="frame-likes-link" data-ga_category="Channel" data-ga_action="click liker" data-ga_label="<%= liker["name"] %>">
                       <img class="frame-likes-avatar" src="<%= liker["avatar"]%>" title="<%= liker["name"] %>" alt="<%= liker["name"] %>">
                     </span>
                   </li>
