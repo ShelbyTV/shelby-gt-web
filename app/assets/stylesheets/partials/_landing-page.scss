@@ -117,11 +117,17 @@ $landing-page-footer-font-color: #EFEFEF;
 
 .shelf {
   background-color: $landing-page-shelf-background;
+
+
+  //non-normative overrides
+  .frame-likes {
+    height: 2.4em;
+  }
 }
 
 .shelf__lining {
   margin: 0 auto;
-  max-width: $landing-page-width;
+  width: $landing-page-width;
 }
 
 //------------------------------------------------------------------------------
