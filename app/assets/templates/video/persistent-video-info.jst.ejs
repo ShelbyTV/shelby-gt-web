@@ -13,6 +13,8 @@
 <% var fauxUserOrigin = !isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(currentCreator) : null %>
 <%
+  var currentCreatorNickname;
+
   if (fauxUserNickname) {
     currentCreatorNickname = fauxUserNickname;
   }
@@ -74,6 +76,8 @@
 
               <% if (fauxUserOrigin) { %>
                 via <span class="capitalize"><%= fauxUserOrigin %></span>
+              <% } else if(currentFrameOriginator && (currentFrameOriginator.nickname != currentCreatorNickname) && (currentFrameOriginator.faux != 1)) { %>
+                via <a class="no-faux-link" href="<%= '/user/' + currentFrameOriginator.id + '/personal_roll' %>"><%= currentFrameOriginator.nickname %></a>
               <% } %>
             </h3>
           <% } %>

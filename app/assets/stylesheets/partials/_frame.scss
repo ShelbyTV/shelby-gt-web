@@ -101,19 +101,19 @@ $active-list-item: $shelby-blue;
   }
 }
 
-.frame-footer {
-  .no-faux-link {
-    &:visited,
-    &:link {
-      color: #666;
-      text-decoration: none;
-    }
-    &:hover,
-    &:active {
-      text-decoration: underline;
-    }
+.no-faux-link {
+  &:visited,
+  &:link {
+    color: #666;
+    text-decoration: none;
   }
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
+}
 
+.frame-footer {
   .hr--double {
     border-top-color: #D9D4D4;
     border-bottom-color: #FCFAFA;

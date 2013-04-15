@@ -100,15 +100,18 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         }
       }
 
+      var currentFrameOriginator = (this._currentFrame.has('originator_id')) ? this._currentFrame.get('originator') : null;
+
       this.$el.html(this.template({
         anonUserShareEmailBody : emailBody,
-        tweetIntentQueryString : $.param(tweetIntentParams),
         currentFrame           : this._currentFrame,
+        currentFrameOriginator : currentFrameOriginator,
         currentFrameShortlink  : this._currentFrameShortlink,
         eventTrackingCategory  : this.options.eventTrackingCategory,
         nextFrame              : this._nextFrame,
         queuedVideosModel      : this.options.queuedVideos,
         showNextFrame          : this.options.showNextFrame,
+        tweetIntentQueryString : $.param(tweetIntentParams),
         user                   : shelby.models.user
       }));
     }
