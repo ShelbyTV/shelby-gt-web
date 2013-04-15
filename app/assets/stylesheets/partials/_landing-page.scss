@@ -60,6 +60,7 @@ $landing-page-footer-font-color: #EFEFEF;
     }
   }
 
+  .shelf--start-watching,
   .shelf--signup,
   .shelf--search,
   .shelf--stats-banner {
@@ -126,6 +127,12 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 //  Elements
 //------------------------------------------------------------------------------
+.shelf__button {}
+      .shelf__button--cta {
+        font-size: 2em;
+        margin: 0 auto;
+      }
+
 .shelf__hr {
   margin: 0 0 2em 0;
   max-width: $landing-page-width;
@@ -289,6 +296,7 @@ $landing-page-footer-font-color: #EFEFEF;
       }
     }
   }
+
   //----- Non-normative -----------------------------------------
   .form_label {
   }
@@ -312,6 +320,7 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 //  Search + Signup
 //------------------------------------------------------------------------------
+.shelf--start-watching,
 .shelf--learn-more-banner,
 .shelf--signup,
 .shelf--search,
@@ -326,7 +335,7 @@ $landing-page-footer-font-color: #EFEFEF;
   //----- Block -----------------------------------------
   .shelf__lining {
     color: $button-color;
-    padding: 7em 0  6em;
+    padding: 5em 0  6em;
     text-align: center;
   }
 
@@ -349,8 +358,7 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 
   .button_primer {
-    padding: 0 2em;
-    margin-left: 1em;
+//     padding: 0 2em;
   }
 }
 
@@ -358,11 +366,13 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 //  Signup, extended by .shelf--search above
 //------------------------------------------------------------------------------
+.shelf--start-watching,
 .shelf--learn-more-banner,
 .shelf--signup, {
   background-image: url('/images/landing/header.jpg');
 }
 
+.shelf--start-watching,
 .shelf--learn-more-banner,
 .shelf--signup,
 .shelf--stats-banner {
@@ -547,6 +557,7 @@ $landing-page-footer-font-color: #EFEFEF;
   //----- Block -----------------------------------------
   .shelf__lining {
     margin-bottom: 1em;
+    text-align: center;
   }
 
   //----- Elements -----------------------------------------
@@ -571,6 +582,10 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 
   .shelf__image {
+  }
+
+  .shelf__button--cta {
+    margin-bottom: 2em;
   }
 }
 
@@ -713,9 +728,14 @@ $landing-page-footer-font-color: #EFEFEF;
 
     .button_primer {
       margin: 0 0 0 1em;
-      padding: 0 2em;
+//       padding: 0 2em;
     }
   }
+}
+//------------------------------------------------------------------------------
+//  Start watching CTA
+//------------------------------------------------------------------------------
+.shelf--start-watching {
 }
 
 //------------------------------------------------------------------------------

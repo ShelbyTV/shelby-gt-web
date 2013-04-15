@@ -1,82 +1,95 @@
 <div class="shelf shelf--community clearfix">
   <div class="shelf__lining">
     <h3 class="shelf__h2">
-      Click to watch channels curated by our community
+      Our community creates #channels for every taste
     </h3>
 
     <hr class="shelf__hr" />
 
     <ul class="list shelf__list clearfix">
       <%
-        frames = [
+        channels = [
           {
-            'title'       => "Learn About Your World",
-            'location'    => "#learnaboutyourworld",
-            'description' => "Ever wonder why Congress sucks or why things are cute? Watch this channel and learn about your world.",
-            'url'         => "/channels/learn",
+            'title'       => "Trending",
+            'location'    => "#trending",
+            'description' => "The most-watched and shared videos by our community",
+            'url'         => "/channels/zero",
             'thumbnail'   => "/images/landing/learn.jpg",
+            'likers'      => [
+              {
+                'avatar' => 'foo',
+                'name'   => 'bar'
+              }
+            ]
           },
           {
-            'title'       => "Happenings",
-            'location'    => "#happenings",
-            'description' => "Stay up to date with the latest trending news and stories via the Associated Press, Al Jazeera and the New York Times.",
-            'url'         => "/channels/happenings",
-            'thumbnail'   => "/images/landing/happenings.jpg"
+            'title'       => "Laugh",
+            'location'    => "#laugh",
+            'description' => "Get into some serious LOLs with the creme of comedy",
+            'url'         => "/channels/laugh",
+            'thumbnail'   => "/images/landing/laugh.jpg",
+            'likers'      => [
+              {
+                'avatar' => 'foo',
+                'name'   => 'bar'
+              }
+            ]
           },
           {
             'title'       => "Adrenaline",
             'location'    => "#adrenaline",
-            'description' => "Surf, snow, skate, base jump from space. Whatever blows your hair back is right here.",
+            'description' => "Mind-blowing bravery from the sky, snow, and sea",
             'url'         => "/channels/adrenaline",
-            'thumbnail'   => "/images/landing/adren.jpg"
-          },
-          {
-            'title'       => "This Exists",
-            'location'    => "#thisexists",
-            'description' => "Discover all things offbeat from the internet. Funny or strange, these videos exist and we're happy about it.",
-            'url'         => "/channels/thisexists",
-            'thumbnail'   => "/images/landing/thisexists.jpg"
-          },
-          {
-            'title'       => "Nature is Rad",
-            'location'    => "#nature",
-            'description' => "Experience the marvels of nature, both large and small. Dogs, cats, icebergs and mountains!",
-            'url'         => "/channels/nature",
-            'thumbnail'   => "/images/landing/nature_2.jpg"
-          },
-          {
-            'title'       => "Great Movie Moments",
-            'location'    => "#greatmoviemoments",
-            'description' => "Relive the classics and stay up on the latest trailers on this channel.",
-            'url'         => "/channels/greatmoviemoments",
-            'thumbnail'   => "/images/landing/movie.jpg"
+            'thumbnail'   => "/images/landing/adren.jpg",
+            'likers'      => [
+              {
+                'avatar' => 'foo',
+                'name'   => 'bar'
+              }
+            ]
           }
         ]
       %>
 
-      <% frames.each do |frame| %>
+      <% channels.each do |channel| %>
         <li class="shelf__item">
           <article class="frame frame--shelf">
-            <a href="<%= frame["url"] %>" class="shelf__link js-track-event" data-ga_category="Homepage" data-ga_action="Click community roll" data-ga_label="<%= frame['title'] %>" title="Click to watch!">
+            <a href="<%= channel["url"] %>" class="shelf__link js-track-event" data-ga_category="Homepage" data-ga_action="Click community roll" data-ga_label="<%= channel['title'] %>" title="Click to watch!">
               <div class="frame-body-wrapper clearfix">
-                <div class="image_module frame-thumbnail icon-player_play" style="background-image: url('<%= frame["thumbnail"] %>');" role="img">
-                  <img class="visuallyhidden" src="<%= frame["thumbnail"] %>" title="<%= frame["thumbnail"] %>" alt="<%= frame["thumbnail"] %> thumbnail">
+                <div class="image_module frame-thumbnail icon-player_play" style="background-image: url('<%= channel["thumbnail"] %>');" role="img">
+                  <img class="visuallyhidden" src="<%= channel["thumbnail"] %>" title="<%= channel["thumbnail"] %>" alt="<%= channel["thumbnail"] %> thumbnail">
                 </div><!-- eo .frame-thumbnail -->
 
                 <div class="media_module frame-footer clearfix">
                   <div class="media_body">
                     <h3 class="xuser-data">
-                      <span class="xuser-data-timestamp"><%= frame["location"] %></span>
-                      <%= frame["title"] %>
+                      <span class="xuser-data-timestamp hidden"><%= channel["title"] %></span>
+                      <%= channel["location"] %>
                     </h3>
 
                     <p class="xuser-message">
-                      <%= frame["description"] %>
+                      <%= channel["description"] %>
                     </p>
                   </div><!-- eo .media_body -->
                 </div>
               </div><!-- eo .frame-body-wrapper -->
             </a>
+
+            <div class="frame-likes frame-external-subline icon-heart icon-heart--red js-frame-likes">
+              <ul class="list frame-likes-avatars js-liker-avatars-list">
+                <% channel["likers"].each do |liker| %>
+                  <li>
+                    <a class="frame-likes-link js-track-event" href="http://reece.shelby.tv" target="_blank" data-ga_category="Frame" data-ga_action="click liker" data-ga_label="<%= liker["name"] %>">
+                      <img class="frame-likes-avatar" src="//s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4d7d154ff6db244f5e000001?1347033016000" title="<%= liker["name"] %>" alt="<%= liker["name"] %>">
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+
+              <span class="frame-likes-count frame-external-subline-text">
+                +1
+              </span>
+            </div><!-- eo frame-likes -->
           </article>
         </li>
       <% end %>
