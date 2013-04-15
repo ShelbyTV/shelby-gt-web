@@ -6,7 +6,7 @@ libs.shelbyGT.AnonUserModel = libs.shelbyGT.UserModel.extend({
       authentications : [],
       autocomplete : {},
       csrf_token : '',
-      faux : 1,
+      user_type : libs.shelbyGT.UserModel.USER_TYPE.faux,
       id : '',
       nickname : 'anonymous',
       preferences : {

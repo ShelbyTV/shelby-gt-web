@@ -32,6 +32,10 @@
   <% end %>
 
   $(document).ready(function(){
+    try {
+      _gaq.push(['_trackEvent', 'Landing Page', 'Visit']);
+    } catch(e) {}
+
     //fanciness on focussing searching in header
     $('.js-nav-search-form-text').focus(function(){
       $(this).parent().toggleClass('focused',true);

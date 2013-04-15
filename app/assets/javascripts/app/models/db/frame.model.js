@@ -16,7 +16,11 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       type : Backbone.HasOne,
       key : 'roll',
       relatedModel : 'libs.shelbyGT.RollModel'
-    }
+    }/*,{
+      type : Backbone.HasOne,
+      key : 'ancestor',
+      relatedModel : 'libs.shelbyGT.AncestorModel'
+    }*/
   ],
 
   initialize : function() {
@@ -164,11 +168,13 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     shelby.track( 'heart_video', { id: this.id, userName: shelby.models.user.get('nickname') });
   },
 
-  watched : function(startTime, endTime, onSuccess) {
+  watched : function(completeWatch, startTime, endTime, onSuccess) {
     if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) { return; }
     var frameWatched = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/watched';
-    if(typeof startTime != "undefined" && typeof endTime != "undefined"){
+    if(completeWatch){
+      url += "?complete=1";
+    } else if(typeof startTime != "undefined" && typeof endTime != "undefined"){
       url += '?start_time='+startTime+'&end_time='+endTime;
     }
     frameWatched.save(null, {url:url, success:onSuccess});

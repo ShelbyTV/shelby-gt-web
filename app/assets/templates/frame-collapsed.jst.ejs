@@ -13,8 +13,9 @@
 <% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
-<% var isFauxUser = creator && creator.get('faux') == 1 %>
+<% var isFauxUser = creator && creator.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.faux %>
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
+<% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
 
 <% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- collapsed videocard -->
@@ -33,7 +34,7 @@
 
   <%
     if (!isGenius && creator) {
-       var creatorNickname = creator.get('nickname');
+       var creatorNickname = fauxUserOrigin && fauxUserNickname ? fauxUserNickname : creator.get('nickname');;
     }
   %>
     <footer class="media_module frame-footer clearfix">
@@ -45,7 +46,10 @@
 
           <% if (!fauxUserOrigin) { %>
             <div class="xuser-data">
-              <%= creatorNickname %><%= !_(dupeFrames).isEmpty() ? ", " + _('other').pluralize(dupeFrames.length, true) : '' %>
+              <%= creatorNickname %><% if (!_(dupeFrames).isEmpty()) { %><%= ", " + _('other').pluralize(dupeFrames.length, true) %>
+              <% } else if (frameOriginator && (frameOriginator.nickname != creator.get('nickname')) && (frameOriginator.faux != 1)) { %>
+                <%= 'via ' + frameOriginator.nickname %>
+              <% } %>
             </div>
           <% } else { %>
             <p class="xuser-data xuser-message--faux">

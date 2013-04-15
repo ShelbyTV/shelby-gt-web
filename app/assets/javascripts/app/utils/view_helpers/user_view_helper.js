@@ -48,6 +48,17 @@ libs.shelbyGT.viewHelpers.user = {
     } else {
       return libs.shelbyGT.viewHelpers.user.undefinedAvatarUrl;
     }
+  },
+
+  // use this to get the nickname of a faux user on their origin network,
+  // NOT the nickname they are assigned in Shelby
+  userOriginNickname: function(user){
+    var userAuths = user.get('authentications');
+    if (userAuths && userAuths.length) {
+      return userAuths[0].nickname;
+    } else {
+      return null;
+    }
   }
 
 };
