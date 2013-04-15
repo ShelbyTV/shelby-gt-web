@@ -16,11 +16,11 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       type : Backbone.HasOne,
       key : 'roll',
       relatedModel : 'libs.shelbyGT.RollModel'
-    }/*,{
+    },{
       type : Backbone.HasOne,
-      key : 'ancestor',
-      relatedModel : 'libs.shelbyGT.AncestorModel'
-    }*/
+      key : 'originator',
+      relatedModel : 'libs.shelbyGT.UserModel'
+    }
   ],
 
   initialize : function() {
