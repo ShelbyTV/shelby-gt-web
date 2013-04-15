@@ -135,6 +135,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     // update user activity
     this._userActivity.set('partialWatchCount', this._userActivity.get('partialWatchCount') + 1);
 
+    // show email collector if watched 3 videos
     if (this._userActivity.get('partialWatchCount') == 3) {
       setTimeout(function(){
         Backbone.Events.trigger('show:emailCollection');
@@ -144,7 +145,12 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     // don't always show this, should not be probabilistic in the end. should be "smart" eventually
     if (!this._shouldShowDVI(1)) return;
 
-    this._cardType = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.5, 'like', 'share');
+    if (shelby.models.user.isAnonymous()){
+      this._cardType = 'like';
+    }
+    else {
+      this._cardType = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.5, 'like', 'share');
+    }
     var _timeout = (this._currentVideoInfo && this._currentVideoInfo.duration) ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 6000;
 
     this._showCard(0, _timeout);
