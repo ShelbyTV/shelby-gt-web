@@ -32,7 +32,8 @@ libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotificati
   userIsAbleTo : function(action){
     if( shelby.models.user.isAnonymous() && action != libs.shelbyGT.AnonymousActions.COMMENT && action != libs.shelbyGT.AnonymousActions.QUEUE){
       this._bannerType = action;
-      this.render();
+      //this.render();
+      Backbone.Events.trigger('show:emailCollection');
       return false;
     } else {
       return true;
