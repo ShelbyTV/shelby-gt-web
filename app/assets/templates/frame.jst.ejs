@@ -169,9 +169,9 @@
 
                 <% if (fauxUserOrigin) { %>
                   via <span class="capitalize"><%= fauxUserOrigin %></span>
-                <% } else if(frameOriginator && (frameOriginator.nickname != creatorNickname) && (frameOriginator.faux != 1)) { %>
-                  via <a class="no-faux-link" href="<%= '/user/' + frameOriginator.id + '/personal_roll' %>"><%= frameOriginator.nickname %></a>
-                  <% } %>
+                <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != 1) { %>
+                  via <a class="no-faux-link" href="<%= '/user/' + frameOriginator.id + '/personal_roll' %>"><%= frameOriginator.get('nickname') %></a>
+                <% } %>
               </p>
 
               <p class="xuser-message<%= commentOverflow ? ' line-clamp js-toggle-comment' : '' %>">
