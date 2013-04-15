@@ -5,6 +5,8 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
       "click .js-close"                   : "_close"
   },
 
+  _emailCollectorShown : false,
+
   template : function(obj){
     return SHELBYJST['channels/email-collection'](obj);
   },
@@ -40,17 +42,38 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
         setTimeout(function(){
           self.$el.toggleClass('hidden', false);
         }, 3000);
-        // TODO this view to know not to render again during this users session, maybe include cookie tracking of this?
+        // event tracking
+        shelby.trackEx({
+          providers : ['ga', 'kmq'],
+          gaCategory : "Email Collection",
+          gaAction : 'Email submitted',
+          gaLabel : 'Channels',
+          kmName : "Email submitted in collection modal on channels"
+        });
       }, 'jsonp');
       return false;
   },
 
   _onShowEmailCollection : function(){
-    this.$el.show();
+    if (!this._emailCollectorShown) {
+      var self = this;
+      setTimeout(function(){
+        self.$el.show();
+      }, 1500);
+      this._emailCollectorShown = true;
+    }
   },
 
   _close : function() {
     this.$el.toggleClass('hidden');
+    // event tracking
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "Email Collection",
+      gaAction : 'Close modal',
+      gaLabel : 'Channels',
+      kmName : "Email collection modal closed on channels"
+    });
   }
 
 });

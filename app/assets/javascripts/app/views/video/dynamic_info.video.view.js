@@ -153,15 +153,17 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     // update user activity
     this._userActivity.set('likeCount', this._userActivity.get('likeCount') + 1);
 
-    // don't always show this, should not be probabilistic in the end. should be "smart"
-    if (!this._shouldShowDVI(1)) return;
+    // SHOW email collector
+    Backbone.Events.trigger('show:emailCollection');
 
-    this._cardType = 'liked-share';
-    var _delay, _timeout;
-    _delay = this._currentVideoInfo && this._currentVideoInfo.duration ? this._currentVideoInfo.duration - this._currentVideoInfo.currentTime >= 5 ? 2000 : 1000 : 2000;
-    _timeout = this._currentVideoInfo && this._currentVideoInfo.duration ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 10000;
+    // NOT showing DVI right now
+    //if (!this._shouldShowDVI(1)) return;
+    // this._cardType = 'liked-share';
+    // var _delay, _timeout;
+    // _delay = this._currentVideoInfo && this._currentVideoInfo.duration ? this._currentVideoInfo.duration - this._currentVideoInfo.currentTime >= 5 ? 2000 : 1000 : 2000;
+    // _timeout = this._currentVideoInfo && this._currentVideoInfo.duration ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 10000;
 
-    this._showCard(_delay, _timeout);
+    // this._showCard(_delay, _timeout);
   },
 
   _onRoll : function(){
