@@ -66,10 +66,9 @@
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if (!@share_type) and !@invite_id and !@team %>
-      <%= render :partial => "/home/shelf/sign_up" %>
+      <%= render :partial => "/home/shelf/start_watching" %>
       <%= render :partial => "/home/shelf/community" %>
       <%= render :partial => "/home/shelf/network" %>
-      <%= render :partial => "/home/shelf/learn_more_teaser" %>
       <%= render :partial => "/home/shelf/about" %>
     <% end %>
 
