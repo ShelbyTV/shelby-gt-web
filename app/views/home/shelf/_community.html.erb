@@ -98,7 +98,7 @@
       <% channels.each do |channel| %>
         <li class="shelf__item">
           <article class="frame frame--shelf">
-            <a href="<%= channel["url"] %>" class="shelf__link js-track-event" data-ga_category="Homepage" data-ga_action="Click channel" data-ga_label="<%= channel['title'] %>" title="Click to watch!">
+            <a href="<%= channel["url"] %>" class="shelf__link js-track-event" data-ga_action="Click channel" data-ga_label="<%= channel['title'] %>" title="Click to watch!">
               <div class="frame-body-wrapper clearfix">
                 <div class="image_module frame-thumbnail icon-player_play" style="background-image: url('<%= channel["thumbnail"] %>');" role="img">
                   <img class="visuallyhidden" src="<%= channel["thumbnail"] %>" title="<%= channel["thumbnail"] %>" alt="<%= channel["thumbnail"] %> thumbnail">
@@ -123,7 +123,7 @@
               <ul class="list frame-likes-avatars js-liker-avatars-list">
                 <% channel["likers"].each do |liker| %>
                   <li>
-                    <span class="frame-likes-link" data-ga_category="Channel" data-ga_action="click liker" data-ga_label="<%= liker["name"] %>">
+                    <span class="frame-likes-link js-track-event" data-ga_action="Click liker" data-ga_label="<%= channel["title"] %>">
                       <img class="frame-likes-avatar" src="<%= liker["avatar"]%>" title="<%= liker["name"] %>" alt="<%= liker["name"] %>">
                     </span>
                   </li>
