@@ -14,6 +14,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "user/:id/personal_roll"                       : "displayUserPersonalRoll",
     "channels"                                     : "displayChannel",
     "channels/:channel"                            : "displayChannel",
+    "channels/:channel/:entryId"                   : "displayEntryInDashboard",
     "help"                                         : "displayHelp",
     "legal"                                        : "displayLegal",
     "search"                                       : "displaySearch",
@@ -226,11 +227,40 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayChannel : function(channel, params){
     if (_(shelby.config.channels).has(channel)) {
       this.displayDashboard(params, {channel: channel});
+      this._handleChannelWelcomeOverview();
     } else {
       // if the requested channel doesn't exist, just go to the first channel
       this.navigate('channels/' + _.keys(shelby.config.channelsForNav)[0], {trigger: true, replace: true});
     }
 
+    this._doChannelTracking(channel);
+
+  },
+
+  displayEntryInDashboard : function(channel, entryId, params){
+    var self = this;
+    if (_(shelby.config.channels).has(channel)) {
+      this.displayDashboard(params, {
+        channel: channel,
+        data: {
+          since_id : entryId,
+          include_children : true
+        },
+        onDashboardFetch: function(dashboardModel, response){
+          self._activateEntryInDashboardById(dashboardModel, entryId);
+        }
+      });
+      this._handleChannelWelcomeOverview();
+    } else {
+      // if the requested channel doesn't exist, just go to the first channel
+      this.navigate('channels/' + _.keys(shelby.config.channelsForNav)[0], {trigger: true, replace: true});
+    }
+
+    this._doChannelTracking(channel);
+
+  },
+
+  _doChannelTracking : function(channel) {
     // send page view to GA
     if(shelby.routeHistory.length !== 0){
       try {
@@ -242,12 +272,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       kmqName : "Visit Channel",
       kmqProperties: {'Channel' : channel}
     });
+  },
 
+  _handleChannelWelcomeOverview : function() {
     shelby.views.channelWelcome = shelby.views.channelWelcome ||
-          new libs.shelbyGT.channelWelcome({
-            el : '.js-channels-welcome',
-            channelWelcomeModel : shelby.models.dotTvWelcome
-          });
+      new libs.shelbyGT.channelWelcome({
+        el : '.js-channels-welcome',
+        channelWelcomeModel : shelby.models.dotTvWelcome
+      });
 
     // ultimatly this should only be shown the first visit which we can track via a cookie
     if (cookies.get('channel-welcome') != "1") {
@@ -306,22 +338,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         self.displayRoll(roll, 'personal_roll', params, {
           updateRollTitle : false
         });
-      }
-    });
-  },
-
-  _displayEntryInDashboard : function(entryId, params, options){
-    // default options
-    options = options || {};
-
-    var self = this;
-    this.displayDashboard(params, {
-      data: {
-        since_id : entryId,
-        include_children : true
-      },
-      onDashboardFetch: function(dashboardModel, response){
-        self._activateEntryInDashboardById(dashboardModel, entryId);
       }
     });
   },
@@ -426,15 +442,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           _gaq.push(['_trackPageview', '/me']);
         } catch(e) {}
       }
-  },
-
-  displayExploreView : function(){
-    this._fetchQueuedVideos();
-    this._setupTopLevelViews();
-    shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.explore});
-    if (shelby.models.exploreRollCategories.get('roll_categories').isEmpty()) {
-      shelby.models.exploreGuide.trigger('showSpinner');
-    }
   },
 
   displayOnboardingView : function(stage){
@@ -586,18 +593,30 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   _activateEntryInDashboardById : function(dashboardModel, entryId) {
-    // don't want to activate the video if we've switched to explore view during the asynchronous load
-    if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.explore) {
-      var entry = dashboardModel.get('dashboard_entries').get(entryId);
-      // for compatibility reasons, we only show videos from certain providers on mobile
-      if (entry && (!Browser.isMobile() || entry.get('frame').get('video').canPlayMobile())) {
-        shelby.models.guide.set('activeFrameModel', entry.get('frame'));
-      } else {
-        // url entry id doesn't exist in the dashboard - notify user, then redirect to the dashboard
-        shelby.alert({message: "<p>Sorry, the entry you were looking for doesn't exist in your stream.</p>"});
-        this.navigate("/", {trigger:true, replace:true});
+      var frameActivated = false;
+      var dbEntry = Backbone.Relational.store.find(libs.shelbyGT.DashboardEntryModel, entryId);
+      if (dbEntry && dbEntry.has('frame')) {
+        var frame = shelby.models.playlistManager.get('playlistFrameGroupCollection').getFrameById(dbEntry.get('frame').id);
+        // for compatibility reasons, we only show videos from certain providers on mobile
+        if (frame && (!Browser.isMobile() || frame.get('video').canPlayMobile())) {
+          shelby.models.guide.set('activeFrameModel', frame);
+          frameActivated = true;
+        }
       }
-    }
+
+      if (!frameActivated) {
+        // url entry id doesn't exist in the dashboard
+        if (dashboardModel.has('channel')) {
+          // they were looking for a video on a channel - notify user, then redirect to the beginning of the channel
+          shelby.alert({message: "<p>Sorry, the video you were looking for doesn't exist in this channel.</p>"});
+          this.navigate("channels/" + dashboardModel.get('channel'), {trigger:true, replace:true});
+        } else {
+          // they were looking for a video in their own stream - notify user, then redirect to the beginning of the stream
+          shelby.alert({message: "<p>Sorry, the video you were looking for doesn't exist.</p>"});
+          this.navigate("", {trigger:true, replace:true});
+        }
+      }
+
   },
 
   _setupTopLevelViews : function(options){
