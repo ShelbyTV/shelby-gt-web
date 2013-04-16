@@ -26,7 +26,7 @@ libs.shelbyGT.channelWelcome = Support.CompositeView.extend({
         gaCategory : "Channel Welcome",
         gaAction : 'Loaded',
         gaLabel : shelby.models.user.get('nickname'),
-        kmName : "Channel welcome banner loaded"
+        kmqName : "Channel welcome banner loaded"
       });
   },
 
