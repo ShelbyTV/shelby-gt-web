@@ -47,6 +47,8 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
         });
         // set kissmetrics identity
         shelby.track('identify', {nickname: email});
+        // set cookie so we remember
+        cookies.set('beta_signup', email, 180);
       }, 'jsonp');
       return false;
   },
