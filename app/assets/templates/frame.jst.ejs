@@ -89,7 +89,7 @@
                     </a>
                   </li>
                 <li class="list__item">
-                  <button class="button_primer button_default button_share button_share--facebook js-button_share--facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                  <button class="button_primer button_default button_share button_share--facebook js-share-to-facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                     <i class="icon icon-social_facebook"></i>
                       Facebook
                   </button>
@@ -216,16 +216,7 @@
           </div>
         <% } %>
 
-        <% if (user.isAnonymous() && (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel)) { %>
-          <ul class="menu_list menu_list--share-frame">
-            <%= SHELBYJST['frame-social-sharing']({isViaSearch: isViaSearch, framePermalink: framePermalink, frameHasRoll: frameHasRoll, frame: frame}) %>
-          </ul>
-        <% } %>
       </footer><!-- eo .media_module-->
-    <% } else if (isViaSearch && userIsAnonymous) { %>
-      <footer class="media_module frame-footer clearfix">
-        <%= SHELBYJST['frame-social-sharing']({isViaSearch: isViaSearch, framePermalink: framePermalink, frameHasRoll: frameHasRoll, frame: frame}) %>
-      </footer>
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
 
