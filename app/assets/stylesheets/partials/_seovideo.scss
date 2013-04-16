@@ -238,6 +238,7 @@ p {
 
   .seovideo__h1 {
     line-height: 2;
+    margin-bottom: 0.5em;
   }
 
   .seovideo__h4 {
@@ -245,61 +246,28 @@ p {
     font-size: 1.25em;
   }
 }
-
-.seovideo__aside_lining {
-  padding: 0 1em 1.6em;
-}
-
-.seovideo__list--aside {
-
-  .seovideo__item {
-    padding: 1em;
-    float: left;
+  .seovideo__aside_lining {
+    padding: 0 1em 1em;
   }
 
-  .seovideo__h4 {
-  }
+  .seovideo__list--aside {
 
-  .seovideo__link {
-    &:hover {
-      .related_video {
-        background-color: #fff;
+    .seovideo__item {
+      padding: 1em;
+      float: left;
+    }
+
+    .seovideo__h4 {
+    }
+
+    .seovideo__link {
+      &:hover {
+        .related_video {
+          background-color: #fff;
+        }
       }
     }
   }
-}
-
-// the related video design requires some complex css.
-// that's why we're creating this "related_video" block.
-.related_video {
-
-}
-
-.related_video__main {
-
-}
-
-.related_video__footer {
-  height: 65px;
-  display: table;
-  width: 100%;
-}
-
-.related_video__footer-lining {
-  display: table-cell;
-  margin: 0 auto;
-  padding: 1em;
-  vertical-align: middle;
-  width: 100%;
-
-  .seovideo__h4 {
-    padding-right: 1.5em;
-
-    &.icon {
-      background-size: 1em;
-    }
-  }
-}
 
 //------------------------------------------------------------------------------
 //  seovideo related

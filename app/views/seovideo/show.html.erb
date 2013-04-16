@@ -81,26 +81,30 @@
                 'title'     => '#nature',
                 'thumbnail' => '/images/landing/nature_2.jpg',
                 'liker_count' => '47',
-                'likers'    => [
+                'likers'      => [
                   {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq192x192/4f805b5dad9f1151d500006e?1347497016000',
-                    'name'   => 'nfpagliaro'
+                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4f32e49fad9f11053b00020a',
+                    'name'   => 'iceberg901'
                   },
+
                   {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4d7d154ff6db244f5e000001?1347033016000',
-                    'name'   => 'reece'
+                    'avatar' => 'http://a2.twimg.com/profile_images/663080233/n6829686_8580.jpg',
+                    'name'   => 'sheynk'
                   },
+
                   {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq192x192/4d922293f6db24463100000b?1361117209000',
-                    'name'   => 'enelson1'
+                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4d7a882df6db246de0000001?',
+                    'name'   => 'spinosa'
                   },
+
                   {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4dcd0063f6db2435a1000001?1349895994000',
-                    'name'   => 'vladimir'
+                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4f6873a2ad9f11477f000124',
+                    'name'   => 'arthur'
                   },
+
                   {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4ea4fc738848206fd800001d?1349883425000',
-                    'name'   => 'kunaltandon'
+                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/509359fab415cc2784011929',
+                    'name'   => 'rickshant'
                   }
                 ]
               },
@@ -110,26 +114,15 @@
                 'title'     => '#laugh',
                 'thumbnail' => '/images/landing/laugh.jpg',
                 'liker_count' => '35',
-                'likers'    => [
+                'likers'      => [
                   {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq192x192/4f805b5dad9f1151d500006e?1347497016000',
-                    'name'   => 'nfpagliaro'
+                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4f370fe2ad9f115a1000011c?1348844515000',
+                    'name'   => 'matyus'
                   },
+
                   {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4d7d154ff6db244f5e000001?1347033016000',
-                    'name'   => 'reece'
-                  },
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq192x192/4d922293f6db24463100000b?1361117209000',
-                    'name'   => 'enelson1'
-                  },
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4dcd0063f6db2435a1000001?1349895994000',
-                    'name'   => 'vladimir'
-                  },
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4ea4fc738848206fd800001d?1349883425000',
-                    'name'   => 'kunaltandon'
+                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4d7ac94af6db241b5d000002?1349478839000',
+                    'name'   => 'chris'
                   }
                 ]
               },
@@ -139,7 +132,7 @@
                 'title'     => '#adrenaline',
                 'thumbnail' => '/images/landing/adren.jpg',
                 'liker_count' => '20',
-                'likers'    => [
+                'likers'      => [
                   {
                     'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq192x192/4f805b5dad9f1151d500006e?1347497016000',
                     'name'   => 'nfpagliaro'
@@ -167,7 +160,7 @@
         <ul class="seovideo__list seovideo__list--aside clearfix">
           <% channels.each do |channel| %>
             <li class="seovideo__item one-third">
-              <a href="#">
+              <a href="/channels/<%= channel["url"] %>" class="js-click-tracking" data-ga_action="Click channel" data-ga_label="<%= channel["name"] %>" title="Click to watch!">
                 <h4 class="seovideo__h4">
                   <%= channel["title"] %>
                 </h4>
