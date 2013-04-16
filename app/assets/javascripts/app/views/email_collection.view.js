@@ -42,11 +42,13 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
           gaCategory : "Email Collection",
           gaAction : 'Email submitted',
           gaLabel : 'Channels',
-          kmName : "Email submitted in collection modal on channels",
+          kmqName : "Email submitted in collection modal on channels",
           kmqProperties : {'email' : email}
         });
         // set kissmetrics identity
         shelby.track('identify', {nickname: email});
+        // set cookie so we remember
+        cookies.set('beta_signup', email, 180);
       }, 'jsonp');
       return false;
   },
@@ -66,7 +68,7 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
           gaCategory : "Email Collection",
           gaAction : 'Loaded',
           gaLabel : 'Channels',
-          kmName : "Email collection modal loaded on channels"
+          kmqName : "Email collection modal loaded on channels"
         });
       }
 
@@ -82,7 +84,7 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
       gaCategory : "Email Collection",
       gaAction : 'Close modal',
       gaLabel : 'Channels',
-      kmName : "Email collection modal closed on channels"
+      kmqName : "Email collection modal closed on channels"
     });
   }
 

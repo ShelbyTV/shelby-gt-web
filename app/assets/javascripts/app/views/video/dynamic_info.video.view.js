@@ -127,7 +127,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
       gaCategory : "Dynamic Video Info",
       gaAction : 'Show card',
       gaLabel : this._cardType,
-      kmName : 'Show DVI '+this._cardType+' card'
+      kmqName : 'Show DVI '+this._cardType+' card'
     });
   },
 
