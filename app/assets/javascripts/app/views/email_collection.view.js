@@ -42,8 +42,11 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
           gaCategory : "Email Collection",
           gaAction : 'Email submitted',
           gaLabel : 'Channels',
-          kmName : "Email submitted in collection modal on channels"
+          kmName : "Email submitted in collection modal on channels",
+          kmqProperties : {'email' : email}
         });
+        // set kissmetrics identity
+        shelby.track('identify', {nickname: email});
       }, 'jsonp');
       return false;
   },
