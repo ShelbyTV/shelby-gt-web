@@ -120,6 +120,15 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     setTimeout(function(){
       self._hideDVI();
     }, timeout);
+
+    // event tracking
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "Dynamic Video Info",
+      gaAction : 'Show card',
+      gaLabel : this._cardType,
+      kmName : 'Show DVI '+this._cardType+' card'
+    });
   },
 
   _hideDVI : function(){
