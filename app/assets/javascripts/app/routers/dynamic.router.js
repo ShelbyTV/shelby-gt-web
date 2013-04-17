@@ -779,7 +779,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
-    this._setupTopLevelViews();
+    this._setupTopLevelViews({isIsolatedRoll: true});
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.dotTv);
     // if a specific roll and frame has been requested we need to pass the information on to the
     // user profile view so that it can load up the right frame
