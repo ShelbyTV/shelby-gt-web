@@ -31,7 +31,6 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
     this._currentFrame = this.options.guide.get('activeFrameModel');
     this._currentVideoInfo = libs.utils.VideoPlaybackEvents.getCurrentPlayerInfo();
-    this._playlistFrameGroupCollection = this.options.playlistManager.get('playlistFrameGroupCollection');
 
     this._userActivity = this.options.userActivityModel;
     this._userActivity.bind('change', this._onUserActivityChange, this);
@@ -66,7 +65,12 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     if (this._currentFrame){
       this._displayedDVI = false;
 
-      permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
+      var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
+      if (_frameGroup) {
+        permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup);
+      } else {
+        permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
+      }
       emailBody = permalink + "?utm_campaign=email-share";
       tweetIntentParams = {
         text : 'Check out this video',
@@ -99,7 +103,6 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   _onplaylistFrameGroupCollectionChange : function(playlistManagerModel, playlistFrameGroupCollection){
-    this._playlistFrameGroupCollection = playlistFrameGroupCollection;
     //TODO : the menu should stay open and we don't need to reload the shortlink
     this._hideDVI();
     this.render();
@@ -265,6 +268,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
   _shareCurrentToFacebook : function(e){
     var _frame = this._currentFrame;
+    var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(_frame.id);
     var _caption;
     if (shelby.config.hostName) {
       _caption = 'a video from '+shelby.config.hostname;
@@ -293,7 +297,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
         {
           method: 'feed',
           name: _frame.get('video').get('title'),
-          link: libs.shelbyGT.viewHelpers.frame.permalink(_frame),
+          link: libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup),
           picture: _frame.get('video').get('thumbnail_url'),
           description: description,
           caption: _caption
