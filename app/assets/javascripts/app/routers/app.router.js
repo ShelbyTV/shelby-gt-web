@@ -71,7 +71,6 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     var self = this;
 
     $(document).ready(function(){
-      $('body').append(SHELBYJST['social-libs']()).toggleClass('shelby--user-anonymous', shelby.models.user.isAnonymous());
       shelby.config.socialLibsLoaded = true;
     });
 
