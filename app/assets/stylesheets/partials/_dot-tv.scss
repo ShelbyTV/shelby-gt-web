@@ -129,13 +129,12 @@
     }
 
     .videoplayer-nav__btn--next {
-      @include transform(rotate(0deg));
       right: $defaultMargin;
       left: auto;
     }
 
     .videoplayer-nav__btn--prev {
-      @include transform(rotate(180deg));
+
     }
 
     .videoplayer-nav__btn--fullscreen {

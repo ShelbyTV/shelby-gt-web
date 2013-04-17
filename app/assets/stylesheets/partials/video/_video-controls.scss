@@ -269,12 +269,10 @@
 //------------------------------------------------------------------------------
 .videoplayer-nav__btn--prev {
   left: $defaultMargin;
-  @include transform(rotate(-90deg));
 }
 
 .videoplayer-nav__btn--next {
   left: $defaultMargin;
-  @include transform(rotate(90deg));
   margin-top: -6px;
 }
 
