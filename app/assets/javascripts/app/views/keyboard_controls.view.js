@@ -76,7 +76,7 @@
       // (->) right
       39 : {
         model : 'userDesires',
-        attr : 'changeVideo',
+        attr : 'changeChannel',
         val : function(){
           shelby.trackEx({
             gaCategory : 'Keyboard',
@@ -95,7 +95,7 @@
       // (<-) left
       37 : {
         model : 'userDesires',
-        attr : 'changeVideo',
+        attr : 'changeChannel',
         val : function(){
           shelby.trackEx({
             gaCategory : 'Keyboard',
@@ -114,7 +114,7 @@
       // up
       38 : {
         model : 'userDesires',
-        attr : 'changeChannel',
+        attr : 'changeVideo',
         val : function(){
           shelby.trackEx({
             gaCategory : 'Keyboard',
@@ -133,7 +133,7 @@
       // down
       40 : {
         model : 'userDesires',
-        attr : 'changeChannel',
+        attr : 'changeVideo',
         val : function(){
           shelby.trackEx({
             gaCategory : 'Keyboard',
@@ -210,8 +210,23 @@
     },
 
     initialize : function(){
+      this._setupViewSpecificBindings();
       this._setupKeyboardBindings();
       this._disableSpacebarScrolling();
+    },
+
+    _setupViewSpecificBindings : function(){
+      if (shelby.models.guide.get('displayIsolatedRoll')) {
+        // override up/down left/right actions for iso-rolls
+        _keyCodeActionMap[37]['attr'] = 'changeVideo'; // left
+        _keyCodeActionMap[39]['attr'] = 'changeVideo'; // right
+        _keyCodeActionMap[38]['attr'] = 'changeChannel'; // up
+        _keyCodeActionMap[40]['attr'] = 'changeChannel'; // down
+      }
+    },
+
+    _leftRightAction : function(){
+      return shelby.models.guide.get('displayIsolatedRoll') ? 'changeVideo' : 'changeChannel';
     },
 
     _disableSpacebarScrolling : function(){
