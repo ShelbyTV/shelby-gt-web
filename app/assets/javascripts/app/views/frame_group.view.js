@@ -114,7 +114,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       var emailBody;
       var tweetIntentParams = {};
       if (shelby.models.user.isAnonymous()) {
-        var permalink = this._getContextAppropriatePermalink();
+        var permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this.model);
         emailBody = permalink + "?utm_campaign=email-share";
         tweetIntentParams = {
           text : 'Check out this video',
@@ -391,7 +391,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         {
           method: 'feed',
           name: _frame.get('video').get('title'),
-          link: this._getContextAppropriatePermalink(),
+          link: libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this.model),
           picture: _frame.get('video').get('thumbnail_url'),
           description: _frame.get('video').get('description'),
           caption: _caption
@@ -467,16 +467,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _followHashtagLink : function(e){
     e.preventDefault();
     shelby.router.navigate('channels/' + $(e.currentTarget).data("channel_key"), {trigger : true});
-  },
-
-  _getContextAppropriatePermalink : function() {
-    if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.channel && this.model.has('primaryDashboardEntry')) {
-      // if we're on a channel, share a link that will bring the user to this entry on the channel
-      return libs.shelbyGT.viewHelpers.dashboardEntry.permalink(this.model.get('primaryDashboardEntry'));
-    } else {
-      // otherwise share a link that will bring the user to this frame on its home roll
-      return libs.shelbyGT.viewHelpers.frame.permalink(this.model.get('frames').at(0));
-    }
   }
 
 });
