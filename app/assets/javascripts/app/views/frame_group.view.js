@@ -31,7 +31,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-share-menu"                  : "_toggleShareMenu",
     "click .js-share-to-facebook"           : "_shareToFacebook",
     "click .js-toggle-comment"              : "_toggleComment",
-    "click .js-video-activity-toggle"       : "_requestConversationView"
+    "click .js-video-activity-toggle"       : "_requestConversationView",
+    "click .js-navigate-originator"         : "_navigateOriginator"
   },
 
   template : function(obj){
@@ -455,6 +456,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _followHashtagLink : function(e){
     e.preventDefault();
     shelby.router.navigate('channels/' + $(e.currentTarget).data("channel_key"), {trigger : true});
-  }
+  },
 
+  _navigateOriginator : function(e) {
+    e.preventDefault();
+
+    var originatorId = e.currentTarget.id;
+
+    shelby.router.navigate('/user/' + originatorId + '/personal_roll',{trigger:true});
+  }
 });

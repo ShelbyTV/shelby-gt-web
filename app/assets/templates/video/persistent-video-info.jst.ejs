@@ -76,8 +76,8 @@
 
               <% if (fauxUserOrigin) { %>
                 via <span class="capitalize"><%= fauxUserOrigin %></span>
-              <% } else if(currentFrameOriginator && (currentFrameOriginator.nickname != currentCreatorNickname) && (currentFrameOriginator.faux != 1)) { %>
-                via <a class="no-faux-link" href="<%= '/user/' + currentFrameOriginator.id + '/personal_roll' %>"><%= currentFrameOriginator.nickname %></a>
+              <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
+                via <a class="js-navigate-originator no-faux-link" id="<%= currentFrameOriginator.id %>" href="#"><%= currentFrameOriginator.get('nickname') %></a>
               <% } %>
             </h3>
           <% } %>

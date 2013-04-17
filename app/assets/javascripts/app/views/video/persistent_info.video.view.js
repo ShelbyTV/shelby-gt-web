@@ -29,7 +29,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .js-share-menu"                                                        : "_toggleShareMenu",
     "click .js-hide-share-menu"                                                   : "_toggleShareMenu",
     "click .js-input-select-on-focus"                                             : "_selectInputText",
-    "click .js-hashtag-link"                                                      : '_followHashtagLink'
+    "click .js-hashtag-link"                                                      : '_followHashtagLink',
+    "click .js-navigate-originator"                                               : "_gotoOriginator"
   },
 
   initialize: function(){
@@ -340,6 +341,14 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       e.preventDefault();
       shelby.router.navigate('channels/' + $(e.currentTarget).data("channel_key"), {trigger : true});
     }
+  },
+
+  _gotoOriginator : function(e) {
+    e.preventDefault();
+
+    var originatorId = e.currentTarget.id;
+
+    shelby.router.navigate('/user/' + originatorId + '/personal_roll',{trigger:true});
   }
 
 });
