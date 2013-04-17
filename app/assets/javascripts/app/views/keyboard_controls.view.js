@@ -225,10 +225,6 @@
       }
     },
 
-    _leftRightAction : function(){
-      return shelby.models.guide.get('displayIsolatedRoll') ? 'changeVideo' : 'changeChannel';
-    },
-
     _disableSpacebarScrolling : function(){
       var self = this;
       $(document).on('keydown', function(e){
