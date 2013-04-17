@@ -29,6 +29,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-roll-frame"                  : "requestFrameRollView",
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-share-menu"                  : "_toggleShareMenu",
+    "click .js-hide-share-menu"             : "_toggleShareMenu",
     "click .js-share-to-facebook"           : "_shareToFacebook",
     "click .js-toggle-comment"              : "_toggleComment",
     "click .js-video-activity-toggle"       : "_requestConversationView"
