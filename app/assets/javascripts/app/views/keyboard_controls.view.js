@@ -218,10 +218,10 @@
     _setupViewSpecificBindings : function(){
       if (shelby.models.guide.get('displayIsolatedRoll')) {
         // override up/down left/right actions for iso-rolls
-        _keyCodeActionMap[37]['attr'] = 'changeVideo'; // left
-        _keyCodeActionMap[39]['attr'] = 'changeVideo'; // right
-        _keyCodeActionMap[38]['attr'] = 'changeChannel'; // up
-        _keyCodeActionMap[40]['attr'] = 'changeChannel'; // down
+        this._keyCodeActionMap[37]['attr'] = 'changeVideo'; // left
+        this._keyCodeActionMap[39]['attr'] = 'changeVideo'; // right
+        this._keyCodeActionMap[38]['attr'] = 'changeChannel'; // up
+        this._keyCodeActionMap[40]['attr'] = 'changeChannel'; // down
       }
     },
 
