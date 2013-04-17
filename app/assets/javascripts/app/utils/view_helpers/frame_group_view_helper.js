@@ -10,11 +10,11 @@ libs.shelbyGT.viewHelpers.frameGroup = {
     if (dbEntry) {
       var dbEntryUserId = dbEntry.get('user_id');
       // if we're on a channel, share a link that will bring the user to this entry on the channel
-      var channel = _(shelby.config.channels).chain().pairs().find(function(channelPair){
+      var channelPair = _(shelby.config.channels).chain().pairs().find(function(channelPair){
         return channelPair[1].id == dbEntryUserId;
-      }).value()[0];
-      if (channel) {
-        return 'http://shelby.tv/channels/' + channel + '/' + dbEntry.id;
+      }).value();
+      if (channelPair) {
+        return 'http://shelby.tv/channels/' + channelPair[0] + '/' + dbEntry.id;
       }
     }
 
