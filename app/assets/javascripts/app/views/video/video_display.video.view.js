@@ -69,13 +69,6 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     var video = frame.get('video');
     var view = this._playerViews[video.get('provider_name')];
 
-    // set up fb comment area (if fb sdk is loaded)
-    if (typeof FB !== "undefined"){
-      $('#fb-comments-holder').empty();
-      $('#fb-comments-holder').html('<div class="fb-comments" data-href="'+shelby.config.appUrl+'/video/'+frame.get('video').get('provider_name')+'/'+frame.get('video').get('provider_id')+'" data-num-posts="2"></div>');
-      FB.XFBML.parse($('#fb-comments-holder')[0]);
-    }
-
     if(!view){
       //TODO: handle ERROR
       return;
@@ -174,7 +167,7 @@ libs.shelbyGT.VideoDisplayView = Support.CompositeView.extend({
     var _currCh = libs.utils.channels.getCurrentChannel();
     if (!_currCh){ return; }
 
-    var _chArray = _.keys(shelby.config.channels);
+    var _chArray = _.keys(shelby.config.channelsForNav);
     var _currChIndex = _.indexOf(_chArray, _currCh);
     var _nextChIndex;
     if (_currChIndex == 0 && dir == -1){ _nextChIndex = _chArray.length - 1; }

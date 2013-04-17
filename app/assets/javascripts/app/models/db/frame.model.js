@@ -16,11 +16,11 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       type : Backbone.HasOne,
       key : 'roll',
       relatedModel : 'libs.shelbyGT.RollModel'
-    }/*,{
+    },{
       type : Backbone.HasOne,
-      key : 'ancestor',
-      relatedModel : 'libs.shelbyGT.AncestorModel'
-    }*/
+      key : 'originator',
+      relatedModel : 'libs.shelbyGT.UserModel'
+    }
   ],
 
   initialize : function() {
@@ -150,6 +150,9 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
         }
       });
     }
+
+    // do things that should be done after a user likes a video
+    Backbone.Events.trigger('userHook:like');
   },
 
   reRoll : function(roll, text, onSuccess) {

@@ -105,8 +105,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     if (this.model.get('frames').length){
 
       var frame = this.model.get('frames').at(0),
-          messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection()),
-          frameOriginator = (frame.has('originator_id')) ? frame.get('originator') : null;
+          messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection());
           //N.B. template({}) receives Models.
           //i.e. frame, video, user, creator, messages, etc.
           //so, JST should only .get() object vals from models
@@ -120,7 +119,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         eventTrackingCategory  : '',
         frame                  : frame,
         frameGroup             : this.model,
-        frameOriginator        : frameOriginator,
+        frameOriginator        : frame.get('originator'),
         messages               : messages,
         queuedVideosModel      : shelby.models.queuedVideos,
         options                : this.options,

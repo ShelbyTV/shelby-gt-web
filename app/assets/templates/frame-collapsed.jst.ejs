@@ -47,8 +47,8 @@
           <% if (!fauxUserOrigin) { %>
             <div class="xuser-data">
               <%= creatorNickname %><% if (!_(dupeFrames).isEmpty()) { %><%= ", " + _('other').pluralize(dupeFrames.length, true) %>
-              <% } else if (frameOriginator && (frameOriginator.nickname != creator.get('nickname')) && (frameOriginator.faux != 1)) { %>
-                <%= 'via ' + frameOriginator.nickname %>
+              <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != 1) { %>
+                <%= 'via ' + frameOriginator.get('nickname') %>
               <% } %>
             </div>
           <% } else { %>

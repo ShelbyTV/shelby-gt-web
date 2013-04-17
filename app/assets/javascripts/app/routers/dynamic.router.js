@@ -12,11 +12,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "rollFromFrame/:frameId"                       : "displayRollFromFrame",
     "embed/:frameId"                               : "displayEmbeddedFrame",
     "user/:id/personal_roll"                       : "displayUserPersonalRoll",
-    "channels"                                     : "displayRandomChannel",
+    "channels"                                     : "displayChannel",
+    "channels/:channel"                            : "displayChannel",
     "help"                                         : "displayHelp",
     "legal"                                        : "displayLegal",
     "search"                                       : "displaySearch",
-    "channels/:channel"                            : "displayChannel",
     "me"                                           : "displayRollList",
     "onboarding/:stage"                            : "displayOnboardingView",
     "preferences"                                  : "displayUserPreferences",
@@ -201,8 +201,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayRandomChannel : function(params) {
-    var channelKeys = _.keys(shelby.config.channels);
+  // currently not in use but may become useful again
+  _displayRandomChannel : function(params) {
+    var channelKeys = _.keys(shelby.config.channelsForNav);
     var randomChannelKey = channelKeys[_.random(channelKeys.length - 1)];
     this.navigate('channels/' + randomChannelKey, {trigger: false, replace: true});
     this.displayChannel(randomChannelKey, params);
@@ -227,7 +228,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       this.displayDashboard(params, {channel: channel});
     } else {
       // if the requested channel doesn't exist, just go to the first channel
-      this.navigate('channels/' + _.keys(shelby.config.channels)[0], {trigger: true, replace: true});
+      this.navigate('channels/' + _.keys(shelby.config.channelsForNav)[0], {trigger: true, replace: true});
     }
 
     // send page view to GA
@@ -242,22 +243,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       kmqProperties: {'Channel' : channel}
     });
 
-    shelby.views.channelWelcome = shelby.views.channelWelcome ||
-          new libs.shelbyGT.channelWelcome({
-            el : '.js-channels-welcome',
-            channelWelcomeModel : shelby.models.dotTvWelcome
-          });
+    // EXPERIMENT: not showing channel welcome message. -his
+    // shelby.views.channelWelcome = shelby.views.channelWelcome ||
+    //       new libs.shelbyGT.channelWelcome({
+    //         el : '.js-channels-welcome',
+    //         channelWelcomeModel : shelby.models.dotTvWelcome
+    //       });
 
     // ultimatly this should only be shown the first visit which we can track via a cookie
-    if (cookies.get('channel-welcome') != "1") {
-      shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
-      shelby.models.userDesires.set({guideShown: true});
-      shelby.userInactivity.disableUserActivityDetection();
-      $('#js-welcome, .js-channels-welcome').toggleClass('hidden', false);
-    }
-    else {
+    // if (cookies.get('channel-welcome') != "1") {
+    //   shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
+    //   shelby.models.userDesires.set({guideShown: true});
+    //   shelby.userInactivity.disableUserActivityDetection();
+    //   $('#js-welcome, .js-channels-welcome').toggleClass('hidden', false);
+    // }
+    // else {
       $('#js-welcome, .js-channels-welcome').toggleClass('hidden', true);
-    }
+    // }
   },
 
   displayRollFromFrame : function(frameId, params) {

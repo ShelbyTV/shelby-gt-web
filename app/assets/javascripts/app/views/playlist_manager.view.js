@@ -20,6 +20,7 @@ libs.shelbyGT.PlaylistManagerView = Support.CompositeView.extend({
 
   _onPlaybackNext : function(){
     this._skipVideo(1);
+
   },
 
   _onPlaylistStart : function(){
