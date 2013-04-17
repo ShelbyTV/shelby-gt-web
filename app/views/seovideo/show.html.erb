@@ -160,7 +160,7 @@
         <ul class="seovideo__list seovideo__list--aside clearfix">
           <% channels.each do |channel| %>
             <li class="seovideo__item one-third">
-              <a href="/channels/<%= channel["url"] %>" class="js-click-tracking" data-ga_action="Click channel" data-ga_label="<%= channel["name"] %>" title="Click to watch!">
+              <a href="/channels/<%= channel["url"] %>" class="js-track-event" data-ga_category="SEO Video" data-ga_action="Click channel" data-ga_label="<%= channel["name"] %>" title="Click to watch!">
                 <h4 class="seovideo__h4">
                   <%= channel["title"] %>
                 </h4>
@@ -174,7 +174,7 @@
                 <ul class="list frame-likes-avatars js-liker-avatars-list">
                   <% channel["likers"].each do |liker| %>
                     <li>
-                      <span class="frame-likes-link js-track-event" data-ga_action="Click liker" data-ga_label="<%= channel["title"] %>">
+                      <span class="frame-likes-link js-track-event" data-ga_category="SEO Video" data-ga_action="Click liker" data-ga_label="<%= channel["title"] %>">
                         <img class="frame-likes-avatar" src="<%= liker["avatar"]%>" title="<%= liker["name"] %>" alt="<%= liker["name"] %>">
                       </span>
                     </li>
