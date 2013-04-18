@@ -70,9 +70,14 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
     var self = this;
 
-    $(document).ready(function(){
+    // when the DOM is ready load the social libraries that we use for logged out users to interact with
+    // twitter and facebook
+    if (!shelby.config.socialLibsLoade) {
+      $(document).ready(function(){
+        $('body').append(SHELBYJST['social-libs']());
+      });
       shelby.config.socialLibsLoaded = true;
-    });
+    }
 
     if (shelby.userSignedIn()){
       shelby.models.user.fetch({
@@ -112,15 +117,15 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     else {
       //setup for a user who is not signed in
       shelby.models.user = new libs.shelbyGT.AnonUserModel();
-      // when the DOM is ready load the social libraries that we use for logged out users to interact with
-      // twitter and facebook
+
       $(document).ready(function(){
         $('body').toggleClass('shelby--user-anonymous', true);
       });
 
       shelby.views.emailCollection = shelby.views.emailCollection ||
         new libs.shelbyGT.emailCollection({
-          el : '.js-email-collection'
+          el : '.js-email-collection',
+          guide: shelby.models.guide
       });
 
       this._reroute();

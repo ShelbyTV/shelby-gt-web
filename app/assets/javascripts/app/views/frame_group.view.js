@@ -29,6 +29,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-roll-frame"                  : "requestFrameRollView",
     "click .js-share-frame"                 : "requestFrameShareView",
     "click .js-share-menu"                  : "_toggleShareMenu",
+    "click .js-hide-share-menu"             : "_toggleShareMenu",
     "click .js-share-to-facebook"           : "_shareToFacebook",
     "click .js-toggle-comment"              : "_toggleComment",
     "click .js-video-activity-toggle"       : "_requestConversationView",
@@ -111,8 +112,19 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
           //i.e. frame, video, user, creator, messages, etc.
           //so, JST should only .get() object vals from models
 
+      var emailBody;
+      var tweetIntentParams = {};
+      if (shelby.models.user.isAnonymous()) {
+        var permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this.model);
+        emailBody = permalink + "?utm_campaign=email-share";
+        tweetIntentParams = {
+          text : 'Check out this video',
+          url : permalink
+        };
+      }
+
       this.$el.html(this.template({
-        anonUserShareEmailBody : '',
+        anonUserShareEmailBody : emailBody,
         creator                : frame.get('creator'),
         currentFrame           : frame,
         currentFrameShortlink  : this._currentFrameShortlink,
@@ -124,7 +136,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         messages               : messages,
         queuedVideosModel      : shelby.models.queuedVideos,
         options                : this.options,
-        tweetIntentQueryString : '',
+        tweetIntentQueryString : $.param(tweetIntentParams),
         user                   : shelby.models.user,
         video                  : frame.get('video')
       }));
@@ -380,7 +392,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         {
           method: 'feed',
           name: _frame.get('video').get('title'),
-          link: libs.shelbyGT.viewHelpers.frame.permalink(_frame),
+          link: libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this.model),
           picture: _frame.get('video').get('thumbnail_url'),
           description: _frame.get('video').get('description'),
           caption: _caption

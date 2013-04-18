@@ -41,8 +41,8 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
           providers : ['ga', 'kmq'],
           gaCategory : "Email Collection",
           gaAction : 'Email submitted',
-          gaLabel : 'Channels',
-          kmqName : "Email submitted in collection modal on channels",
+          gaLabel : this.options.guide.get('displayState'),
+          kmqName : "Email submitted in collection modal on "+this.options.guide.get('displayState'),
           kmqProperties : {'email' : email}
         });
         // set kissmetrics identity
@@ -67,8 +67,8 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
           providers : ['ga', 'kmq'],
           gaCategory : "Email Collection",
           gaAction : 'Loaded',
-          gaLabel : 'Channels',
-          kmqName : "Email collection modal loaded on channels"
+          gaLabel : self.options.guide.get('displayState'),
+          kmqName : "Email collection modal loaded on  "+self.options.guide.get('displayState')
         });
       }
 
@@ -83,8 +83,8 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
       providers : ['ga', 'kmq'],
       gaCategory : "Email Collection",
       gaAction : 'Close modal',
-      gaLabel : 'Channels',
-      kmqName : "Email collection modal closed on channels"
+      gaLabel : this.options.guide.get('displayState'),
+      kmqName : "Email collection modal closed on "+this.options.guide.get('displayState')
     });
   }
 

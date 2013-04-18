@@ -35,7 +35,6 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   initialize: function(){
     this._currentFrame = this.options.guide.get('activeFrameModel');
-    this._playlistFrameGroupCollection = this.options.playlistManager.get('playlistFrameGroupCollection');
 
     this.options.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
     this.options.playlistManager.bind("change:playlistFrameGroupCollection", this._onplaylistFrameGroupCollectionChange, this);
@@ -64,15 +63,22 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   render : function() {
-    if(this._currentFrame && this._playlistFrameGroupCollection){
-      this._nextFrame = this._playlistFrameGroupCollection.getNextPlayableFrame(this._currentFrame, 1, true);
+    var playlistFrameGroupCollection = this.options.playlistManager.get('playlistFrameGroupCollection');
+    if(this._currentFrame && playlistFrameGroupCollection){
+      this._nextFrame = playlistFrameGroupCollection.getNextPlayableFrame(this._currentFrame, 1, true);
     }
 
     if(this._currentFrame && this._nextFrame){
       var emailBody;
       var tweetIntentParams = {};
       if (shelby.models.user.isAnonymous()) {
-        var permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
+        var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
+        var permalink;
+        if (_frameGroup) {
+          permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup);
+        } else {
+          permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
+        }
         // check if there is a special configuration for frame's roll's creator
         var rollCreatorId = this._currentFrame.has('roll') && this._currentFrame.get('roll').has('creator_id') && this._currentFrame.get('roll').get('creator_id');
         var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: rollCreatorId});
@@ -126,7 +132,6 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _onplaylistFrameGroupCollectionChange : function(playlistManagerModel, playlistFrameGroupCollection){
-    this._playlistFrameGroupCollection = playlistFrameGroupCollection;
     //TODO : the menu should stay open and we don't need to reload the shortlink
     this.render();
   },
@@ -225,6 +230,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _shareCurrentToFacebook : function(e){
     var _frame = this._currentFrame;
+    var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(_frame.id);
     var _caption;
     if (shelby.config.hostName) {
       _caption = 'a video from '+shelby.config.hostname;
@@ -253,7 +259,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         {
           method: 'feed',
           name: _frame.get('video').get('title'),
-          link: libs.shelbyGT.viewHelpers.frame.permalink(_frame),
+          link: libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup),
           picture: _frame.get('video').get('thumbnail_url'),
           description: description,
           caption: _caption
