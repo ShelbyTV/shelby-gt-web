@@ -1,7 +1,12 @@
-libs.shelbyGT.LikerAvatarItemView = libs.shelbyGT.ListItemView.extend({
+libs.shelbyGT.ActorAvatarItemView = libs.shelbyGT.ListItemView.extend({
 
   options : {
-    eventTrackingCategory : 'Frame' // what category events in this view will be tracked under
+    eventTrackingCategory : 'Frame', // what category events in this view will be tracked under
+    actorDescription : 'liker' // what type of actor (ie what did they do to this frame) is this? (so far used only for event tracking)
+  },
+
+  events : {
+    "click .js-actor-avatar-link" : "_goToActorPersonalRoll"
   },
 
   initialize : function(){
@@ -13,7 +18,7 @@ libs.shelbyGT.LikerAvatarItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   template : function(obj){
-    return SHELBYJST['liker-avatar-item'](obj);
+    return SHELBYJST['actor-avatar-item'](obj);
   },
 
   render : function(){
@@ -24,11 +29,17 @@ libs.shelbyGT.LikerAvatarItemView = libs.shelbyGT.ListItemView.extend({
     }
 
     this.$el.html(this.template({
+      actorDescription : this.options.actorDescription,
       user : this.model,
       userDescription : userDesc,
       eventTrackingCategory : this.options.eventTrackingCategory
     }));
     return this;
+  },
+
+  _goToActorPersonalRoll : function(e) {
+      shelby.router.navigate('user/' + this.model.id + '/personal_roll', {trigger:true});
+      e.preventDefault();
   }
 
 });

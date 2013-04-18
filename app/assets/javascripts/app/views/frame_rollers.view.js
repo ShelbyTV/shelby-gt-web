@@ -62,7 +62,10 @@ libs.shelbyGT.FrameRollersView = Support.CompositeView.extend({
         collection : rollersCollection,
         doStaticRender : true,
         el : this.$('.js-liker-avatars-list'),
-        listItemView : 'LikerAvatarItemView'
+        listItemView : 'ActorAvatarItemView',
+        listItemViewAdditionalParams : {
+          actorDescription : 'roller'
+        }
       }));
     }
 
