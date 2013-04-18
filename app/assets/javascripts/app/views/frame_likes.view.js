@@ -49,7 +49,10 @@ libs.shelbyGT.FrameLikesView = Support.CompositeView.extend({
         collection : likersCollection,
         doStaticRender : true,
         el : this.$('.js-liker-avatars-list'),
-        listItemView : 'LikerAvatarItemView'
+        listItemView : 'ActorAvatarItemView',
+        listItemViewAdditionalParams : {
+          actorDescription : 'liker'
+        }
       }));
     }
 
