@@ -5,13 +5,11 @@ libs.shelbyGT.LikerAvatarItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   initialize : function(){
-    this.model.bind('change:has_shelby_avatar', this.render, this);
-    this.model.bind('change:personal_roll_subdomain', this.render, this);
+    this.model.bind('change:has_shelby_avatar change:personal_roll_subdomain change:user_type', this.render, this);
   },
 
   _cleanup : function(){
-    this.model.unbind('change:has_shelby_avatar', this.render, this);
-    this.model.unbind('change:personal_roll_subdomain', this.render, this);
+    this.model.unbind('change:has_shelby_avatar change:personal_roll_subdomain change:user_type', this.render, this);
   },
 
   template : function(obj){
@@ -19,8 +17,15 @@ libs.shelbyGT.LikerAvatarItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   render : function(){
+    var userDesc = this.model.get('nickname');
+    if (this.model.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.faux) {
+      var service = this.model.get('authentications')[0].provider;
+      userDesc += ' via ' + _(service).capitalize();
+    }
+
     this.$el.html(this.template({
       user : this.model,
+      userDescription : userDesc,
       eventTrackingCategory : this.options.eventTrackingCategory
     }));
     return this;
