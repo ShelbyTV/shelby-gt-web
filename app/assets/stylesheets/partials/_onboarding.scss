@@ -7,13 +7,23 @@
   width: 92px;
 }
 
+//------------------------------------------------------------------------------
+//  non-normative overrides
+  .shelby-header--onboarding {
+    font-size: 4.7em;
+    padding-top: 0.25em;
+    text-align: center;
+    z-index: 5;
+  }
 
+//------------------------------------------------------------------------------
 //block
 .onboarding__wrapper {
   background-color: $base-frame;
   height: 100%;
   left: 0;
   overflow-y: auto;
+  padding-top: 7em;
   position: absolute;
   top: 0;
   width: 100%;
