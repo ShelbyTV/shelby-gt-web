@@ -146,6 +146,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         model : this.model
       }));
 
+      this.renderChild(new libs.shelbyGT.FrameRollersView({
+        el : this.$('.js-frame-rollers'),
+        model : this.model
+      }));
+
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }
 
