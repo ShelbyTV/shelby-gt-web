@@ -96,3 +96,9 @@ $icons:
     color: #EE4C4C;
   }
 }
+
+.icon-videocard_roll--green {
+  &:before {
+    color: darken(#6cbc45,5%);
+  }
+}

@@ -4,7 +4,7 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
 
   events : {
     "click .js-follow-button:not(.js-busy)" : "_followOrUnfollowRoll",
-    "click .js-subscribe-button"            : "_onSubscribe"
+    "click .js-signup-button"            : "_onSignup"
   },
 
   template : function(obj){
@@ -220,6 +220,17 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
     } else {
       this.$('.js-follow-button').hide();
     }
+   },
+
+   _onSignup : function(){
+    var currentRoll = this.options.guideModel.get('activeFrameModel').get('roll');
+    Backbone.Events.trigger('show:emailCollection');
+    shelby.trackEx({
+      providers : ['ga'],
+      gaCategory : 'User Profile',
+      gaAction : 'Click Signup',
+      gaLabel : 'on '+currentRoll.get('title')
+    });
    },
 
   _onSubscribe: function(){
