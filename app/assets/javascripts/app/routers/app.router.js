@@ -124,7 +124,8 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
       shelby.views.emailCollection = shelby.views.emailCollection ||
         new libs.shelbyGT.emailCollection({
-          el : '.js-email-collection'
+          el : '.js-email-collection',
+          guide: shelby.models.guide
       });
 
       this._reroute();
