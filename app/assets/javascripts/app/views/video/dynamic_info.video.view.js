@@ -155,7 +155,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     }
 
     // don't always show this, should not be probabilistic in the end. should be "smart" eventually
-    if (!this._shouldShowDVI(1)) return;
+    if (!this._shouldShowDVI(0.5)) return;
 
     if (shelby.models.user.isAnonymous()){
       this._cardType = 'like';
