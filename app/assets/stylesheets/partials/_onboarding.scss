@@ -9,6 +9,20 @@
 
 //------------------------------------------------------------------------------
 //  non-normative overrides
+  .shelby--signup {
+    font-size: 0.95em;
+    text-align: center;
+
+    .onboarding__wrapper {
+      padding-top: 4.6em;
+    }
+
+    .shelby-header--onboarding {
+      font-size: 3.1em;
+    }
+
+  }
+
   .shelby-header--onboarding {
     font-size: 4.7em;
     padding-top: 0.25em;
@@ -101,6 +115,7 @@
 }
 
 .onboarding__avatar {
+  border: 1px solid #c7c7c7;
   height: 5em;
   margin-bottom: 1em;
   width: 5em;

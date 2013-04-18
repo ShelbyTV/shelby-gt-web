@@ -12,7 +12,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     "keyup #js-onboarding-username-input" : "_onUsernameInputKeyup",
     "keyup #js-onboarding-pwd-input"      : "_onPwdInputKeyup",
     "keyup #js-onboarding-email-input"    : "_onEmailInputKeyup",
-    "click .js-onboarding-next-step"      : "_onNextStepClick"
+    "click .js-signup-with-email"         : "_onNextStepClick"
   },
 
   initialize : function(){

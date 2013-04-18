@@ -1,35 +1,63 @@
 <%
   var username = shelby.models.user.get('nickname');
 %>
-<section class="onboarding__lining onboarding__lining--init-signup">
+<section class="onboarding__lining onboarding__lining--signup-form">
   <div class="onboarding__head">
-    <h3 class="onboarding__h3">
-      Step 1 of 2
-    </h3>
-
     <h1 class="onboarding__h1">
-      Shelby turns the web into your personal TV channel
+      Create your account
     </h1>
-
-    <h2 class="onboarding__h2">
-      Connect with
-    </h2>
-  </div><!-- eo onboarding__head -->
+ </div><!-- eo onboarding__head -->
 
   <div class="onboarding__body">
+    <h2 class="onboarding__social-connect onboarding__social-connect--facebook">
+      <span class="icon icon-social_facebook"></span> Connected as <strong>Vincent Iadevaia</strong>
+    </h2>
 
-    <a href="#" class="button_primer button_standard button_facebook-blue onboarding__button--social one-quarter">
-      <span class="icon icon-social_facebook"></span> Facebook
-    </a>
+    <h2 class="onboarding__social-connect onboarding__social-connect--twitter">
+      <span class="icon icon-social_twitter"></span> Connected as <strong>@vondoom</strong>
+    </h2>
 
-    <a href="#" class="button_primer button_standard button_twitter-blue onboarding__button--social one-quarter">
-      <span class="icon icon-social_twitter"></span> Twitter
-    </a>
+    <form action="/" class="form_module">
+      <fieldset class="form_fieldset">
+        <div class="avatar"></div>
+      </fieldset>
 
-    <hr class="hr hr--double" />
+      <fieldset class="form_fieldset">
+        <label for="full-name" class="form_label">Full Name</label>
+        <input type="text" class="form_input" id="full-name" placeholder="First and Last Name" />
+      </fieldset>
 
-    <p class="onboarding__block">
-      or, sign up with <a href="#" class="onboarding__anchor">your email address.</a>
-    </p>
+      <fieldset class="form_fieldset">
+        <label for="user-name" class="form_label">Username</label>
+        <input type="text" class="form_input" id="user-name" placeholder="" />
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <label for="email-address" class="form_label">Email Address</label>
+        <input type="text" class="form_input" id="email-address" placeholder="email@address.com" />
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <label for="password" class="form_label">Password</label>
+        <input type="password" class="form_input" id="password" placeholder="•••••••" />
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <input type="checkbox" class="form_checkbox form_checkbox--inline" id="follow-shelby" checked />
+        <label for="follow-shelby" class="form_label form_label--inline">Follow @shelby</label>
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <input type="checkbox" class="form_checkbox form_checkbox--inline" id="facebook-timeline" checked />
+        <label for="facebook-timeline" class="form_label form_label--inline">Publish activity to Facebook Timeline</label>
+      </fieldset>
+
+      <fieldset class="form_fieldset form_fieldset--submit">
+        <button class="button_primer button_standard button_default onboarding__button form_submit">
+          Create Account
+        </button>
+      </fieldset>
+    </form>
+
   </div><!-- eo onboarding__body -->
-</section><!-- eo onboarding__lining--init-signup -->
+</section><!-- eo onboarding__lining--signup-form -->
