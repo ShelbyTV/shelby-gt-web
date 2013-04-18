@@ -20,9 +20,12 @@ $active-list-item: $shelby-blue;
       color: adjust-lightness($active-list-item, 50%);
     }
 
-    .frame-likes.icon-heart--red {
-      &:before {
-        color: #156B86;
+    .frame-likes{
+      &.icon-heart--red,
+      &.icon-videocard_roll--green {
+        &:before {
+          color: #156B86;
+        }
       }
     }
 
@@ -138,7 +141,7 @@ $active-list-item: $shelby-blue;
     }
   }
 }
-å
+
 //------------------------------------------------------------------------------
 //  frame creator block,
 //  base: media obj.
@@ -436,10 +439,12 @@ $active-list-item: $shelby-blue;
   height: 2.3em;
   overflow: hidden;
 
-  &.icon-heart {
+  &.icon-heart,
+  &.icon-videocard_roll {
     &:before {
       display: inline;
-      line-height: 2.3em;
+      font-size: 1.4em;
+      vertical-align: -3px;
     }
   }
 }
@@ -449,13 +454,14 @@ $active-list-item: $shelby-blue;
 }
 
 .frame-likes-avatars {
-  display: inline;
+  display: inline-block;
 
   &.list {
     margin: 0 0.22em 0 0.4em;
   }
 
   &.no-liker-avatars {
+    margin: 0;
     & + .frame-likes-count {
       margin-left: 0.22em;
     }
