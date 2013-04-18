@@ -3,48 +3,52 @@
 window.onload = function() {
 	function addIcon(el, entity) {
 		var html = el.innerHTML;
-		el.innerHTML = '<span style="font-family: \'Shelby\'">' + entity + '</span>' + html;
+		el.innerHTML = '<span style="font-family: \'icomoon\'">' + entity + '</span>' + html;
 	}
 	var icons = {
-			'icon-videocard_roll' : '&#xe000;',
-			'icon-videocard_queue' : '&#xe001;',
-			'icon-videocard_comment' : '&#xe002;',
-			'icon-star' : '&#xe003;',
-			'icon-social_twitter' : '&#xe004;',
-			'icon-social_tumblr' : '&#xe005;',
-			'icon-social_facebook' : '&#xe006;',
-			'icon-shortlink' : '&#xe007;',
-			'icon-share' : '&#xe008;',
-			'icon-search' : '&#xe009;',
-			'icon-player_sound_on' : '&#xe00a;',
-			'icon-player_sound_off' : '&#xe00b;',
-			'icon-player_play' : '&#xe00c;',
-			'icon-player_pause' : '&#xe00d;',
-			'icon-player_fullscreen_enable' : '&#xe00e;',
-			'icon-player_fullscreen_disable' : '&#xe00f;',
-			'icon-missing_thumb' : '&#xe010;',
-			'icon-iphone' : '&#xe011;',
-			'icon-heart' : '&#xe012;',
-			'icon-HD' : '&#xe013;',
-			'icon-embed' : '&#xe014;',
-			'icon-email' : '&#xe015;',
-			'icon-comment_reply' : '&#xe016;',
-			'icon-chevron' : '&#xe017;',
-			'icon-carrot' : '&#xe018;',
-			'icon-cancel' : '&#xe019;',
-			'icon-avatar' : '&#xe01a;',
-			'icon-arrow_up' : '&#xe01b;',
-			'icon-arrow_right' : '&#xe01c;',
-			'icon-arrow_left' : '&#xe01d;',
-			'icon-arrow_down' : '&#xe01e;',
-			'icon-whole' : '&#xe01f;',
-			'icon-type' : '&#xe020;',
-			'icon-mark' : '&#xe021;'
+			'icon-whole' : '&#xe000;',
+			'icon-type' : '&#xe001;',
+			'icon-mark' : '&#xe002;',
+			'icon-videocard_roll' : '&#xe003;',
+			'icon-videocard_queue' : '&#xe004;',
+			'icon-videocard_comment' : '&#xe005;',
+			'icon-trending' : '&#xe006;',
+			'icon-star' : '&#xe007;',
+			'icon-social_twitter' : '&#xe008;',
+			'icon-social_tumblr' : '&#xe009;',
+			'icon-social_facebook' : '&#xe00a;',
+			'icon-shortlink' : '&#xe00b;',
+			'icon-share' : '&#xe00c;',
+			'icon-search' : '&#xe00d;',
+			'icon-player_sound_on' : '&#xe00e;',
+			'icon-player_sound_off' : '&#xe00f;',
+			'icon-player_play' : '&#xe010;',
+			'icon-player_pause' : '&#xe011;',
+			'icon-player_fullscreen_enable' : '&#xe012;',
+			'icon-player_fullscreen_disable' : '&#xe013;',
+			'icon-missing_thumb' : '&#xe014;',
+			'icon-iphone' : '&#xe015;',
+			'icon-heart' : '&#xe016;',
+			'icon-HD' : '&#xe017;',
+			'icon-embed' : '&#xe018;',
+			'icon-email' : '&#xe019;',
+			'icon-comment_reply' : '&#xe01a;',
+			'icon-chevron' : '&#xe01b;',
+			'icon-carrot' : '&#xe01c;',
+			'icon-cancel' : '&#xe01d;',
+			'icon-avatar' : '&#xe01e;',
+			'icon-arrow_up' : '&#xe01f;',
+			'icon-arrow_right' : '&#xe020;',
+			'icon-arrow_left' : '&#xe021;',
+			'icon-arrow_down' : '&#xe022;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;
-	for (i = 0; i < els.length; i += 1) {
+	for (i = 0; ; i += 1) {
 		el = els[i];
+		if(!el) {
+			break;
+		}
 		attr = el.getAttribute('data-icon');
 		if (attr) {
 			addIcon(el, attr);

@@ -125,6 +125,16 @@
     //videoplayer adjustments --------------------------------------------------
     .videoplayer-nav__btn {
       margin-top: -22px;
+      top: 50%;
+    }
+
+    .videoplayer-nav__btn--next {
+      right: $defaultMargin;
+      left: auto;
+    }
+
+    .videoplayer-nav__btn--prev {
+
     }
 
     .videoplayer-nav__btn--fullscreen {
