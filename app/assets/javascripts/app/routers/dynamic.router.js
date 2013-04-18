@@ -208,20 +208,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     var randomChannelKey = channelKeys[_.random(channelKeys.length - 1)];
     this.navigate('channels/' + randomChannelKey, {trigger: false, replace: true});
     this.displayChannel(randomChannelKey, params);
-
-    // track page view
-    if (params && params.src == "chrome-channels-app"){
-      shelby.trackEx({
-        providers : ['ga', 'kmq'],
-        gaCategory : "#Channels Chrome App",
-        gaAction : 'Loaded',
-        gaLabel : shelby.models.user.get('nickname'),
-        kmqProperties : { channel : randomChannelKey }
-      });
-      try {
-        _gaq.push(['_trackPageview', '/channels?src='+params.src]);
-      } catch(e) {}
-    }
   },
 
   displayChannel : function(channel, params){
@@ -233,7 +219,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       this.navigate('channels/' + _.keys(shelby.config.channelsForNav)[0], {trigger: true, replace: true});
     }
 
-    this._doChannelTracking(channel);
+    this._doChannelTracking(channel, params);
 
   },
 
@@ -260,7 +246,22 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   },
 
-  _doChannelTracking : function(channel) {
+  _doChannelTracking : function(channel, params) {
+    // track page view
+    if (params && params.src == "chrome-channels-app"){
+      shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : "#Channels Chrome App",
+        gaAction : 'Loaded',
+        gaLabel : shelby.models.user.get('nickname'),
+        kmqName : "Loaded #Channels Chrome App",
+        kmqProperties : { channel : channel }
+      });
+      try {
+        _gaq.push(['_trackPageview', '/channels?src='+params.src]);
+      } catch(e) {}
+    }
+
     // send page view to GA
     if(shelby.routeHistory.length !== 0){
       try {
