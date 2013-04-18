@@ -9,7 +9,7 @@ libs.shelbyGT.FrameLikesView = Support.CompositeView.extend({
   },
 
   template : function(obj){
-    return SHELBYJST['frame-likes'](obj);
+    return SHELBYJST['frame-actions-counts'](obj);
   },
 
   initialize : function() {
@@ -37,8 +37,7 @@ libs.shelbyGT.FrameLikesView = Support.CompositeView.extend({
 
     this.$el.html(this.template({
       likers : likersToDisplay,
-      remainingLikes : remainingLikes,
-      totalLikes : likeInfo.totalLikes
+      remainingLikes : remainingLikes
     }));
 
     this.$el.toggleClass('frame-likes--hide', likeInfo.totalLikes == 0);
