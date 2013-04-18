@@ -111,6 +111,53 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
     }
 
     return result;
+  },
+  
+  primaryDashboardEntryIsPrioritized : function(){
+    return this.has('primaryDashboardEntry') && this.get('primaryDashboardEntry').get('action') == 30;
+  },
+  
+  getFriendLikerInfo : function(includeFrameCreator) {
+    if(this.primaryDashboardEntryIsPrioritized()){
+      var likers = this.getFriendInfo('friend_likers', includeFrameCreator);
+      return {likers: likers, totalLikes: likers.length};
+    } else {
+      return null;
+    }
+  },
+  
+  getFriendRollerInfo : function(includeFrameCreator) {
+    if(this.primaryDashboardEntryIsPrioritized()){
+      var rollers = this.getFriendInfo('friend_rollers', includeFrameCreator);
+      return {rollers: rollers, totalRollers: rollers.length};
+    } else {
+      return null;
+    }
+  },
+  
+  getFriendViewerAndCompleteViewerInfo : function(includeFrameCreator) {
+    if(this.primaryDashboardEntryIsPrioritized()){
+      var viewers = this.getFriendInfo('friend_viewers', includeFrameCreator);
+      viewers.add(this.getFriendInfo('friend_complete_viewers', includeFrameCreator).models);
+      return {viewers: viewers, totalViewers: viewers.length};
+    } else {
+      return null;
+    }
+  },
+    
+  getFriendInfo : function(friendType, includeFrameCreator){
+    var users = new libs.shelbyGT.UserCollection(),
+    creator = this.getFirstFrame().get('creator');
+      
+    //creating a bunch of non-user models b/c relational creates an infinate loop
+    _(this.get('primaryDashboardEntry').get(friendType)).each( function(userJson){
+      var userModel = new Backbone.Model(userJson);
+      if(includeFrameCreator || userModel.id !== creator.id){
+        users.add(userModel);
+      }
+    });
+    
+    return users;
   }
 
 });

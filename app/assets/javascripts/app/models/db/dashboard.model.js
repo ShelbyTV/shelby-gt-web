@@ -16,6 +16,8 @@ libs.shelbyGT.DashboardModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var channel = this.get('channel');
     if (channel) {
       return shelby.config.apiRoot + '/user/' + shelby.config.channels[channel].id + '/dashboard';
+    } else if (this.get('prioritizedDashboard')){
+      return shelby.config.apiRoot+'/prioritized_dashboard';
     } else {
       return shelby.config.apiRoot+'/dashboard';
     }

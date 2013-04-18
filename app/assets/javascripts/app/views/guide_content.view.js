@@ -22,6 +22,7 @@
     _listView : null,
 
     _dashboardMasterCollection : null,
+    _prioritizedDashboardMasterCollection : null,
 
     _currentChannelMasterCollection : null,
     _currentChannelView : null,
@@ -32,6 +33,7 @@
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('reposition', this._onReposition, this);
       this._dashboardMasterCollection = new Backbone.Collection();
+      this._prioritizedDashboardMasterCollection = new Backbone.Collection();
       if (shelby.models.dashboard) {
         this._dashboardMasterCollection.reset(shelby.models.dashboard.get('dashboard_entries').models);
       }
@@ -79,6 +81,7 @@
 
       switch (currentDisplayState) {
         case DisplayState.dashboard :
+        case DisplayState.prioritizedDashboard :
         case DisplayState.channel :
           var doSmartRefresh;
           var masterCollection;
@@ -87,6 +90,10 @@
             doSmartRefresh = !this._dashboardMasterCollection.isEmpty();
             masterCollection = this._dashboardMasterCollection;
             _playlistType = libs.shelbyGT.PlaylistType.dashboard;
+          } else if (currentDisplayState == DisplayState.prioritizedDashboard) {
+            doSmartRefresh = false;
+            masterCollection = this._prioritizedDashboardMasterCollection;
+            _playlistType = libs.shelbyGT.PlaylistType.prioritizedDashboard;
           } else {
             doSmartRefresh = false;
             masterCollection = this._currentChannelMasterCollection = new Backbone.Collection();

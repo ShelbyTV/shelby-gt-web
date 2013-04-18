@@ -1,4 +1,12 @@
 <ul class="js-content-selector guide-nav-list clearfix">
+  <% if (!shelby.models.user.isAnonymous()) { %>
+    <li class="guide-nav-item">
+      <button class="nav-button js-primetime js-track-event" data-ga_category="Header" data-ga_action="Primetime" data-ga_label='<%= shelby.models.user.get('nickname') %>'  >
+        Primetime
+      </button>
+    </li>
+  <% } %>
+  
   <li class="guide-nav-item">
     <button class="nav-button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= shelby.models.user.get('nickname') %>'  >
       Stream

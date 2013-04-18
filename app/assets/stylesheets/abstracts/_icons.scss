@@ -102,3 +102,9 @@ $icons:
     color: darken(#6cbc45,5%);
   }
 }
+
+.icon-watched--blue {
+  &:before {
+    color: #0590c4;
+  }
+}

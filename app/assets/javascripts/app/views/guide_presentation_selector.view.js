@@ -8,12 +8,13 @@
   libs.shelbyGT.GuidePresentationSelectorView = Support.CompositeView.extend({
 
     events : {
-      "click .js-stream:not(.active-item)"   : "_goToStream",
-      "click .js-queue:not(.active-item)"    : "_goToQueue",
-      "click .js-channels"                   : "_goToChannels",
-      "click .js-me:not(.active-item)"       : "_goToMe",
-      "click .js-mail"                       : "_goToMail",
-      "click .js-admin"                      : "_goToAdmin"
+      "click .js-stream:not(.active-item)"      : "_goToStream",
+      "click .js-primetime:not(.active-item)"   : "_goToPrimetime",
+      "click .js-queue:not(.active-item)"       : "_goToQueue",
+      "click .js-channels"                      : "_goToChannels",
+      "click .js-me:not(.active-item)"          : "_goToMe",
+      "click .js-mail"                          : "_goToMail",
+      "click .js-admin"                         : "_goToAdmin"
     },
 
     /*el : '#js-guide-presentation-selector',*/
@@ -54,6 +55,11 @@
         shelby.router.navigate('stream', {trigger: true});
         shelby.models.userDesires.set({guideShown: true});
       }
+    },
+
+    _goToPrimetime : function(e){
+      shelby.router.navigate('primetime', {trigger: true});
+      shelby.models.userDesires.set({guideShown: true});
     },
 
     _goToChannels : function(e) {
@@ -117,6 +123,8 @@
         $setSelectedClassOn = this.$('.js-me');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
         $setSelectedClassOn = this.$('.js-stream');
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.prioritizedDashboard) {
+        $setSelectedClassOn = this.$('.js-primetime');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
         $setSelectedClassOn = this.$('.js-channels');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {

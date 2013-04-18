@@ -27,7 +27,12 @@ libs.shelbyGT.FrameLikesView = Support.CompositeView.extend({
 
   render : function(){
     //calculate liker info
-    var likeInfo = this.model.getCombinedLikeInfo();
+    var likeInfo;
+    if (this.model.primaryDashboardEntryIsPrioritized()){
+      likeInfo = this.model.getFriendLikerInfo(true);
+    } else {
+      likeInfo = this.model.getCombinedLikeInfo();
+    }
     var likersCollection = new libs.shelbyGT.UserCollection();
     var likersToDisplay = likeInfo.likers.models.slice(0, this.options.numAvatarsDisplayed);
     if (likersToDisplay.length) {

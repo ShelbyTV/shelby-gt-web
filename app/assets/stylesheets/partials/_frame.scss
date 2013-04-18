@@ -22,7 +22,8 @@ $active-list-item: $shelby-blue;
 
     .frame-likes{
       &.icon-heart--red,
-      &.icon-videocard_roll--green {
+      &.icon-videocard_roll--green,
+      &.icon-watched--blue {
         &:before {
           color: #156B86;
         }
@@ -440,7 +441,8 @@ $active-list-item: $shelby-blue;
   overflow: hidden;
 
   &.icon-heart,
-  &.icon-videocard_roll {
+  &.icon-videocard_roll,
+  &.icon-watched {
     &:before {
       display: inline;
       font-size: 1.4em;

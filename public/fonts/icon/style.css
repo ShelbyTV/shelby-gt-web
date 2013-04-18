@@ -27,7 +27,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-whole, .icon-type, .icon-mark, .icon-videocard_roll, .icon-videocard_queue, .icon-videocard_comment, .icon-trending, .icon-star, .icon-social_twitter, .icon-social_tumblr, .icon-social_facebook, .icon-shortlink, .icon-share, .icon-search, .icon-player_sound_on, .icon-player_sound_off, .icon-player_play, .icon-player_pause, .icon-player_fullscreen_enable, .icon-player_fullscreen_disable, .icon-missing_thumb, .icon-iphone, .icon-heart, .icon-HD, .icon-embed, .icon-email, .icon-comment_reply, .icon-chevron, .icon-carrot, .icon-cancel, .icon-avatar, .icon-arrow_up, .icon-arrow_right, .icon-arrow_left, .icon-arrow_down {
+.icon-whole, .icon-type, .icon-mark, .icon-videocard_roll, .icon-videocard_queue, .icon-videocard_comment, .icon-trending, .icon-star, .icon-social_twitter, .icon-social_tumblr, .icon-social_facebook, .icon-shortlink, .icon-share, .icon-search, .icon-player_sound_on, .icon-player_sound_off, .icon-player_play, .icon-player_pause, .icon-player_fullscreen_enable, .icon-player_fullscreen_disable, .icon-missing_thumb, .icon-iphone, .icon-heart, .icon-HD, .icon-embed, .icon-email, .icon-comment_reply, .icon-chevron, .icon-carrot, .icon-cancel, .icon-avatar, .icon-arrow_up, .icon-arrow_right, .icon-arrow_left, .icon-arrow_down, .icon-watched {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -141,4 +141,7 @@ you can use the generic selector below, but it's slower:
 }
 .icon-arrow_down:before {
 	content: "\e022";
+}
+.icon-watched:before {
+	content: "\e023";
 }

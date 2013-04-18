@@ -40,7 +40,8 @@ window.onload = function() {
 			'icon-arrow_up' : '&#xe01f;',
 			'icon-arrow_right' : '&#xe020;',
 			'icon-arrow_left' : '&#xe021;',
-			'icon-arrow_down' : '&#xe022;'
+			'icon-arrow_down' : '&#xe022;',
+			'icon-watched' : '&#xe023;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

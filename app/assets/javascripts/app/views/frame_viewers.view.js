@@ -1,4 +1,4 @@
-libs.shelbyGT.FrameRollersView = Support.CompositeView.extend({
+libs.shelbyGT.FrameViewersView = Support.CompositeView.extend({
 
   _frame : null,
 
@@ -26,40 +26,34 @@ libs.shelbyGT.FrameRollersView = Support.CompositeView.extend({
   },
 
   render : function(){
-    //calculate roller info
-    var rollersCollection = new libs.shelbyGT.UserCollection(),
-    rollersToDisplay, remainingRollers;
-
+    //calculate viewer info
+    var actorsCollection = new libs.shelbyGT.UserCollection(),
+    actorsToDisplay = [], 
+    remainingActors = 0;
+    
     if (this.model.primaryDashboardEntryIsPrioritized()){
-      var rollerInfo = this.model.getFriendRollerInfo(false);
-      rollersToDisplay = rollerInfo.rollers.models.slice(0, this.options.numAvatarsDisplayed);
-      if (rollersToDisplay.length) {
-        rollersCollection.add(rollersToDisplay);
+      var viewerInfo = this.model.getFriendViewerAndCompleteViewerInfo(false);
+      actorsToDisplay = viewerInfo.viewers.models.slice(0, this.options.numAvatarsDisplayed);
+      if (actorsToDisplay.length) {
+        actorsCollection.add(actorsToDisplay);
       }
-      remainingRollers = rollerInfo.totalRollers - rollersToDisplay.length;
+      remainingActors = viewerInfo.totalViewers - actorsToDisplay.length;
     } else {
-      var dupeFrames = this.model.getDuplicateFramesToDisplay();
-      rollersToDisplay = _(dupeFrames.slice(0, this.options.numAvatarsDisplayed)).map(function(frame) {
-        return frame.get('creator');
-      });
-      if (rollersToDisplay.length) {
-        rollersCollection.add(rollersToDisplay);
-      }
-      remainingRollers = dupeFrames.length - rollersToDisplay.length;
+      //nothing, only showing watchers on prioritized dashboard entries
     }
 
     this.$el.html(this.template({
-      likers : rollersToDisplay,
-      remainingLikes : remainingRollers
+      likers : actorsToDisplay,
+      remainingLikes : remainingActors
     }));
 
-    this.$el.toggleClass('frame-likes--hide', rollersToDisplay.length == 0);
+    this.$el.toggleClass('frame-likes--hide', actorsToDisplay.length == 0);
 
-    if (rollersToDisplay.length) {
-      // render the rollers' avatars, now if they've already arrived, or via event handling
+    if (actorsToDisplay.length) {
+      // render the actors' avatars, now if they've already arrived, or via event handling
       // later if the ajax hasn't returned yet
       this.renderChild(new libs.shelbyGT.ListView({
-        collection : rollersCollection,
+        collection : actorsCollection,
         doStaticRender : true,
         el : this.$('.js-liker-avatars-list'),
         listItemView : 'LikerAvatarItemView'
