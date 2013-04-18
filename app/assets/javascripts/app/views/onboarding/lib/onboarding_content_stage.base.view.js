@@ -1,6 +1,6 @@
 libs.shelbyGT.OnboardingContentStageBaseView = Support.CompositeView.extend({
 
-  className : 'onboarding-content-wrapper',
+  className : 'onboarding',
 
   template : function(obj){
     return SHELBYJST['onboarding/onboarding-content-stage-'+this.options.stage](obj);

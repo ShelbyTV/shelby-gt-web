@@ -8,7 +8,6 @@ libs.shelbyGT.OnboardingLayoutView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template());
-    this.renderChild(new libs.shelbyGT.OnboardingGuideView());
     this.renderChild(new libs.shelbyGT.OnboardingContentSwitcherView());
   }
 

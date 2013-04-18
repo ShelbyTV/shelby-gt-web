@@ -1,54 +1,63 @@
-<div class="onboarding_layout_head onboarding-head clearfix">
-  <h1 class="onboarding-header">
-    Program your personal Shelby stream
-  </h1>
+<%
+  var username = shelby.models.user.get('nickname');
+%>
+<section class="onboarding__lining onboarding__lining--signup-form">
+  <div class="onboarding__head">
+    <h1 class="onboarding__h1">
+      Create your account
+    </h1>
+ </div><!-- eo onboarding__head -->
 
-  <h2 class="onboarding-subheader">
-    <span class="onboarding-follow-more-count js-onboarding-follow-more-count">Try following some rolls</span>
-  </h2>
+  <div class="onboarding__body">
+    <h2 class="onboarding__social-connect onboarding__social-connect--facebook">
+      <span class="icon icon-social_facebook"></span> Connected as <strong>Vincent Iadevaia</strong>
+    </h2>
 
-  <div class="onboarding-next-step-wrapper">
-    <button class="js-onboarding-next-step button_primer button_blue button_standard onboarding-stage-2-next-step">
-      Skip
-    </button>
+    <h2 class="onboarding__social-connect onboarding__social-connect--twitter">
+      <span class="icon icon-social_twitter"></span> Connected as <strong>@vondoom</strong>
+    </h2>
 
-    <span class="onboarding-next-step-counter">
-      Step 2 of 3
-    </span>
-  </div>
-</div><!-- eo .onboarding_layout_head -->
+    <form action="/" class="form_module">
+      <fieldset class="form_fieldset">
+        <div class="avatar"></div>
+      </fieldset>
 
-<div class="onboarding_layout_body onboarding-body onboarding-stage-2 clearfix">
-  <ol class="onboarding-category-list clearfix">
-    <% rollCategories.get('roll_categories').forEach(function(category){ %>
-      <li class="onboarding-category-item">
-        <div class="onboarding-category-item-lining">
-          <h3 class="onboarding-category-header">
-            <%= category.get('category_title') %>
-          </h3>
+      <fieldset class="form_fieldset">
+        <label for="full-name" class="form_label">Full Name</label>
+        <input type="text" class="form_input" id="full-name" placeholder="First and Last Name" />
+      </fieldset>
 
-          <ol class="onboarding_list_module onboarding-roll-list clearfix">
-            <% category.get('rolls').forEach(function(roll){ %>
-              <li class="onboarding-roll-item js-onboarding-roll-item">
-                <button data-roll_id="<%= roll.id %>" class="onboarding-roll-button js-onboarding-roll-button js-follow-unfollow">
-                  <h4 class="onboarding-roll-head">
-                    <%= roll.get('display_title') %>
-                  </h4>
+      <fieldset class="form_fieldset">
+        <label for="user-name" class="form_label">Username</label>
+        <input type="text" class="form_input" id="user-name" placeholder="" />
+      </fieldset>
 
-                  <div class="onboarding-roll-body">
-                    <div class="animate_module onboarding-roll-status">
-                      <p></p>
-                    </div>
+      <fieldset class="form_fieldset">
+        <label for="email-address" class="form_label">Email Address</label>
+        <input type="text" class="form_input" id="email-address" placeholder="email@address.com" />
+      </fieldset>
 
-                    <img src="<%= roll.get('display_thumbnail_src') %>" class="onboarding-roll-list-img" />
+      <fieldset class="form_fieldset">
+        <label for="password" class="form_label">Password</label>
+        <input type="password" class="form_input" id="password" placeholder="•••••••" />
+      </fieldset>
 
-                  </div>
-                </button>
-              </li><!-- eo onboarding-roll-item -->
-            <% }); %>
-          </ol>
-        </div><!-- eo onboarding-category-lining -->
-      </li><!-- eo onboarding-category-item -->
-    <% }); %>
-  </ol>
-</div>
+      <fieldset class="form_fieldset">
+        <input type="checkbox" class="form_checkbox form_checkbox--inline" id="follow-shelby" checked />
+        <label for="follow-shelby" class="form_label form_label--inline">Follow @shelby</label>
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <input type="checkbox" class="form_checkbox form_checkbox--inline" id="facebook-timeline" checked />
+        <label for="facebook-timeline" class="form_label form_label--inline">Publish activity to Facebook Timeline</label>
+      </fieldset>
+
+      <fieldset class="form_fieldset form_fieldset--submit">
+        <button class="button_primer button_standard button_default onboarding__button form_submit">
+          Create Account
+        </button>
+      </fieldset>
+    </form>
+
+  </div><!-- eo onboarding__body -->
+</section><!-- eo onboarding__lining--signup-form -->
