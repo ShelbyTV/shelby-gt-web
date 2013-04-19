@@ -1,10 +1,13 @@
+require 'addressable/uri'
+
 module Shelby
   class API
     include HTTParty
     base_uri "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}"
 
     def self.get_user(nickname_or_id)
-      u = get("/user/#{nickname_or_id}").parsed_response
+      uri = Addressable::URI.parse("/user/#{nickname_or_id}").normalize.to_s
+      u = get(uri).parsed_response
       return u['status'] == 200 ? u['result'] : nil
     end
 
