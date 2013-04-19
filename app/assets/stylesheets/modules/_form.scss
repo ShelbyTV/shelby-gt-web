@@ -29,6 +29,16 @@
 .form_fieldset {
   margin-top: 1em;
 }
+    //modifiers
+    .form_fieldset--error {
+      .form_input {
+        border-color: $shelby-red;
+      }
+    }
+
+.form_error {
+  color: $shelby-red;
+}
 
 .form_legend {
 
@@ -41,6 +51,9 @@
   display: block;
   line-height: 1.75;
 }
+    .form_label--inline {
+      display: inline;
+    }
 
 .form_input,
 .form_textarea {
@@ -96,6 +109,12 @@
 .form_textarea {
 
 }
+
+.form_checkbox {}
+    .form_checkbox--inline {
+      display: inline;
+      vertical-align: 1px;
+    }
 ////////////////////////////////////////////////////////////////////////////
 //  HORIZONTAL FORMS
 //

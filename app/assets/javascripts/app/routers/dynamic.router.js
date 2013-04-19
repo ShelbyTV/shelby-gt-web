@@ -352,16 +352,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._fetchQueuedVideos();
     this._fetchDashboard(options);
   },
-  
+
   displayStream : function(params){
     this.displayDashboard(params);
     
+    var _action = shelby.models.user.isAnonymous() ? 'Load stream in app signed out' : 'Load stream in app signed in';
     shelby.trackEx({
       providers : ['ga', 'kmq'],
       gaCategory : "App",
-      gaAction : 'Load stream',
+      gaAction : _action,
       gaLabel : shelby.models.user.get('nickname'),
-      kmqName : 'Load stream in app',
       kmqProperties : { user : shelby.models.user.get('nickname') }
     });
   },

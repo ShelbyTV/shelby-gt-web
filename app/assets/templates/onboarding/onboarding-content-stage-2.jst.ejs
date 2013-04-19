@@ -1,54 +1,84 @@
-<div class="onboarding_layout_head onboarding-head clearfix">
-  <h1 class="onboarding-header">
-    Program your personal Shelby stream
-  </h1>
+<%
+  var authed_providers = [];
+  if (shelby.models.user.get('authentications') != null){
+    shelby.models.user.get('authentications').forEach(function(auth){
+      authed_providers.push(auth.provider);
+    });
+  }
+%>
 
-  <h2 class="onboarding-subheader">
-    <span class="onboarding-follow-more-count js-onboarding-follow-more-count">Try following some rolls</span>
-  </h2>
+<section class="onboarding__lining onboarding__lining--personalize">
+  <div class="onboarding__head">
+    <h3 class="onboarding__h3">
+      Step 2 of 2
+    </h3>
 
-  <div class="onboarding-next-step-wrapper">
-    <button class="js-onboarding-next-step button_primer button_blue button_standard onboarding-stage-2-next-step">
-      Skip
-    </button>
+    <h1 class="onboarding__h1">
+     Personalize Your Shelby Stream
+    </h1>
 
-    <span class="onboarding-next-step-counter">
-      Step 2 of 3
-    </span>
-  </div>
-</div><!-- eo .onboarding_layout_head -->
+    <h2 class="onboarding__h2">
+      Connecting your social networks lets you watch all <br />
+      your friends' videos and tells us more about what you like.
+    </h2>
+ </div><!-- eo onboarding__head -->
 
-<div class="onboarding_layout_body onboarding-body onboarding-stage-2 clearfix">
-  <ol class="onboarding-category-list clearfix">
-    <% rollCategories.get('roll_categories').forEach(function(category){ %>
-      <li class="onboarding-category-item">
-        <div class="onboarding-category-item-lining">
-          <h3 class="onboarding-category-header">
-            <%= category.get('category_title') %>
-          </h3>
+ <div class="onboarding__body">
+    <ul class="list list--inline onboarding__list">
 
-          <ol class="onboarding_list_module onboarding-roll-list clearfix">
-            <% category.get('rolls').forEach(function(roll){ %>
-              <li class="onboarding-roll-item js-onboarding-roll-item">
-                <button data-roll_id="<%= roll.id %>" class="onboarding-roll-button js-onboarding-roll-button js-follow-unfollow">
-                  <h4 class="onboarding-roll-head">
-                    <%= roll.get('display_title') %>
-                  </h4>
+    <% ['twitter', 'facebook'].forEach(function(network){ %>
+      <%
+        var connected_network, disabled = '';
+        if( _.include(authed_providers, network) ){
+          connected_network = 'onboarding-connected-network ';
+          disabled = ' disabled ';
+        }
+      %>
 
-                  <div class="onboarding-roll-body">
-                    <div class="animate_module onboarding-roll-status">
-                      <p></p>
-                    </div>
-
-                    <img src="<%= roll.get('display_thumbnail_src') %>" class="onboarding-roll-list-img" />
-
-                  </div>
-                </button>
-              </li><!-- eo onboarding-roll-item -->
-            <% }); %>
-          </ol>
-        </div><!-- eo onboarding-category-lining -->
-      </li><!-- eo onboarding-category-item -->
+      <li class="list__item one-quarter js-onboarding-network-item">
+          <a class="button_primer<%= (disabled) ? ' button_gray-light disabled' : ' button_'+network+'-blue' %> button_standard onboarding__button--social js-authorize js-track-event"
+            data-popup_width="1000"
+            data-popup_height="650"
+            href="http://api.shelby.tv/auth/<%= network %>"
+            data-ga_action="Connect with <%= network %>">
+              <span class="icon icon-social_<%= network %>"></span> <span class="button_label capitalize"><%= network %></span>
+          </a>
+      </li>
     <% }); %>
-  </ol>
-</div>
+    </ul>
+
+    <p class="onboarding__block">
+      <small>
+        *We promise to never post without your permission. Spam sucks.
+      </small>
+    </p>
+
+    <hr class="hr--double" />
+
+    <h2 class="onboarding__h2">
+      There's most to Shelby than friends! Follow 3 (or more) <br />
+      of our favorites below to add their videos to your Stream.
+    </h2>
+    <ul class="list list--inline onboarding__list onboarding__list--rolls">
+      <% rollCategories.get('roll_categories').forEach(function(category){ %>
+        <% category.get('rolls').forEach(function(roll){ %>
+          <li class="list__item one-fifth">
+            <h4 class="onboarding__h3">
+              <%= roll.get('display_title') %>
+            </h4>
+
+            <img src="<%= roll.get('display_thumbnail_src') %>" class="onboarding__avatar" />
+
+            <button data-roll_id="<%= roll.get('id') %>" class="button_primer button_default button_wide onboarding__button js-onboarding-roll-button js-follow-unfollow">
+              Follow
+            </button>
+          </li>
+        <% }) %>
+      <% }) %>
+    </ul>
+
+    <button disabled class="button_primer button_default button_standard onboarding__button onboarding__button--large js-onboarding-next-step">
+      Follow 3 More Rolls
+    </button>
+ </div><!-- eo onboarding__body -->
+</section><!-- eo onboarding__lining--personalize -->
