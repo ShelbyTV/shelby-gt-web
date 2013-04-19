@@ -103,7 +103,12 @@ _(shelby).extend({
           break;
         case 'identify':
           _kmq.push(['identify', options.nickname]);
-          _kmq.push(['record', 'Visit App', {nickname: options.nickname}]);
+          if (options.nickname !== "anonymous"){
+            _kmq.push(['record', 'Visit App signed in', {nickname: options.nickname}]);
+          }
+          else {
+            _kmq.push(['record', 'Visit App signed out', {nickname: options.nickname}]);
+          }
           break;
         case 'avatar_upload_success':
           _gaCategory = 'Avatar';
