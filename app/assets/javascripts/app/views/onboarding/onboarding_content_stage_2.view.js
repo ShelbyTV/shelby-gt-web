@@ -17,7 +17,7 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
 
   events : {
     "click .js-onboarding-roll-button:not(.js-busy)" : "_followOrUnfollow",
-    "click .js-onboarding-next-step" : "_onNextStepClick"
+    "click .js-onboarding-next-step"                 : "_onNextStepClick"
   },
 
   initialize : function(){
@@ -38,12 +38,13 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onRollsFollwedChange : function(model, rolls_followed){
-    var $button = this.$('.js-start-watching');
+    var $button = this.$('.js-onboarding-next-step');
 
     if (rolls_followed > 2){
       $button.text('Start Watching')
-             .toggleClass('button_default disbaled',false)
-             .toggleClass('button_green',true);
+             .toggleClass('button_default',false)
+             .toggleClass('button_green',true)
+             .removeAttr('disabled');
     } else {
       var needToFollowCount = 3 - rolls_followed;
       var newText = 'Follow '+(needToFollowCount)+' more '+_('Roll').pluralize(needToFollowCount);
@@ -56,7 +57,7 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
     var appProgress = shelby.models.user.get('app_progress');
 
     shelby.models.user.get('app_progress').advanceStage('onboarding', 2);
-    shelby.router.navigate('onboarding/3', {trigger:true});
+    shelby.router.navigate('stream', {trigger:true});
 
     shelby.track('Onboarding step 2 complete', {userName: shelby.models.user.get('nickname')});
   },
