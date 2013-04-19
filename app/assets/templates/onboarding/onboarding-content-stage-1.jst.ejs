@@ -1,5 +1,11 @@
 <%
-  var facebook, twitter, tumblr, username = shelby.models.user.get('nickname');
+  var facebook,
+      twitter,
+      tumblr,
+      user = shelby.models.user,
+      primaryEmail = user.get('primary_email'),
+      fullName = user.get('name'),
+      userName = user.get('nickname');
 
   if (shelby.models.user.get('authentications') != null){
       twitter = _.find(shelby.models.user.get('authentications'), function(auth){ return auth.provider == 'twitter'});
@@ -16,7 +22,7 @@
   <div class="onboarding__body">
     <% if (facebook) { %>
       <h2 class="onboarding__social-connect onboarding__social-connect--facebook">
-        <span class="icon icon-social_facebook"></span> Connected as <strong><%= facebook.nickname %></strong>
+        <span class="icon icon-social_facebook"></span> Connected<% if (fullName) { %> as <strong><%= fullName %></strong><% } %>
       </h2>
     <% } %>
 
@@ -26,7 +32,7 @@
       </h2>
     <% } %>
 
-    <form action="/" class="form_module">
+    <form class="form_module">
       <fieldset class="form_fieldset">
         <label class="form_label visuallyhidden">
           Avatar
@@ -40,27 +46,31 @@
 
       <fieldset class="form_fieldset">
         <label for="full-name" class="form_label">Full Name</label>
-        <input type="text" class="form_input" id="full-name" placeholder="First and Last Name"/>
+        <p class="form_error hidden js-onboarding-username-input-error">Please enter your name</p>
+        <input type="text" class="form_input" id="full-name" placeholder="First and Last Name"<% if(fullName){%> value="<%= fullName %>"<%}%>/>
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label for="user-name" class="form_label">Username</label>
-        <input type="text" class="form_input" id="user-name" placeholder=""<% if(username){%> value="<%= username %>"<%}%>/>
+        <p class="form_error hidden">Please enter a username</p>
+        <input type="text" class="form_input" id="user-name" placeholder=""<% if(userName){%> value="<%= userName %>"<%}%>/>
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label for="email-address" class="form_label">Email Address</label>
-        <input type="text" class="form_input" id="email-address" placeholder="email@address.com" />
+        <p class="form_error hidden js-onboarding-email-input-error">Please enter an email address</p>
+        <input type="text" class="form_input" id="email-address" placeholder="email@address.com"<% if(primaryEmail){%> value="<%= primaryEmail %>"<%}%>/>
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label for="password" class="form_label">Password</label>
+        <p class="form_error hidden js-onboarding-pwd-input-error">Please enter a password</p>
         <input type="password" class="form_input" id="password" placeholder="•••••••" />
       </fieldset>
       <% if (facebook) { %>
         <fieldset class="form_fieldset">
           <input type="checkbox" class="form_checkbox form_checkbox--inline" id="facebook-timeline" checked />
-          <label for="facebook-timeline" class="form_label form_label--inline">Publish activity to Facebook Timeline</label>
+          <label for="facebook-timeline" class="form_label form_label--inline">I want to share videos I roll and watch on Shelby with my friends on my Facebook Timeline</label>
         </fieldset>
       <% } %>
 
@@ -72,7 +82,7 @@
       <% } %>
 
       <fieldset class="form_fieldset form_fieldset--submit">
-        <button class="button_primer button_standard button_default onboarding__button form_submit">
+        <button class="button_primer button_standard button_default onboarding__button form_submit js-onboarding-next-step">
           Create Account
         </button>
       </fieldset>
