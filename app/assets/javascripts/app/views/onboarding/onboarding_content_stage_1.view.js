@@ -94,7 +94,9 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     }
   },
 
-  _onNextStepClick : function(){
+  _onNextStepClick : function(e){
+    e.preventDefault();
+
     var self = this,
         invalidFields = this._getInvalidFields(),
         createAccountButton = this.$('.js-onboarding-next-step');

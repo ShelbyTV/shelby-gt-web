@@ -33,17 +33,8 @@ libs.shelbyGT.OnboardingContentSwitcherView = Support.CompositeView.extend({
           stage: 2
         };
       }
-    },
-    '3' : {
-      view:libs.shelbyGT.OnboardingContentStage3View,
-      opts:{stage:3}
-    },
-    '4' : {
-      view:libs.shelbyGT.OnboardingContentStage4View,
-      opts:{stage:4}
     }
   },
-
 
   render : function(){
     this._leaveChildren();
