@@ -118,22 +118,6 @@ $extension-color: #fff82b;
   margin-left: .7em;
 }
 
-.faux-bookmarklet-button {
-  @include roundies(input);
-
-  border: 1px solid #ccc;
-  font-family: $font-family-display;
-  font-size: .9em;
-  padding: .3em 0.4em .35em;
-
-  i {
-    background-image: url($icon-videocard-roll);
-    background-repeat: no-repeat;
-    background-position: center left;
-    font-style: normal;
-    padding-left: 1.2em;
-  }
-}
 //------------------------------------------------------------------------------
 //  BOOKMARKLET Notification
 //------------------------------------------------------------------------------
@@ -185,20 +169,11 @@ $bookmarklet-color: $shelby-green;
 }
 
 .faux-bookmarklet-button {
-  @include roundies(input);
-
-  border: 1px solid #ccc;
   font-family: $font-family-display;
   font-size: .9em;
+  font-weight: bold;
   padding: .3em 0.4em .35em;
 
-  i {
-    background-image: url($icon-videocard-roll);
-    background-repeat: no-repeat;
-    background-position: center left;
-    font-style: normal;
-    padding-left: 1.2em;
-  }
 }
   ////////////////////////////////////////////////////////////////////////////
   //  HELP dropdown_module

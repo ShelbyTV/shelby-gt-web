@@ -3,21 +3,27 @@
 //------------------------------------------------------------------------------
 .external-tools{
   background-color: $external-bg;
+  font-size: 1.2em;
   left: 0;
   overflow-y: auto;
   position: absolute;
   right: 0;
+  text-align: center;
   top: 0;
 }
 
 //------------------------------------------------------------------------------
 //  external; architectural
 //------------------------------------------------------------------------------
-.external-tools-lining {
-  font-size: 1.2em;
+.external-tools__head {
   padding: 3em;
-  text-align: center;
 }
+
+.externals-tools__body {
+  font-size: 1.5em;
+  padding: 0 3em;
+}
+
 
 .external-subsection {
   margin: 2em 0;
@@ -31,7 +37,6 @@
 }
 
 .external-subheader {
-  font-size: 1.5em;
 }
 
 .external-lead {
@@ -65,39 +70,32 @@
 .external-bookmarklet-button {
 }
 
-//------------------------------------------------------------------------------
-//  extension specific
-//------------------------------------------------------------------------------
-.extension-block {
-  padding-left: 1em;
-}
-
-.extension-chrome-button {
-  @include button-sizing;
-
-  font-size: 1.1em;
-
-  .icon {  background-image: url("/images/tools/chrome-icon.png");
-    padding: .25em .25em .25em 2em;
-  }
-}
-
-//------------------------------------------------------------------------------
-//  bookmarklet specific
-//------------------------------------------------------------------------------
-.external-bookmarklet {
-}
-
-.external-bookmarklet-button {
-  @include button-sizing;
-
+////////////
+//elements
+.external-tools__button {
   cursor: move !important;
   font-size: 1.1em;
+}
 
-  .icon {
-    padding-left: 1.3em;
+//framework
+.external-tools__lining {}
+.external-tools__lining--extension {
+  .extension__block {
+    padding-left: 1em;
+  }
+
+  .external-tools__button {
+    .icon {  background-image: url("/images/tools/chrome-icon.png");
+      padding: .25em .25em .25em 2em;
+    }
   }
 }
+.external-tools__lining--bookmarklet {
+  .external-tools__button {
+  }
+}
+
+
 
 
 .external-bookmarklet-caption {

@@ -1,198 +1,143 @@
-@import "base";
-//------------------------------------------------------------------------------
-//  User Preferences Page
-//------------------------------------------------------------------------------
+//preferences panel
 .preferences{
   font-size: 1.2em;
 }
+  //preferences panel framework
+  .preferences__head {
+    box-shadow: 0 1px 0 0 $outset;
+    border-bottom: 1px solid $inset;
+  }
+  .preferences__body {}
 
-.preferences-head {
-  border-bottom: 1px solid $inset;
-  font-size: 1.3em;
-  padding: $default-margin;
-}
-
-////////////////////////////////////////////////////////////////////////////
-//  abstract: used in all .form_fieldsets
-////////////////////////////////////////////////////////////////////////////
-.preferences-section {
-  border-top: 1px solid $outset;
-  border-bottom: 1px solid $inset;
-
-  margin: 0;
-  padding: $default-margin;
-}
-
-.preferences-form {
-  .form_legend {
-    font-size: 1.2em;
-    margin-bottom: 1em;
+   //elements
+  .preferences__h1 {
+    font-size: 1.3em;
+    padding: $default-margin;
   }
 
-  .form_fieldset {
-    font-size: 1em;
-    font-weight: 500;
+  .form_module--preferences {
+    .form_legend {
+      font-size: 1.2em;
+      margin-bottom: 1em;
+    }
+
+    .form_fieldset {
+      font-size: 1em;
+      font-weight: 500;
+    }
   }
-}
 
 .preferences-list {
-  .list_item {
-    margin-bottom: 1em;
-  }
 }
 
-.preferences-checkbox {
-  margin: .6em;
+.preference__checkbox {
+  margin: 0.6em;
 }
 
-////////////////////////////////////////////////////////////////////////////
-//  .form_fieldset.preferences-section.tools-section
-////////////////////////////////////////////////////////////////////////////
-.tools-section {
 
-}
-
-.tools-section-button {
-	@include roundies(input);
-
-	background: transparent;
-	border: 1px solid $inset;
-	font-family: $font-family-display;
-	padding: 1em;
-	text-align: left;
-	width: 100%;
-
-	.tools-icon {
-		display: block;
-	}
-
-	&:hover {
-		background-color: lighten($base,3%);
-		border-color: lighten($inset,2%)
-	}
-	&:active {
-		background-color: darken($base, 10%);
-		border-color: darken($inset,15%);
-	}
-}
-
-////////////////////////////////////////////////////////////////////////////
-//  .form_fieldset.preferences-section.avatar-section
-////////////////////////////////////////////////////////////////////////////
-.avatar-section {
-
-}
-
-.avatar-section-body {
-
-}
-
-.avatar-section-viewport {
-  float: left;
-  width: 48px;
-  height: 48px;
-
-  .dynamic-avatar {
-    border: 1px solid $avatar-outline;
-    width: inherit;
-    height: inherit;
-  }
-
-  .user-avatar {
-    width: 100%;
-  }
-}
-
-.avatar-section-input {
-
-}
-
-.avatar-section-input {
-  input[type=file] {
-    margin: 13px 0 0 10px;
-  }
-}
-
-////////////////////////////////////////////////////////////////////////////
-//  .form_fieldset.preferences-section.profile-section
-////////////////////////////////////////////////////////////////////////////
-.profile-section {
-
-}
-
-.profile-actions {
-  margin-top: 10px;
-  text-align: right;
-}
-
-.profile-action-cancel,
-.profile-action-save {
-  @include button-sizing;
-}
-
-////////////////////////////////////////////////////////////////////////////
-//  .form_fieldset.preferences-section.password-section
-////////////////////////////////////////////////////////////////////////////
-.password-section {
-
-}
-
-.password-actions {
-  margin-top: 10px;
-  text-align: right;
-}
-
-.password-action-save {
-  @include button-sizing;
-}
-
-////////////////////////////////////////////////////////////////////////////
-//  .form_fieldset.preferences-section.networks-section
-////////////////////////////////////////////////////////////////////////////
-.networks-section {
-
-}
-
-.networks-username {
-  float:right;
-  line-height: 2.6;
+//preferences sections block
+.preference {
+  box-shadow: 0 1px 0 0 $outset;
+  border-bottom: 1px solid $inset;
   margin: 0;
+  padding: $default-margin;
 }
+    //preferences modifiers
+    .preference--tools {
+      .icon-chevron {
+        color: $inset;
+        float: right;
+      }
+    }
+    .preference--avatar {
 
-.preferences-networks {
-  .badge {
-    font-family: $font-family-icon;
-    line-height: 2.4;
-  }
-}
+    }
+      //avatar section elements
+      //non-normative
+      .avatar-section-viewport {
+        float: left;
+        width: 48px;
+        height: 48px;
 
-.connected-network-options {
-  background-color: #eee;
-  margin: 0 0 0 27px;
-  padding: 5px;
+        .dynamic-avatar {
+          border: 1px solid $avatar-outline;
+          width: inherit;
+          height: inherit;
+        }
 
-  p {
-    line-height: 1.231;
-    margin: 0;
-  }
-}
+        .user-avatar {
+          width: 100%;
+        }
+      }
 
-.connected-network-checkbox {
-  float: right;
-}
+    .preference--profile {
+      .list_item {
+        margin-bottom: 1em;
+      }
+    }
+    .preference--password {
 
-.connected-network {
-  float:right;
-  font-size: .8em;
-}
+    }
+    .preferences--networks {
+      .preference__block {
+        float: right;
+        line-height: 2.6;
+        margin: 0;
+      }
+
+      .preference__checkbox {
+        float: right;
+      }
+
+      //non-normative
+      .badge {
+        font-family: $font-family-icon;
+        line-height: 2.2;
+      }
+
+      .list_item {
+        margin-bottom: 1em;
+      }
+    }
+    .preference--notifications {
+      .preference__checkbox {
+        float: right;
+      }
+    }
+
 
 ////////////////////////////////////////////////////////////////////////////
-//  .form_fieldset.preferences-section.notifications-section
-////////////////////////////////////////////////////////////////////////////
-.notifications-section {
+// non-normative
 
-}
+    .avatar-section-input {
+      input[type=file] {
+        margin: 13px 0 0 10px;
+      }
+    }
 
-.preferences-checkbox {
-  float: right;
-}
+    .form_actions {
+      margin-top: 10px;
+      text-align: right;
+    }
+
+
+    //block
+    .connected-network-options {
+      background-color: #eee;
+      margin: 0 0 0 27px;
+      padding: 5px;
+
+      p {
+        line-height: 1.231;
+        margin: 0;
+      }
+    }
+
+    .connected-network-checkbox {
+      float: right;
+    }
+
+    .connected-network {
+      float: right;
+      font-size: .8em;
+    }
