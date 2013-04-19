@@ -127,9 +127,10 @@
 }
 
 .onboarding__h2 {
-  font-family: $font-family;
+  font-family: $font-family-display;
   font-size: 1em;
   line-height: 1.5;
+  font-weight: 300;
   margin-bottom: 1.5em;
 }
 
@@ -199,7 +200,6 @@
     //modifiers
     .onboarding__list--rolls {
       .onboarding__button {
-        display: block;
         margin: 0 auto 2em;
       }
     }
