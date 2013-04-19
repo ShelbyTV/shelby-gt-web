@@ -28,7 +28,6 @@
 
 .form_fieldset {
   margin-top: 1em;
-
 }
     //modifiers
     .form_fieldset--error {
@@ -36,6 +35,10 @@
         border-color: $shelby-red;
       }
     }
+
+.form_error {
+  color: $shelby-red;
+}
 
 .form_legend {
 

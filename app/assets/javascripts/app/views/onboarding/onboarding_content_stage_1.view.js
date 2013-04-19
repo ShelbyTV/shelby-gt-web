@@ -9,10 +9,10 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
    */
 
   events : {
-    "keyup #js-onboarding-username-input" : "_onUsernameInputKeyup",
-    "keyup #js-onboarding-pwd-input"      : "_onPwdInputKeyup",
-    "keyup #js-onboarding-email-input"    : "_onEmailInputKeyup",
-    "click .js-signup-with-email"         : "_onNextStepClick"
+    "keyup #full-name"            : "_onUsernameInputKeyup",
+    "keyup #password"             : "_onPwdInputKeyup",
+    "keyup #email-address"        : "_onEmailInputKeyup",
+    "click .js-signup-with-email" : "_onNextStepClick"
   },
 
   initialize : function(){
@@ -44,16 +44,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
     return this;
   },
 
-  // _onUsernameChange : function(model, username){
-  //   this.$('.js-onboarding-url-username').text(username);
-  // },
-
   _onUsernameInputKeyup : function(event){
-    var usernameInput = this.$('.onboarding-username');
-    if (!usernameInput.hasClass('show-context')) {
-      usernameInput.addClass('show-context');
-    }
-
     this.model.set('nickname', $(event.currentTarget).val());
   },
 
@@ -103,13 +94,18 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onNextStepClick : function(){
-    var invalidFields = this._getInvalidFields();
+    var self = this,
+        invalidFields = this._getInvalidFields(),
+        createAccountButton = this.$('.js-onboarding-create-account');
+
     this._renderErrors(invalidFields, true);
+
     if (invalidFields.length){
       return;
     }
-    this.$('.js-onboarding-next-step').text('Working...');
-    var self = this;
+
+    createAccountButton.text('Working...');
+
     shelby.models.user.save(this.model.toJSON(), {
       success : function(){
         shelby.models.user.get('app_progress').advanceStage('onboarding', 1);

@@ -40,21 +40,25 @@
 
       <fieldset class="form_fieldset">
         <label for="full-name" class="form_label">Full Name</label>
+        <p class="form_error hidden js-onboarding-username-input-error">Please enter your name</p>
         <input type="text" class="form_input" id="full-name" placeholder="First and Last Name"/>
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label for="user-name" class="form_label">Username</label>
+        <p class="form_error hidden">Please enter a username</p>
         <input type="text" class="form_input" id="user-name" placeholder=""<% if(username){%> value="<%= username %>"<%}%>/>
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label for="email-address" class="form_label">Email Address</label>
+        <p class="form_error hidden js-onboarding-email-input-error">Please enter an email address</p>
         <input type="text" class="form_input" id="email-address" placeholder="email@address.com" />
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label for="password" class="form_label">Password</label>
+        <p class="form_error hidden js-onboarding-pwd-input-error">Please enter a password</p>
         <input type="password" class="form_input" id="password" placeholder="•••••••" />
       </fieldset>
       <% if (facebook) { %>
@@ -72,7 +76,7 @@
       <% } %>
 
       <fieldset class="form_fieldset form_fieldset--submit">
-        <button class="button_primer button_standard button_default onboarding__button form_submit">
+        <button class="button_primer button_standard button_default onboarding__button form_submit js-onboarding-create-account">
           Create Account
         </button>
       </fieldset>
