@@ -96,7 +96,7 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   _onNextStepClick : function(){
     var self = this,
         invalidFields = this._getInvalidFields(),
-        createAccountButton = this.$('.js-onboarding-create-account');
+        createAccountButton = this.$('.js-onboarding-next-step');
 
     this._renderErrors(invalidFields, true);
 
