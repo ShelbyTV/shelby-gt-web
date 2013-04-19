@@ -1,5 +1,10 @@
 <%
-  var username = shelby.models.user.get('nickname');
+  var facebook, twitter, tumblr, username = shelby.models.user.get('nickname');
+
+  if (shelby.models.user.get('authentications') != null){
+      twitter = _.find(shelby.models.user.get('authentications'), function(auth){ return auth.provider == 'twitter'});
+      facebook = _.find(shelby.models.user.get('authentications'), function(auth){ return auth.provider == 'facebook'});
+  }
 %>
 <section class="onboarding__lining onboarding__lining--signup-form">
   <div class="onboarding__head">
@@ -9,27 +14,38 @@
  </div><!-- eo onboarding__head -->
 
   <div class="onboarding__body">
-    <h2 class="onboarding__social-connect onboarding__social-connect--facebook">
-      <span class="icon icon-social_facebook"></span> Connected as <strong>Vincent Iadevaia</strong>
-    </h2>
+    <% if (facebook) { %>
+      <h2 class="onboarding__social-connect onboarding__social-connect--facebook">
+        <span class="icon icon-social_facebook"></span> Connected as <strong><%= facebook.nickname %></strong>
+      </h2>
+    <% } %>
 
-    <h2 class="onboarding__social-connect onboarding__social-connect--twitter">
-      <span class="icon icon-social_twitter"></span> Connected as <strong>@vondoom</strong>
-    </h2>
+    <% if (twitter) { %>
+      <h2 class="onboarding__social-connect onboarding__social-connect--twitter">
+        <span class="icon icon-social_twitter"></span> Connected as <strong>@<%= twitter.nickname %></strong>
+      </h2>
+    <% } %>
 
     <form action="/" class="form_module">
       <fieldset class="form_fieldset">
-        <div class="avatar"></div>
+        <label class="form_label visuallyhidden">
+          Avatar
+        </label>
+
+        <div class="avatar">
+          <div class="clearfix js-dynamic-user-avatar onboarding-form-avatar-thumb"></div>
+          <div class="clearfix js-user-avatar-uploader onboarding-form-avatar-file"></div>
+        </div>
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label for="full-name" class="form_label">Full Name</label>
-        <input type="text" class="form_input" id="full-name" placeholder="First and Last Name" />
+        <input type="text" class="form_input" id="full-name" placeholder="First and Last Name"/>
       </fieldset>
 
       <fieldset class="form_fieldset">
         <label for="user-name" class="form_label">Username</label>
-        <input type="text" class="form_input" id="user-name" placeholder="" />
+        <input type="text" class="form_input" id="user-name" placeholder=""<% if(username){%> value="<%= username %>"<%}%>/>
       </fieldset>
 
       <fieldset class="form_fieldset">
@@ -41,16 +57,19 @@
         <label for="password" class="form_label">Password</label>
         <input type="password" class="form_input" id="password" placeholder="•••••••" />
       </fieldset>
+      <% if (facebook) { %>
+        <fieldset class="form_fieldset">
+          <input type="checkbox" class="form_checkbox form_checkbox--inline" id="facebook-timeline" checked />
+          <label for="facebook-timeline" class="form_label form_label--inline">Publish activity to Facebook Timeline</label>
+        </fieldset>
+      <% } %>
 
-      <fieldset class="form_fieldset">
-        <input type="checkbox" class="form_checkbox form_checkbox--inline" id="follow-shelby" checked />
-        <label for="follow-shelby" class="form_label form_label--inline">Follow @shelby</label>
-      </fieldset>
-
-      <fieldset class="form_fieldset">
-        <input type="checkbox" class="form_checkbox form_checkbox--inline" id="facebook-timeline" checked />
-        <label for="facebook-timeline" class="form_label form_label--inline">Publish activity to Facebook Timeline</label>
-      </fieldset>
+      <% if(twitter) { %>
+        <fieldset class="form_fieldset">
+          <input type="checkbox" class="form_checkbox form_checkbox--inline" id="follow-shelby" checked />
+          <label for="follow-shelby" class="form_label form_label--inline">Follow @shelby</label>
+        </fieldset>
+      <% } %>
 
       <fieldset class="form_fieldset form_fieldset--submit">
         <button class="button_primer button_standard button_default onboarding__button form_submit">

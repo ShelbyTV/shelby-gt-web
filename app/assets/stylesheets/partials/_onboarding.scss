@@ -1,11 +1,41 @@
 //avatar block
 .avatar {
   background-color: $base;
-  border: 1px solid #ddd;
-  height: 92px;
-  margin: 0 auto 1em;
-  width: 92px;
+  border: 1px solid #DDD;
+  height: 140px;
+  margin: 0 auto 3em;
+  width: 140px;
+
+  img {
+    width: 100%;
+  }
 }
+
+  //------------------------------
+  //  avatar upload module
+  //------------------------------
+  .onboarding-form-avatar {
+    position: relative;
+    margin: 0 auto;
+    width: 138px;
+
+    .user-avatar,
+    .shelby-avatar {
+      width: 100%;
+    }
+  }
+
+  .onboarding-form-avatar-thumb {
+    height: 138px;
+    overflow: hidden;
+    width: 138px;
+  }
+
+  .onboarding-form-avatar-file {
+    margin-top: 1em;
+    font-size: .7em;
+  }
+
 
 //------------------------------------------------------------------------------
 //  non-normative overrides
@@ -180,6 +210,8 @@
 }
     //modifiers
 
-.onboarding__body {}
+.onboarding__body {
+  margin-bottom: 4em;
+}
     //modifiers
 
