@@ -22,7 +22,7 @@
   <div class="onboarding__body">
     <% if (facebook) { %>
       <h2 class="onboarding__social-connect onboarding__social-connect--facebook">
-        <span class="icon icon-social_facebook"></span> Connected as <strong><%= facebook.nickname %></strong>
+        <span class="icon icon-social_facebook"></span> Connected<% if (fullName) { %> as <strong><%= fullName %></strong><% } %>
       </h2>
     <% } %>
 
@@ -70,7 +70,7 @@
       <% if (facebook) { %>
         <fieldset class="form_fieldset">
           <input type="checkbox" class="form_checkbox form_checkbox--inline" id="facebook-timeline" checked />
-          <label for="facebook-timeline" class="form_label form_label--inline">Publish activity to Facebook Timeline</label>
+          <label for="facebook-timeline" class="form_label form_label--inline">I want to share videos I roll and watch on Shelby with my friends on my Facebook Timeline</label>
         </fieldset>
       <% } %>
 
