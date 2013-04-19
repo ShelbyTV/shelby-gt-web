@@ -1,0 +1,13 @@
+<% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.dotTv) { %>
+  <a class="frame-likes-link js-actor-avatar-link js-track-event" href="#" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="click avatar for <%= actorDescription %>" data-ga_label="<%= user.get('nickname') %>">
+    <img class="frame-likes-avatar" src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>" title="<%= userDescription %>" alt="<%= userDescription %>" />
+  </a>
+<% } else { %>
+  <% if (user.has('personal_roll_subdomain')) { %>
+    <a class="frame-likes-link js-track-event" href="http://<%= user.get('personal_roll_subdomain') %>.shelby.tv" target="_blank" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="click avatar for <%= actorDescription %>" data-ga_label="<%= user.get('nickname') %>">
+  <% } %>
+    <img class="frame-likes-avatar" src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>" title="<%= userDescription %>" alt="<%= userDescription %>" />
+  <% if (user.has('personal_roll_subdomain')) { %>
+    </a>
+  <% } %>
+<% } %>
