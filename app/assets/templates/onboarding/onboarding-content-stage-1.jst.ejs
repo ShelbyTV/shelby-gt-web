@@ -5,7 +5,8 @@
       user = shelby.models.user,
       primaryEmail = user.get('primary_email'),
       fullName = user.get('name'),
-      userName = user.get('nickname');
+      userName = user.get('nickname'),
+      userHasPassword = user.get('has_password');
 
   if (shelby.models.user.get('authentications') != null){
       twitter = _.find(shelby.models.user.get('authentications'), function(auth){ return auth.provider == 'twitter'});
@@ -62,11 +63,13 @@
         <input type="text" class="form_input" id="email-address" placeholder="email@address.com"<% if(primaryEmail){%> value="<%= primaryEmail %>"<%}%>/>
       </fieldset>
 
-      <fieldset class="form_fieldset js-invite-email">
-        <label for="password" class="form_label">Password</label>
-        <p class="form_error hidden js-onboarding-pwd-input-error">Please enter a password</p>
-        <input type="password" class="form_input" id="password" placeholder="•••••••" />
-      </fieldset>
+      <% if (!userHasPassword) { %>
+        <fieldset class="form_fieldset js-invite-email">
+          <label for="password" class="form_label">Password</label>
+          <p class="form_error hidden js-onboarding-pwd-input-error">Please enter a password</p>
+          <input type="password" class="form_input" id="password" placeholder="•••••••" />
+        </fieldset>
+      <% } %>
 
       <% if (facebook) { %>
         <fieldset class="form_fieldset">
