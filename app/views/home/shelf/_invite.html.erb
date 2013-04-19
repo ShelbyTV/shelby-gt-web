@@ -14,19 +14,28 @@
   </div><!-- eo onboarding__head -->
 
   <div class="onboarding__body">
-
-    <a href="#" class="button_primer button_standard button_facebook-blue onboarding__button--social one-quarter">
-      <span class="icon icon-social_facebook"></span> Facebook
+    <a
+      href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>"
+      class="button_primer button_standard button_facebook-blue onboarding__button--social one-quarter js-track-event js-authorize"
+      data-ga_action="Login with Twitter"
+      data-popup_height="700"
+      data-popup_width="600">
+        <span class="icon icon-social_facebook"></span> Facebook
     </a>
 
-    <a href="#" class="button_primer button_standard button_twitter-blue onboarding__button--social one-quarter">
-      <span class="icon icon-social_twitter"></span> Twitter
+    <a
+      href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>"
+      class="button_primer button_standard button_twitter-blue onboarding__button--social one-quarter js-track-event js-authorize"
+      data-ga_action="Login with Facebook"
+      data-popup_height="650"
+      data-popup_width="1000">
+        <span class="icon icon-social_twitter"></span> Twitter
     </a>
 
     <hr class="hr hr--double" />
 
     <p class="onboarding__block">
-      or, sign up with <a href="#" class="onboarding__anchor js-signup-with-email">your email address.</a>
+      or, sign up with <a href="/onboarding/1" class="onboarding__anchor js-signup-with-email">your email address.</a>
     </p>
   </div><!-- eo onboarding__body -->
 </section><!-- eo onboarding__lining--init-signup -->

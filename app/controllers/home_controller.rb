@@ -104,7 +104,7 @@ class HomeController < ApplicationController
   ##
   # Handles invite landing page
   #
-  # GET /invite/:invite_id
+  # GET /invite
   #
   def signup
     if user_signed_in?
