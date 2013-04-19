@@ -109,7 +109,12 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
 
     createAccountButton.text('Working...');
 
-    shelby.models.user.save(this.model.toJSON(), {
+    var modelJson = this.model.toJSON();
+    if (shelby.models.user.get('has_password')) {
+      modelJson = _(modelJson).omit('password', 'password_confirmation');
+    }
+
+    shelby.models.user.save(modelJson, {
       success : function(){
         shelby.models.user.get('app_progress').advanceStage('onboarding', 1);
         shelby.router.navigate('onboarding/2', {trigger:true});
