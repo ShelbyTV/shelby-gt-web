@@ -9,10 +9,11 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
    */
 
   events : {
-    "keyup #full-name"            : "_onUsernameInputKeyup",
-    "keyup #password"             : "_onPwdInputKeyup",
-    "keyup #email-address"        : "_onEmailInputKeyup",
-    "click .js-signup-with-email" : "_onNextStepClick"
+    "keyup #full-name"               : "_onUsernameInputKeyup",
+    "keyup #password"                : "_onPwdInputKeyup",
+    "keyup #email-address"           : "_onEmailInputKeyup",
+    "click .js-signup-with-email"    : "_onNextStepClick",
+    "click .js-onboarding-next-step" : "_onNextStepClick"
   },
 
   initialize : function(){
