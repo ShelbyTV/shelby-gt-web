@@ -5,7 +5,7 @@
 </div>
 
 <section class="onboarding__wrapper js-onboarding-pane clearfix">
-  <section class="onboarding__lining onboarding__lining--init-signup">
+  <section class="onboarding__lining onboarding__lining--init-signup<% if @nickname_error and @email_error %> hidden<% end %>">
     <div class="onboarding__head">
       <h3 class="onboarding__h3">
         Step 1 of 2
@@ -47,7 +47,7 @@
     </div><!-- eo onboarding__body -->
   </section><!-- eo onboarding__lining--init-signup -->
 
-  <section class="onboarding__lining onboarding__lining--signup-form hidden">
+  <section class="onboarding__lining onboarding__lining--signup-form<% if !@nickname_error and !@email_error %> hidden<% end %>">
     <div class="onboarding__head">
       <h1 class="onboarding__h1">
         Create your account

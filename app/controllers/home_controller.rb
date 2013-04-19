@@ -111,6 +111,12 @@ class HomeController < ApplicationController
       redirect_to :action => :index
     else
       @sign_up = true
+
+      # Parse errors and render landing
+
+      @nickname_error = params[:nickname]
+      @email_error = params[:primary_email]
+
       render '/home/landing'
     end
   end

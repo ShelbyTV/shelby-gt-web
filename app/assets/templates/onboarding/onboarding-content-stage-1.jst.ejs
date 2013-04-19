@@ -44,29 +44,30 @@
         </div>
       </fieldset>
 
-      <fieldset class="form_fieldset">
+      <fieldset class="form_fieldset js-invite-name">
         <label for="full-name" class="form_label">Full Name</label>
         <p class="form_error hidden js-onboarding-username-input-error">Please enter your name</p>
         <input type="text" class="form_input" id="full-name" placeholder="First and Last Name"<% if(fullName){%> value="<%= fullName %>"<%}%>/>
       </fieldset>
 
-      <fieldset class="form_fieldset">
+      <fieldset class="form_fieldset js-invite-username">
         <label for="user-name" class="form_label">Username</label>
         <p class="form_error hidden">Please enter a username</p>
         <input type="text" class="form_input" id="user-name" placeholder=""<% if(userName){%> value="<%= userName %>"<%}%>/>
       </fieldset>
 
-      <fieldset class="form_fieldset">
+      <fieldset class="form_fieldset js-invite-email">
         <label for="email-address" class="form_label">Email Address</label>
         <p class="form_error hidden js-onboarding-email-input-error">Please enter an email address</p>
         <input type="text" class="form_input" id="email-address" placeholder="email@address.com"<% if(primaryEmail){%> value="<%= primaryEmail %>"<%}%>/>
       </fieldset>
 
-      <fieldset class="form_fieldset">
+      <fieldset class="form_fieldset js-invite-email">
         <label for="password" class="form_label">Password</label>
         <p class="form_error hidden js-onboarding-pwd-input-error">Please enter a password</p>
         <input type="password" class="form_input" id="password" placeholder="•••••••" />
       </fieldset>
+
       <% if (facebook) { %>
         <fieldset class="form_fieldset">
           <input type="checkbox" class="form_checkbox form_checkbox--inline" id="facebook-timeline" checked />
