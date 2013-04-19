@@ -26,7 +26,7 @@
  <div class="onboarding__body">
     <ul class="list list--inline onboarding__list">
 
-    <% ['twitter', 'facebook', 'tumblr'].forEach(function(network){ %>
+    <% ['twitter', 'facebook'].forEach(function(network){ %>
       <%
         var connected_network, disabled = '';
         if( _.include(authed_providers, network) ){
