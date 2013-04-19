@@ -62,13 +62,13 @@
           <input name="user[name]" type="text" class="form_input" id="signup-name" placeholder="First and Last Name" value="<%= cookies[:_shelby_signup_name] %>" autofocus />
         </fieldset>
 
-        <fieldset class="form_fieldset js-invite-username">
+        <fieldset class="form_fieldset<% if @nickname_error %> form_fieldset--error<% end %> js-invite-username">
           <label for="signup-username" class="form_label">Username</label>
           <p class="form_error<% if !@nickname_error %> hidden<% end %> js-invite-username-error"><% if @nickname_error %>Username taken<% else %>Please enter a username<% end %></p>
           <input name="user[nickname]" type="text" class="form_input" id="signup-username" />
         </fieldset>
 
-        <fieldset class="form_fieldset js-invite-email">
+        <fieldset class="form_fieldset<% if @email_error %> form_fieldset--error<% end %> js-invite-email">
           <label for="signup-email" class="form_label">Email Address</label>
           <p class="form_error<% if !@email_error %> hidden<% end %>  js-invite-email-error"><% if @email_error %>Email already in use<% else %>Please enter an email address<% end %></p>
           <input name="user[primary_email]" type="text" class="form_input" id="signup-email" placeholder="email@address.com" value="<%= cookies[:_shelby_signup_email] %>" />
