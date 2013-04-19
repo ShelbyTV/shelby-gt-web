@@ -23,10 +23,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "preferences"                                  : "displayUserPreferences",
     "likes"                                        : "displaySaves",
     "saves"                                        : "displaySaves",
-    "stream"                                       : "displayDashboard",
+    "stream"                                       : "displayStream",
     "primetime"                                    : "displayPrioritizedDashboard",
     "tools"                                        : "displayTools",
-    ""                                             : "displayDashboard",
+    ""                                             : "displayStream",
 //  ":userName"                                    : "displayUserProfile", //we're not rolling out the user profiles at /userName yet
     "*url"                                         : "doNothing"
   },
@@ -345,24 +345,25 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
     });
   },
-
+  
   displayDashboard : function(params, options){
     this._setupTopLevelViews(options);
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._fetchDashboard(options);
+  },
+  
+  displayStream : function(params){
+    this.displayDashboard(params);
     
-    // hacky quick fix to prevent double-counting, should refactor
-    if(!(options && (options.channel || options.prioritizedDashboard))){
-      shelby.trackEx({
-        providers : ['ga', 'kmq'],
-        gaCategory : "App",
-        gaAction : 'Load stream',
-        gaLabel : shelby.models.user.get('nickname'),
-        kmqName : 'Load stream in app',
-        kmqProperties : { user : shelby.models.user.get('nickname') }
-      });
-    }
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "App",
+      gaAction : 'Load stream',
+      gaLabel : shelby.models.user.get('nickname'),
+      kmqName : 'Load stream in app',
+      kmqProperties : { user : shelby.models.user.get('nickname') }
+    });
   },
   
   displayPrioritizedDashboard : function(params, options){
@@ -424,6 +425,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // uncomment to emulate a new user sign-up w/ no data
     // fetchOptions.data.limit = Math.random() < 0.6 ? 20 : 0;
 
+    shelby.models.dashboard.unset('channel');
+    shelby.models.dashboard.unset('prioritizedDashboard');
+
     if (options.channel) {
       // if we're loading another user's dashboard or 'channel', use the user/id/dashboard api route
       shelby.models.dashboard.set('channel', options.channel);
@@ -431,7 +435,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.models.dashboard.set('prioritizedDashboard', true);
       fetchOptions.data.limit = shelby.config.pageLoadSizes.prioritizedDashboard;
     } else {
-      //don't need to change anything to load dashboard like normal
+      //already unset, don't need to do anything here
     }
 
     if (options.displayInGuide) {
