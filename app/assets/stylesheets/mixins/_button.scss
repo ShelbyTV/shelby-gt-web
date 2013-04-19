@@ -93,3 +93,31 @@ a.button_primer,
         text-decoration: none;
     }
 }
+
+////////////////////////////////////////////////////////////////////////////
+//  a flat button
+//  i.e. bookmarklet button in /preferences
+////////////////////////////////////////////////////////////////////////////
+.button_flat {
+  @include roundies(input);
+
+  background: transparent;
+  border: 1px solid $inset;
+  font-family: $font-family-display;
+  padding: 1em;
+  text-align: left;
+  width: 100%;
+
+  .tools-icon {
+    display: block;
+  }
+
+  &:hover {
+    background-color: lighten($base,3%);
+    border-color: lighten($inset,2%)
+  }
+  &:active {
+    background-color: darken($base, 10%);
+    border-color: darken($inset,15%);
+  }
+}
