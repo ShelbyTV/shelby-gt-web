@@ -42,18 +42,29 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
 
     shelby.track('started onboarding', {userName: shelby.models.user.get('nickname')});
     this.renderChild(this._userAvatarUploader);
+
     return this;
   },
 
+  _errorCleanup : function(event) {
+    $(event.currentTarget).siblings('.form_error').toggleClass('hidden',true).parent().toggleClass('form_fieldset--error', false);
+  },
+
   _onUsernameInputKeyup : function(event){
+    this._errorCleanup(event);
+
     this.model.set('nickname', $(event.currentTarget).val());
   },
 
   _onEmailInputKeyup : function(event){
+    this._errorCleanup(event);
+
     this.model.set('primary_email', $(event.currentTarget).val());
   },
 
   _onPwdInputKeyup : function(event){
+    this._errorCleanup(event);
+
     var pwd = $(event.currentTarget).val();
     this.model.set({
       password: pwd,
@@ -79,19 +90,24 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
 
   _renderErrors : function(fields, isBeforeSubmit){
     //hide any old error messages
-    $('.js-onboarding-username-input-error').hide();
-    $('.js-onboarding-email-input-error').hide();
-    $('.js-onboarding-pwd-input-error').hide();
+    $('.js-onboarding-username-input-error').toggleClass('hidden',true);
+    $('.js-onboarding-email-input-error').toggleClass('hidden',true);
+    $('.js-onboarding-pwd-input-error').toggleClass('hidden',true);
 
     if (_.include(fields, 'nickname')){
-      $('.js-onboarding-username-input-error').text(isBeforeSubmit ? 'Please enter a nickname.' : 'Sorry, that username is already taken.').show();
+      $('.js-onboarding-username-input-error').text(isBeforeSubmit ? 'Please enter a nickname.' : 'Sorry, that username is already taken.').toggleClass('hidden',false);
+      $('.js-invite-name').toggleClass('form_fieldset--error',true);
     }
     if (_.include(fields, 'primary_email')){
-      $('.js-onboarding-email-input-error').text(isBeforeSubmit ? 'Please enter a valid email.' : 'Sorry, that email is already taken.').show();
+      $('.js-onboarding-email-input-error').text(isBeforeSubmit ? 'Please enter a valid email.' : 'Sorry, that email is already taken.').toggleClass('hidden',false);
+      $('.js-invite-email').toggleClass('form_fieldset--error',true);
     }
     if (_.include(fields, 'password')){
-      $('.js-onboarding-pwd-input-error').text('Please enter a password that\'s at least ' + shelby.config.user.password.minLength + ' characters long.').show();
+      $('.js-onboarding-pwd-input-error').text('Please enter a password that\'s at least ' + shelby.config.user.password.minLength + ' characters long.').toggleClass('hidden',false);
+      $('.js-invite-password').toggleClass('form_fieldset--error',true);
     }
+
+
   },
 
   _onNextStepClick : function(e){
@@ -102,6 +118,13 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
         createAccountButton = this.$('.js-onboarding-next-step');
 
     this._renderErrors(invalidFields, true);
+
+    var $password = $('#password');
+
+    if($password == '' || $password == null || $password == undefined) {
+      $password.parent('.form_fieldset').addClass('.form_fieldset--error');
+      $('.js-onboarding-pwd-input-error').toggleClass('hidden',false);
+    }
 
     if (invalidFields.length){
       return;
