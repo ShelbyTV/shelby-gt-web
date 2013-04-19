@@ -1,6 +1,6 @@
 libs.shelbyGT.OnboardingContentSwitcherView = Support.CompositeView.extend({
 
-  el : '.js-onboarding-layout .content_lining .content_module',
+  el : '.js-onboarding-pane',
 
   initialize : function() {
     shelby.models.guide.bind('change:onboardingStage', this._onOnboardingStageChange, this);
@@ -43,7 +43,7 @@ libs.shelbyGT.OnboardingContentSwitcherView = Support.CompositeView.extend({
       opts:{stage:4}
     }
   },
-  
+
 
   render : function(){
     this._leaveChildren();

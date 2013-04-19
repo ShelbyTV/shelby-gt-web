@@ -19,7 +19,7 @@
     var shelbyTrackingCategory = "Landing Page";
   </script>
 </head>
-<body class="shelby shelby--landing<%= ' shelby--mobile' if @mobile_os %>">
+<body class="shelby<%= ' shelby--mobile' if @mobile_os %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %>">
   <!-- Facebook widget -->
   <div id="fb-root"></div>
 
@@ -61,11 +61,13 @@
 
     <% #------------ Shelf Content --------------- %>
 
+    <%= render :partial => "/home/shelf/sign_up_init" if @sign_up %>
+
     <%= render :partial => "/home/shelf/invite" if @invite_id %>
 
     <%= render :partial => "/home/shelf/team" if @team %>
 
-    <% if (!@share_type) and !@invite_id and !@team %>
+    <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
       <%= render :partial => "/home/shelf/start_watching" %>
       <%= render :partial => "/home/shelf/community" %>
       <%= render :partial => "/home/shelf/network" %>

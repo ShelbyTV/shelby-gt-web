@@ -7,30 +7,25 @@
   }
 %>
 
-<div class="onboarding_layout_head onboarding-head clearfix">
-  <h1 class="onboarding-header">
-    Add some serendipity
-  </h1>
+<section class="onboarding__lining onboarding__lining--personalize">
+  <div class="onboarding__head">
+    <h3 class="onboarding__h3">
+      Step 2 of 2
+    </h3>
 
-  <div class="onboarding-next-step-wrapper">
-    <button class="js-onboarding-next-step button_primer button_blue button_standard onboarding-next-step">
-      Next
-    </button>
-    <span class="onboarding-next-step-counter">
-      Step 3 of 3
-    </span>
-  </div>
-</div><!-- eo onboarding_layout_head -->
+    <h1 class="onboarding__h1">
+     Personalize Your Shelby Stream
+    </h1>
 
-<div class="onboarding_layout_body onboarding-body onboarding-stage-3 clearfix">
-  <div class="onboarding-block-container wide">
-    <p class="onboarding-description">
-      Fact: The best discovery happens through distant connections.<br />
-      We don't post without your permission, and we won't spam you.
-    </p>
-  </div>
+    <h2 class="onboarding__h2">
+      Connecting your social networks lets you watch all <br />
+      your friends' videos and tells us more about what you like.
+    </h2>
+ </div><!-- eo onboarding__head -->
 
-  <ul class="clearfix onboarding-network-list">
+ <div class="onboarding__body">
+    <ul class="list list--inline onboarding__list">
+
     <% ['twitter', 'facebook', 'tumblr'].forEach(function(network){ %>
       <%
         var connected_network, disabled = '';
@@ -40,46 +35,90 @@
         }
       %>
 
-      <li class="onboarding-network-item js-onboarding-network-item">
-        <div class="onboarding-network-item-lining clearfix">
-          <a class="button_primer<%= (disabled) ? ' button_gray-light disabled' : ' button_'+network+'-blue' %> onboarding-network-button js-authorize js-track-event"
+      <li class="list__item one-quarter js-onboarding-network-item">
+          <a class="button_primer<%= (disabled) ? ' button_gray-light disabled' : ' button_'+network+'-blue' %> button_standard onboarding__button--social js-authorize js-track-event"
             data-popup_width="1000"
             data-popup_height="650"
             href="http://api.shelby.tv/auth/<%= network %>"
             data-ga_action="Connect with <%= network %>">
-            <i class="icon-social_<%= network %>"></i>
-            <span class="visuallyhidden"><%= network %></span>
+              <span class="icon icon-social_<%= network %>"></span> <span class="button_label capitalize"><%= network %></span>
           </a>
-          <p class="onboarding-network-description">
-            <% if (connected_network) { %>
-              We're already pulling in all the<br/>
-              videos the people you follow are<br/>
-              sharing on <span><%= network %></span>
-            <% } else { %>
-              Shelby will pull the videos off your<br> <span><%= network %></span> feed.
-            <% } %>
-          </p>
-          <% if (network == 'twitter' && disabled){ %>
-            <div class="twitter-follow-shelby onboarding-network-additional-options clearfix">
-              <input id="onboarding-follow-shelby" class="form_checkbox connected-network-checkbox js-onboarding-follow-shelby" name="onboarding-follow-shelby" type="checkbox" checked >
-              <label for="onboarding-follow-shelby" class="form_label">
-                Follow @Shelby on Twitter
-              </label>
-            </div>
-          <% } %>
-          <% if (network == 'facebook' && disabled){ %>
-            <div class="facebook-timeline-opt-in onboarding-network-additional-options clearfix">
-              <input id="onboarding-timeline-sharing" class="form_checkbox connected-network-checkbox" name="preferences-timeline-sharing" type="checkbox" checked >
-              <label for="preferences-timeline-sharing" class="form_label">
-                Facebook Timeline Sharing
-              </label>
-              <p class="timeline-sharing-description">
-                I want to share <b><%= shelby.models.user.get('nickname') %>.shelby.tv</b> and videos I watch on Shelby with my friends on my Facebook Timeline
-              </p>
-            </div>
-          <% } %>
-        </div>
       </li>
     <% }); %>
-  </ul>
-</div><!-- eo onboarding_layout_body -->
+    </ul>
+
+    <p class="onboarding__block">
+      <small>
+        *We promise to never post without your permission. Spam sucks.
+      </small>
+    </p>
+
+    <hr class="hr--double" />
+
+    <h2 class="onboarding__h2">
+      There's most to Shelby than friends! Follow 3 (or more) <br />
+      of our favorites below to add their videos to your Stream.
+    </h2>
+    <ul class="list list--inline onboarding__list onboarding__list--rolls">
+    <%
+      [
+        {
+          "title"  : "Buzzfeed",
+          "avatar" : "/images/avatar.jpg",
+          "id"     : "12345"
+        },
+        {
+          "title"  : "Pitchfork",
+          "avatar" : "/images/avatar.jpg",
+          "id"     : "12345"
+        },
+        {
+          "title"  : "New York Times",
+          "avatar" : "/images/avatar.jpg",
+          "id"     : "12345"
+        },
+        {
+          "title"  : "TED Talks",
+          "avatar" : "/images/avatar.jpg",
+          "id"     : "12345"
+        },
+        {
+          "title"  : "Daily What",
+          "avatar" : "/images/avatar.jpg",
+          "id"     : "12345"
+        },
+        {
+          "title"  : "VICE",
+          "avatar" : "/images/avatar.jpg",
+          "id"     : "12345"
+        },
+        {
+          "title"  : "Sorted",
+          "avatar" : "/images/avatar.jpg",
+          "id"     : "12345"
+        },
+        {
+          "title"  : "Look TV",
+          "avatar" : "/images/avatar.jpg",
+          "id"     : "12345"
+        }
+      ].forEach(function(roll){ %>
+      <li class="list__item one-fifth">
+        <h4 class="onboarding__h3">
+          <%= roll.title %>
+        </h4>
+
+        <img src="<%= roll.avatar %>" class="onboarding__avatar" />
+
+        <button class="button_primer button_default button_wide onboarding__button">
+          Follow
+        </button>
+      </li>
+    <% }) %>
+    </ul>
+
+    <button class="button_primer button_default button_standard onboarding__button onboarding__button--large">
+      Start Watching
+    </button>
+ </div><!-- eo onboarding__body -->
+</section><!-- eo onboarding__lining--personalize -->

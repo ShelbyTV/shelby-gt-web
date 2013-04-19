@@ -102,6 +102,21 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles invite landing page
+  #
+  # GET /invite
+  #
+  def signup
+    if user_signed_in?
+      redirect_to :action => :index
+    else
+      @sign_up = true
+      render '/home/landing'
+    end
+  end
+
+
+  ##
   # Handles channels view when visited directly (allowing logged-out users to see it)
   #
   # GET /channels
