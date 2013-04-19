@@ -38,14 +38,17 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   },
 
   _onRollsFollwedChange : function(model, rolls_followed){
+    var $button = this.$('.js-start-watching');
+
     if (rolls_followed > 2){
-      this.$('.js-onboarding-next-step').text('Next').addClass('onboarding-next-step-highlight');
-      this.$('.js-onboarding-follow-more-count').text('Nice job! Follow a few more or click next to continue.').removeClass('onboarding-follow-more-highlight');
+      $button.text('Start Watching')
+             .toggleClass('button_default disbaled',false)
+             .toggleClass('button_green',true);
     } else {
       var needToFollowCount = 3 - rolls_followed;
-      var newText = 'Try following at least '+(needToFollowCount)+' more '+_('roll').pluralize(needToFollowCount);
-      this.$('.js-onboarding-next-step').text('Skip').removeClass('onboarding-next-step-highlight');
-      this.$('.js-onboarding-follow-more-count').text(newText).addClass('onboarding-follow-more-highlight');
+      var newText = 'Follow '+(needToFollowCount)+' more '+_('Roll').pluralize(needToFollowCount);
+
+      $button.text(newText);
     }
   },
 
