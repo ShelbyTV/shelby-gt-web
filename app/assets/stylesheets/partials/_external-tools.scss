@@ -31,32 +31,20 @@
 //------------------------------------------------------------------------------
 //  general setup
 //------------------------------------------------------------------------------
-.external-header {
+.external-tools__h1 {
   font-size: 2em;
 }
 
-.external-subheader {
-}
-
-.external-lead {
+.external-tools__h2 {
   font-family: $font-family-display;
-  font-weight: 300;
   font-size: 1.4em;
+  font-weight: 300;
   line-height: 1.4;
   margin-top: 1em;
 }
 
-.external-block {
+.external__block {
   width: 450px;
-}
-
-.external-figure-wrapper {
-  position: absolute;
-  left: 350px;
-  right: 10px;
-}
-
-.external-figure {
 }
 
 .external-bookmarklet-button-wrapper {
@@ -77,7 +65,12 @@
 }
 
 //framework
-.external-tools__lining {}
+.external-tools__lining {
+  background-color: darken($external-bg,3%);
+  margin: 1em 0;
+  overflow: hidden;
+  padding: 2.75em 1.5em 1.5em;
+}
 .external-tools__lining--extension {
   .extension__block {
     padding-left: 1em;
