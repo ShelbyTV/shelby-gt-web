@@ -41,8 +41,8 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
           providers : ['ga', 'kmq'],
           gaCategory : "Email Collection",
           gaAction : 'Email submitted',
-          gaLabel : this.options.guide.get('displayState'),
-          kmqName : "Email submitted in collection modal on "+this.options.guide.get('displayState'),
+          gaLabel : self.options.guide.get('displayState'),
+          kmqName : "Email submitted in collection modal on "+self.options.guide.get('displayState'),
           kmqProperties : {'email' : email}
         });
         // set kissmetrics identity
