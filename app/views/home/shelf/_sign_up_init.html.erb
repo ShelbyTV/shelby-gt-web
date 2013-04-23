@@ -177,8 +177,8 @@ $(document).ready(function(){
       }
   }
 
-  $('#signup-password').on('keyup',function(e){
-    if($(this).val().length > 6) {
+  $('.form_input').on('keyup',function(e){
+    if($('#signup-password').val().length >= shelby.config.user.password.minLength) {
       validateForm(e);
 
       if(!hasErrors){
