@@ -117,7 +117,7 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
 
       // validate password
       // var password
-      if($('#signup-password').val().length < shelby.config.user.password.minLength) {
+      if(signupPassword.length && signupPassword.val().length < shelby.config.user.password.minLength) {
         $('.js-invite-password').addClass('form_fieldset--error')
                                 .find('.form_error')
                                 .toggleClass('hidden', false)
