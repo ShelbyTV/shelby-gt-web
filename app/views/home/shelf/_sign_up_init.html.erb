@@ -5,7 +5,7 @@
 </div>
 
 <section class="onboarding__wrapper js-onboarding-pane clearfix">
-  <section class="onboarding__lining onboarding__lining--init-signup<% if @nickname_error and @email_error %> hidden<% end %>">
+  <section class="onboarding__lining onboarding__lining--init-signup">
     <div class="onboarding__head">
       <h3 class="onboarding__h3">
         Step 1 of 2
@@ -14,13 +14,12 @@
       <h1 class="onboarding__h1">
         Shelby turns the web into your personal TV channel
       </h1>
-
-      <h2 class="onboarding__h2">
-        Connect with
-      </h2>
     </div><!-- eo onboarding__head -->
 
-    <div class="onboarding__body">
+    <div class="onboarding__body onboarding__body--auth<% if @nickname_error and @email_error %> hidden<% end %> js-signup-auth">
+      <h2 class="onboarding__h2">
+        Sign up with
+      </h2>
       <a
         href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>"
         class="button_primer button_standard button_facebook-blue onboarding__button--social one-quarter js-track-event js-authorize"
@@ -42,19 +41,10 @@
       <hr class="hr hr--double" />
 
       <p class="onboarding__block">
-        or, sign up with <a href="/onboarding/1" class="onboarding__anchor js-signup-with-email js-track-event" data-ga_action="Signup with Email">your email address.</a>
+        or, use <a href="#" class="onboarding__anchor js-signup-with-email js-track-event" data-ga_action="Signup with Email">your email address.</a>
       </p>
     </div><!-- eo onboarding__body -->
-  </section><!-- eo onboarding__lining--init-signup -->
-
-  <section class="onboarding__lining onboarding__lining--signup-form<% if !@nickname_error and !@email_error %> hidden<% end %>">
-    <div class="onboarding__head">
-      <h1 class="onboarding__h1">
-        Create your account
-      </h1>
-   </div><!-- eo onboarding__head -->
-
-    <div class="onboarding__body">
+    <div class="onboarding__body onboarding__body--email<% if !@nickname_error and !@email_error %> hidden<% end %>  js-signup-email">
       <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.signup_form_url %>" method="post" class="form_module js-invite-form">
         <fieldset class="form_fieldset js-invite-name">
           <label for="signup-name" class="form_label">Full Name</label>
@@ -66,7 +56,7 @@
           <label for="signup-username" class="form_label">Username</label>
           <p class="form_error<% if !@nickname_error %> hidden<% end %> js-invite-username-error"><% if @nickname_error %>Username taken<% else %>Please enter a username<% end %></p>
           <input name="user[nickname]" type="text" class="form_input" id="signup-username" />
-        </fieldset>
+       </fieldset>
 
         <fieldset class="form_fieldset<% if @email_error %> form_fieldset--error<% end %> js-invite-email">
           <label for="signup-email" class="form_label">Email Address</label>
@@ -85,18 +75,21 @@
             Create Account
           </button>
         </fieldset>
+
+        <p class="onboarding__block">
+          or, authenticate using <a href="#" class="onboarding__anchor js-signup-with-email js-track-event" data-ga_action="Signup with Social Auth">Facebook or Twitter</a>
+        </p>
       </form>
 
     </div><!-- eo onboarding__body -->
-  </section><!-- eo onboarding__lining--signup-form -->
+  </section><!-- eo onboarding__lining--init-signup -->
 </section><!-- eo .content_lining -->
 
 <script>
 $(document).ready(function(){
   $('.js-signup-with-email').on('click', function(e){
     e.preventDefault();
-    $('.onboarding__lining--init-signup').toggleClass('hidden',true);
-    $('.onboarding__lining--signup-form').toggleClass('hidden',false);
+    $('.onboarding__body--auth, .onboarding__body--email').toggleClass('hidden');
   });
 
   $('.form_fieldset').on('keyup', function(){
