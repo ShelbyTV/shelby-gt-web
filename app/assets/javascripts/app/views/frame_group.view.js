@@ -420,12 +420,12 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   _getFrameShortlink : function() {
     var frame = this.model.get('frames').at(0);
-    var dbEntry = this.model.get('primaryDashboardEntry');
 
     if (!frame.get('isSearchResultFrame')) {
       var self = this;
       var $shortlinkTextInput = this.$('.js-frame-shortlink');
       var fetchShortlinkUrl;
+      var dbEntry = this.model.get('primaryDashboardEntry');
       if (dbEntry) {
         fetchShortlinkUrl = shelby.config.apiRoot + '/dashboard/' + dbEntry.id + '/short_link';
       } else {
