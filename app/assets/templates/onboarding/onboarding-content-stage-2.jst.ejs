@@ -56,7 +56,7 @@
     <hr class="hr--double" />
 
     <h2 class="onboarding__h2">
-      There's most to Shelby than friends! Follow 3 (or more) <br />
+      There's more to Shelby than friends! Follow 3 (or more) <br />
       of our favorites below to add their videos to your Stream.
     </h2>
     <ul class="list list--inline onboarding__list onboarding__list--rolls">
@@ -69,7 +69,7 @@
 
             <img src="<%= roll.get('display_thumbnail_src') %>" class="onboarding__avatar" />
 
-            <button data-roll_id="<%= roll.get('id') %>" class="button_primer button_default button_wide onboarding__button js-onboarding-roll-button js-follow-unfollow">
+            <button data-roll_id="<%= roll.get('id') %>" class="button_primer button_default button_wide onboarding__button js-onboarding-roll-button js-follow-unfollow js-track-event" data-ga_category="Onboarding" data-ga_action="Follow roll" data-ga_label="<%= roll.get('display_title') %>">
               Follow
             </button>
           </li>
