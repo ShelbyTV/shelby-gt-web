@@ -16,7 +16,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   events : {
     "click .js-button_share--email"         : "requestFrameShareView",
     "click .js-button_share--embed"         : "_showEmbedCode",
-    "click .js-copy-link"                   : "_copyFrameLink",
     "click .js-creation-date"               : "_expand",
     "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
     "click .js-frame-activate"              : "_activate",
@@ -252,29 +251,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     this.$('.js-queue-frame i').addClass('icon-heart--red');
   },
 
-  _copyFrameLink : function(e){
-    var $buttonEl = $(e.currentTarget);
-    $buttonEl.text("[fetching...]");
-
-    var frameId = this.model.getFirstFrame().id;
-    $.ajax({
-      url: 'http://api.shelby.tv/v1/frame/'+frameId+'/short_link',
-      dataType: 'jsonp',
-      success: function(r){
-        var $inputEl = $(SHELBYJST['shortlink-text-input']({
-          shortLink : r.result.short_link
-        }));
-        $buttonEl.replaceWith($inputEl);
-        $inputEl.click(function(){ $inputEl.select(); });
-        $inputEl.select();
-      },
-      error: function(){
-        $buttonEl.text("Link Unavailable");
-        shelby.alert({message:"Shortlinks are currently unavailable."});
-      }
-    });
-  },
-
   _onClickRemoveFrame : function(){
     var self = this;
 
@@ -444,13 +420,20 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   _getFrameShortlink : function() {
     var frame = this.model.get('frames').at(0);
+    var dbEntry = this.model.get('primaryDashboardEntry');
 
     if (!frame.get('isSearchResultFrame')) {
       var self = this;
       var $shortlinkTextInput = this.$('.js-frame-shortlink');
+      var fetchShortlinkUrl;
+      if (dbEntry) {
+        fetchShortlinkUrl = shelby.config.apiRoot + '/dashboard/' + dbEntry.id + '/short_link';
+      } else {
+        fetchShortlinkUrl = shelby.config.apiRoot + '/frame/' + frame.id + '/short_link';
+      }
       // fetch the short link
       $.ajax({
-        url: 'http://api.shelby.tv/v1/frame/' + frame.id + '/short_link',
+        url: fetchShortlinkUrl,
         dataType: 'jsonp',
         success: function(r){
           $shortlinkTextInput.val(r.result.short_link).select();
