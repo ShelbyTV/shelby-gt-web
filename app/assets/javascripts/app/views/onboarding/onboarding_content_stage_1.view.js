@@ -19,11 +19,11 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
   initialize : function(){
     this.model.set('primary_email', shelby.models.user.get('primary_email'));
     this.model.set('nickname', shelby.models.user.get('nickname'));
-    // this.model.bind('change:nickname', this._onUsernameChange, this);
+    shelby.models.user.bind('change:avatar_updated_at', this._onAvatarUploaded, this);
   },
 
   _cleanup : function(){
-    // this.model.unbind('change:nickname', this._onUsernameChange, this);
+    shelby.models.user.unbind('change:avatar_updated_at', this._onAvatarUploaded, this);
   },
 
   render : function(){
@@ -48,6 +48,16 @@ libs.shelbyGT.OnboardingContentStage1View = libs.shelbyGT.OnboardingContentStage
 
   _errorCleanup : function(event) {
     $(event.currentTarget).siblings('.form_error').toggleClass('hidden',true).parent().toggleClass('form_fieldset--error', false);
+  },
+
+  _onAvatarUploaded : function(event){
+    var $submitButton = this.$el.find('.js-onboarding-next-step');
+    if(shelby.models.user.get('has_shelby_avatar')){
+      $submitButton
+        .removeAttr('disabled')
+        .toggleClass('button_default visuallydisabled',false)
+        .toggleClass('button_green',true);
+    }
   },
 
   _onUsernameInputKeyup : function(event){

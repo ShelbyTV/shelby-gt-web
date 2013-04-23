@@ -71,7 +71,7 @@
         </fieldset>
 
         <fieldset class="form_fieldset form_fieldset--submit">
-          <button class="button_primer button_standard button_default onboarding__button form_submit">
+          <button class="button_primer button_standard button_default onboarding__button form_submit js-create-account">
             Create Account
           </button>
         </fieldset>
@@ -92,17 +92,19 @@ $(document).ready(function(){
     $('.onboarding__body--auth, .onboarding__body--email').toggleClass('hidden');
   });
 
-  $('.form_fieldset').on('keyup', function(){
+  $('.form_fieldset').on('keyup', function(e){
     if($(this).hasClass('form_fieldset--error')) {
       $(this).toggleClass('form_fieldset--error',false).find('.form_error').toggleClass('hidden',true);
     }
   });
 
-  $('.js-invite-form').on('submit', function(e){
-      var hasErrors = false;
-      var signupName = $('#signup-name');
-      var signupUsername = $('#signup-username');
-      var signupEmail = $('#signup-email');
+  var hasErrors = false;
+  var signupName = $('#signup-name');
+  var signupUsername = $('#signup-username');
+  var signupEmail = $('#signup-email');
+
+  var validateForm = function(e){
+      hasErrors = false;
 
       // validate user full name
       if(!signupName.val().length) {
@@ -162,6 +164,10 @@ $(document).ready(function(){
 
       if (hasErrors) {
         e.preventDefault();
+        $('.js-create-account')
+          .toggleClass('button_green',false)
+          .toggleClass('button_default', true);
+
       } else {
         // save the user's input in a session cookie so we can re-render it if API redirects us back
         // here with errors the user needs to fix
@@ -169,6 +175,26 @@ $(document).ready(function(){
         cookies.set('_shelby_signup_username', signupUsername.val());
         cookies.set('_shelby_signup_email', signupEmail.val());
       }
+  }
+
+  $('#signup-password').on('keyup',function(e){
+    if($(this).val().length > 6) {
+      validateForm(e);
+
+      if(!hasErrors){
+        $('.js-create-account')
+          .toggleClass('button_default', false)
+          .toggleClass('button_green',true);
+      }
+    } else {
+      $('.js-create-account')
+        .toggleClass('button_green',false)
+        .toggleClass('button_default', true);
+    }
+  });
+
+  $('.js-invite-form').on('submit', function(e){
+      validateForm(e);
     }).find('.form_input').on('blur', function(){
       $this = $(this);
 

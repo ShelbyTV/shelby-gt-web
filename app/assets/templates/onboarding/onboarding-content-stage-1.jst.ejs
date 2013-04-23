@@ -12,11 +12,13 @@
       twitter = _.find(shelby.models.user.get('authentications'), function(auth){ return auth.provider == 'twitter'});
       facebook = _.find(shelby.models.user.get('authentications'), function(auth){ return auth.provider == 'facebook'});
   }
+
+  var emailSignup = (!twitter && !facebook);
 %>
 <section class="onboarding__lining onboarding__lining--signup-form">
   <div class="onboarding__head">
     <h1 class="onboarding__h1">
-      Create your account
+      <%= (emailSignup) ? 'Choose your Avatar' : 'Create your account' %>
     </h1>
  </div><!-- eo onboarding__head -->
 
@@ -45,19 +47,19 @@
         </div>
       </fieldset>
 
-      <fieldset class="form_fieldset js-invite-name">
+      <fieldset class="form_fieldset js-invite-name<%= (emailSignup) ? ' visuallyhidden' : ''%>">
         <label for="full-name" class="form_label">Full Name</label>
         <p class="form_error hidden js-onboarding-username-input-error">Please enter your name</p>
         <input type="text" class="form_input" id="full-name" placeholder="First and Last Name"<% if(fullName){%> value="<%= fullName %>"<%}%>/>
       </fieldset>
 
-      <fieldset class="form_fieldset js-invite-username">
+      <fieldset class="form_fieldset js-invite-username<%= (emailSignup) ? ' visuallyhidden' : ''%>">
         <label for="user-name" class="form_label">Username</label>
         <p class="form_error hidden">Please enter a username</p>
         <input type="text" class="form_input" id="user-name" placeholder=""<% if(userName){%> value="<%= userName %>"<%}%>/>
       </fieldset>
 
-      <fieldset class="form_fieldset js-invite-email">
+      <fieldset class="form_fieldset js-invite-email<%= (emailSignup) ? ' visuallyhidden' : ''%>">
         <label for="email-address" class="form_label">Email Address</label>
         <p class="form_error hidden js-onboarding-email-input-error">Please enter an email address</p>
         <input type="text" class="form_input" id="email-address" placeholder="email@address.com"<% if(primaryEmail){%> value="<%= primaryEmail %>"<%}%>/>
@@ -86,8 +88,8 @@
       <% } %>
 
       <fieldset class="form_fieldset form_fieldset--submit">
-        <button class="button_primer button_standard button_default onboarding__button form_submit js-onboarding-next-step">
-          Create Account
+        <button class="button_primer button_standard button_default onboarding__button form_submit js-onboarding-next-step visuallydisabled">
+          <%= (emailSignup) ? 'Continue' : 'Create Account' %>
         </button>
       </fieldset>
     </form>
