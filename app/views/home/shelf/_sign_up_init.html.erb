@@ -70,6 +70,11 @@
           <input name="user[password]" type="password" class="form_input" id="signup-password" placeholder="•••••••" />
         </fieldset>
 
+        <% #support invitations system from within the app %>
+        <% if @invite_id %>
+          <input name="invite_id" id="signup-invite-id" type="hidden" value="<%= @invite_id %>" />
+        <% end %>
+
         <fieldset class="form_fieldset form_fieldset--submit">
           <button class="button_primer button_standard button_default onboarding__button form_submit js-create-account">
             Create Account
