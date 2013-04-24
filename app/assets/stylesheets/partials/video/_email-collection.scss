@@ -9,11 +9,14 @@
 .welcome-message__wrapper--email_collection {
 
   .welcome-message--large {
-    width: 490px;
+    width: 530px;
   }
 
   .welcome-message__body {
-    padding: 1em;
+    position: relative;
+    width: 138px;
+    padding: 0 1em 1em;
+    margin: 0 auto;
   }
 
   form .search_module__submit {
