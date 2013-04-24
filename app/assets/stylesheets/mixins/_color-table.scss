@@ -1,73 +1,57 @@
 ////////////////////////////////////////////////////////////////////////////
 //  REFERENCE TABLE
 /*  ---------------------
-    blue            #0590c4            ,
-    blue-dark       darken(#0590c4,10%),
 
-    default         #eeeeee            ,
+    excerpt from _base.scss---------
 
-    gray            #27292A            ,
-    gray-light      #a0a0a0            ,
-    gray-medium     #dddddd            ,
-    gray-seven:     #777777            ,
+    $ui-off-white  : rgba(#f4f4f4,1);
+    $ui-white      : rgba(#ffffff,1);
 
-    green:          #428e3a            ,
-    green-soft:     darken(#6cbc45,5%) ,
+    $ui-black      : rgba(#333333,1);
+    $ui-soft-black : rgba(#555555,1);
+    $ui-gray       : rgba(#f1f1f1,1);
 
-    purple:         #693a7b            ,
-    red:            #cc1235            ,
-    yellow:         #d5cd39            ,
+    $ui-green      : rgba(#6fbe47,1);
+    $ui-red        : rgba(#ee4c4c,1);
+    $ui-blue       : rgba(#0590c4,1);
 
-    twitter-blue:   #2CAAE1            ,
-    facebook-blue:  #013e80            ,
-    tumblr-blue:    #2f445b            ,
-
-    chips-ahoy:     #00539d            ;
+    $facebook-blue : rgba(#013e80,1);
+    $twitter-blue  : rgba(#2CAAE1,1);
+    $tumblr-blue   : rgba(#2f445b,1);
 */
 ////////////////////////////////////////////////////////////////////////////
 
-    $color-names :
-    blue         ,
-    blue-dark    ,
+$color-names :
 
-    default      ,
+    off-white    ,
+    white        ,
 
+    black        ,
+    soft-black   ,
     gray         ,
-    gray-light   ,
-    gray-medium  ,
-    gray-seven   ,
 
     green        ,
-    green-soft   ,
-    purple       ,
     red          ,
-    yellow       ,
+    blue         ,
 
-    twitter-blue ,
     facebook-blue,
-    tumblr-blue  ,
+    twitter-blue ,
+    tumblr-blue  ;
 
-    chips-ahoy   ;
 
-    $color-values      :
-    #0590c4            ,
-    darken(#0590c4,10%),
+$color-values :
 
-    #eeeeee            ,
+    rgba(#f4f4f4,1),
+    rgba(#ffffff,1),
 
-    #27292A            ,
-    #a0a0a0            ,
-    #dddddd            ,
-    #777777            ,
+    rgba(#333333,1),
+    rgba(#555555,1),
+    rgba(#f1f1f1,1),
 
-    #428e3a            ,
-    darken(#6cbc45,5%) ,
-    #693a7b            ,
-    #cc1235            ,
-    #d5cd39            ,
+    rgba(#6fbe47,1),
+    rgba(#ee4c4c,1),
+    rgba(#0590c4,1),
 
-    #2CAAE1            ,
-    #013e80            ,
-    #2f445b            ,
-
-    #00539d            ;
+    rgba(#013e80,1),
+    rgba(#2CAAE1,1),
+    rgba(#2f445b,1);
