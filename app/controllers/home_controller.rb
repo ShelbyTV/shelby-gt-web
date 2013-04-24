@@ -84,33 +84,14 @@ class HomeController < ApplicationController
   # Handles invite landing page
   #
   # GET /invite/:invite_id
+  #     :invite_id is OPTIONAL and used for invitation system in app
   #
   def invite
     if user_signed_in?
       redirect_to :action => :index
     else
-      # A/B test
-      @seo_search_messaging = ab_test :seo_search_messaging
-
-      # Parse errors and render landing
-      @nickname_error = params[:nickname]
-      @email_error = params[:primary_email]
-
-      @invite_id = params[:invite_id]
-      render '/home/landing'
-    end
-  end
-
-  ##
-  # Handles invite landing page
-  #
-  # GET /invite
-  #
-  def signup
-    if user_signed_in?
-      redirect_to :action => :index
-    else
       @sign_up = true
+      @invite_id = params[:invite_id]
 
       # Parse errors and render landing
 

@@ -1,7 +1,8 @@
 libs.shelbyGT.emailCollection = Support.CompositeView.extend({
 
   events : {
-      "submit #js-email-form"     : "_onEmailSubmit",
+      // "submit #js-email-form"     : "_onEmailSubmit",
+      "click .js-signup-button"    : "_onClickSignup",
       "click .js-close"                   : "_close"
   },
 
@@ -24,6 +25,19 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
     $('.welcome-message__wrapper--email_collection').show();
   },
 
+  _onClickSignup : function(){
+    // event tracking
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "Email Collection",
+      gaAction : 'Click signup',
+      gaLabel : this.options.guide.get('displayState')
+    });
+
+    // navigate to /invite which is out of the js app
+    document.location.href = '/invite';
+  },
+
   _onEmailSubmit : function(){
     var self = this;
      var email = _(this.$el.find('#js-email-input').val()).clean();
@@ -41,8 +55,8 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
           providers : ['ga', 'kmq'],
           gaCategory : "Email Collection",
           gaAction : 'Email submitted',
-          gaLabel : this.options.guide.get('displayState'),
-          kmqName : "Email submitted in collection modal on "+this.options.guide.get('displayState'),
+          gaLabel : self.options.guide.get('displayState'),
+          kmqName : "Email submitted in collection modal on "+self.options.guide.get('displayState'),
           kmqProperties : {'email' : email}
         });
         // set kissmetrics identity

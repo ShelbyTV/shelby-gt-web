@@ -12,11 +12,13 @@
       twitter = _.find(shelby.models.user.get('authentications'), function(auth){ return auth.provider == 'twitter'});
       facebook = _.find(shelby.models.user.get('authentications'), function(auth){ return auth.provider == 'facebook'});
   }
+
+  var emailSignup = (!twitter && !facebook);
 %>
 <section class="onboarding__lining onboarding__lining--signup-form">
   <div class="onboarding__head">
     <h1 class="onboarding__h1">
-      Create your account
+      <%= (emailSignup) ? 'Choose your Avatar' : 'Create your account' %>
     </h1>
  </div><!-- eo onboarding__head -->
 
@@ -45,29 +47,29 @@
         </div>
       </fieldset>
 
-      <fieldset class="form_fieldset js-invite-name">
-        <label for="full-name" class="form_label">Full Name</label>
-        <p class="form_error hidden js-onboarding-username-input-error">Please enter your name</p>
-        <input type="text" class="form_input" id="full-name" placeholder="First and Last Name"<% if(fullName){%> value="<%= fullName %>"<%}%>/>
+      <fieldset class="form_fieldset<%= (emailSignup) ? ' visuallyhidden' : ''%> js-invite-name">
+        <label for="signup-name" class="form_label">Full Name</label>
+        <p class="form_error hidden js-invite-name-error">Please enter your name</p>
+        <input name="user[name]" type="text" class="form_input" id="signup-name" placeholder="First and Last Name"<% if(fullName){%> value="<%= fullName %>"<%}%> autofocus />
       </fieldset>
 
-      <fieldset class="form_fieldset js-invite-username">
-        <label for="user-name" class="form_label">Username</label>
+      <fieldset class="form_fieldset<%= (emailSignup) ? ' visuallyhidden' : ''%> js-invite-username">
+        <label for="signup-username" class="form_label">Username</label>
         <p class="form_error hidden">Please enter a username</p>
-        <input type="text" class="form_input" id="user-name" placeholder=""<% if(userName){%> value="<%= userName %>"<%}%>/>
-      </fieldset>
+        <input name="user[nickname]" type="text" class="form_input" id="signup-username" <% if(userName){ %> value="<%= userName %>"<%}%> />
+     </fieldset>
 
-      <fieldset class="form_fieldset js-invite-email">
-        <label for="email-address" class="form_label">Email Address</label>
+      <fieldset class="form_fieldset<%= (emailSignup) ? ' visuallyhidden' : ''%> js-invite-email">
+        <label for="signup-email" class="form_label">Email Address</label>
         <p class="form_error hidden js-onboarding-email-input-error">Please enter an email address</p>
-        <input type="text" class="form_input" id="email-address" placeholder="email@address.com"<% if(primaryEmail){%> value="<%= primaryEmail %>"<%}%>/>
+        <input name="user[primary_email]" type="text" class="form_input" id="signup-email" placeholder="email@address.com"<% if(primaryEmail){%> value="<%= primaryEmail %>"<%}%> />
       </fieldset>
 
       <% if (!userHasPassword) { %>
-        <fieldset class="form_fieldset js-invite-password">
-          <label for="password" class="form_label">Password</label>
-          <p class="form_error hidden js-onboarding-pwd-input-error">Please enter a password</p>
-          <input type="password" class="form_input" id="password" placeholder="•••••••" />
+        <fieldset class="form_fieldset<%= (emailSignup) ? ' visuallyhidden' : ''%> js-invite-password">
+          <label for="signup-password" class="form_label">Password</label>
+          <p class="form_error hidden js-invite-password-input-error">Please enter a password</p>
+          <input name="user[password]" type="password" class="form_input" id="signup-password" placeholder="•••••••" />
         </fieldset>
       <% } %>
 
@@ -81,13 +83,13 @@
       <% if(twitter) { %>
         <fieldset class="form_fieldset">
           <input type="checkbox" class="form_checkbox form_checkbox--inline" id="follow-shelby" checked />
-          <label for="follow-shelby" class="form_label form_label--inline">Follow @shelby</label>
+          <label for="follow-shelby" class="form_label form_label--inline">Follow @shelby on Twitter</label>
         </fieldset>
       <% } %>
 
       <fieldset class="form_fieldset form_fieldset--submit">
-        <button class="button_primer button_standard button_default onboarding__button form_submit js-onboarding-next-step">
-          Create Account
+        <button class="button_primer button_standard button_default onboarding__button form_submit js-onboarding-next-step visuallydisabled">
+          <%= (emailSignup) ? 'Continue' : 'Create Account' %>
         </button>
       </fieldset>
     </form>

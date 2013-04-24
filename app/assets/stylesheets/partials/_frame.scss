@@ -8,6 +8,8 @@ $active-list-item: $shelby-blue;
 .stream {
   .active-list-item {
     background-color: rgba(5, 144, 196, .8);//shelby-blue, rbga style
+    position: relative;
+    z-index: 1;
 
     .explore-frame-title,
     .frame-title,
@@ -64,6 +66,12 @@ $active-list-item: $shelby-blue;
     position: absolute;
   }
 }
+    //.frame modifiers
+    .frame--shelf {
+      .frame-body-wrapper {
+        min-height: 222px;
+      }
+    }
 
 .frame-list-item {
   box-shadow: 0 1px 0 0 $outset;
