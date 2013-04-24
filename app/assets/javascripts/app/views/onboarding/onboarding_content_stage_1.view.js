@@ -15,9 +15,9 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
   events : {
     "keyup .form_input"              : "_onKeyupFormInput",
     "blur  .form_input"              : "_onBlurFormInput",
-    "keyup #full-name"               : "_onUsernameInputKeyup",
-    "keyup #password"                : "_onPwdInputKeyup",
-    "keyup #email-address"           : "_onEmailInputKeyup",
+    // "keyup #signup-name"             : "_onUsernameInputKeyup",
+    // "keyup #signup-password"         : "_onPwdInputKeyup",
+    // "keyup #signup-email"            : "_onEmailInputKeyup",
     "click .js-signup-with-email"    : "_onNextStepClick",
     "click .js-onboarding-next-step" : "_onNextStepClick"
   },
@@ -54,13 +54,12 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
 
   _onKeyupFormInput : function(event) {
     var signupPassword = this.$el.find('#signup-password'),
-        submitButton   = this.$el.find('.js-onboarding-next-step'),
-        hasErrors      = this._hasErrors;
+        submitButton   = this.$el.find('.js-onboarding-next-step');
 
     if(signupPassword.length && signupPassword.val().length >= shelby.config.user.password.minLength){
       this._validateForm(event);
 
-      if(!hasErrors) {
+      if(!this._hasErrors) {
         submitButton
           .toggleClass('button_default', false)
           .toggleClass('button_green', true);
@@ -73,10 +72,10 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
   },
 
   _onBlurFormInput : function(event) {
-    var val = $(event.currentTarget).val().length;
-
-    if(val != '' || val != undefined || val != null) {
-      $(event.currentTarget).parent().removeClass('form_fieldset--error');
+    var currentInput = $(event.currentTarget);
+    if(currentInput.val().length) {
+      console.log(currentInput.val().length);
+      currentInput.siblings('.form_error').toggleClass('hidden').parent().removeClass('form_fieldset--error');
     }
   },
 
@@ -85,18 +84,20 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
         signupUsername = this.$el.find('#signup-username'),
         signupEmail    = this.$el.find('#signup-email'),
         signupPassword = this.$el.find('#signup-password'),
-        submitButton   = this.$el.find('.js-onboarding-next-step'),
-        hasErrors      = this._hasErrors = false;
+        submitButton   = this.$el.find('.js-onboarding-next-step');
+
+        this._hasErrors = false;
 
       // validate user full name
       if(!signupName.val().length) {
-        $('.js-invite-name').addClass('form_fieldset--error')
+        $('.js-invite-name').toggleClass('form_fieldset--error',true)
                             .find('.form_error')
                             .toggleClass('hidden', false)
                             .text('Please enter your name');
-        hasErrors = true;
+        this._hasErrors = true;
       } else {
         $('.js-invite-name')
+                            .toggleClass('form_fieldset--error', false)
                             .find('.form_error')
                             .toggleClass('hidden', true);
 
@@ -104,13 +105,15 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
 
       // validate username
       if(!signupUsername.val().length) {
-        $('.js-invite-username').addClass('form_fieldset--error')
+        $('.js-invite-username')
+                                .toggleClass('form_fieldset--error',true)
                                 .find('.form_error')
                                 .toggleClass('hidden', false)
                                 .text('Please enter a username');
-        hasErrors = true;
+        this._hasErrors = true;
       } else {
         $('.js-invite-username')
+                            .toggleClass('form_fieldset--error',false)
                             .find('.form_error')
                             .toggleClass('hidden', true);
       }
@@ -118,37 +121,37 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
       // validate password
       // var password
       if(signupPassword.length && signupPassword.val().length < shelby.config.user.password.minLength) {
-        $('.js-invite-password').addClass('form_fieldset--error')
+        $('.js-invite-password').toggleClass('form_fieldset--error',true)
                                 .find('.form_error')
                                 .toggleClass('hidden', false)
                                 .text('Password must be at least ' + shelby.config.user.password.minLength + ' characters long');
 
-        hasErrors = true;
+        this._hasErrors = true;
       } else {
         $('.js-invite-password')
+                            .toggleClass('form_fieldset--error',false)
                             .find('.form_error')
                             .toggleClass('hidden', true);
       }
       // validate email
       if(!signupEmail.val().length || signupEmail.val().search(shelby.config.user.email.validationRegex) == -1) {
-        $('.js-invite-email').addClass('form_fieldset--error')
+        $('.js-invite-email').toggleClass('form_fieldset--error',true)
                              .find('.form_error')
                              .toggleClass('hidden', false)
                              .text('Please enter a valid email.');
 
-        hasErrors = true;
+        this._hasErrors = true;
       } else {
         $('.js-invite-email')
+                            .toggleClass('form_fieldset--error',false)
                             .find('.form_error')
                             .toggleClass('hidden', true);
       }
 
-      if (hasErrors) {
-        event.preventDefault();
+      if (this._hasErrors) {
         $('.js-create-account')
           .toggleClass('button_green',false)
           .toggleClass('button_default', true);
-
       } else {
         // save the user's input in a session cookie so we can re-render it if API redirects us back
         // here with errors the user needs to fix
@@ -244,14 +247,11 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
         invalidFields = this._getInvalidFields(),
         createAccountButton = this.$('.js-onboarding-next-step');
 
+    this._validateForm(e);
+
     this._renderErrors(invalidFields, true);
 
-    var $password = $('#password');
-
-    if($password == '' || $password == null || $password == undefined) {
-      $password.parent('.form_fieldset').addClass('.form_fieldset--error');
-      $('.js-invite-password-input-error').toggleClass('hidden',false);
-    }
+    if(this._hasErrors){ return; }
 
     if (invalidFields.length){
       return;
