@@ -1,16 +1,22 @@
 <div class="empty-indicator-lining empty-queue">
   <h2 class="empty-indicator-header">
-    Let's queue up some video!
+    All the videos you Like in one place!
   </h2>
-  
+
   <ul class="list empty-indicator-list">
     <li>
       <div class="empty-indicator-section empty-indicator-within-shelby">
           <h3 class="empty-indicator-subheader">
             Within Shelby
           </h3>
+          <button class="empty-indicator-button  button_primer button_default button_command button_command--like js-track-event" data-ga_category="Likes Section" data-ga_action="Click disabled like buttons" data-ga_label="<%= shelby.models.user.get('nickname') %>" disabled="">
+            <i class="icon icon-heart js-command-icon"></i>
+            <span class="label">
+              Like
+            </span>
+          </button>
           <p class="empty-indicator-block">
-            Click the QUEUE button on any video in Shelby to save it for viewing at a later time.
+            Click the LIKE button on any video and it will appear here!
           </p>
         </div>
     </li>
@@ -21,7 +27,7 @@
           </h3>
           <button class="button_primer button_blue empty-indicator-button js-goto-tools">Browser Tools</button>
           <p class="empty-indicator-block">
-            Queue video directly from your favorite websites using our <a class="tools-link js-goto-tools" href="#" onclick="return false;">browser tools</a>.
+            Like video directly from your favorite websites using our <a class="tools-link js-goto-tools js-track-event" data-ga_category="Likes Section" data-ga_action="Click tools" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#" onclick="return false;">browser tools</a>.
           </p>
         </div>
     </li>
