@@ -1,8 +1,21 @@
+
 //------------------------------------------------------------------------------
-//  Constants
+//  UI KIT
 //------------------------------------------------------------------------------
-$app-header__height : 38px;
-$app-background-color : #e2e2e2;
+  $ui-off-white  : rgba(#f4f4f4,1); //Shelby White
+  $ui-white      : rgba(#ffffff,1); //Pane White
+
+  $ui-black      : rgba(#333333,1); //Typography
+  $ui-soft-black : rgba(#555555,1); //Button Typography
+  $ui-gray       : rgba(#f1f1f1,1); //Pane Grey
+
+  $ui-green      : rgba(#6fbe47,1); //Shelby Green
+  $ui-red        : rgba(#ee4c4c,1); //Shelby Red
+  $ui-blue       : rgba(#0590c4,1); //Shelby Blue
+
+  $facebook-blue : rgba(#013e80,1); //Facebook Blue
+  $twitter-blue  : rgba(#2CAAE1,1); //Twitter Blue
+  $tumblr-blue   : rgba(#2f445b,1); //Tumblr Blue
 
 //------------------------------------------------------------------------------
 //  ICONS, these aren't worth taking the time to update right now.
@@ -65,15 +78,13 @@ $input-radius  : $radius - 2;
 //------------------------------------------------------------------------------
 $_unit                         : 10px;
 $defaultMargin                 : $_unit;
-$guide-width                   : $_unit * 37;
-$persistent_video_info--height : 180px;
 
 //------------------------------------------------------------------------------
 //  COLORS
 //------------------------------------------------------------------------------
 //  COLORS: base
-$base          : #e2e2e2;
-$base-frame    : #F2F0F0;
+$base          : $ui-gray;
+$base-frame    : $ui-off-white;
 $shadow        : 0 0 2px 0 rgba(0,0,0,0.3);
 $shadow-text   : 0px -1px 0px rgba(0,0,0,0.6);
 $outset        : adjust-lightness($base, 7%);
@@ -127,3 +138,11 @@ $tumblr-blue                        : #2f445b;
 //  COLORS: buttons
 $button-default-color               : #eee;
 $networks-unselected                : #474747;
+
+//------------------------------------------------------------------------------
+//  Constants
+//------------------------------------------------------------------------------
+$app-header__height            : 38px;
+$app-background-color          : #e2e2e2;
+$guide-width                   : $_unit * 37;
+$persistent_video_info--height : 180px;
