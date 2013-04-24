@@ -74,8 +74,7 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
   _onBlurFormInput : function(event) {
     var currentInput = $(event.currentTarget);
     if(currentInput.val().length) {
-      console.log(currentInput.val().length);
-      currentInput.siblings('.form_error').toggleClass('hidden').parent().removeClass('form_fieldset--error');
+      currentInput.siblings('.form_error').toggleClass('hidden', true).parent().removeClass('form_fieldset--error');
     }
   },
 
