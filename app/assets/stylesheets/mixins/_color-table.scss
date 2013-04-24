@@ -4,20 +4,22 @@
 
     excerpt from _base.scss---------
 
-    $ui-white      : rgba(#ffffff,1);
-    $ui-off-white  : rgba(#f4f4f4,1);
+    name             value              lightness(color);   font-color  lightest non-inverted
 
-    $ui-black      : rgba(#333333,1);
-    $ui-soft-black : rgba(#555555,1);
-    $ui-gray       : rgba(#f1f1f1,1);
+    $ui-white      : rgba(#ffffff,1);   100%                black
+    $ui-off-white  : rgba(#f4f4f4,1);   95.68627%           black
 
-    $ui-green      : rgba(#6fbe47,1);
-    $ui-red        : rgba(#ee4c4c,1);
-    $ui-blue       : rgba(#0590c4,1);
+    $ui-black      : rgba(#333333,1);   20%                 white           8
+    $ui-soft-black : rgba(#555555,1);   33.33333%           white           5
+    $ui-gray       : rgba(#f1f1f1,1);   94.5098%            black
 
-    $facebook-blue : rgba(#013e80,1);
-    $twitter-blue  : rgba(#2CAAE1,1);
-    $tumblr-blue   : rgba(#2f445b,1);
+    $ui-green      : rgba(#6fbe47,1);   51.17647%           white           3
+    $ui-red        : rgba(#ee4c4c,1);   61.56863%           white           1    <<<<<<<
+    $ui-blue       : rgba(#0590c4,1);   39.41176%           white           4
+
+    $facebook-blue : rgba(#013e80,1);   25.29412%           white           7
+    $twitter-blue  : rgba(#2CAAE1,1);   52.7451%            white           2
+    $tumblr-blue   : rgba(#2f445b,1);   27.05882%           white           6
 */
 ////////////////////////////////////////////////////////////////////////////
 

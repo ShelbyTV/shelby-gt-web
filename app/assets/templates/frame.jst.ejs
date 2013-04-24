@@ -35,8 +35,7 @@
           <% if (!user.isAnonymous()) { %>
             <li class="menu_item" role="menuitem">
               <button class="button_primer button_blue button_command button_command--roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
-                <i class="icon icon-videocard_roll"></i>
-                  Roll…
+                <i class="icon icon-videocard_roll"></i>Roll…
               </button>
             </li>
           <% } %>
@@ -45,10 +44,7 @@
             <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
               <button class="button_primer button_gray button_command button_command--like js-queue-frame
                              <%= (videoIsInQueue) ? ' queued' : ' button_gray' %>">
-                <i class="icon icon-heart<%= videoIsInQueue ? ' icon-heart--red': '' %>"></i>
-                <span class="label">
-                    <%= (videoIsInQueue ) ? 'Liked' : 'Like' %>
-                </span>
+                <i class="icon icon-heart<%= videoIsInQueue ? ' icon-heart--red': '' %>"></i><span class="label"><%= (videoIsInQueue ) ? 'Liked' : 'Like' %></span>
               </button>
             <% } else { %>
               <button class="button_primer button_gray button_command button_command--remove js-queue-frame remove-frame js-remove-frame queued">
@@ -61,8 +57,7 @@
 
           <li class="menu_item" role="menuitem">
             <button class="button_primer button_gray button_command button_comand--share js-share-menu">
-              <i class="icon icon-share"></i>
-              Share…
+              <i class="icon icon-share"></i>Share…
             </button>
 
             <div class="share_menu frame-body-wrapper js-share-menu-block hidden">
