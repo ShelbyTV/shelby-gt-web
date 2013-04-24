@@ -18,7 +18,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "help"                                         : "displayHelp",
     "legal"                                        : "displayLegal",
     "search"                                       : "displaySearch",
-    "me"                                           : "displayRollList",
+    "following"                                    : "displayRollList",
+    "me"                                           : "displayCurrentUserPersonalRoll",
     "onboarding/:stage"                            : "displayOnboardingView",
     "preferences"                                  : "displayUserPreferences",
     "likes"                                        : "displaySaves",
@@ -89,7 +90,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayRoll : function(rollId, title, params, options, topLevelViewsOptions){
+  displayRoll : function(roll, title, params, options, topLevelViewsOptions){
+    var rollId;
+    if (typeof(roll) === 'string') {
+      rollId = roll;
+    } else {
+      // if roll is a Model, get its id
+      rollId = roll.id;
+    }
+    if (rollId == shelby.models.user.get('personal_roll_id')) {
+      // we've got a special route to display if this roll is the personal roll
+      // of the currently logged in user
+      this.navigate('me', {trigger: false, replace: true});
+    }
+
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     // default options
@@ -107,7 +121,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       data: {include_children:true}
     }).value();
 
-    this._setupRollView(rollId, title, {
+    this._setupRollView(roll, title, {
       updateRollTitle: options.updateRollTitle,
       data: options.data,
       onRollFetch: options.onRollFetch
@@ -447,6 +461,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           _gaq.push(['_trackPageview', '/me']);
         } catch(e) {}
       }
+  },
+
+  displayCurrentUserPersonalRoll : function(){
+    this.displayRoll(shelby.models.user.get('personal_roll_id'), null, null, {updateRollTitle: false});
   },
 
   displayOnboardingView : function(stage){
