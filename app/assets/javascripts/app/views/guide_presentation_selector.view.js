@@ -32,11 +32,12 @@
 
     render : function(){
       this.$el.html(this.template({user:shelby.models.user}));
-      this.renderChild(new libs.shelbyGT.InviteFormView({
-        el : this.$('.js-guide-invite'),
-        model : shelby.models.invite,
-        user : shelby.models.user
-      }));
+      // not rendering this right now. coming back to it when we can focus on optimizing. -his
+      // this.renderChild(new libs.shelbyGT.InviteFormView({
+      //   el : this.$('.js-guide-invite'),
+      //   model : shelby.models.invite,
+      //   user : shelby.models.user
+      // }));
       this.renderChild(new libs.shelbyGT.GuidePresentationSearchView({
         el : this.$('.js-guide-search')
       }));
@@ -136,7 +137,7 @@
 
     _adjustForAnonymousUser : function(){
       this.$('.js-guide-settings').hide();
-      this.$('.js-guide-invite').hide();
+      // this.$('.js-guide-invite').hide();
     }
 
   });
