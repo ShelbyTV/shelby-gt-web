@@ -37,7 +37,7 @@ ShelbyGtWeb::Application.routes.draw do
 
   # INVITES
   get '/invite' => "home#signup"
-  get '/invite/:invite_id' => "home#invite"
+  get '/invite/:invite_id' => "home#signup"
 
   # HOME
   get '/team' => 'home#team'
