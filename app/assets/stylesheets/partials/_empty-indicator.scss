@@ -39,13 +39,6 @@
   padding: 10px;
 }
 
-.empty-indicator-within-shelby {
-  background-image: url('/images/assets/emptyqueue_card.png');
-  background-position: bottom right;
-  background-repeat: no-repeat;
-  min-height: 138px;
-}
-
 .empty-indicator-button {
   @include button-sizing();
 

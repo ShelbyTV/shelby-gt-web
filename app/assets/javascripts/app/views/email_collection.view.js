@@ -1,7 +1,8 @@
 libs.shelbyGT.emailCollection = Support.CompositeView.extend({
 
   events : {
-      "submit #js-email-form"     : "_onEmailSubmit",
+      // "submit #js-email-form"     : "_onEmailSubmit",
+      "click .js-signup-button"    : "_onClickSignup",
       "click .js-close"                   : "_close"
   },
 
@@ -22,6 +23,19 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
     this.$el.html(this.template());
     $('#js-email-collection-wrapper').toggleClass('hidden', true);
     $('.welcome-message__wrapper--email_collection').show();
+  },
+
+  _onClickSignup : function(){
+    // event tracking
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "Email Collection",
+      gaAction : 'Click signup',
+      gaLabel : this.options.guide.get('displayState')
+    });
+
+    // navigate to /invite which is out of the js app
+    document.location.href = '/invite';
   },
 
   _onEmailSubmit : function(){

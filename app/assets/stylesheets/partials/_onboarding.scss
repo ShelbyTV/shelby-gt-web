@@ -226,4 +226,31 @@
   margin-bottom: 4em;
 }
     //modifiers
+    .onboarding__body--email {
+      margin: 0 auto;
+      width: 25em;
+
+      //non-normative overrides
+      .form_fieldset {
+        position: relative;
+      }
+
+      .form_error {
+        font-size: 0.8em;
+        margin: 2.5em 0.5em 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      .form_input,
+      .form_label {
+        text-align: left;
+      }
+
+      .form_submit {
+        font-size: 1.25em;
+        margin-top: 1em;
+      }
+    }
 
