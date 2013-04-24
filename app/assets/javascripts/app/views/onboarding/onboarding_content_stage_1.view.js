@@ -15,9 +15,9 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
   events : {
     "keyup .form_input"              : "_onKeyupFormInput",
     "blur  .form_input"              : "_onBlurFormInput",
-    // "keyup #signup-name"             : "_onUsernameInputKeyup",
-    // "keyup #signup-password"         : "_onPwdInputKeyup",
-    // "keyup #signup-email"            : "_onEmailInputKeyup",
+    "keyup #signup-name"             : "_onUsernameInputKeyup",
+    "keyup #signup-password"         : "_onPwdInputKeyup",
+    "keyup #signup-email"            : "_onEmailInputKeyup",
     "click .js-signup-with-email"    : "_onNextStepClick",
     "click .js-onboarding-next-step" : "_onNextStepClick"
   },
@@ -119,7 +119,7 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
 
       // validate password
       // var password
-      if(signupPassword.length && signupPassword.val().length < shelby.config.user.password.minLength) {
+      if(signupPassword.length && signupPassword.val().length <= shelby.config.user.password.minLength) {
         $('.js-invite-password').toggleClass('form_fieldset--error',true)
                                 .find('.form_error')
                                 .toggleClass('hidden', false)
