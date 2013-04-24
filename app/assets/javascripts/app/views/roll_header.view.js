@@ -23,6 +23,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   render : function(){
     if (this.model.has('roll_type')) {
       this.$el.html(this.template({
+        tabActive : 'likes',
         roll : this.model,
         isInAppUserProfile : this.options.guideModel.displayState == libs.shelbyGT.DisplayState.watchLaterRoll ||
                              this.options.guideModel.displayState == libs.shelbyGT.DisplayState.rollList ||
@@ -32,15 +33,18 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     shelby.models.guide.trigger('reposition');
   },
 
-  _goToUserPersonalRoll : function(){
+  _goToUserPersonalRoll : function(e){
+    e.preventDefault();
     shelby.router.navigate('me', {trigger: true});
   },
 
-  _goToLikes : function(){
+  _goToLikes : function(e){
+    e.preventDefault();
     shelby.router.navigate('likes', {trigger: true});
   },
 
-  _goToRollFollowings : function(){
+  _goToRollFollowings : function(e){
+    e.preventDefault();
     shelby.router.navigate('following', {trigger: true});
   }
 

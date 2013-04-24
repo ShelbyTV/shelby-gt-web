@@ -1,20 +1,36 @@
+<div class="media_module clearfix">
+  <span class="media_image">
+    <img class="xuser-avatar" src="<%= roll.get('thumbnail_url') %>" />
+  </span>
+
+  <div class="media_body user-nickname">
+    <h2>
+      <%= (isInAppUserProfile) ? shelby.models.user.get('nickname') : (libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || '') %>
+    </h2>
+    <h3>
+      <%= (isInAppUserProfile) ? shelby.models.user.get('name') : roll.get('creator_nickname') %>
+    </h3>
+  </div>
+</div><!-- eo media_module -->
+
 <% if (isInAppUserProfile) { %>
-  <h2 class="user-nickname">
-    <%= shelby.models.user.get('nickname') %>
-  </h2>
-  <ul>
-    <li>
-      <div class="js-user-roll">Roll</div>
+  <ul class="list list--fit tabs clearfix">
+    <li class="one-third">
+      <a href="#" class="button_standard tab<% (tabActive == 'roll') ? ' tab--active' : ''%> js-track-event js-user-roll" data-ga_category="Me tab" data-ga_action="Click" data-ga_label="Roll">
+        Roll
+      </a>
     </li>
-    <li>
-      <div class="js-user-likes">Likes</div>
+
+    <li class="one-third">
+      <a href="#" class="button_standard tab<% (tabActive == 'likes') ? ' tab--active' : ''%> js-track-event js-user-likes" data-ga_category="Me tab" data-ga_action="Click" data-ga_label="Likes">
+        Likes
+      </a>
     </li>
-    <li>
-      <div class="js-user-following">Following</div>
+
+    <li class="one-third">
+      <a href="#" class="button_standard tab<% (tabActive == 'following') ? ' tab--active' : ''%> js-track-event js-user-following" data-ga_category="Me tab" data-ga_action="Click" data-ga_label="Following">
+        Following
+      </a>
     </li>
   </ul>
-<% } else { %>
-  <h2 class="roll-title">
-      <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || '' %>
-  </h2>
 <% } %>
