@@ -55,7 +55,7 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
     // remove the active channel highlight
     this.$('.js-channel')
           .children('.channel_menu__button')
-            .toggleClass('button_default',true)
+            .toggleClass('button_gray',true)
             .toggleClass('button_green-soft',false);
     // set the highlight on the new active channel
     this._findHighlightActiveChannel();
@@ -66,7 +66,7 @@ libs.shelbyGT.ChannelInfoOverlayView = Support.CompositeView.extend({
     var activeChannel = libs.utils.channels.getCurrentChannel();
     this.$('.js-channel[data-channel=' + activeChannel + ']')
           .children('.channel_menu__button')
-            .toggleClass('button_default',false)
+            .toggleClass('button_gray',false)
             .toggleClass('button_green-soft',true);
   }
 

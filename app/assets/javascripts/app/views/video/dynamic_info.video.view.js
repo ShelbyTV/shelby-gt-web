@@ -221,7 +221,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     }
 
     //  toggle the "button pressed" state
-    // $this.toggleClass('button_default',!blockHasClass)
+    // $this.toggleClass('button_gray',!blockHasClass)
     //      .toggleClass('button_gray-light',blockHasClass);
     $this.toggleClass('button_active',blockHasClass);
 

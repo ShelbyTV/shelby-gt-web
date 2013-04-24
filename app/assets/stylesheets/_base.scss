@@ -2,8 +2,8 @@
 //------------------------------------------------------------------------------
 //  UI KIT
 //------------------------------------------------------------------------------
-  $ui-off-white  : rgba(#f4f4f4,1); //Shelby White
   $ui-white      : rgba(#ffffff,1); //Pane White
+  $ui-off-white  : rgba(#f4f4f4,1); //Shelby White
 
   $ui-black      : rgba(#333333,1); //Typography
   $ui-soft-black : rgba(#555555,1); //Button Typography
@@ -17,6 +17,9 @@
   $twitter-blue  : rgba(#2CAAE1,1); //Twitter Blue
   $tumblr-blue   : rgba(#2f445b,1); //Tumblr Blue
 
+
+  $ui-button-text: $ui-black;
+  $ui-button-text-inverted: $ui-white;
 //------------------------------------------------------------------------------
 //  ICONS, these aren't worth taking the time to update right now.
 //------------------------------------------------------------------------------

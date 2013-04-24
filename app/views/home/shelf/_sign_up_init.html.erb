@@ -76,7 +76,7 @@
         <% end %>
 
         <fieldset class="form_fieldset form_fieldset--submit">
-          <button class="button_primer button_standard button_default onboarding__button form_submit js-create-account">
+          <button class="button_primer button_standard button_gray onboarding__button form_submit js-create-account">
             Create Account
           </button>
         </fieldset>
@@ -171,7 +171,7 @@ $(document).ready(function(){
         e.preventDefault();
         $('.js-create-account')
           .toggleClass('button_green',false)
-          .toggleClass('button_default', true);
+          .toggleClass('button_gray', true);
 
       } else {
         // save the user's input in a session cookie so we can re-render it if API redirects us back
@@ -188,13 +188,13 @@ $(document).ready(function(){
 
       if(!hasErrors){
         $('.js-create-account')
-          .toggleClass('button_default', false)
+          .toggleClass('button_gray', false)
           .toggleClass('button_green',true);
       }
     } else {
       $('.js-create-account')
         .toggleClass('button_green',false)
-        .toggleClass('button_default', true);
+        .toggleClass('button_gray', true);
     }
   });
 
