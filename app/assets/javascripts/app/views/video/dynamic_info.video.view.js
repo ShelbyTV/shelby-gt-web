@@ -239,9 +239,17 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   _getFrameShortlink : function() {
     var self = this;
     var $shortlinkTextInput = this.$('.js-frame-shortlink');
+    var fetchShortlinkUrl;
+    var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
+    var dbEntry = frameGroup.get('primaryDashboardEntry');
+    if (dbEntry) {
+      fetchShortlinkUrl = shelby.config.apiRoot + '/dashboard/' + dbEntry.id + '/short_link';
+    } else {
+      fetchShortlinkUrl = shelby.config.apiRoot + '/frame/' + this._currentFrame.id + '/short_link';
+    }
     // fetch the short link
     $.ajax({
-      url: 'http://api.shelby.tv/v1/frame/'+this._currentFrame.id+'/short_link',
+      url: fetchShortlinkUrl,
       dataType: 'jsonp',
       success: function(r){
         $shortlinkTextInput.val(r.result.short_link).select();
