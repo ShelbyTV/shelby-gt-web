@@ -20,7 +20,7 @@ $_video-player : #0e0e0e;
 .video_controls {
 	@include gradient-primer($_video-player);
 
-  color:$button-color;
+  color: $button-color;
   padding: 0;
   position: relative;
 }
@@ -194,22 +194,21 @@ $_video-player : #0e0e0e;
 
 .video_progress__load,
 .video_progress__elapsed {
-  @include gradient-primer(rgba(#303030,1));
-
+  background-color: $ui-black;
   border-radius: $radius*2;
   height: 8px;
   width: 0;
 }
 
 .video_progress__elapsed {
-  background: $ui-gray;
+  background: $ui-soft-black;
   margin-top:-8px;
 }
 
 .video_progress__scrubber {
-  background: #efefef;
+  background: $ui-white;
   border-radius: 8px;
-  box-shadow: 1px 0px 2px 1px black;
+  box-shadow: 1px 0px 2px 1px $ui-black;
   cursor: pointer;
   cursor: ew-resize;
   height: 15px;
@@ -245,7 +244,7 @@ $_video-player : #0e0e0e;
 
   border: none;
   border-radius: $radius;
-  color: $button-color;
+  color: $ui-white;
   font-size: 2.5em;
   margin-top: -145px;
   padding: 0.6em 0.6em 0.5em;

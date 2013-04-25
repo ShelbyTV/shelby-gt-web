@@ -16,13 +16,11 @@
   All spans must be inline!
 */
 
-$shelby-mark-color: #6cbc45;
-
 .shelby_logo {
   line-height: 1;
 
   .icon-mark {
-    color: $shelby-mark-color;
+    color: $ui-green;
   }
 
   .icon-type {
