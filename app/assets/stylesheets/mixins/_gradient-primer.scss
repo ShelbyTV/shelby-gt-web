@@ -3,7 +3,6 @@
   @include background(linear-gradient($direction, adjust-lightness($color,$adjust), $color));
 }
 
-
 //this fucking thing makes "show/hide" of longer PVI comments look better.
 @mixin transparent-fade($color: $base, $stop: 50%, $direction: top){
   background-color: $color;

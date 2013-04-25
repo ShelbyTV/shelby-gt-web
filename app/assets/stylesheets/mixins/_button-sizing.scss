@@ -1,9 +1,9 @@
 @mixin button-sizing($use: generic) {
     @if $use == frame-command {
-    padding-bottom: 0.6em;
-    padding-right: 0.8em;
-    padding-top: 0.6em;
-    padding-left: 0.8em;
+    padding-bottom: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+    padding-left: 0.5em;
   } @elseif $use == explore-rolls {
     padding-top: .8em;
     padding-bottom: .75em;
@@ -51,7 +51,7 @@
     .button_command--embed {}
     .button_command--facebook {}
     .button_command--like {
-      width: 6.5em;
+      width: 5.5em;
     }
     .button_command--remove {}
     .button_command--roll {}

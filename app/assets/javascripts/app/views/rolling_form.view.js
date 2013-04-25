@@ -202,7 +202,7 @@
       var doPrependSpace = currentRollingMessage.length && !_(currentRollingMessage).endsWith(' ');
       //insert the hashtag at the end of the currently entered rolling message
       this.$('#js-rolling-message').insertText((doPrependSpace ? ' ' : '') + $button.val(), currentRollingMessage.length, true);
-      $button.addClass('button_green button_active');
+      $button.addClass('button_green');
 
       shelby.trackEx({
         providers : ['ga'],

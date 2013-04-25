@@ -13,7 +13,7 @@
 }
 
 .guide__head {
-  box-shadow: $shadow;
+  border-bottom: 1px solid $inset;
   position: relative;
   z-index: 1;
 }
