@@ -37,6 +37,7 @@
 
 .button_command {
   @include button-sizing(frame-command);
+  font-size: 16px;
 
   .icon{
     &:before {
@@ -59,6 +60,14 @@
     .button_command--shortlink {}
     .button_command--tumblr {}
     .button_command--twitter {}
+
+    .button_command--like,
+    .button_command--share,
+    .button_command--roll {
+      .icon {
+        margin-right: 1px;
+      }
+    }
 
 .button_share {
   padding-bottom: 0.8em;
