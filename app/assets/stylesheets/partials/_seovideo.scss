@@ -338,6 +338,15 @@ p {
 //  narrow screens
 ////////////////////////////////////////////////////////////////////////////
 @media only screen and (max-width : 470px) {
+
+  .seovideo-head {
+    .seovideo__banner_wrapper {
+      width: 430px;
+      margin: 0 auto;
+    }
+    .seovideo__h2 {display: none;}
+  }
+
   .seovideo__video {
     & > iframe,
     & > embed,
@@ -383,6 +392,19 @@ p {
   }
 }
 
+////////////////////////////////////////////////////////////////////////////
+//  for wide screens
+////////////////////////////////////////////////////////////////////////////
+@media only screen and (min-width : 470px) and (max-width : 1200px) {
+  .seovideo-head {
+    .seovideo__banner_wrapper {
+      width: 640px;
+      margin: 0 auto;
+    }
+  }
+  .seovideo__h1 { font-size: 1.9em !important; }
+  .seovideo__h2 { display: none; }
+}
 ////////////////////////////////////////////////////////////////////////////
 //  for wide screens
 ////////////////////////////////////////////////////////////////////////////
