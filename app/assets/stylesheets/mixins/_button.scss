@@ -1,6 +1,58 @@
 //------------------------------------------------------------------------------
 //  Button Primer
 //------------------------------------------------------------------------------
+/*
+    TERMS:
+
+1   inversion-value
+
+    a breakpoint, it distinguishes between
+    light-colored buttons with dark text and dark-colored buttons with light text
+    refer to _color-table.scss for understanding on determining the actual value
+
+
+2   .button_primer
+
+    base for any styled button can be
+    <a class="button_primer">my button</a>
+    <button class="button_primer">my button</button>
+
+
+3   .button_active
+4   .button_enabled
+
+    use the active/enabled button when you want a "toggle-able" effect.
+
+
+5   .visuallydisabled
+
+    when you want to display a button that looks usable, but doesn't have any interactivity whatsoever
+
+
+6   .disabled, [disabled]
+
+    when a button is not usable, and needs to look disabled you have two options
+      <button disabled class="button_primer button_blue">My Button</button>
+      <button class="button_primer button_blue disabled">My Button</button>
+
+    NOTE: using the attribute on the element, and not the classname means the browser denies activity on the button
+    if you use .disabled instead, make sure you disable the interactivity manually with javascript
+
+
+7   .faux_button, a.button_primer
+
+    any <a> with the class of "button_primer" will style properly.
+    any element (span, strong, etc. that you might use) will need <el class="button_primer button_blue faux_button">My Button</el>
+
+    * use of .faux_button should be extremely rare
+
+8  .button_flat
+
+    this is a weird thing. the only use-case right now is in the preferences pane so it's probably going to be a short-lived style
+
+
+*/
+
 @mixin button($name,$base,$inversion-value : 62) {
   &,
   &.button_enabled:hover,
@@ -10,7 +62,6 @@
 
   border: 1px solid darken($base, if(lightness($base) < $inversion-value, 6.5%, 20%));
   color: if(lightness($base) < $inversion-value, $ui-white, $ui-soft-black);
-  font-weight: bold;
 
   &:hover {
     background: lighten($base, 10.25%);
@@ -45,20 +96,13 @@
   &:visited {
     color: if(lightness($base) < $inversion-value, $ui-white, $ui-soft-black);
   }
-
-  &.disabled {
-     &:active,
-     &:hover,
-     &:link,
-     &:visited {
-     }
-  }
 }
 
 .button_primer {
   @include roundies(button);
 
   font-family: $font-family;
+  font-weight: bold;
   position: relative;
   -moz-user-select: none;
   -webkit-user-select: none;

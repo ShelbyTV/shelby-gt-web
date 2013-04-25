@@ -1,3 +1,13 @@
+/*
+    This is where the button_primer magic happens.
+    For each color-name in _color-table, build a .button_[color-name]
+
+    Dependencies:
+    _color-table.scss
+    _button.scss
+
+*/
+
 @each $name in $color-names {
   .button_#{$name} {
     $base: name-to-value($name);

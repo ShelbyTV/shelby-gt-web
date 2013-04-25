@@ -1,12 +1,6 @@
-
-/*
- *  Local variables
- */
- $channel-menu-height: 87px;
-
 .shelby--channels {
   .content_wrapper {
-    margin-top: $channel-menu-height;
+    margin-top: 87px;
   }
 
   .channel_menu {
@@ -22,7 +16,7 @@
   border-bottom: 1px solid $inset;
   display: none;
   left: 0;
-  padding: 8px;
+  // padding: 8px;
   position: absolute;
   text-align: left;
   width: 100%;
@@ -46,12 +40,9 @@
 }
 
 .channel_menu__button {
+  border-radius: 0;
   font-size: 1.05em;
   padding-top: 0.8em;
   padding-bottom: 0.75em;
-  width: 96%;
-
-  &:first-child {
-    margin-left: 3px;
-  }
+  width: 100%;
 }

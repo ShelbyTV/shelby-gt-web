@@ -2,7 +2,6 @@
 //  frame currently playing styles
 //  nest styles inside of .active-list-item
 //------------------------------------------------------------------------------
-$active-list-item: $shelby-blue;
 //bring this into base once the color is determined.
 .roll,
 .stream {
@@ -12,7 +11,7 @@ $active-list-item: $shelby-blue;
     z-index: 1;
 
     .frame-body-wrapper {
-      outline: 3px solid $ui-green;
+      outline: 5px solid $ui-green;
     }
 
     .explore-frame-title,
@@ -23,7 +22,6 @@ $active-list-item: $shelby-blue;
 
     .frame-external-subline-text a:link,
     .frame-external-subline-text a:visited {
-      // color: adjust-lightness($active-list-item, 50%);
     }
 
     .frame-likes{
