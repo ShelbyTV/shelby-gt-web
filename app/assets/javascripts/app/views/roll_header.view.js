@@ -1,5 +1,7 @@
 libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
+  _currentlyDisplayedUser : null,
+
   className : 'roll-header clearfix',
 
   events : {
@@ -18,16 +20,29 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   _cleanup : function(){
     this.model.unbind('change', this.render, this);
+    if (this._currentlyDisplayedUser) {
+      this._currentlyDisplayedUser.unbind('change', this.render, this);
+    }
   },
 
   render : function(){
+    if (this._currentlyDisplayedUser) {
+      this._currentlyDisplayedUser.unbind('change', this.render, this);
+    }
+    this._currentlyDisplayedUser = libs.shelbyGT.UserModel.findOrCreate({id: this.model.get('creator_id')});
+    if (!this._currentlyDisplayedUser.has('name')) {
+      this._currentlyDisplayedUser.bind('change', this.render, this);
+      this._currentlyDisplayedUser.fetch();
+    }
+
     if (this.model.has('roll_type')) {
       this.$el.html(this.template({
-        tabActive : 'likes',
-        roll : this.model,
         isInAppUserProfile : this.options.guideModel.displayState == libs.shelbyGT.DisplayState.watchLaterRoll ||
                              this.options.guideModel.displayState == libs.shelbyGT.DisplayState.rollList ||
-                             this.model.get('creator_id') == shelby.models.user.id
+                             this.model.get('creator_id') == shelby.models.user.id,
+        roll : this.model,
+        tabActive : 'likes',
+        user : this._currentlyDisplayedUser
       }));
     }
     shelby.models.guide.trigger('reposition');

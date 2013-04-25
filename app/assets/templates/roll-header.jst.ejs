@@ -1,6 +1,6 @@
 <div class="media_module clearfix">
   <span class="media_image">
-    <img class="xuser-avatar" src="<%= roll.get('thumbnail_url') %>" />
+    <img class="xuser-avatar" src="<%= (isInAppUserProfile) ? libs.shelbyGT.viewHelpers.user.avatarUrl(user) : roll.get('thumbnail_url') %>" />
   </span>
 
   <div class="media_body user-nickname">
@@ -8,7 +8,7 @@
       <%= (isInAppUserProfile) ? shelby.models.user.get('nickname') : (libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || '') %>
     </h2>
     <h3>
-      <%= (isInAppUserProfile) ? shelby.models.user.get('name') : roll.get('creator_nickname') %>
+      <%= (isInAppUserProfile) ? shelby.models.user.get('name') : user.get('name') || '' %>
     </h3>
   </div>
 </div><!-- eo media_module -->
