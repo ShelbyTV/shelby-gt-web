@@ -7,26 +7,30 @@ $active-list-item: $shelby-blue;
 .roll,
 .stream {
   .active-list-item {
-    background-color: rgba(5, 144, 196, .8);//shelby-blue, rbga style
+    // background-color: rgba(5, 144, 196, .8);//shelby-blue, rbga style
     position: relative;
     z-index: 1;
+
+    .frame-body-wrapper {
+      outline: 3px solid $ui-green;
+    }
 
     .explore-frame-title,
     .frame-title,
     .frame-external-subline-text {
-      color: white;
+      // color: white;
     }
 
     .frame-external-subline-text a:link,
     .frame-external-subline-text a:visited {
-      color: adjust-lightness($active-list-item, 50%);
+      // color: adjust-lightness($active-list-item, 50%);
     }
 
     .frame-likes{
       &.icon-heart--red,
       &.icon-videocard_roll--green {
         &:before {
-          color: #156B86;
+          // color: #156B86;
         }
       }
     }

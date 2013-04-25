@@ -2,50 +2,48 @@
 //  Button Primer
 //------------------------------------------------------------------------------
 @mixin button($name,$base,$inversion-value : 62) {
-  @include gradient-primer($base);
+  &,
+  &.button_enabled:hover,
+  &.visuallydisabled:hover {
+    @include gradient-primer($base, 3%, bottom);
+  }
 
-  border: 1px solid rgba($base,.9);
-  // border: 1px solid if(lightness($base) < 50, $base, darken($base,20%));
-  // box-shadow: inset 0 1px 0 0 lighten($base, 20%), //inner top hightlight
-  //             inset 0 -1px 0 0 darken($base, 5%);
-              // color: lime;
-
-
+  border: 1px solid darken($base, if(lightness($base) < $inversion-value, 6.5%, 20%));
   color: if(lightness($base) < $inversion-value, $ui-white, $ui-soft-black);
-
   font-weight: bold;
-  // font-weight: if(lightness($base) < 53, 500, 500);
-  // text-shadow: if(lightness($base) < 53, $shadow-text, none);
 
-  &:not([disabled]):not(.disabled):not(.visuallydisabled):hover {
-      $base-hover: lighten($base, 5%);
-
-      @include gradient-primer($base-hover);
-
-      border: 1px solid darken($base-hover,10%);
-      // box-shadow: inset 0 1px 0 0 lighten($base-hover, 20%), //inner top hightlight
-      //             inset 0 -1px 0 0 darken($base-hover, 5%);
+  &:hover {
+    background: lighten($base, 10.25%);
   }
 
   &.button_active,
-  &:not([disabled]):not(.disabled):not(.visuallydisabled):active {
-      $base-active: darken($base, 5%);
+  &.button_enabled:active,
+  &:active {
+    background: darken($base, 5.5%);
+  }
 
-      @include gradient-primer($base-active);
-
-      border: 1px solid darken($base-active, 50%);
-      // box-shadow: inset 0 1px 0 0 lighten($base-active, 20%), //inner top hightlight
-      //             inset 0 -1px 0 0 darken($base-active, 5%);
+  &.button_enabled {
+    &,
+    &:hover {
+      color: darken($base, 28%);
+    }
   }
 
   &[disabled],
   &.disabled {
-      color: darken($base, 30%);
+    &,
+    &:hover {
+      $_disabled-color: #aaaaaa;
+
+      background: $_disabled-color;
+      border: 1px solid $_disabled-color;
+      color: darken($_disabled-color, 13.5%);
+    }
   }
 
   &:hover,
   &:visited {
-    color: if(lightness($base) < $inversion-value, $button-color, $button-color-light);
+    color: if(lightness($base) < $inversion-value, $ui-white, $ui-soft-black);
   }
 
   &.disabled {
@@ -53,8 +51,6 @@
      &:hover,
      &:link,
      &:visited {
-      color: rgba(if(lightness($base) < $inversion-value, $button-color, $button-color-light),.4);
-      text-shadow: none;
      }
   }
 }
@@ -69,16 +65,17 @@
   -ms-user-select: none;
   user-select: none;
 
-  &:not([disabled]):not(.disabled):not(.visuallydisabled):hover {
+  &:hover {
     cursor: pointer;
   }
 
+  &[disabled],
   &.visuallydisabled,
   &.disabled {
     cursor: default;
   }
 
-  &:not([disabled]):not(.disabled):not(.visuallydisabled):focus {
+  &:focus {
     border: 1px solid rgba(0,0,0,1);
     outline: none;
   }
@@ -97,7 +94,7 @@ a.button_primer,
     &:hover,
     &:link,
     &:visited {
-        text-decoration: none;
+      text-decoration: none;
     }
 }
 
