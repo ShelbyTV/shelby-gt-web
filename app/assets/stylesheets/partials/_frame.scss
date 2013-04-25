@@ -92,8 +92,8 @@
 }
 
 .frame-body-wrapper {
-  background-color: $videocard-footer-bg-color;
-  box-shadow: $videocard-shadow;
+  background-color: $ui-white;
+  border: 1px solid rgba(0,0,0,.2);
   position: relative;
 }
 
@@ -250,7 +250,7 @@
     height: 4.1em;
 
     &:after {
-      @include transparent-fade($videocard-footer-bg-color,40%,right);
+      @include transparent-fade($ui-white,40%,right);
     }
   }
 
@@ -529,7 +529,7 @@ $share-frame-half-gutter: 4px;
   .menu_button--facebook,
   .menu_button--email,
   .menu_button--comment {
-    padding: 0.6em 0.8em .6em 0.25em;
+    padding: 0.6em 0.8em 0.6em 0.25em;
     width: 100%;
 
     .icon {

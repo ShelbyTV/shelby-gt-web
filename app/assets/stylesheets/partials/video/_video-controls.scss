@@ -3,6 +3,8 @@
 //    - Video Progress Bar
 //    - Video Navigation (Prev/Next)
 
+$_video-player : #0e0e0e;
+
 //------------------------------------------------------------------------------
 //  Block -- Video Controls
 //------------------------------------------------------------------------------
@@ -16,7 +18,7 @@
 }
 
 .video_controls {
-	@include gradient-primer($video-player);
+	@include gradient-primer($_video-player);
 
   color:$button-color;
   padding: 0;
@@ -192,7 +194,7 @@
 
 .video_progress__load,
 .video_progress__elapsed {
-  @include gradient-primer($video-controls-progress-load);
+  @include gradient-primer(rgba(#303030,1));
 
   border-radius: $radius*2;
   height: 8px;
@@ -238,7 +240,7 @@
 //------------------------------------------------------------------------------
 
 .videoplayer-nav__btn {
-  @include gradient-primer($video-player);
+  @include gradient-primer($_video-player);
   @include opacity(0.5);
 
   border: none;
@@ -274,7 +276,7 @@
 }
 
 .videoplayer-nav__btn--fullscreen {
-  @include gradient-primer($video-player);
+  @include gradient-primer($_video-player);
   @include opacity(0.5);
 
   // border: none;
