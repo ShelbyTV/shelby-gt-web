@@ -7,8 +7,9 @@
     <h2 class="roll-header__h1">
       <%= (isInAppUserProfile) ? shelby.models.user.get('nickname') : (libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || '') %>
     </h2>
+
     <h3 class="roll-header__h2">
-      <%= (isInAppUserProfile) ? shelby.models.user.get('name') : user.get('name') || '' %>
+      <%= (isInAppUserProfile) ? shelby.models.user.get('name') : (user.get('name') || '') %>
     </h3>
   </div>
 </div><!-- eo media_module -->
