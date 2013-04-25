@@ -39,14 +39,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this._updateVisibility();
   },
 
-  _goBack : function(){
-    if( shelby.routeHistory.length > 1 ){
-      window.history.back();
-    } else {
-      shelby.router.navigate("me");
-    }
-  },
-
   _updateVisibility : function(guideModel){
     if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll && !this.model.get('displayIsolatedRoll')) {
       this.$el.show();

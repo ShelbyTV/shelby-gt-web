@@ -19,7 +19,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "legal"                                        : "displayLegal",
     "search"                                       : "displaySearch",
     "following"                                    : "displayRollList",
-    "me"                                           : "displayCurrentUserPersonalRoll",
     "onboarding/:stage"                            : "displayOnboardingView",
     "preferences"                                  : "displayUserPreferences",
     "likes"                                        : "displaySaves",
@@ -27,7 +26,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "stream"                                       : "displayDashboard",
     "tools"                                        : "displayTools",
     ""                                             : "displayDashboard",
-//  ":userName"                                    : "displayUserProfile", //we're not rolling out the user profiles at /userName yet
+    ":userName"                                    : "displayUserProfile",
     "*url"                                         : "doNothing"
   },
 
@@ -101,7 +100,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (rollId == shelby.models.user.get('personal_roll_id')) {
       // we've got a special route to display if this roll is the personal roll
       // of the currently logged in user
-      this.navigate('me', {trigger: false, replace: true});
+      this.navigate(shelby.models.user.get('nickname'), {trigger: false, replace: true});
     }
 
     this._fetchViewedVideos();
@@ -175,13 +174,13 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayIsolatedRoll : function(rollId, params){
-    this._setupUserProfileView({
+    this._setupDotTvUserProfileView({
       rollId : rollId
     }, params);
   },
 
   displayIsolatedRollwithFrame : function(rollId, frameId, params) {
-    this._setupUserProfileView({
+    this._setupDotTvUserProfileView({
       frameId : frameId,
       rollId : rollId
     }, params);
@@ -463,10 +462,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
   },
 
-  displayCurrentUserPersonalRoll : function(){
-    this.displayRoll(shelby.models.user.get('personal_roll_id'), null, null, {updateRollTitle: false});
-  },
-
   displayOnboardingView : function(stage){
     this._setupTopLevelViews();
     shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.onboarding, onboardingStage:stage});
@@ -522,9 +517,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayUserProfile : function(userName, params) {
-    this._setupUserProfileView({
-      userName : userName
-    }, params);
+    if (userName == shelby.models.user.get('nickname')) {
+      this.displayRoll(shelby.models.user.get('personal_roll_id'), null, params, {updateRollTitle: false});
+    } else {
+      this.displayUserPersonalRoll(userName, params);
+    }
   },
 
   doNothing : function(url){
@@ -796,7 +793,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }, topLevelViewsOptions);
   },
 
-  _setupUserProfileView : function(options, params){
+  _setupDotTvUserProfileView : function(options, params){
     var self = this;
 
     // default options

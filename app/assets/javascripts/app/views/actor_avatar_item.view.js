@@ -38,7 +38,7 @@ libs.shelbyGT.ActorAvatarItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   _goToActorPersonalRoll : function(e) {
-      shelby.router.navigate('user/' + this.model.id + '/personal_roll', {trigger:true});
+      shelby.router.navigate(this.model.get('nickname'), {trigger:true});
       e.preventDefault();
   }
 

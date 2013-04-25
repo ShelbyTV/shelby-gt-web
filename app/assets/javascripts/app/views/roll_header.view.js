@@ -35,7 +35,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   _goToUserPersonalRoll : function(e){
     e.preventDefault();
-    shelby.router.navigate('me', {trigger: true});
+    shelby.router.navigate(this.model.get('creator_nickname'), {trigger: true});
   },
 
   _goToLikes : function(e){

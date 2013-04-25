@@ -312,7 +312,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var creator = this.model.getFirstFrame().get('creator');
 
     if (creator) {
-      shelby.router.navigate('user/' + creator.id + '/personal_roll', {trigger:true});
+      shelby.router.navigate(creator.get('nickname'), {trigger:true});
     }
 
   },

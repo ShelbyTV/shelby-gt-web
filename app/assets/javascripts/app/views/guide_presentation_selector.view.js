@@ -65,7 +65,7 @@
 
     _goToMe : function(){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
-        shelby.router.navigate('me', {trigger:true});
+        shelby.router.navigate(shelby.models.user.get('nickname'), {trigger:true});
         shelby.models.userDesires.set({guideShown: true});
       }
     },
