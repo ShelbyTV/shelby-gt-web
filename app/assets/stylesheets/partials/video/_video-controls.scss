@@ -192,8 +192,6 @@
 
 .video_progress__load,
 .video_progress__elapsed {
-  background: $video-controls-progress-load;
-  // @include background(linear-gradient(top, adjust-lightness($video-controls-progress-load, 5%), $video-controls-progress-load));
   @include gradient-primer($video-controls-progress-load);
 
   border-radius: $radius*2;
@@ -202,8 +200,7 @@
 }
 
 .video_progress__elapsed {
-  @include background($shelby-blue);
-
+  background: $ui-gray;
   margin-top:-8px;
 }
 

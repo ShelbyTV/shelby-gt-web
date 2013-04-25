@@ -70,7 +70,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     var wasUnfollow = !isUnfollow;
     // even though the inverse action is now described by the button, we prevent click handling
     // with class js-busy until the ajax completes
-    $thisButton.text(isUnfollow ? 'Unfollow' : 'Follow').toggleClass('button_gray-medium',isUnfollow).addClass('js-busy');
+    $thisButton.text(isUnfollow ? 'Unfollow' : 'Follow').toggleClass('button_gray',isUnfollow).addClass('js-busy');
     // now that we've told the user that their action has succeeded, let's fire off the ajax to
     // actually do what they want, which will very likely succeed
     var clearBusyFunction = function() {
@@ -95,7 +95,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
       this.$('.js-roll-add-leave-button').hide();
     } else {
       var userFollowingRoll = shelby.models.rollFollowings.containsRoll(currentRollModel);
-      this.$('.js-roll-add-leave-button').toggleClass('rolls-leave button_gray-medium', userFollowingRoll)
+      this.$('.js-roll-add-leave-button').toggleClass('rolls-leave button_gray', userFollowingRoll)
         .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
     }
     shelby.models.guide.trigger('reposition');
