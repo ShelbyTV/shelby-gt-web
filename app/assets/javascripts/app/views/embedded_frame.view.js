@@ -2,7 +2,7 @@
  * Displays a single frame suitable for embeddedin via an iframe.
  *
  * Example iFrame embed code:
- * <iframe width="560" height="415" 
+ * <iframe width="560" height="415"
  *  src="http://shelby.tv/embed/:frame_id?footer=1"
  *  frameborder="0" allowfullscreen></iframe>
  *
@@ -20,26 +20,26 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
     "click .js-facebook-share"        : "_facebookShare",
     "click .js-twitter-share"         : "_twitterShare"
   },
-  
+
   initialize : function(opts){
     this._playbackState = opts.playbackState;
     this._guide = opts.guide;
-    
+
     this._playbackState.bind('change:activePlayerState', this._onNewPlayerState, this);
-    
+
     //fallback shortlink
     this._shortlink = "http://"+this.model.get('creator').get('nickname')+"shelby.tv";
     this._prefetchShortlink();
-    
+
     this.render();
-    
+
     //mobile video doesn't auto-play
     //first user tap will (1) hide our unplayed board and (2) start video playing
     if(Browser.isMobile()){
       this._renderVideo();
     }
   },
-  
+
   _cleanup: function() {
     this.model.unbind('change:activePlayerState', this._onNewPlayerState, this);
   },
@@ -57,16 +57,16 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
       shortlink: this._shortlink
     }));
   },
-  
+
   _startPlayback : function(){
     this.$(".embed_board").toggleClass("embed_board--unplayed", false);
     this._renderVideo();
   },
-  
+
   _renderVideo : function(){
     if(!this._hasRenderedVideo){
       this._hasRenderedVideo = true;
-      
+
       //this guys does all the video work
       this.renderChildInto(new libs.shelbyGT.VideoContentPaneView({
                             guide : this._guide,
@@ -78,17 +78,17 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
       this._guide.set({activeFrameModel: this.model});
     }
   },
-  
+
   _onNewPlayerState: function(playbackState, newPlayerState){
     newPlayerState.bind('change:playbackStatus', this._onPlaybackStatusChange, this);
   },
-  
+
   _onPlaybackStatusChange: function(attr, curState){
     var embedBoard = this.$(".embed_board"),
     videoPlayer = this.$("#js-video-section .videoplayer-viewport"),
     backgroundThumb = this.$(".preview-video-thumbnail");
     videoPlayer.show();
-    
+
     switch(curState){
       case libs.shelbyGT.PlaybackStatus.paused:
         shelby.userInactivity.disableUserActivityDetection();
@@ -114,7 +114,7 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
         break;
     }
   },
-  
+
   _openCreatorPersonalRoll : function(){
     var creator = this.model.get('creator'),
     url;
@@ -126,7 +126,7 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
     window.open(url, "", "");
     return false;
   },
-  
+
   _prefetchShortlink : function(){
     var self = this;
     $.ajax({
@@ -141,12 +141,12 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
       }
     });
   },
-  
+
   _selectInputContent : function(el){
     $(el.currentTarget).select();
     return false;
   },
-  
+
   _facebookShare : function(){
     if (typeof FB != "undefined"){
       FB.ui(
@@ -167,11 +167,11 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
     }
     return false;
   },
-  
+
   _twitterShare : function(){
     var url = "https://twitter.com/intent/tweet?text=I%E2%80%99m+watching+\""+encodeURIComponent(this.model.get('video').get('title'))+"\"+via+%40Shelby&url="+this._shortlink;
     window.open(url, "twitterShare", "");
     return false;
   }
-  
+
 });
