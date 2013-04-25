@@ -267,6 +267,7 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
       success : function(){
         shelby.models.user.get('app_progress').advanceStage('onboarding', 1);
         shelby.router.navigate('onboarding/2', {trigger:true});
+        libs.utils.intercom.boot(shelby.models.user);
       },
       error : function(model, resp){
         self.$('.js-onboarding-next-step').text('Get Started');
