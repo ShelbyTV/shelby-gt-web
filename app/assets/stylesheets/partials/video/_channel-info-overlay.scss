@@ -1,6 +1,6 @@
 .shelby--channels {
   .content_wrapper {
-    margin-top: 87px;
+    margin-top: 6.5em;
   }
 
   .channel_menu {
@@ -40,7 +40,10 @@
 }
 
 .channel_menu__button {
+  border-bottom: none;
+  border-left: none;
   border-radius: 0;
+  border-top: none;
   font-size: 1.05em;
   padding-top: 0.8em;
   padding-bottom: 0.75em;
