@@ -67,6 +67,12 @@
     position: absolute;
   }
 }
+    //.frame modifiers
+    .frame--shelf {
+      .frame-body-wrapper {
+        min-height: 222px;
+      }
+    }
 
 .frame-list-item {
   box-shadow: 0 1px 0 0 $outset;
