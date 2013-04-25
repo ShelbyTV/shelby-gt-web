@@ -23,6 +23,7 @@ class HomeController < ApplicationController
       # this is the catch-all route to redirect unknown routes to our app root, but it's
       # only meant to handle requests for html pages
       format.html {
+
         #XXX ISOLATED_ROLL
         # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
         # controller, but until that's built, we just short-circuit right here
@@ -38,6 +39,14 @@ class HomeController < ApplicationController
         end
 
         if user_signed_in?
+          # if the path is just a user name, this is the route for a user profile, so get the
+          # necessary view instance variables and continue
+          user_name = params[:path]
+          user = Shelby::API.get_user(user_name) if user_name
+          if user
+            @user = user
+            @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
+          end
           render '/home/app'
 
         else

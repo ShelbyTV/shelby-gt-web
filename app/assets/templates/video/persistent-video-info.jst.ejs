@@ -77,7 +77,7 @@
               <% if (fauxUserOrigin) { %>
                 via <span class="capitalize"><%= fauxUserOrigin %></span>
               <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
-                via <a class="js-navigate-originator no-faux-link" id="<%= currentFrameOriginator.id %>" href="#"><%= currentFrameOriginator.get('nickname') %></a>
+                via <a class="js-navigate-originator no-faux-link" href="#"><%= currentFrameOriginator.get('nickname') %></a>
               <% } %>
             </h3>
           <% } %>
