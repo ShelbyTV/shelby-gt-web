@@ -51,18 +51,22 @@
     .button_command--email {}
     .button_command--embed {}
     .button_command--facebook {}
+    .button_command--remove {}
+    .button_command--remove,
     .button_command--like {
       width: 5.5em;
     }
-    .button_command--remove {}
     .button_command--roll {}
-    .button_command--share {}
+    .button_command--share {
+      .icon {
+        margin-right: 2px;
+      }
+    }
     .button_command--shortlink {}
     .button_command--tumblr {}
     .button_command--twitter {}
-
+    //
     .button_command--like,
-    .button_command--share,
     .button_command--roll {
       .icon {
         margin-right: 1px;

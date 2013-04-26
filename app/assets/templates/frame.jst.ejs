@@ -54,7 +54,7 @@
           </li>
 
           <li class="menu_item" role="menuitem">
-            <button class="button_primer button_gray button_command button_comand--share js-share-menu">
+            <button class="button_primer button_gray button_command button_command--share js-share-menu">
               <i class="icon icon-share"></i>Share…
             </button>
 
@@ -103,9 +103,9 @@
             </div><!-- eo share_menu -->
           </li>
 
-          <% if (false && creator===shelby.models.user || shelby.models.guide.get('displayState')==='watchLaterRoll' || shelby.models.user.get('admin')) { %>
+          <% if (shelby.models.user.get('admin')) { %>
             <li class="menu_item" role="menuitem">
-              <button class="button_primer <%= shelby.models.user.get('admin') ? 'button_red' : 'button_gray' %> button_command button_command--remove js-remove-frame">
+              <button class="button_primer button_red button_command button_command--cancel js-remove-frame">
                 <i class="icon icon-cancel"></i>
               </button>
             </li>
