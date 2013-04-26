@@ -9,26 +9,58 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <div class="content-wrapper clearfix">
-  <header class="seovideo__head clearfix" role="banner">
+  <header class="seovideo-head clearfix" role="banner">
+    <div class="shelby-header clearfix">
       <a href="http://shelby.tv" class="shelby-logo">
-        <div class="shelby_logo shelby_logo--inverted">
+        <div class="shelby_logo">
           <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
         </div>
       </a>
       <!-- TODO: copy Login button from new Landing page stuff -->
-      <h2 class="seovideo__h1">
-        Shelby.tv is the smartest way to discover video
+    </div>
+
+    <div class="seovideo__banner_wrapper seovideo__banner_wrapper--true frame-body-wrapper">
+      <h1 class="seovideo__h1">Shelby.tv is a smart personal way to enjoy video</h1>
+      <h2 class="seovideo__h2">
+          See more video that matches your search from <i>YouTube</i>, <i>Vimeo</i>, and <i>Dailymotion</i>:
       </h2>
+
+      <div class="media_module seovideo__banner clearfix">
+        <form action="/search" class="js-search-form form_module form_module--search">
+          <fieldset class="search_module">
+            <label for="seovideo-search" class="form_label visuallyhidden">
+              Search Shelby.tv:
+            </label>
+
+            <button class="button_primer button_blue search_module__submit" tabindex="0" <% if (@search_query)%>autofocus="autofocus"<% end %>>
+              Search
+            </button>
+
+            <span class="search_module__input_wrapper">
+              <% if @search_query %>
+                <input id="seovideo-search" name="query" value="<%= @search_query%>" type="text" class="js-search__input form_input search_module__input" />
+              <% else %>
+                <input id="seovideo-search" name="query" type="text" class="js-search__input form_input search_module__input" autofocus="autofocus" />
+              <% end %>
+            </span>
+          </fieldset><!-- eo search_module -->
+
+          <div class="media_body">
+
+          </div>
+        </form>
+      </div>
+    </div><!-- eo seovideo__banner_wrapper -->
   </header><!-- eo seovideo-head -->
 
   <div class="seovideo__wrapper clearfix">
-    <article role="main" class="seovideo">
+    <article role="main" class="seovideo<%= " seovideo--light" if @video_related_videos.empty? %>">
       <div class="seovideo__main">
         <h1 class="seovideo__h2">
           <%= @video_title %>
         </h1>
 
-        <div class="seovideo__video_wrapper">
+        <div class="seovideo__video_wrapper frame-body-wrapper">
           <div class="seovideo__video">
             <% if @video_provider_name == "youtube" %>
               <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
@@ -66,182 +98,98 @@
 
         </div><!-- eo .seovideo__video_wrapper -->
       </div><!-- eo .seovideo__main -->
-    </article><!-- eo .seovideo -->
 
-    <aside class="seovideo__aside clearfix">
-      <div class="seovideo__aside_lining frame-body-wrapper clearfix">
-        <h3 class="seovideo__h1">
-          More awesome videos hand-picked by the Shelby community
-        </h3>
-          <%
-            channels = [
-              {
-                'url'      => 'nature',
-                'name'      => 'Nature is Rad',
-                'title'     => '#nature',
-                'thumbnail' => '/images/landing/nature_2.jpg',
-                'liker_count' => '47',
-                'likers'      => [
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4f32e49fad9f11053b00020a',
-                    'name'   => 'iceberg901'
-                  },
 
-                  {
-                    'avatar' => 'http://a2.twimg.com/profile_images/663080233/n6829686_8580.jpg',
-                    'name'   => 'sheynk'
-                  },
+      <% if !@video_related_videos.empty? %>
+        <aside class="seovideo__aside clearfix">
+          <div class="seovideo__aside_lining">
+            <h3 class="seovideo__h3">
+              Related Videos
+            </h3>
 
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4d7a882df6db246de0000001?',
-                    'name'   => 'spinosa'
-                  },
+            <ul class="seovideo__list seovideo__list--aside clearfix">
+              <% @video_related_videos.each do |related_video| %>
+                <li class="seovideo__item">
+                  <a href="http://shelby.tv/video/<%= related_video["provider_name"] %>/<%= related_video["provider_id"] %>/<%= hyphenateString(related_video["title"]) %>"
+                    class="seovideo__link js-track-event" title="<%= related_video["title"] %>"
+                    data-ga_category="SEO Video"
+                    data-ga_action="Click on Related Video"
+                    data-ga_label="<%= @video_title %>">
+                    <div class="related_video frame-body-wrapper clearfix">
+                      <div class="related_video__main">
+                        <span role="img" class="seovideo__thumbnail" style="background-image: url(<%= related_video["thumbnail_url"] %>);">
+                          <img class="visuallyhidden" src="<%= related_video["thumbnail_url"] %>" alt="<%= related_video["title"] %>" title="<%= related_video["title"] %>" />
+                        </span>
+                      </div><!-- eo related_video__main -->
 
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4f6873a2ad9f11477f000124',
-                    'name'   => 'arthur'
-                  },
-
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/509359fab415cc2784011929',
-                    'name'   => 'rickshant'
-                  }
-                ]
-              },
-              {
-                'url'      => 'laugh',
-                'name'      => 'Laugh',
-                'title'     => '#laugh',
-                'thumbnail' => '/images/landing/laugh.jpg',
-                'liker_count' => '35',
-                'likers'      => [
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4f370fe2ad9f115a1000011c?1348844515000',
-                    'name'   => 'matyus'
-                  },
-
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4d7ac94af6db241b5d000002?1349478839000',
-                    'name'   => 'chris'
-                  }
-                ]
-              },
-              {
-                'url'      => 'adrenaline',
-                'name'      => 'Adrenaline',
-                'title'     => '#adrenaline',
-                'thumbnail' => '/images/landing/adren.jpg',
-                'liker_count' => '20',
-                'likers'      => [
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq192x192/4f805b5dad9f1151d500006e?1347497016000',
-                    'name'   => 'nfpagliaro'
-                  },
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4d7d154ff6db244f5e000001?1347033016000',
-                    'name'   => 'reece'
-                  },
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq192x192/4d922293f6db24463100000b?1361117209000',
-                    'name'   => 'enelson1'
-                  },
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4dcd0063f6db2435a1000001?1349895994000',
-                    'name'   => 'vladimir'
-                  },
-                  {
-                    'avatar' => 'http://s3.amazonaws.com/shelby-gt-user-avatars/sq48x48/4ea4fc738848206fd800001d?1349883425000',
-                    'name'   => 'kunaltandon'
-                  }
-                ]
-              }
-            ]
-          %>
-        <ul class="seovideo__list seovideo__list--aside clearfix">
-          <% channels.each do |channel| %>
-            <li class="seovideo__item one-third">
-              <a href="/channels/<%= channel["url"] %>" class="js-track-event" data-ga_category="SEO Video" data-ga_action="Click channel" data-ga_label="<%= channel["name"] %>" title="Click to watch!">
-                <h4 class="seovideo__h4">
-                  <%= channel["title"] %>
-                </h4>
-
-                <span role="img" class="seovideo__thumbnail icon-play" style="background-image: url(<%= channel["thumbnail"] %>)">
-                  <img src="<%= channel["thumbnail"] %>" class="visuallyhidden" alt="<%= channel["name"] %>" title="Click to watch!" />
-                </span>
-              </a>
-
-              <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">
-                <ul class="list frame-likes-avatars js-liker-avatars-list">
-                  <% channel["likers"].each do |liker| %>
-                    <li>
-                      <span class="frame-likes-link js-track-event" data-ga_category="SEO Video" data-ga_action="Click liker" data-ga_label="<%= channel["title"] %>">
-                        <img class="frame-likes-avatar" src="<%= liker["avatar"]%>" title="<%= liker["name"] %>" alt="<%= liker["name"] %>">
-                      </span>
-                    </li>
-                  <% end %>
-                </ul>
-
-                <span class="frame-likes-count frame-external-subline-text">
-                  +<%= channel["liker_count"] %>
-                </span>
-              </div><!-- eo frame-likes -->
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </aside><!-- eo .seovideo__aside -->
-
-    <div class="seovideo__messages clearfix">
-      <% if @messages %>
-        <% if @messages[:shelby].length > 0 %>
-          <h3 class="seovideo__h3">
-          Shelby Rolls
-          </h3>
-
-          <ul class="seovideo__list">
-          <% @messages[:shelby].each do |message| %>
-            <%= render :partial => "generic_message", :locals => { :message => message } %>
-          <% end %>
-          </ul>
-        <% end %>
-
-        <% if @messages[:facebook].length > 0 %>
-          <h3 class="seovideo__h3">
-            Reactions on Facebook
-          </h3>
-
-          <ul class="seovideo__list">
-          <% @messages[:facebook].each do |message| %>
-            <%= render :partial => "generic_message", :locals => { :message => message } %>
-          <% end %>
-          </ul>
-        <% end %>
-
-        <% if @messages[:twitter].length > 0 %>
-          <h3 class="seovideo__h3">
-            Reactions on Twitter
-          </h3>
-
-          <ul class="seovideo__list">
-          <% @messages[:twitter].each do |message| %>
-            <%= render :partial => "twitter_message", :locals => { :message => message } %>
-          <% end %>
-          </ul>
-        <% end %>
-
-        <% if @messages[:tumblr].length > 0 %>
-          <h3 class="seovideo__h3">
-            Reactions on Tumblr
-          </h3>
-
-          <ul class="seovideo__list">
-          <% @messages[:tumblr].each do |message| %>
-            <%= render :partial => "generic_message", :locals => { :message => message } %>
-          <% end %>
-          </ul>
-        <% end %>
+                      <div class="related_video__footer">
+                        <div class="related_video__footer-lining">
+                          <h4 class="seovideo__h4 button_icon_right icon_chevron icon">
+                            <%= related_video["title"] %>
+                          </h4>
+                        </div><!-- eo related_vido__footer-lining -->
+                      </div><!-- eo related_video__footer -->
+                    </div><!-- eo .related_video -->
+                   </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </aside><!-- eo .seovideo__aside -->
       <% end %>
-    </div><!-- eo .seovideo__messages -->
+
+      <div class="seovideo__messages clearfix">
+        <% if @messages %>
+          <% if @messages[:shelby].length > 0 %>
+            <h3 class="seovideo__h3">
+            Shelby Rolls
+            </h3>
+
+            <ul class="seovideo__list">
+            <% @messages[:shelby].each do |message| %>
+              <%= render :partial => "generic_message", :locals => { :message => message } %>
+            <% end %>
+            </ul>
+          <% end %>
+
+          <% if @messages[:facebook].length > 0 %>
+            <h3 class="seovideo__h3">
+              Reactions on Facebook
+            </h3>
+
+            <ul class="seovideo__list">
+            <% @messages[:facebook].each do |message| %>
+              <%= render :partial => "generic_message", :locals => { :message => message } %>
+            <% end %>
+            </ul>
+          <% end %>
+
+          <% if @messages[:twitter].length > 0 %>
+            <h3 class="seovideo__h3">
+              Reactions on Twitter
+            </h3>
+
+            <ul class="seovideo__list">
+            <% @messages[:twitter].each do |message| %>
+              <%= render :partial => "twitter_message", :locals => { :message => message } %>
+            <% end %>
+            </ul>
+          <% end %>
+
+          <% if @messages[:tumblr].length > 0 %>
+            <h3 class="seovideo__h3">
+              Reactions on Tumblr
+            </h3>
+
+            <ul class="seovideo__list">
+            <% @messages[:tumblr].each do |message| %>
+              <%= render :partial => "generic_message", :locals => { :message => message } %>
+            <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </div><!-- eo .seovideo__messages -->
+    </article><!-- eo .seovideo -->
   </div>
 </div><!-- eo .content-wrapper -->
 
