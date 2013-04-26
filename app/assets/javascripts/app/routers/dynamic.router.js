@@ -457,7 +457,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // send page view to GA
       if(shelby.routeHistory.length !== 0){
         try {
-          _gaq.push(['_trackPageview', '/me']);
+          _gaq.push(['_trackPageview', '/following']);
         } catch(e) {}
       }
   },
