@@ -13,7 +13,7 @@
 //------------------------------------------------------------------------------
 .channel_menu {
   background-color: $base;
-  border-bottom: 1px solid $inset;
+  border-bottom: 1px solid $ui-soft-black;
   display: none;
   left: 0;
   // padding: 8px;
@@ -44,8 +44,8 @@
   border-left: none;
   border-radius: 0;
   border-top: none;
-  font-size: 1.05em;
-  padding-top: 0.8em;
-  padding-bottom: 0.75em;
+  font-size: 1.3em;
+  padding-bottom: 0.55em;
+  padding-top: 0.55em;
   width: 100%;
 }

@@ -34,8 +34,7 @@ $_video-player : #0e0e0e;
   color: inherit;
   float: left;
   font-size: 1.8em;
-  padding: 0.7em 0.75em 0.5em;
-  // width: 3em;
+  padding: 0.5em;
   -webkit-tap-highlight-color: rgba(5, 144, 196,.5);
 
   i {
@@ -179,7 +178,7 @@ $_video-player : #0e0e0e;
   background: black;
   border-radius: $radius*2;
   height: 8px;
-  margin: 1.8em 8px 0;
+  margin: 1.4em 8px 0;
   position: relative;
 }
 
@@ -219,12 +218,12 @@ $_video-player : #0e0e0e;
 }
 
 .video_controls__time {
-  color: #b2b2b2;
+  color: $ui-white;
   float: right;
   font-size: 13px;
   font-size: 0.8rem;
-  font-weight: 300;
-  line-height: 3em;
+  font-weight: bold;
+  line-height: 2.25em;
   margin: 0.5em 1em 0;
 }
 
