@@ -314,7 +314,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var creator = this.model.getFirstFrame().get('creator');
 
     if (creator) {
-      shelby.router.navigate('user/' + creator.id + '/personal_roll', {trigger:true});
+      shelby.router.navigate(creator.get('nickname'), {trigger:true});
     }
 
   },
@@ -468,8 +468,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _navigateOriginator : function(e) {
     e.preventDefault();
 
-    var originatorId = e.currentTarget.id;
-
-    shelby.router.navigate('/user/' + originatorId + '/personal_roll',{trigger:true});
+    shelby.router.navigate(this.model.get('frames').at(0).get('originator').get('nickname'),{trigger:true});
   }
 });

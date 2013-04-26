@@ -360,9 +360,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   _gotoOriginator : function(e) {
     e.preventDefault();
 
-    var originatorId = e.currentTarget.id;
-
-    shelby.router.navigate('/user/' + originatorId + '/personal_roll',{trigger:true});
+    shelby.router.navigate(this._currentFrame.get('originator').get('nickname'),{trigger:true});
   }
 
 });

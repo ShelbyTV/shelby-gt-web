@@ -1,0 +1,25 @@
+//tab menu
+.tabs {
+  margin-bottom: 1px;
+
+  li:last-child {
+    .tab {
+      border-right-color: transparent;
+    }
+  }
+}
+
+.tab {
+  background-color: white;
+  border-bottom : 1px solid $inset;
+  border-left   : 1px solid transparent;
+  border-right  : 1px solid $inset;
+  border-top    : 1px solid $inset;
+  display: block;
+  text-align: center;
+}
+    //.tab mods
+    .tab--active {
+      background-color: $base;
+      border-bottom-color: transparent;
+    }

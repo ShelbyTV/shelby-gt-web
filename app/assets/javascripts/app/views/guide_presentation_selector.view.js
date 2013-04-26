@@ -9,9 +9,8 @@
 
     events : {
       "click .js-stream:not(.active-item)"   : "_goToStream",
-      "click .js-queue:not(.active-item)"    : "_goToQueue",
       "click .js-channels"                   : "_goToChannels",
-      "click .js-me:not(.active-item)"       : "_goToMe",
+      "click .js-me"                         : "_goToMe",
       "click .js-mail"                       : "_goToMail",
       "click .js-admin"                      : "_goToAdmin"
     },
@@ -23,11 +22,11 @@
     },
 
     initialize : function(){
-      this.model.bind('change', this._onGuideModelChanged, this);
+      this.model.bind('change:displayState change:currentRollModel', this._onGuideModelChanged, this);
     },
 
     _cleanup : function(){
-      this.model.unbind('change', this._onGuideModelChanged, this);
+      this.model.unbind('change:displayState change:currentRollModel', this._onGuideModelChanged, this);
     },
 
     render : function(){
@@ -64,16 +63,9 @@
       );
     },
 
-    _goToQueue : function(e){
-      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-        shelby.router.navigate('likes', {trigger: true});
-        shelby.models.userDesires.set({guideShown: true});
-      }
-    },
-
     _goToMe : function(){
       if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
-        shelby.router.navigate('me', {trigger:true});
+        shelby.router.navigate(shelby.models.user.get('nickname'), {trigger:true});
         shelby.models.userDesires.set({guideShown: true});
       }
     },
@@ -89,10 +81,12 @@
     },
 
     _onGuideModelChanged : function(model){
+
+      this._setSelected();
+
+      // cetain updates only necessary if displayState has changed
       var _changedAttrs = _(model.changedAttributes());
-      // only update selection rendering if relevant attribtues have been updated
       if (_changedAttrs.has('displayState')) {
-        this._setSelected();
         if (model.get('displayState') == libs.shelbyGT.DisplayState.onboarding) {
           //don't show any of the menus during onboarding
           this.$('.js-content-selector').hide();
@@ -121,9 +115,12 @@
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
         $setSelectedClassOn = this.$('.js-channels');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
-        $setSelectedClassOn = this.$('.js-queue');
+        $setSelectedClassOn = this.$('.js-me');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.search) {
         $setSelectedClassOn = this.$('.js-search');
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll &&
+                 this.model.has('currentRollModel') && this.model.get('currentRollModel').id == shelby.models.user.get('personal_roll_id')) {
+        $setSelectedClassOn = this.$('.js-me');
       }
 
       if ($setSelectedClassOn) {
