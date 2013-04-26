@@ -41,6 +41,13 @@
   }
 }
 
+.list__item {}
+    //mods
+    .list__item--float {
+      position: relative;
+      z-index: 5;
+    }
+
 .list__link {
   &,
   &:link,

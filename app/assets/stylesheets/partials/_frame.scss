@@ -6,31 +6,9 @@
 .roll,
 .stream {
   .active-list-item {
-    // background-color: rgba(5, 144, 196, .8);//shelby-blue, rbga style
-    position: relative;
-    z-index: 1;
     .frame > {
       .frame-body-wrapper {
         outline: 4px solid $ui-green;
-      }
-    }
-
-    .explore-frame-title,
-    .frame-title,
-    .frame-external-subline-text {
-      // color: white;
-    }
-
-    .frame-external-subline-text a:link,
-    .frame-external-subline-text a:visited {
-    }
-
-    .frame-likes{
-      &.icon-heart--red,
-      &.icon-videocard_roll--green {
-        &:before {
-          // color: #156B86;
-        }
       }
     }
 
@@ -63,6 +41,7 @@
   }
 
   .share_menu {
+    background-color: $base;
     margin-left: -4.5em;
     min-width: 200px;
     position: absolute;
