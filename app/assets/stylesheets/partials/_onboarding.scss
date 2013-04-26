@@ -193,7 +193,12 @@
 }
     .onboarding__social-connect--facebook {
       background-color: $facebook-blue;
+
+      .icon-facebook {
+        width: 1.4em;
+      }
     }
+
     .onboarding__social-connect--twitter {
       background-color: $twitter-blue;
     }

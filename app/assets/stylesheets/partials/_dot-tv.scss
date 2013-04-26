@@ -14,6 +14,17 @@
   background-color: $base;
   overflow: visible;
 
+  //non-normative
+  .active-list-item {
+  .frame-thumbnail {
+      outline: 4px solid $ui-green;
+    }
+
+    .list_button {
+      background-color: $list-item-bg-hover;
+    }
+  }
+
   //notifications: shelby radar && chrome extension
   .notification-banner-wrapper {
     left: 0;
@@ -239,14 +250,4 @@ $explore-frame-title                : adjust-lightness($explore-header-color,10%
   font-weight: 300;
   line-height: 1.4;
   margin-top: (10em/12);
-}
-
-.active-list-item {
-  .frame-thumbnail {
-    outline: 4px solid $ui-green;
-  }
-
-  .list_button {
-    background-color: $list-item-bg-hover;
-  }
 }

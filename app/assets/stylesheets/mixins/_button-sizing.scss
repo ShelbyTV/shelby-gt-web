@@ -62,6 +62,11 @@
     .button_command--twitter {}
 
   //icon adjustments
+    .button_command--like {
+      .icon-like {
+        margin-left: -0.3em;
+      }
+    }
     .button_command--like,
     .button_command--roll {
       .icon {

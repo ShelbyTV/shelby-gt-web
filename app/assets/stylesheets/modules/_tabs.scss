@@ -29,6 +29,10 @@
   &:link {
     text-decoration: none;
   }
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
     //.tab mods
     .tab--active {
