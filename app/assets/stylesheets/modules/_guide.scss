@@ -40,7 +40,9 @@
 //  guide-styles
 //------------------------------------------------------------------------------
 .guide__menu {
-  float: right;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .guide__header {

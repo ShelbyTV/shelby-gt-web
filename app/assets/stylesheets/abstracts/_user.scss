@@ -2,7 +2,7 @@
     User
 
     <div class="user">
-      <div class="media_module clearfix">
+      <div class="media_module user__lining clearfix">
         <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(<%= avatar %>);">
           <img class="visuallyhidden" src="<%= avatar %>"/>
         </span><!-- eo media_image -->
@@ -24,14 +24,31 @@
 .user {
   font-size: 1.2em;
 
-  .button_invisible {
+  .user__lining {
+    border-bottom: 1px solid $inset;
     margin: 0;
-    padding: 1em;
+    padding: 0.8em;
   }
 }
     //mods
-    .user--hr {
+    //enables hover fanciness + dividing border
+    .user--item {
       margin-top: 1px;
+
+      .user__lining {
+
+        &:hover {
+          background-color: $base-frame;
+
+          & + .user__button {
+            display: block;
+          }
+
+          .icon {
+            color: $text;
+          }
+        }
+      }
     }
 
 //elements
@@ -47,22 +64,9 @@
   font-weight: normal;
   line-height: 1.4;
 }
-.user__link {
-  border-bottom: 1px solid $inset;
+.user__lining {
   text-align: left;
   width: 100%;
-
-  &:hover {
-    background-color: $base-frame;
-
-    & + .user__button {
-      display: block;
-    }
-
-    .icon {
-      color: $text;
-    }
-  }
 
   .icon {
     color: $inset;
@@ -72,7 +76,7 @@
 }
 .user__button {
   display: none;
-  margin: 1.3em 3em;
+  margin: 0.8em 3em 0 0;
   position: absolute;
   right: 0;
   top: 0;
