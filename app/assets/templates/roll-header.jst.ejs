@@ -17,19 +17,19 @@
 <% if (isInAppUserProfile) { %>
   <ul class="list list--fit tabs clearfix">
     <li class="one-third">
-      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-roll" data-ga_category="Me tab" data-ga_action="Click" data-ga_label="Roll">
+      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-roll" data-ga_category="In App User Profile" data-ga_action="Click roll tab" data-ga_label="<%= shelby.models.user.get('nickname') %>">
         Roll
       </a>
     </li>
 
     <li class="one-third">
-      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-likes" data-ga_category="Me tab" data-ga_action="Click" data-ga_label="Likes">
+      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-likes" data-ga_category="In App User Profile" data-ga_action="Click likes tab" data-ga_label="<%= shelby.models.user.get('nickname') %>">
         Likes
       </a>
     </li>
 
     <li class="one-third">
-      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-following" data-ga_category="Me tab" data-ga_action="Click" data-ga_label="Following">
+      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-following" data-ga_category="In App User Profile" data-ga_action="Click following tab" data-ga_label="<%= shelby.models.user.get('nickname') %>">
         Following
       </a>
     </li>

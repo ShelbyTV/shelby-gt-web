@@ -1,0 +1,31 @@
+/*
+    Avatar
+*/
+
+//block
+.avatar {
+  @include roundies;
+
+  background-color: $base;
+  border: 1px solid #DDD;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+  }
+}
+  //mods
+  .avatar--largest {
+    height: 140px;
+    width: 140px;
+  }
+
+  .avatar--medium {
+    height: 4em;
+    width: 4em;
+  }
+
+  .avatar--small {
+    height: 3em;
+    width: 3em;
+  }

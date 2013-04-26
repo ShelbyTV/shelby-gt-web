@@ -8,6 +8,9 @@
   @else if $type == input {
     border-radius: $radius - 2;
   }
+  @else if $type == avatar {
+    border-radius: $radius - 1;
+  }
   @else if $type == header {
     border-radius: $radius $radius 0 0;
   }

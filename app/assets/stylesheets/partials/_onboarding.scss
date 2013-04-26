@@ -1,16 +1,3 @@
-//avatar block
-.avatar {
-  background-color: $base;
-  border: 1px solid #DDD;
-  height: 140px;
-  margin: 0 auto 3em;
-  width: 140px;
-
-  img {
-    width: 100%;
-  }
-}
-
   //------------------------------
   //  avatar upload module
   //------------------------------
@@ -98,6 +85,11 @@
       width: 25em;
 
       //non-normative overrides
+
+      .avatar {
+        margin-bottom: 3em;
+      }
+
       .form_fieldset {
         position: relative;
       }
