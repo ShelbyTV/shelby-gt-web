@@ -394,7 +394,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         $frame = $this.closest('.list__item'),
         block = $this.siblings('.js-share-menu-block'),
         blockHasClass = block.hasClass('hidden');
-        console.log('$frame',$frame);
     // if we're opening the menu and we don't have the shortlink
     // yet, we need to get it now
     if (blockHasClass && !this._currentFrameShortlink) {
