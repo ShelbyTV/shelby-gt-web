@@ -270,7 +270,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
       // update UI that like occured
       var $target = $(el.currentTarget);
       $target.toggleClass('queued js-queued').find('.label').text('Liked');
-      $target.find('i').addClass('icon-heart--red');
+      $target.find('i').addClass('icon-like--red');
     }
   },
 

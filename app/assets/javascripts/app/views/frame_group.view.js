@@ -78,7 +78,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       // in case it got updated from somewhere else, update my button
       this.$('.js-queue-frame').toggleClass('queued', !removeVideo);
       this.$('.js-queue-frame .label').text(!removeVideo ? 'Liked' : 'Like');
-      this.$('.js-queue-frame i').toggleClass('icon-heart--red', !removeVideo);
+      this.$('.js-queue-frame i').toggleClass('icon-like--red', !removeVideo);
     }
   },
 
@@ -250,7 +250,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     // immediately change the button state
     this.$('.js-queue-frame').addClass('queued');
     this.$('.js-queue-frame .label').text('Liked');
-    this.$('.js-queue-frame i').addClass('icon-heart--red');
+    this.$('.js-queue-frame i').addClass('icon-like--red');
   },
 
   _onClickRemoveFrame : function(){

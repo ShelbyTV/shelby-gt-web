@@ -153,7 +153,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         // in case it got updated from somewhere else, update my button
         var $button = this.$('.persistent_video_info__current-frame .js-queue-frame');
         $button.toggleClass('queued', !removeVideo).find('.label').text(!removeVideo ? 'Liked' : 'Like');
-        $button.find('i').toggleClass('icon-heart--red', !removeVideo);
+        $button.find('i').toggleClass('icon-like--red', !removeVideo);
       }
     }
   },
@@ -206,7 +206,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       frame.like({likeOrigin: this.options.eventTrackingCategory});
       var $target = $(el.currentTarget);
       $target.toggleClass('queued js-queued').find('.label').text('Liked');
-      $target.find('i').addClass('icon-heart--red');
+      $target.find('i').addClass('icon-like--red');
     }
   },
 

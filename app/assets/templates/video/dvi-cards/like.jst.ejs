@@ -3,7 +3,7 @@
       data-ga_category="<%= eventTrackingCategory %>"
       data-ga_action="Click like on current frame"
       data-ga_label="<%= shelby.models.user.get('nickname') %>">
-  <i class="icon icon-heart <%= currentVideoIsInQueue ? 'icon-heart--red ': ''%>js-command-icon"></i>
+  <i class="icon icon-like <%= currentVideoIsInQueue ? 'icon-like--red ': ''%>js-command-icon"></i>
   <span class="label">
     <%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %>
   </span>

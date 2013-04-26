@@ -3,11 +3,11 @@
 
     Examples:
 
-    <i class="social-icon icon-social__twitter"></i>
+    <i class="social-icon icon-twitter"></i>
 
-    <i class="social-icon icon-social__tumblr"></i>
+    <i class="social-icon icon-tumblr"></i>
 
-    <i class="social-icon icon-social__facebook"></i>
+    <i class="social-icon icon-facebook"></i>
 
     Sizing and positioning should be set in a class for the partial
     that you've applied this to..
@@ -36,15 +36,15 @@
 //branded color always:
 
 .social-icon {
-  &.icon-social__twitter {
+  &.icon-twitter {
     color: $twitter-blue;
   }
 
-  &.icon-social__tumblr {
+  &.icon-tumblr {
     color: $tumblr-blue;
   }
 
-  &.icon-social__facebook {
+  &.icon-facebook {
     color: $facebook-blue;
   }
 }
@@ -59,19 +59,19 @@
   }
 
 
-  .icon-social_twitter {
+  .icon-twitter {
     &:hover {
       color: $twitter-blue;
     }
   }
 
-  .icon-social_tumblr {
+  .icon-tumblr {
     &:hover {
       color: $tumblr-blue;
     }
   }
 
-  .icon-social_facebook {
+  .icon-facebook {
     &:hover {
       color: $facebook-blue;
     }
@@ -86,7 +86,7 @@
 
     <ul class="list list--social_badges">
       <li>
-        <a class="list__link icon-social__twitter" href="http://twitter.com/username" target="_blank">
+        <a class="list__link icon-twitter" href="http://twitter.com/username" target="_blank">
           <span class="visuallyhidden">Twitter</span>
         </a>
       </li>
@@ -94,9 +94,9 @@
 */
 
 .list--social_badges {
-  .icon-social_facebook,
-  .icon-social_tumblr,
-  .icon-social_twitter {
+  .icon-facebook,
+  .icon-tumblr,
+  .icon-twitter {
     display: block; //fixes the 'unclickable area problem'
   }
 }

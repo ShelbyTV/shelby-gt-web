@@ -53,7 +53,7 @@ $landing-page-footer-font-color: #EFEFEF;
   font-size: 50%;
 
   .shelf--community {
-    .icon-player_play {
+    .icon-play {
       &:before {
         font-size: 3.2em;
       }
@@ -451,7 +451,7 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 
   // NON-NORMATIVE
-  .icon-player_play {
+  .icon-play {
     &:before {
       border-radius: 92px;
       background-color: black;
@@ -550,7 +550,7 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 
   .icon-email,
-  .icon-social_twitter {
+  .icon-twitter {
     display: inline-block;
     width: 1.5em;
   }
@@ -696,7 +696,7 @@ $landing-page-footer-font-color: #EFEFEF;
   .shelf__h2 {
     padding: 0 1em .5em;
 
-    .icon-heart {
+    .icon-like {
       line-height: 1;
       vertical-align: -4px;
     }

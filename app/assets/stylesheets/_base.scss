@@ -29,9 +29,9 @@ $path: "#{$images}assets/" !default;
 
 $icon-carrot                    : "#{$path}carrot#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";
-$icon-heart                     : "#{$path}heart#{$extension}";
-$icon-heart-on                  : "#{$path}heart_on#{$extension}";
-$icon-heart-active              : "#{$path}heart_active#{$extension}";
+$icon-like                     : "#{$path}heart#{$extension}";
+$icon-like-on                  : "#{$path}heart_on#{$extension}";
+$icon-like-active              : "#{$path}heart_active#{$extension}";
 $icon-missing-avatar            : "#{$path}missing_avatar.png";
 $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
 $icon-onboarding-facebook-add   : "#{$path}onboarding_facebook_add#{$extension}";
@@ -65,7 +65,7 @@ $animate-delay    : 0s !default;
 $font-color          : #333;
 $font-family         : Helvetica, Arial, sans-serif;
 $font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
-$font-family-icon    : 'icomoon';
+$font-family-icon    : 'Shelby-Icon-Font';
 $font-size           : 100%;
 
 //------------------------------------------------------------------------------

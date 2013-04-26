@@ -35,7 +35,7 @@
           <% if (!user.isAnonymous()) { %>
             <li class="menu_item" role="menuitem">
               <button class="button_primer button_green button_command button_command--roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
-                <i class="icon icon-videocard_roll"></i>Roll…
+                <i class="icon icon-roll"></i>Roll…
               </button>
             </li>
           <% } %>
@@ -44,7 +44,7 @@
             <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
               <button class="button_primer button_gray button_command button_command--like js-queue-frame
                              <%= (videoIsInQueue) ? ' queued' : ' button_gray' %>">
-                <i class="icon icon-heart<%= videoIsInQueue ? ' icon-heart--red': '' %>"></i><span class="label"><%= (videoIsInQueue ) ? 'Liked' : 'Like' %></span>
+                <i class="icon icon-like<%= videoIsInQueue ? ' icon-like--red': '' %>"></i><span class="label"><%= (videoIsInQueue ) ? 'Liked' : 'Like' %></span>
               </button>
             <% } else { %>
               <button class="button_primer button_gray button_command button_command--remove js-queue-frame remove-frame js-remove-frame queued">
@@ -76,13 +76,13 @@
                   <li class="list__item">
                     <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
                       <button class="button_primer button_gray button_share button_share--twitter js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                        <i class="icon icon-social_twitter"></i>Twitter
+                        <i class="icon icon-twitter"></i>Twitter
                       </button>
                     </a>
                   </li>
                 <li class="list__item">
                   <button class="button_primer button_gray button_share button_share--facebook js-share-to-facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                    <i class="icon icon-social_facebook"></i>Facebook
+                    <i class="icon icon-facebook"></i>Facebook
                   </button>
                 </li>
                 <% } %>
@@ -106,7 +106,7 @@
           <% if (shelby.models.user.get('admin')) { %>
             <li class="menu_item" role="menuitem">
               <button class="button_primer button_red button_command button_command--cancel js-remove-frame">
-                <i class="icon icon-cancel"></i>
+                <i class="icon icon-close"></i>
               </button>
             </li>
           <% } %>
@@ -130,7 +130,7 @@
       <footer class="media_module frame-footer clearfix">
          <% if (clickableCreator) { %>
            <a href="#" onclick="return false;" class="js-creator-personal-roll">
-             <span class="image_module xuser-avatar<% if (fauxUserOrigin) { %> xuser-avatar--<%= fauxUserOrigin %> icon-social_<%= fauxUserOrigin %><% } %> media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
+             <span class="image_module xuser-avatar<% if (fauxUserOrigin) { %> xuser-avatar--<%= fauxUserOrigin %> icon-<%= fauxUserOrigin %><% } %> media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
                <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
              </span>
            </a>

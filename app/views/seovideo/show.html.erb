@@ -165,12 +165,12 @@
                   <%= channel["title"] %>
                 </h4>
 
-                <span role="img" class="seovideo__thumbnail icon-player_play" style="background-image: url(<%= channel["thumbnail"] %>)">
+                <span role="img" class="seovideo__thumbnail icon-play" style="background-image: url(<%= channel["thumbnail"] %>)">
                   <img src="<%= channel["thumbnail"] %>" class="visuallyhidden" alt="<%= channel["name"] %>" title="Click to watch!" />
                 </span>
               </a>
 
-              <div class="frame-likes frame-external-subline icon-heart icon-heart--red js-frame-likes">
+              <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">
                 <ul class="list frame-likes-avatars js-liker-avatars-list">
                   <% channel["likers"].each do |liker| %>
                     <li>

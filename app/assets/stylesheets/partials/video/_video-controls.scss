@@ -49,20 +49,20 @@ $_video-player : #0e0e0e;
 //  Play button
 .video_controls__button--play {
   &.video_controls__button--pause {
-    .icon-player_play {
+    .icon-play {
       display: none;
     }
 
-    .icon-player_pause {
+    .icon-pause {
       display: inline;
     }
   }
 
-  .icon-player_play {
+  .icon-play {
     display: inline;
   }
 
-  .icon-player_pause {
+  .icon-pause {
     display: none;
   }
 }
@@ -95,20 +95,20 @@ $_video-player : #0e0e0e;
 .video_controls__button--fullscreen {
   float: right;
 
-  .icon-player_fullscreen_enable {
+  .icon-guide-in {
     display: block;
   }
 
-  .icon-player_fullscreen_disable {
+  .icon-guide-out {
     display: none;
   }
 
   &.cancel {
-    .icon-player_fullscreen_enable {
+    .icon-guide-in {
       display: none;
     }
 
-    .icon-player_fullscreen_disable {
+    .icon-guide-out {
       display: block;
     }
   }
@@ -121,25 +121,25 @@ $_video-player : #0e0e0e;
   float: right;
 
   &.video_controls__button--muted {
-    .icon-player_sound_on {
+    .icon-sound-on {
       display: none;
     }
 
-    .icon-player_sound_off {
+    .icon-sound-off {
       display: inline;
     }
   }
 
-  .icon-player_sound_on {
+  .icon-sound-on {
     display: inline;
   }
 
-  .icon-player_sound_off {
+  .icon-sound-off {
     display: none;
   }
 }
 
-//  HD button
+//  hd button
 
 .video_controls__button--quality {
   float: right;
@@ -149,7 +149,7 @@ $_video-player : #0e0e0e;
   &.video_controls__button--hd-on {
     display: inline;
 
-    .icon--HD {
+    .icon-hd {
     }
   }
 
@@ -158,7 +158,7 @@ $_video-player : #0e0e0e;
     display: inline;
     opacity: 0.4;
 
-    .icon--HD {
+    .icon-hd {
     }
   }
 }
@@ -178,7 +178,7 @@ $_video-player : #0e0e0e;
   background: black;
   border-radius: $radius*2;
   height: 8px;
-  margin: 1.4em 8px 0;
+  margin: 1.5em 8px 0;
   position: relative;
 }
 
@@ -223,7 +223,7 @@ $_video-player : #0e0e0e;
   font-size: 13px;
   font-size: 0.8rem;
   font-weight: bold;
-  line-height: 2.25em;
+  line-height: 2.35em;
   margin: 0.5em 1em 0;
 }
 
@@ -292,20 +292,20 @@ $_video-player : #0e0e0e;
     @include opacity(1.0);
   }
 
-  .icon-player_fullscreen_enable {
+  .icon-guide-in {
     display: block;
   }
 
-  .icon-player_fullscreen_disable {
+  .icon-guide-out {
     display: none;
   }
 
   &.cancel {
-    .icon-player_fullscreen_enable {
+    .icon-guide-in {
       display: none;
     }
 
-    .icon-player_fullscreen_disable {
+    .icon-guide-out {
       display: block;
     }
   }

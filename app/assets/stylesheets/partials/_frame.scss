@@ -282,7 +282,8 @@
 
   .button_command--cancel {
     font-size: 0.8em;
-    margin: 1.1em 0em 0 0.8em;
+    margin: 1em 0em 0 0.8em;
+    padding: 0.3em;
   }
 }
 
@@ -429,8 +430,8 @@
   height: 2.3em;
   overflow: hidden;
 
-  &.icon-heart,
-  &.icon-videocard_roll {
+  &.icon-like,
+  &.icon-roll {
     &:before {
       display: inline;
       font-size: 1.4em;
