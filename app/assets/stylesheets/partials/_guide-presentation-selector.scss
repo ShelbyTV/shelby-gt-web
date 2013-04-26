@@ -356,3 +356,10 @@ $settings-panel-bg : #555;
   line-height: 3.9;
   padding: 0 1em;
 }
+
+  .button_primer--twitter,
+  .button_primer--facebook {
+    padding: 0.5em 1.7em 0.5em 1.2em;
+    text-align: center;
+    width: 40%;
+  }
