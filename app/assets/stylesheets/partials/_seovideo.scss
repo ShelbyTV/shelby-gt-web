@@ -66,16 +66,10 @@ p {
   }
 }
 
-.seovideo__h1 {
-  font-family: $font-family-display;
-  font-size: 1.6em;
-  font-weight: 400;
-  text-align: center;
-}
-
 .seovideo__h2 {
-  font-size: 1.1em;
-  font-weight: bold;
+  font-family: $font-family-display;
+  font-size: 1.3em;
+  font-weight: 400;
   margin: 0 0 0.25em;
 }
 
@@ -86,11 +80,6 @@ p {
   margin: 0;
 }
 
-.seovideo__h4 {
-  font-weight: bold;
-  margin: 0.5em 0;
-}
-
 .seovideo__thumbnail {
   display: block;
   background-color: #000;
@@ -99,30 +88,6 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
   height: 130px;
-  position: relative;
-
-  &:before {
-    border-radius: 92px;
-    background-color: #000;
-    color: #FFF;
-    font-size: 2.25em;
-    height: 71px;
-    line-height: 2.5;
-    left: 50%;
-    margin-left: -36px;
-    opacity: 0.5;
-    padding-left: 5px;
-    position: absolute;
-    text-align: center;
-    top: 25%;
-    width: 71px;
-  }
-
-  &:hover {
-    &:before {
-      opacity: 1;
-    }
-  }
 }
 //------------------------------------------------------------------------------
 //  seovideo architecture
@@ -143,7 +108,7 @@ p {
 
 .seovideo-wrapper {
   margin: 0 auto;
-  max-width: $seo-column-main;
+  max-width:$seo-column-main;
 }
 
 //------------------------------------------------------------------------------
@@ -154,22 +119,8 @@ p {
 }
 
 .seovideo {
-  max-width: $seo-column-left;
-  margin: 1.5em auto 0.5em;
-}
-
-.seovideo__head {
-  padding: 0.7em 1em 0;
-
-  .seovideo__h1 {
-    margin: 0.425em 6em;
-  }
-
-  //non-normative overrides
-  .shelby-logo {
-    font-size: 2.5em;
-    position: absolute;
-  }
+  max-width: 640px;
+  margin: 2em auto;
 }
 
 .seovideo__main {
@@ -180,7 +131,7 @@ p {
 //  seovideo banner
 //------------------------------------------------------------------------------
 .seovideo__banner_wrapper {
-  max-width: 600px;
+  max-width: 975px;
   margin: 0 auto;
 }
 
@@ -194,6 +145,11 @@ p {
   .button_primer {
     margin-left: 8px;
     padding: 0em 2em;
+  }
+
+  .search_module__submit,
+  .search_module__input_wrapper {
+    height: 2.5em;
   }
 }
 
@@ -211,7 +167,7 @@ p {
 }
 
 .seovideo__video_details {
-  padding: 0.5em 0em;
+  padding: 1.0em 1.5em;
 
   p {
 
@@ -232,49 +188,83 @@ p {
 //------------------------------------------------------------------------------
 
 .seovideo__aside {
-  max-width: $seo-column-main;
-  margin: 0 auto;
+  .seovideo__h3 {
+    margin: 2em 0 1em;
+    line-height: 1.5;
+  }
+}
 
-  .seovideo__h1 {
-    line-height: 2;
-    margin: 0.4em 0 0;
+.seovideo__aside_lining {
+
+}
+
+.seovideo__list--aside {
+
+  .seovideo__item {
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+    width: 50%;
+
+    &:nth-child(2n+1) {
+      padding-right: 5px;
+    }
+    &:nth-child(2n) {
+      padding-left: 5px;
+    }
   }
 
   .seovideo__h4 {
-    line-height: 1.5;
-    font-size: 1.25em;
-  }
-}
-  .seovideo__aside_lining {
-    padding: 0 1em 1em;
+    margin: 0;
+    font-weight: normal;
   }
 
-  .seovideo__list--aside {
-
-    .seovideo__item {
-      padding: 1em;
-      float: left;
-    }
-
-    .seovideo__h4 {
-    }
-
-    .seovideo__link {
-      &:hover {
-        .related_video {
-          background-color: #fff;
-        }
+  .seovideo__link {
+    &:hover {
+      .related_video {
+        background-color: #fff;
       }
     }
   }
+}
+
+// the related video design requires some complex css.
+// that's why we're creating this "related_video" block.
+.related_video {
+
+}
+
+.related_video__main {
+
+}
+
+.related_video__footer {
+  height: 65px;
+  display: table;
+  width: 100%;
+}
+
+.related_video__footer-lining {
+  display: table-cell;
+  margin: 0 auto;
+  padding: 1em;
+  vertical-align: middle;
+  width: 100%;
+
+  .seovideo__h4 {
+    padding-right: 1.5em;
+
+    &.icon {
+      background-size: 1em;
+    }
+  }
+}
 
 //------------------------------------------------------------------------------
 //  seovideo related
 //------------------------------------------------------------------------------
 //messages section
 .seovideo__messages {
-  max-width: $seo-column-left;
-  margin: 0 auto;
   padding: 0 0 2em;
 
   .seovideo__h3 {
@@ -330,10 +320,10 @@ p {
 }
 
 .seovideo-social-button {
-  width: 100%;
-  display: block;
-  text-align: right;
-  height: 25px;
+         width: 100%;
+         display: block;
+         text-align: right;
+         height: 25px;
 }
 
 #disqus_thread{
@@ -347,45 +337,22 @@ p {
 ////////////////////////////////////////////////////////////////////////////
 //  narrow screens
 ////////////////////////////////////////////////////////////////////////////
-@media only screen and (max-width : 900px) {
-  .seovideo__head {
-    .shelby_logo {
-      font-size: 0.9em;
-      padding-left: 0;
-    }
-
-    .seovideo__h1 {
-      font-size: 1em;
-      margin-right: 0;
-      margin-top: 0.9em;
-      text-align: right;
-    }
-  }
-
-  .seovideo__video_details {
-    padding: 0.5em;
-  }
-}
-
 @media only screen and (max-width : 470px) {
+
+  .seovideo-head {
+    .seovideo__banner_wrapper {
+      width: 430px;
+      margin: 0 auto;
+    }
+    .seovideo__h2 {display: none;}
+  }
+
   .seovideo__video {
     & > iframe,
     & > embed,
     & > object {
       height: 200px;
     }
-  }
-
-  .seovideo__head {
-    .seovideo__h1 {
-      font-size: 0.9em;
-      margin-top: 1.25em;
-    }
-  }
-
-
-  .seovideo__h2 {
-    margin-left: 0.5em;
   }
 
   .seovideo__aside {
@@ -400,6 +367,14 @@ p {
 
       &:first-child {
         margin-top: 1px;
+      }
+
+      &:nth-child(2n+1) {
+        padding-right: 0;
+      }
+
+      &:nth-child(2n) {
+        padding-left: 0;
       }
     }
   }
@@ -420,5 +395,247 @@ p {
 ////////////////////////////////////////////////////////////////////////////
 //  for wide screens
 ////////////////////////////////////////////////////////////////////////////
+@media only screen and (min-width : 470px) and (max-width : 1200px) {
+  .seovideo-head {
+    .seovideo__banner_wrapper {
+      width: 640px;
+      margin: 0 auto;
+    }
+  }
+  .seovideo__h1 { font-size: 1.9em !important; }
+  .seovideo__h2 { display: none; }
+}
+////////////////////////////////////////////////////////////////////////////
+//  for wide screens
+////////////////////////////////////////////////////////////////////////////
 @media only screen and (min-width : 1200px) {
+  .seovideo {
+    max-width: 980px;
+  }
+
+  .seovideo__main {
+    float: left;
+    margin-right: 20px;
+    width: 640px;
+  }
+
+  .seovideo__aside {
+    margin: 1px;
+    float: right;
+    width: 318px;
+
+    .seovideo__h3 {
+      margin-bottom: 0.25em;
+      margin-top: 0.2em;
+    }
+  }
+
+  .seovideo__list--aside {
+    .seovideo__item {
+      float: none;
+      margin: 20px 2px;
+      width: auto;
+
+      &:first-child {
+        margin-top: 1px;
+      }
+
+      &:nth-child(2n+1) {
+        padding-right: 0;
+      }
+
+      &:nth-child(2n) {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .seovideo__messages {
+    max-width: 640px;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//  AB TEST
+////////////////////////////////////////////////////////////////////////////////
+.seovideo__item--advertisement {
+  .seovideo__link {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .seovideo__h4 {
+    font-size: 1.2em;
+    font-family: $font-family-display;
+    font-weight: bold;
+    margin-bottom: 0.25em;
+  }
+
+
+  .related_video__footer-lining {
+    margin-right: 10px;
+    // text-shadow: 1px 0px 2px black;
+
+    & > .icon {
+      padding-right: 1em;
+      -webkit-background-size: 1em;
+      background-size: 1em;
+    }
+  }
+}
+////////////////////////////////////////////////////////////////////////////
+//  AB Test: SEO AD, text size
+//
+//  ab_test("seo_ad_text_size", "large", "small") do |config|
+//
+////////////////////////////////////////////////////////////////////////////
+.seo__item--advertisement-large {
+  font-size: 1.4em;
+  line-height: 1.3;
+}
+
+.seo__item--advertisement-small {
+  //do nothing
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  AB Test: SEO AD, videocard
+//
+//  ab_test("seo_ad_videocard", "obvious", "subtle") do |config|
+//
+////////////////////////////////////////////////////////////////////////////
+
+.seo__item--advertisement-obvious {
+  //advertisement-large is being carried on to this test:
+  //otherwise, the ad isn't 'different'
+
+  font-size: 1.4em;
+  line-height: 1.3;
+
+  .seovideo__h4 {
+    font-size: 1.1em;
+    font-weight: 400;
+  }
+
+  .related_video__footer-lining {
+    text-shadow: 1px 0px 2px black;
+  }
+
+  .related_video__footer {
+    color: #efefef;
+    height: $related_video__height;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+  }
+
+  .seovideo__thumbnail {
+    background-image: url('/images/seovideo/seo_holiday_4.jpg');
+    height: $related_video__height;
+  }
+
+  .seovideo__subline {
+    display: none;
+  }
+}
+
+.seo__item--advertisement-subtle {
+  &:hover {
+    .icon {
+      background-image: none;
+    }
+  }
+
+  .br--obvious {
+    display: none;
+  }
+
+  .seovideo__h4 {
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.3;
+  }
+
+  .seovideo__subline {
+    bottom: 0;
+    color: #999;
+    font-size: 0.8em;
+    margin: 0.35em 0.6em;
+    position: absolute;
+    right: 0;
+  }
+
+  .seovideo__thumbnail {
+    background-image: url('/images/seovideo/seo_holiday_3.jpg');
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
+//  AB Test: SEO prepopulate
+//
+//  ab_test("seo_search_prepopulat", true, false) do |config|
+//
+////////////////////////////////////////////////////////////////////////////
+
+// .seovideo__banner_wrapper--true {
+//   //if search input is prepopulated with search term that brought user to page
+//   margin-top: 22px;
+//   padding: 18px 22px 1px;
+
+//   .seovideo__h2 {
+//     text-align: center;
+//     font-family: $font-family-display;
+//     font-size: 1.8em;
+//     font-weight: 300;
+//   }
+// }
+
+// .seovideo__banner_wrapper--false {
+//   .seovideo__h2 {
+//     display: none;
+//   }
+// }
+
+////////////////////////////////////////////////////////////////////////////
+//  AB Test: SEO search form label
+//
+//  ab_test("seo_search_label", true, false) do |config|
+//
+////////////////////////////////////////////////////////////////////////////
+
+.seovideo__banner_wrapper--true {
+  //if search input is prepopulated with search term that brought user to page
+  margin-top: 22px;
+  padding: 18px 22px 1px;
+
+  .seovideo__h1 {
+    text-align: center;
+    font-family: $font-family-display;
+    font-size: 2em;
+    font-weight: 600;
+    margin: 10px;
+  }
+
+  .seovideo__h2 {
+    text-align: center;
+    font-family: $font-family-display;
+    font-size: 1.8em;
+    font-weight: 300;
+  }
+}
+
+.seovideo__banner_wrapper--false {
+  margin-top: 22px;
+  padding: 1px 22px 1px;
+}
+
+
+////////////////////////////////////////////////////////////////////////////
+//  BLOCK MODIFIER
+//  WHEN THERES NO RELATED VIDEOS
+////////////////////////////////////////////////////////////////////////////
+.seovideo--light {
+  max-width: $seo-column-left;
 }
