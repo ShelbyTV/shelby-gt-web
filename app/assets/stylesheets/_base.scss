@@ -1,9 +1,25 @@
-//------------------------------------------------------------------------------
-//  Constants
-//------------------------------------------------------------------------------
-$app-header__height : 38px;
-$app-background-color : #e2e2e2;
 
+//------------------------------------------------------------------------------
+//  UI KIT
+//------------------------------------------------------------------------------
+  $ui-white      : rgba(#ffffff,1); //Pane White
+  $ui-off-white  : rgba(#f4f4f4,1); //Shelby White
+
+  $ui-black      : rgba(#333333,1); //Typography
+  $ui-soft-black : rgba(#555555,1); //Button Typography
+  $ui-gray       : rgba(#f1f1f1,1); //Pane Grey
+
+  $ui-green      : rgba(#6fbe47,1); //Shelby Green
+  $ui-red        : rgba(#ee4c4c,1); //Shelby Red
+  $ui-blue       : rgba(#0590c4,1); //Shelby Blue
+
+  $facebook-blue : rgba(#013e80,1); //Facebook Blue
+  $twitter-blue  : rgba(#2CAAE1,1); //Twitter Blue
+  $tumblr-blue   : rgba(#2f445b,1); //Tumblr Blue
+
+
+  $ui-button-text: $ui-black;
+  $ui-button-text-inverted: $ui-white;
 //------------------------------------------------------------------------------
 //  ICONS, these aren't worth taking the time to update right now.
 //------------------------------------------------------------------------------
@@ -13,9 +29,9 @@ $path: "#{$images}assets/" !default;
 
 $icon-carrot                    : "#{$path}carrot#{$extension}";
 $icon-chevron-right             : "#{$path}chevron#{$extension}";
-$icon-heart                     : "#{$path}heart#{$extension}";
-$icon-heart-on                  : "#{$path}heart_on#{$extension}";
-$icon-heart-active              : "#{$path}heart_active#{$extension}";
+$icon-like                     : "#{$path}heart#{$extension}";
+$icon-like-on                  : "#{$path}heart_on#{$extension}";
+$icon-like-active              : "#{$path}heart_active#{$extension}";
 $icon-missing-avatar            : "#{$path}missing_avatar.png";
 $icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
 $icon-onboarding-facebook-add   : "#{$path}onboarding_facebook_add#{$extension}";
@@ -47,13 +63,10 @@ $animate-delay    : 0s !default;
 //  FONT SETUP
 //------------------------------------------------------------------------------
 $font-color          : #333;
-$font-color-display  : $font-color;
-$font-color-light    : adjust-lightness($font-color, 26.5%);
-$font-family         : Arial, sans-serif;
+$font-family         : Helvetica, Arial, sans-serif;
 $font-family-display : 'Ubuntu',Trebuchet MS,sans-serif;
-$font-family-icon    : 'icomoon';
+$font-family-icon    : 'Shelby-Icon-Font';
 $font-size           : 100%;
-$size                : $font-size !default;
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -66,26 +79,17 @@ $input-radius  : $radius - 2;
 //------------------------------------------------------------------------------
 //  MARGINS, PADDINGS, and WIDTHS
 //------------------------------------------------------------------------------
-$unit                : 10px;
-$defaultMargin       : $unit;
-$default-margin      : $unit;
-$margin              : 0.5em;
-$media-module-margin : 8px;
-$header-height       : $unit * 3.5;
-$guide-width         : $unit * 37;
-$persistent_video_info--height : 180px;
+$_unit                         : 10px;
+$defaultMargin                 : $_unit;
 
 //------------------------------------------------------------------------------
 //  COLORS
 //------------------------------------------------------------------------------
 //  COLORS: base
-$base          : #e2e2e2;
-$base-frame    : #F2F0F0;
-$base-bg-color : #000;
-$highlight     : rgba(255,255,255,0.3) !default;
+$base          : $ui-gray;
+$base-frame    : $ui-off-white;
 $shadow        : 0 0 2px 0 rgba(0,0,0,0.3);
 $shadow-text   : 0px -1px 0px rgba(0,0,0,0.6);
-$outline       : #222;
 $outset        : adjust-lightness($base, 7%);
 $inset         : adjust-lightness($base, -10%);
 //  COLORS: fonts
@@ -94,7 +98,6 @@ $button-color       : #efefef;
 $button-color-light : $text + #333;
 //  COLORS: guide
 $guide-bg-color                     : $base;
-$guide-explore-bg                   : $base;
 $guide-presentation-button          : #aaa;
 $guide-presentation-button-active   : adjust-lightness($guide-presentation-button, 28%);
 $guide-presentation-bg-color        : #2f3233;
@@ -103,29 +106,16 @@ $guide-presentation-tab-bg-selected : #242627;
 //  COLORS: nav
 $nav-dropdown-bg                    : $base;
 //  COLORS: list_module
-$list-module-bg                     : $base;
-$list-item-bg                       : adjust-lightness($list-module-bg, 5%);
+$_list-module-bg                     : $base;
+$list-item-bg                       : adjust-lightness($_list-module-bg, 5%);
 $list-item-bg-hover                 : adjust-lightness($list-item-bg, -10%);
-$list-item-border                   : adjust-lightness($list-module-bg, -10%);
+$list-item-border                   : adjust-lightness($_list-module-bg, -10%);
 //  COLORS: overlay
 $overlay_header_height              : 46px;
 //  COLORS: thumbnail_module
 $thumbnail_default_bg               : adjust-lightness($base, -1%);
-//  COLORS: explore
-$explore-header-color               : #333;
-$explore-subline-color              : adjust-lightness($explore-header-color,30%);
-$explore-frame-title                : adjust-lightness($explore-header-color,10%);
 //  COLORS: external
 $external-bg                        : #efefef;
-//  COLORS: videocard
-$videocard-footer-bg-color          : #f2f0f0;
-$videocard-shadow                   : $shadow;
-$videocard-faux-tint                : .7;
-//  COLORS: videoplayer
-$video-controls-progress-load       : #303030;
-$video-player                       : #0e0e0e;
-//  COLORS: preferences
-$toggle-switch-gray                 : #fefefe;
 //  COLORS: shelby
 $shelby-blue                        : #0590c4;
 $shelby-default                     : #eeeeee;
@@ -145,5 +135,11 @@ $tumblr-blue                        : #2f445b;
 //  COLORS: buttons
 $button-default-color               : #eee;
 $networks-unselected                : #474747;
-//  COLORS: avatar
-$avatar-outline                     : darken($base,5%);
+
+//------------------------------------------------------------------------------
+//  Constants
+//------------------------------------------------------------------------------
+$app-header__height            : 38px;
+$app-background-color          : #e2e2e2;
+$guide-width                   : $_unit * 37;
+$persistent_video_info--height : 180px;

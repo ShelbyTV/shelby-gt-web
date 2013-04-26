@@ -221,7 +221,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     }
 
     //  toggle the "button pressed" state
-    // $this.toggleClass('button_default',!blockHasClass)
+    // $this.toggleClass('button_gray',!blockHasClass)
     //      .toggleClass('button_gray-light',blockHasClass);
     $this.toggleClass('button_active',blockHasClass);
 
@@ -270,7 +270,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
       // update UI that like occured
       var $target = $(el.currentTarget);
       $target.toggleClass('queued js-queued').find('.label').text('Liked');
-      $target.find('i').addClass('icon-heart--red');
+      $target.find('i').addClass('icon-like--red');
     }
   },
 

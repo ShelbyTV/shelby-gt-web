@@ -115,7 +115,7 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
     var buttonText = itemQueued ? 'Liked' : 'Like';
     var $button = this.$('.js-queue-command');
     $button.toggleClass('queued js-queued', itemQueued).find('.label').text(buttonText);
-    $button.find('.js-command-icon').toggleClass('icon-heart--red', itemQueued);
+    $button.find('.js-command-icon').toggleClass('icon-like--red', itemQueued);
   },
 
   // override ActiveHighlightListItemView abstract method

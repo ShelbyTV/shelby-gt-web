@@ -2,7 +2,7 @@
 //  guide overlay setup
 //------------------------------------------------------------------------------
 .guide-overlay {
-	background-color: $guide-bg-color;
+	background-color: $base;
 	bottom: 0;
 	position: absolute;
   margin-left: -100%;
@@ -121,10 +121,10 @@
 
 .guide-header-lining,
 .xguide-overlay-context {
-  background-color: adjust-lightness($guide-bg-color, -5%);
+  background-color: adjust-lightness($base, -5%);
   border-bottom: 1px solid $inset;
   border-top: 1px solid $outset;
-  box-shadow: $videocard-shadow;
+  box-shadow: $shadow;
   position: relative;
 }
 

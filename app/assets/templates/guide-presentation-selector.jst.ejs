@@ -1,17 +1,9 @@
 <ul class="js-content-selector guide-nav-list clearfix">
   <li class="guide-nav-item">
-    <button class="nav-button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= shelby.models.user.get('nickname') %>'  >
+    <button class="nav-button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       Stream
     </button>
   </li>
-
-  <% if (!shelby.models.user.isAnonymous()) { %>
-    <li class="guide-nav-item">
-      <button class="nav-button js-queue js-track-event" data-ga_category="Header" data-ga_action="Queue" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-        Likes
-      </button>
-    </li>
-  <% } %>
 
   <li class="guide-nav-item js-channels-menu">
     <button class="nav-button js-channels js-track-event" data-ga_category="Header" data-ga_action="Channels" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
@@ -20,22 +12,15 @@
   </li>
 
   <% if (!shelby.models.user.isAnonymous()) { %>
-    <li class="guide-nav-item js-guide-me">
+    <li class="guide-nav-item js-guide-me js-track-event" data-ga_category="Header" data-ga_action="Me" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       <button class="nav-button js-me">
         Me
       </button>
     </li>
-
-    <% if (false) {  %>
-      <li class="guide-nav-item js-guide-mail">
-        <button class="nav-button js-mail">
-          Mail
-        </button>
-      </li>
-    <% } %>
   <% } %>
 
   <% if (false) {  %>
+    <!-- TODO: debt -->
     <li class="dropdown_module--no-hover dropdown_module--invite-user guide-nav-item js-guide-invite">
       <!-- Content filled in by InviteFormView -->
     </li>

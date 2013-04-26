@@ -1,0 +1,85 @@
+/*
+    User
+
+    <div class="user">
+      <div class="media_module user__lining clearfix">
+        <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(<%= avatar %>);">
+          <img class="visuallyhidden" src="<%= avatar %>"/>
+        </span><!-- eo media_image -->
+
+        <div class="media_body">
+          <h3 class="user__h1">
+            <%= username %>
+          </h3>
+
+          <h4 class="user__h2">
+            <%= realname %>
+          </h4>
+        </div><!-- eo media_body -->
+      </div><!-- eo media_module -->
+    </div><!-- eo user -->
+*/
+
+//block
+.user {
+  font-size: 1.2em;
+
+  .user__lining {
+    border-bottom: 1px solid $inset;
+    margin: 0;
+    padding: 0.8em;
+  }
+}
+    //mods
+    //enables hover fanciness + dividing border
+    .user--item {
+      margin-top: 1px;
+
+      .user__lining {
+
+        &:hover {
+          background-color: $base-frame;
+
+          & + .user__button {
+            display: block;
+          }
+
+          .icon {
+            color: $text;
+          }
+        }
+      }
+    }
+
+//elements
+.user__avatar {
+  display: inline-block;
+  margin-right: 1em;
+}
+.user__h1 {
+  line-height: 1.4;
+}
+.user__h2 {
+  font-family: $font-family;
+  font-weight: normal;
+  line-height: 1.4;
+}
+.user__lining {
+  text-align: left;
+  width: 100%;
+
+  .icon {
+    color: $inset;
+    float: right;
+    margin-top: 1em;
+  }
+}
+.user__button {
+  display: none;
+  margin: 0.8em 2.5em 0 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+}
+.user__button--follow {}

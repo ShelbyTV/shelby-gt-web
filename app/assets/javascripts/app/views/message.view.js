@@ -19,6 +19,7 @@ libs.shelbyGT.MessageView = Support.CompositeView.extend({
   _goToUserPersonalRoll : function(e){
     e.preventDefault();
     var userId = $(e.currentTarget).data('user-id');
+    //TODO: if the frame conversation comes back into service, redo this link to point to /:user_name
     shelby.router.navigate('user/' + userId + '/personal_roll', {trigger:true});
 
     this.parent.hide();

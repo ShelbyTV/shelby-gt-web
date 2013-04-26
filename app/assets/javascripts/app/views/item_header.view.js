@@ -42,13 +42,26 @@
       } else {
         switch (this.model.get('displayState')) {
           case libs.shelbyGT.DisplayState.standardRoll :
+          case libs.shelbyGT.DisplayState.watchLaterRoll :
             if (this.model.has('currentRollModel')) {
-              this.appendChild(new RollHeaderView({model:this.model.get('currentRollModel')}));
+              this.appendChild(new RollHeaderView({
+                model : this.model.get('currentRollModel'),
+                guideModel : shelby.models.guide
+              }));
+            }
+            break;
+          case libs.shelbyGT.DisplayState.rollList :
+            var userRoll = shelby.models.user.has('personal_roll_id') &&
+                           libs.shelbyGT.RollModel.findOrCreate({id: shelby.models.user.get('personal_roll_id')});
+            if (userRoll) {
+              this.appendChild(new RollHeaderView({
+                model : userRoll,
+                guideModel : shelby.models.guide
+              }));
             }
             break;
           case libs.shelbyGT.DisplayState.watchLaterRoll :
           case libs.shelbyGT.DisplayState.dashboard :
-          case libs.shelbyGT.DisplayState.rollList :
             break;
           case libs.shelbyGT.DisplayState.search :
             this.appendChild(new SearchHeaderView({}));

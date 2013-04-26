@@ -3,6 +3,8 @@
 //    - Video Progress Bar
 //    - Video Navigation (Prev/Next)
 
+$_video-player : #0e0e0e;
+
 //------------------------------------------------------------------------------
 //  Block -- Video Controls
 //------------------------------------------------------------------------------
@@ -16,9 +18,9 @@
 }
 
 .video_controls {
-	@include gradient-primer($video-player);
+	@include gradient-primer($_video-player);
 
-  color:$button-color;
+  color: $button-color;
   padding: 0;
   position: relative;
 }
@@ -32,8 +34,7 @@
   color: inherit;
   float: left;
   font-size: 1.8em;
-  padding: 0.7em 0.75em 0.5em;
-  // width: 3em;
+  padding: 0.5em;
   -webkit-tap-highlight-color: rgba(5, 144, 196,.5);
 
   i {
@@ -48,20 +49,20 @@
 //  Play button
 .video_controls__button--play {
   &.video_controls__button--pause {
-    .icon-player_play {
+    .icon-play {
       display: none;
     }
 
-    .icon-player_pause {
+    .icon-pause {
       display: inline;
     }
   }
 
-  .icon-player_play {
+  .icon-play {
     display: inline;
   }
 
-  .icon-player_pause {
+  .icon-pause {
     display: none;
   }
 }
@@ -94,20 +95,20 @@
 .video_controls__button--fullscreen {
   float: right;
 
-  .icon-player_fullscreen_enable {
+  .icon-guide-in {
     display: block;
   }
 
-  .icon-player_fullscreen_disable {
+  .icon-guide-out {
     display: none;
   }
 
   &.cancel {
-    .icon-player_fullscreen_enable {
+    .icon-guide-in {
       display: none;
     }
 
-    .icon-player_fullscreen_disable {
+    .icon-guide-out {
       display: block;
     }
   }
@@ -120,25 +121,25 @@
   float: right;
 
   &.video_controls__button--muted {
-    .icon-player_sound_on {
+    .icon-sound-on {
       display: none;
     }
 
-    .icon-player_sound_off {
+    .icon-sound-off {
       display: inline;
     }
   }
 
-  .icon-player_sound_on {
+  .icon-sound-on {
     display: inline;
   }
 
-  .icon-player_sound_off {
+  .icon-sound-off {
     display: none;
   }
 }
 
-//  HD button
+//  hd button
 
 .video_controls__button--quality {
   float: right;
@@ -148,7 +149,7 @@
   &.video_controls__button--hd-on {
     display: inline;
 
-    .icon--HD {
+    .icon-hd {
     }
   }
 
@@ -157,7 +158,7 @@
     display: inline;
     opacity: 0.4;
 
-    .icon--HD {
+    .icon-hd {
     }
   }
 }
@@ -177,7 +178,7 @@
   background: black;
   border-radius: $radius*2;
   height: 8px;
-  margin: 1.8em 8px 0;
+  margin: 1.5em 8px 0;
   position: relative;
 }
 
@@ -192,25 +193,21 @@
 
 .video_progress__load,
 .video_progress__elapsed {
-  background: $video-controls-progress-load;
-  // @include background(linear-gradient(top, adjust-lightness($video-controls-progress-load, 5%), $video-controls-progress-load));
-  @include gradient-primer($video-controls-progress-load);
-
+  background-color: $ui-black;
   border-radius: $radius*2;
   height: 8px;
   width: 0;
 }
 
 .video_progress__elapsed {
-  @include background($shelby-blue);
-
+  background: $ui-soft-black;
   margin-top:-8px;
 }
 
 .video_progress__scrubber {
-  background: #efefef;
+  background: $ui-white;
   border-radius: 8px;
-  box-shadow: 1px 0px 2px 1px black;
+  box-shadow: 1px 0px 2px 1px $ui-black;
   cursor: pointer;
   cursor: ew-resize;
   height: 15px;
@@ -221,12 +218,12 @@
 }
 
 .video_controls__time {
-  color: #b2b2b2;
+  color: $ui-white;
   float: right;
   font-size: 13px;
   font-size: 0.8rem;
-  font-weight: 300;
-  line-height: 3em;
+  font-weight: bold;
+  line-height: 2.35em;
   margin: 0.5em 1em 0;
 }
 
@@ -241,12 +238,12 @@
 //------------------------------------------------------------------------------
 
 .videoplayer-nav__btn {
-  @include gradient-primer($video-player);
+  @include gradient-primer($_video-player);
   @include opacity(0.5);
 
   border: none;
   border-radius: $radius;
-  color: $button-color;
+  color: $ui-white;
   font-size: 2.5em;
   margin-top: -145px;
   padding: 0.6em 0.6em 0.5em;
@@ -277,7 +274,7 @@
 }
 
 .videoplayer-nav__btn--fullscreen {
-  @include gradient-primer($video-player);
+  @include gradient-primer($_video-player);
   @include opacity(0.5);
 
   // border: none;
@@ -295,20 +292,20 @@
     @include opacity(1.0);
   }
 
-  .icon-player_fullscreen_enable {
+  .icon-guide-in {
     display: block;
   }
 
-  .icon-player_fullscreen_disable {
+  .icon-guide-out {
     display: none;
   }
 
   &.cancel {
-    .icon-player_fullscreen_enable {
+    .icon-guide-in {
       display: none;
     }
 
-    .icon-player_fullscreen_disable {
+    .icon-guide-out {
       display: block;
     }
   }

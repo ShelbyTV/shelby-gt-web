@@ -13,7 +13,7 @@
 }
 
 .guide__head {
-  box-shadow: $shadow;
+  background-color: white;
   position: relative;
   z-index: 1;
 }
@@ -28,11 +28,22 @@
   z-index: 0;
 }
 
+  //elements
+  .guide__h1 {
+
+  }
+  .guide__h2 {
+
+  }
+
 //------------------------------------------------------------------------------
 //  guide-styles
 //------------------------------------------------------------------------------
 .guide__menu {
-  float: right;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
 }
 
 .guide__header {

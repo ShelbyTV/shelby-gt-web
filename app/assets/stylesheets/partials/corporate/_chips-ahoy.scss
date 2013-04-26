@@ -89,13 +89,14 @@
     .brand__social_button {
       font-size: 2em;
       margin: 0em 0em 0em 0.5em;
-      padding: 0.6em 0.7em;
+      padding: 0.6em 0em;
+      width: 3em;
 
-      .icon-social_facebook {
+      .icon-facebook {
         color: $facebook-blue;
       }
 
-      .icon-social_twitter {
+      .icon-twitter {
         color: $twitter-blue;
       }
     }

@@ -4,7 +4,8 @@
   var DisplayState = libs.shelbyGT.DisplayState;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
-  var MeListView = libs.shelbyGT.MeListView;
+  var RollListView = libs.shelbyGT.RollListView;
+  var RollListFilterType = libs.shelbyGT.RollListFilterType;
   var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
   var RollView = libs.shelbyGT.RollView;
   var VideoSearchView = libs.shelbyGT.VideoSearchView;
@@ -111,9 +112,16 @@
          break;
         case DisplayState.rollList :
           displayParams = {
-            viewProto : MeListView,
+            viewProto : RollListView,
             model : shelby.models.rollFollowings,
             onAppendChild : this._populateRollList,
+            options : {
+              comparator : function(roll) {
+                return roll.get('title').toLowerCase();
+              },
+              doStaticRender : true,
+              rollListFilterType : RollListFilterType.following
+            },
             shouldFetch : true,
             spinner : true
           };

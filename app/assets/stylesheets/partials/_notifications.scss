@@ -40,9 +40,8 @@
 }
 
 .notification__button--primary {
-  padding: 0.7em 1em 0.8em;
 
-  .icon-cancel {
+  .icon-close {
     &:before {
       // vertical-align: -0.1em;
     }
@@ -116,7 +115,7 @@
   }
 
   .notification__button--primary {
-    .icon-cancel {
+    .icon-close {
       &:before {
       }
     }
@@ -161,7 +160,7 @@
   }
 
   .notification__button--primary {
-    .icon-cancel {
+    .icon-close {
       &:before {
       }
     }

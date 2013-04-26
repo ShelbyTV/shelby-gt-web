@@ -41,7 +41,7 @@
             data-popup_height="650"
             href="http://api.shelby.tv/auth/<%= network %>"
             data-ga_action="Connect with <%= network %>">
-              <span class="icon icon-social_<%= network %>"></span> <span class="button_label capitalize"><%= network %></span>
+              <span class="icon icon-<%= network %>"></span> <span class="button_label capitalize"><%= network %></span>
           </a>
       </li>
     <% }); %>
@@ -110,14 +110,14 @@
 
         <img src="<%= roll.avatar %>" class="onboarding__avatar" />
 
-        <button class="button_primer button_default button_wide onboarding__button">
+        <button class="button_primer button_gray button_wide onboarding__button">
           Follow
         </button>
       </li>
     <% }) %>
     </ul>
 
-    <button class="button_primer button_default button_standard onboarding__button onboarding__button--large">
+    <button class="button_primer button_gray button_standard onboarding__button onboarding__button--large">
       Start Watching
     </button>
  </div><!-- eo onboarding__body -->

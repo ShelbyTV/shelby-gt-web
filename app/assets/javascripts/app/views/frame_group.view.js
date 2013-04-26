@@ -13,6 +13,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       playlistType : null // the type of playlist that this view's frame model is on: dashboard, roll, etc
   }),
 
+  className : 'list__item',
+
   events : {
     "click .js-button_share--email"         : "requestFrameShareView",
     "click .js-button_share--embed"         : "_showEmbedCode",
@@ -76,7 +78,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       // in case it got updated from somewhere else, update my button
       this.$('.js-queue-frame').toggleClass('queued', !removeVideo);
       this.$('.js-queue-frame .label').text(!removeVideo ? 'Liked' : 'Like');
-      this.$('.js-queue-frame i').toggleClass('icon-heart--red', !removeVideo);
+      this.$('.js-queue-frame i').toggleClass('icon-like--red', !removeVideo);
     }
   },
 
@@ -248,7 +250,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     // immediately change the button state
     this.$('.js-queue-frame').addClass('queued');
     this.$('.js-queue-frame .label').text('Liked');
-    this.$('.js-queue-frame i').addClass('icon-heart--red');
+    this.$('.js-queue-frame i').addClass('icon-like--red');
   },
 
   _onClickRemoveFrame : function(){
@@ -312,7 +314,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var creator = this.model.getFirstFrame().get('creator');
 
     if (creator) {
-      shelby.router.navigate('user/' + creator.id + '/personal_roll', {trigger:true});
+      shelby.router.navigate(creator.get('nickname'), {trigger:true});
     }
 
   },
@@ -389,9 +391,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   _toggleShareMenu : function(e){
     var $this = this.$('.js-share-menu'),
+        $frame = $this.closest('.list__item'),
         block = $this.siblings('.js-share-menu-block'),
         blockHasClass = block.hasClass('hidden');
-
     // if we're opening the menu and we don't have the shortlink
     // yet, we need to get it now
     if (blockHasClass && !this._currentFrameShortlink) {
@@ -400,6 +402,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
     //  toggle the "button pressed" state
     $this.toggleClass('button_active',blockHasClass);
+
+    //  toggle z-index so share menu is always on top.
+    //  pretty hacky; share menu should be a modal pop-up.
+    $frame.toggleClass('list__item--float',blockHasClass);
 
     //  show/hide the panel
     block.toggleClass('hidden',!blockHasClass);
@@ -461,8 +467,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _navigateOriginator : function(e) {
     e.preventDefault();
 
-    var originatorId = e.currentTarget.id;
-
-    shelby.router.navigate('/user/' + originatorId + '/personal_roll',{trigger:true});
+    shelby.router.navigate(this.model.get('frames').at(0).get('originator').get('nickname'),{trigger:true});
   }
 });

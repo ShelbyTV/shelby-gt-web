@@ -1,73 +1,60 @@
 ////////////////////////////////////////////////////////////////////////////
 //  REFERENCE TABLE
 /*  ---------------------
-    blue            #0590c4            ,
-    blue-dark       darken(#0590c4,10%),
 
-    default         #eeeeee            ,
+    excerpt from _base.scss---------
 
-    gray            #27292A            ,
-    gray-light      #a0a0a0            ,
-    gray-medium     #dddddd            ,
-    gray-seven:     #777777            ,
+    name             value              lightness(color);   font-color  lightest non-inverted
 
-    green:          #428e3a            ,
-    green-soft:     darken(#6cbc45,5%) ,
+    $ui-white      : rgba(#ffffff,1);   100%                black
+    $ui-off-white  : rgba(#f4f4f4,1);   95.68627%           black
 
-    purple:         #693a7b            ,
-    red:            #cc1235            ,
-    yellow:         #d5cd39            ,
+    $ui-black      : rgba(#333333,1);   20%                 white           8
+    $ui-soft-black : rgba(#555555,1);   33.33333%           white           5
+    $ui-gray       : rgba(#f1f1f1,1);   94.5098%            black
 
-    twitter-blue:   #2CAAE1            ,
-    facebook-blue:  #013e80            ,
-    tumblr-blue:    #2f445b            ,
+    $ui-green      : rgba(#6fbe47,1);   51.17647%           white           3
+    $ui-red        : rgba(#ee4c4c,1);   61.56863%           white           1    < $inversion-value
+    $ui-blue       : rgba(#0590c4,1);   39.41176%           white           4
 
-    chips-ahoy:     #00539d            ;
+    $facebook-blue : rgba(#013e80,1);   25.29412%           white           7
+    $twitter-blue  : rgba(#2CAAE1,1);   52.7451%            white           2
+    $tumblr-blue   : rgba(#2f445b,1);   27.05882%           white           6
 */
 ////////////////////////////////////////////////////////////////////////////
 
-    $color-names :
-    blue         ,
-    blue-dark    ,
+$color-names :
 
-    default      ,
+    white        ,
+    off-white    ,
 
+    black        ,
+    soft-black   ,
     gray         ,
-    gray-light   ,
-    gray-medium  ,
-    gray-seven   ,
 
     green        ,
-    green-soft   ,
-    purple       ,
     red          ,
-    yellow       ,
+    blue         ,
 
-    twitter-blue ,
     facebook-blue,
+    twitter-blue ,
     tumblr-blue  ,
-
     chips-ahoy   ;
 
-    $color-values      :
-    #0590c4            ,
-    darken(#0590c4,10%),
+$color-values :
 
-    #eeeeee            ,
+    rgba(#ffffff,1),
+    rgba(#f4f4f4,1),
 
-    #27292A            ,
-    #a0a0a0            ,
-    #dddddd            ,
-    #777777            ,
+    rgba(#333333,1),
+    rgba(#555555,1),
+    rgba(#f1f1f1,1),
 
-    #428e3a            ,
-    darken(#6cbc45,5%) ,
-    #693a7b            ,
-    #cc1235            ,
-    #d5cd39            ,
+    darken(rgba(#6fbe47,1),5%),
+    rgba(#ee4c4c,1),
+    rgba(#0590c4,1),
 
-    #2CAAE1            ,
-    #013e80            ,
-    #2f445b            ,
-
-    #00539d            ;
+    rgba(#013e80,1),
+    rgba(#2CAAE1,1),
+    rgba(#2f445b,1),
+    rgba(#00539d,1);

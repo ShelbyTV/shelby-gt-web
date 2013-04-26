@@ -61,12 +61,12 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
 
       if(!this._hasErrors) {
         submitButton
-          .toggleClass('button_default', false)
+          .toggleClass('button_gray', false)
           .toggleClass('button_green', true);
       }
     } else {
       submitButton
-        .toggleClass('button_default', true)
+        .toggleClass('button_gray', true)
         .toggleClass('button_green', false);
     }
   },
@@ -150,7 +150,7 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
       if (this._hasErrors) {
         $('.js-create-account')
           .toggleClass('button_green',false)
-          .toggleClass('button_default', true);
+          .toggleClass('button_gray', true);
       } else {
         // save the user's input in a session cookie so we can re-render it if API redirects us back
         // here with errors the user needs to fix
@@ -174,7 +174,7 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
 
       $submitButton
         .removeAttr('disabled')
-        .toggleClass('button_default visuallydisabled',false)
+        .toggleClass('button_gray visuallydisabled',false)
         .toggleClass('button_green',true);
     }
   },

@@ -39,14 +39,6 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     this._updateVisibility();
   },
 
-  _goBack : function(){
-    if( shelby.routeHistory.length > 1 ){
-      window.history.back();
-    } else {
-      shelby.router.navigate("me");
-    }
-  },
-
   _updateVisibility : function(guideModel){
     if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll && !this.model.get('displayIsolatedRoll')) {
       this.$el.show();
@@ -66,11 +58,11 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
     var $thisButton = this.$('.js-roll-add-leave-button');
     // immediately toggle the button - if the ajax fails, we'll update the next time we render
-    var isUnfollow = $thisButton.toggleClass('rolls-leave').hasClass('rolls-leave');
+    var isUnfollow = $thisButton.toggleClass('js-rolls-leave').hasClass('js-rolls-leave');
     var wasUnfollow = !isUnfollow;
     // even though the inverse action is now described by the button, we prevent click handling
     // with class js-busy until the ajax completes
-    $thisButton.text(isUnfollow ? 'Unfollow' : 'Follow').toggleClass('button_gray-medium',isUnfollow).addClass('js-busy');
+    $thisButton.text(isUnfollow ? 'Unfollow' : 'Follow').toggleClass('button_gray',isUnfollow).addClass('js-busy');
     // now that we've told the user that their action has succeeded, let's fire off the ajax to
     // actually do what they want, which will very likely succeed
     var clearBusyFunction = function() {
@@ -95,7 +87,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
       this.$('.js-roll-add-leave-button').hide();
     } else {
       var userFollowingRoll = shelby.models.rollFollowings.containsRoll(currentRollModel);
-      this.$('.js-roll-add-leave-button').toggleClass('rolls-leave button_gray-medium', userFollowingRoll)
+      this.$('.js-roll-add-leave-button').toggleClass('js-rolls-leave button_enabled', userFollowingRoll)
         .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
     }
     shelby.models.guide.trigger('reposition');

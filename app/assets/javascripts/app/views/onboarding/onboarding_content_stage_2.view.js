@@ -42,7 +42,7 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
 
     if (rolls_followed > 2){
       $button.text('Start Watching')
-             .toggleClass('button_default',false)
+             .toggleClass('button_gray',false)
              .toggleClass('button_green',true)
              .removeAttr('disabled');
     } else {
@@ -66,7 +66,7 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
     var $thisButton = $(e.currentTarget);
 
     // immediately toggle the button - if the ajax fails, we'll update the next time we render
-    var isFollowed = $thisButton.toggleClass('button_green').toggleClass('button_default').hasClass('button_green');
+    var isFollowed = $thisButton.toggleClass('button_green').toggleClass('button_gray').hasClass('button_green');
     var wasFollowed = !isFollowed;
     // even though the inverse action is now described by the button, we prevent click handling
     // with class js-busy until the ajax completes

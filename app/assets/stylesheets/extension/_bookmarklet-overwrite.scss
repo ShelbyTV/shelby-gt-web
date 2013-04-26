@@ -325,12 +325,12 @@ button {
     }
   }
       .video-tab__button--like {
-        .icon-heart {
-          background-image: url($icon-heart-on);
+        .icon-like {
+          background-image: url($icon-like-on);
         }
       }
       .video-tab__button--roll {
-        .icon-videocard_roll {
+        .icon-roll {
           background-image: url($icon-videocard-roll-on);
         }
       }
@@ -412,7 +412,7 @@ button {
       content: "Like";
     }
 
-    .icon-heart {
+    .icon-like {
       padding-left: 15px;
     }
   }
@@ -422,7 +422,7 @@ button {
     cursor: default;
 
     .icon {
-      background-image: url($icon-heart-active);
+      background-image: url($icon-like-active);
     }
 
     .button_label--like {
@@ -448,7 +448,7 @@ button {
   font-style: normal;
 }
 
-.icon-heart,
+.icon-like,
 .icon-roll {
   background-color: transparent;
   padding-left: 1.3em;
@@ -465,7 +465,7 @@ button {
 .icon-roll {
 }
 
-.icon-cancel {
+.icon-close {
   background-image: url('/images/assets/cancel.svg');
   background-repeat: no-repeat;
   background-position: center center;

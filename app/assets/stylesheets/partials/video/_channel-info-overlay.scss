@@ -1,12 +1,6 @@
-
-/*
- *  Local variables
- */
- $channel-menu-height: 87px;
-
 .shelby--channels {
   .content_wrapper {
-    margin-top: $channel-menu-height;
+    margin-top: 6.5em;
   }
 
   .channel_menu {
@@ -19,10 +13,10 @@
 //------------------------------------------------------------------------------
 .channel_menu {
   background-color: $base;
-  border-bottom: 1px solid $inset;
+  border-bottom: 1px solid $ui-soft-black;
   display: none;
   left: 0;
-  padding: 8px;
+  // padding: 8px;
   position: absolute;
   text-align: left;
   width: 100%;
@@ -31,7 +25,7 @@
   //non-normative overrides
   &.fin--top_left { //compound selector, menu must have fin.
     &:before {
-      left: 316px; //positioning pertains to --top_left modifier
+      left: 247px; //positioning pertains to --top_left modifier
     }
   }
 }
@@ -46,12 +40,12 @@
 }
 
 .channel_menu__button {
-  font-size: 1.05em;
-  padding-top: 0.8em;
-  padding-bottom: 0.75em;
-  width: 96%;
-
-  &:first-child {
-    margin-left: 3px;
-  }
+  border-bottom: none;
+  border-left: none;
+  border-radius: 0;
+  border-top: none;
+  font-size: 1.3em;
+  padding-bottom: 0.55em;
+  padding-top: 0.55em;
+  width: 100%;
 }

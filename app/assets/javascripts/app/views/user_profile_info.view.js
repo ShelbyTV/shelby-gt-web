@@ -148,7 +148,7 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
 
     var $thisButton = $(e.currentTarget);
     // immediately toggle the button - if the ajax fails, we'll update the next time we render
-    var isUnfollow = $thisButton.toggleClass('js-roll-unfollow button_green button_gray-medium').hasClass('js-roll-unfollow');
+    var isUnfollow = $thisButton.toggleClass('js-roll-unfollow button_green button_gray').hasClass('js-roll-unfollow');
     var wasUnfollow = !isUnfollow;
     // even though the inverse action is now described by the button, we prevent click handling
     // with class js-busy until the ajax completes
@@ -213,7 +213,7 @@ libs.shelbyGT.UserProfileInfoView = Support.CompositeView.extend({
          this.$('.js-follow-button').hide();
        } else {
          var userFollowingRoll = shelby.models.rollFollowings.containsRoll(currentRoll);
-         this.$('.js-follow-button').toggleClass('js-roll-unfollow button_gray-medium', userFollowingRoll)
+         this.$('.js-follow-button').toggleClass('js-roll-unfollow button_gray', userFollowingRoll)
            .toggleClass('button_green', !userFollowingRoll)
            .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
        }

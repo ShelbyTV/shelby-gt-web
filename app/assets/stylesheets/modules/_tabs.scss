@@ -1,0 +1,42 @@
+//tab menu
+.tabs {
+  li:last-child {
+    .tab {
+      border-right-color: $base;
+    }
+  }
+  li:first-child {
+    .tab {
+      border-left-color: $base;
+    }
+  }
+}
+
+.tab {
+  background-color: white;
+  border-bottom : 1px solid $inset;
+  border-left   : 1px solid $inset;
+  border-right  : 1px solid $base;
+  border-top    : 1px solid $inset;
+  display: block;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+
+  &,
+  &:link {
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+    //.tab mods
+    .tab--active {
+      background-color: $base;
+      border-bottom-color: $base;
+      color: $ui-black;
+    }

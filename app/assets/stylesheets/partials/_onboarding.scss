@@ -1,16 +1,3 @@
-//avatar block
-.avatar {
-  background-color: $base;
-  border: 1px solid #DDD;
-  height: 140px;
-  margin: 0 auto 3em;
-  width: 140px;
-
-  img {
-    width: 100%;
-  }
-}
-
   //------------------------------
   //  avatar upload module
   //------------------------------
@@ -92,12 +79,20 @@
       //overrides
       .onboarding__button--social {
         margin: 0 0.25em 1em;
+        .icon {
+          margin-left: -0.25em;
+        }
       }
     }
     .onboarding__lining--signup-form {
       width: 25em;
 
       //non-normative overrides
+
+      .avatar {
+        margin-bottom: 3em;
+      }
+
       .form_fieldset {
         position: relative;
       }
@@ -201,7 +196,12 @@
 }
     .onboarding__social-connect--facebook {
       background-color: $facebook-blue;
+
+      .icon-facebook {
+        width: 1.4em;
+      }
     }
+
     .onboarding__social-connect--twitter {
       background-color: $twitter-blue;
     }
@@ -213,6 +213,7 @@
     .onboarding__list--rolls {
       .onboarding__button {
         margin: 0 auto 2em;
+        font-size: 1.2em;
       }
     }
 //-------------------------------------------------------------------------------

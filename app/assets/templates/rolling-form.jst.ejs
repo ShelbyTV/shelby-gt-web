@@ -45,7 +45,7 @@
       <ul class="hashtag-option__list list">
         <% _(shelby.config.channelHashtagButtons).chain().values().each(function(channel, index, values){ %>
           <li class="hashtag-option__item">
-            <button class="button_primer button_gray-medium button_standard hashtag-option__button <%= index == values.length - 1 ? 'hashtag-option__button--bottom ' : '' %>js-hashtag-button" value="#<%= channel.hashTags[0] %>">
+            <button class="button_primer button_gray button_standard hashtag-option__button <%= index == values.length - 1 ? 'hashtag-option__button--bottom ' : '' %>js-hashtag-button" value="#<%= channel.hashTags[0] %>">
               #<%= channel.hashTags[0] %>
             </button>
           </li>
@@ -70,7 +70,7 @@
       </label>
     <% } %>
 
-    <button id="js-roll-it" class="form_submit button_primer button_blue rolling-submit" type="submit" tabindex="0" onclick="return false;">
+    <button id="js-roll-it" class="button_primer button_command button_command--wide button_green rolling-submit" type="submit" tabindex="0" onclick="return false;">
       Roll It!
     </button>
   </fieldset>

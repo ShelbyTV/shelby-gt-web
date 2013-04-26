@@ -25,13 +25,13 @@
   <div class="onboarding__body">
     <% if (facebook) { %>
       <h2 class="onboarding__social-connect onboarding__social-connect--facebook">
-        <span class="icon icon-social_facebook"></span> Connected<% if (fullName) { %> as <strong><%= fullName %></strong><% } %>
+        <span class="icon icon-facebook"></span> Connected<% if (fullName) { %> as <strong><%= fullName %></strong><% } %>
       </h2>
     <% } %>
 
     <% if (twitter) { %>
       <h2 class="onboarding__social-connect onboarding__social-connect--twitter">
-        <span class="icon icon-social_twitter"></span> Connected as <strong>@<%= twitter.nickname %></strong>
+        <span class="icon icon-twitter"></span> Connected as <strong>@<%= twitter.nickname %></strong>
       </h2>
     <% } %>
 
@@ -41,7 +41,7 @@
           Avatar
         </label>
 
-        <div class="avatar">
+        <div class="avatar avatar--largest">
           <div class="clearfix js-dynamic-user-avatar onboarding-form-avatar-thumb"></div>
           <div class="clearfix js-user-avatar-uploader onboarding-form-avatar-file"></div>
         </div>
@@ -88,7 +88,7 @@
       <% } %>
 
       <fieldset class="form_fieldset form_fieldset--submit">
-        <button class="button_primer button_standard button_default onboarding__button form_submit js-onboarding-next-step visuallydisabled">
+        <button class="button_primer button_standard button_gray onboarding__button form_submit js-onboarding-next-step visuallydisabled">
           <%= (emailSignup) ? 'Continue' : 'Create Account' %>
         </button>
       </fieldset>

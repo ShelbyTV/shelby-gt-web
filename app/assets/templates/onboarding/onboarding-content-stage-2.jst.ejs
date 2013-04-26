@@ -36,12 +36,12 @@
       %>
 
       <li class="list__item one-quarter js-onboarding-network-item">
-          <a class="button_primer<%= (disabled) ? ' button_gray-light disabled' : ' button_'+network+'-blue' %> button_standard onboarding__button--social js-authorize js-track-event"
+          <a class="button_primer<%= (disabled) ? ' button_gray disabled' : ' button_'+network+'-blue' %> button_standard onboarding__button--social js-authorize js-track-event"
             data-popup_width="1000"
             data-popup_height="650"
             href="http://api.shelby.tv/auth/<%= network %>"
             data-ga_action="Connect with <%= network %>">
-              <span class="icon icon-social_<%= network %>"></span> <span class="button_label capitalize"><%= network %></span>
+              <span class="icon icon-<%= network %>"></span> <span class="button_label capitalize"><%= network %></span>
           </a>
       </li>
     <% }); %>
@@ -69,7 +69,7 @@
 
             <img src="<%= roll.get('display_thumbnail_src') %>" class="onboarding__avatar" />
 
-            <button data-roll_id="<%= roll.get('id') %>" class="button_primer button_default button_wide onboarding__button js-onboarding-roll-button js-follow-unfollow js-track-event" data-ga_category="Onboarding" data-ga_action="Follow roll" data-ga_label="<%= roll.get('display_title') %>">
+            <button data-roll_id="<%= roll.get('id') %>" class="button_primer button_gray button_command button_command--flexible onboarding__button js-onboarding-roll-button js-follow-unfollow js-track-event" data-ga_category="Onboarding" data-ga_action="Follow roll" data-ga_label="<%= roll.get('display_title') %>">
               Follow
             </button>
           </li>
@@ -77,8 +77,8 @@
       <% }) %>
     </ul>
 
-    <button disabled class="button_primer button_default button_standard onboarding__button onboarding__button--large js-onboarding-next-step">
-      Follow 3 More Rolls
+    <button disabled class="button_primer button_command--flexible button_gray button_standard onboarding__button onboarding__button--large js-onboarding-next-step">
+      Follow 3 more Rolls
     </button>
  </div><!-- eo onboarding__body -->
 </section><!-- eo onboarding__lining--personalize -->

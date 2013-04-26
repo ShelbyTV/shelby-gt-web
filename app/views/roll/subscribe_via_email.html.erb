@@ -43,7 +43,7 @@
               <input type="radio" name="frequency" value="weekly"> Weekly Summary
             </div>
 
-            <input type="submit" class="button_primer button_default search_module__submit" value="Subscribe" />
+            <input type="submit" class="button_primer button_gray search_module__submit" value="Subscribe" />
             <span class="search_module__input_wrapper">
               <input name="email" id="js-email-input" class="form_input search_module__input" type="email" placeholder="email@address.com" tabindex="0" autofocus/>
             </span>
@@ -55,12 +55,12 @@
             </h6>
           </fieldset>
         </form>
-        
+
         <p class="shelf__block">
           Worry free guarantee:<br/>
           No spam.  Simple unsubscribe.
         </p>
-        
+
       </div><!-- eo shelf__lining -->
     </div><!-- eo shelf -->
 
@@ -85,7 +85,7 @@
           priority_code: "subscribe_to_roll:"+$(this).find('input[name=frequency]:checked').val()+":<%= @roll_id %>",
           email: $(this).find("input[name=email]").val()
           }
-        
+
         $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', data, function(data) {
           $('#js-email-form-submit').addClass('hidden');
           $('#js-email-form-feedback').removeClass('hidden');

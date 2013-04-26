@@ -816,7 +816,7 @@ window.shelbyBookmarklet = {
                     if (creator.nickname == utilObject.shelbyBkmkltUser.nickname) {
                         shelbyJ(".comment-button-content").addClass("self");
                     }
-                    var creatorUrl = "//<%=Settings::Extension.web_domain%>/user/" + creator.id + "/personal_roll";
+                    var creatorUrl = "//<%=Settings::Extension.web_domain%>/" + creator.nickname;
                     if (!shouldOverwrite && shelbyJ("." + shelbyFrameClass).data("frameclass") !== undefined) {
                         return;
                     }
