@@ -64,7 +64,7 @@
                   <% if (user.isAnonymous()) { %>
                     <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= encodeURIComponent(anonUserShareEmailBody) %>">
                   <% } %>
-                    <button class="button_primer button_gray button_share button_share--email js-hide-share-menu js-track-event<%= !user.isAnonymous() ? ' js-button_share--email' : ''%>" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                    <button class="button_primer button_gray button_command button_command--sub button_command--email js-hide-share-menu js-track-event<%= !user.isAnonymous() ? ' js-button_share--email' : ''%>" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                       <i class="icon icon-email"></i>
                       Email
                     </button>
@@ -75,20 +75,20 @@
                 <% if (user.isAnonymous()) { %>
                   <li class="list__item">
                     <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
-                      <button class="button_primer button_gray button_share button_share--twitter js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                      <button class="button_primer button_gray button_command button_command--sub button_command--twitter js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                         <i class="icon icon-twitter"></i>Twitter
                       </button>
                     </a>
                   </li>
                 <li class="list__item">
-                  <button class="button_primer button_gray button_share button_share--facebook js-share-to-facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                  <button class="button_primer button_gray button_command button_command--sub button_command--facebook js-share-to-facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                     <i class="icon icon-facebook"></i>Facebook
                   </button>
                 </li>
                 <% } %>
                 <% if (!currentFrame.get('isSearchResultFrame')) { %>
                   <li class="list__item js-share-embed-item">
-                    <button class="button_primer button_gray button_share button_share--embed js-button_share--embed js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Get embed code" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+                    <button class="button_primer button_gray button_command button_command--sub button_command--embed js-button_share--embed js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Get embed code" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                       <i class="icon icon-embed"></i>Embed
                     </button>
                   </li>

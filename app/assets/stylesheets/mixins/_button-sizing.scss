@@ -55,9 +55,23 @@
       padding-left: 3em;
       padding-right: 3em;
     }
+    .button_command--sub {
+      font-size: 14px;
+      padding: 0.7em;
+      width: 7.5em;
+
+      .icon {
+        margin-right: 2px;
+      }
+    }
+
     .button_command--cancel {}
     .button_command--email {}
-    .button_command--embed {}
+    .button_command--embed {
+      .icon-embed {
+        margin-right: 2px;
+      }
+    }
     .button_command--facebook {}
     .button_command--remove {}
     .button_command--roll {}
@@ -79,13 +93,15 @@
     }
 
   //width normalization
+    .button_command--email,
+    .button_command--embed,
+    .button_command--shortlink {
+    }
+
     .button_command--roll,
     .button_command--like,
     .button_command--follow,
     .button_command--remove,
-    .button_command--email,
-    .button_command--embed,
-    .button_command--shortlink,
     .button_command--remove,
     .button_command--follow {
       width: 5.7em;
