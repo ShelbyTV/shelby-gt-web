@@ -11,7 +11,7 @@ libs.shelbyGT.RollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
     "click .js-roll-item-unfollow"        : "unfollowRoll"
   },
 
-  className : 'list_item guide-item clearfix',
+  className : 'list__item clearfix',
 
   template : function(obj){
     return SHELBYJST['roll-item'](obj);

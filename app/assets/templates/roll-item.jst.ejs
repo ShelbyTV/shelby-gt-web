@@ -1,12 +1,19 @@
 <% /* parent:"roll-item" */ %>
-<button class="list_button guide-link js-roll-item-button" data-roll_id="<%= roll.id %>">
-  <i class="guide-link-icon">
-    <%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %>
-  </i>
-</button>
+<div class="user user--hr">
+  <button class="media_module button_invisible button_command user__link clearfix js-roll-item-button" data-roll_id="<%= roll.id %>">
+    <% console.log(roll) %>
+    <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) %>
+    <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(<%= avatar %>);"><img class="visuallyhidden" src="<%= avatar %>"/></span><!-- eo media_image -->
+    <i class="media_image media_image--rev icon icon-chevron"></i>
+    <div class="media_body">
+      <h3 class="user__h1"><%= libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) %></h3>
+      <h4 class="user__h2"><%= roll.get('creator_name') || 'michael feldstein' %></h4>
+    </div><!-- eo media_body -->
+  </button><!-- eo media_module -->
 
-<% if ( roll.get('creator_id') != shelby.models.user.id ) { %>
-  <button class="button_primer button_gray guide-link-unfollow js-roll-item-unfollow">
-    Unfollow
-  </button>
-<% } %>
+  <% if ( roll.get('creator_id') != shelby.models.user.id ) { %>
+    <button class="button_primer button_command button_gray user__button guide-link-unfollow js-roll-item-unfollow">
+      Unfollow
+    </button>
+  <% } %>
+</div><!-- eo user -->

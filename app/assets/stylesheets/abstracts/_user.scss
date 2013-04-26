@@ -1,0 +1,62 @@
+/*
+    User
+*/
+
+//block
+.user {
+  font-size: 1.2em;
+
+  .button_invisible {
+    margin: 0;
+    padding: 1em;
+  }
+}
+    //mods
+    .user--hr {
+      border-bottom: 1px solid $inset;
+    }
+
+//elements
+.user__avatar {
+  display: inline-block;
+  margin-right: 1em;
+}
+.user__h1 {
+  line-height: 1.4;
+}
+.user__h2 {
+  font-family: $font-family;
+  font-weight: normal;
+  line-height: 1.4;
+}
+.user__link {
+  text-align: left;
+  width: 100%;
+
+  &:hover {
+    background-color: $base-frame;
+
+    & + .user__button {
+      display: block;
+    }
+
+    .icon {
+      color: $text;
+    }
+  }
+
+  .icon {
+    color: $inset;
+    float: right;
+    margin-top: 18px;
+  }
+}
+.user__button {
+  display: none;
+  margin: 1.3em 3em;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+}
+.user__button--follow {}

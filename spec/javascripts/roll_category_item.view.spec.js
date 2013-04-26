@@ -19,9 +19,8 @@ describe("RollCategoryItemView", function() {
       expect(this.view.el.nodeName).toEqual("LI");
     });
 
-    it ("should have the classes 'list_item' and 'guide-item'", function() {
-      expect(this.view.$el).toHaveClass('list_item');
-      expect(this.view.$el).toHaveClass('guide-item');
+    it ("should have the classes 'list__item'", function() {
+      expect(this.view.$el).toHaveClass('list__item');
     });
 
     it("should call the superclass initializer", function() {
@@ -36,7 +35,7 @@ describe("RollCategoryItemView", function() {
 
     it("renders the category name", function() {
       this.view.render();
-      expect(this.view.$('.list_button.guide-link')).toHaveText('Some Category Name');
+      expect(this.view.$('.user')).toHaveText('Some Category Name');
     });
   });
 });

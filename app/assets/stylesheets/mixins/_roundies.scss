@@ -1,11 +1,14 @@
 $roundies-type : normal !default;
 
-@mixin roundies($roundies-type){
+@mixin roundies($roundies-type:normal){
   @if $roundies-type == normal {
     border-radius: $radius;
   }
   @else if $roundies-type == input {
     border-radius: $radius - 2;
+  }
+  @else if $roundies-type == avatar {
+    border-radius: $radius - 1;
   }
   @else if $roundies-type == header {
     border-radius: $radius $radius 0 0;

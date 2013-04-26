@@ -6,7 +6,7 @@ libs.shelbyGT.RollListFilterType = {
 
 libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
 
-  className : 'list_module guide-list',
+  className : 'list rolls_list clearfix',
 
   options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
     collectionAttribute : 'rolls',
