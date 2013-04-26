@@ -17,13 +17,13 @@
       </h3>
 
       <h4 class="user__h2">
-        <%= roll.get('creator_name') || 'michael feldstein' %>
+        <%= roll.get('creator_name') %>
       </h4>
     </div><!-- eo media_body -->
   </button><!-- eo media_module -->
 
   <% if ( roll.get('creator_id') != shelby.models.user.id ) { %>
-    <button class="button_primer button_command button_gray user__button guide-link-unfollow js-roll-item-unfollow">
+    <button class="button_primer button_command button_command--follow button_gray user__button guide-link-unfollow js-roll-item-unfollow">
       Unfollow
     </button>
   <% } %>

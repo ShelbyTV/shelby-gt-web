@@ -1,35 +1,45 @@
-<div class="media_module clearfix">
-  <span class="media_image">
-    <img class="xuser-avatar" src="<%= (isInAppUserProfile) ? libs.shelbyGT.viewHelpers.user.avatarUrl(user) : roll.get('thumbnail_url') %>" />
-  </span>
+<%
+  var
+      nickname = shelby.models.user.get('nickname'),
+      avatar   = (isInAppUserProfile) ? libs.shelbyGT.viewHelpers.user.avatarUrl(user) : roll.get('thumbnail_url'),
+      username = (isInAppUserProfile) ? nickname : (libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || ''),
+      realname = (isInAppUserProfile) ? shelby.models.user.get('name') : (user.get('name') || '');
+%>
 
-  <div class="media_body user-nickname">
-    <h2 class="roll-header__h1">
-      <%= (isInAppUserProfile) ? shelby.models.user.get('nickname') : (libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || '') %>
-    </h2>
+  <div class="user">
+    <div class="media_module clearfix">
+      <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(<%= avatar %>);">
+        <img class="visuallyhidden" src="<%= avatar %>"/>
+      </span><!-- eo media_image -->
 
-    <h3 class="roll-header__h2">
-      <%= (isInAppUserProfile) ? shelby.models.user.get('name') : (user.get('name') || '') %>
-    </h3>
-  </div>
-</div><!-- eo media_module -->
+      <div class="media_body">
+        <h3 class="user__h1">
+          <%= username %>
+        </h3>
+
+        <h4 class="user__h2">
+          <%= realname %>
+        </h4>
+      </div><!-- eo media_body -->
+    </div><!-- eo media_module -->
+  </div><!-- eo user -->
 
 <% if (isInAppUserProfile) { %>
   <ul class="list list--fit tabs clearfix">
     <li class="one-third">
-      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-roll" data-ga_category="In App User Profile" data-ga_action="Click roll tab" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-roll" data-ga_category="In App User Profile" data-ga_action="Click roll tab" data-ga_label="<%= nickname %>">
         Roll
       </a>
     </li>
 
     <li class="one-third">
-      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-likes" data-ga_category="In App User Profile" data-ga_action="Click likes tab" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-likes" data-ga_category="In App User Profile" data-ga_action="Click likes tab" data-ga_label="<%= nickname %>">
         Likes
       </a>
     </li>
 
     <li class="one-third">
-      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-following" data-ga_category="In App User Profile" data-ga_action="Click following tab" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+      <a href="#" class="button_standard tab js-track-event js-user-tab js-user-following" data-ga_category="In App User Profile" data-ga_action="Click following tab" data-ga_label="<%= nickname %>">
         Following
       </a>
     </li>

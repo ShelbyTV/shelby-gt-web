@@ -1,9 +1,9 @@
 @mixin button-sizing($use: generic) {
     @if $use == frame-command {
     padding-bottom: 0.5em;
-    padding-right: 0.5em;
+    padding-right: 0em;
     padding-top: 0.5em;
-    padding-left: 0.5em;
+    padding-left: 0em;
   } @elseif $use == explore-rolls {
     padding-top: .8em;
     padding-bottom: .75em;
@@ -46,32 +46,46 @@
     }
   }
 }
-    //alphabetical
+    //alphabetical button set
     .button_command--cancel {}
     .button_command--email {}
     .button_command--embed {}
     .button_command--facebook {}
     .button_command--remove {}
-    .button_command--remove,
-    .button_command--like {
-      width: 5.5em;
-    }
     .button_command--roll {}
-    .button_command--share {
-      .icon {
-        margin-right: 2px;
-      }
-    }
     .button_command--shortlink {}
     .button_command--tumblr {}
     .button_command--twitter {}
-    //
+
+  //icon adjustments
     .button_command--like,
     .button_command--roll {
       .icon {
         margin-right: 1px;
       }
     }
+
+  //width normalization
+    .button_command--roll,
+    .button_command--like,
+    .button_command--follow,
+    .button_command--remove,
+    .button_command--email,
+    .button_command--embed,
+    .button_command--shortlink,
+    .button_command--remove,
+    .button_command--follow {
+      width: 5.7em;
+    }
+    .button_command--share {
+      width: 6.5em;
+
+      .icon {
+        margin-right: 2px;
+      }
+    }
+
+
 
 .button_share {
   padding-bottom: 0.8em;

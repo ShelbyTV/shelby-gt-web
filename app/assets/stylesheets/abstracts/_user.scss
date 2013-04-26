@@ -1,5 +1,23 @@
 /*
     User
+
+    <div class="user">
+      <div class="media_module clearfix">
+        <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(<%= avatar %>);">
+          <img class="visuallyhidden" src="<%= avatar %>"/>
+        </span><!-- eo media_image -->
+
+        <div class="media_body">
+          <h3 class="user__h1">
+            <%= username %>
+          </h3>
+
+          <h4 class="user__h2">
+            <%= realname %>
+          </h4>
+        </div><!-- eo media_body -->
+      </div><!-- eo media_module -->
+    </div><!-- eo user -->
 */
 
 //block
@@ -13,7 +31,7 @@
 }
     //mods
     .user--hr {
-      border-bottom: 1px solid $inset;
+      margin-top: 1px;
     }
 
 //elements
@@ -30,6 +48,7 @@
   line-height: 1.4;
 }
 .user__link {
+  border-bottom: 1px solid $inset;
   text-align: left;
   width: 100%;
 
@@ -48,7 +67,7 @@
   .icon {
     color: $inset;
     float: right;
-    margin-top: 18px;
+    margin-top: 1em;
   }
 }
 .user__button {
