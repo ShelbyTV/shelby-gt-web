@@ -48,4 +48,8 @@
   font-size: 1.3em;
   padding: 0.8em 0;
   width: 100%;
+
+  &.button_active {
+    background-color: darken($ui-gray,20%);
+  }
 }
