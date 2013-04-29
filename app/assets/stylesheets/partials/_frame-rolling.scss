@@ -32,6 +32,10 @@
 .guide-overlay__body--frame-rolling {
   padding:1.5em 8px;
 
+  .frame-body-wrapper {
+    margin-top: 0.7em;
+  }
+
   .form_textarea {
     font-size: 1em;
   }
@@ -115,10 +119,6 @@
 
   .rolling-form {
     display: none;
-
-    .frame-body-wrapper {
-      margin-top: 0.7em;
-    }
   }
 }
 
