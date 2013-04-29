@@ -182,7 +182,7 @@ private
 
     @conversations.each do |conversation|
       message = conversation["messages"].first
-      next if !conversation.public?
+      next if !conversation["public"]
       next if !message
       next if !message["text"]
       next if !message["public"]
