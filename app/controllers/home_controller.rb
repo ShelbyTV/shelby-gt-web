@@ -38,38 +38,37 @@ class HomeController < ApplicationController
           render '/home/isolated_roll' and return
         end
 
-        if user_signed_in?
-          # if the path is just a user name, this is the route for a user profile, so get the
-          # necessary view instance variables and continue
-          user_name = params[:path]
-          user = Shelby::API.get_user(user_name) if user_name
-          if user
-            @user = user
-            @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
-          end
-          render '/home/app'
+        # if the path is just a user name, this is the route for a user profile, so get the
+        # necessary view instance variables and continue
+        user_name = params[:path]
+        user = Shelby::API.get_user(user_name) if user_name
 
-        else
-          # Consider errors and render landing page
-          @auth_failure = params[:auth_failure] == '1'
-          @auth_strategy = params[:auth_strategy]
-          @access_error = params[:access] == "nos"
-          @invite_error = params[:invite] == "invalid"
-          @mobile_os = detect_mobile_os
-          @is_mobile = is_mobile?
+        if user
+          @user = user
+          @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
 
-          view_context.get_info_for_meta_tags(params[:path])
-
-          # if @mobile_os
-          #   render '/mobile/search', :layout => 'mobile'
-          # else
-            # A/B test
-            @seo_search_messaging = ab_test :seo_search_messaging
-
-            render '/home/landing'
-          # end
-
+          render '/home/app' and return
         end
+
+        # Consider errors and render landing page
+        @auth_failure = params[:auth_failure] == '1'
+        @auth_strategy = params[:auth_strategy]
+        @access_error = params[:access] == "nos"
+        @invite_error = params[:invite] == "invalid"
+        @mobile_os = detect_mobile_os
+        @is_mobile = is_mobile?
+
+        view_context.get_info_for_meta_tags(params[:path])
+
+        # if @mobile_os
+        #   render '/mobile/search', :layout => 'mobile'
+        # else
+        # A/B test
+        @seo_search_messaging = ab_test :seo_search_messaging
+
+        render '/home/landing'
+        # end
+
       }
       # if we hit this as the catch-all while looking for an image or some other special format,
       # we can't render anything appropriate so send a 404
