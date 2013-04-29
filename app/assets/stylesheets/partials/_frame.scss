@@ -280,7 +280,10 @@
     .button_command--cancel {
       font-size: 0.8em;
       margin: 1em 0em 0 0.8em;
-      padding: 0.3em;
+      padding: 0.4em 0.3em;
+      .icon {
+        vertical-align: -2px;
+      }
     }
     .button_command--sub {
       margin-left: 0;
