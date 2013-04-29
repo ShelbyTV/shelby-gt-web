@@ -31,8 +31,8 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 .dynamic_video_info__h3 {
   font-size: 1em;
-  font-weight: 300;
   line-height: 1.4;
+  font-weight: 300;
 }
 
 .dynamic_video_info__h4 {
@@ -119,12 +119,9 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
     }
   }
   .button_command {
-    &.button_command--like {
-      margin: 25px 0;
-      width: 10.5em;
-    }
+    &.button_command--like,
     &.button_command--share {
-      margin: 20px 0;
+      margin: 20px auto;
     }
   }
 }
@@ -138,10 +135,10 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
  */
 .dynamic_video_info__current-frame { //structured by media_module
   background: $guide-bg-color;
-  opacity: 1;
   box-shadow: $dynamic_video_info__shadow;
   height: inherit;
   margin: 0;
+  opacity: 1;
   position: relative;
   text-align: center;
 
@@ -151,7 +148,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   //   margin: 0 0 1em;
   // }
 
-  //xuser-* carried over from the frame.jst
+  //non-normative overrides
   .xuser-data {
     margin-bottom: .5em;
   }
@@ -173,8 +170,8 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 .share, .liked-share {
   .dynamic_video_info__current-frame {
-    background: #0090c6;
     color: white;
+    background: #0090c6;
     padding-top: 10px;
   }
 }
