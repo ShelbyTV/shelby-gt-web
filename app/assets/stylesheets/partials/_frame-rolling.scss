@@ -16,7 +16,7 @@
   }
 
   .destination {
-    font-weight: 400;
+    font-weight: bold;
     font-size: 1.1em;
     line-height: 1;
   }
@@ -31,6 +31,10 @@
 
 .guide-overlay__body--frame-rolling {
   padding:1.5em 8px;
+
+  .frame-body-wrapper {
+    margin-top: 0.7em;
+  }
 
   .form_textarea {
     font-size: 1em;
@@ -54,7 +58,7 @@
 
 .roll_selection__h3 {
   color: #777;
-  font-weight: 300;
+  font-weight: normal;
 }
 
 //------------------------------------------------------------------------------

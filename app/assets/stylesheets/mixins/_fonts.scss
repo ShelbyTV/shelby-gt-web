@@ -1,9 +1,9 @@
 @mixin basefont{
-  font:400 normal 62.5%/1.231 $font-family;
+  font:normal normal 62.5%/1.231 $font-family;
 }
 
 @mixin inputfont{
-  font:300 normal 100%/1.231 $font-family-display;
+  font:normal normal 100%/1.231 $font-family-display;
 }
 
 @mixin buttonfont{

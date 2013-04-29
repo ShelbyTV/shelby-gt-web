@@ -4,7 +4,7 @@
 
 .form_module--login-form {
   padding: 10px;
-  
+
   .form_fieldset {
     &:first-child {
       margin-top: 0;
@@ -17,7 +17,7 @@
   }
 
   .form_input {
-    
+
   }
 
   .form_submit {
@@ -41,6 +41,7 @@
  padding: 10px;
 
   .form_legend {
+   font-family: $font-family;
     margin-bottom: 5px;
   }
 }

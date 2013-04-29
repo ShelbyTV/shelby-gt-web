@@ -1,6 +1,6 @@
 .shelby--channels {
   .content_wrapper {
-    margin-top: 6.5em;
+    margin-top: 7.25em;
   }
 
   .channel_menu {
@@ -16,7 +16,7 @@
   border-bottom: 1px solid $ui-soft-black;
   display: none;
   left: 0;
-  // padding: 8px;
+  margin-top: 1px;
   position: absolute;
   text-align: left;
   width: 100%;
@@ -33,6 +33,7 @@
 //elements
 .channel_menu__list {
   margin: 0 auto !important;
+  font-size: 1.1em;
 }
 
 .channel_menu__item {
@@ -45,7 +46,10 @@
   border-radius: 0;
   border-top: none;
   font-size: 1.3em;
-  padding-bottom: 0.55em;
-  padding-top: 0.55em;
+  padding: 0.8em 0;
   width: 100%;
+
+  &.button_active {
+    background-color: darken($ui-gray,20%);
+  }
 }

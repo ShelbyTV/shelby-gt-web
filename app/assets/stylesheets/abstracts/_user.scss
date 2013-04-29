@@ -56,6 +56,12 @@
   display: inline-block;
   margin-right: 1em;
 }
+
+.user__h1,
+.user__h2 {
+  @include ellipsis;
+}
+
 .user__h1 {
   line-height: 1.4;
 }

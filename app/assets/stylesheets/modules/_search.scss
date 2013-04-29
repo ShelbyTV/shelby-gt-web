@@ -14,7 +14,10 @@
   vertical-align: middle;
 }
 
-.search_module__submit,
+.search_module__submit {
+  height: 2.3em;
+}
+
 .search_module__input_wrapper {
   height: 3.25em;
 }

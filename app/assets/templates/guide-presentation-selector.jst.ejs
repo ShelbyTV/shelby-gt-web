@@ -1,19 +1,19 @@
-<ul class="js-content-selector guide-nav-list clearfix">
-  <li class="guide-nav-item">
-    <button class="nav-button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+<ul class="js-content-selector list list--inline app_nav clearfix">
+  <li class="list__item">
+    <button class="app_nav__button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       Stream
     </button>
   </li>
 
-  <li class="guide-nav-item js-channels-menu">
-    <button class="nav-button js-channels js-track-event" data-ga_category="Header" data-ga_action="Channels" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+  <li class="list__item js-channels-menu">
+    <button class="app_nav__button js-channels js-track-event" data-ga_category="Header" data-ga_action="Channels" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
       #Channels
     </button>
   </li>
 
   <% if (!shelby.models.user.isAnonymous()) { %>
-    <li class="guide-nav-item js-guide-me js-track-event" data-ga_category="Header" data-ga_action="Me" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-      <button class="nav-button js-me">
+    <li class="list__item js-guide-me js-track-event" data-ga_category="Header" data-ga_action="Me" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+      <button class="app_nav__button js-me">
         Me
       </button>
     </li>
@@ -21,22 +21,22 @@
 
   <% if (false) {  %>
     <!-- TODO: debt -->
-    <li class="dropdown_module--no-hover dropdown_module--invite-user guide-nav-item js-guide-invite">
+    <li class="dropdown_module--no-hover dropdown_module--invite-user list__item js-guide-invite">
       <!-- Content filled in by InviteFormView -->
     </li>
   <% } %>
 
   <% if (shelby.models.user.get('admin')) { %>
-    <li class="guide-nav-item js-admin">
-      <button class="nav-button">
+    <li class="list__item js-admin">
+      <button class="app_nav__button">
         Admin
       </button>
     </li>
   <% } %>
 
   <% if (shelby.models.user.isAnonymous()) { %>
-    <li class="dropdown_module guide-nav-item secondary-item guide-login">
-          <button class="dropdown_button nav-button">
+    <li class="dropdown_module list__item secondary-item guide-login">
+          <button class="dropdown_button app_nav__button">
             Log In
             <i class="icon-carrot"></i>
           </button>
@@ -56,7 +56,7 @@
                 </fieldset>
 
                 <fieldset class="form_fieldset">
-                  <input name="commit" type="submit" value="Login" class="button_primer button_gray-medium form_submit" />
+                  <input name="commit" type="submit" value="Login" class="button_primer button_command button_command--flexible button_gray" />
                   <a href="<%= shelby.config.apiBase + "/user/password/new" %>" class="login-forgot-password">Forgot your password?</a>
                 </fieldset>
               </form>
@@ -69,7 +69,7 @@
                 </h4>
 
                 <a href="<%= shelby.config.apiBase + "/auth/twitter" %>"
-                   class="button_primer button_twitter-blue button_primer--twitter js-track-event js-authorize"
+                   class="button_primer button_twitter-blue button_command button_primer--twitter js-track-event js-authorize"
                    data-ga_action="Login with Twitter"
                    data-popup_height="700"
                    data-popup_width="600">
@@ -78,7 +78,7 @@
                 </a>
 
                 <a href="<%= shelby.config.apiBase + "/auth/facebook" %>"
-                   class="button_primer button_facebook-blue button_primer--facebook js-track-event js-authorize"
+                   class="button_primer button_facebook-blue button_command button_primer--facebook js-track-event js-authorize"
                    data-ga_action="Login with Facebook"
                    data-popup_height="650"
                    data-popup_width="1000">
@@ -91,8 +91,8 @@
         </li><!-- eo login button/dropdown -->
   <% } %>
 
-  <li class="dropdown_module guide-nav-item secondary-item guide-settings js-guide-settings">
-    <button class="dropdown_button nav-button js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+  <li class="dropdown_module list__item secondary-item guide-settings js-guide-settings">
+    <button class="dropdown_button app_nav__button js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= shelby.models.user.get('nickname') %>">
       Settings <i class="icon-carrot"></i>
     </button>
     <section class="dropdown_section settings-section">
@@ -146,7 +146,7 @@
     </section>
   </li>
 
-  <li class="guide-nav-item secondary-item guide-search js-guide-search">
+  <li class="list__item secondary-item guide-search js-guide-search">
     <!-- Content filled in by GuidePresntationSearchView -->
   </li>
 </ul><!-- eo guide-presentation-list -->

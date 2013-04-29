@@ -13,10 +13,10 @@
   }
 
   .welcome-message__body {
+    margin: 0;
     position: relative;
-    width: 138px;
     padding: 0 1em 1em;
-    margin: 0 auto;
+    text-align: center;
   }
 
   form .search_module__submit {
@@ -24,10 +24,10 @@
   }
 
   .welcome-message-dismiss {
+    font-size: 0.85em;
     position: absolute;
     right: 1em;
     top: 1.0em;
-    font-size: 0.85em;
   }
 
   .welcome-message__h2--plain {

@@ -161,7 +161,7 @@
               </li>
               <% } %>
               <% if (!currentFrame.get('isSearchResultFrame')) { %>
-                <li class="list__item js-share-embed-item">
+                <li class="list__item js-share-embed-item clearfix">
                   <button class="button_primer button_gray button_command button_command--sub button_command--embed js-button_share--embed js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Get embed code" data-ga_label="<%= shelby.models.user.get('nickname') %>">
                     <i class="icon icon-embed">
                     </i>
