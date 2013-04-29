@@ -2,8 +2,7 @@
 //  MODULE
 //------------------------------------------------------------------------------
 .notification_module {
-  font-family: $font-family-display;
-  font-weight: 500;
+  font-weight: bold;
   height: 40px;
   padding: 5px;
   position: relative;
@@ -121,7 +120,7 @@ $extension-color: #fff82b;
 //------------------------------------------------------------------------------
 //  BOOKMARKLET Notification
 //------------------------------------------------------------------------------
-$bookmarklet-color: $shelby-green;
+$bookmarklet-color: $ui-green;
 
 .notification_module--bookmarklet {
   @include gradient-primer($bookmarklet-color);
@@ -169,9 +168,7 @@ $bookmarklet-color: $shelby-green;
 }
 
 .faux-bookmarklet-button {
-  font-family: $font-family-display;
   font-size: .9em;
-  font-weight: bold;
   padding: .3em 0.4em .35em;
 
 }
@@ -327,7 +324,7 @@ $bookmarklet-color: $shelby-green;
 
 .anon-benefit-title {
   font-size: 1.0em;
-  font-weight: 500;
+  font-weight: bold;
   line-height: 1.631;
 }
 

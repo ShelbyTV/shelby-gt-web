@@ -8,7 +8,7 @@ $player_controls_height: 44px;
   right: 0;
   top: 0;
   bottom: 0;
-    
+
   /**********************
    * Adjustments to standard styles
    **********************/
@@ -17,17 +17,17 @@ $player_controls_height: 44px;
   .videoplayer-viewport {
     bottom:0;
   }
-  
+
   /* allow the thumbnail as background instead of player */
   .videoplayer {
     background: transparent;
   }
-  
+
   /* no prev/next/hide-guide */
   .videoplayer-nav__btn {
     display: none;
   }
-  
+
 }
 
   .embedded-frame__body {
@@ -37,7 +37,7 @@ $player_controls_height: 44px;
     top: 0;
     bottom: $footer_height;
   }
-  
+
   .embedded-frame__footer {
     position: absolute;
     left: 0;
@@ -45,11 +45,11 @@ $player_controls_height: 44px;
     bottom: 0;
     height: $footer_height;
     background:#f2f0f0;
-    
+
     .frame-footer {
       font-size: 1.3em;
     }
-    
+
     .xuser-avatar {
       height: 3.5em;
       width: 3.5em;
@@ -86,13 +86,13 @@ $player_controls_height: 44px;
   .embed_board--complete {
     display: block;
   }
-  
+
   .embed_board--unplayed {
     .embed_board__head {
       display: none;
     }
   }
- 
+
   .embed_board--paused,
   .embed_board--complete {
     bottom: $footer_height + $player_controls_height;
@@ -101,7 +101,7 @@ $player_controls_height: 44px;
       display: none;
     }
   }
-  
+
 .embed_board__a {
   text-decoration: none;
   &:hover {
@@ -123,7 +123,7 @@ $player_controls_height: 44px;
 .embed_board__h3 {
   color: #aaa;
   font-size: 2em;
-  font-weight: 300;
+  font-weight: normal;
 }
 
 .embed_board__play-button {
@@ -180,15 +180,15 @@ $player_controls_height: 44px;
     .embed_board__play-button,
     .embed_board__body {
       display: none;
-    } 
+    }
   }
-  
+
   /* 2) Because we don't show player controls */
   .embed_board--paused,
   .embed_board--complete {
     bottom: $footer_height;
   }
-  
+
   .embedded-frame--no-footer {
     .embed_board--paused,
     .embed_board--complete {

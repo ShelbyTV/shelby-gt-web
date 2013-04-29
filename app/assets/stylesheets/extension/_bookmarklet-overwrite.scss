@@ -19,7 +19,7 @@ button {
 
 //  fixes waywire.com
 .form_submit {
-  font-family: $font-family-display !important;
+  font-family: $font-family !important;
 }
 
 //------------------------------------------------------------------------------
@@ -118,7 +118,7 @@ button {
 .overlay-notification {
   color: #FFF;
   font-size: 40px;
-  font-family: $font-family-display;
+  font-family: $font-family;
   height:100px;
   line-height: 1;
   text-align: center;
@@ -404,7 +404,7 @@ button {
   width: 100% !important;
 
   .button_label {
-    font-family: $font-family-display;
+    font-family: $font-family;
   }
 }
   .video-tab__button--like {

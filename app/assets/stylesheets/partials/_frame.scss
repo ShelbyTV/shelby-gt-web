@@ -72,8 +72,8 @@
 .frame-title {
   display: inline;
   font-size: 1.3em;
-  line-height: 1.45;
-  margin-bottom: .35em;
+  line-height: 1.35;
+  margin-bottom: 0.35em;
 }
 
 .frame-body-wrapper {
@@ -382,9 +382,9 @@
     background-color: rgba(0, 0, 0, 0.5);
     color: #EFEFEF;
     display: block;
-    font-family: $font-family-display;
+    font-family: $font-family;
     font-size: 1.5em;
-    font-weight: 500;
+    font-weight: bold;
     height: 130px;
     line-height: 1;
     padding-top: 45px;
@@ -472,7 +472,7 @@
 
 .frame-likes-count {
   display: inline;
-  font-family: $font-family-display;
+  font-family: $font-family;
   font-weight: 600;
   line-height: 2.3em;
 }

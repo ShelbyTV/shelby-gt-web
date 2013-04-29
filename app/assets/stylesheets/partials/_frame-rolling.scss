@@ -16,7 +16,7 @@
   }
 
   .destination {
-    font-weight: 400;
+    font-weight: bold;
     font-size: 1.1em;
     line-height: 1;
   }
@@ -54,7 +54,7 @@
 
 .roll_selection__h3 {
   color: #777;
-  font-weight: 300;
+  font-weight: normal;
 }
 
 //------------------------------------------------------------------------------
@@ -115,6 +115,10 @@
 
   .rolling-form {
     display: none;
+
+    .frame-body-wrapper {
+      margin-top: 0.7em;
+    }
   }
 }
 

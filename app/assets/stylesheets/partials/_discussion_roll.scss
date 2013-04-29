@@ -109,7 +109,7 @@ $main-column-width: 45em;
 //------------------------------------------------------------------------------
 .discussion__h1,
 .discussion__h2 {
-  font-family: $font-family-display;
+  font-family: $font-family;
   font-weight: 400;
 }
 
@@ -501,7 +501,7 @@ $main-column-width: 45em;
   }
 
   .discussion__h3 {
-    font-weight: 500;
+    font-weight: bold;
     margin-top: .5em;
     margin-bottom: 0;
   }
