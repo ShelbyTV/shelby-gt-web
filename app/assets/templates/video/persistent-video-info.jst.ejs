@@ -12,6 +12,8 @@
 <% var isFauxUser = currentCreator && currentCreator.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.faux %>
 <% var fauxUserOrigin = !isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(currentCreator) : null %>
+
+
 <%
   var currentCreatorNickname;
 
@@ -19,6 +21,8 @@
     currentCreatorNickname = fauxUserNickname;
   }
 %>
+
+<% var clickableCreator = (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.standardRoll) %>
 
 <div class="persistent_video_info animate_module">
   <% if (showNextFrame) { %>
@@ -57,9 +61,11 @@
       <div class="media_module persistent_video_info__body">
         <% if (showNextFrame) { %>
           <% if (!currentFrame.get('isSearchResultFrame')) { %>
-            <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
-              <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
-            </div>
+            <% if (clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %>
+              <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+                <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
+              </div>
+            <% if (clickableCreator) { %></a><% } %>
           <% } else { %>
             <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
           <% } %>
@@ -69,7 +75,9 @@
           <% if (showNextFrame) { %>
             <h3 class="xuser-data persistent_video_info__h4--light">
               <% if (!currentFrame.get('isSearchResultFrame')) { %>
-                <strong><%= currentCreatorNickname %></strong>
+                <strong>
+                  <% if(clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %><%= currentCreatorNickname %><% if(clickableCreator) { %></a><% } %>
+                </strong>
               <% } else { %>
                 <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
               <% } %>
@@ -77,7 +85,7 @@
               <% if (fauxUserOrigin) { %>
                 via <span class="capitalize"><%= fauxUserOrigin %></span>
               <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
-                via <a class="js-navigate-originator no-faux-link" href="#"><%= currentFrameOriginator.get('nickname') %></a>
+                via <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>
               <% } %>
             </h3>
           <% } %>
@@ -100,7 +108,7 @@
                   }
                 })
               %>
-            </p>
+              </p>
           <% } %>
         </div><!-- eo .media_body -->
       </div><!-- eo .persistent_video_info__body -->

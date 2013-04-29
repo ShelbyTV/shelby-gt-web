@@ -1,7 +1,9 @@
+
+
 <%
   var
       nickname = shelby.models.user.get('nickname'),
-      avatar   = (isInAppUserProfile) ? libs.shelbyGT.viewHelpers.user.avatarUrl(user) : roll.get('thumbnail_url'),
+      avatar   = (isInAppUserProfile) ? libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) : roll.get('thumbnail_url'),
       username = (isInAppUserProfile) ? nickname : (libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || ''),
       realname = (isInAppUserProfile) ? shelby.models.user.get('name') : (user.get('name') || '');
 %>

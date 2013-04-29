@@ -22,6 +22,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
     "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
     "click .persistent_video_info__current-frame  .js-facebook-share"             : "_shareCurrentToFacebook",
+    "click .persistent_video_info__current-frame  .js-navigate-originator"        : "_gotoOriginator",
+    "click .persistent_video_info__current-frame  .js-navigate-creator"           : "_gotoCreator",
     "click .js-button_share--facebook"                                            : "_shareCurrentToFacebook",
     "click .js-button_share--embed"                                               : "_showEmbedCode",
     "click .js-next-video"                                                        : "_skipToNextVideo",
@@ -29,8 +31,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .js-share-menu"                                                        : "_toggleShareMenu",
     "click .js-hide-share-menu"                                                   : "_toggleShareMenu",
     "click .js-input-select-on-focus"                                             : "_selectInputText",
-    "click .js-hashtag-link"                                                      : '_followHashtagLink',
-    "click .js-navigate-originator"                                               : "_gotoOriginator"
+    "click .js-hashtag-link"                                                      : "_followHashtagLink"
   },
 
   initialize: function(){
@@ -361,6 +362,16 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     e.preventDefault();
 
     shelby.router.navigate(this._currentFrame.get('originator').get('nickname'),{trigger:true});
+  },
+
+  _gotoCreator : function(e){
+    e.preventDefault();
+
+    var currentFrame = this._currentFrame.get('roll'),
+        currentFrameId = currentFrame.get('id'),
+        currentFrameNickname = currentFrame.get('creator_nickname');
+
+    shelby.router.navigate((currentFrameNickname) ? currentFrameNickname : '/roll/' + currentFrameId,{trigger:true});
   }
 
 });
