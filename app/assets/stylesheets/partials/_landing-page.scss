@@ -12,6 +12,10 @@ $landing-page-footer-font-color: #EFEFEF;
 //----- Override App Base Styles -----------------------------------------
 //----- Modifiers --------------------------------------------------------
 .shelby--landing {
+  h1,h2,h3,h4,h5,h6 {
+    font-family: $font-family-display;
+  }
+
   background-color: $landing-page-footer-background;
   height: auto;
   overflow: visible;
@@ -34,7 +38,6 @@ $landing-page-footer-font-color: #EFEFEF;
 
   .button_primer--twitter,
   .button_primer--facebook {
-    padding: 0.5em 1.7em 0.5em 1.2em;
     text-align: center;
     width: 40%;
   }
@@ -79,6 +82,7 @@ $landing-page-footer-font-color: #EFEFEF;
 //----- Non-normative Overrides --------------------------------------------------------
 .login-section,
 .signup-section {
+  font-size: 1.3em;
   right: 10px;
   top: 28px;
 }
@@ -100,7 +104,6 @@ $landing-page-footer-font-color: #EFEFEF;
 
 .login-section hr,
 .signup-section hr {
-  border-top: 1px solid $outset;
   border-bottom: 1px solid $inset;
   margin-bottom: 0;
   margin-top: .5em;
