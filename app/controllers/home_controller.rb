@@ -50,24 +50,27 @@ class HomeController < ApplicationController
           render '/home/app' and return
         end
 
-        # Consider errors and render landing page
-        @auth_failure = params[:auth_failure] == '1'
-        @auth_strategy = params[:auth_strategy]
-        @access_error = params[:access] == "nos"
-        @invite_error = params[:invite] == "invalid"
-        @mobile_os = detect_mobile_os
-        @is_mobile = is_mobile?
+        if user_signed_in?
+          render '/home/app'
+        else
+          # Consider errors and render landing page
+          @auth_failure = params[:auth_failure] == '1'
+          @auth_strategy = params[:auth_strategy]
+          @access_error = params[:access] == "nos"
+          @invite_error = params[:invite] == "invalid"
+          @mobile_os = detect_mobile_os
+          @is_mobile = is_mobile?
 
-        view_context.get_info_for_meta_tags(params[:path])
+          view_context.get_info_for_meta_tags(params[:path])
 
-        # if @mobile_os
-        #   render '/mobile/search', :layout => 'mobile'
-        # else
-        # A/B test
-        @seo_search_messaging = ab_test :seo_search_messaging
+          # if @mobile_os
+          #   render '/mobile/search', :layout => 'mobile'
+          # else
+          # A/B test
+          @seo_search_messaging = ab_test :seo_search_messaging
 
-        render '/home/landing'
-        # end
+          render '/home/landing'
+        end
 
       }
       # if we hit this as the catch-all while looking for an image or some other special format,
