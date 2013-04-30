@@ -1,5 +1,3 @@
-
-
 <%
   var
       nickname = shelby.models.user.get('nickname'),
@@ -8,23 +6,23 @@
       realname = (isInAppUserProfile) ? shelby.models.user.get('name') : (user.get('name') || '');
 %>
 
-  <div class="user clearfix">
-    <div class="media_module user__lining clearfix">
-      <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(<%= avatar %>);">
-        <img class="visuallyhidden" src="<%= avatar %>"/>
-      </span><!-- eo media_image -->
+<div class="user clearfix">
+  <div class="media_module user__lining clearfix">
+    <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(<%= avatar %>);">
+      <img class="visuallyhidden" src="<%= avatar %>"/>
+    </span><!-- eo media_image -->
 
-      <div class="media_body">
-        <h3 class="user__h1">
-          <%= username %>
-        </h3>
+    <div class="media_body">
+      <h3 class="user__h1">
+        <%= username %>
+      </h3>
 
-        <h4 class="user__h2">
-          <%= realname %>
-        </h4>
-      </div><!-- eo media_body -->
-    </div><!-- eo media_module -->
-  </div><!-- eo user -->
+      <h4 class="user__h2">
+        <%= realname %>
+      </h4>
+    </div><!-- eo media_body -->
+  </div><!-- eo media_module -->
+</div><!-- eo user -->
 
 <% if (isInAppUserProfile) { %>
   <ul class="list list--fit tabs clearfix">
