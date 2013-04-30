@@ -108,16 +108,31 @@
 //  Screens that LESS THAN 1100px wide.
 @media screen and (max-width: 1100px) {
   //icon normalization, compensates for small typeface proportions
-  [class*="icon-"]:before {
-    vertical-align: -0.1em;
-  }
+  // [class*="icon-"]:before {
+  //   // vertical-align: -0.1em;
+  // }
   //////////////////////////////////////////////////////////////////////////////
   //  Guide
   //////////////////////////////////////////////////////////////////////////////
   .sidebar_module {
     width: 300px;
   }
-
+  //////////////////////////////////////////////////////////////////////////////
+  //  channels
+  //////////////////////////////////////////////////////////////////////////////
+  .channel_menu__button {
+    font-size: 1em;
+    padding: 1.2em 0;
+  }
+  //////////////////////////////////////////////////////////////////////////////
+  //  user-card
+  //////////////////////////////////////////////////////////////////////////////
+  .user {
+    font-size: 1em;
+  }
+  .user__button {
+    margin-top: 1.2em;
+  }
   //////////////////////////////////////////////////////////////////////////////
   //  Frame
   //////////////////////////////////////////////////////////////////////////////
@@ -128,6 +143,15 @@
   }
 
   .frame {
+
+    .button_command--cancel {
+      margin-top: 1.3em;
+    }
+
+    .share_menu {
+      min-width: 13em;
+    }
+
     .frame-footer {
       margin: 5px 5px 2px;
 
@@ -149,27 +173,31 @@
   }
 
   .button_command {
-    margin: .75em 0 0 .75em;
-    padding: .55em .8em .6em;
+    font-size: 1.1em;
   }
 
-  .frame-command-menu {
-    .menu_item {
-      &.right {
-        .button_command {
-          margin: .75em .75em 0 0;
-        }
-      }
-    }
+  .share_menu__faux-button,
+  .button_command--sub {
+    font-size: 1em;
   }
+
+  // .frame-command-menu {
+  //   // .menu_item {
+  //   //   &.right {
+  //   //     .button_command {
+  //   //       margin: .75em .75em 0 0;
+  //   //     }
+  //   //   }
+  //   // }
+  // }
 
   .frame-subsection {
     margin-top: 0.25em;
 
-    .button_command {
-      margin: 0;
-      padding: .55em .8em .6em 0;
-    }
+    // .button_command {
+    //   margin: 0;
+    //   padding: .55em .8em .6em 0;
+    // }
   }
 
   .frame-collapsed {
