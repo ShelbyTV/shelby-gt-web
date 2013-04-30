@@ -18,8 +18,13 @@ button {
 }
 
 //  fixes waywire.com
-.form_submit {
+.form_submit--signin {
   font-family: $font-family !important;
+  font-size: 13px;
+}
+
+.overlay_body {
+  font-size: 1.1em;
 }
 
 //------------------------------------------------------------------------------
@@ -149,22 +154,22 @@ button {
 .button_primer--twitter,
 .button_primer--facebook {
   font-weight: bold;
+  font-size: 14px;
   line-height: 1;
-  padding-left: 2em;
   text-align: center;
-  width: 9em;
+  width: 7em;
 
   .icon {
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center center;
+    -webkit-background-size: 125%;
+    background-size: 125%;
     display: inline-block;
-    height: 15px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin: 0.57em 0.3em;
-    width: 18px;
+    height: 1em;
+    margin-left: -0.3em;
+    width: 1em;
+    vertical-align: -1px;
 
     &:before {
       display: none;
@@ -175,19 +180,11 @@ button {
 .button_primer--twitter {
   .icon {
     background-image: url($icon-share-twitter-on);
-    -webkit-background-size: 100%;
-    background-size: 100%;
-
-    &:before {
-      display: none;
-    }
   }
 }
 
 .button_primer--facebook {
   .icon {
-    -webkit-background-size: contain;
-    background-size: contain;
     background-image: url($icon-share-facebook-on);
   }
 }
