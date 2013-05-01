@@ -156,13 +156,9 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
     // don't always show this, should not be probabilistic in the end. should be "smart" eventually
     if (!this._shouldShowDVI(0.5)) return;
+    if (this._videoAlreadyLiked(this._currentFrame)) return;
 
-    if (shelby.models.user.isAnonymous()){
-      this._cardType = 'like';
-    }
-    else {
-      this._cardType = this._videoAlreadyLiked(this._currentFrame) ? 'share' : this._chooseRandom(0.5, 'like', 'share');
-    }
+    this._cardType = 'like';
     var _timeout = (this._currentVideoInfo && this._currentVideoInfo.duration) ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 8000;
 
     this._showCard(0, _timeout);
