@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   #valid avatar_size options are "sq192x192", "sq48x48", and "original"
   def avatar_url_for_user(user, avatar_size="sq48x48")
 
@@ -11,7 +11,7 @@ module ApplicationHelper
       return user['user_image_original'] || user['user_image'] || "/images/assets/avatar.png"
     end
   end
-  
+
   def creators_message_from_frame(frame)
     if frame and frame['conversation'] and frame['conversation']['messages']
       messages = frame['conversation']['messages']
@@ -20,7 +20,7 @@ module ApplicationHelper
     end
     return nil
   end
-  
+
   def shelby_tracking_category_for(share_type)
     case share_type
     when :genius then "Genius Email Share Landing Page"
@@ -29,21 +29,21 @@ module ApplicationHelper
     else "Landing Page"
     end
   end
-  
+
   def page_title_for_roll(roll, user=nil)
     "#{roll['subdomain']} tv#{user ? ", curated by #{user['name']}" : ''} on Shelby"
   end
-  
+
   def page_description_for_roll_with_frames(roll_with_frames, user=nil)
     desc = user ? "Latest video from #{user['name']} (#{user['nickname']})... " : ""
     if roll_with_frames['frames'] and roll_with_frames['frames'][0]
       msg = roll_with_frames['frames'][0]['conversation']['messages'][0]
       if msg and msg['user_id'] == roll_with_frames['creator_id']
-        desc += roll_with_frames['frames'][0]['conversation']['messages'][0]['text']
+        desc += roll_with_frames['frames'][0]['conversation']['messages'][0]['text'] || ''
       end
     end
-    
+
     return desc.blank? ? nil : desc
   end
-  
+
 end
