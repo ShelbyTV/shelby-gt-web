@@ -43,6 +43,10 @@ libs.shelbyGT.viewHelpers.user = {
 
     if( roll && roll.get('creator_has_shelby_avatar') ) {
       return shelby.config.avatarUrlRoot+'/'+avatarSize+'/'+roll.get('creator_id')+'?'+(new Date(roll.get('creator_avatar_updated_at')).getTime());
+    } else if( roll.get('creator_image_original') ) {
+      return roll.get('creator_image_original');
+    } else if( roll.get('creator_image') ) {
+      return roll.get('creator_image');
     } else if( roll && roll.get('thumbnail_url') ){
       return roll.get('thumbnail_url');
     } else {
