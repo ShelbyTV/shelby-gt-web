@@ -15,8 +15,13 @@ shelby.config.channels = {
     id : '5112fa93b415cc1de20c30a0',
     hashtagRollId : '5137594fb415cc6617000047',
     hashTags : ['laugh', 'lol'],
-    includeInNav : true,
+    includeInNav : false,
     rollingHashtagButton : true
+  },
+  'comedy' : {
+    title : 'Comedy',
+    id : '518a7840b415cc15e90db339',
+    includeInNav : true
   },
   'happenings' : {
     title : '#happenings',
