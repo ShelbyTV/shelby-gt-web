@@ -131,13 +131,15 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     this._currentFrameShortlink = null;
     this.render();
     // track an event of how many recommendations we have to show for this video
-    shelby.trackEx({
-      providers : ['ga'],
-      gaCategory : 'Video Recommendations',
-      gaAction : 'Could be shown',
-      gaLabel : activeFrameModel.get('video').id,
-      gaValue : activeFrameModel.get('video').get('recs').length
-    });
+    if (!activeFrameModel.get('isSearchResultFrame')) {
+      shelby.trackEx({
+        providers : ['ga'],
+        gaCategory : 'Video Recommendations',
+        gaAction : 'Could be shown',
+        gaLabel : activeFrameModel.get('video').id,
+        gaValue : activeFrameModel.get('video').get('recs').length
+      });
+    }
   },
 
   _onplaylistFrameGroupCollectionChange : function(playlistManagerModel, playlistFrameGroupCollection){
