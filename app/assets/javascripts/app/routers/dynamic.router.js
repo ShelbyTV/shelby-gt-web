@@ -79,7 +79,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     //  make the call to add the user to the roll...
     //  then show them the roll
     // otherwise just show the roll view
-    if (shelby.userSignedIn() && params && params.gt_ref_roll){
+    if (!shelby.models.user.isAnonymous() && params && params.gt_ref_roll){
       var rollToJoin = new libs.shelbyGT.RollModel({id:params.gt_ref_roll});
       rollToJoin.joinRoll(function(){
         self._setupRollViewWithCallback(rollId, frameId, options, topLevelViewsOptions);
@@ -340,7 +340,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         el : "#embedded-view",
         model: frame,
         guide : shelby.models.guide,
-        playbackState : shelby.models.playbackState,
+        playbackState : shelby.models.playbackState
       });
   },
 
