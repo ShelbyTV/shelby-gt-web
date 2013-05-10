@@ -1,5 +1,5 @@
 (function(){
-  
+
   var commands = ['set', 'hset', 'sadd', 'incrby', 'lpush'];
 
   libs.utils.rhombus = _.extend({},libs.utils.rhombus,{
@@ -18,7 +18,7 @@
 
     _post : function(cmd, args){
       if (libs.utils.environment.isDevelopment()) return false;
-			if (!shelby.userSignedIn()) return false;
+      if (!shelby.models.user.isAnonymous()) return false;
       if (this._disabled) return false;
 
       var data, path;
@@ -41,6 +41,9 @@
         });
       }
       var chorts = _.clone(shelby.models.user.get('cohorts'));
+      if (!chorts || !$.isArray(chorts)) {
+        chorts = [];
+      }
       chorts.push('');
       var self = this;
       var key = data.args[0];
@@ -72,7 +75,7 @@
     }
 
   });
-  
+
   commands.forEach(function(cmd){
     libs.utils.rhombus[cmd] = function(arg1){
       libs.utils.rhombus._post(cmd, arguments);

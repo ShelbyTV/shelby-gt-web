@@ -25,7 +25,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
   initDiscussionRoll : function(url){
     //if logged-in AND desktop browser: full app view.  Otherwise: discussion-only, mobile first view.
     //XXX full app view is not yet implemented (but will resuse many of the views with somewhat different styling)
-    if (false && shelby.userSignedIn() && !Browser.isMobile()){
+    if (false && shelby.userIsCommonCookieAuthed() && !Browser.isMobile()){
       this.initDynamic(url);
     } else {
       //otherwise, showing the discussion-specific, mobile first view
@@ -72,14 +72,14 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
     // when the DOM is ready load the social libraries that we use for logged out users to interact with
     // twitter and facebook
-    if (!shelby.config.socialLibsLoade) {
+    if (!shelby.config.socialLibsLoaded) {
       $(document).ready(function(){
         $('body').append(SHELBYJST['social-libs']());
       });
       shelby.config.socialLibsLoaded = true;
     }
 
-    if (shelby.userSignedIn()){
+    if (shelby.userIsCommonCookieAuthed()){
       shelby.models.user.fetch({
         success: function(userModel, response) {
           // if the user is trying to view an isolated roll, don't show onboarding right now.
