@@ -23,6 +23,11 @@ shelby.config.channels = {
     id : '518a7840b415cc15e90db339',
     includeInNav : true
   },
+  'nyc' : {
+    title : '#NYC',
+    id : '51913463b415cc7bd80175c8',
+    includeInNav : true
+  },
   'happenings' : {
     title : '#happenings',
     id : '5112fb26b415cc1e160cb0e5',
