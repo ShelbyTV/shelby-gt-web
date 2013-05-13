@@ -10,7 +10,7 @@ $.ajaxPrefilter(function(options, originalOptions, xhr) {
     xhr.abort();
   }
   // attach the API's csrf token to the request for logged in users
-  if (options.type != 'GET' && shelby.models.user && !options.no_csrf) {
+  if (options.type.toUpperCase() != 'GET' && shelby.models.user && !options.no_csrf) {
     var token = $('meta[name=csrf-token]').attr('content');
     if (token) xhr.setRequestHeader('X-CSRF-Token', token);
   }

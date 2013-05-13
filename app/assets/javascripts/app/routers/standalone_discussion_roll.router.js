@@ -9,27 +9,27 @@ libs.shelbyGT.StandaloneDiscussionRollRouter = Backbone.Router.extend({
     "mail/:discussionRollId"  : "_displayDiscussionRoll",
     "mail"                    : "_displayDiscussionRollsManager"
   },
-  
+
   _displayDiscussionRoll : function(discussionRollId, params){
     // handle the "/mail/" route
-    if(typeof(discussionRollId) === "undefined" || discussionRollId.length === 0){ 
+    if(typeof(discussionRollId) === "undefined" || discussionRollId.length === 0){
       this._displayDiscussionRollsManager();
       return;
     }
-    
+
     // handle the "/mail/:discussionRollId"
     var discussionRoll = new libs.shelbyGT.DiscussionRollModel({id:discussionRollId, token:params.t});
-    
+
     shelby.views.standaloneDiscussionRoll = shelby.views.standaloneDiscussionRoll ||
         new libs.shelbyGT.StandaloneDiscussionRollView({model:discussionRoll, viewer:params.u, token:params.t});
   },
-  
+
   /*
    * Want to show the manager which lets a signed-in user view all their discussionRolls.
    * Need some info about the signed in user tho.
    */
   _displayDiscussionRollsManager : function(){
-    if (shelby.userSignedIn()){
+    if (shelby.userIsCommonCookieAuthed()){
       shelby.models.user.fetch({
         success: function(userModel, response) {
           shelby.views.standaloneDiscussionRoll = shelby.views.standaloneDiscussionRoll ||
@@ -45,5 +45,5 @@ libs.shelbyGT.StandaloneDiscussionRollRouter = Backbone.Router.extend({
       window.location = "/";
     }
   }
-  
+
 });

@@ -61,7 +61,7 @@ describe("DynamicRouter", function() {
 
     describe("displayFrameInRoll", function() {
       it("passes showCommentOverlay input option through to _setupRollViewWithCallback", function() {
-        shelby.userSignedIn = function(){return true;};
+        shelby.userIsCommonCookieAuthed = function(){return true;};
         var callStub = sinon.stub(this.router, '_setupRollViewWithCallback');
         this.router.displayFrameInRoll('1', '2', null, {showCommentOverlay:true}, null);
         expect(callStub).toHaveBeenCalledWithExactly('1', '2', {showCommentOverlay:true, rerollSuccess:null}, null);
