@@ -1,4 +1,6 @@
 ShelbyGtWeb::Application.routes.draw do
+  get "signup" => 'signup#index'
+
   get '/genius' => 'genius#index'
 
   constraints(:subdomain => 'm') do
