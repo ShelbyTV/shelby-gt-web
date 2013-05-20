@@ -32,7 +32,7 @@
 }
 
 .button_standard {
-    @include button-sizing(frame-command);
+  @include button-sizing(frame-command);
 }
 
 .button_command {
