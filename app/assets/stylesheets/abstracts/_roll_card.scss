@@ -9,9 +9,9 @@
 //  Block
 //------------------------------------------------------------------------------
 .roll_card {
-  border: 1px solid $ui-black;
+  border: 1px solid $inset;
   margin: 8px;
-  padding: 8px;
+  padding: 15px;
 
   & > .media_module {
     margin: 0;
@@ -22,10 +22,11 @@
 //  Elements
 //------------------------------------------------------------------------------
 .roll_card__h1 {
+  font-size: 1.5em;
 }
 
 .roll_card__block {
-
+  margin-bottom: 1.5em;
 }
 
 .roll_card__avatar {

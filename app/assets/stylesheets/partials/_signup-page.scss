@@ -9,6 +9,15 @@
   .shelby_logo {
     font-size: 5em;
   }
+
+  .form__legend {
+    margin-bottom: 1.5em;
+  }
+
+  .roll_card {
+    font-size: 0.8em;
+    text-align: left;
+  }
 }
 
 
@@ -18,8 +27,24 @@
   content, social, profile
 */
 
+//block
 .signup {
+  font-size: 1.6em;
   margin: 0 auto;
-  width: 60em;
+  text-align: center;
 }
-  .signup--content {}
+  .signup--content {
+    width: 45em;
+
+  }
+
+//elements
+.signup__h1 {
+  font-family: $font-family-display;
+  font-weight: 400;
+}
+.signup__h2 {
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: 1em;
+}
