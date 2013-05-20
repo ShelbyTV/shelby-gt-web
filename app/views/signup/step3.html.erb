@@ -26,21 +26,21 @@
 
           <div class="media_body">
             <fieldset class="form_fieldset">
-              <%= label_tag 'full_name', 'Full Name', :class => 'form_label' %>
+              <%= label_tag 'name', 'Full Name', :class => 'form_label' %>
               <span class="form_error">Please enter a name</span>
-              <%= text_field_tag 'full_name', nil, :placeholder => 'First and Last Name', :class => 'form_input' %>
+              <%= text_field_tag 'name', @user ? @user['name'] : nil, :placeholder => 'First and Last Name', :class => 'form_input' %>
             </fieldset>
 
             <fieldset class="form_fieldset">
-              <%= label_tag 'user_name', 'Username', :class => 'form_label' %>
+              <%= label_tag 'nickname', 'Username', :class => 'form_label' %>
               <span class="form_error">Please enter a username</span>
-              <%= text_field_tag 'user_name', nil, :class => 'form_input' %>
+              <%= text_field_tag 'nickname', @user ? @user['nickname'] : nil, :class => 'form_input' %>
             </fieldset>
 
             <fieldset class="form_fieldset">
-              <%= label_tag 'email_address', 'Email Address', :class => 'form_label' %>
+              <%= label_tag 'primary_email', 'Email Address', :class => 'form_label' %>
               <span class="form_error">Please enter an email address</span>
-              <%= email_field_tag 'email_address', nil, :placeholder => 'email@address.com', :class => 'form_input' %>
+              <%= email_field_tag 'primary_email', @user ? @user['primary_email'] : nil, :placeholder => 'email@address.com', :class => 'form_input' %>
             </fieldset>
 
             <fieldset class="form_fieldset">

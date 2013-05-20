@@ -11,6 +11,15 @@ module Shelby
       return u['status'] == 200 ? u['result'] : nil
     end
 
+    def self.get_current_user(cookie)
+      u = get("/user", :headers => {'Cookie' => cookie}).parsed_response
+      return u['status'] == 200 ? u['result'] : nil
+    end
+
+    def self.update_user(id, attributes, cookie, token)
+      put("/user/#{id}", { :body => attributes, :headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
+    end
+
     def self.get_user_stats(id, cookie)
       s = get("/user/#{id}/stats?num_frames=3", :headers => {'Cookie' => cookie}).parsed_response
       return s['status'] == 200 ? s['result'] : nil
