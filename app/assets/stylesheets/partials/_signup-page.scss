@@ -21,6 +21,20 @@
     line-height: 2.5;
   }
 
+  .form_fieldset--error {
+    .form_error {
+      display: block;
+    }
+  }
+
+  .form_error {
+    font-size: 0.8em;
+    display: none;
+    margin: 0.4em 0.5em;
+    position: absolute;
+    right: 0;
+  }
+
   .roll_card {
     font-size: 0.8em;
     text-align: left;

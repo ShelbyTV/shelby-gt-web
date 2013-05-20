@@ -17,13 +17,15 @@
           will be updated with videos shared by friends.
         </legend>
 
-        <%= content_tag :button, :type => 'submit', :name => 'commit', :value => 'facebook', :class => 'button_primer button_command button_command--share button_facebook-blue one-fifth' do %>
-          <span class="icon icon-facebook"></span> <span class="button_label">Facebook</span>
-        <% end %>
+        <fieldset class="form_fieldset">
+          <%= content_tag :button, :type => 'submit', :name => 'commit', :value => 'facebook', :class => 'button_primer button_command button_command--share button_facebook-blue one-fifth' do %>
+            <span class="icon icon-facebook"></span> <span class="button_label">Facebook</span>
+          <% end %>
 
-        <%= content_tag :button, :type => 'submit', :name => 'commit', :value => 'twitter', :class => 'button_primer button_command button_command--share button_twitter-blue one-fifth' do %>
-          <span class="icon icon-twitter"></span> <span class="button_label">Twitter</span>
-        <% end %>
+          <%= content_tag :button, :type => 'submit', :name => 'commit', :value => 'twitter', :class => 'button_primer button_command button_command--share button_twitter-blue one-fifth' do %>
+            <span class="icon icon-twitter"></span> <span class="button_label">Twitter</span>
+          <% end %>
+        </fieldset>
       </fieldset>
 
       <fieldset class="form_fieldset">
