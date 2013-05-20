@@ -1,0 +1,17 @@
+defaults: &defaults
+  # there are num_steps steps in the signup flow
+  # counting starts from 1
+  num_steps: 3
+  service_authentication_step: 3
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults

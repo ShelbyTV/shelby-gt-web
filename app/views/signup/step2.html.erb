@@ -11,23 +11,15 @@
 
   <div class="signup__body">
     <%= form_tag do %>
-      <fieldset class="hidden">
-        <%= hidden_field_tag(:step,@step) %>
-      </fieldset>
-
       <fieldset class="form_fieldset">
         <legend class="form__legend">
           Connect social networks and your stream <br />
           will be updated with videos shared by friends.
         </legend>
 
-        <button>
-          Facebook
-        </button>
+        <%= submit_tag("Facebook") %>
 
-        <button>
-          Twitter
-        </button>
+        <%= submit_tag("Twitter") %>
       </fieldset>
 
       <%= submit_tag("Next") %>
