@@ -3,7 +3,7 @@
 
   //non-normative overrides
   .shelby__head {
-    padding: 1em;
+    padding: 1em 2em;
   }
 
   .shelby_logo {
@@ -11,7 +11,14 @@
   }
 
   .form__legend {
-    margin-bottom: 1.5em;
+    line-height: 1.6;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
+  .form__description {
+    font-size: 0.7em;
+    line-height: 2.5;
   }
 
   .roll_card {
@@ -29,14 +36,32 @@
 
 //block
 .signup {
-  font-size: 1.6em;
+  font-size: 1.5em;
   margin: 0 auto;
   text-align: center;
+  width: 45em;
 }
-  .signup--content {
-    width: 45em;
+    //modifiers (stages)
+    .signup--content {
+    }
+    .signup--social {
+    }
+    .signup--profile {
+      width: 33em;
 
-  }
+      .avatar__wrapper {
+        margin-top: 2.7em;
+        width: 150px;
+
+        input[type="file"] {
+          font-size: 9px;
+        }
+      }
+
+      .form_fieldset {
+        text-align: left;
+      }
+    }
 
 //elements
 .signup__h1 {
@@ -44,6 +69,7 @@
   font-weight: 400;
 }
 .signup__h2 {
+  color: $ui-soft-black;
   font-size: 1em;
   font-weight: normal;
   margin-bottom: 1em;

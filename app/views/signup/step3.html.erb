@@ -1,25 +1,62 @@
-<div class="signup signup--content" role="main">
+<div class="signup signup--profile" role="main">
   <div class="signup__head">
     <h2 class="signup__h2">
       Step 3 of 3: Profile
     </h2>
 
     <h1 class="signup__h1">
-      Last step
+      Make Shelby TV yours
     </h1>
   </div>
 
   <div class="signup__body">
-    <%= form_tag do %>
+    <%= form_tag({},{ :class => 'form_module' }) do %>
       <fieldset class="hidden">
         <%= hidden_field_tag(:step,@step) %>
       </fieldset>
 
       <fieldset class="form_fieldset">
-        Done
+        <legend class="form__legend">
+          Fill in details below and you'll be able to watch <br />
+          your stream anywhere, any time.
+        </legend>
+
+        <div class="media_module">
+          <div class="media_image avatar__wrapper">
+            <div class="avatar avatar--largest">
+            </div>
+            <input type="file" />
+          </div><!-- eo media_image -->
+
+          <div class="media_body">
+            <fieldset class="form_fieldset">
+              <%= label_tag 'full_name', 'Full Name', :class => 'form_label' %>
+              <%= text_field_tag 'full_name', nil, :placeholder => 'First and Last Name', :class => 'form_input' %>
+            </fieldset>
+
+            <fieldset class="form_fieldset">
+              <%= label_tag 'user_name', 'Username', :class => 'form_label' %>
+              <%= text_field_tag 'user_name', nil, :class => 'form_input' %>
+            </fieldset>
+
+            <fieldset class="form_fieldset">
+              <%= label_tag 'email_address', 'Email Address', :class => 'form_label' %>
+              <%= email_field_tag 'email_address', nil, :placeholder => 'email@address.com', :class => 'form_input' %>
+            </fieldset>
+
+            <fieldset class="form_fieldset">
+              <%= label_tag 'password', 'Password', :class => 'form_label' %>
+              <%= password_field_tag 'password', nil, :placeholder => '*******', :class => 'form_input' %>
+              <span class="form__description">We occasionally email about videos you'll love. Never spam.</span>
+            </fieldset>
+
+            <fieldset class="form_fieldset">
+              <%= submit_tag("Start Watching", :class => 'button_primer button_command button_command--flexible button_green') %>
+            </fieldset>
+          </div><!-- eo media_body -->
+        </div><!-- eo media_module -->
       </fieldset>
 
-      <%= submit_tag("Start Watching") %>
     <% end %>
 
   </div>
