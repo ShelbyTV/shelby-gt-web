@@ -1,5 +1,6 @@
 ShelbyGtWeb::Application.routes.draw do
   get "signup" => 'signup#index'
+  post "signup" => 'signup#index'
 
   get '/genius' => 'genius#index'
 

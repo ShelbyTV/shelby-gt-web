@@ -1,0 +1,69 @@
+<div class="signup signup--content" role="main">
+  <div class="signup__head">
+    <h2 class="signup__h2">
+      Step 1 of 3: Content
+    </h2>
+
+    <h1 class="signup__h1">
+      Fine-tune your Shelby TV
+    </h1>
+  </div>
+
+  <div class="signup__body">
+    <%= form_tag do %>
+      <fieldset class="hidden">
+        <%= hidden_field_tag(:step,@step) %>
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <legend class="form__legend">
+          Select from categories below and we'll add videos by awesome creators to your stream.
+        </legend>
+
+        <ul class="list">
+          <li class="one-half">
+            <div class="roll_card">
+              <h3 class="roll_card__h1">
+                Breaking News
+              </h3>
+
+              <p class="roll_card__block">
+                Reuters, Associated Press, Al Jazeera, and more…
+              </p>
+
+              <div class="media_module clearfix">
+                <div class="media_image media_image--rev">
+                  <button class="button_primer button_command button_gray">
+                    Select
+                  </button>
+                </div><!-- eo media_image -->
+
+                <div class="media_body">
+                  <ul class="list list--inline one-half">
+                    <li class="">
+                      <img src="/images/avatar.jpg" class="avatar avatar--small" />
+                    </li>
+                    <li class="">
+                      <img src="/images/avatar.jpg" class="avatar avatar--small" />
+                    </li>
+                    <li class="">
+                      <img src="/images/avatar.jpg" class="avatar avatar--small" />
+                    </li>
+                  </ul>
+                </div><!-- eo media_body -->
+              </div><!-- eo media_module -->
+            </div><!-- eo roll_card -->
+          </li>
+        </ul>
+      </fieldset>
+
+      <%= submit_tag("Next") %>
+    <% end %>
+
+  </div>
+</div>
+
+
+
+
+

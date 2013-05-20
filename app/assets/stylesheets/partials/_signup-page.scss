@@ -1,0 +1,25 @@
+.shelby--signup {
+  background: $ui-gray;
+
+  //non-normative overrides
+  .shelby__head {
+    padding: 1em;
+  }
+
+  .shelby_logo {
+    font-size: 5em;
+  }
+}
+
+
+/*
+  Every stage has its own .signup block.
+  The stages are as follows:
+  content, social, profile
+*/
+
+.signup {
+  margin: 0 auto;
+  width: 60em;
+}
+  .signup--content {}

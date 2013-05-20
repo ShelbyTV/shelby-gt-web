@@ -1,0 +1,42 @@
+<div class="signup signup--content" role="main">
+  <div class="signup__head">
+    <h2 class="signup__h2">
+      Step 2 of 3: Social
+    </h2>
+
+    <h1 class="signup__h1">
+      Shelby TV is better with friends
+    </h1>
+  </div>
+
+  <div class="signup__body">
+    <%= form_tag do %>
+      <fieldset class="hidden">
+        <%= hidden_field_tag(:step,@step) %>
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <legend class="form__legend">
+          Connect social networks and your stream <br />
+          will be updated with videos shared by friends.
+        </legend>
+
+        <button>
+          Facebook
+        </button>
+
+        <button>
+          Twitter
+        </button>
+      </fieldset>
+
+      <%= submit_tag("Next") %>
+    <% end %>
+
+  </div>
+</div>
+
+
+
+
+

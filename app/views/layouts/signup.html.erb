@@ -2,11 +2,32 @@
 <html>
 <head>
   <title>shelby.tv | sign up</title>
+  <meta name="description" content="">
+
   <%= stylesheet_link_tag "signup" %>
-  <%= javascript_include_tag "signup" %>
-  <%= csrf_meta_tags %>
 </head>
-<body>
-<%= yield %>
+<body class="shelby shelby--signup">
+  <header class="shelby__head" role="header">
+    <span class="shelby_logo shelby_logo--inverted">
+      <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+    </span>
+  </header>
+
+  <%= yield %>
+
+
+<!--
+
+
+
+TODO: DONT FORGET ABOUT ALL SORTS OF TRACKING
+
+
+
+-->
+
+
+  <%= javascript_include_tag "signup" %>
+
 </body>
 </html>

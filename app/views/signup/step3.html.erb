@@ -1,0 +1,31 @@
+<div class="signup signup--content" role="main">
+  <div class="signup__head">
+    <h2 class="signup__h2">
+      Step 3 of 3: Profile
+    </h2>
+
+    <h1 class="signup__h1">
+      Last step
+    </h1>
+  </div>
+
+  <div class="signup__body">
+    <%= form_tag do %>
+      <fieldset class="hidden">
+        <%= hidden_field_tag(:step,@step) %>
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        Done
+      </fieldset>
+
+      <%= submit_tag("Start Watching") %>
+    <% end %>
+
+  </div>
+</div>
+
+
+
+
+
