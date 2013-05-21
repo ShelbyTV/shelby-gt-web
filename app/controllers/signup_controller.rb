@@ -30,7 +30,7 @@ class SignupController < ApplicationController
       # to do service authoriziation for Twitter or Facebook, redirect to appropriate
       # authentication route but don't advance to the next signup step
       redirect_to "#{Settings::ShelbyAPI.url}/auth/#{params[:commit].downcase}" and return
-    elsif session[:signup][:step] == Settings::Signup.user_update_step
+    elsif params[:commit] && session[:signup][:step] == Settings::Signup.user_update_step
       if user_signed_in?
         updateUser
       else
@@ -61,7 +61,6 @@ class SignupController < ApplicationController
 
     # for the user update step, try to update the user, and
     # prevent advancing to the next step if something fails
-    # returns user if successfull, nil otherwise
     def updateUser
       attributes = params.select { |k,v| ['nickname', 'name', 'primary_email'].include? k }
       r = Shelby::API.update_user(@user['id'], attributes, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
@@ -71,6 +70,8 @@ class SignupController < ApplicationController
         # send the errors along to the view so we can render appropriate feedback
         @errors = r.parsed_response['errors']
         Rails.logger.info @errors.inspect
+      else
+        @user = r['result']
       end
       Rails.logger.info @errors.inspect
       @validation_ok = false
@@ -78,15 +79,17 @@ class SignupController < ApplicationController
 
     # for the user update step, try to create a new user with username and password, and
     # prevent advancing to the next step if something fails
-    # returns user if successfull, nil otherwise
     def createUser
       attributes = params.select { |k,v| ['nickname', 'name', 'primary_email', 'password'].include? k }
       r = Shelby::API.create_user({:user => attributes}, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
       if r.code != 200
+        puts "Response: #{r.inspect}"
         # preserve the user input so they can see what the erroneous input was
         @user = attributes
         # send the errors along to the view so we can render appropriate feedback
         @errors = r.parsed_response['errors']
+      else
+        @user = r['result']
       end
       Rails.logger.info @errors.inspect
       @validation_ok = false
