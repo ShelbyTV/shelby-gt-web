@@ -5,38 +5,31 @@
 
 //on step 4 post array save to a hidden input tag
 
-var NEXT = true;
-
-var onBefore = function(foo,bar,baz){
-  // console.log('onBefore',this);
-  var $index = $(this).data('index');
-  // $('.js-next').attr('disabled',($index >= 4));
+var onBefore = function(curr,next,opts,d){
 };
 
-var onAfter = function(foo,bar,baz){
-  // console.log('onAfter',this);
-  var $index = $(this).data('index');
+var onAfter = function(curr,next,opts,d){
+  window.location.hash = opts.currSlide;
 
-  window.location.hash = ($index);
-
-  // console.log($index, ($index >= 4));
+  $('.js-next').toggleClass('hidden',(opts.currSlide > 3));
+  $('.js-advance-slideshow').toggleClass('hidden', !(opts.currSlide > 3));
 };
 
 var startingSlide = function() {
-  var num = +(window.location.hash.split('#')[1]);
-  return (!isNaN(num) && num >= 0) ? num : 0;
+  //get current slide from hash, makes things linkable?
+  var slide = +(window.location.hash.split('#')[1]);
+  return (!isNaN(slide) && slide >= 0) ? slide : 0;
 };
 
 (function(){
 
   $slideshow = $('.js-slideshow');
 
-
   $slideshow.cycle({
     after         : onAfter,
     before        : onBefore,
-    fx            :   'scrollLeft',
-    next          : '.js-advance-slideshow',
+    fx            : 'scrollHorz',
+    next          : '.js-next',
     nowrap        : true,
     timeout       : 0,
     speed         : 500,
@@ -54,7 +47,7 @@ var startingSlide = function() {
 
       //naively toggle state & text of button
       $this.toggleClass('button_green button_gray')
-           .text(isFollowing ? 'Follow' : 'Unfollow');
+           .text(isFollowing ? 'Follow' : 'Followingi');
 
       //change value of hidden input associated with button
       $('#roll_' + roll_id).val(!isFollowing);
@@ -62,7 +55,7 @@ var startingSlide = function() {
 
   $(window).on('hashchange',function(e){
     e.preventDefault();
+
     $slideshow.cycle(+(window.location.hash.split('#')[1]));
   });
-
 })();

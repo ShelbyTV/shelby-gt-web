@@ -23,7 +23,8 @@
                 <% category['rolls'].each_with_index do |roll,roll_index| %>
                   <li class="list__item one-half">
                     <div class="media_module roll_card clearfix" data-roll_id="<%= roll["personal_roll_id"] %>">
-                      <%= hidden_field_tag "roll[#{roll['personal_roll_id']}]", false %>
+                      <%= check_box_tag "roll[#{roll['personal_roll_id']}]", nil, false, :class=>"hidden" %>
+                      <%# hidden_field_tag "roll[#{roll['personal_roll_id']}]", false %>
                       <div class="media_image media_image--rev">
                         <button class="button_primer button_command button_gray roll_card__button js-followOrUnfollow" data-roll_id="<%= roll["personal_roll_id"] %>">
                           Follow
@@ -53,7 +54,8 @@
         </div><!-- eo slideshow -->
       </fieldset>
 
-      <%= submit_tag("Next", :class => "button_primer button_command button_command--wide button_green js-next js-advance-slideshow") %>
+      <%= submit_tag("(Next)", :class => "hidden button_primer button_command button_command--wide button_green js-next js-advance-slideshow") %>
+      <button class="button_primer button_command button_command--wide button_green js-next">Next</button>
     <% end %>
 
   </div>
