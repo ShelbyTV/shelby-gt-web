@@ -63,7 +63,6 @@ class SignupController < ApplicationController
     # prevent advancing to the next step if something fails
     # returns user if successfull, nil otherwise
     def updateUser
-      Rails.logger.info params.inspect
       attributes = params.select { |k,v| ['nickname', 'name', 'primary_email'].include? k }
       r = Shelby::API.update_user(@user['id'], attributes, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
       if r.code != 200
@@ -71,6 +70,7 @@ class SignupController < ApplicationController
         @user.merge! attributes
         # send the errors along to the view so we can render appropriate feedback
         @errors = r.parsed_response['errors']
+        Rails.logger.info @errors.inspect
       end
       Rails.logger.info @errors.inspect
       @validation_ok = false
