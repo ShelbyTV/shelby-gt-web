@@ -45,9 +45,25 @@
           <% end %>
         </fieldset>
 
-        <p class="form__description">
-          We never spam.
-        </p>
+        <% if @facebook_connected or @twitter_connected %>
+          <p class="form__description">
+            We never spam.
+          </p>
+        <% end %>
+
+        <% if !@twitter_connected %>
+          <p class="form__description">
+            <%= check_box_tag 'follow_shelby', 'shelby-twitter', true %>
+            <%= label_tag 'follow_shelby', 'Follow @Shelby on Twitter', :class => 'form_label form_label--inline' %>
+          </p>
+        <% end %>
+
+        <% if !@facebook_connected %>
+          <p class="form__description">
+            <%= check_box_tag 'publish_shelby', 'shelby-facebook', true %>
+            <%= label_tag 'publish_shelby', 'Publish activity to Facebook Timeline', :class => 'form_label form_label--inline' %>
+          </p>
+        <% end %>
       </fieldset>
 
       <fieldset class="form_fieldset">
