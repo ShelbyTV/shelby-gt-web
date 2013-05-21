@@ -1,5 +1,5 @@
 <div style="border:1px solid red">
-  <% Settings::SignupCategories["roll_categories"].each_with_index do |category,index| %>
+  <% Settings::Signup.roll_categories.each_with_index do |category,index| %>
     <p><%= index %></p>
     <p><%= category %></p>
   <% end %>
