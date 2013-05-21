@@ -30,6 +30,8 @@ class SignupController < ApplicationController
       # to do service authoriziation for Twitter or Facebook, redirect to appropriate
       # authentication route but don't advance to the next signup step
       redirect_to "#{Settings::ShelbyAPI.url}/auth/#{params[:commit].downcase}" and return
+    elsif params[:commit] and (session[:signup][:step] == Settings::Signup.roll_selection_step)
+      set_rolls_to_follow
     elsif session[:signup][:step] == Settings::Signup.user_update_step
       if user_signed_in?
         updateUser
@@ -90,5 +92,14 @@ class SignupController < ApplicationController
       end
       Rails.logger.info @errors.inspect
       @validation_ok = false
+    end
+
+    # save rolls to follow in session for later
+    def set_rolls_to_follow
+      rolls_to_follow = params[:rolls].keys
+      # must have at least one roll followed. otherwise we should not advance to next step
+      @validation_ok = false if rolls_to_follow.empty?
+      # save rolls to follow in session to be followed after user creation.
+      session[:signup][:rolls_to_follow]  = rolls_to_follow
     end
 end
