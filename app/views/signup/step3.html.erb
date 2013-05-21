@@ -31,16 +31,22 @@
               <%= text_field_tag 'name', @user ? @user['name'] : nil, :placeholder => 'First and Last Name', :class => 'form_input' %>
             </fieldset>
 
-            <fieldset class="form_fieldset">
+            <%= field_set_tag(nil, {:class => (@errors && @errors['user'] && @errors['user']['nickname']) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
               <%= label_tag 'nickname', 'Username', :class => 'form_label' %>
-              <span class="form_error">Please enter a username</span>
+              <% if @errors && @errors['user'] && @errors['user']['nickname'] == 'already taken' %>
+                <span class="form_error">Sorry, that username is already taken</span>
+              <% else %>
+                <span class="form_error">Please enter a username</span>
+              <% end %>
               <%= text_field_tag 'nickname', @user ? @user['nickname'] : nil, :class => 'form_input' %>
-            </fieldset>
+            <% end %>
 
             <%= field_set_tag(nil, {:class => (@errors && @errors['user'] && @errors['user']['primary_email']) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
               <%= label_tag 'primary_email', 'Email Address', :class => 'form_label' %>
               <% if @errors && @errors['user'] && @errors['user']['primary_email'] == 'already taken' %>
-                  <span class="form_error">Sorry, that email address is already in use</span>
+                  <span class="form_error">Sorry, that email address is already taken</span>
+              <% elsif @errors && @errors['user'] && @errors['user']['primary_email'] == 'is invalid' %>
+
               <% else %>
                   <span class="form_error">Please enter a valid email address</span>
               <% end %>
