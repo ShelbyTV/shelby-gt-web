@@ -66,9 +66,16 @@
     }
     .signup--social {
       .button_command--share {
+        font-size: 1.5em;
+        margin: 0.25em;
+
         .icon {
           margin-left: -0.5em;
         }
+      }
+
+      .signup__img {
+        margin: 1.5em 0;
       }
     }
     .signup--profile {

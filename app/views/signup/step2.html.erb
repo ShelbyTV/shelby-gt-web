@@ -17,23 +17,37 @@
           will be updated with videos shared by friends.
         </legend>
 
+        <img src="/images/onboarding/activity.png" class="signup__img" />
+
         <fieldset class="form_fieldset">
           <%
-            attributes = {:type => 'submit', :name => 'commit', :value => 'facebook', :class => "button_primer button_command button_command--share #{@facebook_connected ? 'button_gray disabled' : 'button_facebook-blue'} one-fifth"}
+            attributes = {:type => 'submit', :name => 'commit', :value => 'facebook', :class => "button_primer button_command button_command--share #{@facebook_connected ? 'button_gray disabled' : 'button_facebook-blue'} one-quarter"}
             attributes[:disabled] = true if @facebook_connected
           %>
           <%= content_tag :button, attributes do %>
-            <span class="icon icon-facebook"></span> <span class="button_label">Facebook</span>
+            <% if @facebook_connected %>
+              <span class="button_label">Connected</span>
+            <% else %>
+              <span class="icon icon-facebook"></span> <span class="button_label">Facebook</span>
+            <% end %>
           <% end %>
 
           <%
-            attributes = {:type => 'submit', :name => 'commit', :value => 'twitter', :class => "button_primer button_command button_command--share #{@twitter_connected ? 'button_gray disabled' : 'button_twitter-blue'} one-fifth"}
+            attributes = {:type => 'submit', :name => 'commit', :value => 'twitter', :class => "button_primer button_command button_command--share #{@twitter_connected ? 'button_gray disabled' : 'button_twitter-blue'} one-quarter"}
             attributes[:disabled] = true if @twitter_connected
           %>
           <%= content_tag :button, attributes do %>
-            <span class="icon icon-twitter"></span> <span class="button_label">Twitter</span>
+            <% if @twitter_connected %>
+              <span class="button_label">Connected</span>
+            <% else %>
+              <span class="icon icon-twitter"></span> <span class="button_label">Twitter</span>
+            <% end %>
           <% end %>
         </fieldset>
+
+        <p class="form__description">
+          We never spam.
+        </p>
       </fieldset>
 
       <fieldset class="form_fieldset">
