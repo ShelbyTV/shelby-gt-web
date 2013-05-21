@@ -29,6 +29,7 @@ var startingSlide = function() {
     fx            : 'scrollHorz',
     next          : '.js-next',
     nowrap        : true,
+    pager         : '.js-pagination',
     timeout       : 0,
     speed         : 500,
     startingSlide : startingSlide()
@@ -40,7 +41,7 @@ var startingSlide = function() {
     e.preventDefault();
 
     var $this = $(this),
-        roll_id = $this.data('roll_id'),
+        roll_id = $this. data('roll_id'),
         isFollowing = !$this.hasClass('button_gray'); // button_gray == not following
 
       //naively toggle state & text of button

@@ -9,3 +9,26 @@
 .slideshow__slide {
   width: 100%;
 }
+
+//this is somewhat hacky because it exploits malsup.cycle
+.slideshow__pagination {
+  margin-bottom: 0em;
+
+  & > a {
+    background-color: $inset;
+    border-radius: 4px;
+    border: 1px solid $inset;
+    display: inline-block;
+    color: transparent;
+    font: 0/0 a;
+    height: 5px;
+    margin: 3px;
+    width: 5px;
+    text-indent: -5000px;
+  }
+
+  & > .activeSlide {
+    background-color: $ui-soft-black;
+    border-color: $ui-soft-black;
+  }
+}

@@ -12,6 +12,7 @@
   <div class="signup__body">
     <%= form_tag do %>
       <fieldset class="form_fieldset">
+        <div class="slideshow__pagination js-pagination"></div>
         <div class="slideshow js-slideshow">
           <% Settings::Signup.roll_categories.each_with_index do |category,cat_index| %>
             <div class="slideshow__slide" data-index="<%= cat_index %>" data-category="<%= category['title'] %>">
