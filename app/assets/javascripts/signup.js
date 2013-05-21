@@ -23,6 +23,7 @@
 
     $this.toggleClass('button_gray',!$this.hasClass('button_gray'));
     $this.toggleClass('button_green',!$this.hasClass('button_gray'));
+
   });
 
 })();

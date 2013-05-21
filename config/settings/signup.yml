@@ -10,27 +10,39 @@ defaults: &defaults
       rolls : [
         {
           nickname : 'VICE',
-          description : 'Exploring uncomfortable truths'
+          personal_roll_id : '4f907a9b9a725b46010005c7',
+          description : 'Exploring uncomfortable truths',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Buzzfeed',
-          description : 'Social content on the web'
+          personal_roll_id : '4f9577c488ba6b15ec0084c7',
+          description : 'Social content on the web',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Creators Project',
-          description : 'Tech in music, art, film, and design'
+          personal_roll_id : '4fbbc4211c1cf42b91002eac',
+          description : 'Tech in music, art, film, and design',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Blank on Blank',
-          description : 'Unheard interviews with American icons'
+          personal_roll_id : '',
+          description : 'Unheard interviews with American icons',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'The Daily What',
-          description : 'Hot off the Internets'
+          personal_roll_id : '4fa28d849a725b79c9000228',
+          description : 'Hot off the Internets',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'The Onion',
-          description : "America's finest news satire"
+          personal_roll_id : '4fc532169a725b2999000354',
+          description : "America's finest news satire",
+          avatar : '/images/avatar.jpg'
         }
       ]
     },
@@ -38,28 +50,40 @@ defaults: &defaults
       title : 'inspired',
       rolls : [
         {
-          nickame : 'TED',
-          description : 'Ideas worth spreading'
+          nickname : 'TED',
+          personal_roll_id : '4fa054ff88ba6b09c8000e93',
+          description : 'Ideas worth spreading',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'iamOTHER',
-          description : 'Thinkers, innovators and outcasts'
+          personal_roll_id : '',
+          description : 'Thinkers, innovators and outcasts',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Life+Times',
-          description : "JAY Z's digital experience"
+          personal_roll_id : '',
+          description : "JAY Z's digital experience",
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Reserve Channel',
-          description : 'Extraordinary people and places'
+          personal_roll_id : '5005b00e9a725b0e150178fa',
+          description : 'Extraordinary people and places',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : "Jamie Oliver's Food Tube",
-          description : 'Great recipes'
+          personal_roll_id : '',
+          description : 'Great recipes',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'New York Times',
-          description : 'Where the conversation begins'
+          personal_roll_id : '50522466b415cc5b81002080',
+          description : 'Where the conversation begins',
+          avatar : '/images/avatar.jpg'
         }
       ]
     },
@@ -68,27 +92,39 @@ defaults: &defaults
       rolls : [
         {
           nickname : 'GQ',
-          description : 'Look sharp + live smart'
+          personal_roll_id : '',
+          description : 'Look sharp + live smart',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Vogue',
-          description : 'Defining the culture of fashion'
+          personal_roll_id : '',
+          description : 'Defining the culture of fashion',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Pitchfork',
-          description : 'Essential guide to indie music'
+          personal_roll_id : '4fa3e6309a725b3689001792',
+          description : 'Essential guide to indie music',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Above Average',
-          description : 'High-quality laughs'
+          personal_roll_id : '50951b06b415cc567800aa16',
+          description : 'High-quality laughs',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Grantland',
-          description : 'Sports and pop culture'
+          personal_roll_id : '',
+          description : 'Sports and pop culture',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'IGN',
-          description : 'Inside scoop on videogames'
+          personal_roll_id : '',
+          description : 'Inside scoop on videogames',
+          avatar : '/images/avatar.jpg'
         }
       ]
     },
@@ -97,27 +133,39 @@ defaults: &defaults
       rolls : [
         {
           nickname : 'GoPro',
-          description : "World's most versatile camera"
+          personal_roll_id : '4f91700d88ba6b2aab000fba',
+          description : "World's most versatile camera",
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Red Bull',
-          description : "Prepare for maximum 'stoke factor'"
+          personal_roll_id : '4fb413bb9a725b650900195a',
+          description : "Prepare for maximum 'stoke factor'",
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'NetworkA',
-          description : 'Intersection of Surf, Skate, Snow, BMX, Ski & Moto'
+          personal_roll_id : '4f987e9188ba6b58500122da',
+          description : 'Intersection of Surf, Skate, Snow, BMX, Ski & Moto',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'RIDE',
-          description: '22 skateboarding shows'
+          personal_roll_id : '',
+          description: '22 skateboarding shows',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Drive',
-          description : 'The culture of cars'
+          personal_roll_id : '4f99e5069a725b1c7501c038',
+          description : 'The culture of cars',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Teton Gravity Research',
-          description : 'Ski and snowboard'
+          personal_roll_id : '512d1f15b415cc5d8c0001cf',
+          description : 'Ski and snowboard',
+          avatar : '/images/avatar.jpg'
         }
       ]
     },
@@ -126,27 +174,39 @@ defaults: &defaults
       rolls : [
         {
           nickname : 'PBS Idea Channel',
-          description : 'Pop culture, technology and art'
+          personal_roll_id : '4faabca99a725b5cd50026a2',
+          description : 'Pop culture, technology and art',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Wired',
-          description : 'Intersection of technology with all else'
+          personal_roll_id : '',
+          description : 'Intersection of technology with all else',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'The Verge',
-          description : 'Intersection of technology, science, art, & culture'
+          personal_roll_id : '4fa1591f88ba6b78da0008b7',
+          description : 'Intersection of technology, science, art, & culture',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Crash Course',
-          description : 'Six awesome courses in from awesome channel'
+          personal_roll_id : '4f95f29f88ba6b72c2004aed',
+          description : 'Six awesome courses in from awesome channel',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Sci Show',
-          description : 'Science news and history'
+          personal_roll_id : '',
+          description : 'Science news and history',
+          avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'THNKR',
-          description : 'Extraordinary access to the people, stories, ideas'
+          personal_roll_id : '',
+          description : 'Extraordinary access to the people, stories, ideas',
+          avatar : '/images/avatar.jpg'
         }
       ]
     }
