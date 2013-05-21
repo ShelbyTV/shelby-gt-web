@@ -18,7 +18,7 @@
         </legend>
         <div class="slideshow js-slideshow">
           <% Settings::Signup.roll_categories.each_with_index do |category,index| %>
-            <div class="slideshow__slide" data-category="<%= category['title'] %>">
+            <div class="slideshow__slide" data-index="<%= index %>" data-category="<%= category['title'] %>">
               <ul class="list">
                 <% category['rolls'].each do |roll| %>
                   <li class="list__item one-half">
@@ -29,7 +29,7 @@
                         </button>
                       </div><!-- eo media_image--rev -->
 
-                      <div class="image_module media_image roll_card__avatar" data-follow="false" data-roll_id="<%= roll["personal_roll_id"] %>" style="background-image: url('<%= roll["avatar"] %>');" role="img">
+                      <div class="image_module media_image roll_card__avatar" data-roll_id="<%= roll["personal_roll_id"] %>" style="background-image: url('<%= roll["avatar"] %>');" role="img">
                         <img src="<%= roll["avatar"] %>" class="visuallyhidden" title="<%= roll["nickname"] %>'s avatar" />
                       </div><!-- eo media_image -->
 
@@ -52,7 +52,7 @@
         </div><!-- eo slideshow -->
       </fieldset>
 
-      <%= submit_tag("Next", :class => "button_primer button_command button_command--wide button_green js-advance-slideshow") %>
+      <%= submit_tag("Next", :class => "button_primer button_command button_command--wide button_green js-next js-advance-slideshow") %>
     <% end %>
 
   </div>
