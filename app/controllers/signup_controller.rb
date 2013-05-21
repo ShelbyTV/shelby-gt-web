@@ -1,24 +1,26 @@
 class SignupController < ApplicationController
   def index
 
+    session[:signup] ||= {}
+    if params[:step]
+      session[:signup][:step] = params[:step].to_i
+    elsif session[:signup][:step].nil?
+      # if neither the params nor the session tells us what step we're on,
+      # we're on the first step
+      session[:signup][:step] = 1
+    end
+
     if user_signed_in?
-      unless session[:signup] && session[:signup][:step] && session[:signup][:step] >= Settings::Signup.service_authentication_step
+      unless session[:signup][:step] >= Settings::Signup.service_authentication_step
         # if the session doesn't tell us that we're in the authenticated portion of signup flow,
         # a logged in user should be redirected into the shelby Backbone app
         redirect_to root_url and return
       else
         # otherwise we need to fetch the user's info to be used in our form
         @user = Shelby::API.get_current_user(request.headers['HTTP_COOKIE'])
-        @facebook_connected = @user.authentications.any { |a| a.provider == 'facebook' }
-        @twitter_connected = @user.authentications.any { |a| a.provider == 'twitter' }
+        @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
+        @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
       end
-    end
-
-    # if the session doesn't tell us what step we're on,
-    # we're on the first step
-    session[:signup] ||= {}
-    if session[:signup][:step].nil?
-      session[:signup][:step] = 1
     end
 
     # do parameter handling for individual steps before we decide if we can
