@@ -3,6 +3,8 @@
 
 //= require ./jquery-plugins/jquery.cycle.js
 
+//on step 4 post array save to a hidden input tag
+
 var NEXT = true;
 
 var onBefore = function(foo,bar,baz){
@@ -41,16 +43,21 @@ var startingSlide = function() {
     startingSlide : startingSlide()
   });
 
-  var $followUnfollow = $('.js-followOrUnfollow').data('follow',false);
+  var $followUnfollow = $('.js-followOrUnfollow');
 
   $followUnfollow.on('click',function(e){
     e.preventDefault();
 
-    var $this = $(this);
+    var $this = $(this),
+        roll_id = $this.data('roll_id'),
+        isFollowing = !$this.hasClass('button_gray'); // button_gray == not following
 
-    $this.toggleClass('button_gray',!$this.hasClass('button_gray'));
-    $this.toggleClass('button_green',!$this.hasClass('button_gray'));
+      //naively toggle state & text of button
+      $this.toggleClass('button_green button_gray')
+           .text(isFollowing ? 'Follow' : 'Unfollow');
 
+      //change value of hidden input associated with button
+      $('#roll_' + roll_id).val(!isFollowing);
   });
 
   $(window).on('hashchange',function(e){
