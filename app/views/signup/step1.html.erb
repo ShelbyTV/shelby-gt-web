@@ -17,31 +17,145 @@
           by awesome creators to your stream.
         </legend>
         <div class="slideshow js-slideshow">
-          <div class="slideshow__slide">
+          <div class="slideshow__slide" data-slide="surprised">
             <ul class="list">
-              <li class="one-half">
-                <div class="media_module roll_card clearfix">
-                  <div class="media_image media_image--rev">
-                    <button class="button_primer button_command button_command--wide button_gray">
-                      Follow
-                    </button>
-                  </div><!-- eo media_image--rev -->
+              <%
+                surprised = [
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  },
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  },
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  },
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  },
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  },
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  }
+                ]
+              %>
+              <% surprised.each do |roll| %>
+                <li class="list__item one-half">
+                  <div class="media_module roll_card clearfix">
+                    <div class="media_image media_image--rev">
+                      <button class="button_primer button_command button_command--wide button_gray js-followOrUnfollow">
+                        Follow
+                      </button>
+                    </div><!-- eo media_image--rev -->
 
-                  <div class="image_module media_image roll_card__avatar" style="background-image: url('/images/avatar.jpg');" role="img">
-                    <img src="/images/avatar.jpg" class="visuallyhidden" />
-                  </div><!-- eo media_image -->
+                    <div class="image_module media_image roll_card__avatar" style="background-image: url('<%= roll["avatar"] %>');" role="img">
+                      <img src="<%= roll["avatar"] %>" class="visuallyhidden" />
+                    </div><!-- eo media_image -->
 
-                  <div class="media_body">
-                    <h3 class="roll_card__h1">
-                      VICE
-                    </h3>
+                    <div class="media_body">
+                      <h3 class="roll_card__h1">
+                        <%= roll["title"] %>
+                      </h3>
 
-                    <p class="roll_card__block">
-                      Exploring uncomfortable truths
-                    </p>
-                  </div><!-- media_body -->
-                </div><!-- eo roll_card -->
-              </li>
+                      <p class="roll_card__block">
+                        <%= roll["description"] %>
+                      </p>
+                    </div><!-- media_body -->
+                  </div><!-- eo roll_card -->
+                </li>
+              <% end %>
+
+            </ul><!-- eo list -->
+          </div><!-- eo slide -->
+
+          <div class="slideshow__slide" data-slide="inspired">
+            <ul class="list">
+              <%
+                surprised = [
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  },
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  },
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  },
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  },
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  },
+                  {
+                    'title' => 'VICE',
+                    'personal_roll_id' => '4f907a9b9a725b46010005c7',
+                    'avatar' => '/images/avatar.jpg',
+                    'description' => 'Exploring uncomfortable truths'
+                  }
+                ]
+              %>
+              <% surprised.each do |roll| %>
+                <li class="list__item one-half">
+                  <div class="media_module roll_card clearfix">
+                    <div class="media_image media_image--rev">
+                      <button class="button_primer button_command button_command--wide button_gray">
+                        Follow
+                      </button>
+                    </div><!-- eo media_image--rev -->
+
+                    <div class="image_module media_image roll_card__avatar" style="background-image: url('<%= roll["avatar"] %>');" role="img">
+                      <img src="<%= roll["avatar"] %>" class="visuallyhidden" />
+                    </div><!-- eo media_image -->
+
+                    <div class="media_body">
+                      <h3 class="roll_card__h1">
+                        <%= roll["title"] %>
+                      </h3>
+
+                      <p class="roll_card__block">
+                        <%= roll["description"] %>
+                      </p>
+                    </div><!-- media_body -->
+                  </div><!-- eo roll_card -->
+                </li>
+              <% end %>
+
             </ul><!-- eo list -->
           </div><!-- eo slide -->
 

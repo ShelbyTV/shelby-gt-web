@@ -58,6 +58,11 @@
     //modifiers (stages)
     .signup--content {
       width: 73em;
+
+      //non-normative overrides
+      .list__item {
+        float: left;
+      }
     }
     .signup--social {
       .button_command--share {
