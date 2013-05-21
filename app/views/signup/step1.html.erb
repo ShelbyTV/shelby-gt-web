@@ -1,3 +1,9 @@
+<div style="border:1px solid red">
+  <% Settings::SignupCategories["roll_categories"].each_with_index do |category,index| %>
+    <p><%= index %></p>
+    <p><%= category %></p>
+  <% end %>
+</div>
 <div class="signup signup--content" role="main">
   <div class="signup__head">
     <h2 class="signup__h2">
