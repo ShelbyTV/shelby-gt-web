@@ -19,6 +19,11 @@ gem "settingslogic"
 gem 'httparty'
 
 #
+# ---------- Smarter cookie parsing
+#
+gem 'cookiejar'
+
+#
 # ---------- Mobile Search
 #
 gem 'youtube_it'
