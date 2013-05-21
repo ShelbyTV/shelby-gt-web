@@ -9,6 +9,8 @@ class SignupController < ApplicationController
       else
         # otherwise we need to fetch the user's info to be used in our form
         @user = Shelby::API.get_current_user(request.headers['HTTP_COOKIE'])
+        @facebook_connected = @user.authentications.any { |a| a.provider == 'facebook' }
+        @twitter_connected = @user.authentications.any { |a| a.provider == 'twitter' }
       end
     end
 
@@ -22,7 +24,11 @@ class SignupController < ApplicationController
     # do parameter handling for individual steps before we decide if we can
     # advance to the next step
     @validation_ok = true
-    if session[:signup][:step] == Settings::Signup.user_update_step
+    if params[:commit] && (params[:commit] == 'facebook' || params[:commit] == 'twitter')
+      # to do service authoriziation for Twitter or Facebook, redirect to appropriate
+      # authentication route but don't advance to the next signup step
+      redirect_to "#{Settings::ShelbyAPI.url}/auth/#{params[:commit].downcase}" and return
+    elsif session[:signup][:step] == Settings::Signup.user_update_step
       processUserUpdateStep
     end
 
@@ -31,17 +37,12 @@ class SignupController < ApplicationController
       Rails.logger.info "Advancing"
     end
 
-
     # some steps in the flow require special handling
     if session[:signup][:step] > Settings::Signup.num_steps
       # if we've passed the last step, enter the shelby
       # backbone app proper and clear the session signup progress state
       session[:signup].delete(:step)
       redirect_to root_url and return
-    elsif params[:commit] && (params[:commit] == 'Facebook' || params[:commit] == 'Twitter')
-      # service authoriziation needs special handling to go through authentication first
-      # if the user connected an external service like Twitter
-      redirect_to "#{Settings::ShelbyAPI.url}/auth/#{params[:commit].downcase}" and return
     end
 
     # for every normal step, we need to set the step parameter and render the page
