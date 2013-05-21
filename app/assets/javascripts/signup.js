@@ -47,7 +47,7 @@ var startingSlide = function() {
 
       //naively toggle state & text of button
       $this.toggleClass('button_green button_gray')
-           .text(isFollowing ? 'Follow' : 'Followingi');
+           .text(isFollowing ? 'Follow' : 'Following');
 
       //change value of hidden input associated with button
       $('#roll_' + roll_id).val(!isFollowing);
