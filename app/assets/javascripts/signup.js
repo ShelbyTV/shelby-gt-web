@@ -8,7 +8,7 @@ var NEXT = true;
 var onBefore = function(foo,bar,baz){
   // console.log('onBefore',this);
   var $index = $(this).data('index');
-  $('.js-next').attr('disabled',($index >= 4));
+  // $('.js-next').attr('disabled',($index >= 4));
 };
 
 var onAfter = function(foo,bar,baz){
