@@ -3,6 +3,8 @@
 
 //= require ./jquery-plugins/jquery.cycle.js
 
+var NEXT = true;
+
 var onBefore = function(foo,bar,baz){
   // console.log('onBefore',this);
   var $index = $(this).data('index');
@@ -18,22 +20,25 @@ var onAfter = function(foo,bar,baz){
   // console.log($index, ($index >= 4));
 };
 
+var startingSlide = function() {
+  var num = +(window.location.hash.split('#')[1]);
+  return (!isNaN(num) && num >= 0) ? num : 0;
+};
+
 (function(){
 
   $slideshow = $('.js-slideshow');
 
-  var startingSlide = function() {
-    var num = +(window.location.hash.split('#')[1]);
-    return (!isNaN(num) && num >= 0) ? num : 0;
-  };
 
   $slideshow.cycle({
-    fx:   'scrollLeft',
-    next: '.js-advance-slideshow',
-    timeout: 0,
-    before: onBefore,
-    after: onAfter,
-    startingSlide: startingSlide()
+    after         : onAfter,
+    before        : onBefore,
+    fx            :   'scrollLeft',
+    next          : '.js-advance-slideshow',
+    nowrap        : true,
+    timeout       : 0,
+    speed         : 500,
+    startingSlide : startingSlide()
   });
 
   var $followUnfollow = $('.js-followOrUnfollow').data('follow',false);
