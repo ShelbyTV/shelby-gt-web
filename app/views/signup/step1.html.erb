@@ -1,7 +1,7 @@
 <div class="signup signup--content" role="main">
   <div class="signup__head">
     <h2 class="signup__h2">
-      Step 1 of 3: Content
+      Step 1 of 3
     </h2>
 
     <h1 class="signup__h1">
@@ -12,13 +12,13 @@
   <div class="signup__body">
     <%= form_tag do %>
       <fieldset class="form_fieldset">
-        <legend class="form__legend">
-          Select from categories below and we'll add videos <br/>
-          by awesome creators to your stream.
-        </legend>
         <div class="slideshow js-slideshow">
           <% Settings::Signup.roll_categories.each_with_index do |category,cat_index| %>
             <div class="slideshow__slide" data-index="<%= cat_index %>" data-category="<%= category['title'] %>">
+              <legend class="form__legend">
+                <%= category['description'].html_safe %>
+              </legend>
+
               <ul class="list">
                 <% category['rolls'].each_with_index do |roll,roll_index| %>
                   <li class="list__item one-half">
