@@ -17,11 +17,15 @@ module Shelby
     end
 
     def self.update_user(id, attributes, cookie, token)
-      put("/user/#{id}", { :body => attributes, :headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
+      headers = { 'Cookie' => cookie }
+      headers['X-CSRF-Token'] = token if token
+      put("/user/#{id}", { :body => attributes, :headers => headers })
     end
 
     def self.create_user(attributes, cookie, token)
-      post("/user", { :body => attributes, :headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
+      headers = { 'Cookie' => cookie }
+      headers['X-CSRF-Token'] = token if token
+      post("/user", { :body => attributes, :headers => headers })
     end
 
     def self.join_roll(roll_id, cookie, token)
