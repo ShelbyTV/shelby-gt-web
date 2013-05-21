@@ -3,8 +3,6 @@
 
 //= require ./jquery-plugins/jquery.cycle.js
 
-//on step 4 post array save to a hidden input tag
-
 var onBefore = function(curr,next,opts,d){
 };
 
@@ -50,7 +48,7 @@ var startingSlide = function() {
            .text(isFollowing ? 'Follow' : 'Following');
 
       //change value of hidden input associated with button
-      $('#roll_' + roll_id).val(!isFollowing);
+      $('#rolls_' + roll_id).attr('checked', !isFollowing);
   });
 
   $(window).on('hashchange',function(e){
