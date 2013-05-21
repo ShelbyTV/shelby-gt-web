@@ -29,6 +29,7 @@ var startingSlide = function() {
     fx            : 'scrollHorz',
     next          : '.js-next',
     nowrap        : true,
+    manualTrump   : false,
     pager         : '.js-pagination',
     timeout       : 0,
     speed         : 500,
