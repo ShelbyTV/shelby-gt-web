@@ -24,6 +24,10 @@ module Shelby
       post("/user", { :body => attributes, :headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
     end
 
+    def self.join_roll(roll_id, cookie, token)
+      post("/roll/#{roll_id}/join", { :headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
+    end
+
     def self.get_user_stats(id, cookie)
       s = get("/user/#{id}/stats?num_frames=3", :headers => {'Cookie' => cookie}).parsed_response
       return s['status'] == 200 ? s['result'] : nil
