@@ -28,7 +28,7 @@ defaults: &defaults
         },
         {
           nickname : 'Blank on Blank',
-          personal_roll_id : '',
+          personal_roll_id : '4fa41c4f88ba6b0d4e00130f',
           description : 'Unheard interviews with American icons',
           avatar : '/images/avatar.jpg'
         },
@@ -57,13 +57,13 @@ defaults: &defaults
         },
         {
           nickname : 'iamOTHER',
-          personal_roll_id : '',
+          personal_roll_id : '519baa7eb415cc0191000007',
           description : 'Thinkers, innovators and outcasts',
           avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Life+Times',
-          personal_roll_id : '',
+          personal_roll_id : '519bab29b415cc0191000077',
           description : "JAY Z's digital experience",
           avatar : '/images/avatar.jpg'
         },
@@ -75,7 +75,7 @@ defaults: &defaults
         },
         {
           nickname : "Jamie Oliver's Food Tube",
-          personal_roll_id : '',
+          personal_roll_id : '4f9d9c1a88ba6b56aa00150f',
           description : 'Great recipes',
           avatar : '/images/avatar.jpg'
         },
@@ -92,13 +92,13 @@ defaults: &defaults
       rolls : [
         {
           nickname : 'GQ',
-          personal_roll_id : '',
+          personal_roll_id : '519bac7cb415cc01910000af',
           description : 'Look sharp + live smart',
           avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'Vogue',
-          personal_roll_id : '',
+          personal_roll_id : '4fa062869a725b0c2c0010fc',
           description : 'Defining the culture of fashion',
           avatar : '/images/avatar.jpg'
         },
@@ -116,13 +116,13 @@ defaults: &defaults
         },
         {
           nickname : 'Grantland',
-          personal_roll_id : '',
+          personal_roll_id : '519bada3b415cc01910000e5',
           description : 'Sports and pop culture',
           avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'IGN',
-          personal_roll_id : '',
+          personal_roll_id : '4f987a5e9a725b032b002f13',
           description : 'Inside scoop on videogames',
           avatar : '/images/avatar.jpg'
         }
@@ -151,7 +151,7 @@ defaults: &defaults
         },
         {
           nickname : 'RIDE',
-          personal_roll_id : '',
+          personal_roll_id : '4f9ee11b9a725b6605001713',
           description: '22 skateboarding shows',
           avatar : '/images/avatar.jpg'
         },
@@ -180,7 +180,7 @@ defaults: &defaults
         },
         {
           nickname : 'Wired',
-          personal_roll_id : '',
+          personal_roll_id : '4f9a08909a725b43ad00f798',
           description : 'Intersection of technology with all else',
           avatar : '/images/avatar.jpg'
         },
@@ -198,13 +198,13 @@ defaults: &defaults
         },
         {
           nickname : 'Sci Show',
-          personal_roll_id : '',
+          personal_roll_id : '4f9731be88ba6b5309025c59',
           description : 'Science news and history',
           avatar : '/images/avatar.jpg'
         },
         {
           nickname : 'THNKR',
-          personal_roll_id : '',
+          personal_roll_id : '4fc8f77f88ba6b0881000995',
           description : 'Extraordinary access to the people, stories, ideas',
           avatar : '/images/avatar.jpg'
         }

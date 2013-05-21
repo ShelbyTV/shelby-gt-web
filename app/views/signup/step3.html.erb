@@ -37,11 +37,15 @@
               <%= text_field_tag 'nickname', @user ? @user['nickname'] : nil, :class => 'form_input' %>
             </fieldset>
 
-            <fieldset class="form_fieldset">
+            <%= field_set_tag(nil, {:class => (@errors && @errors['user'] && @errors['user']['primary_email']) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
               <%= label_tag 'primary_email', 'Email Address', :class => 'form_label' %>
-              <span class="form_error">Please enter an email address</span>
+              <% if @errors && @errors['user'] && @errors['user']['primary_email'] == 'already taken' %>
+                  <span class="form_error">Sorry, that email address is already in use</span>
+              <% else %>
+                  <span class="form_error">Please enter a valid email address</span>
+              <% end %>
               <%= email_field_tag 'primary_email', @user ? @user['primary_email'] : nil, :placeholder => 'email@address.com', :class => 'form_input' %>
-            </fieldset>
+            <% end %>
 
             <fieldset class="form_fieldset">
               <%= label_tag 'password', 'Password', :class => 'form_label' %>
