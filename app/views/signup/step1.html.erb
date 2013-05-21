@@ -17,19 +17,20 @@
           by awesome creators to your stream.
         </legend>
         <div class="slideshow js-slideshow">
-          <% Settings::Signup.roll_categories.each_with_index do |category,index| %>
-            <div class="slideshow__slide" data-index="<%= index %>" data-category="<%= category['title'] %>">
+          <% Settings::Signup.roll_categories.each_with_index do |category,cat_index| %>
+            <div class="slideshow__slide" data-index="<%= cat_index %>" data-category="<%= category['title'] %>">
               <ul class="list">
-                <% category['rolls'].each do |roll| %>
+                <% category['rolls'].each_with_index do |roll,roll_index| %>
                   <li class="list__item one-half">
-                    <div class="media_module roll_card clearfix">
+                    <div class="media_module roll_card clearfix" data-roll_id="<%= roll["personal_roll_id"] %>">
+                      <%= hidden_field_tag "roll[#{roll['personal_roll_id']}]", false %>
                       <div class="media_image media_image--rev">
-                        <button class="button_primer button_command button_command--wide button_gray js-followOrUnfollow">
+                        <button class="button_primer button_command button_gray roll_card__button js-followOrUnfollow" data-roll_id="<%= roll["personal_roll_id"] %>">
                           Follow
                         </button>
                       </div><!-- eo media_image--rev -->
 
-                      <div class="image_module media_image roll_card__avatar" data-roll_id="<%= roll["personal_roll_id"] %>" style="background-image: url('<%= roll["avatar"] %>');" role="img">
+                      <div class="image_module media_image roll_card__avatar" style="background-image: url('<%= roll["avatar"] %>');" role="img">
                         <img src="<%= roll["avatar"] %>" class="visuallyhidden" title="<%= roll["nickname"] %>'s avatar" />
                       </div><!-- eo media_image -->
 
