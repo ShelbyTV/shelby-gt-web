@@ -16,45 +16,39 @@
           Select from categories below and we'll add videos <br/>
           by awesome creators to your stream.
         </legend>
+        <div class="slideshow js-slideshow">
+          <div class="slideshow__slide">
+            <ul class="list">
+              <li class="one-half">
+                <div class="media_module roll_card clearfix">
+                  <div class="media_image media_image--rev">
+                    <button class="button_primer button_command button_command--wide button_gray">
+                      Follow
+                    </button>
+                  </div><!-- eo media_image--rev -->
 
-        <ul class="list">
-          <li class="one-half">
-            <div class="roll_card">
-              <h3 class="roll_card__h1">
-                Breaking News
-              </h3>
+                  <div class="image_module media_image roll_card__avatar" style="background-image: url('/images/avatar.jpg');" role="img">
+                    <img src="/images/avatar.jpg" class="visuallyhidden" />
+                  </div><!-- eo media_image -->
 
-              <p class="roll_card__block">
-                Reuters, Associated Press, Al Jazeera, and more…
-              </p>
+                  <div class="media_body">
+                    <h3 class="roll_card__h1">
+                      VICE
+                    </h3>
 
-              <div class="media_module clearfix">
-                <div class="media_image media_image--rev">
-                  <button class="button_primer button_command button_command--wide button_gray">
-                    Select
-                  </button>
-                </div><!-- eo media_image -->
+                    <p class="roll_card__block">
+                      Exploring uncomfortable truths
+                    </p>
+                  </div><!-- media_body -->
+                </div><!-- eo roll_card -->
+              </li>
+            </ul><!-- eo list -->
+          </div><!-- eo slide -->
 
-                <div class="media_body">
-                  <ul class="list list--inline">
-                    <li class="">
-                      <img src="/images/avatar.jpg" class="avatar avatar--small" />
-                    </li>
-                    <li class="">
-                      <img src="/images/avatar.jpg" class="avatar avatar--small" />
-                    </li>
-                    <li class="">
-                      <img src="/images/avatar.jpg" class="avatar avatar--small" />
-                    </li>
-                  </ul>
-                </div><!-- eo media_body -->
-              </div><!-- eo media_module -->
-            </div><!-- eo roll_card -->
-          </li>
-        </ul>
+        </div><!-- eo slideshow -->
       </fieldset>
 
-      <%= submit_tag("Next", :class => "button_primer button_command button_command--wide button_green") %>
+      <%= submit_tag("Next", :class => "button_primer button_command button_command--wide button_green js-advance-slideshow") %>
     <% end %>
 
   </div>

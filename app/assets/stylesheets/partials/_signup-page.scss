@@ -57,13 +57,14 @@
 }
     //modifiers (stages)
     .signup--content {
+      width: 73em;
+    }
+    .signup--social {
       .button_command--share {
         .icon {
           margin-left: -0.5em;
         }
       }
-    }
-    .signup--social {
     }
     .signup--profile {
       width: 33em;
