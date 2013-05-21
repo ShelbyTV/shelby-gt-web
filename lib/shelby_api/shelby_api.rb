@@ -20,6 +20,10 @@ module Shelby
       put("/user/#{id}", { :body => attributes, :headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
     end
 
+    def self.create_user(attributes, cookie, token)
+      post("/user", { :body => attributes, :headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
+    end
+
     def self.get_user_stats(id, cookie)
       s = get("/user/#{id}/stats?num_frames=3", :headers => {'Cookie' => cookie}).parsed_response
       return s['status'] == 200 ? s['result'] : nil

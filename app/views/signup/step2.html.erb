@@ -18,11 +18,19 @@
         </legend>
 
         <fieldset class="form_fieldset">
-          <%= content_tag :button, :type => 'submit', :name => 'commit', :value => 'facebook', :class => 'button_primer button_command button_command--share button_facebook-blue one-fifth' do %>
+          <%
+            attributes = {:type => 'submit', :name => 'commit', :value => 'facebook', :class => "button_primer button_command button_command--share #{@facebook_connected ? 'button_gray disabled' : 'button_facebook-blue'} one-fifth"}
+            attributes[:disabled] = true if @facebook_connected
+          %>
+          <%= content_tag :button, attributes do %>
             <span class="icon icon-facebook"></span> <span class="button_label">Facebook</span>
           <% end %>
 
-          <%= content_tag :button, :type => 'submit', :name => 'commit', :value => 'twitter', :class => 'button_primer button_command button_command--share button_twitter-blue one-fifth' do %>
+          <%
+            attributes = {:type => 'submit', :name => 'commit', :value => 'twitter', :class => "button_primer button_command button_command--share #{@twitter_connected ? 'button_gray disabled' : 'button_twitter-blue'} one-fifth"}
+            attributes[:disabled] = true if @twitter_connected
+          %>
+          <%= content_tag :button, attributes do %>
             <span class="icon icon-twitter"></span> <span class="button_label">Twitter</span>
           <% end %>
         </fieldset>
