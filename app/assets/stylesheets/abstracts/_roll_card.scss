@@ -26,11 +26,15 @@
 //  Elements
 //------------------------------------------------------------------------------
 .roll_card__h1 {
+  @include ellipsis;
+
   font-size: 1.7em;
   line-height: 2;
 }
 
 .roll_card__block {
+  @include ellipsis;
+
   margin-bottom: 1.5em;
 }
 
