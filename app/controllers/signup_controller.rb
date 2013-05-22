@@ -17,7 +17,7 @@ class SignupController < ApplicationController
         redirect_to root_url and return
       else
         # otherwise we need to fetch the user's info to be used in our form
-        @user = Shelby::API.get_current_user(request.headers['HTTP_COOKIE'])
+        @user = Shelby::API.get_current_user(Shelby::CookieUtils.generate_cookie_string(cookies))
         @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
         @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
         followRolls! unless @rolls_followed
@@ -66,7 +66,7 @@ class SignupController < ApplicationController
     # prevent advancing to the next step if something fails
     def updateUser
       attributes = params.select { |k,v| ['nickname', 'name', 'primary_email'].include? k }
-      r = Shelby::API.update_user(@user['id'], attributes, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
+      r = Shelby::API.update_user(@user['id'], attributes, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
       # proxy the cookies
       Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
       if r.code != 200
@@ -85,7 +85,7 @@ class SignupController < ApplicationController
     # prevent advancing to the next step if something fails
     def createUser
       attributes = params.select { |k,v| ['nickname', 'name', 'primary_email', 'password'].include? k }
-      r = Shelby::API.create_user({:user => attributes}, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
+      r = Shelby::API.create_user({:user => attributes}, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
       # proxy the cookies
       Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
       if r.code != 200
