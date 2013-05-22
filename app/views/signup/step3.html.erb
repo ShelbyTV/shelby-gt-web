@@ -10,7 +10,7 @@
   </div>
 
   <div class="signup__body">
-    <%= form_tag({},{ :class => 'form_module' }) do %>
+    <%= form_tag({},{ :id => 'user_form', :class => 'form_module' }) do %>
       <fieldset class="form_fieldset">
         <legend class="form__legend">
           Fill in details below and you'll be able to watch <br />
@@ -27,7 +27,7 @@
           <div class="media_body">
             <fieldset class="form_fieldset">
               <%= label_tag 'name', 'Full Name', :class => 'form_label' %>
-              <span class="form_error">Please enter a name</span>
+              <span class="form_error">Please enter your name</span>
               <%= text_field_tag 'name', @user ? @user['name'] : nil, :placeholder => 'First and Last Name', :class => 'form_input' %>
             </fieldset>
 
@@ -55,8 +55,8 @@
 
             <fieldset class="form_fieldset">
               <%= label_tag 'password', 'Password', :class => 'form_label' %>
-              <span class="form_error">Please enter a password</span>
-              <%= password_field_tag 'password', nil, :placeholder => '*******', :class => 'form_input' %>
+              <span class="form_error">Password must be at least five characters</span>
+              <%= password_field_tag 'password', nil, :placeholder => '*****', :class => 'form_input' %>
               <span class="form__description">We never spam.</span>
             </fieldset>
 
