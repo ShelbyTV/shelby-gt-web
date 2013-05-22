@@ -69,7 +69,9 @@ class SignupController < ApplicationController
     # for the user update step, try to update the user, and
     # prevent advancing to the next step if something fails
     def updateUser
-      attributes = params.select { |k,v| ['nickname', 'name', 'primary_email'].include? k }
+      attributes = params.select { |k,v| ['nickname', 'name', 'primary_email', 'password'].include? k }
+      # api requires double entry of password for confirmation so we'll fake it
+      attributes['password_confirmation'] = attributes['password']
       r = Shelby::API.update_user(@user['id'], attributes, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
       # proxy the cookies
       Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
@@ -82,7 +84,6 @@ class SignupController < ApplicationController
       else
         @user = r['result']
       end
-      Rails.logger.info @errors.inspect
     end
 
     # for the user update step, try to create a new user with username and password, and
@@ -101,7 +102,6 @@ class SignupController < ApplicationController
       else
         @user = r['result']
       end
-      Rails.logger.info @errors.inspect
     end
 
     def setOnboardingComplete!

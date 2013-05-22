@@ -56,7 +56,7 @@
             <fieldset class="form_fieldset">
               <%= label_tag 'password', 'Password', :class => 'form_label' %>
               <span class="form_error">Password must be at least five characters</span>
-              <%= password_field_tag 'password', nil, :placeholder => '*****', :class => 'form_input' %>
+              <%= password_field_tag 'password', @user && @user['password'] ? @user['password'] : nil, :placeholder => '*****', :class => 'form_input' %>
               <span class="form__description">We never spam.</span>
             </fieldset>
 
