@@ -55,7 +55,7 @@
         </div><!-- eo slideshow -->
       </fieldset>
 
-      <%= submit_tag("Next", :class => "hidden button_primer button_command button_command--wide button_green js-advance-slideshow") %>
+      <%= submit_tag("Next", :class => "hidden button_primer button_command button_command--wide button_green js-advance-slideshow js-track-event", 'data-ga_category' => 'Signup', 'data-ga_label' => 'Anonymous', 'data-ga_action' => 'Click Next') %>
       <button class="button_primer button_command button_command--wide button_gray js-next">More</button>
     <% end %>
 

@@ -5,10 +5,6 @@
   <meta name="description" content="">
 
   <%= stylesheet_link_tag "signup" %>
-  <%= javascript_include_tag "jquery" %>
-  <% if @step == Settings::Signup.user_update_step %>
-    <%= javascript_include_tag "signup-user-update" %>
-  <% end %>
 </head>
 <body class="shelby shelby--signup">
   <div class="shelby__wrapper">
@@ -30,6 +26,35 @@ TODO: DONT FORGET ABOUT ALL SORTS OF TRACKING
 
 
 -->
+  <%= javascript_include_tag "jquery" %>
+  <% if @step == Settings::Signup.user_update_step %>
+    <%= javascript_include_tag "signup-user-update" %>
+  <% end %>
+  <% if ["production", "staging"].include? Rails.env %>
+    <script>
+      var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+  <% end %>
+
+  <% if Rails.env == 'production' %>
+    <script>
+      var _kmq = _kmq || [];
+      var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
+      function _kms(u){
+        setTimeout(function(){
+          var d = document, f = d.getElementsByTagName('script')[0],
+          s = d.createElement('script');
+          s.type = 'text/javascript'; s.async = true; s.src = u;
+          f.parentNode.insertBefore(s, f);
+        }, 1);
+      }
+      _kms('//i.kissmetrics.com/i.js');
+      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+    </script>
+  <% end %>
 
   <% if @step == Settings::Signup.roll_selection_step %>
     <%= javascript_include_tag "signup-slideshow" %>

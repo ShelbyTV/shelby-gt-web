@@ -4,6 +4,11 @@
 // To Use:
 // add class 'js-track-event' to element with data attributes for a category, action and label
 //---------------------------------------------------------
+
+if (typeof(shelby) == 'undefined') {
+  shelby = {};
+}
+
 $(document).ready(function(){
 	$(document).on('click', '.js-track-event', function(e){
 		try{
