@@ -19,7 +19,7 @@ class SignupController < ApplicationController
       end
       @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
       @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
-      followRolls! unless @rolls_followed
+      followRolls! if session[:signup][:rolls_to_follow]
     end
 
     # do parameter handling for individual steps before we decide if we can
@@ -130,7 +130,7 @@ class SignupController < ApplicationController
           end
         }
       end
-      session[:signup][:rolls_to_follow] = []
+      session[:signup].delete([:rolls_to_follow])
       @rolls_followed = true
     end
 
