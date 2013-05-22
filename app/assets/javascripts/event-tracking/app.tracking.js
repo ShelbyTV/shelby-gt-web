@@ -10,13 +10,13 @@ if (typeof(shelby) == 'undefined') {
 }
 
 $(document).ready(function(){
-	$(document).on('click', '.js-track-event', function(e){
-		try{
-			_gaq.push(['_trackEvent', $(e.currentTarget).data("ga_category"), $(e.currentTarget).data("ga_action"), $(e.currentTarget).data("ga_label")]);
-			_kmq.push(['record', $(e.currentTarget).data("ga_action")]);
-		}
-		catch(e){}
-	});
+  $(document).on('click', '.js-track-event', function(e){
+    try{
+      _gaq.push(['_trackEvent', $(e.currentTarget).data("ga_category"), $(e.currentTarget).data("ga_action"), $(e.currentTarget).data("ga_label")]);
+      _kmq.push(['record', $(e.currentTarget).data("ga_action")]);
+    }
+    catch(e){}
+  });
 });
 
 _(shelby).extend({
