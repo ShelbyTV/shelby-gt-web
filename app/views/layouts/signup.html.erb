@@ -5,16 +5,21 @@
   <meta name="description" content="">
 
   <%= stylesheet_link_tag "signup" %>
+  <%= javascript_include_tag "jquery" %>
+  <% if @step == Settings::Signup.user_update_step %>
+    <%= javascript_include_tag "signup-user-update" %>
+  <% end %>
 </head>
 <body class="shelby shelby--signup">
-  <header class="shelby__head" role="header">
-    <span class="shelby_logo shelby_logo--inverted">
-      <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
-    </span>
-  </header>
+  <div class="shelby__wrapper">
+    <header class="shelby__head" role="banner">
+      <span class="shelby_logo shelby_logo--inverted">
+        <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+      </span>
+    </header>
 
-  <%= yield %>
-
+    <%= yield %>
+  </div><!-- eo shelby__wrapper -->
 
 <!--
 
@@ -26,9 +31,9 @@ TODO: DONT FORGET ABOUT ALL SORTS OF TRACKING
 
 -->
 
-
-  <%= javascript_include_tag "jquery" %>
-  <%= javascript_include_tag "signup" %>
+  <% if @step == Settings::Signup.roll_selection_step %>
+    <%= javascript_include_tag "signup-slideshow" %>
+  <% end %>
 
 </body>
 </html>

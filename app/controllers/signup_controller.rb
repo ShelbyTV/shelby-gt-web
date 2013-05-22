@@ -17,13 +17,10 @@ class SignupController < ApplicationController
         redirect_to root_url and return
       else
         # otherwise we need to fetch the user's info to be used in our form
-        @user = Shelby::API.get_current_user(request.headers['HTTP_COOKIE'])
-        Rails.logger.info @user.inspect
-        if @user and @user['authentications']
-          @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
-          @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
-          followRolls!
-        end
+        @user = Shelby::API.get_current_user(Shelby::CookieUtils.generate_cookie_string(cookies))
+        @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
+        @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
+        followRolls! unless @rolls_followed
       end
     end
 
@@ -71,7 +68,7 @@ class SignupController < ApplicationController
     # prevent advancing to the next step if something fails
     def updateUser
       attributes = params.select { |k,v| ['nickname', 'name', 'primary_email'].include? k }
-      r = Shelby::API.update_user(@user['id'], attributes, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
+      r = Shelby::API.update_user(@user['id'], attributes, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
       # proxy the cookies
       Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
       if r.code != 200
@@ -90,7 +87,7 @@ class SignupController < ApplicationController
     # prevent advancing to the next step if something fails
     def createUser
       attributes = params.select { |k,v| ['nickname', 'name', 'primary_email', 'password'].include? k }
-      r = Shelby::API.create_user({:user => attributes}, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
+      r = Shelby::API.create_user({:user => attributes}, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
       # proxy the cookies
       Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
       if r.code != 200
@@ -101,18 +98,15 @@ class SignupController < ApplicationController
         @validation_ok = false
       else
         @user = r['result']
-        Rails.logger.info "USER CREATED!!! ==========="
       end
       Rails.logger.info @errors.inspect
     end
 
     def setOnboardingComplete!
-      Rails.logger.info("=================== #{cookies.inspect}")
       attributes = {:app_progress => {:onboarding => true} }
-      r = Shelby::API.update_user(@user['id'], attributes, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
+      r = Shelby::API.update_user(@user['id'], attributes, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
       # proxy the cookies
       Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
-      Rails.logger.info("=========== setOnboardingComplete: #{r.inspect}")
       if r.code != 200
         # preserve the user input so they can see what the erroneous input was
         @user.merge! attributes
@@ -126,18 +120,14 @@ class SignupController < ApplicationController
 
     # roll followings happen here, asyncronously using event machine.
     def followRolls!
-      Rails.logger.info "------------ Followed Rolls called"
       roll_ids = session[:signup][:rolls_to_follow]
       roll_ids.each do |r|
         EM.next_tick {
-          Rails.logger.info "------------  Trying to Follow: #{r}"
           begin
-            r = Shelby::API.join_roll(r, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
-            Rails.logger.info "Followed: #{r}"
+            r = Shelby::API.join_roll(r, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
             # proxy the cookies
             Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
           rescue => e
-            Rails.logger.info "------------  [FAILURE] joining rolls : #{r.inspect}"
             # TODO: we should be tracking if something goes wrong here (using GA maybe?)
           end
         }
