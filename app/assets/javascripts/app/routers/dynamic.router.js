@@ -669,13 +669,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         });
 
     if(!Browser.isIos()){
-      //irrelevant views for iOS devices.
-      if( !shelby.models.user.isAnonymous() ) {
-        shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
-          new libs.shelbyGT.ExtensionBannerNotification({
-            guideModel : shelby.models.guide
-          });
-      }
+      ///////////////////
+      // Not sure if this fits with current strategy, commenting out for now.
+      // if( !shelby.models.user.isAnonymous() ) {
+      //   shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
+      //     new libs.shelbyGT.ExtensionBannerNotification({
+      //       guideModel : shelby.models.guide
+      //     });
+      // }
 
       shelby.views.keyboardControls = shelby.views.keyboardControls ||
           new libs.shelbyGT.KeyboardControlsView();

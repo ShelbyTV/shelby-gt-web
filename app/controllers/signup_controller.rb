@@ -38,8 +38,10 @@ class SignupController < ApplicationController
         updateUser
       else
         createUser
-        followRolls! unless @rolls_followed
+        followRolls!
       end
+      # if we are getting here, they should be considered through onboarding
+      setOnboardingComplete! if @validation_ok
     end
 
     if params[:commit] && @validation_ok
@@ -100,14 +102,31 @@ class SignupController < ApplicationController
       Rails.logger.info @errors.inspect
     end
 
+    def setOnboardingComplete!
+      attributes = {:app_progress => {:onboarding => true} }
+      r = Shelby::API.update_user(@user['id'], attributes, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
+      # proxy the cookies
+      Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
+      if r.code != 200
+        # preserve the user input so they can see what the erroneous input was
+        @user.merge! attributes
+        # send the errors along to the view so we can render appropriate feedback
+        @errors = r.parsed_response['errors']
+        @validation_ok = false
+      else
+        @user = r['result']
+      end
+    end
+
     # roll followings happen here, asyncronously using event machine.
     def followRolls!
       roll_ids = session[:signup][:rolls_to_follow]
       roll_ids.each do |r|
         EM.next_tick {
           begin
-            Rails.logger.info "Would have followed: #{r}"
-            #Shelby::API.join_roll(r, cookie, token)
+            r = Shelby::API.join_roll(r, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
+            # proxy the cookies
+            Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
           rescue => e
             # TODO: we should be tracking if something goes wrong here (using GA maybe?)
           end
