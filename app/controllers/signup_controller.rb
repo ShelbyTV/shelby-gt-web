@@ -113,6 +113,7 @@ class SignupController < ApplicationController
           end
         }
       end
+      session[:signup][:rolls_to_follow] = []
       @rolls_followed = true
     end
 
