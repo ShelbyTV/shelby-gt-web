@@ -18,9 +18,12 @@ class SignupController < ApplicationController
       else
         # otherwise we need to fetch the user's info to be used in our form
         @user = Shelby::API.get_current_user(request.headers['HTTP_COOKIE'])
-        @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
-        @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
-        followRolls! unless @rolls_followed
+        Rails.logger.info @user.inspect
+        if @user and @user['authentications']
+          @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
+          @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
+          followRolls!
+        end
       end
     end
 
@@ -38,8 +41,10 @@ class SignupController < ApplicationController
         updateUser
       else
         createUser
-        followRolls! unless @rolls_followed
+        followRolls!
       end
+      # if we are getting here, they should be considered through onboarding
+      setOnboardingComplete! if @validation_ok
     end
 
     if params[:commit] && @validation_ok
@@ -96,19 +101,43 @@ class SignupController < ApplicationController
         @validation_ok = false
       else
         @user = r['result']
+        Rails.logger.info "USER CREATED!!! ==========="
       end
       Rails.logger.info @errors.inspect
     end
 
+    def setOnboardingComplete!
+      Rails.logger.info("=================== #{cookies.inspect}")
+      attributes = {:app_progress => {:onboarding => true} }
+      r = Shelby::API.update_user(@user['id'], attributes, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
+      # proxy the cookies
+      Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
+      Rails.logger.info("=========== setOnboardingComplete: #{r.inspect}")
+      if r.code != 200
+        # preserve the user input so they can see what the erroneous input was
+        @user.merge! attributes
+        # send the errors along to the view so we can render appropriate feedback
+        @errors = r.parsed_response['errors']
+        @validation_ok = false
+      else
+        @user = r['result']
+      end
+    end
+
     # roll followings happen here, asyncronously using event machine.
     def followRolls!
+      Rails.logger.info "------------ Followed Rolls called"
       roll_ids = session[:signup][:rolls_to_follow]
       roll_ids.each do |r|
         EM.next_tick {
+          Rails.logger.info "------------  Trying to Follow: #{r}"
           begin
-            Rails.logger.info "Would have followed: #{r}"
-            #Shelby::API.join_roll(r, cookie, token)
+            r = Shelby::API.join_roll(r, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
+            Rails.logger.info "Followed: #{r}"
+            # proxy the cookies
+            Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
           rescue => e
+            Rails.logger.info "------------  [FAILURE] joining rolls : #{r.inspect}"
             # TODO: we should be tracking if something goes wrong here (using GA maybe?)
           end
         }
