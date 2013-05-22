@@ -31,9 +31,9 @@
               <%= text_field_tag 'name', @user ? @user['name'] : nil, :placeholder => 'First and Last Name', :class => 'form_input' %>
             </fieldset>
 
-            <%= field_set_tag(nil, {:class => (@errors && @errors['user'] && @errors['user']['nickname']) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
+            <%= field_set_tag(nil, {:class => (@nickname_error) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
               <%= label_tag 'nickname', 'Username', :class => 'form_label' %>
-              <% if @errors && @errors['user'] && @errors['user']['nickname'] == 'already taken' %>
+              <% if @nickname_error && @nickname_error.include?('has already been taken') %>
                 <span class="form_error">Sorry, that username is already taken</span>
               <% else %>
                 <span class="form_error">Please enter a username</span>
@@ -41,14 +41,14 @@
               <%= text_field_tag 'nickname', @user ? @user['nickname'] : nil, :class => 'form_input' %>
             <% end %>
 
-            <%= field_set_tag(nil, {:class => (@errors && @errors['user'] && @errors['user']['primary_email']) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
+            <%= field_set_tag(nil, {:class => (@email_error) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
               <%= label_tag 'primary_email', 'Email Address', :class => 'form_label' %>
-              <% if @errors && @errors['user'] && @errors['user']['primary_email'] == 'already taken' %>
-                  <span class="form_error">Sorry, that email address is already taken</span>
-              <% elsif @errors && @errors['user'] && @errors['user']['primary_email'] == 'is invalid' %>
-
+              <% if @email_error && @email_error.include?('has already been taken') %>
+                <span class="form_error">Sorry, that email address is already taken</span>
+              <% elsif @email_error && @email_error.include?('is invalid') %>
+                <span class="form_error">Please enter a valid email address</span>
               <% else %>
-                  <span class="form_error">Please enter a valid email address</span>
+                <span class="form_error">Please enter a valid email address</span>
               <% end %>
               <%= email_field_tag 'primary_email', @user ? @user['primary_email'] : nil, :placeholder => 'email@address.com', :class => 'form_input' %>
             <% end %>
@@ -56,7 +56,7 @@
             <fieldset class="form_fieldset">
               <%= label_tag 'password', 'Password', :class => 'form_label' %>
               <span class="form_error">Password must be at least five characters</span>
-              <%= password_field_tag 'password', nil, :placeholder => '*****', :class => 'form_input' %>
+              <%= password_field_tag 'password', @user && @user['password'] ? @user['password'] : nil, :placeholder => '*****', :class => 'form_input' %>
               <span class="form__description">We never spam.</span>
             </fieldset>
 

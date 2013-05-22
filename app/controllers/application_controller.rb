@@ -1,5 +1,6 @@
 require 'shelby_api'
 require 'cookie_utils'
+require 'hash_error_checker'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery

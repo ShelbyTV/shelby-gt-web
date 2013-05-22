@@ -9,7 +9,6 @@ module Shelby
     # by this app
     def self.proxy_cookies(rails_cookies, set_cookie_headers)
       if set_cookie_headers
-        Rails.logger.info("Outgoing set cookies: #{set_cookie_headers}")
         set_cookie_headers.split(/, (?=[\w]+=)/).each do |c|
           # parse the set cookie header
           cookie = CookieJar::CookieValidation.parse_set_cookie(c)
@@ -23,10 +22,8 @@ module Shelby
           cookie_params[:value] = URI.unescape(cookie_params[:value])
           cookie_params.delete_if { |k,v| v.nil? }
           # set the cookie on the client request we are currently servicing
-          Rails.logger.info "rails_cookies[#{cookie[:name]}] = #{cookie_params}"
           rails_cookies[cookie[:name]] = cookie_params
         end
-        Rails.logger.info "Cookies: #{rails_cookies.inspect}"
       end
     end
 
