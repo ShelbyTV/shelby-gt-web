@@ -264,6 +264,7 @@ DEPENDENCIES
   compass-rails (~> 1.0.3)
   cookiejar
   ejs
+  eventmachine
   exception_notification
   headless
   httparty

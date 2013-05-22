@@ -20,6 +20,7 @@ class SignupController < ApplicationController
         @user = Shelby::API.get_current_user(request.headers['HTTP_COOKIE'])
         @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
         @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
+        followRolls! unless @rolls_followed
       end
     end
 
@@ -37,6 +38,7 @@ class SignupController < ApplicationController
         updateUser
       else
         createUser
+        followRolls! unless @rolls_followed
       end
     end
 
@@ -96,6 +98,22 @@ class SignupController < ApplicationController
         @user = r['result']
       end
       Rails.logger.info @errors.inspect
+    end
+
+    # roll followings happen here, asyncronously using event machine.
+    def followRolls!
+      roll_ids = session[:signup][:rolls_to_follow]
+      roll_ids.each do |r|
+        EM.next_tick {
+          begin
+            Rails.logger.info "Would have followed: #{r}"
+            #Shelby::API.join_roll(r, cookie, token)
+          rescue => e
+            # TODO: we should be tracking if something goes wrong here (using GA maybe?)
+          end
+        }
+      end
+      @rolls_followed = true
     end
 
     # save rolls to follow in session for later

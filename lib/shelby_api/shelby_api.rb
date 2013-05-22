@@ -29,6 +29,8 @@ module Shelby
     end
 
     def self.join_roll(roll_id, cookie, token)
+      headers = { 'Cookie' => cookie }
+      headers['X-CSRF-Token'] = token if token
       post("/roll/#{roll_id}/join", { :headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
     end
 

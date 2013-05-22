@@ -17,6 +17,7 @@ gem "settingslogic"
 # ---------- Shelby API
 #
 gem 'httparty'
+gem 'eventmachine'
 
 #
 # ---------- Smarter cookie parsing
