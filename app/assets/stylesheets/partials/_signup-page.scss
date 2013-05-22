@@ -100,7 +100,7 @@
           margin-top: 8em;
         }
 
-        margin-top: 26em;
+        margin-top: 25.75em;
         width: 30%;
       }
 
@@ -118,7 +118,9 @@
         bottom: 0;
         left: 30%;
         position: absolute;
-        right: 0;
+        right: auto;
+        width: 100%;
+        max-width: 1107px;
         top: 0;
       }
       .signup__img {
