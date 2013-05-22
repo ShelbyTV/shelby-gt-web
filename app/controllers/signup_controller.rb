@@ -52,6 +52,10 @@ class SignupController < ApplicationController
       # backbone app proper and clear the session signup progress state
       session[:signup].delete(:step)
       redirect_to root_url and return
+    elsif params[:commit] && (session[:signup][:step] == Settings::Signup.user_update_step)
+      # if we're on the user update step, check on possible errors
+      @nickname_error = Shelby::HashErrorChecker.get_hash_error(@errors, ['user', 'nickname'])
+      @email_error = Shelby::HashErrorChecker.get_hash_error(@errors, ['user', 'primary_email'])
     end
 
     # for every normal step, we need to set the step parameter and render the page
