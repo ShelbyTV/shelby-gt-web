@@ -29,5 +29,16 @@ module Shelby
         Rails.logger.info "Cookies: #{rails_cookies.inspect}"
       end
     end
+
+    # turn the contents of rails_cookies into the kind
+    # of string that is used for a cookie header
+    def self.generate_cookie_string(rails_cookies)
+      cookie_string = ''
+      rails_cookies.each do |k,v|
+        cookie_string << "; #{k}=#{v}"
+      end
+      cookie_string.slice!('; ')
+      return cookie_string
+    end
   end
 end
