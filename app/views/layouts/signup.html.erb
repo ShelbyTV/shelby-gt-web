@@ -5,6 +5,10 @@
   <meta name="description" content="">
 
   <%= stylesheet_link_tag "signup" %>
+  <%= javascript_include_tag "jquery" %>
+  <% if @step == Settings::Signup.user_update_step %>
+    <%= javascript_include_tag "signup-user-update" %>
+  <% end %>
 </head>
 <body class="shelby shelby--signup">
   <div class="shelby__wrapper">
@@ -27,9 +31,9 @@ TODO: DONT FORGET ABOUT ALL SORTS OF TRACKING
 
 -->
 
-
-  <%= javascript_include_tag "jquery" %>
-  <%= javascript_include_tag "signup" %>
+  <% if @step == Settings::Signup.roll_selection_step %>
+    <%= javascript_include_tag "signup-slideshow" %>
+  <% end %>
 
 </body>
 </html>

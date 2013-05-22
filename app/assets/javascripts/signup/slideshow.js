@@ -1,8 +1,3 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-
-//= require ./jquery-plugins/jquery.cycle.js
-
 //the functions below are used inside the config for $slideshow.cycle();
 var onAfter = function(curr,next,opts,d){
   window.location.hash = opts.currSlide;
