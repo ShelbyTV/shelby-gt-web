@@ -8,7 +8,7 @@ defaults: &defaults
   roll_categories: [
     {
       title :  'surprised',
-      description: 'Do you love to watch <strong>surprising</strong> video? <br />Follow our hand-picked selections below.',
+      description: '<span>Do you love to watch <strong>surprising</strong> video? </span><br />Follow our hand-picked selections below.',
       rolls : [
         {
           nickname : 'VICE',
@@ -50,7 +50,7 @@ defaults: &defaults
     },
     {
       title : 'inspired',
-      description: 'Do you love to watch <strong>inspiring</strong> video? <br />Follow our hand-picked selections below.',
+      description: '<span>Do you love to watch <strong>inspiring</strong> video? </span><br />Follow our hand-picked selections below.',
       rolls : [
         {
           nickname : 'TED',
@@ -92,7 +92,7 @@ defaults: &defaults
     },
     {
       title : 'entertained',
-      description: 'Do you love to watch <strong>entertaining</strong> video? <br />Follow our hand-picked selections below.',
+      description: '<span>Do you love to watch <strong>entertaining</strong> video?</span> <br />Follow our hand-picked selections below.',
       rolls : [
         {
           nickname : 'GQ',
@@ -134,7 +134,7 @@ defaults: &defaults
     },
     {
       title : 'daring',
-      description: 'Do you love to watch <strong>daring</strong> video? <br />Follow our hand-picked selections below.',
+      description: '<span>Do you love to watch <strong>daring</strong> video?</span> <br />Follow our hand-picked selections below.',
       rolls : [
         {
           nickname : 'GoPro',
@@ -176,7 +176,7 @@ defaults: &defaults
     },
     {
       title : 'curious',
-      description: 'Do you love to watch <strong>curious</strong> video? <br />Follow our hand-picked selections below.',
+      description: '<span>Do you love to watch <strong>curious</strong> video? </span><br />Follow our hand-picked selections below.',
       rolls : [
         {
           nickname : 'PBS Idea Channel',
