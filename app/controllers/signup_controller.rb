@@ -11,17 +11,15 @@ class SignupController < ApplicationController
     end
 
     if user_signed_in?
-      unless session[:signup][:step] >= Settings::Signup.service_authentication_step
-        # if the session doesn't tell us that we're in the authenticated portion of signup flow,
-        # a logged in user should be redirected into the shelby Backbone app
+      # get the info for the current user
+      @user = Shelby::API.get_current_user(Shelby::CookieUtils.generate_cookie_string(cookies))
+      if @user['app_progress'] && @user['app_progress']['onboarding']
+        # if the user has already completed signup, redirect them into the Backbone app
         redirect_to root_url and return
-      else
-        # otherwise we need to fetch the user's info to be used in our form
-        @user = Shelby::API.get_current_user(Shelby::CookieUtils.generate_cookie_string(cookies))
-        @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
-        @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
-        followRolls! unless @rolls_followed
       end
+      @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
+      @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
+      followRolls! unless @rolls_followed
     end
 
     # do parameter handling for individual steps before we decide if we can
