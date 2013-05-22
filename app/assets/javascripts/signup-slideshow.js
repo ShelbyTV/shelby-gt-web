@@ -2,4 +2,4 @@
 // All this logic will automatically be available in application.js.
 
 //= require ./signup/jquery.cycle.js
-//= require ./signup/signup-slideshow.js
+//= require ./signup/slideshow.js
