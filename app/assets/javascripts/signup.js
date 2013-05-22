@@ -3,20 +3,20 @@
 
 //= require ./jquery-plugins/jquery.cycle.js
 
-var onBefore = function(curr,next,opts,d){
-};
-
+//the functions below are used inside the config for $slideshow.cycle();
 var onAfter = function(curr,next,opts,d){
   window.location.hash = opts.currSlide;
 
-  $('.js-next').toggleClass('hidden',(opts.currSlide > 3));
-  $('.js-advance-slideshow').toggleClass('hidden', !(opts.currSlide > 3));
+  var lastSlide = opts.currSlide == (opts.slideCount - 1);
+
+  $('.js-next').toggleClass('hidden',lastSlide);
+  $('.js-advance-slideshow').toggleClass('hidden', !lastSlide);
 };
 
 var startingSlide = function() {
   //get current slide from hash, makes things linkable?
-  var slide = +(window.location.hash.split('#')[1]);
-  return (!isNaN(slide) && slide >= 0) ? slide : 0;
+  var currentSlide = +(window.location.hash.split('#')[1]);
+  return (!isNaN(currentSlide) && currentSlide >= 0) ? currentSlide : 0;
 };
 
 (function(){
@@ -25,7 +25,6 @@ var startingSlide = function() {
 
   $slideshow.cycle({
     after         : onAfter,
-    before        : onBefore,
     fx            : 'scrollHorz',
     next          : '.js-next',
     nowrap        : true,
