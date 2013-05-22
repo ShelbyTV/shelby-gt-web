@@ -45,20 +45,20 @@
           <% end %>
         </fieldset>
 
-        <% if @facebook_connected or @twitter_connected %>
+        <% if !@facebook_connected or !@twitter_connected %>
           <p class="form__description">
             We never spam.
           </p>
         <% end %>
 
-        <% if !@twitter_connected %>
+        <% if @twitter_connected %>
           <p class="form__description">
             <%= check_box_tag 'follow_shelby', 'shelby-twitter', true %>
             <%= label_tag 'follow_shelby', 'Follow @Shelby on Twitter', :class => 'form_label form_label--inline' %>
           </p>
         <% end %>
 
-        <% if !@facebook_connected %>
+        <% if @facebook_connected %>
           <p class="form__description">
             <%= check_box_tag 'publish_shelby', 'shelby-facebook', true %>
             <%= label_tag 'publish_shelby', 'Publish activity to Facebook Timeline', :class => 'form_label form_label--inline' %>
