@@ -1,12 +1,37 @@
 .shelby--signup {
   background: $ui-white;
+  bottom: auto;
+  left: auto;
+  overflow: visible;
+  position: relative;
+  right: auto;
+  top: auto;
 
   //non-normative overrides
+  .shelby__wrapper {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
   .shelby__head {
     padding: 1em 2em;
   }
 
+  .shelby_nav {
+    text-align: right;
+  }
+
+  .shelby-logo {
+    font-size: 1em;
+
+    .shelby_logo {
+      padding: 0;
+      // font-size: 5em;
+    }
+  }
+
+  .shelby-logo .shelby_logo,
   .shelby_logo {
+    padding: 0;
     font-size: 5em;
   }
 
@@ -56,6 +81,46 @@
   width: 45em;
 }
     //modifiers (stages)
+    .signup--cta {
+      margin-top: 3em;
+      margin-bottom: 3em
+    }
+    .signup--romance {
+      height: 40em;
+      position: relative;
+      text-align: right;
+      width: auto;
+
+      .signup__body {
+        &:first-child {
+          float: left;
+          margin-top: 8em;
+        }
+
+        margin-top: 26em;
+        width: 30%;
+      }
+
+      .signup__block {
+        margin-top: 0.5em;
+        text-align: right;
+      }
+
+      .signup__img_wrapper {
+        background-image: url('/images/onboarding/landing.png');
+        background-position: left top;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        background-size: cover;
+        bottom: 0;
+        left: 30%;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .signup__img {
+      }
+    }
     .signup--content {
       width: 73em;
 
@@ -102,7 +167,17 @@
 }
 .signup__h2 {
   color: $ui-soft-black;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.signup__h3 {
+  color: $ui-soft-black;
   font-size: 1em;
   font-weight: normal;
   margin-bottom: 1em;
+}
+.signup__block {
+  line-height: 1.6;
+  margin: 1em 0;
+  text-align: center;
 }

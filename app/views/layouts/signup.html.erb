@@ -7,14 +7,15 @@
   <%= stylesheet_link_tag "signup" %>
 </head>
 <body class="shelby shelby--signup">
-  <header class="shelby__head" role="header">
-    <span class="shelby_logo shelby_logo--inverted">
-      <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
-    </span>
-  </header>
+  <div class="shelby__wrapper">
+    <header class="shelby__head" role="banner">
+      <span class="shelby_logo shelby_logo--inverted">
+        <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+      </span>
+    </header>
 
-  <%= yield %>
-
+    <%= yield %>
+  </div><!-- eo shelby__wrapper -->
 
 <!--
 
