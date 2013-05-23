@@ -1,14 +1,14 @@
+<% if Rails.env == "staging" %>
+  <span class="shelby-title-staging"><%= Settings::Branch.branch %></span>
+<% end %>
+
 <header class="shelby__head clearfix" role="banner">
   <a href="/" class="button_primer shelby-logo">
-    <% if Rails.env != "staging" %>
+    <h1 class="shelby-logo">
       <span class="shelby_logo shelby_logo--inverted">
         <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
       </span>
-    <% else %>
-      <h1 class="shelby-title-staging">
-        <%= Settings::Branch.branch %>
-      </h1>
-    <% end %>
+    </h1>
   </a>
 
   <nav>
