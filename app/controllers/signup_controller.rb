@@ -31,6 +31,9 @@ class SignupController < ApplicationController
       redirect_to "#{Settings::ShelbyAPI.url}/auth/#{params[:commit].downcase}" and return
     elsif params[:commit] and (session[:signup][:step] == Settings::Signup.roll_selection_step)
       set_rolls_to_follow
+    elsif params[:commit] and (session[:signup][:step] == Settings::Signup.service_authentication_step)
+      # follow shelby on twitter
+      # update open graph setting on user
     elsif params[:commit] && session[:signup][:step] == Settings::Signup.user_update_step
       if user_signed_in?
         updateUser
