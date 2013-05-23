@@ -34,6 +34,12 @@ module Shelby
       post("/roll/#{roll_id}/join", { :headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
     end
 
+    def self.follow_shelby_on_twitter(cookie, token)
+      headers = { 'Cookie' => cookie }
+      headers['X-CSRF-Token'] = token if token
+      post('/twitter/follow/shelby', {:headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
+    end
+
     def self.get_user_stats(id, cookie)
       s = get("/user/#{id}/stats?num_frames=3", :headers => {'Cookie' => cookie}).parsed_response
       return s['status'] == 200 ? s['result'] : nil

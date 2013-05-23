@@ -32,8 +32,8 @@ class SignupController < ApplicationController
     elsif params[:commit] and (session[:signup][:step] == Settings::Signup.roll_selection_step)
       set_rolls_to_follow
     elsif params[:commit] and (session[:signup][:step] == Settings::Signup.service_authentication_step)
-      # follow shelby on twitter
-      # update open graph setting on user
+      followShelbyTwitter if params[:follow_shelby]
+      updateOpenGraphSetting if params[:publish_shelby]
     elsif params[:commit] && session[:signup][:step] == Settings::Signup.user_update_step
       if user_signed_in?
         updateUser
@@ -149,5 +149,17 @@ class SignupController < ApplicationController
       # must have at least one roll followed. otherwise we should not advance to next step
       # save rolls to follow in session to be followed after user creation.
       session[:signup][:rolls_to_follow]  = rolls_to_follow
+    end
+
+    def followShelbyTwitter
+      Shelby::API.follow_shelby_on_twitter(Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
+      Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
+    end
+
+    def updateOpenGraphSetting
+      pref =  {:preferences => { :open_graph_posting => true }}
+      r = Shelby::API.update_user(@user['id'], pref, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
+      Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
+      Rails.logger.info "Posting Shelby! Yay!"
     end
 end
