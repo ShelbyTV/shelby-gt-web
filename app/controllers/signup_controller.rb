@@ -20,6 +20,8 @@ class SignupController < ApplicationController
       @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
       @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
       followRolls! if session[:signup][:rolls_to_follow]
+    else
+      @user = {}
     end
 
     # do parameter handling for individual steps before we decide if we can
@@ -39,7 +41,7 @@ class SignupController < ApplicationController
         updateUser
       else
         createUser
-        followRolls!
+        followRolls! if session[:signup][:rolls_to_follow]
       end
       # if we are getting here, they should be considered through onboarding
       setOnboardingComplete! if @validation_ok
@@ -152,7 +154,7 @@ class SignupController < ApplicationController
     end
 
     def followShelbyTwitter
-      Shelby::API.follow_shelby_on_twitter(Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
+      r = Shelby::API.follow_shelby_on_twitter(Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
       Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
     end
 
