@@ -17,7 +17,6 @@
     <%= yield %>
   </div><!-- eo shelby__wrapper -->
 
-  <%= javascript_include_tag "jquery" %>
   <% if @step == Settings::Signup.user_update_step %>
     <%= javascript_include_tag "signup-user-update" %>
   <% end %>
