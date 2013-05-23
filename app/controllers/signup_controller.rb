@@ -127,13 +127,16 @@ class SignupController < ApplicationController
 
     # roll followings happen here, asyncronously using event machine.
     def followRolls!
+      Rails.logger.info "===== Following Rolls"
       roll_ids = session[:signup][:rolls_to_follow]
       roll_ids.each do |r|
         EM.next_tick {
+          Rails.logger.info "===== Next Tick"
           begin
             r = Shelby::API.join_roll(r, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
             # proxy the cookies
             Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
+            Rails.logger.info "===== Response: #{r}"
           rescue => e
             # TODO: we should be tracking if something goes wrong here (using GA maybe?)
           end
@@ -145,6 +148,7 @@ class SignupController < ApplicationController
 
     # save rolls to follow in session for later
     def set_rolls_to_follow
+      Rails.logger.info "===== Setting rolls to follow: #{params[:rolls].keys}"
       # user much choose at least one roll, if not, send back to begining and show a message
       (@validation_ok = false; return) unless params[:rolls]
       rolls_to_follow = params[:rolls].keys
