@@ -27,8 +27,8 @@
               :value => 'facebook',
               :class => "button_primer button_command button_command--share #{@facebook_connected ? 'button_active' : 'button_facebook-blue'} one-quarter js-track-event",
                'data-ga_category' => 'Onboarding',
-               'data-ga_action' => 'Click Authenticate Facebook',
-               'data-ga_label' => 'Step 2'
+               'data-ga_action' => 'Click Authenticate on Step 2',
+               'data-ga_label' => 'Facebook'
             }
             attributes[:disabled] = true if @facebook_connected
           %>
@@ -47,8 +47,8 @@
               :value => 'twitter',
               :class => "button_primer button_command button_command--share #{@twitter_connected ? 'button_active' : 'button_twitter-blue'} one-quarter js-track-event",
                'data-ga_category' => 'Onboarding',
-               'data-ga_action' => 'Click Authenticate Twitter',
-               'data-ga_label' => 'Step 2'
+               'data-ga_action' => 'Click Authenticate on Step 2',
+               'data-ga_label' => 'Twitter'
             }
             attributes[:disabled] = true if @twitter_connected
           %>
@@ -83,7 +83,7 @@
       </fieldset>
 
       <fieldset class="form_fieldset">
-        <%= submit_tag("Next",:class => 'button_primer button_command button_command--wide button_green', 'data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Next', 'data-ga_label' => 'Step 2') %>
+        <%= submit_tag("Next",:class => 'button_primer button_command button_command--wide button_green', 'data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Next on Step 2') %>
       </fieldset>
     <% end %>
 
