@@ -6,29 +6,54 @@
 
 shelby.config.channels = {
   'trending' : {
-    title : 'trending',
+    title : 'Activity',
     id: '515d83ecb415cc0d1a025bfe',
     includeInNav : true
+  },
+  'suprising' : {
+    title : 'Suprising',
+    id : '519e1a39b415cc3410000001',
+    includeInNav: true
+  },
+  'inspiring' : {
+    title : 'Inspiring',
+    id : '519e1bceb415cc341000004e',
+    includeInNav: true
+  },
+  'entertaining' : {
+    title : 'Entertaining',
+    id : '519e1cb0b415cc34100002a8',
+    includeInNav: true
+  },
+  'daring' : {
+    title : 'Daring',
+    id : '519e1e1eb415cc3410000352',
+    includeInNav: true
+  },
+  'curious' : {
+    title : 'Curious',
+    id : '519e1ef0b415cc341000038e',
+    includeInNav: true
   },
   'laugh' : {
     title : '#laugh',
     id : '5112fa93b415cc1de20c30a0',
     hashtagRollId : '5137594fb415cc6617000047',
     hashTags : ['laugh', 'lol'],
-    includeInNav : true,
+    includeInNav : false,
     rollingHashtagButton : true
   },
   'happenings' : {
     title : '#happenings',
     id : '5112fb26b415cc1e160cb0e5',
-    includeInNav : true
+    includeInNav : false
   },
   'learn' : {
     title : '#learnaboutyourworld',
     id : '5112fb5db415cc1ded0d79a1',
     hashtagRollId : '51375a3bb415cc6617000090',
     hashTags : ['learnaboutyourworld', 'learn'],
-    includeInNav : true,
+    includeInNav : false,
     rollingHashtagButton : true
   },
   'adrenaline' : {
@@ -36,7 +61,7 @@ shelby.config.channels = {
     id : '5112fb95b415cc1ded0d8c89',
     hashtagRollId : '513759ccb415cc6617000069',
     hashTags : ['adrenaline'],
-    includeInNav : true,
+    includeInNav : false,
     rollingHashtagButton : true
   },
   'thisexists' : {
@@ -44,7 +69,7 @@ shelby.config.channels = {
     id: '5137560bb415cc636c035769',
     hashtagRollId : '513756efb415cc6617000008',
     hashTags : ['thisexists', 'exists'],
-    includeInNav : true,
+    includeInNav : false,
     rollingHashtagButton : true
   },
   'greatmoviemoments' : {
@@ -52,7 +77,7 @@ shelby.config.channels = {
     id: '51375788b415cc68d804aa71',
     hashtagRollId : '513757cbb415cc661700001a',
     hashTags : ['greatmoviemoments', 'movies', 'greatmoviemoment'],
-    includeInNav : true,
+    includeInNav : false,
     rollingHashtagButton : true
   },
   'storytellers' : {
@@ -66,7 +91,7 @@ shelby.config.channels = {
     id: '5112fae1b415cc1e0b0e4d6e',
     hashtagRollId : '51375a90b415cc66170000a8',
     hashTags : ['natureisrad', 'nature'],
-    includeInNav : true,
+    includeInNav : false,
     rollingHashtagButton : true
   }
 };
