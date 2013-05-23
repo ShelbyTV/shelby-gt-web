@@ -24,10 +24,9 @@
                 <% category['rolls'].each_with_index do |roll,roll_index| %>
                   <li class="list__item one-half">
                     <div class="media_module roll_card clearfix" data-roll_id="<%= roll["personal_roll_id"] %>">
-                      <%= check_box_tag "rolls[#{roll['personal_roll_id']}]", nil, false, :class=>"hidden" %>
-                      <%# hidden_field_tag "roll[#{roll['personal_roll_id']}]", false %>
+                      <%= check_box_tag "rolls[#{roll['personal_roll_id']}]", nil, false, :class => "hidden" %>
                       <div class="media_image media_image--rev">
-                        <button class="button_primer button_command button_gray roll_card__button js-followOrUnfollow" data-roll_id="<%= roll["personal_roll_id"] %>">
+                        <button class="button_primer button_command button_gray roll_card__button js-followOrUnfollow js-track-event" data-roll_id="<%= roll["personal_roll_id"] %>" data-ga_category="Onboarding" data-ga_action="Click Follow on <%= roll['title'] %>" data-ga_label="Step 1">
                           Follow
                         </button>
                       </div><!-- eo media_image--rev -->
@@ -55,8 +54,8 @@
         </div><!-- eo slideshow -->
       </fieldset>
 
-      <%= submit_tag("Next", :class => "hidden button_primer button_command button_command--wide button_green js-advance-slideshow js-track-event", 'data-ga_category' => 'Signup', 'data-ga_label' => 'Anonymous', 'data-ga_action' => 'Click Next') %>
-      <button class="button_primer button_command button_command--wide button_gray js-next">More</button>
+      <%= submit_tag("Next", :class => "hidden button_primer button_command button_command--wide button_green js-advance-slideshow js-track-event", 'data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Next', 'data-ga_label' => 'Step 1') %>
+      <button class="button_primer button_command button_command--wide button_gray js-next js-track-event" data-ga_category="Onboarding" data-ga_action="Click More" data-ga_label="Step 1">More</button>
     <% end %>
 
   </div>
@@ -64,9 +63,9 @@
 
 <% unless @validation_ok%>
   <script>
-      setTimeout(function(){
-        alert("To make Shelby better for you, pick at least two sources of video");
-      }, 100);
+    setTimeout(function(){
+      alert("To make Shelby better for you, pick at least two sources of video");
+    }, 100);
   </script>
 <% end %>
 
