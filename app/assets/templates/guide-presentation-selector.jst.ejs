@@ -93,55 +93,69 @@
 
   <li class="dropdown_module list__item secondary-item guide-settings js-guide-settings">
     <button class="dropdown_button app_nav__button js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-      Settings <i class="icon-carrot"></i>
+      <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrl(user,libs.shelbyGT.UserAvatarSizes.small)%>
+      <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
+        Settings <i class="icon-carrot"></i>
     </button>
     <section class="dropdown_section settings-section">
       <div class="dropdown_lining settings-section-lining clearfix">
-        <div class="settings-user clearfix">
-          <div class="settings-userhandle">
-            <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(user) %>">
+        <ul class="list">
+          <li class="list__item">
+            <button
+              class="button_primer button_command button_command--flexible button_command--text js-preferences"
+              data-ga_category="Header"
+              data-ga_action="Preferences"
+              data-ga_label="<%= shelby.models.user.get('nickname') %>"
+              >
+              Preferences
+            </button>
+          </li>
 
-            <a href="http://<%= user.get('personal_roll_subdomain') + '.shelby.tv' %>" target="_personalRoll">
-              <%= user.get('personal_roll_subdomain') + '.shelby.tv' %>
+          <li class="list__item">
+            <button class="button_primer button_command button_command--flexible button_command--text js-me"
+              data-ga_category="Header"
+              data-ga_action="Profile"
+              data-ga_label="<%= shelby.models.user.get('nickname') %>"
+            >
+              Profile
+            </button>
+          </li>
+
+          <li class="list__item">
+            <a href="mailto:feedback@shelby.tv" class="button_primer button_command button_command--flexible button_command--text ">
+              Report Feedback
             </a>
-          </div>
+          </li>
 
-          <button class="guide-settings-button settings-preferences js-preferences js-track-event" data-ga_category="Header" data-ga_action="Preferences" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            Edit Preferences
-          </button>
-        </div><!-- eo settings-user-section -->
-
-        <ul class="settings-list clearfix">
-          <li class="settings-item">
-            <a class="settings-button" href="http://twitter.com/shelby" target="_blank">
+          <li class="list__item">
+            <a href="http://twitter.com/mmatyus" target="_blank" class="button_primer button_command button_command--flexible button_command--text ">
               Twitter
             </a>
           </li>
 
-          <li class="settings-item">
-            <a class="settings-button" href="http://facebook.com/shelbytv" target="_blank">
+          <li class="list__item">
+            <a href="http://facebook.com/shelbytv" target="_blank" class="button_primer button_command button_command--flexible button_command--text ">
               Facebook
             </a>
           </li>
 
-          <li class="settings-item">
-            <a class="settings-button" href="http://shelby.tv/blog" target="_blank">
+          <li class="list__item">
+            <a href="http://shelby.tv/blog" target="_blank" class="button_primer button_command button_command--flexible button_command--text ">
               Blog
             </a>
           </li>
 
-          <li class="settings-item right">
-            <button class="settings-button js-signout js-track-event" data-ga_category="Header" data-ga_action="Logout" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-              Sign Out
+          <li class="list__item">
+            <button
+              class="button_primer button_command button_command--flexible button_command--text js-signout"
+              data-ga_category="Header"
+              data-ga_action="Logout"
+              data-ga_label="<%= shelby.models.user.get('nickname') %>"
+              >
+              Logout
             </button>
           </li>
-
-          <li class="settings-item right">
-            <button class="settings-button js-legal">
-              Privacy
-            </button>
-          </li>
-        </ul><!-- eo guide-settings-list -->
+        </ul>
       </div>
     </section>
   </li>

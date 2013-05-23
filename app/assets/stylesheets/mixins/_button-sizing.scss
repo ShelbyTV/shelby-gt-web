@@ -76,6 +76,10 @@
     .button_command--remove {}
     .button_command--roll {}
     .button_command--shortlink {}
+    .button_command--text {
+      background: transparent !important;
+      border: none;
+    }
     .button_command--tumblr {}
     .button_command--twitter {}
 
