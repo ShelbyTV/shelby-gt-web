@@ -46,10 +46,10 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
         if(data.result.status == 200){
           //avatar_updated_at does come back with result, but this will work just as well
           self.model.set({avatar_updated_at:Date.now(), has_shelby_avatar:true});
-          shelby.track( 'avatar_upload_success', { userName: shelby.models.user.get('nickname') });
+          shelby.track( 'avatar_upload_success', { userName: self.model.get('nickname') });
         } else {
           shelby.alert({message: "<p>Sorry, that upload failed.</p>"});
-          shelby.track( 'avatar_upload_fail', { userName: shelby.models.user.get('nickname') });
+          shelby.track( 'avatar_upload_fail', { userName: self.model.get('nickname') });
         }
       },
       error: function(){
@@ -57,8 +57,9 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
         self._hideProgressMessage();
         self._clearProgress();
         shelby.alert({message: "<p>Sorry, that upload failed.</p>"});
-        shelby.track( 'avatar_upload_fail', { userName: shelby.models.user.get('nickname') });
+        shelby.track( 'avatar_upload_fail', { userName: self.model.get('nickname') });
       },
+      formData: {},
       change: function (e, data) {
         self._showSpinner();
         self._showProgressMessage();

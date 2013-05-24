@@ -4,8 +4,15 @@ if (typeof(shelby) == 'undefined') {
 if (typeof(shelby.config) == 'undefined') {
   shelby.config = {};
 }
-_(shelby.config).extend({
-  avatarUrlRoot : '<%= Settings::Application.avatar_url_root %>'
+shelby.alert = function(m) {
+  window.alert(m);
+}
+$.ajaxPrefilter(function(options, originalOptions, xhr) {
+  // attach the API's csrf token to the request for logged in users
+  if (options.type.toUpperCase() != 'GET' && !options.no_csrf) {
+    var token = $('meta[name=shelby-token]').attr('content');
+    if (token) xhr.setRequestHeader('X-CSRF-Token', token);
+  }
 });
 
 // clear all visual indicators of any form validation errors
@@ -59,7 +66,13 @@ $(document).ready(function() {
     el : '.js-avatar-renderer',
     imgAttribute : 'style',
     imgSelector : '.js-avatar-image',
-    imgValTemplate : 'background-image: url(<%%= url %>)',
+    imgValTemplate : 'background-image: url(<%= url %>)',
     model : userModel
   });
+  avatarUploaderView = new libs.shelbyGT.UserAvatarUploaderView({
+    el: $('.js-avatar-renderer'),
+    model: userModel,
+    progressEl: $('.progress-overlay')[0]
+  });
+  avatarUploaderView._initUploader();
 });
