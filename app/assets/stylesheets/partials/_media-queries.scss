@@ -32,19 +32,6 @@
   }
 }
 
-@media screen and (min-width: 1300px) {
-  .shelby--signup {
-    .shelby__wrapper {
-      max-width: none;
-    }
-    .shelby__head {
-      max-width: 1600px;
-      margin: auto;
-    }
-  }
-
-}
-
 //  Screens that LESS THAN 1300px wide.
 @media screen and (max-width: 1300px) {
   .app-banner--chips-ahoy {
