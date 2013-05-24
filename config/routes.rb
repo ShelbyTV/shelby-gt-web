@@ -1,7 +1,4 @@
 ShelbyGtWeb::Application.routes.draw do
-  get "invite" => 'signup#index'
-  post "invite" => 'signup#index'
-
   get '/genius' => 'genius#index'
 
   constraints(:subdomain => 'm') do
@@ -40,7 +37,10 @@ ShelbyGtWeb::Application.routes.draw do
 
   # INVITES
   # get '/invite' => "home#invite"
-  # get '/invite/:invite_id' => "home#invite"
+  get '/invite/:invite_id' => "signup#index"
+  get "invite" => 'signup#index'
+  post "invite" => 'signup#index'
+
 
   # HOME
   get '/team' => 'home#team'
