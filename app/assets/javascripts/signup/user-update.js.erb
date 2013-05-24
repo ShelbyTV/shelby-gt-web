@@ -1,3 +1,13 @@
+if (typeof(shelby) == 'undefined') {
+  shelby = {};
+}
+if (typeof(shelby.config) == 'undefined') {
+  shelby.config = {};
+}
+_(shelby.config).extend({
+  avatarUrlRoot : '<%= Settings::Application.avatar_url_root %>'
+});
+
 // clear all visual indicators of any form validation errors
 function clearUserFormErrors(e) {
   $(e.currentTarget).find('.form_fieldset').has('.form_error').removeClass('form_fieldset--error');
@@ -41,5 +51,15 @@ $(document).ready(function() {
   // that was displayed for it
   $('.form_fieldset').has('.form_error').on('keyup', 'input', function(e) {
     $(e.delegateTarget).removeClass('form_fieldset--error');
+  });
+  //setup backbone views to handle user avatar display and uploader
+  userModel = new libs.shelbyGT.UserModel(userJson);
+  avatarPresenterView = new libs.shelbyGT.UserAvatarPresenterView({
+    avatarSize: libs.shelbyGT.UserAvatarSizes.large,
+    el : '.js-avatar-renderer',
+    imgAttribute : 'style',
+    imgSelector : '.js-avatar-image',
+    imgValTemplate : 'background-image: url(<%%= url %>)',
+    model : userModel
   });
 });

@@ -18,6 +18,7 @@
   </div><!-- eo shelby__wrapper -->
 
   <% if @step == Settings::Signup.user_update_step %>
+    <%= javascript_tag "var userJson = #{@user.to_json;}" %>
     <%= javascript_include_tag "signup-user-update" %>
   <% end %>
   <% if ["production", "staging"].include? Rails.env %>
