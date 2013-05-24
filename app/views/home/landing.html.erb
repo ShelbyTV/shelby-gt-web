@@ -19,7 +19,7 @@
     var shelbyTrackingCategory = "Landing Page";
   </script>
 </head>
-<body class="shelby<%= ' shelby--mobile' if @mobile_os %> shelby--signup">
+<body class="shelby<%= ' shelby--mobile' if @mobile_os %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %>">
   <!-- Facebook widget -->
   <div id="fb-root"></div>
 
@@ -32,7 +32,7 @@
         <div class="shelf__lining">
           <% if @access_error %>
             <p class="shelf__block shelf__block--noaccess js-signin-error">
-              Sorry, you do not have access to the beta…<br />
+              Sorry, you do not have access to the beta…<br>
               <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
             </p>
           <% end %>
@@ -66,7 +66,10 @@
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
-      <%= render :partial => "/home/shelf/get_started" %>
+      <%= render :partial => "/home/shelf/start_watching" %>
+      <%= render :partial => "/home/shelf/community" %>
+      <%= render :partial => "/home/shelf/network" %>
+      <%= render :partial => "/home/shelf/about" %>
     <% end %>
 
     <% #------------ /Shelf Content --------------- %>
@@ -76,6 +79,7 @@
   </div><!-- /shelby-wrapper -->
 
   <%= render :partial => '/home/landing_scripts' %>
+
 
 </body>
 </html>
