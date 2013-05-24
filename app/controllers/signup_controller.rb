@@ -17,8 +17,8 @@ class SignupController < ApplicationController
         # if the user has already completed signup, redirect them into the Backbone app
         redirect_to root_url and return
       end
-      @facebook_connected = @user['authentications'].any? { |a| a['provider'] == 'facebook' }
-      @twitter_connected = @user['authentications'].any? { |a| a['provider'] == 'twitter' }
+      @facebook_connected = @user['authentications'] && @user['authentications'].any? { |a| a['provider'] == 'facebook' }
+      @twitter_connected = @user['authentications'] && @user['authentications'].any? { |a| a['provider'] == 'twitter' }
       followRolls! if session[:signup][:rolls_to_follow]
     else
       @user = {}
