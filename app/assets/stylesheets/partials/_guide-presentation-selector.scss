@@ -181,112 +181,14 @@
 //---------------------------
 
 .settings-section {
-  right: 0;
-}
+  right: 2em;
+  .dropdown_lining {
+    @include fin($ui-white);
 
-
-.settings-section-lining {
-  @include fin($ui-white);
-
-  background-color: $ui-white;
-  box-shadow: 0px 0px 5px 0px black;
-  margin-top: 5px;
-  text-align: left;
-  width: 330px;
-}
-
-.guide-settings-button {
-  background: transparent;
-  border: none;
-
-  &:hover {
-    text-decoration: underline;
+    background-color: $ui-white;
+    box-shadow: 0px 0px 5px 0px black;
+    margin-top: 5px;
+    text-align: left;
+    width: 20em;
   }
 }
-
-.settings-user {
-  background-color: #fff;
-  box-shadow: $shadow;
-  font-size: 1.2em;
-}
-
-.settings-list {
-  font-size: .95em;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.settings-item {
-  display: inline;
-
-  &.right {
-    float: right;
-
-    .settings-button {
-      padding-left: 0em;
-      padding-right: 1em;
-    }
-  }
-}
-
-.settings-button {
-  background: transparent;
-  border: none;
-  color: $text;
-  float: left;
-  line-height: 1.5;
-  padding: .75em .5em .75em .8em;
-  text-align: left;
-
-  &:active,
-  &:link,
-  &:visited {
-    text-decoration: none;
-  }
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-
-.settings-userhandle {
-  @include ellipsis;
-
-  background: transparent;
-  border: none;
-  color: $text;
-  display: block;
-  float: left;
-  font-family: $font-family;
-  font-weight: bold;
-  font-size: 1.1em;
-  line-height: 2.3;
-  margin: 0;
-  padding: 7px;
-  width: 60%;
-
-  img {
-    height: 33px;
-    margin-right: 5px;
-    width: 33px;
-  }
-
-  a {
-    @include hover-link();
-    color: $text;
-  }
-}
-
-.settings-preferences {
-  float: right;
-  line-height: 3.9;
-  padding: 0 1em;
-}
-
-  .button_primer--twitter,
-  .button_primer--facebook {
-    text-align: center;
-    width: 40%;
-  }
