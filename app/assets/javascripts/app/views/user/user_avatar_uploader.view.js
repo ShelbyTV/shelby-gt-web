@@ -16,14 +16,6 @@ libs.shelbyGT.UserAvatarUploaderView = Support.CompositeView.extend({
     return SHELBYJST['user/avatar-uploader'](obj);
   },
 
-
-  initialize : function(){
-    this.model = shelby.models.user;
-  },
-
-  _cleanup : function(){
-  },
-
   render : function(){
     this.$el.html(this.template({ user: this.model }));
 
