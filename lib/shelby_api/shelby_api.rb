@@ -19,13 +19,13 @@ module Shelby
     def self.update_user(id, attributes, cookie, token)
       headers = { 'Cookie' => cookie }
       headers['X-CSRF-Token'] = token if token
-      put("/user/#{id}", { :body => attributes, :headers => headers })
+      put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}", { :body => attributes, :headers => headers })
     end
 
     def self.create_user(attributes, cookie, token)
       headers = { 'Cookie' => cookie }
       headers['X-CSRF-Token'] = token if token
-      post("/user", { :body => attributes, :headers => headers })
+      post("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user", { :body => attributes, :headers => headers })
     end
 
     def self.join_roll(roll_id, cookie, token)
