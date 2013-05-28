@@ -1,31 +1,4 @@
-<div class="js-show-request-invite form_fieldset form_fieldset--private clearfix">
-  <p class="form_legend">
-    Not a member? <a href="#" onclick="$('.js-request-invite').removeClass('hidden');$('.js-show-request-invite').hide();">Request an invite.</a>
-  </p>
-</div>
-
-<div class="js-request-invite clearfix hidden">
-  <form id="js-email-form" class="form_module form_module--request-form js-track-submit<%= inAnonBanner ? ' js-in-anon-banner' : '' %>" data-ga_action="Request invite">
-    <fieldset class="">
-      <label for="email" class="form_label">Email</label>
-      <input name="email" id="js-email-input" class="form_input" type="email" placeholder="email@address.com" autofocus />
-    </fieldset>
-
-    <fieldset class="form_fieldset">
-      <input id="js-email-submit" class="button_primer button_blue form_submit" type="submit" value="Request an invite!" />
-    </fieldset>
-  </form>
-
-  <div id="js-thankyou" class="form_fieldset form_fieldset--feedback hidden">
-    <span class="form_label">
-      Thanks, we'll email you!
-    </span>
-  </div>
-</div>
-
-<hr />
-
-<form accept-charset="UTF-8" action="<%= shelby.config.loginFormUrl %>" method="post" class="form_module form_module--login-form js-track-submit" data-ga_action="Email login">
+<form accept-charset="UTF-8" action="<%= formActionUrl %>" method="post" class="form_module form_module--login-form js-track-submit" data-ga_action="Email login">
   <fieldset class="form_fieldset">
     <label for="username" class="form_label">Username</label>
     <input id="username" name="username" placeholder="Username or Email address" class="form_input" />
@@ -33,12 +6,12 @@
 
   <fieldset class="form_fieldset">
     <label for="password" class="form_label">Password</label>
-  <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
+    <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
   </fieldset>
 
   <fieldset class="form_fieldset">
-    <input name="commit" type="submit" value="Log In" class="button_primer button_command button_command--flexible button_gray" />
-    <a href="<%= shelby.config.apiBase + "/user/password/new" %>" class="login-forgot-password">Forgot your password?</a>
+    <input name="commit" type="submit" value="Login" class="button_primer button_command button_command--flexible button_gray" />
+    <a href="<%= forgotPasswordUrl %>" class="login-forgot-password">Forgot your password?</a>
   </fieldset>
 </form>
 
@@ -49,7 +22,7 @@
     Log in with
   </h4>
 
-  <a href="<%= shelby.config.apiBase + "/auth/twitter" %>"
+  <a href="<%= twitterAuthUrl %>"
      class="button_primer button_twitter-blue button_command button_primer--twitter js-track-event js-authorize"
      data-ga_action="Login with Twitter"
      data-popup_height="700"
@@ -58,7 +31,7 @@
     Twitter
   </a>
 
-  <a href="<%= shelby.config.apiBase + "/auth/facebook" %>"
+  <a href="<%= facebookAuthUrl %>"
      class="button_primer button_facebook-blue button_command button_primer--facebook js-track-event js-authorize"
      data-ga_action="Login with Facebook"
      data-popup_height="650"
@@ -67,29 +40,3 @@
     Facebook
   </a>
 </div>
-
-<script>
-  $(document).ready(function(){
-    var emailForm = $('#js-email-form');
-    emailForm.on('submit', function(){
-      $.get('<%= shelby.config.apiRoot %>/POST/gt_interest', $(this).serialize(), function(data) {
-        $('#js-email-form').addClass('hidden');
-        $('#js-thankyou').removeClass('hidden');
-        var emailAddress = $('#js-email-input').val();
-        if (emailForm.hasClass('js-in-anon-banner')) {
-          shelby.trackEx({
-            providers : ['ga', 'kmq'],
-            gaCategory : 'anonymous banner',
-            gaAction : 'signup',
-            gaLabel : emailAddress,
-            kmqName : 'signup',
-            kmqProperties : {
-              email : emailAddress
-            }
-          })
-        }
-      }, 'jsonp');
-      return false;
-    });
-  });
-</script>

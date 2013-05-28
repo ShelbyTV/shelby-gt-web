@@ -19,6 +19,7 @@
 //= require ../../templates/message.jst.ejs
 //= require ../../templates/notification-overlay.jst.ejs
 //= require ../../templates/rolling-form.jst.ejs
+//= require ../../templates/signin-form.jst.ejs
 //= require ../../templates/thumbnail-module.jst.ejs
 
 
