@@ -1,7 +1,7 @@
 ( function(){
 
   var AutoCompleteDropDownView = Support.CompositeView.extend({
-    
+
     events : {
       "click"         : "_onMenuClick",
       "mousedown"     : "_onMenuMouseDown",
@@ -77,7 +77,7 @@
       this._input = this._$input[0];
 
       this._menu = new AutoCompleteDropDownView({
-        className: this.options.menuClass + " js-autocomplete-menu",
+        className: this.options.menuClass + " fin fin--top_left js-autocomplete-menu",
         tagName : "ul"
       });
       this.renderChild(this._menu);
