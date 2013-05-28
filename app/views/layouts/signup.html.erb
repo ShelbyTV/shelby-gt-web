@@ -17,12 +17,8 @@
     <%= yield %>
   </div><!-- eo shelby__wrapper -->
 
-  <% if @step == Settings::Signup.user_update_step %>
-    <%= javascript_tag "var userJson = #{@user.to_json;}" %>
-    <%= javascript_include_tag "signup-user-update" %>
-  <% elsif @step == Settings::Signup.roll_selection_step %>
-    <%= javascript_include_tag "signup-slideshow" %>
-  <% end %>
+  <%= javascript_tag "var userJson = #{@user.to_json;}" %>
+  <%= javascript_include_tag "signup" %>
 
   <% if ["production", "staging"].include? Rails.env %>
     <script>

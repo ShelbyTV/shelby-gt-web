@@ -13,4 +13,7 @@
 //= require ./app/views/user/
 //= require ./event-tracking/app.tracking.js
 //= require ./app/config/user.config.js
+
+//= require ./signup/jquery.cycle.js
 //= require ./signup/user-update
+//= require ./signup/slideshow.js

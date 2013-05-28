@@ -9,15 +9,15 @@ var onAfter = function(curr,next,opts,d){
 
   // track click event
   shelby.trackEx({
-        providers : ['ga', 'kmq'],
-        gaCategory : "Onboarding",
-        gaAction : 'Click More on Step 1',
-        kmqName : "Click More on Step 1 in Onboarding"
-      });
+    providers : ['ga', 'kmq'],
+    gaCategory : "Onboarding",
+    gaAction : 'Click More on Step 1',
+    kmqName : "Click More on Step 1 in Onboarding"
+  });
 };
 
 var startingSlide = function() {
-  //get current slide from hash, makes things linkable?
+  //get current slide from hash
   var currentSlide = +(window.location.hash.split('#')[1]);
   return (!isNaN(currentSlide) && currentSlide >= 0) ? currentSlide : 0;
 };
