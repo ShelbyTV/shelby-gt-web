@@ -4,9 +4,16 @@ if (typeof(shelby) == 'undefined') {
 if (typeof(shelby.config) == 'undefined') {
   shelby.config = {};
 }
-shelby.alert = function(m) {
-  window.alert(m);
-}
+shelby.alert = function(options) {
+  message = options.message;
+  // strip html paragraph tags out of the alert message
+  re = /<p>|<\/p>/gi;
+  var match;
+  while (match = re.exec(message)) {
+    message = message.slice(0, match.index) + message.slice(match.index + match[0].length);
+  }
+  window.alert(message);
+};
 $.ajaxPrefilter(function(options, originalOptions, xhr) {
   // attach the API's csrf token to the request for logged in users
   if (options.type.toUpperCase() != 'GET' && !options.no_csrf) {
