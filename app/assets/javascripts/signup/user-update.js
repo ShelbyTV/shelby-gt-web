@@ -43,6 +43,22 @@ function validateUserForm(e) {
         hasErrors = true;
   }
 
+  // validate username
+  var $userNameInput = $form.find('#nickname');
+  // entering a username is required
+  if(!$userNameInput.val().length) {
+        $userNameInput.prevAll('.js-form-error').text('Please enter a username').parent().addClass('form_fieldset--error');
+        hasErrors = true;
+  }
+
+  // validate email
+  var $emailInput = $form.find('#primary_email');
+  // entering an email is required
+  if(!$emailInput.val().length) {
+        $emailInput.prevAll('.js-form-error').text('Please enter a valid email address').parent().addClass('form_fieldset--error');
+        hasErrors = true;
+  }
+
   // validate password
   var $passwordInput = $form.find('#password');
   // password must have a minimum length
