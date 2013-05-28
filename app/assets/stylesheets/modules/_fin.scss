@@ -56,6 +56,7 @@
   &:before {
     @include rotate(45deg);
 
+    border: 1px solid transparent;
     background-color: inherit;
     content: "\0020";
     display: block;
