@@ -20,7 +20,10 @@
   <% if @step == Settings::Signup.user_update_step %>
     <%= javascript_tag "var userJson = #{@user.to_json;}" %>
     <%= javascript_include_tag "signup-user-update" %>
+  <% elsif @step == Settings::Signup.roll_selection_step %>
+    <%= javascript_include_tag "signup-slideshow" %>
   <% end %>
+
   <% if ["production", "staging"].include? Rails.env %>
     <script>
       var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
@@ -46,10 +49,5 @@
       _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
     </script>
   <% end %>
-
-  <% if @step == Settings::Signup.roll_selection_step %>
-    <%= javascript_include_tag "signup-slideshow" %>
-  <% end %>
-
 </body>
 </html>

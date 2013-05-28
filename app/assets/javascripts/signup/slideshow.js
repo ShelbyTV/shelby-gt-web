@@ -6,6 +6,14 @@ var onAfter = function(curr,next,opts,d){
 
   $('.js-next').toggleClass('hidden',lastSlide);
   $('.js-advance-slideshow').toggleClass('hidden', !lastSlide);
+
+  // track click event
+  shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : "Onboarding",
+        gaAction : 'Click More on Step 1',
+        kmqName : "Click More on Step 1 in Onboarding"
+      });
 };
 
 var startingSlide = function() {
