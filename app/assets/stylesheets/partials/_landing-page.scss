@@ -79,16 +79,18 @@ $landing-page-footer-font-color: #EFEFEF;
   font-size: 1.3em;
   right: 10px;
   top: 28px;
-}
 
-.login-section-lining,
-.signup-section-lining {
-  @include fin;
+  .fin--top_right {
+    z-index: 0;
+  }
 
-  background: $nav-dropdown-bg;
-  box-shadow: 0 0 20px 0 black;
-  text-align: left;
-  width: 300px;
+  .dropdown_lining {
+    background: $nav-dropdown-bg;
+    box-shadow: 0 0 20px 0 black;
+    margin-top: 1em;
+    text-align: left;
+    width: 300px;
+  }
 }
 
 .login-header,

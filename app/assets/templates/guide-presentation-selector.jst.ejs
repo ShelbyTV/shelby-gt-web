@@ -37,12 +37,11 @@
   <% if (shelby.models.user.isAnonymous()) { %>
     <li class="dropdown_module list__item secondary-item guide-login">
           <button class="dropdown_button app_nav__button">
-            Log In
-            <i class="icon-carrot"></i>
+            Log In <i class="icon-carrot"></i>
           </button>
 
           <section class="dropdown_section login-section">
-            <div class="dropdown_lining login-section-lining clearfix">
+            <div class="dropdown_lining fin fin--top_right clearfix">
               <%= SHELBYJST['signin-form'](shelby.config.loginForm) %>
             </div>
           </section>
@@ -56,7 +55,7 @@
         Settings <i class="icon-carrot"></i>
     </button>
     <section class="dropdown_section settings-section">
-      <div class="dropdown_lining clearfix">
+      <div class="dropdown_lining fin fin--top_right clearfix">
         <ul class="list">
           <li class="list__item">
             <button
