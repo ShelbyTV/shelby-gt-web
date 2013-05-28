@@ -77,8 +77,15 @@
     .button_command--roll {}
     .button_command--shortlink {}
     .button_command--text {
-      background: transparent !important;
+      background-color: transparent;
+      background-image: none;
       border: none;
+      border-radius: 0;
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+      }
     }
     .button_command--tumblr {}
     .button_command--twitter {}
