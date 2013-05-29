@@ -107,10 +107,7 @@
 }
 
 .frame-footer {
-  .hr--double {
-    border-top-color: #D9D4D4;
-    border-bottom-color: #FCFAFA;
-  }
+
 }
 
 .frame-subsection,
@@ -121,14 +118,6 @@
 
 
 .frame-subsection {
-  .frame-command-wrapper {
-    color: #777;
-    padding-right: 1em;
-
-    &.icon {
-      padding-left: 1.4em;
-    }
-  }
 }
 
 //------------------------------------------------------------------------------
