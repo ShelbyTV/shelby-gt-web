@@ -248,7 +248,7 @@ class HomeController < ApplicationController
       if user
         abilities = user["additional_abilities"]
         abilities.keep_if {|a| a[0..2] == "UA-"}
-        return ga_account if ga_account = abilities.first
+        return abilities.first if !abilities.empty?
       end
       return Settings::GoogleAnalytics.code
     end
