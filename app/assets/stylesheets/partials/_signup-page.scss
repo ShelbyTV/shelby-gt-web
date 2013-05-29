@@ -148,6 +148,24 @@
       .signup__img {
         margin: 1.5em 0;
       }
+
+      .button_facebook-blue[disabled]{
+        &,
+        &:hover{
+         background: $facebook-blue;
+         border-color: 1px solid darken($facebook-blue, if(lightness($facebook-blue) < 62, 6.5%, 20%));
+         color: $ui-white;
+        }
+      }
+
+      .button_twitter-blue[disabled]{
+        &,
+        &:hover{
+         background: $twitter-blue;
+         border-color: 1px solid darken($twitter-blue, if(lightness($twitter-blue) < 62, 6.5%, 20%));
+         color: $ui-white;
+        }
+      }
     }
     .signup--profile {
       width: 33em;

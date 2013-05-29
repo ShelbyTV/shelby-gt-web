@@ -25,7 +25,7 @@
               :type => 'submit',
               :name => 'commit',
               :value => 'facebook',
-              :class => "button_primer button_command button_command--share #{@facebook_connected ? 'button_active' : 'button_facebook-blue'} one-quarter js-track-event",
+              :class => "button_primer button_command button_command--share #{'button_active ' if @facebook_connected}button_facebook-blue one-quarter js-track-event",
                'data-ga_category' => 'Onboarding',
                'data-ga_action' => 'Click Authenticate on Step 2',
                'data-ga_label' => 'Facebook'
@@ -45,7 +45,7 @@
               :type => 'submit',
               :name => 'commit',
               :value => 'twitter',
-              :class => "button_primer button_command button_command--share #{@twitter_connected ? 'button_active' : 'button_twitter-blue'} one-quarter js-track-event",
+              :class => "button_primer button_command button_command--share #{'button_active ' if @twitter_connected}button_twitter-blue one-quarter js-track-event",
                'data-ga_category' => 'Onboarding',
                'data-ga_action' => 'Click Authenticate on Step 2',
                'data-ga_label' => 'Twitter'
