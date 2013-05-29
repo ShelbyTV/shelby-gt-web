@@ -14,7 +14,7 @@ user 'gt'
 # Fill path to your app
 working_directory app_path
 
-# Should be 'staging' by default, otherwise use other env 
+# Should be 'staging' by default, otherwise use other env
 rails_env = ENV['RAILS_ENV'] || 'staging'
 
 # Log everything to one file
@@ -25,7 +25,7 @@ stdout_path "#{app_path}/log/unicorn.log"
 pid "/home/gt/web/shared/pids/unicorn.pid"
 
 before_fork do |server, worker|
-  #ActiveRecord::Base.connection.disconnect!
+  EM.stop if EM.reactor_running?
 
   old_pid = "#{server.config[:pid]}.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
@@ -38,5 +38,5 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  #ActiveRecord::Base.establish_connection
+  Thread.new { EM.run }
 end

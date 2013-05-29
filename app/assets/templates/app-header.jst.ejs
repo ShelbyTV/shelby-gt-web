@@ -1,13 +1,11 @@
+<% if (shelby.config.environment == "staging") { %>
+  <span class="shelby-title-staging"><%= shelby.config.branch %></span>
+<% } %>
+
 <button class="shelby-logo visuallydisabled js-home">
-  <% if (shelby.config.environment != "staging") { %>
-    <h1 class="shelby_logo">
-	    <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
-    </h1>
-  <% } else { %>
-    <h1 class="shelby-title-staging">
-      <%= shelby.config.branch %>
-    </h1>
-  <% } %>
+  <h1 class="shelby_logo">
+    <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+  </h1>
 </button>
 
 <nav id="js-guide-presentation-selector" class="guide-presentation-selector">

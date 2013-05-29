@@ -2,6 +2,7 @@
 //= require ../backbone/underscore.js
 
 //App
+//= require ../app/libs.namespace
 //= require ../app/app.config.js
 //= require ../app/app.namespace.js
 

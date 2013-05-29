@@ -1,10 +1,12 @@
 require 'shelby_api'
+require 'cookie_utils'
+require 'hash_error_checker'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+
   after_filter :set_access_control_headers
-  
+
   #set Vanity (A/B testing) to use javascript to register participants, hopefully preventing robots from participating
   Vanity.playground.use_js!
 
@@ -32,19 +34,19 @@ class ApplicationController < ActionController::Base
     Rails.logger.error "render_error(#{code}, '#{message}')"
     render 'blank', :status => @status, :formats => [:json]
   end
-  
+
   # Mobile detection
   def is_mobile?
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android)/]
   end
-  
+
   def detect_mobile_os
     return :ios if (request.user_agent=~/iPhone/)
     return :android if (request.user_agent=~/Android/)
     return :generic if is_mobile?
     return nil
   end
-  
+
   ##
   # Simple helper to let us know if we expect that the user is signed in:
   #  the _shelby_gt_common cookie is being set/cleared on the api server
@@ -56,31 +58,31 @@ class ApplicationController < ActionController::Base
   def current_user_id
     cookie_to_hash(cookies[:_shelby_gt_common])[:authenticated_user_id]
   end
-  
+
   def csrf_token_from_cookie
     cookie_to_hash(cookies[:_shelby_gt_common])[:csrf_token]
   end
-  
+
   def cookie_to_hash(c, delim=",", split="=")
     entries = c.blank? ? nil : c.split(delim)
     h = {}
     return h if entries.blank?
-    
+
     entries.each do |entry|
       key, val = entry.split("=", 2)
       h[key.to_sym] = val
     end
-    
+
     h
   end
-  
+
   private
-  
+
     # Allowing simple GET requests cross-origin
     # This is not CORS
     def set_access_control_headers
       headers['Access-Control-Allow-Origin'] = '*'
       headers['Access-Control-Request-Method'] = 'GET'
     end
-  
+
 end

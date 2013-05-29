@@ -36,12 +36,14 @@ libs.shelbyGT.OnboardingContentStage1View = OnboardingContentStageBaseView.exten
     this.$el.html(this.template());
     this._userAvatar = new libs.shelbyGT.UserAvatarPresenterView({
       el: this.$('.js-dynamic-user-avatar')[0],
-      avatarSize: libs.shelbyGT.UserAvatarSizes.large
+      avatarSize: libs.shelbyGT.UserAvatarSizes.large,
+      model: shelby.models.user
     });
     this.renderChild(this._userAvatar);
 
     this._userAvatarUploader = new libs.shelbyGT.UserAvatarUploaderView({
       el: this.$('.js-user-avatar-uploader')[0],
+      model: shelby.models.user,
       progressEl: this.$('.dynamic-avatar .progress-overlay')[0],
       progressMessageEl: this.$('.dynamic-avatar .progress-message')[0]
     });

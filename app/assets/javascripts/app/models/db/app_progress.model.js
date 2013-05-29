@@ -28,7 +28,7 @@
     },
 
     hasCompletedOnboarding : function(){
-      return this.get('onboarding') >= 2;
+      return this.get('onboarding') !== false;
     },
 
     saveMe : function(){

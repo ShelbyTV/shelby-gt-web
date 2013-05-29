@@ -1,0 +1,58 @@
+/*
+  Card detailing a Roll Category and highlights a few rolls from that category
+
+  Used in the Signup flow
+
+*/
+
+//------------------------------------------------------------------------------
+//  Block
+//------------------------------------------------------------------------------
+.roll_card {
+  border: 1px solid $inset;
+  margin: 8px;
+  padding: 0;
+
+  & > .media_body {
+    padding: 0.7em;
+  }
+
+  & > .media_image--rev {
+    padding: 1.8em 1.8em 0 0;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Elements
+//------------------------------------------------------------------------------
+.roll_card__h1 {
+  @include ellipsis;
+
+  font-size: 1.7em;
+  line-height: 2;
+}
+
+.roll_card__block {
+  @include ellipsis;
+
+  margin-bottom: 1.5em;
+}
+
+.roll_card__avatar {
+  height: 6.7em;
+  width: 6.7em;
+}
+
+.roll_card__button {
+  width: 7em;
+}
+
+//------------------------------------------------------------------------------
+//  Framework
+//------------------------------------------------------------------------------
+.roll_card__head {
+
+}
+
+.roll_card__body {
+}
