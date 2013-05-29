@@ -22,7 +22,7 @@ var startingSlide = function() {
   return (!isNaN(currentSlide) && currentSlide >= 0) ? currentSlide : 0;
 };
 
-(function(){
+$(document).ready(function(){
 
   $slideshow = $('.js-slideshow');
 
@@ -60,10 +60,10 @@ var startingSlide = function() {
 
     $slideshow.cycle(+(window.location.hash.split('#')[1]));
   });
-})();
 
-// if the user failed to follow the appropriate number of rolls
-// on their previous attempt, let them know
-if (!followValidationOk) {
+  // if the user failed to follow the appropriate number of rolls
+  // on their previous attempt, let them know
+  if (!followValidationOk) {
     alert("To make Shelby better for you, pick at least two sources of video");
-}
+  }
+});
