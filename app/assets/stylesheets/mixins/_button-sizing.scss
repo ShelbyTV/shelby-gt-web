@@ -72,7 +72,12 @@
         margin-right: 2px;
       }
     }
-    .button_command--facebook {}
+    .button_command--facebook {
+      .icon-facebook {
+        display: inline-block;
+        width: 0.5em;
+      }
+    }
     .button_command--remove {}
     .button_command--roll {}
     .button_command--shortlink {}
@@ -88,7 +93,13 @@
       }
     }
     .button_command--tumblr {}
-    .button_command--twitter {}
+    .button_command--twitter {
+      .icon-twitter {
+        display: inline-block;
+        width: 1em;
+        margin-left: -0.25em
+      }
+    }
 
   //icon adjustments
     .button_command--like {
