@@ -1,20 +1,10 @@
 //---------------------------------------------------------
-// global mechanism for including library prototypes
+// global namespace for this app
 //---------------------------------------------------------
-libs = {
-  shelbyGT : {
-    viewHelpers : {}
-  },
-  utils : {}
-};
-
 if (typeof(shelby) == 'undefined') {
   shelby = {};
 }
 
-//---------------------------------------------------------
-// global namespace for this app
-//---------------------------------------------------------
 _(shelby).extend({
   models : {},
   views : {},

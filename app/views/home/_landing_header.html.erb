@@ -1,21 +1,21 @@
-<header class="shelby__header clearfix" role="banner">
+<% if Rails.env == "staging" %>
+  <span class="shelby-title-staging"><%= Settings::Branch.branch %></span>
+<% end %>
+
+<header class="shelby__head clearfix" role="banner">
   <a href="/" class="button_primer shelby-logo">
-    <% if Rails.env != "staging" %>
-      <h1 class="shelby_logo">
+    <h1 class="shelby-logo">
+      <span class="shelby_logo">
         <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
-      </h1>
-    <% else %>
-      <h1 class="shelby-title-staging">
-        <%= Settings::Branch.branch %>
-      </h1>
-    <% end %>
+      </span>
+    </h1>
   </a>
 
-  <nav class="guide-presentation-selector">
-    <ul class="list app_nav clearfix">
+  <nav>
+    <ul class="list list--inline app_nav clearfix">
       <% if show_login %>
-        <li class="dropdown_module list__item secondary-item guide-login">
-          <button class="dropdown_button app_nav__button">
+        <li class="dropdown_module list__item">
+          <button class="dropdown_button button_primer button_command button_command--flexible button_command--text app_nav__button">
             Log In
             <i class="icon-carrot"></i>
           </button>

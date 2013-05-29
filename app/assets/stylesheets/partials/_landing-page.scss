@@ -24,6 +24,10 @@ $landing-page-footer-font-color: #EFEFEF;
   //TODO: determine why this override is necessary.
   .shelby__wrapper {
     position: relative;
+    // max-width: 1500px;
+    margin: 0 auto;
+  }
+  .shelby__head {
   }
 
   /* adjust the header, don't want absolute position */
@@ -34,6 +38,7 @@ $landing-page-footer-font-color: #EFEFEF;
   /* this gets hidden in _guide-presentation-selector.scss for onboarding */
   .app_nav {
     display: block;
+    text-align: right;
   }
 }
 
@@ -77,8 +82,10 @@ $landing-page-footer-font-color: #EFEFEF;
 .login-section,
 .signup-section {
   font-size: 1.3em;
-  right: 10px;
-  top: 28px;
+  right: 1.3em;
+  top: 2em;
+  padding-top: 1em;
+}
 
   .fin--top_right {
     z-index: 0;

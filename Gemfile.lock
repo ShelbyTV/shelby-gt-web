@@ -84,6 +84,7 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    cookiejar (0.3.0)
     daemons (1.1.9)
     diff-lcs (1.1.3)
     ejs (1.1.1)
@@ -261,7 +262,9 @@ DEPENDENCIES
   capybara
   capybara-webkit
   compass-rails (~> 1.0.3)
+  cookiejar
   ejs
+  eventmachine
   exception_notification
   headless
   httparty

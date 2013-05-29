@@ -1,0 +1,96 @@
+<div class="signup signup--social" role="main">
+  <div class="signup__head">
+    <h2 class="signup__h3">
+      Step 2 of 3
+    </h2>
+
+    <h1 class="signup__h1">
+      Get social on Shelby TV
+    </h1>
+  </div>
+
+  <div class="signup__body">
+    <%= form_tag do %>
+      <fieldset class="form_fieldset">
+        <legend class="form__legend">
+          Never miss videos your friends are loving and sharing!<br />
+          Connect your networks to Shelby TV below.
+        </legend>
+
+        <img src="/images/onboarding/activity.png" class="signup__img" />
+
+        <fieldset class="form_fieldset">
+          <%
+            attributes = {
+              :type => 'submit',
+              :name => 'commit',
+              :value => 'facebook',
+              :class => "button_primer button_command button_command--share #{'button_active ' if @facebook_connected}button_facebook-blue one-quarter js-track-event",
+               'data-ga_category' => 'Onboarding',
+               'data-ga_action' => 'Click Authenticate on Step 2',
+               'data-ga_label' => 'Facebook'
+            }
+            attributes[:disabled] = true if @facebook_connected
+          %>
+          <%= content_tag :button, attributes do %>
+            <% if @facebook_connected %>
+              <span class="button_label">Connected</span>
+            <% else %>
+              <span class="icon icon-facebook"></span> <span class="button_label">Facebook</span>
+            <% end %>
+          <% end %>
+
+          <%
+            attributes = {
+              :type => 'submit',
+              :name => 'commit',
+              :value => 'twitter',
+              :class => "button_primer button_command button_command--share #{'button_active ' if @twitter_connected}button_twitter-blue one-quarter js-track-event",
+               'data-ga_category' => 'Onboarding',
+               'data-ga_action' => 'Click Authenticate on Step 2',
+               'data-ga_label' => 'Twitter'
+            }
+            attributes[:disabled] = true if @twitter_connected
+          %>
+          <%= content_tag :button, attributes do %>
+            <% if @twitter_connected %>
+              <span class="button_label">Connected</span>
+            <% else %>
+              <span class="icon icon-twitter"></span> <span class="button_label">Twitter</span>
+            <% end %>
+          <% end %>
+        </fieldset>
+
+        <% if !@facebook_connected or !@twitter_connected %>
+          <p class="form__description">
+            We never spam.
+          </p>
+        <% end %>
+
+        <% if @twitter_connected %>
+          <p class="form__description">
+            <%= check_box_tag 'follow_shelby', 'shelby-twitter', true %>
+            <%= label_tag 'follow_shelby', 'Follow @Shelby on Twitter', :class => 'form_label form_label--inline' %>
+          </p>
+        <% end %>
+
+        <% if @facebook_connected %>
+          <p class="form__description">
+            <%= check_box_tag 'publish_shelby', 'shelby-facebook', true %>
+            <%= label_tag 'publish_shelby', 'Publish activity to Facebook Timeline', :class => 'form_label form_label--inline' %>
+          </p>
+        <% end %>
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <%= submit_tag("Next",:class => 'button_primer button_command button_command--wide button_green', 'data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Next on Step 2') %>
+      </fieldset>
+    <% end %>
+
+  </div>
+</div>
+
+
+
+
+

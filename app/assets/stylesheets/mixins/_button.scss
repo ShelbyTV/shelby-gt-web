@@ -60,18 +60,16 @@
     background-color: $base;
 
     // @include gradient-primer($base, 3%, bottom);
-    background-image: -webkit-linear-gradient(bottom, rgba(1,1,1,.05), rgba(0,0,0,0));
-    background-image: -moz-linear-gradient(bottom, rgba(1,1,1,.05), rgba(0,0,0,0));
-    background-image: -o-linear-gradient(bottom, rgba(1,1,1,.05), rgba(0,0,0,0));
-    background-image: -ms-linear-gradient(bottom, rgba(1,1,1,.05), rgba(0,0,0,0));
-    background-image: linear-gradient(to top, rgba(1,1,1,.05), rgba(0,0,0,0));
   }
 
   border: 1px solid darken($base, if(lightness($base) < $inversion-value, 6.5%, 20%));
   color: if(lightness($base) < $inversion-value, $ui-white, $ui-soft-black);
 
   @if $base == darken($ui-green,5%) { //darkened; see _color-table
-    text-shadow: 0px 0px 1px darken($ui-green,5%);
+    text-shadow: 0px 0px 1px $ui-black;
+  }
+  @if $base == $twitter-blue {
+    text-shadow: 0px 0px 1px $ui-black;
   }
 
   &:hover {
@@ -112,8 +110,14 @@
 .button_primer {
   @include roundies(button);
 
+  background-image: -webkit-linear-gradient(bottom, rgba(1,1,1,.05), rgba(0,0,0,0));
+  background-image: -moz-linear-gradient(bottom, rgba(1,1,1,.05), rgba(0,0,0,0));
+  background-image: -o-linear-gradient(bottom, rgba(1,1,1,.05), rgba(0,0,0,0));
+  background-image: -ms-linear-gradient(bottom, rgba(1,1,1,.05), rgba(0,0,0,0));
+  background-image: linear-gradient(to top, rgba(1,1,1,.05), rgba(0,0,0,0));
   font-family: $font-family;
   font-weight: bold;
+  -webkit-font-smoothing: antialiased;
   position: relative;
   -moz-user-select: none;
   -webkit-user-select: none;

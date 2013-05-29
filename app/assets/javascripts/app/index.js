@@ -2,6 +2,7 @@
 manifest. That file is omitted here so that all of the app's functionality can be loaded for testing
 without triggering default app setup actions such as routing, user fetch, etc. */
 //= require ./browser
+//= require ./libs.namespace
 //= require ./app.config
 //= require ./app.namespace
 //
