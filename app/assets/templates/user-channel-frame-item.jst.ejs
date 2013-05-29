@@ -8,20 +8,15 @@
       <% if (!shelby.models.user.isAnonymous()) { %>
         <li class="menu_item" role="menuitem">
           <button class="button_primer button_gray button_command button_command--roll js-roll-command js-track-event" data-ga_category="User Profile" data-ga_action="Click to roll frame" data-ga_label="<%= videoTitle %>">
-            <i class="icon icon-roll">
-            </i>
+            <span class="icon icon-roll"></span>
               Roll…
           </button>
         </li>
       <% } %>
       <li class="menu_item" role="menuitem">
         <button class="button_primer button_gray button_command button_command--like js-queue-command js-track-event" data-ga_category="User Profile" data-ga_action="Click to like frame" data-ga_label="<%= videoTitle %>">
-          <i class="icon icon-like js-command-icon">
-          </i>
-
-          <span class="label">
-            Like
-          </span>
+          <span class="icon icon-like js-command-icon"></span>
+          <span class="label">Like</span>
         </button>
       </li>
     </ul>

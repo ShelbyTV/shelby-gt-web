@@ -37,7 +37,7 @@
   <% if (shelby.models.user.isAnonymous()) { %>
     <li class="dropdown_module list__item secondary-item guide-login">
           <button class="dropdown_button app_nav__button">
-            Log In <i class="icon-carrot"></i>
+            Log In <span class="icon-carrot"></span>
           </button>
 
           <section class="dropdown_section login-section">
@@ -52,7 +52,7 @@
     <button class="dropdown_button app_nav__button app_nav__button--settings js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= shelby.models.user.get('nickname') %>">
       <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrl(user,libs.shelbyGT.UserAvatarSizes.small)%>
       <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
-        Settings <i class="icon-carrot"></i>
+        Settings <span class="icon-carrot"></span>
     </button>
     <section class="dropdown_section settings-section">
       <div class="dropdown_lining fin fin--top_right clearfix">
