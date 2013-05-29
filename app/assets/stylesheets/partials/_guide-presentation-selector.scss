@@ -181,8 +181,28 @@
 }
 
 //---------------------------
-//  settings panel
+//  dropdown panels
 //---------------------------
+
+.login-section {
+  font-size: 1.3em;
+  right: 1.3em;
+  top: 2em;
+  padding-top: 1em;
+
+  .fin--top_right {
+    z-index: 0;
+  }
+
+  .dropdown_lining {
+    background: $nav-dropdown-bg;
+    box-shadow: 0 0 20px 0 black;
+    margin-top: 0.5em;
+    text-align: left;
+    width: 300px;
+  }
+}
+
 
 .login-section,
 .settings-section {
