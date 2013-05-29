@@ -8,11 +8,11 @@
 <% var message        = conversation ? conversation.get('messages').at(0) : null %>
 
 <div class="guide-overlay__head guide-overlay__head--frame-sharing">
-        <h1 class="guide-overlay__title">
+  <h2 class="guide-overlay__title--inline">
     Email to Friends
-  </h1>
+  </h2>
 
-  <button class="button_primer button_gray guide-overlay__button--cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+  <button class="button_primer button_gray button_icon-only js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
     <span class="icon-close"></span>
     <span class="visuallyhidden">Cancel</span>
   </button>

@@ -1,17 +1,15 @@
-<div class="overlay_header guide-overlay-head">
-  <div class="guide-overlay-head-lining">
-    <button class="button_primer button_gray guide-overlay-cancel js-cancel js-track-event" data-ga_category="Bookermarklet" data-ga_action="Click cancel" data-ga_label="anonymous">
-      <i class="icon icon-cancel">
-        Cancel
-      </i>
-    </button>
-    <h2 class="guide-overlay-header">
-      Login to Shelby
-    </h2>
-  </div><!-- eo .guide-overlay-head-lining -->
+<div class="guide-overlay__head guide-overlay__head--bookmarklet">
+  <h2 class="guide-overlay__title--inline">
+    Login to Shelby
+  </h2>
+
+  <button class="button_primer button_gray button_icon-only js-cancel js-track-event" data-ga_category="Bookermarklet" data-ga_action="Click cancel" data-ga_label="anonymous">
+    <span class="icon icon-close"></span>
+    <span class="visuallyhidden">Cancel</span>
+  </button>
 </div><!-- eo .guide-overlay-head -->
 
-<div class="overlay_body guide-overlay-body">
+<div class="guide-overlay__body guide-overlay__body--bookmarklet">
   <%= SHELBYJST['signin-form']({
     facebookAuthUrl   : facebookDomain,
     forgotPasswordUrl : shelby.config.apiBase + "/user/password/new",

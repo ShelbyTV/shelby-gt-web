@@ -248,15 +248,21 @@ p {
   display: table-cell;
   margin: 0 auto;
   padding: 1em;
+  position: relative;
   vertical-align: middle;
   width: 100%;
 
   .seovideo__h4 {
     padding-right: 1.5em;
 
-    &.icon {
-      background-size: 1em;
-    }
+  }
+
+  .icon {
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    height: 1em;
+    margin-top: -.5em;
   }
 }
 
