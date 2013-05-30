@@ -43,7 +43,7 @@ libs.shelbyGT.ShelbyBaseModel = Backbone.RelationalModel.extend({
 
   // supporting the following additional events (in addition to those of Backbone)
   messages : {
-    fetchComplete : "fetch:complete",
+    fetchComplete : "fetch:complete"
   },
 
   fetch : function(options){

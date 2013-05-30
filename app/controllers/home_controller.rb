@@ -245,13 +245,12 @@ class HomeController < ApplicationController
     end
 
     def get_account_analytics_info(user)
-      abilities = user["additional_abilities"]
-      abilities.keep_if {|a| a[0..2] == "UA-"}
-      if ga_account = abilities.first
-        return ga_account
-      else
-        return Settings::GoogleAnalytics.code
+      if user
+        abilities = user["additional_abilities"]
+        abilities.keep_if {|a| a[0..2] == "UA-"}
+        return abilities.first if !abilities.empty?
       end
+      return Settings::GoogleAnalytics.code
     end
 
 end

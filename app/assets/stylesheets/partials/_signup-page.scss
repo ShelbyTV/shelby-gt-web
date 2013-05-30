@@ -1,0 +1,210 @@
+.shelby--signup {
+  background: $ui-white;
+  bottom: auto;
+  left: auto;
+  overflow: visible;
+  position: relative;
+  right: auto;
+  top: auto;
+
+  //non-normative overrides
+  .shelby__wrapper {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  .shelby__head {
+    padding: 1em 2em;
+  }
+
+  .shelby_nav {
+    text-align: right;
+  }
+
+  .shelby-logo {
+    font-size: 1em;
+
+    .shelby_logo {
+      padding: 0;
+      // font-size: 5em;
+    }
+  }
+
+  .shelby-logo .shelby_logo,
+  .shelby_logo {
+    padding: 0;
+    font-size: 5em;
+  }
+
+  .form__legend {
+    line-height: 1.6;
+    margin: 0 auto 1em;
+    text-align: center;
+    width: 100%;
+
+    span {
+      font-size: 1.45em;
+    }
+  }
+
+  .form__description {
+    font-size: 0.7em;
+    line-height: 2.5;
+  }
+
+  .form_fieldset--error {
+    .form_error {
+      display: block;
+    }
+  }
+
+  .form_error {
+    font-size: 0.7em;
+    display: none;
+    margin: 0.2em 0.4em;
+    position: absolute;
+    right: 0;
+  }
+
+  .roll_card {
+    font-size: 0.8em;
+    text-align: left;
+  }
+}
+
+
+/*
+  Every stage has its own .signup block.
+  The stages are as follows:
+  content, social, profile
+*/
+
+//block
+.signup {
+  font-size: 1.5em;
+  margin: 0 auto;
+  text-align: center;
+  width: 45em;
+}
+    //modifiers (stages)
+    .signup--cta {
+      margin-top: 3em;
+      margin-bottom: 3em
+    }
+    .signup--romance {
+      height: 40em;
+      position: relative;
+      text-align: right;
+      width: auto;
+
+      .signup__body {
+        &:first-child {
+          float: left;
+          margin-top: 8em;
+        }
+
+        margin-top: 25.75em;
+        width: 30%;
+      }
+
+      .signup__block {
+        margin-top: 0.5em;
+        text-align: right;
+      }
+
+      .signup__img_wrapper {
+        background-image: url('/images/onboarding/landing.png');
+        background-position: left top;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        background-size: cover;
+        bottom: 0;
+        left: 30%;
+        max-width: 1107px;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .signup__img {
+      }
+    }
+    .signup--content {
+      width: 73em;
+
+      //non-normative overrides
+      .list__item {
+        float: left;
+      }
+    }
+    .signup--social {
+      .button_command--share {
+        font-size: 1.5em;
+        margin: 0.25em;
+
+        .icon {
+          margin-left: -0.5em;
+        }
+      }
+
+      .signup__img {
+        margin: 1.5em 0;
+      }
+
+      .button_facebook-blue[disabled]{
+        &,
+        &:hover{
+         background: $facebook-blue;
+         border-color: 1px solid darken($facebook-blue, if(lightness($facebook-blue) < 62, 6.5%, 20%));
+         color: $ui-white;
+        }
+      }
+
+      .button_twitter-blue[disabled]{
+        &,
+        &:hover{
+         background: $twitter-blue;
+         border-color: 1px solid darken($twitter-blue, if(lightness($twitter-blue) < 62, 6.5%, 20%));
+         color: $ui-white;
+        }
+      }
+    }
+    .signup--profile {
+      width: 33em;
+
+      .avatar__wrapper {
+        margin-top: 2.7em;
+        width: 150px;
+
+        input[type="file"] {
+          font-size: 9px;
+        }
+      }
+
+      .form_fieldset {
+        text-align: left;
+      }
+    }
+    .signup--profile_no-avatar {
+      width: 25em;
+    }
+
+//elements
+.signup__h1 {
+  font-family: $font-family-display;
+  font-weight: 400;
+}
+.signup__h2 {
+  color: $ui-soft-black;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+.signup__h3 {
+  color: $ui-soft-black;
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: 1em;
+}
+.signup__block {
+  line-height: 1.6;
+  margin: 1em 0;
+  text-align: center;
+}

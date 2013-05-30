@@ -32,7 +32,7 @@
 }
 
 .button_standard {
-    @include button-sizing(frame-command);
+  @include button-sizing(frame-command);
 }
 
 .button_command {
@@ -76,6 +76,10 @@
     .button_command--remove {}
     .button_command--roll {}
     .button_command--shortlink {}
+    .button_command--text {
+      background: transparent !important; //TODO: figure out if !important is absolutely necessary
+      border: none;
+    }
     .button_command--tumblr {}
     .button_command--twitter {}
 

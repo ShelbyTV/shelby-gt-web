@@ -29,14 +29,16 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     this.$el.html(this.template({user:this.model}));
 
     this._userAvatar = new libs.shelbyGT.UserAvatarPresenterView({
-      el: this.$('#js-dynamic-user-avatar')[0]
+      el: this.$('#js-dynamic-user-avatar')[0],
+      model: this.model
     });
     this.renderChild(this._userAvatar);
 
     this._userAvatarUploader = new libs.shelbyGT.UserAvatarUploaderView({
       el: this.$('#js-user-avatar-uploader')[0],
-      spinnerEl: this.$('.dynamic-avatar .spinner-overlay')[0],
-      progressEl: this.$('.dynamic-avatar .progress-overlay')[0]
+      model: this.model,
+      progressEl: this.$('.dynamic-avatar .progress-overlay')[0],
+      spinnerEl: this.$('.dynamic-avatar .spinner-overlay')[0]
     });
     this.renderChild(this._userAvatarUploader);
   },
@@ -49,13 +51,13 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   _submitContactInfo: function(e){
     var self = this;
-    var _username = this.$('#preferences-username').val();
+    var _username = this.$('.js-username-input').val();
     // make sure they entered something for their username
     if (!_username.length) {
       self._updateResponse("enter a username.");
       return;
     }
-    var _email = this.$('#preferences-email').val();
+    var _email = this.$('.js-email-input').val();
     // make sure this is a valid email address
     if (_email.search(shelby.config.user.email.validationRegex) == -1) {
       self._updateResponse("email invalid.");
