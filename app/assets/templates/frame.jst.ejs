@@ -30,17 +30,16 @@
 
   <div class="frame-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
     <div class="frame-body">
-      <div class="menu_module frame-menu">
-        <ul class="menu_list frame-command-menu frame-list" role="menubar">
+        <ul class="list list--inline frame-menu" role="menubar">
           <% if (!user.isAnonymous()) { %>
-            <li class="menu_item" role="menuitem">
+            <li class="list__item" role="menuitem">
               <button class="button_primer button_green button_command button_command--roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
                 <span class="icon icon-roll"></span>Roll…
               </button>
             </li>
           <% } %>
 
-          <li class="menu_item" role="menuitem">
+          <li class="list__item" role="menuitem">
             <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
               <button class="button_primer button_gray button_command button_command--like js-queue-frame
                              <%= (videoIsInQueue) ? ' queued' : ' button_gray' %>">
@@ -53,7 +52,7 @@
             <% } %>
           </li>
 
-          <li class="menu_item" role="menuitem">
+          <li class="list__item" role="menuitem">
             <button class="button_primer button_gray button_command button_command--share js-share-menu">
               <span class="icon icon-share"></span>Share…
             </button>
@@ -104,15 +103,14 @@
           </li>
 
           <% if (shelby.models.user.get('admin')) { %>
-            <li class="menu_item" role="menuitem">
+            <li class="list__item" role="menuitem">
               <button class="button_primer button_red button_command button_command--cancel js-remove-frame">
                 <span class="icon icon-close"></span>
               </button>
             </li>
           <% } %>
 
-        </ul>
-      </div><!-- eo .frame-menu -->
+        </ul><!-- eo frame-menu -->
 
       <!-- TODO: should maybe use the thumbnail module JST -->
       <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %> js-track-event" data-ga_category="Frame" data-ga_action="Click frame to play" data-ga_label="<%= shelby.models.user.get('nickname') %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
