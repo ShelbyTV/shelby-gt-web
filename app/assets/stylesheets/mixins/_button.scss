@@ -65,13 +65,6 @@
   border: 1px solid darken($base, if(lightness($base) < $inversion-value, 6.5%, 20%));
   color: if(lightness($base) < $inversion-value, $ui-white, $ui-soft-black);
 
-  @if $base == darken($ui-green,5%) { //darkened; see _color-table
-    text-shadow: 0px 0px 1px rgba(0,0,0,0.4);
-  }
-  @if $base == $twitter-blue {
-    text-shadow: 0px 0px 1px rgba(0,0,0,0.4);
-  }
-
   &:hover {
     background: lighten($base, 10.25%);
   }
