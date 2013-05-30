@@ -115,6 +115,9 @@
     }
 
   //width normalization
+    .button_command--fill {
+      width: 100%;
+    }
     .button_command--email,
     .button_command--embed,
     .button_command--shortlink {
