@@ -1,18 +1,18 @@
 <ul class="js-content-selector list list--inline app_nav clearfix">
   <li class="list__item">
-    <button class="app_nav__button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+    <button class="app_nav__button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= user.get('nickname') %>'>
       Stream
     </button>
   </li>
 
   <li class="list__item js-channels-menu">
-    <button class="app_nav__button js-channels js-track-event" data-ga_category="Header" data-ga_action="Channels" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+    <button class="app_nav__button js-channels js-track-event" data-ga_category="Header" data-ga_action="Channels" data-ga_label='<%= user.get('nickname') %>'>
       #Channels
     </button>
   </li>
 
-  <% if (!shelby.models.user.isAnonymous()) { %>
-    <li class="list__item js-guide-me js-track-event" data-ga_category="Header" data-ga_action="Me" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+  <% if (!user.isAnonymous()) { %>
+    <li class="list__item js-guide-me js-track-event" data-ga_category="Header" data-ga_action="Me" data-ga_label='<%= user.get('nickname') %>'>
       <button class="app_nav__button js-me">
         Me
       </button>
@@ -26,7 +26,7 @@
     </li>
   <% } %>
 
-  <% if (shelby.models.user.get('admin')) { %>
+  <% if (user.get('admin')) { %>
     <li class="list__item js-admin">
       <button class="app_nav__button">
         Admin
@@ -34,7 +34,7 @@
     </li>
   <% } %>
 
-  <% if (shelby.models.user.isAnonymous()) { %>
+  <% if (user.isAnonymous()) { %>
     <li class="dropdown_module list__item secondary-item guide-login">
           <button class="dropdown_button app_nav__button">
             Log In <span class="icon-carrot"></span>
@@ -49,10 +49,9 @@
   <% } %>
 
   <li class="dropdown_module list__item secondary-item js-guide-settings">
-    <button class="dropdown_button app_nav__button app_nav__button--settings js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-      <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrl(user,libs.shelbyGT.UserAvatarSizes.small)%>
-      <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
-        Settings <span class="icon-carrot"></span>
+    <button class="dropdown_button app_nav__button app_nav__button--settings js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= user.get('nickname') %>">
+      <span style="background-image: url('<%= userAvatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= userAvatar %>" class="visuallyhidden"/></span>
+        <%= user.get('nickname') %> <span class="icon-carrot"></span>
     </button>
     <section class="dropdown_section settings-section">
       <div class="dropdown_lining fin fin--top_right clearfix">
@@ -62,7 +61,7 @@
               class="button_primer button_command button_command--flexible button_command--text js-preferences"
               data-ga_category="Header"
               data-ga_action="Preferences"
-              data-ga_label="<%= shelby.models.user.get('nickname') %>"
+              data-ga_label="<%= user.get('nickname') %>"
               >
               Preferences
             </button>
@@ -72,7 +71,7 @@
             <button class="button_primer button_command button_command--flexible button_command--text js-me"
               data-ga_category="Header"
               data-ga_action="Profile"
-              data-ga_label="<%= shelby.models.user.get('nickname') %>"
+              data-ga_label="<%= user.get('nickname') %>"
             >
               Profile
             </button>
@@ -111,7 +110,7 @@
               class="button_primer button_command button_command--flexible button_command--text js-signout"
               data-ga_category="Header"
               data-ga_action="Logout"
-              data-ga_label="<%= shelby.models.user.get('nickname') %>"
+              data-ga_label="<%= user.get('nickname') %>"
               >
               Logout
             </button>

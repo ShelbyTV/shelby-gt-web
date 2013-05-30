@@ -30,7 +30,9 @@
     },
 
     render : function(){
-      this.$el.html(this.template({user:shelby.models.user}));
+      this.$el.html(this.template({
+        user: shelby.models.user
+      }));
       // not rendering this right now. coming back to it when we can focus on optimizing. -his
       // this.renderChild(new libs.shelbyGT.InviteFormView({
       //   el : this.$('.js-guide-invite'),
