@@ -77,8 +77,11 @@
   }
 
   .external-tools__button {
-    .icon {  background-image: url("/images/tools/chrome-icon.png");
-      padding: .25em .25em .25em 2em;
+    .icon {
+      background-image: url("/images/tools/chrome-icon.png");
+      display: inline-block;
+      vertical-align: -1px;
+      padding: .5em;
     }
   }
 }
