@@ -3,6 +3,12 @@
 //  currently used on any overlay
 
 //elements
+.guide-overlay__h1 {
+  @include ellipsis;
+
+  padding: 0.8em;
+}
+
 .guide-overlay__title {
   padding-top: 1em;
 }
@@ -15,6 +21,15 @@
       padding-left: 0.25em;
     }
 
+.guide-overlay__list {
+  //non-normative
+  .button_primer {
+    text-align: left;
+  }
+  .icon-chevron {
+    float: right;
+  }
+}
 
 //architectural
 .guide-overlay__head {

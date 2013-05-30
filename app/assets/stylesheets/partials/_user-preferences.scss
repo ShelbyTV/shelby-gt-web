@@ -1,143 +1,20 @@
-//preferences panel
-.preferences{
+.preferences {
   font-size: 1.2em;
 }
-  //preferences panel framework
-  .preferences__head {
-    box-shadow: 0 1px 0 0 $outset;
-    border-bottom: 1px solid $inset;
-  }
-  .preferences__body {}
 
-   //elements
-  .preferences__h1 {
-    font-size: 1.3em;
-    padding: $defaultMargin;
-  }
+.guide-overlay__head--preferences{
 
-  .form_module--preferences {
-    .form_legend {
-      font-size: 1.2em;
-      margin-bottom: 1em;
-    }
-
-    .form_fieldset {
-      font-size: 1em;
-      font-weight: bold;
-    }
-  }
-
-.preferences-list {
 }
 
-.preference__checkbox {
-  margin: 0.6em;
+.guide-overlay__body--preferences{
+  .guide-overlay__list {
+    .button_primer {
+      background-image:none;
+      border-top: none;
+      border-left: none;
+      border-radius: 0;
+      border-right: none;
+    }
+  }
 }
 
-
-//preferences sections block
-.preference {
-  box-shadow: 0 1px 0 0 $outset;
-  border-bottom: 1px solid $inset;
-  margin: 0;
-  padding: $defaultMargin;
-}
-    //preferences modifiers
-    .preference--tools {
-      .icon-chevron {
-        color: $inset;
-        float: right;
-      }
-    }
-    .preference--avatar {
-
-    }
-      //avatar section elements
-      //non-normative
-      .avatar-section-viewport {
-        float: left;
-        width: 48px;
-        height: 48px;
-
-        .dynamic-avatar {
-          border: 1px solid darken($base,5%);
-          width: inherit;
-          height: inherit;
-        }
-
-        .user-avatar {
-          width: 100%;
-        }
-      }
-
-    .preference--profile {
-      .list_item {
-        margin-bottom: 1em;
-      }
-    }
-    .preference--password {
-
-    }
-    .preferences--networks {
-      .preference__block {
-        float: right;
-        line-height: 2.6;
-        margin: 0;
-      }
-
-      .preference__checkbox {
-        float: right;
-      }
-
-      //non-normative
-      .badge {
-        font-family: $font-family-icon;
-        line-height: 2.2;
-      }
-
-      .list_item {
-        margin-bottom: 1em;
-      }
-    }
-    .preference--notifications {
-      .preference__checkbox {
-        float: right;
-      }
-    }
-
-
-////////////////////////////////////////////////////////////////////////////
-// non-normative
-
-    .avatar-section-input {
-      input[type=file] {
-        margin: 13px 0 0 10px;
-      }
-    }
-
-    .form_actions {
-      margin-top: 10px;
-      text-align: right;
-    }
-
-
-    //block
-    .connected-network-options {
-      background-color: #fff;
-      margin: 0 0 0 27px;
-      padding: 5px;
-
-      p {
-        line-height: 1.231;
-        margin: 0;
-      }
-    }
-
-    .connected-network-checkbox {
-      float: right;
-    }
-
-    .connected-network {
-      float: right;
-      font-size: .8em;
-    }

@@ -1,7 +1,7 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
-    "send-invite"                                  : "openInviteDisplayDashboard",
+    // "send-invite"                                  : "openInviteDisplayDashboard", //broken/obsolete
     "isolated-roll/:rollId"                        : "displayIsolatedRoll",
     "isolated-roll/:rollId/frame/:frameId"         : "displayIsolatedRollwithFrame",
     "roll/:rollId/frame/:frameId/comments"         : "displayFrameInRollWithConversationOverlay", // legacy route, let's kill it if we can
@@ -21,6 +21,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "following"                                    : "displayRollList",
     "onboarding/:stage"                            : "displayOnboardingView",
     "preferences"                                  : "displayUserPreferences",
+    "preferences/:section"                         : "displayUserPreferences",
     "likes"                                        : "displaySaves",
     "saves"                                        : "displaySaves",
     "stream"                                       : "displayDashboard",
@@ -487,13 +488,20 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayUserPreferences : function(){
+  displayUserPreferences : function(section){
     this._setupTopLevelViews();
-    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.userPreferences);
+    shelby.models.guide.set(
+      {
+        displayState: libs.shelbyGT.DisplayState.userPreferences,
+        preferencesRoute: section
+      }
+    );
     // send page view to GA
+    var route = '/preferences' + ((section) ? '/' + section : '');
+
     if(shelby.routeHistory.length !== 0){
       try {
-        _gaq.push(['_trackPageview', '/preferences']);
+        _gaq.push(['_trackPageview', route]);
       } catch(e) {}
     }
   },
