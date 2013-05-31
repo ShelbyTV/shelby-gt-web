@@ -24,6 +24,14 @@ var startingSlide = function() {
 
 $(document).ready(function(){
 
+  // track start of signup process
+  shelby.trackEx({
+    providers : ['ga', 'kmq'],
+    gaCategory : "Onboarding",
+    gaAction : 'Started',
+    kmqName : "Started Onboarding"
+  });
+
   $slideshow = $('.js-slideshow');
 
   $slideshow.cycle({
