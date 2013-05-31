@@ -6,7 +6,7 @@ libs.shelbyGT.RecThumbnailItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   events : {
-    "click .js-actor-avatar-link" : "_playVideo"
+    "click .js-rec-thumbnail-link" : "_playVideo"
   },
 
   initialize : function(){
