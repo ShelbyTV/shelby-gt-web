@@ -1,0 +1,75 @@
+<form action="/" class="form_module">
+  <legend class="form__legend">
+    Profile
+  </legend>
+
+  <p class="form__description">
+    Make yourself look awesome!
+  </p>
+
+  <fieldset class="form_fieldset">
+    <div class="media_module">
+      <div class="media_image avatar avatar--large icon-avatar">
+        img
+      </div>
+
+      <div class="media_body">
+        <label for="avatar" class="form_label">
+          Avatar
+        </label>
+
+        <input type="file" />
+      </div>
+    </div><!-- eo media_module -->
+  </fieldset>
+
+  <fieldset class="form_fieldset">
+    <label for="userFullname" class="form_label">
+      Full Name
+    </label>
+
+    <input type="text" class="form_input" id="fullName" name="fullName" placeholder="First Name, Last Name" />
+  </fieldset>
+
+  <fieldset class="form_fieldset">
+    <label for="userNickname" class="form_label">
+      Username
+    </label>
+
+    <input type="text" class="form_input" id="userNickname" name="userNickname" />
+  </fieldset>
+
+  <fieldset class="form_fieldset">
+    <label for="userEmail" class="form_label">
+      Email
+    </label>
+
+    <input type="email" class="form_email" id="userEmail" name="userEmail" placeholder="email@address.com" />
+  </fieldset>
+
+  <fieldset class="form_fieldset">
+    <label for="userDescription" class="form_label">
+      Profile Description
+    </label>
+
+    <textarea name="userDescription" id="userDescription" rows="4" class="form_textarea" placeholder="How would you describe yourself?"></textarea>
+  </fieldset>
+
+  <fieldset class="form_fieldset">
+    <label for="userUrl" class="form_label">
+      URL
+    </label>
+
+    <input type="text" class="form_input" placeholder="http://myhomepage.com" id="userUrl" name="userUrl" />
+  </fieldset>
+
+  <fieldset class="form_fieldset">
+    <button class="button_primer button_command button_command--submit button_green">
+      Save
+    </button>
+
+    <button class="button_primer button_command button_command--submit button_gray">
+      Cancel
+    </button>
+  </fieldset>
+</form>
