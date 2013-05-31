@@ -1,6 +1,6 @@
 libs.shelbyGT.LayoutSwitcherView = Support.CompositeView.extend({
 
-  el: '#js-shelby-wrapper',
+  el: '.js-shelby-wrapper',
 
   initialize : function() {
     this.model.bind('change:displayState', this._onChangeDisplayState, this);
@@ -17,25 +17,28 @@ libs.shelbyGT.LayoutSwitcherView = Support.CompositeView.extend({
       guide : shelby.models.guide
     }));
     this.renderChild(new libs.shelbyGT.MainLayoutView({model:shelby.models.guide}));
-    this.renderChild(new libs.shelbyGT.OnboardingLayoutView());
+    this.renderChild(new libs.shelbyGT.UserPreferencesView({
+      model: shelby.models.user,
+      viewModel: shelby.models.userPreferencesView
+    }));
   },
 
   _onChangeDisplayState : function(guideModel, displayState) {
-
-    // try something like views.each(this.hide()) here - only show in switch cases
-
     switch (displayState){
-      case libs.shelbyGT.DisplayState.onboarding:
+      case libs.shelbyGT.DisplayState.userPreferences:
         this.options.guideOverlay.triggerImmediateHide();
-        // show the onboarding layout
-        this.$('.js-onboarding-layout').show();
+        // show the preferences layout
+        this.$('.js-preferences-layout').show();
         //pause the video player when obscuring it
         shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
       break;
       default:
-        this.$('.js-onboarding-layout').hide();
+        this.$('.js-preferences-layout').hide();
     }
+  },
 
+  _onChangeSection : function(a,b) {
+    console.log('change to section');
   }
 
 });

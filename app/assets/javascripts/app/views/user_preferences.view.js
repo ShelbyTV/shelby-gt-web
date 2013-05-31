@@ -17,9 +17,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     "change #preferences-timeline-sharing"      : "_toggleTimelineSharing"
   },
 
-  className : 'preferences',
-
-  tagName : 'section',
+  el: '.js-preferences-layout',
 
   template : function(obj){
     return SHELBYJST['user-preferences'](obj);
@@ -27,20 +25,14 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   render : function(){
     this.$el.html(this.template({user:this.model}));
+  },
 
-    this._userAvatar = new libs.shelbyGT.UserAvatarPresenterView({
-      el: this.$('#js-dynamic-user-avatar')[0],
-      model: this.model
-    });
-    this.renderChild(this._userAvatar);
+  initialize : function(){
+    this.options.viewModel.bind('change:section', this.render, this);
+  },
 
-    this._userAvatarUploader = new libs.shelbyGT.UserAvatarUploaderView({
-      el: this.$('#js-user-avatar-uploader')[0],
-      model: this.model,
-      progressEl: this.$('.dynamic-avatar .progress-overlay')[0],
-      spinnerEl: this.$('.dynamic-avatar .spinner-overlay')[0]
-    });
-    this.renderChild(this._userAvatarUploader);
+  _cleanup : function(){
+    this.options.viewModel.unbind('change:section', this.render, this);
   },
 
   _cancel: function(){

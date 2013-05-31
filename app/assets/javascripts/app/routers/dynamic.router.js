@@ -25,7 +25,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "likes"                                        : "displaySaves",
     "saves"                                        : "displaySaves",
     "stream"                                       : "displayDashboard",
-    "tools"                                        : "displayTools",
     ""                                             : "displayDashboard",
     ":userName"                                    : "displayUserProfile",
     "*url"                                         : "doNothing"
@@ -490,12 +489,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayUserPreferences : function(section){
     this._setupTopLevelViews();
-    shelby.models.guide.set(
-      {
-        displayState: libs.shelbyGT.DisplayState.userPreferences,
-        preferencesRoute: section
-      }
-    );
+    shelby.models.userPreferencesView.set({section: section});
+    shelby.models.guide.set({displayState: libs.shelbyGT.DisplayState.userPreferences});
     // send page view to GA
     var route = '/preferences' + ((section) ? '/' + section : '');
 
@@ -514,14 +509,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayLegal : function(){
     this._setupTopLevelViews();
     shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.legal);
-  },
-
-  displayTools : function(){
-    this._setupTopLevelViews();
-    shelby.models.guide.set('displayState', libs.shelbyGT.DisplayState.tools);
-
-    // send page view to GA
-    try { _gaq.push(['_trackPageview', '/tools']); } catch(e) {}
   },
 
   displayUserProfile : function(userName, params) {
