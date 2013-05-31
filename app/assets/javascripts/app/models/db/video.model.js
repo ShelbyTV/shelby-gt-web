@@ -1,5 +1,9 @@
 libs.shelbyGT.VideoModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
+  url : function() {
+    return shelby.config.apiRoot + '/video/' + this.id;
+  },
+
   markUnplayable : function(){
     // save this model and have it self-update on return
     // not using the standard save route for unplayable
