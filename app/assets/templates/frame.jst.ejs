@@ -5,7 +5,6 @@
 <% var videoThumbnail = video.get('thumbnail_url') %>
 <% var videoUnplayable = frameGroup.get('video_unplayable') %>
 <% var videoIsInQueue = queuedVideosModel.videoIsInQueue(video) %>
-<% var videoRecs = video.get('recs') %>
 
 <% var frameHasRoll = frame.has('roll') %>
 <% var isGenius = frameHasRoll && frame.get('roll').get('genius') %>

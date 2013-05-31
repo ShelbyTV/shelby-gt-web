@@ -152,14 +152,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         model : this.model
       }));
 
+      this.renderChild(new libs.shelbyGT.FrameRecsView({
+        el : this.$('.js-frame-recs'),
+        model : this.model
+      }));
+
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }
 
-    // have FB parse any like tags on page so they render correctly
-    if (typeof FB !== "undefined"){ FB.XFBML.parse(this.$el[0]); }
-
-    // when frame is loaded, get number of disqus comments
-    if (typeof DISQUSWIDGETS !== "undefined"){ DISQUSWIDGETS.getCount(); }
   },
 
   _expand: function(){

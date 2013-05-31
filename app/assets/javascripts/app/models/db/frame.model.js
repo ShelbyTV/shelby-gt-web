@@ -248,27 +248,21 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   convertRecIdsToVideoCollection : function(){
     // change the recs from an array of id strings to a collection of video models with those ids
     // CAN'T GET RELATIONAL TO DO THIS THE WAY I WANT SO DOING IT MYSELF
-
-    console.log("running convertRecIdsToVideoCollection");
-
     var recommendationsCollection;
 
-    if (this.get('video').has('recs')) {
+    if (this.has('video') && this.get('video').has('recs')) {
       console.log("HAS RECS");
       var recommendations = this.get('video').get('recs');
       // don't do anything if the recs attribute is already a collection
       if ($.isArray(recommendations)) {
-        console.log("IS ARRAY");
         var recommendationsModels = _(recommendations).map(function(rec){
           // if we already have a model in the global store for this video, use it
           var videoModel = Backbone.Relational.store.find(libs.shelbyGT.VideoModel, rec.recommended_video_id);
           if (!videoModel) {
-            console.log("NO video model found");
             // otherwise, create a new, empty video model with the proper id
             videoModel = new libs.shelbyGT.VideoModel({id: rec.recommended_video_id});
           }
           videoModel.fetch();
-          console.log("FETCH ran", videoModel);
           return videoModel;
         });
         recommendationsCollection = new Backbone.Collection(recommendationsModels);
@@ -278,7 +272,6 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     } else {
       // if there was no upvoters attribute, just add one with an empty collection
       recommendationsCollection = new Backbone.Collection();
-      console.log("NO RECS", this);
     }
 
     return recommendationsCollection;
