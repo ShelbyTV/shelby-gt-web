@@ -10,11 +10,11 @@ libs.shelbyGT.RecThumbnailItemView = libs.shelbyGT.ListItemView.extend({
   },
 
   initialize : function(){
-    this.model.bind('change:thumbnail_url', this.render, this);
+    this.model.get('video').bind('change:thumbnail_url', this.render, this);
   },
 
   _cleanup : function(){
-    this.model.unbind('change:thumbnail_url', this.render, this);
+    this.model.get('video').unbind('change:thumbnail_url', this.render, this);
   },
 
   template : function(obj){
@@ -24,15 +24,14 @@ libs.shelbyGT.RecThumbnailItemView = libs.shelbyGT.ListItemView.extend({
   render : function(){
     this.$el.html(this.template({
       actorDescription : this.options.actorDescription,
-      video : this.model,
+      video : this.model.get('video'),
       eventTrackingCategory : this.options.eventTrackingCategory
     }));
     return this;
   },
 
   _playVideo : function(e) {
-      //shelby.router.navigate(this.model.get('nickname'), {trigger:true});
-      console.log("supposed to play: ", e);
+      shelby.models.guide.set('activeFrameModel', this.model);
       e.preventDefault();
   }
 

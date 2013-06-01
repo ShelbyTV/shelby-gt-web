@@ -3,7 +3,7 @@ libs.shelbyGT.FrameRecsView = Support.CompositeView.extend({
   _frame : null,
 
   options : {
-    numThumbnailsDisplayed : 2, // the number of rec thumbnails to display
+    numThumbnailsDisplayed : 5, // the number of rec thumbnails to display
     selfBindAndUpdate : true // whether the view will bind to its model and dynamically update itself
                               // default is false, in which case updates must be handled by the parent
   },
@@ -26,22 +26,20 @@ libs.shelbyGT.FrameRecsView = Support.CompositeView.extend({
   },
 
   render : function(){
-    console.log("RENDER: frame recs view");
     // get frame recs
     if (this._frame) {
 
       var recommendedVideoCollection = this._frame.get('recommendations');
       var recsToDisplay = recommendedVideoCollection.models.slice(0, this.options.numThumbnailsDisplayed);
 
-      if (recsToDisplay.length && recsToDisplay.length > 0){
-        console.log("list of recs to display: ", recsToDisplay);
+      this.$el.toggleClass('frame-likes--hide', recsToDisplay.length == 0);
 
+
+      if (recsToDisplay.length && recsToDisplay.length > 0){
         this.$el.html(this.template({
           likers : recsToDisplay,
           remainingLikes : null
         }));
-
-        this.$el.toggleClass('frame-likes--hide', recsToDisplay.length == 0);
 
         // render the recommended video thumbnails, now if they've already arrived, or via event handling
         // later if the ajax hasn't returned yet
@@ -51,7 +49,8 @@ libs.shelbyGT.FrameRecsView = Support.CompositeView.extend({
           el : this.$('.js-liker-avatars-list'),
           listItemView : 'RecThumbnailItemView',
           listItemViewAdditionalParams : {
-            actorDescription : 'recommendation'
+            actorDescription : 'recommendation',
+            maxDisplayedItems : 3
           }
         }));
       }

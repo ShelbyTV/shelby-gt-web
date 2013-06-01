@@ -250,8 +250,8 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     // CAN'T GET RELATIONAL TO DO THIS THE WAY I WANT SO DOING IT MYSELF
     var recommendationsCollection;
 
-    if (this.has('video') && this.get('video').has('recs')) {
-      console.log("HAS RECS");
+    if (this.has('video') && this.get('video').has('recs') && this.get('video').get('recs').length > 0) {
+      console.log("FRAME HAS RECS");
       var recommendations = this.get('video').get('recs');
       // don't do anything if the recs attribute is already a collection
       if ($.isArray(recommendations)) {
@@ -263,7 +263,23 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
             videoModel = new libs.shelbyGT.VideoModel({id: rec.recommended_video_id});
           }
           videoModel.fetch();
-          return videoModel;
+
+          // create a fake frame to play
+          var newFrame = new libs.shelbyGT.FrameModel({
+            id : videoModel.id,
+            video : videoModel,
+            conversation : {
+              messages : [
+                {
+                  text : videoModel.get('description')
+                }
+              ]
+            },
+            isSearchResultFrame : true
+          });
+          console.log(newFrame);
+          return newFrame;
+          //return videoModel;
         });
         recommendationsCollection = new Backbone.Collection(recommendationsModels);
       } else {
