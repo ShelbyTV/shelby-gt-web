@@ -255,7 +255,11 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       var recommendations = this.get('video').get('recs');
       // don't do anything if the recs attribute is already a collection
       if ($.isArray(recommendations)) {
-        var recommendationsModels = _(recommendations).map(function(rec){
+
+        // for now limiting whats being fetched and created
+        recsSelection = recommendations.slice(0, 2);
+
+        var recommendationsModels = _(recsSelection).map(function(rec){
           // if we already have a model in the global store for this video, use it
           var videoModel = Backbone.Relational.store.find(libs.shelbyGT.VideoModel, rec.recommended_video_id);
           if (!videoModel) {
@@ -277,13 +281,12 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
             },
             isSearchResultFrame : true
           });
-          console.log(newFrame);
           return newFrame;
           //return videoModel;
         });
         recommendationsCollection = new Backbone.Collection(recommendationsModels);
       } else {
-        recommendationsCollection = recommendations;
+        recommendationsCollection = recsSelection;
       }
     } else {
       // if there was no upvoters attribute, just add one with an empty collection

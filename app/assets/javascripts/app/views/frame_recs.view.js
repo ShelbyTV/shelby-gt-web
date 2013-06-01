@@ -27,7 +27,7 @@ libs.shelbyGT.FrameRecsView = Support.CompositeView.extend({
 
   render : function(){
     // get frame recs
-    if (this._frame) {
+    if (this._frame && this._frame.get('recommendations')) {
 
       var recommendedVideoCollection = this._frame.get('recommendations');
       var recsToDisplay = recommendedVideoCollection.models.slice(0, this.options.numThumbnailsDisplayed);
