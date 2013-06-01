@@ -433,7 +433,8 @@
   overflow: hidden;
 
   &.icon-like,
-  &.icon-roll {
+  &.icon-roll,
+  &.icon-play {
     &:before {
       display: inline;
       font-size: 1.4em;
@@ -486,6 +487,16 @@
   height: 26px;
   width: 26px;
 }
+
+// design hack for now
+.frame-recs {
+  height: 4.3em;
+  .frame-likes-avatar {
+    height: 42px;
+    width: 56px;
+  }
+}
+
 
 //------------------------------------------------------------------------------
 //  .menu_module--share-frame HAPPENS to be isolated roll specific,

@@ -1,5 +1,3 @@
-<% console.log("video! ", video.get('thumbnail_url'), video.get('title')); %>
-
 <a class="frame-likes-link js-rec-thumbnail-link js-track-event" href="#" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="click thumbnail for <%= actorDescription %>" data-ga_label="<%= shelby.models.user.get('nickname') %>">
   <img class="frame-likes-avatar" src="<%= video.get('thumbnail_url') %>" title="<%= video.get('title') %>" alt="<%= video.get('title') %>" />
 </a>

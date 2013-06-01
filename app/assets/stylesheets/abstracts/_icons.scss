@@ -102,3 +102,9 @@ $icons:
     color: darken(#6cbc45,5%);
   }
 }
+
+.icon-play--blue {
+  &:before {
+    color: darken($ui-blue,5%);
+  }
+}

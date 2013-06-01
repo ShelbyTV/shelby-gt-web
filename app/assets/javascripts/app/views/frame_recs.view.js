@@ -43,6 +43,8 @@ libs.shelbyGT.FrameRecsView = Support.CompositeView.extend({
 
         // render the recommended video thumbnails, now if they've already arrived, or via event handling
         // later if the ajax hasn't returned yet
+        recommendedVideoCollection.models = recommendedVideoCollection.models.slice(0, this.options.numThumbnailsDisplayed);
+
         this.renderChild(new libs.shelbyGT.ListView({
           collection : recommendedVideoCollection,
           doStaticRender : true,
