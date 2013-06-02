@@ -257,7 +257,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       if ($.isArray(recommendations)) {
 
         // for now limiting whats being fetched and created
-        recsSelection = recommendations.slice(0, 2);
+        recsSelection = recommendations;
 
         var recommendationsModels = _(recsSelection).map(function(rec){
           // if we already have a model in the global store for this video, use it
@@ -268,20 +268,24 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
           }
           videoModel.fetch();
 
-          // create a fake frame to play
-          var newFrame = new libs.shelbyGT.FrameModel({
-            id : videoModel.id,
-            video : videoModel,
-            conversation : {
-              messages : [
-                {
-                  text : videoModel.get('description')
-                }
-              ]
-            },
-            isSearchResultFrame : true
-          });
-          return newFrame;
+          var frameModel = Backbone.Relational.store.find(libs.shelbyGT.FrameModel, rec.recommended_video_id);
+          if (!frameModel) {
+            // create a fake frame to play
+            frameModel = new libs.shelbyGT.FrameModel({
+              id : videoModel.id,
+              video : videoModel,
+              conversation : {
+                messages : [
+                  {
+                    text : videoModel.get('description')
+                  }
+                ]
+              },
+              isSearchResultFrame : true
+            });
+          }
+
+          return frameModel;
           //return videoModel;
         });
         recommendationsCollection = new Backbone.Collection(recommendationsModels);
