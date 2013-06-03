@@ -433,12 +433,19 @@
   overflow: hidden;
 
   &.icon-like,
-  &.icon-roll,
-  &.icon-play {
+  &.icon-roll {
     &:before {
       display: inline;
       font-size: 1.4em;
       vertical-align: -3px;
+    }
+  }
+
+  &.icon-mark {
+    &:before {
+      display: inline;
+      font-size: 3.4em;
+      vertical-align: -15px;
     }
   }
 }
