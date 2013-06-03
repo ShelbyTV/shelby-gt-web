@@ -2,7 +2,7 @@ libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
 
   tagName: 'div',
 
-  className: 'content_lining',
+  className: 'content_lining preferences_page preferences_page--profile',
 
   options : _.extend({}, Support.CompositeView.prototype.options, {}),
 
@@ -16,13 +16,10 @@ libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    console.log('user peferences!');
-    // this.model.bind('change:section', this.render, this);
+    console.log('/preferences/profile!');
   },
 
   _cleanup : function(){
-    // this.model.unbind('change:section', this.render, this);
   }
-
 
 });

@@ -1,5 +1,4 @@
-.preferences {
-  font-size: 1.2em;
+.preferences-layout {
 }
 
 .guide-overlay__head--preferences{
@@ -18,3 +17,21 @@
   }
 }
 
+
+/*
+
+    The "Preferences Page"
+
+*/
+
+//block
+.preferences_page {
+  margin: 2em 3em;
+  width: 30em;
+}
+    //mods
+    .preferences_page--profile {
+      .avatar-icon {
+        font-size: 5em;
+      }
+    }

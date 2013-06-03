@@ -41,23 +41,18 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     //render selected section
     switch(section) {
       case 'profile':
-        console.log('---render profile:',section);
         this.renderChildInto(new libs.shelbyGT.UserPreferencesProfileView(),this._container);
         break;
       case 'password':
-        console.log('---render password');
         this.renderChildInto(new libs.shelbyGT.UserPreferencesPasswordView(),this._container);
         break;
       case 'networks':
-        console.log('---render networks');
         this.renderChildInto(new libs.shelbyGT.UserPreferencesNetworksView(),this._container);
         break;
       case 'notifications':
-        console.log('---render notifications');
         this.renderChildInto(new libs.shelbyGT.UserPreferencesNotificationsView(),this._container);
         break;
       case 'goodies':
-        console.log('---render goodies');
         this.renderChildInto(new libs.shelbyGT.UserPreferencesGoodiesView(),this._container);
         break;
     }

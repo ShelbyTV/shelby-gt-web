@@ -11,7 +11,6 @@ libs.shelbyGT.UserPreferencesGoodiesView = Support.CompositeView.extend({
   },
 
   render : function(){
-    console.log('opts',this);
     this.$el.html(this.template());
   },
 
