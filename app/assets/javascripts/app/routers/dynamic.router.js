@@ -1,7 +1,6 @@
 libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   routes : {
-    // "send-invite"                                  : "openInviteDisplayDashboard", //broken/obsolete
     "isolated-roll/:rollId"                        : "displayIsolatedRoll",
     "isolated-roll/:rollId/frame/:frameId"         : "displayIsolatedRollwithFrame",
     "roll/:rollId/frame/:frameId/comments"         : "displayFrameInRollWithConversationOverlay", // legacy route, let's kill it if we can
@@ -491,7 +490,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._setupTopLevelViews();
 
     if(!section) { //if `section` is undefined, route to profile as a default
-      shelby.router.navigate('preferences/profile',{trigger:true});
+      section = 'profile';
+      shelby.router.navigate('/preferences/' + section);
     }
 
     shelby.models.userPreferencesView.set({section: section});

@@ -17,11 +17,9 @@ libs.shelbyGT.UserPreferencesGoodiesView = Support.CompositeView.extend({
 
   initialize : function(){
     console.log('user password!');
-    // this.model.bind('change:section', this.render, this);
   },
 
   _cleanup : function(){
-    // this.model.unbind('change:section', this.render, this);
   }
 
 

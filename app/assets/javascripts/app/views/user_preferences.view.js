@@ -17,7 +17,10 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   },
 
   render : function(section){
-    this.$el.html(this.template({user:this.model,section: section}));
+    this.$el.html(this.template({
+      user:this.model,
+      section: section
+    }));
   },
 
   initialize : function(){
@@ -38,7 +41,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     //render selected section
     switch(section) {
       case 'profile':
-        console.log('---render profile');
+        console.log('---render profile:',section);
         this.renderChildInto(new libs.shelbyGT.UserPreferencesProfileView(),this._container);
         break;
       case 'password':
