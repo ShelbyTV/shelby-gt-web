@@ -1,4 +1,4 @@
-libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
+libs.shelbyGT.UserPreferencesGoodiesView = Support.CompositeView.extend({
 
   tagName: 'div',
 
@@ -7,7 +7,7 @@ libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
   options : _.extend({}, Support.CompositeView.prototype.options, {}),
 
   template : function(obj){
-      return SHELBYJST['preferences-profile'](obj);
+      return SHELBYJST['preferences-goodies'](obj);
   },
 
   render : function(){
@@ -16,7 +16,7 @@ libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    console.log('user peferences!');
+    console.log('user password!');
     // this.model.bind('change:section', this.render, this);
   },
 

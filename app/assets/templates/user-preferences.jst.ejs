@@ -8,39 +8,39 @@
   <div class="guide-overlay__body guide-overlay__body--preferences">
     <ul class="list guide-overlay__list">
       <li class="list__item">
-        <button class="button_primer button_command button_gray button_command--fill button_command--flexible js-preferences-profile">
+        <a href="/preferences/profile" class="button_primer button_command button_gray<%= (section == 'profile') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
           <span class="icon icon-chevron"></span>
           <span class="button_label">Profile</span>
-        </button>
+        </a>
       </li>
       <li class="list__item">
-        <button class="button_primer button_command button_gray button_command--fill button_command--flexible js-preferences-password">
+        <a href="/preferences/password" class="button_primer button_command button_gray<%= (section == 'password') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
           <span class="icon icon-chevron"></span>
           <span class="button_label">Password</span>
-        </button>
+        </a>
       </li>
       <li class="list__item">
-        <button class="button_primer button_command button_gray button_command--fill button_command--flexible js-preferences-networks">
+        <a href="/preferences/networks" class="button_primer button_command button_gray<%= (section == 'networks') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
           <span class="icon icon-chevron"></span>
           <span class="button_label">Networks</span>
-        </button>
+        </a>
       </li>
       <li class="list__item">
-        <button class="button_primer button_command button_gray button_command--fill button_command--flexible js-preferences-notifications">
+        <a href="/preferences/notifications" class="button_primer button_command button_gray<%= (section == 'notifications') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
           <span class="icon icon-chevron"></span>
           <span class="button_label">Notifications</span>
-        </button>
+        </a>
       </li>
       <li class="list__item">
-        <button class="button_primer button_command button_gray button_command--fill button_command--flexible js-preferences-goodies">
+        <a href="/preferences/goodies" class="button_primer button_command button_gray<%= (section == 'goodies') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
           <span class="icon icon-chevron"></span>
           <span class="button_label">Goodies</span>
-        </button>
+        </a>
       </li>
     </ul>
   </div><!-- eo guide-overlay__body -->
 </div><!-- eo sidebar_module-->
 
-<div class="content_lining js-preferences-section">
+<div class="content_module content_module--page js-preferences-section">
   Content
 </div>

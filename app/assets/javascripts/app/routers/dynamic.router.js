@@ -489,8 +489,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayUserPreferences : function(section){
     this._setupTopLevelViews();
+
+    if(!section) { //if `section` is undefined, route to profile as a default
+      shelby.router.navigate('preferences/profile',{trigger:true});
+    }
+
     shelby.models.userPreferencesView.set({section: section});
     shelby.models.guide.set({displayState: libs.shelbyGT.DisplayState.userPreferences});
+
     // send page view to GA
     var route = '/preferences' + ((section) ? '/' + section : '');
 

@@ -1,0 +1,44 @@
+/*
+
+    Content Module, basic frame for layout
+
+*/
+
+//block
+.content_module {
+  height: 100%;
+  position: relative;
+}
+    //mods
+    .content_module--page {
+      background-color: $ui-white;
+      font-size: 1.2em;
+      overflow-y: auto;
+
+      .content_lining {
+        margin: 2em 3em;
+        width: 30em;
+      }
+    }
+
+.content_wrapper {
+  bottom: 0;
+  font-size: 1.1em;
+  line-height: 1.5;
+  left: 0;
+  margin-top: $app-header__height;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+
+  &.onboarding-layout {
+    display: none;
+  }
+}
+
+.content_lining {
+  height: 100%;
+  // overflow: hidden;
+  position: relative;
+}

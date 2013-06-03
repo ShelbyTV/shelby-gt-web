@@ -65,6 +65,7 @@
   border: 1px solid darken($base, if(lightness($base) < $inversion-value, 6.5%, 20%));
   color: if(lightness($base) < $inversion-value, $ui-white, $ui-soft-black);
 
+  &.button_selected,
   &:hover {
     background: lighten($base, 10.25%);
   }
