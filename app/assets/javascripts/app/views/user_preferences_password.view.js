@@ -2,7 +2,7 @@ libs.shelbyGT.UserPreferencesPasswordView = Support.CompositeView.extend({
 
   tagName: 'div',
 
-  className: 'content_lining',
+  className: 'content_lining preferences_page preferences_page--password',
 
   options : _.extend({}, Support.CompositeView.prototype.options, {}),
 
@@ -11,18 +11,16 @@ libs.shelbyGT.UserPreferencesPasswordView = Support.CompositeView.extend({
   },
 
   render : function(){
-    console.log('opts',this);
-    this.$el.html(this.template());
+    var data = {};
+
+    this.$el.html(this.template(data));
   },
 
   initialize : function(){
-    console.log('user password!');
-    // this.model.bind('change:section', this.render, this);
+    console.log('/preferences/password!');
   },
 
   _cleanup : function(){
-    // this.model.unbind('change:section', this.render, this);
   }
-
 
 });

@@ -11,8 +11,9 @@ libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
   },
 
   render : function(){
-    console.log('opts',this);
-    this.$el.html(this.template());
+    var data = {};
+
+    this.$el.html(this.template(data));
   },
 
   initialize : function(){

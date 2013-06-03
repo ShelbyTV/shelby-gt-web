@@ -2,7 +2,7 @@ libs.shelbyGT.UserPreferencesGoodiesView = Support.CompositeView.extend({
 
   tagName: 'div',
 
-  className: 'content_lining',
+  className: 'content_lining preferences_page preferences_page--goodies',
 
   options : _.extend({}, Support.CompositeView.prototype.options, {}),
 
@@ -11,15 +11,16 @@ libs.shelbyGT.UserPreferencesGoodiesView = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template());
+    var data = {};
+
+    this.$el.html(this.template(data));
   },
 
   initialize : function(){
-    console.log('user password!');
+    console.log('/preferences/goodies!');
   },
 
   _cleanup : function(){
   }
-
 
 });

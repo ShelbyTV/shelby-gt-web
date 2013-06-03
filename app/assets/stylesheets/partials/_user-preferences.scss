@@ -31,7 +31,22 @@
 }
     //mods
     .preferences_page--profile {
-      .avatar-icon {
-        font-size: 5em;
+      .icon-avatar:before {
+        color: $ui-soft-black;
+        font-size: 2.65em;
+        text-align: center;
+        vertical-align: -30px;
       }
+    }
+    .preferences_page--password {
+
+    }
+    .preferences_page--networks {
+
+    }
+    .preferences_page--notifications {
+
+    }
+    .preferences_page--goodies {
+
     }
