@@ -1,11 +1,11 @@
-libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
+libs.shelbyGT.UserOwnedRollsGuideView = Support.CompositeView.extend({
 
   options : {
-    userChannelsCollectionModel : null
+    userOwnedRollsCollectionModel : null
   },
 
   template : function(obj){
-    return SHELBYJST['user-channel-guide'](obj);
+    return SHELBYJST['user-owned-roll-guide'](obj);
   },
 
   initialize : function(){
@@ -33,13 +33,13 @@ libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
       this.renderChild(new libs.shelbyGT.ListView({
         collectionAttribute : 'rolls',
         doStaticRender : true,
-        el : '.js-user-channel-list',
+        el : '.js-user-owned-roll-list',
         listItemViewAdditionalParams : {
           activationStateModel : shelby.models.guide,
           userProfileModel : this.model
         },
-        listItemView : 'UserChannelItemView',
-        model : this.options.userChannelsCollectionModel
+        listItemView : 'UserOwnedRollItemView',
+        model : this.options.userOwnedRollsCollectionModel
       }));
     }
   },
@@ -68,13 +68,13 @@ libs.shelbyGT.UserChannelGuideView = Support.CompositeView.extend({
       } else if (shelby.models.playlistManager.get('playlistType') == libs.shelbyGT.PlaylistType.roll) {
         // figure out which roll to change to (one forward or back in the list)
         if (changeChannel > 0) {
-          changeToRoll = this.options.userChannelsCollectionModel.get('rolls').getNextRoll(shelby.models.playlistManager.get('playlistRollId'));
+          changeToRoll = this.options.userOwnedRollsCollectionModel.get('rolls').getNextRoll(shelby.models.playlistManager.get('playlistRollId'));
         } else {
-          changeToRoll = this.options.userChannelsCollectionModel.get('rolls').getPreviousRoll(shelby.models.playlistManager.get('playlistRollId'));
+          changeToRoll = this.options.userOwnedRollsCollectionModel.get('rolls').getPreviousRoll(shelby.models.playlistManager.get('playlistRollId'));
         }
       } else {
         // if we're not already playing something from this .tv, just play the first roll on the .tv
-        changeToRoll = this.options.userChannelsCollectionModel.get('rolls').first();
+        changeToRoll = this.options.userOwnedRollsCollectionModel.get('rolls').first();
       }
 
       // if the roll we're supposd to change to is the same roll we're already playing, do nothing

@@ -60,11 +60,11 @@ libs.utils.String = {
           return text;
         }
       },
-      hashtags : true,
+      hashtags : false,
       hashtag_link_attribs : {},
       hashtag_link_prefix : '',
       hashtag_link_postfix : '',
-      hashtag_whitelist : shelby.config.hashTags
+      hashtag_whitelist : null
     }).value();
 
     return linkify(s, options);

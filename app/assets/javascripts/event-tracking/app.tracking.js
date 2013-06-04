@@ -125,12 +125,12 @@ _(shelby).extend({
           _gaAction = "Upload fail";
           _kmq.push(['record', action, {nickname: options.userName}]);
           break;
-        case 'Click explore promo':
-        case 'Show explore promo':
+        case 'Click community promo':
+        case 'Show community promo':
           _gaCategory = 'Promo';
           _gaAction = action;
-          _gaLabel = 'explore';
-          //_kmq.push(['record', action, {label: 'explore'}]);
+          _gaLabel = 'community';
+          //_kmq.push(['record', action, {label: 'community'}]);
           break;
         case 'Click roll promo':
         case 'Show roll promo':

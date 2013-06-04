@@ -21,7 +21,6 @@
 
     events : {
       "click #js-roll-it"         : '_doRoll',
-      "click .js-hashtag-button"  : '_insertHashtag',
       "focus #new-roll-name"      : '_clearErrors',
       "focus #js-rolling-message" : '_clearErrors'
     },
@@ -49,7 +48,6 @@
           titleWithoutPath : RollViewHelpers.titleWithoutPath(this._roll),
           urlForRoll : RollViewHelpers.urlForRoll(this._roll)
         },
-        showHashtagButtons : true,
         user : shelby.models.user
       }));
 
@@ -192,23 +190,6 @@
           if (b.status == 404) { shelby.alert({message: "<p>404 error</p>"}); }
           else { shelby.alert({message: "<p>sorry, something went wrong.</p>"}); }
         }
-      });
-    },
-
-    _insertHashtag : function(e) {
-      e.preventDefault();
-      var $button = $(e.currentTarget);
-      var currentRollingMessage = this.$('#js-rolling-message').val();
-      var doPrependSpace = currentRollingMessage.length && !_(currentRollingMessage).endsWith(' ');
-      //insert the hashtag at the end of the currently entered rolling message
-      this.$('#js-rolling-message').insertText((doPrependSpace ? ' ' : '') + $button.val(), currentRollingMessage.length, true);
-      $button.addClass('button_green');
-
-      shelby.trackEx({
-        providers : ['ga'],
-        gaCategory : 'Rolling',
-        gaAction : 'click hashtag',
-        gaLabel : $button.val()
       });
     }
 

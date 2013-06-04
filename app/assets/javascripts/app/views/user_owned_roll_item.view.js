@@ -1,6 +1,6 @@
-libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
+libs.shelbyGT.UserOwnedRollItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
-  _channelListView : null,
+  _ownedRollListView : null,
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
@@ -39,7 +39,7 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   },
 
   template : function(obj){
-    return SHELBYJST['user-channel-item'](obj);
+    return SHELBYJST['user-owned-roll-item'](obj);
   },
 
   render : function(){
@@ -77,7 +77,7 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
       rollTitleOverride : rollTitleOverride,
       showAttribution : showAttribution
     }));
-    this._channelListView = new libs.shelbyGT.RollView({
+    this._ownedRollListView = new libs.shelbyGT.RollView({
       collapseViewedFrameGroups : false,
       fetchParams : {
         include_children : true
@@ -88,10 +88,10 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
         return false;
       },
       limit : shelby.config.pageLoadSizes.rollOnUserProfile.pagingLoad,
-      listItemView : 'UserChannelFrameItemView',
+      listItemView : 'UserOwnedRollFrameItemView',
       model : this.model
     });
-    this.appendChildInto(this._channelListView, '.js-user-channel');
+    this.appendChildInto(this._ownedRollListView, '.js-user-owned-roll');
     this._sizeToContents();
 
     var autoLoadRollId = this.options.userProfileModel.get('autoLoadRollId');
@@ -115,7 +115,7 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
         var rollToPlayId = (doPlaySpecificFrame && autoLoadRollId) || (self.options.userProfileModel.get('currentUser') && self.options.userProfileModel.get('currentUser').get('personal_roll_id'));
         if (rollToPlayId && (rollToPlayId == rollModel.id) && !shelby.models.guide.get('activeFrameModel')) {
           // if this is the roll to play and nothing else is playing, register it as the current playlist
-          self._channelListView.registerPlaylist();
+          self._ownedRollListView.registerPlaylist();
           if (doPlaySpecificFrame) {
             // if a particular frame was specified, start playing it
             var frame = rollModel.get('frames').get(autoLoadFrameId);
@@ -149,9 +149,9 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   },
 
   _onPlayThisRoll : function() {
-    if (this._channelListView) {
-      // register this channel as the current playlist and start playing it from the beginning
-      this._channelListView.registerPlaylist();
+    if (this._ownedRollListView) {
+      // register this roll as the current playlist and start playing it from the beginning
+      this._ownedRollListView.registerPlaylist();
       shelby.models.playlistManager.trigger('playlist:start');
     }
   },
@@ -179,8 +179,8 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
     this.$('.js-button-previous,.js-button-next').addClass('js-busy');
 
     // figure out how many frames are already scrolled off to the left of the wrapper's viewable area
-    var $wrapper = this.$('.js-user-channel-wrapper');
-    var frameWidth = this.$('.js-user-channel-item').outerWidth(true);
+    var $wrapper = this.$('.js-user-owned-roll-wrapper');
+    var frameWidth = this.$('.js-user-owned-roll-item').outerWidth(true);
     var currentScrolledLeftFrames = $wrapper.scrollLeft() / frameWidth;
     // figure out what would be the leftmost viewable item after the desired amount of scrolling
     var framesPerPage = $wrapper.width() / frameWidth;
@@ -190,7 +190,7 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
     }
     // if we would have scrolled past the very last frame, just make the very last frame be the
     // one we are scrolling to
-    var numFrames = this.$('.js-user-channel-item').length;
+    var numFrames = this.$('.js-user-owned-roll-item').length;
     if (newScrolledLeftFrames > numFrames - 1) {
       newScrolledLeftFrames = numFrames - 1;
     }
@@ -199,7 +199,7 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
     // flush with the left edge of the wrapper, or alternatively the wrapper scrolled
     // all the way to the right if having the particular element we want on the left isn't
     // possible because it's too close to the end of the list
-    var $itemToScrollTo = this.$('.js-user-channel-item:eq(' + newScrolledLeftFrames + ')');
+    var $itemToScrollTo = this.$('.js-user-owned-roll-item:eq(' + newScrolledLeftFrames + ')');
     if ($itemToScrollTo.length) {
       $wrapper.scrollTo($itemToScrollTo, 500, {onAfter: function(){
         //scrolling is finished, re-enable the scrolling buttons
@@ -223,13 +223,13 @@ libs.shelbyGT.UserChannelItemView = libs.shelbyGT.ActiveHighlightListItemView.ex
   // _sizeToContents - since this is a horizontal scrolling container, we need to explicitly set its width
   // to match the combined width of its contents when that quantity changes
   _sizeToContents : function(){
-    var $userChannels = this.$('.js-user-channel-item');
-    var newWidth = ($userChannels.length * $userChannels.outerWidth(true));
+    var $userOwnedRolls = this.$('.js-user-owned-roll-item');
+    var newWidth = ($userOwnedRolls.length * $userOwnedRolls.outerWidth(true));
     var $loadMoreIndicator = this.$('.js-load-more:visible');
     if ($loadMoreIndicator.length) {
       newWidth += this.$('.js-load-more').outerWidth(true);
     }
-    this.$('.js-user-channel').width(newWidth);
+    this.$('.js-user-owned-roll').width(newWidth);
   }
 
 });

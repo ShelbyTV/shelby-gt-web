@@ -19,7 +19,7 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/list.view.js
 //= require ./views/smart_refresh_list.view.js
 //= require ./views/paging_list.view.js
-//= require ./views/inline_explore_promo.view.js
+//= require ./views/inline_community_promo.view.js
 //= require ./views/inline_roll_promo.view.js
 //= require ./views/inline_donate_promo.view.js
 //= require ./collections/frame_groups.coll.js
@@ -40,7 +40,6 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/roll_action_menu.view.js
 //= require ./views/roll_header.view.js
 //= require ./views/search_header.view.js
-//= require ./views/channel_header.view.js
 //= require ./views/iso_roll_header.view.js
 //= require ./views/item_header.view.js
 //= require ./views/autocomplete.view.js
