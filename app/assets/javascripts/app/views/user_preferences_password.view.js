@@ -27,6 +27,52 @@ libs.shelbyGT.UserPreferencesPasswordView = libs.shelbyGT.UserPreferencesBaseVie
 
   _onSubmit : function(e){
     e.preventDefault();
+
+    this._$newPassword        = $('#newPassword'),
+    this._$newPasswordConfirm = $('#newPasswordConfirm');
+
+    if(info.password.length < shelby.config.user.password.minLength){
+      this._$newPassword.prev('.form_error').text('Password must be at least' + shelby.config.user.password.minLength + "characters")
+                        .parent().toggleClass('form_fieldset--error',true);
+    }
+    // the new password is not state that we want/need to persist on the client side,
+    // so we create a temporary clone of the user model with only password info via which
+    // to save the password to the backend (using HTTPS)
+    this._modelClone = new libs.shelbyGT.UserModel({
+      id : this.model.id,
+      password : this._$newPassword,
+      password_confirmation : this._$newPasswordConfirm
+    });
+
+    this._modelClone.useSecureUrl = true;
+
+    var self = this;
+
+    this._modelClone.save(null,{
+      success : function(model, response){
+        shelby.alert(self._preferencesSuccessMsg);
+      },
+      error : function(model, response){
+        var error;
+
+        if(response == 409) {
+          error = {
+            message: "Try again, passwords did not match.",
+            button_primary: {
+              title: 'Dismiss'
+            },
+            button_secondary: {
+              title:null
+            }
+          };
+        } else {
+          error = self._preferencesErrorMsg;
+        }
+
+        shelby.alert(error);
+      }
+    });
+
   }
 
 });
