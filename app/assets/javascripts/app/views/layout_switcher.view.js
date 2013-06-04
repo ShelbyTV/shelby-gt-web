@@ -28,16 +28,18 @@ libs.shelbyGT.LayoutSwitcherView = Support.CompositeView.extend({
   },
 
   _onChangeDisplayState : function(guideModel, displayState) {
+    var $preferencesLayout = $('.js-preferences-layout');
+
     switch (displayState){
       case libs.shelbyGT.DisplayState.userPreferences:
         this.options.guideOverlay.triggerImmediateHide();
         // show the preferences layout
-        this.$('.js-preferences-layout').toggleClass('hidden',false);
+        $preferencesLayout.toggleClass('hidden',false);
         //pause the video player when obscuring it
         shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
       break;
       default:
-        this.$('.js-preferences-layout').toggleClass('hidden',true);
+        $preferencesLayout.toggleClass('hidden',true);
     }
   }
 });
