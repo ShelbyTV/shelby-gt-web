@@ -9,8 +9,6 @@
 //  SHARED BY HORIZONTAL + VERTICAL FORMS
 ////////////////////////////////////////////////////////////////////////////
 .form_submit {
-  @include button-sizing(wide);
-
   .spinner {
     left: auto;
     margin-left: -4px;

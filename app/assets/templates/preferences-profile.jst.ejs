@@ -1,4 +1,4 @@
-<form action="/" class="form_module">
+<form action="/preferences/profile" class="form_module js-submit-profile">
   <h1 class="form__legend">
     Profile
   </h1>
@@ -12,13 +12,13 @@
       Avatar
     </label>
 
-    <div class="media_module media_module--bare">
-      <div class="media_image avatar avatar--medium icon-avatar">
+    <div class="media_module media_module--bare avatar-section-body clearfix">
+      <div id="js-dynamic-user-avatar" class="media_image avatar-section-viewport">
+        <!-- filled in by UserAvatarPresenterView -->
       </div>
 
-      <div class="media_body">
-
-        <input type="file" />
+      <div id="js-user-avatar-uploader" class="media_body avatar-section-input">
+        <!-- filled in by UserAvatarUploaderView -->
       </div>
     </div><!-- eo media_module -->
   </fieldset>
@@ -27,48 +27,49 @@
     <label for="userFullname" class="form_label">
       Full Name
     </label>
-
-    <input type="text" class="form_input" id="fullName" name="fullName" placeholder="First Name, Last Name" />
+    <span class="form_error" data-error="You must provide your full name"></span>
+    <input required type="text" class="form_input" id="userFullname" name="userFullname" placeholder="First Name, Last Name"<% if(userFullname){ %> value="<%= userFullname %>"<% } %> />
   </fieldset>
 
   <fieldset class="form_fieldset">
     <label for="userNickname" class="form_label">
       Username
     </label>
-
-    <input type="text" class="form_input" id="userNickname" name="userNickname" />
+    <span class="form_error" data-error="You must provide a username"></span>
+    <input required type="text" class="form_input" id="userNickname" name="userNickname"<% if(userNickname){ %> value="<%= userNickname %>"<% } %> />
   </fieldset>
 
   <fieldset class="form_fieldset">
     <label for="userEmail" class="form_label">
       Email
     </label>
-
-    <input type="email" class="form_input" id="userEmail" name="userEmail" placeholder="email@address.com" />
+    <span class="form_error" data-error="You must provide an email address"></span>
+    <input required type="email" class="form_input" id="userEmail" name="userEmail" placeholder="email@address.com"<% if(userEmail){ %> value="<%= userEmail %>"<% } %> />
   </fieldset>
 
+<% if(false) { %>
   <fieldset class="form_fieldset">
     <label for="userDescription" class="form_label">
       Profile Description
     </label>
 
-    <textarea name="userDescription" id="userDescription" rows="4" class="form_textarea" placeholder="How would you describe yourself?"></textarea>
+    <textarea name="userDescription" id="userDescription" rows="4" class="form_textarea" placeholder="How would you describe yourself?"><% if(userDescription){ %><%= userDescription %><% } %></textarea>
   </fieldset>
 
   <fieldset class="form_fieldset">
-    <label for="userUrl" class="form_label">
+    <label for="userHomepage" class="form_label">
       URL
     </label>
 
-    <input type="text" class="form_input" placeholder="http://myhomepage.com" id="userUrl" name="userUrl" />
+    <input type="text" class="form_input" id="userHomepage" name="userHomepage" placeholder="http://myhomepage.com"<% if(userHomepage){ %> value="<%= userHomepage %>"<% } %> />
   </fieldset>
-
+<% } %>
   <fieldset class="form_fieldset">
-    <button class="button_primer button_command button_command--submit button_green">
+    <button type="submit" class="button_primer button_command button_command--submit button_green">
       Save
     </button>
 
-    <button class="button_primer button_command button_command--submit button_gray">
+    <button type="reset" class="button_primer button_command button_command--submit button_gray js-cancel" title="Reset">
       Cancel
     </button>
   </fieldset>

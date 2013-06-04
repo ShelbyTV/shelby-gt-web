@@ -28,6 +28,25 @@
 .preferences_page {
   margin: 2em 3em;
   width: 30em;
+
+  //non-normative
+  .form_error {
+    display: none;
+    font-size: 11px;
+    margin-right: 4px;
+    position: absolute;
+    right: 0;
+  }
+
+  .form_fieldset--error {
+    .form_error {
+      display: block;
+
+      &:before {
+        content: attr(error);
+      }
+    }
+  }
 }
     //mods
     .preferences_page--profile {

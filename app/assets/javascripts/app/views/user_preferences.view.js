@@ -38,22 +38,28 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     //re-render (aka update menu as per selected section)
     this.render(section);
 
+
+    //all the children views inherit the same data
+    var viewData = {
+      model: this.model
+    };
+
     //render selected section
     switch(section) {
       case 'profile':
-        this.renderChildInto(new libs.shelbyGT.UserPreferencesProfileView(),this._container);
+        this.renderChildInto(new libs.shelbyGT.UserPreferencesProfileView(viewData),this._container);
         break;
       case 'password':
-        this.renderChildInto(new libs.shelbyGT.UserPreferencesPasswordView(),this._container);
+        this.renderChildInto(new libs.shelbyGT.UserPreferencesPasswordView(viewData),this._container);
         break;
       case 'networks':
-        this.renderChildInto(new libs.shelbyGT.UserPreferencesNetworksView(),this._container);
+        this.renderChildInto(new libs.shelbyGT.UserPreferencesNetworksView(viewData),this._container);
         break;
       case 'notifications':
-        this.renderChildInto(new libs.shelbyGT.UserPreferencesNotificationsView(),this._container);
+        this.renderChildInto(new libs.shelbyGT.UserPreferencesNotificationsView(viewData),this._container);
         break;
       case 'goodies':
-        this.renderChildInto(new libs.shelbyGT.UserPreferencesGoodiesView(),this._container);
+        this.renderChildInto(new libs.shelbyGT.UserPreferencesGoodiesView(viewData),this._container);
         break;
     }
   },
