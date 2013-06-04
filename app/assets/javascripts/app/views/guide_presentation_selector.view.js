@@ -37,9 +37,6 @@
       //   model : shelby.models.invite,
       //   user : shelby.models.user
       // }));
-      this.renderChild(new libs.shelbyGT.GuidePresentationSearchView({
-        el : this.$('.js-guide-search')
-      }));
       this.renderChild(new libs.shelbyGT.ChannelInfoOverlayView({
         el: this.$('.js-channels-menu'),
         model : shelby.models.guide,
@@ -116,8 +113,6 @@
         $setSelectedClassOn = this.$('.js-channels');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-me');
-      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.search) {
-        $setSelectedClassOn = this.$('.js-search');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll &&
                  this.model.has('currentRollModel') && this.model.get('currentRollModel').id == shelby.models.user.get('personal_roll_id')) {
         $setSelectedClassOn = this.$('.js-me');
