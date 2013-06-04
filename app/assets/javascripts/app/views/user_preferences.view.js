@@ -5,7 +5,8 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   _securityResponseFadeTimeout : null,
 
   events: {
-    "click .js-preferences-navigate" : "_navigateSection"
+    "click .js-preferences-navigate" : "_navigateSection",
+    "keyup .form_input"              : "cleanUpErrors"
   },
 
   _container : '.js-preferences-section', //for children views
@@ -25,6 +26,10 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   initialize : function(){
     this.options.viewModel.bind('change:section', this._onSectionChange, this);
+  },
+
+  cleanUpErrors: function(e) {
+    $(e.currentTarget).parent().removeClass('form_fieldset--error');
   },
 
   _cleanup : function(){

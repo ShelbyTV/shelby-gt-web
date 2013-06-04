@@ -1,8 +1,7 @@
 libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
 
   events : {
-    "submit .js-submit-profile" : "_onSubmit",
-    "keyup .form_input"         : "_cleanUpErrors"
+    "submit .js-submit-profile" : "_onSubmit"
   },
 
   className: 'content_lining preferences_page preferences_page--profile',
@@ -91,10 +90,6 @@ libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
   _valueIsEmpty : function(val) {
     //we still need to know if a non-required field is empty
     return !val.length;
-  },
-
-  _cleanUpErrors: function(e) {
-    $(e.currentTarget).parent().removeClass('form_fieldset--error');
   },
 
   _updateUser : function(updates) {

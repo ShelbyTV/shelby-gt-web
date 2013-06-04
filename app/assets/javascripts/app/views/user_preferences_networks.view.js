@@ -11,7 +11,13 @@ libs.shelbyGT.UserPreferencesNetworksView = Support.CompositeView.extend({
   },
 
   render : function(){
-    var data = {};
+    var networks = this.model.get('authentications');
+
+    var data = {
+      facebook : _.findWhere(networks, {provider: 'facebook'}),
+      twitter  : _.findWhere(networks, {provider: 'twitter'}),
+      tumblr   : _.findWhere(networks, {provider: 'tumblr'})
+    };
 
     this.$el.html(this.template(data));
   },

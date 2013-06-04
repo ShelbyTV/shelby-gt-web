@@ -61,6 +61,11 @@
 
     }
     .preferences_page--networks {
+      width: 40em;
+
+      .network {
+        border-top: 1px solid $inset;
+      }
 
     }
     .preferences_page--notifications {
