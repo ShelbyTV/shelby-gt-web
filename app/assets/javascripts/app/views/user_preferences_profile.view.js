@@ -1,4 +1,4 @@
-libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
+libs.shelbyGT.UserPreferencesProfileView = libs.shelbyGT.UserPreferencesBaseView.extend({
 
   events : {
     "submit .js-submit-profile" : "_onSubmit"
@@ -6,7 +6,7 @@ libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
 
   className: 'content_lining preferences_page preferences_page--profile',
 
-  options : _.extend({}, Support.CompositeView.prototype.options, {}),
+  options : _.extend({}, libs.shelbyGT.UserPreferencesBaseView.prototype.options, {}),
 
   template : function(obj){
       return SHELBYJST['preferences-profile'](obj);
@@ -87,11 +87,6 @@ libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
     this._updateUser(updates);
   },
 
-  _valueIsEmpty : function(val) {
-    //we still need to know if a non-required field is empty
-    return !val.length;
-  },
-
   _updateUser : function(updates) {
     var self = this;
 
@@ -99,29 +94,10 @@ libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
       success: function(model, response){
         console.log('success',response);
 
-        var successMsg = {
-          message: "<p>Your preferences have been updated!</p>",
-          button_primary: {
-            title: 'Ok'
-          },
-          button_secondary: {
-            title: null
-          }
-        };
-
-        shelby.alert(successMsg);
+        shelby.alert(self._preferencesSuccessMsg);
       },
       error: function(model, response){
         console.log('error',response);
-        var errorMsg = {
-          message: "<p>An unexpected error has occurred, <br/>please refresh the page and try again.</p>",
-          button_primary: {
-            title: 'Refresh'
-          },
-          button_secondary: {
-            title: 'Dismiss'
-          }
-        };
 
         if (response.status == 409) {
           var data = $.parseJSON(response.responseText);
@@ -136,18 +112,10 @@ libs.shelbyGT.UserPreferencesProfileView = Support.CompositeView.extend({
                             .parent('.form_fieldset').addClass('form_fieldset--error');
           } else {
             //if error unidentified, suggest page refresh (to alleviate possible authentication problem)
-            shelby.alert(errorMsg,function(returnVal){
-              if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary) {
-                document.location.reload(true);
-              }
-            });
+            shelby.alert(self._preferencesErrorMsg,self._preferencesErrorMsgCallback);
           }
         } else {
-          shelby.alert(errorMsg,function(returnVal){
-            if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary) {
-              document.location.reload(true);
-            }
-          });
+          shelby.alert(self._preferencesErrorMsg,self._preferencesErrorMsgCallback);
         }
       },
       wait: true

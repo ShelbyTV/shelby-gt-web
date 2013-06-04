@@ -1,4 +1,4 @@
-libs.shelbyGT.UserPreferencesPasswordView = Support.CompositeView.extend({
+libs.shelbyGT.UserPreferencesPasswordView = libs.shelbyGT.UserPreferencesBaseView.extend({
 
   events : {
     "submit .js-preferences-password" : "_onSubmit"
@@ -6,7 +6,7 @@ libs.shelbyGT.UserPreferencesPasswordView = Support.CompositeView.extend({
 
   className: 'content_lining preferences_page preferences_page--password',
 
-  options : _.extend({}, Support.CompositeView.prototype.options, {}),
+  options : _.extend({}, libs.shelbyGT.UserPreferencesBaseView.prototype.options, {}),
 
   template : function(obj){
       return SHELBYJST['preferences-password'](obj);
@@ -27,8 +27,6 @@ libs.shelbyGT.UserPreferencesPasswordView = Support.CompositeView.extend({
 
   _onSubmit : function(e){
     e.preventDefault();
-
-
   }
 
 });

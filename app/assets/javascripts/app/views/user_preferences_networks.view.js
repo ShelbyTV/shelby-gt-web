@@ -1,10 +1,10 @@
-libs.shelbyGT.UserPreferencesNetworksView = Support.CompositeView.extend({
+libs.shelbyGT.UserPreferencesNetworksView = libs.shelbyGT.UserPreferencesBaseView.extend({
 
   tagName: 'div',
 
   className: 'content_lining preferences_page preferences_page--networks',
 
-  options : _.extend({}, Support.CompositeView.prototype.options, {}),
+  options : _.extend({}, libs.shelbyGT.UserPreferencesBaseView.prototype.options, {}),
 
   template : function(obj){
       return SHELBYJST['preferences-networks'](obj);

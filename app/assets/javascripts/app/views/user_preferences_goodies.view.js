@@ -1,10 +1,10 @@
-libs.shelbyGT.UserPreferencesGoodiesView = Support.CompositeView.extend({
+libs.shelbyGT.UserPreferencesGoodiesView = libs.shelbyGT.UserPreferencesBaseView.extend({
 
   tagName: 'div',
 
   className: 'content_lining preferences_page preferences_page--goodies',
 
-  options : _.extend({}, Support.CompositeView.prototype.options, {}),
+  options : _.extend({}, libs.shelbyGT.UserPreferencesBaseView.prototype.options, {}),
 
   template : function(obj){
       return SHELBYJST['preferences-goodies'](obj);
