@@ -12,7 +12,8 @@
       "click .js-channels"                   : "_goToChannels",
       "click .js-me"                         : "_goToMe",
       "click .js-mail"                       : "_goToMail",
-      "click .js-admin"                      : "_goToAdmin"
+      "click .js-admin"                      : "_goToAdmin",
+      "click .js-navigate"                   : "_goToHref"
     },
 
     /*el : '#js-guide-presentation-selector',*/
@@ -31,7 +32,8 @@
 
     render : function(){
       this.$el.html(this.template({
-        user: shelby.models.user
+        user: shelby.models.user,
+        userNickname: shelby.models.user.get('nickname')
       }));
       // not rendering this right now. coming back to it when we can focus on optimizing. -his
       // this.renderChild(new libs.shelbyGT.InviteFormView({
@@ -80,6 +82,14 @@
 
     _goToAdmin : function(){
       document.location = "http://api.shelby.tv/admin/new_users";
+    },
+
+    _goToHref : function(e){
+      e.preventDefault();
+
+      var href = e.currentTarget.pathname;
+
+      shelby.router.navigate(href,{trigger:true});
     },
 
     _onGuideModelChanged : function(model){

@@ -1,18 +1,18 @@
 <ul class="js-content-selector list list--inline app_nav clearfix">
   <li class="list__item">
-    <button class="app_nav__button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= user.get('nickname') %>'>
+    <button class="app_nav__button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label='<%= userNickname %>'>
       Stream
     </button>
   </li>
 
   <li class="list__item js-channels-menu">
-    <button class="app_nav__button js-channels js-track-event" data-ga_category="Header" data-ga_action="Channels" data-ga_label='<%= user.get('nickname') %>'>
+    <button class="app_nav__button js-channels js-track-event" data-ga_category="Header" data-ga_action="Channels" data-ga_label='<%= userNickname %>'>
       #Channels
     </button>
   </li>
 
   <% if (!user.isAnonymous()) { %>
-    <li class="list__item js-guide-me js-track-event" data-ga_category="Header" data-ga_action="Me" data-ga_label='<%= user.get('nickname') %>'>
+    <li class="list__item js-guide-me js-track-event" data-ga_category="Header" data-ga_action="Me" data-ga_label='<%= userNickname %>'>
       <button class="app_nav__button js-me">
         Me
       </button>
@@ -49,52 +49,79 @@
   <% } %>
 
   <li class="dropdown_module list__item secondary-item js-guide-settings">
-    <button class="dropdown_button app_nav__button app_nav__button--settings js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= user.get('nickname') %>">
+    <button class="dropdown_button app_nav__button app_nav__button--settings js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= userNickname %>">
       <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrl(user,libs.shelbyGT.UserAvatarSizes.small)%>
       <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
-        <%= user.get('nickname') %> <span class="icon-carrot"></span>
+        <%= userNickname %> <span class="icon-carrot"></span>
     </button>
     <section class="dropdown_section settings-section">
       <div class="dropdown_lining fin fin--top_right clearfix">
         <ul class="list">
           <li class="list__item">
             <button
-              class="button_primer button_command button_command--flexible button_command--text js-preferences"
-              data-ga_category="Header"
-              data-ga_action="Preferences"
-              data-ga_label="<%= user.get('nickname') %>"
-              >
-              Preferences
-            </button>
-          </li>
-
-          <li class="list__item">
-            <button class="button_primer button_command button_command--flexible button_command--text js-me"
+              class="button_primer button_command button_command--flexible button_command--text js-me"
               data-ga_category="Header"
               data-ga_action="Profile"
-              data-ga_label="<%= user.get('nickname') %>"
+              data-ga_label="<%= userNickname %>"
             >
               Profile
             </button>
           </li>
+
+          <li class="list__item">
+            <a
+              href="/preferences"
+              class="button_primer button_command button_command--flexible button_command--text js-navigate"
+              data-ga_category="Header"
+              data-ga_action="Preferences"
+              data-ga_label="<%= userNickname %>"
+              >
+              Preferences
+            </a>
+          </li>
+<!--
+          <li class="list__item">
+            <a
+              href="/preferences/password"
+              class="button_primer button_command button_command--flexible button_command--text js-navigate"
+              data-ga_category="Header"
+              data-ga_action="Preferences"
+              data-ga_label="<%= userNickname %>"
+              >
+              Password
+            </a>
+          </li>
+
+          <li class="list__item">
+            <a
+              href="/preferences/networks"
+              class="button_primer button_command button_command--flexible button_command--text js-navigate"
+              data-ga_category="Header"
+              data-ga_action="Preferences"
+              data-ga_label="<%= userNickname %>"
+              >
+              Networks
+            </a>
+          </li>
+
+          <li class="list__item">
+            <a
+              href="/preferences/notifications"
+              class="button_primer button_command button_command--flexible button_command--text js-navigate"
+              data-ga_category="Header"
+              data-ga_action="Preferences"
+              data-ga_label="<%= userNickname %>"
+              >
+              Notifications
+            </a>
+          </li>
+ -->
         </ul>
 
         <ul class="list">
           <li class="list__item">
-            <a href="mailto:feedback@shelby.tv" class="button_primer button_command button_command--flexible button_command--text ">
-              Report Feedback
-            </a>
-          </li>
-
-          <li class="list__item">
-            <a href="http://twitter.com/shelby" target="_blank" class="button_primer button_command button_command--flexible button_command--text ">
-              Twitter
-            </a>
-          </li>
-
-          <li class="list__item">
-            <a href="http://facebook.com/shelbytv" target="_blank" class="button_primer button_command button_command--flexible button_command--text ">
-              Facebook
+            <a href="https://getsatisfaction.com/shelbytv" target="_blank" class="button_primer button_command button_command--flexible button_command--text ">
+              Support and Feedback
             </a>
           </li>
 
@@ -111,7 +138,7 @@
               class="button_primer button_command button_command--flexible button_command--text js-signout"
               data-ga_category="Header"
               data-ga_action="Logout"
-              data-ga_label="<%= user.get('nickname') %>"
+              data-ga_label="<%= userNickname %>"
               >
               Logout
             </button>
