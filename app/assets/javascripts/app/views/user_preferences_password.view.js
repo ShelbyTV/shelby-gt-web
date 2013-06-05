@@ -33,9 +33,20 @@ libs.shelbyGT.UserPreferencesPasswordView = libs.shelbyGT.UserPreferencesBaseVie
     this._$newPassword        = $('#newPassword'),
     this._$newPasswordConfirm = $('#newPasswordConfirm');
 
-    if(this._$newPassword.length < shelby.config.user.password.minLength){
-      this._$newPassword.prev('.form_error').text('Password must be at least' + shelby.config.user.password.minLength + "characters")
+    var hasError = null;
+
+    if (this._$newPassword.val().length < shelby.config.user.password.minLength) {
+      hasError = 'Password must be at least ' + shelby.config.user.password.minLength + ' characters';
+      this._$newPassword.prev('.form_error').text(hasError)
                         .parent().toggleClass('form_fieldset--error',true);
+    } else if (this._$newPassword.val() != this._$newPasswordConfirm.val()) {
+      hasError = 'Passwords do not match';
+      this._$newPasswordConfirm.prev('.form_error').text(hasError)
+                        .parent().toggleClass('form_fieldset--error',true);
+    }
+
+    if (hasError){
+      return false;
     }
     // the new password is not state that we want/need to persist on the client side,
     // so we create a temporary clone of the user model with only password info via which
