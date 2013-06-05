@@ -27,7 +27,7 @@
 
     <%= render :partial => '/home/landing_header', :locals => {:show_login => true} %>
 
-    <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
+    <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") or @path_error %>
       <section class="shelf shelf--error clearfix">
         <div class="shelf__lining">
           <% if @access_error %>
@@ -47,6 +47,12 @@
             <p class="shelf__block shelf__block--error js-signin-error">
               There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.
               <br/>Please try again.
+            </p>
+          <% end %>
+
+          <% if @path_error %>
+            <p class="shelf__block shelf__block--error js-signin-error">
+              You must log in to access this page.
             </p>
           <% end %>
 
