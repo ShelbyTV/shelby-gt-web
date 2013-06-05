@@ -59,8 +59,11 @@
 
       //non-normative and gross and hacky
       .avatar-section-button {
+        left: 0;
+        margin-left: 3.5em;
         margin-top: 0.3em;
         position: absolute;
+        top: 0;
       }
 
       .avatar-section-input {
