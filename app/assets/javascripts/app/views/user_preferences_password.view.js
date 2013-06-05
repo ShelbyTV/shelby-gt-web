@@ -42,7 +42,7 @@ libs.shelbyGT.UserPreferencesPasswordView = libs.shelbyGT.UserPreferencesBaseVie
     } else if (this._$newPassword.val() != this._$newPasswordConfirm.val()) {
       hasError = 'Passwords do not match';
       this._$newPasswordConfirm.prev('.form_error').text(hasError)
-                        .parent().toggleClass('form_fieldset--error',true);
+                               .parent().toggleClass('form_fieldset--error',true);
     }
 
     if (hasError){
