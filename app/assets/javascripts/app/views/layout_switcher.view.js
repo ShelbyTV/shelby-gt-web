@@ -37,9 +37,12 @@ libs.shelbyGT.LayoutSwitcherView = Support.CompositeView.extend({
         $preferencesLayout.toggleClass('hidden',false);
         //pause the video player when obscuring it
         shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
+        //disable user-inactivity
+        shelby.userInactivity.disableUserActivityDetection();
       break;
       default:
         $preferencesLayout.toggleClass('hidden',true);
+        shelby.userInactivity.enableUserActivityDetection();
     }
   }
 });
