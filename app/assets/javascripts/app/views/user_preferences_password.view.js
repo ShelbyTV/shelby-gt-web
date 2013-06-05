@@ -1,7 +1,8 @@
 libs.shelbyGT.UserPreferencesPasswordView = libs.shelbyGT.UserPreferencesBaseView.extend({
 
   events : {
-    "submit .js-preferences-password" : "_onSubmit"
+    "submit .js-preferences-password" : "_onSubmit",
+    "blur .form_input"                : "_toggleRequiredAttr"
   },
 
   className: 'content_lining preferences_page preferences_page--password',
@@ -72,7 +73,20 @@ libs.shelbyGT.UserPreferencesPasswordView = libs.shelbyGT.UserPreferencesBaseVie
         shelby.alert(error);
       }
     });
+  },
 
+  _toggleRequiredAttr : function(e) {
+    //only apply the `required` attribute onBlur,
+    //this is because the browser will add a
+    //pink background color before the user interacts
+    //with the form inputs.
+    //it doesn't make sense in this context.
+    //so, only until the user has blurred either input should we
+    //append the `required`
+
+    var $this = $(e.currentTarget);
+
+    $this.attr('required',true);
   }
 
 });
