@@ -32,6 +32,29 @@ libs.shelbyGT.UserPreferencesBaseView = Support.CompositeView.extend({
   _valueIsEmpty : function(val) {
     //we still need to know if a non-required field is empty
     return !val.length;
+  },
+
+  _updateUserPreferencesModel : function(updates) {
+    //the user preferences is a object on the the usermodel
+    //make a different function if you need to update the whole user model.
+    var self = this;
+
+    this.model.save({preferences: updates}, {
+      success: function(model, response){
+        shelby.alert(self._preferencesSuccessMsg);
+      },
+      error: function(model, response){
+        shelby.alert(self._preferencesErrorMsg,self._preferencesErrorMsgCallback);
+      }
+    });
+  },
+
+  _doUpdateUserPreferences : function(updates){
+    var defaults = _(this._preferences).clone();
+
+    _(defaults).extend(updates);
+
+    this._updateUserPreferencesModel(defaults);
   }
 
 });

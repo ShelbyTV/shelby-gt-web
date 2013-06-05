@@ -9,7 +9,7 @@
   </p>
 
   <fieldset class="form_fieldset">
-    <input checked="<%= preferences.email_updates %>" type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationNews" name="notificationNews" />
+    <input<% if(preferences.email_updates){ %> checked<% } %> type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationNews" name="notificationNews" />
 
     <label for="notificationNews" class="form_label form_label--inline">
       News and Updates
@@ -17,7 +17,7 @@
   </fieldset>
 
   <fieldset class="form_fieldset">
-    <input checked="<%= preferences.like_notifications %>" type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationLikes" name="notificationLikes" />
+    <input<% if(preferences.like_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationLikes" name="notificationLikes" />
 
     <label for="notificationLikes" class="form_label form_label--inline">
       Likes
@@ -25,7 +25,7 @@
   </fieldset>
 
   <fieldset class="form_fieldset">
-    <input checked="<%= preferences.reroll_notifications %>" type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationReRolls" name="notificationReRolls" />
+    <input<% if(preferences.reroll_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationReRolls" name="notificationReRolls" />
 
     <label for="notificationReRolls" class="form_label form_label--inline">
       Re-Rolls
@@ -33,7 +33,7 @@
   </fieldset>
 
   <fieldset class="form_fieldset">
-    <input checked="<%= preferences.roll_activity_notifications %>" type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationRollActivity" name="notificationRollActivity" />
+    <input<% if(preferences.roll_activity_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationRollActivity" name="notificationRollActivity" />
 
     <label for="notificationRollActivity" class="form_label form_label--inline">
       Roll Activity

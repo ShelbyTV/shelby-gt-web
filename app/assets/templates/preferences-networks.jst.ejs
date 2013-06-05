@@ -33,8 +33,8 @@
         </p>
 
         <div class="form_fieldset">
-          <input checked="checked" type="checkbox" class="form_checkbox form_checkbox--inline" id="connectTwitter" name="connectTwitter" />
-          <label for="connectTwitter" class="form_label form_label--inline">Follow @shelby</label>
+          <input checked="checked" type="checkbox" class="form_checkbox form_checkbox--inline" id="followShelby" name="followShelby" />
+          <label for="followShelby" class="form_label form_label--inline">Follow @shelby</label>
         </div>
       <% } %>
     </div>
@@ -66,8 +66,8 @@
         </p>
 
         <div class="form_fieldset">
-          <input checked="checked" type="checkbox" class="form_checkbox form_checkbox--inline" id="connectTwitter" name="connectTwitter" />
-          <label for="connectTwitter" class="form_label form_label--inline">I want to share videos I roll and watch on Shelby <br/>with my friends on my Facebook Timeline</label>
+          <input<% if(preferences.open_graph_posting){ %> checked<% } %>  type="checkbox" class="form_checkbox form_checkbox--inline" id="facebookTimeline" name="facebookTimeline" />
+          <label for="facebookTimeline" class="form_label form_label--inline">I want to share videos I roll and watch on Shelby <br/>with my friends on my Facebook Timeline</label>
         </div>
       <% } %>
     </div>

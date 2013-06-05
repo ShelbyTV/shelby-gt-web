@@ -71,7 +71,10 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
   _navigateSection : function(e) {
     e.preventDefault();
-    shelby.router.navigate(e.currentTarget.pathname,{trigger:true});
+
+    var href = e.currentTarget.pathname;
+
+    shelby.router.navigate(href,{trigger:true});
   }
 
 });

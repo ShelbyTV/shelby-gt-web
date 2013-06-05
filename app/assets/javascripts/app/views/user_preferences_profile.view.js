@@ -93,13 +93,9 @@ libs.shelbyGT.UserPreferencesProfileView = libs.shelbyGT.UserPreferencesBaseView
 
     this.model.save(updates, {
       success: function(model, response){
-        console.log('success',response);
-
         shelby.alert(self._preferencesSuccessMsg);
       },
       error: function(model, response){
-        console.log('error',response);
-
         if (response.status == 409) {
           var data = $.parseJSON(response.responseText);
           var errors = _(data.errors.user);
