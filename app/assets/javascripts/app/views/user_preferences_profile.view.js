@@ -1,7 +1,8 @@
 libs.shelbyGT.UserPreferencesProfileView = libs.shelbyGT.UserPreferencesBaseView.extend({
 
   events : {
-    "submit .js-submit-profile" : "_onSubmit"
+    "submit .js-submit-profile" : "_onSubmit",
+    "click .js-choose-file"     : "_triggerClickOnFileInput"
   },
 
   className: 'content_lining preferences_page preferences_page--profile',
@@ -120,6 +121,11 @@ libs.shelbyGT.UserPreferencesProfileView = libs.shelbyGT.UserPreferencesBaseView
       },
       wait: true
     });
+  },
+
+  _triggerClickOnFileInput : function(e){
+    e.preventDefault();
+    $('#fileupload').trigger('click');
   }
 
 });
