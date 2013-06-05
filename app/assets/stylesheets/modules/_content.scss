@@ -12,6 +12,7 @@
     //mods
     .content_module--page {
       background-color: $ui-white;
+      border-left: 1px solid $inset;
       font-size: 1.2em;
       overflow-y: auto;
     }
