@@ -32,7 +32,7 @@ libs.shelbyGT.UserPreferencesPasswordView = libs.shelbyGT.UserPreferencesBaseVie
     this._$newPassword        = $('#newPassword'),
     this._$newPasswordConfirm = $('#newPasswordConfirm');
 
-    if(info.password.length < shelby.config.user.password.minLength){
+    if(this._$newPassword.length < shelby.config.user.password.minLength){
       this._$newPassword.prev('.form_error').text('Password must be at least' + shelby.config.user.password.minLength + "characters")
                         .parent().toggleClass('form_fieldset--error',true);
     }
@@ -41,8 +41,8 @@ libs.shelbyGT.UserPreferencesPasswordView = libs.shelbyGT.UserPreferencesBaseVie
     // to save the password to the backend (using HTTPS)
     this._modelClone = new libs.shelbyGT.UserModel({
       id : this.model.id,
-      password : this._$newPassword,
-      password_confirmation : this._$newPasswordConfirm
+      password : this._$newPassword.val(),
+      password_confirmation : this._$newPasswordConfirm.val()
     });
 
     this._modelClone.useSecureUrl = true;
