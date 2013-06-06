@@ -23,60 +23,49 @@
   <!-- Facebook widget -->
   <div id="fb-root"></div>
 
-  <div class="shelby__wrapper">
+  <div class="shelby__wrapper clearfix">
 
     <%= render :partial => '/home/landing_header', :locals => {:show_login => true} %>
 
     <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
-      <section class="shelf shelf--error clearfix">
-        <div class="shelf__lining">
-          <% if @access_error %>
-            <p class="shelf__block shelf__block--noaccess js-signin-error">
-              Sorry, you do not have access to the beta…<br>
-              <a href="http://shelby.tv/blog/post/26927127539/new-shelby-shutdown">Learn what's coming</a>.
-            </p>
-          <% end %>
+      <div class="shelf shelf--error clearfix">
+        <% if @access_error or @invite_error %>
+          <p class="js-signin-error">
+            Please Sign up or Log in
+          </p>
+        <% end %>
 
-          <% if @invite_error %>
-            <p class="shelf__block shelf__block--invalid-invite js-signin-error">
-              Sorry, that invite is no longer valid.  Please <a href="mailto:contact+invite@shelby.tv">contact us</a> if you have questions.
-            </p>
-          <% end %>
+        <% if @auth_failure %>
+          <p class="js-signin-error">
+            There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.
+            <br/>Please try again.
+          </p>
+        <% end %>
 
-          <% if @auth_failure %>
-            <p class="shelf__block shelf__block--error js-signin-error">
-              There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.
-              <br/>Please try again.
-            </p>
-          <% end %>
-
-          <% if (flash[:error] == "401") %>
-            <p class="shelf__block shelf__block--error js-signin-error">
-              Session expired, please log in again!
-            </p>
-          <% end %>
-        </div>
-      </section>
+        <% if (flash[:error] == "401") %>
+          <p class="js-signin-error">
+            Session expired, please log in again!
+          </p>
+        <% end %>
+      </div><!-- eo shelf -->
     <% end %>
 
     <% #------------ Shelf Content --------------- %>
 
-    <%= render :partial => "/home/shelf/sign_up_init" if @sign_up %>
-
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
-      <%= render :partial => "/home/shelf/start_watching" %>
-      <%= render :partial => "/home/shelf/community" %>
-      <%= render :partial => "/home/shelf/network" %>
-      <%= render :partial => "/home/shelf/about" %>
+      <%= render :partial => "/home/shelf/call_to_action" %>
+      <%= render :partial => "/home/shelf/stream" %>
+      <%= render :partial => "/home/shelf/social" %>
+      <%= render :partial => "/home/shelf/press" %>
+      <%= render :partial => "/home/shelf/secondary_call_to_action" %>
     <% end %>
 
     <% #------------ /Shelf Content --------------- %>
 
-    <%= render :partial => '/home/landing_footer' %>
-
   </div><!-- /shelby-wrapper -->
+  <%= render :partial => '/home/shelf/footer' %>
 
   <%= render :partial => '/home/landing_scripts' %>
 

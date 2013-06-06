@@ -66,6 +66,14 @@
     }
   }
 }
+    .app_nav__button--inverted {
+      color: $ui-black;
+
+      &:active,
+      &:hover {
+        color: $ui-black;
+      }
+    }
 
 .guide-nav-item {
   width: auto;
