@@ -250,7 +250,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     // immediately change the button state
     this.$('.js-queue-frame').addClass('queued');
     this.$('.js-queue-frame .label').text('Liked');
-    this.$('.js-queue-frame i').addClass('icon-like--red');
+    this.$('.js-queue-frame .icon').addClass('icon-like--red');
   },
 
   _onClickRemoveFrame : function(){
