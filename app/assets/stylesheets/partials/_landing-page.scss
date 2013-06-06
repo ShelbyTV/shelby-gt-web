@@ -219,4 +219,27 @@
 //the footer isn't actually a shelf
 .shelby__foot {
   background-color: $ui-black;
+  font-size: 1.5em;
+  line-height: 1.5;
+  text-align: center;
+
+  .shelby__lining {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    padding: 3em 0;
+  }
+
+  .shelby__h4 {
+    color: $ui-soft-black;
+    margin-bottom: 1em;
+  }
+
+  .list__link {
+    &,
+    &:visited,
+    &:hover {
+      color: $ui-white;
+    }
+  }
 }
