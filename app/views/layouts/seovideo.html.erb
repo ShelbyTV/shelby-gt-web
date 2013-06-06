@@ -18,7 +18,7 @@
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
   <%= javascript_include_tag "seovideo" %>
 </head>
-<body>
+<body class="shelby<%= ' shelby--mobile' if @mobile_os %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %>">
 
   <%= yield %>
 

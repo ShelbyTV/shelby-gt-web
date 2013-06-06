@@ -22,22 +22,6 @@ $related_video__height: 195px;
 //------------------------------------------------------------------------------
 //  seovideo setup
 //------------------------------------------------------------------------------
-html,body{
-  height:100%;
-  margin:0;
-  padding:0;
-  width:100%;
-}
-
-body{
-  // background-color:#f8f8f8;
-  background-color:#dddddd;
-  bottom:0;
-  color: $font-color;
-  font-family: $font-family;
-  font-size: 81.25%;
-  font-weight: normal;
-}
 
 a {
   @include unstyled-link;
@@ -119,6 +103,8 @@ p {
 }
 
 .seovideo {
+  font-size: 1.2em;
+  line-height: 1.5;
   max-width: 640px;
   margin: 2em auto;
 }
