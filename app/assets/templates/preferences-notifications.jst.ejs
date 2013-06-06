@@ -1,42 +1,37 @@
 <form action="/preferences/notifications" class="form_module js-submit-notifications">
   <h1 class="form__legend">
     Notifications
-
   </h1>
 
-  <p class="form__description">
-    Let us tell you how popular you are.
-  </p>
-
   <fieldset class="form_fieldset">
-    <input<% if(preferences.email_updates){ %> checked<% } %> type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationNews" name="notificationNews" />
+    <input<% if(preferences.email_updates){ %> checked<% } %> type="checkbox" class="form_checkbox js-notification-checkbox" id="notificationNews" name="notificationNews" />
 
-    <label for="notificationNews" class="form_label form_label--inline">
-      News and Updates
+    <label for="notificationNews" class="form_label">
+      News and Updates<br/> <em>Keep me updated with new stuff from Shelby.</em>
     </label>
   </fieldset>
 
   <fieldset class="form_fieldset">
-    <input<% if(preferences.like_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationLikes" name="notificationLikes" />
+    <input<% if(preferences.like_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox js-notification-checkbox" id="notificationLikes" name="notificationLikes" />
 
-    <label for="notificationLikes" class="form_label form_label--inline">
-      Likes
+    <label for="notificationLikes" class="form_label">
+      Likes<br/> <em>Notify me when someone Likes my videos.</em>
     </label>
   </fieldset>
 
   <fieldset class="form_fieldset">
-    <input<% if(preferences.reroll_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationReRolls" name="notificationReRolls" />
+    <input<% if(preferences.reroll_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox js-notification-checkbox" id="notificationReRolls" name="notificationReRolls" />
 
-    <label for="notificationReRolls" class="form_label form_label--inline">
-      Re-Rolls
+    <label for="notificationReRolls" class="form_label">
+      Re-Rolls<br/> <em>Notify me when someone Re-Rolls my video.</em>
     </label>
   </fieldset>
 
   <fieldset class="form_fieldset">
-    <input<% if(preferences.roll_activity_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox form_checkbox--inline js-notification-checkbox" id="notificationRollActivity" name="notificationRollActivity" />
+    <input<% if(preferences.roll_activity_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox js-notification-checkbox" id="notificationRollActivity" name="notificationRollActivity" />
 
-    <label for="notificationRollActivity" class="form_label form_label--inline">
-      Roll Activity
+    <label for="notificationRollActivity" class="form_label">
+      Roll Activity<br/> <em>Notify me when someone new Follows me.</em>
     </label>
   </fieldset>
 

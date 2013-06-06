@@ -94,7 +94,18 @@
 
     }
     .preferences_page--notifications {
+      .form_checkbox {
+        float: left;
+        margin: 0.4em 0.5em 0 0;
+      }
 
+      .form_label {
+        float: left;
+        em {
+          font-weight: normal;
+          font-style: normal;
+        }
+      }
     }
     .preferences_page--goodies {
 
