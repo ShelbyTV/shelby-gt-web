@@ -13,13 +13,20 @@ class SignupController < ApplicationController
     if user_signed_in?
       # get the info for the current user
       @user = Shelby::API.get_current_user(Shelby::CookieUtils.generate_cookie_string(cookies))
-      if @user['app_progress'] && @user['app_progress']['onboarding']
-        # if the user has already completed signup, redirect them into the Backbone app
-        redirect_to root_url and return
+      if @user
+        if @user['app_progress'] && @user['app_progress']['onboarding']
+          # if the user has already completed signup, redirect them into the Backbone app
+          redirect_to root_url and return
+        end
+        @facebook_connected = @user['authentications'] && @user['authentications'].any? { |a| a['provider'] == 'facebook' }
+        @twitter_connected = @user['authentications'] && @user['authentications'].any? { |a| a['provider'] == 'twitter' }
+        followRolls! if session[:signup][:rolls_to_follow]
+      else
+        # something went wrong with the user's session, so start over
+        session[:signup][:step] = 1
+        cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
+        redirect_to({:action => 'index'}, {:alert => "Your session expired. Please try again."}) and return
       end
-      @facebook_connected = @user['authentications'] && @user['authentications'].any? { |a| a['provider'] == 'facebook' }
-      @twitter_connected = @user['authentications'] && @user['authentications'].any? { |a| a['provider'] == 'twitter' }
-      followRolls! if session[:signup][:rolls_to_follow]
     else
       @user = {}
     end
