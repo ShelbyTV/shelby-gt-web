@@ -28,7 +28,7 @@ libs.shelbyGT.appWelcome = Support.CompositeView.extend({
       shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
       shelby.userInactivity.enableUserActivityDetection();
       $('#js-welcome, .js-app-welcome').addClass('hidden');
-      //shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
+      shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
   }
 
 });
