@@ -5,8 +5,8 @@
 // (first) hashtag
 
 shelby.config.channels = {
-  'trending' : {
-    title : 'trending',
+  'community' : {
+    title : 'community',
     id: '515d83ecb415cc0d1a025bfe',
     includeInNav : true
   },
@@ -70,21 +70,3 @@ shelby.config.channels = {
     rollingHashtagButton : true
   }
 };
-
-// create a flat array of all shelby channel hashtags
-shelby.config.hashTags = _(shelby.config.channels).chain().map(function(channel){
-  return channel.hashTags;
-}).flatten().compact().value();
-
-// filter the channels info to only the ones that should appear in the channel nav
-var includeChannelKeys = _(shelby.config.channels).chain().pairs().map(function(channelPair){
-  return channelPair[1].includeInNav ? channelPair[0] : null;
-}).compact().value();
-shelby.config.channelsForNav = _(shelby.config.channels).pick(includeChannelKeys);
-
-// filter the channels info to only the ones that should have hashtag buttons displayed on the rolling form
-includeChannelKeys = _(shelby.config.channels).chain().pairs().map(function(channelPair){
-  var channelValue = channelPair[1];
-  return channelValue.rollingHashtagButton && _(channelValue).has('hashTags') && channelValue.hashTags.length ? channelPair[0] : null;
-}).compact().value();
-shelby.config.channelHashtagButtons = _(shelby.config.channels).pick(includeChannelKeys);

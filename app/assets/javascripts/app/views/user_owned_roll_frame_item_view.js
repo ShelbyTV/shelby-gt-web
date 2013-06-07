@@ -1,10 +1,10 @@
-libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
+libs.shelbyGT.UserOwnedRollFrameItemView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
   _frame : null,
 
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
-      className : 'user-channel__item js-user-channel-item',
+      className : 'user-channel__item js-user-owned-roll-item',
       guideOverlayModel : null,
       // playlistXxx options MUST be supplied by the parent list view
       playlistFrameGroupCollection : null, // the playlist collection that this view's frame model belongs to
@@ -32,7 +32,7 @@ libs.shelbyGT.UserChannelFrameItemView = libs.shelbyGT.ActiveHighlightListItemVi
   },
 
   template : function(obj){
-    return SHELBYJST['user-channel-frame-item'](obj);
+    return SHELBYJST['user-owned-roll-frame-item'](obj);
   },
 
   render : function(){

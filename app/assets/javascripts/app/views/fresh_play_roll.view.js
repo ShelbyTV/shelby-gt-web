@@ -29,7 +29,6 @@
 
   // shorten names of included library prototypes
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
-  var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
   var PlaylistType = libs.shelbyGT.PlaylistType;
 
   libs.shelbyGT.FreshPlayRollView = FrameGroupPlayPagingListView.extend({

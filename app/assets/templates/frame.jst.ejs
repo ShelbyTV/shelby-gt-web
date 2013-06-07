@@ -168,9 +168,6 @@
                     libs.utils.String.linkifySafeWithClickTracking(comment, {
                       link : {
                         gaAction : 'Click on link in comment'
-                      },
-                      hashtag : {
-                        gaAction : 'Click on hashtag link'
                       }
                     })
                   %>
@@ -183,10 +180,6 @@
   </div><!-- eo .frame-body-wrapper -->
 
   <%= SHELBYJST['frame-aside'](obj) %>
-
-	<% if(frame.get('isFreshPlayNew')){ %>
-		<div class="sash">New</div>
-	<% } %>
 
 </article>
 <!-- end new videocard -->

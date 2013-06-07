@@ -50,10 +50,6 @@
   <div class="media_body persistent_video_info__current-frame">
     <div class="persistent_video_info__lining">
 
-			<% if(currentFrame.get('isFreshPlayNew')){ %>
-				<div class="persistent_video_info__sash">New</div>
-			<% } %>
-
       <h2 class="persistent_video_info__h1">
         <%= currentVideo.get('title') %>
       </h2>
@@ -101,10 +97,6 @@
                   link : {
                     gaCategory : eventTrackingCategory,
                     gaAction : 'Click on link in comment'
-                  },
-                  hashtag : {
-                    gaCategory : eventTrackingCategory,
-                    gaAction : 'Click on hashtag link'
                   }
                 })
               %>

@@ -24,7 +24,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-go-to-roll-by-id"            : "_goToRollById",
     "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById",
-    "click .js-hashtag-link"                : '_followHashtagLink',
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-remove-frame"                : "_onClickRemoveFrame",
     "click .js-roll-frame"                  : "requestFrameRollView",
@@ -457,11 +456,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   //ListItemView overrides
   isMyModel : function(model) {
     return this.model == model;
-  },
-
-  _followHashtagLink : function(e){
-    e.preventDefault();
-    shelby.router.navigate('channels/' + $(e.currentTarget).data("channel_key"), {trigger : true});
   },
 
   _navigateOriginator : function(e) {

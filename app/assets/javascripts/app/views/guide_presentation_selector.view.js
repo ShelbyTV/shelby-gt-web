@@ -9,7 +9,7 @@
 
     events : {
       "click .js-stream:not(.active-item)"   : "_goToStream",
-      "click .js-channels"                   : "_goToChannels",
+      "click .js-community"                  : "_goToCommunity",
       "click .js-me"                         : "_goToMe",
       "click .js-mail"                       : "_goToMail",
       "click .js-admin"                      : "_goToAdmin"
@@ -37,11 +37,6 @@
       //   model : shelby.models.invite,
       //   user : shelby.models.user
       // }));
-      this.renderChild(new libs.shelbyGT.ChannelInfoOverlayView({
-        el: this.$('.js-channels-menu'),
-        model : shelby.models.guide,
-        playlistManagerModel : shelby.models.playlistManager
-      }));
       if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
       this._setSelected();
     },
@@ -53,9 +48,9 @@
       }
     },
 
-    _goToChannels : function(e) {
+    _goToCommunity : function(e) {
       shelby.router.navigate(
-        "channels",
+        "/channels/community",
         {trigger:true}
       );
     },
@@ -90,14 +85,6 @@
         } else {
           this.$('.js-content-selector').show();
         }
-
-        // show the channel  info header nav
-        if (model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
-          $('.channel-info-section').slideDown('fast');
-        }
-        else {
-          $('.channel-info-section').slideUp('fast');
-        }
       }
     },
 
@@ -110,7 +97,7 @@
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
         $setSelectedClassOn = this.$('.js-stream');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
-        $setSelectedClassOn = this.$('.js-channels');
+        $setSelectedClassOn = this.$('.js-community');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-me');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll &&
