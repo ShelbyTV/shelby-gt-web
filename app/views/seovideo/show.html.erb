@@ -9,12 +9,12 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <div class="shelby__wrapper clearfix">
-  <%= render :partial => '/home/landing_header', :locals => {:show_login => true} %>
+  <%= render :partial => '/home/landing_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
 
 
   <div class="seovideo__wrapper clearfix">
 
-    <%= render :partial => '/home/shelf/slogan', :locals => {:show_login => true} %>
+    <%= render :partial => '/home/shelf/slogan' %>
 
 
     <article role="main" class="seovideo<%= " seovideo--light" if @video_related_videos.empty? %>">

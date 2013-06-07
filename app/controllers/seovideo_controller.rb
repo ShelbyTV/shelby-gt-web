@@ -21,7 +21,7 @@ class SeovideoController < ApplicationController
     @video_provider_name = params.delete(:provider_name)
     @video_provider_id = params.delete(:provider_id)
     @is_mobile = is_mobile?
-
+    @user_signed_in = user_signed_in?
 
     begin
       # sets all other @video_ variables relevant to primary video
