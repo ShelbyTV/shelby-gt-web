@@ -27,31 +27,9 @@
 
     <%= render :partial => '/home/landing_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
 
-    <% if @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
-      <div class="shelf shelf--error clearfix">
-        <% if @access_error or @invite_error %>
-          <p class="js-signin-error">
-            Please Sign up or Log in
-          </p>
-        <% end %>
-
-        <% if @auth_failure %>
-          <p class="js-signin-error">
-            There was a problem logging you in<%= if @auth_strategy then " with #{@auth_strategy}" end%>.
-            <br/>Please try again.
-          </p>
-        <% end %>
-
-        <% if (flash[:error] == "401") %>
-          <p class="js-signin-error">
-            Session expired, please log in again!
-          </p>
-        <% end %>
-      </div><!-- eo shelf -->
-    <% end %>
-
     <% #------------ Shelf Content --------------- %>
 
+    <%= render :partial => '/home/shelf/errors' %>
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>

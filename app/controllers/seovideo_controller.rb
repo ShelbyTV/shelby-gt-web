@@ -16,6 +16,11 @@ class SeovideoController < ApplicationController
   # info is put into member variables that are accessed by the layout and template
   #
   def show
+    # Consider errors and render seovideo page
+    @auth_failure  = params[:auth_failure] == '1'
+    @auth_strategy = params[:auth_strategy]
+    @access_error  = params[:access] == "nos"
+    @invite_error  = params[:invite] == "invalid"
 
     # route guarantees provider_name and provider_id will exist
     @video_provider_name = params.delete(:provider_name)
