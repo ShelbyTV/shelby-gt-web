@@ -13,8 +13,9 @@
       'rollListNav' : false,
       'streamNav' : false,*/
       'onboarding' : false,
+      'welcomed' : false
       //has this user seen and dismissed the extension/bookmarket notification?
-      'extension' : false
+      //'extension' : false
     },
 
     //assuming that parameter stage is an integer
@@ -29,6 +30,10 @@
 
     hasCompletedOnboarding : function(){
       return this.get('onboarding') !== false;
+    },
+
+    hasBeenWelcomed : function(){
+      return this.get('welcomed') !== false;
     },
 
     saveMe : function(){

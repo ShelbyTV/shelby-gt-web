@@ -659,6 +659,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           new libs.shelbyGT.KeyboardControlsView();
     }
 
+    shelby.views.appWelcome = shelby.views.appWelcome ||
+      new libs.shelbyGT.appWelcome({
+        el : '.js-app-welcome'
+      });
+
     if (options.openInvite) {
       shelby.models.invite.trigger('invite:open');
     }
