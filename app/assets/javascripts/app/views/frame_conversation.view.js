@@ -1,9 +1,9 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var GuideOverlayView = libs.shelbyGT.GuideOverlayView;
-  var MessageModel = libs.shelbyGT.MessageModel;
-  var MessageView = libs.shelbyGT.MessageView;
+  var GuideOverlayView       = libs.shelbyGT.GuideOverlayView;
+  var MessageModel           = libs.shelbyGT.MessageModel;
+  var MessageView            = libs.shelbyGT.MessageView;
   var ShelbyAutocompleteView = libs.shelbyGT.ShelbyAutocompleteView;
 
   libs.shelbyGT.FrameConversationView = GuideOverlayView.extend({

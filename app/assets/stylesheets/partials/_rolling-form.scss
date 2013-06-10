@@ -1,20 +1,13 @@
 /*
 	Styles the form in step 2/2 when rolling
 */
-//---------------------------
-//  submit button subclasses share_submit
-//---------------------------
-
-.rolling-submit {
-  font-size: 16px;
-  float: right;
-}
 
 //---------------------------
 //  wrapper for all UI below the
 //  video card and rolling message
 //---------------------------
 .rolling-option {
+  font-size: 1.2em;
   padding-top: 4px;
   position: absolute;
   width: 100%;

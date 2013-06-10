@@ -13,12 +13,14 @@ libs.shelbyGT.GuideOverlayManagerView = Support.CompositeBehaviorView.extend({
 
   _onGuideOverlayChange : function(guideOverlayModel) {
     var guideOverlayView;
-    
+
     //whether we're removing overlays or opening a new one, all
     //current overlays should be hidden
     this.children.each(function(child) {
       child.hide();
     });
+
+    console.log('guideoverlaymodel',guideOverlayModel.get('activeGuideOverlayType'));
 
     switch (guideOverlayModel.get('activeGuideOverlayType')) {
       case libs.shelbyGT.GuideOverlayType.none:

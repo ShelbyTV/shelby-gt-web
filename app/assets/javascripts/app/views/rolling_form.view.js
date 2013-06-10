@@ -20,8 +20,7 @@
   libs.shelbyGT.RollingFormView = Support.CompositeView.extend({
 
     events : {
-      "click #js-roll-it"         : '_doRoll',
-      "click .js-hashtag-button"  : '_insertHashtag',
+      "click .js-roll-it"         : '_doRoll',
       "focus #new-roll-name"      : '_clearErrors',
       "focus #js-rolling-message" : '_clearErrors'
     },
