@@ -660,7 +660,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
 
     shelby.views.appWelcome = shelby.views.appWelcome ||
-      new libs.shelbyGT.appWelcome({
+      new libs.shelbyGT.welcomeMessages({
         el : '.js-app-welcome'
       });
 
