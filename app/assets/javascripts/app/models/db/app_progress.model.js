@@ -12,8 +12,11 @@
       'rollNav' : false,
       'rollListNav' : false,
       'streamNav' : false,*/
-      'onboarding' : false,
-      'welcomed' : false
+      'dashboardWelcomed' : false,
+      'channelWelcomed' : false,
+      'ownSharesWelcomed' : false,
+      'othersSharesWelcomed' : false,
+      'onboarding' : false
       //has this user seen and dismissed the extension/bookmarket notification?
       //'extension' : false
     },
@@ -32,8 +35,9 @@
       return this.get('onboarding') !== false;
     },
 
-    hasBeenWelcomed : function(){
-      return this.get('welcomed') !== false;
+    hasBeenWelcomed : function(section){
+      var _progress = section+'Welcomed';
+      return this.get(_progress) !== false;
     },
 
     saveMe : function(){
