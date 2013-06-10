@@ -38,7 +38,7 @@ class FrameController < ApplicationController
           render '/home/landing'
         end
       else
-        redirect_to "/video/#{@video["provider_name"]}/#{@video["provider_id"]}"
+        render 'home/app'
       end
     else
       render '/home/app'
