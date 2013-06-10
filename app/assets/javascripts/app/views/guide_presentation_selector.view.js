@@ -50,7 +50,7 @@
 
     _goToCommunity : function(e) {
       shelby.router.navigate(
-        "/channels/community",
+        "community",
         {trigger:true}
       );
     },

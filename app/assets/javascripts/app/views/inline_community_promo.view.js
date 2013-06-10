@@ -17,9 +17,9 @@ libs.shelbyGT.InlineCommunityPromoView = Support.CompositeView.extend({
 
   _gotoCommunity : function(){
     if (shelby.models.guide.get('displayIsolatedRoll')) {
-      window.top.location.href = shelby.config.appUrl + '/channels/community';
+      window.top.location.href = shelby.config.appUrl + '/community';
     } else {
-      shelby.router.navigate('channels/community', {trigger:true});
+      shelby.router.navigate('community', {trigger:true});
     }
     shelby.track('Click community promo');
   }
