@@ -12,6 +12,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "rollFromFrame/:frameId"                       : "displayRollFromFrame",
     "embed/:frameId"                               : "displayEmbeddedFrame",
     "user/:id/personal_roll"                       : "displayUserPersonalRoll",
+    "community"                                    : "displayCommunityChannel",
     "channels"                                     : "displayChannel",
     "channels/:channel"                            : "displayChannel",
     "channels/:channel/:entryId"                   : "displayEntryInDashboard",
@@ -223,12 +224,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this.displayChannel(randomChannelKey, params);
   },
 
+  displayCommunityChannel : function(params){
+    this.displayChannel('community', params);
+  },
+
   displayChannel : function(channel, params){
     if (channel == 'community') {
       this.displayDashboard(params, {channel: channel});
+      this.navigate('community', {trigger: false, replace: true});
     } else {
       // if the requested channel doesn't exist, just go to the first channel
-      this.navigate('channels/community', {trigger: true, replace: true});
+      this.navigate('community', {trigger: true, replace: true});
     }
 
     this._doChannelTracking(channel, params);
@@ -364,9 +370,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _fetchDashboard : function(options) {
     // default options
     var defaultOnDashboardFetch = null;
-    var displayingChannel = options && options.channel;
-    if (displayingChannel || !shelby.models.guide.get('activeFrameModel')) {
-      // if nothing is already playing, or if we're switching to a channel
+    if (!shelby.models.guide.get('activeFrameModel')) {
+      // if nothing is already playing,
       // start playing the first frame in the dashboard on load
       defaultOnDashboardFetch = this._activateFirstDashboardVideoFrame;
     }

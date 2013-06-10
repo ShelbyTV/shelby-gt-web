@@ -16,7 +16,7 @@ libs.shelbyGT.DashboardEmptyIndicatorView = Support.CompositeView.extend({
   },
 
   _goToCommunity : function() {
-    shelby.router.navigate('channels/community', {trigger:true});
+    shelby.router.navigate('community', {trigger:true});
   },
 
   _goToPreferences : function() {
