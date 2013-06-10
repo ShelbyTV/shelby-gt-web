@@ -30,7 +30,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
       this._currentlyDisplayedUser.unbind('change', this.render, this);
     }
     this._currentlyDisplayedUser = libs.shelbyGT.UserModel.findOrCreate({id: this.model.get('creator_id')});
-    if (!this._currentlyDisplayedUser.has('nickname')) {
+    if (!this._currentlyDisplayedUser.has('nickname') && this._currentlyDisplayedUser.has('id')) {
       this._currentlyDisplayedUser.bind('change', this.render, this);
       this._currentlyDisplayedUser.fetch();
     }
