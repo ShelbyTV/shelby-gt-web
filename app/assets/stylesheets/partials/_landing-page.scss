@@ -196,6 +196,60 @@
       }
     }
 
+    .shelf--team {
+      background: transparent;
+      border: none;
+
+      .shelf__lining {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      //non-normative
+      .shelf__item {
+        float: left;
+      }
+      .frame {
+        font-size: 0.75em;
+        line-height: 1.4;
+      }
+      .frame-footer {
+        min-height: 8em;
+      }
+      .frame-thumbnail {
+        height: 193px;
+      }
+      .frame-subline {
+        bottom: 0;
+        margin: 0;
+        position: absolute;
+        text-align: right;
+        width: 100%;
+      }
+      .xuser-data {
+        font-family: $font-family;
+        margin-bottom: 0.5em;
+      }
+      .xuser-data-timestamp {
+        line-height: 1.8;
+      }
+
+      a {
+
+        &,
+        &:visited {
+          text-decoration: none;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      //hack
+      .left {
+        float: left;
+      }
+    }
+
 //------------------------------------------------------------------------------
 //  Elements
 //------------------------------------------------------------------------------
