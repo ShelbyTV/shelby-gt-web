@@ -9,7 +9,7 @@ libs.shelbyGT.appWelcome = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    if (!shelby.models.user.get('app_progress').hasBeenWelcomed()){
+    if (false && !shelby.models.user.get('app_progress').hasBeenWelcomed()){
       shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
       shelby.userInactivity.disableUserActivityDetection();
       this.render();
