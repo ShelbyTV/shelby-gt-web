@@ -21,6 +21,7 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
   render : function(currentDisplayState){
     this._appProgressKey = currentDisplayState || shelby.models.guide.get('displayState');
 
+    this._prepareForModal();
     this.$el.html(this.template({
       currentDisplayState: this._appProgressKey
     }));
@@ -29,27 +30,29 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
   },
 
   _changeDisplay : function() {
-    // show welcome to stream message
-    this._prepareVideoPlayerForModal();
-    if ((shelby.models.guide.get('displayState') == "dashboard") && !shelby.models.user.get('app_progress').hasBeenWelcomed('dashbaord')){
-      this.render('dashboard');
-    }
-    else if ((shelby.models.guide.get('displayState') == "channel") && !shelby.models.user.get('app_progress').hasBeenWelcomed('channel')){
-      this.render('channel');
-    }
-    else if ((shelby.models.guide.get('displayState') == "standardRoll")){
-      if ((shelby.models.guide.get('currentRollModel').get('creator_id') == shelby.models.user.id) && !shelby.models.user.get('app_progress').hasBeenWelcomed('ownShares')) {
-        this.render('ownShares');
-      }
-      else if (!shelby.models.user.get('app_progress').hasBeenWelcomed('othersShares')) {
-        this.render('othersShares');
-      }
-      else{
+    // show welcome to stream, community, shares message
+    switch  (shelby.models.guide.get('displayState')) {
+      case "dashboard":
+        if (!shelby.models.user.get('app_progress').hasBeenWelcomed('dashboard')){
+          this.render('dashboard');
+        }
+        break;
+      case "channel":
+        if (!shelby.models.user.get('app_progress').hasBeenWelcomed('channel')){
+          this.render('channel');
+        }
+        break;
+      case "standardRoll":
+        if (shelby.models.guide.get('currentRollModel').get('creator_id') == shelby.models.user.id && !shelby.models.user.get('app_progress').hasBeenWelcomed('ownShares')) {
+          this.render('ownShares');
+        }
+        else if (!shelby.models.user.get('app_progress').hasBeenWelcomed('othersShares') && !shelby.models.user.isAnonymous()){
+          this.render('othersShares');
+        }
+        else { this._resetVideoPlayerOperation(); }
+        break;
+      default:
         this._resetVideoPlayerOperation();
-      }
-    }
-    else {
-      this._resetVideoPlayerOperation();
     }
   },
 
@@ -66,7 +69,7 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
     shelby.models.user.get('app_progress').saveMe();
   },
 
-  _prepareVideoPlayerForModal : function(){
+  _prepareForModal : function(){
       shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.paused);
       shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
       shelby.userInactivity.disableUserActivityDetection();
