@@ -370,9 +370,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _fetchDashboard : function(options) {
     // default options
     var defaultOnDashboardFetch = null;
-    var displayingChannel = options && options.channel;
-    if (displayingChannel || !shelby.models.guide.get('activeFrameModel')) {
-      // if nothing is already playing, or if we're switching to a channel
+    if (!shelby.models.guide.get('activeFrameModel')) {
+      // if nothing is already playing,
       // start playing the first frame in the dashboard on load
       defaultOnDashboardFetch = this._activateFirstDashboardVideoFrame;
     }
