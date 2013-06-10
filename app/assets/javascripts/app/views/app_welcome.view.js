@@ -9,7 +9,7 @@ libs.shelbyGT.appWelcome = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    if (!shelby.models.user.get('app_progress').hasBeenWelcomed()){
+    if (false && !shelby.models.user.get('app_progress').hasBeenWelcomed()){
       shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
       shelby.userInactivity.disableUserActivityDetection();
       this.render();
@@ -28,7 +28,7 @@ libs.shelbyGT.appWelcome = Support.CompositeView.extend({
       shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
       shelby.userInactivity.enableUserActivityDetection();
       $('#js-welcome, .js-app-welcome').addClass('hidden');
-      //shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
+      shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
   }
 
 });
