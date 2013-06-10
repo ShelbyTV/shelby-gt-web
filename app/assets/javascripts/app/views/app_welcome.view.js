@@ -16,11 +16,9 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
     shelby.models.guide.unbind('change:displayState', this._changeDisplay, this);
   },
 
-  render : function(){
+  render : function(currentDisplayState){
     this.$el.html(this.template({
-      header: "Welcome to Shelby.tv",
-      message: "This stream of video was made just for you. The more you watch, like and share the better it will get!",
-      button: "Play Your Stream"
+      currentDisplayState: currentDisplayState || shelby.models.guide.get('displayState')
     }));
 
     $('#js-welcome, .js-app-welcome').removeClass('hidden');
@@ -28,11 +26,23 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
 
   _changeDisplay : function() {
     // show welcome to stream message
-    if ((shelby.models.guide.get('displayState') == "dashboard") && !shelby.models.user.get('app_progress').hasBeenWelcomed()){
-      shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.paused);
-      shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
-      shelby.userInactivity.disableUserActivityDetection();
+    if ((shelby.models.guide.get('displayState') == "dashboard") && !shelby.models.user.get('app_progress').hasBeenWelcomed('stream')){
+      this._prepareVideoPlayerForModal();
       this.render();
+    }
+    else if ((shelby.models.guide.get('displayState') == "channel") && !shelby.models.user.get('app_progress').hasBeenWelcomed('community')){
+      this._prepareVideoPlayerForModal();
+      this.render();
+    }
+    else if ((shelby.models.guide.get('displayState') == "standardRoll")){
+      if ((shelby.models.guide.get('currentRollModel').get('creator_id') == shelby.models.user.id) && !shelby.models.user.get('app_progress').hasBeenWelcomed('ownShares')) {
+        this._prepareVideoPlayerForModal();
+        this.render('ownShares');
+      }
+      else if (!shelby.models.user.get('app_progress').hasBeenWelcomed('othersShares')) {
+        this._prepareVideoPlayerForModal();
+        this.render('othersShares');
+      }
     }
     // in the future show welome to community channel or me
     else {
@@ -45,11 +55,17 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
       $('#js-welcome, .js-app-welcome').addClass('hidden');
   },
 
+  _prepareVideoPlayerForModal : function(){
+      shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.paused);
+      shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
+      shelby.userInactivity.disableUserActivityDetection();
+  },
+
   _resetVideoPlayerOperation : function(){
       $('#js-welcome, .js-app-welcome').addClass('hidden');
       shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
       shelby.userInactivity.enableUserActivityDetection();
-      //shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
+      shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
   }
 
 });
