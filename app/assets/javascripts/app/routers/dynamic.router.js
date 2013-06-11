@@ -27,6 +27,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "stream"                                       : "displayDashboard",
     ""                                             : "displayDashboard",
     ":userName"                                    : "displayUserProfile",
+    ":userName/shares"                             : "displayUserProfile",
+    ":userName/shares/:frameId"                    : "displayFrameInUserProfile",
     "*url"                                         : "doNothing"
   },
 
@@ -90,21 +92,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayRoll : function(roll, title, params, options, topLevelViewsOptions){
-    var rollId;
-    if (typeof(roll) === 'string') {
-      rollId = roll;
-    } else {
-      // if roll is a Model, get its id
-      rollId = roll.id;
-    }
-    if (rollId == shelby.models.user.get('personal_roll_id')) {
-      // we've got a special route to display if this roll is the personal roll
-      // of the currently logged in user
-      this.navigate(shelby.models.user.get('nickname'), {trigger: false, replace: true});
-    }
-
-    this._fetchViewedVideos();
-    this._fetchQueuedVideos();
     // default options
     var defaultOnRollFetch = null;
     if (!shelby.models.guide.get('activeFrameModel')) {
@@ -119,6 +106,22 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       onRollFetch: defaultOnRollFetch,
       data: {include_children:true}
     }).value();
+
+    var rollId;
+    if (typeof(roll) === 'string') {
+      rollId = roll;
+    } else {
+      // if roll is a Model, get its id
+      rollId = roll.id;
+    }
+    if (options.updateRollTitle && rollId == shelby.models.user.get('personal_roll_id')) {
+      // we've got a special route to display if this roll is the personal roll
+      // of the currently logged in user
+      this.navigate(shelby.models.user.get('nickname'), {trigger: false, replace: true});
+    }
+
+    this._fetchViewedVideos();
+    this._fetchQueuedVideos();
 
     this._setupRollView(roll, title, {
       updateRollTitle: options.updateRollTitle,
@@ -340,6 +343,18 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     });
   },
 
+  displayFrameInUserPersonalRoll : function(userId, frameId, params){
+    var self = this;
+    var roll = new libs.shelbyGT.UserPersonalRollModel({creator_id:userId});
+    //we don't have enough information about the roll to proceed, so we have to do a preliminary fetch of
+    //the roll info before we can continue
+    roll.fetchWithoutFrames({
+      success : function() {
+        self.displayFrameInRoll(roll.id, frameId, params);
+      }
+    });
+  },
+
   displayDashboard : function(params, options){
     this._setupTopLevelViews(options);
     this._fetchViewedVideos();
@@ -505,6 +520,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     } else {
       this.displayUserPersonalRoll(userName, params);
     }
+  },
+
+  displayFrameInUserProfile : function(userName, frameId, params) {
+    this.displayFrameInUserPersonalRoll(userName, frameId, params);
   },
 
   doNothing : function(url){
