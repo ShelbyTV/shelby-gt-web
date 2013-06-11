@@ -34,32 +34,14 @@
   }
 }
 
-// ----- Non-normative Overrides --------------------------------------------------------
-.login-section,
-.signup-section {
-  right: 1.3em;
-  top: 2em;
-  padding-top: 1em;
-}
+// ----- Non-normative Overrides -----------------------------------------------
+.login-section {
+  margin-top: 1em;
 
-.login-section-lining,
-.signup-section-lining {
-  background: $nav-dropdown-bg;
-  box-shadow: 0 0 20px 0 black;
-  text-align: left;
-  width: 300px;
-}
-
-.login-header,
-.signup-header {
-  margin: 10px 10px 0;
-}
-
-.login-section hr,
-.signup-section hr {
-  border-bottom: 1px solid $inset;
-  margin-bottom: 0;
-  margin-top: .5em;
+  .fin:before {
+    border-top: 1px solid $inset;
+    border-left: 1px solid $inset;
+  }
 }
 
 //------------------------------------------------------------------------------

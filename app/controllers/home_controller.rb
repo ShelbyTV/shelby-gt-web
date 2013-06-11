@@ -117,6 +117,15 @@ class HomeController < ApplicationController
 
 
   ##
+  # Handles community view when visited directly (allowing logged-out users to see it)
+  #
+  # GET /community
+  #
+  def community
+    render '/home/app'
+  end
+
+  ##
   # Handles channels view when visited directly (allowing logged-out users to see it)
   #
   # GET /channels
