@@ -30,8 +30,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .js-toggle-comment"                                                    : "_toggleComment",
     "click .js-share-menu"                                                        : "_toggleShareMenu",
     "click .js-hide-share-menu"                                                   : "_toggleShareMenu",
-    "click .js-input-select-on-focus"                                             : "_selectInputText",
-    "click .js-hashtag-link"                                                      : "_followHashtagLink"
+    "click .js-input-select-on-focus"                                             : "_selectInputText"
   },
 
   initialize: function(){
@@ -354,18 +353,6 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _selectInputText : function(e){
     e.currentTarget.select();
-  },
-
-  _followHashtagLink : function(e){
-    if (this.options.guide.get('displayState') == libs.shelbyGT.DisplayState.dotTv) {
-      // from a dot tv, pause the player and allow the link to handle itself using the browser's default handling
-      // based on its properly filled in href and target attributes
-      shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
-    } else {
-      // anywhere else we're in the app proper, so handle the link using javascript/Backbone routing
-      e.preventDefault();
-      shelby.router.navigate('channels/' + $(e.currentTarget).data("channel_key"), {trigger : true});
-    }
   },
 
   _gotoOriginator : function(e) {

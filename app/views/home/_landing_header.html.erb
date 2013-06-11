@@ -2,31 +2,88 @@
   <span class="shelby-title-staging"><%= Settings::Branch.branch %></span>
 <% end %>
 
-<header class="shelby__head clearfix" role="banner">
-  <a href="/" class="button_primer shelby-logo">
-    <h1 class="shelby-logo">
-      <span class="shelby_logo">
-        <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
-      </span>
-    </h1>
-  </a>
+<header class="shelf shelf--header shelby__head clearfix js-header" role="banner">
+  <div class="shelf__lining">
+    <a href="/" class="button_primer shelby-logo">
+      <h1 class="shelby-logo">
+        <span class="shelby_logo shelby_logo--inverted">
+          <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+        </span>
+      </h1>
+    </a>
 
-  <nav>
-    <ul class="list list--inline app_nav clearfix">
-      <% if show_login %>
-        <li class="dropdown_module list__item">
-          <button class="dropdown_button button_primer button_command button_command--flexible button_command--text app_nav__button">
-            Log In
-            <span class="icon-carrot"></span>
-          </button>
+    <nav role="navigation">
+      <ul class="list list--inline app_nav clearfix">
+        <% if show_login  %>
+          <% if !user_signed_in %>
+            <li class="list__item">
+              <a
+                href="/invite"
+                class="animate_module button_primer button_command button_command--flexible button_green button_transparent js-cta-header js-track-event"
+                data-ga_action="Click Sign Up"
+                data-ga_label="Header"
+                >
+                Sign Up
+              </a>
+            </li>
 
-          <section class="dropdown_section login-section">
-            <div class="dropdown_lining fin fin--top_right clearfix">
-              <%= render :partial => '/objects/login_form' %>
-            </div>
-          </section>
-        </li><!-- eo login button/dropdown -->
-      <% end %>
-    </ul>
-  </nav>
-</header>
+            <li class="dropdown_module list__item">
+              <button class="dropdown_button button_primer button_command button_command--flexible button_command--text app_nav__button app_nav__button--inverted">
+                Log In
+                <i class="icon-carrot"></i>
+              </button>
+
+              <section class="dropdown_section login-section">
+                <div class="dropdown_lining login-section-lining clearfix">
+
+                  <form accept-charset="UTF-8" action="<%= Settings::ShelbyAPI.login_form_url %>" method="post" class="form_module form_module--login-form js-track-submit" data-ga_action="Email login">
+                    <fieldset class="form_fieldset">
+                      <label for="username" class="form_label">Username</label>
+                      <input id="username" name="username" placeholder="Username or Email address" class="form_input" />
+                    </fieldset>
+
+                    <fieldset class="form_fieldset">
+                      <label for="password" class="form_label">Password</label>
+                      <input id="password" name="password" type="password" placeholder="•••••••••" class="form_input" />
+                    </fieldset>
+
+                    <fieldset class="form_fieldset">
+                      <input name="commit" type="submit" value="Login" class="button_primer button_command button_command--flexible button_gray" />
+                      <a href="<%= "#{Settings::ShelbyAPI.url}/user/password/new" %>" class="login-forgot-password">Forgot your password?</a>
+                    </fieldset>
+                  </form>
+
+                  <hr class="hr--double" />
+
+                  <div class="form_fieldset form_fieldset--login-social clearfix">
+                    <h4 class="form_legend">
+                      Log in with
+                    </h4>
+
+                    <a href="<%= "#{Settings::ShelbyAPI.url}/auth/twitter" %>"
+                       class="button_primer button_twitter-blue button_command button_primer--twitter js-track-event js-authorize"
+                       data-ga_action="Login with Twitter"
+                       data-popup_height="700"
+                       data-popup_width="600">
+                      <i class="icon-twitter"></i>
+                      Twitter
+                    </a>
+
+                    <a href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>"
+                       class="button_primer button_facebook-blue button_command button_primer--facebook js-track-event js-authorize"
+                       data-ga_action="Login with Facebook"
+                       data-popup_height="650"
+                       data-popup_width="1000">
+                      <i class="icon-facebook"></i>
+                      Facebook
+                    </a>
+                  </div>
+                </div>
+              </section>
+            </li><!-- eo login button/dropdown -->
+          <% end %>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header><!-- eo shelf -->

@@ -24,7 +24,6 @@
     _dashboardMasterCollection : null,
 
     _currentChannelMasterCollection : null,
-    _currentChannelView : null,
 
     _currentRollMasterCollection : null,
 

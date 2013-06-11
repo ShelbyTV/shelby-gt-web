@@ -1,12 +1,4 @@
 //------------------------------------------------------------------------------
-//  local vars
-//------------------------------------------------------------------------------
-$landing-page-shelf-background: #f8f8f8;
-$landing-page-width: 1080px;
-$landing-page-footer-background: #161818;
-$landing-page-footer-font-color: #EFEFEF;
-
-//------------------------------------------------------------------------------
 //  OVERRIDES
 //------------------------------------------------------------------------------
 //----- Override App Base Styles -----------------------------------------
@@ -14,19 +6,19 @@ $landing-page-footer-font-color: #EFEFEF;
 .shelby--landing {
   h1,h2,h3,h4,h5,h6 {
     font-family: $font-family-display;
+    font-weight: 500;
   }
 
-  background-color: $landing-page-footer-background;
+  background-color: $ui-off-white;
   height: auto;
   overflow: visible;
   position: relative;
 
   //TODO: determine why this override is necessary.
   .shelby__wrapper {
-    position: relative;
-    // max-width: 1500px;
-    margin: 0 auto;
+    padding-top: 70px;
   }
+
   .shelby__head {
   }
 
@@ -42,41 +34,34 @@ $landing-page-footer-font-color: #EFEFEF;
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//  DISCLAIMER (N.B.):
-
-/*  There's a difference between .shelby--mobile and the media-queries at the
-    bottom of this partial.
-
-    Please use discretion when adding/removing styles from either.
-*/
-///////////////////////////////////////////////////////////////////////////////
-.shelby--mobile {
-  font-size: 50%;
-
-  .shelf--community {
-    .icon-play {
-      &:before {
-        font-size: 3.2em;
-      }
-    }
-  }
-
-  .shelf--start-watching,
-  .shelf--signup,
-  .shelf--search,
-  .shelf--stats-banner {
-    .shelf__form {
-      font-size: inherit;
-    }
-  }
-
-  .shelf--community {
-    .shelf__list {
-      margin: 0 0 1em;
-    }
-  }
+// ----- Non-normative Overrides --------------------------------------------------------
+.login-section,
+.signup-section {
+  right: 1.3em;
+  top: 2em;
+  padding-top: 1em;
 }
+
+.login-section-lining,
+.signup-section-lining {
+  background: $nav-dropdown-bg;
+  box-shadow: 0 0 20px 0 black;
+  text-align: left;
+  width: 300px;
+}
+
+.login-header,
+.signup-header {
+  margin: 10px 10px 0;
+}
+
+.login-section hr,
+.signup-section hr {
+  border-bottom: 1px solid $inset;
+  margin-bottom: 0;
+  margin-top: .5em;
+}
+
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -86,869 +71,241 @@ $landing-page-footer-font-color: #EFEFEF;
 //------------------------------------------------------------------------------
 
 .shelf {
-  background-color: $landing-page-shelf-background;
-
-
-  //non-normative overrides
-  .frame-likes {
-    height: 2.4em;
-  }
+  background-color: $ui-white;
+  border: 1px solid $inset;
+  font-size: 1.5em;
+  margin: 1em auto;
+  width: 944px;
 }
+    .shelf--error {
+      border: 1px solid $ui-red;
+      color: $ui-red;
+      font-weight: bold;
+      text-align: center;
+    }
 
-.shelf__lining {
-  margin: 0 auto;
-  max-width: $landing-page-width;
-}
+    .shelf--header {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      left: 0;
+      max-width: none;
+      margin: 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+
+      .shelf__lining {
+        padding: 0.25em 1em;
+      }
+
+      //non-normative overrides
+      .app_nav__button {
+        font-size: inherit;
+        margin-top: 0.5em;
+      }
+    }
+
+    .shelf--cta {
+      text-align: center;
+
+      .shelf__lining {
+        padding-top: 4em;
+        font-size: 1.1em;
+      }
+
+      .shelf__button {
+        margin: 2em auto;
+      }
+
+      .shelf__img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+    }
+
+    .shelf--stream {
+      .shelf__h1 {
+        margin-top: 6.5em;
+      }
+
+      .shelf__img--stream {
+        max-width: 100%;
+        margin: 0 2em;
+      }
+      .shelf__img--sources {
+        margin: 2em 0;
+        max-width: 100%;
+      }
+    }
+
+    .shelf--social {
+      .shelf__h1 {
+        margin-top: 1.8em;
+      }
+
+      .shelf__img {
+        margin: 4em 3em;
+      }
+    }
+
+    .shelf--press {
+      text-align: center;
+
+      .shelf__img {
+        height: 40px;
+        display: block;
+        -webkit-background-size: auto;
+        background-size: auto;
+      }
+      .shelf__img--mashable {
+        background-image: url('/images/landing/mashable.png');
+      }
+      .shelf__img--tnw {
+        background-image: url('/images/landing/tnw.png');
+      }
+      .shelf__img--tc {
+        background-image: url('/images/landing/tc.png');
+      }
+    }
+
+    .shelf--secondary-cta {
+      text-align: center;
+
+      .shelf__h2 {
+        margin-top: 1em;
+      }
+    }
+
+    .shelf--slogan {
+      text-align: center;
+
+      .shelf__h2 {
+        margin-top: 1em;
+      }
+    }
+
+    .shelf--team {
+      background: transparent;
+      border: none;
+
+      .shelf__lining {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      //non-normative
+      .shelf__item {
+        float: left;
+
+        &:nth-child(3n+1){
+          .frame {
+            padding-left: 0;
+          }
+        }
+
+        &:nth-child(3n+2) {
+          .frame {
+            padding-left: 0;
+            padding-right: 0;
+          }
+        }
+
+        &:nth-child(3n+3){
+          .frame {
+            padding-right: 0;
+          }
+        }
+      }
+      .frame {
+        font-size: 0.75em;
+        line-height: 1.4;
+      }
+      .frame-footer {
+        min-height: 8em;
+      }
+      .frame-thumbnail {
+        height: 193px;
+      }
+      .frame-subline {
+        bottom: 0;
+        margin: 0;
+        position: absolute;
+        text-align: right;
+        width: 100%;
+      }
+      .xuser-data {
+        font-family: $font-family;
+        margin-bottom: 0.5em;
+      }
+      .xuser-data-timestamp {
+        line-height: 1.8;
+      }
+
+      a {
+
+        &,
+        &:visited {
+          text-decoration: none;
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      //hack
+      .left {
+        float: left;
+      }
+    }
 
 //------------------------------------------------------------------------------
 //  Elements
 //------------------------------------------------------------------------------
-.shelf__button {}
-      .shelf__button--cta {
-        font-size: 2em;
-        margin: 0 auto;
-      }
-
-.shelf__hr {
-  margin: 0 0 2em 0;
-  max-width: $landing-page-width;
-  padding: 0;
-  width: 100%;
+.shelf__lining {
+  padding: 2em 3em;
 }
 
 .shelf__h1 {
-  font-size: 4em;
-  font-weight: 100;
+  font-size: 1.8em;
+  margin-bottom: 1em;
 }
 
 .shelf__h2 {
-  color: #666;
-  font-size: 2.4em;
-  font-weight: normal;
-  padding: 1.2em 0 0.7em;
-  margin: 0;
-  text-align: center;
-}
-
-.shelf__h3 {
-  color: darken($inset,50%);
-  font-family: $font-family;
-  font-size: 2.3em;
-  font-weight: bold;
-  margin: 0.5em 0.5em 0.3em 0em;
-  text-align: left;
-}
-
-.shelf__h4 {
-  font-weight: 400;
+  margin-bottom: 1em;
 }
 
 .shelf__block {
-  color: $button-color;
-  font-size: 1.5em;
-  font-family: $font-family;
-  font-weight: 400;
   line-height: 1.5;
-  margin: 1.5em 0 2em;
-}
-
-.shelf__list--inline,
-.shelf__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.shelf__list--inline {
-  & > li {
-    display: inline-block;
-  }
-}
-
-.shelf__link,
-.shelf__link-light {
-  &,
-  &:active,
-  &:visited {
-    text-decoration: none;
-  }
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.shelf__link-light {
-  &, &:hover, &:visited {
-    color: white;
-  }
 }
 
 
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//  Modifiers
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-
-//------------------------------------------------------------------------------
-//  Invite
-//------------------------------------------------------------------------------
-.shelf--error {
-  color: $shelby-red;
-  font-size: 1.3em;
-  font-weight: bold;
-  text-align: center;
-
-  //----- Block -----------------------------------------
-  .shelf__lining {
-  }
-
-  //----- Elements --------------------------------------
-  .shelf__block {
-    color: inherit;
-    margin: 1em;
-  }
-
-  //----- Modifiers --------------------------------------
-  .shelf__block--error {}
-
-  .shelf__block--noaccess {}
-
-  .shelf__block--invalid-invite {}
-}
-
-//------------------------------------------------------------------------------
-//  Invite
-//------------------------------------------------------------------------------
-.shelf--invite {
-  background-color: #444;
-  background-image: url('/images/landing/invite_landing.jpg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  background-size: cover;
-  color: $button-color;
+////////////////////////////////////////
+//the footer isn't actually a shelf
+.shelby__foot {
+  background-color: $ui-black;
   font-size: 1.5em;
+  line-height: 1.5;
+  text-align: center;
 
-  //----- Block -----------------------------------------
-  .shelf__lining {}
-
-  .shelf__head,
-  .shelf__body {
-    float: right;
-    width: 50%;
-  }
-
-  .shelf__head {
-    font-size: 4em;
-    padding-top: 2em;
-    text-align: center;
-  }
-
-  .shelf__body {
-    padding: 3em;
-  }
-
-  //----- Elements -----------------------------------------
-  .shelf__h2--invite {
-    color: $button-color;
-    font-weight: 700;
-    font-size: 1.5em;
-  }
-
-  .shelf__h3 {
-    font-size: 0.7em;
-  }
-
-  .shelf__lining {}
-
-  .shelf__button {
-    @include button-sizing;
-
-    .icon_primer {
-      &:before {
-        // vertical-align: -0.1em;
-      }
-    }
-  }
-
-  //----- Non-normative -----------------------------------------
-  .form_label {
-  }
-
-  .form_input {
-    background-color: rgba(239,239,239,0.7);
-
-    &:focus {
-      background-color: rgba(239,239,239,1);
-    }
-  }
-
-  .form_submit {
-    @include button-sizing;
-
-    margin-top: 1em;
-    width: 100%;
-  }
-}
-
-//------------------------------------------------------------------------------
-//  Search + Signup
-//------------------------------------------------------------------------------
-.shelf--start-watching,
-.shelf--learn-more-banner,
-.shelf--signup,
-.shelf--search,
-.shelf--stats-banner {
-  background-color: #444;
-  background-image: url('/images/landing/invite_landing.jpg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  background-size: cover;
-
-  //----- Block -----------------------------------------
-  .shelf__lining {
-    color: $button-color;
-    padding: 5em 0  6em;
-    text-align: center;
-  }
-
-  //----- Elements -----------------------------------------
-  .shelf__h1 {
-  }
-
-  .shelf__block {
-  }
-
-  .shelf__form {
-    font-size: 1.6em;
-    margin: 0 auto;
-    max-width: 600px;
-  }
-
-  //----- Non-normative Elements -----------------------------------------
-  .search_module {
-    font-size: 1.1em;
-  }
-
-  .button_primer {
-//     padding: 0 2em;
-  }
-}
-
-
-//------------------------------------------------------------------------------
-//  Signup, extended by .shelf--search above
-//------------------------------------------------------------------------------
-.shelf--start-watching,
-.shelf--learn-more-banner,
-.shelf--signup, {
-  background-image: url('/images/landing/header.jpg');
-}
-
-.shelf--start-watching,
-.shelf--learn-more-banner,
-.shelf--signup,
-.shelf--stats-banner {
-
-  //----- Block -----------------------------------------
-  .shelf__lining {
-    text-shadow: $shadow-text;
-  }
-
-  //----- Elements -----------------------------------------
-  .shelf__h1 {
-
-  }
-
-  .shelf__h2 {
-    color: #efefef;
-    font-size: 1.4em;
-    padding: 1em 1em 0.3em;
-    width: 100%;
-  }
-
-  .shelf__block {
-    font-family: $font-family;
-    font-weight: 400;
-  }
-
-  .shelf__form {
-    height: 5em;
-    position: relative;
-
-    .shelf__block {
-      font-size: inherit;
-      margin: 0;
-    }
-
-    &.shelf__form-tall {
-      height: 8em;
-    }
-  }
-
-  //----- Non-normativeElements -----------------------------------------
-}
-
-
-//------------------------------------------------------------------------------
-//  Community
-//------------------------------------------------------------------------------
-.shelf--community {
-  //----- Block -----------------------------------------
-  .shelf__lining {
-  }
-
-  //----- Elements -----------------------------------------
-  .shelf__h2 {
-  }
-
-  .shelf__block {
-    color: darken($inset,25%);
-    margin-top: 0;
-    text-align: center;
-  }
-
-  .shelf__list {
-    margin: 0 0 5em;
-  }
-
-  .shelf__item {
-    float: left;
-    width: 33.333333%;
-  }
-
-  // NON-NORMATIVE
-  .icon-play {
-    &:before {
-      border-radius: 92px;
-      background-color: black;
-      color: white;
-      font-size: 2.6em;
-      height: 71px;
-      line-height: 2.5;
-      left: 50%;
-      margin-left: -36px;
-      opacity: 0.5;
-      padding-left: 5px;
-      position: absolute;
-      text-align: center;
-      top: 14%;
-      width: 71px;
-    }
-
-    &:hover:before {
-      opacity: 0.8;
-    }
-
-    &:active:before {
-      opacity: 1;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------
-//  Team
-//------------------------------------------------------------------------------
-.shelf--team {
-  //----- Block -----------------------------------------
-  .shelf__lining {
-    margin-bottom: 1em;
-  }
-    .shelf__lining--banner {
-      background-image: url('/images/team/MAIN.jpg');
-      background-repeat: no-repeat;
-      -webkit-background-size: cover;
-      background-size: cover;
-      background-position: center center;
-      height: 360px;
-    }
-
-  //----- Elements -----------------------------------------
-
-  .shelf__h2 {
-  }
-
-  .shelf__list {
-  }
-
-  .shelf__item {
-    float: left;
-  }
-
-  .frame--shelf {
-    .xuser-data {
-      font-weight: bold;
-      font-family: $font-family;
-      margin-bottom: 0.6em;
-    }
-
-    .xuser-data-timestamp {
-      padding-right: 2px;
-    }
-
-    .xuser-message {
-      font-size: 1.1em;
-      line-height: 1.4;
-      min-height: 4em;
-    }
-
-    .frame-thumbnail {
-      height: 230px;
-    }
-
-    .frame-subline {
-      margin-bottom: 0;
-    }
-
-    a {
-      &,
-      &:visited {
-        text-decoration: none;
-      }
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    .left {
-      float: left;
-    }
-  }
-
-  .icon-email,
-  .icon-twitter {
+  .shelby__lining {
     display: inline-block;
-    width: 1.5em;
+    text-align: left;
+    vertical-align: top;
+    padding: 3em 0;
   }
-}
 
-//------------------------------------------------------------------------------
-//  Network
-//------------------------------------------------------------------------------
-.shelf--network {
-  //----- Block -----------------------------------------
-  .shelf__lining {
+  .shelby__h4 {
+    color: $ui-soft-black;
     margin-bottom: 1em;
-    text-align: center;
   }
 
-  //----- Elements -----------------------------------------
-  .shelf__h2 {
-  }
-
-  .shelf__list {
-  }
-
-  //list of sources
-  .shelf__list--sources {
-    background-image: url('/images/landing/device.png');
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: 23em;
-    margin-bottom: 5em;
-
-    .shelf__item {
-      float: left;
-      width: 14.2857%;
-    }
-  }
-
-  .shelf__image {
-  }
-
-  .shelf__button--cta {
-    margin-bottom: 2em;
-  }
-}
-
-//------------------------------------------------------------------------------
-//  About
-//------------------------------------------------------------------------------
-.shelf--about {
-  background-color: #444;
-  background-image: url('/images/landing/team.jpg');
-  background-position: top center;
-  background-repeat: repeat-x;
-  background-size: cover;
-  position: relative;
-  text-align: center;
-  z-index: 1;
-
-  //----- Block -----------------------------------------
-  .shelf__lining {
-  }
-
-  //----- Elements -----------------------------------------
-  .shelf__h2 {
-  }
-
-  .shelf__block {
-    margin: 1.5em auto;
-    max-width: 630px;
-  }
-
-  .shelf__list {
-  }
-
-  .shelf__link {
-    color: $button-color;
-  }
-
-  .shelf__item {
-    float: left;
-    width: 14.2857%;
-  }
-
-  //  NON-NORMATIVE
-
-  .icon-mark {
-    &:before {
-      font-family: $font-family-icon;
-      color: #6cbc45;
-      display: block;
-      font-size: 3em;
-      left: 0;
-      margin: 0.35em 0.5em;
-      position: absolute;
-      top: 0;
-    }
-  }
-}
-
-//------------------------------------------------------------------------------
-//  Learn More Shelf CTA
-//------------------------------------------------------------------------------
-.shelf--learn-more-teaser {
-  text-align: center;
-
-  .shelf__lining {
-    padding-bottom: 5.5em;
-  }
-
-  a {
-    font-size: 3em;
-    margin-top: 1em;
-    padding: 0.5em 1.5em;
-  }
-}
-
-//------------------------------------------------------------------------------
-//  Learn More Page
-//------------------------------------------------------------------------------
-
-.shelf--learn-more-banner {
-  a {
-    color: inherit;
-    text-decoration: underline;
-  }
-
-  .shelf__lining {
-    padding: 4em 0 3em;
-  }
-}
-
-.shelf--learn-more {
-  a {
-    color: inherit;
-    text-decoration: underline;
-  }
-
-  .shelf__lining {
-    &:first-child {
-      padding-top: 5em;
-    }
-  }
-
-  .shelf__h2 {
-    padding: 0 1em .5em;
-
-    .icon-like {
-      line-height: 1;
-      vertical-align: -4px;
-    }
-  }
-
-  .shelf__list {
-  }
-}
-
-.shelf__list--learn-more {
-  margin: 0 auto 5em;
-  max-width: 56em;
-  padding: 1em 2em;
-
-  .shelf__list--learn-more-entry {
-    margin-bottom: 4em;
-
-    .shelf__list--learn-more-definition {
-      font-size: 1.4em;
-      line-height: 1.5;
-      margin: 0 0 0.5em 0em;
-    }
-  }
-}
-
-.shelf__list--reserve-username {
-
-  .shelf__list--learn-more-entry {
-    margin-bottom: 0;
-  }
-
-  .shelf__form--learn-more {
-    font-size: 1.5em;
-    margin: 0.8em 0 1.5em;
-
-    .button_primer {
-      margin: 0 0 0 1em;
-//       padding: 0 2em;
-    }
-  }
-}
-//------------------------------------------------------------------------------
-//  Start watching CTA
-//------------------------------------------------------------------------------
-.shelf--start-watching {
-}
-
-//------------------------------------------------------------------------------
-//  Footer
-//------------------------------------------------------------------------------
-.shelf--footer {
-  background-color: #ededed;
-  border: 1px solid #ddd;
-
-  //----- Block -----------------------------------------
-  .shelf__lining {
-    font-size: 1.3em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    max-width: none;
-    padding: 0 1em;
-    text-align: center;
-  }
-
-  //----- Elements -----------------------------------------
-  .shelf__h2 {
-  }
-
-  .shelf__list--inline {
-    & > li {
-      margin: 0;
-      vertical-align: middle;
-    }
-  }
-
-  .shelf__list--footer {
-    float: left;
-  }
-
-  .shelf__list--social {
-    float: right;
-    padding-top: 0.5em;
-  }
-
-  .shelf__list--disclaimer {
-    float: right;
-    display: none;
-  }
-
-  .shelf__item {
-  }
-
-  .shelf__link {
-    font-weight: bold;
-    display: block;
-    padding: 1em;
-  }
-
-  .shelf__disclaimer-text {
-    font-size: .5em;
-    display: block;
-    padding: 1.85em 1em;
-  }
-
-  // NON-NORMATIVE
-  .fb_edge_widget_with_comment {
-    margin-right: 1em;
-  }
-}
-//------------------------------------------------------------------------------
-//  MediaQueries
-//------------------------------------------------------------------------------
-
-//  - BREAKPOINTS ARE NOT MANDATORY
-//  - BREAKPOINTS ARE BASED ON NEEDS OF THE CONTENT
-//  - BREAKPOINTS SHOULD NEVER ACCOMODATE SPECIFIC DEVICES
-@media screen and (max-width: 1050px) { //Based on shelf--footer content
-  //----- Modifiers ----------------------------------------------------------
-  .shelf--footer {
-    .shelf__list--inline {
-      display: block;
-      float: none;
-    }
-  }
-
-  .shelf--network {
-    .shelf__list--sources {
-      -webkit-background-size: contain;
-      background-size: contain;
-      height: 0;
-      padding: 15% 0 0;
-    }
-  }
-}
-
-@media screen and (max-width: 850px) { //Based on shelf--community content
-  //----- Block ----------------------------------------------------------
-
-  //.blocks
-
-  //----- Elements ----------------------------------------------------------
-
-  .shelf__item {
-    float: none;
-  }
-
-  //----- Modifiers ----------------------------------------------------------
-
-  .shelf--community {
-    .shelf__item {
-      width: 50%;
-    }
-  }
-
-  .shelf--network {
-    .shelf__list--sources {
-      padding: 25% 0 0;
-    }
-  }
-
-  .shelf--about {
-    .shelf__block {
-      &:before {
-        display: none;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 600px) { //Based on shelf--community content
-  //----- Block ----------------------------------------------------------
-  .shelf {
-        //non-normative overrides
-        .frame-likes {
-          height: 2.6em;
-        }
-
-    .shelf__lining {
-      padding: 2em;
-    }
-
-    .shelf__h1 {
-      font-size: 3em;
-    }
-
-    .shelf__h2 {
-      font-size: 2.5em;
-      padding: 0;
-    }
-  }
-
-  //----- Modifiers ----------------------------------------------------------
-  .shelf--community {
-    .shelf__item {
-      float: none;
-      width: auto;
-    }
-  }
-
-  .shelf--signup,
-  .shelf--stats-banner {
-    .shelf__block {
-      br {
-        display: none;
-      }
-    }
-  }
-
-  .shelf--network {
-    .shelf__list--sources {
-      margin-bottom: 1em;
-    }
-  }
-
-  .shelf--footer {
-    .shelf__list--social {
-      & > li {
-        display: list-item;
-        margin: 1em;
-      }
-    }
-  }
-  //------ Non-normative Elements --------------------------------------
-  .frame--shelf {
-    padding: 0.8em 0;
-  }
-}
-
-// END OF MEDIA QUERIES ////////////////////////////////////////////////
-
-//----- Non-normative Elements -----------------------------------------
-.frame--shelf {
-  font-size: 1.1em;
-  font-family: $font-family;
-  font-weight: normal;
-
-  .media_module {
-    margin: 1em;
-    min-height: 5.5em;
-  }
-
-  .shelf__link {
-    &:active {
-      .frame-body-wrapper {
-        box-shadow: 0 0 2px 0 black;
-      }
-    }
-
+  .list__link {
     &,
-    &:hover,
-    &:visited {
-      text-decoration: none;
-    }
-
+    &:visited,
     &:hover {
-      .frame-body-wrapper {
-        background-color: #fff;
-        box-shadow: 0 0 2px 0 $shelby-blue;
-      }
-
-      .xuser-data {
-        text-decoration: underline;
-      }
-    }
-
-    .xuser-data {
-      color: $text;
-      font-family: $font-family;
-      font-weight: bold;
-      margin-bottom: 1em;
-
-      span {
-        font-weight: normal;
-        font-size: 0.9em;
-        opacity: 0.5;
-      }
-    }
-
-    .xuser-message {
-      font-size: 1.1em;
-      line-height: 1.4;
+      color: $ui-white;
     }
   }
 }
-

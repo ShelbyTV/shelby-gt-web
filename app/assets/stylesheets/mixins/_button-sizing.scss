@@ -64,7 +64,9 @@
         margin-right: 2px;
       }
     }
-
+    .button_command--large {
+      font-size: $font-size-large-button;
+    }
     .button_command--cancel {}
     .button_command--email {}
     .button_command--embed {
@@ -140,6 +142,10 @@
         margin-right: 2px;
       }
     }
+
+.button_transparent {
+  opacity: 0;
+}
 
 .button_share {
   padding-bottom: 0.8em;

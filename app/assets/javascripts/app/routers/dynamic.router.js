@@ -11,6 +11,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "rollFromFrame/:frameId"                       : "displayRollFromFrame",
     "embed/:frameId"                               : "displayEmbeddedFrame",
     "user/:id/personal_roll"                       : "displayUserPersonalRoll",
+    "community"                                    : "displayCommunityChannel",
     "channels"                                     : "displayChannel",
     "channels/:channel"                            : "displayChannel",
     "channels/:channel/:entryId"                   : "displayEntryInDashboard",
@@ -222,13 +223,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this.displayChannel(randomChannelKey, params);
   },
 
+  displayCommunityChannel : function(params){
+    this.displayChannel('community', params);
+  },
+
   displayChannel : function(channel, params){
-    if (_(shelby.config.channels).has(channel)) {
+    if (channel == 'community') {
       this.displayDashboard(params, {channel: channel});
-      this._handleChannelWelcomeOverview();
+      this.navigate('community', {trigger: false, replace: true});
     } else {
       // if the requested channel doesn't exist, just go to the first channel
-      this.navigate('channels/' + _.keys(shelby.config.channelsForNav)[0], {trigger: true, replace: true});
+      this.navigate('community', {trigger: true, replace: true});
     }
 
     this._doChannelTracking(channel, params);
@@ -248,10 +253,9 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           self._activateEntryInDashboardById(dashboardModel, entryId);
         }
       });
-      this._handleChannelWelcomeOverview();
     } else {
       // if the requested channel doesn't exist, just go to the first channel
-      this.navigate('channels/' + _.keys(shelby.config.channelsForNav)[0], {trigger: true, replace: true});
+      this.navigate('channels/community/' + entryId, {trigger: true, replace: true});
     }
 
     this._doChannelTracking(channel);
@@ -285,27 +289,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       kmqName : "Visit Channel",
       kmqProperties: {'Channel' : channel}
     });
-  },
-
-  _handleChannelWelcomeOverview : function() {
-
-    // EXPERIMENT: not showing channel welcome message. -his
-    // shelby.views.channelWelcome = shelby.views.channelWelcome ||
-    //       new libs.shelbyGT.channelWelcome({
-    //         el : '.js-channels-welcome',
-    //         channelWelcomeModel : shelby.models.dotTvWelcome
-    //       });
-
-    // ultimatly this should only be shown the first visit which we can track via a cookie
-    // if (cookies.get('channel-welcome') != "1") {
-    //   shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
-    //   shelby.models.userDesires.set({guideShown: true});
-    //   shelby.userInactivity.disableUserActivityDetection();
-    //   $('#js-welcome, .js-channels-welcome').toggleClass('hidden', false);
-    // }
-    // else {
-      $('#js-welcome, .js-channels-welcome').toggleClass('hidden', true);
-    // }
   },
 
   displayRollFromFrame : function(frameId, params) {
@@ -386,9 +369,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _fetchDashboard : function(options) {
     // default options
     var defaultOnDashboardFetch = null;
-    var displayingChannel = options && options.channel;
-    if (displayingChannel || !shelby.models.guide.get('activeFrameModel')) {
-      // if nothing is already playing, or if we're switching to a channel
+    if (!shelby.models.guide.get('activeFrameModel')) {
+      // if nothing is already playing,
       // start playing the first frame in the dashboard on load
       defaultOnDashboardFetch = this._activateFirstDashboardVideoFrame;
     }
@@ -683,6 +665,11 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           new libs.shelbyGT.KeyboardControlsView();
     }
 
+    shelby.views.appWelcome = shelby.views.appWelcome ||
+      new libs.shelbyGT.welcomeMessages({
+        el : '.js-app-welcome'
+      });
+
     if (options.openInvite) {
       shelby.models.invite.trigger('invite:open');
     }
@@ -888,7 +875,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.models.userProfile.set('currentUser', userForProfile);
       // we're completely switching users so we need to get rid of the old user's
       // rolls in preparation for getting the new user's
-      shelby.models.userChannels.get('rolls').reset();
+      shelby.models.userOwnedRolls.get('rolls').reset();
     }
     if (userForProfile.isNew()) {
       // if we don't have the user info yet, we need to fetch it, then use the user's personal roll id
@@ -904,7 +891,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
             el : '.js-isolated-roll-welcome--dot-tv'
           });
         }
-        shelby.models.userChannels.fetch({
+        shelby.models.userOwnedRolls.fetch({
           url: shelby.config.apiRoot + '/roll/' + userPersonalRollId + '/associated'
         });
       }});
@@ -920,7 +907,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           el : '.js-isolated-roll-welcome--dot-tv'
         });
       }
-      shelby.models.userChannels.fetch({
+      shelby.models.userOwnedRolls.fetch({
           url: shelby.config.apiRoot + '/roll/' + userPersonalRollId + '/associated'
       });
     }

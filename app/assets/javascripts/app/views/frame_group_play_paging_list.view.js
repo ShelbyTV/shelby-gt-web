@@ -1,7 +1,7 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var InlineExplorePromoView = libs.shelbyGT.InlineExplorePromoView;
+  var InlineCommunityPromoView = libs.shelbyGT.InlineCommunityPromoView;
   var PagingListView = libs.shelbyGT.PagingListView;
   var InlineRollPromoView = libs.shelbyGT.InlineRollPromoView;
   var InlineDonatePromoView = libs.shelbyGT.InlineDonatePromoView;
@@ -39,7 +39,7 @@
           playlistType : this.playlistType
         };
       },
-      noMoreResultsViewProto : InlineExplorePromoView,
+      noMoreResultsViewProto : InlineCommunityPromoView,
       pagingKeySortOrder : -1,
       playlistType : PlaylistType.dashboard
     }),
@@ -94,9 +94,8 @@
         shelby.models.playlistManager.get('playlistType') == PlaylistType.roll &&
         shelby.models.playlistManager.get('playlistRollId') == this.model.id;
       var reloadingCurrentPlaylist = returningToDashboard || returningToRoll;
-      var viewingChannel = this.options.playlistType == PlaylistType.channel;
 
-      if (!isAnythingPlaying || forceFramePlay || reloadingCurrentPlaylist || viewingChannel) {
+      if (!isAnythingPlaying || forceFramePlay || reloadingCurrentPlaylist) {
         this.registerPlaylist();
       }
 
@@ -147,7 +146,7 @@
       //we'll just randomly choose to show a promo for the explore section or for a specific roll
       // if (this._nextPromoExplore) {
       //   this._nextPromoExplore = false;
-      //   return new InlineExplorePromoView();
+      //   return new InlineCommunityPromoView();
       // } else {
         var donatePromoInfo = this._lookupDonatePromo();
         if (donatePromoInfo) {
@@ -184,7 +183,7 @@
             return [];
             // this._nextPromoExplore = false;
             //we don't have any rolls to promo, so promo explore instead
-            // return new InlineExplorePromoView();
+            // return new InlineCommunityPromoView();
           }
         }
       // }

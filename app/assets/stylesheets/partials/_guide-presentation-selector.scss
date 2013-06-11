@@ -58,13 +58,12 @@
     }
   }
 }
-    .app_nav__button--settings {
-      padding-left: 0.5em;
-      padding-right: 0.5em;
+    .app_nav__button--inverted {
+      color: $ui-black;
 
-      .avatar {
-        vertical-align: -0.75em;
-        margin-right: 0.35em;
+      &:active,
+      &:hover {
+        color: $ui-black;
       }
     }
 

@@ -36,76 +36,15 @@
       _gaq.push(['_trackEvent', 'Landing Page', 'Visit']);
     } catch(e) {}
 
-    //fanciness on focussing searching in header
-    $('.js-nav-search-form-text').focus(function(){
-      $(this).parent().toggleClass('focused',true);
-    }).blur(function(){
-      $(this).parent().toggleClass('focused',false);
-    });
+    var $buttonMain   = $('.js-cta'),
+        $buttonHeader = $('.js-cta-header'),
+        $header       = $('.js-header');
 
-    // Email submit (used by many shelves) -->
-    $('#js-email-form').on('submit', function(){
-      $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
-        $('#js-email-form-submit').addClass('hidden');
-        $('#js-email-form-feedback').removeClass('hidden');
-      }, 'jsonp');
-      return false;
-    });
-
-    $('.js-search-form, #js-nav-search-form').on('submit', function(e){
-      e.preventDefault();
-      var searchQuery = $(e.currentTarget).find("#query").val() || $(e.currentTarget).find("#js-nav-search-form-text").val();
-      if (searchQuery) {
-        if("<%= @is_mobile %>" !== "") {
-          var params = {
-            "q" : searchQuery,
-            "max-results" : "50",
-            "orderby" : "relevance"
-          };
-
-            // Create a callback
-            var cb = function(res){
-            // Create array of returned YouTube video URLs
-            var urls = new Array();
-            if (typeof res !== 'undefined'){
-              res.forEach(function(r){
-                if (r.link != undefined) {
-                  r.link.forEach(function(l){
-                    if(l.rel != undefined && l.rel == "alternate") {
-                      if(l.href != undefined) {
-                        urls.push(l.href);
-                      }
-                    }
-                  });
-                }
-              });
-            }
-
-            if (urls.length !== 0) {
-              // Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
-              $.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': searchQuery, 'urls': JSON.stringify(urls)}, function(data){
-                if (data.status == 200){
-                  var _rollUrl = '<%= Settings::Application.mobile_url %>' + "/roll/" + data.result.id;
-                  window.location.href = _rollUrl;
-                }
-                else { alert("Something went wrong, please try again."); }
-              });
-            }
-            else { //if no URLs:
-              $('.js-search__input').val('').attr('placeholder','sorry, nothing turned up');
-            }
-          };
-
-          // Call ytQuery.query, passing params and your callback
-          ytQuery.query(params, cb);
-
-        } else {
-          window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
-        }
-
-        try {
-        _gaq.push(['_trackEvent', shelbyTrackingCategory, 'search', searchQuery.toLowerCase()]);
-        } catch(e) {}
+    $(window).on('scroll',function(e){
+      if($buttonMain.offset().top + $buttonMain.height() - $(this).scrollTop() - $header.height() > 0) {
+        $buttonHeader.toggleClass('button_transparent',true);
+      } else {
+        $buttonHeader.toggleClass('button_transparent',false);
       }
     });
   });

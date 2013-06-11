@@ -12,9 +12,13 @@
       'rollNav' : false,
       'rollListNav' : false,
       'streamNav' : false,*/
-      'onboarding' : false,
+      'dashboardWelcomed' : false,
+      'channelWelcomed' : false,
+      'ownSharesWelcomed' : false,
+      'othersSharesWelcomed' : false,
+      'onboarding' : false
       //has this user seen and dismissed the extension/bookmarket notification?
-      'extension' : false
+      //'extension' : false
     },
 
     //assuming that parameter stage is an integer
@@ -29,6 +33,11 @@
 
     hasCompletedOnboarding : function(){
       return this.get('onboarding') !== false;
+    },
+
+    hasBeenWelcomed : function(section){
+      var _progress = section+'Welcomed';
+      return this.get(_progress) !== false;
     },
 
     saveMe : function(){

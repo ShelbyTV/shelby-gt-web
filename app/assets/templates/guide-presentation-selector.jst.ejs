@@ -5,9 +5,9 @@
     </button>
   </li>
 
-  <li class="list__item js-channels-menu">
-    <button class="app_nav__button js-channels js-track-event" data-ga_category="Header" data-ga_action="Channels" data-ga_label='<%= userNickname %>'>
-      #Channels
+  <li class="list__item js-community-menu">
+    <button class="app_nav__button js-community js-track-event" data-ga_category="Header" data-ga_action="Community" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+      Community
     </button>
   </li>
 
@@ -147,9 +147,5 @@
         </ul>
       </div>
     </section>
-  </li>
-
-  <li class="list__item secondary-item guide-search js-guide-search">
-    <!-- Content filled in by GuidePresntationSearchView -->
   </li>
 </ul><!-- eo guide-presentation-list -->

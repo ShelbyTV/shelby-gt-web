@@ -11,7 +11,7 @@
 
   <div class="media_body user-channel__wrapper clearfix">
     <div class="user-channel__head">
-      <h3 class="user-channel__title js-user-channel-title">
+      <h3 class="user-channel__title js-user-owned-roll-title">
         <% var rollTitle = rollTitleOverride || roll.get('title') %>
         <% if (showAttribution) { %>
           <%= rollTitle %> by <img class="user-channel__avatar" src="<%= attribution.authorAvatar %>"/ > <%= attribution.authorName %>
@@ -21,8 +21,8 @@
       </h3>
     </div>
 
-    <div class="media_body user-channel__body js-user-channel-wrapper">
-      <div class="user-channel js-user-channel clearfix">
+    <div class="media_body user-channel__body js-user-owned-roll-wrapper">
+      <div class="user-channel js-user-owned-roll clearfix">
         <!-- Filled in by … -->
       </div><!-- eo user-channel block -->
     </div><!-- eo media_body -->
