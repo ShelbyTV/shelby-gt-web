@@ -4,22 +4,18 @@
 
 <% if (@frame and @video and @roll) or (@video_provider_name and @video_provider_id) or (@roll and @user) %>
 	<!-- For Twitter -->
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:site:id" content="<%= Settings::Twitter.shelby_twitter_user_id %>">
+	<meta name="twitter:card" content="<%= (@video or @video_embed) ? 'player' : 'summary' %>">
+	<meta name="twitter:site" content="<%= Settings::Twitter.shelby_twitter_username %>">
 <% end %>
 
 <% if @frame and @video and @roll %>
 	<meta name="twitter:description" content="<%= @video['description'] %>">
 	<meta name="twitter:title" content="<%= (@roll['subdomain'] ? "#{@roll['subdomain']}.shelby.tv - " : "") + @video['title'].to_s %>">
+	<meta name="twitter:player" content="<%= build_valid_video_player_url(@video['embed_url']) %>">
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" />
-	<% if @video['source_url'] %>
-		<meta property="og:video:url" content="<%= @video['source_url'] %>" />
-		<meta property="og:video:secure_url" content="https://<%= @video['source_url'][7..-1] if @video['source_url'] %>" />
-	<% else %>
-		<meta property="og:video:url" content="<%= Shelby::API.generate_video_route(@video['provider_name'], @video['provider_id']) %>" />
-		<meta property="og:video:secure_url" content="<%= Shelby::API.generate_video_route(@video['provider_name'], @video['provider_id'], 'https') %>" />
-	<% end %>
+	<meta property="og:video:url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
+	<meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
 	<meta property="og:title" content="<%= @video['title'] %>" />
 	<% if @frame['conversation'] and @frame['conversation']['messages'] and @frame['conversation']['messages'][0] %>
 		<meta property="og:description" content="<%= @frame['conversation']['messages'][0]['text'] %>" />
@@ -38,16 +34,11 @@
 	<meta name="description" content="<%= page_description_for_roll_with_frames(@roll, @user) %>" />
 
 <% elsif @video_provider_name and @video_provider_id %>
-
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id) %>" />
-	<% if @video_source_url %>
-		<meta property="og:video:url" content="<%= @video_source_url %>" />
-		<meta property="og:video:secure_url" content="https://<%= @video_source_url[7..-1] if @video_source_url %>" />
-	<% else %>
-		<meta property="og:video:url" content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id) %>" />
-		<meta property="og:video:secure_url" content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id, 'https') %>" />
-	<% end %>
+	<meta name="twitter:player" content="<%= build_valid_video_player_url(@video_embed) %>">
+	<meta property="og:video:url" content="<%= build_valid_video_player_url(@video_embed) %>" />
+	<meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video_embed) %>" />
 	<meta property="og:title" content="<%= @video_title %>" />
 	<meta property="og:description" content="<%= @video_description %>" />
 	<meta property="og:image" content="<%= @video_thumbnail_url %>" />
