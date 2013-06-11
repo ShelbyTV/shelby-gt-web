@@ -13,8 +13,10 @@
 
   libs.shelbyGT.FrameRollingView = GuideOverlayView.extend({
 
+    _currentFrameShortlink : null,
+
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .js-cancel"                      : "_onClickCancel"  //cancel from Step 1/2
+      "click .js-cancel" : "_onClickCancel"
     }),
 
     className : GuideOverlayView.prototype.className + ' guide-overlay__rolling-frame js-rolling-frame',
@@ -31,6 +33,7 @@
 
     render : function(){
       this.$el.html(this.template({
+        currentFrameShortlink: this._currentFrameShortlink,
         frame      : this.model,
         frameVideo : this.model.get('video'),
         user       : shelby.models.user
@@ -38,8 +41,9 @@
 
       // rolling details (personal roll as default)
       this._renderRollingFormChild(shelby.models.user.get('personal_roll'));
-
       GuideOverlayView.prototype.render.call(this);
+
+      this._getFrameShortlink();
     },
 
     //------------------------- SELECT ROLL ----------------------------
@@ -70,8 +74,9 @@
 
     _renderRollingFormChild: function(roll){
       this._rollingForm = new libs.shelbyGT.RollingFormView({
-        roll: roll,
-        frame: this.model
+        currentFrameShortlink : this._currentFrameShortlink,
+        frame: this.model,
+        roll: roll
       });
       this.appendChildInto(this._rollingForm, '.js-guide-overlay-main');
     },
@@ -83,21 +88,6 @@
 
     //------------------------- EVENTS ----------------------------
 
-    // via click event on Create button
-    // NOT CURRENTLY IMPLEMENTED
-    _createRoll: function(){
-      this._rollingForm.setRoll();
-      this.$el.find('.js-rolling-destination-display').html("New Roll");
-    },
-
-    // via child view RollingSelectionListView via RollingSelectionListViewItem
-    // this may happen any number of times
-    selectRoll: function(roll){
-      this._rollingForm.setRoll(roll);
-      this.$el.find('.js-rolling-destination-display').html(libs.shelbyGT.viewHelpers.roll.titleWithoutPath(roll));
-      this._hideRollSelectionChild();
-    },
-
     done : function(){
       this._setGuideOverlayStateNone();
     },
@@ -105,7 +95,40 @@
     _onClickCancel : function(e){
       e.preventDefault();
       this.done();
+    },
+
+    _getFrameShortlink : function() {
+
+      var frame = this.model;
+
+      if (!frame.get('isSearchResultFrame')) {
+        var self = this;
+        var $shortlinkTextInput = this.$('.js-frame-shortlink');
+        var fetchShortlinkUrl;
+        var dbEntry = this.model.get('primaryDashboardEntry');
+        if (dbEntry) {
+          fetchShortlinkUrl = shelby.config.apiRoot + '/dashboard/' + dbEntry.id + '/short_link';
+        } else {
+          fetchShortlinkUrl = shelby.config.apiRoot + '/frame/' + frame.id + '/short_link';
+        }
+        // fetch the short link
+        $.ajax({
+          url: fetchShortlinkUrl,
+          dataType: 'jsonp',
+          success: function(r){
+            $shortlinkTextInput.val(r.result.short_link).select();
+            // save the link for future reference in case we are going to
+            // re-render without changing frames
+            self._currentFrameShortlink = r.result.short_link;
+            frame.set('shortlink', r.result.short_link);
+          },
+          error: function(){
+            $shortlinkTextInput.val("Link Unavailable").select();
+          }
+        });
+      }
     }
+
 
   });
 

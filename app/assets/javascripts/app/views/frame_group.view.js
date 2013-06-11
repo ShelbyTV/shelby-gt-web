@@ -236,10 +236,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   requestFrameRollView : function(){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
-      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
-        this.model.getFirstFrame());
-    }
+    this.options.guideOverlayModel.switchOrHideOverlay(
+      libs.shelbyGT.GuideOverlayType.rolling,
+      this.model.getFirstFrame()
+    );
   },
 
   _onClickQueue : function(){

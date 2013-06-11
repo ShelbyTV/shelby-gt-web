@@ -31,30 +31,50 @@
     });
   }
 
-  console.log('active_networks',active_networks);
-
   var twitter_enabled = _.include(active_networks, 'twitter') ? true : false;
   var facebook_enabled = _.include(active_networks, 'facebook') ? true : false;
 %>
 
 <div class="rolling-option">
-  <fieldset class="form_fieldset form_fieldset--social clearfix">
-    <p class="form_label">
-      <%= (user.isAnonymous()) ? 'Share to' : 'Also Share to' %>
-    </p>
 
-    <label for="share-on-twitter" class="button_primer button_command button_command--flexible<%= (twitter_enabled) ? ' button_twitter-blue' : ' button_gray' %>">
-      <input id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden" />
-      <span class="icon icon-twitter"></span>
-      <span class="button_label">Twitter</span>
-    </label>
+  <% if (user.isAnonymous()) { %>
+    <fieldset class="form_fieldset form_fieldset--social clearfix">
+      <p class="form_label">
+        Also Share to
+      </p>
 
-    <label for="share-on-facebook" class="button_primer button_command button_command--flexible<%= (facebook_enabled) ? ' button_facebook-blue' : ' button_gray' %>">
-      <input id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden" />
-      <span class="icon icon-facebook"></span>
-      <span class="button_label">Facebook</span>
-    </label>
-  </fieldset>
+      <% console.log('shortlinkzz',frame.get('shortlink')) %>
+
+      <a href="http://twitter.com/share?url=&amp;text=&amp;related=shelby&amp;via=shelby" target="_blank" class="button_primer button_command button_command--share button_twitter-blue">
+        <span class="icon icon-twitter"></span>
+        <span class="button_label">Twitter</span>
+      </a>
+
+      <a href="" class="button_primer button_command button_command--share button_facebook-blue">
+        <span class="icon icon-facebook"></span>
+        <span class="button_label">Facebook</span>
+      </a>
+    </fieldset>
+  <% } else { %>
+    <fieldset class="form_fieldset form_fieldset--social clearfix">
+      <p class="form_label">
+        Also Share to
+      </p>
+
+      <label for="share-on-twitter" class="button_primer button_command button_command--flexible<%= (twitter_enabled) ? ' button_twitter-blue' : ' button_gray' %>">
+        <input id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden" />
+        <span class="icon icon-twitter"></span>
+        <span class="button_label">Twitter</span>
+      </label>
+
+      <label for="share-on-facebook" class="button_primer button_command button_command--flexible<%= (facebook_enabled) ? ' button_facebook-blue' : ' button_gray' %>">
+        <input id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden" />
+        <span class="icon icon-facebook"></span>
+        <span class="button_label">Facebook</span>
+      </label>
+    </fieldset>
+  <% } %>
+
 
   <fieldset class="form_fieldset clearfix">
     <button class="button_primer button_command button_command--wide button_green js-roll-it" type="submit" tabindex="0" onclick="return false;">
@@ -67,6 +87,5 @@
     <p class="form_label">
       Protip: Sharing improves videos recommended to you and your friends on Shelby.
     </p>
-
   </fieldset>
 </div>

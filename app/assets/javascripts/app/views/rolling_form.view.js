@@ -19,8 +19,6 @@
 
   libs.shelbyGT.RollingFormView = Support.CompositeView.extend({
 
-    _currentFrameShortlink : null,
-
     events : {
       "click .js-roll-it"         : '_doRoll',
       "focus #new-roll-name"      : '_clearErrors',
@@ -37,14 +35,20 @@
       this._frameRollingState = new ShareActionStateModel();
       this._roll = this.options.roll;
       this._frame = this.options.frame;
+
+      this._frame.bind('change:shortlink',this.render,this);
+    },
+
+    _cleanup : function() {
+      this._frame.unbind('change:shortlink',this.render,this);
     },
 
     render : function(){
       var self = this;
 
       this.$el.html(this.template({
-        currentFrameShortlink: this._currentFrameShortlink,
         frame : this._frame,
+        video : this._frame.get('video'),
         roll : this._roll,
         rollOptions : {
           pathForDisplay : RollViewHelpers.pathForDisplay(this._roll),
@@ -212,37 +216,12 @@
         gaAction : 'click hashtag',
         gaLabel : $button.val()
       });
-    },
+    }//,
 
-    _getFrameShortlink : function() {
-      var frame = this.model.get('frames').at(0);
-
-      if (!frame.get('isSearchResultFrame')) {
-        var self = this;
-        var $shortlinkTextInput = this.$('.js-frame-shortlink');
-        var fetchShortlinkUrl;
-        var dbEntry = this.model.get('primaryDashboardEntry');
-        if (dbEntry) {
-          fetchShortlinkUrl = shelby.config.apiRoot + '/dashboard/' + dbEntry.id + '/short_link';
-        } else {
-          fetchShortlinkUrl = shelby.config.apiRoot + '/frame/' + frame.id + '/short_link';
-        }
-        // fetch the short link
-        $.ajax({
-          url: fetchShortlinkUrl,
-          dataType: 'jsonp',
-          success: function(r){
-            $shortlinkTextInput.val(r.result.short_link).select();
-            // save the link for future reference in case we are going to
-            // re-render without changing frames
-            self._currentFrameShortlink = r.result.short_link;
-          },
-          error: function(){
-            $shortlinkTextInput.val("Link Unavailable").select();
-          }
-        });
-      }
-    }
+    // _updateShortlink : function(e){
+    //   this.render();
+    //   console.log('change to shortlink',this._frame.get('shortlink'));
+    // }
 
   });
 

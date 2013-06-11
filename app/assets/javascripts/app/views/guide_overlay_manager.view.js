@@ -20,8 +20,6 @@ libs.shelbyGT.GuideOverlayManagerView = Support.CompositeBehaviorView.extend({
       child.hide();
     });
 
-    console.log('guideoverlaymodel',guideOverlayModel.get('activeGuideOverlayType'));
-
     switch (guideOverlayModel.get('activeGuideOverlayType')) {
       case libs.shelbyGT.GuideOverlayType.none:
         //the child.hide() above will call into GuideOverlayView.hide() which should ultimately hide our el
@@ -32,6 +30,7 @@ libs.shelbyGT.GuideOverlayManagerView = Support.CompositeBehaviorView.extend({
         });
         break;
       case libs.shelbyGT.GuideOverlayType.rolling:
+      console.log('overlaytype == rolling');
         guideOverlayView = new libs.shelbyGT.FrameRollingView({
           model : guideOverlayModel.get('activeGuideOverlayFrame'),
           guideOverlayModel : this.model
