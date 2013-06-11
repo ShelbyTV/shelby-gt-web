@@ -29,5 +29,16 @@
         <!-- Form content from RollingFormView -->
       </div><!-- eo guide-overlay__main -->
     </div><!-- eo frame-body-wrapper -->
-   </form>
+  </form>
+  <div class="guide-overlay__foot guide-overlay__foot--frame-rolling">
+    <span class="form_label">
+      Shortlink
+    </span>
+
+    <span class="share_menu__faux-button button_command--shortlink clearfix">
+      <span class="icon icon-shortlink"></span>
+      <% var currentFrameShortlink = '';%>
+      <input type="text" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
+    </span>
+  </div>
 </div><!-- eo overlay_body guide-overlay-body conversation-body -->

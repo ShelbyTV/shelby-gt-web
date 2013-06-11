@@ -75,7 +75,29 @@
     .button_command--facebook {}
     .button_command--remove {}
     .button_command--roll {}
-    .button_command--shortlink {}
+    .button_command--shortlink {
+      display: block;
+      font-size: $font-size-button;
+      margin-bottom: 0.5em;
+      margin-top: 0.5em;
+      position: relative;
+      width: 7.5em;
+
+      //non-normative overrides
+      .form_input {
+        font-size: inherit;
+        padding-left: 1.7em;
+      }
+
+      .icon-shortlink,
+      .icon-embed {
+        left: 0;
+        margin: 0;
+        padding: 0.55em 0 0 0.3em;
+        position: absolute;
+        top: 0;
+      }
+    }
     .button_command--text {
       background: transparent !important; //TODO: figure out if !important is absolutely necessary
       border: none;

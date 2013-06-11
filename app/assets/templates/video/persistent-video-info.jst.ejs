@@ -38,7 +38,8 @@
 
         <%= SHELBYJST['thumbnail-module']({
           thumbnail: nextVideo.get('thumbnail_url'),
-          title: nextVideo.get('title') }) %>
+          title: nextVideo.get('title')
+        }) %>
 
         <h2 class="persistent_video_info__h3">
           <%= nextVideo.get('title') %>
@@ -122,7 +123,7 @@
                     data-ga_category="<%= eventTrackingCategory %>"
                     data-ga_action="Click roll on current frame"
                     data-ga_label="<%= shelby.models.user.get('nickname') %>">
-              <i class="icon icon-roll"></i>Roll…
+              <span class="icon icon-roll"></span>Share…
             </button>
           </li>
         <% } %>
@@ -134,58 +135,6 @@
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
             <i class="icon icon-like <%= currentVideoIsInQueue ? 'icon-like--red ': ''%>js-command-icon"></i><span class="label"><%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %></span>
           </button>
-        </li>
-
-        <li class="list__item clearfix">
-          <button class="button_primer button_gray button_command button_command--share js-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Click share menu on current frame" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="icon icon-share"></i>Share…
-          </button>
-
-          <div class="share_menu frame-body-wrapper js-share-menu-block hidden">
-            <ul class="list">
-              <li class="list__item">
-                <% if (user.isAnonymous()) { %>
-                  <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= encodeURIComponent(anonUserShareEmailBody) %>">
-                <% } %>
-                  <button class="button_primer button_gray button_command button_command--sub button_command--email js-hide-share-menu js-track-event<%= !user.isAnonymous() ? ' js-button_share--email' : ''%>" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                    <i class="icon icon-email"></i>Email
-                  </button>
-                <% if (user.isAnonymous()) { %>
-                  </a>
-                <% } %>
-              </li>
-              <% if (user.isAnonymous()) { %>
-                <li class="list__item">
-                  <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
-                    <button class="button_primer button_gray button_command button_command--sub button_command--twitter js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                      <i class="icon icon-twitter"></i>Twitter
-                    </button>
-                  </a>
-                </li>
-              <li class="list__item">
-                <button class="button_primer button_gray button_command button_command--sub button_command--facebook js-button_share--facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                  <i class="icon icon-facebook"></i>Facebook
-                </button>
-              </li>
-              <% } %>
-              <% if (!currentFrame.get('isSearchResultFrame')) { %>
-                <li class="list__item js-share-embed-item clearfix">
-                  <button class="button_primer button_gray button_command button_command--sub button_command--embed js-button_share--embed js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Get embed code" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                    <i class="icon icon-embed">
-                    </i>
-                      Embed
-                  </button>
-                </li>
-                <li class="list__item nudge">
-                  <span class="share_menu__faux-button clearfix">
-                    <i class="icon icon-shortlink">
-                    </i>
-                    <input type="text" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
-                  </span>
-                </li>
-              <% } %>
-            </ul>
-          </div><!-- eo share_menu -->
         </li>
       </ul>
     </div><!-- eo .persistent_video_info__foot -->

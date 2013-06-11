@@ -156,7 +156,6 @@
       margin: 5px 5px 2px;
 
       .xuser-avatar {
-        // display: inline-block;
         height: 18px;
         width: 18px;
         margin-right: 5px;
@@ -176,28 +175,13 @@
     font-size: 1.1em;
   }
 
-  .share_menu__faux-button,
   .button_command--sub {
     font-size: 1em;
   }
 
-  // .frame-command-menu {
-  //   // .menu_item {
-  //   //   &.right {
-  //   //     .button_command {
-  //   //       margin: .75em .75em 0 0;
-  //   //     }
-  //   //   }
-  //   // }
-  // }
 
   .frame-subsection {
     margin-top: 0.25em;
-
-    // .button_command {
-    //   margin: 0;
-    //   padding: .55em .8em .6em 0;
-    // }
   }
 
   .frame-collapsed {

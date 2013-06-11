@@ -16,8 +16,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   className : 'list__item',
 
   events : {
-    "click .js-button_share--email"         : "requestFrameShareView",
-    "click .js-button_share--embed"         : "_showEmbedCode",
+    // "click .js-button_share--email"         : "requestFrameShareView",
+    // "click .js-button_share--embed"         : "_showEmbedCode",
     "click .js-creation-date"               : "_expand",
     "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
     "click .js-frame-activate"              : "_activate",
@@ -29,7 +29,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-remove-frame"                : "_onClickRemoveFrame",
     "click .js-roll-frame"                  : "requestFrameRollView",
     "click .js-share-frame"                 : "requestFrameShareView",
-    "click .js-share-menu"                  : "_toggleShareMenu",
+    // "click .js-share-menu"                  : "_toggleShareMenu",
     "click .js-hide-share-menu"             : "_toggleShareMenu",
     "click .js-share-to-facebook"           : "_shareToFacebook",
     "click .js-toggle-comment"              : "_toggleComment",

@@ -49,3 +49,12 @@
   top: $overlay_header_height;
   width: 100%;
 }
+
+.guide-overlay__foot {
+  bottom: 0;
+  font-size: 1.2em;
+  left: 0;
+  position: absolute;
+  padding: 8px;
+  width: 100%;
+}

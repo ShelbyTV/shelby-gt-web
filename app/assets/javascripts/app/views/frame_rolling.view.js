@@ -14,9 +14,7 @@
   libs.shelbyGT.FrameRollingView = GuideOverlayView.extend({
 
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .js-cancel"                      : "_setGuideOverlayStateNone",  //cancel from Step 1/2
-      "click .js-create-roll"                 : "_createRoll", // NOT CURRENTLY IMPLEMENTED
-      "click .js-change-rolling-destination"  : "_showRollSelectionChild"
+      "click .js-cancel"                      : "_onClickCancel"  //cancel from Step 1/2
     }),
 
     className : GuideOverlayView.prototype.className + ' guide-overlay__rolling-frame js-rolling-frame',
@@ -35,7 +33,7 @@
       this.$el.html(this.template({
         frame      : this.model,
         frameVideo : this.model.get('video'),
-        user       : shelby.models.user,
+        user       : shelby.models.user
       }));
 
       // rolling details (personal roll as default)
@@ -102,6 +100,11 @@
 
     done : function(){
       this._setGuideOverlayStateNone();
+    },
+
+    _onClickCancel : function(e){
+      e.preventDefault();
+      this.done();
     }
 
   });
