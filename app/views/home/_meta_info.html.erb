@@ -35,7 +35,7 @@
 
 <% elsif @video_provider_name and @video_provider_id %>
 	<meta property="og:type" 		content="video" />
-	<meta property="og:url"			content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id) %>" />
+	<meta property="og:url"			content="<%= build_valid_video_player_url(@video_embed) %>" />
 	<meta name="twitter:player" content="<%= build_valid_video_player_url(@video_embed) %>">
 	<meta property="og:video:url" content="<%= build_valid_video_player_url(@video_embed) %>" />
 	<meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video_embed) %>" />
