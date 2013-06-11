@@ -31,18 +31,25 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
 
   _changeDisplay : function() {
     // show welcome to stream, community, shares message
-    switch  (shelby.models.guide.get('displayState')) {
-      case "dashboard":
+    var displayState = shelby.models.guide.get('displayState');
+
+    if(displayState == libs.shelbyGT.DisplayState.userPreferences) {
+      $('#js-welcome, .js-app-welcome').addClass('hidden');
+      return;
+    }
+
+    switch  (displayState) {
+      case libs.shelbyGT.DisplayState.dashboard:
         if (!shelby.models.user.get('app_progress').hasBeenWelcomed('dashboard')){
           this.render('dashboard');
         }
         break;
-      case "channel":
+      case libs.shelbyGT.DisplayState.channel:
         if (!shelby.models.user.get('app_progress').hasBeenWelcomed('channel')){
           this.render('channel');
         }
         break;
-      case "standardRoll":
+      case libs.shelbyGT.DisplayState.standardRoll:
         if (shelby.models.guide.get('currentRollModel').get('creator_id') == shelby.models.user.id && !shelby.models.user.get('app_progress').hasBeenWelcomed('ownShares')) {
           this.render('ownShares');
         }
