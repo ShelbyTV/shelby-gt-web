@@ -47,7 +47,7 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
           this.render('ownShares');
         }
         else if (!shelby.models.user.get('app_progress').hasBeenWelcomed('othersShares') && !shelby.models.user.isAnonymous()){
-          this.render('othersShares');
+          //this.render('othersShares');
         }
         else { this._resetVideoPlayerOperation(); }
         break;
