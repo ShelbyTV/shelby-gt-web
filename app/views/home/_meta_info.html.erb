@@ -12,6 +12,8 @@
 	<meta name="twitter:description" content="<%= @video['description'] %>">
 	<meta name="twitter:title" content="<%= (@roll['subdomain'] ? "#{@roll['subdomain']}.shelby.tv - " : "") + @video['title'].to_s %>">
 	<meta name="twitter:player" content="<%= build_valid_video_player_url(@video['embed_url']) %>">
+	<meta name="twitter:player:width" content="500">
+	<meta name="twitter:player:height" content="375">
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" />
 	<meta property="og:video:url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
@@ -37,6 +39,8 @@
 	<meta property="og:type" 		content="video" />
 	<meta property="og:url"			content="<%= build_valid_video_player_url(@video_embed) %>" />
 	<meta name="twitter:player" content="<%= build_valid_video_player_url(@video_embed) %>">
+	<meta name="twitter:player:width" content="500">
+	<meta name="twitter:player:height" content="375">
 	<meta property="og:video:url" content="<%= build_valid_video_player_url(@video_embed) %>" />
 	<meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video_embed) %>" />
 	<meta property="og:title" content="<%= @video_title %>" />
