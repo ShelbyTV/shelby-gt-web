@@ -20,10 +20,12 @@
   libs.shelbyGT.RollingFormView = Support.CompositeView.extend({
 
     events : {
-      "click .js-roll-it"         : '_doRoll',
-      "focus #new-roll-name"      : '_clearErrors',
-      "focus #js-rolling-message" : '_clearErrors',
-      "click .js-facebook-post"   : '_shareToFacebook'
+      "click .js-roll-it"                  : '_doRoll',
+      "focus #new-roll-name"               : '_clearErrors',
+      "focus #js-rolling-message"          : '_clearErrors',
+      "click .js-facebook-post"            : '_shareToFacebook',
+      "change .js-toggle-twitter-sharing"  : '_toggleCheckboxButton',
+      "change .js-toggle-facebook-sharing" : '_toggleCheckboxButton'
     },
 
     className : 'rolling-form',
@@ -117,30 +119,6 @@
       this.$('#js-rolling-message').removeClass('error');
     },
 
-    // create new roll, then proceed like normal
-    _createRollRerollFrameAndShare : function(){
-      var self = this;
-
-      var roll = new RollModel({
-        'title' : this.$("#new-roll-name").val(),
-        'public': true,
-        'collaborative': false});
-
-      roll.save(null, {
-        success : function(newRoll){
-          // add new roll to rolls collection, correctly sorted
-          BackboneCollectionUtils.insertAtSortedIndex(
-            newRoll,
-            shelby.models.rollFollowings.get('rolls'),
-            {searchOffset:  RollFollowingsConfig.numSpecialRolls,
-             sortAttribute: RollFollowingsConfig.sortAttribute,
-             sortDirection: RollFollowingsConfig.sortDirection});
-
-          //proceed with re-rolling and sharing
-          self._rerollFrameAndShare(newRoll);
-        }});
-    },
-
     _rerollFrameAndShare : function(roll){
       var self = this;
       var message = this.$("#js-rolling-message").val();
@@ -175,65 +153,31 @@
       }
     },
 
+    _toggleCheckboxButton : function(e) {
+
+      var $this = $(e.currentTarget),
+          network = $this.data('network');
+
+        $this.parent()
+                .toggleClass('button_gray',!$this.is(':checked'))
+                .toggleClass('button_'+network+'-blue',$this.is(':checked'));
+
+    },
+
     _rollingSuccess : function(roll, newFrame){
       this.parent.done();
-      //N.B. This link is picked up by NotificationOverlayView for routing
-      shelby.alert({
-        message: '<p>Video successfully rolled!</p>',
-        button_secondary: {
-          title: 'Go to Roll'
-          }
-        },
-        function(returnVal){
-          var rollId = newFrame.get('roll_id');
+      var msg = {
+        message          : '<p>Video successfully shared!</p>',
+        button_primer    : { title: 'Done' },
+        button_secondary : { title: 'Go to my Profile' }
+      };
 
-          if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonSecondary) {
-            shelby.router.navigate('roll/' + rollId, {trigger:true,replace:true});
-          }
+      shelby.alert(msg, function(returnVal){
+        var rollId = newFrame.get('roll_id');
+
+        if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonSecondary) {
+          shelby.router.navigate('roll/' + rollId, {trigger:true,replace:true});
         }
-      );
-    },
-
-    _addViaUrl : function(message, roll, shareDests) {
-      var self = this;
-      var newFrame = new libs.shelbyGT.FrameModel();
-      newFrame.save(
-        {url: this._frame.get('video').get('source_url'), text: message, source: 'webapp'},
-        {url: shelby.config.apiRoot + '/roll/'+roll.id+'/frames',
-        success: function(newFrame){
-          //rolling is done (don't need to wait for add message to complete)
-          self._rollingSuccess(roll, newFrame);
-          // Optional Sharing (happens in the background)
-          if (shareDests.length) {
-            self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
-              url : newFrame.shareUrl(),
-              success : function(){
-                shelby.track('shared_frame',{destination: shareDests.join(", ")});
-              }
-            });
-          }
-        },
-        error: function(a,b,c){
-          if (b.status == 404) { shelby.alert({message: "<p>404 error</p>"}); }
-          else { shelby.alert({message: "<p>sorry, something went wrong.</p>"}); }
-        }
-      });
-    },
-
-    _insertHashtag : function(e) {
-      e.preventDefault();
-      var $button = $(e.currentTarget);
-      var currentRollingMessage = this.$('#js-rolling-message').val();
-      var doPrependSpace = currentRollingMessage.length && !_(currentRollingMessage).endsWith(' ');
-      //insert the hashtag at the end of the currently entered rolling message
-      this.$('#js-rolling-message').insertText((doPrependSpace ? ' ' : '') + $button.val(), currentRollingMessage.length, true);
-      $button.addClass('button_green');
-
-      shelby.trackEx({
-        providers : ['ga'],
-        gaCategory : 'Rolling',
-        gaAction : 'click hashtag',
-        gaLabel : $button.val()
       });
     },
 

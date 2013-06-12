@@ -46,13 +46,13 @@
       </legend>
 
       <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--share <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %>">
-        <input id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
+        <input data-network="twitter" id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
         <span class="icon icon-twitter"></span>
         <span class="button_label">Twitter</span>
       </label>
 
       <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--share <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %>">
-        <input id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
+        <input data-network="facebook" id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
         <span class="icon icon-facebook"></span>
         <span class="button_label">Facebook</span>
       </label>
