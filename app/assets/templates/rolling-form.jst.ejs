@@ -1,27 +1,11 @@
-<%
-  var creator = frame.get('creator');
-  var creatorNickname = creator ? frame.get('creator').get('nickname') : '';
-  var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
-
-  var messageText;
-  if (!frame.get('isSearchResultFrame')) {
-    messageText = (creatorNickname) ? "&#x2794;@"+creatorNickname : '';
-    if(messages.length > 0){
-      messageText += ": "+messages.first().get('text');
-    }
-  } else {
-    messageText = '';
-  }
-%>
-
-<%=
-  SHELBYJST['media-module']({
+<% if (!user.isAnonymous()) { %>
+  <%=  SHELBYJST['media-module']({
     userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrl(user),
     userNickname : user.get('nickname') || '',
-    messageText  : messageText,
+    messageText  : '',
     subline      : false
-  })
-%>
+  }) %>
+<% } %>
 
 <%
   var active_networks = [];
@@ -38,9 +22,9 @@
 <div class="rolling-option">
   <% if (user.isAnonymous()) { %>
     <fieldset class="form_fieldset form_fieldset--social clearfix">
-      <p class="form_label">
-        Also Share to
-      </p>
+      <legend class="form_legend">
+        Share to
+      </legend>
 
       <a href="#" target="_blank" class="disabled button_primer button_command button_command--share button_twitter-blue js-tweet-share">
         <span class="icon icon-twitter"></span>
@@ -54,17 +38,17 @@
     </fieldset>
   <% } else { %>
     <fieldset class="form_fieldset form_fieldset--social clearfix">
-      <p class="form_label">
+      <legend class="form_legend">
         Also Share to
-      </p>
+      </legend>
 
-      <label for="share-on-twitter" class="button_primer button_command button_command--flexible<%= (twitter_enabled) ? ' button_twitter-blue' : ' button_gray' %>">
+      <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--flexible<%= (twitter_enabled) ? ' button_twitter-blue' : ' button_gray' %>">
         <input id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden" />
         <span class="icon icon-twitter"></span>
         <span class="button_label">Twitter</span>
       </label>
 
-      <label for="share-on-facebook" class="button_primer button_command button_command--flexible<%= (facebook_enabled) ? ' button_facebook-blue' : ' button_gray' %>">
+      <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--flexible<%= (facebook_enabled) ? ' button_facebook-blue' : ' button_gray' %>">
         <input id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden" />
         <span class="icon icon-facebook"></span>
         <span class="button_label">Facebook</span>
@@ -73,14 +57,20 @@
   <% } %>
 
 
-  <fieldset class="form_fieldset clearfix">
-    <button class="button_primer button_command button_command--wide button_green js-roll-it" type="submit" tabindex="0" onclick="return false;">
-      Roll It!
-    </button>
-    <button class="button_primer button_command button_command--flexible button_gray js-cancel">
-      Cancel
-    </button>
+  <fieldset class="form_fieldset form_fieldset--submit clearfix">
+    <% if (!user.isAnonymous()) { %>
+      <button class="button_primer button_command button_command--wide button_green js-roll-it" type="submit" tabindex="0" onclick="return false;">
+        Share
+      </button>
 
+      <button class="button_primer button_command button_command--flexible button_gray js-cancel">
+        Cancel
+      </button>
+    <% } else { %>
+      <button class="button_primer button_command button_command--flexible button_gray js-cancel">
+        Close
+      </button>
+    <% } %>
     <p class="form_label">
       Protip: Sharing improves videos recommended to you and your friends on Shelby.
     </p>

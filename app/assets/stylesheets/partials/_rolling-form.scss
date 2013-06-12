@@ -8,7 +8,6 @@
 //---------------------------
 .rolling-option {
   font-size: 1.2em;
-  padding-top: 4px;
   position: absolute;
   width: 100%;
 
@@ -18,56 +17,11 @@
       text-align: center;
     }
   }
-}
 
-//---------------------------
-//  interface elements for adding
-//  hashtags to the rolling message
-//---------------------------
-
-.hashtag-option {
-  margin-top: 10px;
-}
-
-.hashtag-option__legend {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 0;
-}
-
-.hashtag-option__list {
-  margin-top: 10px;
-}
-
-.hashtag-option__item {
-  float : left;
-  width : 50%;
-
-  &:nth-child(odd) {
-    text-align: left;
-  }
-
-  &:nth-child(even) {
-   text-align: right;
+  .form_fieldset--submit {
+    margin-top: 2em;
   }
 }
-
-.hashtag-option__button {
-  font-size: 1.2em;
-  font-weight: 700;
-  margin-bottom: 10px;
-  text-align :center;
-  width: 97%;
-}
-
-.hashtag-option__button--bottom {
-  margin-bottom: 8px;
-}
-
-//---------------------------
-//  twitter/facebook checkboxes,
-//  subclasses the share_module
-//---------------------------
 
 .share-option {
 	margin-top: 8px;

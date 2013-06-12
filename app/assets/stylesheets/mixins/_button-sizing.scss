@@ -57,11 +57,13 @@
     }
     .button_command--sub {
       font-size: $font-size-sub-button;
-      padding: 0.7em;
       width: 7.5em;
 
       .icon {
         margin-right: 2px;
+      }
+      .icon-twitter {
+        margin-left: -4px;
       }
     }
 
@@ -132,6 +134,8 @@
       width: 5.7em;
     }
     .button_command--share {
+      padding-left: 0;
+      padding-right: 0;
       width: 6.5em;
 
       .icon {
