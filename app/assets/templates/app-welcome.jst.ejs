@@ -5,10 +5,10 @@
     </h2>
 
     <h3 class="welcome-message__h2--plain">
-      <%= shelby.config.welcomeMessages[currentDisplayState].message %>
       <% if (shelby.models.user.isAnonymous()) { %>
-        <b><%= shelby.models.guide.get('currentRollModel').get('creator_nickname')  %></b>
+        <b><%= shelby.models.guide.get('currentRollModel').get('creator_name')  %></b>
       <% } %>
+      <%= shelby.config.welcomeMessages[currentDisplayState].message %>
     </h3>
 
     <div class="welcome-message__button-wrapper">

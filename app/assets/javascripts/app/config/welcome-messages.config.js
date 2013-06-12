@@ -16,7 +16,7 @@ shelby.config.welcomeMessages = {
   },
   loggetOutShares : {
     header: "Welcome to Shelby.tv",
-    message : "These are videos shared by ",
+    message : " uses Shelby to watch, share and discover amazing video.",
     button: "Play"
   }
 };
