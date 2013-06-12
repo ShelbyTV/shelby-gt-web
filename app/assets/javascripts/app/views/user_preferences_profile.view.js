@@ -42,7 +42,6 @@ libs.shelbyGT.UserPreferencesProfileView = libs.shelbyGT.UserPreferencesBaseView
   },
 
   initialize : function(){
-    console.log('/preferences/profile!');
   },
 
   _cleanup : function(){

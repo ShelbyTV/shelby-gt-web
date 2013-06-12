@@ -28,7 +28,6 @@ libs.shelbyGT.UserPreferencesNetworksView = libs.shelbyGT.UserPreferencesBaseVie
   },
 
   initialize : function(){
-    console.log('/preferences/networks!');
     this._preferences = this.model.get('preferences');
   },
 

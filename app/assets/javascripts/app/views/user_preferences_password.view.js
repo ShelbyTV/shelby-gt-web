@@ -20,7 +20,6 @@ libs.shelbyGT.UserPreferencesPasswordView = libs.shelbyGT.UserPreferencesBaseVie
   },
 
   initialize : function(){
-    console.log('/preferences/password!');
     this._preferences = this.model.get('preferences');
   },
 

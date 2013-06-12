@@ -14,12 +14,10 @@ libs.shelbyGT.UserPreferencesNotificationsView = libs.shelbyGT.UserPreferencesBa
   },
 
   render : function(){
-
     this.$el.html(this.template({preferences: this._preferences}));
   },
 
   initialize : function(){
-    console.log('/preferences/notficiations!');
     this._preferences = this.model.get('preferences');
   },
 
