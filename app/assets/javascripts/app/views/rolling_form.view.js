@@ -41,7 +41,19 @@
     render : function(){
       var self = this;
 
+      var enabledDestinations = shelby.config.share.services;
+      if (shelby.models.user.has('app_progress')) {
+        enabledDestinations = [];
+        var userAppProgress = shelby.models.user.get('app_progress');
+        _(shelby.config.share.services).each(function(service){
+          if (!_(userAppProgress.attributes).has('share_' + service + '_enabled') || userAppProgress.get('share_' + service + '_enabled')) {
+            enabledDestinations.push(service);
+          }
+        });
+      }
+
       this.$el.html(this.template({
+        enabledDestinations : enabledDestinations,
         frame : this._frame,
         roll : this._roll,
         rollOptions : {
@@ -125,8 +137,13 @@
       var self = this;
       var message = this.$("#js-rolling-message").val();
       var shareDests = [];
-      if(this.$("#share-on-twitter").is(':checked')){ shareDests.push('twitter'); }
-      if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
+      _(shelby.config.share.services).each(function(service){
+        var isServiceChecked = this.$(".js-toggle-" + service + "-sharing").is(':checked');
+        if(isServiceChecked){ shareDests.push(service); }
+        shelby.models.user.get('app_progress').set('share_' + service + '_enabled', isServiceChecked);
+      });
+
+      shelby.models.user.get('app_progress').saveMe();
 
       // if we are in a search result, add to roll via url
       if (shelby.models.guide.get('displayState') === "search") {
