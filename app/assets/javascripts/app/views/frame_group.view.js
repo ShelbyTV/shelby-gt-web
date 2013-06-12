@@ -16,8 +16,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   className : 'list__item',
 
   events : {
-    // "click .js-button_share--email"         : "requestFrameShareView",
-    // "click .js-button_share--embed"         : "_showEmbedCode",
     "click .js-creation-date"               : "_expand",
     "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
     "click .js-frame-activate"              : "_activate",
@@ -28,12 +26,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-remove-frame"                : "_onClickRemoveFrame",
     "click .js-roll-frame"                  : "requestFrameRollView",
-    "click .js-share-frame"                 : "requestFrameShareView",
-    // "click .js-share-menu"                  : "_toggleShareMenu",
-    "click .js-hide-share-menu"             : "_toggleShareMenu",
-    "click .js-share-to-facebook"           : "_shareToFacebook",
     "click .js-toggle-comment"              : "_toggleComment",
-    "click .js-video-activity-toggle"       : "_requestConversationView",
     "click .js-navigate-originator"         : "_navigateOriginator"
   },
 
@@ -228,13 +221,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     }
   },
 
-  requestFrameShareView: function(){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
-      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share,
-        this.model.getFirstFrame());
-    }
-  },
-
   requestFrameRollView : function(){
     this.options.guideOverlayModel.switchOrHideOverlay(
       libs.shelbyGT.GuideOverlayType.rolling,
@@ -250,7 +236,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     // immediately change the button state
     this.$('.js-queue-frame').addClass('queued');
     this.$('.js-queue-frame .label').text('Liked');
-    this.$('.js-queue-frame i').addClass('icon-like--red');
+    this.$('.js-queue-frame .icon').addClass('icon-like--red');
   },
 
   _onClickRemoveFrame : function(){
@@ -283,25 +269,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     // if user destroys the currently playing frame, kick on to the next one
     if (destroyingActiveFrame){
       Backbone.Events.trigger('playback:next');
-    }
-  },
-
-  _upvote : function(){
-    var self = this;
-    // check if they're already an upvoter
-    if ( !_.contains(this.model.getFirstFrame().get('upvoters'), shelby.models.user.id) ) {
-      this.model.getFirstFrame().upvote(function(f){
-        var upvoteUsers = self.model.getFirstFrame().get('upvote_users');
-        upvoteUsers.push(shelby.models.user.toJSON());
-        self.model.getFirstFrame().set({upvoters: f.get('upvoters'), upvote_users: upvoteUsers });
-      });
-    }
-  },
-
-  _requestConversationView : function(){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
-      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.conversation,
-        this.model.getFirstFrame());
     }
   },
 
@@ -352,76 +319,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     if (!$(e.target).is('a')) {
       $(e.currentTarget).toggleClass('line-clamp--open');
     }
-  },
-
-  _shareToFacebook : function(e){
-    var _id = $(e.currentTarget).parents('article').attr('id');
-    var _frame = this.model.getFirstFrame();
-    var _caption;
-    if (shelby.config.hostName) {
-      _caption = 'a video from '+shelby.config.hostname;
-    } else if (_frame.has('roll')) {
-      if (_frame.get('roll').has('subdomain')) {
-        _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
-      } else {
-        _caption = 'a video from shelby.tv';
-      }
-    }
-    else {
-      _caption = 'a video found with Shelby Video Search';
-    }
-    if (typeof FB != "undefined"){
-      FB.ui(
-        {
-          method: 'feed',
-          name: _frame.get('video').get('title'),
-          link: libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this.model),
-          picture: _frame.get('video').get('thumbnail_url'),
-          description: _frame.get('video').get('description'),
-          caption: _caption
-        },
-        function(response) {
-          if (response && response.post_id) {
-            // TODO:we should record that this happened.
-          }
-        }
-      );
-    }
-  },
-
-  _toggleShareMenu : function(e){
-    var $this = this.$('.js-share-menu'),
-        $frame = $this.closest('.list__item'),
-        block = $this.siblings('.js-share-menu-block'),
-        blockHasClass = block.hasClass('hidden');
-    // if we're opening the menu and we don't have the shortlink
-    // yet, we need to get it now
-    if (blockHasClass && !this._currentFrameShortlink) {
-      this._getFrameShortlink();
-    }
-
-    //  toggle the "button pressed" state
-    $this.toggleClass('button_active',blockHasClass);
-
-    //  toggle z-index so share menu is always on top.
-    //  pretty hacky; share menu should be a modal pop-up.
-    $frame.toggleClass('list__item--float',blockHasClass);
-
-    //  show/hide the panel
-    block.toggleClass('hidden',!blockHasClass);
-
-    // if we open the menu and we already have the shortlink,
-    // highlight it
-    if (blockHasClass && this._currentFrameShortlink) {
-      this.$('.js-frame-shortlink').select();
-    }
-
-  },
-
-  _showEmbedCode : function() {
-    this.$('.js-share-embed-item')
-      .html(SHELBYJST['embed-input']({frame : this.model.get('frames').at(0)}))
-      .addClass('nudge').find('.js-input-select-on-focus').select();
   },
 
   _getFrameShortlink : function() {
