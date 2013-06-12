@@ -170,6 +170,23 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles shares view when visited directly (allowing logged-out users to see it)
+  #
+  # GET /:user_name/shares(/:frame_id)
+  #
+  def shares
+    user_name = params[:user_name]
+    user = Shelby::API.get_user(user_name)
+    if user
+      @user = user
+      @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
+    end
+    @frame = Shelby::API.get_frame(params[:frame_id], true) if params[:frame_id]
+
+    render '/home/app'
+  end
+
+  ##
   # Handles "make the web" (allowing logged-out users to see it)
   #
   # GET /experience/:url

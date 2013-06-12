@@ -59,6 +59,9 @@ ShelbyGtWeb::Application.routes.draw do
   #STATS
   get '/user/:user_id/stats' => "home#stats"
 
+  #SHARES
+  get '/:user_name/shares(/:frame_id)' => "home#shares"
+
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'
   get '/embed/:frame_id' => 'turbo_embed#embed'
