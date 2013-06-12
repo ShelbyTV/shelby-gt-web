@@ -21,4 +21,12 @@
   .form_fieldset--submit {
     margin-top: 2em;
   }
+
+  //this entire --protip mod is hacky as shit.
+  .form_label--protip {
+    color: #666;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-top: 1.5em;
+  }
 }

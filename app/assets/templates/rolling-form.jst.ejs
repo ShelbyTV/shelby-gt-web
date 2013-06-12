@@ -63,22 +63,21 @@
     </fieldset>
   <% } %>
 
-
   <fieldset class="form_fieldset form_fieldset--submit clearfix">
     <% if (userLoggedIn) { %>
       <button class="button_primer button_command button_command--wide button_green js-share-it" type="submit" tabindex="0" onclick="return false;">
         Share
       </button>
 
-      <button class="button_primer button_command button_command--flexible button_gray js-cancel">
+      <button class="button_primer button_command button_command--flexible button_command--sub button_command--cancel button_gray js-cancel">
         Cancel
       </button>
 
-      <p class="form_label">
+      <p class="form_label--protip">
         Protip: Sharing improves videos recommended to you and your friends on Shelby.
       </p>
     <% } else { %>
-      <button class="button_primer button_command button_command--flexible button_gray js-cancel">
+      <button class="button_primer button_command button_command--flexible button_command--cancel button_gray js-cancel">
         Close
       </button>
     <% } %>
