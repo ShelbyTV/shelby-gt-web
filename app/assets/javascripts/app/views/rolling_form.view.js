@@ -22,7 +22,8 @@
     events : {
       "click .js-roll-it"         : '_doRoll',
       "focus #new-roll-name"      : '_clearErrors',
-      "focus #js-rolling-message" : '_clearErrors'
+      "focus #js-rolling-message" : '_clearErrors',
+      "click .js-facebook-post"   : '_shareToFacebook'
     },
 
     className : 'rolling-form',
@@ -35,12 +36,13 @@
       this._frameRollingState = new ShareActionStateModel();
       this._roll = this.options.roll;
       this._frame = this.options.frame;
+      this._video = this.options.frame.get('video');
 
-      this._frame.bind('change:shortlink',this.render,this);
+      this._frame.bind('change:shortlink',this._onShortlinkUpdate,this);
     },
 
     _cleanup : function() {
-      this._frame.unbind('change:shortlink',this.render,this);
+      this._frame.unbind('change:shortlink',this._onShortlinkUpdate,this);
     },
 
     render : function(){
@@ -48,7 +50,7 @@
 
       this.$el.html(this.template({
         frame : this._frame,
-        video : this._frame.get('video'),
+        video : this._video,
         roll : this._roll,
         rollOptions : {
           pathForDisplay : RollViewHelpers.pathForDisplay(this._roll),
@@ -216,12 +218,72 @@
         gaAction : 'click hashtag',
         gaLabel : $button.val()
       });
-    }//,
+    },
 
-    // _updateShortlink : function(e){
-    //   this.render();
-    //   console.log('change to shortlink',this._frame.get('shortlink'));
-    // }
+    _buildTweetUrl : function(shortlink) {
+      if (!shortlink) {
+        var msg = {
+          message          : '<p>Oops! There was an error generating the shortlink. Please refresh your browser and try again.</p>',
+          button_primary   : { title: 'Refresh' },
+          button_secondary : { title: 'Dismiss' }
+        };
+
+        shelby.alert(msg, function(returnVal){
+          if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary){
+            window.location.reload(true);
+          }
+        });
+      }
+
+      var tweetText = encodeURIComponent(this._video.get('title')),
+          tweetUrl  = shortlink;
+
+      var url = 'https://twitter.com/intent/tweet?related=shelby&via=shelby&url=' + tweetUrl + '&text=' + tweetText + '';
+
+      return url;
+    },
+
+    _shareToFacebook : function(e){
+      e.preventDefault();
+
+      if($(e.currentTarget).hasClass('disabled')){
+        return;
+      }
+
+      var
+        shortlink        = this._frame.get('shortlink'),
+        text             = 'Shelby.tv',
+        videoDescription = this._video.get('description'),
+        videoTitle       = this._video.get('title'),
+        videoThumbnail   = this._video.get('thumbnail_url');
+
+
+      if (typeof FB != "undefined"){
+        FB.ui(
+          {
+            caption     : text,
+            description : videoDescription,
+            link        : shortlink,
+            method      : 'feed',
+            name        : videoTitle,
+            picture     : videoThumbnail
+          },
+          function(response) {
+            if (response && response.post_id) {
+              // TODO:we should record that this happened.
+            }
+          }
+        );
+      }
+    },
+
+    _onShortlinkUpdate : function(e){
+      var shortlink    = this._frame.get('shortlink'),
+          twitterHref  = this._buildTweetUrl(shortlink);
+
+      this.$el.find('.js-tweet-share').removeClass('disabled').attr('href',twitterHref);
+      this.$el.find('.js-facebook-post').removeClass('disabled');
+    }
 
   });
 

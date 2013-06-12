@@ -36,21 +36,18 @@
 %>
 
 <div class="rolling-option">
-
   <% if (user.isAnonymous()) { %>
     <fieldset class="form_fieldset form_fieldset--social clearfix">
       <p class="form_label">
         Also Share to
       </p>
 
-      <% console.log('shortlinkzz',frame.get('shortlink')) %>
-
-      <a href="http://twitter.com/share?url=&amp;text=&amp;related=shelby&amp;via=shelby" target="_blank" class="button_primer button_command button_command--share button_twitter-blue">
+      <a href="#" target="_blank" class="disabled button_primer button_command button_command--share button_twitter-blue js-tweet-share">
         <span class="icon icon-twitter"></span>
         <span class="button_label">Twitter</span>
       </a>
 
-      <a href="" class="button_primer button_command button_command--share button_facebook-blue">
+      <a href="#" class="disabled button_primer button_command button_command--share button_facebook-blue js-facebook-post">
         <span class="icon icon-facebook"></span>
         <span class="button_label">Facebook</span>
       </a>
