@@ -8,11 +8,13 @@ ShelbyGtWeb::Application.routes.draw do
 
   #######################XXX###############################
   # For development, take me out when mobile is more stable
-  get '/m' => 'mobile#search', :as => :mobile_search
-  get '/m/roll/:id' => 'mobile#roll', :as => :mobile_roll
-  constraints(:subdomain => 'm.localhost') do
-    get '/' => 'mobile#search', :as => :mobile_search # to show mobile search as shelby.tv ?
-    get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
+  if Rails.env.development?
+    get '/m' => 'mobile#search', :as => :mobile_search
+    get '/m/roll/:id' => 'mobile#roll', :as => :mobile_roll
+    constraints(:subdomain => 'm.localhost') do
+      get '/' => 'mobile#search', :as => :mobile_search # to show mobile search as shelby.tv ?
+      get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
+    end
   end
   #######################XXX###############################
 
@@ -55,6 +57,9 @@ ShelbyGtWeb::Application.routes.draw do
 
   #STATS
   get '/user/:user_id/stats' => "home#stats"
+
+  #SHARES
+  get '/:user_name/shares(/:frame_id)' => "home#shares"
 
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'
