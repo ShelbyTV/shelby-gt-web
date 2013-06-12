@@ -162,7 +162,13 @@
     }
 
     .shelf--slogan {
+      background: transparent;
+      border: none;
       text-align: center;
+
+      .shelf__lining {
+        padding: 0em;
+      }
 
       .shelf__h2 {
         margin-top: 1em;
@@ -262,7 +268,11 @@
   line-height: 1.5;
 }
 
-
+.shelf__link {
+  &:hover {
+    text-decoration: underline;
+  }
+}
 ////////////////////////////////////////
 //the footer isn't actually a shelf
 .shelby__foot {
