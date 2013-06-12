@@ -3,16 +3,15 @@
 <% var videoTitle = video.get('title') %>
 <% var videoThumbnail = video.get('thumbnail_url') %>
 <article id="<%= videoId %>" class="explore-frame clearfix transparent">
-  <ul class="list list--inline frame-menu" role="menubar">
-    <% if (!shelby.models.user.isAnonymous()) { %>
-      <li class="list__item" role="menuitem">
-        <button class="button_primer button_gray button_command button_command--roll js-roll-command js-track-event" data-ga_category="User Profile" data-ga_action="Click to roll frame" data-ga_label="<%= videoTitle %>">
-          <span class="icon icon-roll"></span>
-            Roll…
-        </button>
-      </li>
-    <% } %>
-    <li class="list__item" role="menuitem">
+  <ul class="menu_list frame-command-menu xframe-list" role="menubar">
+    <li class="menu_item" role="menuitem">
+      <button class="button_primer button_gray button_command button_command--roll js-roll-command js-track-event" data-ga_category="User Profile" data-ga_action="Click to roll frame" data-ga_label="<%= videoTitle %>">
+        <span class="icon icon-roll"></span>
+        <span class="button_label">Share…</span>
+      </button>
+    </li>
+
+    <li class="menu_item" role="menuitem">
       <button class="button_primer button_gray button_command button_command--like js-queue-command js-track-event" data-ga_category="User Profile" data-ga_action="Click to like frame" data-ga_label="<%= videoTitle %>">
         <span class="icon icon-like js-command-icon"></span>
         <span class="label">Like</span>

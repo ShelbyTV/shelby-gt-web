@@ -1,113 +1,24 @@
 /*
 	Styles the form in step 2/2 when rolling
 */
-//---------------------------
-//  submit button subclasses share_submit
-//---------------------------
-
-.rolling-submit {
-  font-size: 16px;
-  float: right;
-}
 
 //---------------------------
 //  wrapper for all UI below the
 //  video card and rolling message
 //---------------------------
 .rolling-option {
-  padding-top: 4px;
+  font-size: 1.2em;
   position: absolute;
   width: 100%;
-}
 
-//---------------------------
-//  interface elements for adding
-//  hashtags to the rolling message
-//---------------------------
-
-.hashtag-option {
-  margin-top: 10px;
-}
-
-.hashtag-option__legend {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin: 0;
-}
-
-.hashtag-option__list {
-  margin-top: 10px;
-}
-
-.hashtag-option__item {
-  float : left;
-  width : 50%;
-
-  &:nth-child(odd) {
-    text-align: left;
+  .form_fieldset--social {
+    //soon to be obsolete
+    .button_primer {
+      text-align: center;
+    }
   }
 
-  &:nth-child(even) {
-   text-align: right;
-  }
-}
-
-.hashtag-option__button {
-  font-size: 1.2em;
-  font-weight: 700;
-  margin-bottom: 10px;
-  text-align :center;
-  width: 97%;
-}
-
-.hashtag-option__button--bottom {
-  margin-bottom: 8px;
-}
-
-//---------------------------
-//  twitter/facebook checkboxes,
-//  subclasses the share_module
-//---------------------------
-
-.share-option {
-	margin-top: 8px;
-}
-
-.share-option-twitter,
-.share-option-facebook {
-  margin-right: 5px;
-}
-
-.share-button-twitter,
-.share-button-facebook {
-  background-position: center center;
-  background-repeat: no-repeat;
-  border: 1px solid $inset !important;
-  border-radius: $radius;
-}
-
-.share-button-twitter {
-  background-image: url($icon-share-twitter-off);
-  background-size: contain;
-}
-
-.share-button-facebook {
-  background-image: url($icon-share-facebook-off);
-  background-size: contain;
-}
-
-.share-option-twitter:checked {
-  & ~ .share-button-twitter {
-    background-color: $twitter-blue;
-    background-image: url($icon-share-twitter-on);
-    border-color: adjust-lightness($twitter-blue, -20%) !important;
-  }
-}
-
-.share-option-facebook:checked {
-  & ~ .share-button-facebook {
-    background-color: $facebook-blue;
-    background-image: url($icon-share-facebook-on);
-    border-color: adjust-lightness($facebook-blue, -15%) !important;
+  .form_fieldset--submit {
+    margin-top: 2em;
   }
 }

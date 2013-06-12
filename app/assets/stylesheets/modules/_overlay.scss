@@ -10,7 +10,10 @@
 }
 
 .guide-overlay__title {
-  padding-top: 1em;
+  @include ellipsis;
+
+  padding: 0.5em;
+  line-height: 1.7;
 }
     //modifiers
     .guide-overlay__title--inline {
@@ -50,5 +53,14 @@
   position: absolute;
   overflow-y: auto;
   top: $overlay_header_height;
+  width: 100%;
+}
+
+.guide-overlay__foot {
+  bottom: 0;
+  font-size: 1.2em;
+  left: 0;
+  position: absolute;
+  padding: 8px;
   width: 100%;
 }

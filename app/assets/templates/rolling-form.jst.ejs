@@ -1,27 +1,11 @@
-<%
-  var creator = frame.get('creator');
-  var creatorNickname = creator ? frame.get('creator').get('nickname') : '';
-  var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
-
-  var messageText;
-  if (!frame.get('isSearchResultFrame')) {
-    messageText = (creatorNickname) ? "&#x2794;@"+creatorNickname : '';
-    if(messages.length > 0){
-      messageText += ": "+messages.first().get('text');
-    }
-  } else {
-    messageText = '';
-  }
-%>
-
-<%=
-  SHELBYJST['media-module']({
+<% if (!user.isAnonymous()) { %>
+  <%=  SHELBYJST['media-module']({
     userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrl(user),
     userNickname : user.get('nickname') || '',
-    messageText  : messageText,
+    messageText  : '',
     subline      : false
-  })
-%>
+  }) %>
+<% } %>
 
 <%
   var active_networks = [];
@@ -39,23 +23,60 @@
 %>
 
 <div class="rolling-option">
-  <fieldset class="share_module share-option">
-    <% if(twitter_enabled) { %>
-      <label class="share_label" for="share-on-twitter" title="Share to Twitter">
-        <input id="share-on-twitter" class="share_input share-option-twitter visuallyhidden js-toggle-twitter-sharing" name="share-option-twitter" type="checkbox" <%= twitter_checked ? 'checked="true" ' : '' %>/>
-        <span class="ir share_label_icon share-button-twitter">Share to Twitter</span>
-      </label>
-    <% } %>
+  <% if (user.isAnonymous()) { %>
+    <fieldset class="form_fieldset form_fieldset--social clearfix">
+      <legend class="form_legend">
+        Share to
+      </legend>
 
-    <% if(facebook_enabled) { %>
-      <label class="share_label" for="share-on-facebook" title="Share to Facebook">
-        <input id="share-on-facebook" class="share_input share-option-facebook visuallyhidden js-toggle-facebook-sharing" name="share-option-facebook" type="checkbox" <%= facebook_checked ? 'checked="true" ' : '' %>/>
-        <span class="ir share_label_icon share-button-facebook">Share to Facebook</span>
-      </label>
-    <% } %>
+      <a href="#" target="_blank" class="disabled button_primer button_command button_command--share button_twitter-blue js-tweet-share">
+        <span class="icon icon-twitter"></span>
+        <span class="button_label">Twitter</span>
+      </a>
 
-    <button id="js-roll-it" class="button_primer button_command button_command--wide button_green rolling-submit" type="submit" tabindex="0" onclick="return false;">
-      Roll It!
-    </button>
+      <a href="#" class="disabled button_primer button_command button_command--share button_facebook-blue js-facebook-post">
+        <span class="icon icon-facebook"></span>
+        <span class="button_label">Facebook</span>
+      </a>
+    </fieldset>
+  <% } else { %>
+    <fieldset class="form_fieldset form_fieldset--social clearfix">
+      <legend class="form_legend">
+        Also Share to
+      </legend>
+
+      <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--share <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %>">
+        <input data-network="twitter" id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
+        <span class="icon icon-twitter"></span>
+        <span class="button_label">Twitter</span>
+      </label>
+
+      <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--share <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %>">
+        <input data-network="facebook" id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
+        <span class="icon icon-facebook"></span>
+        <span class="button_label">Facebook</span>
+      </label>
+    </fieldset>
+  <% } %>
+
+
+  <fieldset class="form_fieldset form_fieldset--submit clearfix">
+    <% if (!user.isAnonymous()) { %>
+      <button class="button_primer button_command button_command--wide button_green js-share-it" type="submit" tabindex="0" onclick="return false;">
+        Share
+      </button>
+
+      <button class="button_primer button_command button_command--flexible button_gray js-cancel">
+        Cancel
+      </button>
+
+      <p class="form_label">
+        Protip: Sharing improves videos recommended to you and your friends on Shelby.
+      </p>
+    <% } else { %>
+      <button class="button_primer button_command button_command--flexible button_gray js-cancel">
+        Close
+      </button>
+    <% } %>
   </fieldset>
 </div>

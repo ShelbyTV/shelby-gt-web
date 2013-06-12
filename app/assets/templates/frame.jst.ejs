@@ -30,87 +30,35 @@
 
   <div class="frame-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
     <div class="frame-body">
-        <ul class="list list--inline frame-menu" role="menubar">
-          <% if (!user.isAnonymous()) { %>
-            <li class="list__item" role="menuitem">
-              <button class="button_primer button_green button_command button_command--roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
-                <span class="icon icon-roll"></span>Roll…
-              </button>
-            </li>
-          <% } %>
+      <ul class="list list--inline frame-menu" role="menubar">
+        <li class="list__item" role="menuitem">
+          <button class="button_primer button_green button_command button_command--roll js-share-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
+            <span class="icon icon-roll"></span>Share…
+          </button>
+        </li>
 
-          <li class="list__item" role="menuitem">
-            <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
-              <button class="button_primer button_gray button_command button_command--like js-queue-frame
-                             <%= (videoIsInQueue) ? ' queued' : ' button_gray' %>">
-                <span class="icon icon-like<%= videoIsInQueue ? ' icon-like--red': '' %>"></span><span class="label"><%= (videoIsInQueue ) ? 'Liked' : 'Like' %></span>
-              </button>
-            <% } else { %>
-              <button class="button_primer button_gray button_command button_command--remove js-queue-frame remove-frame js-remove-frame queued">
-                <span class="label">Remove</span>
-              </button>
-            <% } %>
-          </li>
-
-          <li class="list__item" role="menuitem">
-            <button class="button_primer button_gray button_command button_command--share js-share-menu">
-              <span class="icon icon-share"></span>Share…
+        <li class="list__item" role="menuitem">
+          <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
+            <button class="button_primer button_gray button_command button_command--like js-queue-frame
+                           <%= (videoIsInQueue) ? ' queued' : ' button_gray' %>">
+              <span class="icon icon-like<%= videoIsInQueue ? ' icon-like--red': '' %>"></span><span class="label"><%= (videoIsInQueue ) ? 'Liked' : 'Like' %></span>
             </button>
-
-            <div class="share_menu frame-body-wrapper js-share-menu-block hidden">
-              <ul class="list">
-                <li class="list__item">
-                  <% if (user.isAnonymous()) { %>
-                    <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= encodeURIComponent(anonUserShareEmailBody) %>">
-                  <% } %>
-                    <button class="button_primer button_gray button_command button_command--sub button_command--email js-hide-share-menu js-track-event<%= !user.isAnonymous() ? ' js-button_share--email' : ''%>" data-ga_category="Frame" data-ga_action="Share frame via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                      <span class="icon icon-email"></span>
-                      Email
-                    </button>
-                  <% if (user.isAnonymous()) { %>
-                    </a>
-                  <% } %>
-                </li>
-                <% if (user.isAnonymous()) { %>
-                  <li class="list__item">
-                    <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
-                      <button class="button_primer button_gray button_command button_command--sub button_command--twitter js-hide-share-menu js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                        <span class="icon icon-twitter"></span>Twitter
-                      </button>
-                    </a>
-                  </li>
-                <li class="list__item">
-                  <button class="button_primer button_gray button_command button_command--sub button_command--facebook js-share-to-facebook js-hide-share-menu js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                    <span class="icon icon-facebook"></span>Facebook
-                  </button>
-                </li>
-                <% } %>
-                <% if (!currentFrame.get('isSearchResultFrame')) { %>
-                  <li class="list__item js-share-embed-item clearfix">
-                    <button class="button_primer button_gray button_command button_command--sub button_command--embed js-button_share--embed js-track-event" data-ga_category="Frame" data-ga_action="Get embed code" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                      <span class="icon icon-embed"></span>Embed
-                    </button>
-                  </li>
-                  <li class="list__item nudge">
-                    <span class="share_menu__faux-button clearfix">
-                      <span class="icon icon-shortlink"></span>
-                      <input type="text" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
-                    </span>
-                  </li>
-                <% } %>
-              </ul>
-            </div><!-- eo share_menu -->
-          </li>
-
-          <% if (shelby.models.user.get('admin')) { %>
-            <li class="list__item" role="menuitem">
-              <button class="button_primer button_red button_command button_command--cancel js-remove-frame">
-                <span class="icon icon-close"></span>
-              </button>
-            </li>
+          <% } else { %>
+            <button class="button_primer button_gray button_command button_command--remove js-queue-frame remove-frame js-remove-frame queued">
+              <span class="label">Remove</span>
+            </button>
           <% } %>
+        </li>
 
-        </ul><!-- eo frame-menu -->
+        <% if (shelby.models.user.get('admin')) { %>
+          <li class="list__item right" role="menuitem">
+            <button class="button_primer button_red button_command button_command--cancel js-remove-frame">
+              <span class="icon icon-close"></span>
+            </button>
+          </li>
+        <% } %>
+
+      </ul><!-- eo frame-menu -->
 
       <!-- TODO: should maybe use the thumbnail module JST -->
       <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %> js-track-event" data-ga_category="Frame" data-ga_action="Click frame to play" data-ga_label="<%= shelby.models.user.get('nickname') %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
