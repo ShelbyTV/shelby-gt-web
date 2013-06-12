@@ -16,11 +16,13 @@
 
   .dropdown_lining {
     background-color: $ui-white;
-    box-shadow: 0px 0px 5px 0px black;
+    border: 1px solid #adadad;
     text-align: left;
     width: 300px;
   }
 }
+
+
 
 .settings-section {
   font-size: $font-size-text;
@@ -33,7 +35,7 @@
   }
   .dropdown_lining {
     background-color: $ui-white;
-    box-shadow: 0px 0px 5px 0px black;
+    border: 1px solid #adadad;
     padding: 5px;
     text-align: left;
     width: 20em;

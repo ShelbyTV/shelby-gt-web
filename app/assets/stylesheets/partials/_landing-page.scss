@@ -39,8 +39,8 @@
   padding-top: 2em;
 
   .fin:before {
-    border-top: 1px solid $inset;
-    border-left: 1px solid $inset;
+    border-top: 1px solid #adadad;
+    border-left: 1px solid #adadad;
   }
 }
 
@@ -82,6 +82,10 @@
         padding: 0.25em 1em;
       }
 
+      .shelf__button--cta {
+        vertical-align: -2px;
+      }
+
       //non-normative overrides
       .app_nav__button {
         font-size: inherit;
@@ -93,12 +97,12 @@
       text-align: center;
 
       .shelf__lining {
-        padding-top: 4em;
+        padding-top: 3em;
         font-size: 1.1em;
       }
 
       .shelf__button {
-        margin: 2em auto;
+        margin: 1.5em auto 0;
       }
 
       .shelf__img {
@@ -158,6 +162,9 @@
 
       .shelf__h2 {
         margin-top: 1em;
+      }
+      .shelf__button--cta {
+        margin-left: 10px;
       }
     }
 
