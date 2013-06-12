@@ -45,6 +45,9 @@
       // vertical-align: -0.15em;
     }
   }
+  & + .button_command--cancel {
+    margin-left: 5px;
+  }
 }
     //button set
     .button_command--flexible {
@@ -69,7 +72,10 @@
     .button_command--large {
       font-size: $font-size-large-button;
     }
-    .button_command--cancel {}
+    .button_command--cancel {
+      padding: 0.65em;
+      vertical-align: top;
+    }
     .button_command--email {}
     .button_command--embed {
       .icon-embed {

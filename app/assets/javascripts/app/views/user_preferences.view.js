@@ -43,7 +43,6 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     //re-render (aka update menu as per selected section)
     this.render(section);
 
-
     //all the children views inherit the same data
     var viewData = {
       model: this.model
@@ -63,8 +62,8 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
       case 'notifications':
         this.renderChildInto(new libs.shelbyGT.UserPreferencesNotificationsView(viewData),this._container);
         break;
-      case 'goodies':
-        this.renderChildInto(new libs.shelbyGT.UserPreferencesGoodiesView(viewData),this._container);
+      default:
+        shelby.router.navigate('/preferences/profile',{trigger:true});
         break;
     }
   },

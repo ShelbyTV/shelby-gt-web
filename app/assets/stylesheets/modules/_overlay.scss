@@ -22,8 +22,8 @@
 
 //architectural
 .guide-overlay__head {
-  height: $overlay_header_height;
   border-bottom: 1px solid $inset;
+  height: $overlay_header_height;
 
   .button_icon-only {
     float: left;
@@ -33,7 +33,6 @@
 }
 
 .guide-overlay__body {
-  border-top: 1px solid $outset;
   bottom: 0;
   position: absolute;
   overflow-y: auto;
@@ -43,9 +42,13 @@
 
 .guide-overlay__foot {
   bottom: 0;
+  border-top: 1px solid $inset;
   font-size: 1.2em;
   left: 0;
   position: absolute;
-  padding: 8px;
   width: 100%;
+
+  .guide-overlay__lining {
+    margin: 8px;
+  }
 }
