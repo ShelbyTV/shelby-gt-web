@@ -25,7 +25,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-hashtag-link"                : '_followHashtagLink',
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-remove-frame"                : "_onClickRemoveFrame",
-    "click .js-roll-frame"                  : "requestFrameRollView",
+    "click .js-share-frame"                 : "requestShareFrame",
     "click .js-toggle-comment"              : "_toggleComment",
     "click .js-navigate-originator"         : "_navigateOriginator"
   },
@@ -221,7 +221,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     }
   },
 
-  requestFrameRollView : function(){
+  requestShareFrame : function(){
     this.options.guideOverlayModel.switchOrHideOverlay(
       libs.shelbyGT.GuideOverlayType.rolling,
       this.model.getFirstFrame()

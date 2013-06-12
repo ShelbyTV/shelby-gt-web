@@ -20,9 +20,8 @@
   libs.shelbyGT.RollingFormView = Support.CompositeView.extend({
 
     events : {
-      "click .js-roll-it"                  : '_doRoll',
-      "focus #new-roll-name"               : '_clearErrors',
-      "focus #js-rolling-message"          : '_clearErrors',
+      "click .js-share-it"                  : '_doShare',
+      "focus #js-sharing-message"          : '_clearErrors',
       "click .js-facebook-post"            : '_shareToFacebook',
       "change .js-toggle-twitter-sharing"  : '_toggleCheckboxButton',
       "change .js-toggle-facebook-sharing" : '_toggleCheckboxButton'
@@ -76,7 +75,7 @@
       }));
 
       this._shelbyAutocompleteView = new ShelbyAutocompleteView({
-        el : this.$('#js-rolling-message')[0],
+        el : this.$('#js-sharing-message')[0],
         includeSources : ['shelby', 'twitter', 'facebook'],
         multiTerm : true,
         multiTermMethod : 'paragraph',
@@ -85,13 +84,15 @@
         }
       });
       this.renderChild(this._shelbyAutocompleteView);
+
+      this._onShortlinkUpdate();
     },
 
     setRoll: function(roll){
       this._roll = roll;
     },
 
-    _doRoll : function(e){
+    _doShare : function(e){
       e.preventDefault();
 
       if(!this._validate()){ return; }
@@ -105,9 +106,9 @@
     _validate : function(){
       validates = true;
 
-      if( this.$("#js-rolling-message").val().length < 1 ){
+      if( this.$("#js-sharing-message").val().length < 1 ){
         shelby.alert({message: "<p>Please enter a comment</p>"});
-        this.$('#js-rolling-message').addClass('error');
+        this.$('#js-sharing-message').addClass('error');
         validates = false;
       }
 
@@ -116,12 +117,12 @@
 
     _clearErrors : function(){
       // this.$('#new-roll-name').removeClass('error');
-      this.$('#js-rolling-message').removeClass('error');
+      this.$('#js-sharing-message').removeClass('error');
     },
 
     _rerollFrameAndShare : function(roll){
       var self = this;
-      var message = this.$("#js-rolling-message").val();
+      var message = this.$("#js-sharing-message").val();
       var shareDests = [];
       _(shelby.config.share.services).each(function(service){
         var isServiceChecked = this.$(".js-toggle-" + service + "-sharing").is(':checked');
@@ -154,18 +155,17 @@
     },
 
     _toggleCheckboxButton : function(e) {
-
       var $this = $(e.currentTarget),
           network = $this.data('network');
 
-        $this.parent()
-                .toggleClass('button_gray',!$this.is(':checked'))
-                .toggleClass('button_'+network+'-blue',$this.is(':checked'));
-
+      $this.parent()
+              .toggleClass('button_gray',!$this.is(':checked'))
+              .toggleClass('button_'+network+'-blue',$this.is(':checked'));
     },
 
     _rollingSuccess : function(roll, newFrame){
       this.parent.done();
+
       var msg = {
         message          : '<p>Video successfully shared!</p>',
         button_primer    : { title: 'Done' },
@@ -238,12 +238,17 @@
       }
     },
 
-    _onShortlinkUpdate : function(e){
-      var shortlink    = this._frame.get('shortlink'),
-          twitterHref  = this._buildTweetUrl(shortlink);
+    _onShortlinkUpdate : function(){
+      var shortlink = this._frame.get('shortlink');
 
-      this.$el.find('.js-tweet-share').removeClass('disabled').attr('href',twitterHref);
-      this.$el.find('.js-facebook-post').removeClass('disabled');
+      if(shortlink){
+        //this is called in this.render(), as well as change:shortlink on the frame
+        //because the pvi share button and frame button can call it separately
+        var twitterHref  = this._buildTweetUrl(shortlink);
+
+        this.$el.find('.js-tweet-share').removeClass('disabled').attr('href',twitterHref);
+        this.$el.find('.js-facebook-post').removeClass('disabled');
+      }
     }
 
   });

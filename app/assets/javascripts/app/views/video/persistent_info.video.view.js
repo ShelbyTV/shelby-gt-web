@@ -170,9 +170,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _requestFrameRollView : function(frame){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
-      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling, frame);
-    }
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling, frame);
   },
 
   _requestCurrentFrameShareView : function(){

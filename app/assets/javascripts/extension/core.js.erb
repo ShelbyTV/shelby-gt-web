@@ -726,10 +726,10 @@ window.shelbyBookmarklet = {
               var submitButton = shelbyJ("#js-roll-it");
               submitButton.off('click');
               submitButton.on('click', null, null, function (event) {
-                var message = shelbyJ("#js-rolling-message").val();
+                var message = shelbyJ("#js-sharing-message").val();
                 if (!message || message.length === 0) {
                   utilObject.htmlTemplate.notifyMessage("Please enter a comment");
-                  shelbyJ('#js-rolling-message').addClass('form_textarea--error');
+                  shelbyJ('#js-sharing-message').addClass('form_textarea--error');
                   return;
                 }
 
