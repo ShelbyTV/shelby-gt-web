@@ -6,23 +6,8 @@
 .guide-overlay__h1 {
   @include ellipsis;
 
-  padding: 0.8em;
+  padding: 0.8em 0.5em;
 }
-
-.guide-overlay__title {
-  @include ellipsis;
-
-  padding: 0.5em;
-  line-height: 1.7;
-}
-    //modifiers
-    .guide-overlay__title--inline {
-      display: inline;
-      font-size: 1.2em;
-      font-weight: normal;
-      line-height: 3.75;
-      padding-left: 0.25em;
-    }
 
 .guide-overlay__list {
   //non-normative

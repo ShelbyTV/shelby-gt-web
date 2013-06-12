@@ -70,7 +70,8 @@
           titleWithoutPath : RollViewHelpers.titleWithoutPath(this._roll),
           urlForRoll : RollViewHelpers.urlForRoll(this._roll)
         },
-        user : shelby.models.user
+        user : shelby.models.user,
+        userLoggedIn : !shelby.models.user.isAnonymous()
       }));
 
       this._shelbyAutocompleteView = new ShelbyAutocompleteView({

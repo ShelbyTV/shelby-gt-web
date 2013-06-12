@@ -33,10 +33,11 @@
 
     render : function(){
       this.$el.html(this.template({
-        currentFrameShortlink: this._currentFrameShortlink,
-        frame      : this.model,
-        frameVideo : this.model.get('video'),
-        user       : shelby.models.user
+        currentFrameShortlink : this._currentFrameShortlink,
+        frame                 : this.model,
+        frameVideo            : this.model.get('video'),
+        user                  : shelby.models.user,
+        userLoggedIn          : !shelby.models.user.isAnonymous()
       }));
 
       // rolling details (personal roll as default)

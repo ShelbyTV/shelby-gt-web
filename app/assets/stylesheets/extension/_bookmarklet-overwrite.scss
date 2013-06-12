@@ -17,6 +17,11 @@ button {
   text-shadow: none;
 }
 
+  .button_command--twitter,
+  .button_command--facebook {
+    font-size: 14px;
+  }
+
 //  fixes waywire.com
 .form_submit--signin {
   font-family: $font-family !important;
@@ -31,8 +36,12 @@ button {
   font-size: 14px;
 }
 
-.guide-overlay__title--inline {
-  line-height: 3.35;
+.guide-overlay__bookmarklet {
+  font-size: 11px;
+}
+
+.guide-overlay__h1 {
+  font-size: 16px;
 }
 //------------------------------------------------------------------------------
 //  FRAME

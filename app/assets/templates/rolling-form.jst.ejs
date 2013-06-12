@@ -1,4 +1,4 @@
-<% if (!user.isAnonymous()) { %>
+<% if (userLoggedIn) { %>
   <%=  SHELBYJST['media-module']({
     userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrl(user),
     userNickname : user.get('nickname') || '',
@@ -23,7 +23,7 @@
 %>
 
 <div class="rolling-option">
-  <% if (user.isAnonymous()) { %>
+  <% if (!userLoggedIn) { %>
     <fieldset class="form_fieldset form_fieldset--social clearfix">
       <legend class="form_legend">
         Share to
@@ -39,29 +39,33 @@
         <span class="button_label">Facebook</span>
       </a>
     </fieldset>
-  <% } else { %>
+  <% } else if (twitter_enabled || facebook_enabled) { %>
     <fieldset class="form_fieldset form_fieldset--social clearfix">
       <legend class="form_legend">
         Also Share to
       </legend>
 
-      <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--share <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %>">
-        <input data-network="twitter" id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
-        <span class="icon icon-twitter"></span>
-        <span class="button_label">Twitter</span>
-      </label>
+      <% if(twitter_enabled) { %>
+        <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--share <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %>">
+          <input data-network="twitter" id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
+          <span class="icon icon-twitter"></span>
+          <span class="button_label">Twitter</span>
+        </label>
+      <% } %>
 
-      <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--share <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %>">
-        <input data-network="facebook" id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
-        <span class="icon icon-facebook"></span>
-        <span class="button_label">Facebook</span>
-      </label>
+      <% if(facebook_enabled) { %>
+        <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--share <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %>">
+          <input data-network="facebook" id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
+          <span class="icon icon-facebook"></span>
+          <span class="button_label">Facebook</span>
+        </label>
+      <% } %>
     </fieldset>
   <% } %>
 
 
   <fieldset class="form_fieldset form_fieldset--submit clearfix">
-    <% if (!user.isAnonymous()) { %>
+    <% if (userLoggedIn) { %>
       <button class="button_primer button_command button_command--wide button_green js-share-it" type="submit" tabindex="0" onclick="return false;">
         Share
       </button>
