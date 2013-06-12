@@ -26,9 +26,11 @@
     },
 
     initialize : function(){
+      this.model.bind('change:shortlink',this.render,this);
     },
 
     _cleanup : function(){
+      this.model.unbind('change:shortlink',this.render,this);
     },
 
     render : function(){
