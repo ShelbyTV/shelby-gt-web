@@ -41,26 +41,25 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
     switch  (displayState) {
       case libs.shelbyGT.DisplayState.dashboard:
         if (!shelby.models.user.get('app_progress').hasBeenWelcomed('dashboard')){
-          this.render('dashboard');
+          return this.render('dashboard');
         }
         break;
       case libs.shelbyGT.DisplayState.channel:
         if (!shelby.models.user.get('app_progress').hasBeenWelcomed('channel')){
-          this.render('channel');
+          return this.render('channel');
         }
         break;
       case libs.shelbyGT.DisplayState.standardRoll:
         if (shelby.models.guide.get('currentRollModel').get('creator_id') == shelby.models.user.id && !shelby.models.user.get('app_progress').hasBeenWelcomed('ownShares')) {
-          this.render('ownShares');
+          return this.render('ownShares');
         }
-        else if (!shelby.models.user.get('app_progress').hasBeenWelcomed('othersShares') && !shelby.models.user.isAnonymous()){
-          this.render('othersShares');
+        else if (!this._hasBeenWelcomedLoggedOut() && shelby.models.user.isAnonymous()){
+          return this.render('loggetOutShares');
         }
         else { this._resetVideoPlayerOperation(); }
         break;
-      default:
-        this._resetVideoPlayerOperation();
     }
+    this._resetVideoPlayerOperation();
   },
 
   _onClickPlay : function() {
@@ -69,6 +68,9 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
       this._resetVideoPlayerOperation();
       shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
       $('#js-welcome, .js-app-welcome').addClass('hidden');
+      if (shelby.models.user.isAnonymous()) {
+        this._markViewerWelcomedLoggedOut();
+      }
   },
 
   _updateAppProgress : function(property, val){
@@ -86,6 +88,14 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
       $('#js-welcome, .js-app-welcome').addClass('hidden');
       shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
       shelby.userInactivity.enableUserActivityDetection();
+  },
+
+  _markViewerWelcomedLoggedOut : function(){
+    cookies.set('welcomedToShelby', true);
+  },
+
+  _hasBeenWelcomedLoggedOut : function(){
+    return cookies.get('welcomedToShelby') !== "" ? true : false;
   }
 
 });

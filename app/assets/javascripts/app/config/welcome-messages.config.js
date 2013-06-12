@@ -10,13 +10,13 @@ shelby.config.welcomeMessages = {
     button: "Got it!"
   },
   ownShares: {
-    header: "These Are Your Shares",
-    message: "",
+    header: "Welcome to your Profile",
+    message: "Here you can find the videos you've shared and liked on Shelby.tv",
     button: "Got it!"
   },
-  othersShares: {
-    header: "These Someone Elses Shares",
-    message: "",
-    button: "Got it!"
+  loggetOutShares : {
+    header: "Welcome to Shelby.tv",
+    message : "These are videos shared by ",
+    button: "Play"
   }
 };
