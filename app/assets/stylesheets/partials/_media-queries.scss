@@ -87,7 +87,6 @@
   .app-banner__lining {
     max-width: 710px;
   }
-
   .shelby--dot-tv .main-layout {
     width: 710px;
     margin: auto;
@@ -97,6 +96,10 @@
     & > .user_roll__item_lining {
       width: 710px;
     }
+  }
+
+  .welcome-message__wrapper {
+    left: 300px;
   }
 }
 
