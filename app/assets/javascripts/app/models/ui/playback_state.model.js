@@ -4,15 +4,15 @@
 
 libs.shelbyGT.PlaybackStateModel = Backbone.Model.extend({
 
-	defaults: {
-		//the state of the player that is currently active.  bind to change:activePlayerState to know when player changes
-		activePlayerState: null,
-		
-		//should we auto-play when a new video is displayed?
-		autoplayOnVideoDisplay: true
-	},
-	
-	initialize: function(){
+  defaults: {
+    //the state of the player that is currently active.  bind to change:activePlayerState to know when player changes
+    activePlayerState: null,
+
+    //should we auto-play when a new video is displayed?
+    autoplayOnVideoDisplay: true
+  },
+
+  initialize: function(){
   }
 
 });

@@ -82,7 +82,7 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
   },
 
   _prepareForModal : function(){
-      shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.paused);
+      shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
       shelby.models.playbackState.set('autoplayOnVideoDisplay', false);
       shelby.userInactivity.disableUserActivityDetection();
   },
