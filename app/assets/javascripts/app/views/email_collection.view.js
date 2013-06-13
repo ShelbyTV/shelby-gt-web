@@ -35,7 +35,7 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
     });
 
     // navigate to /invite which is out of the js app
-    document.location.href = '/invite';
+    document.location.href = '/signup';
   },
 
   _onEmailSubmit : function(){
