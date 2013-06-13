@@ -2,6 +2,7 @@ libs.shelbyGT.UserPreferencesPasswordView = libs.shelbyGT.UserPreferencesBaseVie
 
   events : {
     "submit .js-preferences-password" : "_onSubmit",
+    "reset .js-preferences-password"  : "_clearErrors",
     "blur .form_input"                : "_toggleRequiredAttr"
   },
 
@@ -84,6 +85,10 @@ libs.shelbyGT.UserPreferencesPasswordView = libs.shelbyGT.UserPreferencesBaseVie
         shelby.alert(error);
       }
     });
+  },
+
+  _clearErrors : function() {
+    this.$('.form_fieldset').removeClass('form_fieldset--error');
   },
 
   _toggleRequiredAttr : function(e) {
