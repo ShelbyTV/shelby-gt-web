@@ -2,6 +2,7 @@ libs.shelbyGT.UserPreferencesProfileView = libs.shelbyGT.UserPreferencesBaseView
 
   events : {
     "submit .js-submit-profile" : "_onSubmit",
+    "reset .js-submit-profile"  : "_clearErrors",
     "click .js-choose-file"     : "_triggerClickOnFileInput"
   },
 
@@ -56,6 +57,8 @@ libs.shelbyGT.UserPreferencesProfileView = libs.shelbyGT.UserPreferencesBaseView
     this._$userDescription = $('#userDescription'),
     this._$userHomepage    = $('#userHomepage');
 
+    var validationPassed = true;
+
     var updates = {
       //grabbing defaults from current model
       name : this.model.get('name'),
@@ -65,14 +68,22 @@ libs.shelbyGT.UserPreferencesProfileView = libs.shelbyGT.UserPreferencesBaseView
 
     if(!this._valueIsEmpty(this._$userFullname.val())) {
       updates.name = this._$userFullname.val();
+    } else {
+      validationPassed = false;
     }
 
     if(!this._valueIsEmpty(this._$userNickname.val())) {
       updates.nickname = this._$userNickname.val();
+    } else {
+      validationPassed = false;
     }
 
     if(!this._valueIsEmpty(this._$userEmail.val()) && this._$userEmail.val().search(shelby.config.user.email.validationRegex) != -1) {
       updates.primary_email = this._$userEmail.val();
+    } else {
+      this._$userEmail.prev('.form_error').text("Please enter a valid email address")
+                            .parent('.form_fieldset').addClass('form_fieldset--error');
+      validationPassed = false;
     }
 
     // UI doesn't exist yet …yet
@@ -84,7 +95,9 @@ libs.shelbyGT.UserPreferencesProfileView = libs.shelbyGT.UserPreferencesBaseView
     //   updates. = _userHomepage;
     // }
 
-    this._updateUser(updates);
+    if (validationPassed) {
+      this._updateUser(updates);
+    }
   },
 
   _updateUser : function(updates) {
@@ -104,7 +117,7 @@ libs.shelbyGT.UserPreferencesProfileView = libs.shelbyGT.UserPreferencesBaseView
             self._$userNickname.prev('.form_error').text("Username already in use")
                                .parent('.form_fieldset').addClass('form_fieldset--error');
           } else if (errors.has('primary_email')) {
-            self._$userEmail.prev('.form_error').text("Username already in use")
+            self._$userEmail.prev('.form_error').text("Email already in use")
                             .parent('.form_fieldset').addClass('form_fieldset--error');
           } else {
             //if error unidentified, suggest page refresh (to alleviate possible authentication problem)
@@ -116,6 +129,10 @@ libs.shelbyGT.UserPreferencesProfileView = libs.shelbyGT.UserPreferencesBaseView
       },
       wait: true
     });
+  },
+
+  _clearErrors : function() {
+    this.$('.form_fieldset').removeClass('form_fieldset--error');
   },
 
   _triggerClickOnFileInput : function(e){
