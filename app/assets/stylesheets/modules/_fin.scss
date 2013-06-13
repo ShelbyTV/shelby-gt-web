@@ -90,6 +90,17 @@
       }
     }
 
+.fin--top,
+.fin--top_left,
+.fin--top_right {
+  &.fin--edging {
+    &:before {
+      border-top-color: inherit;
+      border-left-color: inherit;
+    }
+  }
+}
+
 .fin--bottom {
   &:before {
     bottom:-0.5em;
