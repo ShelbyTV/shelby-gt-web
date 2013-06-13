@@ -193,14 +193,6 @@
           if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary){
             window.location.reload(true);
           }
-// <<<<<<< HEAD
-//         },
-//         error: function(a,b,c){
-//           if (b.status == 404) { shelby.alert({message: "<p>404 error</p>"}); }
-//           else { shelby.alert({message: "<p>sorry, something went wrong.</p>"}); }
-//         }
-//       });
-// =======
         });
       }
 
@@ -211,6 +203,33 @@
 
       return url;
     },
+
+    _addViaUrl : function(message, roll, shareDests) {
+      var self = this;
+      var newFrame = new libs.shelbyGT.FrameModel();
+      newFrame.save(
+        {url: this._frame.get('video').get('source_url'), text: message, source: 'webapp'},
+        {url: shelby.config.apiRoot + '/roll/'+roll.id+'/frames',
+        success: function(newFrame){
+          //rolling is done (don't need to wait for add message to complete)
+          self._rollingSuccess(roll, newFrame);
+          // Optional Sharing (happens in the background)
+          if (shareDests.length) {
+            self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
+              url : newFrame.shareUrl(),
+              success : function(){
+                shelby.track('shared_frame',{destination: shareDests.join(", ")});
+              }
+            });
+          }
+        },
+        error: function(a,b,c){
+          if (b.status == 404) { shelby.alert({message: "<p>404 error</p>"}); }
+          else { shelby.alert({message: "<p>sorry, something went wrong.</p>"}); }
+        }
+      });
+    },
+
 
     _shareToFacebook : function(e){
       e.preventDefault();
