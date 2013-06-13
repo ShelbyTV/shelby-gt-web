@@ -182,6 +182,7 @@ class HomeController < ApplicationController
       @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
     end
     @frame = Shelby::API.get_frame(params[:frame_id], true) if params[:frame_id]
+    @video = Shelby::API.get_video(@frame['video_id']) if @frame
 
     render '/home/app'
   end
