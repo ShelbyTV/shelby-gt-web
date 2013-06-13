@@ -128,9 +128,21 @@
       }
 
       .shelf__img {
-        margin: 4em 3em;
+        margin: 8em 3em;
+      }
+
+      &.shelf--facebook-logged-out {
+        .facepile {
+          display: none;
+        }
+
+        .shelf__img {
+          margin: 4em 3em;
+        }
       }
     }
+
+
 
     .shelf--press {
       text-align: center;
