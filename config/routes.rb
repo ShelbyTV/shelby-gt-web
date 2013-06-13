@@ -42,6 +42,8 @@ ShelbyGtWeb::Application.routes.draw do
   get '/invite/:invite_id' => "signup#index"
   get "invite" => 'signup#index'
   post "invite" => 'signup#index'
+  get "signup" => 'signup#index'
+  post "signup" => 'signup#index'
 
 
   # HOME

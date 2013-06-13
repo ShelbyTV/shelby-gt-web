@@ -10,7 +10,7 @@
   </div>
 
   <div class="signup__body">
-    <%= form_tag({},{ :id => 'user_form', :class => 'form_module' }) do %>
+    <%= form_tag(request.env['PATH_INFO'], { :id => 'user_form', :class => 'form_module' }) do %>
       <fieldset class="form_fieldset">
         <legend class="form__legend">
           Watch your personalized video stream from anywhere<br/>

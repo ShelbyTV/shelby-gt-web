@@ -5,7 +5,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   className : 'roll-header clearfix',
 
   events : {
-    "click .js-user-roll"      : "_goToUserPersonalRoll",
+    "click .js-user-shares"    : "_goToUserShares",
     "click .js-user-likes"     : "_goToLikes",
     "click .js-user-following" : "_goToRollFollowings"
   },
@@ -61,7 +61,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     } else if (this.options.guideModel.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
       $setSelectedClassOn = this.$('.js-user-following');
     } else if (this.model.get('creator_id') == shelby.models.user.id) {
-      $setSelectedClassOn = this.$('.js-user-roll');
+      $setSelectedClassOn = this.$('.js-user-shares');
     }
 
     if ($setSelectedClassOn) {
@@ -73,7 +73,7 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     this.$('.js-user-tab').removeClass('tab--active');
   },
 
-  _goToUserPersonalRoll : function(e){
+  _goToUserShares : function(e){
     e.preventDefault();
     shelby.router.navigate(this.model.get('creator_nickname'), {trigger: true});
   },

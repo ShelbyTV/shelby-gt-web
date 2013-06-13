@@ -10,7 +10,7 @@
   </div>
 
   <div class="signup__body">
-    <%= form_tag do %>
+    <%= form_tag(request.env['PATH_INFO']) do %>
       <fieldset class="form_fieldset">
         <div class="slideshow__pagination js-pagination"></div>
         <div class="slideshow js-slideshow">

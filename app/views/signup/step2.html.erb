@@ -10,7 +10,7 @@
   </div>
 
   <div class="signup__body">
-    <%= form_tag do %>
+    <%= form_tag(request.env['PATH_INFO']) do %>
       <fieldset class="form_fieldset">
         <legend class="form__legend">
           Never miss videos your friends are loving and sharing!<br />
