@@ -3,51 +3,54 @@
 <meta property="og:locale" content="EN_us" />
 
 <% if (@frame and @video and @roll) or (@video_provider_name and @video_provider_id) or (@roll and @user) %>
-	<!-- For Twitter -->
-	<meta name="twitter:card" content="<%= (@video or @video_embed) ? 'player' : 'summary' %>">
-	<meta name="twitter:site" content="<%= Settings::Twitter.shelby_twitter_username %>">
+  <!-- For Twitter -->
+  <meta name="twitter:card" content="<%= (@video or @video_embed) ? 'player' : 'summary' %>">
+  <meta name="twitter:site" content="<%= Settings::Twitter.shelby_twitter_username %>">
 <% end %>
 
-<% if @frame and @video and @roll %>
-	<meta name="twitter:description" content="<%= @video['description'] %>">
-	<meta name="twitter:title" content="<%= (@roll['subdomain'] ? "#{@roll['subdomain']}.shelby.tv - " : "") + @video['title'].to_s %>">
-	<meta name="twitter:player" content="<%= build_valid_video_player_url(@video['embed_url']) %>">
-	<meta name="twitter:player:width" content="500">
-	<meta name="twitter:player:height" content="375">
-	<meta property="og:type" 		content="video" />
-	<meta property="og:url"			content="<%= Shelby::API.generate_frame_route(@roll['id'], @frame['id']) %>" />
-	<meta property="og:video:url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
-	<meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
-	<meta property="og:title" content="<%= @video['title'] %>" />
-	<% if @frame['conversation'] and @frame['conversation']['messages'] and @frame['conversation']['messages'][0] %>
-		<meta property="og:description" content="<%= @frame['conversation']['messages'][0]['text'] %>" />
-	<% else %>
-		<meta property="og:description" content="<%= @video['description'] %>" />
-	<% end %>
-	<meta property="og:image" content="<%= @video['thumbnail_url'] %>" />
+<% if @frame and @video and @roll and @user %>
+  <meta name="twitter:description" content="<%= URI.escape(@video['description']) %>">
+  <meta name="twitter:player" content="<%= build_valid_video_player_url(@video['embed_url']) %>">
+  <meta name="twitter:player:width" content="500">
+  <meta name="twitter:player:height" content="375">
+  <meta property="og:type"    content="video" />
+  <meta property="og:url"     content="<%= Shelby::API.generate_frame_route(@roll['subdomain'], @frame['id']) %>" />
+  <meta property="og:video:url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
+  <meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
+  <meta property="og:title" content="<%= URI.escape(@video['title']) %> shared by <%= "#{@frame['creator']['name']} (#{@frame['creator']['nickname']})" %> on Shelby.tv">
+  <% if @frame['conversation'] and @frame['conversation']['messages'] and @frame['conversation']['messages'][0] %>
+    <% message = URI.escape(@frame['conversation']['messages'][0]['text']) %>
+    <meta property="og:description" content="<%= message %>" />
+    <meta name="description"        content="<%= message %>" />
+  <% else %>
+    <% desription = URI.escape(@video['description']) %>
+    <meta property="og:description" content="<%= description %>" />
+    <meta name="description"        content="<%= description %>" />
+  <% end %>
+  <meta property="og:image" content="<%= @video['thumbnail_url'] %>" />
 
 <% elsif @roll and @user %>
-	<% user_roll_title = "#{@roll['subdomain']}.shelby.tv" %>
-	<meta property="og:type" 		content="video.other" />
-	<meta property="og:url"			content="http://<%= @roll['subdomain'] %>.shelby.tv<%= @frame ? "/"+@frame['id'] : '' %>" />
-	<meta property="og:title" content="<%= user_roll_title %>" />
-	<meta property="og:description" content="<%= page_description_for_roll_with_frames(@roll, @user) %>" />
-	<meta property="og:image" content="<%= @roll['first_frame_thumbnail_url'] %>" />
-	<meta name="description" content="<%= page_description_for_roll_with_frames(@roll, @user) %>" />
+  <meta property="og:type"    content="video.other" />
+  <meta property="og:url"     content="http://shelby.tv/<%= @roll['subdomain'] %><%= @frame ? "/shares/"+@frame['id'] : '' %>" />
+  <meta property="og:title"   content="Videos shared by <%= "#{@user['name']} (#{@user['nickname']})" %> on Shelby.tv">
+
+  <meta property="og:description" content="<%= page_description_for_roll_with_frames(@roll, @user) %>" />
+  <meta property="og:image" content="<%= @roll['first_frame_thumbnail_url'] %>" />
+  <meta name="description" content="<%= page_description_for_roll_with_frames(@roll, @user) %>" />
 
 <% elsif @video_provider_name and @video_provider_id %>
-	<meta property="og:type" 		content="video" />
-	<meta property="og:url"			content="<%= build_valid_video_player_url(@video_embed) %>" />
-	<meta name="twitter:player" content="<%= build_valid_video_player_url(@video_embed) %>">
-	<meta name="twitter:player:width" content="500">
-	<meta name="twitter:player:height" content="375">
-	<meta property="og:video:url" content="<%= build_valid_video_player_url(@video_embed) %>" />
-	<meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video_embed) %>" />
-	<meta property="og:title" content="<%= @video_title %>" />
-	<meta property="og:description" content="<%= @video_description %>" />
-	<meta property="og:image" content="<%= @video_thumbnail_url %>" />
+  <meta property="og:type"    content="video" />
+  <meta property="og:url"     content="<%= build_valid_video_player_url(@video_embed) %>" />
+  <meta name="twitter:player" content="<%= build_valid_video_player_url(@video_embed) %>">
+  <meta name="twitter:player:width" content="500">
+  <meta name="twitter:player:height" content="375">
+  <meta property="og:video:url" content="<%= build_valid_video_player_url(@video_embed) %>" />
+  <meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video_embed) %>" />
+  <meta property="og:title" content="<%= URI.escape(@video_title) %>" />
+  <meta property="og:description" content="<%= URI.escape(@video_description) %>" />
+  <meta property="og:image" content="<%= @video_thumbnail_url %>" />
 
 <% else %>
-	<meta name="description" content="<%= Settings::Application.meta_description %>">
+  <meta name="description" content="<%= Settings::Application.meta_description %>">
 
 <% end %>
