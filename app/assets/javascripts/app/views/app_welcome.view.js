@@ -45,7 +45,10 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
         }
         break;
       case libs.shelbyGT.DisplayState.channel:
-        if (!shelby.models.user.get('app_progress').hasBeenWelcomed('channel')){
+        if (!this._hasBeenWelcomedLoggedOut() && shelby.models.user.isAnonymous()){
+          return this.render('channel');
+        }
+        else if (!shelby.models.user.get('app_progress').hasBeenWelcomed('channel') && !shelby.models.user.isAnonymous()){
           return this.render('channel');
         }
         break;
