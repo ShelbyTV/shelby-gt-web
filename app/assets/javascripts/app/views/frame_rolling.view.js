@@ -76,6 +76,8 @@
     //------------------------- ROLLING DETAILS ----------------------------
 
     _renderRollingFormChild: function(roll){
+      this._currentFrameShortlink = this._currentFrameShortlink || this.model.get('shortlink');
+
       this._rollingForm = new libs.shelbyGT.RollingFormView({
         currentFrameShortlink : this._currentFrameShortlink,
         frame: this.model,
