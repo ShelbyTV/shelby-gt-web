@@ -119,14 +119,14 @@
           url: fetchShortlinkUrl,
           dataType: 'jsonp',
           success: function(r){
-            $shortlinkTextInput.val(r.result.short_link).select();
+            $shortlinkTextInput.val(r.result.short_link);
             // save the link for future reference in case we are going to
             // re-render without changing frames
             self._currentFrameShortlink = r.result.short_link;
             frame.set('shortlink', r.result.short_link);
           },
           error: function(){
-            $shortlinkTextInput.val("Link Unavailable").select();
+            $shortlinkTextInput.val("Link Unavailable");
           }
         });
       }
