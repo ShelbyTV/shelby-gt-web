@@ -7,6 +7,12 @@
   position: absolute;
   z-index: 1000;
 
+  &.hidden {
+    &:before {
+      content: none;
+    }
+  }
+
   &.fin--top_left:before {
     border-left-color: $ui-soft-black;
     border-top-color: $ui-soft-black;

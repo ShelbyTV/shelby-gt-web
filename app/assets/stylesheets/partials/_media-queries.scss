@@ -2,6 +2,13 @@
 //  Overrides
 //------------------------------------------------------------------------------
 
+//  Screens that LESS THAN 625px tall.
+@media screen and (max-height: 630px) {
+  //share pane shortlink hack
+  .guide-overlay__foot--frame-rolling {
+    top: 460px;
+  }
+}
 // USER PROFILE HACK -----------------------------------------------------------
 //  Screens that MORE THAN 900px tall.
 @media screen and (min-height: 900px) {
