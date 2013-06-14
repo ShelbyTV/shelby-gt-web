@@ -9,7 +9,7 @@
 <% end %>
 
 <% if @frame and @video and @roll and @user %>
-  <meta name="twitter:description" content="<%= URI.escape(@video['description']) %>">
+  <meta name="twitter:description" content="<%= @video['description'] %>">
   <meta name="twitter:player" content="<%= build_valid_video_player_url(@video['embed_url']) %>">
   <meta name="twitter:player:width" content="500">
   <meta name="twitter:player:height" content="375">
