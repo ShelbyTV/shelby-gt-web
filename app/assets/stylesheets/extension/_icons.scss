@@ -15,7 +15,7 @@
 }
 
 .icon-twitter {
-  background-image: url("#{$path}share_twitter_on.svg");
+  background-image: url("#{$path}share_twitter_off.svg");
   background-position: center center;
   -webkit-background-size: 1.3em;
   background-size: 1.3em;
@@ -23,15 +23,25 @@
   height: 1em;
   vertical-align: -2px;
 }
+.button_twitter-blue {
+  .icon-twitter {
+    background-image: url("#{$path}share_twitter_on.svg");
+  }
+}
 
 .icon-facebook {
-  background-image: url("#{$path}share_facebook_on.svg");
+  background-image: url("#{$path}share_facebook_off.svg");
   background-position: center center;
   -webkit-background-size: 1.3em;
   background-size: 1.3em;
   display: inline-block;
   height: 1em;
   vertical-align: -2px;
+}
+.button_facebook-blue {
+  .icon-facebook {
+    background-image: url("#{$path}share_facebook_on.svg");
+  }
 }
 
 .icon-roll {
