@@ -40,12 +40,12 @@
 
 <% elsif @video_provider_name and @video_provider_id %>
   <meta property="og:type"    content="video" />
-  <meta property="og:url"     content="<%= build_valid_video_player_url(@video_embed) %>" />
-  <meta name="twitter:player" content="<%= build_valid_video_player_url(@video_embed) %>">
+  <meta property="og:url"     content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>" />
+  <meta name="twitter:player" content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>">
   <meta name="twitter:player:width" content="500">
   <meta name="twitter:player:height" content="375">
-  <meta property="og:video:url" content="<%= build_valid_video_player_url(@video_embed) %>" />
-  <meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video_embed) %>" />
+  <meta property="og:video:url" content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>" />
+  <meta property="og:video:secure_url" content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>" />
   <meta property="og:title" content="<%= @video_title %>" />
   <meta property="og:description" content="<%= @video_description %>" />
   <meta property="og:image" content="<%= @video_thumbnail_url %>" />
