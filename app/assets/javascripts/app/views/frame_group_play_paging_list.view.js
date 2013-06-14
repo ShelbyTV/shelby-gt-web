@@ -93,7 +93,10 @@
       var returningToRoll = this.options.playlistType == PlaylistType.roll &&
         shelby.models.playlistManager.get('playlistType') == PlaylistType.roll &&
         shelby.models.playlistManager.get('playlistRollId') == this.model.id;
-      var reloadingCurrentPlaylist = returningToDashboard || returningToRoll;
+      var returningToChannel = this.options.playlistType == PlaylistType.channel &&
+        shelby.models.playlistManager.get('playlistType') == PlaylistType.channel &&
+        shelby.models.playlistManager.get('playlistRollId') == this.model.get('channel');
+      var reloadingCurrentPlaylist = returningToDashboard || returningToRoll || returningToChannel;
 
       if (!isAnythingPlaying || forceFramePlay || reloadingCurrentPlaylist) {
         this.registerPlaylist();

@@ -12,6 +12,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "embed/:frameId"                               : "displayEmbeddedFrame",
     "user/:id/personal_roll"                       : "displayUserPersonalRoll",
     "community"                                    : "displayCommunityChannel",
+    "community/:entryId"                           : "displayEntryInCommunityChannel",
     "channels"                                     : "displayChannel",
     "channels/:channel"                            : "displayChannel",
     "channels/:channel/:entryId"                   : "displayEntryInDashboard",
@@ -228,6 +229,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayCommunityChannel : function(params){
     this.displayChannel('community', params);
+  },
+
+  displayEntryInCommunityChannel : function(entryId, params) {
+    this.displayEntryInDashboard('community', entryId, params);
   },
 
   displayChannel : function(channel, params){
