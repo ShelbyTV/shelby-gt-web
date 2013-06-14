@@ -87,7 +87,7 @@ module Shelby
 
     # def self.generate_frame_route(roll_id, frame_id, protocol="http")
     def self.generate_frame_route(user_nickname, frame_id, protocol="http")
-      return "#{protocol}://#{Settings::Application.domain}/#{user_nickanme}/shares/#{frame_id}"
+      return "#{protocol}://#{Settings::Application.domain}/#{user_nickname}/shares/#{frame_id}"
     end
 
     def self.generate_user_route(user_id)
