@@ -106,18 +106,75 @@
       }
     }
 
+    .css-vertical-pan {
+      -webkit-animation: vertical-pan 98s infinite; /* Chrome, Safari 5+ */
+         -moz-animation: vertical-pan 98s infinite; /* Firefox 5-15 */
+           -o-animation: vertical-pan 98s infinite; /* Opera 12.00 */
+              animation: vertical-pan 98s infinite; /* Chrome, Firefox 16+, IE 10+, Opera 12.10+ */
+
+      -webkit-animation-timing-function: linear;
+         -moz-animation-timing-function: linear;
+           -o-animation-timing-function: linear;
+              animation-timing-function: linear;
+
+      -webkit-backface-visibility: hidden;
+              -webkit-perspective: 1000;
+
+      -webkit-transform: rotateZ(0deg);  -webkit-transform-style: preserve-3d;
+         -moz-transform: rotateZ(0deg);     -moz-transform-style: preserve-3d;
+          -ms-transform: rotateZ(0deg);      -ms-transform-style: preserve-3d;
+              transform: rotateZ(0deg);          transform-style: preserve-3d;
+    }
+
+    @-webkit-keyframes vertical-pan {
+      0%   { background-position: center 0; }
+      50%  { background-position: center 100%; }
+      100% { background-position: center 0; }
+    }
+    @-moz-keyframes vertical-pan {
+      0%   { background-position: center 0; }
+      50%  { background-position: center 100%; }
+      100% { background-position: center 0; }
+    }
+    @-o-keyframes vertical-pan {
+      0%   { background-position: center 0; }
+      50%  { background-position: center 100%; }
+      100% { background-position: center 0; }
+    }
+    @keyframes vertical-pan {
+      0%   { background-position: center 0; }
+      50%  { background-position: center 100%; }
+      100% { background-position: center 0; }
+    }
     .shelf--stream {
+      height: 637px;
+
       .shelf__h1 {
         margin-top: 6.5em;
       }
 
       .shelf__img--stream {
-        max-width: 100%;
-        margin: 0 2em;
+        background-image: url('/images/landing/stream/stream.jpg');
+        background-repeat: none;
+        background-position: top center;
+        -webkit-background-size: 100%;
+        background-size: 100%;
+        width: 384px;
+
+        .img {
+          margin: 0 2em;
+          max-width: 100%;
+        }
       }
       .shelf__img--sources {
         margin: 2em 0;
         max-width: 100%;
+      }
+
+      //non-normative
+      .media_module,
+      .media_image {
+        height: inherit;
       }
     }
 
@@ -140,8 +197,6 @@
         }
       }
     }
-
-
 
     .shelf--press {
       text-align: center;
