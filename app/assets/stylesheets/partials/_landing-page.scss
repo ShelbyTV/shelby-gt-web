@@ -159,7 +159,9 @@
         background-position: top center;
         -webkit-background-size: 100%;
         background-size: 100%;
+        margin: 0 1em 0 3em;
         width: 384px;
+        height: 635px;
 
         .img {
           margin: 0 2em;
@@ -172,8 +174,7 @@
       }
 
       //non-normative
-      .media_module,
-      .media_image {
+      .media_module {
         height: inherit;
       }
     }
