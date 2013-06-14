@@ -18,9 +18,17 @@ libs.shelbyGT.GuideOverlayModel = Backbone.Model.extend({
         this.get('activeGuideOverlayType') == type &&
         this.has('activeGuideOverlayFrame') &&
         this.get('activeGuideOverlayFrame').id == frameModel.id &&
-        this.has('activeGuideOverlayDashboardEntry') &&
-        dashboardEntryModel &&
-        this.get('activeGuideOverlayDashboardEntry').id == dashboardEntryModel.id;
+        (
+          (
+            this.has('activeGuideOverlayDashboardEntry') &&
+            dashboardEntryModel &&
+            this.get('activeGuideOverlayDashboardEntry').id == dashboardEntryModel.id
+          ) ||
+          (
+            !dashboardEntryModel &&
+            !this.get('activeGuideOverlayDashboardEntry')
+          )
+        );
 
     if (alreadyShowingThisOverlay) {
       // hide the current overlay(s)
