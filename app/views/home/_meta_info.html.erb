@@ -17,15 +17,15 @@
   <meta property="og:url"     content="<%= Shelby::API.generate_frame_route(@roll['subdomain'], @frame['id']) %>" />
   <meta property="og:video:url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
   <meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
-  <meta property="og:title" content="<%= URI.escape(@video['title']) %> shared by <%= "#{@frame['creator']['name']} (#{@frame['creator']['nickname']})" %> on Shelby.tv">
+  <meta property="og:title" content="<%= @video['title'] %> shared by <%= "#{@frame['creator']['name']} (#{@frame['creator']['nickname']})" %> on Shelby.tv">
   <% if @frame['conversation'] and @frame['conversation']['messages'] and @frame['conversation']['messages'][0] %>
-    <% message = URI.escape(@frame['conversation']['messages'][0]['text']) %>
+    <% message = @frame['conversation']['messages'][0]['text'] %>
     <meta property="og:description" content="<%= message %>" />
-    <meta name="description"        content="<%= message %>" />
+    <meta name="description"        content="<%= URI.escape(message) %>" />
   <% else %>
-    <% desription = URI.escape(@video['description']) %>
+    <% desription = @video['description'] %>
     <meta property="og:description" content="<%= description %>" />
-    <meta name="description"        content="<%= description %>" />
+    <meta name="description"        content="<%= URI.escape(description) %>" />
   <% end %>
   <meta property="og:image" content="<%= @video['thumbnail_url'] %>" />
 
@@ -36,7 +36,7 @@
 
   <meta property="og:description" content="<%= page_description_for_roll_with_frames(@roll, @user) %>" />
   <meta property="og:image" content="<%= @roll['first_frame_thumbnail_url'] %>" />
-  <meta name="description" content="<%= page_description_for_roll_with_frames(@roll, @user) %>" />
+  <meta name="description" content="<%= URI.escape(page_description_for_roll_with_frames(@roll, @user)) %>" />
 
 <% elsif @video_provider_name and @video_provider_id %>
   <meta property="og:type"    content="video" />
@@ -46,8 +46,8 @@
   <meta name="twitter:player:height" content="375">
   <meta property="og:video:url" content="<%= build_valid_video_player_url(@video_embed) %>" />
   <meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video_embed) %>" />
-  <meta property="og:title" content="<%= URI.escape(@video_title) %>" />
-  <meta property="og:description" content="<%= URI.escape(@video_description) %>" />
+  <meta property="og:title" content="<%= @video_title %>" />
+  <meta property="og:description" content="<%= @video_description %>" />
   <meta property="og:image" content="<%= @video_thumbnail_url %>" />
 
 <% else %>

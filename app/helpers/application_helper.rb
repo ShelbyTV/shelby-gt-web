@@ -43,7 +43,7 @@ module ApplicationHelper
       end
     end
 
-    return desc.blank? ? nil : URI.escape(desc)
+    return desc.blank? ? nil : desc
   end
 
   def build_valid_video_player_url(video_embed)
