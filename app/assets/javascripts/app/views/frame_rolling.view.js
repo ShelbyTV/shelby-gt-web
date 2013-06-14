@@ -16,7 +16,9 @@
     _currentFrameShortlink : null,
 
     events : _.extend({}, GuideOverlayView.prototype.events, {
-      "click .js-cancel" : "_onClickCancel"
+      "click .js-cancel"                  : "_onClickCancel",
+      "focus .js-input-select-on-focus"   : "_onFocusInputText",
+      "mouseup .js-input-select-on-focus" : "_onMouseupInputText"
     }),
 
     className : GuideOverlayView.prototype.className + ' guide-overlay__rolling-frame js-rolling-frame',
@@ -94,6 +96,14 @@
     _onClickCancel : function(e){
       e.preventDefault();
       this.done();
+    },
+
+    _onFocusInputText : function(e){
+      e.currentTarget.select();
+    },
+
+    _onMouseupInputText : function(e){
+      e.preventDefault();
     },
 
     _getFrameShortlink : function() {
