@@ -26,14 +26,12 @@
     },
 
     initialize : function(){
-      this.model.bind('change:shortlink',this.render,this);
-    },
-
-    _cleanup : function(){
-      this.model.unbind('change:shortlink',this.render,this);
+      this._getFrameShortlink();
     },
 
     render : function(){
+      this._leaveChildren();
+
       this.$el.html(this.template({
         currentFrameShortlink : this._currentFrameShortlink,
         frame                 : this.model,
@@ -45,8 +43,6 @@
       // rolling details (personal roll as default)
       this._renderRollingFormChild(shelby.models.user.get('personal_roll'));
       GuideOverlayView.prototype.render.call(this);
-
-      this._getFrameShortlink();
     },
 
     //------------------------- SELECT ROLL ----------------------------
@@ -76,8 +72,6 @@
     //------------------------- ROLLING DETAILS ----------------------------
 
     _renderRollingFormChild: function(roll){
-      this._currentFrameShortlink = this._currentFrameShortlink || this.model.get('shortlink');
-
       this._rollingForm = new libs.shelbyGT.RollingFormView({
         currentFrameShortlink : this._currentFrameShortlink,
         frame: this.model,
@@ -110,7 +104,7 @@
         var self = this;
         var $shortlinkTextInput = this.$('.js-frame-shortlink');
         var fetchShortlinkUrl;
-        var dbEntry = this.model.get('primaryDashboardEntry');
+        var dbEntry = this.options.guideOverlayModel.get('activeGuideOverlayDashboardEntry');
         if (dbEntry) {
           fetchShortlinkUrl = shelby.config.apiRoot + '/dashboard/' + dbEntry.id + '/short_link';
         } else {
@@ -125,7 +119,7 @@
             // save the link for future reference in case we are going to
             // re-render without changing frames
             self._currentFrameShortlink = r.result.short_link;
-            frame.set('shortlink', r.result.short_link);
+            self.render();
           },
           error: function(){
             $shortlinkTextInput.val("Link Unavailable");

@@ -601,7 +601,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       // NOTE: validity of the overlay type has been checked earlier so here we just assume it's
       // a type of overlay we support
       if (showOverlayType) {
-        shelby.models.guideOverlay.switchOrHideOverlay(showOverlayType, frame);
+        shelby.models.guideOverlay.switchOrHideOverlay(showOverlayType, frame, null);
       }
     } else {
       // url frame id doesn't exist in this roll - notify user, then redirect to the default view of the roll

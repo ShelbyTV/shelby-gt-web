@@ -223,7 +223,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   requestShareFrame : function(){
     this.options.guideOverlayModel.switchOrHideOverlay(
       libs.shelbyGT.GuideOverlayType.rolling,
-      this.model.getFirstFrame()
+      this.model.getFirstFrame(),
+      this.model.get('primaryDashboardEntry')
     );
   },
 

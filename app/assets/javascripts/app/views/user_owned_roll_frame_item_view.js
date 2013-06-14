@@ -93,7 +93,7 @@ libs.shelbyGT.UserOwnedRollFrameItemView = libs.shelbyGT.ActiveHighlightListItem
 
   _displayRollVideo : function() {
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
-      shelby.models.guideOverlay.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling, this._frame);
+      shelby.models.guideOverlay.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling, this._frame, null);
     }
   },
 

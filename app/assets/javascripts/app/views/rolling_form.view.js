@@ -38,12 +38,6 @@
       this._roll = this.options.roll;
       this._frame = this.options.frame;
       this._video = this.options.frame.get('video');
-
-      this._frame.bind('change:shortlink',this._onShortlinkUpdate,this);
-    },
-
-    _cleanup : function() {
-      this._frame.unbind('change:shortlink',this._onShortlinkUpdate,this);
     },
 
     render : function(){
@@ -73,6 +67,7 @@
         user : shelby.models.user,
         userLoggedIn : !shelby.models.user.isAnonymous()
       }));
+      this._checkAndRenderShortlink();
 
       this._shelbyAutocompleteView = new ShelbyAutocompleteView({
         el : this.$('#js-sharing-message')[0],
@@ -84,8 +79,6 @@
         }
       });
       this.renderChild(this._shelbyAutocompleteView);
-
-      this._onShortlinkUpdate();
     },
 
     setRoll: function(roll){
@@ -239,7 +232,7 @@
       }
 
       var
-        shortlink        = this._frame.get('shortlink'),
+        shortlink        = this.options.currentFrameShortlink,
         text             = 'Shelby.tv',
         videoDescription = this._video.get('description'),
         videoTitle       = this._video.get('title'),
@@ -265,8 +258,8 @@
       }
     },
 
-    _onShortlinkUpdate : function(){
-      var shortlink = this._frame.get('shortlink');
+    _checkAndRenderShortlink : function(){
+      var shortlink = this.options.currentFrameShortlink;
 
       if(shortlink){
         //this is called in this.render(), as well as change:shortlink on the frame
@@ -276,7 +269,6 @@
         this.$el.find('.js-tweet-share').removeClass('disabled').attr('href',twitterHref);
         this.$el.find('.js-facebook-post').removeClass('disabled');
       }
-// >>>>>>> roll-to-share
     }
 
   });
