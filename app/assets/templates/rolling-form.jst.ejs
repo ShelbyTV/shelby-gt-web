@@ -29,12 +29,12 @@
         Share to
       </legend>
 
-      <a href="#" target="_blank" class="disabled button_primer button_command button_command--twitter button_command--share one-third button_twitter-blue js-tweet-share">
+      <a href="#" target="_blank" class="disabled button_primer button_command button_command--sub button_command--twitter button_twitter-blue js-tweet-share">
         <span class="icon icon-twitter"></span>
         <span class="button_label">Twitter</span>
       </a>
 
-      <a href="#" class="disabled button_primer button_command button_command--facebook button_command--share one-third button_facebook-blue js-facebook-post">
+      <a href="#" class="disabled button_primer button_command button_command--sub button_command--facebook button_facebook-blue js-facebook-post">
         <span class="icon icon-facebook"></span>
         <span class="button_label">Facebook</span>
       </a>
@@ -46,7 +46,7 @@
       </legend>
 
       <% if(twitter_enabled) { %>
-        <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--twitter button_command--share one-third <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %>">
+        <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--twitter <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %>">
           <input data-network="twitter" id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
           <span class="icon icon-twitter"></span>
           <span class="button_label">Twitter</span>
@@ -54,7 +54,7 @@
       <% } %>
 
       <% if(facebook_enabled) { %>
-        <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--facebook button_command--share one-third <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %>">
+        <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--facebook <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %>">
           <input data-network="facebook" id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
           <span class="icon icon-facebook"></span>
           <span class="button_label">Facebook</span>
