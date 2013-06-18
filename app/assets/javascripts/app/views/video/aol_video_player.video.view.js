@@ -1,8 +1,8 @@
 //DOCS: http://www.collegehumor.com/moogaloop/api.php
 //example 404 video: http://localhost.shelby.tv:3000/roll/4f9009d9b415cc466a000466/frame/504cedb6d1041245b5003156
-libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
+libs.shelbyGT.AolVideoPlayerView = Support.CompositeView.extend({
 
-  id: 'collegehumor-player-holder',
+  id: 'aol-player-holder',
 
   _video: null,
   _player: null,
@@ -15,6 +15,8 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
   initialize: function(opts){
     var self = this;
 
+    console.log("AOL Video");
+
     this._playbackState = opts.playbackState;
 
     this.playerState = new libs.shelbyGT.PlayerStateModel({
@@ -25,11 +27,11 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
       });
 
     //listen to private events
-    Backbone.Events.bind("collegehumor:playerReady", this._playerReady, this);
-    Backbone.Events.bind("collegehumor:onEnded", this._onEnded, this);
-    Backbone.Events.bind("collegehumor:stateChange", function(s) { self._onStateChange(s); });
-    Backbone.Events.bind("collegehumor:setCurrentTime", function(t) { self._setCurrentTime(t); });
-    Backbone.Events.bind("collegehumor:setDuration", function(d) { self._setDuration(d); });
+    Backbone.Events.bind("aol:playerReady", this._playerReady, this);
+    Backbone.Events.bind("aol:onEnded", this._onEnded, this);
+    Backbone.Events.bind("aol:stateChange", function(s) { self._onStateChange(s); });
+    Backbone.Events.bind("aol:setCurrentTime", function(t) { self._setCurrentTime(t); });
+    Backbone.Events.bind("aol:setDuration", function(d) { self._setDuration(d); });
   },
 
   //NB: overriding leave b/c we don't usually tear down
@@ -44,11 +46,11 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
   },
 
   _cleanup: function(){
-    Backbone.Events.unbind("collegehumor:playerReady", this._playerReady, this);
-    Backbone.Events.unbind("collegehumor:onEnded", this._onEnded, this);
-    Backbone.Events.unbind("collegehumor:stateChange");
-    Backbone.Events.unbind("collegehumor:setCurrentTime");
-    Backbone.Events.unbind("collegehumor:setDuration");
+    Backbone.Events.unbind("aol:playerReady", this._playerReady, this);
+    Backbone.Events.unbind("aol:onEnded", this._onEnded, this);
+    Backbone.Events.unbind("aol:stateChange");
+    Backbone.Events.unbind("aol:setCurrentTime");
+    Backbone.Events.unbind("aol:setDuration");
   },
 
   render: function(container, video){
@@ -78,7 +80,7 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
       //since we have been loaded, need to make sure we only load_video if it's *different* from the current one (due to CH player bugginess)
       if(this._video !== video){
         this._video = video;
-        this._player.load_video(this._video.get('provider_id'));
+        this._player.play();
       } else {
         this.play();
       }
@@ -87,13 +89,13 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
 
   play: function(){
     if( this._player ){
-      this._player.togglePlay(true);
+      this._player.play();
     }
   },
 
   pause: function(){
     if( this._player ){
-      this._player.togglePlay(false);
+      this._player.pause();
     }
   },
 
@@ -171,12 +173,13 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
     this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.ended});
   },
 
-  _playerReady: function(){
+  _playerReady: function(e){
+    console.log("PLAYER READY", e);
     //CollegeHumor replaces the div backbone is holding with it's own, so we need to update this view
     this.setElement($('#'+this.id));
 
-    this._player = $("#"+this.id)[0];
-
+    this._player = e.player;
+    window.TEST = e.player;
     //auto play is not a config option, need to press play meow...
     if( this._playbackState.get('autoplayOnVideoDisplay') && this._isActivePlayer ){ this.play(); }
 
@@ -184,15 +187,20 @@ libs.shelbyGT.CollegeHumorVideoPlayerView = Support.CompositeView.extend({
   },
 
   _bootstrapPlayer: function(){
-    var url = "http://www.collegehumor.com/moogaloop/moogaloop.swf?use_node_id=true&fullscreen=0&clip_id="+this._video.get('provider_id');
-    swfobject.embedSWF(url, this.id, "100%", "100%", "9.0.0", null, null, { allowScriptAccess: "always", wmode: "transparent" });
+    console.log("bootstraping AOL");
+    var tag = document.createElement('script');
+    var url = "http://pshared.5min.com/Scripts/PlayerSeed.js?sid=239&amp;width=1000&amp;height=800&amp;colorPallet=%23FFEB00&amp;hasCompanion=false&amp;videoControlDisplayColor=%23191919&amp;playList=517823407&amp;onReady=AOLPlayerReady";
+    tag.src = url;
+    var firstScriptTag = document.getElementById('youtube-player-holder');
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    //swfobject.embedSWF(url, this.id, "100%", "100%", "9.0.0", null, null, { allowScriptAccess: "always", wmode: "transparent" });
   }
 
 });
 
 //Global (and poorly named) functions called by Collegehumor player
-function CHPlayerReady(){ Backbone.Events.trigger("collegehumor:playerReady"); }
-function getPlayerState(newState){ Backbone.Events.trigger("collegehumor:stateChange", newState); }
-function detectEndVideo(){ Backbone.Events.trigger("collegehumor:onEnded"); }
-function getCurrentTime(t){ Backbone.Events.trigger("collegehumor:setCurrentTime", t); }
-function getDuration(d){ Backbone.Events.trigger("collegehumor:setDuration", d); }
+function AOLPlayerReady(p){ Backbone.Events.trigger("aol:playerReady", p); }
+function onVideoStartPlay(newState){ Backbone.Events.trigger("aol:stateChange", newState); }
+function onTimeUpdate(e){ Backbone.Events.trigger("aol:onEnded", e); }
+function onTimeUpdate(t){ Backbone.Events.trigger("aol:setCurrentTime", t); }
+function getDuration(d){ Backbone.Events.trigger("aol:setDuration", d); }
