@@ -74,6 +74,13 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
       if (shelby.models.user.isAnonymous()) {
         this._markViewerWelcomedLoggedOut();
       }
+      shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : "App",
+        gaAction : "Click play in "+this._appProgressKey+" welcome",
+        gaLabel : shelby.models.user.get('nickname'),
+        kmqProperties : { user : shelby.models.user.get('nickname') }
+      });
   },
 
   _updateAppProgress : function(property, val){
