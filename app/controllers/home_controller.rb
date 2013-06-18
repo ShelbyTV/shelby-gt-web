@@ -175,8 +175,8 @@ class HomeController < ApplicationController
   # GET /:user_name/shares(/:frame_id)
   #
   def shares
-    user_name = params[:user_name]
-    user = Shelby::API.get_user(user_name)
+    user_id_or_nickname = params[:user_id_or_nickname]
+    user = Shelby::API.get_user(user_id_or_nickname)
     if user
       @user = user
       @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user

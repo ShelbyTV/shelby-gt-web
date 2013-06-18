@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', "3.2.12"
+gem 'rails', :git => 'git@github.com:ShelbyTV/rails.git', :branch => 'v3.2.13-shelby'
 # json is a dependency of rails, want to make sure we are secure with at least 1.7.7
 gem 'json', "~> 1.7.7"
 

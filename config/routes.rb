@@ -30,7 +30,7 @@ ShelbyGtWeb::Application.routes.draw do
   # ROLLS
   get '/roll/:roll_id/:title' => 'roll#show'
   get '/roll/:roll_id' => 'roll#show'
-  get '/user/:user_id/personal_roll' => 'roll#show_personal_roll'
+  get '/user/:user_id_or_nickname/personal_roll' => 'roll#show_personal_roll', :constraints => { :user_id_or_nickname => /[^\/]+/ }
   get '/isolated-roll/:roll_id' => 'roll#show_isolated_roll'
   get '/subscribe-via-email/roll/:roll_id' => 'roll#subscribe_via_email'
 
@@ -62,7 +62,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/user/:user_id/stats' => "home#stats"
 
   #SHARES
-  get '/:user_name/shares(/:frame_id)' => "home#shares"
+  get '/:user_id_or_nickname/shares(/:frame_id)' => "home#shares", :constraints => { :user_id_or_nickname => /[^\/]+/ }
 
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'
@@ -78,6 +78,6 @@ ShelbyGtWeb::Application.routes.draw do
   # This used to handle *everything* but now it's much more limited in scope
   # XXX Still handles non-shelby-domain iso rolls :(
   post '(*path)' => 'home#index', :as => :root
-  get '(*path)' => 'home#index', :as => :root
+  get '(*path)' => 'home#index', :as => :root, :constraints => { :path => /[^\/]+/ }
 
 end
