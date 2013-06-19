@@ -114,7 +114,9 @@ class HomeController < ApplicationController
       render '/home/landing'
     end
   end
-
+  #forcegraph controller
+  def forcegraph
+  end 
 
   ##
   # Handles community view when visited directly (allowing logged-out users to see it)

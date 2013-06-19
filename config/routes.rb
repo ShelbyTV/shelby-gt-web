@@ -45,7 +45,8 @@ ShelbyGtWeb::Application.routes.draw do
   get "signup" => 'signup#index'
   post "signup" => 'signup#index'
 
-
+  # forcegraph route 
+  get '/forcegraph' => 'home#forcegraph'
   # HOME
   get '/team' => 'home#team'
   get '/hash_app' => 'home#hash_app'
