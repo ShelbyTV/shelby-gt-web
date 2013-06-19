@@ -27,6 +27,14 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
     }));
 
     $('#js-welcome, .js-app-welcome').removeClass('hidden');
+
+    shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : "App",
+        gaAction : "Display "+this._appProgressKey+" welcome dialog",
+        gaLabel : shelby.models.user.get('nickname'),
+        kmqProperties : { user : shelby.models.user.get('nickname') }
+      });
   },
 
   _changeDisplay : function() {

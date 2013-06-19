@@ -1,5 +1,9 @@
 <% if @frame and @video %>
-  <%= @video['title'] %> shared by <%= "#{@frame['creator']['name']} (#{@frame['creator']['nickname']})" %> on Shelby.tv
+  <% if @frame['creator'] %>
+    <%= @video['title'] %> shared by <%= "#{@frame['creator']['name']} (#{@frame['creator']['nickname']})" %> on Shelby.tv
+  <% else %>
+    <%= @video['title'] %> on Shelby.tv
+  <% end %>
 
 <% elsif @roll %>
 	<%= page_title_for_roll(@roll, @user) %>
