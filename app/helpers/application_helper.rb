@@ -47,6 +47,8 @@ module ApplicationHelper
   end
 
   def build_valid_video_player_url(video_embed)
+    return '' unless video_embed
+
     urls = URI.extract(video_embed)
     if !urls.empty?
       return urls.first.include?('https') ? urls.first : urls.first.gsub(/http/,'https')
