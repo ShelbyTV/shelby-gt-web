@@ -78,6 +78,9 @@ ShelbyGtWeb::Application.routes.draw do
   # This used to handle *everything* but now it's much more limited in scope
   # XXX Still handles non-shelby-domain iso rolls :(
   post '(*path)' => 'home#index', :as => :root
+  # first allow single segment paths that contain any character besides /, so we can handle things like /user.name
   get '(*path)' => 'home#index', :as => :root, :constraints => { :path => /[^\/]+/ }
+  # otherwise catch any multi-segment path
+  get '(*path)' => 'home#index', :as => :root
 
 end
