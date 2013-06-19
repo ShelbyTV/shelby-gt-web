@@ -1,28 +1,33 @@
 libs.shelbyGT.Ajax = {
   // default error handling for ajax calls in the Shelby app
   defaultOnError : function(event, jqXHR, ajaxSettings, thrownError){
+    var msg = {
+                message: "<p>You are not authorized to do that</p>",
+                button_primary : {
+                  title: 'Login'
+                },
+                button_secondary : {
+                  title: 'or Sign Up'
+                }
+              };
+
     if(!shelby.views.notificationOverlayView){ new libs.shelbyGT.notificationOverlayView({model:shelby.models.notificationState}); }
     switch(jqXHR.status){
       case 401:
-        shelby.dialog(
-          {
-            message: "<p>You are not authorized to do that</p>",
-            button_primary : {
-              title: 'Login'
-            },
-            button_secondary : {
-              title: 'No thanks'
-            }
-          },
+      case 403:
+        shelby.alert(msg,
           function(returnValue){
+            var href = "/signout";
+
             if(returnValue == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary) {
-              document.location = "/";
+              href = "/signout";
+            } else {
+              href = "/signup";
             }
+
+            document.location = href;
           }
         );
-        break;
-      case 403:
-        shelby.alert({message: "<p>You are not authorized to do that</p>"});
         break;
     }
   },
