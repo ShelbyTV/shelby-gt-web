@@ -28,9 +28,10 @@
     }),
 
     //actionToViewMap : use this if your dashboard entry action needs a different view than FrameGroupView
+    // it's evaluated using _.result(), so it can be set to either an object or a function that returns an object
     actionToViewMap : {
       /* example override:
-      '0' : libs.ShelbyGT.SomeView
+      0 : libs.ShelbyGT.SomeView
       */
     },
 
@@ -40,7 +41,7 @@
       _(this.options).extend({
         listItemView : function(item, params){
 
-          var mapResult = self.actionToViewMap[item.get('primaryDashboardEntry').get('action')] || libs.shelbyGT.FrameGroupView;
+          var mapResult = _(self).result('actionToViewMap')[item.get('primaryDashboardEntry').get('action')] || libs.shelbyGT.FrameGroupView;
           return new mapResult(_(params).extend({model:item}));
         }
       });

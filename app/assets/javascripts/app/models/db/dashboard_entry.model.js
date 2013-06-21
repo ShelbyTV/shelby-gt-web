@@ -6,3 +6,7 @@ libs.shelbyGT.DashboardEntryModel = libs.shelbyGT.ShelbyBaseModel.extend({
     createModels : true
   }]
 });
+
+libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES = {
+  videoGraphRecommendation : 31
+};
