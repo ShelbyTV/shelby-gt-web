@@ -73,6 +73,14 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   isAnonymous : function(){
     return this.get('anon');
+  },
+
+  trackSessionCount : function(onSuccess){
+    var _url = shelby.config.apiRoot + '/user/' + this.id + '/visit';
+    $.ajax(_url, {
+      type: 'PUT',
+      success: onSuccess
+    });
   }
 
 });
