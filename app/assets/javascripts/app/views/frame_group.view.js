@@ -17,11 +17,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   events : {
     "click .js-creation-date"               : "_expand",
-    "click .js-creator-personal-roll"       : "_goToCreatorsPersonalRoll",
+    "click .js-goto-user-page"              : "_goToUserPage",
     "click .js-frame-activate"              : "_activate",
     "click .js-frame-source"                : "_goToSourceRoll",
-    "click .js-go-to-roll-by-id"            : "_goToRollById",
-    "click .js-go-to-frame-and-roll-by-id"  : "_goToFrameAndRollById",
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
     "click .js-remove-frame"                : "_onClickRemoveFrame",
     "click .js-share-frame"                 : "requestShareFrame",
@@ -272,17 +270,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     }
   },
 
-  _goToCreatorsPersonalRoll : function(){
+  _goToUserPage : function(e){
     if (this.model.get('collapsed')) {
       this._expand();
       return;
     }
 
-    var creator = this.model.getFirstFrame().get('creator');
-
-    if (creator) {
-      shelby.router.navigate(creator.get('nickname'), {trigger:true});
-    }
+    shelby.router.navigate($(e.currentTarget).data('user_nickname'), {trigger:true});
 
   },
 
@@ -301,16 +295,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     } else {
       shelby.router.navigateToRoll(this.model.getFirstFrame().get('roll'), {trigger:true});
     }
-  },
-
-  _goToRollById : function(e){
-    shelby.router.navigate('roll/' + $(e.currentTarget).data('public_roll_id'), {trigger:true});
-    return false;
-  },
-
-  _goToFrameAndRollById : function(e){
-    shelby.router.navigate('roll/' + $(e.currentTarget).data('roll_id') + '/frame/' + $(e.currentTarget).data('frame_id'), {trigger:true});
-    return false;
   },
 
   _toggleComment : function(e){
