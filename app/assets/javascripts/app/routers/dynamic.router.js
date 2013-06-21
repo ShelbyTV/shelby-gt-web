@@ -15,7 +15,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "community/:entryId"                           : "displayEntryInCommunityChannel",
     "channels"                                     : "displayChannel",
     "channels/:channel"                            : "displayChannel",
-    "channels/:channel/:entryId"                   : "displayEntryInDashboard",
+    "channels/:channel/:entryId"                   : "displayEntryInChannel",
     "help"                                         : "displayHelp",
     "legal"                                        : "displayLegal",
     "search"                                       : "displaySearch",
@@ -52,7 +52,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   //---
 
   openInviteDisplayDashboard : function(params) {
-    this.displayDashboard(params, {openInvite: true});
+    this.displayDashboard(null, {openInvite: true});
   },
 
   displayFrameInRollWithConversationOverlay : function(rollId, frameId, params){
@@ -232,12 +232,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayEntryInCommunityChannel : function(entryId, params) {
-    this.displayEntryInDashboard('community', entryId, params);
+    this.displayEntryInChannel('community', entryId, params);
   },
 
   displayChannel : function(channel, params){
     if (channel == 'community') {
-      this.displayDashboard(params, {channel: channel});
+      this.displayDashboard(null, {channel: channel});
       this.navigate('community', {trigger: false, replace: true});
     } else {
       // if the requested channel doesn't exist, just go to the first channel
@@ -248,10 +248,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   },
 
-  displayEntryInDashboard : function(channel, entryId, params){
+  displayEntryInChannel : function(channel, entryId, params){
     var self = this;
     if (_(shelby.config.channels).has(channel)) {
-      this.displayDashboard(params, {
+      this.displayDashboard(null, {
         channel: channel,
         data: {
           since_id : entryId,
@@ -361,6 +361,22 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayDashboard : function(params, options){
+
+    // if there was a URL param requesting a specific dashboard entry
+    // set options appropriately to load that entry and start with it
+    if (params && params.entry) {
+      var self = this;
+      options = _.chain({}).extend(options).extend({
+        data : {
+          since_id : params.entry,
+          include_children : true
+        },
+        onDashboardFetch : function(dashboardModel, response){
+          self._activateEntryInDashboardById(dashboardModel, params.entry);
+        }
+      }).value();
+    }
+
     this._setupTopLevelViews(options);
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
