@@ -75,7 +75,15 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
       var dupe = false;
 
       for (var j = 0; j < this.length && !dupe; j++) {
-         if (this.at(j).getFirstFrame().get('video').id == video_id) {
+         // any two entries with the same video are dupes, UNLESS one of them
+         // is a video recommendation and one is not - video recommendations
+         // should still be shown separately even if there is another entry
+         // with that same video
+         var areSameVideo = this.at(j).getFirstFrame().get('video').id == video_id;
+         var neitherAreVideoRecs = !dashboard_entry ||
+                                   (dashboard_entry.get('action') != libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation &&
+                                   this.at(j).get('primaryDashboardEntry').get('action') != libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation);
+         if (areSameVideo && neitherAreVideoRecs) {
             this.at(j).add(frame, dashboard_entry, options);
             dupe = true;
          }
