@@ -18,6 +18,8 @@
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
 
+<% var action = frameGroup.get('primaryDashboardEntry') && frameGroup.get('primaryDashboardEntry').get('action') %>
+
 <% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- videocard -->
 
@@ -75,7 +77,7 @@
     %>
       <footer class="media_module frame-footer clearfix">
          <% if (clickableCreator) { %>
-           <a href="#" onclick="return false;" class="js-creator-personal-roll">
+           <a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= creator.get('nickname') %>">
              <span class="image_module xuser-avatar<% if (fauxUserOrigin) { %> xuser-avatar--<%= fauxUserOrigin %> icon-<%= fauxUserOrigin %><% } %> media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
                <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
              </span>
@@ -96,7 +98,7 @@
 
               <p class="xuser-data">
                 <% if (clickableCreator) { %>
-                  <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
+                  <a href="#" onclick="return false;" class="js-goto-user-page no-faux-link" data-user_nickname="<%= creator.get('nickname') %>"><strong><%= creatorNickname %></strong></a>
                 <% } else { %>
                   <%= creatorNickname %>
                 <% } %>
@@ -121,6 +123,25 @@
               </p>
           </div><!-- eo .media_body -->
 
+      </footer><!-- eo .media_module-->
+    <% } else if (action == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) {
+        var sourceFrameCreatorNickname = frameGroup.get('primaryDashboardEntry').get('src_frame').get('creator').get('nickname');
+    %>
+      <footer class="media_module frame-footer clearfix">
+        <div class="media_body">
+          <span class="xuser-data-timestamp">
+            <%= frame.get('created_at') %>
+          </span>
+          <p class="xuser-data xuser-data--green xuser-data--recommendation">
+            <strong>Recommended for you</strong>
+          </p>
+          <p class="xuser-message">
+            This video is shared by people like
+              <a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= sourceFrameCreatorNickname %>">
+                <%= sourceFrameCreatorNickname %>
+              </a>
+          <p>
+        </div><!-- eo .media_body -->
       </footer><!-- eo .media_module-->
     <% } %>
   </div><!-- eo .frame-body-wrapper -->

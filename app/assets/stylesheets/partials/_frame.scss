@@ -130,6 +130,14 @@
   color: adjust-lightness($text, 20%);
 }
 
+    .xuser-data--green {
+      color: adjust-lightness($ui-green, -10%);
+    }
+
+    .xuser-data--recommendation {
+      font-size: 1.1em;
+    }
+
 .xuser-data-link {
   &:link,
   &:visited {
