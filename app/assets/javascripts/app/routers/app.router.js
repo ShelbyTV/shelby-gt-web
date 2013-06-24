@@ -97,6 +97,9 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           shelby.models.promoRollCategories.fetch();
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: userModel.get('nickname')});
+
+          userModel.trackSessionCount();
+
           libs.utils.flash.detectFlash();
           libs.utils.intercom.boot(userModel);
           if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.dotTv) {
