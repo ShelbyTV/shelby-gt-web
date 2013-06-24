@@ -44,7 +44,11 @@
 }
 
 .roll_card__button {
-  width: 7em;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 0;
+  width: 100%;
 }
 
 //------------------------------------------------------------------------------

@@ -58,10 +58,19 @@ if (signupStep == 1) {
 
         //naively toggle state & text of button
         $this.toggleClass('button_green button_gray')
-             .text(isFollowing ? 'Follow' : 'Following');
+             .children('.button_label').text(isFollowing ? 'Follow' : 'Following');
 
         //change value of hidden input associated with button
         $('#rolls_' + roll_id).attr('checked', !isFollowing);
+    });
+
+    var $followAll = $('.js-follow-all');
+
+    $followAll.on('click', function(e){
+
+      var category = e.currentTarget.id.split(':')[1];
+      console.log('c',category);
+      $('.all-'+category).find('.form_checkbox').attr('checked',true);
     });
 
     $(window).on('hashchange',function(e){

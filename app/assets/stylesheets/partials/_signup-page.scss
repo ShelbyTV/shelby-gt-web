@@ -131,8 +131,45 @@
       width: 73em;
 
       //non-normative overrides
-      .list__item {
-        float: left;
+      .list--rolls {
+        .list__item {
+          float: left;
+        }
+      }
+
+      //local/private var.
+      $_slideshowHeight: 440px;
+
+      .slideshow_wrapper {
+        border: 1px solid $inset;
+        height: $_slideshowHeight;
+      }
+      .slideshow_menu {
+        border: 1px solid $inset;
+        height: $_slideshowHeight;
+        width: 300px;
+
+        &,
+        .button_primer {
+          text-align: left
+        }
+
+        .list__item {
+          border-bottom: 1px solid $inset;
+
+          &:first-child {
+            border-top: 1px solid $inset;
+          }
+        }
+      }
+      .slideshow_menu__h1 {
+        padding: 0.5em;
+      }
+
+      .follow_all {
+        float: right;
+        font-size: 0.9em;
+        padding: 0.75em 0.75em 0;
       }
     }
     .signup--social {
