@@ -117,6 +117,9 @@
       display: inline;
       vertical-align: 1px;
     }
+    .form_checkbox--partial {
+      @include opacity(0.5);
+    }
 ////////////////////////////////////////////////////////////////////////////
 //  HORIZONTAL FORMS
 //

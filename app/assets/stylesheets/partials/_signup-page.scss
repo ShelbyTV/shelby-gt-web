@@ -145,9 +145,18 @@
         height: $_slideshowHeight;
       }
       .slideshow_menu {
-        border: 1px solid $inset;
+        border-bottom: 1px solid $inset;
+        border-left: 1px solid $inset;
+        border-top: 1px solid $inset;
+        margin-right: 0;
         height: $_slideshowHeight;
         width: 300px;
+
+        .icon {
+          color: $ui-gray;
+          float: right;
+          padding: 0.6em 0.6em 0 0;
+        }
 
         &,
         .button_primer {
@@ -161,17 +170,22 @@
             border-top: 1px solid $inset;
           }
         }
+        .list__item--selected {
+          .icon {
+            color: $ui-soft-black;
+          }
+        }
       }
       .slideshow_menu__h1 {
         padding: 0.5em;
       }
-
       .follow_all {
         float: right;
         font-size: 0.9em;
         padding: 0.75em 0.75em 0;
       }
     }
+
     .signup--social {
       .button_command--share {
         font-size: 1.5em;

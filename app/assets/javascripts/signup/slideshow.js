@@ -8,6 +8,8 @@ if (signupStep == 1) {
     $('.js-next').toggleClass('hidden',lastSlide);
     $('.js-advance-slideshow').toggleClass('hidden', !lastSlide);
 
+    $('.js-slideshow-menu').children('.list__item').removeClass('list__item--selected').eq(opts.currSlide).addClass('list__item--selected');
+
     // track click event
     shelby.trackEx({
       providers : ['ga', 'kmq'],
@@ -50,18 +52,7 @@ if (signupStep == 1) {
     var $followUnfollow = $('.js-followOrUnfollow');
 
     $followUnfollow.on('click',function(e){
-      e.preventDefault();
-
-      var $this = $(this),
-          roll_id = $this. data('roll_id'),
-          isFollowing = !$this.hasClass('button_gray'); // button_gray == not following
-
-        //naively toggle state & text of button
-        $this.toggleClass('button_green button_gray')
-             .children('.button_label').text(isFollowing ? 'Follow' : 'Following');
-
-        //change value of hidden input associated with button
-        $('#rolls_' + roll_id).attr('checked', !isFollowing);
+      //doesn't need logic anymore, checkbox isn't hidden
     });
 
     var $followAll = $('.js-follow-all');
@@ -69,8 +60,10 @@ if (signupStep == 1) {
     $followAll.on('click', function(e){
 
       var category = e.currentTarget.id.split(':')[1];
-      console.log('c',category);
-      $('.all-'+category).find('.form_checkbox').attr('checked',true);
+      var $isChecked = $(e.currentTarget).is(':checked');
+      var $checkboxes = $('.js-' + category).find('.form_checkbox');
+
+      $checkboxes.attr('checked',$isChecked);
     });
 
     $(window).on('hashchange',function(e){

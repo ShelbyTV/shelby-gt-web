@@ -16,11 +16,12 @@
           Tune Your Shelby
         </h3>
 
-        <ul class="list list--stacked">
+        <ul class="list list--stacked js-slideshow-menu">
           <% Settings::Signup.roll_categories.each_with_index do |category,cat_index| %>
             <li class="list__item">
+              <span class="icon icon-chevron"></span>
               <label for="follow:<%= category['title'].downcase %>" class="follow_all">
-                <input type="checkbox" id="follow:<%= category['title'].downcase %>" name="follow:<%= category['title'].downcase %>" class="form_checkbox form_checkbox--inline js-follow-all" />
+                <input type="checkbox" id="follow:<%= category['title'].downcase %>" name="follow:<%= category['title'].downcase %>" class="form_checkbox form_checkbox--inline js-follow-all js-follow-all-<%= category['title'].downcase %>" data-children="<%= category['rolls'].count %>" />
                 Follow all
               </label>
 
@@ -37,7 +38,7 @@
           <fieldset class="slideshow_wrapper">
             <div class="slideshow js-slideshow">
               <% Settings::Signup.roll_categories.each_with_index do |category,cat_index| %>
-                <div class="slideshow__slide all-<%= category['title'].downcase %>" data-index="<%= cat_index %>" data-category="<%= category['title'].downcase %>">
+                <div class="slideshow__slide js-<%= category['title'].downcase %>" data-index="<%= cat_index %>" data-category="<%= category['title'].downcase %>">
                   <ul class="list list--rolls">
                     <% category['rolls'].each_with_index do |roll,roll_index| %>
                       <li class="list__item one-half">
@@ -58,10 +59,10 @@
                           </div><!-- media_body -->
 
                           <div class="clearfix">
-                            <button class="button_primer button_command button_gray roll_card__button js-followOrUnfollow js-track-event" data-roll_id="<%= roll["personal_roll_id"] %>" data-ga_category="Onboarding" data-ga_action="Click Follow on Step 1" data-ga_label="<%= roll['nickname'] %>">
+                            <label class="button_primer button_command button_gray roll_card__button js-followOrUnfollow js-track-event" data-category="<%= category['title'].downcase %>" data-roll_id="<%= roll["personal_roll_id"] %>" data-ga_category="Onboarding" data-ga_action="Click Follow on Step 1" data-ga_label="<%= roll['nickname'] %>">
                               <%= check_box_tag "rolls[#{roll['personal_roll_id']}]", nil, false, :class => "form_checkbox form_checkbox--inline" %>
                               <span class="button_label">Follow</span>
-                            </button>
+                            </label>
                           </div><!-- eo media_image--rev -->
                         </div><!-- eo roll_card -->
                       </li>
