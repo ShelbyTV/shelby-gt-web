@@ -40,16 +40,17 @@ class HomeController < ApplicationController
           end
         end
 
+        path = params[:path]
         # if the path is just a user name, this is the route for a user profile, so get the
-        # necessary view instance variables and continue
-        user_name = params[:path]
-        user = Shelby::API.get_user(user_name) if user_name
+        # necessary view instance variables and render
+        if path && !Settings::Application.root_paths.include?(path)
+          user = Shelby::API.get_user(path)
 
-        if user
-          @user = user
-          @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
-
-          render '/home/app' and return
+          if user
+            @user = user
+            @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
+            render '/home/app' and return
+          end
         end
 
         if user_signed_in?
