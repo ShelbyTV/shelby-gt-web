@@ -37,13 +37,13 @@ if (signupStep == 1) {
 
     $slideshow.cycle({
       after         : onAfter,
-      fx            : 'scrollHorz',
+      fx            : 'scrollVert',
       next          : '.js-next',
       nowrap        : true,
       manualTrump   : false,
       pager         : '.js-pagination',
       timeout       : 0,
-      speed         : 500,
+      speed         : 300,
       startingSlide : startingSlide()
     });
 
@@ -51,8 +51,8 @@ if (signupStep == 1) {
 
     $followUnfollow.on('click',function(e){
       //doesn't need logic anymore, checkbox isn't hidden
-      $this    = $(this),
-      category = $this.data('category');
+      $this          = $(this),
+      category       = $this.data('category');
       categoryLength = $('.js-' + category).find($followUnfollow).length;
 
       //filter (find) all the checkboxes in the slideshow.

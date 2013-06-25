@@ -7,21 +7,25 @@
     <h1 class="signup__h1">
       Tune your Shelby TV
     </h1>
+
+    <h2 class="signup__h2">
+      Follow our hand-picked selections below.
+    </h2>
   </div>
 
   <div class="signup__body">
     <div class="media_module">
       <div class="media_image slideshow_menu">
-        <h3 class="slideshow_menu__h1">
-          Categories
+<!--         <h3 class="slideshow_menu__h1">
+          Genres
         </h3>
-
+ -->
         <ul class="list list--stacked js-slideshow-menu">
           <% Settings::Signup.roll_categories.each_with_index do |category,cat_index| %>
             <li class="list__item">
               <span class="icon icon-chevron"></span>
               <label for="follow:<%= category['title'].downcase %>" class="follow_all">
-                <input type="checkbox" id="follow:<%= category['title'].downcase %>" name="follow:<%= category['title'].downcase %>" class="form_checkbox form_checkbox--inline js-follow-all js-follow-all-<%= category['title'].downcase %>" data-children="<%= category['rolls'].count %>" />
+                <input type="checkbox" id="follow:<%= category['title'].downcase %>" name="follow:<%= category['title'].downcase %>" class="form_checkbox form_checkbox--inline js-follow-all js-follow-all-<%= category['title'].downcase %>" data-children="<%= category['rolls'].count %>" data-title="<%= category['title'].downcase %>" />
                 Follow all
               </label>
 

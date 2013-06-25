@@ -156,9 +156,9 @@
         width: 300px;
 
         .icon {
-          color: $ui-gray;
+          color: $ui-white;
           float: right;
-          padding: 0.6em 0.6em 0 0;
+          padding: 1.2em 0.6em 0 0;
         }
 
         &,
@@ -166,6 +166,7 @@
           text-align: left;
         }
         .button_primer {
+          padding: 1em;
           width: 55%;
         }
 
@@ -173,7 +174,7 @@
           border-bottom: 1px solid $inset;
 
           &:first-child {
-            border-top: 1px solid $inset;
+            // border-top: 1px solid $inset;
           }
         }
         .list__item--selected {
@@ -185,12 +186,12 @@
         }
       }
       .slideshow_menu__h1 {
-        padding: 0.5em;
+        padding: 0.9em;
       }
       .follow_all {
         float: right;
         font-size: 0.9em;
-        padding: 0.75em 0.75em 0;
+        padding: 1.3em 0.75em 0;
       }
       .form_legend {
         font-size: 1.8em;
@@ -260,13 +261,14 @@
   font-weight: 400;
 }
 .signup__h2 {
-  color: $ui-soft-black;
-  font-size: 1.4em;
-  font-weight: bold;
+  font-weight: normal;
+  font-size: 1em;
+  margin: 1em auto 2em;
+  width: 28em;
 }
 .signup__h3 {
   color: $ui-soft-black;
-  font-size: 1em;
+  font-size: 12px;
   font-weight: normal;
   margin-bottom: 1em;
 }
