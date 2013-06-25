@@ -3,12 +3,10 @@ if (signupStep == 1) {
   var onAfter = function(curr,next,opts,d){
     window.location.hash = opts.currSlide;
 
-    var lastSlide = opts.currSlide == (opts.slideCount - 1);
-
-    $('.js-next').toggleClass('hidden',lastSlide);
-    $('.js-advance-slideshow').toggleClass('hidden', !lastSlide);
-
-    $('.js-slideshow-menu').children('.list__item').removeClass('list__item--selected').eq(opts.currSlide).addClass('list__item--selected');
+    $('.js-slideshow-menu')
+        .children('.list__item').removeClass('list__item--selected')
+                                .eq(opts.currSlide)
+                                .addClass('list__item--selected');
 
     // track click event
     shelby.trackEx({
@@ -59,7 +57,8 @@ if (signupStep == 1) {
 
       //filter (find) all the checkboxes in the slideshow.
       //then count (filter) the checked ones for the specific category
-      var checkedBoxes = $('.js-' + category).find($followUnfollow).children('.form_checkbox').filter(':checked').length;
+      var checkedBoxes = $('.js-' + category).find($followUnfollow).children('.form_checkbox')
+                                                                   .filter(':checked').length;
 
       var partiallyChecked = (checkedBoxes > 0 && checkedBoxes < categoryLength);
       var menuItem = $('.js-follow-all-'+category);
@@ -80,6 +79,12 @@ if (signupStep == 1) {
       var $checkboxes = $('.js-' + category).find('.form_checkbox');
 
       $checkboxes.attr('checked',$isChecked);
+
+      //if not checked, clean up the 'partial' state
+      if(!$isChecked) {
+        $(this).removeClass('form_checkbox--partial');
+      }
+
     });
 
     $(window).on('hashchange',function(e){

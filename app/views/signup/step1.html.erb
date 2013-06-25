@@ -13,7 +13,7 @@
     <div class="media_module">
       <div class="media_image slideshow_menu">
         <h3 class="slideshow_menu__h1">
-          Tune Your Shelby
+          Categories
         </h3>
 
         <ul class="list list--stacked js-slideshow-menu">
@@ -78,9 +78,8 @@
             </div><!-- eo slideshow -->
           </fieldset>
 
-          <%= submit_tag("Next", :class => "hidden button_primer button_command button_command--wide button_green js-advance-slideshow js-track-event", 'data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Next on Step 1') %>
-          <!-- event tracking for button below is handled in slideshow.js -->
-          <button class="button_primer button_command button_command--wide button_gray js-next">More</button>
+          <%= submit_tag("Next", :class => "button_primer button_command button_command--wide button_green form__submit js-advance-slideshow js-track-event", 'data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Next on Step 1') %>
+
         <% end %>
 
       </div><!-- eo media_body -->

@@ -163,7 +163,10 @@
 
         &,
         .button_primer {
-          text-align: left
+          text-align: left;
+        }
+        .button_primer {
+          width: 55%;
         }
 
         .list__item {
@@ -193,6 +196,9 @@
         font-size: 1.8em;
         line-height: 2;
         padding: 0.25em 0.6em 0;
+      }
+      .form__submit {
+        margin: 1em 30% 0 0;
       }
     }
 
