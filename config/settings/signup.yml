@@ -7,7 +7,7 @@ defaults: &defaults
   user_update_step: 3
   roll_categories: [
     {
-      title :  'surprised',
+      title :  'surprising',
       description: '<span>Do you love to watch <strong>surprising</strong> video? </span><br />Follow our hand-picked selections below.',
       rolls : [
         {
@@ -49,7 +49,7 @@ defaults: &defaults
       ]
     },
     {
-      title : 'inspired',
+      title : 'inspiring',
       description: '<span>Do you love to watch <strong>inspiring</strong> video? </span><br />Follow our hand-picked selections below.',
       rolls : [
         {
@@ -91,7 +91,7 @@ defaults: &defaults
       ]
     },
     {
-      title : 'entertained',
+      title : 'entertaining',
       description: '<span>Do you love to watch <strong>entertaining</strong> video?</span> <br />Follow our hand-picked selections below.',
       rolls : [
         {
