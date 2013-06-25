@@ -53,6 +53,22 @@ if (signupStep == 1) {
 
     $followUnfollow.on('click',function(e){
       //doesn't need logic anymore, checkbox isn't hidden
+      $this    = $(this),
+      category = $this.data('category');
+      categoryLength = $('.js-' + category).find($followUnfollow).length;
+
+      //filter (find) all the checkboxes in the slideshow.
+      //then count (filter) the checked ones for the specific category
+      var checkedBoxes = $('.js-' + category).find($followUnfollow).children('.form_checkbox').filter(':checked').length;
+
+      var partiallyChecked = (checkedBoxes > 0 && checkedBoxes < categoryLength);
+      var menuItem = $('.js-follow-all-'+category);
+
+      if(partiallyChecked && menuItem.is(':checked')) {
+        $('.js-follow-all-'+category).toggleClass('form_checkbox--partial',true);
+      } else {
+        $('.js-follow-all-'+category).toggleClass('form_checkbox--partial',false);
+      }
     });
 
     var $followAll = $('.js-follow-all');

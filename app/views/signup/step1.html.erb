@@ -39,6 +39,10 @@
             <div class="slideshow js-slideshow">
               <% Settings::Signup.roll_categories.each_with_index do |category,cat_index| %>
                 <div class="slideshow__slide js-<%= category['title'].downcase %>" data-index="<%= cat_index %>" data-category="<%= category['title'].downcase %>">
+                  <h3 class="form_legend">
+                    <%= category['title'].capitalize %>
+                  </h3>
+
                   <ul class="list list--rolls">
                     <% category['rolls'].each_with_index do |roll,roll_index| %>
                       <li class="list__item one-half">
@@ -57,14 +61,14 @@
                               <%= roll["description"] %>
                             </p>
                           </div><!-- media_body -->
-
-                          <div class="clearfix">
-                            <label class="button_primer button_command button_gray roll_card__button js-followOrUnfollow js-track-event" data-category="<%= category['title'].downcase %>" data-roll_id="<%= roll["personal_roll_id"] %>" data-ga_category="Onboarding" data-ga_action="Click Follow on Step 1" data-ga_label="<%= roll['nickname'] %>">
-                              <%= check_box_tag "rolls[#{roll['personal_roll_id']}]", nil, false, :class => "form_checkbox form_checkbox--inline" %>
-                              <span class="button_label">Follow</span>
-                            </label>
-                          </div><!-- eo media_image--rev -->
                         </div><!-- eo roll_card -->
+
+                        <div class="roll_card__foot clearfix">
+                          <label class="button_primer button_command button_gray roll_card__button js-followOrUnfollow js-track-event" data-category="<%= category['title'].downcase %>" data-roll_id="<%= roll["personal_roll_id"] %>" data-ga_category="Onboarding" data-ga_action="Click Follow on Step 1" data-ga_label="<%= roll['nickname'] %>">
+                            <%= check_box_tag "rolls[#{roll['personal_roll_id']}]", nil, false, :class => "form_checkbox form_checkbox--inline" %>
+                            <span class="button_label">Follow</span>
+                          </label>
+                        </div><!-- eo media_image--rev -->
                       </li>
                     <% end %>
                   </ul><!-- eo list -->

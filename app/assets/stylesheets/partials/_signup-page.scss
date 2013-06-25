@@ -128,23 +128,26 @@
       }
     }
     .signup--content {
-      width: 73em;
+      width: 65em;
 
       //non-normative overrides
       .list--rolls {
+        padding: 0.5em;
+
         .list__item {
           float: left;
         }
       }
 
       //local/private var.
-      $_slideshowHeight: 440px;
+      $_slideshowHeight: 455px;
 
       .slideshow_wrapper {
         border: 1px solid $inset;
         height: $_slideshowHeight;
       }
       .slideshow_menu {
+        background-color: $ui-off-white;
         border-bottom: 1px solid $inset;
         border-left: 1px solid $inset;
         border-top: 1px solid $inset;
@@ -171,6 +174,8 @@
           }
         }
         .list__item--selected {
+          background-color: $ui-white;
+
           .icon {
             color: $ui-soft-black;
           }
@@ -183,6 +188,11 @@
         float: right;
         font-size: 0.9em;
         padding: 0.75em 0.75em 0;
+      }
+      .form_legend {
+        font-size: 1.8em;
+        line-height: 2;
+        padding: 0.25em 0.6em 0;
       }
     }
 
