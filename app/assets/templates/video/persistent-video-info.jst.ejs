@@ -15,8 +15,6 @@
 
 <% var action = frameGroup.get('primaryDashboardEntry') && frameGroup.get('primaryDashboardEntry').get('action') %>
 
-<% console.log('frameGroup',frameGroup) %>
-<% console.log('action',action) %>
 <%
   var currentCreatorNickname;
 
@@ -59,8 +57,7 @@
       </h2>
 
       <div class="media_module persistent_video_info__body">
-        <% if(action == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) {
-          console.log('action!');
+        <% if(action == <libs class="shelbyGT DashboardEntryModel ENTRY_TYPES videoGraphRecommendation"></libs>) {
           var sourceFrameCreatorNickname = frameGroup.get('primaryDashboardEntry').get('src_frame').get('creator').get('nickname');
         %>
           <div class="media_body">
