@@ -60,8 +60,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     if(this._currentFrame && this._nextFrame){
       var emailBody;
       var tweetIntentParams = {};
+      var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
       if (shelby.models.user.isAnonymous()) {
-        var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
         var permalink;
         if (_frameGroup) {
           permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup);
@@ -104,6 +104,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         currentFrameOriginator : currentFrameOriginator,
         currentFrameShortlink  : this._currentFrameShortlink,
         eventTrackingCategory  : this.options.eventTrackingCategory,
+        frameGroup             : _frameGroup,
         nextFrame              : this._nextFrame,
         queuedVideosModel      : this.options.queuedVideos,
         showNextFrame          : this.options.showNextFrame,
