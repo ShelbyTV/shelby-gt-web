@@ -13,17 +13,21 @@
 
     _userSeeked : false,
 
-    //how much playback (in seconds) should eached "watched" interval represent
+    //how much playback (in seconds) must occur before we mark the video started
+    //NB: this should always be less than WATCHED_INTERVAL
+    START_INTERVAL : 5,
+    //how much playback (in seconds) should each "watched" interval represent
     WATCHED_INTERVAL : 15,
-    //how much playback (by percent) should eached "watched" interval represent
+    //how much playback (by percent) should each "watched" interval represent
     WATCHED_PCT : 0.20,
     //when to mark video as watched (by percent) for js based even tracking
-    EVENT_TRACKING_PCT_THRESHOLD : 10,
+    EVENT_TRACKING_PCT_THRESHOLD : 0.10,
     // when to message a user about liking/sharing/rolling
     ENGAGED_INTERVAL : 60,
     ENGAGED_WATCHER_PCT : 0.40,
     ENGAGED_WATCHER_PCT_THRESHOLD : 40,
 
+    _markedAsStarted : null,
     _markedAsWatched : null,
     _markedAsEngaged : null,
 
@@ -64,7 +68,7 @@
         return;
       }
 
-      if( this._startTime === null ){
+      if( this._startTime === null || this._startTime === undefined ){
         //resetting _startTime after user seek
         this._startTime = curTime;
         return;
@@ -75,7 +79,7 @@
 
       // did they watch the mininum amount in seconds or by percentage?
       var watchedSeconds = curTime - this._startTime;
-      if( watchedSeconds > this.WATCHED_INTERVAL || watchedSeconds > this._requiredWatchPct) {
+      if( watchedSeconds > this.WATCHED_INTERVAL || watchedSeconds > this._requiredWatchSecondsByPct) {
         //API intelligently handles multiple "watched" posts for same frame
         this._currentFrame.watched(false, this._startTime, curTime);
         this._startTime = curTime;
@@ -85,11 +89,17 @@
         // If this hasn't been already marked as watched (in the eyes of ourevent tracking), do so.
         if (!this._markedAsWatched) {this.trackWatchedEvent(curTime);}
       }
+      // new Watch events are based off of interval seconds only, not percentages
+      if (watchedSeconds > this.START_INTERVAL && !this._markedAsStarted) {
+          this.trackWatchStart();
+          this._markedAsStarted = true;
+      }
+
 
       // wait till a video has a duration then trigger a hook
       if (!this._markedAsEngaged && this._currentFrame.get('video').get('duration')) {
-        this._requiredEngagedPct = this._currentFrame.get('video').get('duration') * this.ENGAGED_WATCHER_PCT;
-        if (curTime > this._requiredEngagedPct){
+        this._requiredEngagedSecondsByPct = this._currentFrame.get('video').get('duration') * this.ENGAGED_WATCHER_PCT;
+        if (curTime > this._requiredEngagedSecondsByPct){
           Backbone.Events.trigger('userHook:partialWatch');
           this._markedAsEngaged = true;
         }
@@ -156,13 +166,28 @@
       // have to track a final watch progress event for the segment of that video between
       // the last time we tracked it and now when we stop playing it
       if (guideModel.previous('activeFrameModel') && this._startTime !== null) {
-        this.trackWatchProgress(this._playbackState.get('activePlayerState').get('currentTime') - this._startTime);
+        var finalSegmentSeconds = this._playbackState.get('activePlayerState').get('currentTime') - this._startTime;
+        if (!isNaN(finalSegmentSeconds) && finalSegmentSeconds > 0.0) {
+          this.trackWatchProgress(finalSegmentSeconds);
+          //in case we marked some progress but the video wasn't yet tracked as started, mark it now
+          if (!this._markedAsStarted) {
+            this.trackWatchStart();
+            this._markedAsStarted = true;
+          }
+        }
+      }
+      // in case this video got marked as watched by pct but not by absolute seconds
+      // we need to track it as having been started
+      if (this._markedAsWatched && !this._markedAsStarted) {
+        this.trackWatchStart();
+        this._markedAsStarted = true;
       }
 
       this._currentFrame = frame;
-      this._startTime = 0;
-      this._requiredWatchPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.WATCHED_PCT) : this.WATCHED_INTERVAL;
-      this._requiredEngagedPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.ENGAGED_WATCHER_PCT) : this.ENGAGED_INTERVAL;
+      this._startTime = null;
+      this._requiredWatchSecondsByPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.WATCHED_PCT) : this.WATCHED_INTERVAL;
+      this._requiredEngagedSecondsByPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.ENGAGED_WATCHER_PCT) : this.ENGAGED_INTERVAL;
+      this._markedAsStarted = null;
       this._markedAsWatched = null;
       this._markedAsEngaged = null;
       this._currentPlayerInfo = null;
@@ -172,6 +197,16 @@
     // Analytics Reporting on when video is watched
     //  == tracked with GA and KISS
     //----------------------------------
+
+    trackWatchStart : function(){
+      var _primaryDashboardEntry = this._currentFrame._primaryDashboardEntry;
+      var _action = _primaryDashboardEntry ? _primaryDashboardEntry.get('action') : -1;
+        shelby.trackEx({
+          gaCategory : "Watch",
+          gaAction : "Start",
+          gaLabel : shelby.models.user.get('nickname') + '::' + _action
+        });
+    },
 
     //records what percent of videos are watched, grouped by dbentry action and by user
     trackWatchProgress : function(seconds) {
@@ -192,7 +227,7 @@
     trackWatchedEvent : function(currentTime){
       var _pctWatched = this.getPctWatched(currentTime) || 0.0;
       if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD) {
-        shelby.track('watched', {frameId: this._currentFrame.id, rollId: this._currentFrame.get('roll_id'), videoDuration: _duration, pctWatched: _pctWatched, userName: shelby.models.user.get('nickname')});
+        shelby.track('watched', {frameId: this._currentFrame.id, rollId: this._currentFrame.get('roll_id'), pctWatched: _pctWatched, userName: shelby.models.user.get('nickname')});
         this._markedAsWatched = true;
       }
     },
@@ -208,6 +243,13 @@
 
     trackWatchedCompleteEvent : function(){
       shelby.track('watched in full', {frameId: this._currentFrame.id, userName: shelby.models.user.get('nickname')});
+      var _primaryDashboardEntry = this._currentFrame._primaryDashboardEntry;
+      var _action = _primaryDashboardEntry ? _primaryDashboardEntry.get('action') : -1;
+      shelby.trackEx({
+        gaCategory : "Watch",
+        gaAction : "Complete",
+        gaLabel : shelby.models.user.get('nickname') + '::' + _action
+      });
     }
   };
 })();
