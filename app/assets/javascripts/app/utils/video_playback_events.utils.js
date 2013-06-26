@@ -33,7 +33,7 @@
       this._userDesires = userDesires;
 
       //track the active frame via guideModel
-      this._guideModel.bind('change:activeFrameModel', this._videoChanged, this);
+      this._guideModel.bind('change:activeFrameModel', this._frameChanged, this);
 
       //and track the progress of the video via player & playback state
       this._playbackState.bind('change:activePlayerState', this._onNewPlayerState, this);
@@ -58,7 +58,7 @@
     _onCurrentTimeChange: function(attr, curTime){
 
       if( this._userSeeked ) {
-        // user seeked, we will reset _starTime on the next update
+        // user seeked, we will reset _startTime on the next update
         this._userSeeked = false;
         this._startTime = null;
         return;
@@ -80,6 +80,8 @@
         this._currentFrame.watched(false, this._startTime, curTime);
         this._startTime = curTime;
 
+        this.trackWatchProgress(watchedSeconds);
+
         // If this hasn't been already marked as watched (in the eyes of ourevent tracking), do so.
         if (!this._markedAsWatched) {this.trackWatchedEvent(curTime);}
       }
@@ -100,6 +102,8 @@
       }
 
     },
+
+
 
     /*
     * When the video ends, count that as a watch
@@ -147,7 +151,14 @@
       newPlayerState.bind('change:playbackStatus', this._onPlaybackStatusChange, this);
     },
 
-    _videoChanged: function( guideModel, frame ){
+    _frameChanged: function( guideModel, frame ){
+      // if we were previously playing another video,
+      // have to track a final watch progress event for the segment of that video between
+      // the last time we tracked it and now when we stop playing it
+      if (guideModel.previous('activeFrameModel') && this._startTime !== null) {
+        this.trackWatchProgress(this._playbackState.get('activePlayerState').get('currentTime') - this._startTime);
+      }
+
       this._currentFrame = frame;
       this._startTime = 0;
       this._requiredWatchPct = frame.get('video').get('duration') ? (frame.get('video').get('duration') * this.WATCHED_PCT) : this.WATCHED_INTERVAL;
@@ -162,13 +173,37 @@
     //  == tracked with GA and KISS
     //----------------------------------
 
+    //records what percent of videos are watched, grouped by dbentry action and by user
+    trackWatchProgress : function(seconds) {
+        var _pctWatched = this.getPctWatched(seconds);
+        if (!_pctWatched) {
+          return;
+        }
+        var _primaryDashboardEntry = this._currentFrame._primaryDashboardEntry;
+        var _action = _primaryDashboardEntry ? _primaryDashboardEntry.get('action') : -1;
+        shelby.trackEx({
+          gaCategory : "Watch",
+          gaAction : "Progress",
+          gaLabel : shelby.models.user.get('nickname') + '::' + _action,
+          gaValue : _pctWatched
+        });
+    },
+
     trackWatchedEvent : function(currentTime){
-      var _duration = shelby.models.playbackState.get('activePlayerState').get('duration');
-      var _pctWatched = parseFloat( (currentTime / _duration * 100).toFixed(2) );
+      var _pctWatched = this.getPctWatched(currentTime) || 0.0;
       if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD) {
         shelby.track('watched', {frameId: this._currentFrame.id, rollId: this._currentFrame.get('roll_id'), videoDuration: _duration, pctWatched: _pctWatched, userName: shelby.models.user.get('nickname')});
         this._markedAsWatched = true;
       }
+    },
+
+    getPctWatched : function(time){
+      var _duration = this._playbackState.get('activePlayerState').get('duration');
+      if (!_duration) {
+        return null;
+      }
+      var _pct = time / _duration;
+      return Math.round(_pct * 100) / 100;
     },
 
     trackWatchedCompleteEvent : function(){
