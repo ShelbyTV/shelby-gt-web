@@ -6,30 +6,19 @@
   <ul class="list empty-indicator-list">
     <li>
       <div class="empty-indicator-section empty-indicator-within-shelby">
-          <h3 class="empty-indicator-subheader">
-            Within Shelby
-          </h3>
-          <button class="empty-indicator-button  button_primer button_gray button_command button_command--like js-track-event" data-ga_category="Likes Section" data-ga_action="Click disabled like buttons" data-ga_label="<%= shelby.models.user.get('nickname') %>" disabled="">
-            <span class="icon icon-like js-command-icon"></span>
-            <span class="label">
-              Like
-            </span>
-          </button>
-          <p class="empty-indicator-block">
-            Click the LIKE button on any video and it will appear here!
-          </p>
-        </div>
-    </li>
-    <li>
-      <div class="empty-indicator-section">
-          <h3 class="empty-indicator-subheader">
-            Across the web
-          </h3>
-          <button class="button_primer button_blue empty-indicator-button js-goto-tools">Browser Tools</button>
-          <p class="empty-indicator-block">
-            Like video directly from your favorite websites using our <a class="tools-link js-goto-tools js-track-event" data-ga_category="Likes Section" data-ga_action="Click tools" data-ga_label="<%= shelby.models.user.get('nickname') %>" href="#" onclick="return false;">browser tools</a>.
-          </p>
-        </div>
+        <h3 class="empty-indicator-subheader">
+          Within Shelby
+        </h3>
+        <button class="empty-indicator-button button_primer button_gray button_command button_command--like visuallydisabled js-track-event" data-ga_category="Likes Section" data-ga_action="Click disabled like buttons" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+          <span class="icon icon-like js-command-icon"></span>
+          <span class="label">
+            Like
+          </span>
+        </button>
+        <p class="empty-indicator-block">
+          Click the LIKE button on any video and it will appear here!
+        </p>
+      </div>
     </li>
   </ul>
 </div>
