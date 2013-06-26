@@ -392,7 +392,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       kmqProperties : { user : shelby.models.user.get('nickname') }
     });
 
-    if (params.utm_campaign && params.utm_campaign == "weekly-recommendation"){
+    if (params && params.utm_campaign && (params.utm_campaign == "weekly-recommendation")){
       shelby.trackEx({
         providers : ['kmq'],
         kmqName : 'Load stream from weekly-recommendation email',
