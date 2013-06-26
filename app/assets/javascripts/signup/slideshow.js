@@ -96,7 +96,7 @@ if (signupStep == 1) {
     // if the user failed to follow the appropriate number of rolls
     // on their previous attempt, let them know
     if (!followValidationOk) {
-      alert("To make Shelby better for you, pick at least one source of video");
+      alert("To make Shelby better for you, pick at least three source of video");
     }
   });
 }
