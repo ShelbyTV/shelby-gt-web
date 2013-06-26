@@ -128,13 +128,81 @@
       }
     }
     .signup--content {
-      width: 73em;
+      width: 65em;
 
       //non-normative overrides
-      .list__item {
-        float: left;
+      .list--rolls {
+        padding: 0.5em;
+
+        .list__item {
+          float: left;
+        }
+      }
+
+      //local/private var.
+      $_slideshowHeight: 455px;
+
+      .slideshow_wrapper {
+        border: 1px solid $inset;
+        height: $_slideshowHeight;
+      }
+      .slideshow_menu {
+        background-color: $ui-off-white;
+        border-bottom: 1px solid $inset;
+        border-left: 1px solid $inset;
+        border-top: 1px solid $inset;
+        margin-right: 0;
+        height: $_slideshowHeight;
+        width: 300px;
+
+        .icon {
+          color: transparent;
+          float: right;
+          padding: 1.2em 0.6em 0 0;
+        }
+
+        &,
+        .button_primer {
+          text-align: left;
+        }
+        .button_primer {
+          padding: 1em;
+          width: 55%;
+        }
+
+        .list__item {
+          border-bottom: 1px solid $inset;
+
+          &:first-child {
+            // border-top: 1px solid $inset;
+          }
+        }
+        .list__item--selected {
+          background-color: $ui-white;
+
+          .icon {
+            color: $ui-soft-black;
+          }
+        }
+      }
+      .slideshow_menu__h1 {
+        padding: 0.9em;
+      }
+      .follow_all {
+        float: right;
+        font-size: 0.9em;
+        padding: 1.3em 0.75em 0;
+      }
+      .form_legend {
+        font-size: 1.8em;
+        line-height: 2;
+        padding: 0.25em 0.6em 0;
+      }
+      .form__submit {
+        margin: 1em 43% 0 0;
       }
     }
+
     .signup--social {
       .button_command--share {
         font-size: 1.5em;
@@ -193,13 +261,14 @@
   font-weight: 400;
 }
 .signup__h2 {
-  color: $ui-soft-black;
-  font-size: 1.4em;
-  font-weight: bold;
+  font-weight: normal;
+  font-size: 1em;
+  margin: 1em auto 2em;
+  width: 28em;
 }
 .signup__h3 {
   color: $ui-soft-black;
-  font-size: 1em;
+  font-size: 12px;
   font-weight: normal;
   margin-bottom: 1em;
 }

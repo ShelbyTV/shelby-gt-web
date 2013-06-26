@@ -156,8 +156,7 @@ class SignupController < ApplicationController
     # save rolls to follow in session for later
     def set_rolls_to_follow
       # user much choose at least one roll, if not, send back to begining and show a message
-      (@validation_ok = false; return) unless params[:rolls]
-      Rails.logger.info "===== Setting rolls to follow: #{params[:rolls].keys}"
+      (@validation_ok = false; return) unless params[:rolls] and (params[:rolls].length > 2)
       rolls_to_follow = params[:rolls].keys
       # must have at least one roll followed. otherwise we should not advance to next step
       # save rolls to follow in session to be followed after user creation.
