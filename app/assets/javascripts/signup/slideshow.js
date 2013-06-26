@@ -37,7 +37,7 @@ if (signupStep == 1) {
 
     $slideshow.cycle({
       after         : onAfter,
-      fx            : 'scrollVert',
+      fx            : 'scrollHorz',
       next          : '.js-next',
       nowrap        : true,
       manualTrump   : false,
