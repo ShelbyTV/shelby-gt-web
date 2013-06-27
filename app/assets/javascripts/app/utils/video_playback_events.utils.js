@@ -244,11 +244,26 @@
     trackWatchCompleteEvent : function(){
       var _primaryDashboardEntry = this._currentFrame._primaryDashboardEntry;
       var _action = _primaryDashboardEntry ? _primaryDashboardEntry.get('action') : -1;
-      shelby.trackEx({
+      var providers = ['ga'];
+      var trackOptions = {
         gaCategory : "Watch",
         gaAction : "Complete",
-        gaLabel : shelby.models.user.get('nickname') + '::' + _action
-      });
+        gaLabel : shelby.models.user.get('nickname') + '::' + _action,
+        providers : providers
+      };
+
+      // track complete watches of videos from recommendation emails in KissMetrics
+      // for evaluation of recommended video email funnel
+      var routeParams = shelby.models.routingState.get('params');
+      if (routeParams &&
+          routeParams['utm_campaign'] == 'weekly-recommendation' &&
+          _primaryDashboardEntry &&
+          routeParams['entry'] == _primaryDashboardEntry.id) {
+        trackOptions.providers.push('kmq');
+        trackOptions.kmqName = 'Watched Complete Recommended Video';
+      }
+
+      shelby.trackEx(trackOptions);
     }
   };
 })();
