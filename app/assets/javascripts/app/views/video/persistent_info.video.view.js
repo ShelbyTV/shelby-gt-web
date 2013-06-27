@@ -19,7 +19,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__current-frame  .js-navigate-originator"        : "_gotoOriginator",
     "click .persistent_video_info__current-frame  .js-navigate-creator"           : "_gotoCreator",
     "click .js-toggle-comment"                                                    : "_toggleComment",
-    "click .js-next-video"                                                        : "_skipToNextVideo"
+    "click .js-next-video"                                                        : "_skipToNextVideo",
+    "click .js-goto-user-page"                                                    : "_goToUserPage"
   },
 
   initialize: function(){
@@ -270,6 +271,11 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         currentFrameNickname = currentFrame.get('creator_nickname');
 
     shelby.router.navigate((currentFrameNickname) ? currentFrameNickname : '/roll/' + currentFrameId,{trigger:true});
+  },
+
+  _goToUserPage : function(e){
+    e.preventDefault();
+    shelby.router.navigate(e.currentTarget.pathname, {trigger:true});
   }
 
 });
