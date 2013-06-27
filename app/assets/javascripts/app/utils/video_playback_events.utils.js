@@ -229,6 +229,15 @@
       if (_pctWatched > this.EVENT_TRACKING_PCT_THRESHOLD) {
         shelby.track('watched', {frameId: this._currentFrame.id, rollId: this._currentFrame.get('roll_id'), pctWatched: _pctWatched, userName: shelby.models.user.get('nickname')});
         this._markedAsWatched = true;
+
+        // track partial watches of videos from recommendation emails in KissMetrics
+        // for evaluation of recommended video email funnel
+        if (this._isRecommendedVideoFromEmail()) {
+          shelby.trackEx({
+            kmqName : 'Watched Recommended Video',
+            providers : ['kmq']
+          });
+        }
       }
     },
 
@@ -254,16 +263,24 @@
 
       // track complete watches of videos from recommendation emails in KissMetrics
       // for evaluation of recommended video email funnel
-      var routeParams = shelby.models.routingState.get('params');
-      if (routeParams &&
-          routeParams['utm_campaign'] == 'weekly-recommendation' &&
-          _primaryDashboardEntry &&
-          routeParams['entry'] == _primaryDashboardEntry.id) {
-        trackOptions.providers.push('kmq');
+      if (this._isRecommendedVideoFromEmail()) {
         trackOptions.kmqName = 'Watched Complete Recommended Video';
+        trackOptions.providers.push('kmq');
       }
 
       shelby.trackEx(trackOptions);
+    },
+
+    _isRecommendedVideoFromEmail : function() {
+      var _primaryDashboardEntry = this._currentFrame._primaryDashboardEntry;
+      if (_primaryDashboardEntry) {
+        var routeParams = shelby.models.routingState.get('params');
+        return (routeParams &&
+                routeParams['utm_campaign'] == 'weekly-recommendation' &&
+                routeParams['entry'] == _primaryDashboardEntry.id);
+      } else {
+        return false;
+      }
     }
   };
 })();
