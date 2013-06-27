@@ -27,6 +27,8 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
      if (this.get('frames').length == 0) {
         this.get('frames').add(frame, options);
         this.set( { primaryDashboardEntry : dashboard_entry } , options);
+        //see the comment in frame.model.js to understand what we're doing with frame._primaryDashboardEntry
+        frame._primaryDashboardEntry = dashboard_entry;
 
         //dynamically collapse and mark videos as unplayable
         frame.get('video').bind('change:last_unplayable_at', this._handleVideoPlayability, this);
@@ -40,6 +42,8 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
         }
         // guess we don't have this frame yet
         this.get('frames').add(frame, options);
+        //see the comment in frame.model.js to understand what we're doing with frame._primaryDashboardEntry
+        frame._primaryDashboardEntry = this.get('primaryDashboardEntry');
      }
   },
 
