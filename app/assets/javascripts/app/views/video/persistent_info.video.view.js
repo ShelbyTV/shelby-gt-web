@@ -55,16 +55,17 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     var playlistFrameGroupCollection = this.options.playlistManager.get('playlistFrameGroupCollection');
     if(this._currentFrame && playlistFrameGroupCollection){
       this._nextFrame = playlistFrameGroupCollection.getNextPlayableFrame(this._currentFrame, 1, true);
+      this._frameGroup = playlistFrameGroupCollection.getFrameGroupByFrameId(this._currentFrame.id);
     }
 
-    if(this._currentFrame && this._nextFrame){
+    if(this._currentFrame && this._nextFrame && this._frameGroup){
+
       var emailBody;
       var tweetIntentParams = {};
-      var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
       if (shelby.models.user.isAnonymous()) {
         var permalink;
-        if (_frameGroup) {
-          permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup);
+        if (this._frameGroup) {
+          permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this._frameGroup);
         } else {
           permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
         }
@@ -94,6 +95,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
             url : permalink
           };
         }
+
       }
 
       var currentFrameOriginator = (this._currentFrame.has('originator_id')) ? this._currentFrame.get('originator') : null;
@@ -104,7 +106,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         currentFrameOriginator : currentFrameOriginator,
         currentFrameShortlink  : this._currentFrameShortlink,
         eventTrackingCategory  : this.options.eventTrackingCategory,
-        frameGroup             : _frameGroup,
+        frameGroup             : this._frameGroup,
         nextFrame              : this._nextFrame,
         queuedVideosModel      : this.options.queuedVideos,
         showNextFrame          : this.options.showNextFrame,
