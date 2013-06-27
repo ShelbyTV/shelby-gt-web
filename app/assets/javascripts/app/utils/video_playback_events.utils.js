@@ -121,7 +121,7 @@
     _onPlaybackStatusChange: function(attr, status){
       if(status === libs.shelbyGT.PlaybackStatus.ended){
         this._currentFrame.watched(true);
-        this.trackWatchedCompleteEvent();
+        this.trackWatchCompleteEvent();
         Backbone.Events.trigger('userHook:completeWatch');
       }
 
@@ -241,8 +241,7 @@
       return Math.round(_pct * 100) / 100;
     },
 
-    trackWatchedCompleteEvent : function(){
-      shelby.track('watched in full', {frameId: this._currentFrame.id, userName: shelby.models.user.get('nickname')});
+    trackWatchCompleteEvent : function(){
       var _primaryDashboardEntry = this._currentFrame._primaryDashboardEntry;
       var _action = _primaryDashboardEntry ? _primaryDashboardEntry.get('action') : -1;
       shelby.trackEx({
