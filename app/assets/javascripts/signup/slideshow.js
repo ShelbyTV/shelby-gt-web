@@ -3,10 +3,10 @@ if (signupStep == 1) {
   var onAfter = function(curr,next,opts,d){
     window.location.hash = opts.currSlide;
 
-    var lastSlide = opts.currSlide == (opts.slideCount - 1);
-
-    $('.js-next').toggleClass('hidden',lastSlide);
-    $('.js-advance-slideshow').toggleClass('hidden', !lastSlide);
+    $('.js-slideshow-menu')
+        .children('.list__item').removeClass('list__item--selected')
+                                .eq(opts.currSlide)
+                                .addClass('list__item--selected');
 
     // track click event
     shelby.trackEx({
@@ -43,25 +43,48 @@ if (signupStep == 1) {
       manualTrump   : false,
       pager         : '.js-pagination',
       timeout       : 0,
-      speed         : 500,
+      speed         : 300,
       startingSlide : startingSlide()
     });
 
     var $followUnfollow = $('.js-followOrUnfollow');
 
     $followUnfollow.on('click',function(e){
-      e.preventDefault();
+      //doesn't need logic anymore, checkbox isn't hidden
+      $this          = $(this),
+      category       = $this.data('category');
+      categoryLength = $('.js-' + category).find($followUnfollow).length;
 
-      var $this = $(this),
-          roll_id = $this. data('roll_id'),
-          isFollowing = !$this.hasClass('button_gray'); // button_gray == not following
+      //filter (find) all the checkboxes in the slideshow.
+      //then count (filter) the checked ones for the specific category
+      var checkedBoxes = $('.js-' + category).find($followUnfollow).children('.form_checkbox')
+                                                                   .filter(':checked').length;
 
-        //naively toggle state & text of button
-        $this.toggleClass('button_green button_gray')
-             .text(isFollowing ? 'Follow' : 'Following');
+      var partiallyChecked = (checkedBoxes > 0 && checkedBoxes < categoryLength);
+      var menuItem = $('.js-follow-all-'+category);
 
-        //change value of hidden input associated with button
-        $('#rolls_' + roll_id).attr('checked', !isFollowing);
+      if(partiallyChecked && menuItem.is(':checked')) {
+        $('.js-follow-all-'+category).toggleClass('form_checkbox--partial',true);
+      } else {
+        $('.js-follow-all-'+category).toggleClass('form_checkbox--partial',false);
+      }
+    });
+
+    var $followAll = $('.js-follow-all');
+
+    $followAll.on('click', function(e){
+
+      var category = e.currentTarget.id.split(':')[1];
+      var $isChecked = $(e.currentTarget).is(':checked');
+      var $checkboxes = $('.js-' + category).find('.form_checkbox');
+
+      $checkboxes.attr('checked',$isChecked);
+
+      //if not checked, clean up the 'partial' state
+      if(!$isChecked) {
+        $(this).removeClass('form_checkbox--partial');
+      }
+
     });
 
     $(window).on('hashchange',function(e){
@@ -73,7 +96,7 @@ if (signupStep == 1) {
     // if the user failed to follow the appropriate number of rolls
     // on their previous attempt, let them know
     if (!followValidationOk) {
-      alert("To make Shelby better for you, pick at least one source of video");
+      alert("To make Shelby better for you, pick at least three source of video");
     }
   });
 }
