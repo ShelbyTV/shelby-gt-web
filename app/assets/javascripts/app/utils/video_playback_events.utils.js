@@ -113,8 +113,6 @@
 
     },
 
-
-
     /*
     * When the video ends, count that as a watch
     */
@@ -220,7 +218,7 @@
           gaCategory : "Watch",
           gaAction : "Progress",
           gaLabel : shelby.models.user.get('nickname') + '::' + _action,
-          gaValue : _pctWatched
+          gaValue : Math.round(_pctWatched * 100)
         });
     },
 
