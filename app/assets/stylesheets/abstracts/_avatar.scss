@@ -15,6 +15,11 @@
   }
 }
   //mods
+  .avatar--inline {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
   .avatar--largest {
     height: 140px;
     width: 140px;
@@ -28,4 +33,9 @@
   .avatar--small {
     height: 3em;
     width: 3em;
+  }
+
+  .avatar--tiny {
+    height: 2em;
+    width: 2em;
   }

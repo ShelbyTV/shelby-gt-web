@@ -8,8 +8,9 @@ defaults: &defaults
   avatar_url_root: "//s3.amazonaws.com/shelby-gt-user-avatars"
   roll_images_url_root: "//s3.amazonaws.com/shelby-gt-roll-images"
   missing_thumb_url: "http://shelby.tv/images/assets/missing_thumb.png"
-  meta_description: "shelby.tv - a simple new way to enjoy video from Twitter, Facebook, Tumblr, YouTube, Vimeo, Hulu and the rest of the web"
-  title: "shelby.tv | a simple new way to enjoy video"
+  meta_description: "Watch the perfect stream of videos built for you and powered by your friends. Videos from Twitter, Facebook, Tumblr, YouTube, Vimeo, Hulu and the rest of the web."
+  title: "Shelby.tv | The perfect stream of videos built for you and powered by your friends."
+  root_paths: ['community', 'channels', 'help', 'legal', 'search', 'following', 'preferences', 'likes', 'saves', 'stream']
 
 development:
   <<: *defaults

@@ -8,11 +8,13 @@ ShelbyGtWeb::Application.routes.draw do
 
   #######################XXX###############################
   # For development, take me out when mobile is more stable
-  get '/m' => 'mobile#search', :as => :mobile_search
-  get '/m/roll/:id' => 'mobile#roll', :as => :mobile_roll
-  constraints(:subdomain => 'm.localhost') do
-    get '/' => 'mobile#search', :as => :mobile_search # to show mobile search as shelby.tv ?
-    get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
+  if Rails.env.development?
+    get '/m' => 'mobile#search', :as => :mobile_search
+    get '/m/roll/:id' => 'mobile#roll', :as => :mobile_roll
+    constraints(:subdomain => 'm.localhost') do
+      get '/' => 'mobile#search', :as => :mobile_search # to show mobile search as shelby.tv ?
+      get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
+    end
   end
   #######################XXX###############################
 
@@ -28,7 +30,7 @@ ShelbyGtWeb::Application.routes.draw do
   # ROLLS
   get '/roll/:roll_id/:title' => 'roll#show'
   get '/roll/:roll_id' => 'roll#show'
-  get '/user/:user_id/personal_roll' => 'roll#show_personal_roll'
+  get '/user/:user_id_or_nickname/personal_roll' => 'roll#show_personal_roll', :constraints => { :user_id_or_nickname => /[^\/]+/ }
   get '/isolated-roll/:roll_id' => 'roll#show_isolated_roll'
   get '/subscribe-via-email/roll/:roll_id' => 'roll#subscribe_via_email'
 
@@ -40,11 +42,14 @@ ShelbyGtWeb::Application.routes.draw do
   get '/invite/:invite_id' => "signup#index"
   get "invite" => 'signup#index'
   post "invite" => 'signup#index'
+  get "signup" => 'signup#index'
+  post "signup" => 'signup#index'
 
 
   # HOME
   get '/team' => 'home#team'
   get '/hash_app' => 'home#hash_app'
+  get '/community(/:entry_id)' => "home#community"
   get '/channels(*path)' => "home#channels"
   get '/search' => "home#search"
   get '/learn_more' => "home#learn_more"
@@ -55,6 +60,9 @@ ShelbyGtWeb::Application.routes.draw do
 
   #STATS
   get '/user/:user_id/stats' => "home#stats"
+
+  #SHARES
+  get '/:user_id_or_nickname/shares(/:frame_id)' => "home#shares", :constraints => { :user_id_or_nickname => /[^\/]+/ }
 
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'
@@ -70,6 +78,9 @@ ShelbyGtWeb::Application.routes.draw do
   # This used to handle *everything* but now it's much more limited in scope
   # XXX Still handles non-shelby-domain iso rolls :(
   post '(*path)' => 'home#index', :as => :root
+  # first allow single segment paths that contain any character besides /, so we can handle things like /user.name
+  get '(*path)' => 'home#index', :as => :root, :constraints => { :path => /[^\/]+/ }
+  # otherwise catch any multi-segment path
   get '(*path)' => 'home#index', :as => :root
 
 end

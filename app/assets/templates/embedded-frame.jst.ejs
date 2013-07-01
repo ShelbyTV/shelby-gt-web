@@ -8,14 +8,19 @@
   <h1 class="embed_board__h1"><%= video.get('title') %></h1>
 
   <div class="embed_board__play-button js-start-playback js-track-event"
-      data-ga_category="Embedded Frame" data-ga_action="Click Play">
-    <i class="icon-play"></i>
+       data-ga_category="Embedded Frame"
+       data-ga_action="Click Play"
+       >
+    <span class="icon-play"></span>
   </div>
 
   <div class="embed_board__head">
     <h3 class="embed_board__h3">You’re watching this on</h3>
-    <a href="#" class="embed_board__a js-creator-personal-roll js-track-event"
-        data-ga_category="Embedded Frame" data-ga_action="Click Roll Title">
+    <a href="#"
+       class="embed_board__a js-creator-personal-roll js-track-event"
+       data-ga_category="Embedded Frame"
+       data-ga_action="Click Roll Title"
+       >
       <h2 class="embed_board__h2"><%= creator.get('nickname') %>.shelby.tv</h2>
     </a>
   </div>
@@ -23,15 +28,21 @@
   <div class="embed_board__body">
     <h3 class="embed_board__h3">Share this video</h3>
 
-    <a href="#" class="button_primer button_facebook-blue embed_board__button js-facebook-share js-track-event"
-        data-ga_category="Embedded Frame" data-ga_action="Click Share to Facebook">
-      <i class="icon icon-facebook"></i>
+    <a href="#"
+       class="button_primer button_facebook-blue embed_board__button js-facebook-share js-track-event"
+       data-ga_category="Embedded Frame"
+       data-ga_action="Click Share to Facebook"
+       >
+      <span class="icon icon-facebook"></span>
       <span class="visuallyhidden">Share To Facebook</span>
     </a>
 
-    <a href="#" class="button_primer button_twitter-blue embed_board__button js-twitter-share js-track-event"
-        data-ga_category="Embedded Frame" data-ga_action="Click Share to Twitter">
-      <i class="icon icon-twitter"></i>
+    <a href="#"
+       class="button_primer button_twitter-blue embed_board__button js-twitter-share js-track-event"
+       data-ga_category="Embedded Frame"
+       data-ga_action="Click Share to Twitter"
+       >
+      <span class="icon icon-twitter"></span>
       <span class="visuallyhidden">Share To Twitter</span>
     </a>
 
@@ -41,10 +52,13 @@
 
 <div class="embedded-frame__footer">
   <footer class="media_module frame-footer clearfix">
-    <a href="#" class="js-creator-personal-roll js-track-event"
-        data-ga_category="Embedded Frame" data-ga_action="Click User">
+    <a href="#"
+       class="js-creator-personal-roll js-track-event"
+       data-ga_category="Embedded Frame"
+       data-ga_action="Click User"
+       >
       <span class="image_module xuser-avatar media_image" style="background-image: url(<%= libs.shelbyGT.viewHelpers.user.avatarUrl(creator) %>);" role="img">
-        <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(creator) %>" class="visuallyhidden" title="henry" alt="henry">
+        <img src="<%= libs.shelbyGT.viewHelpers.user.avatarUrl(creator) %>" class="visuallyhidden" title="" alt="">
       </span>
     </a>
 
@@ -53,8 +67,11 @@
         <%= frame.get('created_at') %>
       </span>
       <p class="xuser-data">
-        <a href="#" class="js-creator-personal-roll no-faux-link js-track-event"
-            data-ga_category="Embedded Frame" data-ga_action="Click User">
+        <a href="#"
+           class="js-creator-personal-roll no-faux-link js-track-event"
+           data-ga_category="Embedded Frame"
+           data-ga_action="Click User"
+           >
           <strong><%= creator.get('nickname') %></strong>
         </a>
       </p>

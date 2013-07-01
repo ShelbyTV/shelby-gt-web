@@ -17,6 +17,11 @@ button {
   text-shadow: none;
 }
 
+  .button_command--twitter,
+  .button_command--facebook {
+    font-size: 14px;
+  }
+
 //  fixes waywire.com
 .form_submit--signin {
   font-family: $font-family !important;
@@ -31,8 +36,12 @@ button {
   font-size: 14px;
 }
 
-.guide-overlay__title--inline {
-  line-height: 3.35;
+.guide-overlay__bookmarklet {
+  font-size: 11px;
+}
+
+.guide-overlay__h1 {
+  font-size: 16px;
 }
 //------------------------------------------------------------------------------
 //  FRAME
@@ -158,43 +167,6 @@ button {
 #login-guide-window {}
 
 //--- SOCIAL LOGIN -------------------------------------------------------------
-.button_primer--twitter,
-.button_primer--facebook {
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 1;
-  text-align: center;
-  width: 7em;
-
-  .icon {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center center;
-    -webkit-background-size: 125%;
-    background-size: 125%;
-    display: inline-block;
-    height: 1em;
-    margin-left: -0.3em;
-    width: 1em;
-    vertical-align: -1px;
-
-    &:before {
-      display: none;
-    }
-  }
-}
-
-.button_primer--twitter {
-  .icon {
-    background-image: url($icon-share-twitter-on);
-  }
-}
-
-.button_primer--facebook {
-  .icon {
-    background-image: url($icon-share-facebook-on);
-  }
-}
 
 //------------------------------------------------------------------------------
 //  ROLLS
@@ -301,12 +273,10 @@ button {
 
     &:last-child {
       .video-tab__button {
-//        border-top: none;
       }
     }
 
     .video-tab__button {
-//      border: 1px solid #adadad;
       border-right: 0;
     }
   }
@@ -317,26 +287,11 @@ button {
 
   .video-tab__button {
     .icon {
-      background-color: transparent;
-      background-position: center 2px;
-      background-repeat: no-repeat;
-      -webkit-background-size: contain;
-      background-size: contain;
-      display: inline-block;
-      font-size: 1.1em;
-      height: 1em;
-      width: 1em;
     }
   }
       .video-tab__button--like {
-        .icon-like {
-          background-image: url($icon-like-on);
-        }
       }
       .video-tab__button--roll {
-        .icon-roll {
-          background-image: url($icon-videocard-roll-on);
-        }
       }
       .video-tab__button--avatar {
         border-radius: 0 0 0 5px;
@@ -401,7 +356,7 @@ button {
   font-weight: bold !important;
   height: 100% !important;
   outline: 0 !important;
-  padding: 0.25em 1em !important;
+  padding: 0 0 0 0.7em !important;
   text-align: left !important;
   text-shadow: none !important;
   text-transform: none !important;
@@ -425,8 +380,8 @@ button {
     background-color: darken(#eee,10%) !important;
     cursor: default;
 
-    .icon {
-      background-image: url($icon-like-active);
+    .icon-like {
+      background-image: url("#{$path}heart_active.svg");
     }
 
     .button_label--like {
@@ -463,22 +418,5 @@ button {
     content: "Like";
     font-family: "Ubuntu", Trebuchet MS, sans-serif;
     font-weight: bold;
-  }
-}
-
-.icon-roll {
-}
-
-.icon-close {
-  background-image: url('/images/assets/cancel.svg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-background-size: contain;
-  background-size: contain;
-  display: block;
-  height: 1em;
-  width: 1em;
-  &:before {
-    display: none;
   }
 }

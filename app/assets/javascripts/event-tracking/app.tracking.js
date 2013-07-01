@@ -70,13 +70,13 @@ _(shelby).extend({
         case 'watched':
           options.pctWatched = options.pctWatched ? options.pctWatched.toFixed() : null;
           _gaAction = 'watched'; _gaCategory = 'Frame';
-          //_kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': options.pctWatched}]);
+          //_kmq.push(['record', action, {'frame': options.frameId, 'pctWatched': options.pctWatched}]);
           // extra watch event tracking to capture frame and roll popularity
           _gaq.push(['_trackEvent', "Watched", options.rollId, options.frameId]);
           break;
         case 'watched in full':
           _gaAction = 'watched in full'; _gaCategory = 'Frame';
-          //_kmq.push(['record', action, {'frame': options.frameId, 'videoDuration': options.videoDuration, 'pctWatched': 100} ]);
+          //_kmq.push(['record', action, {'frame': options.frameId, 'pctWatched': 100} ]);
           break;
         case 'started onboarding':
           _gaAction = action; _gaCategory = 'Onboarding';
@@ -125,12 +125,12 @@ _(shelby).extend({
           _gaAction = "Upload fail";
           _kmq.push(['record', action, {nickname: options.userName}]);
           break;
-        case 'Click explore promo':
-        case 'Show explore promo':
+        case 'Click community promo':
+        case 'Show community promo':
           _gaCategory = 'Promo';
           _gaAction = action;
-          _gaLabel = 'explore';
-          //_kmq.push(['record', action, {label: 'explore'}]);
+          _gaLabel = 'community';
+          //_kmq.push(['record', action, {label: 'community'}]);
           break;
         case 'Click roll promo':
         case 'Show roll promo':

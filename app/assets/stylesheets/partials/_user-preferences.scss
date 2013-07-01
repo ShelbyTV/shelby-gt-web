@@ -1,143 +1,116 @@
-//preferences panel
-.preferences{
-  font-size: 1.2em;
+.preferences-layout {
 }
-  //preferences panel framework
-  .preferences__head {
-    box-shadow: 0 1px 0 0 $outset;
-    border-bottom: 1px solid $inset;
-  }
-  .preferences__body {}
 
-   //elements
-  .preferences__h1 {
-    font-size: 1.3em;
-    padding: $defaultMargin;
-  }
+.guide-overlay__head--preferences{
 
-  .form_module--preferences {
-    .form_legend {
-      font-size: 1.2em;
-      margin-bottom: 1em;
-    }
+}
 
-    .form_fieldset {
-      font-size: 1em;
-      font-weight: bold;
+.guide-overlay__body--preferences{
+  .guide-overlay__list {
+    .button_primer {
+      background-image:none;
+      border-top: none;
+      border-left: none;
+      border-radius: 0;
+      border-right: none;
     }
   }
-
-.preferences-list {
-}
-
-.preference__checkbox {
-  margin: 0.6em;
 }
 
 
-//preferences sections block
-.preference {
-  box-shadow: 0 1px 0 0 $outset;
-  border-bottom: 1px solid $inset;
-  margin: 0;
-  padding: $defaultMargin;
-}
-    //preferences modifiers
-    .preference--tools {
-      .icon-chevron {
-        color: $inset;
-        float: right;
+/*
+
+    The "Preferences Page"
+
+*/
+
+//block
+.preferences_page {
+  margin: 2em 3em;
+  width: 30em;
+
+  //non-normative
+  .form_error {
+    display: none;
+    font-size: 11px;
+    margin-right: 4px;
+    position: absolute;
+    right: 0;
+  }
+
+  .form_fieldset--error {
+    .form_error {
+      display: block;
+
+      &:before {
+        content: attr(error);
       }
     }
-    .preference--avatar {
+  }
+}
+    //mods
+    .preferences_page--profile {
+      .icon-avatar:before {
+        color: $ui-soft-black;
+        font-size: 2.65em;
+        text-align: center;
+        vertical-align: -30px;
+      }
+
+      //non-normative and gross and hacky
+      .user-avatar {
+        max-width: 48px;
+      }
+
+      .avatar-section-button {
+        left: 0;
+        margin-left: 3.5em;
+        margin-top: 0.3em;
+        position: absolute;
+        top: 0;
+      }
+
+      .avatar-section-input {
+        opacity: 0;
+        position: absolute;
+        z-index: 1;
+
+        input[type="file"],
+        &:hover {
+          cursor: pointer;
+
+          & + .avatar-section-button {
+            background-color: white;
+            background-image: none;
+          }
+        }
+      }
+    }
+    .preferences_page--password {
 
     }
-      //avatar section elements
-      //non-normative
-      .avatar-section-viewport {
+    .preferences_page--networks {
+      width: 40em;
+
+      .network {
+        border-top: 1px solid $inset;
+      }
+
+    }
+    .preferences_page--notifications {
+      .form_checkbox {
         float: left;
-        width: 48px;
-        height: 48px;
+        margin: 0.4em 0.5em 0 0;
+      }
 
-        .dynamic-avatar {
-          border: 1px solid darken($base,5%);
-          width: inherit;
-          height: inherit;
-        }
-
-        .user-avatar {
-          width: 100%;
+      .form_label {
+        float: left;
+        em {
+          font-weight: normal;
+          font-style: normal;
         }
       }
-
-    .preference--profile {
-      .list_item {
-        margin-bottom: 1em;
-      }
     }
-    .preference--password {
+    .preferences_page--goodies {
 
-    }
-    .preferences--networks {
-      .preference__block {
-        float: right;
-        line-height: 2.6;
-        margin: 0;
-      }
-
-      .preference__checkbox {
-        float: right;
-      }
-
-      //non-normative
-      .badge {
-        font-family: $font-family-icon;
-        line-height: 2.2;
-      }
-
-      .list_item {
-        margin-bottom: 1em;
-      }
-    }
-    .preference--notifications {
-      .preference__checkbox {
-        float: right;
-      }
-    }
-
-
-////////////////////////////////////////////////////////////////////////////
-// non-normative
-
-    .avatar-section-input {
-      input[type=file] {
-        margin: 13px 0 0 10px;
-      }
-    }
-
-    .form_actions {
-      margin-top: 10px;
-      text-align: right;
-    }
-
-
-    //block
-    .connected-network-options {
-      background-color: #fff;
-      margin: 0 0 0 27px;
-      padding: 5px;
-
-      p {
-        line-height: 1.231;
-        margin: 0;
-      }
-    }
-
-    .connected-network-checkbox {
-      float: right;
-    }
-
-    .connected-network {
-      float: right;
-      font-size: .8em;
     }

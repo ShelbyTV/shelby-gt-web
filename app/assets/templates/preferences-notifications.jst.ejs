@@ -1,0 +1,47 @@
+<form action="/preferences/notifications" class="form_module js-submit-notifications">
+  <h1 class="form__legend">
+    Email Notifications
+  </h1>
+
+  <fieldset class="form_fieldset">
+    <input<% if(preferences.email_updates){ %> checked<% } %> type="checkbox" class="form_checkbox js-notification-checkbox" id="notificationNews" name="notificationNews" />
+
+    <label for="notificationNews" class="form_label">
+      News and Updates<br/> <em>Keep me updated with new stuff from Shelby.</em>
+    </label>
+  </fieldset>
+
+  <fieldset class="form_fieldset">
+    <input<% if(preferences.like_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox js-notification-checkbox" id="notificationLikes" name="notificationLikes" />
+
+    <label for="notificationLikes" class="form_label">
+      Likes<br/> <em>Notify me when someone Likes my videos.</em>
+    </label>
+  </fieldset>
+
+  <fieldset class="form_fieldset">
+    <input<% if(preferences.reroll_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox js-notification-checkbox" id="notificationReRolls" name="notificationReRolls" />
+
+    <label for="notificationReRolls" class="form_label">
+      Shares<br/> <em>Notify me when someone Re-Shares my video.</em>
+    </label>
+  </fieldset>
+
+  <fieldset class="form_fieldset">
+    <input<% if(preferences.roll_activity_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox js-notification-checkbox" id="notificationRollActivity" name="notificationRollActivity" />
+
+    <label for="notificationRollActivity" class="form_label">
+      Profile Activity<br/> <em>Notify me when someone new Follows me.</em>
+    </label>
+  </fieldset>
+
+  <fieldset class="form_fieldset">
+    <button type="submit" class="button_primer button_command button_command--submit button_green">
+      Save
+    </button>
+
+    <button type="reset" class="button_primer button_command button_command--sub button_command--cancel button_command--submit button_gray">
+      Reset
+    </button>
+  </fieldset>
+</form>

@@ -62,14 +62,15 @@ $animate-delay    : 0s !default;
 //------------------------------------------------------------------------------
 //  FONT SETUP
 //------------------------------------------------------------------------------
-$font-color           : #333;
-$font-family          : 'Helvetica Neue', Helvetica, sans-serif;
-$font-family-display  : 'Ubuntu',Trebuchet MS,sans-serif;
-$font-family-icon     : 'Shelby-Icon-Font';
-$font-size            : 100%;
-$font-size-button     : 16px;
-$font-size-sub-button : 14px;
-
+$font-color             : #333;
+$font-family            : 'Helvetica Neue', Helvetica, sans-serif;
+$font-family-display    : 'Ubuntu',Trebuchet MS,sans-serif;
+$font-family-icon       : 'Shelby-Icon-Font';
+$font-size              : 100%;
+$font-size-large-button : 18px;
+$font-size-button       : 16px;
+$font-size-sub-button   : 14px;
+$font-size-text         : 13px;
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 //  BORDER RADIUS
@@ -141,7 +142,7 @@ $networks-unselected                : #474747;
 //------------------------------------------------------------------------------
 //  Constants
 //------------------------------------------------------------------------------
-$app-header__height            : 38px;
+$app-header__height            : 40px;
 $app-background-color          : #e2e2e2;
 $guide-width                   : $_unit * 37;
 $persistent_video_info--height : 180px;

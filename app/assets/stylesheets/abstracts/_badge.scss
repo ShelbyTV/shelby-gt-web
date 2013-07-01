@@ -9,7 +9,19 @@
 */
 
 .badge {
-  @include networks-badge;
+  &:before {
+    @include roundies;
+
+    color: #efefef;
+    float: left;
+    height:24px;
+    left:0;
+    line-height: 2.3;
+    margin: 1px 5px 0 0;
+    text-align: center;
+    top:0;
+    width:24px;
+  }
 }
 
 .badge--facebook {

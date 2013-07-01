@@ -14,24 +14,13 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   events : {
     "click .persistent_video_info__current-frame  .js-roll-frame"                 : "_requestCurrentFrameRollView",
     "click .persistent_video_info__next-frame     .js-roll-frame"                 : "_requestNextFrameRollView",
-    "click .js-button_share--email"                                               : "_requestCurrentFrameShareView",
-    "click .persistent_video_info__current-frame  .js-share-frame"                : "_requestCurrentFrameShareView",
-    "click .persistent_video_info__next-frame     .js-share-frame"                : "_requestNextFrameShareView",
     "click .persistent_video_info__current-frame  .js-queue-frame:not(.queued)"   : "_queueCurrentFrame",
     "click .persistent_video_info__next-frame     .js-queue-frame:not(.queued)"   : "_queueNextFrame",
-    "click .persistent_video_info__current-frame  .js-comment-frame"              : "_commentCurrentFrame",
-    "click .persistent_video_info__next-frame     .js-comment-frame"              : "_commentNextFrame",
-    "click .persistent_video_info__current-frame  .js-facebook-share"             : "_shareCurrentToFacebook",
     "click .persistent_video_info__current-frame  .js-navigate-originator"        : "_gotoOriginator",
     "click .persistent_video_info__current-frame  .js-navigate-creator"           : "_gotoCreator",
-    "click .js-button_share--facebook"                                            : "_shareCurrentToFacebook",
-    "click .js-button_share--embed"                                               : "_showEmbedCode",
-    "click .js-next-video"                                                        : "_skipToNextVideo",
     "click .js-toggle-comment"                                                    : "_toggleComment",
-    "click .js-share-menu"                                                        : "_toggleShareMenu",
-    "click .js-hide-share-menu"                                                   : "_toggleShareMenu",
-    "click .js-input-select-on-focus"                                             : "_selectInputText",
-    "click .js-hashtag-link"                                                      : "_followHashtagLink"
+    "click .js-next-video"                                                        : "_skipToNextVideo",
+    "click .js-goto-user-page"                                                    : "_goToUserPage"
   },
 
   initialize: function(){
@@ -67,16 +56,17 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     var playlistFrameGroupCollection = this.options.playlistManager.get('playlistFrameGroupCollection');
     if(this._currentFrame && playlistFrameGroupCollection){
       this._nextFrame = playlistFrameGroupCollection.getNextPlayableFrame(this._currentFrame, 1, true);
+      this._frameGroup = playlistFrameGroupCollection.getFrameGroupByFrameId(this._currentFrame.id);
     }
 
-    if(this._currentFrame && this._nextFrame){
+    if(this._currentFrame && this._nextFrame && this._frameGroup){
+
       var emailBody;
       var tweetIntentParams = {};
       if (shelby.models.user.isAnonymous()) {
-        var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
         var permalink;
-        if (_frameGroup) {
-          permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup);
+        if (this._frameGroup) {
+          permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this._frameGroup);
         } else {
           permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
         }
@@ -106,6 +96,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
             url : permalink
           };
         }
+
       }
 
       var currentFrameOriginator = (this._currentFrame.has('originator_id')) ? this._currentFrame.get('originator') : null;
@@ -116,6 +107,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         currentFrameOriginator : currentFrameOriginator,
         currentFrameShortlink  : this._currentFrameShortlink,
         eventTrackingCategory  : this.options.eventTrackingCategory,
+        frameGroup             : this._frameGroup,
         nextFrame              : this._nextFrame,
         queuedVideosModel      : this.options.queuedVideos,
         showNextFrame          : this.options.showNextFrame,
@@ -164,7 +156,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         // in case it got updated from somewhere else, update my button
         var $button = this.$('.persistent_video_info__current-frame .js-queue-frame');
         $button.toggleClass('queued', !removeVideo).find('.label').text(!removeVideo ? 'Liked' : 'Like');
-        $button.find('i').toggleClass('icon-like--red', !removeVideo);
+        $button.find('.icon').toggleClass('icon-like--red', !removeVideo);
       }
     }
   },
@@ -181,9 +173,9 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _requestFrameRollView : function(frame){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
-      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling, frame);
-    }
+    var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
+    var dbEntry = frameGroup.get('primaryDashboardEntry');
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling, frame, dbEntry);
   },
 
   _requestCurrentFrameShareView : function(){
@@ -200,7 +192,9 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _requestFrameShareView: function(frame){
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
-      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, frame);
+      var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
+      var dbEntry = frameGroup.get('primaryDashboardEntry');
+      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, frame, dbEntry);
     }
   },
 
@@ -217,110 +211,13 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       frame.like({likeOrigin: this.options.eventTrackingCategory});
       var $target = $(el.currentTarget);
       $target.toggleClass('queued js-queued').find('.label').text('Liked');
-      $target.find('i').addClass('icon-like--red');
+      $target.find('.icon').addClass('icon-like--red');
     }
-  },
-
-  _commentCurrentFrame : function(el){
-    this._commentFrame(this._currentFrame, el);
-  },
-
-  _commentNextFrame : function(el){
-    this._commentFrame(this._nextFrame, el);
-  },
-
-  _commentFrame : function(frame, el){
-    //comment frame func
-    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.conversation, frame);
   },
 
   _skipToNextVideo : function(){
     this.options.userDesires.set('changeVideo', 1);
     this.options.userDesires.unset('changeVideo');
-  },
-
-  _shareCurrentToFacebook : function(e){
-    var _frame = this._currentFrame;
-    var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(_frame.id);
-    var _caption;
-    if (shelby.config.hostName) {
-      _caption = 'a video from '+shelby.config.hostname;
-    } else if (_frame.has('roll')) {
-      if (_frame.get('roll').has('subdomain')) {
-        _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
-      } else {
-        _caption = 'a video from shelby.tv';
-      }
-    }
-    else {
-      _caption = 'a video found with Shelby Video Search';
-    }
-
-    var rollCreatorId = this._currentFrame.has('roll') && this._currentFrame.get('roll').has('creator_id') && this._currentFrame.get('roll').get('creator_id');
-    var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: rollCreatorId});
-    var description = _frame.get('video').get('description');
-
-    // if there is a special message for the facebook share, use it
-    if (specialConfig && specialConfig.customShareMessages && specialConfig.customShareMessages.facebook) {
-      description = specialConfig.customShareMessages.facebook;
-    }
-
-    if (typeof FB != "undefined"){
-      FB.ui(
-        {
-          method: 'feed',
-          name: _frame.get('video').get('title'),
-          link: libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup),
-          picture: _frame.get('video').get('thumbnail_url'),
-          description: description,
-          caption: _caption
-        },
-        function(response) {
-          if (response && response.post_id) {
-            // TODO:we should record that this happened.
-          }
-        }
-      );
-    }
-  },
-
-  _showEmbedCode : function() {
-    this.$('.js-share-embed-item')
-      .html(SHELBYJST['embed-input']({frame : this._currentFrame}))
-      .addClass('nudge').find('.js-input-select-on-focus').select();
-  },
-
-  _toggleComment : function(e){
-    // if the click was on an anchor within the frame comment just let the normal
-    // link handling occur without showing/hiding the rest of the comment
-    if (!$(e.target).is('a')) {
-      $(e.currentTarget).toggleClass('line-clamp--open');
-    }
-  },
-
-  _toggleShareMenu : function(){
-    var $this = this.$('.js-share-menu'),
-        block = $this.siblings('.js-share-menu-block'),
-        blockHasClass = block.hasClass('hidden');
-
-    // if we're opening the menu and we don't have the shortlink
-    // yet, we need to get it now
-    if (blockHasClass && !this._currentFrameShortlink) {
-      this._getFrameShortlink();
-    }
-
-    //  toggle the "button pressed" state
-    $this.toggleClass('button_active',blockHasClass);
-
-    //  show/hide the panel
-    block.toggleClass('hidden',!blockHasClass);
-
-    // if we open the menu and we already have the shortlink,
-    // highlight it
-    if (blockHasClass && this._currentFrameShortlink) {
-      this.$('.js-frame-shortlink').select();
-    }
-
   },
 
   _getFrameShortlink : function() {
@@ -352,19 +249,11 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     }
   },
 
-  _selectInputText : function(e){
-    e.currentTarget.select();
-  },
-
-  _followHashtagLink : function(e){
-    if (this.options.guide.get('displayState') == libs.shelbyGT.DisplayState.dotTv) {
-      // from a dot tv, pause the player and allow the link to handle itself using the browser's default handling
-      // based on its properly filled in href and target attributes
-      shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
-    } else {
-      // anywhere else we're in the app proper, so handle the link using javascript/Backbone routing
-      e.preventDefault();
-      shelby.router.navigate('channels/' + $(e.currentTarget).data("channel_key"), {trigger : true});
+  _toggleComment : function(e){
+    // if the click was on an anchor within the frame comment just let the normal
+    // link handling occur without showing/hiding the rest of the comment
+    if (!$(e.target).is('a')) {
+      $(e.currentTarget).toggleClass('line-clamp--open');
     }
   },
 
@@ -382,6 +271,11 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         currentFrameNickname = currentFrame.get('creator_nickname');
 
     shelby.router.navigate((currentFrameNickname) ? currentFrameNickname : '/roll/' + currentFrameId,{trigger:true});
+  },
+
+  _goToUserPage : function(e){
+    e.preventDefault();
+    shelby.router.navigate(e.currentTarget.pathname, {trigger:true});
   }
 
 });

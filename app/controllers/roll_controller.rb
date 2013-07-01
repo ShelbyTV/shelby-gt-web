@@ -16,8 +16,8 @@ class RollController < ApplicationController
   end
 
   def show_personal_roll
-    user_id = params[:user_id]
-    @user = Shelby::API.get_user(user_id) if user_id
+    user_id_or_nickname = params[:user_id_or_nickname]
+    @user = Shelby::API.get_user(user_id_or_nickname) if user_id_or_nickname
     @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
     render '/home/app'
   end

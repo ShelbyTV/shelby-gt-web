@@ -7,59 +7,85 @@
     <h1 class="signup__h1">
       Tune your Shelby TV
     </h1>
+
+    <h2 class="signup__h2">
+      Follow at least 3 of our hand-picked selections below.
+    </h2>
   </div>
 
   <div class="signup__body">
-    <%= form_tag do %>
-      <fieldset class="form_fieldset">
-        <div class="slideshow__pagination js-pagination"></div>
-        <div class="slideshow js-slideshow">
+    <div class="media_module">
+      <div class="media_image slideshow_menu">
+<!--         <h3 class="slideshow_menu__h1">
+          Genres
+        </h3>
+ -->
+        <ul class="list list--stacked js-slideshow-menu">
           <% Settings::Signup.roll_categories.each_with_index do |category,cat_index| %>
-            <div class="slideshow__slide" data-index="<%= cat_index %>" data-category="<%= category['title'] %>">
-              <legend class="form__legend">
-                <%= category['description'].html_safe %>
-              </legend>
+            <li class="list__item">
+              <span class="icon icon-chevron"></span>
+              <label for="follow:<%= category['title'].downcase %>" class="follow_all">
+                <input type="checkbox" id="follow:<%= category['title'].downcase %>" name="follow:<%= category['title'].downcase %>" class="form_checkbox form_checkbox--inline js-follow-all js-follow-all-<%= category['title'].downcase %>" data-children="<%= category['rolls'].count %>" data-title="<%= category['title'].downcase %>" />
+                Follow all
+              </label>
 
-              <ul class="list">
-                <% category['rolls'].each_with_index do |roll,roll_index| %>
-                  <li class="list__item one-half">
-                    <div class="media_module roll_card clearfix" data-roll_id="<%= roll["personal_roll_id"] %>">
-                      <%= check_box_tag "rolls[#{roll['personal_roll_id']}]", nil, false, :class => "hidden" %>
-                      <div class="media_image media_image--rev">
-                        <button class="button_primer button_command button_gray roll_card__button js-followOrUnfollow js-track-event" data-roll_id="<%= roll["personal_roll_id"] %>" data-ga_category="Onboarding" data-ga_action="Click Follow on Step 1" data-ga_label="<%= roll['nickname'] %>">
-                          Follow
-                        </button>
-                      </div><!-- eo media_image--rev -->
-
-                      <div class="image_module media_image roll_card__avatar" style="background-image: url('<%= roll["avatar"] %>');" role="img">
-                        <img src="<%= roll["avatar"] %>" class="visuallyhidden" title="<%= roll["nickname"] %>'s avatar" />
-                      </div><!-- eo media_image -->
-
-                      <div class="media_body">
-                        <h3 class="roll_card__h1">
-                          <%= roll["nickname"] %>
-                        </h3>
-
-                        <p class="roll_card__block">
-                          <%= roll["description"] %>
-                        </p>
-                      </div><!-- media_body -->
-                    </div><!-- eo roll_card -->
-                  </li>
-                <% end %>
-              </ul><!-- eo list -->
-            </div><!-- eo slide -->
+              <a href="#<%= cat_index %>" class="button_primer button_command button_command--flexible button_command--text">
+                <%= category['title'].capitalize %>
+              </a>
+            </li>
           <% end %>
+        </ul>
+      </div><!-- eo media_image -->
+      <div class="media_body">
 
-        </div><!-- eo slideshow -->
-      </fieldset>
+        <%= form_tag(request.env['PATH_INFO']) do %>
+          <fieldset class="slideshow_wrapper">
+            <div class="slideshow js-slideshow">
+              <% Settings::Signup.roll_categories.each_with_index do |category,cat_index| %>
+                <div class="slideshow__slide js-<%= category['title'].downcase %>" data-index="<%= cat_index %>" data-category="<%= category['title'].downcase %>">
+                  <h3 class="form_legend">
+                    <%= category['title'].capitalize %>
+                  </h3>
 
-      <%= submit_tag("Next", :class => "hidden button_primer button_command button_command--wide button_green js-advance-slideshow js-track-event", 'data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Next on Step 1') %>
-      <!-- event tracking for button below is handled in slideshow.js -->
-      <button class="button_primer button_command button_command--wide button_gray js-next">More</button>
-    <% end %>
+                  <ul class="list list--rolls">
+                    <% category['rolls'].each_with_index do |roll,roll_index| %>
+                      <li class="list__item one-half">
+                        <div class="media_module roll_card clearfix" data-roll_id="<%= roll["personal_roll_id"] %>">
 
+                          <div class="image_module media_image roll_card__avatar" style="background-image: url('<%= roll["avatar"] %>');" role="img">
+                            <img src="<%= roll["avatar"] %>" class="visuallyhidden" title="<%= roll["nickname"] %>'s avatar" />
+                          </div><!-- eo media_image -->
+
+                          <div class="media_body">
+                            <h3 class="roll_card__h1">
+                              <%= roll["nickname"] %>
+                            </h3>
+
+                            <p class="roll_card__block">
+                              <%= roll["description"] %>
+                            </p>
+                          </div><!-- media_body -->
+                        </div><!-- eo roll_card -->
+
+                        <div class="roll_card__foot clearfix">
+                          <label class="button_primer button_command button_gray roll_card__button js-followOrUnfollow js-track-event" data-category="<%= category['title'].downcase %>" data-roll_id="<%= roll["personal_roll_id"] %>" data-ga_category="Onboarding" data-ga_action="Click Follow on Step 1" data-ga_label="<%= roll['nickname'] %>">
+                            <%= check_box_tag "rolls[#{roll['personal_roll_id']}]", nil, false, :class => "form_checkbox form_checkbox--inline" %>
+                            <span class="button_label">Follow</span>
+                          </label>
+                        </div><!-- eo media_image--rev -->
+                      </li>
+                    <% end %>
+                  </ul><!-- eo list -->
+                </div><!-- eo slide -->
+              <% end %>
+
+            </div><!-- eo slideshow -->
+          </fieldset>
+
+          <%= submit_tag("Next", :class => "button_primer button_command button_command--wide button_green form__submit js-advance-step-1") %>
+
+        <% end %>
+      </div><!-- eo media_body -->
+    </div><!-- eo media_module -->
   </div>
 </div>
-
-<%= javascript_tag "var followValidationOk = #{@validation_ok ? 'true' : 'false'};" %>

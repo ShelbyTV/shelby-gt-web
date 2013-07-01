@@ -8,52 +8,13 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="content-wrapper clearfix">
-  <header class="seovideo-head clearfix" role="banner">
-    <div class="shelby-header clearfix">
-      <a href="http://shelby.tv" class="shelby-logo">
-        <div class="shelby_logo">
-          <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
-        </div>
-      </a>
-      <!-- TODO: copy Login button from new Landing page stuff -->
-    </div>
-
-    <div class="seovideo__banner_wrapper seovideo__banner_wrapper--true frame-body-wrapper">
-      <h1 class="seovideo__h1">Shelby.tv is a smart personal way to enjoy video</h1>
-      <h2 class="seovideo__h2">
-          See more video that matches your search from <i>YouTube</i>, <i>Vimeo</i>, and <i>Dailymotion</i>:
-      </h2>
-
-      <div class="media_module seovideo__banner clearfix">
-        <form action="/search" class="js-search-form form_module form_module--search">
-          <fieldset class="search_module">
-            <label for="seovideo-search" class="form_label visuallyhidden">
-              Search Shelby.tv:
-            </label>
-
-            <button class="button_primer button_blue search_module__submit" tabindex="0" <% if (@search_query)%>autofocus="autofocus"<% end %>>
-              Search
-            </button>
-
-            <span class="search_module__input_wrapper">
-              <% if @search_query %>
-                <input id="seovideo-search" name="query" value="<%= @search_query%>" type="text" class="js-search__input form_input search_module__input" />
-              <% else %>
-                <input id="seovideo-search" name="query" type="text" class="js-search__input form_input search_module__input" autofocus="autofocus" />
-              <% end %>
-            </span>
-          </fieldset><!-- eo search_module -->
-
-          <div class="media_body">
-
-          </div>
-        </form>
-      </div>
-    </div><!-- eo seovideo__banner_wrapper -->
-  </header><!-- eo seovideo-head -->
+<div class="shelby__wrapper clearfix">
+  <%= render :partial => '/home/landing_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
 
   <div class="seovideo__wrapper clearfix">
+    <%= render :partial => '/home/shelf/errors' %>
+    <%= render :partial => '/home/shelf/slogan' %>
+
     <article role="main" class="seovideo<%= " seovideo--light" if @video_related_videos.empty? %>">
       <div class="seovideo__main">
         <h1 class="seovideo__h2">
@@ -124,9 +85,11 @@
 
                       <div class="related_video__footer">
                         <div class="related_video__footer-lining">
-                          <h4 class="seovideo__h4 button_icon_right icon_chevron icon">
+                          <h4 class="seovideo__h4">
                             <%= related_video["title"] %>
                           </h4>
+
+                          <span class="icon icon-chevron"></span>
                         </div><!-- eo related_vido__footer-lining -->
                       </div><!-- eo related_video__footer -->
                     </div><!-- eo .related_video -->

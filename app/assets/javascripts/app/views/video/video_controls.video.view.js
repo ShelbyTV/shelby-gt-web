@@ -6,7 +6,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   events : {
     "click"                                                   : "_dismissWelcomeBanner",
-    "click .js-videoplayer-roll"                              : "_requestFrameRollView",
     "click .js-videoplayer-playback"                          : "_togglePlayback",
     "click .js-videoplayer-mute"                              : "_toggleMute",
     "click .js-videoplayer-hd.video_controls__button--hd-on"  : "_hdOff",
@@ -200,13 +199,6 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   _dismissWelcomeBanner : function(){
     // dismiss the dot tv welcome banner if its still there
     shelby.models.dotTvWelcome.trigger('dismiss');
-  },
-
-  _requestFrameRollView : function(){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
-      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.rolling,
-        this.options.guide.get('activeFrameModel'));
-    }
   },
 
   _togglePlayback : function(){

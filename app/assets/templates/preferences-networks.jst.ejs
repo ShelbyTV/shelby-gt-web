@@ -1,0 +1,93 @@
+<div class="form_module">
+  <h1 class="form__legend">
+    Connect Networks
+  </h1>
+
+  <div class="form_fieldset media_module media_module--bare network network--twitter clearfix">
+    <div class="media_image badge badge--twitter icon-twitter"></div>
+
+    <div class="media_image media_image--rev">
+      <% if(twitter) {  %>
+        <button disabled class="button_primer button_command button_disabled button_command--flexible button_gray">
+          Connected
+        </button>
+      <% } else { %>
+        <a class="button_primer button_command button_command--flexible button_gray js-authorize" data-popup_width="600" data-popup_height="700" href="<%= shelby.config.apiBase %>/auth/twitter">
+          Connect
+        </a>
+      <% } %>
+    </div>
+
+    <div class="media_body">
+      <h2 class="network__h1">
+        Twitter
+      </h2>
+
+      <% if (twitter && twitter.nickname) { %>
+        <p class="network__h2">
+          @<%= twitter.nickname %>
+        </p>
+      <% } %>
+    </div>
+  </div><!-- network -->
+
+  <div class="media_module media_module--bare network network--facebook clearfix">
+    <div class="media_image badge badge--facebook icon-facebook"></div>
+
+    <div class="media_image media_image--rev">
+      <% if(facebook) {  %>
+        <button disabled class="button_primer button_command button_disabled button_command--flexible button_gray">
+          Connected
+        </button>
+      <% } else { %>
+        <a class="button_primer button_command button_command--flexible button_gray js-authorize" data-popup_width="600" data-popup_height="700" href="<%= shelby.config.apiBase %>/auth/facebook">
+          Connect
+        </a>
+      <% } %>
+    </div>
+
+    <div class="media_body">
+      <h2 class="network__h1">
+        Facebook
+      </h2>
+
+      <% if (facebook && facebook.name) { %>
+        <p class="network__h2">
+          <%= facebook.name %>
+        </p>
+
+        <div class="form_fieldset">
+          <input<% if(preferences.open_graph_posting){ %> checked<% } %>  type="checkbox" class="form_checkbox form_checkbox--inline" id="facebookTimeline" name="facebookTimeline" />
+          <label for="facebookTimeline" class="form_label form_label--inline">I want to share videos I share and watch on Shelby <br/>with my friends on my Facebook Timeline</label>
+        </div>
+      <% } %>
+    </div>
+  </div><!-- network -->
+
+  <div class="media_module media_module--bare network network--tumblr clearfix">
+    <div class="media_image badge badge--tumblr icon-tumblr"></div>
+
+    <div class="media_image media_image--rev">
+      <% if(tumblr) {  %>
+        <button disabled class="button_primer button_command button_disabled button_command--flexible button_gray">
+          Connected
+        </button>
+      <% } else { %>
+        <a class="button_primer button_command button_command--flexible button_gray js-authorize" data-popup_width="600" data-popup_height="700" href="<%= shelby.config.apiBase %>/auth/tumblr">
+          Connect
+        </a>
+      <% } %>
+    </div>
+
+    <div class="media_body">
+      <h2 class="network__h1">
+        Tumblr
+      </h2>
+
+      <% if (tumblr && tumblr.nickname) { %>
+        <p class="network__h2">
+          <%= tumblr.nickname %>
+        </p>
+      <% } %>
+    </div>
+</div>

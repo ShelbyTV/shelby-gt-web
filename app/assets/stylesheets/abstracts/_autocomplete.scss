@@ -1,54 +1,57 @@
-@import "base";
+.autocomplete-menu {
+  border: 1px solid $ui-soft-black;
+  font-size: 1.2em;
+  list-style: none;
+  margin: 1em 0 0;
+  padding: 0;
+  position: absolute;
+  z-index: 1000;
 
-.autocomplete-menu {	
-	@include roundies(footer);
-	$autocomplete-border: darken($inset,40%);
-	border-left: 1px solid $autocomplete-border;
-	border-right: 1px solid $autocomplete-border;
-	border-bottom: 1px solid $autocomplete-border;
-	box-shadow: $shadow;
-	float: left;
-	font-size: 12px;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	z-index: 1000;
+  &.hidden {
+    &:before {
+      content: none;
+    }
+  }
 
-	li {
-		background-color: #efefef;
+  &.fin--top_left:before {
+    border-left-color: $ui-soft-black;
+    border-top-color: $ui-soft-black;
+  }
 
-		a {
-			color: #888;
-			display: block;
-			font-weight: normal;
-			padding: .5em;
-			text-decoration: none;
-		}
+  li {
+    background-color: $ui-white;
 
-		strong {
-			color: #333;
-			font-weight: bold;
-		}
-	}
+    a {
+      color: #888;
+      display: block;
+      font-weight: normal;
+      padding: .5em;
+      text-decoration: none;
+    }
 
-	li.active {
-		background-color: $shelby-blue;
+    strong {
+      color: #333;
+      font-weight: bold;
+    }
+  }
 
-		a {
-			color: adjust-lightness($shelby-blue, 30%);
+  li.active {
+    background-color: $ui-gray;
 
-			&:hover {
-				text-decoration: underline;
-			}
-		}
+    a {
+      color: $ui-black;
 
-		strong {
-			color: #fff;
-		}
-	}
+      &:hover {
+        text-decoration: underline;
+      }
+    }
 
-	li:last-child {
-		border-radius: 0 0 4px 4px;
-	}
+    strong {
+      font-weight: bold;
+    }
+  }
+
+  li:last-child {
+    border-radius: 0 0 4px 4px;
+  }
 }

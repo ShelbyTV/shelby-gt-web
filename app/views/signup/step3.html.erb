@@ -10,7 +10,7 @@
   </div>
 
   <div class="signup__body">
-    <%= form_tag({},{ :id => 'user_form', :class => 'form_module' }) do %>
+    <%= form_tag(request.env['PATH_INFO'], { :id => 'user_form', :class => 'form_module' }) do %>
       <fieldset class="form_fieldset">
         <legend class="form__legend">
           Watch your personalized video stream from anywhere<br/>
@@ -66,7 +66,7 @@
             </fieldset>
 
             <fieldset class="form_fieldset">
-              <%= submit_tag("Start Watching", :class => 'button_primer button_command button_command--flexible button_green js-track-event','data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Start Watching on Step 3' ) %>
+              <%= submit_tag("Create Account", :class => 'button_primer button_command button_command--flexible button_green js-track-event','data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Start Watching on Step 3' ) %>
             </fieldset>
           </div><!-- eo media_body -->
         </div><!-- eo media_module -->

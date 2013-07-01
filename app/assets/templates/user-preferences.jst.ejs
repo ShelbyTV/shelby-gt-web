@@ -1,199 +1,40 @@
-<div class="preferences__head">
-  <h1 class="preferences__h1">
-    Preferences
-  </h1>
-</div><!-- eo preferences__head -->
-<div class="preferences__body">
-  <form class="form_module form_module--preferences">
-    <div class="preference preference--tools">
-      <fieldset>
-        <h2 class="form_legend">
-          Tools
-        </h2>
+<div class="sidebar_module guide-wrapper clearfix">
+  <div class="guide-overlay__head guide-overlay__head--preferences">
+    <h2 class="guide-overlay__h1">
+      Preferences
+    </h2>
+  </div>
 
-        <button class="button_flat preference__button js-tools">
-          <i class="icon icon-chevron"></i> <%= (Browser.isChrome()) ? 'Chrome Extension & ' : '' %>Bookmarklet
-        </button>
-      </fieldset>
-    </div><!-- eo .preference--tools -->
+  <div class="guide-overlay__body guide-overlay__body--preferences">
+    <ul class="list guide-overlay__list">
+      <li class="list__item">
+        <a href="/preferences/profile" class="button_primer button_command button_gray<%= (section == 'profile') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
+          <span class="icon icon-chevron"></span>
+          <span class="button_label">Profile</span>
+        </a>
+      </li>
+      <li class="list__item">
+        <a href="/preferences/password" class="button_primer button_command button_gray<%= (section == 'password') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
+          <span class="icon icon-chevron"></span>
+          <span class="button_label">Password</span>
+        </a>
+      </li>
+      <li class="list__item">
+        <a href="/preferences/networks" class="button_primer button_command button_gray<%= (section == 'networks') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
+          <span class="icon icon-chevron"></span>
+          <span class="button_label">Networks</span>
+        </a>
+      </li>
+      <li class="list__item">
+        <a href="/preferences/notifications" class="button_primer button_command button_gray<%= (section == 'notifications') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
+          <span class="icon icon-chevron"></span>
+          <span class="button_label">Notifications</span>
+        </a>
+      </li>
+    </ul>
+  </div><!-- eo guide-overlay__body -->
+</div><!-- eo sidebar_module-->
 
-    <div class="preference preference--avatar">
-      <fieldset>
-        <h2 class="form_legend">
-          Avatar
-        </h2>
-
-        <div class="avatar-section-body clearfix">
-          <div id="js-dynamic-user-avatar" class="avatar-section-viewport">
-            <!-- filled in by UserAvatarPresenterView -->
-          </div>
-
-          <div id="js-user-avatar-uploader" class="avatar-section-input">
-            <!-- filled in by UserAvatarUploaderView -->
-          </div>
-        </div>
-      </fieldset>
-    </div><!-- eo .preference--avatar -->
-
-    <div class="preference preference--profile">
-      <fieldset>
-        <h2 class="form_legend">
-          Your Profile
-        </h2>
-
-        <ul class="list_module">
-          <li class="list_item form_fieldset clearfix">
-            <label for="preference-username" class="form_label">
-              Username
-            </label>
-
-            <input id="preference-username" class="form_input js-username-input" name="preference-username" type="text" placeholder="<%= user.get('nickname') %>" value="<%= user.get('nickname') %>" />
-          </li>
-
-          <li class="list_item form_fieldset clearfix">
-            <label for="preference-email" class="form_label">
-              Email
-            </label>
-
-            <input id="preference-email" class="form_input js-email-input" name="preference-email" type="email" placeholder="youremail@address.com" value="<%= user.get('primary_email') %>" />
-          </li>
-        </ul>
-
-        <fieldset class="form_actions">
-          <span id="response-message" class="js-response-message profile-response"></span>
-
-          <button class="button_primer button_gray button_command button_command--flexible js-user-cancel profile-action-cancel" type="button">
-            Cancel
-          </button>
-
-          <button class="button_primer button_gray button_command button_command--flexible js-user-save profile-action-save" type="button">
-            Save
-          </button>
-        </fieldset>
-      </fieldset>
-    </div><!-- eo preference--profile -->
-
-    <div class="preference preference--password">
-      <fieldset>
-        <h2 class="form_legend">
-          Change Password
-        </h2>
-
-        <fieldset class="form_fieldset">
-          <label for="preferences-password" class="form_label">
-            Password
-          </label>
-          <input id="preferences-password" class="form_input" name="preferences-password" type="password" />
-        </fieldset>
-
-        <fieldset class="form_fieldset">
-          <label for="preferences-password-confirmation" class="form_label">
-            Confirm
-          </label>
-          <input id="preferences-password-confirmation" class="form_input" name="preferences-password-confirmation" type="password" />
-        </fieldset>
-
-        <fieldset class="form_actions">
-          <span id="security-response-message" class="js-security-response-message profile-response"></span>
-          <button class="button_primer button_gray button_command button_command--flexible js-user-password-save password-action-save" type="button">
-            Change Password
-          </button>
-        </fieldset>
-      </fieldset>
-    </div><!-- eo preference--password -->
-
-    <div class="preference preferences--networks">
-      <fieldset>
-        <h2 class="form_legend">
-          Connect
-        </h2>
-        <ul class="list_module">
-          <li class="list_item clearfix">
-            <% var tw = _.find(user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
-            <% if (typeof tw !== 'undefined'){ %>
-              <p class="preference__block">@<%= tw.nickname || '' %></p>
-              <!-- <button type="button">Disconnect</button> -->
-            <% } else { %>
-              <p class="preference__block"></p>
-              <a class="button_primer button_green button_wide connected-network faux_button js-authorize" type="button" data-popup_width="600" data-popup_height="700" href="<%= shelby.config.apiBase %>/auth/twitter">Connect</a>
-            <% } %>
-
-            <h2 class="badge badge--twitter icon-twitter preferences-networks-twitter form_label">Twitter</h2>
-
-          </li>
-          <li class="list_item clearfix">
-            <% var tu = _.find(user.get('authentications'),function(a){ return a.provider == 'tumblr' }) %>
-            <% if (typeof tu !== 'undefined'){ %>
-              <p class="preference__block"><%= tu.nickname || '' %></p>
-              <!-- <button type="button">Disconnect</button> -->
-            <% } else { %>
-              <p class="preference__block"></p>
-              <a class="button_primer button_green button_wide faux_button connected-network js-authorize" type="button" data-popup_width="900" data-popup_height="400" href="<%= shelby.config.apiBase %>/auth/tumblr">Connect</a>
-            <% } %>
-
-            <h2 class="badge badge--tumblr icon-tumblr preferences-networks-tumblr form_label">Tumblr</h2>
-
-          </li>
-          <li class="list_item clearfix">
-            <% var fb = _.find(user.get('authentications'),function(a){ return a.provider == 'facebook' }) %>
-            <% if (typeof fb !== 'undefined'){ %>
-              <p class="preference__block"><%= fb.nickname || '' %></p>
-              <!-- <button type="button">Disconnect</button> -->
-            <% } else { %>
-              <p class="preference__block"></p>
-              <a class="button_primer button_green button_wide faux_button connected-network js-authorize" type="button" data-popup_width="1000" data-popup_height="650" href="<%= shelby.config.apiBase %>/auth/facebook">Connect</a>
-            <% } %>
-
-            <h2 class="badge badge--facebook icon-facebook preferences-networks-facebook form_label">Facebook</h2>
-
-            <% if (typeof fb !== 'undefined'){ %>
-              <div class="connected-network-options clearfix">
-                <input id="preferences-timeline-sharing" class="form_checkbox connected-network-checkbox" name="preferences-timeline-sharing" type="checkbox" <% if (user.get('preferences').open_graph_posting === true){ %> checked <% }%> >
-                <label for="preferences-timeline-sharing" class="form_label">
-                  Timeline Sharing
-                </label>
-                <p class="timeline-sharing-description">
-                  Share videos you roll and watch to your Facebook timeline.
-                </p>
-              </div>
-            <% } %>
-          </li>
-        </ul>
-      </fieldset>
-    </div><!-- eo preference--networks -->
-
-    <div class="preference preference--notifications">
-      <fieldset>
-        <h2 class="form_legend">
-          Email Notifications
-        </h2>
-        <ul class="list_module">
-          <li class="list_item clearfix">
-            <input id="preferences-email-updates" class="form_checkbox preference__checkbox" name="preferences-email-updates" type="checkbox" <% if (user.get('preferences').email_updates === true){ %> checked <% }%> />
-            <label for="preferences-email-updates" class="form_label">
-              News and Updates
-            </label>
-          </li>
-          <li class="list_item clearfix">
-            <input id="preferences-email-likes" class="form_checkbox preference__checkbox" name="preferences-email-likes" type="checkbox" <% if (user.get('preferences').like_notifications === true){ %> checked <% }%> />
-            <label for="preferences-email-likes" class="form_label">
-              Likes
-            </label>
-          </li>
-          <li class="list_item clearfix">
-            <input id="preferences-email-rerolls" class="form_checkbox preference__checkbox" name="preferences-email-rerolls" type="checkbox" <% if (user.get('preferences').reroll_notifications === true){ %> checked <% }%> />
-            <label for="preferences-email-rerolls" class="form_label">
-              Re-rolls
-            </label>
-          </li>
-          <li class="list_item clearfix">
-            <input id="preferences-email-joinrolls" class="form_checkbox preference__checkbox" name="preferences-email-joinrolls" type="checkbox" <% if (user.get('preferences').roll_activity_notifications === true){ %> checked <% }%> />
-            <label for="preferences-email-joinrolls" class="form_label">
-              Roll activity
-            </label>
-          </li>
-        </ul>
-      </fieldset>
-    </div><!-- eo preference--notifications -->
-  </form>
-</div><!-- eo preferences__body -->
+<div class="content_module content_module--page js-preferences-section">
+  <!-- Filled in by the UserPreferencesView -->
+</div>

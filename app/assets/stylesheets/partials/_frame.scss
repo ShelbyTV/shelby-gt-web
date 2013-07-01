@@ -12,7 +12,7 @@
       }
     }
 
-    .menu_module {
+    .frame-menu {
       display: block;
     }
   }
@@ -31,7 +31,7 @@
   //  collapsed: indicationt that frame is openable.
   ////////////////////////////////////////////////////////////////////////////
   &:hover {
-    .menu_module {
+    .frame-menu {
       display: block;
     }
   }
@@ -107,10 +107,7 @@
 }
 
 .frame-footer {
-  .hr--double {
-    border-top-color: #D9D4D4;
-    border-bottom-color: #FCFAFA;
-  }
+
 }
 
 .frame-subsection,
@@ -121,14 +118,6 @@
 
 
 .frame-subsection {
-  .frame-command-wrapper {
-    color: #777;
-    padding-right: 1em;
-
-    &.icon {
-      padding-left: 1.4em;
-    }
-  }
 }
 
 //------------------------------------------------------------------------------
@@ -140,6 +129,14 @@
 
   color: adjust-lightness($text, 20%);
 }
+
+    .xuser-data--green {
+      color: adjust-lightness($ui-green, -10%);
+    }
+
+    .xuser-data--recommendation {
+      font-size: 1.1em;
+    }
 
 .xuser-data-link {
   &:link,
@@ -254,31 +251,21 @@
 //  frame menu appears on :hover of particular videocard
 //------------------------------------------------------------------------------
 .frame-menu {
+  display: none;
   height: 0;
   left: 0;
   position: absolute;
   top: 0;
   width: 100%;
   z-index: 1;
-}
 
-.frame-command-menu {
-  height: inherit;
-  left: inherit;
-  list-style-type: none;
-  position: inherit;
-  top: inherit;
-  width: inherit;
-
-  .menu_item {
-  }
     .button_command {
-      margin-left: 0.6em;
+      margin-left: 0.5em;
       margin-top: 0.5em;
     }
     .button_command--cancel {
       font-size: 0.8em;
-      margin: 1.9em 0em 0 0.8em;
+      margin: 0.8em;
       padding: 0.4em 0.3em;
       .icon {
         vertical-align: -2px;
@@ -288,6 +275,7 @@
       margin-left: 0;
     }
 }
+
 
 
 //------------------------------------------------------------------------------
@@ -506,79 +494,6 @@
 
 
 //------------------------------------------------------------------------------
-//  .menu_module--share-frame HAPPENS to be isolated roll specific,
-//  but isn't necessarily, or may not always be true
-//------------------------------------------------------------------------------
-$share-frame-half-gutter: 4px;
-
-.menu_list--share-frame {
-  .menu_item {
-    float: left;
-    padding-top: 1em;
-    width: 33%;
-
-    &.menu_item--right {
-      float: right;
-    }
-
-    &:first-child {
-      padding-right: $share-frame-half-gutter;
-
-    }
-
-    &:last-child {
-      padding-left: $share-frame-half-gutter;
-
-    }
-  }
-
-  .menu_button--twitter,
-  .menu_button--facebook,
-  .menu_button--email,
-  .menu_button--comment {
-    padding: 0.6em 0.8em 0.6em 0.25em;
-    width: 100%;
-
-    .icon {
-      background-size: 1.8em;
-      -webkit-background-size: 1.8em;
-      display: block;
-      padding-left: 1.9em;
-    }
-  }
-
-  .menu_button--twitter {
-    .icon {
-    }
-  }
-
-  .menu_button--facebook {
-    .icon {
-    }
-  }
-
-  .menu_button--email {
-    i {
-      padding: 0 0.3em;
-    }
-  }
-
-  .menu_button--comment {
-    padding-left: 0.9em;
-
-    .icon {
-      background-size: contain;
-      -webkit-background-size: contain;
-    }
-  }
-
-  .menu_button--comment a {
-    text-decoration: none;
-  }
-
-}
-
-//------------------------------------------------------------------------------
 //  frame via search (not a "real" frame, really just a video)
 //  (nest styles inside of .via-search{})
 //------------------------------------------------------------------------------
@@ -597,14 +512,4 @@ $share-frame-half-gutter: 4px;
 //------------------------------------------------------------------------------
 .frame.fresh-play-new {
   overflow: hidden;
-}
-
-.frame.fresh-play-new .sash {
-  @include rotate(45deg);
-  @include sash-primer();
-
-  position: absolute;
-  right: -25px;
-  top: 10px;
-  width: 90px;
 }

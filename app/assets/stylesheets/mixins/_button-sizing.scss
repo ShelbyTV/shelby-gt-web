@@ -45,8 +45,11 @@
       // vertical-align: -0.15em;
     }
   }
+  & + .button_command--cancel {
+    margin-left: 5px;
+  }
 }
-    //alphabetical button set
+    //button set
     .button_command--flexible {
       padding-left: 0.8em;
       padding-right: 0.8em;
@@ -57,31 +60,76 @@
     }
     .button_command--sub {
       font-size: $font-size-sub-button;
-      padding: 0.7em;
       width: 7.5em;
 
       .icon {
         margin-right: 2px;
       }
+      .icon-twitter {
+        margin-left: -4px;
+      }
     }
-
-    .button_command--cancel {}
-    .button_command--email {}
+    .button_command--large {
+      font-size: $font-size-large-button;
+    }
+    .button_command--cancel {
+      padding: 0.65em;
+      vertical-align: top;
+    }
     .button_command--embed {
       .icon-embed {
         margin-right: 2px;
       }
     }
-    .button_command--facebook {}
+    .button_command--facebook {
+      .icon-facebook {
+        display: inline-block;
+        width: 0.5em;
+      }
+    }
     .button_command--remove {}
     .button_command--roll {}
-    .button_command--shortlink {}
-    .button_command--text {
-      background: transparent !important; //TODO: figure out if !important is absolutely necessary
-      border: none;
+    .button_command--shortlink {
+      display: block;
+      font-size: $font-size-button;
+      margin-bottom: 0.5em;
+      margin-top: 0.5em;
+      position: relative;
+
+      //non-normative overrides
+      .form_input {
+        font-size: inherit;
+        padding-left: 1.7em;
+      }
+
+      .icon-shortlink,
+      .icon-embed {
+        left: 0;
+        margin: 0;
+        padding: 0.55em 0 0 0.3em;
+        position: absolute;
+        top: 0;
+      }
     }
-    .button_command--tumblr {}
-    .button_command--twitter {}
+    .button_text,
+    .button_command--text {
+      background-color: transparent;
+      background-image: none;
+      border: none;
+      border-radius: 0;
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+    .button_command--twitter {
+      .icon-twitter {
+        display: inline-block;
+        width: 1em;
+        margin-left: -0.25em
+      }
+    }
 
   //icon adjustments
     .button_command--like {
@@ -97,12 +145,10 @@
     }
 
   //width normalization
-    .button_command--email,
-    .button_command--embed,
-    .button_command--shortlink {
+    .button_command--fill {
+      width: 100%;
     }
-
-    .button_command--roll,
+    .button_command--submit,
     .button_command--like,
     .button_command--follow,
     .button_command--remove,
@@ -110,7 +156,16 @@
     .button_command--follow {
       width: 5.7em;
     }
+    .button_command--roll {
+      width: 6.2em;
+    }
+    .button_command--twitter,
+    .button_command--facebook {
+      width: 7.1em;
+    }
     .button_command--share {
+      padding-left: 0;
+      padding-right: 0;
       width: 6.5em;
 
       .icon {
@@ -118,7 +173,9 @@
       }
     }
 
-
+.button_transparent {
+  opacity: 0;
+}
 
 .button_share {
   padding-bottom: 0.8em;

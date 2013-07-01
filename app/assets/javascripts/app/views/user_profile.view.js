@@ -28,11 +28,11 @@ libs.shelbyGT.UserProfileView = Support.CompositeView.extend({
       guideModel: shelby.models.guide,
       model: this.model
     }));
-    this.renderChild(new libs.shelbyGT.UserChannelGuideView({
-      el: '.js-user-channel-guide',
+    this.renderChild(new libs.shelbyGT.UserOwnedRollsGuideView({
+      el: '.js-user-owned-roll-guide',
       guideModel: shelby.models.guide,
       model: this.model,
-      userChannelsCollectionModel: shelby.models.userChannels,
+      userOwnedRollsCollectionModel: shelby.models.userOwnedRolls,
       userDesiresModel : shelby.models.userDesires
     }));
   },

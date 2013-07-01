@@ -1,19 +1,15 @@
 @import "mixins/animate";
-@import "mixins/roundies.scss";
-@import "mixins/no-type";
+@import "mixins/roundies";
 @import "mixins/fonts";
-@import "mixins/fin";
-@import "mixins/font-primer";
+// @import "mixins/font-primer"; //obsolete
+// @import "mixins/no-type"; //obsolete
 @import "mixins/gradient-primer";
-@import "mixins/networks-badge";
-@import "mixins/share-networks-buttons";
 @import "mixins/icon-primer";
-@import "mixins/button-padding";
+@import "mixins/button";
+// @import "mixins/button-padding";
 @import "mixins/button-sizing";
 @import "mixins/name-to-value";
-@import "mixins/button";
 @import "mixins/color-table";
-@import "mixins/sash";
 
 @import "compass/css3";
 @import "compass/typography/text/ellipsis";

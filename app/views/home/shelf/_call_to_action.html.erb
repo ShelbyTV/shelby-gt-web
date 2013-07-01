@@ -1,42 +1,24 @@
-<section class="landing-shelf flat landing-cta clearfix">
-  <div class="landing-shelf__lining half landing-cta-genius">
-    <h2 class="landing-shelf-subheader extra landing-cta-header">
-      <i class="button_icon_center icon_landing_genius cta-icon icon-genius"></i>
-      <label for="js-email-input" class="form_label">
-		    Sign up for Shelby
-		  </label>
-    </h2>
+<div class="shelf shelf--cta">
+  <div class="shelf__lining">
+    <h1 class="shelf__h1">
+      Watch videos you'll love.
+    </h1>
 
-    <p class="landing-shelf-block display">
-      Curate your own .TV channel with video<br/>
-			from YouTube, Vimeo, DailyMotion and more...
+    <p class="shelf__block">
+      Imagine a new kind of TV with only one channel <br/>and it’s tuned just for you. Welcome to Shelby TV.
     </p>
 
-    <form id="js-email-form" class="form_module_horz form_module_horz--signmeup-form js-track-submit" data-ga_action="Submit interest email">
-		  <input name="email" id="js-email-input" class="form_input" type="email" placeholder="email@address.com" />
-		  <input id="js-email-submit" class="button_primer button_blue landing-button-large landing-signmeup-submit" type="submit" value="Sign Up!" />
-		</form>
-		<div id="js-thankyou" class="form_module_horz form_module_horz--signmeup-form hidden">
-		  <span class="form_label">
-		    Thanks, we'll email you!
-		  </span>
-		</div>
-
-  </div>
-
-  <div class="landing-shelf__lining half landing-cta-explore">
-    <h2 class="landing-shelf-subheader extra landing-cta-header">
-      <i class="button_icon_center icon_landing_explore cta-icon icon-explore"></i>
-      Don't want to sign up just yet?
-    </h2>
-
-    <p class="landing-shelf-block display">
-      Explore amazing video collections on Shelby.<br>
-      No login required!
+    <p class="shelf__block">
+      <a
+        href="/signup"
+        class="button_primer button_command button_command--wide button_command--large button_green shelf__button js-cta js-track-event"
+        data-ga_action="Click Sign Up"
+        data-ga_label="Main"
+        >
+        Sign Up
+      </a>
     </p>
-
-    <a href="/channels" class="button_primer faux_button button_gray landing-button-large clearfix js-track-event" data-ga_action="Click explore" title="Enjoy Shelby Explore without Logging in!">
-      Explore Shelby
-    </a>
   </div>
-</section>
+
+  <img src="/images/landing/screenshot.png" class="shelf__img" alt="Shelby.tv in-app screenshot" />
+</div><!-- eo shelf -->

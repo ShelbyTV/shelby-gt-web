@@ -59,37 +59,6 @@ a{
   top: 0;
 }
 
-.content_wrapper {
-  bottom: 0;
-  font-size: 1.1em;
-  line-height: 1.5;
-  left: 0;
-  margin-top: $app-header__height;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-
-  &.onboarding-layout {
-    display: none;
-  }
-}
-
-.content_lining {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
-.content_module {
-  height: 100%;
-  position: relative;
-}
-
-.sidebar_module {
-  width: $guide-width;
-}
-
 .guide-wrapper{
   background-color: $guide-bg-color; //should technically be on .guide or something.
   // border-right: 1px solid #ccc;

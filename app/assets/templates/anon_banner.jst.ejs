@@ -4,16 +4,14 @@
 <div class="notification_module notification_module--anonymous-signup">
   <div class="notification_actions js-learn-more">
     <button class="button_primer button_gray notification_button">
-      <i class="button_icon_right">
-        Learn more
-      </i>
+      Learn more
     </button>
 
-    <section class="dropdown_section signup-section">
-      <div class="dropdown_lining signup-section-lining clearfix">
-        <%= SHELBYJST['signin-form']({inAnonBanner: true}) %>
-      </div><!-- eo signup-section-lining -->
-    </section><!-- eo signup-section -->
+    <section class="dropdown_section login-section">
+      <div class="dropdown_lining login-section-lining clearfix">
+        <%= SHELBYJST['signin-form'](shelby.config.loginForm) %>
+      </div><!-- eo login-section-lining -->
+    </section><!-- eo login-section -->
   </div><!-- eo dropdown_module -->
 
   <div class="notification_body clearfix">
@@ -56,8 +54,6 @@
   </div><!-- eo notification_body -->
 
   <button class="button_primer button_gray js-close-banner">
-    <i class="button_icon_center icon_cancel icon">
-      &nbsp;
-    </i>
+    <span class="icon icon-cancel"></span>
   </button>
 </div>

@@ -1,28 +1,30 @@
   <!-- form element wrapper is in outside of this JST -->
   <fieldset class="form_fieldset">
-		<label class="form_label frame-sharing__from-label js-from-label">
+		<label class="form_label js-from-label">
       From
     </label>
-		<input class="form_input form_input_uneditable frame-sharing__from-input js-from-input" disabled value="<%= shelby.models.user.get('primary_email') %>"></input>
+
+		<input class="form_input form_input_uneditable js-from-input" disabled value="<%= shelby.models.user.get('primary_email') %>"></input>
 	</fieldset>
 
   <fieldset class="form_fieldset">
-    <label class="form_label frame-sharing__to-label js-to-label" for="email-recipients">
+    <label class="form_label js-to-label" for="email-recipients">
       To
     </label>
+
     <textarea id="email-recipients" class="form_input js-share-email-addresses" pattern="(\s*[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+[,\s;]*)*" name="email-recipients" autofocus tabindex="0" rows="2" placeholder="good_friend@gmail.com, bossman@company.com, etc..." ></textarea>
   </fieldset>
 
   <fieldset class="form_fieldset">
-    <label class="frame-sharing__message-label form_label" for="email-message">
+    <label class="form_label" for="email-message">
       Message
     </label>
+
     <textarea class="form_textarea js-share-textarea" rows="4" name="email-message" id="email-message" tabindex="0"></textarea>
-    <!-- <p id="js-share-comment-counter" class="form_textarea_subline">140</p> -->
   </fieldset>
 
-	<fieldset class="form_fieldset share-submit">
-    <button onclick="return false;" class="js-submit-share form_submit button_primer button_blue share-submit-button" type="submit" tabindex="0">
+	<fieldset class="form_fieldset">
+    <button onclick="return false;" class="button_primer button_command button_command--flexible button_green js-submit-share" type="submit" tabindex="0">
       Send
     </button>
 	</fieldset>

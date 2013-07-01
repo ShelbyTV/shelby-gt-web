@@ -1,27 +1,11 @@
-<%
-  var creator = frame.get('creator');
-  var creatorNickname = creator ? frame.get('creator').get('nickname') : '';
-  var messages = (frame.get('conversation') && frame.get('conversation').get('messages')) || [];
-
-  var messageText;
-  if (!frame.get('isSearchResultFrame')) {
-    messageText = (creatorNickname) ? "&#x2794;@"+creatorNickname : '';
-    if(messages.length > 0){
-      messageText += ": "+messages.first().get('text');
-    }
-  } else {
-    messageText = '';
-  }
-%>
-
-<%=
-  SHELBYJST['media-module']({
+<% if (userLoggedIn) { %>
+  <%=  SHELBYJST['media-module']({
     userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrl(user),
     userNickname : user.get('nickname') || '',
-    messageText  : messageText,
+    messageText  : '',
     subline      : false
-  })
-%>
+  }) %>
+<% } %>
 
 <%
   var active_networks = [];
@@ -31,47 +15,71 @@
     });
   }
 
-  var twitter_enabled = _.include(active_networks, 'twitter') ? true : false;
-  var facebook_enabled = _.include(active_networks, 'facebook') ? true : false;
+  var twitter_enabled = _.include(active_networks, 'twitter');
+  var facebook_enabled = _.include(active_networks, 'facebook');
+
+  var twitter_checked = _.include(enabledDestinations, 'twitter');
+  var facebook_checked = _.include(enabledDestinations, 'facebook');
 %>
 
 <div class="rolling-option">
-  <% if (showHashtagButtons) { %>
-    <hr class="hr--double-rev" />
-    <fieldset class="hashtag-option clearfix">
-      <p class="hashtag-option__legend form_legend">
-        Tag your video to add to #Channels
-      </p>
-      <ul class="hashtag-option__list list">
-        <% _(shelby.config.channelHashtagButtons).chain().values().each(function(channel, index, values){ %>
-          <li class="hashtag-option__item">
-            <button class="button_primer button_gray button_standard hashtag-option__button <%= index == values.length - 1 ? 'hashtag-option__button--bottom ' : '' %>js-hashtag-button" value="#<%= channel.hashTags[0] %>">
-              #<%= channel.hashTags[0] %>
-            </button>
-          </li>
-        <% }); %>
-      </ul>
+  <% if (!userLoggedIn) { %>
+    <fieldset class="form_fieldset form_fieldset--social clearfix">
+      <legend class="form_legend">
+        Share to
+      </legend>
+
+      <a href="#" target="_blank" class="disabled button_primer button_command button_command--sub button_command--twitter button_twitter-blue js-tweet-share">
+        <span class="icon icon-twitter"></span>
+        <span class="button_label">Twitter</span>
+      </a>
+
+      <a href="#" class="disabled button_primer button_command button_command--sub button_command--facebook button_facebook-blue js-facebook-post">
+        <span class="icon icon-facebook"></span>
+        <span class="button_label">Facebook</span>
+      </a>
     </fieldset>
-    <hr class="hr--double-rev" />
+  <% } else if (twitter_enabled || facebook_enabled) { %>
+    <fieldset class="form_fieldset form_fieldset--social clearfix">
+      <legend class="form_legend">
+        Also Share to
+      </legend>
+
+      <% if(twitter_enabled) { %>
+        <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--twitter <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %>">
+          <input data-network="twitter" id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
+          <span class="icon icon-twitter"></span>
+          <span class="button_label">Twitter</span>
+        </label>
+      <% } %>
+
+      <% if(facebook_enabled) { %>
+        <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--facebook <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %>">
+          <input data-network="facebook" id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
+          <span class="icon icon-facebook"></span>
+          <span class="button_label">Facebook</span>
+        </label>
+      <% } %>
+    </fieldset>
   <% } %>
 
-  <fieldset class="share_module share-option">
-    <% if(twitter_enabled) { %>
-      <label class="share_label js-toggle-twitter-sharing" for="share-on-twitter" title="Share to Twitter">
-        <input id="share-on-twitter" class="share_input share-option-twitter visuallyhidden" name="share-option-twitter" type="checkbox" />
-        <span class="ir share_label_icon share-button-twitter">Share to Twitter</span>
-      </label>
-    <% } %>
+  <fieldset class="form_fieldset form_fieldset--submit clearfix">
+    <% if (userLoggedIn) { %>
+      <button class="button_primer button_command button_command--wide button_green js-share-it" type="submit" tabindex="0" onclick="return false;">
+        Share
+      </button>
 
-    <% if(facebook_enabled) { %>
-      <label class="share_label js-toggle-facebook-sharing" for="share-on-facebook" title="Share to Facebook">
-        <input id="share-on-facebook" class="share_input share-option-facebook visuallyhidden" name="share-option-facebook" type="checkbox" />
-        <span class="ir share_label_icon share-button-facebook">Share to Facebook</span>
-      </label>
-    <% } %>
+      <button class="button_primer button_command button_command--flexible button_command--sub button_command--cancel button_gray js-cancel">
+        Cancel
+      </button>
 
-    <button id="js-roll-it" class="button_primer button_command button_command--wide button_green rolling-submit" type="submit" tabindex="0" onclick="return false;">
-      Roll It!
-    </button>
+      <p class="form_label--protip">
+        Protip: Sharing improves videos recommended to you and your friends on Shelby.
+      </p>
+    <% } else { %>
+      <button class="button_primer button_command button_command--flexible button_command--cancel button_gray js-cancel">
+        Close
+      </button>
+    <% } %>
   </fieldset>
 </div>

@@ -67,7 +67,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 4;
+  z-index: 3; // so preferences dropdown is usable
 }
 
 .welcome-message__wrapper--channels {
@@ -75,6 +75,10 @@
 }
 .welcome-message__wrapper--search {
   display: block;
+}
+.welcome-message__wrapper--app {
+  display: block;
+  top: 40px;
 }
 
 //root

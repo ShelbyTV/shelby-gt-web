@@ -3,7 +3,7 @@ libs.shelbyGT.DashboardEmptyIndicatorView = Support.CompositeView.extend({
   tagName : 'li',
 
   events : {
-    "click .js-explore-link"     : "_goToExplore",
+    "click .js-community-link"   : "_goToCommunity",
     "click .js-preferences-link" : "_goToPreferences"
   },
 
@@ -15,8 +15,8 @@ libs.shelbyGT.DashboardEmptyIndicatorView = Support.CompositeView.extend({
     this.$el.html(this.template());
   },
 
-  _goToExplore : function() {
-    shelby.router.navigate('channels', {trigger:true});
+  _goToCommunity : function() {
+    shelby.router.navigate('community', {trigger:true});
   },
 
   _goToPreferences : function() {

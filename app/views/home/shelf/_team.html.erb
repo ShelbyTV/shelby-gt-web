@@ -7,15 +7,13 @@
     <h3 class="shelf__h2">
       Our Team
     </h3>
-
-    <hr class="shelf__hr" />
 <%
   team = [
     {
       'name' => 'Reece Pacheco',
       'description' => 'Attacking TV via web video + startups. Love surf, snow, and foreign lands. Native Cape Codder. Immigrant\'s son. Fat kid at heart. Humanist.',
       'image' => '/images/team/reece-small2.jpg',
-      'url' => 'reece.shelby.tv',
+      'url' => 'shelby.tv/reece',
       'email' => 'r@shelby.tv',
       'twitter' => 'reece',
       'title' => 'Cofounder, CEO'
@@ -33,7 +31,7 @@
       'name' => 'Henry Sztul',
       'description' => "Physicist, Entrepreneur, Dad. Builder of things.",
       'image' => '/images/team/henry-small2.jpg',
-      'url' => 'henry.shelby.tv',
+      'url' => 'shelby.tv/henry',
       'email' => 'h@shelby.tv',
       'twitter' => 'sztul',
       'title' => 'Scientist'
@@ -42,7 +40,7 @@
       'name' => 'Chris Kurdziel',
       'description' => 'Chris like memes, mountains, metal, Mars and alotta alliteration.',
       'image' => '/images/team/chris-small2.jpg',
-      'url' => 'chris.shelby.tv',
+      'url' => 'shelby.tv/chris',
       'email' => 'c@shelby.tv',
       'twitter' => 'ckurdziel',
       'title' => 'Product Manager'
@@ -51,7 +49,7 @@
       'name' => 'Joshua Samberg ',
       'description' => "Finds your futuristic world strange/frightening.  Knows 2 things: 1) Code should be written the right way. 2) No such thing as a bad joke.",
       'image' => '/images/team/josh-small2.jpg',
-      'url' => 'iceberg901.shelby.tv',
+      'url' => 'shelby.tv/iceberg901',
       'email' => 'josh@shelby.tv',
       'twitter' => nil,
       'title' => 'Hair/Software Engineer'
@@ -60,7 +58,7 @@
       'name' => 'Vincent Iadevaia',
       'description' => 'Vincent likes comic books, videos of giant robots, and awesome movie trailers.',
       'image' => '/images/team/vincent-small2.jpg',
-      'url' => 'vondoom.shelby.tv',
+      'url' => 'shelby.tv/vondoom',
       'email' => 'v@shelby.tv',
       'twitter' => 'vondoom',
       'title' => 'Product Designer'
@@ -69,7 +67,7 @@
       'name' => 'Michael Matyus ',
       'description' => "Front-end Engineer who sacrifices sleep for reading and collecting old books. The beard stays.",
       'image' => '/images/team/mike-small2.jpg',
-      'url' => 'matyus.shelby.tv',
+      'url' => 'shelby.tv/matyus',
       'email' => 'michael@shelby.tv',
       'twitter' => 'mmatyus',
       'title' => 'DOM Wizard'
@@ -78,25 +76,16 @@
       'name' => 'Keren Pinkas',
       'description' => "Tiny. Redhead. Vegetarian. Beatlefan. Geek.",
       'image' => '/images/team/keren-small2.jpg',
-      'url' => 'keren.shelby.tv',
+      'url' => 'shelby.tv/keren',
       'email' => 'keren@shelby.tv',
       'twitter' => 'kepsolution',
       'title' => 'iOS Developer'
     },
     {
-      'name' => 'James Aviaz',
-      'description' => "An Aussie in New York. Loves culture, tech, and the intersection of both.",
-      'image' => '/images/team/james-small2.jpg',
-      'url' => 'jamesaviaz.helby.tv',
-      'email' => 'james@shelby.tv',
-      'twitter' => 'jamesaviaz',
-      'title' => 'Marketing & Content'
-    },
-    {
       'name' => 'Edon Ophir',
       'description' => "People person. Voracious reader. Israeli/American in NYC. Take me to the beach!",
       'image' => '/images/team/edon-small2.jpg',
-      'url' => 'edon.shelby.tv',
+      'url' => 'shelby.tv/edon',
       'email' => 'edon@shelby.tv',
       'twitter' => 'edonophir',
       'title' => 'Community Manager'
@@ -105,7 +94,7 @@
       'name' => 'Frasher Ulaj',
       'description' => "Young-eon learning ropes of start-ups + video. Rule #76 : No excuses. Play like a champion!",
       'image' => '/images/team/frasher-small2.jpg',
-      'url' => 'frash.shelby.tv',
+      'url' => 'shelby.tv/frash',
       'email' => 'frasher@shelby.tv',
       'twitter' => 'frash',
       'title' => 'Summer Intern'
@@ -135,8 +124,8 @@
 
                   <p class="frame-subline">
                     <a class="left" target="_blank" href="http://<%= member["url"] %>"><%= member["url"] %></a>
-                    <% if member["twitter"] %><a target="_blank" href="http://twitter.com/<%= member["twitter"] %>"><i class="icon-twitter"></i></a><% end %>
-                    <a href="mailto:<%= member["email"] %>"><i class="icon-email"></i></a>
+                    <% if member["twitter"] %><a target="_blank" href="http://twitter.com/<%= member["twitter"] %>"><span class="icon-twitter"></span></a><% end %>
+                    <a href="mailto:<%= member["email"] %>"><span class="icon-email"></span></a>
                   </p>
 
                 </div><!-- eo .media_body -->

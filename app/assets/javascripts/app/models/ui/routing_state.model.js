@@ -1,7 +1,8 @@
 libs.shelbyGT.RoutingStateModel = Backbone.Model.extend({
 
   defaults : {
-    forceFramePlay : false
+    forceFramePlay : false,
+    params : null
   }
 
 });

@@ -13,6 +13,7 @@
 <% var fauxUserOrigin = !isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(currentCreator) : null %>
 
+<% var action = frameGroup.get('primaryDashboardEntry') && frameGroup.get('primaryDashboardEntry').get('action') %>
 
 <%
   var currentCreatorNickname;
@@ -38,7 +39,8 @@
 
         <%= SHELBYJST['thumbnail-module']({
           thumbnail: nextVideo.get('thumbnail_url'),
-          title: nextVideo.get('title') }) %>
+          title: nextVideo.get('title')
+        }) %>
 
         <h2 class="persistent_video_info__h3">
           <%= nextVideo.get('title') %>
@@ -50,143 +52,99 @@
   <div class="media_body persistent_video_info__current-frame">
     <div class="persistent_video_info__lining">
 
-			<% if(currentFrame.get('isFreshPlayNew')){ %>
-				<div class="persistent_video_info__sash">New</div>
-			<% } %>
-
       <h2 class="persistent_video_info__h1">
         <%= currentVideo.get('title') %>
       </h2>
 
       <div class="media_module persistent_video_info__body">
-        <% if (showNextFrame) { %>
-          <% if (!currentFrame.get('isSearchResultFrame')) { %>
-            <% if (clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %>
-              <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
-                <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
-              </div>
-            <% if (clickableCreator) { %></a><% } %>
-          <% } else { %>
-            <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
-          <% } %>
-        <% } %>
-
-        <div class="media_body">
+        <% if(action == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) {
+          var sourceFrameCreatorNickname = frameGroup.get('primaryDashboardEntry').get('src_frame').get('creator').get('nickname');
+        %>
+          <div class="media_body">
+            <!--
+            <span class="xuser-data-timestamp">
+              <%= currentFrame.get('created_at') %>
+            </span>
+            -->
+            <p class="xuser-data xuser-data--green xuser-data--recommendation">
+              <strong>Recommended for you</strong>
+            </p>
+            <p class="xuser-message">
+              This video is shared by people like <a href="/<%= sourceFrameCreatorNickname %>" class="js-goto-user-page"><%= sourceFrameCreatorNickname %></a>
+            <p>
+          </div><!-- eo .media_body -->
+        <% } else { %>
           <% if (showNextFrame) { %>
-            <h3 class="xuser-data persistent_video_info__h4--light">
-              <% if (!currentFrame.get('isSearchResultFrame')) { %>
-                <strong>
-                  <% if(clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %><%= currentCreatorNickname %><% if(clickableCreator) { %></a><% } %>
-                </strong>
-              <% } else { %>
-                <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
-              <% } %>
-
-              <% if (fauxUserOrigin) { %>
-                via <span class="capitalize"><%= fauxUserOrigin %></span>
-              <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
-                via <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>
-              <% } %>
-            </h3>
+            <% if (!currentFrame.get('isSearchResultFrame')) { %>
+              <% if (clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %>
+                <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+                  <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
+                </div>
+              <% if (clickableCreator) { %></a><% } %>
+            <% } else { %>
+              <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
+            <% } %>
           <% } %>
+          <div class="media_body">
+            <% if (showNextFrame) { %>
+              <h3 class="xuser-data persistent_video_info__h4--light">
+                <% if (!currentFrame.get('isSearchResultFrame')) { %>
+                  <strong>
+                    <% if(clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %><%= currentCreatorNickname %><% if(clickableCreator) { %></a><% } %>
+                  </strong>
+                <% } else { %>
+                  <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
+                <% } %>
 
-          <% var hasComment = (currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame') %>
+                <% if (fauxUserOrigin) { %>
+                  via <span class="capitalize"><%= fauxUserOrigin %></span>
+                <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
+                  via <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>
+                <% } %>
+              </h3>
+            <% } %>
 
-          <% if(hasComment) { %>
-            <% var comment = currentMessages.models[0].get('text') %>
-            <% var commentOverflow = comment && comment.length > 256  %>
-            <p<%= commentOverflow ? ' class="line-clamp js-toggle-comment"' : '' %>>
-              <%=
-                libs.utils.String.linkifySafeWithClickTracking(comment, {
-                  link : {
-                    gaCategory : eventTrackingCategory,
-                    gaAction : 'Click on link in comment'
-                  },
-                  hashtag : {
-                    gaCategory : eventTrackingCategory,
-                    gaAction : 'Click on hashtag link'
-                  }
-                })
-              %>
-              </p>
-          <% } %>
-        </div><!-- eo .media_body -->
+            <% var hasComment = (currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame') %>
+
+            <% if(hasComment) { %>
+              <% var comment = currentMessages.models[0].get('text') %>
+              <% var commentOverflow = comment && comment.length > 256  %>
+              <p<%= commentOverflow ? ' class="line-clamp js-toggle-comment"' : '' %>>
+                <%=
+                  libs.utils.String.linkifySafeWithClickTracking(comment, {
+                    link : {
+                      gaCategory : eventTrackingCategory,
+                      gaAction : 'Click on link in comment'
+                    }
+                  })
+                %>
+                </p>
+            <% } %>
+          </div><!-- eo .media_body -->
+        <% } %>
       </div><!-- eo .persistent_video_info__body -->
     </div><!-- eo .persistent_video_info_lining -->
 
     <div class="persistent_video_info__foot">
       <ul class="list list--inline persistent_video_info__commands">
-        <% if (!user.isAnonymous()) { %>
-          <li class="list__item clearfix">
-            <button class="button_primer button_green button_command button_command--roll js-roll-frame js-track-event"
-                    data-ga_category="<%= eventTrackingCategory %>"
-                    data-ga_action="Click roll on current frame"
-                    data-ga_label="<%= shelby.models.user.get('nickname') %>">
-              <i class="icon icon-roll"></i>Roll…
-            </button>
-          </li>
-        <% } %>
+        <li class="list__item clearfix">
+          <button class="button_primer button_green button_command button_command--roll js-roll-frame js-track-event"
+                  data-ga_category="<%= eventTrackingCategory %>"
+                  data-ga_action="Click roll on current frame"
+                  data-ga_label="<%= shelby.models.user.get('nickname') %>">
+            <span class="icon icon-roll"></span>Share…
+          </button>
+        </li>
 
         <li class="list__item clearfix">
           <button class="button_primer button_gray button_command button_command--like js-queue-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
               data-ga_category="<%= eventTrackingCategory %>"
               data-ga_action="Click like on current frame"
               data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="icon icon-like <%= currentVideoIsInQueue ? 'icon-like--red ': ''%>js-command-icon"></i><span class="label"><%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %></span>
+            <span class="icon icon-like <%= currentVideoIsInQueue ? 'icon-like--red ': ''%>js-command-icon"></span><span class="label"><%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %></span>
           </button>
         </li>
 
-        <li class="list__item clearfix">
-          <button class="button_primer button_gray button_command button_command--share js-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Click share menu on current frame" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <i class="icon icon-share"></i>Share…
-          </button>
-
-          <div class="share_menu frame-body-wrapper js-share-menu-block hidden">
-            <ul class="list">
-              <li class="list__item">
-                <% if (user.isAnonymous()) { %>
-                  <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= encodeURIComponent(anonUserShareEmailBody) %>">
-                <% } %>
-                  <button class="button_primer button_gray button_command button_command--sub button_command--email js-hide-share-menu js-track-event<%= !user.isAnonymous() ? ' js-button_share--email' : ''%>" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                    <i class="icon icon-email"></i>Email
-                  </button>
-                <% if (user.isAnonymous()) { %>
-                  </a>
-                <% } %>
-              </li>
-              <% if (user.isAnonymous()) { %>
-                <li class="list__item">
-                  <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
-                    <button class="button_primer button_gray button_command button_command--sub button_command--twitter js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                      <i class="icon icon-twitter"></i>Twitter
-                    </button>
-                  </a>
-                </li>
-              <li class="list__item">
-                <button class="button_primer button_gray button_command button_command--sub button_command--facebook js-button_share--facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                  <i class="icon icon-facebook"></i>Facebook
-                </button>
-              </li>
-              <% } %>
-              <% if (!currentFrame.get('isSearchResultFrame')) { %>
-                <li class="list__item js-share-embed-item clearfix">
-                  <button class="button_primer button_gray button_command button_command--sub button_command--embed js-button_share--embed js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Get embed code" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                    <i class="icon icon-embed">
-                    </i>
-                      Embed
-                  </button>
-                </li>
-                <li class="list__item nudge">
-                  <span class="share_menu__faux-button clearfix">
-                    <i class="icon icon-shortlink">
-                    </i>
-                    <input type="text" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
-                  </span>
-                </li>
-              <% } %>
-            </ul>
-          </div><!-- eo share_menu -->
-        </li>
       </ul>
     </div><!-- eo .persistent_video_info__foot -->
   </div><!-- eo .persistent_video_info__current-frame -->

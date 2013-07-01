@@ -16,7 +16,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
   events : {
     "click .js-like-frame"              : "_likeFrame",
-    "click .js-likes-section"          : "_navigateToLikes",
+    "click .js-likes-section"           : "_navigateToLikes",
     "click .js-share-menu"              : "_toggleShareMenu",
     "click .js-button_share--email"     : "_requestFrameEmailView",
     "click .js-button_share--facebook"  : "_shareCurrentToFacebook",
@@ -316,7 +316,9 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   _requestFrameEmailView : function(){
-    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, this._currentFrame);
+    var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
+    var dbEntry = frameGroup.get('primaryDashboardEntry');
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, this._currentFrame, dbEntry);
   },
 
   /*************************************************************

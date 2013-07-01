@@ -13,7 +13,7 @@
 }
 
 .guide__head {
-  background-color: white;
+  background-color: $ui-white;
   position: relative;
   z-index: 1;
 }
@@ -40,6 +40,7 @@
 //  guide-styles
 //------------------------------------------------------------------------------
 .guide__menu {
+  margin: 12px;
   position: absolute;
   right: 0;
   top: 0;

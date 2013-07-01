@@ -9,8 +9,6 @@
 //  SHARED BY HORIZONTAL + VERTICAL FORMS
 ////////////////////////////////////////////////////////////////////////////
 .form_submit {
-  @include button-sizing(wide);
-
   .spinner {
     left: auto;
     margin-left: -4px;
@@ -41,7 +39,12 @@
 }
 
 .form_legend {
-
+  font-size: 1em;
+  font-weight: bold;
+  display: block;
+  line-height: 2;
+  text-align: left;
+  width: 100%;
 }
 
 .form_label {
@@ -113,6 +116,9 @@
     .form_checkbox--inline {
       display: inline;
       vertical-align: 1px;
+    }
+    .form_checkbox--partial {
+      @include opacity(0.5);
     }
 ////////////////////////////////////////////////////////////////////////////
 //  HORIZONTAL FORMS

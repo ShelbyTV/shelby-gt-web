@@ -18,6 +18,8 @@
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
 
+<% var action = frameGroup.get('primaryDashboardEntry') && frameGroup.get('primaryDashboardEntry').get('action') %>
+
 <% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- videocard -->
 
@@ -30,89 +32,35 @@
 
   <div class="frame-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
     <div class="frame-body">
-      <div class="menu_module frame-menu">
-        <ul class="menu_list frame-command-menu frame-list" role="menubar">
-          <% if (!user.isAnonymous()) { %>
-            <li class="menu_item" role="menuitem">
-              <button class="button_primer button_green button_command button_command--roll js-roll-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
-                <i class="icon icon-roll"></i>Roll…
-              </button>
-            </li>
-          <% } %>
+      <ul class="list list--inline frame-menu" role="menubar">
+        <li class="list__item" role="menuitem">
+          <button class="button_primer button_green button_command button_command--roll js-share-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
+            <span class="icon icon-roll"></span>Share…
+          </button>
+        </li>
 
-          <li class="menu_item" role="menuitem">
-            <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
-              <button class="button_primer button_gray button_command button_command--like js-queue-frame
-                             <%= (videoIsInQueue) ? ' queued' : ' button_gray' %>">
-                <i class="icon icon-like<%= videoIsInQueue ? ' icon-like--red': '' %>"></i><span class="label"><%= (videoIsInQueue ) ? 'Liked' : 'Like' %></span>
-              </button>
-            <% } else { %>
-              <button class="button_primer button_gray button_command button_command--remove js-queue-frame remove-frame js-remove-frame queued">
-                <span class="label">Remove</span>
-              </button>
-            <% } %>
-          </li>
-
-          <li class="menu_item" role="menuitem">
-            <button class="button_primer button_gray button_command button_command--share js-share-menu">
-              <i class="icon icon-share"></i>Share…
+        <li class="list__item" role="menuitem">
+          <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
+            <button class="button_primer button_gray button_command button_command--like js-queue-frame
+                           <%= (videoIsInQueue) ? ' queued' : ' button_gray' %>">
+              <span class="icon icon-like<%= videoIsInQueue ? ' icon-like--red': '' %>"></span><span class="label"><%= (videoIsInQueue ) ? 'Liked' : 'Like' %></span>
             </button>
-
-            <div class="share_menu frame-body-wrapper js-share-menu-block hidden">
-              <ul class="list">
-                <li class="list__item">
-                  <% if (user.isAnonymous()) { %>
-                    <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= encodeURIComponent(anonUserShareEmailBody) %>">
-                  <% } %>
-                    <button class="button_primer button_gray button_command button_command--sub button_command--email js-hide-share-menu js-track-event<%= !user.isAnonymous() ? ' js-button_share--email' : ''%>" data-ga_category="Frame" data-ga_action="Share frame via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                      <i class="icon icon-email"></i>
-                      Email
-                    </button>
-                  <% if (user.isAnonymous()) { %>
-                    </a>
-                  <% } %>
-                </li>
-                <% if (user.isAnonymous()) { %>
-                  <li class="list__item">
-                    <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
-                      <button class="button_primer button_gray button_command button_command--sub button_command--twitter js-hide-share-menu js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                        <i class="icon icon-twitter"></i>Twitter
-                      </button>
-                    </a>
-                  </li>
-                <li class="list__item">
-                  <button class="button_primer button_gray button_command button_command--sub button_command--facebook js-share-to-facebook js-hide-share-menu js-track-event" data-ga_category="Frame" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                    <i class="icon icon-facebook"></i>Facebook
-                  </button>
-                </li>
-                <% } %>
-                <% if (!currentFrame.get('isSearchResultFrame')) { %>
-                  <li class="list__item js-share-embed-item clearfix">
-                    <button class="button_primer button_gray button_command button_command--sub button_command--embed js-button_share--embed js-track-event" data-ga_category="Frame" data-ga_action="Get embed code" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-                      <i class="icon icon-embed"></i>Embed
-                    </button>
-                  </li>
-                  <li class="list__item nudge">
-                    <span class="share_menu__faux-button clearfix">
-                      <i class="icon icon-shortlink"></i>
-                      <input type="text" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
-                    </span>
-                  </li>
-                <% } %>
-              </ul>
-            </div><!-- eo share_menu -->
-          </li>
-
-          <% if (shelby.models.user.get('admin')) { %>
-            <li class="menu_item" role="menuitem">
-              <button class="button_primer button_red button_command button_command--cancel js-remove-frame">
-                <i class="icon icon-close"></i>
-              </button>
-            </li>
+          <% } else { %>
+            <button class="button_primer button_gray button_command button_command--remove js-queue-frame remove-frame js-remove-frame queued">
+              <span class="label">Remove</span>
+            </button>
           <% } %>
+        </li>
 
-        </ul>
-      </div><!-- eo .frame-menu -->
+        <% if (shelby.models.user.get('admin')) { %>
+          <li class="list__item right" role="menuitem">
+            <button class="button_primer button_red button_command button_command--cancel js-remove-frame">
+              <span class="icon icon-close"></span>
+            </button>
+          </li>
+        <% } %>
+
+      </ul><!-- eo frame-menu -->
 
       <!-- TODO: should maybe use the thumbnail module JST -->
       <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %> js-track-event" data-ga_category="Frame" data-ga_action="Click frame to play" data-ga_label="<%= shelby.models.user.get('nickname') %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
@@ -129,7 +77,7 @@
     %>
       <footer class="media_module frame-footer clearfix">
          <% if (clickableCreator) { %>
-           <a href="#" onclick="return false;" class="js-creator-personal-roll">
+           <a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= creator.get('nickname') %>">
              <span class="image_module xuser-avatar<% if (fauxUserOrigin) { %> xuser-avatar--<%= fauxUserOrigin %> icon-<%= fauxUserOrigin %><% } %> media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
                <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
              </span>
@@ -150,7 +98,7 @@
 
               <p class="xuser-data">
                 <% if (clickableCreator) { %>
-                  <a href="#" onclick="return false;" class="js-creator-personal-roll no-faux-link"><strong><%= creatorNickname %></strong></a>
+                  <a href="#" onclick="return false;" class="js-goto-user-page no-faux-link" data-user_nickname="<%= creator.get('nickname') %>"><strong><%= creatorNickname %></strong></a>
                 <% } else { %>
                   <%= creatorNickname %>
                 <% } %>
@@ -168,9 +116,6 @@
                     libs.utils.String.linkifySafeWithClickTracking(comment, {
                       link : {
                         gaAction : 'Click on link in comment'
-                      },
-                      hashtag : {
-                        gaAction : 'Click on hashtag link'
                       }
                     })
                   %>
@@ -179,14 +124,29 @@
           </div><!-- eo .media_body -->
 
       </footer><!-- eo .media_module-->
+    <% } else if (action == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) {
+        var sourceFrameCreatorNickname = frameGroup.get('primaryDashboardEntry').get('src_frame').get('creator').get('nickname');
+    %>
+      <footer class="media_module frame-footer clearfix">
+        <div class="media_body">
+          <span class="xuser-data-timestamp">
+            <%= frame.get('created_at') %>
+          </span>
+          <p class="xuser-data xuser-data--green xuser-data--recommendation">
+            <strong>Recommended for you</strong>
+          </p>
+          <p class="xuser-message">
+            This video is shared by people like
+              <a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= sourceFrameCreatorNickname %>">
+                <%= sourceFrameCreatorNickname %>
+              </a>
+          <p>
+        </div><!-- eo .media_body -->
+      </footer><!-- eo .media_module-->
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
 
   <%= SHELBYJST['frame-aside'](obj) %>
-
-	<% if(frame.get('isFreshPlayNew')){ %>
-		<div class="sash">New</div>
-	<% } %>
 
 </article>
 <!-- end new videocard -->

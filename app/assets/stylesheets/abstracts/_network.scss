@@ -1,0 +1,28 @@
+//preferences/networks
+
+.network {
+  margin-bottom: 2em;
+
+  //non-normative
+  .badge:before {
+    font-size: 16px;
+    height: 2em;
+    line-height: 2;
+    width: 2em;
+  }
+
+  .media_image {
+    padding: 1em 0;
+  }
+}
+.network__h1 {
+  font-size: 1.4em;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 0;
+  margin-top: 0.5em;
+}
+.network__h2 {
+  font-size: 1em;
+  color: lighten($ui-soft-black,20%);
+}

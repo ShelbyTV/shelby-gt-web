@@ -24,42 +24,45 @@ class HomeController < ApplicationController
       # only meant to handle requests for html pages
       format.html {
 
-        #XXX ISOLATED_ROLL
+        #XXX .TV subdomains
         # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
         # controller, but until that's built, we just short-circuit right here
-        if @isolated_roll_id = get_isolated_roll_id_from_domain_of_request(request)
-          @roll = Shelby::API.get_roll_with_frames(@isolated_roll_id)
-          @user = Shelby::API.get_user(@roll['creator_id']) if @roll
-          @analytics_account = get_account_analytics_info(@user)
-          @frame_id = get_frame_from_path(params[:path])
-          @hostname = request.host
-          @is_mobile = is_mobile?
+        if dot_tv_roll = get_dot_tv_roll_from_domain(request)
+          user = Shelby::API.get_user(dot_tv_roll['creator_id'])
+          frame_id = get_frame_from_path(params[:path])
 
-          render '/home/isolated_roll' and return
+          unless frame_id
+            # if no frame was specified, this points to the user's roll, which is now at the user's "profile", shelby.tv/the-users-nickname
+            redirect_to "#{Settings::Application.protocol_matching_url}/#{user['nickname']}", :status => :moved_permanently and return
+          else
+            # if a frame was specified this is a link to a specific frame on the user's roll
+            redirect_to "#{Settings::Application.protocol_matching_url}/roll/#{dot_tv_roll['id']}/frame/#{frame_id}", :status => :moved_permanently and return
+          end
         end
 
+        path = params[:path]
         # if the path is just a user name, this is the route for a user profile, so get the
-        # necessary view instance variables and continue
-        user_name = params[:path]
-        user = Shelby::API.get_user(user_name) if user_name
+        # necessary view instance variables and render
+        if path && !Settings::Application.root_paths.include?(path)
+          user = Shelby::API.get_user(path)
 
-        if user
-          @user = user
-          @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
-
-          render '/home/app' and return
+          if user
+            @user = user
+            @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
+            render '/home/app' and return
+          end
         end
 
         if user_signed_in?
           render '/home/app'
         else
           # Consider errors and render landing page
-          @auth_failure = params[:auth_failure] == '1'
+          @auth_failure  = params[:auth_failure] == '1'
           @auth_strategy = params[:auth_strategy]
-          @access_error = params[:access] == "nos"
-          @invite_error = params[:invite] == "invalid"
-          @mobile_os = detect_mobile_os
-          @is_mobile = is_mobile?
+          @access_error  = params[:access] == "nos"
+          @invite_error  = params[:invite] == "invalid"
+          @mobile_os     = detect_mobile_os
+          @is_mobile     = is_mobile?
 
           view_context.get_info_for_meta_tags(params[:path])
 
@@ -115,6 +118,15 @@ class HomeController < ApplicationController
 
 
   ##
+  # Handles community view when visited directly (allowing logged-out users to see it)
+  #
+  # GET /community
+  #
+  def community
+    render '/home/app'
+  end
+
+  ##
   # Handles channels view when visited directly (allowing logged-out users to see it)
   #
   # GET /channels
@@ -159,6 +171,24 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles shares view when visited directly (allowing logged-out users to see it)
+  #
+  # GET /:user_name/shares(/:frame_id)
+  #
+  def shares
+    user_id_or_nickname = params[:user_id_or_nickname]
+    user = Shelby::API.get_user(user_id_or_nickname)
+    if user
+      @user = user
+      @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
+    end
+    @frame = Shelby::API.get_frame(params[:frame_id], true) if params[:frame_id]
+    @video = @frame['video'] if @frame
+
+    render '/home/app'
+  end
+
+  ##
   # Handles "make the web" (allowing logged-out users to see it)
   #
   # GET /experience/:url
@@ -195,8 +225,9 @@ class HomeController < ApplicationController
   private
 
 
-    def get_isolated_roll_id_from_domain_of_request(request)
-      return case request.host
+    def get_dot_tv_roll_from_domain(request)
+      hard_coded_dot_tv_roll_id =
+        case request.host
           #TODO: pull this mapping from API
           when "bohrmann.tv" then "4f8f81bbb415cc4762002d7a"
           when "chriskurdziel.tv" then "4f901d4bb415cc661405fde9"
@@ -221,17 +252,18 @@ class HomeController < ApplicationController
           when "runneracademy.tv" then "508ed234b415cc50e40112bb" # requested by matt j., added 3/7/13 -hs
           when "localhost.danspinosa.tv" then "4f8f7ef2b415cc4762000002"
           when "localhost.henrysztul.tv" then "4f8f7ef6b415cc476200004a"
-          else
-            if [nil, "", "gt", "localhost", "www", "fb", "m"].include? request.subdomain
-              false
-            elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
-              # for shelby.tv domain, try to find a roll assigned to the given subdomain
-              roll = Shelby::API.get_roll_by_subdomain(request.subdomain)
+          else nil
+        end
 
-              roll && roll['id']
-            else
-              false
-            end
+      if hard_coded_dot_tv_roll_id
+        Shelby::API.get_roll(hard_coded_dot_tv_roll_id)
+      elsif [nil, "", "gt", "localhost", "www", "fb", "m"].include? request.subdomain
+        nil
+      elsif ActionDispatch::Http::URL.extract_domain(request.host) == "shelby.tv"
+        # for shelby.tv domain, try to find a roll assigned to the given subdomain
+        Shelby::API.get_roll_by_subdomain(request.subdomain)
+      else
+        nil
       end
     end
 

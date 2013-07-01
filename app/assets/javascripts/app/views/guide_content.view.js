@@ -9,7 +9,6 @@
   var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
   var RollView = libs.shelbyGT.RollView;
   var VideoSearchView = libs.shelbyGT.VideoSearchView;
-  var UserPreferencesView = libs.shelbyGT.UserPreferencesView;
   var HelpView = libs.shelbyGT.HelpView;
   var TeamView = libs.shelbyGT.TeamView;
   var LegalView = libs.shelbyGT.LegalView;
@@ -25,7 +24,6 @@
     _dashboardMasterCollection : null,
 
     _currentChannelMasterCollection : null,
-    _currentChannelView : null,
 
     _currentRollMasterCollection : null,
 
@@ -53,7 +51,8 @@
           !_changedAttrs.has('currentChannelId')) {
         return;
       }
-      if (model.get('displayState') != libs.shelbyGT.DisplayState.onboarding &&
+      if (model.get('displayState') != libs.shelbyGT.DisplayState.userPreferences &&
+          model.get('displayState') != libs.shelbyGT.DisplayState.onboarding &&
           model.get('displayState') != libs.shelbyGT.DisplayState.dotTv) {
         this._updateChild(model);
       }
@@ -192,13 +191,6 @@
               masterCollection : this._currentRollMasterCollection,
               videoSearchModel : shelby.models.videoSearch
             }
-          };
-          break;
-        case DisplayState.userPreferences :
-        case DisplayState.tools :
-          displayParams = {
-            viewProto : UserPreferencesView,
-            model : shelby.models.user
           };
           break;
         case DisplayState.help :

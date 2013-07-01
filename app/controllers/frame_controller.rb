@@ -26,7 +26,8 @@ class FrameController < ApplicationController
     @roll = Shelby::API.get_roll_with_frames(params[:roll_id])
     @frame = Shelby::API.get_frame(params[:frame_id], true)
     if @frame
-      @video = Shelby::API.get_video(@frame['video_id'])
+      @video = @frame['video']
+      @user = @frame['creator']
       if params[:frame_action]
         if user_signed_in?
           render '/home/app'
@@ -38,7 +39,7 @@ class FrameController < ApplicationController
           render '/home/landing'
         end
       else
-        redirect_to "/video/#{@video["provider_name"]}/#{@video["provider_id"]}"
+        render 'home/app'
       end
     else
       render '/home/app'

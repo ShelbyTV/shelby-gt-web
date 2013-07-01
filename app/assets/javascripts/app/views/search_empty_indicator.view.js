@@ -3,7 +3,7 @@ libs.shelbyGT.SearchEmptyIndicatorView = Support.CompositeView.extend({
   tagName : 'li',
 
   events : {
-    "click .js-explore-link"     : "_goToExplore"
+    "click .js-community-link"     : "_goToCommunity"
   },
 
   template : function(obj){
@@ -14,8 +14,8 @@ libs.shelbyGT.SearchEmptyIndicatorView = Support.CompositeView.extend({
     this.$el.html(this.template());
   },
 
-  _goToExplore : function() {
-    shelby.router.navigate('channels', {trigger:true});
+  _goToCommunity : function() {
+    shelby.router.navigate('community', {trigger:true});
   }
 
 });

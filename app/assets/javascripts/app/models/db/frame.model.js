@@ -23,6 +23,14 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     }
   ],
 
+  // another workaround 'inspired' by Mark's FrameGroup architecture:
+  // ----------------------------------------------------------------
+  // _primaryDashboardEntry - set with primary dashboard entry of the frame's
+  // frame group, if it has one; don't mix it with the actual model attributes so we don't
+  // accidentally consider it actual model data
+  // would be much harder to get to this info when we need it if we didn't do this
+  _primaryDashboardEntry : null,
+
   initialize : function() {
     this.set('upvoters', this.convertUpvoterIdsToUserCollection());
     this.set('recommendations', this.convertRecIdsToVideoCollection());

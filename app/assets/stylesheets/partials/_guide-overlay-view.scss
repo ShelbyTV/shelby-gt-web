@@ -15,68 +15,6 @@
 }
 
 //------------------------------------------------------------------------------
-//  guide overlay framework
-//------------------------------------------------------------------------------
-.guide-overlay-head {
-  border-bottom: 1px solid $inset;
-}
-
-.guide-overlay-head-lining {
-  height: 46px;
-  padding: 12px 7px;
-}
-
-.guide-overlay-body {
-  border-top: 1px solid $outset;
-}
-
-//------------------------------------------------------------------------------
-//  normative contents
-//------------------------------------------------------------------------------
-.guide-overlay-header {
-  display: inline;
-  font-size: 1.2em;
-  font-weight: normal;
-  line-height: 1.55;
-  padding-left: .25em;
-
-  .em {
-    font-weight: 100;
-  }
-}
-
-.guide-overlay-cancel {
-  @include button-sizing(cancel);
-  padding:.5em;
-  vertical-align: top;
-
-  .icon {
-    background-size: contain;
-    color: transparent;
-    display: block;
-    font: 0/0 a;
-    height: 7px;
-    width: 7px;
-  }
-}
-
-//------------------------------------------------------------------------------
-//  ISOLATED ROLL OVERRIDES
-//------------------------------------------------------------------------------
-.isolated-roll {
-  .guide-header-lining {
-    border: none;
-  }
-
-  .guide-header-title {
-    @include ellipsis;
-
-    font-size: 1.3em;
-    line-height: 2.3;
-  }
-}
-
-//------------------------------------------------------------------------------
 //  TODO: non-normative/uncategorized
 //------------------------------------------------------------------------------
 #guide-header-roll-header-image {
@@ -117,39 +55,4 @@
       width: 30px;
     }
   }
-}
-
-.guide-header-lining,
-.xguide-overlay-context {
-  background-color: adjust-lightness($base, -5%);
-  border-bottom: 1px solid $inset;
-  border-top: 1px solid $outset;
-  box-shadow: $shadow;
-  position: relative;
-}
-
-.guide-overlay-context-overview {
-  bottom: 0;
-  padding-bottom: 10px;
-  position: absolute;
-  width: 100%;
-}
-
-.guide-header-avatar {
-  background-color: inherit;
-  float: left;
-  margin-right: 10px;
-}
-
-.guide-header-title {
-  margin-left: 10px;
-}
-
-.guide-overlay-context-creator {
-  font-size: 12px;
-  margin-bottom: 3px;
-}
-
-.guide-overlay-context-title {
-  font-size: 14px;
 }

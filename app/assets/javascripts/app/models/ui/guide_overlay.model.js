@@ -1,11 +1,12 @@
 libs.shelbyGT.GuideOverlayModel = Backbone.Model.extend({
 
   defaults : {
+    activeGuideOverlayDashboardEntry : null,
     activeGuideOverlayFrame : null,
     activeGuideOverlayType  : libs.shelbyGT.GuideOverlayType.none
   },
 
-  switchOrHideOverlay : function(type, frameModel) {
+  switchOrHideOverlay : function(type, frameModel, dashboardEntryModel) {
     if (type == libs.shelbyGT.GuideOverlayType.none) {
       //if the type is none we don't care about the frameModel, just hide all overlays
       this.clearAllGuideOverlays();
@@ -16,7 +17,18 @@ libs.shelbyGT.GuideOverlayModel = Backbone.Model.extend({
     var alreadyShowingThisOverlay =
         this.get('activeGuideOverlayType') == type &&
         this.has('activeGuideOverlayFrame') &&
-        this.get('activeGuideOverlayFrame').id == frameModel.id;
+        this.get('activeGuideOverlayFrame').id == frameModel.id &&
+        (
+          (
+            this.has('activeGuideOverlayDashboardEntry') &&
+            dashboardEntryModel &&
+            this.get('activeGuideOverlayDashboardEntry').id == dashboardEntryModel.id
+          ) ||
+          (
+            !dashboardEntryModel &&
+            !this.get('activeGuideOverlayDashboardEntry')
+          )
+        );
 
     if (alreadyShowingThisOverlay) {
       // hide the current overlay(s)
@@ -24,6 +36,7 @@ libs.shelbyGT.GuideOverlayModel = Backbone.Model.extend({
     } else {
       // show the requested overlay
       this.set({
+        'activeGuideOverlayDashboardEntry' : dashboardEntryModel,
         'activeGuideOverlayFrame' : frameModel,
         'activeGuideOverlayType' : type
       });
@@ -32,6 +45,7 @@ libs.shelbyGT.GuideOverlayModel = Backbone.Model.extend({
 
   clearAllGuideOverlays : function() {
     this.set({
+      activeGuideOverlayDashboardEntry : null,
       activeGuideOverlayFrame : null,
       activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.none
     });

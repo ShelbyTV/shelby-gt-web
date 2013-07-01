@@ -207,28 +207,13 @@ $explore-frame-title                : adjust-lightness($explore-header-color,10%
   }
 
   &:hover {
-    .menu_module {
+    .frame-menu {
       display: block;
     }
   }
 
   .xframe-thumbnail {
     border: 1px solid #b9b9b9;
-  }
-}
-
-.explore-frame-thumbnail {
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  border: 1px solid #b9b9b9;
-  display: block;
-  height: 160px;
-  position: relative;
-  width: 100%;
-
-  & > img {
-
   }
 }
 

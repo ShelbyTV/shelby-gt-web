@@ -476,7 +476,6 @@ window.shelbyBookmarklet = {
                     utilObject.shelbyDocElements['ext-elements'].off('click');
                   utilObject.shelbyContextButton.clickRoll();
                   utilObject.shelbyContextButton.clickQueue();
-                  utilObject.shelbyContextButton.clickComment();
                 }
             },
             shelbyContextButton : {
@@ -527,7 +526,7 @@ window.shelbyBookmarklet = {
                           var backboneFrame = utilObject.shelbyCreateModel({'creator' : creator});
                           backboneFrame.set('video', utilObject.shelbyCreateModel(videoInfo));
                           backboneFrame.set('conversation', conversation);
-                          shelbyJ("#roll-guide-window").html(SHELBYJST['frame-rolling']({frame: backboneFrame, user: utilObject.shelbyCreateModel(user)}));
+                          shelbyJ("#roll-guide-window").html(SHELBYJST['frame-rolling']({frame: backboneFrame, frameVideo: backboneFrame.get('video'), user: utilObject.shelbyCreateModel(user), userLoggedIn: true, currentFrameShortlink: false}));
                           shelbyJ(".select-roll-type").css("display", "none");
                           utilObject.htmlTemplate.rollingFormHtml(user.personalRoll, backboneFrame);
                           utilObject.handleRollSubmit(rollButton.getAttribute("data-videourl"), frameClass, videoId);
@@ -540,45 +539,7 @@ window.shelbyBookmarklet = {
                               utilObject.styleGuideHide("roll-guide");
                           });
                     });
-                },
-                // if it is commentable there must be a frame associated with it
-                clickComment : function() {
-                    utilObject.shelbyDocElements['ext-elements'].on('click', ".js-comment", null, function (event) {
-                        var commentButton = event.currentTarget;
-                        var videoId = commentButton.getAttribute("data-videoId");
-                        var frameInfo = utilObject.videoInformation[videoId].frame;
-                        var conversationId = frameInfo.conversation_id;
-                        var backboneFrame = utilObject.shelbyCreateModel({});
-                        backboneFrame.set("conversation", utilObject.shelbyCreateModel(frameInfo.conversation));
-                        backboneFrame.set("creator", utilObject.shelbyCreateModel(frameInfo.creator));
-                        backboneFrame.set("video", utilObject.shelbyCreateModel(frameInfo.video));
-                        var commentHtml = SHELBYJST["frame-conversation"]({frame: backboneFrame, user: utilObject.shelbyCreateModel(utilObject.shelbyBkmkltUser)});
-                        shelbyJ("#comment-guide-window").html(commentHtml);
-                        shelbyJ(".js-cancel").on("click", function(event) {
-                            utilObject.styleGuideHide("comment-guide");
-                        });
-                        shelbyJ(".back").on("click", function(event) {
-                            utilObject.styleGuideHide("comment-guide");
-                        });
-                        utilObject.shelbyDocElements['commentSubmit'] = shelbyJ(".new-comment-submit");
-                        utilObject.shelbyDocElements['commentText'] = shelbyJ(".js-conversation-body .new-comment-input");
-                        utilObject.htmlTemplate.setUpConversationWithId(conversationId, videoId);
-                        utilObject.styleGuideShow("comment-guide");
-                        utilObject.shelbyDocElements['commentSubmit'].off('click');
-                        utilObject.shelbyDocElements['commentSubmit'].on('click', function (event) {
-                            event.preventDefault();
-                            var comment = utilObject.shelbyDocElements['commentText'].val();
-                            utilObject.shelbyDocElements['commentText'].val('');
-                            if (!comment || comment.length == 0) {
-                                return;
-                            }
-                            var dataReq = {
-                                'text': comment
-                            };
-                            utilObject.shelbyAjaxCall.shelbyApiComment(conversationId, dataReq, videoId);
-                        });
-                    });
-                },
+                }
             },
             shelbyAjaxCall : {
                 shelbyApiConversation: function(conversationId, conversationCB) {
@@ -723,13 +684,13 @@ window.shelbyBookmarklet = {
             },
 
             handleRollSubmit : function (knownUrl, frameInfoClass, videoId) {
-              var submitButton = shelbyJ("#js-roll-it");
+              var submitButton = shelbyJ(".js-share-it");
               submitButton.off('click');
               submitButton.on('click', null, null, function (event) {
-                var message = shelbyJ("#js-rolling-message").val();
+                var message = shelbyJ("#js-sharing-message").val();
                 if (!message || message.length === 0) {
                   utilObject.htmlTemplate.notifyMessage("Please enter a comment");
-                  shelbyJ('#js-rolling-message').addClass('form_textarea--error');
+                  shelbyJ('#js-sharing-message').addClass('form_textarea--error');
                   return;
                 }
 
@@ -912,6 +873,15 @@ window.shelbyBookmarklet = {
                 rollingFormHtml: function (personalRoll, backboneFrame) {
                         var backboneRoll = utilObject.shelbyCreateModel(personalRoll);
                         var backboneUser = utilObject.shelbyCreateModel(utilObject.shelbyBkmkltUser);
+                        var enabledDestinations = [];
+
+                        _(backboneUser.get('authentications')).each(function(service){
+                            if(service.provider == 'twitter' || service.provider == 'facebook') {
+                                console.log('service',service);
+                                enabledDestinations.push(service);
+                            }
+                        });
+
                         var templateObj = {
                           roll: backboneRoll,
                           frame: backboneFrame,
@@ -921,9 +891,25 @@ window.shelbyBookmarklet = {
                                 titleWithoutPath: "Personal Roll",
                                 urlForRoll: backboneRoll.subdomain + ".shelby.tv"
                           },
-                          showHashtagButtons : false
+                          userLoggedIn: true,
+                          enabledDestinations : enabledDestinations,
+                          twitter_enabled :  _.include(enabledDestinations,'twitter'),
+                          facebook_enabled :  _.include(enabledDestinations,'facebook')
+
                         }
                         shelbyJ(".js-guide-overlay-main").append(SHELBYJST['rolling-form'](templateObj));
+
+                        shelbyJ('#share-on-twitter, #share-on-facebook').click(
+                            function(e){
+                                $this = shelbyJ(e.currentTarget);
+
+                                if($this.is(':checked')){
+                                    $this.parent().addClass('button_'+$this.data('network')+'-blue').removeClass('button_gray');
+                                } else {
+                                    $this.parent().removeClass('button_'+$this.data('network')+'-blue').addClass('button_gray');
+                                }
+                            }
+                        );
                 },
                 loginGuideHtml: function () {
                   shelbyJ('#login-guide-window').html(SHELBYJST['bookmarklet-login']({

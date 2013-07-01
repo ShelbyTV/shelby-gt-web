@@ -2,50 +2,53 @@
 //  ABSTRACTS
 //  currently used on any overlay
 
-.guide-overlay__button--cancel {
-  font-size: 0.9em;
-  left: 0;
-  margin: 1.2em;
-  padding: 0.4em 0.55em 0.4em 0.5em;
-  position: absolute;
-  top: 0;
+//elements
+.guide-overlay__h1 {
+  @include ellipsis;
+
+  padding: 0.8em 0.5em;
 }
 
-.guide-overlay__title {
-    line-height: 2;
-}
-
-//------------------------------------------------------------------------------
-//  HEAD
-
-.guide-overlay__head {
-  height: $overlay_header_height;
-  border-bottom: 1px solid $inset;
-}
-
-.guide-overlay__title--inline {
-  display: inline;
-  font-size: 1.2em;
-  font-weight: normal;
-  line-height: 3.75;
-  padding-left: 0.25em;
-
-  & + .guide-overlay__button--cancel {
-    float: left;
-    left: auto;
-    position: relative;
-    top: auto;
+.guide-overlay__list {
+  //non-normative
+  .button_primer {
+    text-align: left;
+  }
+  .icon-chevron {
+    float: right;
+    margin-top: 3px;
   }
 }
 
-//------------------------------------------------------------------------------
-//  BODY
+//architectural
+.guide-overlay__head {
+  border-bottom: 1px solid $inset;
+  height: $overlay_header_height;
+
+  .button_icon-only {
+    float: left;
+    margin: 1em;
+    position: relative;
+  }
+}
 
 .guide-overlay__body {
-  border-top: 1px solid $outset;
   bottom: 0;
   position: absolute;
   overflow-y: auto;
   top: $overlay_header_height;
   width: 100%;
+}
+
+.guide-overlay__foot {
+  bottom: 0;
+  border-top: 1px solid $inset;
+  font-size: 1.2em;
+  left: 0;
+  position: absolute;
+  width: 100%;
+
+  .guide-overlay__lining {
+    margin: 8px;
+  }
 }

@@ -149,14 +149,16 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
 
   _facebookShare : function(){
     if (typeof FB != "undefined"){
+      var video = this.model.get('video');
       FB.ui(
         {
-          method: 'feed',
-          display: 'popup',
-          name: this.model.get('creator').get('nickname')+".shelby.tv",
-          link: this.shortlink,
-          picture: this.model.get('video').get('thumbnail_url'),
-          description: "I’m watching \""+this.model.get('video').get('title')+"\" on @Shelby"
+          caption     : 'Shelby.tv',
+          description : video.get('description'),
+          display     : 'popup',
+          link        : this._shortlink,
+          method      : 'feed',
+          name        : video.get('title'),
+          picture     : video.get('thumbnail_url')
         },
         function(response) {
           if (response && response.post_id) {
@@ -169,7 +171,7 @@ libs.shelbyGT.EmbeddedFrameView = Support.CompositeView.extend({
   },
 
   _twitterShare : function(){
-    var url = "https://twitter.com/intent/tweet?text=I%E2%80%99m+watching+\""+encodeURIComponent(this.model.get('video').get('title'))+"\"+via+%40Shelby&url="+this._shortlink;
+    var url = 'https://twitter.com/intent/tweet?related=shelby&via=shelby&url=' + this._shortlink + '&text=' + encodeURIComponent(this.model.get('video').get('title'));
     window.open(url, "twitterShare", "");
     return false;
   }

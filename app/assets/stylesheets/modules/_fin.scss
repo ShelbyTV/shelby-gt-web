@@ -56,7 +56,9 @@
   &:before {
     @include rotate(45deg);
 
+    border: 1px solid transparent;
     background-color: inherit;
+    font-size: 14px;
     content: "\0020";
     display: block;
     height: 1em;
@@ -70,23 +72,34 @@
   &:before {
     left:50%;
     margin-left: -0.5em;
-    top:-0.5em;
+    top:-8px;
   }
 }
     .fin--top_left {
       &:before {
         left:2em;
         margin-left: -0.5em;
-        top:-0.5em;
+        top:-8px;
       }
     }
     .fin--top_right {
       &:before {
         margin-left: -0.5em;
         right:2em;
-        top:-0.5em;
+        top:-8px;
       }
     }
+
+.fin--top,
+.fin--top_left,
+.fin--top_right {
+  &.fin--edging {
+    &:before {
+      border-top-color: inherit;
+      border-left-color: inherit;
+    }
+  }
+}
 
 .fin--bottom {
   &:before {

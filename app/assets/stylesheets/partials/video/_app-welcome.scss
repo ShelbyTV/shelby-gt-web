@@ -1,0 +1,34 @@
+/*
+*   Local Variables
+*/
+
+
+//------------------------------------------------------------------------------
+//  App Welcome Pane
+//------------------------------------------------------------------------------
+.welcome-message__wrapper--app {
+  left: 370px;
+  top: 40px;
+
+  // welcome message
+  .welcome-message {
+    min-height: 100px;
+    width: 392px;
+    left: 18px;
+    top: 100px;
+    margin: 0;
+    padding: 20px 30px 15px;
+    //border-top: 8px $ui-green solid;
+
+    .welcome-message__h2--plain {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.3;
+      margin-bottom: 1.3em;
+    }
+
+    .welcome-message__button-wrapper {
+      text-align: center;
+    }
+  }
+}

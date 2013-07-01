@@ -10,7 +10,7 @@
 //------------------------------------------------------------------------------
 .roll_card {
   border: 1px solid $inset;
-  margin: 8px;
+  margin: 8px 8px 0;
   padding: 0;
 
   & > .media_body {
@@ -28,7 +28,7 @@
 .roll_card__h1 {
   @include ellipsis;
 
-  font-size: 1.7em;
+  font-size: 1.2em;
   line-height: 2;
 }
 
@@ -39,12 +39,15 @@
 }
 
 .roll_card__avatar {
-  height: 6.7em;
-  width: 6.7em;
+  border-right: 1px solid $inset;
+  height: 5.5em;
+  width: 5.5em;
 }
 
 .roll_card__button {
-  width: 7em;
+  border-top: none;
+  border-radius: 0;
+  display: block;
 }
 
 //------------------------------------------------------------------------------
@@ -55,4 +58,8 @@
 }
 
 .roll_card__body {
+}
+
+.roll_card__foot {
+  margin: 0 8px 8px;
 }

@@ -32,81 +32,73 @@
   <% end %>
 
   $(document).ready(function(){
+
     try {
       _gaq.push(['_trackEvent', 'Landing Page', 'Visit']);
     } catch(e) {}
 
-    //fanciness on focussing searching in header
-    $('.js-nav-search-form-text').focus(function(){
-      $(this).parent().toggleClass('focused',true);
-    }).blur(function(){
-      $(this).parent().toggleClass('focused',false);
-    });
+    //button cache
+    var $buttonMain   = $('.js-cta'),
+        $buttonHeader = $('.js-cta-header'),
+        $header       = $('.js-header'),
+        $stream       = $('.js-stream');
 
-    // Email submit (used by many shelves) -->
-    $('#js-email-form').on('submit', function(){
-      $.get('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>/POST/gt_interest', $(this).serialize(), function(data) {
-        $('#js-email-form-submit').addClass('hidden');
-        $('#js-email-form-feedback').removeClass('hidden');
-      }, 'jsonp');
-      return false;
-    });
+    var listening     = true;
 
-    $('.js-search-form, #js-nav-search-form').on('submit', function(e){
-      e.preventDefault();
-      var searchQuery = $(e.currentTarget).find("#query").val() || $(e.currentTarget).find("#js-nav-search-form-text").val();
-      if (searchQuery) {
-        if("<%= @is_mobile %>" !== "") {
-          var params = {
-            "q" : searchQuery,
-            "max-results" : "50",
-            "orderby" : "relevance"
-          };
+    $(window).on('scroll',function(e){
+      if($buttonMain.offset().top + $buttonMain.height() - $(this).scrollTop() - $header.height() > 0) {
+        $buttonHeader.toggleClass('button_transparent',true);
+      } else {
+        $buttonHeader.toggleClass('button_transparent',false);
+      }
 
-            // Create a callback
-            var cb = function(res){
-            // Create array of returned YouTube video URLs
-            var urls = new Array();
-            if (typeof res !== 'undefined'){
-              res.forEach(function(r){
-                if (r.link != undefined) {
-                  r.link.forEach(function(l){
-                    if(l.rel != undefined && l.rel == "alternate") {
-                      if(l.href != undefined) {
-                        urls.push(l.href);
-                      }
-                    }
-                  });
-                }
-              });
-            }
-
-            if (urls.length !== 0) {
-              // Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
-              $.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': searchQuery, 'urls': JSON.stringify(urls)}, function(data){
-                if (data.status == 200){
-                  var _rollUrl = '<%= Settings::Application.mobile_url %>' + "/roll/" + data.result.id;
-                  window.location.href = _rollUrl;
-                }
-                else { alert("Something went wrong, please try again."); }
-              });
-            }
-            else { //if no URLs:
-              $('.js-search__input').val('').attr('placeholder','sorry, nothing turned up');
-            }
-          };
-
-          // Call ytQuery.query, passing params and your callback
-          ytQuery.query(params, cb);
-
-        } else {
-          window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
-        }
-
-        try {
-        _gaq.push(['_trackEvent', shelbyTrackingCategory, 'search', searchQuery.toLowerCase()]);
-        } catch(e) {}
+      if($stream.offset().top/2 < $(this).scrollTop() && listening) {
+        $stream.addClass('css-vertical-pan');
+        listening = false;
       }
     });
   });
+</script>
+
+
+<script>
+  // Twitter widget -->
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+  // Facebook widget -->
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '<%= Settings::Facebook.facebook_app_id %>', // App ID
+      channelURL : '//shelby.tv/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      oauth      : true, // enable OAuth 2.0
+      xfbml      : true  // parse XFBML
+    });
+
+    FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+            $('.shelf--social').removeClass('shelf--facebook-logged-out');
+        } else if (response.status === 'not_authorized') {
+            $('.shelf--social').removeClass('shelf--facebook-logged-out');
+        } else {
+            // the user isn't logged in to Facebook. so keep the facepile hidden
+        }
+    });
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));
+
+  // G +1 widget -->
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
 </script>

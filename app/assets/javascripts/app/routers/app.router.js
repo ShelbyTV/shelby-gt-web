@@ -35,9 +35,9 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     }
   },
 
-  initDynamic : function(url){
+  initDynamic : function(url, params){
     shelby.router = new libs.shelbyGT.DynamicRouter();
-    shelby.models.routingState = new libs.shelbyGT.RoutingStateModel();
+    shelby.models.routingState = new libs.shelbyGT.RoutingStateModel({params: params});
 
     this._bootstrapRequiredAppModels();
 
@@ -51,6 +51,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.invite = new libs.shelbyGT.InviteModel();
     shelby.models.videoSearch = new libs.shelbyGT.VideoSearchModel();
     shelby.models.userProfile = new libs.shelbyGT.UserProfileModel();
+    shelby.models.userPreferencesView = new libs.shelbyGT.UserPreferencesViewModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
     shelby.models.userDesires = new libs.shelbyGT.UserDesiresStateModel();
@@ -59,7 +60,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
     shelby.models.onboardingRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});
     shelby.models.promoRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'in_line_promos'});
-    shelby.models.userChannels = new libs.shelbyGT.AssociatedRollsCollectionModel();
+    shelby.models.userOwnedRolls = new libs.shelbyGT.AssociatedRollsCollectionModel();
 
     shelby.collections.videoSearchResultFrames = new libs.shelbyGT.FramesCollection();
 
@@ -96,6 +97,9 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           shelby.models.promoRollCategories.fetch();
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: userModel.get('nickname')});
+
+          userModel.trackSessionCount();
+
           libs.utils.flash.detectFlash();
           libs.utils.intercom.boot(userModel);
           if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.dotTv) {

@@ -9,10 +9,11 @@
 
     events : {
       "click .js-stream:not(.active-item)"   : "_goToStream",
-      "click .js-channels"                   : "_goToChannels",
+      "click .js-community"                  : "_goToCommunity",
       "click .js-me"                         : "_goToMe",
       "click .js-mail"                       : "_goToMail",
-      "click .js-admin"                      : "_goToAdmin"
+      "click .js-admin"                      : "_goToAdmin",
+      "click .js-navigate"                   : "_goToHref"
     },
 
     /*el : '#js-guide-presentation-selector',*/
@@ -30,21 +31,16 @@
     },
 
     render : function(){
-      this.$el.html(this.template({user:shelby.models.user}));
+      this.$el.html(this.template({
+        user: shelby.models.user,
+        userNickname: shelby.models.user.get('nickname')
+      }));
       // not rendering this right now. coming back to it when we can focus on optimizing. -his
       // this.renderChild(new libs.shelbyGT.InviteFormView({
       //   el : this.$('.js-guide-invite'),
       //   model : shelby.models.invite,
       //   user : shelby.models.user
       // }));
-      this.renderChild(new libs.shelbyGT.GuidePresentationSearchView({
-        el : this.$('.js-guide-search')
-      }));
-      this.renderChild(new libs.shelbyGT.ChannelInfoOverlayView({
-        el: this.$('.js-channels-menu'),
-        model : shelby.models.guide,
-        playlistManagerModel : shelby.models.playlistManager
-      }));
       if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
       this._setSelected();
     },
@@ -56,9 +52,9 @@
       }
     },
 
-    _goToChannels : function(e) {
+    _goToCommunity : function(e) {
       shelby.router.navigate(
-        "channels",
+        "community",
         {trigger:true}
       );
     },
@@ -80,6 +76,14 @@
       document.location = "http://api.shelby.tv/admin/new_users";
     },
 
+    _goToHref : function(e){
+      e.preventDefault();
+
+      var href = e.currentTarget.pathname;
+
+      shelby.router.navigate(href,{trigger:true});
+    },
+
     _onGuideModelChanged : function(model){
 
       this._setSelected();
@@ -93,14 +97,6 @@
         } else {
           this.$('.js-content-selector').show();
         }
-
-        // show the channel  info header nav
-        if (model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
-          $('.channel-info-section').slideDown('fast');
-        }
-        else {
-          $('.channel-info-section').slideUp('fast');
-        }
       }
     },
 
@@ -113,11 +109,9 @@
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
         $setSelectedClassOn = this.$('.js-stream');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
-        $setSelectedClassOn = this.$('.js-channels');
+        $setSelectedClassOn = this.$('.js-community');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-me');
-      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.search) {
-        $setSelectedClassOn = this.$('.js-search');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll &&
                  this.model.has('currentRollModel') && this.model.get('currentRollModel').id == shelby.models.user.get('personal_roll_id')) {
         $setSelectedClassOn = this.$('.js-me');

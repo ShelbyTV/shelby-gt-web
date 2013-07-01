@@ -1,8 +1,6 @@
 <button class="dropdown_button nav-button js-invite">
-  <i class="dropdown_icon">
-    Invite
-    <span class="js-invites-remaining invite-count"><%= user.get('beta_invites_available') %></span>
-  </i>
+  Invite
+  <span class="js-invites-remaining invite-count"><%= user.get('beta_invites_available') %></span>
 </button>
 <section class="dropdown_section js-invite-section">
   <div class="dropdown_lining js-invite-section-lining clearfix">
@@ -16,7 +14,7 @@
         </p>
       </div>
 
-      <hr class="hr-double" />
+      <hr class="hr--double" />
 
       <fieldset class="form_fieldset">
         <label class="form_label" for="invite-email">

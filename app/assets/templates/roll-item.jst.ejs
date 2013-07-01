@@ -1,15 +1,14 @@
 <% /* parent:"roll-item" */ %>
-<% console.log(roll) %>
 <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) %>
 
 <div class="user user--item clearfix">
-  <button class="media_module button_invisible button_command user__lining clearfix js-roll-item-button" data-roll_id="<%= roll.id %>">
+  <button class="media_module button_invisible button_command button_command--sub user__lining clearfix js-roll-item-button" data-roll_id="<%= roll.id %>">
 
     <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(<%= avatar %>);">
       <img class="visuallyhidden" src="<%= avatar %>"/>
     </span><!-- eo media_image -->
 
-    <i class="media_image media_image--rev icon icon-chevron"></i>
+    <span class="media_image media_image--rev icon icon-chevron"></span>
 
     <div class="media_body">
       <h3 class="user__h1">

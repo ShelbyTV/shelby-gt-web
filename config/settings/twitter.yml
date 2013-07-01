@@ -1,9 +1,10 @@
 defaults: &defaults
   shelby_twitter_user_id: "250202787"
-  
+  shelby_twitter_username: "shelby"
+
 development:
   <<: *defaults
-  
+
 test:
   <<: *defaults
 

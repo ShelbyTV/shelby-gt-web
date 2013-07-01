@@ -42,9 +42,8 @@
 @import "partials/app-header";
 @import "partials/guide-presentation-selector";
 @import "partials/guide-overlay-view";
-@import "partials/nav-search";
 
-@import "partials/landing-page";
+// @import "partials/landing-page";
 
 ////////////////////////////////////////////////////////////////////////////
 //  layout related
@@ -53,7 +52,6 @@
 @import "partials/user-profile";
 
 @import "partials/frame";
-@import "partials/external-tools";
 
 @import "partials/roll-header";
 @import "partials/search-header";
@@ -64,9 +62,8 @@
 @import "partials/video/video-player";
 @import "partials/video/persistent-video-info";
 @import "partials/video/dynamic-video-info";
-@import "partials/video/channel-info-overlay";
-@import "partials/video/channel-welcome";
 @import "partials/video/search-welcome";
+@import "partials/video/app-welcome";
 @import "partials/video/email-collection";
 @import "partials/video/video-controls";
 @import "partials/video/video-mini-progress";
@@ -79,9 +76,6 @@
 //------------------------------------------------------------------------------
 @import "partials/frame-rolling";
 @import "partials/rolling-form";
-@import "partials/frame-conversation";
-@import "partials/rolls";
-@import "partials/share";
 
 //------------------------------------------------------------------------------
 //  peripherals

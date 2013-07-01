@@ -1,3 +1,5 @@
+@import "modules/content";
+@import "modules/side-bar";
 @import "modules/guide";
 @import "modules/list";
 @import "modules/animate";
@@ -5,7 +7,6 @@
 @import "modules/nav";
 @import "modules/tabs";
 @import "modules/image";
-@import "modules/menu";
 @import "modules/group-list";
 @import "modules/overlay";
 @import "modules/form";
@@ -13,5 +14,6 @@
 @import "modules/search";
 @import "modules/dropdown";
 @import "modules/text";
+@import "modules/line-clamp";
 @import "modules/widths";
 @import "modules/fin";

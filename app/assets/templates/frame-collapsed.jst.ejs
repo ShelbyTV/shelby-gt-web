@@ -17,6 +17,8 @@
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
 
+<% var action = frameGroup.get('primaryDashboardEntry') && frameGroup.get('primaryDashboardEntry').get('action') %>
+
 <% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- collapsed videocard -->
 
@@ -49,7 +51,9 @@
               <%= creatorNickname %><% if (!_(dupeFrames).isEmpty()) { %><%= ", " + _('other').pluralize(dupeFrames.length, true) %>
               <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != 1) { %>
                 <%= 'via ' + frameOriginator.get('nickname') %>
-              <% } %>
+            <% } else if (action == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) { %>
+              <span class="xuser-data--green">Recommended for you</span>
+            <% } %>
             </div>
           <% } else { %>
             <p class="xuser-data xuser-message--faux">
@@ -63,10 +67,6 @@
   </div><!-- eo .frame-body-wrapper -->
 
   <%= SHELBYJST['frame-aside'](obj) %>
-
-	<% if(frame.get('isFreshPlayNew')){ %>
-		<div class="sash">New</div>
-	<% } %>
 
 </article>
 <!-- end collapsed videocard -->

@@ -8,13 +8,12 @@
 <% var message        = conversation ? conversation.get('messages').at(0) : null %>
 
 <div class="guide-overlay__head guide-overlay__head--frame-sharing">
-        <h1 class="guide-overlay__title">
+  <h1 class="guide-overlay__h1">
     Email to Friends
   </h1>
 
-  <button class="button_primer button_gray guide-overlay__button--cancel js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
-    <i class="icon-close"></i>
-
+  <button class="button_primer button_gray button_icon-only js-cancel js-track-event" data-ga_category="Sharing" data-ga_action="Click cancel" data-ga_label="<%= userNickname %>">
+    <span class="icon-close"></span>
     <span class="visuallyhidden">Cancel</span>
   </button>
 </div><!-- eo guide-overlay__head -->
@@ -35,7 +34,6 @@
 
     </div><!-- eo frame-body-wrapper -->
     <div class="frame-sharing">
-
     </div>
   </form>
 </div><!-- eo over_body guide-overlay-body conversation-body -->

@@ -20,10 +20,11 @@
   libs.shelbyGT.RollingFormView = Support.CompositeView.extend({
 
     events : {
-      "click #js-roll-it"         : '_doRoll',
-      "click .js-hashtag-button"  : '_insertHashtag',
-      "focus #new-roll-name"      : '_clearErrors',
-      "focus #js-rolling-message" : '_clearErrors'
+      "click .js-share-it"                  : '_doShare',
+      "focus #js-sharing-message"          : '_clearErrors',
+      "click .js-facebook-post"            : '_shareToFacebook',
+      "change .js-toggle-twitter-sharing"  : '_toggleCheckboxButton',
+      "change .js-toggle-facebook-sharing" : '_toggleCheckboxButton'
     },
 
     className : 'rolling-form',
@@ -36,25 +37,40 @@
       this._frameRollingState = new ShareActionStateModel();
       this._roll = this.options.roll;
       this._frame = this.options.frame;
+      this._video = this.options.frame.get('video');
     },
 
     render : function(){
       var self = this;
 
+      var enabledDestinations = shelby.config.share.services;
+      if (shelby.models.user.has('app_progress')) {
+        enabledDestinations = [];
+        var userAppProgress = shelby.models.user.get('app_progress');
+        _(shelby.config.share.services).each(function(service){
+          if (!_(userAppProgress.attributes).has('share_' + service + '_enabled') || userAppProgress.get('share_' + service + '_enabled')) {
+            enabledDestinations.push(service);
+          }
+        });
+      }
+
       this.$el.html(this.template({
+        enabledDestinations : enabledDestinations,
         frame : this._frame,
+        video : this._video,
         roll : this._roll,
         rollOptions : {
           pathForDisplay : RollViewHelpers.pathForDisplay(this._roll),
           titleWithoutPath : RollViewHelpers.titleWithoutPath(this._roll),
           urlForRoll : RollViewHelpers.urlForRoll(this._roll)
         },
-        showHashtagButtons : true,
-        user : shelby.models.user
+        user : shelby.models.user,
+        userLoggedIn : !shelby.models.user.isAnonymous()
       }));
+      this._checkAndRenderShortlink();
 
       this._shelbyAutocompleteView = new ShelbyAutocompleteView({
-        el : this.$('#js-rolling-message')[0],
+        el : this.$('#js-sharing-message')[0],
         includeSources : ['shelby', 'twitter', 'facebook'],
         multiTerm : true,
         multiTermMethod : 'paragraph',
@@ -69,7 +85,7 @@
       this._roll = roll;
     },
 
-    _doRoll : function(e){
+    _doShare : function(e){
       e.preventDefault();
 
       if(!this._validate()){ return; }
@@ -83,9 +99,9 @@
     _validate : function(){
       validates = true;
 
-      if( this.$("#js-rolling-message").val().length < 1 ){
+      if( this.$("#js-sharing-message").val().length < 1 ){
         shelby.alert({message: "<p>Please enter a comment</p>"});
-        this.$('#js-rolling-message').addClass('error');
+        this.$('#js-sharing-message').addClass('error');
         validates = false;
       }
 
@@ -94,39 +110,20 @@
 
     _clearErrors : function(){
       // this.$('#new-roll-name').removeClass('error');
-      this.$('#js-rolling-message').removeClass('error');
-    },
-
-    // create new roll, then proceed like normal
-    _createRollRerollFrameAndShare : function(){
-      var self = this;
-
-      var roll = new RollModel({
-        'title' : this.$("#new-roll-name").val(),
-        'public': true,
-        'collaborative': false});
-
-      roll.save(null, {
-        success : function(newRoll){
-          // add new roll to rolls collection, correctly sorted
-          BackboneCollectionUtils.insertAtSortedIndex(
-            newRoll,
-            shelby.models.rollFollowings.get('rolls'),
-            {searchOffset:  RollFollowingsConfig.numSpecialRolls,
-             sortAttribute: RollFollowingsConfig.sortAttribute,
-             sortDirection: RollFollowingsConfig.sortDirection});
-
-          //proceed with re-rolling and sharing
-          self._rerollFrameAndShare(newRoll);
-        }});
+      this.$('#js-sharing-message').removeClass('error');
     },
 
     _rerollFrameAndShare : function(roll){
       var self = this;
-      var message = this.$("#js-rolling-message").val();
+      var message = this.$("#js-sharing-message").val();
       var shareDests = [];
-      if(this.$("#share-on-twitter").is(':checked')){ shareDests.push('twitter'); }
-      if(this.$("#share-on-facebook").is(':checked')){ shareDests.push('facebook'); }
+      _(shelby.config.share.services).each(function(service){
+        var isServiceChecked = this.$(".js-toggle-" + service + "-sharing").is(':checked');
+        if(isServiceChecked){ shareDests.push(service); }
+        shelby.models.user.get('app_progress').set('share_' + service + '_enabled', isServiceChecked);
+      });
+
+      shelby.models.user.get('app_progress').saveMe();
 
       // if we are in a search result, add to roll via url
       if (shelby.models.guide.get('displayState') === "search") {
@@ -150,23 +147,54 @@
       }
     },
 
+    _toggleCheckboxButton : function(e) {
+      var $this = $(e.currentTarget),
+          network = $this.data('network');
+
+      $this.parent()
+              .toggleClass('button_gray',!$this.is(':checked'))
+              .toggleClass('button_'+network+'-blue',$this.is(':checked'));
+    },
+
     _rollingSuccess : function(roll, newFrame){
       this.parent.done();
-      //N.B. This link is picked up by NotificationOverlayView for routing
-      shelby.alert({
-        message: '<p>Video successfully rolled!</p>',
-        button_secondary: {
-          title: 'Go to Roll'
-          }
-        },
-        function(returnVal){
-          var rollId = newFrame.get('roll_id');
 
-          if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonSecondary) {
-            shelby.router.navigate('roll/' + rollId, {trigger:true,replace:true});
-          }
+      var msg = {
+        message          : '<p>Video successfully shared!</p>',
+        button_primer    : { title: 'Done' },
+        button_secondary : { title: 'Go to my Profile' }
+      };
+
+      shelby.alert(msg, function(returnVal){
+        var rollId = newFrame.get('roll_id');
+
+        if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonSecondary) {
+          shelby.router.navigate('roll/' + rollId, {trigger:true,replace:true});
         }
-      );
+      });
+    },
+
+    _buildTweetUrl : function(shortlink) {
+      if (!shortlink) {
+        var msg = {
+          message          : '<p>Oops! There was an error generating the shortlink. Please refresh your browser and try again.</p>',
+          button_primary   : { title: 'Refresh' },
+          button_secondary : { title: 'Dismiss' }
+        };
+
+        shelby.alert(msg, function(returnVal){
+          if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary){
+            window.location.reload(true);
+          }
+        });
+      }
+
+      var tweetText = encodeURIComponent(this._video.get('title')),
+          tweetUrl  = shortlink;
+
+      var url = 'https://twitter.com/intent/tweet?related=shelby&via=shelby&url=' + tweetUrl + '&text=' + tweetText + '';
+
+      return url;
     },
 
     _addViaUrl : function(message, roll, shareDests) {
@@ -195,21 +223,52 @@
       });
     },
 
-    _insertHashtag : function(e) {
-      e.preventDefault();
-      var $button = $(e.currentTarget);
-      var currentRollingMessage = this.$('#js-rolling-message').val();
-      var doPrependSpace = currentRollingMessage.length && !_(currentRollingMessage).endsWith(' ');
-      //insert the hashtag at the end of the currently entered rolling message
-      this.$('#js-rolling-message').insertText((doPrependSpace ? ' ' : '') + $button.val(), currentRollingMessage.length, true);
-      $button.addClass('button_green');
 
-      shelby.trackEx({
-        providers : ['ga'],
-        gaCategory : 'Rolling',
-        gaAction : 'click hashtag',
-        gaLabel : $button.val()
-      });
+    _shareToFacebook : function(e){
+      e.preventDefault();
+
+      if($(e.currentTarget).hasClass('disabled')){
+        return;
+      }
+
+      var
+        shortlink        = this.options.currentFrameShortlink,
+        text             = 'Shelby.tv',
+        videoDescription = this._video.get('description'),
+        videoTitle       = this._video.get('title'),
+        videoThumbnail   = this._video.get('thumbnail_url');
+
+
+      if (typeof FB != "undefined"){
+        FB.ui(
+          {
+            caption     : text,
+            description : videoDescription,
+            link        : shortlink,
+            method      : 'feed',
+            name        : videoTitle,
+            picture     : videoThumbnail
+          },
+          function(response) {
+            if (response && response.post_id) {
+              // TODO:we should record that this happened.
+            }
+          }
+        );
+      }
+    },
+
+    _checkAndRenderShortlink : function(){
+      var shortlink = this.options.currentFrameShortlink;
+
+      if(shortlink){
+        //this is called in this.render(), as well as change:shortlink on the frame
+        //because the pvi share button and frame button can call it separately
+        var twitterHref  = this._buildTweetUrl(shortlink);
+
+        this.$el.find('.js-tweet-share').removeClass('disabled').attr('href',twitterHref);
+        this.$el.find('.js-facebook-post').removeClass('disabled');
+      }
     }
 
   });

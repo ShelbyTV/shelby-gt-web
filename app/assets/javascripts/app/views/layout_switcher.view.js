@@ -1,6 +1,6 @@
 libs.shelbyGT.LayoutSwitcherView = Support.CompositeView.extend({
 
-  el: '#js-shelby-wrapper',
+  el: '.js-shelby-wrapper',
 
   initialize : function() {
     this.model.bind('change:displayState', this._onChangeDisplayState, this);
@@ -13,29 +13,36 @@ libs.shelbyGT.LayoutSwitcherView = Support.CompositeView.extend({
 
   render : function(){
     this.renderChild(new libs.shelbyGT.AppHeaderView({
-      model : shelby.models.user,
-      guide : shelby.models.guide
+      model: shelby.models.user,
+      guide: shelby.models.guide
     }));
-    this.renderChild(new libs.shelbyGT.MainLayoutView({model:shelby.models.guide}));
-    this.renderChild(new libs.shelbyGT.OnboardingLayoutView());
+    this.renderChild(new libs.shelbyGT.MainLayoutView({
+      model: shelby.models.guide
+    }));
+
+    this.renderChild(new libs.shelbyGT.UserPreferencesView({
+      model: shelby.models.user,
+      viewModel: shelby.models.userPreferencesView,
+      section: libs.shelbyGT.UserPreferencesViewModel.section
+    }));
   },
 
   _onChangeDisplayState : function(guideModel, displayState) {
-
-    // try something like views.each(this.hide()) here - only show in switch cases
+    var $preferencesLayout = $('.js-preferences-layout');
 
     switch (displayState){
-      case libs.shelbyGT.DisplayState.onboarding:
+      case libs.shelbyGT.DisplayState.userPreferences:
         this.options.guideOverlay.triggerImmediateHide();
-        // show the onboarding layout
-        this.$('.js-onboarding-layout').show();
+        // show the preferences layout
+        $preferencesLayout.toggleClass('hidden',false);
         //pause the video player when obscuring it
         shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
+        //disable user-inactivity
+        shelby.userInactivity.disableUserActivityDetection();
       break;
       default:
-        this.$('.js-onboarding-layout').hide();
+        $preferencesLayout.toggleClass('hidden',true);
+        shelby.userInactivity.enableUserActivityDetection();
     }
-
   }
-
 });

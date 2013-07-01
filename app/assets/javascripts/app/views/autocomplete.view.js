@@ -1,7 +1,7 @@
 ( function(){
 
   var AutoCompleteDropDownView = Support.CompositeView.extend({
-    
+
     events : {
       "click"         : "_onMenuClick",
       "mousedown"     : "_onMenuMouseDown",
@@ -77,7 +77,7 @@
       this._input = this._$input[0];
 
       this._menu = new AutoCompleteDropDownView({
-        className: this.options.menuClass + " js-autocomplete-menu",
+        className: this.options.menuClass + " fin fin--top_left fin--edging hidden js-autocomplete-menu",
         tagName : "ul"
       });
       this.renderChild(this._menu);
@@ -133,13 +133,13 @@
           width: this._input.offsetWidth //+2 compensates for border thickness
         });
 
-        this._menu.$el.show();
+        this._menu.$el.toggleClass('hidden',false);
         this._shown = true;
         return this;
     },
 
     hide : function () {
-      this._menu.$el.hide();
+      this._menu.$el.toggleClass('hidden',true);
       this._shown = false;
       return this;
     },

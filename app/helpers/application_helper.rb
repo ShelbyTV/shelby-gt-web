@@ -31,11 +31,11 @@ module ApplicationHelper
   end
 
   def page_title_for_roll(roll, user=nil)
-    "#{roll['subdomain']} tv#{user ? ", curated by #{user['name']}" : ''} on Shelby"
+    "#{user ? "Videos shared by #{user['name']} (#{user['nickname']})" : roll['title']} on Shelby.tv"
   end
 
   def page_description_for_roll_with_frames(roll_with_frames, user=nil)
-    desc = user ? "Latest video from #{user['name']} (#{user['nickname']})... " : ""
+    desc = user ? "Most recent video shared: " : ""
     if roll_with_frames['frames'] and roll_with_frames['frames'][0]
       msg = roll_with_frames['frames'][0]['conversation']['messages'][0]
       if msg and msg['user_id'] == roll_with_frames['creator_id']
@@ -44,6 +44,17 @@ module ApplicationHelper
     end
 
     return desc.blank? ? nil : desc
+  end
+
+  def build_valid_video_player_url(video_embed)
+    return '' unless video_embed
+
+    urls = URI.extract(video_embed)
+    if !urls.empty?
+      return urls.first.include?('https') ? urls.first : urls.first.gsub(/http/,'https')
+    else
+      return ''
+    end
   end
 
 end
