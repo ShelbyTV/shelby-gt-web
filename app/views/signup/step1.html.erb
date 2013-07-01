@@ -38,7 +38,7 @@
       </div><!-- eo media_image -->
       <div class="media_body">
 
-        <%= form_tag(request.env['PATH_INFO']) do %>
+        <%= form_tag(request.env['PATH_INFO'], :class => 'js-submit-step-one' ) do %>
           <fieldset class="slideshow_wrapper">
             <div class="slideshow js-slideshow">
               <% Settings::Signup.roll_categories.each_with_index do |category,cat_index| %>
