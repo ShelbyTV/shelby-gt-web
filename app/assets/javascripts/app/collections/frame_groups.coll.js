@@ -205,7 +205,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
   _convertRecsToNewFrameGroups : function(coll, frame, frameGroup, options){
     // don't get and show recs if we are displaying anything but dasboard or community
-    if (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.dashboard && shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel) {
+    if (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.dashboard) { //&& shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel) {
       return;
     }
 
