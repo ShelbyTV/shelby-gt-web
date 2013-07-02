@@ -93,8 +93,6 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
         var frameGroup = new libs.shelbyGT.FrameGroupModel();
         frameGroup.add(frame, dashboard_entry, options);
 
-        this._convertRecsToNewFrameGroups(this, frame, options);
-
         if (this._collapseViewedFrameGroups) {
            var viewed = shelby.models.viewedVideos.get('viewed_videos').find(function(entry){
              return entry.id == frame.get('video').id;
@@ -104,8 +102,8 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
              frameGroup.set({ collapsed : true }, options);
            }
         }
-        console.log("first this, ", this);
         Backbone.Collection.prototype.add.call(this, frameGroup, options);
+        this._convertRecsToNewFrameGroups(this, frame, frameGroup, options);
       }
     }
 
@@ -205,9 +203,9 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     return this.at(_index);
   },
 
-  _convertRecsToNewFrameGroups : function(coll, frame, options){
+  _convertRecsToNewFrameGroups : function(coll, frame, frameGroup, options){
+    var self = this;
     options = options || {};
-
     if (frame.has('video') && frame.get('video').has('recs') && frame.get('video').get('recs').length > 0) {
       var recommendations = frame.get('video').get('recs');
       console.log("--- FRAME HAS ", recommendations.length, "RECS ---");
@@ -250,13 +248,20 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
             });
             // end dbe creation //
 
-          var frameGroup = new libs.shelbyGT.FrameGroupModel();
-          frameGroup.add(frameModel, newDBE, options);
-          Backbone.Collection.prototype.add.call(coll, frameGroup, options);
+          var newFrameGroup = new libs.shelbyGT.FrameGroupModel();
+          newFrameGroup.add(frameModel, newDBE, options);
+          // insert this new frameGroup at the appropriate place in the collection
+          options.at = self._findIndexInCollection(frameGroup, coll) + 1;
+          Backbone.Collection.prototype.add.call(coll, newFrameGroup, options);
           }
         });
       }
     }
+  },
+
+  _findIndexInCollection : function(frameGroup, coll) {
+    var _matchingFrameGroup = coll.find(function(c){ return c == frameGroup; });
+    return coll.indexOf(_matchingFrameGroup);
   }
 
 });
