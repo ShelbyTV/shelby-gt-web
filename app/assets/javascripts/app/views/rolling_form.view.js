@@ -126,7 +126,7 @@
       shelby.models.user.get('app_progress').saveMe();
 
       // if we are in a search result, add to roll via url
-      if (shelby.models.guide.get('displayState') === "search") {
+      if (this._frame.get('mockFrame')) {
         this._addViaUrl(message, roll, shareDests);
       }
       else {
@@ -169,7 +169,7 @@
         var rollId = newFrame.get('roll_id');
 
         if(returnVal == libs.shelbyGT.notificationStateModel.ReturnValueButtonSecondary) {
-          shelby.router.navigate('roll/' + rollId, {trigger:true,replace:true});
+          shelby.router.navigate('/' + shelby.models.user.get('nickname'), {trigger:true,replace:true});
         }
       });
     },
