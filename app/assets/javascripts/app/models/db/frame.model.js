@@ -120,7 +120,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
         var _wl_roll = shelby.models.user.get('watch_later_roll');
         var _message = "added to shelby via a video search";
         _newFrame.save(
-          {url: this.get('video').get('source_url'), text: _message, source: 'webapp'},
+          {url: this.get('video').get('source_url'), source: 'webapp'},
           {url: shelby.config.apiRoot + '/roll/'+_wl_roll.id+'/frames',
           success: function(newFrame){
             // we only want to update the set of queued videos if the ajax call succeeds,

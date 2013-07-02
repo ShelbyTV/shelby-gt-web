@@ -204,13 +204,18 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
   },
 
   _convertRecsToNewFrameGroups : function(coll, frame, frameGroup, options){
+    // don't get and show recs if we are displaying anything but dasboard or community
+    if (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.dashboard && shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel) {
+      return;
+    }
+
     var self = this;
     options = options || {};
     if (frame.has('video') && frame.get('video').has('recs') && frame.get('video').get('recs').length > 0) {
       var recommendations = frame.get('video').get('recs');
       // don't do anything if the recs attribute is already a collection
       if ($.isArray(recommendations)) {
-        var slicedRecs = recommendations.slice(0, 1);
+        var slicedRecs = recommendations.slice(0, 2);
         var recommendationsModels = _(slicedRecs).map(function(rec){
           // if we already have a model in the global store for this video, use it
           var videoModel = Backbone.Relational.store.find(libs.shelbyGT.VideoModel, rec.recommended_video_id);
@@ -237,7 +242,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
             });
 
             // create dashboard entry with reference to frame (video)
-            var bsonId =  new ObjectId();
+            var bsonId =  new ObjectId(); // is this even necessary???
             var newDBE = new libs.shelbyGT.DashboardEntryModel({
               id: bsonId.toString(),
               action: libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation,
