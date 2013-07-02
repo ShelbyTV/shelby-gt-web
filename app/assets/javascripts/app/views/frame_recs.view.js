@@ -3,19 +3,21 @@ libs.shelbyGT.FrameRecsView = Support.CompositeView.extend({
   _frame : null,
 
   options : {
-    numThumbnailsDisplayed : 5, // the number of rec thumbnails to display
+    numThumbnailsDisplayed : 1, // the number of rec thumbnails to display
     selfBindAndUpdate : true // whether the view will bind to its model and dynamically update itself
                               // default is false, in which case updates must be handled by the parent
   },
 
   template : function(obj){
+    // obj is an array of likers where each el is currently a 'frame'
     return SHELBYJST['frame-actions-counts'](obj);
   },
 
   initialize : function() {
     if (this.options.selfBindAndUpdate) {
+      // this.model == frame group
       this._frame = this.model.getFirstFrame();
-      this._frame.bind('change:recommendations', this.render, this);
+      //this._frame.bind('change:recommendations', this.render, this);
     }
   },
 
@@ -32,7 +34,7 @@ libs.shelbyGT.FrameRecsView = Support.CompositeView.extend({
       var recommendedVideoCollection = this._frame.get('recommendations');
       var recsToDisplay = recommendedVideoCollection.models.slice(0, this.options.numThumbnailsDisplayed);
 
-      this.$el.toggleClass('frame-likes--hide', recsToDisplay.length == 0);
+      this.$el.toggleClass('frame-likes--hide', recsToDisplay.length === 0);
 
 
       if (recsToDisplay.length && recsToDisplay.length > 0){

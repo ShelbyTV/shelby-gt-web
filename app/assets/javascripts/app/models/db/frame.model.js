@@ -33,7 +33,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   initialize : function() {
     this.set('upvoters', this.convertUpvoterIdsToUserCollection());
-    this.set('recommendations', this.convertRecIdsToVideoCollection());
+    //this.set('recommendations', this.convertRecIdsToVideoCollection());
   },
 
   sync : function(method, model, options) {
@@ -275,7 +275,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
             videoModel = new libs.shelbyGT.VideoModel({id: rec.recommended_video_id});
           }
           videoModel.fetch();
-
+          // create frame
           var frameModel = Backbone.Relational.store.find(libs.shelbyGT.FrameModel, rec.recommended_video_id);
           if (!frameModel) {
             // create a fake frame to play
@@ -291,6 +291,22 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
               },
               isSearchResultFrame : true
             });
+
+            // create dashboard entry with reference to frame (video)
+            //var bsonId =  new ObjectId();
+            var newDBE = new libs.shelbyGT.DashboardEntryModel({
+              //id: bsonId.toString(),
+              action: libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation,
+              user_id: shelby.models.user.id,
+              frame: frameModel,
+              src_frame: this
+            });
+
+            //frameModel.set('_primaryDashboardEntry', newDBE);
+            //console.log("newDBE:", newDBE);
+            //shelby.models.playlistManager.get('playlistFrameGroupCollection').models.push(newDBE);
+            //console.log(shelby.models.dashboard.get('dashboard_entries').models.length);
+            // end dbe creation //
           }
 
           return frameModel;
