@@ -254,6 +254,18 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
           var newFrameGroup = new libs.shelbyGT.FrameGroupModel();
           newFrameGroup.add(frameModel, newDBE, options);
+
+          // if a user views a "real" shelby frame it will be in their viewed videos, so show it as collapsed
+          // NOTE: currently a view of a recommended video is not recorded as the video doesnt really exist as a frame
+          if (self._collapseViewedFrameGroups) {
+            var viewed = shelby.models.viewedVideos.get('viewed_videos').find(function(entry){
+              return entry.id == frameModel.get('video').id;
+            });
+           if (viewed) {
+             newFrameGroup.set({ collapsed : true });
+           }
+        }
+
           // insert this new frameGroup at the appropriate place in the collection
           options.at = self._findIndexOfFrameGroupInCollection(frameGroup, coll) + 1;
           Backbone.Collection.prototype.add.call(coll, newFrameGroup, options);

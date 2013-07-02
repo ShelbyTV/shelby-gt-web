@@ -138,7 +138,7 @@
           <p class="xuser-message">
             This video is shared by people like
               <a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= sourceFrameCreatorNickname %>">
-                <%= sourceFrameCreatorNickname %>
+                <%= sourceFrameCreatorNickname == userNickname ? "you" : sourceFrameCreatorNickname %>
               </a>
           <p>
         </div><!-- eo .media_body -->
