@@ -63,7 +63,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var frame = this.model.getFirstFrame();
     var frameVideo = frame.get('video');
     if (frameVideo.id == video.id ||
-        (frame.get('isSearchResultFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
+        (frame.get('mockFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
       // this video is the one being added/removed
       // in case it got updated from somewhere else, update my button
       this.$('.js-queue-frame').toggleClass('queued', !removeVideo);
@@ -304,7 +304,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _getFrameShortlink : function() {
     var frame = this.model.get('frames').at(0);
 
-    if (!frame.get('isSearchResultFrame')) {
+    if (!frame.get('mockFrame')) {
       var self = this;
       var $shortlinkTextInput = this.$('.js-frame-shortlink');
       var fetchShortlinkUrl;

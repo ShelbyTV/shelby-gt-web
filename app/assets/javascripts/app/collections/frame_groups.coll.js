@@ -238,7 +238,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
                   }
                 ]
               },
-              isSearchResultFrame : true
+              mockFrame : true
             });
 
             // create dashboard entry with reference to frame (video)

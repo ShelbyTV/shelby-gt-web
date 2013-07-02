@@ -75,7 +75,7 @@
           </div><!-- eo .media_body -->
         <% } else { %>
           <% if (showNextFrame) { %>
-            <% if (!currentFrame.get('isSearchResultFrame')) { %>
+            <% if (!currentFrame.get('mockFrame')) { %>
               <% if (clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %>
                 <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
                   <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
@@ -88,7 +88,7 @@
           <div class="media_body">
             <% if (showNextFrame) { %>
               <h3 class="xuser-data persistent_video_info__h4--light">
-                <% if (!currentFrame.get('isSearchResultFrame')) { %>
+                <% if (!currentFrame.get('mockFrame')) { %>
                   <strong>
                     <% if(clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %><%= currentCreatorNickname %><% if(clickableCreator) { %></a><% } %>
                   </strong>
@@ -104,7 +104,7 @@
               </h3>
             <% } %>
 
-            <% var hasComment = (currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame') %>
+            <% var hasComment = (currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('mockFrame') %>
 
             <% if(hasComment) { %>
               <% var comment = currentMessages.models[0].get('text') %>
