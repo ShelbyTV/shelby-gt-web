@@ -70,7 +70,7 @@
               <strong>Recommended for you</strong>
             </p>
             <p class="xuser-message">
-              This video is shared by people like <a href="/<%= sourceFrameCreatorNickname %>" class="js-goto-user-page"><%= sourceFrameCreatorNickname %></a>
+              This video is shared by people like <a href="/<%= sourceFrameCreatorNickname %>" class="js-goto-user-page"><%= sourceFrameCreatorNickname == shelby.models.user.get('nickname') ? "you" : sourceFrameCreatorNickname %></a>
             <p>
           </div><!-- eo .media_body -->
         <% } else { %>

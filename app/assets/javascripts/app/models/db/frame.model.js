@@ -180,7 +180,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   },
 
   watched : function(completeWatch, startTime, endTime, onSuccess) {
-    if (this.mockFrame) { return; }
+    if (this.get('mockFrame')) { return; }
     var frameWatched = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/watched';
     if(completeWatch){
