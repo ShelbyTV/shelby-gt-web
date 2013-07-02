@@ -215,7 +215,8 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
       var recommendations = frame.get('video').get('recs');
       // don't do anything if the recs attribute is already a collection
       if ($.isArray(recommendations)) {
-        var slicedRecs = recommendations.slice(0, 2);
+        var _showN = Math.random() <= 0.5 ? 1 : 2;
+        var slicedRecs = recommendations.slice(0, _showN);
         var recommendationsModels = _(slicedRecs).map(function(rec){
           // if we already have a model in the global store for this video, use it
           var videoModel = Backbone.Relational.store.find(libs.shelbyGT.VideoModel, rec.recommended_video_id);
