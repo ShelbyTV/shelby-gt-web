@@ -208,10 +208,9 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     options = options || {};
     if (frame.has('video') && frame.get('video').has('recs') && frame.get('video').get('recs').length > 0) {
       var recommendations = frame.get('video').get('recs');
-      console.log("--- FRAME HAS ", recommendations.length, "RECS ---");
       // don't do anything if the recs attribute is already a collection
       if ($.isArray(recommendations)) {
-        var slicedRecs = recommendations.slice(0,1);
+        var slicedRecs = recommendations.slice(0, 1);
         var recommendationsModels = _(slicedRecs).map(function(rec){
           // if we already have a model in the global store for this video, use it
           var videoModel = Backbone.Relational.store.find(libs.shelbyGT.VideoModel, rec.recommended_video_id);
@@ -251,7 +250,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
           var newFrameGroup = new libs.shelbyGT.FrameGroupModel();
           newFrameGroup.add(frameModel, newDBE, options);
           // insert this new frameGroup at the appropriate place in the collection
-          options.at = self._findIndexInCollection(frameGroup, coll) + 1;
+          options.at = self._findIndexOfFrameGroupInCollection(frameGroup, coll) + 1;
           Backbone.Collection.prototype.add.call(coll, newFrameGroup, options);
           }
         });
@@ -259,8 +258,8 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     }
   },
 
-  _findIndexInCollection : function(frameGroup, coll) {
-    var _matchingFrameGroup = coll.find(function(c){ return c == frameGroup; });
+  _findIndexOfFrameGroupInCollection : function(frameGroup, coll) {
+    var _matchingFrameGroup = coll.find(function(fg){ return fg == frameGroup; });
     return coll.indexOf(_matchingFrameGroup);
   }
 

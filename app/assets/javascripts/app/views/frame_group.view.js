@@ -83,6 +83,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var groupFirstFrame = model.getFirstFrame();
     groupFirstFrame[action]('change', this.render, this);
     groupFirstFrame.get('conversation') && groupFirstFrame.get('conversation')[action]('change', this.render, this);
+    groupFirstFrame.get('video')[action]('change:thumbnail_url', this.render, this);
     model.get('frames')[action]('change', this.render, this);
     model.get('frames')[action]('add', this.render, this);
     model.get('frames')[action]('destroy', this.render, this);

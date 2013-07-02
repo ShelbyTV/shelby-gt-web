@@ -33,7 +33,6 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   initialize : function() {
     this.set('upvoters', this.convertUpvoterIdsToUserCollection());
-    //this.set('recommendations', this.convertRecIdsToVideoCollection());
   },
 
   sync : function(method, model, options) {
@@ -251,77 +250,6 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     }
 
     return upvotersCollection;
-  },
-
-  convertRecIdsToVideoCollection : function(){
-    // change the recs from an array of id strings to a collection of video models with those ids
-    // CAN'T GET RELATIONAL TO DO THIS THE WAY I WANT SO DOING IT MYSELF
-    var recommendationsCollection;
-
-    if (this.has('video') && this.get('video').has('recs') && this.get('video').get('recs').length > 0) {
-      console.log("FRAME HAS RECS");
-      var recommendations = this.get('video').get('recs');
-      // don't do anything if the recs attribute is already a collection
-      if ($.isArray(recommendations)) {
-
-        // for now limiting whats being fetched and created
-        recsSelection = recommendations;
-
-        var recommendationsModels = _(recsSelection).map(function(rec){
-          // if we already have a model in the global store for this video, use it
-          var videoModel = Backbone.Relational.store.find(libs.shelbyGT.VideoModel, rec.recommended_video_id);
-          if (!videoModel) {
-            // otherwise, create a new, empty video model with the proper id
-            videoModel = new libs.shelbyGT.VideoModel({id: rec.recommended_video_id});
-          }
-          videoModel.fetch();
-          // create frame
-          var frameModel = Backbone.Relational.store.find(libs.shelbyGT.FrameModel, rec.recommended_video_id);
-          if (!frameModel) {
-            // create a fake frame to play
-            frameModel = new libs.shelbyGT.FrameModel({
-              id : videoModel.id,
-              video : videoModel,
-              conversation : {
-                messages : [
-                  {
-                    text : videoModel.get('description')
-                  }
-                ]
-              },
-              isSearchResultFrame : true
-            });
-
-            // create dashboard entry with reference to frame (video)
-            //var bsonId =  new ObjectId();
-            var newDBE = new libs.shelbyGT.DashboardEntryModel({
-              //id: bsonId.toString(),
-              action: libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation,
-              user_id: shelby.models.user.id,
-              frame: frameModel,
-              src_frame: this
-            });
-
-            //frameModel.set('_primaryDashboardEntry', newDBE);
-            //console.log("newDBE:", newDBE);
-            //shelby.models.playlistManager.get('playlistFrameGroupCollection').models.push(newDBE);
-            //console.log(shelby.models.dashboard.get('dashboard_entries').models.length);
-            // end dbe creation //
-          }
-
-          return frameModel;
-          //return videoModel;
-        });
-        recommendationsCollection = new Backbone.Collection(recommendationsModels);
-      } else {
-        recommendationsCollection = recsSelection;
-      }
-    } else {
-      // if there was no upvoters attribute, just add one with an empty collection
-      recommendationsCollection = new Backbone.Collection();
-    }
-
-    return recommendationsCollection;
   }
 
 });
