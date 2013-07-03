@@ -106,7 +106,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
         Backbone.Collection.prototype.add.call(this, frameGroup, options);
 
-        if (dashboard_entry && !dashboard_entry.get('mockDBE') && !dashboard_entry.get('action') !== libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) {
+        if (dashboard_entry && !dashboard_entry.get('mockDBE') && dashboard_entry.get('action') !== libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) {
           this._convertRecsToNewFrameGroups(frame, frameGroup, options);
         }
       }
@@ -282,6 +282,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
           // insert this new frameGroup at the appropriate place in the collection
           options.at = self._indexToInsertRecommendation(frame, self._associatedMasterCollection) + 1;
+          //console.log("at: ", options.at, newDBE);
           self._associatedMasterCollection.add(newDBE, options);
           }
         });
@@ -291,12 +292,10 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
 
   _indexToInsertRecommendation : function(entity, collection) {
     // entity can be a dbe or a frame
-    var _matchingEntity;
-
-    _matchingEntity = collection.find(function(c){
-      return _.contains(c.get('frames').models, entity)
+    var _matchingEntity = collection.find(function(c){
+      return _.contains(c.get('frames').models, entity);
     });
-
+    //console.log("_matchingEntity", _matchingEntity);
     return collection.indexOf(_matchingEntity);
   }
 
