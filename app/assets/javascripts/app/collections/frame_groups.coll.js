@@ -83,7 +83,8 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
          var neitherAreVideoRecs = !dashboard_entry ||
                                    (dashboard_entry.get('action') != libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation &&
                                    this.at(j).get('primaryDashboardEntry').get('action') != libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation);
-         if (areSameVideo && neitherAreVideoRecs) {
+         var neitherAreMocks = !dashboard_entry || (!dashboard_entry.get('mockDBE') && !this.at(j).get('primaryDashboardEntry').get('mockDBE'));
+         if (areSameVideo && neitherAreVideoRecs && neitherAreMocks) {
             this.at(j).add(frame, dashboard_entry, options);
             dupe = true;
          }
@@ -102,8 +103,12 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
              frameGroup.set({ collapsed : true }, options);
            }
         }
+
         Backbone.Collection.prototype.add.call(this, frameGroup, options);
-        this._convertRecsToNewFrameGroups(this, frame, frameGroup, options);
+
+        if (dashboard_entry && !dashboard_entry.get('mockDBE') && !dashboard_entry.get('action') !== libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) {
+          this._convertRecsToNewFrameGroups(frame, frameGroup, options);
+        }
       }
     }
 
@@ -203,7 +208,13 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     return this.at(_index);
   },
 
-  _convertRecsToNewFrameGroups : function(coll, frame, frameGroup, options){
+    // TODO:
+    // if frameGroup.primary_dasboard_entry
+    // go search for that,
+    // otherwise search for frame
+    // FOR purpose of finding index below...
+
+  _convertRecsToNewFrameGroups : function(frame, frameGroup, options){
     // don't get and show recs if we are displaying anything but dasboard or community
     if (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.dashboard) { //&& shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel) {
       return;
@@ -229,8 +240,9 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
           var frameModel = Backbone.Relational.store.find(libs.shelbyGT.FrameModel, rec.recommended_video_id);
           if (!frameModel) {
             // create a fake frame to play
+            var frameBsonId =  new ObjectId();
             frameModel = new libs.shelbyGT.FrameModel({
-              id : videoModel.id,
+              id : frameBsonId.toString(),
               video : videoModel,
               conversation : {
                 messages : [
@@ -243,13 +255,14 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
             });
 
             // create dashboard entry with reference to frame (video)
-            var bsonId =  new ObjectId(); // is this even necessary???
+            var dbeBsonId =  new ObjectId(); // is this even necessary???
             var newDBE = new libs.shelbyGT.DashboardEntryModel({
-              id: bsonId.toString(),
+              id: dbeBsonId.toString(),
               action: libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation,
               user_id: shelby.models.user.id,
               frame: frameModel,
-              src_frame: frame
+              src_frame: frame,
+              mockDBE: true
             });
             // end dbe creation //
 
@@ -268,17 +281,23 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
         }
 
           // insert this new frameGroup at the appropriate place in the collection
-          options.at = self._findIndexOfFrameGroupInCollection(frameGroup, coll) + 1;
-          Backbone.Collection.prototype.add.call(coll, newFrameGroup, options);
+          options.at = self._indexToInsertRecommendation(frame, self._associatedMasterCollection) + 1;
+          self._associatedMasterCollection.add(newDBE, options);
           }
         });
       }
     }
   },
 
-  _findIndexOfFrameGroupInCollection : function(frameGroup, coll) {
-    var _matchingFrameGroup = coll.find(function(fg){ return fg == frameGroup; });
-    return coll.indexOf(_matchingFrameGroup);
+  _indexToInsertRecommendation : function(entity, collection) {
+    // entity can be a dbe or a frame
+    var _matchingEntity;
+
+    _matchingEntity = collection.find(function(c){
+      return _.contains(c.get('frames').models, entity)
+    });
+
+    return collection.indexOf(_matchingEntity);
   }
 
 });

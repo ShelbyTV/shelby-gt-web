@@ -47,7 +47,7 @@
     initialize : function(){
       this.frameGroupCollection = this.options.displayCollection =
         new FrameGroupsCollection([], {
-          collapseViewedFrameGroups : this.options.collapseViewedFrameGroups
+          collapseViewedFrameGroups : this.options.collapseViewedFrameGroups,
         });
 
       // if (Browser.isMobile()) {
@@ -61,6 +61,7 @@
       this._checkAndRegisterPlaylist();
 
       PagingListView.prototype.initialize.call(this);
+      this.frameGroupCollection._associatedMasterCollection = this.options.displayCollection;
     },
 
     _cleanup : function(){

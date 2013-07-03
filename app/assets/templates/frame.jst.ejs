@@ -69,7 +69,6 @@
       <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/><%= (browserNeedsFlash) ? 'flash needed' : 'unplayable' %></div>
 
       </div><!-- eo .frame-body -->
-
     <% if (!isGenius && creator) {
          var creatorNickname = fauxUserOrigin && fauxUserNickname ? fauxUserNickname : creator.get('nickname');
          var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator);
@@ -125,7 +124,10 @@
 
       </footer><!-- eo .media_module-->
     <% } else if (action == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) {
-        var sourceFrameCreatorNickname = frameGroup.get('primaryDashboardEntry').get('src_frame').get('creator').get('nickname');
+      var sourceFrameCreatorNickname;
+      if (frameGroup.get('primaryDashboardEntry').get('src_frame').get('creator')) {
+        sourceFrameCreatorNickname = frameGroup.get('primaryDashboardEntry').get('src_frame').get('creator').get('nickname');
+      }
     %>
       <footer class="media_module frame-footer clearfix">
         <div class="media_body">

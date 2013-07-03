@@ -36,7 +36,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         return SHELBYJST['frame'](obj);
       }
     } catch(e){
+      console.log("===========");
       console.log(e.message, e.stack, obj);
+      console.log("===========");
     }
   },
 
