@@ -81,8 +81,8 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
          // with that same video
          var areSameVideo = this.at(j).getFirstFrame().get('video').id == video_id;
          var neitherAreVideoRecs = !dashboard_entry ||
-                                   (dashboard_entry.get('action') != libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation &&
-                                   this.at(j).get('primaryDashboardEntry').get('action') != libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation);
+                                   (!dashboard_entry.isRecommendationEntry() &&
+                                    !this.at(j).get('primaryDashboardEntry').isRecommendationEntry());
          if (areSameVideo && neitherAreVideoRecs) {
             this.at(j).add(frame, dashboard_entry, options);
             dupe = true;

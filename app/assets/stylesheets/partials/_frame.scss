@@ -441,6 +441,10 @@
     margin: 0 0.22em 0 0.4em;
   }
 
+  &.friends-avatars.list {
+   margin: 0.4em 0 0 0;
+  }
+
   &.no-liker-avatars {
     margin: 0;
     & + .frame-likes-count {
