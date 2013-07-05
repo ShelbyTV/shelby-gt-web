@@ -2,6 +2,10 @@ libs.shelbyGT.FrameRecommendationView = Support.CompositeView.extend({
 
   _firstFriend : null,
 
+  options : {
+    isPvi : false // is this view inside of the PersistentVideoInfoView?
+  },
+
   template: function(obj){
     return SHELBYJST['frame-recommendation'](obj);
   },
@@ -24,10 +28,11 @@ libs.shelbyGT.FrameRecommendationView = Support.CompositeView.extend({
       dashboardEntry: this.model,
       firstFriend : this._firstFriend,
       numFriends : numFriends,
-      isEntertainmentGraph : isEntertainmentGraph
+      isEntertainmentGraph : isEntertainmentGraph,
+      isPvi : this.options.isPvi
     }));
 
-    if (isEntertainmentGraph && numFriends) {
+    if (!this.options.isPvi && isEntertainmentGraph && numFriends) {
       // render the friends' avatars, now if they've already arrived, or via event handling
       // later if the ajax hasn't returned yet
       this.renderChild(new libs.shelbyGT.ListView({

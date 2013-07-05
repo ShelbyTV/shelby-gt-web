@@ -13,8 +13,6 @@
 <% var fauxUserOrigin = !isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(currentCreator) : null %>
 
-<% var action = frameGroup.get('primaryDashboardEntry') && frameGroup.get('primaryDashboardEntry').get('action') %>
-
 <%
   var currentCreatorNickname;
 
@@ -57,21 +55,9 @@
       </h2>
 
       <div class="media_module persistent_video_info__body">
-        <% if(action == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) {
-          var sourceFrameCreatorNickname = frameGroup.get('primaryDashboardEntry').get('src_frame').get('creator').get('nickname');
-        %>
-          <div class="media_body">
-            <!--
-            <span class="xuser-data-timestamp">
-              <%= currentFrame.get('created_at') %>
-            </span>
-            -->
-            <p class="xuser-data xuser-data--green xuser-data--recommendation">
-              <strong>Recommended for you</strong>
-            </p>
-            <p class="xuser-message">
-              This video is shared by people like <a href="/<%= sourceFrameCreatorNickname %>" class="js-goto-user-page"><%= sourceFrameCreatorNickname %></a>
-            <p>
+        <% if (isRecommendation) { %>
+          <div class="media_body js-frame-recommendation">
+            <!-- content filled in by FrameRecommendationView -->
           </div><!-- eo .media_body -->
         <% } else { %>
           <% if (showNextFrame) { %>

@@ -1,6 +1,8 @@
+<% if (!isPvi) { %>
 <span class="xuser-data-timestamp">
   <%= dashboardEntry.get('frame').get('created_at') %>
 </span>
+<% } %>
 <p class="xuser-data xuser-data--green xuser-data--recommendation">
   <strong>Recommended for you</strong>
 </p>
@@ -18,7 +20,7 @@
       <%= SHELBYJST['user-page-link']({nickname: dashboardEntry.get('src_frame').get('creator').get('nickname')}) %>
   <% } %>
 <p>
-<% if (isEntertainmentGraph && numFriends) { %>
+<% if (!isPvi && isEntertainmentGraph && numFriends) { %>
   <ul class="list frame-likes-avatars friends-avatars js-friend-avatars-list">
     <!-- Content filled in by ListView with ActorAvatarItemView list item views -->
   </ul>
