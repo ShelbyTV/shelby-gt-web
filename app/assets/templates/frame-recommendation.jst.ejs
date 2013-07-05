@@ -15,9 +15,11 @@
         <%= SHELBYJST['user-page-link']({nickname: firstFriend.get('nickname')}) %> checked out this video
       <% } %>
     <% } %>
-  <% } else { %>
+  <% } else if (dashboardEntry.get('src_frame').has('creator')) { %>
     This video is shared by people like
       <%= SHELBYJST['user-page-link']({nickname: dashboardEntry.get('src_frame').get('creator').get('nickname')}) %>
+  <% } else { %>
+    Check out this video
   <% } %>
 <p>
 <% if (!isPvi && isEntertainmentGraph && numFriends) { %>
