@@ -278,11 +278,14 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
            if (viewed) {
              newFrameGroup.set({ collapsed : true });
            }
-        }
+          }
 
+          var _currentCollection, _entity;
           // insert this new frameGroup at the appropriate place in the collection
-          options.at = self._indexToInsertRecommendation(frame, self._associatedMasterCollection) + 1;
+          options.at = self._indexToInsertRecommendation(frame, self._associatedDisplayCollection) + 1;
           //console.log("at: ", options.at, newDBE);
+          //console.log("collections:", self._associatedMasterCollection, self._associatedDisplayCollection);
+          self._associatedDisplayCollection.add(newDBE, options);
           self._associatedMasterCollection.add(newDBE, options);
           }
         });
@@ -291,11 +294,26 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
   },
 
   _indexToInsertRecommendation : function(entity, collection) {
-    // entity can be a dbe or a frame
-    var _matchingEntity = collection.find(function(c){
-      return _.contains(c.get('frames').models, entity);
-    });
-    //console.log("_matchingEntity", _matchingEntity);
+    // entity can be a dbe or a frame ???
+    shelby.testCollection = collection;
+    shelby.testEntity = entity;
+    if (collection.models[0].has('frame')){
+      console.log("======= DBE =======", collection.length);
+      var _matchingEntity = collection.find(function(c){
+        if (c.get('frame').id == entity.id){
+         return c;
+        }
+      });
+      //console.log("_matchingEntity:", _matchingEntity);
+    }
+    else {
+      console.log("======= NOT DBE =======", collection.length);
+      var _matchingEntity = collection.find(function(c){
+        return _.contains(c.get('frames').models, entity);
+      });
+      //console.log("_matchingEntity", _matchingEntity);
+    }
+    console.log("match at:", collection.indexOf(_matchingEntity));
     return collection.indexOf(_matchingEntity);
   }
 
