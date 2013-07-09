@@ -44,12 +44,16 @@
            <%= videoTitle %>
           </h1>
 
-          <% if (!fauxUserOrigin) { %>
+          <% if (isRecommendation) { %>
+            <div class="xuser-data">
+              <span class="xuser-data--green">Recommended for you</span>
+            </div>
+          <% } else if (!fauxUserOrigin) { %>
             <div class="xuser-data">
               <%= creatorNickname %><% if (!_(dupeFrames).isEmpty()) { %><%= ", " + _('other').pluralize(dupeFrames.length, true) %>
               <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != 1) { %>
                 <%= 'via ' + frameOriginator.get('nickname') %>
-              <% } %>
+            <% } %>
             </div>
           <% } else { %>
             <p class="xuser-data xuser-message--faux">

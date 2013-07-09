@@ -35,9 +35,9 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     }
   },
 
-  initDynamic : function(url){
+  initDynamic : function(url, params){
     shelby.router = new libs.shelbyGT.DynamicRouter();
-    shelby.models.routingState = new libs.shelbyGT.RoutingStateModel();
+    shelby.models.routingState = new libs.shelbyGT.RoutingStateModel({params: params});
 
     this._bootstrapRequiredAppModels();
 

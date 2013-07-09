@@ -19,7 +19,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__current-frame  .js-navigate-originator"        : "_gotoOriginator",
     "click .persistent_video_info__current-frame  .js-navigate-creator"           : "_gotoCreator",
     "click .js-toggle-comment"                                                    : "_toggleComment",
-    "click .js-next-video"                                                        : "_skipToNextVideo"
+    "click .js-next-video"                                                        : "_skipToNextVideo",
+    "click .js-goto-user-page"                                                    : "_goToUserPage"
   },
 
   initialize: function(){
@@ -55,16 +56,17 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     var playlistFrameGroupCollection = this.options.playlistManager.get('playlistFrameGroupCollection');
     if(this._currentFrame && playlistFrameGroupCollection){
       this._nextFrame = playlistFrameGroupCollection.getNextPlayableFrame(this._currentFrame, 1, true);
+      this._frameGroup = playlistFrameGroupCollection.getFrameGroupByFrameId(this._currentFrame.id);
     }
 
-    if(this._currentFrame && this._nextFrame){
+    if(this._currentFrame && this._nextFrame && this._frameGroup){
+
       var emailBody;
       var tweetIntentParams = {};
       if (shelby.models.user.isAnonymous()) {
-        var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
         var permalink;
-        if (_frameGroup) {
-          permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup);
+        if (this._frameGroup) {
+          permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this._frameGroup);
         } else {
           permalink = libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame);
         }
@@ -94,9 +96,12 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
             url : permalink
           };
         }
+
       }
 
       var currentFrameOriginator = (this._currentFrame.has('originator_id')) ? this._currentFrame.get('originator') : null;
+      var primaryDashboardEntry = this._frameGroup.get('primaryDashboardEntry');
+      var isRecommendation = primaryDashboardEntry && primaryDashboardEntry.isRecommendationEntry();
 
       this.$el.html(this.template({
         anonUserShareEmailBody : emailBody,
@@ -104,12 +109,22 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         currentFrameOriginator : currentFrameOriginator,
         currentFrameShortlink  : this._currentFrameShortlink,
         eventTrackingCategory  : this.options.eventTrackingCategory,
+        frameGroup             : this._frameGroup,
+        isRecommendation       : isRecommendation,
         nextFrame              : this._nextFrame,
         queuedVideosModel      : this.options.queuedVideos,
         showNextFrame          : this.options.showNextFrame,
         tweetIntentQueryString : $.param(tweetIntentParams),
         user                   : shelby.models.user
       }));
+
+      if (isRecommendation) {
+        this.renderChild(new libs.shelbyGT.FrameRecommendationView({
+          el : this.$('.js-frame-recommendation'),
+          isPvi : true,
+          model : primaryDashboardEntry
+        }));
+      }
     }
   },
 
@@ -267,6 +282,10 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         currentFrameNickname = currentFrame.get('creator_nickname');
 
     shelby.router.navigate((currentFrameNickname) ? currentFrameNickname : '/roll/' + currentFrameId,{trigger:true});
+  },
+
+  _goToUserPage : function(e){
+    shelby.router.navigate($(e.currentTarget).data('user_nickname'), {trigger:true});
   }
 
 });

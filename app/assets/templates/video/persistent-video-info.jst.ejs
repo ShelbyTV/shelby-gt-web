@@ -1,4 +1,4 @@
-  <% var currentCreator = currentFrame.get('creator') %>
+<% var currentCreator = currentFrame.get('creator') %>
 <% var currentCreatorNickname = currentCreator ? currentCreator.get('nickname') : null %>
 <% var currentCreatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(currentCreator) %>
 <% var currentVideo = currentFrame.get('video') %>
@@ -12,7 +12,6 @@
 <% var isFauxUser = currentCreator && currentCreator.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.faux %>
 <% var fauxUserOrigin = !isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(currentCreator) : null %>
-
 
 <%
   var currentCreatorNickname;
@@ -56,54 +55,59 @@
       </h2>
 
       <div class="media_module persistent_video_info__body">
-        <% if (showNextFrame) { %>
-          <% if (!currentFrame.get('isSearchResultFrame')) { %>
-            <% if (clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %>
-              <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
-                <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
-              </div>
-            <% if (clickableCreator) { %></a><% } %>
-          <% } else { %>
-            <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
-          <% } %>
-        <% } %>
-
-        <div class="media_body">
+        <% if (isRecommendation) { %>
+          <div class="media_body js-frame-recommendation">
+            <!-- content filled in by FrameRecommendationView -->
+          </div><!-- eo .media_body -->
+        <% } else { %>
           <% if (showNextFrame) { %>
-            <h3 class="xuser-data persistent_video_info__h4--light">
-              <% if (!currentFrame.get('isSearchResultFrame')) { %>
-                <strong>
-                  <% if(clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %><%= currentCreatorNickname %><% if(clickableCreator) { %></a><% } %>
-                </strong>
-              <% } else { %>
-                <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
-              <% } %>
-
-              <% if (fauxUserOrigin) { %>
-                via <span class="capitalize"><%= fauxUserOrigin %></span>
-              <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
-                via <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>
-              <% } %>
-            </h3>
+            <% if (!currentFrame.get('isSearchResultFrame')) { %>
+              <% if (clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %>
+                <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+                  <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
+                </div>
+              <% if (clickableCreator) { %></a><% } %>
+            <% } else { %>
+              <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
+            <% } %>
           <% } %>
+          <div class="media_body">
+            <% if (showNextFrame) { %>
+              <h3 class="xuser-data persistent_video_info__h4--light">
+                <% if (!currentFrame.get('isSearchResultFrame')) { %>
+                  <strong>
+                    <% if(clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %><%= currentCreatorNickname %><% if(clickableCreator) { %></a><% } %>
+                  </strong>
+                <% } else { %>
+                  <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
+                <% } %>
 
-          <% var hasComment = (currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame') %>
+                <% if (fauxUserOrigin) { %>
+                  via <span class="capitalize"><%= fauxUserOrigin %></span>
+                <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
+                  via <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>
+                <% } %>
+              </h3>
+            <% } %>
 
-          <% if(hasComment) { %>
-            <% var comment = currentMessages.models[0].get('text') %>
-            <% var commentOverflow = comment && comment.length > 256  %>
-            <p<%= commentOverflow ? ' class="line-clamp js-toggle-comment"' : '' %>>
-              <%=
-                libs.utils.String.linkifySafeWithClickTracking(comment, {
-                  link : {
-                    gaCategory : eventTrackingCategory,
-                    gaAction : 'Click on link in comment'
-                  }
-                })
-              %>
-              </p>
-          <% } %>
-        </div><!-- eo .media_body -->
+            <% var hasComment = (currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame') %>
+
+            <% if(hasComment) { %>
+              <% var comment = currentMessages.models[0].get('text') %>
+              <% var commentOverflow = comment && comment.length > 256  %>
+              <p<%= commentOverflow ? ' class="line-clamp js-toggle-comment"' : '' %>>
+                <%=
+                  libs.utils.String.linkifySafeWithClickTracking(comment, {
+                    link : {
+                      gaCategory : eventTrackingCategory,
+                      gaAction : 'Click on link in comment'
+                    }
+                  })
+                %>
+                </p>
+            <% } %>
+          </div><!-- eo .media_body -->
+        <% } %>
       </div><!-- eo .persistent_video_info__body -->
     </div><!-- eo .persistent_video_info_lining -->
 

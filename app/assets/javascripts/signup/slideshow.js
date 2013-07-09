@@ -10,10 +10,10 @@ if (signupStep == 1) {
 
     // track click event
     shelby.trackEx({
-      providers : ['ga', 'kmq'],
+      providers  : ['ga'],
       gaCategory : "Onboarding",
-      gaAction : 'Click More on Step 1',
-      kmqName : "Click More on Step 1 in Onboarding"
+      gaAction   : 'Click Category on Step 1',
+      gaLabel    : opts.currSlide
     });
   };
 
@@ -24,13 +24,33 @@ if (signupStep == 1) {
   };
 
   $(document).ready(function(){
-
     // track start of signup process
     shelby.trackEx({
       providers : ['ga', 'kmq'],
       gaCategory : "Onboarding",
       gaAction : 'Started',
       kmqName : "Started Onboarding"
+    });
+
+
+    $('.js-advance-step-1').on('click',function(e){
+      var _selectedSources = $('.js-submit-step-one').find('input:checked').length,
+          minimumSourcesFollowed = 3;
+
+      if(_selectedSources >= minimumSourcesFollowed) {
+        shelby.trackEx({
+          providers : ['kmq'],
+          kmqName   : "Click Next on Step 1"
+        });
+      }
+
+      shelby.trackEx({
+        providers  : ['ga'],
+        gaCategory : "Onboarding",
+        gaAction   : 'Click Next Step 1',
+        gaLabel    : (_selectedSources >= minimumSourcesFollowed) ? 'Valid' : 'Invalid',
+        gaValue    : _selectedSources
+      });
     });
 
     $slideshow = $('.js-slideshow');
