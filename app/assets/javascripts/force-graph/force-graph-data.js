@@ -91,7 +91,7 @@ var graph = {
       {
          "name":"shark",
          "group":"video",
-         "picture":"/images/force-graph/shark.jpg",
+         "picture":"/images/force-graph/superman.gif",
          "originX":-120,
          "originY":150,
          "radius":40
@@ -99,7 +99,7 @@ var graph = {
       {
          "name":"dog lying down",
          "group":"video",
-         "picture":"/images/force-graph/lyingDown.jpg",
+         "picture":"/images/force-graph/cat.gif",
          "originX":-140,
          "originY":50,
          "radius":40
@@ -107,7 +107,7 @@ var graph = {
       {
          "name":"cat with hat",
          "group":"video",
-         "picture":"/images/force-graph/hat.jpg",
+         "picture":"/images/force-graph/confused.gif",
          "originX":100,
          "originY":310,
          "radius":40
@@ -115,7 +115,7 @@ var graph = {
       {
          "name":"cats",
          "group":"video",
-         "picture":"/images/force-graph/cats.jpg",
+         "picture":"/images/force-graph/scream.gif",
          "originX":280,
          "originY":280,
          "radius":40
@@ -123,7 +123,7 @@ var graph = {
       {
          "name":"bear",
          "group":"video",
-         "picture":"/images/force-graph/bear.jpg",
+         "picture":"/images/force-graph/kick.gif",
          "originX":175,
          "originY":-175,
          "radius":40
@@ -131,7 +131,7 @@ var graph = {
       {
          "name":"dog with hands",
          "group":"video",
-         "picture":"/images/force-graph/hands.jpg",
+         "picture":"/images/force-graph/love.gif",
          "originX":-15,
          "originY":-180,
          "radius":40
@@ -139,7 +139,7 @@ var graph = {
       {
          "name":"yawn",
          "group":"video",
-         "picture":"/images/force-graph/yawn.jpg",
+         "picture":"/images/force-graph/goal.gif",
          "originX":-175,
          "originY":-175,
          "radius":40
@@ -147,7 +147,7 @@ var graph = {
       {
          "name":"sleep",
          "group":"video",
-         "picture":"/images/force-graph/sleep.jpg",
+         "picture":"/images/force-graph/tommy.gif",
          "originX":-230,
          "originY":260,
          "radius":40
