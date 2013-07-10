@@ -7,7 +7,7 @@
 
 var force = d3.layout.force()
     .gravity(0)
-    .theta(0)    
+    .theta(0)
     .linkDistance(function(d){return d.length;})
     .size([width, height]);
 var svg = d3.select(".media_image--rev").append("svg")
@@ -25,7 +25,7 @@ var svg = d3.select(".media_image--rev").append("svg")
     .enter().append("line")
       .attr("class", "link")
       .style("stroke-width", 1)
-      .style("stroke", "grey");   
+      .style("stroke", "grey");
   var node_drag = d3.behavior.drag()
   .on("dragstart", dragstart)
   .on("drag", dragmove)
@@ -39,7 +39,7 @@ var svg = d3.select(".media_image--rev").append("svg")
       d.px += d3.event.dx;
       d.py += d3.event.dy;
       d.x += d3.event.dx;
-      d.y += d3.event.dy; 
+      d.y += d3.event.dy;
   }
   }
   function dragend(d,i){
@@ -51,16 +51,16 @@ var svg = d3.select(".media_image--rev").append("svg")
     .append("foreignObject")
     .attr("width",function(d){if (d.group=="video") return d.radius*3; else return d.radius*2})
     .attr("height",function(d){return d.radius*2;})
-    .attr("class", "people")    
+    .attr("class", "people")
     .append("xhtml:body")
     .html(function(d){
       if (d.group=='video') {
-        return '<image src="'+d.picture+'" class="'+d.group+'"/><div class="play__wrapper"><image src="/forceGraph/images/player_play.svg" class="play"/></div>';
+        return '<image src="'+d.picture+'" class="'+d.group+'"/><div class="play__wrapper"><image src="/images/force-graph/player_play.svg" class="play"/></div>';
       }
       else return '<image src="'+d.picture+'" class="'+d.group+'"/>';
     })
     .attr("class",function(d){ if (d.group=='social') return "social__wrapper social--"+d.name;
-                                else return d.group+"__wrapper";})  
+                                else return d.group+"__wrapper";})
     .call(node_drag);
   //physics work-- hook up changes to objects
   force.on("tick", function() {
@@ -72,21 +72,21 @@ var svg = d3.select(".media_image--rev").append("svg")
         .attr("y2", function(d) { return d.target.y+d.target.radius; });
 
     d3.selectAll('.people')
-    .attr("x", function(d) { 
-      if (d.group!="profile") { 
+    .attr("x", function(d) {
+      if (d.group!="profile") {
         if (Math.abs(d.x-d.originX)<1) d.x=d.originX;
-        else d.x+=(graph.nodes[0].x-d.x-d.originX)*speed;    
+        else d.x+=(graph.nodes[0].x-d.x-d.originX)*speed;
       return d.x;
     }
-      else return (d.x-d.radius); 
+      else return (d.x-d.radius);
     })
-    .attr("y", function(d) { 
-      if (d.group!="profile") { 
+    .attr("y", function(d) {
+      if (d.group!="profile") {
         if (Math.abs(d.y-d.originY)<1) d.y=d.originY;
         else d.y+=(graph.nodes[0].y-d.y-d.originY)*speed;
-      return d.y; 
+      return d.y;
     }
-      return (d.y-d.radius); 
+      return (d.y-d.radius);
     });
   });
   //set center nodes attributes
@@ -97,8 +97,8 @@ var svg = d3.select(".media_image--rev").append("svg")
   graph.nodes[0].py=200;
   force.tick();
   $(document).ready(function(){
-  
-  var $people=$('.people'); 
+
+  var $people=$('.people');
   var $shelf__svg=$('.shelf__svg');
 
   //bounces graph around center
@@ -113,7 +113,7 @@ var svg = d3.select(".media_image--rev").append("svg")
     isClicked=value;
   }
   function tryBounce () {
-    if (!isClicked){   
+    if (!isClicked){
     bounce(graph);
     force.resume();
    }
@@ -130,7 +130,7 @@ var svg = d3.select(".media_image--rev").append("svg")
   }
   $people.on('mousedown', setDragging(true)).on('mouseup', setDragging(false));
   $("#frame").mousedown(tryBounce);
-  
+
   $(window).scroll(function(){
     if (isScrolledIntoView($shelf__svg)) {
       if (hasBounced) {
