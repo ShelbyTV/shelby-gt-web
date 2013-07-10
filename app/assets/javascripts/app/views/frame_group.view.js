@@ -117,6 +117,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         };
       }
 
+      var primaryDashboardEntry = this.model.get('primaryDashboardEntry');
+      var isRecommendation = primaryDashboardEntry && primaryDashboardEntry.isRecommendationEntry();
+
       this.$el.html(this.template({
         anonUserShareEmailBody : emailBody,
         creator                : frame.get('creator'),
@@ -127,6 +130,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         frame                  : frame,
         frameGroup             : this.model,
         frameOriginator        : frame.get('originator'),
+        isRecommendation       : isRecommendation,
         messages               : messages,
         queuedVideosModel      : shelby.models.queuedVideos,
         options                : this.options,
@@ -144,6 +148,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         el : this.$('.js-frame-rollers'),
         model : this.model
       }));
+
+      if (isRecommendation && !this.model.get('collapsed')) {
+        this.renderChild(new libs.shelbyGT.FrameRecommendationView({
+          el : this.$('.js-frame-recommendation'),
+          model : primaryDashboardEntry
+        }));
+      }
 
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }

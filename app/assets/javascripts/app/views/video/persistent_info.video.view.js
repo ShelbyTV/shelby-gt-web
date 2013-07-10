@@ -100,6 +100,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       }
 
       var currentFrameOriginator = (this._currentFrame.has('originator_id')) ? this._currentFrame.get('originator') : null;
+      var primaryDashboardEntry = this._frameGroup.get('primaryDashboardEntry');
+      var isRecommendation = primaryDashboardEntry && primaryDashboardEntry.isRecommendationEntry();
 
       this.$el.html(this.template({
         anonUserShareEmailBody : emailBody,
@@ -108,12 +110,21 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         currentFrameShortlink  : this._currentFrameShortlink,
         eventTrackingCategory  : this.options.eventTrackingCategory,
         frameGroup             : this._frameGroup,
+        isRecommendation       : isRecommendation,
         nextFrame              : this._nextFrame,
         queuedVideosModel      : this.options.queuedVideos,
         showNextFrame          : this.options.showNextFrame,
         tweetIntentQueryString : $.param(tweetIntentParams),
         user                   : shelby.models.user
       }));
+
+      if (isRecommendation) {
+        this.renderChild(new libs.shelbyGT.FrameRecommendationView({
+          el : this.$('.js-frame-recommendation'),
+          isPvi : true,
+          model : primaryDashboardEntry
+        }));
+      }
     }
   },
 
@@ -274,8 +285,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _goToUserPage : function(e){
-    e.preventDefault();
-    shelby.router.navigate(e.currentTarget.pathname, {trigger:true});
+    shelby.router.navigate($(e.currentTarget).data('user_nickname'), {trigger:true});
   }
 
 });

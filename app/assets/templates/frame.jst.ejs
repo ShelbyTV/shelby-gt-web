@@ -18,8 +18,6 @@
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
 
-<% var action = frameGroup.get('primaryDashboardEntry') && frameGroup.get('primaryDashboardEntry').get('action') %>
-
 <% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- videocard -->
 
@@ -123,26 +121,10 @@
           </div><!-- eo .media_body -->
 
       </footer><!-- eo .media_module-->
-    <% } else if (action == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) {
-      var sourceFrameCreatorNickname;
-      if (frameGroup.get('primaryDashboardEntry').get('src_frame').get('creator')) {
-        sourceFrameCreatorNickname = frameGroup.get('primaryDashboardEntry').get('src_frame').get('creator').get('nickname');
-      }
-    %>
+    <% } else if (isRecommendation) {%>
       <footer class="media_module frame-footer clearfix">
-        <div class="media_body">
-          <span class="xuser-data-timestamp">
-            <%= frame.get('created_at') %>
-          </span>
-          <p class="xuser-data xuser-data--green xuser-data--recommendation">
-            <strong>Recommended for you</strong>
-          </p>
-          <p class="xuser-message">
-            This video is shared by people like
-              <a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= sourceFrameCreatorNickname %>">
-                <%= sourceFrameCreatorNickname == userNickname ? "you" : sourceFrameCreatorNickname %>
-              </a>
-          <p>
+        <div class="media_body js-frame-recommendation">
+          <!-- content filled in by FrameRecommendationView -->
         </div><!-- eo .media_body -->
       </footer><!-- eo .media_module-->
     <% } %>
