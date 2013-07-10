@@ -3,7 +3,7 @@ var graph = {
       {
          "name":"profile",
          "group":"profile",
-         "picture":"/forceGraph/images/avatar.svg",
+         "picture":"/images/force-graph/avatar.svg",
          "originX":330,
          "originY":200,
          "radius":35
@@ -11,7 +11,7 @@ var graph = {
       {
          "name":"facebook",
          "group":"social",
-         "picture":"/forceGraph/images/social_facebook.svg",
+         "picture":"/images/force-graph/social_facebook.svg",
          "originX":100,
          "originY":100,
          "radius":20
@@ -19,7 +19,7 @@ var graph = {
       {
          "name":"tumblr",
          "group":"social",
-         "picture":"/forceGraph/images/social_tumblr.svg",
+         "picture":"/images/force-graph/social_tumblr.svg",
          "originX":-75,
          "originY":-75,
          "radius":20
@@ -27,7 +27,7 @@ var graph = {
       {
          "name":"twitter",
          "group":"social",
-         "picture":"/forceGraph/images/social_twitter.svg",
+         "picture":"/images/force-graph/social_twitter.svg",
          "originX":50,
          "originY":-50,
          "radius":20
@@ -35,7 +35,7 @@ var graph = {
       {
          "name":"vincent",
          "group":"user",
-         "picture":"/forceGraph/images/vincent.jpg",
+         "picture":"/images/force-graph/vincent.jpg",
          "originX":-40,
          "originY":80,
          "radius":30
@@ -43,7 +43,7 @@ var graph = {
       {
          "name":"frasher",
          "group":"user",
-         "picture":"/forceGraph/images/frasher.jpg",
+         "picture":"/images/force-graph/frasher.jpg",
          "originX":100,
          "originY":-100,
          "radius":30
@@ -51,7 +51,7 @@ var graph = {
       {
          "name":"tsvi",
          "group":"user",
-         "picture":"/forceGraph/images/tsvi.jpg",
+         "picture":"/images/force-graph/tsvi.jpg",
          "originX":0,
          "originY":-100,
          "radius":30
@@ -59,7 +59,7 @@ var graph = {
       {
          "name":"reece",
          "group":"user",
-         "picture":"/forceGraph/images/reece.jpg",
+         "picture":"/images/force-graph/reece.jpg",
          "originX":-125,
          "originY":-125,
          "radius":30
@@ -67,7 +67,7 @@ var graph = {
       {
          "name":"chris",
          "group":"user",
-         "picture":"/forceGraph/images/chris.jpg",
+         "picture":"/images/force-graph/chris.jpg",
          "originX":100,
          "originY":200,
          "radius":30
@@ -75,7 +75,7 @@ var graph = {
       {
          "name":"edon",
          "group":"user",
-         "picture":"/forceGraph/images/edon.jpg",
+         "picture":"/images/force-graph/edon.jpg",
          "originX":170,
          "originY":170,
          "radius":30
@@ -83,7 +83,7 @@ var graph = {
       {
          "name":"dan",
          "group":"user",
-         "picture":"/forceGraph/images/dan.jpg",
+         "picture":"/images/force-graph/andrew.jpg",
          "originX":200,
          "originY":100,
          "radius":30
@@ -91,7 +91,7 @@ var graph = {
       {
          "name":"shark",
          "group":"video",
-         "picture":"/forceGraph/images/shark.jpg",
+         "picture":"/images/force-graph/shark.jpg",
          "originX":-120,
          "originY":150,
          "radius":40
@@ -99,7 +99,7 @@ var graph = {
       {
          "name":"dog lying down",
          "group":"video",
-         "picture":"/forceGraph/images/lyingDown.jpg",
+         "picture":"/images/force-graph/lyingDown.jpg",
          "originX":-140,
          "originY":50,
          "radius":40
@@ -107,7 +107,7 @@ var graph = {
       {
          "name":"cat with hat",
          "group":"video",
-         "picture":"/forceGraph/images/hat.jpg",
+         "picture":"/images/force-graph/hat.jpg",
          "originX":100,
          "originY":310,
          "radius":40
@@ -115,7 +115,7 @@ var graph = {
       {
          "name":"cats",
          "group":"video",
-         "picture":"/forceGraph/images/cats.jpg",
+         "picture":"/images/force-graph/cats.jpg",
          "originX":280,
          "originY":280,
          "radius":40
@@ -123,7 +123,7 @@ var graph = {
       {
          "name":"bear",
          "group":"video",
-         "picture":"/forceGraph/images/bear.jpg",
+         "picture":"/images/force-graph/bear.jpg",
          "originX":175,
          "originY":-175,
          "radius":40
@@ -131,7 +131,7 @@ var graph = {
       {
          "name":"dog with hands",
          "group":"video",
-         "picture":"/forceGraph/images/hands.jpg",
+         "picture":"/images/force-graph/hands.jpg",
          "originX":-15,
          "originY":-180,
          "radius":40
@@ -139,7 +139,7 @@ var graph = {
       {
          "name":"yawn",
          "group":"video",
-         "picture":"/forceGraph/images/yawn.jpg",
+         "picture":"/images/force-graph/yawn.jpg",
          "originX":-175,
          "originY":-175,
          "radius":40
@@ -147,7 +147,7 @@ var graph = {
       {
          "name":"sleep",
          "group":"video",
-         "picture":"/forceGraph/images/sleep.jpg",
+         "picture":"/images/force-graph/sleep.jpg",
          "originX":-230,
          "originY":260,
          "radius":40
