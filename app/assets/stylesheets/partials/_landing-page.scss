@@ -185,10 +185,12 @@
       .shelf__lining {
         padding: 4em 3em;
         width: 50%;
+        position: relative;
+        z-index: 10;
       }
       &.shelf--facebook-logged-out {
         .shelf__lining {
-          padding: 8em 3em;
+          padding: 9em 3em;
         }
 
         .facepile {
