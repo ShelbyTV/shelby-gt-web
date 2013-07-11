@@ -48,12 +48,15 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     /*
       Where should new listItemViews be rendered?
       Valid options are 'append' (default), 'prepend', and 'before'.
-      'before' behaves like 'append' but you must also include an element selector (which shoud only
-      match one element) that the child is appended just before.
+        'before' behaves like 'append' but you must also include an element selector (which shoud only
+        match one element) that the child is appended just before.
+      If you specify position : 'before' and no element is found based on the selector, then setting
+        fallbackToAppend : true will cause the element to be appended instead
     */
     insert : {
       position : 'append',
-      selector : null
+      selector : null,
+      fallbackToAppend : false
     },
 
     /*
@@ -197,22 +200,22 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   sourceAddOne : function(item, collection, options){
-    if (!this._filter || this._filter(item)) {
-      this._displayCollection.add(item);
-    }
     // there's no way to effectively specify add:true for a Backbone Relational collection
     // we can simulate it by storing all of the contents the relational collection ever loaded,
     // and using this as a surrogate for the relational collection itself when re-filtering
     if (!this.options.collection && this.options.simulateAddTrue) {
-      this._simulatedMasterCollection.add(item);
+      this._simulatedMasterCollection.add(item, options);
+    }
+    if (!this._filter || this._filter(item)) {
+      this._displayCollection.add(item, options);
     }
   },
 
   sourceRemoveOne : function(item){
-    this._displayCollection.remove(item);
     if (!this.options.collection && this.options.simulateAddTrue) {
       this._simulatedMasterCollection.remove(item);
     }
+    this._displayCollection.remove(item);
   },
 
   sourceReset : function(sourceCollection){
@@ -239,14 +242,23 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   internalAddOne : function(item, collection, options){
+    options = options || {};
+
     var self = this;
     var childView = this._constructListItemView(item);
 
     // Special handling if the item was not simply appended
-    if (options && _(options).has('index')){
-      this._listItemViews.splice(options.index, 0, childView);
+    var insertAtIndex = -1;
+    if (_(options).has('at')) {
+      insertAtIndex = options.at;
+    } else if (_(options).has('index')) {
+      insertAtIndex = options.index;
+    }
+
+    if (insertAtIndex > -1){
+      this._listItemViews.splice(insertAtIndex, 0, childView);
       // adjusting for size of _intervalViews b/c DOM has views from both _intervalViews and _listItemViews
-      this.insertChildAt(childView, options.index+this._intervalViews.length);
+      this.insertChildAt(childView, insertAtIndex+this._intervalViews.length);
     } else {
       //store a reference to all list item child views so they can be removed/left without
       //removing any other child views
@@ -310,7 +322,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
             return;
           case 'before' :
             if (this.options.insert.selector) {
-              this.insertChildBefore(childView, this.options.insert.selector);
+              this.insertChildBefore(childView, this.options.insert.selector, this.options.insert.fallbackToAppend);
               return;
             }
         }
@@ -320,7 +332,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this.appendChild(childView);
   },
 
-  internalReset : function(models){
+  internalReset : function(collection){
     var self = this;
     //we have to completely repopulate the contents of the view, so remove
     //all the existing list items
@@ -333,8 +345,8 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     });
     this._intervalViews.length = 0;
     //refill the view with the new contents
-    models.each(function(item){
-      self.internalAddOne(item);
+    collection.each(function(item){
+      self.internalAddOne(item, collection);
     });
   },
 

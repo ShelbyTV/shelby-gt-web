@@ -30,9 +30,14 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
 
   //TODO: refactor these to be DRYer
 
-  insertChildBefore: function(view, selector) {
-    this.renderChild(view);
-    this.$(selector).before(view.el);
+  insertChildBefore: function(view, selector, fallbackToAppend) {
+    var $insertBefore = this.$(selector);
+    if ($insertBefore.length) {
+      this.renderChild(view);
+      $insertBefore.before(view.el);
+    } else if (fallbackToAppend) {
+      this.appendChild(view);
+    }
   },
 
   insertChildAt : function(view, childIndex) {

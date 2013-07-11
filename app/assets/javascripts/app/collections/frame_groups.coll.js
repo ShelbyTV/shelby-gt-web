@@ -86,6 +86,9 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
          var neitherAreMocks = !dashboard_entry || (!dashboard_entry.get('mockDBE') && !this.at(j).get('primaryDashboardEntry').get('mockDBE'));
          if (areSameVideo && neitherAreVideoRecs && neitherAreMocks) {
             this.at(j).add(frame, dashboard_entry, options);
+            if (dashboard_entry) {
+               dashboard_entry.recs_revealed = this.at(j).recs_revealed;
+            }
             dupe = true;
          }
       }
@@ -104,10 +107,28 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
            }
         }
 
+        if (_(options).has('at')) {
+          if (options.at > 0) {
+            var insertAfter = this._associatedSourceCollection.at(options.at - 1);
+            if (insertAfter) {
+              var frameToFind = insertAfter.get('frame') || insertAfter;
+              var frameGroupIndex = this._indexOfMatchingFrameGroup(frameToFind);
+              if (frameGroupIndex > -1) {
+                options.at = frameGroupIndex + 1;
+              } else {
+                options.at = this.length;
+              }
+            } else {
+              options.at = this.length;
+            }
+          }
+        }
+
         Backbone.Collection.prototype.add.call(this, frameGroup, options);
 
-        if (dashboard_entry && !dashboard_entry.get('mockDBE') && dashboard_entry.get('action') !== libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) {
-          this._convertRecsToNewFrameGroups(frame, frameGroup, options);
+        if (dashboard_entry && !dashboard_entry.recs_revealed && !dashboard_entry.isRecommendationEntry()) {
+          this._convertRecsToNewFrameGroups(dashboard_entry, frame, options);
+          dashboard_entry.recs_revealed = true;
         }
       }
     }
@@ -214,7 +235,7 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     // otherwise search for frame
     // FOR purpose of finding index below...
 
-  _convertRecsToNewFrameGroups : function(frame, frameGroup, options){
+  _convertRecsToNewFrameGroups : function(dbe, frame, options){
     // don't get and show recs if we are displaying anything but dasboard or community
     if (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.dashboard) { //&& shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel) {
       return;
@@ -280,41 +301,13 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
            }
           }
 
-          var _currentCollection, _entity;
           // insert this new frameGroup at the appropriate place in the collection
-          options.at = self._indexToInsertRecommendation(frame, self._associatedDisplayCollection) + 1;
-          //console.log("at: ", options.at, newDBE);
-          //console.log("collections:", self._associatedMasterCollection, self._associatedDisplayCollection);
-          self._associatedDisplayCollection.add(newDBE, options);
-          self._associatedMasterCollection.add(newDBE, options);
+          options.at = self._associatedSourceCollection.indexOf(dbe || frame) + 1;
+          self._associatedListView.sourceAddOne(newDBE, self._boundCollection, options, true);
           }
         });
       }
     }
-  },
-
-  _indexToInsertRecommendation : function(entity, collection) {
-    // entity can be a dbe or a frame ???
-    shelby.testCollection = collection;
-    shelby.testEntity = entity;
-    if (collection.models[0].has('frame')){
-      console.log("======= DBE =======", collection.length);
-      var _matchingEntity = collection.find(function(c){
-        if (c.get('frame').id == entity.id){
-         return c;
-        }
-      });
-      //console.log("_matchingEntity:", _matchingEntity);
-    }
-    else {
-      console.log("======= NOT DBE =======", collection.length);
-      var _matchingEntity = collection.find(function(c){
-        return _.contains(c.get('frames').models, entity);
-      });
-      //console.log("_matchingEntity", _matchingEntity);
-    }
-    console.log("match at:", collection.indexOf(_matchingEntity));
-    return collection.indexOf(_matchingEntity);
   }
 
 });

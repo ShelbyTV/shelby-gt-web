@@ -61,8 +61,11 @@
       this._checkAndRegisterPlaylist();
 
       PagingListView.prototype.initialize.call(this);
-      this.frameGroupCollection._associatedMasterCollection = this.options.masterCollection;
-      this.frameGroupCollection._associatedDisplayCollection = this.options.displayCollection;
+      this.frameGroupCollection._boundCollection =
+        this.options.collection ||
+        this.options.model.get(this.options.collectionAttribute);
+      this.frameGroupCollection._associatedSourceCollection = this._getSourceCollection();
+      this.frameGroupCollection._associatedListView = this;
     },
 
     _cleanup : function(){
