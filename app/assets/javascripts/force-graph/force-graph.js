@@ -1,5 +1,5 @@
-(function(){ width = 460,
-    height = 418,
+(function(){ width = 942,
+    height = 422,
     hasBounced=true,
     isClicked=false,
     elasticity=.05,
@@ -10,7 +10,7 @@ var force = d3.layout.force()
     .theta(0)
     .linkDistance(function(d){return d.length;})
     .size([width, height]);
-var svg = d3.select(".media_image--rev").append("svg")
+var svg = d3.select("#socialBox").append("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("class","shelf__svg")
@@ -91,8 +91,8 @@ var svg = d3.select(".media_image--rev").append("svg")
   });
   //set center nodes attributes
   graph.nodes[0].fixed=true;
-  graph.nodes[0].x=200;
-  graph.nodes[0].px=200;
+  graph.nodes[0].x=700;
+  graph.nodes[0].px=700;
   graph.nodes[0].y=200;
   graph.nodes[0].py=200;
   force.tick();
@@ -129,7 +129,7 @@ var svg = d3.select(".media_image--rev").append("svg")
       return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
   }
   $people.on('mousedown', setDragging(true)).on('mouseup', setDragging(false));
-  $("#frame").mousedown(tryBounce);
+  $("#socialBox").mousedown(tryBounce);
 
   $(window).scroll(function(){
     if (isScrolledIntoView($shelf__svg)) {

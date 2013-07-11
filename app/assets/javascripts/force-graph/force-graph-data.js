@@ -12,30 +12,30 @@ var graph = {
          "name":"facebook",
          "group":"social",
          "picture":"/images/force-graph/social_facebook.svg",
-         "originX":100,
-         "originY":100,
+         "originX":80,
+         "originY":70,
          "radius":20
       },
       {
          "name":"tumblr",
          "group":"social",
          "picture":"/images/force-graph/social_tumblr.svg",
-         "originX":-75,
-         "originY":-75,
+         "originX":-50,
+         "originY":-50,
          "radius":20
       },
       {
          "name":"twitter",
          "group":"social",
          "picture":"/images/force-graph/social_twitter.svg",
-         "originX":50,
+         "originX":110,
          "originY":-50,
          "radius":20
       },
       {
          "name":"vincent",
          "group":"user",
-         "picture":"/images/force-graph/vincent.jpg",
+         "picture":"/images/force-graph/avatar1.jpg",
          "originX":-40,
          "originY":80,
          "radius":30
@@ -43,113 +43,81 @@ var graph = {
       {
          "name":"frasher",
          "group":"user",
-         "picture":"/images/force-graph/frasher.jpg",
-         "originX":100,
+         "picture":"/images/force-graph/avatar2.jpg",
+         "originX":160,
          "originY":-100,
          "radius":30
       },
       {
          "name":"tsvi",
          "group":"user",
-         "picture":"/images/force-graph/tsvi.jpg",
-         "originX":0,
+         "picture":"/images/force-graph/avatar3.jpg",
+         "originX":60,
          "originY":-100,
          "radius":30
       },
       {
          "name":"reece",
          "group":"user",
-         "picture":"/images/force-graph/reece.jpg",
-         "originX":-125,
-         "originY":-125,
+         "picture":"/images/force-graph/avatar4.jpg",
+         "originX":-100,
+         "originY":-100,
          "radius":30
       },
       {
          "name":"chris",
          "group":"user",
-         "picture":"/images/force-graph/chris.jpg",
-         "originX":100,
-         "originY":200,
+         "picture":"/images/force-graph/avatar5.jpg",
+         "originX":85,
+         "originY":160,
          "radius":30
       },
       {
          "name":"edon",
          "group":"user",
-         "picture":"/images/force-graph/edon.jpg",
+         "picture":"/images/force-graph/avatar6.jpg",
          "originX":170,
-         "originY":170,
+         "originY":120,
          "radius":30
       },
       {
-         "name":"dan",
-         "group":"user",
-         "picture":"/images/force-graph/andrew.jpg",
-         "originX":200,
-         "originY":100,
-         "radius":30
+         "name":"bear",
+         "group":"video",
+         "picture":"/images/force-graph/video5.jpg",
+         "originX":230,
+         "originY":-190,
+         "radius":40
       },
       {
          "name":"shark",
          "group":"video",
-         "picture":"/images/force-graph/superman.gif",
+         "picture":"/images/force-graph/video1.jpg",
          "originX":-120,
          "originY":150,
          "radius":40
       },
       {
-         "name":"dog lying down",
+         "name":"dog with hands",
          "group":"video",
-         "picture":"/images/force-graph/cat.gif",
-         "originX":-140,
-         "originY":50,
+         "picture":"/images/force-graph/video6.jpg",
+         "originX":0,
+         "originY":-180,
          "radius":40
       },
       {
          "name":"cat with hat",
          "group":"video",
-         "picture":"/images/force-graph/confused.gif",
+         "picture":"/images/force-graph/video3.jpg",
          "originX":100,
-         "originY":310,
+         "originY":270,
          "radius":40
       },
       {
          "name":"cats",
          "group":"video",
-         "picture":"/images/force-graph/scream.gif",
-         "originX":280,
-         "originY":280,
-         "radius":40
-      },
-      {
-         "name":"bear",
-         "group":"video",
-         "picture":"/images/force-graph/kick.gif",
-         "originX":175,
-         "originY":-175,
-         "radius":40
-      },
-      {
-         "name":"dog with hands",
-         "group":"video",
-         "picture":"/images/force-graph/love.gif",
-         "originX":-15,
-         "originY":-180,
-         "radius":40
-      },
-      {
-         "name":"yawn",
-         "group":"video",
-         "picture":"/images/force-graph/goal.gif",
-         "originX":-175,
-         "originY":-175,
-         "radius":40
-      },
-      {
-         "name":"sleep",
-         "group":"video",
-         "picture":"/images/force-graph/tommy.gif",
-         "originX":-230,
-         "originY":260,
+         "picture":"/images/force-graph/video4.jpg",
+         "originX":270,
+         "originY":220,
          "radius":40
       }
    ],
@@ -200,49 +168,29 @@ var graph = {
          "length":80
       },
       {
-         "source":1,
-         "target":10,
-         "length":80
-      },
-      {
          "source":4,
          "target":11,
-         "length":80
-      },
-      {
-         "source":4,
-         "target":12,
-         "length":80
+         "length":120
       },
       {
          "source":8,
          "target":13,
-         "length":80
+         "length":120
       },
       {
          "source":9,
          "target":14,
-         "length":80
+         "length":120
       },
       {
          "source":5,
-         "target":15,
-         "length":80
+         "target":10,
+         "length":120
       },
       {
          "source":6,
-         "target":16,
-         "length":80
-      },
-      {
-         "source":7,
-         "target":17,
-         "length":80
-      },
-      {
-         "source":11,
-         "target":18,
-         "length":80
+         "target":12,
+         "length":120
       }
    ]
 }

@@ -186,6 +186,7 @@
       }
       .shelf__lining {
         padding: 4em 3em;
+        position: absolute;
       }
       //non-normaitve 
       .shelf__svg{
@@ -193,93 +194,7 @@
           position:relative;
         }
       }      
-      .link {
-      stroke: #999;
-      stroke-opacity: .6;
-      }
-
-      .profile {
-        border-radius: 50px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 13px;
-        height: 55px;
-        display: block;
-      }
-
-      .social {
-        border-radius: 50px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 11px;
-        height: 28px;
-        display: block;
-      }
-      .video {
-        width: 100%;
-        height: 100%;
-        border-radius: 3px;
-        position: absolute;
-      }
-      .user {
-        width: 100%;
-        height: 100%;
-        border-radius: 50px;
-      }
-      .play {
-        width: 28px; 
-        height:30px; 
-        padding-top: 8px; 
-        padding-left:12px;
-        position:absolute; 
-      }
-
-      .social__wrapper {
-        width:40px;
-        height: 40px;
-        margin:0;
-        border-radius:50px;        
-      }
-      .video__wrapper {
-        width:120px;
-        height: 80px;
-        margin:0;
-        border-radius:10px;
-        background: #ffffff;
-      }
-      .user__wrapper {
-        width: 60px;
-        height: 60px;
-        margin:0;
-        border-radius:50px;
-        background: #ffffff;
-      }
-      .profile__wrapper {
-        width: 70px;
-        height: 70px;
-        margin:0;
-        border-radius:50px;
-        background: #6ab843;
-      }
-      .play__wrapper {
-        width: 38px; 
-        height: 38px; 
-        border-radius: 30px; 
-        background:#000000; 
-        opacity:0.7; 
-        margin-top:22px; 
-        margin-left:38px;
-        position:absolute;
-      }
-      .social--twitter {
-          background: #2eaae1;
-      }
-      .social--facebook { 
-        background: #0155a0;
-      }
-      .social--tumblr {
-        background: #41607e;
-      }
+      
       &.shelf--facebook-logged-out {
         .facepile {
           display: none;
@@ -411,7 +326,9 @@
 .shelf__lining {
   padding: 2em 3em;
 }
-
+#social-description {
+  width:45%;
+}
 .shelf__h1 {
   font-size: 1.8em;
   margin-bottom: 1em;
@@ -457,4 +374,93 @@
       color: $ui-white;
     }
   }
+}
+#frame {
+  .link {
+        stroke: #999;
+        stroke-opacity: .6;
+        }
+
+        .profile {
+          border-radius: 50px;
+          margin-left: auto;
+          margin-right: auto;
+          padding-top: 13px;
+          height: 55px;
+          display: block;
+        }
+
+        .social {
+          border-radius: 50px;
+          margin-left: auto;
+          margin-right: auto;
+          padding-top: 11px;
+          height: 28px;
+          display: block;
+        }
+        .video {
+          width: 100%;
+          height: 100%;
+          border-radius: 3px;
+          position: absolute;
+        }
+        .user {
+          width: 100%;
+          height: 100%;
+          border-radius: 50px;
+        }
+        .play {
+          width: 28px; 
+          height:30px; 
+          padding-top: 8px; 
+          padding-left:12px;
+          position:absolute; 
+        }
+
+        .social__wrapper {
+          width:40px;
+          height: 40px;
+          margin:0;
+          border-radius:50px;        
+        }
+        .video__wrapper {
+          width:120px;
+          height: 80px;
+          margin:0;
+          border-radius:10px;
+          background: #ffffff;
+        }
+        .user__wrapper {
+          width: 60px;
+          height: 60px;
+          margin:0;
+          border-radius:50px;
+          background: #ffffff;
+        }
+        .profile__wrapper {
+          width: 70px;
+          height: 70px;
+          margin:0;
+          border-radius:50px;
+          background: #6ab843;
+        }
+        .play__wrapper {
+          width: 38px; 
+          height: 38px; 
+          border-radius: 30px; 
+          background:#000000; 
+          opacity:0.7; 
+          margin-top:22px; 
+          margin-left:38px;
+          position:absolute;
+        }
+        .social--twitter {
+            background: #2eaae1;
+        }
+        .social--facebook { 
+          background: #0155a0;
+        }
+        .social--tumblr {
+          background: #41607e;
+        }
 }
