@@ -1,5 +1,35 @@
 (function(){
 
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : 115071338568035, // App ID
+      channelURL : '//shelby.tv/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      oauth      : true, // enable OAuth 2.0
+      xfbml      : true  // parse XFBML
+    });
+    FB.getLoginStatus(function(response) {
+       if (response.status == 'connected') {
+        //get Facebook news feed
+        $(document).ready(function(){
+         var $user= $('.user');
+         var counter=0;
+         FB.api('/me/friends?fields=installed=true', 'get', function(response) {
+           for (var x in response.data) {  
+              if (response.data[x].installed==true) {                                                
+                if (counter<6) {
+                  document.getElementsByClassName('user')[counter].src='https://graph.facebook.com/'+response.data[x].id+'/picture';
+                }
+                counter++; 
+              }
+           }
+         });
+       });
+      }
+    });
+  };
+
   var hasBounced = true,
       isClicked  = false,
       elasticity = 0.05,
@@ -119,11 +149,10 @@
     graph.nodes[0].py    = 200;
 
     force.tick();
-
+    
     $(document).ready(function(){
-
     var $people = $('.people');
-    var $shelf__svg = $('.shelf__svg');
+    var $shelf__lining = $('.shelf__lining');
 
     //bounces graph around center
     function bounce (graph) {
@@ -159,7 +188,7 @@
     $("#frame").mousedown(tryBounce);
 
     $(window).scroll(function(){
-      if (isScrolledIntoView($shelf__svg)) {
+      if (isScrolledIntoView($shelf__lining)) {
         if (hasBounced) {
           hasBounced = false;
           force.resume();
