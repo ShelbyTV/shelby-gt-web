@@ -40,6 +40,10 @@ libs.shelbyGT.AolVideoPlayerView = Support.CompositeView.extend({
     this.pause();
     this.$el.css('visibility', 'hidden');
     this.$el.css('z-index', '-1');
+
+    this.$el.remove();
+    this.playerState.set({playerLoaded:false});
+
     this.playerState.set({visible:false});
   },
 
@@ -78,7 +82,9 @@ libs.shelbyGT.AolVideoPlayerView = Support.CompositeView.extend({
       //since we have been loaded, need to make sure we only load_video if it's *different* from the current one (due to CH player bugginess)
       if(this._video !== video){
         this._video = video;
-        this._player.playVideo(video.get('provider_id'), true);
+        this.leave();
+        //this._player.playVideo(video.get('provider_id'), true);
+        this._bootstrapPlayer();
         //this._player.play();
       } else {
         this.play();
@@ -176,12 +182,12 @@ libs.shelbyGT.AolVideoPlayerView = Support.CompositeView.extend({
   },
 
   _playerReady: function(e){
-    //CollegeHumor replaces the div backbone is holding with it's own, so we need to update this view
+    this.id = e.player.divID;
     this.setElement($('#'+this.id));
 
-    // need to make the video player the right size
-    $("#"+e.player.divID+" object").css("position", "absolute").css("width", "100%").css("height", "100%");
 
+    // need to make the video player the right size
+    $("#"+e.player.divID+" object").css("position", "absolute").css("width", "100%").css("height", "100%").css('z-index', '1');;
     this._player = e.player;
     window.T = e;
 
