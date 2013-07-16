@@ -187,7 +187,7 @@ libs.shelbyGT.AolVideoPlayerView = Support.CompositeView.extend({
 
 
     // need to make the video player the right size
-    $("#"+e.player.divID+" object").css("position", "absolute").css("width", "100%").css("height", "100%").css('z-index', '1');;
+    $("#"+e.player.divID+" object").css("position", "absolute").css("width", "100%").css("height", "100%").css('z-index', '1');
     this._player = e.player;
     window.T = e;
 
