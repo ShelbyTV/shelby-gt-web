@@ -15,15 +15,13 @@ libs.shelbyGT.AolVideoPlayerView = Support.CompositeView.extend({
   initialize: function(opts){
     var self = this;
 
-    console.log("AOL Video");
-
     this._playbackState = opts.playbackState;
 
     this.playerState = new libs.shelbyGT.PlayerStateModel({
       playerView: this,
-      supportsChromeless: true,
+      supportsChromeless: false,
       supportsMute: true,
-      supportsVolume: false
+      supportsVolume: true
       });
 
     //listen to private events
@@ -80,7 +78,8 @@ libs.shelbyGT.AolVideoPlayerView = Support.CompositeView.extend({
       //since we have been loaded, need to make sure we only load_video if it's *different* from the current one (due to CH player bugginess)
       if(this._video !== video){
         this._video = video;
-        this._player.play();
+        this._player.playVideo(video.get('provider_id'), true);
+        //this._player.play();
       } else {
         this.play();
       }
@@ -99,31 +98,32 @@ libs.shelbyGT.AolVideoPlayerView = Support.CompositeView.extend({
     }
   },
 
-  //expects pct to be [0.0, 1.0]
+  //expects pct to be [0, 100]
   seekByPct: function(pct){
     if( this._player ){
-      this._player.seekVideo( (pct * this.playerState.get('duration')) );
+      var _time = (pct * this.playerState.get('duration'));
+      this._player.seekTo(Math.floor(_time));
     }
   },
 
   mute: function(){
     if(this._player){
-      this._player.setVolume(0);
+      this._player.mute();
       this.playerState.set({muted: true});
     }
   },
 
   unMute: function(){
     if(this._player){
-      this._player.setVolume(1);
+      this._player.mute(0);
       this.playerState.set({muted: true});
     }
   },
 
-  //expects pct to be [0.0, 1.0]
+  //expects pct to be [0, 100]
   setVolume: function(pct){
     if(this._player){
-      this._player.setVolume(pct);
+      this._player.volue(pct);
       this.playerState.set({volume: pct});
     }
   },
@@ -137,31 +137,31 @@ libs.shelbyGT.AolVideoPlayerView = Support.CompositeView.extend({
   //---------------------------------------------------
 
   _setCurrentTime: function(t){
-    this.playerState.set({currentTime:t});
+    this.playerState.set({currentTime:t.playheadTime});
   },
 
   _setDuration: function(d){
-    this.playerState.set({duration:d});
+    this.playerState.set({duration:d.videoDuration});
   },
 
   _onStateChange: function(newState){
-    switch(newState) {
-      case 'ended':
-        // this marks the end of video, but an add plays after this, global callback function used is: detectEndVideo()
+    var _state = newState.eventCode;
+    switch(_state) {
+      case 64:
+        Backbone.Events.trigger("aol:setCurrentTime", newState);
+        Backbone.Events.trigger("aol:setDuration", newState);
+        if (newState.isPlayComplete) {
+          Backbone.Events.trigger("aol:onEnded", newState);
+        }
         break;
-      case 'playing':
+      case 4:
         this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.playing});
         if (!this._isActivePlayer) {
           this.pause();
         }
         break;
-      case 'pause':
+      case 8:
         this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.paused});
-        break;
-      case 'buffering':
-        this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.buffering});
-        break;
-      case 'seek':
         break;
       default:
         break;
@@ -169,38 +169,43 @@ libs.shelbyGT.AolVideoPlayerView = Support.CompositeView.extend({
     }
   },
 
-  _onEnded: function(){
-    this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.ended});
+  _onEnded: function(p){
+    if (p.isPlayComplete){
+      this.playerState.set({playbackStatus: libs.shelbyGT.PlaybackStatus.ended});
+    }
   },
 
   _playerReady: function(e){
-    console.log("PLAYER READY", e);
     //CollegeHumor replaces the div backbone is holding with it's own, so we need to update this view
     this.setElement($('#'+this.id));
 
+    // need to make the video player the right size
+    $("#"+e.player.divID+" object").css("position", "absolute").css("width", "100%").css("height", "100%");
+
     this._player = e.player;
-    window.TEST = e.player;
-    //auto play is not a config option, need to press play meow...
-    if( this._playbackState.get('autoplayOnVideoDisplay') && this._isActivePlayer ){ this.play(); }
+    window.T = e;
 
     this.playerState.set({playerLoaded: true});
   },
 
   _bootstrapPlayer: function(){
-    console.log("bootstraping AOL");
+    var _playerViewport = $('.videoplayer-viewport');
+    var _width = _playerViewport.width();
+    var _height = _playerViewport.height();
+
     var tag = document.createElement('script');
-    var url = "http://pshared.5min.com/Scripts/PlayerSeed.js?sid=239&amp;width=1000&amp;height=800&amp;colorPallet=%23FFEB00&amp;hasCompanion=false&amp;videoControlDisplayColor=%23191919&amp;playList=517823407&amp;onReady=AOLPlayerReady";
+    // add htmlplayerforce=1 param to do that.
+    // know however, that params that are passed to events are different.
+    var url = "http://pshared.5min.com/Scripts/PlayerSeed.js?sid=239&autoStart="+ (this._playbackState.get('autoplayOnVideoDisplay') ? "true" : "false") +"&wmode=transparent&width="+_width+"&height="+_height+"&hasCompanion=false&videoControlDisplayColor=%23191919&playList="+ this._video.get("provider_id")+"&playerId="+this.id+"&onReady=AOLPlayerReady&onTimeUpdate=onAOLStateChange&onPause=onAOLStateChange&onPlay=onAOLStateChange";
+
     tag.src = url;
     var firstScriptTag = document.getElementById('youtube-player-holder');
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    //swfobject.embedSWF(url, this.id, "100%", "100%", "9.0.0", null, null, { allowScriptAccess: "always", wmode: "transparent" });
   }
 
 });
 
 //Global (and poorly named) functions called by Collegehumor player
 function AOLPlayerReady(p){ Backbone.Events.trigger("aol:playerReady", p); }
-function onVideoStartPlay(newState){ Backbone.Events.trigger("aol:stateChange", newState); }
-function onTimeUpdate(e){ Backbone.Events.trigger("aol:onEnded", e); }
-function onTimeUpdate(t){ Backbone.Events.trigger("aol:setCurrentTime", t); }
-function getDuration(d){ Backbone.Events.trigger("aol:setDuration", d); }
+function onAOLStateChange(newState){ Backbone.Events.trigger("aol:stateChange", newState); }
+
