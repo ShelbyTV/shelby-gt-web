@@ -3,7 +3,8 @@ libs.shelbyGT.FrameRecommendationView = Support.CompositeView.extend({
   _firstFriend : null,
 
   options : {
-    isPvi : false // is this view inside of the PersistentVideoInfoView?
+    isPvi : false, // is this view inside of the PersistentVideoInfoView?
+    numAvatarsDisplayed : 10 // the number of friend avatars to display
   },
 
   template: function(obj){
@@ -20,6 +21,7 @@ libs.shelbyGT.FrameRecommendationView = Support.CompositeView.extend({
     var isEntertainmentGraph = this.model.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.entertainmentGraphRecommendation;
     if (isEntertainmentGraph) {
       friendsCollection = this.model.convertFriendIdsToUserCollection();
+      friendsCollection.reset(friendsCollection.first(this.options.numAvatarsDisplayed));
       this._firstFriend = friendsCollection.first();
       this._firstFriend.bind('change:nickname', this.render, this);
     }
