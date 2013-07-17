@@ -12,7 +12,9 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
   },
 
   render : function(){
-    var data = {};
+    var data = {
+			tweetURL : this._buildTweetUrl(123)
+		};
 
     this.$el.html(this.template(data));
   },
@@ -29,6 +31,16 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
 
   _clearErrors : function() {
     this.$('.form_fieldset').removeClass('form_fieldset--error');
-  }
+  },
+
+    _buildTweetUrl : function(userId) {
+
+      var tweetText = encodeURIComponent('Friends, join me on Shelby'),
+          tweetUrl  = 'http://shelby.tv/invite?id=' + userId;
+
+      var url = 'https://twitter.com/intent/tweet?related=shelby&via=shelby&url=' + tweetUrl + '&text=' + tweetText + '';
+
+      return url;
+    },
 
 });
