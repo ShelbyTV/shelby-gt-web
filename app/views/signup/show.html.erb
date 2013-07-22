@@ -1,7 +1,7 @@
-<div class="signup signup--profile<%= ' signup--profile_no-avatar' unless @user.has_key?('authentications') %>" role="main">
+<div class="signup signup--profile signup--profile_no-avatar" role="main">
   <div class="signup__head">
     <h2 class="signup__h3">
-      Step 3 of 3
+      Step 1 of 1 !!
     </h2>
 
     <h1 class="signup__h1">
@@ -18,22 +18,11 @@
         </legend>
 
         <div class="media_module">
-          <% if @user.has_key?('authentications') %>
-            <div class="media_image avatar__wrapper js-avatar-renderer">
-              <div class="dynamic-avatar">
-                <div class="image_module avatar avatar--largest js-avatar-image" style="background-image: url('<%= avatar_url_for_user(@user, "sq192x192") %>')">
-                </div>
-                <div class="progress-overlay"></div>
-              </div>
-              <input id="fileupload" type="file" name="avatar" accept="image/*">
-            </div><!-- eo media_image -->
-          <% end %>
-
           <div class="media_body">
             <fieldset class="form_fieldset">
               <%= label_tag 'name', 'Full Name', :class => 'form_label' %>
               <span class="form_error js-form-error">Please enter your name</span>
-              <%= text_field_tag 'name', @user ? @user['name'] : nil, :placeholder => 'First and Last Name', :class => 'form_input' %>
+              <%= text_field_tag 'name', nil, :placeholder => 'First and Last Name', :class => 'form_input' %>
             </fieldset>
 
             <%= field_set_tag(nil, {:class => (@nickname_error) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
@@ -43,7 +32,7 @@
               <% else %>
                 <span class="form_error js-form-error">Please enter a username</span>
               <% end %>
-              <%= text_field_tag 'nickname', @user ? @user['nickname'] : nil, :class => 'form_input' %>
+              <%= text_field_tag 'nickname', nil, :class => 'form_input' %>
             <% end %>
 
             <%= field_set_tag(nil, {:class => (@email_error) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
@@ -55,18 +44,18 @@
               <% else %>
                 <span class="form_error js-form-error">Please enter a valid email address</span>
               <% end %>
-              <%= email_field_tag 'primary_email', @user ? @user['primary_email'] : nil, :placeholder => 'email@address.com', :class => 'form_input' %>
+              <%= email_field_tag 'primary_email', nil, :placeholder => 'email@address.com', :class => 'form_input' %>
             <% end %>
 
             <fieldset class="form_fieldset">
               <%= label_tag 'password', 'Password', :class => 'form_label' %>
               <span class="form_error js-form-error">Password must be at least five characters</span>
-              <%= password_field_tag 'password', @user && @user['password'] ? @user['password'] : nil, :placeholder => '*****', :class => 'form_input' %>
+              <%= password_field_tag 'password', nil, :placeholder => '*****', :class => 'form_input' %>
               <span class="form__description">We never spam.</span>
             </fieldset>
 
             <fieldset class="form_fieldset">
-              <%= submit_tag("Create Account", :class => 'button_primer button_command button_command--flexible button_green js-track-event','data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Start Watching on Step 3' ) %>
+              <%= submit_tag("Join Shelby", :class => 'button_primer button_command button_command--flexible button_green js-track-event','data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Signup on Step 1' ) %>
             </fieldset>
           </div><!-- eo media_body -->
         </div><!-- eo media_module -->
