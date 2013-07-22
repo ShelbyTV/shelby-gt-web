@@ -1,9 +1,15 @@
-libs.shelbyGT.OnboardingContentSwitcherView = Support.CompositeView.extend({
+libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
 
-  el : '.js-onboarding-pane',
+  className: 'content_wrapper onboarding clearfix',
+
+  template : function(obj) {
+    return SHELBYJST['onboarding/onboarding'](obj);
+  },
 
   initialize : function() {
     shelby.models.guide.bind('change:onboardingStage', this._onOnboardingStageChange, this);
+
+    $('.js-main-layout').after(this.el);
   },
 
   _cleanup : function() {
@@ -38,6 +44,7 @@ libs.shelbyGT.OnboardingContentSwitcherView = Support.CompositeView.extend({
 
   render : function(){
     this._leaveChildren();
+    this.$el.html(this.template());
     //problem is that leaving child deletes the container?
     var stage = shelby.models.guide.get('onboardingStage');
     if (stage===null) return false;

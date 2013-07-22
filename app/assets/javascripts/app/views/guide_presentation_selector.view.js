@@ -85,18 +85,17 @@
     },
 
     _onGuideModelChanged : function(model){
-
       this._setSelected();
 
       // cetain updates only necessary if displayState has changed
       var _changedAttrs = _(model.changedAttributes());
       if (_changedAttrs.has('displayState')) {
-        if (model.get('displayState') == libs.shelbyGT.DisplayState.onboarding) {
-          //don't show any of the menus during onboarding
-          this.$('.js-content-selector').hide();
-        } else {
-          this.$('.js-content-selector').show();
-        }
+        // disable menus during onboarding, prevent hovers on dropdowns.
+        var doDisableMenus = (model.get('displayState') == libs.shelbyGT.DisplayState.onboarding);
+
+        this.$('.js-content-selector')
+              .children().toggleClass('dropdown_module', !doDisableMenus)
+              .children('.app_nav__button').attr('disabled', doDisableMenus);
       }
     },
 

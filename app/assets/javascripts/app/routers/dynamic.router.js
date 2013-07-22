@@ -488,7 +488,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   },
 
   displayOnboardingView : function(stage){
-    this._setupTopLevelViews();
+    this._setupTopLevelViews({onboarding: true});
     shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.onboarding, onboardingStage:stage});
   },
 
@@ -674,6 +674,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // default options
     options = _.chain({}).extend(options).defaults({
       isIsolatedRoll : false,
+      onboarding: false,
       openInvite : false
     }).value();
 
@@ -698,6 +699,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           guideModel : shelby.models.guide,
           model : shelby.models.playlistManager
         });
+    if(options.onboarding) {
+      shelby.views.onboarding = shelby.views.onboarding ||
+        new libs.shelbyGT.OnboardingView();
+    }
 
     if(!Browser.isIos()){
       ///////////////////

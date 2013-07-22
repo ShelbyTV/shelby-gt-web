@@ -87,8 +87,20 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           if (/isolated-roll/.test(url)){
             self._reroute();
           }
-          else if (!userModel.get('app_progress').hasCompletedOnboarding()) {
-            document.location.href = shelby.config.signupRoute;
+          else if (url.indexOf('onboarding') == -1) {
+            var userOnboardingProgress = userModel.get('app_progress').get('onboarding');
+
+            if (!userOnboardingProgress) {
+              self.navigate('/onboarding/1', {trigger:true, replace:true});
+              return;
+            } else {
+              if (userOnboardingProgress < 4) {
+                  self.navigate('/onboarding/' + (userOnboardingProgress + 1), {trigger:true, replace:true});
+                  return;
+              } else {
+                  self._reroute();
+              }
+            }
           } else {
             self._reroute();
           }

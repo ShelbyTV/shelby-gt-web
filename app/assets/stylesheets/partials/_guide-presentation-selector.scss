@@ -2,8 +2,6 @@
 
 //man nav block
 .app_nav {
-  display: none;
-
   .list__item {
     &.secondary-item {
       float: right;
@@ -39,6 +37,13 @@
     &:link,
     &:visited {
       text-decoration: none;
+    }
+  }
+  &[disabled] {
+    opacity: 0.5;
+
+    &:hover {
+      color: darken($ui-white,33.333%);
     }
   }
 }
