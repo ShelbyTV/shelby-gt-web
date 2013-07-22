@@ -74,7 +74,6 @@ function orderId(data) {
 		keys.push(key);
 	}
 	temp.sort(function(a,b){return b-a});
-	console.log(temp);
 	for (var x in temp) {
 		if (answer.indexOf(keys[values.indexOf(temp[x])])!=-1) {
 			delete values[values.indexOf(temp[x])];
@@ -83,32 +82,50 @@ function orderId(data) {
 	}
 	return answer;
 }
-function displayFriends (friends) {
-	$('.post').remove();
-	console.log('GOING IN');
+function displayFriends (friends, id) {
+	$('.'+id+'1').remove();
 	for (var x=0; x < Math.min(friends.length,48); x++) {
-		$('.go').append('<div class="post" style="display:inline;">'+'<img src="https://graph.facebook.com/'+friends[x]+'/picture"></div>');
+		$('.'+id).append('<div class="'+id+'1 post" style="display:inline;">'+'<img src="https://graph.facebook.com/'+friends[x]+'/picture"></div>');
 	}
 }
-function process (data) {
-	console.log(data);
-	for (var x in data) {
-		for (var i in data[x].fql_result_set){	
-			var id = data[x].fql_result_set[i][val[data[x].name].data];
-			if (!(id in ids)) ids[id]=val[data[x].name].val;
-			else ids[id]+=val[data[x].name].val;
-		}
+function process (data) {	
+	for (var i in data.fql_result_set){	
+		if (val[data.name]==undefined) break;
+			var id = data.fql_result_set[i][val[data.name].data];
+			if (id in ids) ids[id]+=val[data.name].val;
+			else ids[id]=val[data.name].val;
 	}
-	displayFriends(orderId(ids));
+	displayFriends(orderId(ids),'go');
+}
+function process2() {
+	window.statusData=[1331550225,100000030999600,100000152883013,519035738,586121302,854315174,647845190,854315174,647845190,1043554591,100000152883013,100000030999600,854315174,647845190,854315174,647845190,1598161380,647845190,1687980018,1344001825];
+	window.messageData=[1306417426,514233521,100000152883013,514233521,1687980018,514233521,514233521,1331550225,1663209170,514233521,716941386,1089990563,774384166,514233521,1258335120,1821308617,514233521,514233521,514233521,1391981422,514233521,854315174,1043554591,514233521,1444629544,100000152883013,603212209,514811764,672329108,625864457,1201314384,585286033,1043554591,100002192177788,514233521,100000030999600,519641619,514233521,1089990563,514233521,909245104,836740116,514233521,514233521,100000030806917,514233521,1360772286,514233521,1427707480,514233521,759176903,514233521,774384166,514233521,673723929,1079456261,514233521,514233521,630370476,514233521,1178422919,1448198986,514233521,514233521,1200829295,514233521,1002144438,514233521,547851341,514233521,750571542,514233521,631217385,514233521,1382520516,685869243,514233521,1306417426,514233521,100000030806917,100000226943764,514233521,703405919,514233521,1380240482,100001215002973,514233521,519035738,514233521,514233521,100000352772924,1663209170,514233521,514233521,556097074,514233521,683947409,504092771,514233521,586121302,514233521,1598161380,514233521,514233521,514811764,514233521,100003699774021,514233521,614980229,514233521,100000030999600,514233521,662712660,1530338,514233521];
+	window.photoData=[100000657033349,514233521,1448198986,514233521,614980229,572131664,586121302,100003338205589,749730236,677940382,779847929,1337173977,1231164609,514233521,1077584642,514233521,1448198986,514233521,514233521,1043554591,519035738,514233521,1043554591,519035738,514233521,1043554591,519035738,514233521,1043554591,519035738,514233521,725382936,1185439645,100001545467867,603182676,1448198986,1258335120,526887276,1305674084,1687980018,538921123,1178422919,514233521,100000226943764,514233521,514233521,1247154572,514233521];
+	ids2=ids;
+	for (var x in statusData) {
+		if (statusData[x] in ids2) ids2[statusData[x]]+=80;
+		else ids2[statusData[x]]=80;
+	}
+	for (var x in messageData) {
+		if (statusData[x] in ids2) ids2[statusData[x]]+=100;
+		else ids2[statusData[x]]=100;
+	}
+	for (var x in photoData) {
+		if (statusData[x] in ids2) ids2[statusData[x]]+=40;
+		else ids2[statusData[x]]=40;
+	}
+	displayFriends(orderId(ids2),'more');
 }
 $(document).ready(function(){
 	console.log("ready");
 	$('.submit').click(function(d){		
 		FB.getLoginStatus(function(response) {
 			if (response.status === 'connected') {
-				window.val={'link':{val:parseInt($('input[name="link"]').val()), data:"owner"}, 'post':{val:parseInt($('input[name="post"]').val()), data:"actor_id"}, 'status':{val:parseInt($('input[name="status"]').val()),data:"uid"}, 'postTo':{val:parseInt($('input[name="postTo"]').val()),data:"target_id"},'mutual':parseInt($('input[name="mutual"]').val()), 'newsFeed':{val:parseInt($('input[name="newsFeed"]').val()),data:"actor_id"}};
+				console.log("started");
+				window.val={'link':{val:parseInt($('input[name="link"]').val()), data:"owner"}, 'post':{val:parseInt($('input[name="post"]').val()), data:"actor_id"}, 'status':{val:parseInt($('input[name="status"]').val()),data:"uid"}, 'mutual':parseInt($('input[name="mutual"]').val()), 'newsFeed':{val:parseInt($('input[name="newsFeed"]').val()),data:"actor_id"}};
 				var friends=0;
 				window.ids ={};
+				window.ids2 ={};
 				// FB.api('/me/friends?fields=installed', 'get', function(response) {          
 				// 	for (var x in response.data) {              
 				// 		if (response.data[x].installed==true) {
@@ -120,24 +137,44 @@ $(document).ready(function(){
 				// });
 				FB.api('/me?fields=friends','get',function(response){
 					friends=response.friends.data.length;
-				});
-
-
+				});	
 				FB.api({
 					method: 'fql.multiquery',
 					queries: { //use # to merge queries later 			
-						'post':'select actor_id from stream where source_id=me() and actor_id in (select uid1 from friend where uid2=me()) limit 100',
-						'status':'select uid from status where status_id in (select object_id from like where user_id=me())',
-						'link':'select owner from link where link_id in (select object_id from like where user_id=me() and object_type="link" limit 400)',
+						'friends': 'select uid1 from friend where uid2=me()',
+						'objects': 'select object_id from like where user_id=me() limit 300',
+						'post':'select actor_id from stream where source_id=me() and actor_id in (select uid1 from #friends) limit 100',
+						'status':'select uid from status where status_id in (select object_id from #objects)',
+						'link':'select owner from link where link_id in (select object_id from #objects)',
 						// 'friends in photo':'select subject from photo_tag where pid in (select pid from photo_tag where subject=me())',
 						// 'friends in messages':'select recipients from thread where folder_id=1',
 						// 'postTo':'select target_id from connection where source_id=me() and target_type="user"',
-						'newsFeed':'SELECT actor_id FROM stream WHERE filter_key in (SELECT filter_key FROM stream_filter WHERE uid=me() and type = "newsfeed") and actor_id in (select uid1 from friend where uid2=me()) limit 50'
+						'newsFeed':'SELECT actor_id FROM stream WHERE filter_key in (SELECT filter_key FROM stream_filter WHERE uid=me() and type = "newsfeed") and actor_id in (select uid1 from #friends) limit 50'
 						// 'postTo':'select target_id from stream_tag where post_id in (select status_id from status where uid=me())' can't get need more permissions status 
 
 					}
-				}, function(response){process(response); console.log(response)});
-
+				}, function(response){
+					var randoFriend=[]; 
+					console.log(response);
+					for (var x in response){
+						if (val[response[x].name]!=undefined) process(response[x]);
+						if (response[x].name=='friends') {
+							while (randoFriend.length<49){
+								var random = Math.floor(Math.random()*response[x].fql_result_set.length);
+								if (randoFriend.indexOf(x)==-1) randoFriend.push(random);
+							}
+							console.log(randoFriend);
+							for (var y in randoFriend){
+								
+								randoFriend[y]=parseInt(response[x].fql_result_set[randoFriend[y]].uid1);
+								//console.log(randoFriend[x]);
+							}
+							displayFriends(randoFriend,'friends');
+						}
+					}					
+					process2();
+				});
+				
 				// FB.api('/me?fields=feed.limit(20)', 'get', function(response){					
 				// 	response.feed.data.forEach(function(story){				
 				// 		if (story.likes != undefined){
@@ -173,6 +210,9 @@ $(document).ready(function(){
 		});
 	return false;
 	});
+	$('.post').hover(function(d){
+
+	});
 });
 	// var link= "https://graph.facebook.com/me/friends";        
 	// $(document).ready(function(){
@@ -192,29 +232,23 @@ $(document).ready(function(){
 <div id="centerMe">
 	<form class="form">
 		<div class="container">
-			<div class="name">Value for link: (1...100)</div><input type="text" name="link" value="15"><br>
-			<div class="name">Value for post: (1...100)</div><input type="text" name="post" value="40"><br>
-			<div class="name">Value for status from: (1...100)</div><input type="text" name="status" value="80"><br>
-			<div class="name">Value for post to: (1...100)</div><input type="text" name="postTo" value="80"><br>
-			<div class="name">Importance of mutual friends (1...10): </div><input type="text" name="mutual" value="7"><br>
-			<div class="name">Value for newsfeed post: (1...100)</div><input type="text" name="newsFeed" value="80"><br>
+			<div class="name">Value for link: (1...100)</div><input type="text" name="link" value="50"><br>
+			<div class="name">Value for story on your wall: (1...100)</div><input type="text" name="post" value="30"><br>
+			<div class="name">Value for liked status: (1...100)</div><input type="text" name="status" value="60"><br>
+			<div class="name">Value for newsfeed post: (1...100)</div><input type="text" name="newsFeed" value="20"><br>
+			<div class="name">Value for mutual friends (1...10):</div><input type="text" name="mutual" value="7"><br>
 			<input type="submit" value="Test" class='submit'>
 		</div>
 	</form>
 </div>
 <table border="0" cellpadding="5" cellspacing="0" width="600">
-<tr><td align="left" valign="top" width="200">
-
-PUT FIRST COLUMN CONTENTS HERE
-
-</td><td align="left" valign="top" width="200">
-
-<div class="go"></div>
-
-</td><td align="left" valign="top" width="200">
-
-PUT THIRD COLUMN CONTENTS HERE
-
-</td></tr></table>
+	<tr><td align="left" valign="top" width="200">
+		<div class="friends"></div>
+	</td><td align="left" valign="top" width="200">
+		<div class="go"></div>
+	</td><td align="left" valign="top" width="200">
+		<div class="more"></div>
+	</td></tr>
+</table>
 </body>
 </html>
