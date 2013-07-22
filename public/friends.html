@@ -1,0 +1,220 @@
+<html>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<style>
+.form {
+	margin: 0em 0em 2em 0em;
+	position:relative;
+	font-family: Helvetica, Geneva, sans-serif;
+	font-size: 16px;
+	line-height: 18px;
+	text-decoration: none;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	padding:10px;
+	display: inline-block;
+	border: 1px solid #999;
+	border: inset 1px solid #333;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+.centerMe {
+	text-align: center;
+}
+.name {
+	text-align: center;
+	display: inline;
+}
+input {
+	width: 375px;
+	display: block;
+	border: 1px solid #999;
+	height: 25px;
+}
+.submit {
+	background-color: orange;
+	font-size: 18px;
+	height: 30px;
+	border: 3px solid black;
+	margin: 2px 2px 2px 2px;
+	width: 94px;
+	margin-right: auto;
+	margin-left: auto;
+}
+</style>
+<script type="text/javascript">
+window.fbAsyncInit = function() {
+	FB.init({
+	  appId      : 115071338568035, // App ID
+	  channelURL : 'http://shelby.tv/channel.html', // Channel File
+	  status     : true, // check login status
+	  cookie     : true, // enable cookies to allow the server to access the session
+	  oauth      : true, // enable OAuth 2.0
+	  xfbml      : true  // parse XFBML
+	});
+  };
+  // Load the SDK asynchronously
+  (function(d, s, id){
+	 var js, fjs = d.getElementsByTagName(s)[0];
+	 if (d.getElementById(id)) {return;}
+	 js = d.createElement(s); js.id = id;
+	 js.src = "//connect.facebook.net/en_US/all.js";
+	 fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+function orderId(data) {
+	var values=[];
+	var temp=[]; 
+	var keys=[];
+	var answer=[];
+	for (var key in data) {
+		values.push(data[key]);
+		temp.push(data[key]);
+		keys.push(key);
+	}
+	temp.sort(function(a,b){return b-a});
+	console.log(temp);
+	for (var x in temp) {
+		if (answer.indexOf(keys[values.indexOf(temp[x])])!=-1) {
+			delete values[values.indexOf(temp[x])];
+		}
+		answer.push(keys[values.indexOf(temp[x])]);
+	}
+	return answer;
+}
+function displayFriends (friends) {
+	$('.post').remove();
+	console.log('GOING IN');
+	for (var x=0; x < Math.min(friends.length,48); x++) {
+		$('.go').append('<div class="post" style="display:inline;">'+'<img src="https://graph.facebook.com/'+friends[x]+'/picture"></div>');
+	}
+}
+function process (data) {
+	console.log(data);
+	for (var x in data) {
+		for (var i in data[x].fql_result_set){	
+			var id = data[x].fql_result_set[i][val[data[x].name].data];
+			if (!(id in ids)) ids[id]=val[data[x].name].val;
+			else ids[id]+=val[data[x].name].val;
+		}
+	}
+	displayFriends(orderId(ids));
+}
+$(document).ready(function(){
+	console.log("ready");
+	$('.submit').click(function(d){		
+		FB.getLoginStatus(function(response) {
+			if (response.status === 'connected') {
+				window.val={'link':{val:parseInt($('input[name="link"]').val()), data:"owner"}, 'post':{val:parseInt($('input[name="post"]').val()), data:"actor_id"}, 'status':{val:parseInt($('input[name="status"]').val()),data:"uid"}, 'postTo':{val:parseInt($('input[name="postTo"]').val()),data:"target_id"},'mutual':parseInt($('input[name="mutual"]').val()), 'newsFeed':{val:parseInt($('input[name="newsFeed"]').val()),data:"actor_id"}};
+				var friends=0;
+				window.ids ={};
+				// FB.api('/me/friends?fields=installed', 'get', function(response) {          
+				// 	for (var x in response.data) {              
+				// 		if (response.data[x].installed==true) {
+				// 			$('.go').append('<div class="post" style="display:inline;">'+'<img src="https://graph.facebook.com/'+response.data[x].id+'/picture"></div>');
+				// 		}
+				// }});
+				// FB.api('514233521?fields=tagged','get',function(response){
+				// //console.log(response);
+				// });
+				FB.api('/me?fields=friends','get',function(response){
+					friends=response.friends.data.length;
+				});
+
+
+				FB.api({
+					method: 'fql.multiquery',
+					queries: { //use # to merge queries later 			
+						'post':'select actor_id from stream where source_id=me() and actor_id in (select uid1 from friend where uid2=me()) limit 100',
+						'status':'select uid from status where status_id in (select object_id from like where user_id=me())',
+						'link':'select owner from link where link_id in (select object_id from like where user_id=me() and object_type="link" limit 400)',
+						// 'friends in photo':'select subject from photo_tag where pid in (select pid from photo_tag where subject=me())',
+						// 'friends in messages':'select recipients from thread where folder_id=1',
+						// 'postTo':'select target_id from connection where source_id=me() and target_type="user"',
+						'newsFeed':'SELECT actor_id FROM stream WHERE filter_key in (SELECT filter_key FROM stream_filter WHERE uid=me() and type = "newsfeed") and actor_id in (select uid1 from friend where uid2=me()) limit 50'
+						// 'postTo':'select target_id from stream_tag where post_id in (select status_id from status where uid=me())' can't get need more permissions status 
+
+					}
+				}, function(response){process(response); console.log(response)});
+
+				// FB.api('/me?fields=feed.limit(20)', 'get', function(response){					
+				// 	response.feed.data.forEach(function(story){				
+				// 		if (story.likes != undefined){
+				// 			story.likes.data.forEach(function(like){
+				// 				if (!(like.id in ids)) ids[like.id]=likeVal;
+				// 				else ids[like.id]+=likeVal;
+				// 			})
+				// 		}
+				// 		if (story.comments != undefined){
+				// 			story.comments.data.forEach(function(comment){
+				// 				if (!(comment.from.id in ids)) ids[comment.from.id]=commentVal;
+				// 				else ids[comment.from.id]+=commentVal;
+				// 			})
+				// 		}
+				// 		if (!(story.from.id in ids)) ids[story.from.id]=storyVal;
+				// 		else ids[story.from.id]+=storyVal;
+				// 	});
+				// 	window.idCount=0;
+				// 	for (var j in ids) idCount++;
+				// 	var i=0;
+				// 	for (var key in ids) {							
+				// 		FB.api('/me?fields=friends.uid('+key+').fields(mutualfriends)','get',function(response){	
+				// 			if (response.friends!=undefined) {	
+				// 				ids[response.friends.data[0].id]*=(1+mutualVal+response.friends.data[0].mutualfriends.data.length/friends);
+				// 			}
+				// 			i++;
+				// 			if (i==idCount) displayFriends(orderId(ids));
+				// 		});
+
+				// 	}					
+				// });   				
+			}			
+		});
+	return false;
+	});
+});
+	// var link= "https://graph.facebook.com/me/friends";        
+	// $(document).ready(function(){
+	//   $.getJSON(link, function(data){
+	//     console.log(data.data);  
+	//   });
+	  // var url = 'https://graph.facebook.com/search?type=post&q='+ $('#q').val();
+	  // $.getJSON(url, function(data) {
+	  //       obj = data.data;
+	  //       Object.keys(obj).forEach(function(key){
+	  //           $('.go').append('<div class="post">'+'<img src="https://graph.facebook.com/'+obj[key].from.id+'/picture">'+obj[key].message+'</div>');
+	  //       });
+	  // });
+	//});
+</script>
+<div id="fb-root"></div>
+<div id="centerMe">
+	<form class="form">
+		<div class="container">
+			<div class="name">Value for link: (1...100)</div><input type="text" name="link" value="15"><br>
+			<div class="name">Value for post: (1...100)</div><input type="text" name="post" value="40"><br>
+			<div class="name">Value for status from: (1...100)</div><input type="text" name="status" value="80"><br>
+			<div class="name">Value for post to: (1...100)</div><input type="text" name="postTo" value="80"><br>
+			<div class="name">Importance of mutual friends (1...10): </div><input type="text" name="mutual" value="7"><br>
+			<div class="name">Value for newsfeed post: (1...100)</div><input type="text" name="newsFeed" value="80"><br>
+			<input type="submit" value="Test" class='submit'>
+		</div>
+	</form>
+</div>
+<table border="0" cellpadding="5" cellspacing="0" width="600">
+<tr><td align="left" valign="top" width="200">
+
+PUT FIRST COLUMN CONTENTS HERE
+
+</td><td align="left" valign="top" width="200">
+
+<div class="go"></div>
+
+</td><td align="left" valign="top" width="200">
+
+PUT THIRD COLUMN CONTENTS HERE
+
+</td></tr></table>
+</body>
+</html>
