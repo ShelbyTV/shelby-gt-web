@@ -45,7 +45,7 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
     this.$el.html(this.template());
     var stageInfo = libs.shelbyGT.OnboardingView.onboardingStages[shelby.models.guide.get('onboardingStage') - 1];
     var opts = _(stageInfo).result('opts');
-    this.appendChild(new stageInfo.view(opts));
+    this.appendChildInto(new stageInfo.view(opts), '.js-onboarding-stage-content');
     return this;
   }
 
