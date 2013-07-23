@@ -3,6 +3,7 @@
   font-size: 13px;
   margin: 4em 1.25em;
   min-height: 400px;
+  padding: 1em;
   text-align: left;
   width: 460px;
 
@@ -14,7 +15,6 @@
 .modal__body {
   background-color: white;
   border: 1px solid #ddd;
-  margin: 1em;
   padding: 2em;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .modal__foot {
-  padding: 0 1em 1em;
+  padding-top: 1em;
   text-align: right;
 }
 
