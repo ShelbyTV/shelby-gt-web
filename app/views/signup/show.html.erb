@@ -1,11 +1,15 @@
 <div class="signup signup--profile signup--profile_no-avatar" role="main">
   <div class="signup__head">
-    <h2 class="signup__h3">
-      Step 1 of 1 !!
-    </h2>
+    <% if @inviter %>
+        <%= image_tag avatar_url_for_user(@inviter) %>
+    <% end %>
 
     <h1 class="signup__h1">
-      Make Shelby TV yours
+      <% if @inviter %>
+        <%= @inviter['name'] %> found the perfect stream of video on Shelby. Find Yours.
+      <% else %>
+        Get your perfect stream of video
+      <% end %>
     </h1>
   </div>
 

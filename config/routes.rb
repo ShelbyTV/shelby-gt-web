@@ -38,11 +38,10 @@ ShelbyGtWeb::Application.routes.draw do
   get '/mail/:roll_id' => 'discussion_roll#show'
 
   # INVITES
-  # get '/invite' => "home#invite"
   get '/invite/:invite_id' => "signup#index"
-  get "invite" => 'signup#show'
+  get "invite" => 'signup#show', :as => :invite
   post "invite" => 'signup#create'
-  get "signup" => 'signup#show'
+  get "signup" => 'signup#show', :as => :signup
   post "signup" => 'signup#create'
 
 
