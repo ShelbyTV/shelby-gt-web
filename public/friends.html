@@ -43,6 +43,10 @@ input {
 	margin-right: auto;
 	margin-left: auto;
 }
+.username {
+	font-size: .8em;
+}
+
 </style>
 <script type="text/javascript">
 window.fbAsyncInit = function() {
@@ -84,8 +88,11 @@ function orderId(data) {
 }
 function displayFriends (friends, id) {
 	$('.'+id+'1').remove();
-	for (var x=0; x < Math.min(friends.length,48); x++) {
-		$('.'+id).append('<div class="'+id+'1 post" style="display:inline;">'+'<img src="https://graph.facebook.com/'+friends[x]+'/picture"></div>');
+	for (var x=0; x < Math.min(friends.length,20); x++) {
+		$("."+id).append('<li class="'+id+'1 post">'+'<img src="https://graph.facebook.com/'+friends[x]+'/picture"><span class="'+friends[x]+'" username"></span></li>');
+		FB.api('/'+friends[x]+'?fields=name','get',function(response){
+			$("."+response.id).text(response.name);
+		});			
 	}
 }
 function process (data) {	
@@ -102,17 +109,17 @@ function process2() {
 	window.messageData=[1306417426,514233521,100000152883013,514233521,1687980018,514233521,514233521,1331550225,1663209170,514233521,716941386,1089990563,774384166,514233521,1258335120,1821308617,514233521,514233521,514233521,1391981422,514233521,854315174,1043554591,514233521,1444629544,100000152883013,603212209,514811764,672329108,625864457,1201314384,585286033,1043554591,100002192177788,514233521,100000030999600,519641619,514233521,1089990563,514233521,909245104,836740116,514233521,514233521,100000030806917,514233521,1360772286,514233521,1427707480,514233521,759176903,514233521,774384166,514233521,673723929,1079456261,514233521,514233521,630370476,514233521,1178422919,1448198986,514233521,514233521,1200829295,514233521,1002144438,514233521,547851341,514233521,750571542,514233521,631217385,514233521,1382520516,685869243,514233521,1306417426,514233521,100000030806917,100000226943764,514233521,703405919,514233521,1380240482,100001215002973,514233521,519035738,514233521,514233521,100000352772924,1663209170,514233521,514233521,556097074,514233521,683947409,504092771,514233521,586121302,514233521,1598161380,514233521,514233521,514811764,514233521,100003699774021,514233521,614980229,514233521,100000030999600,514233521,662712660,1530338,514233521];
 	window.photoData=[100000657033349,514233521,1448198986,514233521,614980229,572131664,586121302,100003338205589,749730236,677940382,779847929,1337173977,1231164609,514233521,1077584642,514233521,1448198986,514233521,514233521,1043554591,519035738,514233521,1043554591,519035738,514233521,1043554591,519035738,514233521,1043554591,519035738,514233521,725382936,1185439645,100001545467867,603182676,1448198986,1258335120,526887276,1305674084,1687980018,538921123,1178422919,514233521,100000226943764,514233521,514233521,1247154572,514233521];
 	ids2=ids;
-	for (var x in statusData) {
+	for (var x in statusData) {		
 		if (statusData[x] in ids2) ids2[statusData[x]]+=80;
 		else ids2[statusData[x]]=80;
 	}
 	for (var x in messageData) {
-		if (statusData[x] in ids2) ids2[statusData[x]]+=100;
-		else ids2[statusData[x]]=100;
+		if (messageData[x] in ids2) ids2[messageData[x]]+=100;
+		else ids2[messageData[x]]=100;
 	}
 	for (var x in photoData) {
-		if (statusData[x] in ids2) ids2[statusData[x]]+=40;
-		else ids2[statusData[x]]=40;
+		if (photoData[x] in ids2) ids2[photoData[x]]+=40;
+		else ids2[photoData[x]]=40;
 	}
 	displayFriends(orderId(ids2),'more');
 }
@@ -155,15 +162,13 @@ $(document).ready(function(){
 					}
 				}, function(response){
 					var randoFriend=[]; 
-					console.log(response);
 					for (var x in response){
 						if (val[response[x].name]!=undefined) process(response[x]);
 						if (response[x].name=='friends') {
-							while (randoFriend.length<49){
+							while (randoFriend.length<21){
 								var random = Math.floor(Math.random()*response[x].fql_result_set.length);
 								if (randoFriend.indexOf(x)==-1) randoFriend.push(random);
 							}
-							console.log(randoFriend);
 							for (var y in randoFriend){
 								
 								randoFriend[y]=parseInt(response[x].fql_result_set[randoFriend[y]].uid1);
@@ -173,6 +178,11 @@ $(document).ready(function(){
 						}
 					}					
 					process2();
+					$('.post').click(function(d){
+						var u=d.toElement.src;
+						u=u.slice(u.indexOf('.com/')+5,u.indexOf('/picture'));
+						FB.api('/'+u+'?fields=name','get',function(response){console.log(response.name);});
+					});		
 				});
 				
 				// FB.api('/me?fields=feed.limit(20)', 'get', function(response){					
@@ -210,9 +220,6 @@ $(document).ready(function(){
 		});
 	return false;
 	});
-	$('.post').hover(function(d){
-
-	});
 });
 	// var link= "https://graph.facebook.com/me/friends";        
 	// $(document).ready(function(){
@@ -241,14 +248,18 @@ $(document).ready(function(){
 		</div>
 	</form>
 </div>
-<table border="0" cellpadding="5" cellspacing="0" width="600">
-	<tr><td align="left" valign="top" width="200">
-		<div class="friends"></div>
-	</td><td align="left" valign="top" width="200">
-		<div class="go"></div>
-	</td><td align="left" valign="top" width="200">
-		<div class="more"></div>
-	</td></tr>
+<table border="0" cellpadding="5" cellspacing="0" width="660">
+<div>
+	<div style="float: left; width: 25%;">1st List
+		<ol class="friends"></ol>
+	</div>
+	<div style="float: left; width: 25%;">2nd List
+		<ol class="go"></ol>
+	</div>
+	<div style="float: left; width: 25%;">3rd List
+		<ol class="more"></ol>
+	</div>
+</div>
 </table>
 </body>
 </html>
