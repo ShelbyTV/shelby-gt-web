@@ -2,7 +2,8 @@
 // All this logic will automatically be available in application.js.
 
 //= require jquery
-//= require ./app/app.config.js.erb
+//= require ./backbone/underscore.js
+//= require ./app/app.config
 //= require ./event-tracking/app.tracking.js
 //= require ./app/config/user.config.js
 //= require ./signup/user-update

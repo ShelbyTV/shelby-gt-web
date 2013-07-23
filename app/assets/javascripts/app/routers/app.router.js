@@ -92,16 +92,19 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
             if (!userOnboardingProgress) {
               self.navigate('/onboarding/1', {trigger:true, replace:true});
               return;
+            } else if (userOnboardingProgress !== true && userOnboardingProgress < libs.shelbyGT.OnboardingView.numOnboardingStages) {
+              self.navigate('/onboarding/' + (parseInt(userOnboardingProgress,10) + 1), {trigger:true, replace:true});
+              return;
             } else {
-              if (userOnboardingProgress !== true && userOnboardingProgress < libs.shelbyGT.OnboardingView.numOnboardingStages) {
-                  self.navigate('/onboarding/' + (userOnboardingProgress + 1), {trigger:true, replace:true});
-                  return;
-              } else {
-                  self._reroute();
-              }
+              self._reroute();
             }
           } else {
-            self._reroute();
+            if (userModel.get('app_progress').get('onboarding') === true) {
+              self.navigate('/', {trigger:true, replace:true});
+              return;
+            } else {
+              self._reroute();
+            }
           }
 
           shelby.models.rollFollowings.fetch();
