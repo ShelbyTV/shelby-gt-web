@@ -95,29 +95,6 @@ class HomeController < ApplicationController
   end
 
   ##
-  # Handles invite landing page
-  #
-  # GET /invite/:invite_id
-  #     :invite_id is OPTIONAL and used for invitation system in app
-  #
-  def invite
-    if user_signed_in?
-      redirect_to :action => :index
-    else
-      @sign_up = true
-      @invite_id = params[:invite_id]
-
-      # Parse errors and render landing
-
-      @nickname_error = params[:nickname]
-      @email_error = params[:primary_email]
-
-      render '/home/landing'
-    end
-  end
-
-
-  ##
   # Handles community view when visited directly (allowing logged-out users to see it)
   #
   # GET /community

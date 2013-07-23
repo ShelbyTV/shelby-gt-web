@@ -9,20 +9,9 @@
 </head>
 <body class="shelby shelby--signup">
   <div class="shelby__wrapper">
-    <header class="shelby__head" role="banner">
-      <span class="shelby_logo shelby_logo--inverted">
-        <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
-      </span>
-    </header>
-
     <%= yield %>
   </div><!-- eo shelby__wrapper -->
 
-  <%= javascript_tag do %>
-    var userJson = <%= raw @user.to_json %>;
-    var followValidationOk = <%= @validation_ok ? 'true' : 'false' %>;
-    var signupStep = <%= @step %>;
-  <% end %>
   <%= javascript_include_tag "signup" %>
   <% if flash[:alert] %>
     <%= javascript_tag do %>
