@@ -53,10 +53,13 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
 
 libs.shelbyGT.OnboardingView.onboardingStages = [
   {
-    view:libs.shelbyGT.OnboardingWelcomeView
+    view : libs.shelbyGT.OnboardingWelcomeView
   },
   {
-    view:libs.shelbyGT.OnboardingConnectServicesView
+    view : libs.shelbyGT.OnboardingConnectServicesView,
+    opts : function() {
+      return {model: new libs.shelbyGT.OnboardingConnectServicesViewModel()};
+    }
   }
 ];
 
