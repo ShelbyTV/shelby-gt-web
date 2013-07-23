@@ -15,11 +15,11 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
   },
 
   render : function(){
-    var userId = shelby.models.user.get('id');
+    this._userId = shelby.models.user.get('id');
 
     var data = {
-      shareURL : this._buildShareUrl(userId),
-			tweetURL : this._buildTweetUrl(userId)
+      shareURL : this._buildShareUrl(this._userId),
+			tweetURL : this._buildTweetUrl(this._userId)
 		};
 
     this.$el.html(this.template(data));
@@ -32,36 +32,32 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
   _cleanup : function(){
   },
 
-  _buildTweetUrl : function(userId) {
+  _buildTweetUrl : function() {
 
     var tweetText = encodeURIComponent('Friends, join me on Shelby'),
-        tweetUrl  = this._baseURL + userId;
+        tweetUrl  = this._baseURL + this._userId;
 
     var url = 'https://twitter.com/intent/tweet?related=shelby&via=shelby&url=' + tweetUrl + '&text=' + tweetText + '';
 
     return url;
   },
 
-  _buildShareUrl : function(userId) {
-    return this._baseURL + userId;
+  _buildShareUrl : function() {
+    return this._baseURL + this._userId;
   },
 
   _shareToFacebook : function(e){
     e.preventDefault();
 
-    if($(e.currentTarget).hasClass('disabled')){
-      return;
-    }
-
     if (typeof FB != "undefined"){
       FB.ui(
         {
-          caption     : 'text',
-          description : 'videoDescription',
-          link        : 'http://shelby.tv/invite',
+          caption     : 'Join me on Shelby.tv', //subheader
+          description : 'Your single stream of video', //message
+          link        : this._baseURL + this._userId,
           method      : 'feed',
-          name        : 'videoTitle',
-          picture     : 'videoThumbnai'
+          name        : 'Shelby.tv', //header
+          picture     : 'http://shelby.tv/images/mark_144sq.png'
         },
         function(response) {
           if (response && response.post_id) {
