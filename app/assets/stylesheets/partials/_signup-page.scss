@@ -90,15 +90,28 @@
         font-size: 13px;
       }
     }
+    .signup--inviter {
+      .signup__h1 {
+        font-size: 1.3em;
+        margin: 0.8em  0 0;
+      }
+
+      //non-normative
+      .avatar {
+        margin-top: 1em;
+      }
+    }
 
 //framework
 .signup__body {
+  margin-bottom: 2em;
 }
 
 //elements
 .signup__h1 {
   font-family: $font-family-display;
   font-weight: 400;
+  margin: 1em 0;
 }
 .signup__h2 {
   font-weight: normal;

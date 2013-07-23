@@ -1,11 +1,11 @@
-<div class="signup signup--profile" role="main">
+<div class="signup signup--profile<%= ' signup--inviter' if @inviter %>" role="main">
   <%= render :partial => '/home/landing_header', :locals => {:show_login => false, :user_signed_in => @user_signed_in} %>
 
   <div class="shelf">
     <div class="shelf__lining">
       <div class="signup__head">
         <% if @inviter %>
-            <%= image_tag avatar_url_for_user(@inviter) %>
+            <%= image_tag avatar_url_for_user(@inviter), :class => 'avatar' %>
         <% end %>
 
         <h1 class="signup__h1">
@@ -20,11 +20,6 @@
       <div class="signup__body">
         <%= form_tag(request.env['PATH_INFO'], { :id => 'user_form', :class => 'form_module' }) do %>
           <fieldset class="form_fieldset">
-            <legend class="form__legend">
-              Watch your personalized video stream from anywhere<br/>
-              and curate your own Shelby TV channel.
-            </legend>
-
             <div class="media_module">
               <div class="media_image media_image--rev two-fifths">
                 <ul class="list list--benefits">
