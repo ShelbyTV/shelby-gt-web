@@ -33,7 +33,11 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
   },
 
   _onOnboardingStageChange : function(guideModel, stage){
-    this.render();
+    if (stage) {
+      this.render();
+    } else {
+      this.$el.remove();
+    }
   },
 
   render : function(){
@@ -49,22 +53,10 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
 
 libs.shelbyGT.OnboardingView.onboardingStages = [
   {
-    view:libs.shelbyGT.OnboardingWelcomeView,
-    opts:function(){
-      return {
-        model: new libs.shelbyGT.OnboardingStage1Model()
-      };
-    }
+    view:libs.shelbyGT.OnboardingWelcomeView
   },
   {
-    view:libs.shelbyGT.OnboardingContentStage2View,
-    opts:function(){
-      return {
-        model: new libs.shelbyGT.OnboardingStage2Model(),
-        rollCategories: shelby.models.onboardingRollCategories,
-        stage:2
-      };
-    }
+    view:libs.shelbyGT.OnboardingConnectServicesView
   }
 ];
 
