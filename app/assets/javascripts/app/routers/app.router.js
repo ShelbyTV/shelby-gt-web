@@ -94,7 +94,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
               self.navigate('/onboarding/1', {trigger:true, replace:true});
               return;
             } else {
-              if (userOnboardingProgress < 4) {
+              if (userOnboardingProgress !== true && userOnboardingProgress < libs.shelbyGT.OnboardingView.numOnboardingStages) {
                   self.navigate('/onboarding/' + (userOnboardingProgress + 1), {trigger:true, replace:true});
                   return;
               } else {

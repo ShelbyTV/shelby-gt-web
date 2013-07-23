@@ -2,6 +2,10 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
 
   className: 'content_wrapper onboarding clearfix',
 
+  events : {
+    "click .js-onboarding-advance-stage" : "_advanceStage"
+  },
+
   template : function(obj) {
     return SHELBYJST['onboarding/onboarding'](obj);
   },
@@ -16,42 +20,52 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
     shelby.models.guide.unbind('change:onboardingStage', this._onOnboardingStageChange, this);
   },
 
-  _onOnboardingStageChange : function(guideModel, stage){
-    this.render();
+  _advanceStage : function() {
+    var currentStage = shelby.models.guide.get('onboardingStage');
+    if (currentStage == libs.shelbyGT.OnboardingView.numOnboardingStages) {
+      shelby.models.user.get('app_progress').advanceStage('onboarding', true);
+      shelby.models.guide.set('onboardingStage', null);
+      shelby.router.navigate('stream', {trigger:true});
+    } else {
+      shelby.models.user.get('app_progress').advanceStage('onboarding', currentStage);
+      shelby.router.navigate('onboarding/' + (parseInt(currentStage, 10) + 1), {trigger:true});
+    }
   },
 
-  _stageToChildMap : {
-    '1' : {
-      view:libs.shelbyGT.OnboardingContentStage1View,
-      opts:function(){
-        return {
-          model: new libs.shelbyGT.OnboardingStage1Model(),
-          stage: 1
-        };
-      }
-    },
-    '2' : {
-      view:libs.shelbyGT.OnboardingContentStage2View,
-      opts:function(){
-        return {
-          model: new libs.shelbyGT.OnboardingStage2Model(),
-          rollCategories: shelby.models.onboardingRollCategories,
-          stage: 2
-        };
-      }
-    }
+  _onOnboardingStageChange : function(guideModel, stage){
+    this.render();
   },
 
   render : function(){
     this._leaveChildren();
     this.$el.html(this.template());
-    //problem is that leaving child deletes the container?
-    var stage = shelby.models.guide.get('onboardingStage');
-    if (stage===null) return false;
-    var opts = (typeof this._stageToChildMap[stage].opts==='function') ? this._stageToChildMap[stage].opts() : this._stageToChildMap[stage].opts;
-    //this.renderChild(new this._stageToChildMap[stage].view(opts));
-    this.appendChild(new this._stageToChildMap[stage].view(opts));
+    var stageInfo = libs.shelbyGT.OnboardingView.onboardingStages[shelby.models.guide.get('onboardingStage') - 1];
+    var opts = _(stageInfo).result('opts');
+    this.appendChild(new stageInfo.view(opts));
     return this;
   }
 
 });
+
+libs.shelbyGT.OnboardingView.onboardingStages = [
+  {
+    view:libs.shelbyGT.OnboardingWelcomeView,
+    opts:function(){
+      return {
+        model: new libs.shelbyGT.OnboardingStage1Model()
+      };
+    }
+  },
+  {
+    view:libs.shelbyGT.OnboardingContentStage2View,
+    opts:function(){
+      return {
+        model: new libs.shelbyGT.OnboardingStage2Model(),
+        rollCategories: shelby.models.onboardingRollCategories,
+        stage:2
+      };
+    }
+  }
+];
+
+libs.shelbyGT.OnboardingView.numOnboardingStages = libs.shelbyGT.OnboardingView.onboardingStages.length;
