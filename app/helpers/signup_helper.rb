@@ -1,10 +1,5 @@
 module SignupHelper
 
-  def get_inviter_info(user_id)
-    Rails.logger.info "CODE: #{user_id}"
-    r = Shelby::API.get_user(user_id)
-  end
-
   def create_user!(params, cookies)
     attributes = params.select { |k,v| ['nickname', 'name', 'primary_email', 'password'].include? k }
     r = Shelby::API.create_user({:user => attributes}, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)

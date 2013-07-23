@@ -88,7 +88,8 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
             self._reroute();
           }
           else if (!userModel.get('app_progress').hasCompletedOnboarding()) {
-            document.location.href = shelby.config.signupRoute;
+            // TODO need to do something here
+            //document.location.href = shelby.config.signupRoute;
           } else {
             self._reroute();
           }

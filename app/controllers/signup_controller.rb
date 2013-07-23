@@ -3,9 +3,7 @@ class SignupController < ApplicationController
 
   def show
     # just show the freakin form.
-    @inviter = get_inviter_info(params[:code]) if params[:code]
-
-    Rails.logger.info "USER: #{@inviter}"
+    @inviter = Shelby::API.get_user(params[:code]) if params[:code]
 
     if session[:user_errors]
       @user_attributes = session[:user_attributes]
