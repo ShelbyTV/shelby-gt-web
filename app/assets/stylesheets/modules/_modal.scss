@@ -1,0 +1,38 @@
+.modal {
+  background-color: $ui-gray;
+  font-size: 13px;
+  margin: 4em 1.25em;
+  min-height: 400px;
+  text-align: left;
+  width: 460px;
+
+  &:before {
+    z-index: 1;
+  }
+}
+
+.modal__body {
+  background-color: white;
+  border: 1px solid #ddd;
+  margin: 1em;
+  padding: 2em;
+}
+
+.modal__body--scroll {
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.modal__foot {
+  padding: 0 1em 1em;
+  text-align: right;
+}
+
+.modal__h1 {
+  font-size: 1.3em;
+}
+
+.modal__block {}
+
+.modal__button {}
+
