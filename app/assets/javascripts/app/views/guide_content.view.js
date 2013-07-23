@@ -4,6 +4,7 @@
   var DisplayState = libs.shelbyGT.DisplayState;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
+  var SampleDashboardView = libs.shelbyGT.SampleDashboardView;
   var RollListView = libs.shelbyGT.RollListView;
   var RollListFilterType = libs.shelbyGT.RollListFilterType;
   var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
@@ -48,12 +49,15 @@
           !_changedAttrs.has('currentRollModel') &&
           !_changedAttrs.has('sinceId') &&
           !_changedAttrs.has('displayIsolatedRoll') &&
-          !_changedAttrs.has('currentChannelId')) {
+          !_changedAttrs.has('currentChannelId') &&
+          !_changedAttrs.has('onboardingStage')) {
         return;
       }
       if (model.get('displayState') != libs.shelbyGT.DisplayState.userPreferences &&
-          model.get('displayState') != libs.shelbyGT.DisplayState.onboarding &&
-          model.get('displayState') != libs.shelbyGT.DisplayState.dotTv) {
+          model.get('displayState') != libs.shelbyGT.DisplayState.dotTv &&
+          (model.get('displayState') != libs.shelbyGT.DisplayState.onboarding) ||
+           model.get('onboardingStage') == 1 ||
+           model.get('onboardingStage') == 2) {
         this._updateChild(model);
       }
       $('.js-guide').addClass('animate_module');
@@ -153,6 +157,29 @@
             },
             spinner : true
           };
+          break;
+        case DisplayState.onboarding :
+          if (this.model.get('onboardingStage') == 1) {
+            displayParams = {
+              viewProto : SampleDashboardView
+            };
+          } else {
+            displayParams = {
+              viewProto : DashboardView,
+              model : shelby.models.dashboard,
+              options : {
+                doSmartRefresh : true,
+                doStaticRender : true,
+                fetchParams : {
+                  include_children : true
+                },
+                playlistType : libs.shelbyGT.PlaylistType.dashboard,
+                firstFetchLimit : shelby.config.pageLoadSizes.dashboard,
+                limit : shelby.config.pageLoadSizes.dashboard + 1,
+                masterCollection : this._dashboardMasterCollection
+              }
+            };
+          }
           break;
         case DisplayState.search :
           this._currentRollMasterCollection = new Backbone.Collection();

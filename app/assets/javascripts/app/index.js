@@ -28,6 +28,7 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/dashboard_empty_indicator.view.js
 //= require ./views/search_empty_indicator.view.js
 //= require ./views/dashboard.view.js
+//= require ./views/sample_dashboard.view.js
 //= require ./views/guide_overlay.view.js
 //= require ./views/roll_list.view.js
 //= require ./views/roll.view.js
