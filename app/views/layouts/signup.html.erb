@@ -12,11 +12,6 @@
     <%= yield %>
   </div><!-- eo shelby__wrapper -->
 
-  <%= javascript_tag do %>
-    var userJson = <%= raw @user.to_json %>;
-    var followValidationOk = <%= @validation_ok ? 'true' : 'false' %>;
-    var signupStep = <%= @step %>;
-  <% end %>
   <%= javascript_include_tag "signup" %>
   <% if flash[:alert] %>
     <%= javascript_tag do %>

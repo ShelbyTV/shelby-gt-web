@@ -82,20 +82,4 @@ $(document).ready(function() {
   $('.form_fieldset').has('.form_error').on('keyup', 'input', function(e) {
     $(e.delegateTarget).removeClass('form_fieldset--error');
   });
-  //setup backbone views to handle user avatar display and uploader
-  userModel = new libs.shelbyGT.UserModel(userJson);
-  avatarPresenterView = new libs.shelbyGT.UserAvatarPresenterView({
-    avatarSize: libs.shelbyGT.UserAvatarSizes.large,
-    el : '.js-avatar-renderer',
-    imgAttribute : 'style',
-    imgSelector : '.js-avatar-image',
-    imgValTemplate : 'background-image: url(<%= url %>)',
-    model : userModel
-  });
-  avatarUploaderView = new libs.shelbyGT.UserAvatarUploaderView({
-    el: $('.js-avatar-renderer'),
-    model: userModel,
-    progressEl: $('.progress-overlay')[0]
-  });
-  avatarUploaderView._initUploader();
 });

@@ -14,8 +14,4 @@
 //= require ./app/views/user/
 //= require ./event-tracking/app.tracking.js
 //= require ./app/config/user.config.js
-//= require ./signup/jquery.cycle.js
 //= require ./signup/user-update
-//= require ./signup/slideshow.js
-//= require ./jquery-plugins/jquery-ui-1.8.19.core-draggable.min.js
-//= require ./deferred/jquery.fileupload.js
