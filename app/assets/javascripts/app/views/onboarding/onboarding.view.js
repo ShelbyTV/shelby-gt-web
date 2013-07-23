@@ -60,6 +60,15 @@ libs.shelbyGT.OnboardingView.onboardingStages = [
     opts : function() {
       return {model: new libs.shelbyGT.OnboardingConnectServicesViewModel()};
     }
+  },
+  {
+    view : libs.shelbyGT.OnboardingFollowSourcesView,
+    opts : function() {
+      return {
+        model : new libs.shelbyGT.OnboardingFollowSourcesViewModel(),
+        rollCategories : shelby.models.onboardingRollCategories
+      };
+    }
   }
 ];
 

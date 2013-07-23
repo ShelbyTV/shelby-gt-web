@@ -1,4 +1,4 @@
-libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStageBaseView.extend({
+libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
 
   /*
    * SCSS hover buttons
@@ -18,6 +18,10 @@ libs.shelbyGT.OnboardingContentStage2View = libs.shelbyGT.OnboardingContentStage
   events : {
     "click .js-onboarding-roll-button:not(.js-busy)" : "_followOrUnfollow",
     "click .js-onboarding-next-step"                 : "_onNextStepClick"
+  },
+
+  template : function(obj){
+    return SHELBYJST['onboarding/onboarding-follow-sources'](obj);
   },
 
   initialize : function(){
