@@ -18,6 +18,14 @@
       .load_progress__label {
         color: lighten($ui-soft-black,10%);
         font-size: 0.75em;
+        line-height: 2;
+
+        span:first-child {
+          display: block;
+        }
+        span:last-child {
+          display: none;
+        }
       }
     }
 
@@ -26,6 +34,15 @@
 }
 
 .load_progress__h2 {}
+
+.load_progress__label {
+  span:first-child {
+    display: none;
+  }
+  span:last-child {
+    display: block;
+  }
+}
 
 .load_progress__total {
   float: right;
