@@ -487,9 +487,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
   },
 
-  displayOnboardingView : function(stage){
+  displayOnboardingView : function(stage, params){
     this._setupTopLevelViews({onboarding: true});
     shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.onboarding, onboardingStage:stage});
+    if (stage == 2 && params && params['authed_with']) {
+      shelby.models.onboardingConnectServicesView.set({action: 'load', service: params['authed_with']});
+    }
   },
 
   displaySaves : function(){

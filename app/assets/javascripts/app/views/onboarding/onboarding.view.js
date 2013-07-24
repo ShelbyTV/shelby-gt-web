@@ -25,10 +25,10 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
     if (currentStage == libs.shelbyGT.OnboardingView.numOnboardingStages) {
       shelby.models.user.get('app_progress').advanceStage('onboarding', true);
       shelby.models.guide.set('onboardingStage', null);
-      shelby.router.navigate('stream', {trigger:true});
+      shelby.router.navigate('', {trigger: true, replace: true});
     } else {
       shelby.models.user.get('app_progress').advanceStage('onboarding', currentStage);
-      shelby.router.navigate('onboarding/' + (parseInt(currentStage, 10) + 1), {trigger:true});
+      shelby.router.navigate('onboarding/' + (parseInt(currentStage, 10) + 1), {trigger: true, replace: true});
     }
   },
 
@@ -58,7 +58,7 @@ libs.shelbyGT.OnboardingView.onboardingStages = [
   {
     view : libs.shelbyGT.OnboardingConnectServicesView,
     opts : function() {
-      return {model: new libs.shelbyGT.OnboardingConnectServicesViewModel()};
+      return {model: shelby.models.onboardingConnectServicesView};
     }
   },
   {
