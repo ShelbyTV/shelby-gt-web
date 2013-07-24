@@ -4,11 +4,18 @@
   <div class="shelf">
     <div class="shelf__lining">
       <div class="signup__head">
-        <% if @inviter %>
-            <%= image_tag avatar_url_for_user(@inviter), :class => 'avatar' %>
-        <% end %>
 
         <h1 class="signup__h1">
+          <% if @inviter %>
+            <span class="image_module avatar avatar--small" style="background-image: url(<%= avatar_url_for_user(@inviter) %>);">
+              <%= image_tag avatar_url_for_user(@inviter),
+                    :class => 'visuallyhidden',
+                    :name => @inviter['name'],
+                    :alt => @inviter['name']
+              %>
+            </span>
+          <% end %>
+
           <% if @inviter %>
             <%= @inviter['name'] %> found the perfect stream of video on Shelby. Find Yours.
           <% else %>
