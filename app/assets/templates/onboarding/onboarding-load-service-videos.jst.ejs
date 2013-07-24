@@ -38,10 +38,10 @@
 </div><!-- eo modal__body -->
 
 <div class="modal__foot clearfix">
-  <button class="button_primer button_command button_command--flexible button_<%= otherService %>-blue js-onboarding-connect-network">
+  <a href="http://api.shelby.tv/auth/<%= otherService %>?redir_query=authed_with%3D<%= otherService %>" class="button_primer button_command button_command--flexible button_<%= otherService %>-blue js-authorize"  data-popup_width="1000" data-popup_height="650">
     <span class="icon icon-<%= otherService %>"></span>
     <span class="button_label">Connect</span>
-  </button>
+  </a>
 
   <b>&nbsp;or&nbsp;</b>
 
