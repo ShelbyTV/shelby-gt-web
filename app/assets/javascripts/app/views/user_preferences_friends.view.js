@@ -1,7 +1,7 @@
 libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView.extend({
 
-  _baseURL : 'http://shelby.tv/invite?code=',
-  _shareText : "I'm watching my perfect video stream on @Shelby. Join me and get yours",
+  _baseURL : 'http://shelby.tv/signup?code=',
+  _shareText : "I'm watching my perfect video stream on @Shelby. Join me and get yours.",
 
   events : {
     'click .js-facebook-post' : '_shareToFacebook'
@@ -35,8 +35,8 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
 
   _buildTweetUrl : function() {
 
-    var tweetUrl  = this._baseURL + this._userId;
-    var url       = 'https://twitter.com/intent/tweet?related=shelby&url=' + tweetUrl + '&text=' + encodeURIComponent(this._shareText) + '';
+    var tweetUrl  = this._baseURL + this._userId,
+        url       = 'https://twitter.com/intent/tweet?related=shelby&url=' + tweetUrl + '&text=' + encodeURIComponent(this._shareText) + '';
 
     return url;
   },
