@@ -6,13 +6,13 @@
   <meta name="shelby-token" content="<%= csrf_token_from_cookie %>">
 
   <%= stylesheet_link_tag "signup" %>
+  <%= javascript_include_tag "signup" %>
 </head>
 <body class="shelby shelby--signup">
   <div class="shelby__wrapper">
     <%= yield %>
   </div><!-- eo shelby__wrapper -->
 
-  <%= javascript_include_tag "signup" %>
   <% if flash[:alert] %>
     <%= javascript_tag do %>
       $(document).ready(function(){
