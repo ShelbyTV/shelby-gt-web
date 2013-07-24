@@ -6,6 +6,8 @@
 
 */
 
+$_status-bg-color : darken($ui-off-white,5%);
+
 
 .load_progress {
   border-top: 1px solid $inset;
@@ -14,6 +16,9 @@
     .load_progress--loading {
       .load_progress__total {
         opacity: 0;
+      }
+      .load_progress__status {
+        background-color: $_status-bg-color;
       }
       .load_progress__label {
         color: lighten($ui-soft-black,10%);
@@ -50,7 +55,9 @@
 }
 
 .load_progress__status {
-  background-color: darken($ui-off-white,5%);
+  @include roundies(avatar);
+
+  background-color: $_status-bg-color;
   border: 1px solid $inset;
   height: 30px;
   float: left;

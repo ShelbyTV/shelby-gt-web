@@ -16,9 +16,22 @@
   border: 1px solid #ddd;
   padding: 2em 2em 1em;
 }
-  .modal__body--bare {
-    padding: 0;
-  }
+    .modal__body--bare {
+      padding: 0;
+    }
+
+    // super non-normative: styles abstracts/_load.scss
+    .modal__body--twitter {
+      .load_progress__status {
+        background-color: $twitter-blue;
+      }
+    }
+    .modal__body--facebook {
+      .load_progress__status {
+        background-color: $facebook-blue;
+      }
+    }
+
 
 .modal__body--scroll {
   max-height: 420px;
