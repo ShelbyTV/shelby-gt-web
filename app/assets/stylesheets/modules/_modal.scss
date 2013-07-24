@@ -14,8 +14,11 @@
 .modal__body {
   background-color: white;
   border: 1px solid #ddd;
-  padding: 2em;
+  padding: 1em;
 }
+  .modal__body--bare {
+    padding: 0;
+  }
 
 .modal__body--scroll {
   max-height: 420px;
@@ -30,6 +33,10 @@
 .modal__h1 {
   font-size: 1.3em;
 }
+    .modal__h1--padding {
+      padding: 1em 0.75em;
+      font-size: 1.5em;
+    }
 
 .modal__block {}
 

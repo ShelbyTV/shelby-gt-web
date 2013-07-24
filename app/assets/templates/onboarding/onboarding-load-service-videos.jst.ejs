@@ -1,8 +1,44 @@
-<div class="modal__body clearfix">
-  Stuff about loading videos here
+<div class="modal__body modal__body--bare clearfix">
+  <h1 class="modal__h1 modal__h1--padding">
+    Connecting Facebook…
+  </h1>
+
+  <ol class="list">
+    <li class="list__item load_progress clearfix">
+      <h2 class="load_progress__h1">
+        <span class="load_progress__status"></span>
+        <span class="load_progress__label">Facebook Connected</span>
+      </h2>
+      <span class="laod_video__progress"></span>
+    </li>
+    <li class="list__item load_progress load_progress--loading clearfix">
+      <h2 class="load_progress__h1">
+        <span class="load_progress__status"></span>
+        <span class="load_progress__total">24</span>
+        <span class="load_progress__label">Finding Friends</span>
+      </h2>
+      <span class="laod_video__progress"></span>
+    </li>
+    <li class="list__item load_progress load_progress--loading clearfix">
+      <h2 class="load_progress__h1">
+        <span class="load_progress__status"></span>
+        <span class="load_progress__total">40</span>
+        <span class="load_progress__label">Finding Videos</span>
+      </h2>
+      <span class="laod_video__progress"></span>
+    </li>
+  </ol>
+
 </div><!-- eo modal__body -->
 
 <div class="modal__foot clearfix">
+  <button class="button_primer button_command button_command--flexible button_twitter-blue js-onboarding-connect-network">
+    <span class="icon icon-twitter"></span>
+    <span class="button_label">Connect</span>
+  </button>
+
+  <b>&nbsp;or&nbsp;</b>
+
   <button class="button_primer button_command button_command--flexible button_green js-onboarding-advance-stage">
     <span class="icon icon-roll"></span>
     <span class="button_label">Add more video</span>

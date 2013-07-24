@@ -1,0 +1,47 @@
+/*
+
+    LOADING BADGE
+
+    Used in Onboarding
+
+*/
+
+
+.load_progress {
+  border-top: 1px solid $inset;
+  background-color: $ui-off-white;
+  padding: 1em;
+}
+    .load_progress--loading {
+      .load_progress__label {
+        color: lighten($ui-soft-black,10%);
+        font-size: 0.75em;
+      }
+    }
+
+.load_progress__h1 {
+  line-height: 1.4;
+}
+
+.load_progress__h2 {}
+
+.load_progress__progress {}
+
+.load_progress__total {
+  float: right;
+}
+
+.load_progress__status {
+  background-color: darken($ui-off-white,5%);
+  border: 1px solid $inset;
+  height: 30px;
+  float: left;
+  margin-right: 0.5em;
+  width: 30px;
+}
+  .load_progress__status--loading {
+    //spinner
+  }
+  .load_progress__status--done {
+    //checkbox
+  }
