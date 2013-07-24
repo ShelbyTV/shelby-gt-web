@@ -45,40 +45,26 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     var self = this;
 
     if (action == 'load') {
+      // fetch the roll followings so we can find out how many friends the user has on the new service
       shelby.models.rollFollowings.fetch({
         success : function(model, response, option){
           // todo: keep loading the rollfollowings until the number stabilizes
           self.model.set('numFriends', model.get('rolls').length);
+          // we now also know how many videos (actaully frames) are available from the friends the user has
           var numVideos = model.get('rolls').reduce(function(count, roll){ return count + roll.get('frame_count'); }, 0);
+          // create the illusion that we still have to look up how many videos are available with a timeout
           setTimeout(function(){
+            // update the view to show how many videos are available
             self.model.set('numVideos', numVideos);
+            // now fetch the actual found videos from the dashboard and show them in the guide
+              shelby.models.dashboard.fetch({
+                data : {
+                  limit : shelby.config.pageLoadSizes.dashboard
+                }
+              });
           }, 2000);
         }
       });
-      // shelby.models.dashboard.fetch({
-      //   data : {
-      //     limit : shelby.config.pageLoadSizes.dashboard
-      //   },
-      //   success : function(model, response, option){
-      //     // we fetched the dashboard and we want to collect some stats and show them to the user
-      //     var uniqueVideosFromService = model.get('dashboard_entries').chain().map(
-      //       // loop through the frames
-      //       function(d){return d.get('frame');}
-      //     ).filter(
-      //       // only look at the frames that come from the service we just connected
-      //       function(f){return f.has('creator') && f.get('creator').has('authentications') && _(f.get('creator').get('authentications')).any(function(a){return a.provider == this.model.get('service');});}
-      //     ).map(
-      //       // loop through the videos of those frames
-      //       function(f){return f.get('video');}
-      //     ).map(
-      //       // get their ids
-      //       function(v){return v.get('id');}
-      //     ).unique().value().length; // and count the number of unique videos that came from that service
-
-
-      //     console.log(result);
-      //   }
-      // });
     }
     this.render();
   },
@@ -95,10 +81,6 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
   _onAdvanceStage : function(e){
     e.preventDefault();
-    if (this.model.get('action') == 'connect') {
-      this.model.set('action', 'load');
-      e.stopPropagation();
-    }
   }
 
 });
