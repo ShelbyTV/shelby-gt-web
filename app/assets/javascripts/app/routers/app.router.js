@@ -100,7 +100,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
               self._reroute();
             }
           } else {
-            if (userModel.get('app_progress').get('onboarding') === true) {
+            if (false) {
               self.navigate('/', {trigger:true, replace:true});
               return;
             } else {
