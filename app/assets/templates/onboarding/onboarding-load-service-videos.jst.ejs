@@ -1,22 +1,22 @@
-<div class="modal__body modal__body--bare clearfix">
+<div class="modal__body modal__body--bare modal__body--<%= currentService %> clearfix">
   <h1 class="modal__h1 modal__h1--padding">
-    Connecting Facebook…
+    Connecting <%= _(currentService).capitalize() %>…
   </h1>
 
-  <ol class="list">
+  <ol class="list js-progress-list">
     <li class="list__item load_progress clearfix">
       <h2 class="load_progress__h1">
         <span class="load_progress__status"></span>
         <span class="load_progress__label">
-          <span>Connecting Facebook</span>
-          <span>Facebook Connected</span>
+          <span>Connecting <%= _(currentService).capitalize() %></span>
+          <span><%= _(currentService).capitalize() %> Connected</span>
         </span>
       </h2>
     </li>
     <li class="list__item load_progress load_progress--loading clearfix">
       <h2 class="load_progress__h1">
         <span class="load_progress__status"></span>
-        <span class="animate_module load_progress__total">24</span>
+        <span class="animate_module load_progress__total js-num-friends">0</span>
         <span class="load_progress__label">
           <span>Finding Friends</span>
           <span>Friends Found</span>
@@ -26,7 +26,7 @@
     <li class="list__item load_progress load_progress--loading clearfix">
       <h2 class="load_progress__h1">
         <span class="load_progress__status"></span>
-        <span class="animate_module load_progress__total">40</span>
+        <span class="animate_module load_progress__total js-num-videos">0</span>
         <span class="load_progress__label">
           <span>Finding Videos</span>
           <span>Videos Found</span>
@@ -38,10 +38,10 @@
 </div><!-- eo modal__body -->
 
 <div class="modal__foot clearfix">
-  <button class="button_primer button_command button_command--flexible button_twitter-blue js-onboarding-connect-network">
-    <span class="icon icon-twitter"></span>
+  <a href="http://api.shelby.tv/auth/<%= otherService %>?redir_query=authed_with%3D<%= otherService %>" class="button_primer button_command button_command--flexible button_<%= otherService %>-blue js-authorize"  data-popup_width="1000" data-popup_height="650">
+    <span class="icon icon-<%= otherService %>"></span>
     <span class="button_label">Connect</span>
-  </button>
+  </a>
 
   <b>&nbsp;or&nbsp;</b>
 
