@@ -13,6 +13,9 @@
   padding: 1em;
 }
     .load_progress--loading {
+      .load_progress__total {
+        opacity: 0;
+      }
       .load_progress__label {
         color: lighten($ui-soft-black,10%);
         font-size: 0.75em;
@@ -25,10 +28,9 @@
 
 .load_progress__h2 {}
 
-.load_progress__progress {}
-
 .load_progress__total {
   float: right;
+  opacity: 1;
 }
 
 .load_progress__status {
