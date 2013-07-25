@@ -47,6 +47,35 @@
     position: absolute;
   }
 }
+    .frame--abstract {
+      .icon-play:before {
+        font-size: 4em;
+      }
+      .frame-thumbnail {
+        padding-top: 4em;
+        text-align: center;
+        color: #FFF;
+      }
+      .frame-title {
+        color: #666;
+      }
+      .frame-likes-count,
+      .frame-likes {
+        color: #bbb;
+      }
+      .frame-likes-avatar {
+        background-color: #ddd;
+        display: inline-block;
+        vertical-align: -9px;
+      }
+      .xuser-message {
+        background-color: #bbb;
+        color: #bbb;
+        display: inline;
+      }
+    }
+
+
     //.frame modifiers
     .frame--shelf {
       .frame-body-wrapper {
@@ -480,7 +509,8 @@
 }
 
 .frame-likes-avatar {
-  border-radius: 3px;
+  @include roundies(avatar);
+
   height: 26px;
   width: 26px;
 }
