@@ -82,7 +82,11 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
                     limit : shelby.config.pageLoadSizes.dashboard
                   }
                 });
-            }, 2000);
+
+              setTimeout(function(){
+                self.$el.find('.js-modal-foot').removeClass('cloaked');
+              }, 2000);
+            }, 3250);
           }, 2000);
         }
       });
