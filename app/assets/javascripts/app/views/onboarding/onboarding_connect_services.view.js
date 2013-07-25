@@ -64,21 +64,25 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       shelby.models.rollFollowings.fetch({
         success : function(model, response, option){
           // todo: keep loading the rollfollowings until the number stabilizes
-          // a user follows to of his/her own rolls so adjust the number accordingly
-          var numRolls = model.get('rolls').length - 2;
-          self.model.set('numFriends', numRolls);
-          // we now also know how many videos (actaully frames) are available from the friends the user has
-          var numVideos = model.get('rolls').reduce(function(count, roll){ return count + roll.get('frame_count'); }, 0);
-          // create the illusion that we still have to look up how many videos are available with a timeout
+          // create the illusion that we still have to look up how many friends they have with a timeout
           setTimeout(function(){
-            // update the view to show how many videos are available
-            self.model.set('numVideos', numVideos);
-            // now fetch the actual found videos from the dashboard and show them in the guide
-              shelby.models.dashboard.fetch({
-                data : {
-                  limit : shelby.config.pageLoadSizes.dashboard
-                }
-              });
+            var friendRollsFromService = model.get('rolls').filter(function(roll){
+              return roll.get('origin_network') == self.model.get('service');
+            });
+            self.model.set('numFriends', friendRollsFromService.length);
+            // we now also know how many videos (actaully frames) are available from the friends the user has
+            var numVideos = _(friendRollsFromService).reduce(function(count, roll){ return count + roll.get('frame_count'); }, 0);
+            // create the illusion that we still have to look up how many videos are available with a timeout
+            setTimeout(function(){
+              // update the view to show how many videos are available
+              self.model.set('numVideos', numVideos);
+              // now fetch the actual found videos from the dashboard and show them in the guide
+                shelby.models.dashboard.fetch({
+                  data : {
+                    limit : shelby.config.pageLoadSizes.dashboard
+                  }
+                });
+            }, 2000);
           }, 2000);
         }
       });
