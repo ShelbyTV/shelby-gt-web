@@ -20,12 +20,12 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
   initialize : function(){
     this.options.rollCategories.fetch();
 
-    this.model.bind('change:rolls_followed', this._onRollsFollwedChange, this);
+    this.model.bind('change:rolls_followed', this._onRollsFollowedChange, this);
     this.options.rollCategories.get('roll_categories').bind('reset', this.render, this);
   },
 
   cleanup : function(){
-    this.model.unbind('change:rolls_followed', this._onRollsFollwedChange, this);
+    this.model.unbind('change:rolls_followed', this._onRollsFollowedChange, this);
     this.options.rollCategories.get('roll_categories').unbind('reset', this.render, this);
   },
 
@@ -42,7 +42,7 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
     return this;
   },
 
-  _onRollsFollwedChange : function(model, rolls_followed){
+  _onRollsFollowedChange : function(model, rolls_followed){
     var $button = this.$('.js-onboarding-advance-stage');
 
     if (rolls_followed > 2){
@@ -60,15 +60,28 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
   _follow : function(e){
     // even though the inverse action is now described by the button,
     // we prevent click handling with class js-busy
-    var $thisButton = $(e.currentTarget).addClass('js-busy');;
+    var $thisButton = $(e.currentTarget).addClass('js-busy');
 
     // immediately toggle the button - if the ajax fails, we'll update the next time we render
     var isFollowed = $thisButton.text('Following').toggleClass('button_enabled visuallydisabled').hasClass('visuallydisabled');
-    var notFollowed = !isFollowed;
+
+    // now that we've told the user that their action has succeeded, let's fire off the ajax to
+    // actually do what they want, which will very likely succeed
+    var onRollJoined = function() {
+      $thisButton.removeClass('js-busy');
+      // the user should get some new videos in their stream from the newly followed roll,
+      // so fetch the dashboard again to make them appear in the guide
+      shelby.models.dashboard.fetch({
+        data : {
+          limit : shelby.config.pageLoadSizes.dashboard
+        }
+      });
+    };
 
     var thisRoll = new libs.shelbyGT.RollModel({id: $thisButton.data('roll_id')});
 
-    thisRoll.joinRoll(clearBusyFunction, clearBusyFunction);
+    this.model.set('rolls_followed', this.model.get('rolls_followed')+1);
+    thisRoll.joinRoll(onRollJoined, onRollJoined);
   },
 
   _onAdvanceStage : function(e){

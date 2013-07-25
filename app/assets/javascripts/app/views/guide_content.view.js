@@ -55,9 +55,11 @@
       }
       if (model.get('displayState') != libs.shelbyGT.DisplayState.userPreferences &&
           model.get('displayState') != libs.shelbyGT.DisplayState.dotTv &&
-          (model.get('displayState') != libs.shelbyGT.DisplayState.onboarding) ||
+          (model.get('displayState') != libs.shelbyGT.DisplayState.onboarding ||
            model.get('onboardingStage') == 1 ||
-           model.get('onboardingStage') == 2) {
+           model.get('onboardingStage') == 2 ||
+           !model.previous('onboardingStage')
+          )) {
         this._updateChild(model);
       }
       $('.js-guide').addClass('animate_module');
