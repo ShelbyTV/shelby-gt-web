@@ -1,7 +1,8 @@
 libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
 
   events : {
-    "click .js-onboarding-roll-button:not(.js-busy)" : "_follow"
+    "click .js-onboarding-roll-button:not(.js-busy)" : "_follow",
+    "click .js-onboarding-advance-stage"  :  "_onAdvanceStage"
   },
 
   template : function(obj){
@@ -70,5 +71,21 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
       this.model.set('rolls_followed', this.model.get('rolls_followed')+1);
       thisRoll.joinRoll(clearBusyFunction, clearBusyFunction);
     }
+  },
+
+  _onAdvanceStage : function(e){
+// event tracking
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "Onboarding",
+      gaAction : 'Step 4 Complete',
+      gaLabel : shelby.models.user.get('nickname'),
+      gaValue : this.model.get('rolls_followed'),
+      kmqName : "Onboarding Step 4 Complete",
+      kmqProperties : {
+        nickname: shelby.models.user.get('nickname'),
+        rollsFollowed : this.model.get('rolls_followed')
+      }
+    });
   }
 });

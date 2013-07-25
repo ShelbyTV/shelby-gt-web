@@ -21,7 +21,6 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
   },
 
   _advanceStage : function() {
-    // TODO: event tracking for each step
     var currentStage = shelby.models.guide.get('onboardingStage');
     if (currentStage == libs.shelbyGT.OnboardingView.numOnboardingStages) {
       shelby.models.user.get('app_progress').advanceStage('onboarding', true);
