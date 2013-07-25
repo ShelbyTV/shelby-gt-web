@@ -1,8 +1,16 @@
 libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
 
+  _page  : 1,
+  _limit : 10,
+  _pages : null,
+  _averagePages : null,
+  _sourcesList : '.js-list-sources',
+
+
   events : {
     "click .js-onboarding-roll-button:not(.js-busy)" : "_follow",
-    "click .js-onboarding-advance-stage"             : "_onAdvanceStage"
+    "click .js-onboarding-advance-stage"             : "_onAdvanceStage",
+    "click .js-see-more"                             : "_showMoreSources"
   },
 
   template : function(obj){
@@ -28,6 +36,9 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
     }
 
     this.$el.html(this.template({rollCategories: _rollCategories}));
+
+    this._pages = this.$el.find(this._sourcesList).children().length;
+
     return this;
   },
 
@@ -87,5 +98,23 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
         rollsFollowed : this.model.get('rolls_followed')
       }
     });
+  },
+
+  _showMoreSources : function(e){
+    e.preventDefault();
+
+    var $listItems = this.$el.find(this._sourcesList).children();
+
+    var scope = this._page * this._limit;
+    $listItems.slice(scope, (scope + this._limit) ).removeClass('hide');
+
+    this._page += 1;
+
+    this._averagePages = (this._pages / this._limit);
+
+    if(this._page >= this._averagePages) {
+      $(e.currentTarget).addClass('hidden');
+    }
+
   }
 });
