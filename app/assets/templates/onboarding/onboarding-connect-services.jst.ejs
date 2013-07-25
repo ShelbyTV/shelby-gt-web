@@ -7,12 +7,12 @@
     We'll bring you the video your friends are sharing on other networks. <strong>We won't post or share anything without your permission.</strong>
   </p>
 
-  <a href="http://api.shelby.tv/auth/twitter?redir_query=authed_with%3Dtwitter" class="button_primer button_twitter-blue button_command button_command--sub button_command--twitter one-third js-authorize js-authorize--twitter" data-popup_width="1000" data-popup_height="650">
+  <a href="http://api.shelby.tv/auth/twitter?redir_query=authed_with%3Dtwitter" class="button_primer button_twitter-blue button_command button_command--sub button_command--twitter one-third js-authorize js-authorize--twitter js-track-event" data-popup_width="1000" data-popup_height="650" data-ga_category="Onboarding" data-ga_action="Click Auth Twitter on Step 3" data-ga_label="<%= shelby.models.user.get('nickname') %>">
     <span class="icon-twitter"></span>
     <span class="button_label">Twitter</span>
   </a>
 
-  <a href="http://api.shelby.tv/auth/facebook?redir_query=authed_with%3Dfacebook" class="button_primer button_facebook-blue button_command button_command--sub button_command--facebook one-third js-authorize js-authorize--facebook"  data-popup_width="1000" data-popup_height="650">
+  <a href="http://api.shelby.tv/auth/facebook?redir_query=authed_with%3Dfacebook" class="button_primer button_facebook-blue button_command button_command--sub button_command--facebook one-third js-authorize js-authorize--facebook js-track-event"  data-popup_width="1000" data-popup_height="650"  data-ga_category="Onboarding" data-ga_action="Click Auth Facebook on Step 3" data-ga_label="<%= shelby.models.user.get('nickname') %>">
     <span class="icon-facebook"></span>
     <span class="button_label">Facebook</span>
   </a>

@@ -47,11 +47,6 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
     }
 
     switch  (displayState) {
-      case libs.shelbyGT.DisplayState.dashboard:
-        if (!shelby.models.user.get('app_progress').hasBeenWelcomed('dashboard')){
-          return this.render('dashboard');
-        }
-        break;
       case libs.shelbyGT.DisplayState.channel:
         if (!this._hasBeenWelcomedLoggedOut() && shelby.models.user.isAnonymous()){
           return this.render('channel');

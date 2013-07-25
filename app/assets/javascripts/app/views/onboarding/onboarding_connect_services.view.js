@@ -101,6 +101,19 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   },
 
   _onAdvanceStage : function(e){
+    // event tracking
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "Onboarding",
+      gaAction : 'Step 3 Complete',
+      gaLabel : shelby.models.user.get('nickname'),
+      gaValue : shelby.models.user.get('authentications').length,
+      kmqName : "Onboarding Step 4 Complete",
+      kmqProperties : {
+        nickname: shelby.models.user.get('nickname'),
+        authenticationsCount : shelby.models.user.get('authentications').length
+      }
+    });
     e.preventDefault();
   }
 
