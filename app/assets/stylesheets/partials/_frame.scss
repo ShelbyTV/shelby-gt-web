@@ -47,6 +47,7 @@
     position: absolute;
   }
 }
+    // modifiers
     .frame--abstract {
       .icon-play:before {
         font-size: 4em;
@@ -74,9 +75,6 @@
         display: inline;
       }
     }
-
-
-    //.frame modifiers
     .frame--shelf {
       .frame-body-wrapper {
         min-height: 222px;
