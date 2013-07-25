@@ -5,6 +5,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   },
 
   initialize : function(){
+    _.bind(this._onRollFollowingsFetched, this);
     this.model.bind('change:action', this._onChangeAction, this);
     this.model.bind('change:numFriends', this._onChangeNumFriends, this);
     this.model.bind('change:numVideos', this._onChangeNumVideos, this);
@@ -60,16 +61,28 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     var self = this;
 
     if (action == 'load') {
-      // fetch the roll followings so we can find out how many friends the user has on the new service
-      shelby.models.rollFollowings.fetch({
-        success : function(model, response, option){
-          // todo: keep loading the rollfollowings until the number stabilizes
-          // create the illusion that we still have to look up how many friends they have with a timeout
+      // define callback for what to do afetr we load the roll followings
+      var previousNumFriendRolls = 0;
+      var fetchAttempt = 1;
+      var onRollFollowingsFetched = function(model, response, option){
+        var friendRollsFromService = model.get('rolls').filter(function(roll){
+          return roll.get('origin_network') == self.model.get('service');
+        });
+        var numFriendRolls = friendRollsFromService.length;
+
+        if ((!numFriendRolls || numFriendRolls != previousNumFriendRolls) && fetchAttempt < 5) {
+          // if we think there might be more roll followings yet to be created, fetch again
+          fetchAttempt++;
+          previousNumFriendRolls = numFriendRolls;
+          console.log('fetching again');
+          shelby.models.rollFollowings.fetch({
+            success : onRollFollowingsFetched
+          });
+        } else {
           setTimeout(function(){
-            var friendRollsFromService = model.get('rolls').filter(function(roll){
-              return roll.get('origin_network') == self.model.get('service');
-            });
-            self.model.set('numFriends', friendRollsFromService.length);
+            // otherwise, update the displayed number of friends found with video and move on
+            self.model.set('numFriends', numFriendRolls);
+
             // we now also know how many videos (actaully frames) are available from the friends the user has
             var numVideos = _(friendRollsFromService).reduce(function(count, roll){ return count + roll.get('frame_count'); }, 0);
             // create the illusion that we still have to look up how many videos are available with a timeout
@@ -87,11 +100,21 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
                 self.$el.find('.js-modal-foot').removeClass('cloaked');
               }, 2000);
             }, 3250);
-          }, 2000);
+          }, 1000);
         }
+      };
+      console.log('first fetch');
+
+      // fetch the roll followings so we can find out how many friends the user has on the new service
+      shelby.models.rollFollowings.fetch({
+        success : onRollFollowingsFetched
       });
     }
     this.render();
+  },
+
+  _onRollFollowingsFetched : function(model, response, option) {
+    console.log('fetched', this);
   },
 
   _onChangeNumFriends : function(model, numFriends) {
