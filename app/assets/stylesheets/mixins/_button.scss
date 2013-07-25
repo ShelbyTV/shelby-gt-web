@@ -58,7 +58,7 @@
   &.button_enabled:hover,
   &.visuallydisabled:hover {
     background-color: $base;
-
+    background-image: none;
     // @include gradient-primer($base, 3%, bottom);
   }
 

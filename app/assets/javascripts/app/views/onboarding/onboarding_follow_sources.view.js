@@ -1,23 +1,7 @@
 libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
 
-  /*
-   * SCSS hover buttons
-   * <li data-roll_id="23484skdfj4384">
-   * .bind(fn(el)el.parent.data('roll_id') etc)
-   *
-   * Next button should be disabled "follow n more Rolls"
-  */
-
-  /* Where does the content come from?
-   * --> We are using RollCategoriesCollectionModel to fetch featured rolls from the API
-   *
-   * To update the content, see shelby_gt/config/settings/roll.yml (which gets returned via
-   * /v1/roll/featured)
-   */
-
   events : {
-    "click .js-onboarding-roll-button:not(.js-busy)" : "_followOrUnfollow",
-    "click .js-onboarding-next-step"                 : "_onNextStepClick"
+    "click .js-onboarding-roll-button:not(.js-busy)" : "_follow"
   },
 
   template : function(obj){
@@ -37,41 +21,36 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
   },
 
   render : function(){
-    this.$el.html(this.template({rollCategories: this.options.rollCategories}));
+    var _rollCategories = [];
+    if (this.options.rollCategories && this.options.rollCategories.get('roll_categories').models.length > 0 && this.options.rollCategories.get('roll_categories').models[0].has('rolls')){
+      _rollCategories = this.options.rollCategories.get('roll_categories').models[0].get('rolls').models;
+    }
+
+    this.$el.html(this.template({rollCategories: _rollCategories}));
     return this;
   },
 
   _onRollsFollwedChange : function(model, rolls_followed){
-    var $button = this.$('.js-onboarding-next-step');
+    var $button = this.$('.js-onboarding-advance-stage');
 
     if (rolls_followed > 2){
       $button.text('Start Watching')
-             .toggleClass('button_gray',false)
-             .toggleClass('button_green',true)
+             .toggleClass('disabled',false)
              .removeAttr('disabled');
     } else {
       var needToFollowCount = 3 - rolls_followed;
-      var newText = 'Follow '+(needToFollowCount)+' more '+_('Roll').pluralize(needToFollowCount);
+      var newText = 'Follow '+(needToFollowCount) + ' More';
 
       $button.text(newText);
     }
   },
 
-  _onNextStepClick : function(){
-    var appProgress = shelby.models.user.get('app_progress');
-
-    shelby.models.user.get('app_progress').advanceStage('onboarding', 2);
-    shelby.router.navigate('stream', {trigger:true});
-
-    shelby.track('Onboarding step 2 complete', {userName: shelby.models.user.get('nickname')});
-  },
-
-  _followOrUnfollow : function(e){
+  _follow : function(e){
     var $thisButton = $(e.currentTarget);
 
     // immediately toggle the button - if the ajax fails, we'll update the next time we render
-    var isFollowed = $thisButton.toggleClass('button_green').toggleClass('button_gray').hasClass('button_green');
-    var wasFollowed = !isFollowed;
+    var isFollowed = $thisButton.text('Following').toggleClass('button_enabled visuallydisabled').hasClass('visuallydisabled');
+    var notFollowed = !isFollowed;
     // even though the inverse action is now described by the button, we prevent click handling
     // with class js-busy until the ajax completes
     $thisButton.addClass('js-busy');
@@ -84,10 +63,10 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
 
     var thisRoll = new libs.shelbyGT.RollModel({id: $thisButton.data('roll_id')});
 
-    if (wasFollowed) {
-      this.model.set('rolls_followed', this.model.get('rolls_followed')-1);
-      thisRoll.leaveRoll(clearBusyFunction, clearBusyFunction);
-    } else {
+    if (notFollowed) {
+      e.preventDefault();
+    }
+    else {
       this.model.set('rolls_followed', this.model.get('rolls_followed')+1);
       thisRoll.joinRoll(clearBusyFunction, clearBusyFunction);
     }
