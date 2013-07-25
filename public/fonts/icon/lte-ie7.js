@@ -32,7 +32,10 @@ window.onload = function() {
 			'icon-arrow_up' : '&#xe017;',
 			'icon-arrow_right' : '&#xe018;',
 			'icon-arrow_left' : '&#xe019;',
-			'icon-arrow_down' : '&#xe01a;'
+			'icon-arrow_down' : '&#xe01a;',
+			'icon-whole' : '&#xe01b;',
+			'icon-type' : '&#xe01c;',
+			'icon-mark' : '&#xe01d;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;
