@@ -4,6 +4,7 @@ if (typeof(shelby) == 'undefined') {
 if (typeof(shelby.config) == 'undefined') {
   shelby.config = {};
 }
-shelby.config.share = {
-  services : ['twitter', 'facebook']
+shelby.config.services = {
+  share : ['twitter', 'facebook'],
+  primaryAuth : ['twitter', 'facebook']
 };

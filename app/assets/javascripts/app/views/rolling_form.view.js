@@ -43,11 +43,11 @@
     render : function(){
       var self = this;
 
-      var enabledDestinations = shelby.config.share.services;
+      var enabledDestinations = shelby.config.services.share;
       if (shelby.models.user.has('app_progress')) {
         enabledDestinations = [];
         var userAppProgress = shelby.models.user.get('app_progress');
-        _(shelby.config.share.services).each(function(service){
+        _(shelby.config.services.share).each(function(service){
           if (!_(userAppProgress.attributes).has('share_' + service + '_enabled') || userAppProgress.get('share_' + service + '_enabled')) {
             enabledDestinations.push(service);
           }
@@ -117,7 +117,7 @@
       var self = this;
       var message = this.$("#js-sharing-message").val();
       var shareDests = [];
-      _(shelby.config.share.services).each(function(service){
+      _(shelby.config.services.share).each(function(service){
         var isServiceChecked = this.$(".js-toggle-" + service + "-sharing").is(':checked');
         if(isServiceChecked){ shareDests.push(service); }
         shelby.models.user.get('app_progress').set('share_' + service + '_enabled', isServiceChecked);
