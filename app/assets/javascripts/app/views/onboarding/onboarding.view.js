@@ -34,8 +34,10 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
 
   _onOnboardingStageChange : function(guideModel, stage){
     if (stage) {
+      shelby.userInactivity.disableUserActivityDetection();
       this.render();
     } else {
+      shelby.userInactivity.enableUserActivityDetection();
       this.$el.remove();
     }
   },
