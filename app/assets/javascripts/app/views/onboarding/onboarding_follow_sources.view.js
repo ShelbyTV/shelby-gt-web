@@ -64,11 +64,11 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
 
     // immediately toggle the button - if the ajax fails, we'll update the next time we render
     var isFollowed = $thisButton.text('Following').toggleClass('button_enabled visuallydisabled').hasClass('visuallydisabled');
+    this.model.set('rolls_followed', this.model.get('rolls_followed')+1);
 
     // now that we've told the user that their action has succeeded, let's fire off the ajax to
     // actually do what they want, which will very likely succeed
     var onRollJoined = function() {
-      $thisButton.removeClass('js-busy');
       // the user should get some new videos in their stream from the newly followed roll,
       // so fetch the dashboard again to make them appear in the guide
       shelby.models.dashboard.fetch({
@@ -77,10 +77,7 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
         }
       });
     };
-
     var thisRoll = new libs.shelbyGT.RollModel({id: $thisButton.data('roll_id')});
-
-    this.model.set('rolls_followed', this.model.get('rolls_followed')+1);
     thisRoll.joinRoll(onRollJoined, onRollJoined);
   },
 
