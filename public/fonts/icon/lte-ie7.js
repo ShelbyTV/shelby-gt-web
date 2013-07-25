@@ -3,7 +3,7 @@
 window.onload = function() {
 	function addIcon(el, entity) {
 		var html = el.innerHTML;
-		el.innerHTML = '<span style="font-family: \'Shelby-Icon-Font\'">' + entity + '</span>' + html;
+		el.innerHTML = '<span style="font-family: \'icomoon\'">' + entity + '</span>' + html;
 	}
 	var icons = {
 			'icon-twitter' : '&#xe000;',
@@ -18,23 +18,21 @@ window.onload = function() {
 			'icon-play' : '&#xe009;',
 			'icon-pause' : '&#xe00a;',
 			'icon-like' : '&#xe00b;',
-			'icon-chevron' : '&#xe00c;',
-			'icon-carrot' : '&#xe00d;',
-			'icon-avatar' : '&#xe00e;',
-			'icon-arrow_up' : '&#xe00f;',
-			'icon-arrow_right' : '&#xe010;',
-			'icon-arrow_left' : '&#xe011;',
-			'icon-arrow_down' : '&#xe012;',
-			'icon-whole' : '&#xe013;',
-			'icon-type' : '&#xe014;',
-			'icon-mark' : '&#xe015;',
-			'icon-hd' : '&#xe016;',
-			'icon-guide-out' : '&#xe017;',
-			'icon-guide-in' : '&#xe018;',
-			'icon-facebook' : '&#xe019;',
-			'icon-embed' : '&#xe01a;',
-			'icon-email' : '&#xe01b;',
-			'icon-close' : '&#xe01c;'
+			'icon-hd' : '&#xe00c;',
+			'icon-guide-out' : '&#xe00d;',
+			'icon-guide-in' : '&#xe00e;',
+			'icon-facebook' : '&#xe00f;',
+			'icon-embed' : '&#xe010;',
+			'icon-email' : '&#xe011;',
+			'icon-close' : '&#xe012;',
+			'icon-chevron' : '&#xe013;',
+			'icon-check' : '&#xe014;',
+			'icon-carrot' : '&#xe015;',
+			'icon-avatar' : '&#xe016;',
+			'icon-arrow_up' : '&#xe017;',
+			'icon-arrow_right' : '&#xe018;',
+			'icon-arrow_left' : '&#xe019;',
+			'icon-arrow_down' : '&#xe01a;'
 		},
 		els = document.getElementsByTagName('*'),
 		i, attr, html, c, el;

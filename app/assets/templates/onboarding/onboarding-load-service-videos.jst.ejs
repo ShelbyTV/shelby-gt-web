@@ -6,7 +6,9 @@
   <ol class="list js-progress-list">
     <li class="list__item load_progress clearfix">
       <h2 class="load_progress__h1">
-        <span class="load_progress__status"></span>
+        <span class="image_module load_progress__status">
+          <span class="icon icon-check"></span>
+        </span>
         <span class="load_progress__label">
           <span>Connecting <%= _(currentService).capitalize() %></span>
           <span><%= _(currentService).capitalize() %> Connected</span>
@@ -15,7 +17,9 @@
     </li>
     <li class="list__item load_progress load_progress--loading clearfix">
       <h2 class="load_progress__h1">
-        <span class="load_progress__status"></span>
+        <span class="image_module load_progress__status">
+          <span class="icon icon-check"></span>
+        </span>
         <span class="animate_module load_progress__total js-num-friends">0</span>
         <span class="load_progress__label">
           <span>Finding Friends</span>
@@ -25,7 +29,9 @@
     </li>
     <li class="list__item load_progress load_progress--loading clearfix">
       <h2 class="load_progress__h1">
-        <span class="load_progress__status"></span>
+        <span class="image_module load_progress__status">
+          <span class="icon icon-check"></span>
+        </span>
         <span class="animate_module load_progress__total js-num-videos">0</span>
         <span class="load_progress__label">
           <span>Finding Videos</span>
