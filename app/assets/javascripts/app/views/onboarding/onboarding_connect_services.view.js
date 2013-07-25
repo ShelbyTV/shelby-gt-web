@@ -20,9 +20,24 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     if (this.model.get('action') == 'connect') {
       return SHELBYJST['onboarding/onboarding-connect-services']();
     } else {
+      // the view will display a button to authorize with more services if
+      // the user hasn't already connected them, so first figure out which
+      // eligible services the user hasn't connected yet
+      var userAuthentications = shelby.models.user.get('authentications');
+      var remainingServices;
+      if (userAuthentications && userAuthentications.length) {
+        remainingServices = _(shelby.config.services.primaryAuth).reject(function(service){
+          return _(userAuthentications).any(function(auth){
+            return auth.provider == service;
+          });
+        });
+      } else {
+        remainingServices = shelby.config.services.primaryAuth;
+      }
+
       return SHELBYJST['onboarding/onboarding-load-service-videos']({
         currentService : this.model.get('service'),
-        otherService : this.model.get('service') == 'facebook' ? 'twitter' : 'facebook'
+        remainingServices : remainingServices
       });
     }
   },
@@ -32,7 +47,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
     this.$el.html(this.template());
 
-    _(['twitter', 'facebook']).each(function(service){
+    _(shelby.config.services.primaryAuth).each(function(service){
       if (_(shelby.models.user.get('authentications')).any(function(auth){return auth.provider == service;})) {
         self.$('.js-authorize--' + service).addClass('disabled').find('.button_label').text('Connected');
       }
@@ -49,7 +64,9 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       shelby.models.rollFollowings.fetch({
         success : function(model, response, option){
           // todo: keep loading the rollfollowings until the number stabilizes
-          self.model.set('numFriends', model.get('rolls').length);
+          // a user follows to of his/her own rolls so adjust the number accordingly
+          var numRolls = model.get('rolls').length - 2;
+          self.model.set('numFriends', numRolls);
           // we now also know how many videos (actaully frames) are available from the friends the user has
           var numVideos = model.get('rolls').reduce(function(count, roll){ return count + roll.get('frame_count'); }, 0);
           // create the illusion that we still have to look up how many videos are available with a timeout
