@@ -5,7 +5,6 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    _.bind(this._onRollFollowingsFetched, this);
     this.model.bind('change:action', this._onChangeAction, this);
     this.model.bind('change:numFriends', this._onChangeNumFriends, this);
     this.model.bind('change:numVideos', this._onChangeNumVideos, this);
@@ -79,7 +78,6 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
           // if we think there might be more roll followings yet to be created, fetch again
           fetchAttempt++;
           previousNumFriendRolls = numFriendRolls;
-          console.log('fetching again');
           shelby.models.rollFollowings.fetch({
             success : onRollFollowingsFetched
           });
@@ -108,7 +106,6 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
           }, 1000);
         }
       };
-      console.log('first fetch');
 
       // fetch the roll followings so we can find out how many friends the user has on the new service
       shelby.models.rollFollowings.fetch({
@@ -116,10 +113,6 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       });
     }
     this.render();
-  },
-
-  _onRollFollowingsFetched : function(model, response, option) {
-    console.log('fetched', this);
   },
 
   _onChangeNumFriends : function(model, numFriends) {
