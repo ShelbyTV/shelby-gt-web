@@ -66,7 +66,12 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       var fetchAttempt = 1;
       var onRollFollowingsFetched = function(model, response, option){
         var friendRollsFromService = model.get('rolls').filter(function(roll){
-          return roll.get('origin_network') == self.model.get('service');
+          return (roll.get('creator_id') != shelby.models.user.id &&
+                  (roll.get('origin_network') == self.model.get('service')) ||
+                  (_(roll.get('creator_authentications')).any(function(auth){
+                    return auth.provider == self.model.get('service');
+                  }))
+                 );
         });
         var numFriendRolls = friendRollsFromService.length;
 
