@@ -9,10 +9,15 @@
   &:before {
     z-index: 1;
   }
+
+  // non-normative
+  .user {
+    font-size: 1em;
+  }
 }
 
 .modal__body {
-  background-color: white;
+  background-color: $ui-white;
   border: 1px solid #ddd;
   padding: 2em 2em 1em;
 }
@@ -51,6 +56,9 @@
     }
 
 .modal__block {}
+    .modal__block--push {
+      margin-bottom: 1.5em;
+    }
 
 .modal__button {}
 

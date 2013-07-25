@@ -41,8 +41,8 @@
           Your Profile
         </h2>
 
-        <ul class="list_module">
-          <li class="list_item form_fieldset clearfix">
+        <ul class="list">
+          <li class="list__item form_fieldset clearfix">
             <label for="preference-username" class="form_label">
               Username
             </label>
@@ -50,7 +50,7 @@
             <input id="preference-username" class="form_input js-username-input" name="preference-username" type="text" placeholder="<%= user.get('nickname') %>" value="<%= user.get('nickname') %>" />
           </li>
 
-          <li class="list_item form_fieldset clearfix">
+          <li class="list__item form_fieldset clearfix">
             <label for="preference-email" class="form_label">
               Email
             </label>
@@ -107,8 +107,8 @@
         <h2 class="form_legend">
           Connect
         </h2>
-        <ul class="list_module">
-          <li class="list_item clearfix">
+        <ul class="list">
+          <li class="list__item clearfix">
             <% var tw = _.find(user.get('authentications'),function(a){ return a.provider == 'twitter' }) %>
             <% if (typeof tw !== 'undefined'){ %>
               <p class="preference__block">@<%= tw.nickname || '' %></p>
@@ -121,7 +121,7 @@
             <h2 class="badge badge--twitter icon-twitter preferences-networks-twitter form_label">Twitter</h2>
 
           </li>
-          <li class="list_item clearfix">
+          <li class="list__item clearfix">
             <% var tu = _.find(user.get('authentications'),function(a){ return a.provider == 'tumblr' }) %>
             <% if (typeof tu !== 'undefined'){ %>
               <p class="preference__block"><%= tu.nickname || '' %></p>
@@ -134,7 +134,7 @@
             <h2 class="badge badge--tumblr icon-tumblr preferences-networks-tumblr form_label">Tumblr</h2>
 
           </li>
-          <li class="list_item clearfix">
+          <li class="list__item clearfix">
             <% var fb = _.find(user.get('authentications'),function(a){ return a.provider == 'facebook' }) %>
             <% if (typeof fb !== 'undefined'){ %>
               <p class="preference__block"><%= fb.nickname || '' %></p>
@@ -167,26 +167,26 @@
         <h2 class="form_legend">
           Email Notifications
         </h2>
-        <ul class="list_module">
-          <li class="list_item clearfix">
+        <ul class="list">
+          <li class="list__item clearfix">
             <input id="preferences-email-updates" class="form_checkbox preference__checkbox" name="preferences-email-updates" type="checkbox" <% if (user.get('preferences').email_updates === true){ %> checked <% }%> />
             <label for="preferences-email-updates" class="form_label">
               News and Updates
             </label>
           </li>
-          <li class="list_item clearfix">
+          <li class="list__item clearfix">
             <input id="preferences-email-likes" class="form_checkbox preference__checkbox" name="preferences-email-likes" type="checkbox" <% if (user.get('preferences').like_notifications === true){ %> checked <% }%> />
             <label for="preferences-email-likes" class="form_label">
               Likes
             </label>
           </li>
-          <li class="list_item clearfix">
+          <li class="list__item clearfix">
             <input id="preferences-email-rerolls" class="form_checkbox preference__checkbox" name="preferences-email-rerolls" type="checkbox" <% if (user.get('preferences').reroll_notifications === true){ %> checked <% }%> />
             <label for="preferences-email-rerolls" class="form_label">
               Re-rolls
             </label>
           </li>
-          <li class="list_item clearfix">
+          <li class="list__item clearfix">
             <input id="preferences-email-joinrolls" class="form_checkbox preference__checkbox" name="preferences-email-joinrolls" type="checkbox" <% if (user.get('preferences').roll_activity_notifications === true){ %> checked <% }%> />
             <label for="preferences-email-joinrolls" class="form_label">
               Roll activity

@@ -2,7 +2,7 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
 
   events : {
     "click .js-onboarding-roll-button:not(.js-busy)" : "_follow",
-    "click .js-onboarding-advance-stage"  :  "_onAdvanceStage"
+    "click .js-onboarding-advance-stage"             : "_onAdvanceStage"
   },
 
   template : function(obj){
