@@ -20,10 +20,9 @@ module SignupHelper
     end
   end
 
-  def follow_user!(user_id, cookies)
+  def follow_inviter!(user_id, cookies)
     if user = Shelby::API.get_user(user_id)
-      roll_id = user['public_roll_id']
-      Shelby::API.join_roll(roll_id, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
+      Shelby::API.join_roll(user['personal_roll_id'], Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
       # proxy the cookies
       Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
     end

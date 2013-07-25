@@ -15,10 +15,11 @@ class SignupController < ApplicationController
     end
   end
 
-  #actually create the user, if errors, go back to show and show what failed
+  # actually create the user, if errors, go back to show and show what failed
   def create
     if create_user!(params, cookies)
-      EM.next_tick { follow_user!(session[:invite_code], cookies) if session[:invite_code] }
+      # the new user should follow an inviter if they are invited, its only nice. and asynchronous
+      EM.next_tick { follow_inviter!(session[:invite_code], cookies) if session[:invite_code] }
       redirect_to :root
     else
       redirect_to :signup
