@@ -34,6 +34,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
     emptyIndicatorViewProto : null,
+    showEmptyIndicatorOnStaticRender : false,
     firstFetchLimit : 0,
     insert : {
       position : 'before',
@@ -83,6 +84,17 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   _prepareMasterCollection : function() {
     libs.shelbyGT.SmartRefreshListView.prototype._prepareMasterCollection.call(this);
     this._updatePagingParameters();
+  },
+
+  render : function(forceReRender){
+    libs.shelbyGT.SmartRefreshListView.prototype.render.call(this, forceReRender);
+    if (this.options.doStaticRender &&
+        this.options.showEmptyIndicatorOnStaticRender &&
+        this.options.emptyIndicatorViewProto &&
+        this._numItemsLoaded == 0) {
+        this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
+        this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
+    }
   },
 
   _updatePagingParameters : function() {
