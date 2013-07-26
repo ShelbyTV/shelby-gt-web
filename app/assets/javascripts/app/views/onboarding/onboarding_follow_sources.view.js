@@ -60,10 +60,10 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
   _follow : function(e){
     // even though the inverse action is now described by the button,
     // we prevent click handling with class js-busy
-    var $thisButton = $(e.currentTarget).addClass('js-busy');
+    var $thisButton = $(e.currentTarget).addClass('button_busy js-busy');
 
     // immediately toggle the button - if the ajax fails, we'll update the next time we render
-    var isFollowed = $thisButton.text('Following').toggleClass('button_enabled visuallydisabled').hasClass('visuallydisabled');
+    var isFollowed = $thisButton.toggleClass('button_enabled visuallydisabled').hasClass('visuallydisabled');
     this.model.set('rolls_followed', this.model.get('rolls_followed')+1);
 
     // now that we've told the user that their action has succeeded, let's fire off the ajax to
@@ -79,6 +79,10 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
     };
     var thisRoll = new libs.shelbyGT.RollModel({id: $thisButton.data('roll_id')});
     thisRoll.joinRoll(onRollJoined, onRollJoined);
+
+    setTimeout(function(){
+      $thisButton.removeClass('button_busy').children('.button_label').text('Following');
+    }, 2000);
   },
 
   _onAdvanceStage : function(e){

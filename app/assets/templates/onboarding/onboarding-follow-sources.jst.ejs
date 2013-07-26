@@ -12,7 +12,9 @@
         <div class="user user--no_lining user--medium_avatar clearfix">
           <div class="media_module media_module--bare clearfix">
             <div class="media_image--rev">
-              <button class="button_primer button_command button_command--flexible button_gray user__button js-onboarding-roll-button" data-roll_id="<%= category.id %>">Follow</button>
+              <button class="button_primer button_command button_command--flexible button_gray user__button js-onboarding-roll-button" data-roll_id="<%= category.id %>">
+                <span class="button_label">Follow</span>
+              </button>
             </div><!-- eo media_image--rev -->
 
             <span class="media_image image_module avatar avatar--medium user__avatar" role="img" style="background-image:url(<%= category.get('display_thumbnail_src') %>);">

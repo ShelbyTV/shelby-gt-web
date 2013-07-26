@@ -189,3 +189,22 @@ a.button_primer,
   background: transparent;
   font-size: inherit;
 }
+
+/////////////////////////////////////////////////////////////////////////////
+//  button busy
+//  sometimes you need a button with a spinner.
+/////////////////////////////////////////////////////////////////////////////
+.button_busy {
+  background-repeat: no-repeat;
+  background-position: center;
+
+  .button_label {
+    visibility: hidden;
+  }
+
+  // mad hacky.
+  &.button_gray {
+    background-color: #e7e7e7;
+    background-image: url($icon-signup-spinner);
+  }
+}
