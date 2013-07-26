@@ -4,4 +4,4 @@ shelby.config.db = {
     sortAttribute: 'followed_at',
     sortDirection: 'desc'
   }
-}
+};
