@@ -82,7 +82,7 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
   },
 
   _onAdvanceStage : function(e){
-// event tracking
+    // event tracking
     shelby.trackEx({
       providers : ['ga', 'kmq'],
       gaCategory : "Onboarding",

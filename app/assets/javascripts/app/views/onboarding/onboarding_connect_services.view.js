@@ -126,17 +126,18 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   },
 
   _onAdvanceStage : function(e){
+    var _auths = shelby.models.user.get('authentications') ? shelby.models.user.get('authentications') : [];
     // event tracking
     shelby.trackEx({
       providers : ['ga', 'kmq'],
       gaCategory : "Onboarding",
       gaAction : 'Step 3 Complete',
       gaLabel : shelby.models.user.get('nickname'),
-      gaValue : shelby.models.user.get('authentications').length,
+      gaValue : _auths.length,
       kmqName : "Onboarding Step 4 Complete",
       kmqProperties : {
         nickname: shelby.models.user.get('nickname'),
-        authenticationsCount : shelby.models.user.get('authentications').length
+        authenticationsCount : _auths.length
       }
     });
     e.preventDefault();
