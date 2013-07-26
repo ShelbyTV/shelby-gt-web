@@ -1,7 +1,8 @@
 libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
   events : {
-    "click .js-onboarding-advance-stage" : "_onAdvanceStage"
+    "click .js-onboarding-advance-stage" : "_onAdvanceStage",
+    "click .js-authorize" : "_onConnectRemainingService"
   },
 
   initialize : function(){
@@ -127,6 +128,10 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
   _onAdvanceStage : function(e){
     var _auths = shelby.models.user.get('authentications') ? shelby.models.user.get('authentications') : [];
+    if (this.model.get('action') == 'load') {
+      this._checkSetTimelineSharing();
+    }
+
     // event tracking
     shelby.trackEx({
       providers : ['ga', 'kmq'],
@@ -141,6 +146,20 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       }
     });
     e.preventDefault();
+  },
+
+  _onConnectRemainingService : function(){
+    this._checkSetTimelineSharing();
+  },
+
+  _checkSetTimelineSharing : function(){
+    // if we just authenticated facebook, update the user's timeline sharing preference
+    if (this.model.get('service') == 'facebook') {
+      var _prefs = _.clone(shelby.models.user.get('preferences'));
+      _prefs['open_graph_posting'] = this.$('#onboarding-timeline-sharing').is(':checked');
+      shelby.models.user.save({preferences: _prefs});
+      shelby.track('FB Timeline App Preference set to '+_prefs['open_graph_posting'],{userName: shelby.models.user.get('nickname')});
+    }
   }
 
 });
