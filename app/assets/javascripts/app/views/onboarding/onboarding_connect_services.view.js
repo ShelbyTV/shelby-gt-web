@@ -140,7 +140,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       gaAction : 'Step 3 Complete',
       gaLabel : shelby.models.user.get('nickname'),
       gaValue : _auths.length,
-      kmqName : "Onboarding Step 4 Complete",
+      kmqName : "Onboarding Step 3 Complete",
       kmqProperties : {
         nickname: shelby.models.user.get('nickname'),
         authenticationsCount : _auths.length
