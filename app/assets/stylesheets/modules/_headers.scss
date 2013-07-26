@@ -1,0 +1,24 @@
+
+.alpha {
+  @include header-size(20px);
+}
+
+.beta {
+  @include header-size(18px);
+}
+
+.gamma {
+  @include header-size(16px);
+}
+
+.delta {
+  @include header-size(14px);
+}
+
+.epsilon {
+  @include header-size(13px);
+}
+
+.zeta {
+  @include header-size(12px);
+}

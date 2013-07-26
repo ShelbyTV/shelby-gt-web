@@ -45,11 +45,12 @@
 
 .modal__foot {
   padding-top: 1em;
-  text-align: right;
 }
+    .modal__foot--rev {
+      text-align: right;
+    }
 
 .modal__h1 {
-  font-size: 1.5em;
 }
     .modal__h1--padding {
       padding: 1em 0.75em;
@@ -60,5 +61,11 @@
       margin-bottom: 1.3em;
     }
 
+    .modal__block--hint {
+      &,
+      a {
+        color: #888;
+      }
+    }
 .modal__button {}
 

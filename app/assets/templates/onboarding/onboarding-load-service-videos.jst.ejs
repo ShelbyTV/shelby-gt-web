@@ -1,5 +1,5 @@
 <div class="modal__body modal__body--bare modal__body--<%= currentService %> clearfix">
-  <h1 class="modal__h1 modal__h1--padding">
+  <h1 class="alpha modal__h1 modal__h1--padding">
     Connecting <%= _(currentService).capitalize() %>
   </h1>
 
@@ -9,7 +9,7 @@
         <span class="image_module load_progress__status">
           <span class="icon icon-check"></span>
         </span>
-        <span class="load_progress__label">
+        <span class="beta load_progress__label">
           <span>Connecting <%= _(currentService).capitalize() %></span>
           <span><%= _(currentService).capitalize() %> Connected</span>
         </span>
@@ -21,7 +21,7 @@
           <span class="icon icon-check"></span>
         </span>
         <span class="animate_module load_progress__total js-num-friends">0</span>
-        <span class="load_progress__label">
+        <span class="beta load_progress__label">
           <span>Finding Friends</span>
           <span>Friends Found</span>
         </span>
@@ -33,7 +33,7 @@
           <span class="icon icon-check"></span>
         </span>
         <span class="animate_module load_progress__total js-num-videos">0</span>
-        <span class="load_progress__label">
+        <span class="beta load_progress__label">
           <span>Finding Videos</span>
           <span>Videos Found</span>
         </span>
@@ -46,13 +46,17 @@
 <div class="animate_module modal__foot cloaked clearfix js-modal-foot">
   <% if (currentService == 'facebook') { %>
     <form>
-      <input class="form_checkbox form_checkbox--inline" type="checkbox" id="onboarding-timeline-sharing" checked="checked" />
-      <label class="form_label form_label--inline" for="onboarding-timeline-sharing">Publish activity to Facebook Timeline</label>
+      <fieldset class="form_fieldset form_fieldset--rev">
+        <input class="form_checkbox form_checkbox--inline" type="checkbox" id="onboarding-timeline-sharing" checked="checked" />
+        <label class="form_label form_label--inline" for="onboarding-timeline-sharing">Publish activity to Facebook Timeline</label>
+      </fieldset>
     </form>
   <% } else if (currentService == 'twitter') { %>
     <form>
-      <input class="form_checkbox form_checkbox--inline" type="checkbox" id="onboarding-follow-shelby" checked="checked" />
-      <label class="form_label form_label--inline" for="onboarding-follow-shelby">Follow @Shelby on Twitter</label>
+      <fieldset class="form_fieldset form_fieldset--rev">
+        <input class="form_checkbox form_checkbox--inline" type="checkbox" id="onboarding-follow-shelby" checked="checked" />
+        <label class="form_label form_label--inline" for="onboarding-follow-shelby">Follow @Shelby on Twitter</label>
+      </fieldset>
     </form>
 
   <% } %>
@@ -66,8 +70,8 @@
   <b>&nbsp;or&nbsp;</b>
 
   <% } %>
-  <button class="button_primer button_command button_command--flexible button_green js-onboarding-advance-stage">
+  <a class="button_primer button_command button_command--flexible button_green js-onboarding-advance-stage">
     <span class="icon icon-roll"></span>
     <span class="button_label">Add more video</span>
-  </button>
+  </a>
 </div><!-- eo modal__foot -->
