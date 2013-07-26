@@ -129,6 +129,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   _onAdvanceStage : function(e){
     var _auths = shelby.models.user.get('authentications') ? shelby.models.user.get('authentications') : [];
     if (this.model.get('action') == 'load') {
+      this._checkFollowShelby();
       this._checkSetTimelineSharing();
     }
 
@@ -139,7 +140,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       gaAction : 'Step 3 Complete',
       gaLabel : shelby.models.user.get('nickname'),
       gaValue : _auths.length,
-      kmqName : "Onboarding Step 4 Complete",
+      kmqName : "Onboarding Step 3 Complete",
       kmqProperties : {
         nickname: shelby.models.user.get('nickname'),
         authenticationsCount : _auths.length
@@ -149,7 +150,24 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   },
 
   _onConnectRemainingService : function(){
+    this._checkFollowShelby();
     this._checkSetTimelineSharing();
+  },
+
+  _checkFollowShelby : function(){
+    // if we just authenticated twitter
+    if(this.model.get('service') == 'twitter' &&
+       _(shelby.models.user.get('authentications')).any(function(auth){return auth.provider == 'twitter';})) {
+      // if the user checked the box to do so
+      if(this.$('#onboarding-follow-shelby').is(':checked')) {
+        // make the user follow Shelby on twitter
+        // TODO make this an actual model subclass if we need to do this anywhere else in the app
+        var userToFollow = new libs.shelbyGT.ShelbyBaseModel();
+        userToFollow.url = shelby.config.apiRoot + '/twitter/follow/shelby';
+        userToFollow.save();
+        shelby.track('Follow Shelby', {userName: shelby.models.user.get('nickname')});
+      }
+    }
   },
 
   _checkSetTimelineSharing : function(){
