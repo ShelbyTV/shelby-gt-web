@@ -126,6 +126,12 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         }));
       }
     }
+
+    // toggle the video_controls position based on displayState, only if onboarding is incomplete
+    var displayState = shelby.models.guide.get('displayState'),
+        isOnboarding = displayState == libs.shelbyGT.DisplayState.onboarding;
+
+    $('.js-video-controls-wrapper').toggleClass('video_controls__wrapper--preload', isOnboarding);
   },
 
   _onActiveFrameModelChange : function(guideModel, activeFrameModel){

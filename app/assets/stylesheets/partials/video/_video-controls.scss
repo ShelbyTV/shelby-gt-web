@@ -16,6 +16,9 @@ $_video-player : #0e0e0e;
   right: 0;
   z-index: 2000000;
 }
+    .video_controls__wrapper--preload {
+      bottom: 0;
+    }
 
 .video_controls {
 	@include gradient-primer($_video-player);
