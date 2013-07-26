@@ -1,7 +1,6 @@
 libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView.extend({
 
   _baseURL : 'http://shelby.tv/signup?code=',
-  _shareText : "I'm watching my perfect video stream on @Shelby. Join me and get yours.",
 
   events : {
     'click .js-facebook-post' : '_shareToFacebook'
@@ -35,8 +34,9 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
 
   _buildTweetUrl : function() {
 
-    var tweetUrl  = this._baseURL + this._userId,
-        url       = 'https://twitter.com/intent/tweet?related=shelby&url=' + tweetUrl + '&text=' + encodeURIComponent(this._shareText) + '';
+    var tweetUrl     = this._baseURL + this._userId,
+        tweetMessage = "I'm watching my perfect video stream on @Shelby. Join me and get yours.",
+        url          = 'https://twitter.com/intent/tweet?related=shelby&url=' + tweetUrl + '&text=' + encodeURIComponent(tweetMessage) + '';
 
     return url;
   },
@@ -51,11 +51,11 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
     if (typeof FB != "undefined"){
       FB.ui(
         {
-          caption     : 'Join me on Shelby.tv', //subheader
-          description : this._shareText, //message
+          caption     : "Join Shelby.tv",
+          description : "Shelby.tv is a single stream of video, personalized to you that gets better over time.", //message
           link        : this._baseURL + this._userId,
           method      : 'send',
-          name        : 'Shelby.tv', //header
+          name        : "You've been invited to join Shelby.tv", //header
           picture     : 'http://shelby.tv/images/mark_144sq.png'
         },
         function(response) {
