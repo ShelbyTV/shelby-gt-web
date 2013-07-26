@@ -120,6 +120,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
         this._emptyIndicatorView.leave();
       }
     }
+
     if (items.length < this._numItemsRequested) {
       // if the load returned less items than we requested, there are no more items to
       // be loaded and we hide the DOM element that is clicked for more loading
@@ -130,7 +131,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     } else {
       this._loadMoreEnabled = true;
     }
-
   },
 
   _onFetchSuccess : function(model, response){

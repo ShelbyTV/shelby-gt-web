@@ -159,6 +159,7 @@
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
+              doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
               doSmartRefresh : true,
               doStaticRender : true,
               emptyIndicatorViewProto : OnboardingGuideEmptyIndicatorView,
@@ -167,6 +168,7 @@
                 include_children : true
               },
               playlistType : libs.shelbyGT.PlaylistType.dashboard,
+              sortOrder : -1,
               firstFetchLimit : shelby.config.pageLoadSizes.dashboard,
               limit : shelby.config.pageLoadSizes.dashboard + 1,
               masterCollection : this._dashboardMasterCollection

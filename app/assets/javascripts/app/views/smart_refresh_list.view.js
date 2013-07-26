@@ -57,10 +57,10 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
       case libs.shelbyGT.SmartRefreshCheckType.binarySearch :
           if (this._simulatedMasterCollection.length >= this.options.binarySearchOffset) {
             var insertAtIndex =
-              libs.utils.BackboneCollectionUtils.getSortedIndex(item, collection,
+              libs.utils.BackboneCollectionUtils.getSortedIndex(item, this._simulatedMasterCollection,
                                                     {searchOffset : this.options.binarySearchOffset,
                                                      sortAttribute : this.options.sortAttribute,
-                                                     sortDirection : this.options.sortDirection});
+                                                     sortDirection : this.options.sortOrder == -1 ? 'desc' : 'asc'});
             this._addItem(item, collection, {at:insertAtIndex});
           } else {
             this._addItem(item, collection);
@@ -140,7 +140,7 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
           libs.utils.BackboneCollectionUtils.insertAtSortedIndex(item, this._displayCollection,
                                                 {searchOffset : this.options.binarySearchOffset,
                                                  sortAttribute : this.options.sortAttribute,
-                                                 sortDirection : this.options.sortDirection});
+                                                 sortDirection : this.options.sortOrder == -1 ? 'desc' : 'asc'});
         } else {
           this._displayCollection.add(item, options);
         }
