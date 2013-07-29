@@ -1,6 +1,8 @@
 <div class="signup signup--profile<%= ' signup--inviter' if @inviter %>" role="main">
   <%= render :partial => '/home/landing_header', :locals => {:show_login => false, :user_signed_in => @user_signed_in} %>
 
+  <%= render :partial => '/home/shelf/errors' if @social_signup_error %>
+
   <div class="shelf">
     <div class="shelf__lining">
       <div class="signup__head">

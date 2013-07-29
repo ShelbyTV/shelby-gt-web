@@ -13,6 +13,8 @@ class SignupController < ApplicationController
       @email_error = session[:user_errors_email]
       @nickname_error = session[:user_errors_nickname]
     end
+
+    @social_signup_error = params[:social_signup]
   end
 
   # actually create the user, if errors, go back to show and show what failed
