@@ -38,6 +38,10 @@
     line-height: 2.5;
   }
 
+  .form_fieldset {
+    position: relative;
+  }
+
   .form_fieldset--error {
     .form_error {
       display: block;
