@@ -63,7 +63,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     if (action == 'load') {
       // define callback for what to do afetr we load the roll followings
       var previousNumFriendRolls = 0;
-      var fetchAttempt = 1;
+      var rollFollowingFetchAttempt = 1;
       var onRollFollowingsFetched = function(model, response, option){
         var friendRollsFromService = model.get('rolls').filter(function(roll){
           return (roll.get('creator_id') != shelby.models.user.id &&
@@ -75,9 +75,9 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
         });
         var numFriendRolls = friendRollsFromService.length;
 
-        if ((!numFriendRolls || numFriendRolls != previousNumFriendRolls) && fetchAttempt < 5) {
+        if ((!numFriendRolls || numFriendRolls != previousNumFriendRolls) && rollFollowingFetchAttempt < 5) {
           // if we think there might be more roll followings yet to be created, fetch again
-          fetchAttempt++;
+          rollFollowingFetchAttempt++;
           previousNumFriendRolls = numFriendRolls;
           shelby.models.rollFollowings.fetch({
             success : onRollFollowingsFetched
@@ -94,11 +94,22 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
               // update the view to show how many videos are available
               self.model.set('numVideos', numVideos);
               // now fetch the actual found videos from the dashboard and show them in the guide
-                shelby.models.dashboard.fetch({
-                  data : {
-                    limit : shelby.config.pageLoadSizes.dashboard
-                  }
-                });
+              // poll a few times in case the backfilling of dashboard entries on the backend is slow
+              var dashboardFetchAttempt = 0;
+              (function pollLoopFunction(){
+                dashboardFetchAttempt++;
+                if (dashboardFetchAttempt < 6) {
+                  shelby.models.dashboard.fetch({
+                    data : {
+                      limit : shelby.config.pageLoadSizes.dashboard
+                    },
+                    success : function(){
+                      setTimeout(pollLoopFunction, 750);
+                    }
+                  });
+                }
+              })();
+
 
               setTimeout(function(){
                 self.$el.find('.js-modal-foot').removeClass('cloaked');

@@ -163,6 +163,7 @@
               doSmartRefresh : true,
               doStaticRender : true,
               emptyIndicatorViewProto : OnboardingGuideEmptyIndicatorView,
+              noMoreResultsViewProto : null,
               showEmptyIndicatorOnStaticRender: true,
               fetchParams : {
                 include_children : true
