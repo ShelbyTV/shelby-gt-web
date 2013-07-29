@@ -100,6 +100,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
                 dashboardFetchAttempt++;
                 if (dashboardFetchAttempt < 6) {
                   shelby.models.dashboard.fetch({
+                    cache : false,
                     data : {
                       limit : shelby.config.pageLoadSizes.dashboard
                     },
