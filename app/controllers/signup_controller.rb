@@ -8,10 +8,10 @@ class SignupController < ApplicationController
       session[:invite_code] = params[:code]
     end
 
-    if session[:user_errors]
-      @user_attributes = session[:user_attributes]
-      @email_error = session[:user_errors_email]
-      @nickname_error = session[:user_errors_nickname]
+    if flash[:user_errors]
+      @user_attributes = flash[:user_attributes]
+      @email_error = flash[:user_errors_email]
+      @nickname_error = flash[:user_errors_nickname]
     end
 
     @social_signup_error = params[:social_signup]
