@@ -16,7 +16,8 @@ libs.utils.BackboneCollectionUtils = {
       if (item.constructor != libs.shelbyGT.FrameGroupModel) {
         return item.get(options.sortAttribute);
       } else {
-        return item.getFirstFrame().get(options.sortAttribute);
+        var primaryDashboardEntry = item.get('primaryDashboardEntry');
+        return (primaryDashboardEntry && primaryDashboardEntry.get(options.sortAttribute)) || item.getFirstFrame().get(options.sortAttribute);
       }
     };
 

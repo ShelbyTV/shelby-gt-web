@@ -118,6 +118,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
         this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
       } else if (items.length && this._emptyIndicatorView) {
         this._emptyIndicatorView.leave();
+        this._emptyIndicatorView = null;
       }
     }
 

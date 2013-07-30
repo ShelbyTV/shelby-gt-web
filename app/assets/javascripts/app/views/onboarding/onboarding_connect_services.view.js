@@ -103,14 +103,14 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
               var dashboardFetchAttempt = 0;
               (function pollLoopFunction(){
                 dashboardFetchAttempt++;
-                if (dashboardFetchAttempt < 8) {
+                if (dashboardFetchAttempt < 31) {
                   shelby.models.dashboard.fetch({
                     cache : false,
                     data : {
                       limit : shelby.config.pageLoadSizes.dashboard
                     },
                     success : function(){
-                      setTimeout(pollLoopFunction, 1000);
+                      setTimeout(pollLoopFunction, 500);
                     }
                   });
                 }
