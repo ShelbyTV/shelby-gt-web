@@ -9,17 +9,22 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     this.model.bind('change:action', this._onChangeAction, this);
     this.model.bind('change:numFriends', this._onChangeNumFriends, this);
     this.model.bind('change:numVideos', this._onChangeNumVideos, this);
+    this.model.bind('change:authFailure', this.render, this);
   },
 
   _cleanup : function() {
     this.model.unbind('change:action', this._onChangeAction, this);
     this.model.unbind('change:numFriends', this._onChangeNumFriends, this);
     this.model.unbind('change:numVideos', this._onChangeNumVideos, this);
+    this.model.unbind('change:authFailure', this.render, this);
   },
 
   template : function(){
     if (this.model.get('action') == 'connect') {
-      return SHELBYJST['onboarding/onboarding-connect-services']();
+      return SHELBYJST['onboarding/onboarding-connect-services']({
+        authFailure : this.model.get('authFailure'),
+        service : this.model.get('service')
+      });
     } else {
       // the view will display a button to authorize with more services if
       // the user hasn't already connected them, so first figure out which

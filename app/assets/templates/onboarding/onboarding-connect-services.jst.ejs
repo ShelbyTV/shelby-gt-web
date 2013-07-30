@@ -7,6 +7,12 @@
     We'll bring you the video your friends are sharing on other networks. <br/><strong>We won't post or share anything without your permission.</strong>
   </p>
 
+  <% if(authFailure){ %>
+    <p class="form_error">
+      Could not connect <%= _(service).capitalize() %>, please try again.
+    </p>
+  <% } %>
+
   <a href="http://api.shelby.tv/auth/twitter?redir_query=authed_with%3Dtwitter" class="button_primer button_twitter-blue button_command button_command--sub button_command--twitter one-third js-authorize js-authorize--twitter js-track-event" data-popup_width="1000" data-popup_height="650" data-ga_category="Onboarding" data-ga_action="Click Auth Twitter on Step 3" data-ga_label="<%= shelby.models.user.get('nickname') %>">
     <span class="icon-twitter"></span>
     <span class="button_label">Twitter</span>
