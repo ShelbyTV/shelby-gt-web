@@ -84,13 +84,19 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     if (shelby.userIsCommonCookieAuthed()){
       shelby.models.user.fetch({
         success: function(userModel, response) {
+
+          // users created before the new onboarding was deployed are not eligible to be re-onboarded
+          var notEligibleForOnboarding = new Date(userModel.get('created_at')) < new Date("Thu, 01 Aug 2013 13:00:00 GMT-0400")
+
           // if the user is trying to view an isolated roll, don't show onboarding right now.
           if (/isolated-roll/.test(url)){
             self._reroute();
           } else if (url.indexOf('onboarding') == -1) {
             var userOnboardingProgress = userModel.get('app_progress').get('onboarding');
 
-            if (!userOnboardingProgress) {
+            if (notEligibleForOnboarding) {
+              self.reroute();
+            } else if (!userOnboardingProgress) {
               self.navigate('/onboarding/1', {trigger:true, replace:true});
               return;
             } else if (userOnboardingProgress !== true && userOnboardingProgress < libs.shelbyGT.OnboardingView.numOnboardingStages) {
@@ -100,7 +106,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
               self._reroute();
             }
           } else {
-            if (userModel.get('app_progress').get('onboarding') === true) {
+            if (notEligibleForOnboarding || userModel.get('app_progress').get('onboarding') === true) {
               self.navigate('/', {trigger:true, replace:true});
               return;
             } else {
