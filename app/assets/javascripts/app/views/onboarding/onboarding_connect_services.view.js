@@ -1,11 +1,15 @@
 libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
+  _rollFollowingsIncludingFauxUsers : null,
+
   events : {
     "click .js-onboarding-advance-stage" : "_onAdvanceStage",
     "click .js-authorize" : "_onConnectRemainingService"
   },
 
   initialize : function(){
+    this._rollFollowingsIncludingFauxUsers = new libs.shelbyGT.RollsCollectionModel();
+
     this.model.bind('change:action', this._onChangeAction, this);
     this.model.bind('change:numFriends', this._onChangeNumFriends, this);
     this.model.bind('change:numVideos', this._onChangeNumVideos, this);
@@ -90,7 +94,10 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
           // if we think there might be more roll followings yet to be created, fetch again
           rollFollowingFetchAttempt++;
           previousNumRollFollowings = numRollFollowings;
-          shelby.models.rollFollowings.fetch({
+          self._rollFollowingsIncludingFauxUsers.fetch({
+            data : {
+              'include_faux' : 1
+            },
             success : onRollFollowingsFetched
           });
         } else {
@@ -132,7 +139,10 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       };
 
       // fetch the roll followings so we can find out how many friends the user has on the new service
-      shelby.models.rollFollowings.fetch({
+      this._rollFollowingsIncludingFauxUsers.fetch({
+        data : {
+          'include_faux' : 1
+        },
         success : onRollFollowingsFetched
       });
     }
