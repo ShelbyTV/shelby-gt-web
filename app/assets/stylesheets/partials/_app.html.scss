@@ -59,6 +59,10 @@ a{
   top: 0;
 }
 
+.main-layout {
+  z-index: 1;
+}
+
 .guide-wrapper{
   background-color: $guide-bg-color; //should technically be on .guide or something.
   // border-right: 1px solid #ccc;
