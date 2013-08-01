@@ -95,7 +95,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
             var userOnboardingProgress = userModel.get('app_progress').get('onboarding');
 
             if (notEligibleForOnboarding) {
-              self.reroute();
+              self._reroute();
             } else if (!userOnboardingProgress) {
               self.navigate('/onboarding/1', {trigger:true, replace:true});
               return;
