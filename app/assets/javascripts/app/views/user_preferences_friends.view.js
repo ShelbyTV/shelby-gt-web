@@ -47,7 +47,6 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
 
   _shareToFacebook : function(e){
     e.preventDefault();
-    console.log(this._baseURL + this._userId);
     if (typeof FB != "undefined"){
       FB.ui(
         {
