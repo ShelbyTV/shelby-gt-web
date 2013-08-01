@@ -67,23 +67,29 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
     if (action == 'load') {
       // define callback for what to do afetr we load the roll followings
-      var previousNumFriendRolls = 0;
+      var previousNumRollFollowings = 0;
       var rollFollowingFetchAttempt = 1;
       var onRollFollowingsFetched = function(model, response, option){
-        var friendRollsFromService = model.get('rolls').filter(function(roll){
-          return (roll.get('creator_id') != shelby.models.user.id &&
-                  (roll.get('origin_network') == self.model.get('service')) ||
-                  (_(roll.get('creator_authentications')).any(function(auth){
-                    return auth.provider == self.model.get('service');
-                  }))
-                 );
+        var rolls = model.get('rolls');
+        var numRollFollowings = rolls.length;
+        var friendRollsFromService = rolls.filter(function(roll){
+          // count how many rolls I am following that come from the service I just authed with
+
+          // don't count my own rolls
+          var isNotOneOfMyRolls = (roll.get('creator_id') != shelby.models.user.id);
+          var rollOriginIsService = (roll.get('origin_network') == self.model.get('service'));
+          var rollCreatorsIsAuthedWithService = _(roll.get('creator_authentications')).any(function(auth){
+            return auth.provider == self.model.get('service');
+          });
+
+          return isNotOneOfMyRolls && (rollOriginIsService || rollCreatorsIsAuthedWithService);
         });
         var numFriendRolls = friendRollsFromService.length;
 
-        if ((!numFriendRolls || numFriendRolls != previousNumFriendRolls) && rollFollowingFetchAttempt < 5) {
+        if ((!numFriendRolls || numRollFollowings != previousNumRollFollowings) && rollFollowingFetchAttempt < 5) {
           // if we think there might be more roll followings yet to be created, fetch again
           rollFollowingFetchAttempt++;
-          previousNumFriendRolls = numFriendRolls;
+          previousNumRollFollowings = numRollFollowings;
           shelby.models.rollFollowings.fetch({
             success : onRollFollowingsFetched
           });
