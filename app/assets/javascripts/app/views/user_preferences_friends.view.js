@@ -47,11 +47,10 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
 
   _shareToFacebook : function(e){
     e.preventDefault();
-
+    console.log(this._baseURL + this._userId);
     if (typeof FB != "undefined"){
       FB.ui(
         {
-          caption     : "Join Shelby.tv",
           description : "Shelby.tv is a single stream of video, personalized to you that gets better over time.", //message
           link        : this._baseURL + this._userId,
           method      : 'send',
