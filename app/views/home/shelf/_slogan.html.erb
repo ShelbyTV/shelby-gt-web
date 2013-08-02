@@ -4,7 +4,15 @@
   <div class="shelf shelf--slogan">
     <div class="shelf__lining clearfix">
       <h2 class="shelf__h2">
-        Your personal channel of video, powered by friends.
+        <% if @seo_messaging == :videos_youll_love %>
+          <%= Settings::Marketing.videos_youll_love %>
+        <% elsif @seo_messaging == :discover_and_enjoy %>
+          <%= Settings::Marketing.discover_and_enjoy %>
+        <% elsif @seo_messaging == :just_for_you %>
+          <%= Settings::Marketing.just_for_you %>
+        <% elsif @seo_messaging == :no_search_required %>
+          <%= Settings::Marketing.no_search_required %>
+        <% end %>
       </h2>
     </div>
   </div><!-- eo shelf -->

@@ -1,8 +1,9 @@
 defaults: &defaults
   videos_youll_love: "Watch videos you'll love."
   discover_and_enjoy: "Discover and enjoy the best of web video."
-  just_for_you: "The best web video, picked just for you."
-  powered_by_friends: "Your personal channel of video, powered by friends."
+  just_for_you: "A personal channel of video, picked just for you."
+  powered_by_friends: "The best web video, powered by friends."
+  no_search_required: "Great video, no searching required."
 
 development:
   <<: *defaults
