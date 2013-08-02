@@ -23,7 +23,7 @@
 
 <article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable || browserNeedsFlash) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
   <a href="#" onclick="return false;" class="frame-header js-frame-activate">
-    <h1 class="frame-title" title="<%= videoTitle %>">
+    <h1 class="frame-title" title="<%- videoTitle %>">
      <%= videoTitle %>
     </h1>
   </a>
@@ -62,7 +62,7 @@
 
       <!-- TODO: should maybe use the thumbnail module JST -->
       <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %> js-track-event" data-ga_category="Frame" data-ga_action="Click frame to play" data-ga_label="<%= shelby.models.user.get('nickname') %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
-        <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
+        <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%- videoTitle %>" alt="<%- videoTitle %> thumbnail">
       </a>
       <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/><%= (browserNeedsFlash) ? 'flash needed' : 'unplayable' %></div>
 
