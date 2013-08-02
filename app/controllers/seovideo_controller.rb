@@ -43,7 +43,7 @@ class SeovideoController < ApplicationController
     setMetaDescription()
 
     # A/B tests
-    # @seo_search_label = ab_test :seo_search_label
+    @seo_messaging = ab_test :seo_messaging
 
     # if the referrer is google search, parse the search query out of its url
     http_referer = request.env["HTTP_REFERER"]
