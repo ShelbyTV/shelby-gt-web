@@ -3,12 +3,21 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   _rollFollowingsIncludingFauxUsers : null,
 
   events : {
+    "click .js-invite-friends"           : "_onInviteFriends",
     "click .js-onboarding-advance-stage" : "_onAdvanceStage",
-    "click .js-authorize" : "_onConnectRemainingService"
+    "click .js-authorize"                : "_onConnectRemainingService"
   },
 
   initialize : function(){
     this._rollFollowingsIncludingFauxUsers = new libs.shelbyGT.RollsCollectionModel();
+
+    // if the user has already authenticated facebook, it means we're returning to this stage
+    // of onboarding after already having visited the load videos screen, so jump straight
+    // to inviting friends from facebook
+    if (this.model.get('action') == 'connect' &&
+        _(shelby.models.user.get('authentications')).any(function(auth){return auth.provider == 'facebook';})) {
+      this.model.set('action', 'invite');
+    }
 
     this.model.bind('change:action', this._onChangeAction, this);
     this.model.bind('change:numFriends', this._onChangeNumFriends, this);
@@ -24,31 +33,22 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   },
 
   template : function(){
-    if (this.model.get('action') == 'connect') {
-      return SHELBYJST['onboarding/onboarding-connect-services']({
-        authFailure : this.model.get('authFailure'),
-        service : this.model.get('service')
-      });
-    } else {
-      // the view will display a button to authorize with more services if
-      // the user hasn't already connected them, so first figure out which
-      // eligible services the user hasn't connected yet
-      var userAuthentications = shelby.models.user.get('authentications');
-      var remainingServices;
-      if (userAuthentications && userAuthentications.length) {
-        remainingServices = _(shelby.config.services.primaryAuth).reject(function(service){
-          return _(userAuthentications).any(function(auth){
-            return auth.provider == service;
-          });
-        });
-      } else {
-        remainingServices = shelby.config.services.primaryAuth;
-      }
 
-      return SHELBYJST['onboarding/onboarding-load-service-videos']({
-        currentService : this.model.get('service'),
-        remainingServices : remainingServices
-      });
+    switch (this.model.get('action')) {
+      case 'connect':
+        return SHELBYJST['onboarding/onboarding-connect-services']({
+          authFailure : this.model.get('authFailure'),
+          service : this.model.get('service')
+        });
+      case 'load':
+        return SHELBYJST['onboarding/onboarding-load-service-videos']({
+          currentService : this.model.get('service'),
+          remainingServices : shelby.models.user.getUnauthedServices()
+        });
+      case 'invite':
+        return SHELBYJST['onboarding/onboarding-invite-friends']({
+          remainingServices : shelby.models.user.getUnauthedServices()
+        });
     }
   },
 
@@ -175,11 +175,15 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     this.$('.js-num-videos').text(numVideos).removeClass('load_progress__total--no_data');
   },
 
+  _onInviteFriends : function() {
+    this._checkSetTimelineSharing();
+    this.model.set('action', 'invite');
+  },
+
   _onAdvanceStage : function(e){
-    var _auths = shelby.models.user.get('authentications') ? shelby.models.user.get('authentications') : [];
+    var _auths = shelby.models.user.get('authentications') || [];
     if (this.model.get('action') == 'load') {
       this._checkFollowShelby();
-      this._checkSetTimelineSharing();
     }
 
     // event tracking
@@ -200,7 +204,6 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
   _onConnectRemainingService : function(){
     this._checkFollowShelby();
-    this._checkSetTimelineSharing();
   },
 
   _checkFollowShelby : function(){

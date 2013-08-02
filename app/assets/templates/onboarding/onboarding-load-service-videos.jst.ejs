@@ -58,20 +58,25 @@
         <label class="form_label form_label--inline" for="onboarding-follow-shelby">Follow @Shelby on Twitter</label>
       </fieldset>
     </form>
-
   <% } %>
 
-  <% if (remainingServices.length) { %>
-  <a href="http://api.shelby.tv/auth/<%= remainingServices[0] %>?redir_query=authed_with%3D<%= remainingServices[0] %>" class="button_primer button_command button_command--flexible button_<%= remainingServices[0] %>-blue js-authorize"  data-popup_width="1000" data-popup_height="650">
-    <span class="icon icon-<%= remainingServices[0] %>"></span>
-    <span class="button_label">Connect</span>
-  </a>
+  <% if (currentService == 'facebook') { %>
+    <a class="button_primer button_command button_command--flexible button_green js-invite-friends">
+      <span class="button_label">Next</span>
+    </a>
+  <% } else { %>
+    <% if (remainingServices.length) { %>
+    <a href="http://api.shelby.tv/auth/<%= remainingServices[0] %>?redir_query=authed_with%3D<%= remainingServices[0] %>" class="button_primer button_command button_command--flexible button_<%= remainingServices[0] %>-blue js-authorize"  data-popup_width="1000" data-popup_height="650">
+      <span class="icon icon-<%= remainingServices[0] %>"></span>
+      <span class="button_label">Connect</span>
+    </a>
 
-  <b>&nbsp;or&nbsp;</b>
+    <b>&nbsp;or&nbsp;</b>
 
+    <% } %>
+    <a class="button_primer button_command button_command--flexible button_green js-onboarding-advance-stage">
+      <span class="icon icon-roll"></span>
+      <span class="button_label">Add more video</span>
+    </a>
   <% } %>
-  <a class="button_primer button_command button_command--flexible button_green js-onboarding-advance-stage">
-    <span class="icon icon-roll"></span>
-    <span class="button_label">Add more video</span>
-  </a>
 </div><!-- eo modal__foot -->
