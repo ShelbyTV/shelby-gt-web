@@ -14,9 +14,6 @@ $_status-bg-color : darken($ui-off-white,5%);
   padding: 1em;
 }
     .load_progress--loading {
-      .load_progress__total {
-        opacity: 0;
-      }
       .load_progress__status {
         background-color: $_status-bg-color;
         background-image: url($icon-signup-spinner);
@@ -58,6 +55,10 @@ $_status-bg-color : darken($ui-off-white,5%);
 .load_progress__total {
   float: right;
   opacity: 1;
+}
+
+.load_progress__total--no_data {
+  opacity: 0;
 }
 
 .load_progress__status {

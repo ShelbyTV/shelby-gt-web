@@ -1,11 +1,15 @@
 libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
+  _rollFollowingsIncludingFauxUsers : null,
+
   events : {
     "click .js-onboarding-advance-stage" : "_onAdvanceStage",
     "click .js-authorize" : "_onConnectRemainingService"
   },
 
   initialize : function(){
+    this._rollFollowingsIncludingFauxUsers = new libs.shelbyGT.RollsCollectionModel();
+
     this.model.bind('change:action', this._onChangeAction, this);
     this.model.bind('change:numFriends', this._onChangeNumFriends, this);
     this.model.bind('change:numVideos', this._onChangeNumVideos, this);
@@ -67,7 +71,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
     if (action == 'load') {
       // define callback for what to do afetr we load the roll followings
-      var previousNumRollFollowings = 0;
+      var previousNumRollFollowings = [0, 0];
       var rollFollowingFetchAttempt = 1;
       var onRollFollowingsFetched = function(model, response, option){
         var rolls = model.get('rolls');
@@ -86,67 +90,89 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
         });
         var numFriendRolls = friendRollsFromService.length;
 
-        if ((!numFriendRolls || numRollFollowings != previousNumRollFollowings) && rollFollowingFetchAttempt < 5) {
+        // if we've found any friends, update the displayed number of friends
+        if (numFriendRolls) {
+          self.model.set('numFriends', numFriendRolls);
+        }
+
+        var recentRollFollowingCounts = _.union(previousNumRollFollowings, [numRollFollowings]);
+        if ((!numFriendRolls || recentRollFollowingCounts.length > 1) && rollFollowingFetchAttempt < 10) {
           // if we think there might be more roll followings yet to be created, fetch again
-          rollFollowingFetchAttempt++;
-          previousNumRollFollowings = numRollFollowings;
-          shelby.models.rollFollowings.fetch({
-            success : onRollFollowingsFetched
-          });
-        } else {
           setTimeout(function(){
-            // otherwise, update the displayed number of friends found with video and move on
-            self.model.set('numFriends', numFriendRolls);
-
-            // we now also know how many videos (actaully frames) are available from the friends the user has
-            var numVideos = _(friendRollsFromService).reduce(function(count, roll){ return count + roll.get('frame_count'); }, 0);
-            // create the illusion that we still have to look up how many videos are available with a timeout
-            setTimeout(function(){
-              // update the view to show how many videos are available
+            rollFollowingFetchAttempt++;
+            previousNumRollFollowings.shift();
+            previousNumRollFollowings.push(numRollFollowings);
+            self._rollFollowingsIncludingFauxUsers.fetch({
+              data : {
+                'include_faux' : 1
+              },
+              success : onRollFollowingsFetched
+            });
+          }, 500);
+        } else {
+          this.$('.js-progress-list').children().eq(1).removeClass('load_progress--loading');
+          // we now also know how many videos (actaully frames) are available from the friends the user has
+          var numVideos = _(friendRollsFromService).reduce(function(count, roll){ return count + roll.get('frame_count'); }, 0);
+          // create the illusion that we still have to look up how many videos are available with a timeout
+          setTimeout(function(){
+            // if we've found any videos, update the view to show how many videos are available
+            if (numVideos) {
               self.model.set('numVideos', numVideos);
-              // now fetch the actual found videos from the dashboard and show them in the guide
-              // poll a few times in case the backfilling of dashboard entries on the backend is slow
-              var dashboardFetchAttempt = 0;
-              (function pollLoopFunction(){
-                dashboardFetchAttempt++;
-                if (dashboardFetchAttempt < 31) {
-                  shelby.models.dashboard.fetch({
-                    cache : false,
-                    data : {
-                      limit : shelby.config.pageLoadSizes.dashboard
-                    },
-                    success : function(){
-                      setTimeout(pollLoopFunction, 500);
-                    }
-                  });
-                }
-              })();
-
-
-              setTimeout(function(){
-                self.$el.find('.js-modal-foot').removeClass('cloaked');
-              }, 2000);
-            }, 3250);
-          }, 1000);
+            }
+            self._pollDashboardAndRevealFooter();
+          }, 1500);
         }
       };
 
       // fetch the roll followings so we can find out how many friends the user has on the new service
-      shelby.models.rollFollowings.fetch({
+      this._rollFollowingsIncludingFauxUsers.fetch({
+        data : {
+          'include_faux' : 1
+        },
         success : onRollFollowingsFetched
       });
     }
     this.render();
   },
 
+  // last step of the user experience for this view
+  _pollDashboardAndRevealFooter : function() {
+    var self = this;
+
+    // we've determined the user has all the roll followings they're going to get, so start polling the dashboard to
+    // display the videos that have backfilled into their stream
+    // poll a few times in case the backfilling of dashboard entries on the backend is slow
+    var dashboardFetchAttempt = 0;
+    (function pollLoopFunction(){
+      dashboardFetchAttempt++;
+      if (dashboardFetchAttempt < 31) {
+        shelby.models.dashboard.fetch({
+          cache : false,
+          data : {
+            limit : shelby.config.pageLoadSizes.dashboard
+          },
+          success : function(){
+            setTimeout(pollLoopFunction, 500);
+          }
+        });
+      }
+    })();
+
+    // after a delay that makes it feel smooth, reveal the buttons giving the user their choices for
+    // their next step
+    setTimeout(function(){
+      self.$('.js-progress-list').children().eq(2).removeClass('load_progress--loading');
+      self.$el.find('.js-modal-foot').removeClass('cloaked');
+    }, 2000);
+
+  },
+
   _onChangeNumFriends : function(model, numFriends) {
-    this.$('.js-num-friends').text(numFriends);
-    this.$('.js-progress-list').children().eq(1).removeClass('load_progress--loading');
+    this.$('.js-num-friends').text(numFriends).removeClass('load_progress__total--no_data');
   },
 
   _onChangeNumVideos : function(model, numVideos) {
-    this.$('.js-num-videos').text(numVideos);
-    this.$('.js-progress-list').children().eq(2).removeClass('load_progress--loading');
+    this.$('.js-num-videos').text(numVideos).removeClass('load_progress__total--no_data');
   },
 
   _onAdvanceStage : function(e){
