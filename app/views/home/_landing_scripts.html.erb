@@ -29,6 +29,9 @@
     if (typeof shortLink != 'undefined') {  action += ' via Short Link'; }
     else { shortLink = null; }
     _kmq.push(['record', action, {shortLink: shortLink}]);
+    <% if @landing_messaging %>
+      _kmq.push(["set", {"Landing Page Message A/B/C": "<%= @landing_messaging.to_s %>"}]);
+    <% end %>
   <% end %>
 
   $(document).ready(function(){
