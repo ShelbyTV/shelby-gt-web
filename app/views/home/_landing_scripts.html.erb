@@ -1,3 +1,16 @@
+<% # VANITY A/B TESTING %>
+<%= vanity_js %>
+<% experiments = vanity_experiments %>
+<% unless experiments.nil? %>
+  <script>
+    <% experiments.each do |name, alternative| %>
+      try {
+        _gaq.push(['_trackEvent', 'ab-testing', '<%= name %>', '<%= alternative.value %>']);
+      } catch(e) {}
+    <% end %>
+  </script>
+<% end %>
+
 <script>
   <% if ("production" == Rails.env or "staging" == Rails.env) %>
     //Track loading of landing page separate from loading of app -->
