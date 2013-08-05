@@ -55,6 +55,8 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   render : function(){
     var self = this;
 
+    this._leaveChildren();
+
     this.$el.html(this.template());
 
     _(shelby.config.services.primaryAuth).each(function(service){
@@ -62,6 +64,21 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
         self.$('.js-authorize--' + service).addClass('disabled').find('.button_label').text('Connected');
       }
     });
+
+    if(this.model.get('action') == 'invite') {
+      this.appendChildInto(new libs.shelbyGT.ListView({
+        model : this._rollFollowingsIncludingFauxUsers,
+        collectionAttribute : 'rolls',
+        doStaticRender : false,
+        listItemView : libs.shelbyGT.OnboardingInviteFriendItemView
+      }),'.js-invite-friends-body');
+
+      this._rollFollowingsIncludingFauxUsers.fetch({
+        data : {
+          'include_faux' : 1
+        }
+      });
+    }
 
     return this;
   },
