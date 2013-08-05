@@ -1,12 +1,8 @@
 <div class="shelf shelf--cta">
   <div class="shelf__lining">
     <h1 class="shelf__h1">
-      <% if @landing_messaging == :videos_youll_love %>
-        <%= Settings::Marketing.videos_youll_love %>
-      <% elsif @landing_messaging == :discover_and_enjoy %>
+      <% if @landing_messaging == :discover_and_enjoy %>
         <%= Settings::Marketing.discover_and_enjoy %>
-      <% elsif @landing_messaging == :just_for_you %>
-        <%= Settings::Marketing.just_for_you %>
       <% elsif @landing_messaging == :powered_by_friends %>
         <%= Settings::Marketing.powered_by_friends %>
       <% end %>
