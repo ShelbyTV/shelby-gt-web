@@ -112,7 +112,7 @@
       height: 440px;
       text-align: center;
       background-image: url("/images/landing/sky.jpg");
-      color: $ui-white;
+      color: $ui-off-white;
 
       .shelf__lining {
         font-size: 1.1em;
@@ -121,7 +121,7 @@
       .shelf__lining--right {
         width: 45%;
         float: right;
-        padding-top: 3em;
+        padding-top: 2em;
         text-align: left;
       }
 
@@ -148,6 +148,11 @@
 
       .form_fieldset {
         width: 255px;
+      }
+
+      .form__description {
+        font-size: 0.8em;
+        line-height: 1;
       }
     }
 
