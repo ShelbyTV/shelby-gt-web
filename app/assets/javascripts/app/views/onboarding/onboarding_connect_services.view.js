@@ -66,12 +66,28 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     });
 
     if(this.model.get('action') == 'invite') {
-      this.appendChildInto(new libs.shelbyGT.ListView({
+      // for the invite stage, setup and render a list view
+      // showing an item to invite a friend for each facebook-based
+      // faux user roll we find
+      var friendInvitesListView = new libs.shelbyGT.ListView({
         model : this._rollFollowingsIncludingFauxUsers,
         collectionAttribute : 'rolls',
+        // show the friends with the most video at the top
+        comparator : function(roll) {
+          return -roll.get('frame_count');
+        },
         doStaticRender : false,
-        listItemView : libs.shelbyGT.OnboardingInviteFriendItemView
-      }),'.js-invite-friends-body');
+        listItemView : 'OnboardingInviteFriendItemView'
+      });
+      // only include faux users from Facebook
+      friendInvitesListView._filter = function(roll) {
+        return roll.get('creator_id') != shelby.models.user.id &&
+               roll.id != shelby.models.user.get('watch_later_roll_id') &&
+               roll.has('creator_authentications') &&
+               _(roll.get('creator_authentications')).any(function(auth){return auth.provider == 'facebook';}) &&
+               (roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll || roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public);
+      };
+      this.appendChildInto(friendInvitesListView,'.js-invite-friends-body');
 
       this._rollFollowingsIncludingFauxUsers.fetch({
         data : {

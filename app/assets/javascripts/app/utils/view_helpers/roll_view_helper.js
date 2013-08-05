@@ -119,6 +119,23 @@ libs.shelbyGT.viewHelpers.roll = {
     } else {
       return roll.get('title');
     }
+  },
+
+  // display the roll's creator's name on that creator's source network
+  // OPTIONAL - specify which source network with the provider parameter
+  fauxUserDisplayName : function(roll, provider) {
+    var creatorAuths = roll.get('creator_authentications');
+    if (creatorAuths && creatorAuths.length) {
+      var auth;
+      if (provider) {
+        auth = _(creatorAuths).find(function(auth){ return auth.provider == provider; });
+      } else {
+        auth = creatorAuths[0];
+      }
+      return auth && (auth.name || auth.nickname || null);
+    } else {
+      return null;
+    }
   }
 
 };
