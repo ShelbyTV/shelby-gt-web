@@ -220,7 +220,9 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   },
 
   _onConnectRemainingService : function(){
-    this._checkFollowShelby();
+    if (this.model.get('action') == 'load') {
+      this._checkFollowShelby();
+    }
   },
 
   _checkFollowShelby : function(){
