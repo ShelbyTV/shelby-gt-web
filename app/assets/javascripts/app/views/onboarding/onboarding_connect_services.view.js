@@ -23,6 +23,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     this.model.bind('change:numFriends', this._onChangeNumFriends, this);
     this.model.bind('change:numVideos', this._onChangeNumVideos, this);
     this.model.bind('change:authFailure', this.render, this);
+    this.model.bind('onboarding:invite:foundNoFriends', this._onFoundNoFriends, this);
   },
 
   _cleanup : function() {
@@ -30,6 +31,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     this.model.unbind('change:numFriends', this._onChangeNumFriends, this);
     this.model.unbind('change:numVideos', this._onChangeNumVideos, this);
     this.model.unbind('change:authFailure', this.render, this);
+    this.model.unbind('onboarding:invite:foundNoFriends', this._onFoundNoFriends, this);
   },
 
   template : function(){
@@ -69,29 +71,37 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       // for the invite stage, setup and render a list view
       // showing an item to invite a friend for each facebook-based
       // faux user roll we find
-      var friendInvitesListView = new libs.shelbyGT.ListView({
-        model : this._rollFollowingsIncludingFauxUsers,
-        collectionAttribute : 'rolls',
-        // show the friends with the most video at the top
-        comparator : function(roll) {
-          return -roll.get('frame_count');
+
+      // fetch the roll followings again so we have maximum chance of discovering some friends to invite
+      this._rollFollowingsIncludingFauxUsers.fetch({
+        data : {
+          'include_faux' : 1
         },
-        doStaticRender : false,
-        listItemView : 'OnboardingInviteFriendItemView'
-      });
-      // only include faux users from Facebook
-      friendInvitesListView._filter = function(roll) {
-        return roll.get('creator_id') != shelby.models.user.id &&
+        success : function(model, response) {
+          // filter down to only faux user friends from Facebook
+          var friendFauxUserRolls = model.get('rolls').filter(function(roll){
+            return roll.get('creator_id') != shelby.models.user.id &&
                roll.id != shelby.models.user.get('watch_later_roll_id') &&
                roll.has('creator_authentications') &&
                _(roll.get('creator_authentications')).any(function(auth){return auth.provider == 'facebook';}) &&
                (roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll || roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public);
-      };
-      this.appendChildInto(friendInvitesListView,'.js-invite-friends-body');
-
-      this._rollFollowingsIncludingFauxUsers.fetch({
-        data : {
-          'include_faux' : 1
+          });
+          if (friendFauxUserRolls.length) {
+            // we have some friends to invite, go ahead and render the list of them with invite buttons
+            self.appendChildInto(new libs.shelbyGT.ListView({
+              collection : new Backbone.Collection(friendFauxUserRolls),
+              // show the friends with the most video at the top
+              comparator : function(roll) {
+                return -roll.get('frame_count');
+              },
+              doStaticRender : true,
+              listItemView : 'OnboardingInviteFriendItemView',
+              simulateAddTrue : false
+            }), '.js-invite-friends-body');
+          } else {
+            // we didn't find any friends to invite, notify the view
+            self.model.trigger('onboarding:invite:foundNoFriends');
+          }
         }
       });
     }
@@ -238,6 +248,14 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   _onConnectRemainingService : function(){
     if (this.model.get('action') == 'load') {
       this._checkFollowShelby();
+    }
+  },
+
+  _onFoundNoFriends : function() {
+    if (this.model.get('action') == 'invite') {
+      // didn't find any friends and we're still on the invite screen
+      // append a generic Facebook invite button and the user can choose facebook friends to invite him/herself
+      this.$('.js-invite-friends-body').append(SHELBYJST['onboarding/onboarding-generic-facebook-invite-button']);
     }
   },
 
