@@ -71,7 +71,7 @@ class HomeController < ApplicationController
           # else
 
           # A/B test
-          @landing_messaging = ab_test :landing_messaging
+          @landing_messaging_v2 = ab_test :landing_messaging_v2
 
           render '/home/landing'
         end
