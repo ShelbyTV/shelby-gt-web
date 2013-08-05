@@ -108,6 +108,49 @@
       }
     }
 
+    .shelf--signup {
+      height: 440px;
+      text-align: center;
+      background-image: url("/images/landing/sky.jpg");
+      color: $ui-white;
+
+      .shelf__lining {
+        font-size: 1.1em;
+      }
+
+      .shelf__lining--right {
+        width: 45%;
+        float: right;
+        padding-top: 3em;
+        text-align: left;
+      }
+
+      .shelf__lining--left {
+        width: 55%;
+        float: left;
+        padding-top: 5.75em;
+        padding-left: 66px;
+      }
+
+      .shelf__button {
+        margin: 1.5em auto 0;
+      }
+
+      .shelf__img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+
+      .list--benefits {
+        margin-left: 75px;
+      }
+
+      .form_fieldset {
+        width: 255px;
+      }
+    }
+
     .css-vertical-pan {
       -webkit-animation: vertical-pan 98s infinite; /* Chrome, Safari 5+ */
          -moz-animation: vertical-pan 98s infinite; /* Firefox 5-15 */

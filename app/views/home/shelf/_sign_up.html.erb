@@ -1,32 +1,39 @@
-<div class="shelf shelf--signup">
-  <div class="shelf__lining">
-    <h2 class="shelf__h1">
-      Create your own .TV network
-    </h2>
+<div class="shelf shelf--signup image_module">
+  <div class="shelf__lining shelf__lining--left">
+    <h1 class="shelf__h1">
+        The best web video, powered by friends.
+    </h1>
 
     <p class="shelf__block">
-      In the past, a few people at big TV networks programmed the TV that millions watch.  <br/>
-      In the future, everyone gets their own channel. Start curating yours now.
+      Imagine a new kind of TV with only one channel <br>and it’s tuned just for you. Welcome to Shelby TV.
     </p>
+    <ul class="list list--benefits">
+        <li class="benefit benefit--smart icon-like"></li>
+        <li class="benefit benefit--share icon-facebook"></li>
+        <li class="benefit benefit--save icon-roll"></li>
+    </ul>
+  </div>
 
-    <form id="js-email-form" class="form_module shelf__form js-track-submit" data-ga_action="Submit interest email">
-      <fieldset id="js-email-form-submit" class="search_module">
-        <input type="submit" class="button_primer button_gray search_module__submit" value="Sign Up" />
-
-        <span class="search_module__input_wrapper">
-          <input name="email" id="js-email-input" class="form_input search_module__input" type="email" placeholder="email@address.com" tabindex="0" autofocus/>
-        </span>
-      </fieldset><!-- eo search_module -->
-
-      <fieldset id="js-email-form-feedback" class="hidden">
-        <h6 class="shelf__h2">
-          Thank you for signing up
-        </h6>
-
-        <p class="shelf__block">
-         Check out active members of our community below!
-        </p>
+  <div class="shelf__lining shelf__lining--right">
+    <div class="media_body">
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="nickname">Username</label>
+        <input class="form_input" id="nickname" name="nickname" type="text">
       </fieldset>
-    </form>
-  </div><!-- eo shelf__lining -->
+
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="primary_email">Email Address</label>
+        <input class="form_input" id="primary_email" name="primary_email" placeholder="email@address.com" type="email">
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <label class="form_label" for="password">Password</label>
+        <input class="form_input" id="password" name="password" placeholder="*****" type="password">
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <input class="button_primer button_command button_command--large button_green one-whole js-track-event" data-ga_action="Click Signup on Step 1" data-ga_category="Onboarding" name="commit" type="submit" value="Join Shelby">
+      </fieldset>
+    </div>
+  </div>
 </div><!-- eo shelf -->

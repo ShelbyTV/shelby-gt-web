@@ -32,7 +32,9 @@
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
-      <%= render :partial => "/home/shelf/call_to_action" %>
+      <!-- TODO: TEST A NEW SHELF W SIGNUP FORM -->
+      <%= render :partial => "/home/shelf/sign_up" %>
+      <%# render :partial => "/home/shelf/call_to_action" %>
       <%= render :partial => "/home/shelf/stream" %>
       <%= render :partial => "/home/shelf/social" %>
       <%= render :partial => "/home/shelf/press" %>
