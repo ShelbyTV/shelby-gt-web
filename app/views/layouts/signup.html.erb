@@ -4,6 +4,7 @@
   <title>shelby.tv | sign up</title>
   <meta name="description" content="Sign up for Shelby.tv">
   <meta name="shelby-token" content="<%= csrf_token_from_cookie %>">
+  <%= render :partial => '/signup/og_tags' if @inviter %>
 
   <%= stylesheet_link_tag "signup" %>
   <%= javascript_include_tag "signup" %>
