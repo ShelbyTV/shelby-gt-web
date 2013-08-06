@@ -29,9 +29,6 @@
     if (typeof shortLink != 'undefined') {  action += ' via Short Link'; }
     else { shortLink = null; }
     _kmq.push(['record', action, {shortLink: shortLink}]);
-    <% if @landing_messaging %>
-      _kmq.push(["set", {"Landing Page Message A/B/C": "<%= @landing_messaging.to_s %>"}]);
-    <% end %>
   <% end %>
 
   $(document).ready(function(){
@@ -114,6 +111,7 @@
     <% experiments.each do |name, alternative| %>
       try {
         _gaq.push(['_trackEvent', 'ab-testing', '<%= name %>', '<%= alternative.value %>']);
+        _kmq.push(["set", {"<%= name %>": "<%= alternative.value %>"}]);
       } catch(e) {}
     <% end %>
   </script>
