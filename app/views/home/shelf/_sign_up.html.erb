@@ -12,9 +12,9 @@
       Imagine a new kind of TV with only one channel <br>and it’s tuned just for you. Welcome to Shelby TV.
     </p>
     <ul class="list list--benefits">
-        <li class="benefit benefit--smart icon-like"></li>
-        <li class="benefit benefit--share icon-facebook"></li>
-        <li class="benefit benefit--save icon-roll"></li>
+        <li class="benefit benefit--smart icon-like js-track-event" data-ga_category="Landing" data-ga_action="Click like icon"></li>
+        <li class="benefit benefit--share icon-facebook js-track-event" data-ga_category="Landing" data-ga_action="Click fb icon"></li>
+        <li class="benefit benefit--save icon-roll js-track-event" data-ga_category="Landing" data-ga_action="Click share icon"></li>
     </ul>
   </div>
 
@@ -51,7 +51,8 @@
         </fieldset>
 
         <fieldset class="form_fieldset">
-          <%= submit_tag("Join Shelby", :class => 'button_primer button_command button_green one-whole js-cta js-track-event','data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Signup on Landing Page' ) %>
+          <%# EVENT TRACKING IN user-update.js USING shelby.trackEx()  %>
+          <%= submit_tag("Join Shelby", :class => 'button_primer button_command button_green one-whole js-cta') %>
         </fieldset>
       <% end %>
     </div>

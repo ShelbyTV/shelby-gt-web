@@ -111,8 +111,6 @@
     .shelf--signup {
       height: 440px;
       text-align: center;
-      background-image: url("/images/landing/sky.jpg");
-      color: $ui-off-white;
 
       .shelf__lining {
         font-size: 1.1em;
@@ -162,10 +160,10 @@
       }
 
       .form_error {
-        font-size: 0.7em;
+        position: absolute;
+        margin: 0.3em 2em;
+        font-size: 0.65em;
         display: none;
-        margin: 0.2em 0em;
-        left: 0;
       }
     }
 

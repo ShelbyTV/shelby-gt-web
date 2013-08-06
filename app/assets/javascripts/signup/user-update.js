@@ -48,6 +48,7 @@ function validateUserForm(e) {
   // entering a username is required
   if(!$userNameInput.val().length) {
         $userNameInput.prevAll('.js-form-error').text('Please enter a username').parent().addClass('form_fieldset--error');
+        $userNameInput.parent().find('input').attr('placeholder','');
         hasErrors = true;
   }
 
@@ -56,6 +57,7 @@ function validateUserForm(e) {
   // entering an email is required
   if(!$emailInput.val().length) {
         $emailInput.prevAll('.js-form-error').text('Please enter a valid email address').parent().addClass('form_fieldset--error');
+        $emailInput.parent().find('input').attr('placeholder','');
         hasErrors = true;
   }
 
@@ -64,12 +66,32 @@ function validateUserForm(e) {
   // password must have a minimum length
   if($passwordInput.val().length < shelby.config.user.password.minLength) {
         $passwordInput.parent().addClass('form_fieldset--error');
+        $passwordInput.parent().find('input').attr('placeholder','');
         hasErrors = true;
   }
 
   // if there are any errors, cancel form submission
   if (hasErrors) {
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "Onboarding",
+      gaAction : 'Signup has errors',
+      kmqName : "Onboarding Signup hasErrors"
+    });
+
     e.preventDefault();
+  }
+  else {
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "Onboarding",
+      gaAction : 'Signup complete',
+      gaLabel : $userNameInput.val(),
+      kmqName : "Onboarding Signup Complete",
+      kmqProperties : {
+        nickname: $userNameInput.val()
+      }
+    });
   }
 }
 

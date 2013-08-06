@@ -37,3 +37,36 @@ $(document).ready(function(){
                                        $(e.currentTarget).data("ga_label"));
   });
 });
+
+
+// FOR SPECIFIC EVENT TRACKING //
+if (typeof(shelby) == 'undefined') {
+  var shelby = {};
+}
+
+shelby.trackEx = function(options){
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      providers : ['ga']
+    }).value();
+
+    if (_(options.providers).contains('ga') && options.gaCategory) {
+      try {
+        if (_(options).has('gaValue')) {
+          _gaq.push(['_trackEvent', options.gaCategory, options.gaAction, options.gaLabel, options.gaValue]);
+        } else {
+          _gaq.push(['_trackEvent', options.gaCategory, options.gaAction, options.gaLabel]);
+        }
+      } catch(e) {
+        $.noop();
+      }
+    }
+    var kmqName = options.kmqName || options.gaAction;
+    if (_(options.providers).contains('kmq') && kmqName) {
+      try {
+        _kmq.push(['record', kmqName, _({}).extend(options.kmqProperties)]);
+      } catch(e) {
+        $.noop();
+      }
+    }
+  };
