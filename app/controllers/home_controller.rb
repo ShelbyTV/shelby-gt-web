@@ -69,8 +69,9 @@ class HomeController < ApplicationController
           # if @mobile_os
           #   render '/mobile/search', :layout => 'mobile'
           # else
+
           # A/B test
-          @seo_search_messaging = ab_test :seo_search_messaging
+          @landing_messaging_v2 = ab_test :landing_messaging_v2
 
           render '/home/landing'
         end

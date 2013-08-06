@@ -1,7 +1,11 @@
 <div class="shelf shelf--cta">
   <div class="shelf__lining">
     <h1 class="shelf__h1">
-      Watch videos you'll love.
+      <% if @landing_messaging_v2 == :discover_and_enjoy %>
+        <%= Settings::Marketing.discover_and_enjoy %>
+      <% elsif @landing_messaging_v2 == :powered_by_friends %>
+        <%= Settings::Marketing.powered_by_friends %>
+      <% end %>
     </h1>
 
     <p class="shelf__block">
