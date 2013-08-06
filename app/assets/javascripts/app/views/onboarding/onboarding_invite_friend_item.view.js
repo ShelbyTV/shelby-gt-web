@@ -21,7 +21,6 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
       var $thisButton = $(e.currentTarget).toggleClass('button_busy js-busy button_enabled visuallydisabled');
       FB.ui(
         {
-          description : "Shelby.tv is a single stream of video, personalized to you that gets better over time.", //message
           link        : 'http://shelby.tv/signup?code=' + shelby.models.user.id,
           method      : 'send',
           name        : "You've been invited to join Shelby.tv", //header
