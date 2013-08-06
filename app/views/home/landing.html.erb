@@ -32,7 +32,7 @@
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
-      <%= if @signup_on_landing %>
+      <% if @signup_on_landing == :yes %>
         <%= render :partial => "/home/shelf/sign_up" %>
       <% else %>
         <%= render :partial => "/home/shelf/call_to_action" %>
