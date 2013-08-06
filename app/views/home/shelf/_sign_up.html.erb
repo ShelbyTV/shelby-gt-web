@@ -16,7 +16,7 @@
 
   <div class="shelf__lining shelf__lining--right">
     <div class="media_body">
-      <%= form_tag(request.env['PATH_INFO'], { :id => 'user_form', :class => 'form_module' }) do %>
+      <%= form_tag('/signup', { :id => 'user_form', :class => 'form_module' }) do %>
         <%= field_set_tag(nil, {:class => (@nickname_error) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
           <%= label_tag 'nickname', 'Username', :class => 'form_label' %>
           <% if @nickname_error && @nickname_error.include?('has already been taken') %>
@@ -47,7 +47,7 @@
         </fieldset>
 
         <fieldset class="form_fieldset">
-          <%= submit_tag("Join Shelby", :class => 'button_primer button_command button_green one-whole js-track-event','data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Signup on Step 1' ) %>
+          <%= submit_tag("Join Shelby", :class => 'button_primer button_command button_green one-whole js-cta js-track-event','data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Signup on Landing Page' ) %>
         </fieldset>
       <% end %>
     </div>

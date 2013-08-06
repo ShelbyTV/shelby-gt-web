@@ -24,7 +24,11 @@ class SignupController < ApplicationController
       EM.next_tick { follow_inviter!(session[:invite_code], cookies) if session[:invite_code] }
       redirect_to :root
     else
-      redirect_to :signup
+      if URI(request.referer).path == "/"
+        redirect_to :root
+      else
+        redirect_to :signup
+      end
     end
   end
 end

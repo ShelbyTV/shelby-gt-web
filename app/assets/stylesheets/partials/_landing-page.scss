@@ -154,6 +154,19 @@
         font-size: 0.8em;
         line-height: 1;
       }
+
+      .form_fieldset--error {
+        .form_error {
+          display: block;
+        }
+      }
+
+      .form_error {
+        font-size: 0.7em;
+        display: none;
+        margin: 0.2em 0em;
+        left: 0;
+      }
     }
 
     .css-vertical-pan {

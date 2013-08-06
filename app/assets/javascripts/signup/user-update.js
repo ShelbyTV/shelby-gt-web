@@ -38,7 +38,7 @@ function validateUserForm(e) {
   // validate user full name
   var $fullNameInput = $form.find('#name');
   // entering a name is required
-  if(!$fullNameInput.val().length) {
+  if($fullNameInput.length > 0 && !$fullNameInput.val().length) {
         $fullNameInput.parent().addClass('form_fieldset--error');
         hasErrors = true;
   }
@@ -74,7 +74,7 @@ function validateUserForm(e) {
 }
 
 $(document).ready(function() {
-
+  $('#user_form #nickname').focus();
   // wire up user form validation
   $('#user_form').on('submit', validateUserForm);
   // as soon as I start typing in a text input, hide any visual error indication
