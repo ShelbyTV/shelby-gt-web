@@ -5,7 +5,8 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   events : {
     "click .js-invite-friends"           : "_onInviteFriends",
     "click .js-onboarding-advance-stage" : "_onAdvanceStage",
-    "click .js-authorize"                : "_onConnectRemainingService"
+    "click .js-authorize"                : "_onConnectRemainingService",
+    'click .js-facebook-post'            : '_inviteViaFacebook'
   },
 
   initialize : function(){
@@ -257,6 +258,30 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
         // append a generic Facebook invite button and the user can choose facebook friends to invite him/herself
         this.$('.js-invite-friends-body').append(SHELBYJST['onboarding/onboarding-generic-facebook-invite-button']);
       }
+    }
+  },
+
+  _inviteViaFacebook : function(e) {
+    var self = this;
+
+    e.preventDefault();
+
+    if (typeof FB != "undefined"){
+      FB.ui(
+        {
+          description : "Shelby.tv is a single stream of video, personalized to you that gets better over time.", //message
+          link        : 'http://shelby.tv/signup?code=' + shelby.models.user.id,
+          method      : 'send',
+          name        : "You've been invited to join Shelby.tv", //header
+          picture     : 'http://shelby.tv/images/mark_144sq.png',
+        },
+        function(response) {
+          if (response && response.success) {
+            // invitation succeeded, move on to next stage
+            self.$('.js-onboarding-advance-stage').click();
+          }
+        }
+      );
     }
   },
 
