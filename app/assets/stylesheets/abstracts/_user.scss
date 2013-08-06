@@ -79,6 +79,10 @@
 
 .user__h1 {
   line-height: 1.4;
+
+  &:only-child {
+    line-height: 2.6;
+  }
 }
 .user__h2 {
   font-family: $font-family;
