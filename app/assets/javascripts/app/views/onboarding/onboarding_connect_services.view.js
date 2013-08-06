@@ -2,6 +2,8 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
   _rollFollowingsIncludingFauxUsers : null,
 
+  _invitesTracked : false, // whether or not we've sent a tracking event for the number of invites yet
+
   events : {
     "click .js-invite-friends"           : "_onInviteFriends",
     "click .js-onboarding-advance-stage" : "_onAdvanceStage",
@@ -229,12 +231,44 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
         authenticationsCount : _auths.length
       }
     });
+
+    // also track an event for the number of invitations the user sent if this
+    // was a Facebook connect
+    if (this.model.get('service') == 'facebook') {
+      this._trackNumInvites();
+    }
+
     e.preventDefault();
   },
 
+  _trackNumInvites : function() {
+    // only track invites once per visit to the invite screen
+    if (!this._invitesTracked) {
+      shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : "Onboarding",
+        gaAction : 'Step 3 Num Invites Sent',
+        gaLabel : shelby.models.user.get('nickname'),
+        gaValue : this.model.get('numInvitesSent'),
+        kmqName : "Onboarding Step 3 Num Invites Sent",
+        kmqProperties : {
+          nickname: shelby.models.user.get('nickname'),
+          numInvitesSent : this.model.get('numInvitesSent')
+        }
+      });
+      this._invitesTracked = true;
+    }
+  },
+
   _onConnectRemainingService : function(){
-    if (this.model.get('action') == 'load') {
+    var action = this.model.get('action');
+    if (action == 'load') {
       this._checkFollowShelby();
+    }
+    if (action == 'invite' && this.model.get('service') == 'facebook') {
+      // track an event for the number of invitations the user sent if this
+      // was a Facebook connect
+      this._trackNumInvites();
     }
   },
 
@@ -251,6 +285,9 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
           },
           doStaticRender : true,
           listItemView : 'OnboardingInviteFriendItemView',
+          listItemViewAdditionalParams : {
+            onboardingConnectServicesViewModel : this.model
+          },
           simulateAddTrue : false
         }), '.js-invite-friends-body');
       } else {
@@ -282,6 +319,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
         },
         function(response) {
           if (response && response.success) {
+            self.model.set('numInvitesSent', self.model.get('numInvitesSent') + 1);
             // invitation succeeded, move on to next stage if the user hasn't done so already
             if (self.model.get('action') == 'invite') {
               self.$('.js-onboarding-advance-stage').click();

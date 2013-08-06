@@ -8,6 +8,7 @@ libs.shelbyGT.OnboardingConnectServicesViewModel = Backbone.Model.extend({
     service : 'facebook',  // 'facebook' or 'twitter'
     numFriends : null, // the number of friends we've found for the user on the current service
     numVideos : null, // the number of videos we've found for the user on the current service
+    numInvitesSent : 0, // the number of Facebook friends that the user invited to Shelby
     authFailure : false
   }
 

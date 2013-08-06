@@ -15,6 +15,8 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
   },
 
   _inviteFriend : function(e) {
+    var self = this;
+
     if (typeof FB != "undefined"){
       var $thisButton = $(e.currentTarget).toggleClass('button_busy js-busy button_enabled visuallydisabled');
       FB.ui(
@@ -29,6 +31,9 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
         function(response) {
           if (response) {
             if (response.success) {
+              var viewModel = self.options.onboardingConnectServicesViewModel;
+              viewModel.set('numInvitesSent', viewModel.get('numInvitesSent') + 1);
+
               $thisButton.removeClass('button_busy').children('.button_label').text('Invited');
               return;
             }
