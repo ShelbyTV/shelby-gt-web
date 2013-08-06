@@ -23,7 +23,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     this.model.bind('change:numFriends', this._onChangeNumFriends, this);
     this.model.bind('change:numVideos', this._onChangeNumVideos, this);
     this.model.bind('change:authFailure', this.render, this);
-    this.model.bind('onboarding:invite:foundNoFriends', this._onFoundNoFriends, this);
+    this.model.bind('onboarding:invite:fetchedFriends', this._onFetchedFriends, this);
   },
 
   _cleanup : function() {
@@ -31,7 +31,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     this.model.unbind('change:numFriends', this._onChangeNumFriends, this);
     this.model.unbind('change:numVideos', this._onChangeNumVideos, this);
     this.model.unbind('change:authFailure', this.render, this);
-    this.model.unbind('onboarding:invite:foundNoFriends', this._onFoundNoFriends, this);
+    this.model.unbind('onboarding:invite:fetchedFriends', this._onFetchedFriends, this);
   },
 
   template : function(){
@@ -86,22 +86,8 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
                _(roll.get('creator_authentications')).any(function(auth){return auth.provider == 'facebook';}) &&
                (roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll || roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public);
           });
-          if (friendFauxUserRolls.length) {
-            // we have some friends to invite, go ahead and render the list of them with invite buttons
-            self.appendChildInto(new libs.shelbyGT.ListView({
-              collection : new Backbone.Collection(friendFauxUserRolls),
-              // show the friends with the most video at the top
-              comparator : function(roll) {
-                return -roll.get('frame_count');
-              },
-              doStaticRender : true,
-              listItemView : 'OnboardingInviteFriendItemView',
-              simulateAddTrue : false
-            }), '.js-invite-friends-body');
-          } else {
-            // we didn't find any friends to invite, notify the view
-            self.model.trigger('onboarding:invite:foundNoFriends');
-          }
+          // notify the view of the friends we found
+          self.model.trigger('onboarding:invite:fetchedFriends', friendFauxUserRolls);
         }
       });
     }
@@ -251,11 +237,26 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     }
   },
 
-  _onFoundNoFriends : function() {
+  _onFetchedFriends : function(friendRolls) {
+    // only interested in this event if we're still on the invite screen
     if (this.model.get('action') == 'invite') {
-      // didn't find any friends and we're still on the invite screen
-      // append a generic Facebook invite button and the user can choose facebook friends to invite him/herself
-      this.$('.js-invite-friends-body').append(SHELBYJST['onboarding/onboarding-generic-facebook-invite-button']);
+      if (friendRolls.length) {
+        // we have some friends to invite, go ahead and render the list of them with invite buttons
+        this.appendChildInto(new libs.shelbyGT.ListView({
+          collection : new Backbone.Collection(friendRolls),
+          // show the friends with the most video at the top
+          comparator : function(roll) {
+            return -roll.get('frame_count');
+          },
+          doStaticRender : true,
+          listItemView : 'OnboardingInviteFriendItemView',
+          simulateAddTrue : false
+        }), '.js-invite-friends-body');
+      } else {
+        // didn't find any friends
+        // append a generic Facebook invite button and the user can choose facebook friends to invite him/herself
+        this.$('.js-invite-friends-body').append(SHELBYJST['onboarding/onboarding-generic-facebook-invite-button']);
+      }
     }
   },
 
