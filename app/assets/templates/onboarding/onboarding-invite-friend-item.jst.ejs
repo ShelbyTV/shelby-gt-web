@@ -1,4 +1,5 @@
 <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) %>
+<% var frameCount = roll.get('frame_count') %>
 
 <div class="user user--no_lining user--medium_avatar clearfix">
   <div class="media_module media_module--bare clearfix">
@@ -17,9 +18,11 @@
         <%= libs.shelbyGT.viewHelpers.roll.fauxUserDisplayName(roll) %>
       </h3>
 
-      <h4 class="user__h2">
-        <%= _('video').pluralize(roll.get('frame_count'), true) %>
-      </h4>
+      <% if (frameCount) { %>
+        <h4 class="user__h2">
+          <%= _('video').pluralize(frameCount, true) %>
+        </h4>
+      <% } %>
     </div><!-- eo media_body -->
   </div><!-- eo media_module -->
 </div><!-- eo user -->
