@@ -257,6 +257,11 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
         // didn't find any friends
         // append a generic Facebook invite button and the user can choose facebook friends to invite him/herself
         this.$('.js-invite-friends-body').append(SHELBYJST['onboarding/onboarding-generic-facebook-invite-button']);
+        this.$('.js-facebook-post').data({
+          'ga_category' : 'Onboarding',
+          'ga_action' : 'Click invite friend',
+          'ga_label' : shelby.models.user.get('nickname')
+        });
       }
     }
   },
