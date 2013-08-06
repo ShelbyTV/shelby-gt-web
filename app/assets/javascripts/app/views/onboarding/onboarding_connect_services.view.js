@@ -277,8 +277,10 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
         },
         function(response) {
           if (response && response.success) {
-            // invitation succeeded, move on to next stage
-            self.$('.js-onboarding-advance-stage').click();
+            // invitation succeeded, move on to next stage if the user hasn't done so already
+            if (self.model.get('action') == 'invite') {
+              self.$('.js-onboarding-advance-stage').click();
+            }
           }
         }
       );
