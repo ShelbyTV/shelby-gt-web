@@ -81,6 +81,21 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
       type: 'PUT',
       success: onSuccess
     });
+  },
+
+  //return an array of the services for which the user does not have authentication
+  getUnauthedServices : function(){
+    var userAuthentications = this.get('authentications');
+    if (userAuthentications && userAuthentications.length) {
+      return _(shelby.config.services.primaryAuth).reject(function(service){
+        return _(userAuthentications).any(function(auth){
+          return auth.provider == service;
+        });
+      });
+    } else {
+      return shelby.config.services.primaryAuth;
+    }
+
   }
 
 });
@@ -90,4 +105,4 @@ libs.shelbyGT.UserModel.USER_TYPE = {
   faux : 1,
   converted : 2,
   service : 3
-}
+};

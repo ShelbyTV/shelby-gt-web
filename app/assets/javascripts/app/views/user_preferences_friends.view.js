@@ -57,7 +57,7 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
           picture     : 'http://shelby.tv/images/mark_144sq.png'
         },
         function(response) {
-          if (response && response.post_id) {
+          if (response && response.success) {
             // TODO:we should record that this happened.
           }
         }
