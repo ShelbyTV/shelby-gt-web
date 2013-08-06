@@ -50,11 +50,8 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
     if (typeof FB != "undefined"){
       FB.ui(
         {
-          description : "Shelby.tv is a single stream of video, personalized to you that gets better over time.", //message
           link        : this._baseURL + this._userId,
-          method      : 'send',
-          name        : "You've been invited to join Shelby.tv", //header
-          picture     : 'http://shelby.tv/images/mark_144sq.png'
+          method      : 'send'
         },
         function(response) {
           if (response && response.success) {

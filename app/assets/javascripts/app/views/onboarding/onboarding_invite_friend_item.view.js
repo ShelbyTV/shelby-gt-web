@@ -23,8 +23,6 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
         {
           link        : 'http://shelby.tv/signup?code=' + shelby.models.user.id,
           method      : 'send',
-          name        : "You've been invited to join Shelby.tv", //header
-          picture     : 'http://shelby.tv/images/mark_144sq.png',
           to          : _(this.model.get('creator_authentications')).find(function(a){ return a.provider == 'facebook'; }).uid
         },
         function(response) {
