@@ -35,4 +35,9 @@ module SignupHelper
     (user_first_name && (user_first_name.length > 0)) ? user_first_name : user['nickname']
   end
 
+  def user_facebook_image(user)
+    facebook_auth = user['authentications'].find {|a| a['provider'] == 'facebook'}
+    facebook_auth && "http://graph.facebook.com/#{facebook_auth['uid']}/picture?type=large"
+  end
+
 end
