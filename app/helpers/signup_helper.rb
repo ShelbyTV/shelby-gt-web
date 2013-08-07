@@ -28,4 +28,11 @@ module SignupHelper
     end
   end
 
+  def user_first_name(user)
+    user_name = user['name'] && user['name'].lstrip
+    user_first_name = user_name && user_name.split(/\s+/, 2)[0]
+    user_first_name && user_first_name.strip!
+    (user_first_name && (user_first_name.length > 0)) ? user_first_name : user['nickname']
+  end
+
 end
