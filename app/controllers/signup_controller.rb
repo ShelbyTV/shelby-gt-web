@@ -5,6 +5,7 @@ class SignupController < ApplicationController
     # just show the freakin form.
     if params[:code]
       @inviter = Shelby::API.get_user(params[:code])
+      @og_url = request.original_url
       session[:invite_code] = params[:code]
     end
 
