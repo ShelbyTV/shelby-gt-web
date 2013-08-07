@@ -1,6 +1,6 @@
 libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView.extend({
 
-  _baseURL : 'http://shelby.tv/signup?code=',
+  _baseURL : 'http://shelby.tv/signup/',
 
   events : {
     'click .js-facebook-post' : '_shareToFacebook'
