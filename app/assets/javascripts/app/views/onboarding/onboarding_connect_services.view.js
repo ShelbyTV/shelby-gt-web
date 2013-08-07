@@ -311,11 +311,8 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     if (typeof FB != "undefined"){
       FB.ui(
         {
-          description : "Shelby.tv is a single stream of video, personalized to you that gets better over time.", //message
           link        : 'http://shelby.tv/signup?code=' + shelby.models.user.id,
-          method      : 'send',
-          name        : "You've been invited to join Shelby.tv", //header
-          picture     : 'http://shelby.tv/images/mark_144sq.png',
+          method      : 'send'
         },
         function(response) {
           if (response && response.success) {
