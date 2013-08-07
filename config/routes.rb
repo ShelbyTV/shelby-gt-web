@@ -42,6 +42,7 @@ ShelbyGtWeb::Application.routes.draw do
   get "invite" => 'signup#show', :as => :invite
   post "invite" => 'signup#create'
   get "signup" => 'signup#show', :as => :signup
+  get "signup/:code" => 'signup#show'
   post "signup" => 'signup#create'
 
 

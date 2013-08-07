@@ -96,7 +96,7 @@ function validateUserForm(e) {
 }
 
 $(document).ready(function() {
-  $('#user_form #nickname').focus();
+  $('#user_form input:first[type="text"]').focus();
   // wire up user form validation
   $('#user_form').on('submit', validateUserForm);
   // as soon as I start typing in a text input, hide any visual error indication

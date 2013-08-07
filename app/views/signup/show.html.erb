@@ -19,7 +19,7 @@
           <% end %>
 
           <% if @inviter %>
-            <%= @inviter['name'] %> found the perfect stream of video on Shelby. Find Yours.
+            <%= @inviter['name'] || @inviter['nickname'] %> found the perfect stream of video on Shelby. Find Yours.
           <% else %>
             Get your perfect stream of video
           <% end %>
