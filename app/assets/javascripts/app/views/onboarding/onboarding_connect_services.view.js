@@ -311,7 +311,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
     if (typeof FB != "undefined"){
       FB.ui(
         {
-          link        : 'http://shelby.tv/signup?code=' + shelby.models.user.id,
+          link        : 'http://shelby.tv/signup/' + shelby.models.user.id,
           method      : 'send'
         },
         function(response) {

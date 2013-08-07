@@ -21,7 +21,7 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
       var $thisButton = $(e.currentTarget).toggleClass('button_busy js-busy button_enabled visuallydisabled');
       FB.ui(
         {
-          link        : 'http://shelby.tv/signup?code=' + shelby.models.user.id,
+          link        : 'http://shelby.tv/signup/' + shelby.models.user.id,
           method      : 'send',
           to          : _(this.model.get('creator_authentications')).find(function(a){ return a.provider == 'facebook'; }).uid
         },
