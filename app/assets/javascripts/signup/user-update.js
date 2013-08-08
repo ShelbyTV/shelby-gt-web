@@ -82,8 +82,7 @@ function validateUserForm(e) {
     e.preventDefault();
   }
   else {
-    var shelbyTrackingCategory;
-    var location = shelbyTrackingCategory ? shelbyTrackingCategory : "Signup Page";
+    var location = (typeof shelbyTrackingCategory == "undefined") ? "Signup Page" : "Landing Page";
     shelby.trackEx({
       providers : ['ga', 'kmq'],
       gaCategory : "Onboarding",
