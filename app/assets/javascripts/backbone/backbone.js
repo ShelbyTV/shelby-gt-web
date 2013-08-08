@@ -7,6 +7,13 @@
 
 (function(){
 
+  // !!SHELBY MOD!!
+  // Make backbone's query parameter decoding W3C compliant by decoding '+'
+  // as a space
+  var decodeURIComponent = function(encodedURI){
+    return window.decodeURIComponent((encodedURI+'').replace(/\+/g, '%20'));
+  };
+
   // Initial Setup
   // -------------
 
