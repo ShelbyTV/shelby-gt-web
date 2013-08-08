@@ -82,14 +82,17 @@ function validateUserForm(e) {
     e.preventDefault();
   }
   else {
+    var shelbyTrackingCategory;
+    var location = shelbyTrackingCategory ? shelbyTrackingCategory : "Signup Page";
     shelby.trackEx({
       providers : ['ga', 'kmq'],
       gaCategory : "Onboarding",
       gaAction : 'Signup complete',
-      gaLabel : $userNameInput.val(),
+      gaLabel : location,
       kmqName : "Onboarding Signup Complete",
       kmqProperties : {
-        nickname: $userNameInput.val()
+        nickname: $userNameInput.val(),
+        location: location
       }
     });
   }
