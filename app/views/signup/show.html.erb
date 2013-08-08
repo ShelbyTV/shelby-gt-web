@@ -86,7 +86,7 @@
                 </fieldset>
 
                 <fieldset class="form_fieldset">
-                  <%= submit_tag("Join Shelby", :class => 'button_primer button_command button_green one-whole js-track-event','data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Signup on Step 1' ) %>
+                  <%= submit_tag("Join Shelby", :class => 'button_primer button_command button_green one-whole js-submit-signup js-track-event','data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Signup on Step 1' ) %>
                 </fieldset>
               </div><!-- eo media_body -->
             </div><!-- eo media_module -->
@@ -99,6 +99,29 @@
 
 <%= javascript_tag do %>
   $(document).ready(function(){
+
+      <% if @inviter %>
+        shelby.trackEx({
+          providers : ['ga', 'kmq'],
+          gaCategory : "Onboarding",
+          gaAction : 'Started via Invite',
+          kmqName : 'Started Onboarding via Invite'
+        });
+
+        $('.js-submit-signup').on('click', function(){
+          shelby.trackEx({
+            providers : ['ga', 'kmq'],
+            gaCategory : "Onboarding",
+            gaAction : 'Clicked sign up via an invite',
+            gaLabel : 'via <%= @inviter['nickname'] %>',
+            kmqName : 'Clicked sign up via invite'
+            kmqProperties : {
+              inviter: '<%= @inviter['nickname'] %>'
+            }
+          });
+        });
+      <% end %>
+
       shelby.trackEx({
         providers : ['ga', 'kmq'],
         gaCategory : "Onboarding",
