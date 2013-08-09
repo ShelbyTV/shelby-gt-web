@@ -26,6 +26,32 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
       shelby.models.user.get('app_progress').advanceStage('onboarding', true);
       shelby.models.guide.set('onboardingStage', null);
       shelby.router.navigate('', {trigger: true, replace: true});
+
+      // track an event containing the total number of rolls followed
+      shelby.models.rollFollowingsIncludingFauxUsers.fetch({
+        data : {
+          'include_faux' : 1
+        },
+        success : function(model, response) {
+          var numRollsFollowed = model.get('rolls').filter(function(roll){
+            return roll.get('creator_id') != shelby.models.user.id &&
+               roll.id != shelby.models.user.get('watch_later_roll_id');
+          }).length;
+
+          shelby.trackEx({
+            providers : ['ga', 'kmq'],
+            gaCategory : "Onboarding",
+            gaAction : 'Total Rolls Followed',
+            gaLabel : shelby.models.user.get('nickname'),
+            gaValue : numRollsFollowed,
+            kmqName : "Onboarding Total Rolls Followed",
+            kmqProperties : {
+              nickname: shelby.models.user.get('nickname'),
+              rollsFollowed : numRollsFollowed
+            }
+          });
+        }
+      });
     } else {
       shelby.models.user.get('app_progress').advanceStage('onboarding', currentStage);
       shelby.router.navigate('onboarding/' + (parseInt(currentStage, 10) + 1), {trigger: true, replace: true});
@@ -60,7 +86,10 @@ libs.shelbyGT.OnboardingView.onboardingStages = [
   {
     view : libs.shelbyGT.OnboardingConnectServicesView,
     opts : function() {
-      return {model: shelby.models.onboardingConnectServicesView};
+      return {
+        model : shelby.models.onboardingConnectServicesView,
+        rollFollowings : shelby.models.rollFollowingsIncludingFauxUsers
+      };
     }
   },
   {

@@ -58,6 +58,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.userActivity = new libs.shelbyGT.UserActivityModel();
 
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
+    shelby.models.rollFollowingsIncludingFauxUsers = new libs.shelbyGT.RollsCollectionModel();
     shelby.models.onboardingRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});
     shelby.models.onboardingConnectServicesView = new libs.shelbyGT.OnboardingConnectServicesViewModel();
     shelby.models.promoRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'in_line_promos'});

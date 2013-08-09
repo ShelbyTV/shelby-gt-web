@@ -1,7 +1,5 @@
 libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
-  _rollFollowingsIncludingFauxUsers : null,
-
   _invitesTracked : false, // whether or not we've sent a tracking event for the number of invites yet
 
   events : {
@@ -12,8 +10,6 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    this._rollFollowingsIncludingFauxUsers = new libs.shelbyGT.RollsCollectionModel();
-
     // if the user has already authenticated facebook, it means we're returning to this stage
     // of onboarding after already having visited the load videos screen, so jump straight
     // to inviting friends from facebook
@@ -76,7 +72,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       // faux user roll we find
 
       // fetch the roll followings again so we have maximum chance of discovering some friends to invite
-      this._rollFollowingsIncludingFauxUsers.fetch({
+      this.options.rollFollowings.fetch({
         data : {
           'include_faux' : 1
         },
@@ -134,7 +130,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
             rollFollowingFetchAttempt++;
             previousNumRollFollowings.shift();
             previousNumRollFollowings.push(numRollFollowings);
-            self._rollFollowingsIncludingFauxUsers.fetch({
+            self.options.rollFollowings.fetch({
               data : {
                 'include_faux' : 1
               },
@@ -157,7 +153,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       };
 
       // fetch the roll followings so we can find out how many friends the user has on the new service
-      this._rollFollowingsIncludingFauxUsers.fetch({
+      this.options.rollFollowings.fetch({
         data : {
           'include_faux' : 1
         },
