@@ -47,5 +47,19 @@
       _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
     </script>
   <% end %>
+  <% # VANITY A/B TESTING %>
+  <%= vanity_js %>
+  <% experiments = vanity_experiments %>
+  <% unless experiments.nil? %>
+    <script>
+      <% experiments.each do |name, alternative| %>
+        try {
+          _gaq.push(['_trackEvent', 'ab-testing', '<%= name %>', '<%= alternative.value %>']);
+          _kmq.push(["set", {"<%= name %>": "<%= alternative.value %>"}]);
+        } catch(e) {}
+      <% end %>
+    </script>
+  <% end %>
+
 </body>
 </html>
