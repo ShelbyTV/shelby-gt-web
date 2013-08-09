@@ -8,6 +8,7 @@ libs.utils.intercom = {
         Intercom('boot', {
                 app_id: 'aeb096feb787399ac1cf3985f891d0e13aa47571',
                 email: userModel.get('primary_email'),
+                nickname: userModel.get('nickname'),
                 created_at: created_at,
                 name: userModel.get('name'),
                 user_id: userModel.get('id'),
