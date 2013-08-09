@@ -40,6 +40,7 @@ function validateUserForm(e) {
   // entering a name is required
   if($fullNameInput.length > 0 && !$fullNameInput.val().length) {
         $fullNameInput.parent().addClass('form_fieldset--error');
+        $fullNameInput.parent().find('input').attr('placeholder','');
         hasErrors = true;
   }
 

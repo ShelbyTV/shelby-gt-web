@@ -17,6 +17,12 @@
   <div class="shelf__lining shelf__lining--right">
     <div class="media_body">
       <%= form_tag('/signup', { :id => 'user_form', :class => 'form_module' }) do %>
+        <fieldset class="form_fieldset">
+          <%= label_tag 'name', 'Full Name', :class => 'form_label' %>
+          <span class="form_error js-form-error">Please enter your name</span>
+          <%= text_field_tag 'name', nil, :placeholder => 'First and Last Name', :class => 'form_input' %>
+        </fieldset>
+
         <%= field_set_tag(nil, {:class => (@nickname_error) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
           <%= label_tag 'nickname', 'Username', :class => 'form_label' %>
           <% if @nickname_error && @nickname_error.include?('has already been taken') %>
