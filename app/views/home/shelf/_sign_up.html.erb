@@ -60,3 +60,14 @@
     </div>
   </div>
 </div><!-- eo shelf -->
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : "Onboarding",
+        gaAction : 'Started',
+        kmqName : 'Started Onboarding'
+    });
+  });
+<% end %>
