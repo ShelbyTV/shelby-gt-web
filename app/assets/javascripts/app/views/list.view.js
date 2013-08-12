@@ -245,12 +245,12 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     var childView = this._constructListItemView(item);
 
     // Special handling if the item was not simply appended
-     var insertAtIndex = -1;
-      if (_(options).has('at')) {
-        insertAtIndex = options.at;
-      } else if (_(options).has('index')) {
-        insertAtIndex = options.index;
-      }
+    var insertAtIndex = -1;
+    if (_(options).has('at')) {
+      insertAtIndex = options.at;
+    } else if (_(options).has('index')) {
+      insertAtIndex = options.index;
+    }
 
     if (insertAtIndex > -1){
       this._listItemViews.splice(insertAtIndex, 0, childView);
