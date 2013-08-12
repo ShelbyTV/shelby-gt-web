@@ -64,13 +64,23 @@ class HomeController < ApplicationController
           @mobile_os     = detect_mobile_os
           @is_mobile     = is_mobile?
 
+
+          if flash[:user_errors]
+            @user_attributes = flash[:user_attributes]
+            @email_error = flash[:user_errors_email]
+            @nickname_error = flash[:user_errors_nickname]
+          end
+
           view_context.get_info_for_meta_tags(params[:path])
 
           # if @mobile_os
           #   render '/mobile/search', :layout => 'mobile'
           # else
-          # A/B test
-          @seo_search_messaging = ab_test :seo_search_messaging
+
+          # A/B tests
+          #@landing_messaging_v2 = ab_test :landing_messaging_v2
+          @signup_on_landing = ab_test :signup_on_landing
+          session[:signup_on_landing] = @signup_on_landing
 
           render '/home/landing'
         end
@@ -93,29 +103,6 @@ class HomeController < ApplicationController
     @team = :true
     render '/home/landing'
   end
-
-  ##
-  # Handles invite landing page
-  #
-  # GET /invite/:invite_id
-  #     :invite_id is OPTIONAL and used for invitation system in app
-  #
-  def invite
-    if user_signed_in?
-      redirect_to :action => :index
-    else
-      @sign_up = true
-      @invite_id = params[:invite_id]
-
-      # Parse errors and render landing
-
-      @nickname_error = params[:nickname]
-      @email_error = params[:primary_email]
-
-      render '/home/landing'
-    end
-  end
-
 
   ##
   # Handles community view when visited directly (allowing logged-out users to see it)

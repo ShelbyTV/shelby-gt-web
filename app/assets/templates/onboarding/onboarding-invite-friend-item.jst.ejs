@@ -1,0 +1,28 @@
+<% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) %>
+<% var frameCount = roll.get('frame_count') %>
+
+<div class="user user--no_lining user--medium_avatar clearfix">
+  <div class="media_module media_module--bare clearfix">
+    <div class="media_image--rev">
+      <button class="button_primer button_command button_command--flexible button_gray user__button js-onboarding-roll-button js-track-event" data-roll_id="<%= roll.id %>" data-ga_category="Onboarding" data-ga_action="Click invite friend" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+        <span class="button_label">Invite</span>
+      </button>
+    </div><!-- eo media_image--rev -->
+
+    <span class="media_image image_module avatara avatar--medium user__avatar" role="img" style="background-image:url(<%= avatar %>);">
+      <img class="visuallyhidden" src="<%= avatar %>"/>
+    </span><!-- eo media_image -->
+
+    <div class="media_body">
+      <h3 class="user__h1">
+        <%= libs.shelbyGT.viewHelpers.roll.fauxUserDisplayName(roll) %>
+      </h3>
+
+      <% if (frameCount) { %>
+        <h4 class="user__h2">
+          <%= _('video').pluralize(frameCount, true) %>
+        </h4>
+      <% } %>
+    </div><!-- eo media_body -->
+  </div><!-- eo media_module -->
+</div><!-- eo user -->

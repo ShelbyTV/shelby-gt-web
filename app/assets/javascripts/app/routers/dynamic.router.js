@@ -487,9 +487,23 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       }
   },
 
-  displayOnboardingView : function(stage){
-    this._setupTopLevelViews();
+  displayOnboardingView : function(stage, params){
+    this._setupTopLevelViews({onboarding: true});
     shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.onboarding, onboardingStage:stage});
+
+    var attrs = { authFailure: false }; //defaults
+
+    if (stage == 2 && params) {
+      if(params['authed_with'] && _(shelby.config.services.primaryAuth).include(params['authed_with'])) {
+        _(attrs).extend({action: 'load', service: params['authed_with']});
+      }
+
+      if(params['auth_failure']) {
+        _(attrs).extend({action: 'connect', authFailure: true});
+      }
+
+      shelby.models.onboardingConnectServicesView.set(attrs);
+    }
   },
 
   displaySaves : function(){
@@ -674,6 +688,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // default options
     options = _.chain({}).extend(options).defaults({
       isIsolatedRoll : false,
+      onboarding: false,
       openInvite : false
     }).value();
 
@@ -698,6 +713,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           guideModel : shelby.models.guide,
           model : shelby.models.playlistManager
         });
+    if(options.onboarding) {
+      shelby.views.onboarding = shelby.views.onboarding ||
+        new libs.shelbyGT.OnboardingView();
+    }
 
     if(!Browser.isIos()){
       ///////////////////

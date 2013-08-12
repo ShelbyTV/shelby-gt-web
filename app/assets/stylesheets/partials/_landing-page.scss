@@ -21,14 +21,16 @@
   .shelby__head {
   }
 
+  .shelby-logo {
+    font-size: 49px;
+  }
+
   /* adjust the header, don't want absolute position */
   .shelby__header {
     position: relative;
   }
 
-  /* this gets hidden in _guide-presentation-selector.scss for onboarding */
   .app_nav {
-    display: block;
     text-align: right;
   }
 }
@@ -106,6 +108,66 @@
       }
     }
 
+    .shelf--signup {
+      height: 440px;
+      text-align: center;
+
+      .shelf__lining {
+        font-size: 1.1em;
+      }
+
+      .shelf__lining--right {
+        width: 45%;
+        float: right;
+        padding-top: 2em;
+        text-align: left;
+        font-size: 0.9em;
+      }
+
+      .shelf__lining--left {
+        width: 55%;
+        float: left;
+        padding-top: 5.75em;
+        padding-left: 66px;
+      }
+
+      .shelf__button {
+        margin: 1.5em auto 0;
+      }
+
+      .shelf__img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+
+      .list--benefits {
+        margin-left: 75px;
+      }
+
+      .form_fieldset {
+        width: 255px;
+      }
+
+      .form__description {
+        font-size: 0.8em;
+        line-height: 1;
+      }
+
+      .form_fieldset--error {
+        .form_error {
+          display: block;
+        }
+      }
+
+      .form_error {
+        position: absolute;
+        margin: 0.3em 2em;
+        font-size: 0.65em;
+        display: none;
+      }
+    }
+
     .css-vertical-pan {
       -webkit-animation: vertical-pan 98s infinite; /* Chrome, Safari 5+ */
          -moz-animation: vertical-pan 98s infinite; /* Firefox 5-15 */
@@ -147,21 +209,21 @@
       100% { background-position: center 0; }
     }
     .shelf--stream {
-      height: 637px;
+      height: 437px;
 
       .shelf__h1 {
-        margin-top: 6.5em;
+        margin-top: 3.2em;
       }
 
       .shelf__img--stream {
-        background-image: url('/images/landing/stream/stream.jpg');
+        background-image: url('/images/landing/stream.jpg');
         background-repeat: none;
         background-position: top center;
         -webkit-background-size: 100%;
         background-size: 100%;
         margin: 0 1em 0 3em;
         width: 384px;
-        height: 635px;
+        height: 435px;
 
         .img {
           margin: 0 2em;

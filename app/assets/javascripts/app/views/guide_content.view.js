@@ -4,6 +4,7 @@
   var DisplayState = libs.shelbyGT.DisplayState;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
+  var OnboardingGuideEmptyIndicatorView = libs.shelbyGT.OnboardingGuideEmptyIndicatorView;
   var RollListView = libs.shelbyGT.RollListView;
   var RollListFilterType = libs.shelbyGT.RollListFilterType;
   var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
@@ -52,7 +53,6 @@
         return;
       }
       if (model.get('displayState') != libs.shelbyGT.DisplayState.userPreferences &&
-          model.get('displayState') != libs.shelbyGT.DisplayState.onboarding &&
           model.get('displayState') != libs.shelbyGT.DisplayState.dotTv) {
         this._updateChild(model);
       }
@@ -152,6 +152,28 @@
               masterCollection : this._currentRollMasterCollection
             },
             spinner : true
+          };
+          break;
+        case DisplayState.onboarding :
+          displayParams = {
+            viewProto : DashboardView,
+            model : shelby.models.dashboard,
+            options : {
+              doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
+              doSmartRefresh : true,
+              doStaticRender : true,
+              emptyIndicatorViewProto : OnboardingGuideEmptyIndicatorView,
+              noMoreResultsViewProto : null,
+              showEmptyIndicatorOnStaticRender: true,
+              fetchParams : {
+                include_children : true
+              },
+              playlistType : libs.shelbyGT.PlaylistType.dashboard,
+              sortOrder : -1,
+              firstFetchLimit : shelby.config.pageLoadSizes.dashboard,
+              limit : shelby.config.pageLoadSizes.dashboard + 1,
+              masterCollection : this._dashboardMasterCollection
+            }
           };
           break;
         case DisplayState.search :

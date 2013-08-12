@@ -102,3 +102,17 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
 </script>
+
+<% # VANITY A/B TESTING %>
+<%= vanity_js %>
+<% experiments = vanity_experiments %>
+<% unless experiments.nil? %>
+  <script>
+    <% experiments.each do |name, alternative| %>
+      try {
+        _gaq.push(['_trackEvent', 'ab-testing', '<%= name %>', '<%= alternative.value %>']);
+        _kmq.push(["set", {"<%= name %>": "<%= alternative.value %>"}]);
+      } catch(e) {}
+    <% end %>
+  </script>
+<% end %>

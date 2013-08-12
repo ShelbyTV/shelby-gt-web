@@ -16,6 +16,9 @@ $_video-player : #0e0e0e;
   right: 0;
   z-index: 2000000;
 }
+    .video_controls__wrapper--preload {
+      bottom: 0;
+    }
 
 .video_controls {
 	@include gradient-primer($_video-player);
@@ -36,135 +39,113 @@ $_video-player : #0e0e0e;
   font-size: 1.8em;
   padding: 0.5em;
   -webkit-tap-highlight-color: rgba(5, 144, 196,.5);
-
-  i {
-    height: inherit;
-  }
 }
 
-//------------------------------------------------------------------------------
-//  Modifiers -- Video Controls
-//------------------------------------------------------------------------------
+    .video_controls__button--play {
+      &.video_controls__button--pause {
+        .icon-play {
+          display: none;
+        }
 
-//  Play button
-.video_controls__button--play {
-  &.video_controls__button--pause {
-    .icon-play {
+        .icon-pause {
+          display: inline;
+        }
+      }
+
+      .icon-play {
+        display: inline;
+      }
+
+      .icon-pause {
+        display: none;
+      }
+    }
+
+    // Prev/Next
+    // Right now, these show for Touch devices only.
+    // For non-touch button styles, grep .videoplayer-nav__btn
+    .video_controls__button--prev,
+    .video_controls__button--next {
+      @include gradient-primer(#666);
+
+      padding: 0.7em 0 0.5em;
+      width: 2em;
+    }
+
+    .video_controls__button--prev {
+      @include roundies(right);
+    }
+
+    .video_controls__button--next {
+      @include roundies(left);
+
+      float: right;
+    }
+
+    .video_controls__button--fullscreen {
+      float: right;
+
+      .icon-guide-in {
+        display: block;
+      }
+
+      .icon-guide-out {
+        display: none;
+      }
+
+      &.cancel {
+        .icon-guide-in {
+          display: none;
+        }
+
+        .icon-guide-out {
+          display: block;
+        }
+      }
+    }
+    // Volume button
+    .video_controls__button--volume {
+      float: right;
+
+      &.video_controls__button--muted {
+        .icon-sound-on {
+          display: none;
+        }
+
+        .icon-sound-off {
+          display: inline;
+        }
+      }
+
+      .icon-sound-on {
+        display: inline;
+      }
+
+      .icon-sound-off {
+        display: none;
+      }
+    }
+    //  hd button
+    .video_controls__button--quality {
+      float: right;
       display: none;
+
+      //quality is not even an option, so it shouldn't display
+      &.video_controls__button--hd-on {
+        display: inline;
+
+        .icon-hd {}
+      }
+      //quality is toggle-able
+      &.video_controls__button--hd-off {
+        display: inline;
+        opacity: 0.4;
+
+        .icon-hd {}
+      }
     }
-
-    .icon-pause {
-      display: inline;
-    }
-  }
-
-  .icon-play {
-    display: inline;
-  }
-
-  .icon-pause {
-    display: none;
-  }
-}
-
-// Prev/Next
-// Right now, these show for Touch devices only.
-// For non-touch button styles, grep .videoplayer-nav__btn
-.video_controls__button--prev,
-.video_controls__button--next {
-  @include gradient-primer(#666);
-
-  padding: 0.7em 0 0.5em;
-  width: 2em;
-
-  & > i {
-    color: black;
-  }
-}
-
-.video_controls__button--prev {
-  @include roundies(right);
-}
-
-.video_controls__button--next {
-  @include roundies(left);
-
-  float: right;
-}
-
-.video_controls__button--fullscreen {
-  float: right;
-
-  .icon-guide-in {
-    display: block;
-  }
-
-  .icon-guide-out {
-    display: none;
-  }
-
-  &.cancel {
-    .icon-guide-in {
-      display: none;
-    }
-
-    .icon-guide-out {
-      display: block;
-    }
-  }
-}
-
-
-// Volume button
-
-.video_controls__button--volume {
-  float: right;
-
-  &.video_controls__button--muted {
-    .icon-sound-on {
-      display: none;
-    }
-
-    .icon-sound-off {
-      display: inline;
-    }
-  }
-
-  .icon-sound-on {
-    display: inline;
-  }
-
-  .icon-sound-off {
-    display: none;
-  }
-}
-
-//  hd button
-
-.video_controls__button--quality {
-  float: right;
-  display: none;
-
-  //quality is not even an option, so it shouldn't display
-  &.video_controls__button--hd-on {
-    display: inline;
-
-    .icon-hd {
-    }
-  }
-
-  //quality is toggle-able
-  &.video_controls__button--hd-off {
-    display: inline;
-    opacity: 0.4;
-
-    .icon-hd {
-    }
-  }
-}
 
 //  END ------------------------------------------------------------------------
-
 //------------------------------------------------------------------------------
 //  Block -- Video Progress Bar
 //------------------------------------------------------------------------------
@@ -176,7 +157,7 @@ $_video-player : #0e0e0e;
 
 .video_progress {
   background: black;
-  border-radius: $radius*2;
+  border-radius: $radius * 2;
   height: 8px;
   margin: 1.5em 8px 0;
   position: relative;
@@ -200,7 +181,7 @@ $_video-player : #0e0e0e;
 }
 
 .video_progress__elapsed {
-  background: $ui-soft-black;
+  background: $ui-green;
   margin-top:-8px;
 }
 

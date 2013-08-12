@@ -41,7 +41,7 @@ _.extend(Support.CompositeView.prototype, Backbone.View.prototype, {
   },
 
   insertChildAt : function(view, childIndex) {
-    if(childIndex === this.children.value().length){
+    if(childIndex >= this.children.value().length){
       this.appendChild(view);
     } else {
       var insertBeforeThisView = this.children.value()[childIndex];

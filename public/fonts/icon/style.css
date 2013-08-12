@@ -1,17 +1,17 @@
 @font-face {
-	font-family: 'Shelby-Icon-Font';
-	src:url('fonts/Shelby-Icon-Font.eot');
-	src:url('fonts/Shelby-Icon-Font.eot?#iefix') format('embedded-opentype'),
-		url('fonts/Shelby-Icon-Font.woff') format('woff'),
-		url('fonts/Shelby-Icon-Font.ttf') format('truetype'),
-		url('fonts/Shelby-Icon-Font.svg#Shelby-Icon-Font') format('svg');
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.ttf') format('truetype'),
+		url('fonts/icomoon.svg#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
 [data-icon]:before {
-	font-family: 'Shelby-Icon-Font';
+	font-family: 'icomoon';
 	content: attr(data-icon);
 	speak: none;
 	font-weight: normal;
@@ -27,8 +27,8 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-twitter, .icon-tumblr, .icon-thumbnail, .icon-sound-on, .icon-sound-off, .icon-shortlink, .icon-share, .icon-search, .icon-roll, .icon-play, .icon-pause, .icon-like, .icon-chevron, .icon-carrot, .icon-avatar, .icon-arrow_up, .icon-arrow_right, .icon-arrow_left, .icon-arrow_down, .icon-whole, .icon-type, .icon-mark, .icon-hd, .icon-guide-out, .icon-guide-in, .icon-facebook, .icon-embed, .icon-email, .icon-close {
-	font-family: 'Shelby-Icon-Font';
+.icon-twitter, .icon-tumblr, .icon-thumbnail, .icon-sound-on, .icon-sound-off, .icon-shortlink, .icon-share, .icon-search, .icon-roll, .icon-play, .icon-pause, .icon-like, .icon-hd, .icon-guide-out, .icon-guide-in, .icon-facebook, .icon-embed, .icon-email, .icon-close, .icon-chevron, .icon-check, .icon-carrot, .icon-avatar, .icon-arrow_up, .icon-arrow_right, .icon-arrow_left, .icon-arrow_down, .icon-whole, .icon-type, .icon-mark {
+	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -73,54 +73,57 @@ you can use the generic selector below, but it's slower:
 .icon-like:before {
 	content: "\e00b";
 }
-.icon-chevron:before {
+.icon-hd:before {
 	content: "\e00c";
 }
-.icon-carrot:before {
+.icon-guide-out:before {
 	content: "\e00d";
 }
-.icon-avatar:before {
+.icon-guide-in:before {
 	content: "\e00e";
 }
-.icon-arrow_up:before {
+.icon-facebook:before {
 	content: "\e00f";
 }
-.icon-arrow_right:before {
+.icon-embed:before {
 	content: "\e010";
 }
-.icon-arrow_left:before {
+.icon-email:before {
 	content: "\e011";
 }
-.icon-arrow_down:before {
+.icon-close:before {
 	content: "\e012";
 }
-.icon-whole:before {
+.icon-chevron:before {
 	content: "\e013";
 }
-.icon-type:before {
+.icon-check:before {
 	content: "\e014";
 }
-.icon-mark:before {
+.icon-carrot:before {
 	content: "\e015";
 }
-.icon-hd:before {
+.icon-avatar:before {
 	content: "\e016";
 }
-.icon-guide-out:before {
+.icon-arrow_up:before {
 	content: "\e017";
 }
-.icon-guide-in:before {
+.icon-arrow_right:before {
 	content: "\e018";
 }
-.icon-facebook:before {
+.icon-arrow_left:before {
 	content: "\e019";
 }
-.icon-embed:before {
+.icon-arrow_down:before {
 	content: "\e01a";
 }
-.icon-email:before {
+.icon-whole:before {
 	content: "\e01b";
 }
-.icon-close:before {
+.icon-type:before {
 	content: "\e01c";
+}
+.icon-mark:before {
+	content: "\e01d";
 }

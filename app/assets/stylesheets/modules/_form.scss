@@ -28,6 +28,10 @@
   margin-top: 1em;
 }
     //modifiers
+    .form_fieldset--rev {
+      margin-top: 0;
+      margin-bottom: 1em;
+    }
     .form_fieldset--error {
       .form_input {
         border-color: $shelby-red;

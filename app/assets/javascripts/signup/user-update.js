@@ -38,8 +38,9 @@ function validateUserForm(e) {
   // validate user full name
   var $fullNameInput = $form.find('#name');
   // entering a name is required
-  if(!$fullNameInput.val().length) {
+  if($fullNameInput.length > 0 && !$fullNameInput.val().length) {
         $fullNameInput.parent().addClass('form_fieldset--error');
+        $fullNameInput.parent().find('input').attr('placeholder','');
         hasErrors = true;
   }
 
@@ -48,6 +49,7 @@ function validateUserForm(e) {
   // entering a username is required
   if(!$userNameInput.val().length) {
         $userNameInput.prevAll('.js-form-error').text('Please enter a username').parent().addClass('form_fieldset--error');
+        $userNameInput.parent().find('input').attr('placeholder','');
         hasErrors = true;
   }
 
@@ -56,6 +58,7 @@ function validateUserForm(e) {
   // entering an email is required
   if(!$emailInput.val().length) {
         $emailInput.prevAll('.js-form-error').text('Please enter a valid email address').parent().addClass('form_fieldset--error');
+        $emailInput.parent().find('input').attr('placeholder','');
         hasErrors = true;
   }
 
@@ -64,17 +67,39 @@ function validateUserForm(e) {
   // password must have a minimum length
   if($passwordInput.val().length < shelby.config.user.password.minLength) {
         $passwordInput.parent().addClass('form_fieldset--error');
+        $passwordInput.parent().find('input').attr('placeholder','');
         hasErrors = true;
   }
 
   // if there are any errors, cancel form submission
   if (hasErrors) {
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "Onboarding",
+      gaAction : 'Signup has errors',
+      kmqName : "Onboarding Signup hasErrors"
+    });
+
     e.preventDefault();
+  }
+  else {
+    var location = (typeof shelbyTrackingCategory == "undefined") ? "Signup Page" : "Landing Page";
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "Onboarding",
+      gaAction : 'Signup complete',
+      gaLabel : location,
+      kmqName : "Onboarding Signup Complete",
+      kmqProperties : {
+        nickname: $userNameInput.val(),
+        location: location
+      }
+    });
   }
 }
 
 $(document).ready(function() {
-
+  $('#user_form input:first[type="text"]').focus();
   // wire up user form validation
   $('#user_form').on('submit', validateUserForm);
   // as soon as I start typing in a text input, hide any visual error indication
@@ -82,20 +107,4 @@ $(document).ready(function() {
   $('.form_fieldset').has('.form_error').on('keyup', 'input', function(e) {
     $(e.delegateTarget).removeClass('form_fieldset--error');
   });
-  //setup backbone views to handle user avatar display and uploader
-  userModel = new libs.shelbyGT.UserModel(userJson);
-  avatarPresenterView = new libs.shelbyGT.UserAvatarPresenterView({
-    avatarSize: libs.shelbyGT.UserAvatarSizes.large,
-    el : '.js-avatar-renderer',
-    imgAttribute : 'style',
-    imgSelector : '.js-avatar-image',
-    imgValTemplate : 'background-image: url(<%= url %>)',
-    model : userModel
-  });
-  avatarUploaderView = new libs.shelbyGT.UserAvatarUploaderView({
-    el: $('.js-avatar-renderer'),
-    model: userModel,
-    progressEl: $('.progress-overlay')[0]
-  });
-  avatarUploaderView._initUploader();
 });

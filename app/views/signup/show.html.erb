@@ -1,0 +1,143 @@
+<div class="signup signup--profile<%= ' signup--inviter' if @inviter %>" role="main">
+  <%= render :partial => '/home/landing_header', :locals => {:show_login => false, :user_signed_in => @user_signed_in} %>
+
+  <%= render :partial => '/home/shelf/errors' if @social_signup_error %>
+
+  <div class="shelf">
+    <div class="shelf__lining">
+      <div class="signup__head">
+
+        <h1 class="signup__h1">
+          <% if @inviter %>
+            <span class="image_module avatar avatar--small" style="background-image: url(<%= avatar_url_for_user(@inviter) %>);">
+              <%= image_tag avatar_url_for_user(@inviter),
+                    :class => 'visuallyhidden',
+                    :name => @inviter['name'],
+                    :alt => @inviter['name']
+              %>
+            </span>
+          <% end %>
+
+          <% if @inviter %>
+            <%= @inviter['name'] || @inviter['nickname'] %> found the perfect stream of video on Shelby. Find Yours.
+          <% else %>
+            Get your perfect stream of video
+          <% end %>
+        </h1>
+      </div><!-- signup__head -->
+
+      <div class="signup__body">
+        <%= form_tag(request.env['PATH_INFO'], { :id => 'user_form', :class => 'form_module' }) do %>
+          <fieldset class="form_fieldset">
+            <div class="media_module">
+              <div class="media_image media_image--rev two-fifths">
+                <ul class="list list--benefits">
+                  <li class="benefit benefit--smart icon-like">
+                    <h2 class="benefit__h1">Personal recommendations</h2>
+                    <p class="benefit__block">Our recommendations get better as <br/>you and your friends Like, Share, and <br/>watch video on Shelby.</p>
+                  </li>
+
+                  <li class="benefit benefit--share icon-facebook">
+                    <h2 class="benefit__h1">People that matter</h2>
+                    <p class="benefit__block">Connect Facebook or Twitter <br/>and see how much great content <br/>your friends are sharing daily.</p>
+                  </li>
+
+                  <li class="benefit benefit--save icon-roll">
+                    <h2 class="benefit__h1">Pay it forward</h2>
+                    <p class="benefit__block">When you find something awesome, <br/>share it with your friends!</p>
+                  </li>
+                </ul>
+              </div><!-- eo media_image -->
+
+              <div class="media_body">
+                <fieldset class="form_fieldset">
+                  <%= label_tag 'name', 'Full Name', :class => 'form_label' %>
+                  <span class="form_error js-form-error">Please enter your name</span>
+                  <%= text_field_tag 'name', nil, :placeholder => 'First and Last Name', :class => 'form_input' %>
+                </fieldset>
+
+                <%= field_set_tag(nil, {:class => (@nickname_error) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
+                  <%= label_tag 'nickname', 'Username', :class => 'form_label' %>
+                  <% if @nickname_error && @nickname_error.include?('has already been taken') %>
+                    <span class="form_error js-form-error">Sorry, that username is already taken</span>
+                  <% else %>
+                    <span class="form_error js-form-error">Please enter a username</span>
+                  <% end %>
+                  <%= text_field_tag 'nickname', nil, :class => 'form_input' %>
+                <% end %>
+
+                <%= field_set_tag(nil, {:class => (@email_error) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
+                  <%= label_tag 'primary_email', 'Email Address', :class => 'form_label' %>
+                  <% if @email_error && @email_error.include?('has already been taken') %>
+                    <span class="form_error js-form-error">Sorry, that email address is already taken</span>
+                  <% elsif @email_error && @email_error.include?('is invalid') %>
+                    <span class="form_error js-form-error">Please enter a valid email address</span>
+                  <% else %>
+                    <span class="form_error js-form-error">Please enter a valid email address</span>
+                  <% end %>
+                  <%= email_field_tag 'primary_email', nil, :placeholder => 'email@address.com', :class => 'form_input' %>
+                <% end %>
+
+                <fieldset class="form_fieldset">
+                  <%= label_tag 'password', 'Password', :class => 'form_label' %>
+                  <span class="form_error js-form-error">Password must be at least five characters</span>
+                  <%= password_field_tag 'password', nil, :placeholder => '*****', :class => 'form_input' %>
+                  <span class="form__description">We never spam.</span>
+                </fieldset>
+
+                <fieldset class="form_fieldset">
+                  <%= submit_tag("Join Shelby", :class => 'button_primer button_command button_green one-whole js-submit-signup js-track-event','data-ga_category' => 'Onboarding', 'data-ga_action' => 'Click Signup on Step 1' ) %>
+                </fieldset>
+              </div><!-- eo media_body -->
+            </div><!-- eo media_module -->
+          </fieldset>
+        <% end %>
+      </div><!-- eo shelf__lining -->
+    </div><!-- shelf -->
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+
+      // AB TEST
+      <% if session[:signup_on_landing] %>
+        try {
+          _gaq.push(['_trackEvent', 'ab-testing', 'signup_on_landing', '<%= session[:signup_on_landing] %>']);
+          _kmq.push(["set", {"signup_on_landing": "<%= session[:signup_on_landing] %>"}]);
+        } catch (e) {}
+      <% end %>
+
+      <% if @inviter %>
+        shelby.trackEx({
+          providers : ['ga', 'kmq'],
+          gaCategory : "Onboarding",
+          gaAction : 'Started via Invite',
+          kmqName : 'Started Onboarding via Invite'
+        });
+
+        $('.js-submit-signup').on('click', function(){
+          shelby.trackEx({
+            providers : ['ga', 'kmq'],
+            gaCategory : "Onboarding",
+            gaAction : 'Clicked sign up via an invite',
+            gaLabel : 'via <%= @inviter['nickname'] %>',
+            kmqName : 'Clicked sign up via invite'
+            kmqProperties : {
+              inviter: '<%= @inviter['nickname'] %>'
+            }
+          });
+        });
+      <% end %>
+
+      shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : "Onboarding",
+        gaAction : 'Started',
+        kmqName : 'Started Onboarding'
+      });
+  });
+<% end %>
+
+
+

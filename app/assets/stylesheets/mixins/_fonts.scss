@@ -2,10 +2,9 @@
   font:normal normal 62.5%/1.231 $font-family;
 }
 
-@mixin inputfont{
-  font:normal normal 100%/1.231 $font-family-display;
-}
+// header-size inspired by https://github.com/csswizardry/inuit.css/blob/master/generic/_mixins.scss
 
-@mixin buttonfont{
-  font:700 normal 100%/1.231 $font-family-display;
+@mixin header-size($_font-size){
+  font-size: $_font-size;
+  font-size: ($_font-size / $base-font-size) * 1rem;
 }

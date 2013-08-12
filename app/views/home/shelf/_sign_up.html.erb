@@ -1,32 +1,73 @@
-<div class="shelf shelf--signup">
-  <div class="shelf__lining">
-    <h2 class="shelf__h1">
-      Create your own .TV network
-    </h2>
+<div class="shelf shelf--signup image_module">
+  <div class="shelf__lining shelf__lining--left">
+    <h1 class="shelf__h1">
+      <%= Settings::Marketing.discover_and_enjoy %>
+    </h1>
 
     <p class="shelf__block">
-      In the past, a few people at big TV networks programmed the TV that millions watch.  <br/>
-      In the future, everyone gets their own channel. Start curating yours now.
+      Imagine a new kind of TV with only one channel <br>and it’s tuned just for you. Welcome to Shelby TV.
     </p>
+    <ul class="list list--benefits">
+        <li class="benefit benefit--smart icon-like js-track-event" data-ga_category="Landing" data-ga_action="Click like icon"></li>
+        <li class="benefit benefit--share icon-facebook js-track-event" data-ga_category="Landing" data-ga_action="Click fb icon"></li>
+        <li class="benefit benefit--save icon-roll js-track-event" data-ga_category="Landing" data-ga_action="Click share icon"></li>
+    </ul>
+  </div>
 
-    <form id="js-email-form" class="form_module shelf__form js-track-submit" data-ga_action="Submit interest email">
-      <fieldset id="js-email-form-submit" class="search_module">
-        <input type="submit" class="button_primer button_gray search_module__submit" value="Sign Up" />
+  <div class="shelf__lining shelf__lining--right">
+    <div class="media_body">
+      <%= form_tag('/signup', { :id => 'user_form', :class => 'form_module' }) do %>
+        <fieldset class="form_fieldset">
+          <%= label_tag 'name', 'Full Name', :class => 'form_label' %>
+          <span class="form_error js-form-error">Please enter your name</span>
+          <%= text_field_tag 'name', nil, :placeholder => 'First and Last Name', :class => 'form_input' %>
+        </fieldset>
 
-        <span class="search_module__input_wrapper">
-          <input name="email" id="js-email-input" class="form_input search_module__input" type="email" placeholder="email@address.com" tabindex="0" autofocus/>
-        </span>
-      </fieldset><!-- eo search_module -->
+        <%= field_set_tag(nil, {:class => (@nickname_error) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
+          <%= label_tag 'nickname', 'Username', :class => 'form_label' %>
+          <% if @nickname_error && @nickname_error.include?('has already been taken') %>
+            <span class="form_error js-form-error">Sorry, that username is already taken</span>
+          <% else %>
+            <span class="form_error js-form-error">Please enter a username</span>
+          <% end %>
+          <%= text_field_tag 'nickname', nil, :class => 'form_input' %>
+        <% end %>
 
-      <fieldset id="js-email-form-feedback" class="hidden">
-        <h6 class="shelf__h2">
-          Thank you for signing up
-        </h6>
+        <%= field_set_tag(nil, {:class => (@email_error) ? "form_fieldset form_fieldset--error" : "form_fieldset"}) do %>
+          <%= label_tag 'primary_email', 'Email Address', :class => 'form_label' %>
+          <% if @email_error && @email_error.include?('has already been taken') %>
+            <span class="form_error js-form-error">Sorry, that email address is already taken</span>
+          <% elsif @email_error && @email_error.include?('is invalid') %>
+            <span class="form_error js-form-error">Please enter a valid email address</span>
+          <% else %>
+            <span class="form_error js-form-error">Please enter a valid email address</span>
+          <% end %>
+          <%= email_field_tag 'primary_email', nil, :placeholder => 'email@address.com', :class => 'form_input' %>
+        <% end %>
 
-        <p class="shelf__block">
-         Check out active members of our community below!
-        </p>
-      </fieldset>
-    </form>
-  </div><!-- eo shelf__lining -->
+        <fieldset class="form_fieldset">
+          <%= label_tag 'password', 'Password', :class => 'form_label' %>
+          <span class="form_error js-form-error">Password must be at least five characters</span>
+          <%= password_field_tag 'password', nil, :placeholder => '*****', :class => 'form_input' %>
+          <span class="form__description">We never spam.</span>
+        </fieldset>
+
+        <fieldset class="form_fieldset">
+          <%# EVENT TRACKING IN user-update.js USING shelby.trackEx()  %>
+          <%= submit_tag("Join Shelby", :class => 'button_primer button_command button_green one-whole js-cta') %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
 </div><!-- eo shelf -->
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : "Onboarding",
+        gaAction : 'Started',
+        kmqName : 'Started Onboarding'
+    });
+  });
+<% end %>

@@ -34,6 +34,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
     emptyIndicatorViewProto : null,
+    showEmptyIndicatorOnStaticRender : false,
     firstFetchLimit : 0,
     insert : {
       position : 'before',
@@ -85,6 +86,17 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     this._updatePagingParameters();
   },
 
+  render : function(forceReRender){
+    libs.shelbyGT.SmartRefreshListView.prototype.render.call(this, forceReRender);
+    if (this.options.doStaticRender &&
+        this.options.showEmptyIndicatorOnStaticRender &&
+        this.options.emptyIndicatorViewProto &&
+        this._numItemsLoaded == 0) {
+        this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
+        this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
+    }
+  },
+
   _updatePagingParameters : function() {
     this._numItemsLoaded = this._simulatedMasterCollection.length;
     if (this.options.pagingMethod == libs.shelbyGT.PagingMethod.key) {
@@ -106,8 +118,10 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
         this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
       } else if (items.length && this._emptyIndicatorView) {
         this._emptyIndicatorView.leave();
+        this._emptyIndicatorView = null;
       }
     }
+
     if (items.length < this._numItemsRequested) {
       // if the load returned less items than we requested, there are no more items to
       // be loaded and we hide the DOM element that is clicked for more loading
@@ -118,7 +132,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     } else {
       this._loadMoreEnabled = true;
     }
-
   },
 
   _onFetchSuccess : function(model, response){

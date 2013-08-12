@@ -1,0 +1,82 @@
+<div class="modal__body modal__body--bare modal__body--<%= currentService %> clearfix">
+  <h1 class="alpha modal__h1 modal__h1--padding">
+    Connecting <%= _(currentService).capitalize() %>
+  </h1>
+
+  <ol class="list js-progress-list">
+    <li class="list__item load_progress clearfix">
+      <h2 class="load_progress__h1">
+        <span class="image_module load_progress__status">
+          <span class="icon icon-check"></span>
+        </span>
+        <span class="beta load_progress__label">
+          <span>Connecting <%= _(currentService).capitalize() %></span>
+          <span>Connected <%= _(currentService).capitalize() %></span>
+        </span>
+      </h2>
+    </li>
+    <li class="list__item load_progress load_progress--loading clearfix">
+      <h2 class="load_progress__h1">
+        <span class="image_module load_progress__status">
+          <span class="icon icon-check"></span>
+        </span>
+        <span class="animate_module load_progress__total load_progress__total--no_data js-num-friends">0</span>
+        <span class="beta load_progress__label">
+          <span>Finding friends sharing video</span>
+          <span>Found friends sharing video</span>
+        </span>
+      </h2>
+    </li>
+    <li class="list__item load_progress load_progress--loading clearfix">
+      <h2 class="load_progress__h1">
+        <span class="image_module load_progress__status">
+          <span class="icon icon-check"></span>
+        </span>
+        <span class="animate_module load_progress__total load_progress__total--no_data js-num-videos">0</span>
+        <span class="beta load_progress__label">
+          <span>Finding videos</span>
+          <span>Found videos</span>
+        </span>
+      </h2>
+    </li>
+  </ol>
+
+</div><!-- eo modal__body -->
+
+<div class="animate_module modal__foot cloaked clearfix js-modal-foot">
+  <% if (currentService == 'facebook') { %>
+    <form>
+      <fieldset class="form_fieldset form_fieldset--rev">
+        <input class="form_checkbox form_checkbox--inline" type="checkbox" id="onboarding-timeline-sharing" checked="checked" />
+        <label class="form_label form_label--inline" for="onboarding-timeline-sharing">Publish activity to Facebook Timeline</label>
+      </fieldset>
+    </form>
+  <% } else if (currentService == 'twitter') { %>
+    <form>
+      <fieldset class="form_fieldset form_fieldset--rev">
+        <input class="form_checkbox form_checkbox--inline" type="checkbox" id="onboarding-follow-shelby" checked="checked" />
+        <label class="form_label form_label--inline" for="onboarding-follow-shelby">Follow @Shelby on Twitter</label>
+      </fieldset>
+    </form>
+  <% } %>
+
+  <% if (currentService == 'facebook') { %>
+    <a class="button_primer button_command button_command--flexible button_green js-invite-friends">
+      <span class="button_label">Next</span>
+    </a>
+  <% } else { %>
+    <% if (remainingServices.length) { %>
+    <a href="http://api.shelby.tv/auth/<%= remainingServices[0] %>?redir_query=authed_with%3D<%= remainingServices[0] %>" class="button_primer button_command button_command--flexible button_<%= remainingServices[0] %>-blue js-authorize"  data-popup_width="1000" data-popup_height="650">
+      <span class="icon icon-<%= remainingServices[0] %>"></span>
+      <span class="button_label">Connect</span>
+    </a>
+
+    <b>&nbsp;or&nbsp;</b>
+
+    <% } %>
+    <a class="button_primer button_command button_command--flexible button_green js-onboarding-advance-stage">
+      <span class="icon icon-roll"></span>
+      <span class="button_label">Add more video</span>
+    </a>
+  <% } %>
+</div><!-- eo modal__foot -->

@@ -8,7 +8,7 @@
 $(document).ready(function(){
   $('.js-track-event').on('click', function(e){
     var action = $(e.currentTarget).data("ga_action");
-    var category = $(e.currentTarget).data("ga_category");
+    var category = shelbyTrackingCategory || $(e.currentTarget).data("ga_category");
     var label = $(e.currentTarget).data("ga_label");
     try {
       _gaq.push(['_trackEvent', category, action, label]);

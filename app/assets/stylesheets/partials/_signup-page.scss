@@ -1,5 +1,5 @@
 .shelby--signup {
-  background: $ui-white;
+  background-color: $ui-off-white;
   bottom: auto;
   left: auto;
   overflow: visible;
@@ -11,30 +11,16 @@
   .shelby__wrapper {
     max-width: 1500px;
     margin: 0 auto;
+    padding-top: 70px;
   }
   .shelby__head {
-    padding: 1em 2em;
   }
-
   .shelby_nav {
     text-align: right;
   }
-
   .shelby-logo {
-    font-size: 1em;
-
-    .shelby_logo {
-      padding: 0;
-      // font-size: 5em;
-    }
+    font-size: 49px;
   }
-
-  .shelby-logo .shelby_logo,
-  .shelby_logo {
-    padding: 0;
-    font-size: 5em;
-  }
-
   .form__legend {
     line-height: 1.6;
     margin: 0 auto 1em;
@@ -49,6 +35,10 @@
   .form__description {
     font-size: 0.7em;
     line-height: 2.5;
+  }
+
+  .form_fieldset {
+    position: relative;
   }
 
   .form_fieldset--error {
@@ -80,185 +70,54 @@
 
 //block
 .signup {
-  font-size: 1.5em;
   margin: 0 auto;
   text-align: center;
-  width: 45em;
 }
     //modifiers (stages)
-    .signup--cta {
-      margin-top: 3em;
-      margin-bottom: 3em
-    }
-    .signup--romance {
-      height: 40em;
-      position: relative;
-      text-align: right;
-      width: auto;
-
-      .signup__body {
-        &:first-child {
-          float: left;
-          margin-top: 8em;
-        }
-
-        margin-top: 25.75em;
-        width: 30%;
-      }
-
-      .signup__block {
-        margin-top: 0.5em;
-        text-align: right;
-      }
-
-      .signup__img_wrapper {
-        background-image: url('/images/onboarding/landing.png');
-        background-position: left top;
-        background-repeat: no-repeat;
-        -webkit-background-size: cover;
-        background-size: cover;
-        bottom: 0;
-        left: 30%;
-        max-width: 1107px;
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-      .signup__img {
-      }
-    }
-    .signup--content {
-      width: 65em;
-
-      //non-normative overrides
-      .list--rolls {
-        padding: 0.5em;
-
-        .list__item {
-          float: left;
-        }
-      }
-
-      //local/private var.
-      $_slideshowHeight: 455px;
-
-      .slideshow_wrapper {
-        border: 1px solid $inset;
-        height: $_slideshowHeight;
-      }
-      .slideshow_menu {
-        background-color: $ui-off-white;
-        border-bottom: 1px solid $inset;
-        border-left: 1px solid $inset;
-        border-top: 1px solid $inset;
-        margin-right: 0;
-        height: $_slideshowHeight;
-        width: 300px;
-
-        .icon {
-          color: transparent;
-          float: right;
-          padding: 1.2em 0.6em 0 0;
-        }
-
-        &,
-        .button_primer {
-          text-align: left;
-        }
-        .button_primer {
-          padding: 1em;
-          width: 55%;
-        }
-
-        .list__item {
-          border-bottom: 1px solid $inset;
-
-          &:first-child {
-            // border-top: 1px solid $inset;
-          }
-        }
-        .list__item--selected {
-          background-color: $ui-white;
-
-          .icon {
-            color: $ui-soft-black;
-          }
-        }
-      }
-      .slideshow_menu__h1 {
-        padding: 0.9em;
-      }
-      .follow_all {
-        float: right;
-        font-size: 0.9em;
-        padding: 1.3em 0.75em 0;
-      }
-      .form_legend {
-        font-size: 1.8em;
-        line-height: 2;
-        padding: 0.25em 0.6em 0;
-      }
-      .form__submit {
-        margin: 1em 43% 0 0;
-      }
-    }
-
-    .signup--social {
-      .button_command--share {
-        font-size: 1.5em;
-        margin: 0.25em;
-
-        .icon {
-          margin-left: -0.5em;
-        }
-      }
-
-      .signup__img {
-        margin: 1.5em 0;
-      }
-
-      .button_facebook-blue[disabled]{
-        &,
-        &:hover{
-         background: $facebook-blue;
-         border-color: 1px solid darken($facebook-blue, if(lightness($facebook-blue) < 62, 6.5%, 20%));
-         color: $ui-white;
-        }
-      }
-
-      .button_twitter-blue[disabled]{
-        &,
-        &:hover{
-         background: $twitter-blue;
-         border-color: 1px solid darken($twitter-blue, if(lightness($twitter-blue) < 62, 6.5%, 20%));
-         color: $ui-white;
-        }
-      }
-    }
     .signup--profile {
-      width: 33em;
-
-      .avatar__wrapper {
-        margin-top: 2.7em;
-        width: 150px;
-
-        input[type="file"] {
-          font-size: 9px;
-        }
-      }
-
       .form_fieldset {
         text-align: left;
       }
+
+      // the margins/paddings on media_body/media_image--ref optically center the content
+      .media_body {
+        padding-left: 70px;
+      }
+
+      .media_image--rev {
+        margin-left: 100px;
+      }
+      //positioning
+      .list--benefits {
+        margin-top: 5em;
+        font-size: 13px;
+      }
+      .avatar {
+        margin-bottom: 0.5em;
+      }
     }
-    .signup--profile_no-avatar {
-      width: 25em;
+    .signup--inviter {
+      .signup__h1 {
+        font-size: 1.3em;
+        margin: 0.8em  0 0;
+      }
+
+      //non-normative
+      .avatar {
+        margin-top: 1em;
+      }
     }
+
+//framework
+.signup__body {
+  margin-bottom: 2em;
+}
 
 //elements
 .signup__h1 {
   font-family: $font-family-display;
   font-weight: 400;
+  margin: 1em 0;
 }
 .signup__h2 {
   font-weight: normal;
@@ -277,3 +136,49 @@
   margin: 1em 0;
   text-align: center;
 }
+
+
+//------------------------------------------------------------------------------
+//  non-normative
+
+//  `benefit` abstract:
+//  the list items with iconographic/colored badges
+
+    .benefit{
+      &:before {
+        background-color: #EEE;
+        border-radius: 3px;
+        color: white;
+        display: inline-block;
+        float: left;
+        font-size: 1.6em;
+        line-height: 1;
+        margin-bottom: 1em;
+        margin-top: 0.5em;
+        margin-right: 1em;
+        padding: 0.6em 0.5em;
+        text-align: center;
+        width: 1.4em;
+      }
+      &.icon-facebook:before {
+        background-color: $facebook-blue;
+      }
+      &.icon-like:before {
+        background-color: $ui-red;
+      }
+      &.icon-roll:before {
+        background-color: $ui-green;
+      }
+    }
+
+    .benefit__h1 {
+      color: #666;
+      font-size: 1.1em;
+      margin-bottom: 0.5em;
+    }
+
+    .benefit__block {
+      line-height: 1.3;
+      font-family: $font-family;
+      margin: 0 0 3.5em;
+    }

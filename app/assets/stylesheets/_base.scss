@@ -44,6 +44,7 @@ $icon-share-facebook-on         : "#{$path}share_facebook_on#{$extension}";
 $icon-share-facebook-off        : "#{$path}share_facebook_off#{$extension}";
 $icon-share-twitter-on          : "#{$path}share_twitter_on#{$extension}";
 $icon-share-twitter-off         : "#{$path}share_twitter_off#{$extension}";
+$icon-signup-spinner            : "#{$path}signup-loader.gif";
 $icon-social-facebook           : "#{$path}social_facebook#{$extension}";
 $icon-social-tumblr             : "#{$path}social_tumblr#{$extension}";
 $icon-social-twitter            : "#{$path}social_twitter#{$extension}";
@@ -65,8 +66,10 @@ $animate-delay    : 0s !default;
 $font-color             : #333;
 $font-family            : 'Helvetica Neue', Helvetica, sans-serif;
 $font-family-display    : 'Ubuntu',Trebuchet MS,sans-serif;
-$font-family-icon       : 'Shelby-Icon-Font';
+$font-family-icon       : 'icomoon';
 $font-size              : 100%;
+$base-font-size         : 16px;
+$base-line-height       : 1.5;
 $font-size-large-button : 18px;
 $font-size-button       : 16px;
 $font-size-sub-button   : 14px;
@@ -144,5 +147,5 @@ $networks-unselected                : #474747;
 //------------------------------------------------------------------------------
 $app-header__height            : 40px;
 $app-background-color          : #e2e2e2;
-$guide-width                   : $_unit * 37;
+$guide-width                   : $_unit * 37; //if you use this, make sure you add a media-query to account for narrow viewports
 $persistent_video_info--height : 180px;

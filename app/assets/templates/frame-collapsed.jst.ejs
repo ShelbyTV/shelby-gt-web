@@ -26,7 +26,7 @@
     <div class="frame-body">
       <!-- TODO: should maybe use the thumbnail module JST -->
       <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
-        <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%= videoTitle %>" alt="<%= videoTitle %> thumbnail">
+        <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%- videoTitle %>" alt="<%- videoTitle %> thumbnail">
       </a>
 
       <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/>unplayable</div>
@@ -40,7 +40,7 @@
     <footer class="media_module frame-footer clearfix">
       <div class="media_body">
         <a href="#" onclick="return false;" class="frame-header js-frame-activate">
-          <h1 class="frame-title" title="<%= videoTitle %>">
+          <h1 class="frame-title" title="<%- videoTitle %>">
            <%= videoTitle %>
           </h1>
 

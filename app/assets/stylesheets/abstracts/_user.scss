@@ -50,6 +50,21 @@
         }
       }
     }
+    .user--no_lining {
+      margin-bottom: 1.5em;
+
+      .user__button {
+        display: block;
+        margin: 0.1em 0 0;
+        position: relative;
+      }
+    }
+    .user--medium_avatar {
+      .user__button,
+      .user__h1 {
+        margin-top: 0.4em;
+      }
+    }
 
 //elements
 .user__avatar {
@@ -64,6 +79,10 @@
 
 .user__h1 {
   line-height: 1.4;
+
+  &:only-child {
+    line-height: 2.6;
+  }
 }
 .user__h2 {
   font-family: $font-family;

@@ -12,13 +12,21 @@ libs.utils.BackboneCollectionUtils = {
       sortDirection : 'asc'
     }).value();
 
-    var rankingFunc = function(item){return item.get(options.sortAttribute);};
+    var rankingFunc = function(item){
+      if (item.constructor != libs.shelbyGT.FrameGroupModel) {
+        return item.get(options.sortAttribute);
+      } else {
+        var primaryDashboardEntry = item.get('primaryDashboardEntry');
+        return (primaryDashboardEntry && primaryDashboardEntry.get(options.sortAttribute)) || item.getFirstFrame().get(options.sortAttribute);
+      }
+    };
 
+    var collectionToInspect;
     if(options.sortDirection === "desc"){
-      var collectionToInspect = collection.chain().rest(options.searchOffset).reverse();
+      collectionToInspect = collection.chain().rest(options.searchOffset).reverse();
       return (collectionToInspect.value().length - collectionToInspect.sortedIndex(model, rankingFunc).value()) + options.searchOffset;
     } else {
-      var collectionToInspect = collection.chain().rest(options.searchOffset);
+      collectionToInspect = collection.chain().rest(options.searchOffset);
       return collectionToInspect.sortedIndex(model, rankingFunc).value() + options.searchOffset;
     }
   }

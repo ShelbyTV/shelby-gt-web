@@ -25,7 +25,7 @@
     advanceStage : function(attribute, stage) {
       var value = this.get(attribute);
       //don't let the stage of progress move backwards
-      if (!value || value < stage) {
+      if (value !== true && (!value || value < stage || stage === true || stage === false)) {
         this.set(attribute, stage);
         this.saveMe();
       }

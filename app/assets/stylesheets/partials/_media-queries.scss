@@ -9,109 +9,109 @@
     top: 460px;
   }
 }
-// USER PROFILE HACK -----------------------------------------------------------
-//  Screens that MORE THAN 900px tall.
-@media screen and (min-height: 900px) {
-  .shelby--dot-tv {
-    .hide-guide {
-      &.main-layout {
-        height: 800px;
-      }
-    }
-  }
-}
+// // USER PROFILE HACK -----------------------------------------------------------
+// //  Screens that MORE THAN 900px tall.
+// @media screen and (min-height: 900px) {
+//   .shelby--dot-tv {
+//     .hide-guide {
+//       &.main-layout {
+//         height: 800px;
+//       }
+//     }
+//   }
+// }
 
-//  Screens that MORE THAN 1620px wide.
-@media screen and (min-width: 1620px) {
-  .app-banner__lining {
-    max-width: 1610px;
-  }
+// //  Screens that MORE THAN 1620px wide.
+// @media screen and (min-width: 1620px) {
+//   .app-banner__lining {
+//     max-width: 1610px;
+//   }
 
-  .shelby--dot-tv .main-layout {
-    width: 1610px;
-    margin: auto;
-  }
+//   .shelby--dot-tv .main-layout {
+//     width: 1610px;
+//     margin: auto;
+//   }
 
-  .user_roll__item {
-    & > .user_roll__item_lining {
-      width: 1610px;
-    }
-  }
-}
+//   .user_roll__item {
+//     & > .user_roll__item_lining {
+//       width: 1610px;
+//     }
+//   }
+// }
 
-//  Screens that LESS THAN 1300px wide.
-@media screen and (max-width: 1300px) {
-  .app-banner--chips-ahoy {
-    .brand__h1 {
-      font-size: 1.8em;
-      margin-top: 0.7em;
-    }
-  }
+// //  Screens that LESS THAN 1300px wide.
+// @media screen and (max-width: 1300px) {
+//   .app-banner--chips-ahoy {
+//     .brand__h1 {
+//       font-size: 1.8em;
+//       margin-top: 0.7em;
+//     }
+//   }
 
-  .app-banner__lining {
-    max-width: 1010px;
-  }
+//   .app-banner__lining {
+//     max-width: 1010px;
+//   }
 
-  .shelby--dot-tv .main-layout {
-    width: 1010px;
-    margin: auto;
-  }
+//   .shelby--dot-tv .main-layout {
+//     width: 1010px;
+//     margin: auto;
+//   }
 
-  .user_roll__item {
-    & > .user_roll__item_lining {
-      width: 1010px;
-    }
-  }
-}
+//   .user_roll__item {
+//     & > .user_roll__item_lining {
+//       width: 1010px;
+//     }
+//   }
+// }
 
-//  Screens that LESS THAN 1000px wide.
-@media screen and (max-width: 1000px) {
-  .app-banner--chips-ahoy {
-    .media_image:first-child {
-      width: 187px;
-    }
+// //  Screens that LESS THAN 1000px wide.
+// @media screen and (max-width: 1000px) {
+//   .app-banner--chips-ahoy {
+//     .media_image:first-child {
+//       width: 187px;
+//     }
 
-    .brand__flourish {
-      display: none;
-    }
+//     .brand__flourish {
+//       display: none;
+//     }
 
-    .brand__h1 {
-      margin-top: 0.3em;
-    }
+//     .brand__h1 {
+//       margin-top: 0.3em;
+//     }
 
-    .videoplayer__badge {
-      margin-top: 1em;
-    }
-  }
+//     .videoplayer__badge {
+//       margin-top: 1em;
+//     }
+//   }
 
-  .app-banner__lining {
-    max-width: 710px;
-  }
-  .shelby--dot-tv .main-layout {
-    width: 710px;
-    margin: auto;
-  }
+//   .app-banner__lining {
+//     max-width: 710px;
+//   }
+//   .shelby--dot-tv .main-layout {
+//     width: 710px;
+//     margin: auto;
+//   }
 
-  .user_roll__item {
-    & > .user_roll__item_lining {
-      width: 710px;
-    }
-  }
+//   .user_roll__item {
+//     & > .user_roll__item_lining {
+//       width: 710px;
+//     }
+//   }
 
-  .welcome-message__wrapper {
-    left: 300px;
-  }
-}
+//   .welcome-message__wrapper {
+//     left: 300px;
+//   }
+// }
 
 //  Screens that LESS THAN 710px wide.
-@media screen and (max-width: 700px) {
+// @media screen and (max-width: 700px) {
 
-  .user_roll__item {
-    & > .user_roll__item_lining {
-      width: 410px;
-    }
-  }
-}
+//   .user_roll__item {
+//     & > .user_roll__item_lining {
+//       width: 410px;
+//     }
+//   }
+// }
 // EO USER PROFILE HACK --------------------------------------------------------
 
 
@@ -126,6 +126,12 @@
   //////////////////////////////////////////////////////////////////////////////
   .sidebar_module {
     width: 300px;
+  }
+  //////////////////////////////////////////////////////////////////////////////
+  //  Onboarding
+  //////////////////////////////////////////////////////////////////////////////
+  .onboarding {
+    padding-left: 300px;
   }
   //////////////////////////////////////////////////////////////////////////////
   //  user-card
@@ -146,14 +152,13 @@
   }
 
   .frame {
-
     .button_command--cancel {
       margin-top: 1.3em;
     }
 
-    .share_menu {
-      min-width: 13em;
-    }
+    // .share_menu {
+    //   min-width: 13em;
+    // }
 
     .frame-footer {
       margin: 5px 5px 2px;
@@ -195,169 +200,160 @@
   //////////////////////////////////////////////////////////////////////////////
   //  Persistent Video Info
   //////////////////////////////////////////////////////////////////////////////
-  .persistent_video_info__list--actions {
-    font-size: 1.1em;
+  // .video-search-form {
+  //   .form_label {
+  //     font-size: 1.2em;
+  //   }
+  // }
 
-    .persistent_video_info__button {
-      padding-left: .5em;
-      padding-right: .5em;
-    }
-  }
+  // //////////////////////////////////////////////////////////////////////////////
+  // //  Team Page
+  // //////////////////////////////////////////////////////////////////////////////
+  // .shelf--team {
+  //   .shelf__list {
+  //     margin: 0 auto;
+  //     width: 680px;
+  //   }
 
-  .video-search-form {
-    .form_label {
-      font-size: 1.2em;
-    }
-  }
-
-  //////////////////////////////////////////////////////////////////////////////
-  //  Team Page
-  //////////////////////////////////////////////////////////////////////////////
-  .shelf--team {
-    .shelf__list {
-      margin: 0 auto;
-      width: 680px;
-    }
-
-    .shelf__item {
-      width: 50%;
-    }
-  }
+  //   .shelf__item {
+  //     width: 50%;
+  //   }
+  // }
 
 }//eo media-query///////////////////////////////////////////////////////////////
 
 //  Screens that LESS THAN 600px wide.
 @media screen and (max-width: 600px) {
-  //////////////////////////////////////////////////////////////////////////////
-  //  Team Page
-  //////////////////////////////////////////////////////////////////////////////
-  .shelf--team {
-    .shelf__list {
-      margin: 0 auto;
-      width: 340px;
-    }
+  // //////////////////////////////////////////////////////////////////////////////
+  // //  Team Page
+  // //////////////////////////////////////////////////////////////////////////////
+  // .shelf--team {
+  //   .shelf__list {
+  //     margin: 0 auto;
+  //     width: 340px;
+  //   }
 
-    .shelf__item {
-      width: 100%;
-    }
-  }
+  //   .shelf__item {
+  //     width: 100%;
+  //   }
+  // }
 
 
   //----------------------------------------------------------------------------
   //  Shelby Mail
 
-  .video {
-    & > iframe,
-    & > embed,
-    & > object {
-      height: 220px;
-    }
-  }
+  // .video {
+  //   & > iframe,
+  //   & > embed,
+  //   & > object {
+  //     height: 220px;
+  //   }
+  // }
 
-  .search_result {
-    //short results thumbs and video embeds
-    .discussion__video-preview,
-    .frame-thumbnail {
-      height: 145px;
-    }
-  }
+  // .search_result {
+  //   //short results thumbs and video embeds
+  //   .discussion__video-preview,
+  //   .frame-thumbnail {
+  //     height: 145px;
+  //   }
+  // }
 
-  .discussion__body {
-    margin-bottom: 8em;
-  }
+  // .discussion__body {
+  //   margin-bottom: 8em;
+  // }
 
-  .discussion__content--main {
-    margin-bottom: 0;
-  }
+  // .discussion__content--main {
+  //   margin-bottom: 0;
+  // }
 
-  .discussion__item--conversation {
-    margin: 1px;
-    border-radius: 0;
-  }
+  // .discussion__item--conversation {
+  //   margin: 1px;
+  //   border-radius: 0;
+  // }
 
-  .discussion__footer {
-    background-color: white;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    width: 100%;
-  }
+  // .discussion__footer {
+  //   background-color: white;
+  //   bottom: 0;
+  //   left: 0;
+  //   position: fixed;
+  //   width: 100%;
+  // }
 
-  .discussion-reply {
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    margin: 0 auto;
-    max-width: 45em;
-  }
+  // .discussion-reply {
+  //   border: none;
+  //   border-radius: 0;
+  //   box-shadow: none;
+  //   margin: 0 auto;
+  //   max-width: 45em;
+  // }
 
-  .discussion__form--discussion-reply {
-    // font-size: 0.8em;
-  }
+  // .discussion__form--discussion-reply {
+  //   // font-size: 0.8em;
+  // }
 
   //touch interfaces with narrow viewports
   .touch {
-    //------------------------------------------------------------------------------
-    //  Shelby Mail
+    // //------------------------------------------------------------------------------
+    // //  Shelby Mail
 
-    .discussion__body {
-      margin-bottom: 5em;
-    }
+    // .discussion__body {
+    //   margin-bottom: 5em;
+    // }
 
 
-    // hide header after user scrolls
-    .discussion__header.user-did-scroll {
-      opacity: 0;
-    }
+    // // hide header after user scrolls
+    // .discussion__header.user-did-scroll {
+    //   opacity: 0;
+    // }
 
-    .attachment {
-      top: 0;
-    }
+    // .attachment {
+    //   top: 0;
+    // }
 
-    //shrink "Search" button
-    .search_module__submit {
-      padding: 0.5em;
-    }
+    // //shrink "Search" button
+    // .search_module__submit {
+    //   padding: 0.5em;
+    // }
 
-    //tighten spacing of conversations
-    .discussion__menu_item {
-      border-radius: 0;
-      margin-bottom: 5px;
-    }
+    // //tighten spacing of conversations
+    // .discussion__menu_item {
+    //   border-radius: 0;
+    //   margin-bottom: 5px;
+    // }
 
-    .discussion {
-      //remove roundedness of items
-      .frame-body-wrapper {
-        border-radius: 0;
-      }
-    }
+    // .discussion {
+    //   //remove roundedness of items
+    //   .frame-body-wrapper {
+    //     border-radius: 0;
+    //   }
+    // }
 
-    //tighten spacing within conversation
-    .discussion__item {
-      margin: 0;
-    }
+    // //tighten spacing within conversation
+    // .discussion__item {
+    //   margin: 0;
+    // }
 
-    //shrink Insert Video button
-    .discussion__item--insert-video {
-      margin: 0em;
-      padding: 0;
+    // //shrink Insert Video button
+    // .discussion__item--insert-video {
+    //   margin: 0em;
+    //   padding: 0;
 
-      .discussion__h5 {
-        margin: 0.5em;
-      }
-    }
+    //   .discussion__h5 {
+    //     margin: 0.5em;
+    //   }
+    // }
 
-    .discussion__form--discussion-reply {
-      //hiding the avatar
-      .media_image {
-        display: none;
-      }
+    // .discussion__form--discussion-reply {
+    //   //hiding the avatar
+    //   .media_image {
+    //     display: none;
+    //   }
 
-      //shrinking the "Reply" button
-      .form_submit {
-        padding: 0.5em;
-      }
-    }
+    //   //shrinking the "Reply" button
+    //   .form_submit {
+    //     padding: 0.5em;
+    //   }
+    // }
 
   }// eo touch
 

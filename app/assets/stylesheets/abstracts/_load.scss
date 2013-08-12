@@ -1,0 +1,79 @@
+/*
+
+    LOADING BADGE
+
+    Used in Onboarding
+
+*/
+
+$_status-bg-color : darken($ui-off-white,5%);
+
+
+.load_progress {
+  border-top: 1px solid $inset;
+  padding: 1em;
+}
+    .load_progress--loading {
+      .load_progress__status {
+        background-color: $_status-bg-color;
+        background-image: url($icon-signup-spinner);
+      }
+      .icon-check {
+        display: none;
+      }
+      .load_progress__label {
+        color: lighten($ui-soft-black,10%);
+        font-size: 0.75em;
+        line-height: 2;
+
+        // we "swap" the text of the label rather than update it dynamically with JS
+        span:first-child {
+          display: block;
+        }
+        span:last-child {
+          display: none;
+        }
+      }
+    }
+
+.load_progress__h1 {
+  line-height: 1.6;
+}
+
+.load_progress__h2 {}
+
+.load_progress__label {
+  // we "swap" the text of the label rather than update it dynamically with JS
+  span:first-child {
+    display: none;
+  }
+  span:last-child {
+    display: block;
+  }
+}
+
+.load_progress__total {
+  float: right;
+  opacity: 1;
+}
+
+.load_progress__total--no_data {
+  opacity: 0;
+}
+
+.load_progress__status {
+  @include roundies(avatar);
+
+  background-color: $_status-bg-color;
+  background-image: none;
+  -webkit-background-size: auto;
+  background-size: auto; //overrides .image_module default
+  border: 1px solid $inset;
+  color: $ui-button-text-inverted;
+  float: left;
+  height: 30px;
+  line-height: 1.3;
+  margin-right: 0.5em;
+  text-align: center;
+  width: 30px;
+}
