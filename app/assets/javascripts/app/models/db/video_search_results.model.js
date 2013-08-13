@@ -1,7 +1,5 @@
 libs.shelbyGT.VideoSearchResultsModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
-  providerName : 'generic',
-
   relations : [{
     type : Backbone.HasMany,
     key : 'videos',
@@ -59,10 +57,9 @@ libs.shelbyGT.VideoSearchResultsModel = libs.shelbyGT.ShelbyBaseModel.extend({
     return this.get('videos').map(function(video) {
       var idString = video.get('provider_name') + ":" + video.get('provider_id');
       video.set({
-        id : idString,
-        isSearchResultVideo : true
+        id : idString
       });
-      return new libs.shelbyGT.FrameModel({
+      return new libs.shelbyGT.ClientSideFrameModel({
         id : video.id,
         video : video,
         conversation : {
@@ -71,8 +68,10 @@ libs.shelbyGT.VideoSearchResultsModel = libs.shelbyGT.ShelbyBaseModel.extend({
               text : video.get('description')
             }
           ]
-        },
-        isSearchResultFrame : true
+        }
+      },
+      {
+        clientSideFrameType : 'search'
       });
     });
   }

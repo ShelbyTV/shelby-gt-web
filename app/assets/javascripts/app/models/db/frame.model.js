@@ -70,36 +70,18 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     var frameToReroll = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/add_to_watch_later';
 
-    if (this.get('isSearchResultFrame')) {
-      var _newFrame = new libs.shelbyGT.FrameModel();
-      var _wl_roll = shelby.models.user.get('watch_later_roll');
-      var _message = "added to shelby via a video search";
-      _newFrame.save(
-        {url: this.get('video').get('source_url'), text: _message, source: 'webapp'},
-        {url: shelby.config.apiRoot + '/roll/'+_wl_roll.id+'/frames',
-        success: function(newFrame){
-          // we only want to update the set of queued videos if the ajax call succeeds,
-          // that's the only way that the Queued state of a video will persist across navigation
-          // around the app
-          shelby.models.queuedVideos.get('queued_videos').add(newFrame.get('video'));
-          if (onSuccess) onSuccess();
-        }
-      });
+    frameToReroll.save(null, {
+      global : false, // we don't care if the ajax call fails
+      url : url,
+      success : function(frameModel, response){
+        // we only want to update the set of queued videos if the ajax call succeeds,
+        // that's the only way that the Queued state of a video will persist across navigation
+        // around the app
+        shelby.models.queuedVideos.get('queued_videos').add(self.get('video'));
+        if (onSuccess) onSuccess();
+      }
+    });
 
-    }
-    else {
-      frameToReroll.save(null, {
-        global : false, // we don't care if the ajax call fails
-        url : url,
-        success : function(frameModel, response){
-          // we only want to update the set of queued videos if the ajax call succeeds,
-          // that's the only way that the Queued state of a video will persist across navigation
-          // around the app
-          shelby.models.queuedVideos.get('queued_videos').add(self.get('video'));
-          if (onSuccess) onSuccess();
-        }
-      });
-    }
     shelby.track( 'add_to_queue', { frameId: this.id, userName: shelby.models.user.get('nickname') });
   },
   --saveToWatchLater currently deprecated as its functionality is subsumed under the next method, like()--
@@ -111,53 +93,25 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
       likeOrigin : 'Frame'
     }).value();
 
-    if (this.get('isSearchResultFrame')) {
-      // in the current state of things it doesn't make any sense for a logged out user to "like" a search result
-      if (!shelby.models.user.isAnonymous()) {
-        // liking a search frame for a logged in user means only adding it to their watch later roll
-        // TODO: also find a way to increment its like count
-        var _newFrame = new libs.shelbyGT.FrameModel();
-        var _wl_roll = shelby.models.user.get('watch_later_roll');
-        var _message = "added to shelby via a video search";
-        _newFrame.save(
-          {url: this.get('video').get('source_url'), text: _message, source: 'webapp'},
-          {url: shelby.config.apiRoot + '/roll/'+_wl_roll.id+'/frames',
-          success: function(newFrame){
-            // we only want to update the set of queued videos if the ajax call succeeds,
-            // that's the only way that the Queued state of a video will persist across navigation
-            // around the app
-            shelby.models.queuedVideos.get('queued_videos').add(newFrame.get('video'));
-          }
-        });
-      } else {
-        // just for appearances sake (so that all instances of this video get their like button flipped to a red heart),
-        // add the video to the local collection tracking which videos the user has liked, even though we didn't make
-        // any actual updates on the backend
-        shelby.models.queuedVideos.get('queued_videos').add(this.get('video'));
+    this.save(null, {
+      global : false, // we don't care if the ajax call fails
+      url : shelby.config.apiRoot + '/frame/' + this.id + '/like',
+      success : function(frameModel, response){
+        // we only want to update the set of queued videos if the ajax call succeeds,
+        // that's the only way that the Queued state of a video will persist across navigation
+        // around the app
+        shelby.models.queuedVideos.get('queued_videos').add(frameModel.get('video'));
       }
-      // different tracking for like action on search frames
-      shelby.track( 'liked on search', { frameId: this.id, userName: shelby.models.user.get('nickname') });
-    } else {
-      this.save(null, {
-        global : false, // we don't care if the ajax call fails
-        url : shelby.config.apiRoot + '/frame/' + this.id + '/like',
-        success : function(frameModel, response){
-          // we only want to update the set of queued videos if the ajax call succeeds,
-          // that's the only way that the Queued state of a video will persist across navigation
-          // around the app
-          shelby.models.queuedVideos.get('queued_videos').add(frameModel.get('video'));
-        }
-      });
-      shelby.trackEx({
-        providers : ['ga', 'kmq'],
-        gaCategory : options.likeOrigin,
-        gaAction : 'liked',
-        gaLabel : shelby.models.user.get('nickname'),
-        kmqProperties : {
-          frame : this.id
-        }
-      });
-    }
+    });
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : options.likeOrigin,
+      gaAction : 'liked',
+      gaLabel : shelby.models.user.get('nickname'),
+      kmqProperties : {
+        frame : this.id
+      }
+    });
 
     // do things that should be done after a user likes a video
     Backbone.Events.trigger('userHook:like');
@@ -171,16 +125,7 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     shelby.track( 'add_to_roll', { frameId: this.id, rollId: roll.id, userName: shelby.models.user.get('nickname') });
   },
 
-  upvote : function(onSuccess) {
-    var frameToUpvote = new libs.shelbyGT.FrameModel();
-    var url = shelby.config.apiRoot + '/frame/' + this.id + '/upvote';
-    frameToUpvote.save(null, {url:url, success:onSuccess});
-    libs.utils.rhombus.sadd('frames_upvoted', this.id);
-    shelby.track( 'heart_video', { id: this.id, userName: shelby.models.user.get('nickname') });
-  },
-
   watched : function(completeWatch, startTime, endTime, onSuccess) {
-    if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) { return; }
     var frameWatched = new libs.shelbyGT.FrameModel();
     var url = shelby.config.apiRoot + '/frame/' + this.id + '/watched';
     if(completeWatch){
@@ -250,6 +195,40 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     }
 
     return upvotersCollection;
+  },
+
+  // return a boolean specifying whether this frame can be shortlinked
+  canBeShortlinked : function() {
+    return true;
+  },
+
+  // return a boolean specifying whether or not this frame has a comment to be displayed
+  // on its video card
+  hasComment : function() {
+    var messages = this.get('conversation') && this.get('conversation').get('messages');
+    var creator = this.get('creator');
+    return (messages && messages.length && creator && creator.id == messages.at(0).get('user_id'));
+  },
+
+  // return a boolean specifying whether or not this frame is eligible to have recommendations
+  // displayed after it
+  doShowRecommendationsAfter : function() {
+    return true;
+  },
+
+  // return a description of what information should be used to present this frame's origin
+  originInfoType : function() {
+    return libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.creator;
+  },
+
+  // whether or not the frame can be reRolled, false means it can only be added via URL
+  canReRoll : function() {
+    return true;
   }
 
 });
+
+libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE = {
+  creator : 'creator',
+  videoProvider : 'videoProvider'
+};

@@ -125,12 +125,8 @@
 
       shelby.models.user.get('app_progress').saveMe();
 
-      // if we are in a search result, add to roll via url
-      if (shelby.models.guide.get('displayState') === "search") {
-        this._addViaUrl(message, roll, shareDests);
-      }
-      else {
-        // elsere roll the frame
+      if (this._frame.canReRoll()) {
+        // if this is a frame that already exists in the DB and can be rerolled, reroll it
         this._frame.reRoll(roll, message, function(newFrame){
           //rolling is done (don't need to wait for add message to complete)
           self._rollingSuccess(roll, newFrame);
@@ -144,6 +140,9 @@
             });
           }
         });
+      } else {
+        // otherwise add a new frame via URL
+        this._addViaUrl(message, roll, shareDests);
       }
     },
 

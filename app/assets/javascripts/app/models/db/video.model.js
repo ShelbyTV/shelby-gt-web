@@ -24,6 +24,13 @@ libs.shelbyGT.VideoModel = libs.shelbyGT.ShelbyBaseModel.extend({
         url : shelby.config.apiRoot+'/video/'+this.id+'/fix_if_necessary'
       });
     }
+  },
+
+  // returns a boolean specifying whether the video passed in is the same as this video
+  isSameVideo : function(video) {
+    return (this.id == video.id ||
+            (this.get('provider_id') == video.get('provider_id') && this.get('provider_name') == video.get('provider_name'))
+           );
   }
 
 });

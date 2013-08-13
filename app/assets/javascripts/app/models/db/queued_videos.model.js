@@ -15,9 +15,8 @@ libs.shelbyGT.QueuedVideosModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
   videoIsInQueue : function(video){
     return this.get('queued_videos').some(function(_video){
-      return (video.get('id')===_video.get('id') ||
-          (video.get('isSearchResultVideo') && video.get('provider_id') == _video.get('provider_id') && video.get('provider_name') == _video.get('provider_name')));
+      return video.isSameVideo(_video);
     });
   }
-    
+
 });

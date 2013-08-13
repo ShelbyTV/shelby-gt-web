@@ -1,9 +1,5 @@
 libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
-  _currentFrameShortlink : null,
-
-  // _frame : this.model.get('frame'),
-
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
       guideOverlayModel : null,
@@ -62,8 +58,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     if (!this.model) return false;
     var frame = this.model.getFirstFrame();
     var frameVideo = frame.get('video');
-    if (frameVideo.id == video.id ||
-        (frame.get('isSearchResultFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
+    if (frameVideo.isSameVideo(video)) {
       // this video is the one being added/removed
       // in case it got updated from somewhere else, update my button
       this.$('.js-queue-frame').toggleClass('queued', !removeVideo);
@@ -121,7 +116,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         anonUserShareEmailBody : emailBody,
         creator                : frame.get('creator'),
         currentFrame           : frame,
-        currentFrameShortlink  : this._currentFrameShortlink,
         dupeFrames             : this.model.getDuplicateFramesToDisplay(),
         eventTrackingCategory  : '',
         frame                  : frame,
@@ -313,36 +307,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     // link handling occur without showing/hiding the rest of the comment
     if (!$(e.target).is('a')) {
       $(e.currentTarget).toggleClass('line-clamp--open');
-    }
-  },
-
-  _getFrameShortlink : function() {
-    var frame = this.model.get('frames').at(0);
-
-    if (!frame.get('isSearchResultFrame')) {
-      var self = this;
-      var $shortlinkTextInput = this.$('.js-frame-shortlink');
-      var fetchShortlinkUrl;
-      var dbEntry = this.model.get('primaryDashboardEntry');
-      if (dbEntry) {
-        fetchShortlinkUrl = shelby.config.apiRoot + '/dashboard/' + dbEntry.id + '/short_link';
-      } else {
-        fetchShortlinkUrl = shelby.config.apiRoot + '/frame/' + frame.id + '/short_link';
-      }
-      // fetch the short link
-      $.ajax({
-        url: fetchShortlinkUrl,
-        dataType: 'jsonp',
-        success: function(r){
-          $shortlinkTextInput.val(r.result.short_link).select();
-          // save the link for future reference in case we are going to
-          // re-render without changing frames
-          self._currentFrameShortlink = r.result.short_link;
-        },
-        error: function(){
-          $shortlinkTextInput.val("Link Unavailable").select();
-        }
-      });
     }
   },
 

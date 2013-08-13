@@ -140,7 +140,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     this._currentFrameShortlink = null;
     this.render();
     // track an event of how many recommendations we have to show for this video
-    if (!activeFrameModel.get('isSearchResultFrame')) {
+    if (activeFrameModel.doShowRecommendationsAfter()) {
       shelby.trackEx({
         providers : ['ga'],
         gaCategory : 'Video Recommendations',
@@ -167,8 +167,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   _onAddRemoveQueuedVideo : function(video, removeVideo) {
     if (this._currentFrame) {
       var frameVideo = this._currentFrame.get('video');
-      if (frameVideo.id == video.id ||
-          (this._currentFrame.get('isSearchResultFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
+      if (frameVideo.isSameVideo(video)) {
         // this video is the one being added/removed
         // in case it got updated from somewhere else, update my button
         var $button = this.$('.persistent_video_info__current-frame .js-queue-frame');
@@ -235,35 +234,6 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   _skipToNextVideo : function(){
     this.options.userDesires.set('changeVideo', 1);
     this.options.userDesires.unset('changeVideo');
-  },
-
-  _getFrameShortlink : function() {
-    if (!this._currentFrame.get('isSearchResultFrame')) {
-      var self = this;
-      var $shortlinkTextInput = this.$('.js-frame-shortlink');
-      var fetchShortlinkUrl;
-      var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
-      var dbEntry = frameGroup.get('primaryDashboardEntry');
-      if (dbEntry) {
-        fetchShortlinkUrl = shelby.config.apiRoot + '/dashboard/' + dbEntry.id + '/short_link';
-      } else {
-        fetchShortlinkUrl = shelby.config.apiRoot + '/frame/' + this._currentFrame.id + '/short_link';
-      }
-      // fetch the short link
-      $.ajax({
-        url: fetchShortlinkUrl,
-        dataType: 'jsonp',
-        success: function(r){
-          $shortlinkTextInput.val(r.result.short_link).select();
-          // save the link for future reference in case we are going to
-          // re-render without changing frames
-          self._currentFrameShortlink = r.result.short_link;
-        },
-        error: function(){
-          $shortlinkTextInput.val("Link Unavailable").select();
-        }
-      });
-    }
   },
 
   _toggleComment : function(e){

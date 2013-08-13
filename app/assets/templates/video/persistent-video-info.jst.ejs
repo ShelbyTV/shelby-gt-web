@@ -61,24 +61,24 @@
           </div><!-- eo .media_body -->
         <% } else { %>
           <% if (showNextFrame) { %>
-            <% if (!currentFrame.get('isSearchResultFrame')) { %>
+            <% if (currentFrame.originInfoType() == libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.creator) { %>
               <% if (clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %>
                 <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
                   <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
                 </div>
               <% if (clickableCreator) { %></a><% } %>
-            <% } else { %>
+            <% } else if (currentFrame.originInfoType() == libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.videoProvider) { %>
               <img src="/images/assets/search.svg" class="xuser-avatar media_image" title="Search Result" alt="Search">
             <% } %>
           <% } %>
           <div class="media_body">
             <% if (showNextFrame) { %>
               <h3 class="xuser-data persistent_video_info__h4--light">
-                <% if (!currentFrame.get('isSearchResultFrame')) { %>
+                <% if (currentFrame.originInfoType() == libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.creator) { %>
                   <strong>
                     <% if(clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %><%= currentCreatorNickname %><% if(clickableCreator) { %></a><% } %>
                   </strong>
-                <% } else { %>
+                <% } else if (currentFrame.originInfoType() == libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.videoProvider) { %>
                   <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
                 <% } %>
 
@@ -90,9 +90,7 @@
               </h3>
             <% } %>
 
-            <% var hasComment = (currentMessages.models.length > 0 && currentCreator && currentCreator.get('id') == currentMessages.models[0].get('user_id')) || currentFrame.get('isSearchResultFrame') %>
-
-            <% if(hasComment) { %>
+            <% if (currentFrame.hasComment()) { %>
               <% var comment = currentMessages.models[0].get('text') %>
               <% var commentOverflow = comment && comment.length > 256  %>
               <p<%= commentOverflow ? ' class="line-clamp js-toggle-comment"' : '' %>>
