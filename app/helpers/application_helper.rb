@@ -8,7 +8,9 @@ module ApplicationHelper
     if user['has_shelby_avatar']
       return "#{Settings::Application.avatar_url_root}/#{avatar_size}/#{user['id']}"
     else
-      return user['user_image_original'] || user['user_image'] || "/images/assets/avatar.png"
+      avatar_url = user['user_image_original'] || user['user_image']
+      avatar_url = "/images/assets/avatar.png" if (!avatar_url || (avatar_url == 'null'))
+      return avatar_url
     end
   end
 
