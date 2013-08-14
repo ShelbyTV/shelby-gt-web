@@ -84,7 +84,7 @@
           var masterCollection;
           var _playlistType;
           if (currentDisplayState == DisplayState.dashboard) {
-            doSmartRefresh = !this._dashboardMasterCollection.isEmpty();
+            doSmartRefresh = true;
             masterCollection = this._dashboardMasterCollection;
             _playlistType = libs.shelbyGT.PlaylistType.dashboard;
           } else {
@@ -96,6 +96,8 @@
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
+              doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
+              doubleCheckExistingItem : true,
               doSmartRefresh : doSmartRefresh,
               doStaticRender : true,
               fetchParams : {

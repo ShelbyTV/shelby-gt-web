@@ -28,7 +28,14 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
 
     /* TODO: needs documentation */
     sortOrder : 1, // 1 for ascending, -1 for descending
-    sortAttribute : 'id'
+    sortAttribute : 'id',
+
+    // doubleCheckExistingItem - in a binary search smart refresh, set to true to make the list view itself check
+    // if the item is already in the collection, and not add it if it is
+    // NB: normal Backbone collections already take care of this for us, but not the FrameGroupsCollection, because Mark didn't
+    // believe that the collection he implemented should maintain the interface contract and semantics defined by the
+    // class he was extending
+    doubleCheckExistingItem : false
   }),
 
   initialize : function() {
@@ -53,8 +60,20 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
   },
 
   _addIfNew : function(item, collection) {
+    var existingItem;
+
     switch (this.options.doCheck) {
       case libs.shelbyGT.SmartRefreshCheckType.binarySearch :
+          if (this.options.doubleCheckExistingItem) {
+            // if the options say so and if the item to be added is already in the collection,
+            // don't do anything
+            existingItem = this._simulatedMasterCollection.find(function(compareItem) {
+              return compareItem.id == item.id;
+            });
+            if (existingItem) {
+              return;
+            }
+          }
           if (this._simulatedMasterCollection.length >= this.options.binarySearchOffset) {
             var insertAtIndex =
               libs.utils.BackboneCollectionUtils.getSortedIndex(item, this._simulatedMasterCollection,
@@ -103,7 +122,7 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
         break;
       case libs.shelbyGT.SmartRefreshCheckType.key :
         var self = this;
-        var existingItem = this._simulatedMasterCollection.find(function(compareItem) {
+        existingItem = this._simulatedMasterCollection.find(function(compareItem) {
           return compareItem.get(self.options.keyAttribute) == item.get(self.options.keyAttribute);
         });
         if (!existingItem) {
