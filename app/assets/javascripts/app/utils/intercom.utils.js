@@ -12,7 +12,7 @@ libs.utils.intercom = {
                 name: userModel.get('name'),
                 user_id: userModel.get('id'),
                 unsubscribed_from_emails : should_send_emails,
-                onboarding_progress: shelby.models.user.get('app_progress').get('onboarding').toString(),
+                onboarding: shelby.models.user.get('app_progress').get('onboarding').toString(),
                 tv_page: "http://shelby.tv/"+userModel.get('personal_roll_subdomain')
               });
       } catch (e) {console.log("[ INTERCOM ERROR ] ", e);}
