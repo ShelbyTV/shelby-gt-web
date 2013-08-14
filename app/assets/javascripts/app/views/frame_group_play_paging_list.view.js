@@ -47,7 +47,7 @@
     initialize : function(){
       this.frameGroupCollection = this.options.displayCollection =
         new FrameGroupsCollection([], {
-          collapseViewedFrameGroups : this.options.collapseViewedFrameGroups
+          collapseViewedFrameGroups : this.options.collapseViewedFrameGroups,
         });
 
       // if (Browser.isMobile()) {
@@ -61,6 +61,11 @@
       this._checkAndRegisterPlaylist();
 
       PagingListView.prototype.initialize.call(this);
+      this.frameGroupCollection._boundCollection =
+        this.options.collection ||
+        this.options.model.get(this.options.collectionAttribute);
+      this.frameGroupCollection._associatedSourceCollection = this._getSourceCollection();
+      this.frameGroupCollection._associatedListView = this;
     },
 
     _cleanup : function(){

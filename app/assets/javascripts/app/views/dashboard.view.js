@@ -40,7 +40,6 @@
 
       _(this.options).extend({
         listItemView : function(item, params){
-
           var mapResult = _(self).result('actionToViewMap')[item.get('primaryDashboardEntry').get('action')] || libs.shelbyGT.FrameGroupView;
           return new mapResult(_(params).extend({model:item}));
         }

@@ -36,7 +36,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         return SHELBYJST['frame'](obj);
       }
     } catch(e){
+      console.log("===========");
       console.log(e.message, e.stack, obj);
+      console.log("===========");
     }
   },
 
@@ -63,7 +65,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var frame = this.model.getFirstFrame();
     var frameVideo = frame.get('video');
     if (frameVideo.id == video.id ||
-        (frame.get('isSearchResultFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
+        (frame.get('mockFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
       // this video is the one being added/removed
       // in case it got updated from somewhere else, update my button
       this.$('.js-queue-frame').toggleClass('queued', !removeVideo);
@@ -83,6 +85,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     var groupFirstFrame = model.getFirstFrame();
     groupFirstFrame[action]('change', this.render, this);
     groupFirstFrame.get('conversation') && groupFirstFrame.get('conversation')[action]('change', this.render, this);
+    groupFirstFrame.get('video')[action]('change:thumbnail_url', this.render, this);
     model.get('frames')[action]('change', this.render, this);
     model.get('frames')[action]('add', this.render, this);
     model.get('frames')[action]('destroy', this.render, this);
@@ -156,11 +159,6 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       libs.shelbyGT.ActiveHighlightListItemView.prototype.render.call(this);
     }
 
-    // have FB parse any like tags on page so they render correctly
-    if (typeof FB !== "undefined"){ FB.XFBML.parse(this.$el[0]); }
-
-    // when frame is loaded, get number of disqus comments
-    if (typeof DISQUSWIDGETS !== "undefined"){ DISQUSWIDGETS.getCount(); }
   },
 
   _expand: function(){
@@ -319,7 +317,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _getFrameShortlink : function() {
     var frame = this.model.get('frames').at(0);
 
-    if (!frame.get('isSearchResultFrame')) {
+    if (!frame.get('mockFrame')) {
       var self = this;
       var $shortlinkTextInput = this.$('.js-frame-shortlink');
       var fetchShortlinkUrl;

@@ -110,7 +110,7 @@
 
       var frame = this.model;
 
-      if (!frame.get('isSearchResultFrame')) {
+      if (!frame.get('mockFrame')) {
         var self = this;
         var $shortlinkTextInput = this.$('.js-frame-shortlink');
         var fetchShortlinkUrl;

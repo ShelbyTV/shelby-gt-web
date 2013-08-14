@@ -39,8 +39,8 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
     }
   },
 
-  sourceAddOne : function(item, collection, options){
-    if (this.options.doSmartRefresh) {
+  sourceAddOne : function(item, collection, options, noSmartRefresh){
+    if (this.options.doSmartRefresh && !noSmartRefresh) {
       // there's no way to effectively specify add:true for a Backbone Relational collection
       // we can simulate it by storing all of the contents the relational collection ever loaded,
       // and using this as a surrogate for the relational collection itself when re-filtering

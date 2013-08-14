@@ -455,6 +455,14 @@
       vertical-align: -3px;
     }
   }
+
+  &.icon-mark {
+    &:before {
+      display: inline;
+      font-size: 3.4em;
+      vertical-align: -15px;
+    }
+  }
 }
 
 .frame-likes--hide {
@@ -512,6 +520,7 @@
   height: 26px;
   width: 26px;
 }
+
 
 //------------------------------------------------------------------------------
 //  frame via search (not a "real" frame, really just a video)

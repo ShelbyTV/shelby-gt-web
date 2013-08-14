@@ -48,12 +48,15 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     /*
       Where should new listItemViews be rendered?
       Valid options are 'append' (default), 'prepend', and 'before'.
-      'before' behaves like 'append' but you must also include an element selector (which shoud only
-      match one element) that the child is appended just before.
+        'before' behaves like 'append' but you must also include an element selector (which shoud only
+        match one element) that the child is appended just before.
+      If you specify position : 'before' and no element is found based on the selector, then setting
+        fallbackToAppend : true will cause the element to be appended instead
     */
     insert : {
       position : 'append',
-      selector : null
+      selector : null,
+      fallbackToAppend : false
     },
 
     /*
@@ -319,7 +322,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
             return;
           case 'before' :
             if (this.options.insert.selector) {
-              this.insertChildBefore(childView, this.options.insert.selector);
+              this.insertChildBefore(childView, this.options.insert.selector, this.options.insert.fallbackToAppend);
               return;
             }
         }

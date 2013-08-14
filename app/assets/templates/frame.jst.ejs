@@ -67,7 +67,6 @@
       <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/><%= (browserNeedsFlash) ? 'flash needed' : 'unplayable' %></div>
 
       </div><!-- eo .frame-body -->
-
     <% if (!isGenius && creator) {
          var creatorNickname = fauxUserOrigin && fauxUserNickname ? fauxUserNickname : creator.get('nickname');
          var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator);
@@ -122,8 +121,7 @@
           </div><!-- eo .media_body -->
 
       </footer><!-- eo .media_module-->
-    <% } else if (isRecommendation) {
-    %>
+    <% } else if (isRecommendation) {%>
       <footer class="media_module frame-footer clearfix">
         <div class="media_body js-frame-recommendation">
           <!-- content filled in by FrameRecommendationView -->

@@ -140,7 +140,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     this._currentFrameShortlink = null;
     this.render();
     // track an event of how many recommendations we have to show for this video
-    if (!activeFrameModel.get('isSearchResultFrame')) {
+    if (!activeFrameModel.get('mockFrame')) {
       shelby.trackEx({
         providers : ['ga'],
         gaCategory : 'Video Recommendations',
@@ -168,7 +168,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     if (this._currentFrame) {
       var frameVideo = this._currentFrame.get('video');
       if (frameVideo.id == video.id ||
-          (this._currentFrame.get('isSearchResultFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
+          (this._currentFrame.get('mockFrame') && frameVideo.get('provider_id') == video.get('provider_id') && frameVideo.get('provider_name') == video.get('provider_name'))){
         // this video is the one being added/removed
         // in case it got updated from somewhere else, update my button
         var $button = this.$('.persistent_video_info__current-frame .js-queue-frame');
@@ -238,7 +238,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _getFrameShortlink : function() {
-    if (!this._currentFrame.get('isSearchResultFrame')) {
+    if (!this._currentFrame.get('mockFrame')) {
       var self = this;
       var $shortlinkTextInput = this.$('.js-frame-shortlink');
       var fetchShortlinkUrl;

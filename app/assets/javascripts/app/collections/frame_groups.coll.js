@@ -83,8 +83,12 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
          var neitherAreVideoRecs = !dashboard_entry ||
                                    (!dashboard_entry.isRecommendationEntry() &&
                                     !this.at(j).get('primaryDashboardEntry').isRecommendationEntry());
-         if (areSameVideo && neitherAreVideoRecs) {
+         var neitherAreMocks = !dashboard_entry || (!dashboard_entry.get('mockDBE') && !this.at(j).get('primaryDashboardEntry').get('mockDBE'));
+         if (areSameVideo && neitherAreVideoRecs && neitherAreMocks) {
             this.at(j).add(frame, dashboard_entry, options);
+            if (dashboard_entry) {
+               dashboard_entry.recs_revealed = this.at(j).recs_revealed;
+            }
             dupe = true;
          }
       }
@@ -103,7 +107,29 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
            }
         }
 
+        if (_(options).has('at')) {
+          if (options.at > 0) {
+            var insertAfter = this._associatedSourceCollection.at(options.at - 1);
+            if (insertAfter) {
+              var frameToFind = insertAfter.get('frame') || insertAfter;
+              var frameGroupIndex = this._indexOfMatchingFrameGroup(frameToFind);
+              if (frameGroupIndex > -1) {
+                options.at = frameGroupIndex + 1;
+              } else {
+                options.at = this.length;
+              }
+            } else {
+              options.at = this.length;
+            }
+          }
+        }
+
         Backbone.Collection.prototype.add.call(this, frameGroup, options);
+
+        if (dashboard_entry && !dashboard_entry.recs_revealed && !dashboard_entry.isRecommendationEntry()) {
+          this._convertRecsToNewFrameGroups(dashboard_entry, frame, options);
+          dashboard_entry.recs_revealed = true;
+        }
       }
     }
 
@@ -201,6 +227,87 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
     }
 
     return this.at(_index);
+  },
+
+    // TODO:
+    // if frameGroup.primary_dasboard_entry
+    // go search for that,
+    // otherwise search for frame
+    // FOR purpose of finding index below...
+
+  _convertRecsToNewFrameGroups : function(dbe, frame, options){
+    // don't get and show recs if we are displaying anything but dasboard or community
+    if (shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.dashboard) { //&& shelby.models.guide.get('displayState') !== libs.shelbyGT.DisplayState.channel) {
+      return;
+    }
+
+    var self = this;
+    options = options || {};
+    if (frame.has('video') && frame.get('video').has('recs') && frame.get('video').get('recs').length > 0) {
+      var recommendations = frame.get('video').get('recs');
+      // don't do anything if the recs attribute is already a collection
+      if ($.isArray(recommendations)) {
+        var _showN = Math.random() <= 0.5 ? 1 : 2;
+        var slicedRecs = recommendations.slice(0, _showN);
+        var recommendationsModels = _(slicedRecs).map(function(rec){
+          // if we already have a model in the global store for this video, use it
+          var videoModel = Backbone.Relational.store.find(libs.shelbyGT.VideoModel, rec.recommended_video_id);
+          if (!videoModel) {
+            // otherwise, create a new, empty video model with the proper id
+            videoModel = new libs.shelbyGT.VideoModel({id: rec.recommended_video_id});
+          }
+          videoModel.fetch();
+          // create frame
+          var frameModel = Backbone.Relational.store.find(libs.shelbyGT.FrameModel, rec.recommended_video_id);
+          if (!frameModel) {
+            // create a fake frame to play
+            var frameBsonId =  new ObjectId();
+            frameModel = new libs.shelbyGT.FrameModel({
+              id : frameBsonId.toString(),
+              video : videoModel,
+              conversation : {
+                messages : [
+                  {
+                    text : videoModel.get('description')
+                  }
+                ]
+              },
+              mockFrame : true
+            });
+
+            // create dashboard entry with reference to frame (video)
+            var dbeBsonId =  new ObjectId(); // is this even necessary???
+            var newDBE = new libs.shelbyGT.DashboardEntryModel({
+              id: dbeBsonId.toString(),
+              action: libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation,
+              user_id: shelby.models.user.id,
+              frame: frameModel,
+              src_frame: frame,
+              mockDBE: true
+            });
+            // end dbe creation //
+
+          var newFrameGroup = new libs.shelbyGT.FrameGroupModel();
+          newFrameGroup.add(frameModel, newDBE, options);
+
+          // if a user views a "real" shelby frame it will be in their viewed videos, so show it as collapsed
+          // NOTE: currently a view of a recommended video is not recorded as the video doesnt really exist as a frame
+          if (self._collapseViewedFrameGroups) {
+            var viewed = shelby.models.viewedVideos.get('viewed_videos').find(function(entry){
+              return entry.id == frameModel.get('video').id;
+            });
+           if (viewed) {
+             newFrameGroup.set({ collapsed : true });
+           }
+          }
+
+          // insert this new frameGroup at the appropriate place in the collection
+          options.at = self._associatedSourceCollection.indexOf(dbe || frame) + 1;
+          self._associatedListView.sourceAddOne(newDBE, self._boundCollection, options, true);
+          }
+        });
+      }
+    }
   }
 
 });

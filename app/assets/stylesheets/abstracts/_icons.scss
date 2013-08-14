@@ -23,3 +23,8 @@
     color: darken(#6cbc45,5%);
   }
 }
+.icon-mark--blue {
+  &:before {
+    color: darken($ui-blue,5%);
+  }
+}
