@@ -8,8 +8,12 @@ libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
   _clientSideFrameType : 'none',
 
   constructor : function(attributes, options) {
-    if (options && options.clientSideFrameType) {
-      this._clientSideFrameType = options.clientSideFrameType;
+    if (options) {
+      if (options.clientSideFrameType) {
+        this._clientSideFrameType = options.clientSideFrameType;
+      } else if (options.collection && options.collection.clientSideFrameType) {
+        this._clientSideFrameType = options.collection.clientSideFrameType;
+      }
     }
     libs.shelbyGT.FrameModel.apply(this, arguments);
   },
