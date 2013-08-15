@@ -101,12 +101,11 @@
   $(document).ready(function(){
 
       // AB TEST
-      <% if session[:signup_on_landing] %>
-        try {
-          _gaq.push(['_trackEvent', 'ab-testing', 'signup_on_landing', '<%= session[:signup_on_landing] %>']);
-          _kmq.push(["set", {"signup_on_landing": "<%= session[:signup_on_landing] %>"}]);
+      <% session[:signup_on_landing] = "no" unless session[:signup_on_landing] %>
+      try {
+          _gaq.push(['_trackEvent', 'ab-testing', 'signup_on_landing', '<%= session[:signup_on_landing].to_s %>']);
+          _kmq.push(["set", {"signup_on_landing": "<%= session[:signup_on_landing].to_s %>"}]);
         } catch (e) {}
-      <% end %>
 
       <% if @inviter %>
         shelby.trackEx({
@@ -122,7 +121,7 @@
             gaCategory : "Onboarding",
             gaAction : 'Clicked sign up via an invite',
             gaLabel : 'via <%= @inviter['nickname'] %>',
-            kmqName : 'Clicked sign up via invite'
+            kmqName : 'Clicked sign up via invite',
             kmqProperties : {
               inviter: '<%= @inviter['nickname'] %>'
             }
