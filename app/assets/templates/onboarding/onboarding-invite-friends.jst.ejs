@@ -1,26 +1,17 @@
 <div class="modal__body  modal__body--scroll clearfix js-invite-friends-body">
   <h2 class="modal__h1">
-    Invite your friends to Shelby
+    Want more video? Invite friends!
   </h2>
   <p class="modal__block modal__block--push">
-    Want more video? Invite more friends!
+    Invite your friends to Shelby
   </p>
   <!-- list appended by the ListView -->
 </div><!-- eo modal__body -->
 
-<div class="modal__foot clearfix">
-  <% if (remainingServices.length) { %>
-    <a href="http://api.shelby.tv/auth/<%= remainingServices[0] %>?redir_query=authed_with%3D<%= remainingServices[0] %>" class="button_primer button_command button_command--flexible button_<%= remainingServices[0] %>-blue js-authorize"  data-popup_width="1000" data-popup_height="650">
-      <span class="icon icon-<%= remainingServices[0] %>"></span>
-      <span class="button_label">Connect</span>
-    </a>
-
-    <b>&nbsp;or&nbsp;</b>
-
-  <% } %>
-  <a class="button_primer button_command button_command--flexible button_green js-onboarding-advance-stage">
-    <span class="icon icon-roll"></span>
-    <span class="button_label">Add more video</span>
+<div class="modal__foot modal__foot--rev clearfix">
+  <a class="button_primer button_command button_command--flexible button_gray js-onboarding-advance-stage">
+    <span class="button_label">Skip</span>
+    <span class="icon icon-arrow_right"></span>
   </a>
 
 </div><!-- eo modal__foot -->

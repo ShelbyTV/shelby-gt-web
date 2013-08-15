@@ -10,7 +10,7 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
   events : {
     "click .js-onboarding-roll-button:not(.js-busy)" : "_follow",
     "click .js-onboarding-advance-stage"             : "_onAdvanceStage",
-    "click .js-see-more"                             : "_showMoreSources"
+    //"click .js-see-more"                             : "_showMoreSources"
   },
 
   template : function(obj){
@@ -37,7 +37,7 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
 
     this.$el.html(this.template({rollCategories: _rollCategories}));
 
-    this._pages = this.$el.find(this._sourcesList).children().length;
+    //this._pages = this.$el.find(this._sourcesList).children().length;
 
     return this;
   },

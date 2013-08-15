@@ -1,5 +1,5 @@
 .onboarding {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.1);
   height: 100%;
   left: 0;
   padding-left: $guide-width;
@@ -10,5 +10,10 @@
 
   .button_command--facebook {
     margin-left: 0.45em;
+  }
+
+  form {
+    float: left;
+    margin-top: 9px;
   }
 }

@@ -32,6 +32,7 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
               viewModel.set('numInvitesSent', viewModel.get('numInvitesSent') + 1);
 
               $thisButton.removeClass('button_busy').children('.button_label').text('Invited');
+              $('.modal__foot').find('.js-onboarding-advance-stage').removeClass('button_gray').addClass('button_green').find('.button_label').text('Next');
               return;
             }
           }
