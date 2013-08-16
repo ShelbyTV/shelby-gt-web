@@ -41,6 +41,39 @@ a{
 
 }
 
+.shelby {}
+
+  .shelby--shares {
+    background-color: $ui-off-white;
+    overflow: visible;
+
+    &,
+    .shelby-wrapper,
+    .shelby-header,
+    .content_wrapper,
+    .app-banner__wrapper {
+      position: relative;
+    }
+
+    .content_wrapper {
+      margin-top: 40px;
+      overflow-y: auto;
+    }
+
+    .frame {
+      max-width: 550px;
+      margin: 4em auto;
+    }
+
+    video,
+    iframe,
+    object,
+    canvas {
+      width: 100% !important;
+      height: 333px !important;
+    }
+  }
+
 
 //---------------------------
 //  shelby! containing wrappers, etc

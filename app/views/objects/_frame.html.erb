@@ -1,0 +1,57 @@
+<article id="<%= @frame['id'] %>" class="animate_module frame">
+  <span class="frame-header js-frame-activate">
+    <h1 class="frame-title" title="New film explores 'Deep Throat' star">
+      <%= @video['title'] %>
+    </h1>
+  </span>
+
+  <div class="frame-body-wrapper clearfix">
+    <div class="frame-body">
+      <div class="frame__video">
+        <% if @video['provider_name'] == "youtube" %>
+          <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
+        <% else %>
+          <%= raw @video['embed_url'] %>
+        <% end %>
+      </div>
+    </div><!-- eo .frame-body -->
+
+    <footer class="media_module frame-footer clearfix">
+      <%
+        avatar = avatar_url_for_user(@user)
+        userNickname = @user['nickname']
+      %>
+      <a href="/<%= @user['id'] %>" class="js-goto-user-page" data-user_nickname="<%= userNickname %>">
+        <span class="image_module xuser-avatar media_image" style="background-image: url(<%= avatar %>);" role="img">
+          <img src="<%= avatar %>" class="visuallyhidden" title="<%= userNickname %>" alt="<%= userNickname %>">
+        </span>
+      </a>
+
+      <div class="media_body">
+        <span class="xuser-data-timestamp">
+          <%= @frame['created_at'] %>
+        </span>
+
+        <p class="xuser-data">
+          <a href="/<%= userNickname %>" onclick="return false;" class="js-goto-user-page no-faux-link" data-user_nickname="<%= userNickname %>"><strong><%= userNickname %></strong></a>
+        </p>
+
+        <p class="xuser-message">
+          <%= @frame['conversation']['messages'][0]['text'] %>
+        </p>
+      </div><!-- eo .media_body -->
+    </footer><!-- eo .media_module-->
+  </div><!-- eo .frame-body-wrapper -->
+
+  <% if @frame['upvoters'] %>
+    <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">
+      <ul class="list frame-likes-avatars js-liker-avatars-list">
+        <li>
+          <a class="frame-likes-link js-actor-avatar-link js-track-event" href="#" data-ga_category="Frame" data-ga_action="click avatar for liker" data-ga_label="martha">
+            <img class="frame-likes-avatar" src="http://graph.facebook.com/100002916795366/picture?type=square" title="martha" alt="martha">
+          </a>
+        </li>
+      </ul>
+    </div><!-- eo frame-likes -->
+  <% end %>
+</article>

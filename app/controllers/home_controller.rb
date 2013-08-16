@@ -163,16 +163,31 @@ class HomeController < ApplicationController
   # GET /:user_name/shares(/:frame_id)
   #
   def shares
+
+
+    # order things logically in this process
     user_id_or_nickname = params[:user_id_or_nickname]
     user = Shelby::API.get_user(user_id_or_nickname)
     if user
       @user = user
-      @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
+      # @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
     end
     @frame = Shelby::API.get_frame(params[:frame_id], true) if params[:frame_id]
     @video = @frame['video'] if @frame
 
-    render '/home/app'
+    @is_mobile = is_mobile?
+    @user_signed_in = user_signed_in?
+    # determine mobile before data GET
+    # render mobile or desktop based on (mobile)? (ios)?
+    # do we need separate layouts or should the view render partials
+
+    if @user_signed_in
+      @current_user = Shelby::API.get_user(current_user_id)
+    end
+    # else
+      render '/home/shares'
+    # end
+    # check if signed in?
   end
 
   ##
