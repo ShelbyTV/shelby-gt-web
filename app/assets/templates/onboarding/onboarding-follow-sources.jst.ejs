@@ -8,7 +8,7 @@
   </p>
   <ul class="list js-list-sources">
     <% _(rollCategories).each(function(category, index){ %>
-      <li class="list__item<%= (index > 10) ? ' hide' : '' %>">
+      <li class="list__item">
         <div class="user user--no_lining user--medium_avatar clearfix">
           <div class="media_module media_module--bare clearfix">
             <div class="media_image--rev">
@@ -35,8 +35,6 @@
       </li>
     <% }); %>
   </ul>
-
-  <button class="button_primer button_command button_command--fill button_gray js-see-more js-track-event" data-ga_category="Onboarding" data-ga_action="Click" data-ga_label="See More Sources">See More…</button>
 </div><!-- eo modal__body -->
 
 <div class="modal__foot modal__foot--rev clearfix">
