@@ -41,8 +41,8 @@ a{
 
 }
 
-.shelby {}
-
+  // MODIFIER:
+  // Share Page. Major layout overrides are happening in here!!
   .shelby--shares {
     background-color: $ui-off-white;
     overflow: visible;
@@ -56,21 +56,37 @@ a{
     }
 
     .content_wrapper {
-      margin-top: 40px;
+      margin-top: 0;
       overflow-y: auto;
     }
 
     .frame {
+      outline: 5px solid gray;
       max-width: 550px;
-      margin: 4em auto;
+      margin: 1em auto;
+
+      .avatar {
+        margin-right: 1em;
+      }
     }
 
-    video,
-    iframe,
-    object,
-    canvas {
-      width: 100% !important;
-      height: 333px !important;
+    // font-size adjust for "desktop" situations
+    @media screen and (min-width: 600px) {
+      .frame-title {
+        font-size: 1.7em;
+      }
+      .frame-footer {
+        font-size: 1.4em;
+        line-height: 1.3;
+        margin: 1em;
+
+        .line-clamp {
+          height: 4.6em;
+        }
+      }
+      .avatar {
+        font-size: 0.8em;
+      }
     }
   }
 
