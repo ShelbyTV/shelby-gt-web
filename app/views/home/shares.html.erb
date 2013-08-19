@@ -33,11 +33,14 @@
     <% end %>
     <% end %>
   </script>
+  <%= javascript_include_tag "shares" %>
 </head>
 
 <body class="shelby shelby--shares">
   <section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
-  <div class="app-banner__wrapper js-app-banner hidden"></div>
+  <div class="app-banner__wrapper js-app-banner hidden">
+    <%= render :partial => '/mobile/partials/app_store' if @is_mobile == 'iPhone' %>
+  </div>
 
   <div id="js-shelby-wrapper" class="shelby-wrapper clearfix">
     <header id="js-header" class="animate_module js-app-header shelby-header js-inactivity-preemption" role="banner">

@@ -1,15 +1,15 @@
 <article id="<%= @frame['id'] %>" class="animate_module frame">
   <span class="frame-header js-frame-activate">
-    <h1 class="frame-title" title="New film explores 'Deep Throat' star">
+    <h1 class="frame-title" title="<%= @video['title'] %>">
       <%= @video['title'] %>
     </h1>
   </span>
 
   <div class="frame-body-wrapper clearfix">
     <div class="frame-body">
-      <div class="frame__video">
+      <div class="video">
         <% if @video['provider_name'] == "youtube" %>
-          <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
+          <%= render :partial => "/seovideo/youtube_embed", :locals => { :video_provider_id => @video['provider_id'] } %>
         <% else %>
           <%= raw @video['embed_url'] %>
         <% end %>
@@ -22,7 +22,7 @@
         userNickname = @user['nickname']
       %>
       <a href="/<%= @user['id'] %>" class="js-goto-user-page" data-user_nickname="<%= userNickname %>">
-        <span class="image_module xuser-avatar media_image" style="background-image: url(<%= avatar %>);" role="img">
+        <span class="image_module media_image avatar avatar--medium" style="background-image: url(<%= avatar %>);" role="img">
           <img src="<%= avatar %>" class="visuallyhidden" title="<%= userNickname %>" alt="<%= userNickname %>">
         </span>
       </a>
@@ -33,24 +33,26 @@
         </span>
 
         <p class="xuser-data">
-          <a href="/<%= userNickname %>" onclick="return false;" class="js-goto-user-page no-faux-link" data-user_nickname="<%= userNickname %>"><strong><%= userNickname %></strong></a>
+          <a href="/<%= @user['id'] %>" class="js-goto-user-page no-faux-link" data-user_nickname="<%= userNickname %>"><strong><%= userNickname %></strong></a>
         </p>
 
-        <p class="xuser-message">
+        <p class="xuser-message<%= " line-clamp js-toggle-comment" if @frame['conversation']['messages'][0]['text'].length > 265%>">
           <%= @frame['conversation']['messages'][0]['text'] %>
         </p>
       </div><!-- eo .media_body -->
     </footer><!-- eo .media_module-->
   </div><!-- eo .frame-body-wrapper -->
 
-  <% if @frame['upvoters'] %>
+  <% if @frame['upvoters'].length > 0 %>
     <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">
       <ul class="list frame-likes-avatars js-liker-avatars-list">
-        <li>
-          <a class="frame-likes-link js-actor-avatar-link js-track-event" href="#" data-ga_category="Frame" data-ga_action="click avatar for liker" data-ga_label="martha">
-            <img class="frame-likes-avatar" src="http://graph.facebook.com/100002916795366/picture?type=square" title="martha" alt="martha">
-          </a>
-        </li>
+        <% @frame['upvoters'].each do |liker| %>
+          <li>
+            <a class="frame-likes-link js-actor-avatar-link js-track-event" href="#" data-ga_category="Frame" data-ga_action="click avatar for liker" data-ga_label="<%= liker['name'] %>">
+              <img class="frame-likes-avatar" src="<%= liker['has_shelby_avatar'] ? avatar_url_for_user(liker) : liker['user_image'] %>" title="<%= liker['name'] %>" alt="<%= liker['name'] %>">
+            </a>
+          </li>
+        <% end %>
       </ul>
     </div><!-- eo frame-likes -->
   <% end %>
