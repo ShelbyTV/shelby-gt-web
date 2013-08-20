@@ -71,6 +71,10 @@ a{
       }
     }
 
+    .xuser-message {
+      font-color: #555;
+    }
+
     // font-size adjust for "desktop" situations
     @media screen and (min-width: 600px) {
       .frame-title {

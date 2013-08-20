@@ -18,6 +18,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <link rel="icon"type="image/png" href="/favicon.png">
+
+  <script>
+    var shelbyTrackingCategory = "Share Page";
+  </script>
+
   <%= stylesheet_link_tag "screen", :media => "screen" %>
   <script>
     if (typeof(shelby) == 'undefined') {
@@ -39,7 +44,7 @@
 <body class="shelby shelby--shares">
   <section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
   <div class="app-banner__wrapper js-app-banner">
-    <%= render :partial => '/mobile/partials/app_store' if @is_mobile == 'iPhone' %>
+    <% #render :partial => '/mobile/partials/app_store' if @is_mobile == 'iPhone' %>
   </div>
 
   <div id="js-shelby-wrapper" class="shelby-wrapper clearfix">

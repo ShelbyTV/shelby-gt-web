@@ -1,14 +1,16 @@
 //progressive enhancement: jquery.fitvid
 //= require jquery
 //= require_tree ./shares
+//= require ./event-tracking/landing.tracking
 
 $(document).ready(function(){
+  //imitation handling
   $('.js-toggle-comment').on('click',function(){
     var $this = $(this);
     $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
   });
 
-
+  //imitation handling
   $('.js-content-selector').on('click','button',function(e){
     e.preventDefault();
     var $this = $(this);

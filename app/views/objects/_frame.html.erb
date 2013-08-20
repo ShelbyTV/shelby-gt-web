@@ -33,11 +33,12 @@
         </span>
 
         <p class="xuser-data">
-          <a href="/<%= @user['id'] %>" class="js-goto-user-page no-faux-link" data-user_nickname="<%= userNickname %>"><strong><%= userNickname %></strong></a>
+          <a href="/<%= userNickname %>" class="js-goto-user-page no-faux-link" data-user_nickname="<%= userNickname %>"><strong><%= userNickname %></strong></a>
         </p>
 
-        <p class="xuser-message<%= " line-clamp js-toggle-comment" if @frame['conversation']['messages'][0]['text'].length > 265%>">
-          <%= @frame['conversation']['messages'][0]['text'] %>
+        <% message = @frame['conversation']['messages'][0]['text'] if @frame['conversation'] and @frame['conversation']['messages'] and @frame['conversation']['messages'][0] %>
+        <p class="xuser-message<%= " line-clamp js-toggle-comment" if message and @frame['conversation']['messages'][0]['text'].length > 265%>">
+          <%= message %>
         </p>
       </div><!-- eo .media_body -->
     </footer><!-- eo .media_module-->
@@ -48,7 +49,7 @@
       <ul class="list frame-likes-avatars js-liker-avatars-list">
         <% @frame['upvoters'].each do |liker| %>
           <li>
-            <a class="frame-likes-link js-actor-avatar-link js-track-event" href="#" data-ga_category="Frame" data-ga_action="click avatar for liker" data-ga_label="<%= liker['name'] %>">
+            <a class="frame-likes-link js-actor-avatar-link js-track-event" href="#" data-ga_action="click avatar for liker" data-ga_label="<%= liker['name'] %>">
               <img class="frame-likes-avatar" src="<%= liker['has_shelby_avatar'] ? avatar_url_for_user(liker) : liker['user_image'] %>" title="<%= liker['name'] %>" alt="<%= liker['name'] %>">
             </a>
           </li>
