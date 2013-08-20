@@ -1,0 +1,21 @@
+<div class="shelf shelf--marketing_shares">
+  <div class="frame-body-wrapper">
+    <h2 class="alpha">
+      Discover and enjoy the best of web video
+    </h2>
+
+    <p class="">
+      Sign up to see what your friends are sharing<%= " on #{@has_referer[0].capitalize}" if @has_referer %>.
+    </p>
+
+    <% if !@is_mobile %>
+      <p>
+        <center>
+          <a href="/signup" class="button_primer button_command button_command--flexible button_green js-track-event">
+            Sign Up
+          </a>
+        </center>
+      </p>
+    <% end %>
+  </div>
+</div><!-- eo shelf -->
