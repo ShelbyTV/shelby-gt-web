@@ -8,12 +8,15 @@
 
 //BLOCK
 .banner {
+  font-size: $font-size-button;
+  font-weight: bold;
   text-align: center;
 }   //MODIFIERS
     //color
     .banner--green {
       background-color: $ui-green;
       color: $ui-white;
+
       .banner__link {
         color: inherit;
       }

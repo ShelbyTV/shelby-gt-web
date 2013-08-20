@@ -181,6 +181,11 @@ class HomeController < ApplicationController
     # render mobile or desktop based on (mobile)? (ios)?
     # do we need separate layouts or should the view render partials
 
+    if request.env['HTTP_REFERER']
+      ref = request.env['HTTP_REFERER']
+      @has_referer = ref.match(/fiddle|twitter|facebook/)
+    end
+
     if @user_signed_in
       @current_user = Shelby::API.get_user(current_user_id)
     end

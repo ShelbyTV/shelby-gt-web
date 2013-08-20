@@ -43,6 +43,8 @@ a{
 
   // MODIFIER:
   // Share Page. Major layout overrides are happening in here!!
+  $_singleColumn: 550px;
+
   .shelby--shares {
     background-color: $ui-off-white;
     overflow: visible;
@@ -61,8 +63,7 @@ a{
     }
 
     .frame {
-      outline: 5px solid gray;
-      max-width: 550px;
+      max-width: $_singleColumn;
       margin: 1em auto;
 
       .avatar {
@@ -83,12 +84,31 @@ a{
         .line-clamp {
           height: 4.6em;
         }
+        .line-clamp--open {
+          height: auto;
+        }
       }
       .avatar {
         font-size: 0.8em;
       }
     }
-  }
+    //non-normative
+    .shelf--marketing_shares {
+      font-size: 1.3em;
+      margin: 0 auto;
+      max-width: $_singleColumn;
+
+      .alpha {
+        font-family: $font-family-display;
+        font-weight: 500;
+      }
+
+      .frame-body-wrapper {
+        margin: 0.6em;
+        padding: 2em;
+      }
+    }
+  }// eo shares
 
 
 //---------------------------

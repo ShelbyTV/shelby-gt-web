@@ -7,7 +7,7 @@
 
   <div class="frame-body-wrapper clearfix">
     <div class="frame-body">
-      <div class="video">
+      <div class="video__wrapper">
         <% if @video['provider_name'] == "youtube" %>
           <%= render :partial => "/seovideo/youtube_embed", :locals => { :video_provider_id => @video['provider_id'] } %>
         <% else %>

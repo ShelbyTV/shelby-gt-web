@@ -38,17 +38,19 @@
 
 <body class="shelby shelby--shares">
   <section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
-  <div class="app-banner__wrapper js-app-banner hidden">
+  <div class="app-banner__wrapper js-app-banner">
     <%= render :partial => '/mobile/partials/app_store' if @is_mobile == 'iPhone' %>
   </div>
 
   <div id="js-shelby-wrapper" class="shelby-wrapper clearfix">
-    <header id="js-header" class="animate_module js-app-header shelby-header js-inactivity-preemption" role="banner">
+    <header id="js-header" class="animate_module js-app-header shelby-header clearfix js-inactivity-preemption" role="banner">
       <%= render :partial => '/home/app_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
     </header>
 
     <div class="content_wrapper" role="main">
       <%= render :partial => '/objects/frame' %>
+
+      <%= render :partial => '/marketing/shares' if @is_mobile != 'iPhone' and !@user_signed_in %>
     </div>
   </div> <!-- eo ~application -->
   <% if ["production", "staging"].include? Rails.env %>

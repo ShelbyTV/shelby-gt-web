@@ -8,70 +8,70 @@
   </h1>
 </span>
 
-<nav id="js-guide-presentation-selector" class="guide-presentation-selector">
-  <ul class="js-content-selector list list--inline app_nav clearfix">
-    <li class="list__item">
-      <button class="app_nav__button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label="">
-        Stream
-      </button>
-    </li>
-
-    <li class="list__item js-community-menu">
-      <button class="app_nav__button js-community js-track-event" data-ga_category="Header" data-ga_action="Community" data-ga_label="">
-        Community
-      </button>
-    </li>
-
-    <% if true #(!user.isAnonymous()) { %>
-      <li class="list__item js-guide-me js-track-event" data-ga_category="Header" data-ga_action="Me" data-ga_label="">
-        <button class="app_nav__button js-me">
-          Me
+<% if user_signed_in %>
+  <nav id="js-guide-presentation-selector" class="guide-presentation-selector">
+    <ul class="js-content-selector list list--inline app_nav clearfix">
+      <li class="list__item">
+        <button class="app_nav__button js-stream js-track-event" data-ga_category="Header" data-ga_action="Stream" data-ga_label="">
+          Stream
         </button>
       </li>
-    <% end %>
 
-    <% if true #(user.get('admin')) { %>
-      <li class="list__item js-admin">
-        <button class="app_nav__button">
-          Admin
+      <li class="list__item js-community-menu">
+        <button class="app_nav__button js-community js-track-event" data-ga_category="Header" data-ga_action="Community" data-ga_label="">
+          Community
         </button>
       </li>
-    <% end %>
 
-    <% if @current_user #(user.isAnonymous()) { %>
-      <li class="dropdown_module list__item secondary-item guide-login">
-        <button class="dropdown_button app_nav__button app_nav__button--settings js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= 'userNickname' %>">
-          <%
-            avatar = avatar_url_for_user(@current_user)
-            userNickname = @current_user['nickname']
-          %>
-          <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
-            <%= userNickname %> <span class="icon-carrot"></span>
-        </button>
+        <li class="list__item js-guide-me js-track-event" data-ga_category="Header" data-ga_action="Me" data-ga_label="">
+          <button class="app_nav__button js-me">
+            Me
+          </button>
+        </li>
 
-        <section class="dropdown_section settings-section">
-          <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
+      <% if @current_user['admin'] %>
+        <li class="list__item js-admin">
+          <button class="app_nav__button">
+            Admin
+          </button>
+        </li>
+      <% end %>
 
-            <%= render :partial => 'objects/user_subnav', :locals => { :userNickname => userNickname } %>
+      <% if @current_user #(user.isAnonymous()) { %>
+        <li class="dropdown_module list__item secondary-item guide-login">
+          <button class="dropdown_button app_nav__button app_nav__button--settings js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= 'userNickname' %>">
+            <%
+              avatar = avatar_url_for_user(@current_user)
+              userNickname = @current_user['nickname']
+            %>
+            <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
+              <%= userNickname %> <span class="icon-carrot"></span>
+          </button>
 
+          <section class="dropdown_section settings-section">
+            <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
+
+              <%= render :partial => 'objects/user_subnav', :locals => { :userNickname => userNickname } %>
+
+            </div>
+          </section>
+        </li><!-- eo login button/dropdown -->
+      <% else %>
+        <li class="dropdown_module list__item secondary-item guide-login">
+          <button class="dropdown_button app_nav__button">
+            Log In <span class="icon-carrot"></span>
+          </button>
+
+          <div class="dropdown_section login-section">
+            <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
+
+                <%= render :partial => 'objects/login_form' %>
+
+            </div>
           </div>
-        </section>
-      </li><!-- eo login button/dropdown -->
-    <% else %>
-      <li class="dropdown_module list__item secondary-item guide-login">
-        <button class="dropdown_button app_nav__button">
-          Log In <span class="icon-carrot"></span>
-        </button>
+        </li><!-- eo login button/dropdown -->
+      <% end %>
 
-        <div class="dropdown_section login-section">
-          <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
-
-              <%= render :partial => 'objects/login_form' %>
-
-          </div>
-        </div>
-      </li><!-- eo login button/dropdown -->
-    <% end %>
-
-  </ul><!-- eo guide-presentation-list -->
-</nav>
+    </ul><!-- eo guide-presentation-list -->
+  </nav>
+<% end %>
