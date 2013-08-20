@@ -29,15 +29,7 @@
           </button>
         </li>
 
-      <% if @current_user['admin'] %>
-        <li class="list__item js-admin">
-          <button class="app_nav__button">
-            Admin
-          </button>
-        </li>
-      <% end %>
-
-      <% if @current_user #(user.isAnonymous()) { %>
+      <% if @current_user %>
         <li class="dropdown_module list__item secondary-item guide-login">
           <button class="dropdown_button app_nav__button app_nav__button--settings js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= 'userNickname' %>">
             <%
