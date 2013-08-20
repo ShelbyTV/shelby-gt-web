@@ -10,7 +10,7 @@
 
 <% if !@is_mobile %>
   <%
-    userNickname = @current_user['nickname'] or 'anonymous'
+    userNickname = ((@current_user && @current_user['nickname']) || 'anonymous')
   %>
   <nav id="js-guide-presentation-selector" class="guide-presentation-selector">
     <ul class="js-content-selector list list--inline app_nav clearfix">
