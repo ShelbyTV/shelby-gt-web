@@ -16,7 +16,7 @@
       <% } %>
     <% } %>
   <% } else if (dashboardEntry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) { %>
-    <% if (dashboardEntry.get('src_frame').has('creator')) { %>
+    <% if (dashboardEntry.get('src_frame') && dashboardEntry.get('src_frame').has('creator')) { %>
       This video is shared by people like
         <%= SHELBYJST['user-page-link']({nickname: dashboardEntry.get('src_frame').get('creator').get('nickname')}) %>
     <% } else { %>

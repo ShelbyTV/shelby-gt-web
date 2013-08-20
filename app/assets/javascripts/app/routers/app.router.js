@@ -65,6 +65,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.userOwnedRolls = new libs.shelbyGT.AssociatedRollsCollectionModel();
 
     shelby.collections.videoSearchResultFrames = new libs.shelbyGT.FramesCollection();
+    shelby.collections.dynamicRecommendations = new libs.shelbyGT.DynamicRecommendationsCollection();
 
     libs.utils.rhombus.login.init_login();
     libs.utils.rhombus.videos_watched.init_videos_watched();
@@ -117,6 +118,9 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
           shelby.models.rollFollowings.fetch();
           shelby.models.promoRollCategories.fetch();
+          shelby.collections.dynamicRecommendations.fetch({
+            url : shelby.config.apiRoot+'/user/'+userModel.id+'/recommendations?scan_limit=20&min_score=80.0'
+          });
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: userModel.get('nickname')});
 
