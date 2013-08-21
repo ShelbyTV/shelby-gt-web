@@ -228,6 +228,14 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
  */
 libs.shelbyGT.PagingLoadMoreView = Support.CompositeView.extend({
 
+  tagName : 'li',
+
+  className : 'js-load-more js-loading load-more',
+
+  initialize : function() {
+    this.$el.hide();
+  },
+
   template : function(obj){
     return SHELBYJST['load-more'](obj);
   },
