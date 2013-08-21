@@ -24,7 +24,7 @@
         <div class="seovideo__video_wrapper frame-body-wrapper">
           <div class="seovideo__video">
             <% if @video_provider_name == "youtube" %>
-              <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video['provider_id'] } %>
+              <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
             <% else %>
               <%= raw @video_embed %>
             <% end %>
