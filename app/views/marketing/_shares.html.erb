@@ -4,17 +4,15 @@
       Discover and enjoy the best of web video
     </h2>
 
-    <p class="">
+    <p>
       Sign up to see what your friends are sharing<%= " on #{@has_referer[0].capitalize}" if @has_referer %>.
     </p>
 
     <% if !@is_mobile %>
-      <p>
-        <center>
-          <a href="/signup" class="button_primer button_command button_command--wide button_green js-track-event" >
-            Sign Up
-          </a>
-        </center>
+      <p class="shelf__block--push shelf__block--center">
+        <a href="/signup" class="button_primer button_command button_command--wide button_green js-track-event" data-ga_category="Share Page" data-ga_label="Shelf" data-ga_action="Click Sign Up">
+          Sign Up
+        </a>
       </p>
     <% end %>
   </div>
