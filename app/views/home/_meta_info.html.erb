@@ -54,3 +54,7 @@
   <meta name="description" content="<%= Settings::Application.meta_description %>">
 
 <% end %>
+
+<% if Rails.env != "production" %>
+  <meta name="robots" content="noindex,nofollow">
+<% end %>
