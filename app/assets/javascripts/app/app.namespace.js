@@ -9,6 +9,7 @@ _(shelby).extend({
   models : {},
   views : {},
   collections : {},
+  promises : {},
 
   // Convenience function to check if common cookie says the user is authenticated
   userIsCommonCookieAuthed: function(){

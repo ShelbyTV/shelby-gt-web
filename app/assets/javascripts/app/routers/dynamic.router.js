@@ -424,27 +424,31 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         if (response.result.length) {
           defaultOnDashboardFetch && defaultOnDashboardFetch.call(self, dashboardModel, response);
           // we are going to insert a dynamic recommendation at the second slot in the user's stream the first
-          // time they visit it when some fetched recommendations are available
+          // time that some fetched recommendations are available
           if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard &&
               !shelby.models.guide.get('hasShownDynamicRec')) {
-            console.log("checking for recommendations");
-            if (shelby.collections.dynamicRecommendations.length) {
-              // we're not going to do anything until we have some real dashboard entries and
-              // some dynamic recommendations are available
-              var dbEntries = shelby.models.dashboard.get('dashboard_entries');
-              if (dbEntries.length) {
-                // to get the dynamic dashboard entry to show up in the right place in the stream,
-                // we need to give it an id just less than the item we want it to show up after
-                var fakeDbeId = new ObjectId(dbEntries.at(0).id);
-                fakeDbeId.increment--;
-                var fakeDbe = shelby.collections.dynamicRecommendations.at(0);
-                fakeDbe.set('id', fakeDbeId.toString());
+            // we're not going to do anything until we have some real dashboard entries
+            var dbEntries = shelby.models.dashboard.get('dashboard_entries');
+            if (dbEntries.length) {
+              // if we have some real dashboard entries, then wait until the dynamic entries have been fetched, and...
+              shelby.promises.dynamicRecommendationsFetch.done(function() {
+                // if we're still showing the dashboard
+                if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
+                  // if there are any recommendations available
+                  if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard && shelby.collections.dynamicRecommendations.length) {
+                    // to get the dynamic dashboard entry to show up in the right place in the stream,
+                    // we need to give it an id just less than the item we want it to show up after
+                    var fakeDbeId = new ObjectId(dbEntries.at(0).id);
+                    fakeDbeId.increment--;
+                    var fakeDbe = shelby.collections.dynamicRecommendations.at(0);
+                    fakeDbe.set('id', fakeDbeId.toString());
 
-                dbEntries.add(fakeDbe);
-                console.log('found and added');
-              }
-              // don't insert any more dynamic recommendations during this session
-              shelby.models.guide.set('hasShownDynamicRec', true);
+                    dbEntries.add(fakeDbe);
+                  }
+                  // don't insert any more dynamic recommendations during this session
+                  shelby.models.guide.set('hasShownDynamicRec', true);
+                }
+              });
             }
           }
         } else {
