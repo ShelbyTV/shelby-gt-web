@@ -15,7 +15,10 @@ $(document).ready(function(){
     e.preventDefault();
     var $this = $(this);
 
-    if($this.hasClass('js-stream')) {
+    if($this.hasClass('js-do-nothing')){
+      return false;
+    }
+    else if($this.hasClass('js-stream')) {
       window.location = "/stream";
     }
     else if($this.hasClass('js-community')) {
