@@ -253,9 +253,18 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     }
 
     if (insertAtIndex > -1){
+      // find the view we want to displace with this new view
+      var insertBeforeView = this._listItemViews[insertAtIndex];
+
       this._listItemViews.splice(insertAtIndex, 0, childView);
-      // adjusting for size of _intervalViews b/c DOM has views from both _intervalViews and _listItemViews
-      this.insertChildAt(childView, insertAtIndex+this._intervalViews.length);
+
+      if (insertBeforeView) {
+        // if there's a view to insert before, do so
+        this.insertChildBefore(childView, insertBeforeView.el);
+      } else {
+        // otherwise just insert the view in the standard way
+        this._insertChildView(childView);
+      }
     } else {
       //store a reference to all list item child views so they can be removed/left without
       //removing any other child views
