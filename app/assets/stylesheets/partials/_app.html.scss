@@ -65,9 +65,16 @@ a{
     .frame {
       max-width: $_singleColumn;
       margin: 1em auto;
-
-      .avatar {
-        margin-right: 1em;
+      .frame-footer {
+        .avatar {
+          margin-right: 1em;
+        }
+      }
+      .frame-likes {
+      }
+      .frame-likes:before,
+      .frame-likes-link {
+        vertical-align: middle;
       }
     }
 
@@ -85,6 +92,10 @@ a{
         line-height: 1.3;
         margin: 1em;
 
+        //non-normative overrides
+        .avatar {
+          font-size: 0.8em;
+        }
         .line-clamp {
           height: 4.6em;
         }
@@ -92,9 +103,9 @@ a{
           height: auto;
         }
       }
-      .avatar {
-        font-size: 0.8em;
-      }
+    }
+    .frame-likes {
+      font-size: 1.4em;
     }
     //non-normative
     .shelf--marketing_shares {
@@ -111,6 +122,12 @@ a{
         margin: 0.6em;
         padding: 2em;
       }
+    }
+    .shelf__block--push {
+      margin-top: 2em;
+    }
+    .shelf__block--center {
+      text-align: center;
     }
   }// eo shares
 
