@@ -39,6 +39,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   initialize : function() {
     this._setupTeardownModelBindings(this.model, true);
     libs.shelbyGT.ActiveHighlightListItemView.prototype.initialize.call(this);
+
+    // make a note that a frame of this type was displayed, so we that we can periodically aggregate a count
+    // of the different types of frames that were displayed and track it with GA
+    shelby.tracking.displayedFrameTypesQueue.push(this.model.getFirstFrame().getFrameDescription(this.model.get('primaryDashboardEntry')));
   },
 
   _cleanup : function(){

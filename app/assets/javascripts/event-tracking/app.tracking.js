@@ -8,8 +8,16 @@
 if (typeof(shelby) == 'undefined') {
   shelby = {};
 }
+if (typeof(shelby.tracking) == 'undefined') {
+  shelby.tracking = {};
+}
+
+// a queue of strings, each one representing the description of a type of frame that was displayed,
+// like "Frame", "Frame - Recommended", or "Frame - Search"
+shelby.tracking.displayedFrameTypesQueue = [];
 
 $(document).ready(function(){
+  // set up click tracking handler
   $(document).on('click', '.js-track-event', function(e){
     try{
       _gaq.push(['_trackEvent', $(e.currentTarget).data("ga_category"), $(e.currentTarget).data("ga_action"), $(e.currentTarget).data("ga_label")]);
@@ -17,6 +25,28 @@ $(document).ready(function(){
     }
     catch(e){}
   });
+
+  // set up periodic tracking of the number of different types of frames that have been displayed
+  setInterval(function(){
+    // if any frames have been displayed since the last interval
+    if (shelby.tracking.displayedFrameTypesQueue.length) {
+      // count the number frames of each type that were displayed
+      frameTypeCounts = _(shelby.tracking.displayedFrameTypesQueue).countBy(function(stringVal){ return stringVal;});
+      _(frameTypeCounts).each(function(value, key){
+        // track one event with the count for each frame type
+        shelby.trackEx({
+          providers : ['ga'],
+          gaCategory : key,
+          gaAction : 'displayed',
+          gaLabel : shelby.models.user.get('nickname'),
+          gaValue : value,
+        });
+      });
+      // reset the queue so it can start collecting a new record of types of frames displayed until the next tracking interval
+      shelby.tracking.displayedFrameTypesQueue.length = 0;
+    }
+  }, 3000);
+
 });
 
 _(shelby).extend({
