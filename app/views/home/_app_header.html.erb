@@ -1,0 +1,71 @@
+<% if Rails.env == "staging" %>
+  <span class="shelby-title-staging"><%= Settings::Branch.branch %></span>
+<% end %>
+
+<span class="shelby-logo visuallydisabled js-home js-track-event" data-ga_category="Share Page" data-ga_action="Logo">
+  <h1 class="shelby_logo">
+    <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+  </h1>
+</span>
+
+<% if !@is_mobile %>
+  <%
+    userNickname = ((@current_user && @current_user['nickname']) || 'anonymous')
+  %>
+  <nav id="js-guide-presentation-selector" class="guide-presentation-selector">
+    <ul class="js-content-selector list list--inline app_nav clearfix">
+      <% if @user_signed_in %>
+        <li class="list__item">
+          <button class="app_nav__button js-stream js-track-event" data-ga_category="Share Page" data-ga_action="Stream" data-ga_label="<%= userNickname %>">
+            Stream
+          </button>
+        </li>
+
+        <li class="list__item js-community-menu">
+          <button class="app_nav__button js-community js-track-event" data-ga_category="Share Page" data-ga_action="Community" data-ga_label="<%= userNickname %>">
+            Community
+          </button>
+        </li>
+
+        <li class="list__item js-guide-me js-track-event" data-ga_category="Share Page" data-ga_action="Me" data-ga_label="<%= userNickname %>">
+          <button class="app_nav__button js-me">
+            Me
+          </button>
+        </li>
+
+        <li class="dropdown_module list__item secondary-item guide-login">
+          <button class="dropdown_button app_nav__button app_nav__button--settings js-do-nothing" data-ga_category="Share Page" data-ga_action="Settings" data-ga_label="<%= userNickname  %>" type="button">
+            <%
+              avatar = avatar_url_for_user(@current_user)
+            %>
+            <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
+              <%= userNickname %> <span class="icon-carrot"></span>
+          </button>
+
+          <section class="dropdown_section settings-section">
+            <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
+
+              <%= render :partial => 'objects/user_subnav', :locals => { :userNickname => userNickname } %>
+
+            </div>
+          </section>
+        </li><!-- eo login button/dropdown -->
+      <% else %>
+        <li class="dropdown_module list__item secondary-item guide-login">
+          <button class="dropdown_button app_nav__button js-do-nothing" type="button">
+            Log In <span class="icon-carrot"></span>
+          </button>
+
+          <div class="dropdown_section login-section">
+            <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
+
+                <%= render :partial => 'objects/login_form' %>
+
+            </div>
+          </div>
+        </li><!-- eo login button/dropdown -->
+      <% end %>
+
+    </ul><!-- eo guide-presentation-list -->
+  </nav>
+<% end %>

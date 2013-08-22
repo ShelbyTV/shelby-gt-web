@@ -6,7 +6,6 @@ class RollController < ApplicationController
   # I'm supporting this, but can't think of who uses/needs this route...
   #
   def show
-
     if user_signed_in?
       render '/home/app'
     else

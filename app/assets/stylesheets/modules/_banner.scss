@@ -1,0 +1,34 @@
+/*
+
+    Banner module
+    a simple 'ad banner', if you will.
+
+*/
+
+
+//BLOCK
+.banner {
+  font-size: $font-size-button;
+  font-weight: bold;
+  text-align: center;
+}   //MODIFIERS
+    //color
+    .banner--green {
+      background-color: $ui-green;
+      color: $ui-white;
+
+      .banner__link {
+        color: inherit;
+      }
+    }
+    //usage
+    .banner--app_store {
+    }
+
+//ELEMENTS
+.banner__block {
+
+}
+.banner__link {
+
+}

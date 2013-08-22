@@ -1,0 +1,31 @@
+/*
+
+    Video module, not the app videoplayer.
+
+*/
+
+// BLOCK
+.video__wrapper {
+  height: 0;
+  position: relative;
+  padding-top: 56.25%; // 16:9
+
+  // ELEMENTS
+  iframe,
+  embed,
+  object {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+    // MODIFIERS
+    .video__wrapper--10_6 {
+      padding-top: 62.5%;
+    }
+    .video__wrapper--4_3 {
+      padding-top: 75%; // 16:9
+    }
+

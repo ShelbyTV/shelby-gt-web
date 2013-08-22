@@ -163,16 +163,30 @@ class HomeController < ApplicationController
   # GET /:user_name/shares(/:frame_id)
   #
   def shares
+
     user_id_or_nickname = params[:user_id_or_nickname]
     user = Shelby::API.get_user(user_id_or_nickname)
-    if user
-      @user = user
-      @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
-    end
-    @frame = Shelby::API.get_frame(params[:frame_id], true) if params[:frame_id]
-    @video = @frame['video'] if @frame
 
-    render '/home/app'
+    @user = user if user
+    @user_signed_in = user_signed_in?
+    @current_user = Shelby::API.get_user(current_user_id) if @user_signed_in
+    @current_user_nickname = (@current_user['nickname'] if @current_user) || 'Anonymous'
+
+    if(params[:frame_id])
+      @frame = Shelby::API.get_frame(params[:frame_id], true)
+      @video = @frame['video'] if @frame
+
+      @is_mobile = is_mobile?
+
+      if request.env['HTTP_REFERER']
+        ref = request.env['HTTP_REFERER']
+        @has_referer = ref.match(/fiddle|twitter|facebook/)
+      end
+
+      render '/home/shares'
+    else
+      render '/home/app'
+    end
   end
 
   ##

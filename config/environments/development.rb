@@ -30,4 +30,10 @@ ShelbyGtWeb::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # prevent sass from intense caching
+  config.sass.cache = false
+
+  # black magic
+  config.assets.cache_store = :null_store
 end
