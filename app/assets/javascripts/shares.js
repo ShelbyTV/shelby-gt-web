@@ -5,7 +5,7 @@
 
 $(document).ready(function(){
   var loc = shelbyTrackingCategory || "Share Page",
-      username = shelbyTrackingLabel || "anonymous" ;
+      username = shelbyTrackingLabel || "Anonymous" ;
 
   shelby.trackEx({
     providers : ['ga'],

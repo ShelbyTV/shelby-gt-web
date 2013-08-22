@@ -21,7 +21,7 @@
         avatar = avatar_url_for_user(@user)
         userNickname = @user['nickname']
       %>
-      <a href="/<%= userNickname %>" class="js-track-event" data-ga_category="Share Page" data-ga_action="Click Username" data-user_nickname="<%= userNickname %>">
+      <a href="/<%= userNickname %>" class="js-track-event" data-ga_category="Share Page" data-ga_action="Click Username" data-ga_label="<%= @current_user_nickname %>" data-user_nickname="<%= userNickname %>">
         <span class="image_module media_image avatar avatar--medium" style="background-image: url(<%= avatar %>);" role="img">
           <img src="<%= avatar %>" class="cloaked" title="<%= userNickname %>" alt="<%= userNickname %>">
         </span>
@@ -33,7 +33,7 @@
         </span>
 
         <p class="xuser-data">
-          <a href="/<%= userNickname %>" class="js-track-event no-faux-link" data-ga_category="Share Page" data-ga_action="Click Username" data-user_nickname="<%= userNickname %>"><strong><%= userNickname %></strong></a>
+          <a href="/<%= userNickname %>" class="js-track-event no-faux-link" data-ga_category="Share Page" data-ga_action="Click Username" data-ga_label="<%= @current_user_nickname %>" data-user_nickname="<%= userNickname %>"><strong><%= userNickname %></strong></a>
         </p>
 
         <% message = @frame['conversation']['messages'][0]['text'] if @frame['conversation'] and @frame['conversation']['messages'] and @frame['conversation']['messages'][0] %>

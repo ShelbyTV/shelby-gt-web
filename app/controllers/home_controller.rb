@@ -170,6 +170,7 @@ class HomeController < ApplicationController
     @user = user if user
     @user_signed_in = user_signed_in?
     @current_user = Shelby::API.get_user(current_user_id) if @user_signed_in
+    @current_user_nickname = (@current_user['nickname'] if @current_user) || 'Anonymous'
 
     if(params[:frame_id])
       @frame = Shelby::API.get_frame(params[:frame_id], true)

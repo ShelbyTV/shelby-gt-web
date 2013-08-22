@@ -21,7 +21,7 @@
 
   <script>
     var shelbyTrackingCategory = "Share Page",
-        shelbyTrackingLabel<%= raw " = '#{@current_user['nickname'] if @current_user }'"%>;
+        shelbyTrackingLabel<%= raw " = '#{@current_user_nickname}'" %>;
   </script>
 
   <%= stylesheet_link_tag "screen", :media => "screen" %>
