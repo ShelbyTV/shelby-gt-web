@@ -1,9 +1,19 @@
-//progressive enhancement: jquery.fitvid
 //= require jquery
-//= require_tree ./shares
+//= require ./jquery-plugins/jquery.urlparams.js
+//= require ./backbone/underscore.js
 //= require ./event-tracking/landing.tracking
 
 $(document).ready(function(){
+  var loc = shelbyTrackingCategory || "Share Page",
+      username = shelbyTrackingLabel || "anonymous" ;
+
+  shelby.trackEx({
+    providers : ['ga'],
+    gaCategory : loc,
+    gaAction : 'Visit page',
+    gaLabel : username
+  });
+
   //imitation handling
   $('.js-toggle-comment').on('click',function(){
     var $this = $(this);

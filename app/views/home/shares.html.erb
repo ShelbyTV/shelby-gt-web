@@ -20,7 +20,8 @@
   <link rel="icon"type="image/png" href="/favicon.png">
 
   <script>
-    var shelbyTrackingCategory = "Share Page";
+    var shelbyTrackingCategory = "Share Page",
+        shelbyTrackingLabel<%= raw " = '#{@current_user['nickname'] if @current_user }'"%>;
   </script>
 
   <%= stylesheet_link_tag "screen", :media => "screen" %>

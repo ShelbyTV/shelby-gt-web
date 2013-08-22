@@ -21,7 +21,7 @@
         avatar = avatar_url_for_user(@user)
         userNickname = @user['nickname']
       %>
-      <a href="/<%= userNickname %>" class="js-goto-user-page" data-user_nickname="<%= userNickname %>">
+      <a href="/<%= userNickname %>" class="js-track-event" data-ga_category="Share Page" data-ga_action="Click Username" data-user_nickname="<%= userNickname %>">
         <span class="image_module media_image avatar avatar--medium" style="background-image: url(<%= avatar %>);" role="img">
           <img src="<%= avatar %>" class="cloaked" title="<%= userNickname %>" alt="<%= userNickname %>">
         </span>
@@ -33,7 +33,7 @@
         </span>
 
         <p class="xuser-data">
-          <a href="/<%= userNickname %>" class="js-track-event no-faux-link" data-ga_category="Share Page" data-ga_event="Click Username" data-user_nickname="<%= userNickname %>"><strong><%= userNickname %></strong></a>
+          <a href="/<%= userNickname %>" class="js-track-event no-faux-link" data-ga_category="Share Page" data-ga_action="Click Username" data-user_nickname="<%= userNickname %>"><strong><%= userNickname %></strong></a>
         </p>
 
         <% message = @frame['conversation']['messages'][0]['text'] if @frame['conversation'] and @frame['conversation']['messages'] and @frame['conversation']['messages'][0] %>
@@ -50,7 +50,7 @@
         <% @frame['upvoters'].each do |liker| %>
         <% avatar = liker['has_shelby_avatar'] ? avatar_url_for_user(liker) : liker['user_image'] %>
           <li>
-            <a class="image_module avatar avatar--tiny frame-likes-link js-actor-avatar-link js-track-event" style="background-image: url(<%= avatar %>)" href="/<%= liker['nickname'] %>" data-ga_category="Share Page" data-ga_action="click avatar for liker" data-ga_label="<%= liker['name'] %>">
+            <a class="image_module avatar avatar--tiny frame-likes-link js-track-event" style="background-image: url(<%= avatar %>)" href="/<%= liker['nickname'] %>" data-ga_category="Share Page" data-ga_action="click avatar for liker" data-ga_label="<%= liker['nickname'] %>">
               <img class="visuallyhidden" src="<%= avatar %>" title="<%= liker['name'] %>" alt="<%= liker['name'] %>">
             </a>
           </li>
