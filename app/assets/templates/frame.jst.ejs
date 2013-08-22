@@ -32,7 +32,7 @@
     <div class="frame-body">
       <ul class="list list--inline frame-menu" role="menubar">
         <li class="list__item" role="menuitem">
-          <button class="button_primer button_green button_command button_command--roll js-share-frame js-track-event" data-ga_category="Frame" data-ga_action="Click roll" data-ga_label="<%= userNickname %>">
+          <button class="button_primer button_green button_command button_command--roll js-share-frame">
             <span class="icon icon-roll"></span>Share…
           </button>
         </li>
@@ -61,7 +61,7 @@
       </ul><!-- eo frame-menu -->
 
       <!-- TODO: should maybe use the thumbnail module JST -->
-      <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %> js-track-event" data-ga_category="Frame" data-ga_action="Click frame to play" data-ga_label="<%= shelby.models.user.get('nickname') %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
+      <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate<%= (!videoThumbnail) ? ' missing-thumbnail' : '' %>" style="background-image: url('<%= videoThumbnail %>');" role="img">
         <img class="visuallyhidden" src="<%= videoThumbnail %>" title="<%- videoTitle %>" alt="<%- videoTitle %> thumbnail">
       </a>
       <div class="xvideo-unplayable-thumbnail-overlay">⏏<br/><%= (browserNeedsFlash) ? 'flash needed' : 'unplayable' %></div>

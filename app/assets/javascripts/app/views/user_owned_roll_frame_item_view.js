@@ -86,7 +86,7 @@ libs.shelbyGT.UserOwnedRollFrameItemView = libs.shelbyGT.ActiveHighlightListItem
 
   _queueVideo : function() {
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-      this._frame.like();
+      this._frame.like({likeOrigin: this._frame.getFrameDescription(this.model.get('primaryDashboardEntry'))});
       this._updateQueueButton(true);
     }
   },

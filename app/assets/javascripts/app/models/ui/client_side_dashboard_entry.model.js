@@ -13,7 +13,7 @@ libs.shelbyGT.ClientSideDashboardEntryModel = libs.shelbyGT.DashboardEntryModel.
   },{
     type : Backbone.HasOne,
     key : 'src_frame',
-    relatedModel : 'libs.shelbyGT.ClientSideFrameModel',
+    relatedModel : 'libs.shelbyGT.FrameModel',
     createModels : true
   }],
 

@@ -186,30 +186,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       playlistRollId : _playlistRollId
     });
 
-    // if we're on a .tv, track clicks on frames
-    if ($('body').hasClass('js-isolated-roll')) {
-      // determine whether this frame is on the user's personal roll or some other roll they created
-      // for GA tracking purposes we'll use a binary integer value - 0 means on personal roll, 1 means on some other roll
-      var onSecondaryRollBinary;
-      if (frame.has('roll')) {
-        var rollType = frame.get('roll').get('roll_type');
-        if (rollType == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
-            rollType == libs.shelbyGT.RollModel.TYPES.special_public_upgraded) {
-          onSecondaryRollBinary = 0;
-        } else {
-          onSecondaryRollBinary = 1;
-        }
-      } else {
-        onSecondaryRollBinary = 1;
-      }
-      // now call the event tracking code, using the binary we calculated as the event value
-      shelby.trackEx({
-        gaCategory : '.TV',
-        gaAction : 'Click on frame',
-        gaLabel : shelby.models.user.get('nickname'),
-        gaValue : onSecondaryRollBinary
-      });
-    }
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : frame.getFrameDescription(this.model.get('primaryDashboardEntry')),
+      gaAction : 'Click frame to play',
+      gaLabel : shelby.models.user.get('nickname'),
+    });
+
   },
 
   // override ActiveHighlightListItemView abstract method
@@ -229,13 +212,21 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       this.model.getFirstFrame(),
       this.model.get('primaryDashboardEntry')
     );
+
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : this.model.getFirstFrame().getFrameDescription(this.model.get('primaryDashboardEntry')),
+      gaAction : 'Click share',
+      gaLabel : shelby.models.user.get('nickname'),
+    });
   },
 
   _onClickQueue : function(){
     if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){ return; }
 
     self = this;
-    this.model.getFirstFrame().like();
+    var frame = this.model.getFirstFrame();
+    frame.like({likeOrigin: frame.getFrameDescription(this.model.get('primaryDashboardEntry'))});
     // immediately change the button state
     this.$('.js-queue-frame').addClass('queued');
     this.$('.js-queue-frame .label').text('Liked');

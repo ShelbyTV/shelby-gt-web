@@ -210,12 +210,6 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     return (messages && messages.length && creator && creator.id == messages.at(0).get('user_id'));
   },
 
-  // return a boolean specifying whether or not this frame is eligible to have recommendations
-  // displayed after it
-  doShowRecommendationsAfter : function() {
-    return true;
-  },
-
   // return a description of what information should be used to present this frame's origin
   originInfoType : function() {
     return libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.creator;
@@ -224,6 +218,16 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
   // whether or not the frame can be reRolled, false means it can only be added via URL
   canReRoll : function() {
     return true;
+  },
+
+  // return a string used to describe what type of frame this is for event tracking
+  // pass in a db entry if you want to include some information about the dbentry in the description
+  getFrameDescription : function(parentDbe) {
+    if (parentDbe && parentDbe.isRecommendationEntry()) {
+      return "Frame - Recommended";
+    } else {
+      return "Frame";
+    }
   }
 
 });

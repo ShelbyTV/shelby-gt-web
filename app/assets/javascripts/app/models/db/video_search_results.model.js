@@ -71,7 +71,7 @@ libs.shelbyGT.VideoSearchResultsModel = libs.shelbyGT.ShelbyBaseModel.extend({
         }
       },
       {
-        clientSideFrameType : 'search'
+        clientSideFrameType : 'Search'
       });
     });
   }

@@ -5,7 +5,7 @@
 // backend
 libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
 
-  _clientSideFrameType : 'none',
+  _clientSideFrameType : null,
 
   constructor : function(attributes, options) {
     if (options) {
@@ -45,7 +45,12 @@ libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
   --saveToWatchLater currently deprecated as its functionality is subsumed under the next method, like()--
   */
 
-  like : function() {
+  like : function(options) {
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      likeOrigin : 'Frame'
+    }).value();
+
     // in the current state of things it doesn't make any sense for a logged out user to "like" a frame
     // that doesn't exist anywhere persistent
     if (!shelby.models.user.isAnonymous()) {
@@ -78,7 +83,7 @@ libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
     // different tracking for like action on client side frames
     shelby.trackEx({
       providers : ['ga', 'kmq'],
-      gaCategory : "special " + this._clientSideFrameType + " frame",
+      gaCategory : options.likeOrigin,
       gaAction : 'liked',
       gaLabel : shelby.models.user.get('nickname')
     });
@@ -124,12 +129,6 @@ libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
     return (messages && messages.length);
   },
 
-  // return a boolean specifying whether or not this frame is eligible to have recommendations
-  // displayed after it
-  doShowRecommendationsAfter : function() {
-    return false;
-  },
-
   // return a description of what information should be used to present this frame's origin
   originInfoType : function() {
     return libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.videoProvider;
@@ -138,6 +137,16 @@ libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
   // whether or not the frame can be reRolled, false means it can only be added via URL
   canReRoll : function() {
     return false;
+  },
+
+  // return a string used to describe what type of frame this is for event tracking
+  // pass in a db entry if you want to include some information about the dbentry in the description
+  getFrameDescription : function(parentDbe) {
+    if (this._clientSideFrameType) {
+      return ("Frame - " + this._clientSideFrameType);
+    } else {
+      return libs.shelbyGT.FrameModel.prototype.getFrameDescription.call(this, parentDbe);
+    }
   }
 
 });

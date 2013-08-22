@@ -139,16 +139,6 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     // current frame changed, so we don't have the right shortlink anymore
     this._currentFrameShortlink = null;
     this.render();
-    // track an event of how many recommendations we have to show for this video
-    if (activeFrameModel.doShowRecommendationsAfter()) {
-      shelby.trackEx({
-        providers : ['ga'],
-        gaCategory : 'Video Recommendations',
-        gaAction : 'Could be shown',
-        gaLabel : activeFrameModel.get('video').id,
-        gaValue : activeFrameModel.get('video').get('recs').length
-      });
-    }
   },
 
   _onplaylistFrameGroupCollectionChange : function(playlistManagerModel, playlistFrameGroupCollection){
