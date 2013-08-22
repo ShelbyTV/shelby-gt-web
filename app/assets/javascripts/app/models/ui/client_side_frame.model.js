@@ -94,9 +94,9 @@ libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
 
   likeMessage : function() {
     if (this._clientSideFrameType == 'search') {
-      return "added to shelby via a video search";
+      return "I like this video that I found with Shelby video search.";
     } else {
-      return null;
+      return "I like this video that Shelby recommended to me.";
     }
   },
 
