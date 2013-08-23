@@ -180,7 +180,7 @@ class HomeController < ApplicationController
 
       if request.env['HTTP_REFERER']
         ref = request.env['HTTP_REFERER']
-        @has_referer = ref.match(/fiddle|twitter|facebook/)
+        @has_referer = ref.match(/twitter|facebook|t.co/)
       end
 
       render '/home/shares'
