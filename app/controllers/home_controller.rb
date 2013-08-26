@@ -181,6 +181,7 @@ class HomeController < ApplicationController
     @user_signed_in = user_signed_in?
     @current_user = Shelby::API.get_user(current_user_id) if @user_signed_in
     @current_user_nickname = (@current_user['nickname'] if @current_user) || 'Anonymous'
+    @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
 
     if(params[:frame_id])
       @frame = Shelby::API.get_frame(params[:frame_id], true)
