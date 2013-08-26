@@ -5,7 +5,7 @@
     </h2>
 
     <p>
-      Sign up to see what your friends are sharing<%= " on #{@has_referer[0].capitalize}" if @has_referer %>.
+      Sign up to see what your friends are sharing<%= " on #{(@has_referer == 't.co') ? 'Twitter' : @has_referer[0].capitalize}" if @has_referer %>.
     </p>
 
     <% if !@is_mobile %>

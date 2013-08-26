@@ -181,7 +181,6 @@ class HomeController < ApplicationController
       if request.env['HTTP_REFERER']
         ref = request.env['HTTP_REFERER']
         @has_referer = ref.match(/twitter|facebook|t.co/)
-        @has_referer = 'twitter' if (@has_referer == 't.co')
       end
 
       render '/home/shares'
