@@ -1,7 +1,7 @@
 ( function(){
 
   // shorten names of included library prototypes
-  var InlineCommunityPromoView = libs.shelbyGT.InlineCommunityPromoView;
+  var InlineFeaturedPromoView = libs.shelbyGT.InlineFeaturedPromoView;
   var PagingListView = libs.shelbyGT.PagingListView;
   var InlineRollPromoView = libs.shelbyGT.InlineRollPromoView;
   var InlineDonatePromoView = libs.shelbyGT.InlineDonatePromoView;
@@ -39,7 +39,7 @@
           playlistType : this.playlistType
         };
       },
-      noMoreResultsViewProto : InlineCommunityPromoView,
+      noMoreResultsViewProto : InlineFeaturedPromoView,
       pagingKeySortOrder : -1,
       playlistType : PlaylistType.dashboard
     }),

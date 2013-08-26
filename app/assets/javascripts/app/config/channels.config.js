@@ -8,6 +8,11 @@ shelby.config.channels = {
   'community' : {
     title : 'community',
     id: '515d83ecb415cc0d1a025bfe',
+    includeInNav : false
+  },
+  'featured' : {
+    title : 'featured',
+    id: '521264b4b415cc44c9000001',
     includeInNav : true
   },
   'laugh' : {

@@ -9,7 +9,7 @@
 
     events : {
       "click .js-stream:not(.active-item)"   : "_goToStream",
-      "click .js-community"                  : "_goToCommunity",
+      "click .js-featured"                  : "_goToFeatured",
       "click .js-me"                         : "_goToMe",
       "click .js-mail"                       : "_goToMail",
       "click .js-admin"                      : "_goToAdmin",
@@ -52,9 +52,9 @@
       }
     },
 
-    _goToCommunity : function(e) {
+    _goToFeatured : function(e) {
       shelby.router.navigate(
-        "community",
+        "featured",
         {trigger:true}
       );
     },
@@ -108,7 +108,7 @@
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
         $setSelectedClassOn = this.$('.js-stream');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
-        $setSelectedClassOn = this.$('.js-community');
+        $setSelectedClassOn = this.$('.js-featured');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-me');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll &&

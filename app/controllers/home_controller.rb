@@ -114,6 +114,16 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles featured view when visited directly (allowing logged-out users to see it)
+  #
+  # GET /featured
+  #
+  def featured
+    render '/home/app'
+  end
+
+
+  ##
   # Handles channels view when visited directly (allowing logged-out users to see it)
   #
   # GET /channels

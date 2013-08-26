@@ -31,8 +31,8 @@ $(document).ready(function(){
     else if($this.hasClass('js-stream')) {
       window.location = "/stream";
     }
-    else if($this.hasClass('js-community')) {
-      window.location = "/community";
+    else if($this.hasClass('js-featured')) {
+      window.location = "/featured";
     }
     else if($this.hasClass('js-me')) {
       var username = $('.app_nav__button--settings').text().trim();
