@@ -33,9 +33,9 @@
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
       <%# if @signup_on_landing == :yes %>
-        <%= render :partial => "/home/shelf/sign_up" %>
+        <%#= render :partial => "/home/shelf/sign_up" %>
       <%# else %>
-        <%#= render :partial => "/home/shelf/call_to_action" %>
+        <%= render :partial => "/home/shelf/call_to_action" %>
       <%# end %>
 
       <%= render :partial => "/home/shelf/stream" %>
