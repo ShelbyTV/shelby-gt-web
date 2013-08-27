@@ -76,6 +76,7 @@
     _renderRollingFormChild: function(roll){
       this._rollingForm = new libs.shelbyGT.RollingFormView({
         currentFrameShortlink : this._currentFrameShortlink,
+        dashboardEntry : this.options.guideOverlayModel.get('activeGuideOverlayDashboardEntry'),
         frame: this.model,
         roll: roll
       });
