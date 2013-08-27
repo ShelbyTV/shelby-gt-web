@@ -38,6 +38,7 @@
       this._roll = this.options.roll;
       this._frame = this.options.frame;
       this._video = this.options.frame.get('video');
+      this._dashboardEntry = this.options.dashboardEntry;
     },
 
     render : function(){
@@ -135,9 +136,11 @@
             self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
               url : newFrame.shareUrl(),
               success : function(){
-                shelby.track('shared_frame',{destination: shareDests.join(", ")});
+                self._trackShare(shareDests);
               }
             });
+          } else {
+            self._trackShare();
           }
         });
       } else {
@@ -210,9 +213,11 @@
             self._frameRollingState.get('shareModel').save({destination: shareDests, text: message}, {
               url : newFrame.shareUrl(),
               success : function(){
-                shelby.track('shared_frame',{destination: shareDests.join(", ")});
+                self._trackShare(shareDests);
               }
             });
+          } else {
+            self._trackShare();
           }
         },
         error: function(a,b,c){
@@ -222,6 +227,23 @@
       });
     },
 
+
+    _trackShare : function(destinations) {
+      if (!destinations) {
+        destinations = [];
+      }
+
+      shelby.trackEx({
+        providers : ['ga', 'kmq'],
+        gaCategory : this._frame.getFrameDescription(this._dashboardEntry),
+        gaAction : 'shared',
+        gaLabel : shelby.models.user.get('nickname'),
+        gaValue : destinations.length,
+        kmqProperties : {
+          'outbound destination': destinations.join(", "),
+        }
+      });
+    },
 
     _shareToFacebook : function(e){
       e.preventDefault();
