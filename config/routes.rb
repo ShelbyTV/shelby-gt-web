@@ -52,6 +52,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/team' => 'home#team'
   get '/hash_app' => 'home#hash_app'
   get '/community(/:entry_id)' => "home#community"
+  get '/featured(/:entry_id)' => "home#featured"
   get '/channels(*path)' => "home#channels"
   get '/search' => "home#search"
   get '/learn_more' => "home#learn_more"

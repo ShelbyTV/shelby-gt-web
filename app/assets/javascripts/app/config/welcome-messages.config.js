@@ -5,9 +5,9 @@ shelby.config.welcomeMessages = {
     button: "Play Your Stream"
   },
   channel: {
-    header: "Meet the Shelby Commuity",
-    message: "This stream is what the Shelby community is up to. Watch, discover, enjoy!",
-    button: "Got it!"
+    header: "Featured on Shelby",
+    message: "This stream is what we think of as the best video on Shelby right now. Watch, discover, enjoy!",
+    button: "Play video!"
   },
   ownShares: {
     header: "Welcome to your Profile",
