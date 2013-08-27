@@ -16,6 +16,7 @@ class SeovideoController < ApplicationController
   # info is put into member variables that are accessed by the layout and template
   #
   def show
+    @seo_video = true # let app header know this is an seo page
     # Consider errors and render seovideo page
     @auth_failure  = params[:auth_failure] == '1'
     @auth_strategy = params[:auth_strategy]
