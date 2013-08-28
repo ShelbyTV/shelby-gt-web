@@ -156,6 +156,11 @@
   border-top-width: 0px;
   border-bottom-width: 1px;
   text-align: center;
+
+  // non-normative override
+  .word-clamp {
+    max-width: 36%;
+  }
 }
     .frame__tab--facebook {
       background-color: transparentize($facebook-blue, .95);

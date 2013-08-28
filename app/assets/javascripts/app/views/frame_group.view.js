@@ -328,6 +328,13 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       function(response){
         if(response){
           var notificationOpts;
+          // event tracking
+          var trackingOpts = {
+            providers : ['ga'],
+            gaCategory : "Frame",
+            gaAction : 'Facebook Invite Success',
+            gaLabel : shelby.models.user.get('nickname')
+          };
 
           if(response.success) {
             notificationOpts = {
@@ -340,7 +347,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
               }
             };
           }
-          else { //if fail
+          else {
+            // if non-success
+            trackingOpts.gaAction = "Facebook Invite Error";
+
             notificationOpts = {
               message: "<p>Oops! Something went wrong, try again.</p>",
               button_primary : {
@@ -352,6 +362,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
             };
           }
 
+          shelby.trackEx(trackingOpts);
           shelby.alert(notificationOpts);
         }
       });
