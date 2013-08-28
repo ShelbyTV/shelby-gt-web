@@ -65,6 +65,10 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
       case 'friends':
         this.renderChildInto(new libs.shelbyGT.UserPreferencesFriendsView(viewData),this._container);
         break;
+      case 'sources':
+        viewData.rollCategories = shelby.models.onboardingRollCategories;
+        this.renderChildInto(new libs.shelbyGT.UserPreferencesSourcesView(viewData),this._container);
+        break;
       default:
         shelby.router.navigate('/preferences/profile',{trigger:true});
         break;
