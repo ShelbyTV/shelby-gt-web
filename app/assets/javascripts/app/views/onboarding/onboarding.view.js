@@ -52,6 +52,9 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
           });
         }
       });
+    } else if (currentStage == 1) {
+      shelby.models.user.get('app_progress').advanceStage('onboarding', currentStage);
+      shelby.router.navigate('onboarding/2?authed_with=facebook', {trigger: true, replace: true});
     } else {
       shelby.models.user.get('app_progress').advanceStage('onboarding', currentStage);
       shelby.router.navigate('onboarding/' + (parseInt(currentStage, 10) + 1), {trigger: true, replace: true});
