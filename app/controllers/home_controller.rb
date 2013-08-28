@@ -79,8 +79,9 @@ class HomeController < ApplicationController
 
           # A/B tests
           #@landing_messaging_v2 = ab_test :landing_messaging_v2
-          @signup_on_landing = ab_test :signup_on_landing
-          session[:signup_on_landing] = @signup_on_landing
+          #@signup_on_landing = ab_test :signup_on_landing
+          @signup_w_fb = ab_test :signup_w_fb
+          session[:signup_w_fb] = @signup_w_fb
 
           render '/home/landing'
         end

@@ -106,6 +106,10 @@
         margin: 0 auto;
         max-width: 100%;
       }
+
+      .shelf__email-signup {
+        color: lighten($text,20%);
+      }
     }
 
     .shelf--signup {
@@ -383,7 +387,7 @@
 //  Elements
 //------------------------------------------------------------------------------
 .shelf__lining {
-  padding: 2em 3em;
+  padding: 1em 3em;
 }
 
 .shelf__h1 {
