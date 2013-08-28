@@ -14,6 +14,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   events : {
     "click .js-creation-date"               : "_expand",
     "click .js-goto-user-page"              : "_goToUserPage",
+    "click .js-invite-faux-user"            : "_inviteFauxUser",
     "click .js-frame-activate"              : "_activate",
     "click .js-frame-source"                : "_goToSourceRoll",
     "click .js-queue-frame:not(.queued)"    : "_onClickQueue",
@@ -314,5 +315,46 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     e.preventDefault();
 
     shelby.router.navigate(this.model.get('frames').at(0).get('originator').get('nickname'),{trigger:true});
+  },
+
+  _inviteFauxUser : function(e) {
+    // all of the "invite faux user" code is written strictly for Facebook only.
+    if(typeof FB != "undefined") {
+      FB.ui({
+        link   : 'http://shelby.tv/signup/' + shelby.models.user.id,
+        method : 'send',
+        to     : $(e.currentTarget).data('faux-id')
+      },
+      function(response){
+        if(response){
+          var notificationOpts;
+
+          if(response.success) {
+            notificationOpts = {
+              message: "<p>Message sent!</p>",
+              button_primary : {
+                title: 'Dismiss'
+              },
+              button_secondary : {
+                title: null
+              }
+            };
+          }
+          else { //if fail
+            notificationOpts = {
+              message: "<p>Oops! Something went wrong, try again.</p>",
+              button_primary : {
+                title: 'Ok'
+              },
+              button_secondary : {
+                title: null
+              }
+            };
+          }
+
+          shelby.alert(notificationOpts);
+        }
+      });
+    }
   }
 });

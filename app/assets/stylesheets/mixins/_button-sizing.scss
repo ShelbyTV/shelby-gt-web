@@ -193,10 +193,6 @@
   }
 }
 
-.button_explore {
-    @include button-sizing(explore-rolls);
-}
-
 .button_wide {
     @include button-sizing(wide);
 }

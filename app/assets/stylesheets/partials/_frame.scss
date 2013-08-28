@@ -80,6 +80,11 @@
         min-height: 222px;
       }
     }
+    .frame--faux_user {
+      .frame-body-wrapper {
+        border-bottom: none;
+      }
+    }
 
 .frame-list-item {
   border-bottom: 1px solid $inset;
@@ -136,6 +141,46 @@
 .frame-footer {
 
 }
+
+//------------------------------------------------------------------------------
+//  psuedo block: frame__tab
+//  the rounded clickable button-like footer notification!
+//------------------------------------------------------------------------------
+.frame__tab {
+  @include roundies(footer);
+
+  border-color: rgba(0,0,0,.2);
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  border-bottom-width: 1px;
+  text-align: center;
+}
+    .frame__tab--facebook {
+      background-color: transparentize($facebook-blue, .95);
+
+      &:visited,
+      .frame__link {
+        border-bottom: 1px solid transparentize($facebook-blue,.6);
+        color: $facebook-blue;
+      }
+
+      &:hover {
+        background-color: transparentize($facebook-blue, .85);
+        color: #444;
+
+        .frame__link {
+          border-bottom: 1px solid $facebook-blue;
+        }
+      }
+
+      &:active {
+        color: $facebook-blue;
+        background-color: transparentize($facebook-blue, .6);
+      }
+    }
+
 
 .frame-subsection,
 .frame-subline {
