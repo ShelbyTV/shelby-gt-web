@@ -43,3 +43,11 @@
     content: "Hide";
   }
 }
+
+// use an override from the Block that you're using this class in to set a width
+.word-clamp {
+  @include ellipsis;
+
+  display: inline-block;
+  vertical-align: top;
+}

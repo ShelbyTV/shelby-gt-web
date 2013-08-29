@@ -15,13 +15,15 @@
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
 <% var isFauxUser = creator && creator.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.faux %>
+<% var originUser = creator && _(creator.get('authentications')).where({ provider : 'facebook' }) %>
+<% var inviteFauxUser = isFauxUser && originUser.length %>
+
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
 
 <% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- videocard -->
-
-<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable || browserNeedsFlash) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %>">
+<article id="<%= videoId %>" class="animate_module frame frame-list-item<%= (frameViewed) ? ' frame-collapsed' : ''%><%= (videoUnplayable || browserNeedsFlash) ? ' xvideo-unplayable' : ''%><%= (isViaSearch) ? ' via-search' : '' %><%= (frame.get('isFreshPlayNew')) ? ' fresh-play-new' : '' %><%= (inviteFauxUser) ? ' frame--faux_user' : '' %>">
   <a href="#" onclick="return false;" class="frame-header js-frame-activate">
     <h1 class="frame-title" title="<%- videoTitle %>">
      <%= videoTitle %>
@@ -130,6 +132,12 @@
       </footer><!-- eo .media_module-->
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
+
+  <% if (inviteFauxUser) { %>
+    <a class="button_primer button_standard frame__tab frame__tab--facebook one-whole js-invite-faux-user js-track-event" data-ga_category="Frame" data-ga_action="Click Invite via Facebook" data-ga_label="<%= userNickname %>" data-faux-id="<%= originUser[0].uid %>">
+      <span class="word-clamp word-clamp"><%= originUser[0].nickname %></span> isn't on Shelby, <strong class="frame__link">Invite them via Facebook</strong>
+    </a>
+  <% } %>
 
   <%= SHELBYJST['frame-aside'](obj) %>
 
