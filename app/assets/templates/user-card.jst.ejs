@@ -1,0 +1,23 @@
+<div class="user user--no_lining user--medium_avatar clearfix">
+  <div class="media_module media_module--bare clearfix">
+    <div class="media_image--rev">
+      <button class="button_primer button_command button_command--flexible button_gray user__button js-roll-button js-track-event" data-roll_id="<%= category.id %>" data-ga_category="<%= context %>" data-ga_action="Click follow source" data-ga_label="<%= category.get('display_title') %>">
+        <span class="button_label">Follow</span>
+      </button>
+    </div><!-- eo media_image--rev -->
+
+    <span class="media_image image_module avatar avatar--medium user__avatar" role="img" style="background-image:url(<%= category.get('display_thumbnail_src') %>);">
+      <img class="visuallyhidden" src="<%= category.get('display_thumbnail_src') %>"/>
+    </span><!-- eo media_image -->
+
+    <div class="media_body">
+      <h3 class="user__h1">
+        <%= category.get('display_title') %>
+      </h3>
+
+      <h4 class="user__h2">
+        <%= category.get('description') %>
+      </h4>
+    </div><!-- eo media_body -->
+  </div><!-- eo media_module -->
+</div><!-- eo user -->

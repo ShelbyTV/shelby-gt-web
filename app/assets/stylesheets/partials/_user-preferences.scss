@@ -114,3 +114,9 @@
     .preferences_page--friends {
 
     }
+    .preferences_page--sources {
+      .roll_categories {
+        font-size: 10px; //this resets the 1em to a reasonable size.
+        margin-top: 2em;
+      }
+    }
