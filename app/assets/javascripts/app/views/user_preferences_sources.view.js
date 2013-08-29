@@ -17,6 +17,7 @@ libs.shelbyGT.UserPreferencesSourcesView = libs.shelbyGT.UserPreferencesBaseView
       _rollCategories = this.options.rollCategories.get('roll_categories').models[0].get('rolls').models;
 
       this.appendChildInto(new libs.shelbyGT.FollowSourcesView({
+        clickableUser: true,
         context: 'Preferences',
         model : new libs.shelbyGT.OnboardingFollowSourcesViewModel(),
         rollCategories: _rollCategories

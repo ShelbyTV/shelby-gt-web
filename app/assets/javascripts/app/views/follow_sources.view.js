@@ -1,7 +1,12 @@
 libs.shelbyGT.FollowSourcesView = Support.CompositeView.extend({
 
+  tagName: 'ul',
+
+  className: 'list',
+
   events : {
-    "click .js-roll-button:not(.js-busy)" : "_follow"
+    "click .js-roll-button:not(.js-busy)" : "_follow",
+    "click .js-navigate-roll" : "_navigateRoll"
   },
 
   template : function(obj){
@@ -17,7 +22,12 @@ libs.shelbyGT.FollowSourcesView = Support.CompositeView.extend({
   render : function(){
     var self = this;
     _(this.options.rollCategories).each(function(category, index){
-      self.$el.append(self.template({category: category, index: index, context: self.options.context }));
+      self.$el.append(self.template({
+        category: category,
+        clickableUser: self.options.clickableUser,
+        context: self.options.context,
+        index: index
+      }));
     });
 
     return this;
@@ -49,5 +59,11 @@ libs.shelbyGT.FollowSourcesView = Support.CompositeView.extend({
     setTimeout(function(){
       $thisButton.removeClass('button_busy').children('.button_label').text('Following');
     }, 2000);
+  },
+
+  _navigateRoll : function(e) {
+    e.preventDefault();
+    var id = $(e.currentTarget).data('roll_id');
+    shelby.router.navigate('/roll/'+ id,{trigger:true,replace:false});
   }
 });

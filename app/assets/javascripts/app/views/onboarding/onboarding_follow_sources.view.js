@@ -28,8 +28,9 @@ libs.shelbyGT.OnboardingFollowSourcesView = Support.CompositeView.extend({
       _rollCategories = this.options.rollCategories.get('roll_categories').models[0].get('rolls').models;
 
       this.appendChildInto(new libs.shelbyGT.FollowSourcesView({
+        clickableUser: false,
         context: 'Onboarding',
-        model : this.model,
+        model: this.model,
         rollCategories: _rollCategories
       }), '.js-list-sources--onboarding');
     }

@@ -88,7 +88,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
         success: function(userModel, response) {
 
           // users created before the new onboarding was deployed are not eligible to be re-onboarded
-          var notEligibleForOnboarding = new Date(userModel.get('created_at')) < new Date("Thu, 01 Aug 2013 13:00:00 GMT-0400");
+          var notEligibleForOnboarding = false;//new Date(userModel.get('created_at')) < new Date("Thu, 01 Aug 2013 13:00:00 GMT-0400");
 
           // if the user is trying to view an isolated roll, don't show onboarding right now.
           if (/isolated-roll/.test(url)){
