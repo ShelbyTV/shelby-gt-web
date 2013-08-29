@@ -109,6 +109,9 @@
 
       .shelf__email-signup {
         color: lighten($text,20%);
+        @include basefont;
+        font-size: 0.8em;
+        margin-top: -0.5em;
       }
     }
 
@@ -387,7 +390,7 @@
 //  Elements
 //------------------------------------------------------------------------------
 .shelf__lining {
-  padding: 1em 3em;
+  padding: 0.7em 3em;
 }
 
 .shelf__h1 {
