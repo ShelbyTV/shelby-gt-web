@@ -23,7 +23,9 @@ $(document).ready(function(){
       _kmq.push(['record', action]);
       _gaq.push(['_trackEvent', category, action, label]);
     }
-    catch(e){};
+    catch(e){
+      console.log("error posting event:", category, action, label, e);
+    };
   };
 
 
