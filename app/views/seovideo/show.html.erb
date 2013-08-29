@@ -8,6 +8,8 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
+<%= render :partial => "signup_cta" %>
+
 <div class="shelby__wrapper clearfix">
   <%= render :partial => '/home/landing_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
 
@@ -68,10 +70,10 @@
               Related Videos
             </h3>
 
-            <ul class="seovideo__list seovideo__list--aside clearfix">
+            <ul class="seovideo__list seovideo__list--aside js-similar-video-list clearfix">
               <% @video_related_videos.each do |related_video| %>
                 <li class="seovideo__item">
-                  <a href="http://shelby.tv/video/<%= related_video["provider_name"] %>/<%= related_video["provider_id"] %>/<%= hyphenateString(related_video["title"]) %>"
+                  <a href="<%= Settings::Application.url %>/video/<%= related_video["provider_name"] %>/<%= related_video["provider_id"] %>/<%= hyphenateString(related_video["title"]) %>"
                     class="seovideo__link js-track-event" title="<%= related_video["title"] %>"
                     data-ga_category="SEO Video"
                     data-ga_action="Click on Related Video"

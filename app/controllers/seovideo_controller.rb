@@ -23,6 +23,8 @@ class SeovideoController < ApplicationController
     @access_error  = params[:access] == "nos"
     @invite_error  = params[:invite] == "invalid"
 
+    @from_similar_video = params[:s]
+
     # route guarantees provider_name and provider_id will exist
     @video_provider_name = params.delete(:provider_name)
     @video_provider_id = params.delete(:provider_id)

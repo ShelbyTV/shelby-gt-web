@@ -1,0 +1,20 @@
+$(document).on('ready', function(){
+  // avoiding bots:
+  // add parameter to all videos in similar section to trigger display of signup cta.
+  var $similar_videos = $('.js-similar-video-list a')
+  $similar_videos.each(function(i, a){
+    $(a).attr('href', $(a).attr('href') + '?s=1');
+  });
+
+
+  if (<%= from_similar_video ? true : false %> == true) {
+    // show this bad boy
+    $('.js-seo-signup-message').removeClass('hidden');
+    // let em close it
+    $('body').on('click', function(){
+      $('.js-seo-signup-message').addClass('hidden');
+    });
+  }
+});
+
+
