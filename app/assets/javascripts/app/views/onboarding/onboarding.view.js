@@ -14,6 +14,8 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
     shelby.models.guide.bind('change:onboardingStage', this._onOnboardingStageChange, this);
 
     $('.js-main-layout').after(this.el);
+
+    libs.utils.intercom.send('boot', shelby.models.user);
   },
 
   _cleanup : function() {

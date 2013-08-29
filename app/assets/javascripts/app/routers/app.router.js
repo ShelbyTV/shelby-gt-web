@@ -125,7 +125,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           userModel.trackSessionCount();
 
           libs.utils.flash.detectFlash();
-          libs.utils.intercom.boot(userModel);
+          libs.utils.intercom.send('boot', userModel);
           if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.dotTv) {
             libs.utils.userNotifications.init(userModel);
           }
