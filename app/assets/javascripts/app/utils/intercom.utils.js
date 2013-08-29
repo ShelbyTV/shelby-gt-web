@@ -2,7 +2,7 @@ libs.utils.intercom = {
   send : function(action, userModel){
     if(typeof(Intercom) !== "undefined"){
       try {
-        created_at = new Date(userModel.get('created_at').slice(0,10));
+        created_at = new Date(userModel.get('created_at'));
         created_at = created_at.getTime()/1000;
         should_send_emails = userModel.get('preferences')['email_updates'];
         Intercom(action, {
