@@ -64,6 +64,8 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
       shelby.models.user.get('app_progress').advanceStage('onboarding', currentStage);
       shelby.router.navigate('onboarding/' + (parseInt(currentStage, 10) + 1), {trigger: true, replace: true});
     }
+
+    libs.utils.intercom.send('update', shelby.models.user);
   },
 
   _onOnboardingStageChange : function(guideModel, stage){
