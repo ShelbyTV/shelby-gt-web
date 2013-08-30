@@ -16,6 +16,9 @@ $(document).on('ready', function(){
     // let em close it
     $('body').on('click', function(){
       $('.js-seo-signup-message').addClass('hidden');
+      try {
+        _gaq.push(['_trackEvent', 'SEO Video', 'Click on body with modal', "<%= request.referer || 'direct' %>"]);
+      } catch(e) {}
     });
   }
 });
