@@ -80,7 +80,9 @@
   display: block;
   top: 40px;
 }
-
+.welcome-message__wrapper--seo {
+  display: block;
+}
 //root
 .welcome-message {
   font-size: 1.2em;
@@ -107,6 +109,49 @@
       .welcome-message__subline {
         margin-top: 1em;
         padding: 0.6em;
+      }
+    }
+
+    .welcome-message--seo {
+      background-color: #f1f1f1;
+      padding: 20px;
+      text-align: center;
+      .welcome-message__h1--plain {
+        font-size: 1.8em;
+        line-height: 1.8em;
+      }
+      .welcome-message__h2 {
+        @include basefont;
+        font-size: 1.2em;
+        margin-top: 1em;
+      }
+      .welcome-message__button-wrapper {
+        text-align: center;
+      }
+      .button_command--seo {
+        width: 44%;
+        margin: 20px 0px 10px;
+      }
+      .email-signup {
+        text-align: center;
+        //color: lighten($text,20%);
+        @include basefont;
+        font-size: 1.1em;
+        margin-top: 0.5em;
+        a {
+          text-decoration: underline;
+        }
+      }
+      .button_facebook-blue {
+        //margin-right: 40px;
+      }
+      .close-me {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        text-transform: uppercase;
+        font-weight: 500;
+        cursor: pointer;
       }
     }
 //structure
