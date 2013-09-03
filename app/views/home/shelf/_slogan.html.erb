@@ -4,11 +4,7 @@
   <div class="shelf shelf--slogan">
     <div class="shelf__lining clearfix">
       <h2 class="shelf__h2">
-        <% if @seo_messaging_v2 == :powered_by_friends %>
-          <%= Settings::Marketing.powered_by_friends %>
-        <% elsif @seo_messaging_v2 == :discover_and_enjoy %>
-          <%= Settings::Marketing.discover_and_enjoy %>
-        <% end %>
+        <%= Settings::Marketing.discover_and_enjoy %>
       </h2>
     </div>
   </div><!-- eo shelf -->

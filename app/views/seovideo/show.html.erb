@@ -4,16 +4,18 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+
+<%= render :partial => "signup_cta" %>
 
 <div class="shelby__wrapper clearfix">
   <%= render :partial => '/home/landing_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
 
   <div class="seovideo__wrapper clearfix">
     <%= render :partial => '/home/shelf/errors' %>
-    <%= render :partial => '/home/shelf/slogan' %>
+    <%#= render :partial => '/home/shelf/slogan' %>
 
     <article role="main" class="seovideo<%= " seovideo--light" if @video_related_videos.empty? %>">
       <div class="seovideo__main">
@@ -41,11 +43,11 @@
 
             <ul class="seovideo__list seovideo__list--social">
               <li class="seovideo__item">
-                <div class="fb-like clearfix" data-href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="box_count" data-width="90" data-show-faces="false" data-font="arial"></div>
+                <div class="fb-like clearfix" data-href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="box_count" data-width="90" data-show-faces="false" data-font="arial" ></div>
               </li>
 
               <li class="seovideo__item">
-                <a href="https://twitter.com/share" class="twitter-share-button clearfix" data-url="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-count="none" data-text="<%= @video_title %> via @Shelby">Tweet</a>
+                <a href="https://twitter.com/share" class="twitter-share-button clearfix" data-url="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-count="none" data-text="<%= @video_title %> via @Shelby" data-destination="twitter">Tweet</a>
               </li>
 
               <li class="seovideo__item">
@@ -68,10 +70,10 @@
               Related Videos
             </h3>
 
-            <ul class="seovideo__list seovideo__list--aside clearfix">
+            <ul class="seovideo__list seovideo__list--aside js-similar-video-list clearfix">
               <% @video_related_videos.each do |related_video| %>
                 <li class="seovideo__item">
-                  <a href="http://shelby.tv/video/<%= related_video["provider_name"] %>/<%= related_video["provider_id"] %>/<%= hyphenateString(related_video["title"]) %>"
+                  <a href="<%= Settings::Application.url %>/video/<%= related_video["provider_name"] %>/<%= related_video["provider_id"] %>/<%= hyphenateString(related_video["title"]) %>"
                     class="seovideo__link js-track-event" title="<%= related_video["title"] %>"
                     data-ga_category="SEO Video"
                     data-ga_action="Click on Related Video"
@@ -174,55 +176,10 @@
   $(document).ready(function(){
     $('.js-search-form').on('submit', function(e){
       e.preventDefault();
+
       var searchQuery = $(e.currentTarget).find("#seovideo-search").val();
-
       if (searchQuery) {
-        if("<%= @is_mobile %>" !== "") {
-          var params = {
-            "q" : searchQuery,
-            "max-results" : "50",
-            "orderby" : "relevance"
-          };
-
-            // Create a callback
-            var cb = function(res){
-            // Create array of returned YouTube video URLs
-            var urls = new Array();
-            if (typeof res !== 'undefined'){
-              res.forEach(function(r){
-                if (r.link != undefined) {
-                  r.link.forEach(function(l){
-                    if(l.rel != undefined && l.rel == "alternate") {
-                      if(l.href != undefined) {
-                        urls.push(l.href);
-                      }
-                    }
-                  });
-                }
-              });
-            }
-
-            if (urls.length !== 0) {
-              // Get Shelby API to create genius roll based on URLs -- XXX this needs error checking
-              $.post('<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>' + '/roll/genius', {'search': searchQuery, 'urls': JSON.stringify(urls)}, function(data){
-                if (data.status == 200){
-                  var _rollUrl = '<%= Settings::Application.mobile_url %>' + "/roll/" + data.result.id;
-                  window.location.href = _rollUrl;
-                }
-                else { alert("Something went wrong, please try again."); }
-              });
-            }
-            else { //if no URLs:
-              $('.js-search__input').val('').attr('placeholder','sorry, nothing turned up');
-            }
-          };
-
-          // Call ytQuery.query, passing params and your callback
-          ytQuery.query(params, cb);
-
-        } else {
-          window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
-        }
+        window.location.href = '/search?query=' + encodeURIComponent(searchQuery);
 
         try {
           _gaq.push(['_trackEvent', 'SEO Video', 'search', searchQuery.toLowerCase()]);
