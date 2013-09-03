@@ -13,6 +13,7 @@
   <meta name="twitter:player" content="<%= build_valid_video_player_url(@video['embed_url']) %>">
   <meta name="twitter:player:width" content="500">
   <meta name="twitter:player:height" content="375">
+  <meta property="og:site_name" content="Shelby.tv">
   <meta property="og:type"    content="video" />
   <meta property="og:url"     content="<%= Shelby::API.generate_frame_route(@roll['subdomain'], @frame['id']) %>" />
   <meta property="og:video:url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
