@@ -4,7 +4,7 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&status=0";
+  js.src = "//connect.facebook.net/en_US/all.js";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
@@ -43,18 +43,26 @@
 
             <ul class="seovideo__list seovideo__list--social">
               <li class="seovideo__item">
-                <div class="fb-like clearfix" data-href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="box_count" data-width="90" data-show-faces="false" data-font="arial" ></div>
+                <button class="button_primer button_facebook-blue button_command button_command--seo button_command--facebook js-fb-send js-track-event"  data-ga_category="SEO Video" data-ga_action="Click Share on Facebook" data-ga_label="<%= request.referer || 'direct' %>" data-video-url="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>">
+                  <span class="icon-facebook"></span>
+                  <span class="button_label">Share on Facebook</span>
+                </button>
               </li>
 
               <li class="seovideo__item">
-                <a href="https://twitter.com/share" class="twitter-share-button clearfix" data-url="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-count="none" data-text="<%= @video_title %> via @Shelby" data-destination="twitter">Tweet</a>
+                <a href="https://twitter.com/share?url=http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>&text=<%= @video_title %>&via=Shelby" class="button_primer button_twitter-blue button_command button_command--seo button_command--twitter  js-track-event js-authorize " data-popup_width="1000" data-popup_height="650">
+                  <span class="icon-twitter"></span>
+                  <span class="button_label">Share on Twitter</span>
+                </a>
               </li>
 
+              <!--
               <li class="seovideo__item">
                 <div class="g-plusone-wrapper clearfix">
                   <div class="g-plusone clearfix" data-size="medium" data-annotation="none"></div>
                 </div>
               </li>
+              -->
             </ul><!-- eo .seovideo__list--social -->
 
           </div><!-- eo .seovideo-details -->
@@ -107,7 +115,7 @@
         <% if @messages %>
           <% if @messages[:shelby].length > 0 %>
             <h3 class="seovideo__h3">
-            Shelby Rolls
+            Shelby Shares
             </h3>
 
             <ul class="seovideo__list">
@@ -162,18 +170,46 @@
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 
 <script>
+  // Facebook -->
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '<%= Settings::Facebook.facebook_app_id %>', // App ID
+      channelURL : '//shelby.tv/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      oauth      : true, // enable OAuth 2.0
+      xfbml      : true  // parse XFBML
+    });
+  };
+
   //TWITTER
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
   //GOOGLE PLUS
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
+  //(function() {
+  //  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+  //  po.src = 'https://apis.google.com/js/plusone.js';
+  //  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  //})();
 
-  //search
   $(document).ready(function(){
+
+    $('.js-fb-send').on('click', function(e){
+      var _url = $(e.currentTarget).data('video-url');
+      console.log(_url);
+      FB.ui({
+        method: 'send',
+        link: _url
+      },
+      function(response){
+        // event tracking
+        var _status = response ? 'was' : 'was not';
+        try {
+          _gaq.push(['_trackEvent', 'SEO Video', 'Facebook Message ' + _status + ' Sent']);
+        } catch(e) {}
+      });
+    });
+
     $('.js-search-form').on('submit', function(e){
       e.preventDefault();
 
