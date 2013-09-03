@@ -9,7 +9,7 @@ $(document).on('ready', function(){
 
   if (<%= from_similar_video ? true : false %> == true) {
     try {
-      _gaq.push(['_trackEvent', 'SEO Video', 'Show signup modal', "<%= request.referer || 'direct' %>"]);
+      _gaq.push(['_trackEvent', 'SEO Video', 'Show signup modal', "When clicking related video"]);
     } catch(e) {}
     // show this bad boy
     $('.js-seo-signup-message').removeClass('hidden');
@@ -17,7 +17,7 @@ $(document).on('ready', function(){
     $('body').on('click', function(){
       $('.js-seo-signup-message').addClass('hidden');
       try {
-        _gaq.push(['_trackEvent', 'SEO Video', 'Click on body with modal', "<%= request.referer || 'direct' %>"]);
+        _gaq.push(['_trackEvent', 'SEO Video', 'Click on body with modal', "When clicking related video"]);
       } catch(e) {}
     });
   }
