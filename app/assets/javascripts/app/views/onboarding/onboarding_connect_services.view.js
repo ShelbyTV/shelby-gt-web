@@ -205,6 +205,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
 
   _onInviteFriends : function() {
     this._checkSetTimelineSharing();
+    this._checkLikeShelby();
     this.model.set('action', 'invite');
   },
 
@@ -335,6 +336,46 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
         userToFollow.url = shelby.config.apiRoot + '/twitter/follow/shelby';
         userToFollow.save();
         shelby.track('Follow Shelby', {userName: shelby.models.user.get('nickname')});
+      }
+    }
+  },
+
+  _checkLikeShelby : function(){
+    if(this.model.get('service') == 'facebook' &&
+       _(shelby.models.user.get('authentications')).any(function(auth){return auth.provider == 'facebook';})) {
+      // if the user checked the box to do so
+      if(this.$('#onboarding-like-shelby').is(':checked')) {
+        // make the user like Shelby on facebook
+        if (typeof FB !== "undefined"){
+          FB.api('/me/og.likes', 'post', {object: "http://shelby.tv"}, function(response){
+            var _trackingProperties;
+            if (!response || response.error) {
+              // track posting error
+              _trackingProperties = {
+                  providers : ['ga', 'kmq'],
+                  gaCategory : "Onboarding",
+                  gaAction : 'Error liking shelby on FB',
+                  gaLabel : shelby.models.user.get('nickname'),
+                  kmqName : "Error liking Shelby on FB in onboarding",
+                  kmqProperties : {
+                    nickname: shelby.models.user.get('nickname')
+                  }
+                };
+            } else {
+              _trackingProperties = {
+                  providers : ['ga', 'kmq'],
+                  gaCategory : "Onboarding",
+                  gaAction : 'Like shelby on FB',
+                  gaLabel : shelby.models.user.get('nickname'),
+                  kmqName : "Like Shelby on FB in onboarding",
+                  kmqProperties : {
+                    nickname: shelby.models.user.get('nickname')
+                  }
+                };
+            }
+            shelby.trackEx(_trackingProperties);
+          });
+        }
       }
     }
   },
