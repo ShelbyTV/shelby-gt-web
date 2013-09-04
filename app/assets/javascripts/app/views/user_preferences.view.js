@@ -63,6 +63,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
         this.renderChildInto(new libs.shelbyGT.UserPreferencesNotificationsView(viewData),this._container);
         break;
       case 'friends':
+        viewData.rollFollowings = shelby.models.rollFollowings;
         this.renderChildInto(new libs.shelbyGT.UserPreferencesFriendsView(viewData),this._container);
         break;
       case 'sources':

@@ -17,12 +17,17 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
   render : function(){
     this._userId = shelby.models.user.get('id');
 
+    console.log('stuff',this.options);
+
     var data = {
       shareURL : this._buildShareUrl(this._userId),
-			tweetURL : this._buildTweetUrl(this._userId)
+      tweetURL : this._buildTweetUrl(this._userId)
 		};
 
     this.$el.html(this.template(data));
+
+
+    console.log(this.options.rollFollowings.get('roll'));
   },
 
   initialize : function(){

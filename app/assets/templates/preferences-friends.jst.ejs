@@ -1,27 +1,31 @@
 <div class="form_module">
   <h1 class="form__legend">
-  	Invite Friends
+    Invite Friends
   </h1>
 
-	<fieldset class="form_fieldset">
-	<label for="preferences-shortlink" class="form_label">
-		Invite Link
-	</label>
+  <fieldset class="form_fieldset">
+    <label for="preferences-shortlink" class="form_label">
+      Invite Link
+    </label>
 
-	<input type="text" id="preferences-shortlink" name="preferences-shortlink" class="form_input one-half js-preferences-shortlink" value="<%= shareURL %>" />
+    <input type="text" id="preferences-shortlink" name="preferences-shortlink" class="form_input one-half js-preferences-shortlink" value="<%= shareURL %>" />
 
-	<p>
-		Or invite friends via <br/>
+    <p>
+      Or invite friends via <br/>
 
-		<a href="#" class="button_primer button_command button_command--flexible one-quarter button_facebook-blue js-facebook-post">
-			<span class="icon icon-facebook"></span>
-			<span class="button_label">Send</span>
-		</a>
+      <a href="#" class="button_primer button_command button_command--flexible one-quarter button_facebook-blue js-facebook-post">
+        <span class="icon icon-facebook"></span>
+        <span class="button_label">Send</span>
+      </a>
 
-		<a href="<%= tweetURL %>" class="button_primer button_command button_command--flexible one-quarter button_twitter-blue">
-			<span class="icon icon-twitter"></span>
-			<span class="button_label">Tweet</span>
-		</a>
-	</p>
-	</fieldset>
+      <a href="<%= tweetURL %>" class="button_primer button_command button_command--flexible one-quarter button_twitter-blue">
+        <span class="icon icon-twitter"></span>
+        <span class="button_label">Tweet</span>
+      </a>
+    </p>
+  </fieldset>
+
+  <div class="js-friends-list">
+    <!-- filled in by the SourcesList -->
+  </div>
 </div>
