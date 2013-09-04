@@ -46,9 +46,13 @@
 <div class="animate_module modal__foot modal__foot--rev cloaked clearfix js-modal-foot">
   <% if (currentService == 'facebook') { %>
     <form>
-      <fieldset class="form_fieldset form_fieldset--rev">
+      <fieldset class="form_fieldset form_fieldset--rev form_fieldset--fb">
         <input class="form_checkbox form_checkbox--inline" type="checkbox" id="onboarding-timeline-sharing" checked="checked" />
-        <label class="form_label form_label--inline" for="onboarding-timeline-sharing">Publish activity to Facebook Timeline</label>
+        <label class="form_label form_label--inline form_label--vertical" for="onboarding-timeline-sharing">Publish activity to Facebook Timeline</label>
+      </fieldset>
+      <fieldset class="form_fieldset form_fieldset--rev form_fieldset--fb">
+        <input class="form_checkbox form_checkbox--inline" type="checkbox" id="onboarding-like-shelby" checked="checked" />
+        <label class="form_label form_label--inline form_label--vertical" for="onboarding-like-shelby">Like Shelby.tv on Facebook</label>
       </fieldset>
     </form>
     <a class="button_primer button_command button_command--flexible button_green js-invite-friends">
