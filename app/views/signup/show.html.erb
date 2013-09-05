@@ -100,13 +100,6 @@
 <%= javascript_tag do %>
   $(document).ready(function(){
 
-      // AB TEST
-      <% session[:signup_w_fb] = "no" unless session[:signup_w_fb] %>
-      try {
-          _gaq.push(['_trackEvent', 'ab-testing', 'signup_w_fb', '<%= session[:signup_w_fb].to_s %>']);
-          _kmq.push(["set", {"signup_w_fb": "<%= session[:signup_w_fb].to_s %>"}]);
-        } catch (e) {}
-
       <% if @inviter %>
         shelby.trackEx({
           providers : ['ga', 'kmq'],
