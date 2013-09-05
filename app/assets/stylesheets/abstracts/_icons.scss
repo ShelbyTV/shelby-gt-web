@@ -23,3 +23,19 @@
     color: darken(#6cbc45,5%);
   }
 }
+
+.icon-spinner {
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: contain;
+  background-size: contain;
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+}
+    .icon-spinner--base {
+      background-image: url('/images/assets/loading-explore.gif');
+      vertical-align: -8px;
+      height: 25px;
+      width: 25px;
+    }

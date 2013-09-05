@@ -15,26 +15,45 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
   },
 
   render : function(){
+    var self = this;
+
     this._userId = shelby.models.user.get('id');
 
-    console.log('stuff',this.options);
+    this.options.rollFollowings.fetch({
+        data : {
+          'include_faux' : 1
+        },
+        success : function(model, response) {
+          // filter down to only faux user friends from Facebook
+          var friendFauxUserRolls = model.get('rolls').filter(function(roll){
+            return roll.get('creator_id') != shelby.models.user.id &&
+               roll.id != shelby.models.user.get('watch_later_roll_id') &&
+               roll.has('creator_authentications') &&
+               _(roll.get('creator_authentications')).any(function(auth){ return auth.provider == 'facebook';}) &&
+               (roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll || roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public);
+          });
+          // notify the view of the friends we found
+          self.model.trigger('onboarding:invite:fetchedFriends', friendFauxUserRolls);
+        }
+      });
 
     var data = {
       shareURL : this._buildShareUrl(this._userId),
-      tweetURL : this._buildTweetUrl(this._userId)
+      tweetURL : this._buildTweetUrl(this._userId),
+      facebookConnected : this._facebookConnected
 		};
 
     this.$el.html(this.template(data));
 
-
-    console.log(this.options.rollFollowings.get('roll'));
   },
 
   initialize : function(){
-    this._preferences = this.model.get('preferences');
+    this._facebookConnected = _(shelby.models.user.get('authentications')).any(function(auth){ return auth.provider == 'facebook'; });
+    this.model.bind('onboarding:invite:fetchedFriends', this._onFetchedFriends, this);
   },
 
   _cleanup : function(){
+    this.model.unbind('onboarding:invite:fetchedFriends', this._onFetchedFriends, this);
   },
 
   _buildTweetUrl : function() {
@@ -64,6 +83,29 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
           }
         }
       );
+    }
+  },
+
+  _onFetchedFriends : function(friendRolls) {
+    if (friendRolls.length && this._facebookConnected) {
+      this.$el.find('.js-friends-spinner').remove();
+
+      // we have some friends to invite, go ahead and render the list of them with invite buttons
+      this.appendChildInto(new libs.shelbyGT.ListView({
+        collection : new Backbone.Collection(friendRolls),
+        // show the friends with the most video at the top
+        comparator : function(roll) {
+          return -roll.get('frame_count');
+        },
+        doStaticRender : true,
+        listItemView : 'OnboardingInviteFriendItemView',
+        listItemViewAdditionalParams : {
+          onboarding : false
+        },
+        simulateAddTrue : false
+      }), '.js-invite-friends-body');
+    } else {
+      this.$el.find('.js-invite-friends-body').html("<b>Your friends are already on Shelby!</b>");
     }
   }
 

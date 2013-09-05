@@ -1,31 +1,53 @@
-<div class="form_module">
-  <h1 class="form__legend">
+<div class="preferences_page__head clearfix">
+  <h1>
     Invite Friends
   </h1>
 
   <fieldset class="form_fieldset">
-    <label for="preferences-shortlink" class="form_label">
-      Invite Link
-    </label>
+    <div class="column one-quarter">
+      <label for="preferences-shortlink" class="form_label">
+        Invite Link
+      </label>
 
-    <input type="text" id="preferences-shortlink" name="preferences-shortlink" class="form_input one-half js-preferences-shortlink" value="<%= shareURL %>" />
+      <input type="text" id="preferences-shortlink" name="preferences-shortlink" class="form_input four-fifths js-preferences-shortlink" value="<%= shareURL %>" />
+    </div>
 
-    <p>
-      Or invite friends via <br/>
+    <div class="column one-half">
+      <label for="preferences-shortlink" class="form_label">
+        Or invite friends via
+      </label>
 
-      <a href="#" class="button_primer button_command button_command--flexible one-quarter button_facebook-blue js-facebook-post">
+      <a href="#" class="button_primer button_command button_command--sub one-fifth button_facebook-blue js-facebook-post">
         <span class="icon icon-facebook"></span>
         <span class="button_label">Send</span>
       </a>
 
-      <a href="<%= tweetURL %>" class="button_primer button_command button_command--flexible one-quarter button_twitter-blue">
+      <a href="<%= tweetURL %>" class="button_primer button_command button_command--sub one-fifth button_twitter-blue">
         <span class="icon icon-twitter"></span>
         <span class="button_label">Tweet</span>
       </a>
-    </p>
+    </div>
   </fieldset>
+</div><!-- eo preferences_page__head -->
 
-  <div class="js-friends-list">
-    <!-- filled in by the SourcesList -->
-  </div>
-</div>
+<% if (facebookConnected) { %>
+  <ul class="list list--fit tabs one-whole clearfix">
+    <li class="one-fifth">
+      <span class="button_standard tab tab--active tab--space js-track-event js-user-tab js-user-shares" data-ga_category="In App User Profile" data-ga_action="Click roll tab" data-ga_label="<%= 'nickname' %>">
+        Facebook
+      </span>
+    </li>
+    <li class="four-fifths">
+      <span class="button_standard tab tab--space js-track-event js-user-tab js-user-shares" data-ga_category="In App User Profile" data-ga_action="Click roll tab" data-ga_label="<%= 'nickname' %>">
+        &nbsp;
+      </span>
+    </li>
+  </ul>
+
+  <div class="preferences_page__body clearfix">
+    <div class="preferences_page__lining one-third js-invite-friends-body">
+      <span class="js-friends-spinner"><span class="icon icon-spinner icon-spinner--base"></span> <b>Finding friends that share video…</b></span>
+      <!-- filled in by the SourcesList -->
+    </div>
+  </div><!-- eo preferences_page__body -->
+<% } %>

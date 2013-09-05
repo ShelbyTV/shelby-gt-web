@@ -27,7 +27,7 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
         },
         function(response) {
           if (response) {
-            if (response.success) {
+            if (response.success && self.options.onboarding) {
               var viewModel = self.options.onboardingConnectServicesViewModel;
               viewModel.set('numInvitesSent', viewModel.get('numInvitesSent') + 1);
 

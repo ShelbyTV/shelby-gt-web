@@ -112,7 +112,30 @@
       }
     }
     .preferences_page--friends {
+      margin: 0;
+      width: auto;
 
+      .preferences_page__lining,
+      .preferences_page__head {
+        margin: 2em 3em;
+      }
+      .preferences_page__body {
+        background-color: $base;
+        font-size: 13px;
+        min-height: 100%;
+      }
+      .preferences_page__lining {
+      }
+      //non-normative and experimental
+      .tabs {
+        font-size: 11px;
+      }
+      .column {
+        float: left;
+      }
+      .user {
+        font-size: 1em;
+      }
     }
     .preferences_page--sources {
       .roll_categories {

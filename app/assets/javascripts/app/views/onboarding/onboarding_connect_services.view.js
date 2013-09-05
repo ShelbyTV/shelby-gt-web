@@ -282,6 +282,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
           doStaticRender : true,
           listItemView : 'OnboardingInviteFriendItemView',
           listItemViewAdditionalParams : {
+            onboarding : true,
             onboardingConnectServicesViewModel : this.model
           },
           simulateAddTrue : false
