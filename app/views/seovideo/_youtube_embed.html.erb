@@ -1,4 +1,54 @@
-<iframe width="640" height="365"
-src="http://www.youtube.com/embed/<%= video_provider_id %>"
-frameborder="0" allowfullscreen>
+<div id="youtube-player"></div>
+
+<script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtube-player', {
+          height: '365',
+          width: '640',
+          videoId: "<%= video_provider_id %>",
+          showinfo : 0,
+          modestbranding: 1,
+          origin: window.location.host,
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerReady(event) {
+        //event.target.playVideo();
+      }
+
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED) {
+          showModal();
+        }
+      }
+
+      function showModal() {
+        try {
+          _gaq.push(['_trackEvent', 'SEO Video', 'Show signup modal', "On video finish"]);
+        } catch(e) {}
+        // show this bad boy
+        $('.js-seo-signup-message').removeClass('hidden');
+        // let em close it
+        $('body').on('click', function(){
+          $('.js-seo-signup-message').addClass('hidden');
+          try {
+            _gaq.push(['_trackEvent', 'SEO Video', 'Click on body with modal', "On video finish"]);
+          } catch(e) {}
+        });
+      }
+    </script>
 </iframe>
