@@ -347,7 +347,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
       if(this.$('#onboarding-like-shelby').is(':checked')) {
         // make the user like Shelby on facebook
         if (typeof FB !== "undefined"){
-          FB.api('/me/og.likes', 'post', {object: "http://shelby.tv"}, function(response){
+          FB.api('/me/og.likes', 'post', {object: "https://graph.facebook.com/136371303102900"}, function(response){
             var _trackingProperties;
             if (!response || response.error) {
               // track posting error
