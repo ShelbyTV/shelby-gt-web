@@ -2,6 +2,7 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
 
   events : {
     "click .js-onboarding-roll-button:not(.js-busy)" : "_inviteFriend",
+    "click .js-navigate-roll" : "_navigateRoll"
   },
 
   template : function(obj) {
@@ -10,7 +11,9 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
 
   render : function(){
     this.$el.html(this.template({
-      roll : this.model
+      onboarding    : this.options.onboarding,
+      clickableUser : !this.options.onboarding,
+      roll          : this.model
     }));
   },
 
@@ -41,5 +44,12 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
         }
       );
     }
+  },
+
+  _navigateRoll : function(e) {
+    e.preventDefault();
+    var id = $(e.currentTarget).data('roll_id');
+    shelby.router.navigate('/roll/'+ id,{trigger:true,replace:false});
   }
+
 });

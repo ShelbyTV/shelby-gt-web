@@ -97,8 +97,8 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
         comparator : function(roll) {
           return -roll.get('frame_count');
         },
-        doStaticRender : true,
-        listItemView : 'OnboardingInviteFriendItemView',
+        doStaticRender  : true,
+        listItemView    : 'OnboardingInviteFriendItemView',
         listItemViewAdditionalParams : {
           onboarding : false
         },
