@@ -43,14 +43,14 @@
 
             <ul class="seovideo__list seovideo__list--social">
               <li class="seovideo__item">
-                <button class="button_primer button_facebook-blue button_command button_command--seo button_command--facebook js-fb-send js-track-event"  data-ga_category="SEO Video" data-ga_action="Click Share on Facebook" data-ga_label="<%= request.referer || 'direct' %>" data-video-url="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>">
+                <button class="button_primer button_facebook-blue button_command button_command--seo button_command--facebook js-fb-send js-track-event"  data-ga_category="SEO Video" data-ga_action="Click Share on Facebook" data-video-url="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>">
                   <span class="icon-facebook"></span>
                   <span class="button_label">Share on Facebook</span>
                 </button>
               </li>
 
               <li class="seovideo__item">
-                <a href="https://twitter.com/share?url=http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>&text=<%= @video_title %>&via=Shelby" class="button_primer button_twitter-blue button_command button_command--seo button_command--twitter  js-track-event js-authorize " data-popup_width="1000" data-popup_height="650" data-ga_category="SEO Video" data-ga_action="Click Share on Twitter" data-ga_label="<%= request.referer || 'direct' %>">
+                <a href="https://twitter.com/share?url=http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>&text=<%= @video_title %>&via=Shelby" class="button_primer button_twitter-blue button_command button_command--seo button_command--twitter  js-track-event js-authorize " data-popup_width="1000" data-popup_height="650" data-ga_category="SEO Video" data-ga_action="Click Share on Twitter">
                   <span class="icon-twitter"></span>
                   <span class="button_label">Share on Twitter</span>
                 </a>
