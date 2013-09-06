@@ -51,7 +51,7 @@ class HomeController < ApplicationController
             @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
             render '/home/app' and return
           else
-            render '404'
+            raise ActionController::RoutingError
           end
         end
 
