@@ -1,19 +1,20 @@
 <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll) %>
 <% var frameCount = roll.get('frame_count') %>
+<% var userNickname = shelby.models.user.get('nickname') %>
 
 <div class="user user--no_lining user--medium_avatar clearfix">
   <div class="media_module media_module--bare clearfix">
     <div class="media_image--rev">
-      <button class="button_primer button_command button_command--flexible button_gray user__button js-onboarding-roll-button js-track-event" data-roll_id="<%= roll.id %>" data-ga_category="<%= (onboarding) ? 'Onboarding' : 'Preferences' %>" data-ga_action="Click invite friend" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+      <button class="button_primer button_command button_command--flexible button_gray user__button js-onboarding-roll-button js-track-event" data-roll_id="<%= roll.id %>" data-ga_category="<%= (onboarding) ? 'Onboarding' : 'Preferences' %>" data-ga_action="Click invite friend" data-ga_label="<%= userNickname %>">
         <span class="button_label">Invite...</span>
       </button>
     </div><!-- eo media_image--rev -->
 
     <% if (clickableUser) { %>
-      <a href="/roll/<%= roll.id %>" data-roll_id="<%= roll.id %>" class="user__link js-navigate-roll">
+      <a href="/roll/<%= roll.id %>" data-roll_id="<%= roll.id %>" class="user__link js-navigate-roll" data-roll_id="<%= roll.id %>" data-ga_category="<%= (onboarding) ? 'Onboarding' : 'Preferences' %>" data-ga_action="Click friend" data-ga_label="<%= userNickname %>">
     <% } %>
 
-      <span class="media_image image_module avatar avatar--medium user__avatar" role="img" style="background-image:url(<%= avatar %>);">
+      <span class="media_image image_module avatar avatar--medium user__avatar" role="img" style="background-image:url(<%= avatar %>);" >
         <img class="visuallyhidden" src="<%= avatar %>"/>
       </span><!-- eo media_image -->
 

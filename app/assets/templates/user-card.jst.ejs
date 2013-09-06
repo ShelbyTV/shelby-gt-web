@@ -8,7 +8,7 @@
       </div><!-- eo media_image--rev -->
 
       <% if (clickableUser) { %>
-        <a href="/roll/<%= category.id %>" data-roll_id="<%= category.id %>" class="user__link js-navigate-roll">
+        <a href="/roll/<%= category.id %>" data-roll_id="<%= category.id %>" class="user__link js-navigate-roll" data-ga_category="<%= context %>" data-ga_action="Click source" data-ga_label="<%= category.get('display_title') %>">
       <% } %>
 
           <span class="media_image image_module avatar avatar--medium user__avatar" role="img" style="background-image:url(<%= category.get('display_thumbnail_src') %>);">
