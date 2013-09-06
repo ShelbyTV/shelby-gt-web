@@ -103,7 +103,7 @@ class ApplicationController < ActionController::Base
     render '/errors/error', :layout => 'blank', :locals => {
       :status => status,
       :message => Settings::ErrorMessages.messages.sample
-    }
+    }, :status => 404
   end
 end
 
