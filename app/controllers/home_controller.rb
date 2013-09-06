@@ -184,8 +184,8 @@ class HomeController < ApplicationController
     @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
 
     if(params[:frame_id])
-      @frame = Shelby::API.get_frame(params[:frame_id], true)
-      @video = @frame['video'] if @frame
+      @frame = (Shelby::API.get_frame(params[:frame_id], true))
+      @video = (@frame['video'] if @frame)
 
       @is_mobile = is_mobile?
 

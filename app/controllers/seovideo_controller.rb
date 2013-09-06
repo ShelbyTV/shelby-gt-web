@@ -34,9 +34,7 @@ class SeovideoController < ApplicationController
     begin
       # sets all other @video_ variables relevant to primary video
       getVideo(@video_provider_name, @video_provider_id)
-    rescue Exception => e
-      # if the primary video isn't available, means we can't really show a great page. return 404 for now...
-      return render_error(404, e.message)
+    # if the primary video isn't available, means we can't really show a great page, rescue_from catches error
     end
 
     # we'll return a page regardless of how successful the rest of these are

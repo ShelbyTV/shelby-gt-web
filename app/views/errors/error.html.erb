@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Shelby.tv | Error!</title>
+    <meta name="viewport" content="width=device-width">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        width: 100%;
+        -webkit-font-smoothing: antialiased;
+      }
+      .shelby {
+        color: white;
+        font-family: 'Helvetica Neue', Helvetica, sans-serif;
+        font-size: 100%;
+        font-weight: normal;
+      }
+      .shelby--hal {
+        background-color: black;
+        background-image: url('/images/status/hal.jpg');
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: right top;
+        background-repeat: no-repeat;
+      }
+      .logo {
+        height: 40px;
+      }
+      .error {
+        font-size: 1.3em;
+        line-height: 2;
+        margin-left: 20%;
+        margin-top: -200px;
+        position: relative;
+        top: 50%;
+      }
+      .error h1 {
+        margin: 0;
+        font-size: 1.75em;
+      }
+      .error p {
+        margin: 0 0 1em;
+        line-height: 1.5;
+        width: 24em;
+      }
+      </style>
+  </head>
+  <body class="shelby shelby--hal">
+    <article class="error">
+      <h1><%= status %></h1>
+      <p><q><%= raw message %></q></p>
+      <img class="logo" src="/images/assets/_LOGO/whole.svg" />
+    </article>
+  </body>
+</html>
