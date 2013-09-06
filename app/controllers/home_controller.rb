@@ -51,7 +51,7 @@ class HomeController < ApplicationController
             @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
             render '/home/app' and return
           else
-            raise ActionController::RoutingError
+            raise ActionController::RoutingError.new("Not Found")
           end
         end
 
