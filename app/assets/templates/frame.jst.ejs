@@ -133,9 +133,9 @@
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
 
-  <% if (inviteFauxUser) { %>
+  <% if (inviteFauxUser && !userIsAnonymous) { %>
     <a class="button_primer button_standard frame__tab frame__tab--facebook one-whole js-invite-faux-user js-track-event" data-ga_category="Frame" data-ga_action="Click Invite via Facebook" data-ga_label="<%= userNickname %>" data-faux-id="<%= originUser[0].uid %>">
-      <span class="word-clamp word-clamp"><%= originUser[0].name %></span> isn't on Shelby, <strong class="frame__link">Invite them via Facebook</strong>
+      <span class="word-clamp word-clamp"><%= originUser[0].name || 'Your friend ' %></span> isn't on Shelby, <strong class="frame__link">Invite them via Facebook</strong>
     </a>
   <% } %>
 
