@@ -44,4 +44,13 @@ $(document).ready(function(){
       window.location = $this.attr('href');
     }
   });
+
+  if($('body').hasClass('shelby--shares_enabled')) {
+    // mini-app
+    var c      = document.createElement("script");
+        c.type = "text/javascript";
+        c.src  = '/assets/shares/shares_enabled.js';
+        document.body.appendChild(c);
+  }
+
 });

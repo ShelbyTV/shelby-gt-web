@@ -78,6 +78,19 @@ a{
       }
     }
 
+    .frame_interactions {
+      //non-normative and experimental
+      & > .column {
+        display: inline-block;
+        &:first-child {
+          padding-right: 0.5em;
+        }
+        &:last-child {
+          padding-left: 0.5em;
+        }
+      }
+    }
+
     .xuser-message {
       font-color: #555;
     }
