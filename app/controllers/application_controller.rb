@@ -92,11 +92,11 @@ class ApplicationController < ActionController::Base
   # end
 
   def render_error_404
-    error(404)
+    error('404 Page Not Found')
   end
 
   def render_error_500
-    error(500)
+    error('404 Page Not Found')
   end
 
   def error(status)
