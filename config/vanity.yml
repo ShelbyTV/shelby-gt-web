@@ -7,6 +7,11 @@ development:
 staging:
   collecting: false
 
+production-seo-1:
+  adapter: redis
+  connection: redis://108.166.56.26:6379/0
+  collecting: true
+
 production:
   adapter: redis
   connection: redis://108.166.56.26:6379/0
