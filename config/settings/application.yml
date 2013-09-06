@@ -28,5 +28,14 @@ staging:
   <<: *defaults
   protocol_matching_url: "//staging.shelby.tv"
 
+
+production-seo-1:
+  <<: *defaults
+  url: "http://onshelby.tv"
+  protocol_matching_url: "//onshelby.tv"
+  domain: "onshelby.tv"
+  missing_thumb_url: "http://onshelby.tv/images/assets/missing_thumb.png"
+
+
 production:
   <<: *defaults

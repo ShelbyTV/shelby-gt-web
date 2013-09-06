@@ -13,6 +13,9 @@ staging:
 
 production: &production
   <<: *defaults
-  
+
+production-seo-1:
+  <<: *defaults
+
 arnold:
   <<: *production

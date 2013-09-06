@@ -11,5 +11,8 @@ test:
 staging:
   <<: *defaults
 
+production-seo-1:
+  <<: *defaults
+
 production:
   <<: *defaults

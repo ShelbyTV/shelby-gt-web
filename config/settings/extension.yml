@@ -18,5 +18,9 @@ staging:
 production: &production
   <<: *defaults
 
+production-seo-1:
+  <<: *defaults
+  web_domain: 'onshelby.tv'
+
 arnold:
   <<: *production

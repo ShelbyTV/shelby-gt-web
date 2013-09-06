@@ -3,13 +3,17 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  
+
 test:
   <<: *defaults
 
 staging:
   <<: *defaults
   code: "UA-21191360-8"
+
+production-seo-1:
+  <<: *defaults
+  code: "UA-21191360-15"
 
 production:
   <<: *defaults
