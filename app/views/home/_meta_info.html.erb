@@ -41,7 +41,7 @@
   <meta name="description" content="<%= URI.escape(page_description_for_roll_with_frames(@roll, @user)) %>" />
 
 <% elsif @video_provider_name and @video_provider_id %>
-  <meta property="og:site_name" content="Shelby.tv">
+  <meta property="og:site_name" content="<%= Settings::Application.domain %>">
   <meta property="og:type"    content="video" />
   <meta property="og:url"     content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>" />
   <meta name="twitter:player" content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>">

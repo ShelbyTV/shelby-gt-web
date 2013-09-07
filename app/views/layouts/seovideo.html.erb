@@ -8,11 +8,11 @@
   <meta name="description" content="<%= @meta_description %>">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Shelby.tv | <%= @video_title %></title>
+  <title>onShelby.tv | <%= @video_title %></title>
 
   <meta name="viewport" content="width=device-width">
   <link rel="icon"type="image/png" href="/favicon.png">
-  <link rel="canonical" href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>">
+  <link rel="canonical" href="http://<%= Settings::Application.domain %>/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>">
   <meta name="apple-itunes-app" content="app-id=556665733">
   <%= stylesheet_link_tag "seovideo", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
@@ -28,7 +28,7 @@
     <script>
       <% if Rails.env == 'production' %>
         //Goog'
-        var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
+        var _gaq=[['_setAccount','UA-21191360-15'],['_setDomainName','<%= Settings::Application.domain %>'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s);}(document,'script'));
