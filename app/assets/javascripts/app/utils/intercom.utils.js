@@ -22,7 +22,7 @@ libs.utils.intercom = {
                 created_at: created_at,
                 name: userModel.get('name'),
                 user_id: userModel.get('id'),
-                unsubscribed_from_emails : should_send_emails,
+                unsubscribed_from_emails : !should_send_emails,
                 onboardingProgress: self.santizeOnboarding(shelby.models.user.get('app_progress').get('onboarding')),
                 tv_page: "http://shelby.tv/"+userModel.get('personal_roll_subdomain')
               });
