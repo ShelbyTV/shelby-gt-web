@@ -1,5 +1,5 @@
 <script>
-  <% if ("production" == Rails.env or "staging" == Rails.env) %>
+  <% if ['production', 'production-seo-1', 'staging'].include?(Rails.env) %>
     //Track loading of landing page separate from loading of app -->
     var shortLink = $.getUrlParam('awesm');
     if (typeof viaShortLink != 'undefined') { shortLink = 'via Short Link: ' + shortLink; }

@@ -26,7 +26,7 @@
   <%= yield %>
 
     <script>
-      <% if Rails.env == 'production' %>
+      <% if ['production', 'production-seo-1'].include?(Rails.env)  %>
         //Goog'
         var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','<%= Settings::Application.domain %>'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
