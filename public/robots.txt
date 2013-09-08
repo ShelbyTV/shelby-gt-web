@@ -4,4 +4,4 @@
 # User-Agent: *
 # Disallow: /
 
-Sitemap: http://api.shelby.tv/system/sitemap_index.xml.gz
+Sitemap: http://api.shelby.tv/system/onshelby/sitemap_index.xml.gz
