@@ -1,0 +1,69 @@
+/*
+
+
+  Permalink page has a share dropdown
+
+  This basically "sub-classes" the guide-overlay because
+  it uses a lot of the same form elements.
+
+*/
+
+.share_panel {
+  &.fin:before {
+    z-index: 1;
+  }
+
+  &.frame-body-wrapper {
+    margin-top: 1.5em;
+  }
+
+  margin-top: 1.7em;
+  position: absolute;
+  width: $guide-width;
+
+
+  //non-normative
+  .guide-overlay__h1 {
+    padding: 1em 1em 0;
+  }
+  //non-normative
+  .guide-overlay__body--frame-sharing {
+    padding: 0.7em 1.5em 0.8em;
+    top: 0;
+
+    .form_textarea {
+      font-size: 1.1em;
+    }
+
+    .button_primer {
+      display: inline-block;
+      margin-right: 0.2em;
+    }
+  }
+
+  //non-normative
+  .guide-overlay__head {
+    border: none;
+  }
+
+  .guide-overlay__body {
+    position: relative;
+  }
+
+  .guide-overlay__main {
+    margin-bottom: 2em;
+  }
+
+  //non-normative
+  .guide-overlay__foot,
+  .rolling-option {
+    position: relative;
+  }
+
+  .guide-overlay__foot {
+    .guide-overlay__lining {
+      margin: 8px 0 0 0;
+    }
+  }
+
+}
