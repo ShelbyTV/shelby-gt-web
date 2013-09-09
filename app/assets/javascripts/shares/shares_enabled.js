@@ -90,33 +90,65 @@ $(function(){
   //on Share form submit
   $('#share-it').live('submit', function(e){
     e.preventDefault();
-    var $this = $(this);
-
-      // $('.js-share-it')
-
-      var data = {
-        source: 'share',
-        text: $this.find('#frame_comment').val(),
-        frame_id: $this.find('#frame_id').val()
-      };
-
-      $.ajax({
-        type: 'GET',
-        url: '//api.shelby.tv/v1/POST/roll/' + roll_id + '/frames',
-        dataType: "jsonp",
-        timeout: 10000,
-        crossDomain: true,
-        data: data,
-        xhrFields: {
-            withCredentials: true
+    var $this = $(this),
+        data = {
+          source: 'share',
+          text: $this.find('#frame_comment').val(),
+          frame_id: $this.find('#frame_id').val()
         },
-        success: function (response) {
-            console.log(response);
-        },
-        error: function () {
-            console.log("Cannot roll");
-        }
-      });
+        destinations = [];
+
+    if($('#share-on-facebook').is(':checked')) {
+      destinations.push('facebook');
+    }
+
+    if($('#share-on-twitter').is(':checked')) {
+      destinations.push('twitter');
+    }
+
+    $.ajax({
+      type: 'GET',
+      url: '//api.shelby.tv/v1/POST/roll/' + roll_id + '/frames',
+      dataType: "jsonp",
+      timeout: 10000,
+      crossDomain: true,
+      data: data,
+      xhrFields: {
+          withCredentials: true
+      },
+      success: function (response) {
+        console.log('resp',response,data);
+
+        var new_frame_id = response.result.id,
+            shareData    = {
+              destination: destinations,
+              frame_id: new_frame_id,
+              text: data.text
+            };
+
+        $.ajax({
+          type: 'POST',
+          url: '//api.shelby.tv/v1/POST/frame/' + new_frame_id + '/share',
+          dataType: "jsonp",
+          timeout: 10000,
+          crossDomain: true,
+          data: shareData,
+          xhrFields: {
+              withCredentials: true
+          },
+          success: function (response) {
+            console.log('yay',response);
+          },
+          error: function () {
+            console.log("Sharing failed.");
+          }
+        });
+
+      },
+      error: function () {
+          console.log("Cannot roll");
+      }
+    });
 
   });
 
