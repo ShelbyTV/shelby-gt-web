@@ -1,4 +1,4 @@
-<article id="<%= @frame['id'] %>" data-video_id="<%= @video['id'] %>" data-roll_id="<%= @current_user['personal_roll_id'] %>" data-user_name="<%= @current_user['nickname'] %>" class="animate_module frame js-frame">
+<article id="<%= @frame['id'] %>" data-video_id="<%= @video['id'] %>" data-roll_id="<%= (@current_user) ? @current_user['personal_roll_id'] : 'null' %>" data-user_name="<%= (@current_user) ? @current_user['nickname'] : 'anonymous' %>" class="animate_module frame js-frame">
   <span class="frame-header js-frame-activate">
     <h1 class="frame-title" title="<%= @video['title'] %>">
       <%= @video['title'] %>
