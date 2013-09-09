@@ -1,4 +1,4 @@
-<article id="<%= @frame['id'] %>" class="animate_module frame">
+<article id="<%= @frame['id'] %>" data-video_id="<%= @video['id'] %>" data-roll_id="<%= @current_user['personal_roll_id'] %>" class="animate_module frame js-frame">
   <span class="frame-header js-frame-activate">
     <h1 class="frame-title" title="<%= @video['title'] %>">
       <%= @video['title'] %>
@@ -44,19 +44,21 @@
     </footer><!-- eo .media_module-->
   </div><!-- eo .frame-body-wrapper -->
 
-  <div class="form_fieldset frame_interactions">
-    <span class="column one-half">
-      <button class="button_primer button_command button_command--flexible button_green one-whole">
-        <span class="icon icon-roll"></span>Share…
-      </button>
-    </span><!--
-  --><span class="column one-half">
-      <button class="button_primer button_command button_command--flexible button_gray one-whole">
-          <span class="icon icon-like"></span>Like
-      </button>
-    </span>
-    <div class="share_panel frame-body-wrapper fin fin--top_left clearfix js-shares-enabled"></div>
-  </div>
+  <% if @user_signed_in %>
+    <div class="form_fieldset frame_interactions">
+      <span class="column one-half">
+        <button class="button_primer button_command button_command--flexible button_green one-whole js-share-init">
+          <span class="icon icon-roll"></span>Share…
+        </button>
+      </span><!--
+    --><span class="column one-half">
+        <button class="button_primer button_command button_command--flexible button_gray one-whole js-like">
+            <span class="icon icon-like"></span>Like
+        </button>
+      </span>
+      <div class="share_panel frame-body-wrapper fin fin--top_left fin--edging clearfix js-shares hidden"></div>
+    </div>
+  <% end %>
 
   <% if @frame['upvoters'].length > 0 %>
     <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">

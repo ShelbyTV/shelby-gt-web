@@ -47,10 +47,27 @@ $(document).ready(function(){
 
   if($('body').hasClass('shelby--shares_enabled')) {
     // mini-app
+    // var files = [],
+    //     frame = $('.js-frame').attr('id');
+
+    // if(username) {
+    //   files.push('//api.shelby.tv/v1/user/' + username);
+    // }
+
+    // if(frame) {
+    //   files.push('//api.shelby.tv/v1/frame/' + frame);
+    // }
+
+    // var SHARE = {};
+
+    // _(files).each(function(data,index){
+    //   console.log(data,index);
+    // });
+
     var c      = document.createElement("script");
         c.type = "text/javascript";
         c.src  = '/assets/shares/shares_enabled.js';
-        document.body.appendChild(c);
+    document.body.appendChild(c);
   }
 
 });

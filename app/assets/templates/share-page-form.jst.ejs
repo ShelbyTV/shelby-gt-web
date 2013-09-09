@@ -4,72 +4,51 @@
   </h2>
 </div><!-- eo guide-overlay__head--frame-rolling -->
 
-<div class="guide-overlay__body guide-overlay__body--frame-rolling">
-  <div class="roll_selection js-roll-selection">
-    <!-- content from RollingSelectionListView when applicable -->
-  </div>
+<div class="guide-overlay__body guide-overlay__body--frame-sharing">
+  <form id="share-it" class="form_module rolling-form js-share-submit">
+    <input type="hidden" id="frame_id" name="frame_id" value="<%= frameId %>" />
 
-  <form class="form_module rolling-form">
-    <h1 class="frame-title">
-     Share this video
-    </h1>
+    <textarea id="frame_comment" name="frame_comment" class="form_textarea js-add-message-input new-comment-input" rows="3" autofocus tabindex="0" placeholder="What do you think about this video?"></textarea>
 
-    <div class="frame-body-wrapper clearfix">
-      <div class="media_module clearfix">
-        <div class="media_body clearfix">
-          <!-- display input for rolling -->
-          <textarea id="js-sharing-message" class="form_textarea js-add-message-input new-comment-input" rows="2" autofocus tabindex="0" placeholder="What do you think about this video?"></textarea>
-        </div>
-      </div><!-- eo .media_module-->
-      <div class="js-guide-overlay-main guide-overlay__main">
-        <div class="rolling-option">
-          <fieldset class="form_fieldset form_fieldset--social clearfix">
-            <legend class="form_legend">
-              Also Share to
-            </legend>
+    <div class="js-guide-overlay-main guide-overlay__main">
+      <div class="rolling-option">
+        <fieldset class="form_fieldset form_fieldset--social clearfix">
+          <legend class="form_legend">
+            Also Share to
+          </legend>
 
-            <% if(twitter_enabled) { %>
-              <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--twitter <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %>">
-                <input data-network="twitter" id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
-                <span class="icon icon-twitter"></span>
-                <span class="button_label">Twitter</span>
-              </label>
-            <% } %>
+          <% if(true || twitter_enabled) { %>
+            <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--twitter <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %> one-fourth">
+              <input data-network="twitter" id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
+              <span class="icon icon-twitter"></span>
+              <span class="button_label">Twitter</span>
+            </label>
+          <% } %>
 
-            <% if(facebook_enabled) { %>
-              <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--facebook <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %>">
-                <input data-network="facebook" id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
-                <span class="icon icon-facebook"></span>
-                <span class="button_label">Facebook</span>
-              </label>
-            <% } %>
-          </fieldset>
+          <% if(true || facebook_enabled) { %>
+            <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--facebook <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %> one-fourth">
+              <input data-network="facebook" id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
+              <span class="icon icon-facebook"></span>
+              <span class="button_label">Facebook</span>
+            </label>
+          <% } %>
+        </fieldset>
 
-          <fieldset class="form_fieldset form_fieldset--submit clearfix">
-            <% if (userLoggedIn) { %>
-              <button class="button_primer button_command button_command--wide button_green js-share-it" type="submit" tabindex="0" onclick="return false;">
-                Share
-              </button>
+        <fieldset class="form_fieldset form_fieldset--submit clearfix">
+          <button class="button_primer button_command button_command--wide button_green js-share-it" type="submit" tabindex="0">
+            Share
+          </button>
 
-              <button class="button_primer button_command button_command--flexible button_command--sub button_command--cancel button_gray js-cancel">
-                Cancel
-              </button>
+          <button class="button_primer button_command button_command--flexible button_command--sub button_command--cancel button_gray js-cancel">
+            Cancel
+          </button>
+        </fieldset>
 
-              <p class="form_label--protip">
-                Protip: Sharing improves videos recommended to you and your friends on Shelby.
-              </p>
-            <% } else { %>
-              <button class="button_primer button_command button_command--flexible button_command--cancel button_gray js-cancel">
-                Close
-              </button>
-            <% } %>
-          </fieldset>
-        </div>
-      </div><!-- eo guide-overlay__main -->
-    </div><!-- eo frame-body-wrapper -->
+      </div>
+    </div><!-- eo guide-overlay__main -->
   </form>
 
-  <% if (currentFrameShortlink) { %>
+  <% if (false || currentFrameShortlink) { %>
     <div class="guide-overlay__foot guide-overlay__foot--frame-rolling clearfix">
       <div class="guide-overlay__lining clearfix">
         <span class="form_label">
@@ -78,7 +57,7 @@
 
         <span class="share_menu__faux-button button_command--shortlink one-half clearfix">
           <span class="icon icon-shortlink"></span>
-          <input type="text" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
+          <input type="text" name="shortlink" id="shortlink" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
         </span>
       </div><!-- eo foot lining -->
     </div><!-- eo guide-overlay__foot -->

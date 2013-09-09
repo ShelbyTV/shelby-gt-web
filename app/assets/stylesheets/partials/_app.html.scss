@@ -59,7 +59,7 @@ a{
 
     .content_wrapper {
       margin-top: 0;
-      overflow-y: auto;
+      overflow-y: visible;
     }
 
     .frame {
@@ -92,7 +92,7 @@ a{
     }
 
     .xuser-message {
-      font-color: #555;
+      color: #555;
     }
 
     // font-size adjust for "desktop" situations
