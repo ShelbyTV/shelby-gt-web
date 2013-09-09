@@ -11,7 +11,7 @@
 <%= render :partial => "signup_cta" %>
 
 <div class="shelby__wrapper clearfix">
-  <%= render :partial => '/home/landing_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
+  <%= render :partial => '/home/landing_header', :locals => {:show_login => false, :user_signed_in => @user_signed_in} %>
 
   <div class="seovideo__wrapper clearfix">
     <%= render :partial => '/home/shelf/errors' %>
