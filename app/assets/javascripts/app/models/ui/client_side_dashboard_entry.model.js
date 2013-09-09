@@ -15,6 +15,11 @@ libs.shelbyGT.ClientSideDashboardEntryModel = libs.shelbyGT.DashboardEntryModel.
     key : 'src_frame',
     relatedModel : 'libs.shelbyGT.FrameModel',
     createModels : true
+  },{
+    type : Backbone.HasOne,
+    key : 'src_video',
+    relatedModel : 'libs.shelbyGT.VideoModel',
+    createModels : true
   }],
 
 

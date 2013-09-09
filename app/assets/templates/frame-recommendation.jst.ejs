@@ -23,7 +23,11 @@
       Check out this video
     <% } %>
   <% } else if (dashboardEntry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.mortarRecommendation) { %>
-    This is a Mortar recommendation.
+    <% if (dashboardEntry.get('src_video') && dashboardEntry.get('src_video').has('title')) { %>
+      Because you shared "<%= dashboardEntry.get('src_video').get('title') %>"
+    <% } else { %>
+      This video is similar to videos you have shared
+    <% } %>
   <% } %>
 <p>
 <% if (!isPvi && isEntertainmentGraph && numFriends) { %>

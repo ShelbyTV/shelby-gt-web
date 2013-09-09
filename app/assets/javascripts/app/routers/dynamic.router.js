@@ -432,7 +432,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       onDashboardFetch: function(dashboardModel, response){
         if (response.result.length) {
           defaultOnDashboardFetch && defaultOnDashboardFetch.call(self, dashboardModel, response);
-          // we are going to insert a dynamic recommendation at the second slot in the user's stream the first
+          // we are going to insert some dynamic recommenations at regular slots in the user's stream the first
           // time that some fetched recommendations are available
           if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard &&
               !shelby.models.guide.get('hasShownDynamicRec')) {
@@ -445,14 +445,17 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
                 if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
                   // if there are any recommendations available
                   if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard && shelby.collections.dynamicRecommendations.length) {
-                    // to get the dynamic dashboard entry to show up in the right place in the stream,
-                    // we need to give it an id just less than the item we want it to show up after
-                    var fakeDbeId = new ObjectId(dbEntries.at(0).id);
-                    fakeDbeId.increment--;
-                    var fakeDbe = shelby.collections.dynamicRecommendations.at(0);
-                    fakeDbe.set('id', fakeDbeId.toString());
+                    for (var i = 0; i < shelby.collections.dynamicRecommendations.length; i++) {
+                      // to get the dynamic dashboard entry to show up in the right place in the stream,
+                      // we need to give it an id just less than the item we want it to show up after
+                      var dbeToPlaceAfter = dbEntries.at(i * 2);
+                      var fakeDbeId = new ObjectId(dbeToPlaceAfter ? dbeToPlaceAfter.id : dbEntries.at(dbEntries[dbEntries.length - 1]).id);
+                      fakeDbeId.increment--;
+                      var fakeDbe = shelby.collections.dynamicRecommendations.at(i);
+                      fakeDbe.set('id', fakeDbeId.toString());
 
-                    dbEntries.add(fakeDbe);
+                      dbEntries.add(fakeDbe);
+                    }
                   }
                   // don't insert any more dynamic recommendations during this session
                   shelby.models.guide.set('hasShownDynamicRec', true);
