@@ -1,33 +1,33 @@
-//App
-//= require ../app/libs.namespace
-//= require ../app/app.config.js
-//= require ../app/app.namespace.js
-
 //JST
 //= require ../../templates/share-page-form.jst.ejs
 
 //INIT
 $(function(){
   // "globals"
-  var $dropdown = $('.js-shares'),
-      $frame    = $('.js-frame'),
-      frame_id  = $frame.attr('id'),
-      video_id  = $frame.data('video_id'),
-      roll_id   = $frame.data('roll_id'),
-      user = {},
-      username  = $frame.data('user_name');
+  var $dropdown        = $('.js-shares'),
+      $frame           = $('.js-frame'),
+      $shareInitButton = $('.js-share-init'),
+      frame_id         = $frame.attr('id'),
+      video_id         = $frame.data('video_id'),
+      personal_roll_id = $frame.data('personal_roll_id'),
+      username         = $frame.data('user_name'),
+      user             = {};
 
-  //share pane settings
+  // share pane template data
   var data = {
     twitter_enabled       : false,
     twitter_checked       : false,
     facebook_enabled      : false,
     facebook_checked      : false,
     currentFrameShortlink : null,
-    frameId               : $('.js-frame').attr('id')
+    frameId               : frame_id,
+    username              : username
   };
 
-  //determine if Video has been liked.
+  // append share pane dynamically.
+  $dropdown.html(SHELBYJST['share-page-form'](data));
+
+  // determine if Video has been liked.
   $.ajax({
     type: 'GET',
     url: '//api.shelby.tv/v1/video/queued',
@@ -47,11 +47,11 @@ $(function(){
       }
     },
     error: function (e) {
-      console.log("API Error");
+      console.log("API Error: ",e);
     }
   });
 
-
+  // get user
   $.ajax({
     type: 'GET',
     url: '//api.shelby.tv/v1/user/' + username,
@@ -79,13 +79,10 @@ $(function(){
       }
     },
     error: function (e) {
-      console.log("API Error");
+      console.log("API Error: ",e);
     }
   });
 
-
-  //append share pane dynamically.
-  $dropdown.html(SHELBYJST['share-page-form'](data));
 
   //on Share form submit
   $('#share-it').live('submit', function(e){
@@ -108,16 +105,19 @@ $(function(){
 
     $.ajax({
       type: 'GET',
-      url: '//api.shelby.tv/v1/POST/roll/' + roll_id + '/frames',
+      url: '//api.shelby.tv/v1/POST/roll/' + personal_roll_id + '/frames',
       dataType: "jsonp",
       timeout: 10000,
       crossDomain: true,
       data: data,
       xhrFields: {
-          withCredentials: true
+        withCredentials: true
       },
       success: function (response) {
-        console.log('resp',response,data);
+        console.log("Share successful!");
+
+        $shareInitButton.toggleClass('button_active',false);
+        $dropdown.toggleClass('hidden',true);
 
         var new_frame_id = response.result.id,
             shareData    = {
@@ -126,33 +126,44 @@ $(function(){
               text: data.text
             };
 
-        $.ajax({
-          type: 'POST',
-          url: '//api.shelby.tv/v1/POST/frame/' + new_frame_id + '/share',
-          dataType: "jsonp",
-          timeout: 10000,
-          crossDomain: true,
-          data: shareData,
-          xhrFields: {
-              withCredentials: true
-          },
-          success: function (response) {
-            console.log('yay',response);
-          },
-          error: function () {
-            console.log("Sharing failed.");
+        shelby.trackEx({
+          providers : ['ga', 'kmq'],
+          gaCategory : 'Share Page',
+          gaAction : 'shared',
+          gaLabel : username,
+          gaValue : destinations.length,
+          kmqProperties : {
+            'outbound destination': destinations.join(", "),
           }
         });
 
+        if(shareData.destination.length > 0) {
+          $.ajax({
+            type: 'POST',
+            url: '//api.shelby.tv/v1/POST/frame/' + new_frame_id + '/share',
+            dataType: "jsonp",
+            timeout: 10000,
+            crossDomain: true,
+            data: shareData,
+            xhrFields: {
+              withCredentials: true
+            },
+            success: function (response) {
+              console.log("Social Share successful!");
+            },
+            error: function () {
+              console.log("Social Sharing failed.");
+            }
+          });
+        }
       },
-      error: function () {
-          console.log("Cannot roll");
+      error: function (e) {
+        console.log("Share unsuccessful: ",e);
       }
     });
 
   });
 
-  $shareInitButton = $('.js-share-init');
 
   $('.js-cancel').on('click',function(e){
     e.preventDefault();
@@ -174,13 +185,13 @@ $(function(){
       crossDomain: true,
       data: data,
       xhrFields: {
-          withCredentials: true
+        withCredentials: true
       },
       success: function (response) {
         $('#shortlink').removeAttr('disabled').val(response.result.short_link);
       },
       error: function () {
-        console.log("Cannot roll");
+        $('#shortlink').val('Error…');
       }
     });
 
@@ -209,14 +220,10 @@ $(function(){
       crossDomain: true,
       data: data,
       xhrFields: {
-          withCredentials: true
+        withCredentials: true
       },
-      success: function (response) {
-          console.log(response);
-      },
-      error: function () {
-          console.log("Cannot like");
-      }
+      success: function () {},
+      error: function () {}
     });
   });
 
