@@ -24,32 +24,6 @@ $(function(){
     username              : username
   };
 
-  // append share pane dynamically.
-  $dropdown.html(SHELBYJST['share-page-form'](data));
-
-  // determine if Video has been liked.
-  $.ajax({
-    type: 'GET',
-    url: '//api.shelby.tv/v1/video/queued',
-    dataType: "jsonp",
-    timeout: 10000,
-    crossDomain: true,
-    data: {},
-    xhrFields: {
-      withCredentials: true
-    },
-    success: function (response) {
-      var likes = response.result;
-      for(var i = 0; i < likes.length; i++) {
-        if(likes[i].id == video_id) {
-          $('.js-like').addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
-        }
-      }
-    },
-    error: function (e) {
-      console.log("API Error: ",e);
-    }
-  });
 
   // get user
   $.ajax({
@@ -77,10 +51,44 @@ $(function(){
           data.twitter_checked = user.app_progress.share_facebook_enabled;
         }
       }
+
+      // append share pane dynamically.
+      $dropdown.html(SHELBYJST['share-page-form'](data));
+      // share button shouldn't be clickable until user's data is loaded/rendered
+      $shareInitButton.removeAttr('disabled');
+
+      $('.js-toggle-twitter-sharing, .js-toggle-facebook-sharing').on('click',function(e){
+        var $this = $(e.currentTarget),
+            network = $this.data('network');
+
+        $this.parent()
+                .toggleClass('button_gray',!$this.is(':checked'))
+                .toggleClass('button_'+network+'-blue',$this.is(':checked'));
+      });
+
+      // determine if Video has been liked, depends on user being loaded.
+      $.ajax({
+        type: 'GET',
+        url: '//api.shelby.tv/v1/video/queued',
+        dataType: "jsonp",
+        timeout: 10000,
+        crossDomain: true,
+        data: {},
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function (response) {
+          var likes = response.result;
+          for(var i = 0; i < likes.length; i++) {
+            if(likes[i].id == video_id) {
+              $('.js-like').addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
+            }
+          }
+        },
+        error: function (e) { console.log("API Error: Unabled to persist Like",e); }
+      });
     },
-    error: function (e) {
-      console.log("API Error: ",e);
-    }
+    error: function (e) { console.log("API Error: Unable to load User",e); }
   });
 
 
@@ -225,14 +233,5 @@ $(function(){
       success: function () {},
       error: function () {}
     });
-  });
-
-  $('.js-toggle-twitter-sharing, .js-toggle-facebook-sharing').on('click',function(e){
-    var $this = $(e.currentTarget),
-        network = $this.data('network');
-
-    $this.parent()
-            .toggleClass('button_gray',!$this.is(':checked'))
-            .toggleClass('button_'+network+'-blue',$this.is(':checked'));
   });
 });
