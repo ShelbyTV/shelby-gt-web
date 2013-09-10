@@ -8,7 +8,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<%= render :partial => "signup_cta", :locals => { :with_js => true, :category => 'SEO Video' } # shares.html.erb uses this partial but doesn't need the JS %>
+<%= render :partial => "signup_cta", :locals => { :with_js => true, :category => 'SEO Video' } %>
 
 <div class="shelby__wrapper clearfix">
   <%= render :partial => '/home/landing_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
