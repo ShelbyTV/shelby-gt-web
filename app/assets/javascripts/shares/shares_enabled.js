@@ -208,30 +208,4 @@ $(function(){
 
     $dropdown.toggleClass('hidden',!$dropdown.hasClass('hidden'));
   });
-
-  $('.js-like').on('click', function(e){
-    //prevent extraneous api calls
-    if($(this).hasClass('visuallydisabled')) { return false; }
-
-    e.preventDefault();
-
-    $(this).children('.icon-like').addClass('icon-like--red');
-
-    var frame_id = $('#frame_id').val(),
-        data = { frame_id : frame_id };
-
-    $.ajax({
-      type: 'GET',
-      url: '//api.shelby.tv/v1/PUT/frame/' + frame_id + '/like',
-      dataType: "jsonp",
-      timeout: 10000,
-      crossDomain: true,
-      data: data,
-      xhrFields: {
-        withCredentials: true
-      },
-      success: function () {},
-      error: function () {}
-    });
-  });
 });
