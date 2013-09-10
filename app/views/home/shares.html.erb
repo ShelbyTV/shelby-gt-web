@@ -43,6 +43,8 @@
 </head>
 
 <body class="shelby shelby--shares<%= (!@is_mobile && @user_signed_in) ? ' shelby--shares_enabled' : ''%>">
+  <%= render :partial => "seovideo/signup_cta", :locals => { :with_js => false, :category => "Share Page" } %>
+
   <section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
   <div class="app-banner__wrapper js-app-banner">
     <% #render :partial => '/mobile/partials/app_store' if @is_mobile == 'iPhone' %>

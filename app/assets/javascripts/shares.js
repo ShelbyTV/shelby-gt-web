@@ -52,9 +52,16 @@ $(document).ready(function(){
         c.src  = '/assets/shares/shares_enabled.js';
     document.body.appendChild(c);
   } else {
+    var $signupMessage = $('.js-seo-signup-message').on('click', function(){
+      $(this).addClass('hidden');
+
+      try {
+        _gaq.push(['_trackEvent', 'SEO Video', 'Click on body with modal', "When clicking related video"]);
+      } catch(e) {}
+    });
     //handle "Share" button differently, since there's no Share Pane.
     $('.js-share-init').removeAttr('disabled').on('click',function(){
-      window.location = '/';
+      $signupMessage.removeClass('hidden');
     });
   }
 
