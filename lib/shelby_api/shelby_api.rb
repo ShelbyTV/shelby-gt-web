@@ -55,8 +55,17 @@ module Shelby
       return r['status'] == 200 ? r['result'][0] : nil
     end
 
-    def self.get_roll_with_frames(roll_id)
-      r = get( "/roll/#{roll_id}/frames?include_children=true" ).parsed_response
+    def self.get_user_dasboard(user_id=nil, skip=0, limit=20)
+      base = user_id ? "/user/#{user_id}/dashboard" : '/dasboard'
+      r = get( "/#{base}?skip=#{skip}&limit=#{limit}" ).parsed_response
+      return nil if r['status'] != 200
+      if r['result']['frames'] and r['result']['frames'].is_a?(Array)
+        roll = r['result']
+      end
+    end
+
+    def self.get_roll_with_frames(roll_id, skip=0, limit=20)
+      r = get( "/roll/#{roll_id}/frames?include_children=true&skip=#{skip}&limit=#{limit}" ).parsed_response
       return nil if r['status'] != 200
       if r['result']['frames'] and r['result']['frames'].is_a?(Array)
         roll = r['result']
