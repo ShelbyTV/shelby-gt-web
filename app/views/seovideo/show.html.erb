@@ -43,26 +43,16 @@
 
             <ul class="seovideo__list seovideo__list--social">
               <li class="seovideo__item">
-                <button class="button_primer button_facebook-blue button_command button_command--seo button_command--facebook js-fb-send js-track-event"  data-ga_category="SEO Video" data-ga_action="Click Share on Facebook" data-video-url="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>">
-                  <span class="icon-facebook"></span>
-                  <span class="button_label">Share on Facebook</span>
-                </button>
+                <div class="fb-like clearfix" data-href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial" ></div>
               </li>
 
-              <li class="seovideo__item">
-                <a href="https://twitter.com/share?url=http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>&text=<%= @video_title %>&via=Shelby" class="button_primer button_twitter-blue button_command button_command--seo button_command--twitter  js-track-event js-authorize " data-popup_width="1000" data-popup_height="650" data-ga_category="SEO Video" data-ga_action="Click Share on Twitter">
-                  <span class="icon-twitter"></span>
-                  <span class="button_label">Share on Twitter</span>
-                </a>
-              </li>
+              <li id="twitter-intent" class="seovideo__item"></li>
 
-              <!--
               <li class="seovideo__item">
                 <div class="g-plusone-wrapper clearfix">
-                  <div class="g-plusone clearfix" data-size="medium" data-annotation="none"></div>
+                  <div class="g-plusone clearfix" data-size="medium" data-annotation="none" data-callback="gPlusOneCallback"></div>
                 </div>
               </li>
-              -->
             </ul><!-- eo .seovideo__list--social -->
 
           </div><!-- eo .seovideo-details -->
@@ -166,9 +156,6 @@
   </div>
 </div><!-- eo .content-wrapper -->
 
-<!-- TWITTER INTENTS -->
-<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-
 <script>
   // Facebook -->
   window.fbAsyncInit = function() {
@@ -180,36 +167,69 @@
       oauth      : true, // enable OAuth 2.0
       xfbml      : true  // parse XFBML
     });
+
+    // event listentin'
+    FB.Event.subscribe('edge.create',
+      function(response) {
+        try {
+        _gaq.push(['_trackEvent', 'SEO Video', 'FB Like', response]);
+      } catch(e) {}
+      }
+    );
   };
 
-  //TWITTER
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+  //TWITTER specific
+  window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+    js.src="https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+  }(document, "script", "twitter-wjs"));
 
-  //GOOGLE PLUS
-  //(function() {
-  //  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  //  po.src = 'https://apis.google.com/js/plusone.js';
-  //  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  //})();
+  twttr.ready(function (twttr) {
+    twttr.events.bind('click', function(r){
+      if (!r) return;
+      try {
+        _gaq.push(['_trackEvent', 'SEO Video', 'Click Tweet', r.type]);
+      } catch(e) {}
+    });
+    twttr.events.bind('tweet', function (r) {
+      if (!r) return;
+      try {
+        _gaq.push(['_trackEvent', 'SEO Video', 'Sent Tweet', r.type]);
+      } catch(e) {}
+    });
+    twttr.widgets.createShareButton(
+      "http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>",
+      document.getElementById('twitter-intent'),
+      function(){
+        // loaded button
+      },
+      {
+        count: 'none',
+        text: '<%= @video_title %>',
+        via: 'Shelby',
+        size: "medium"
+      }
+    );
+  });
+  //end TWITTER
+
+  // GOOGLE PLUS
+  (function() {
+   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+   po.src = 'https://apis.google.com/js/plusone.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+
+  var gPlusOneCallback = function(event){
+    if (!event) { return; }
+    try {
+        _gaq.push(['_trackEvent', 'SEO Video', '+1 on Google', event.href]);
+      } catch(e) {}
+  };
 
   $(document).ready(function(){
-
-    $('.js-fb-send').on('click', function(e){
-      var _url = $(e.currentTarget).data('video-url');
-      console.log(_url);
-      FB.ui({
-        method: 'send',
-        link: _url
-      },
-      function(response){
-        // event tracking
-        var _status = response ? 'was' : 'was not';
-        try {
-          _gaq.push(['_trackEvent', 'SEO Video', 'Facebook Message ' + _status + ' Sent']);
-        } catch(e) {}
-      });
-    });
-
     $('.js-search-form').on('submit', function(e){
       e.preventDefault();
 
