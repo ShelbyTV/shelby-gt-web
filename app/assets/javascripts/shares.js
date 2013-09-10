@@ -91,7 +91,10 @@ $(document).ready(function(){
       },
       success: function () {
         var $total = $('.js-like-total');
-        $total.text( '+ ' + (+($total.text().split('+')[1].trim()) + 1 ));
+
+        if($total.length){
+          $total.text( '+ ' + (+($total.text().split('+')[1].trim()) + 1 ));
+        }
       },
       error: function () {}
     });
