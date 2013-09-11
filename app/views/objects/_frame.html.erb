@@ -49,6 +49,7 @@
 
         <p class="xuser-data">
           <a href="/<%= userNickname %>" class="js-track-event no-faux-link" data-ga_category="Share Page" data-ga_action="Click Username" data-ga_label="<%= @current_user_nickname %>" data-user_nickname="<%= userNickname %>"><strong><%= userNickname %></strong></a>
+          <% if @frame['originator'] && @frame['originator']['nickname'] %> <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <a class="no-faux-link js-track-event" href="/<%= @frame['originator']['nickname'] %>" data-ga_category="Share Page" data-ga_action="Click via Username" data-ga_label="<%= @current_user_nickname %>"><%= @frame['originator']['nickname'] %></a></span><% end %>
         </p>
 
         <% message = @frame['conversation']['messages'][0]['text'] if @frame['conversation'] and @frame['conversation']['messages'] and @frame['conversation']['messages'][0] %>
