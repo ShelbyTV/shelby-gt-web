@@ -30,24 +30,43 @@
   </fieldset>
 </div><!-- eo preferences_page__head -->
 
-<% if (facebookConnected) { %>
+<% if (facebookConnected || twitterConnected || tumblrConnected) { %>
   <ul class="list list--fit tabs one-whole clearfix">
+  <% if (facebookConnected) { %>
     <li class="one-fifth">
-      <span class="button_standard tab tab--active tab--space js-track-event js-user-tab js-user-shares" data-ga_category="In App User Profile" data-ga_action="Click roll tab" data-ga_label="<%= 'nickname' %>">
+      <a href="/preferences/friends/facebook" class="button_standard tab<%= (tab == 'facebook') ? ' tab--active' : '' %> tab--space js-track-event js-user-tab js-user-shares" data-ga_category="Preferences" data-ga_action="Click facebook" data-ga_label="<%= 'nickname' %>">
         Facebook
-      </span>
+      </a>
     </li>
-    <li class="four-fifths">
-      <span class="button_standard tab tab--space js-track-event js-user-tab js-user-shares" data-ga_category="In App User Profile" data-ga_action="Click roll tab" data-ga_label="<%= 'nickname' %>">
+  <% } %>
+  <% if (twitterConnected) { %>
+    <li class="one-fifth">
+      <a href="/preferences/friends/twitter" class="button_standard tab<%= (tab == 'twitter') ? ' tab--active' : '' %> tab--space js-track-event js-user-tab js-user-shares" data-ga_category="Preferences" data-ga_action="Click twitter" data-ga_label="<%= 'nickname' %>">
+        Twitter
+      </a>
+    </li>
+  <% } %>
+  <% if (tumblrConnected) { %>
+    <li class="one-fifth">
+      <a href="/preferences/friends/tumblr" class="button_standard tab<%= (tab == 'tumblr') ? ' tab--active' : '' %> tab--space js-track-event js-user-tab js-user-shares" data-ga_category="Preferences" data-ga_action="Click tumblr" data-ga_label="<%= 'nickname' %>">
+        Tumblr
+      </a>
+    </li>
+  <% } %>
+    <li class="two-fifths">
+      <span class="button_standard tab tab--space">
         &nbsp;
       </span>
     </li>
   </ul>
 
   <div class="preferences_page__body clearfix">
-    <div class="preferences_page__lining one-third js-invite-friends-body">
-      <span class="js-friends-spinner"><span class="icon icon-spinner icon-spinner--base"></span> <b>Finding friends that share video…</b></span>
-      <!-- filled in by the -->
+    <div class="preferences_page__lining one-third">
+      <span class="js-friends-spinner"><b>See friends who share video on other networks.</b></span>
+      <!-- filled in by the ListView funness -->
+      <div class="js-invite-friends-body js-invite-friends-body--facebook <%= (tab == 'facebook') ? '' : 'hidden' %>"></div>
+      <div class="js-invite-friends-body js-invite-friends-body--twitter <%= (tab == 'twitter') ? '' : 'hidden' %>"></div>
+      <div class="js-invite-friends-body js-invite-friends-body--tumblr <%= (tab == 'tumblr') ? '' : 'hidden' %>"></div>
     </div>
   </div><!-- eo preferences_page__body -->
 <% } %>

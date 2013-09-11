@@ -17,10 +17,11 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
     return SHELBYJST['user-preferences'](obj);
   },
 
-  render : function(section){
+  render : function(section,tab){
     this.$el.html(this.template({
       user:this.model,
-      section: section
+      section: section,
+      tab: tab
     }));
   },
 
@@ -37,6 +38,7 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   },
 
   _onSectionChange : function(model,section,opts) {
+    console.log('/000000000000000000 ',section,model);
     //destroy children
     this._leaveChildren();
 
@@ -45,7 +47,8 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
     //all the children views inherit the same data
     var viewData = {
-      model: this.model
+      model: this.model,
+      tab: model.get('tab')
     };
 
     //render selected section

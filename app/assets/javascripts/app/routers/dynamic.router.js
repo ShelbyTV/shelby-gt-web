@@ -24,6 +24,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "onboarding/:stage"                            : "displayOnboardingView",
     "preferences"                                  : "displayUserPreferences",
     "preferences/:section"                         : "displayUserPreferences",
+    "preferences/:section/:tab"                    : "displayUserPreferences",
     "likes"                                        : "displaySaves",
     "saves"                                        : "displaySaves",
     "stream"                                       : "displayDashboard",
@@ -566,7 +567,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  displayUserPreferences : function(section){
+  displayUserPreferences : function(section,tab){
     this._setupTopLevelViews();
 
     if(!section) { //if `section` is undefined, route to profile as a default
@@ -574,7 +575,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.router.navigate('/preferences/' + section);
     }
 
-    shelby.models.userPreferencesView.set({section: section});
+    shelby.models.userPreferencesView.set({section: section, tab: tab});
     shelby.models.guide.set({displayState: libs.shelbyGT.DisplayState.userPreferences});
 
     // send page view to GA

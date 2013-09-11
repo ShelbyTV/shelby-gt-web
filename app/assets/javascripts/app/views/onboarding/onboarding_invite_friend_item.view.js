@@ -13,7 +13,8 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
     this.$el.html(this.template({
       onboarding    : this.options.onboarding,
       clickableUser : !this.options.onboarding,
-      roll          : this.model
+      roll          : this.model,
+      network       : this.options.network
     }));
   },
 

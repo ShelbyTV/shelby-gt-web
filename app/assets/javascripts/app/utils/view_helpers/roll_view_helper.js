@@ -123,7 +123,7 @@ libs.shelbyGT.viewHelpers.roll = {
 
   // display the roll's creator's name on that creator's source network
   // OPTIONAL - specify which source network with the provider parameter
-  fauxUserDisplayName : function(roll, provider) {
+  fauxUserDisplayName : function(roll, provider,full) {
     var creatorAuths = roll.get('creator_authentications');
     if (creatorAuths && creatorAuths.length) {
       var auth;
@@ -132,7 +132,8 @@ libs.shelbyGT.viewHelpers.roll = {
       } else {
         auth = creatorAuths[0];
       }
-      return auth && (auth.name || auth.nickname || null);
+
+      return auth && ((full && provider && auth.name != null && auth.nickname != null && auth.name != auth.nickname) ? auth.name + ' (' +auth.nickname + ')' : (auth.name || auth.nickname || null));
     } else {
       return null;
     }
