@@ -10,11 +10,11 @@ ShelbyGtWeb::Application.routes.draw do
   #######################XXX###############################
   # For development, take me out when mobile is more stable
   if Rails.env.development?
-    get '/m' => 'mobile#search', :as => :mobile_search
-    get '/m/roll/:id' => 'mobile#roll', :as => :mobile_roll
     constraints(:subdomain => 'm.localhost') do
-      get '/' => 'mobile#search', :as => :mobile_search # to show mobile search as shelby.tv ?
-      get '/roll/:id' => 'mobile#roll', :as => :mobile_roll
+      get '/' => 'mobile#landing', :as => :mobile_landing
+      get '/stream' => 'mobile#stream', :as => :mobile_stream
+      get '/featured' => 'mobile#featured', :as => :mobile_featured
+      get '/me(*path)' => 'mobile#me', :as => :mobile_me
     end
   end
   #######################XXX###############################

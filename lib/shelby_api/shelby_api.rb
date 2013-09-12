@@ -56,7 +56,7 @@ module Shelby
     end
 
     def self.get_user_dasboard(user_id=nil, skip=0, limit=20)
-      base = user_id ? "/user/#{user_id}/dashboard" : '/dasboard'
+      base = user_id ? "/user/#{user_id}/dashboard" : '/dashboard'
       r = get( "/#{base}?skip=#{skip}&limit=#{limit}" ).parsed_response
       return nil if r['status'] != 200
       if r['result']['frames'] and r['result']['frames'].is_a?(Array)

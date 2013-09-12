@@ -1,5 +1,18 @@
 class MobileController < ApplicationController
 
+  def landing
+
+  end
+
+  def stream
+    if @current_user = Shelby::API.get_current_user and @dashboard = Shelby::API.get_user_dasboard()
+
+      # show stream to logged in user
+    else
+      redirect_to '/'
+    end
+  end
+
   def search
     # render just search box
     @query_param = params[:q]
@@ -15,5 +28,5 @@ class MobileController < ApplicationController
       redirect_to "/"
     end
   end
-  
+
 end
