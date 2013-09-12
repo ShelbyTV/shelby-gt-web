@@ -136,6 +136,7 @@
       <% experiments.each do |name, alternative| %>
         try {
           _gaq.push(['_trackEvent', 'ab-testing', '<%= name %>', '<%= alternative.value %>']);
+          _kmq.push(["set", {"<%= name %>": "<%= alternative.value %>"}]);
         } catch(e) {}
       <% end %>
     </script>
