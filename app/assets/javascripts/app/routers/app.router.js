@@ -99,7 +99,13 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
             if (notEligibleForOnboarding) {
               self._reroute();
             } else if (!userOnboardingProgress) {
-              self.navigate('/onboarding/1', {trigger:true, replace:true});
+              // AB TESTING ORDER OF ONBOARDING
+              if (shelby.abTests && shelby.abTests.onboardingFirstStep == 'connect_services') {
+                var _param = _(userModel.get('authentications')).any(function(auth){return auth.provider == 'facebook';}) ? '?authed_with=facebook' : '';
+                self.navigate('/onboarding/2'+_param, {trigger:true, replace:true});
+              } else {
+                self.navigate('/onboarding/1', {trigger:true, replace:true});
+              }
               return;
             } else if (userOnboardingProgress !== true && userOnboardingProgress < libs.shelbyGT.OnboardingView.numOnboardingStages) {
               self.navigate('/onboarding/' + (parseInt(userOnboardingProgress,10) + 1), {trigger:true, replace:true});
