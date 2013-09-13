@@ -21,7 +21,7 @@
 
   <script>
     var shelbyTrackingCategory = "Share Page",
-        shelbyTrackingLabel<%= raw " = '#{@current_user_nickname}'" %>;
+        shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname']}'" %>;
   </script>
 
   <%= stylesheet_link_tag "screen", :media => "screen" %>
@@ -42,7 +42,7 @@
   <%= javascript_include_tag "shares" %>
 </head>
 
-<body class="shelby shelby--shares<%= (!@is_mobile && @user_signed_in) ? ' shelby--shares_enabled' : ''%>">
+<body class="shelby shelby--shares<%= (!@is_mobile && @user_signed_in) ? ' shelby--shares_enabled' : ''%>" data-personal_roll_id="<%= (@signed_in_user) ? @signed_in_user['personal_roll_id'] : 'null' %>" data-user_name="<%= (@signed_in_user) ? @signed_in_user['nickname'] : 'anonymous' %>">
   <%= render :partial => "seovideo/signup_cta", :locals => { :with_js => false, :category => "Share Page" } %>
 
   <section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
@@ -52,11 +52,23 @@
 
   <div id="js-shelby-wrapper" class="shelby-wrapper clearfix">
     <header id="js-header" class="animate_module js-app-header shelby-header clearfix js-inactivity-preemption" role="banner">
-      <%= render :partial => '/home/app_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
+      <%= render :partial => '/home/app_header',
+          :locals => {
+            :show_login     => true,
+            :signed_in_user => @signed_in_user,
+            :is_mobile      => @is_mobile
+          } %>
     </header>
 
     <div class="content_wrapper" role="main">
-      <%= render :partial => '/objects/frame' %>
+      <%= render :partial => '/objects/frame',
+          :locals => {
+            :frame          => @frame,
+            :frame_owner    => @frame_owner,
+            :video          => @frame_video,
+            :signed_in_user => @signed_in_user,
+            :is_mobile      => @is_mobile
+          } %>
 
       <%= render :partial => '/marketing/shares' if @is_mobile != 'iPhone' and !@user_signed_in %>
     </div>

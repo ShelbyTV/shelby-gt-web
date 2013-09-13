@@ -6,8 +6,10 @@ class MobileController < ApplicationController
 
   def stream
     if user_signed_in?
-      @current_user = Shelby::API.get_user(current_user_id)
+      @signed_in_user = Shelby::API.get_user(current_user_id)
       @dashboard = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'])
+      @is_mobile = is_mobile?
+      @user_signed_in = user_signed_in?
     else
       # TODO:
       # add param on redirect to show what happened.

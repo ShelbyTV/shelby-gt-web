@@ -6,11 +6,12 @@ $(function(){
   // "globals"
   var $dropdown        = $('.js-shares'),
       $frame           = $('.js-frame'),
+      $body            = $('body'),
       $shareInitButton = $('.js-share-init'),
       frame_id         = $frame.attr('id'),
       video_id         = $frame.data('video_id'),
-      personal_roll_id = $frame.data('personal_roll_id'),
-      username         = $frame.data('user_name'),
+      personal_roll_id = $body.data('personal_roll_id'),
+      username         = $body.data('user_name'),
       user             = {};
 
   // share pane template data

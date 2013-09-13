@@ -8,13 +8,14 @@
   </h1>
 </span>
 
-<% if !@is_mobile %>
+<% if !is_mobile %>
   <%
-    userNickname = ((@current_user && @current_user['nickname']) || 'anonymous')
+    userNickname = (signed_in_user && signed_in_user['nickname']) || 'anonymous'
+    avatar       = avatar_url_for_user(signed_in_user)
   %>
   <nav id="js-guide-presentation-selector" class="guide-presentation-selector">
     <ul class="js-content-selector list list--inline app_nav clearfix">
-      <% if @user_signed_in %>
+      <% if signed_in_user %>
         <li class="list__item">
           <button class="app_nav__button js-stream js-track-event" data-ga_category="Share Page" data-ga_action="Stream" data-ga_label="<%= userNickname %>">
             Stream
@@ -35,9 +36,6 @@
 
         <li class="dropdown_module list__item secondary-item guide-login">
           <button class="dropdown_button app_nav__button app_nav__button--settings js-do-nothing" data-ga_category="Share Page" data-ga_action="Settings" data-ga_label="<%= userNickname  %>" type="button">
-            <%
-              avatar = avatar_url_for_user(@current_user)
-            %>
             <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
               <%= userNickname %> <span class="icon-carrot"></span>
           </button>
@@ -45,7 +43,10 @@
           <section class="dropdown_section settings-section">
             <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
 
-              <%= render :partial => 'objects/user_subnav', :locals => { :userNickname => userNickname } %>
+              <%= render :partial => 'objects/user_subnav',
+                  :locals => {
+                    :userNickname => userNickname
+                  } %>
 
             </div>
           </section>
