@@ -25,11 +25,13 @@ class MobileController < ApplicationController
       if params[:path] == "likes"
         @roll_type = "likes"
         @roll_id = @current_user['watch_later_roll_id']
-      else
+      elsif params[:path] == "shares"
         @roll_type = "shares"
         @roll_id = @current_user['personal_roll_id']
+      else
+        redirect_to '/m'
       end
-      @roll_with_frames = Shelby::API.get_roll_with_frames(roll_id)
+      @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id)
     else
       redirect_to '/m'
     end
