@@ -72,4 +72,20 @@ class MobileController < ApplicationController
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 
+  def onboarding
+    if user_signed_in?
+      @current_user = Shelby::API.get_user(current_user_id)
+      @current_step = params[:path]
+      if [1,2,3].include? @current_step.to_i
+        render "/mobile/onboarding/step_#{@current_step.to_s}".to_sym
+      else
+        raise ActionController::RoutingError.new("That step doesnt exist.")
+      end
+    else
+      # TODO:
+      # add param on redirect to show what happened.
+      redirect_to :mobile_landing
+    end
+  end
+
 end
