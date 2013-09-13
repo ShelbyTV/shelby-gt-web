@@ -10,6 +10,10 @@ ShelbyGtWeb::Application.routes.draw do
   #######################XXX###############################
   # For development, take me out when mobile is more stable
   if Rails.env.development?
+    get '/m' => 'mobile#landing', :as => :mobile_landing
+    get '/m/stream' => 'mobile#stream', :as => :mobile_stream
+    get '/m/featured' => 'mobile#featured', :as => :mobile_featured
+    get '/m/me(*path)' => 'mobile#me', :as => :mobile_me
     constraints(:subdomain => 'm.localhost') do
       get '/' => 'mobile#landing', :as => :mobile_landing
       get '/stream' => 'mobile#stream', :as => :mobile_stream

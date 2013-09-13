@@ -55,13 +55,11 @@ module Shelby
       return r['status'] == 200 ? r['result'][0] : nil
     end
 
-    def self.get_user_dasboard(user_id=nil, skip=0, limit=20)
+    def self.get_user_dasboard(user_id, cookie, skip=0, limit=20)
       base = user_id ? "/user/#{user_id}/dashboard" : '/dashboard'
-      r = get( "/#{base}?skip=#{skip}&limit=#{limit}" ).parsed_response
+      r = get( "/dashboard?skip=#{skip}&limit=#{limit}", :headers => {'Cookie' => cookie} ).parsed_response
       return nil if r['status'] != 200
-      if r['result']['frames'] and r['result']['frames'].is_a?(Array)
-        roll = r['result']
-      end
+      dashboard = r['result']
     end
 
     def self.get_roll_with_frames(roll_id, skip=0, limit=20)

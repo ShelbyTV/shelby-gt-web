@@ -5,11 +5,11 @@ class MobileController < ApplicationController
   end
 
   def stream
-    if @current_user = Shelby::API.get_current_user and @dashboard = Shelby::API.get_user_dasboard()
-
-      # show stream to logged in user
+    if user_signed_in?
+      @current_user = Shelby::API.get_user(current_user_id)
+      @dashboard = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'])
     else
-      redirect_to '/'
+      redirect_to '/m'
     end
   end
 

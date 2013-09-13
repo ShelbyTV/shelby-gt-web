@@ -1,0 +1,11 @@
+Hello <%= @current_user['nickname'] %>
+
+<ul>
+  <% @dashboard.each do |dbe| %>
+    <li>
+      <% if dbe['frame'] and dbe['frame']['video'] %>
+        <img src="<%= dbe['frame']['video']["thumbnail_url"] %>" />
+      <% end %>
+    </li>
+  <% end %>
+</ul>
