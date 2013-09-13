@@ -25,6 +25,7 @@ class MobileController < ApplicationController
       if params[:path] == "/likes"
         @roll_type = "likes"
         @roll_id = @current_user['watch_later_roll_id']
+        Rails.logger.info @roll_id
       elsif params[:path] == "/shares"
         @roll_type = "shares"
         @roll_id = @current_user['personal_roll_id']
@@ -32,7 +33,11 @@ class MobileController < ApplicationController
         @roll_type = "shares"
         @roll_id = @current_user['personal_roll_id']
       end
-      @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id)
+      if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'])
+        @frames = @roll_with_frames['frames']
+      else
+        @frames = []
+      end
     else
       redirect_to '/m'
     end

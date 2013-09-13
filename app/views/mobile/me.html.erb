@@ -15,3 +15,13 @@ Shelby::API.Shelby::API.get_roll_with_frames(@roll_id, skip=20, limit=20)
 <% elsif @roll_type == "likes" %>
   This is your likes
 <% end %>
+
+<ul>
+  <% @frames.each do |f| %>
+    <li>
+      <% if f and f['video'] %>
+        <img src="<%=f['video']["thumbnail_url"] %>" />
+      <% end %>
+    </li>
+  <% end %>
+</ul>
