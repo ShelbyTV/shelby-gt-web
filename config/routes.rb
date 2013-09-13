@@ -12,11 +12,14 @@ ShelbyGtWeb::Application.routes.draw do
     get '/m/stream' => 'mobile#stream', :as => :mobile_stream
     get '/m/featured' => 'mobile#featured', :as => :mobile_featured
     get '/m/me(*path)' => 'mobile#me', :as => :mobile_me
+    get '/m/signout' => 'mobile#signout', :as => :mobile_signout
+    # for user shares
+    get '/m/(*path)' => 'mobile#shares', :as => :mobile_shares
     constraints(:subdomain => 'm.localhost') do
-      get '/' => 'mobile#landing', :as => :mobile_landing
-      get '/stream' => 'mobile#stream', :as => :mobile_stream
-      get '/featured' => 'mobile#featured', :as => :mobile_featured
-      get '/me(*path)' => 'mobile#me', :as => :mobile_me
+      #get '/' => 'mobile#landing', :as => :mobile_landing
+      #get '/stream' => 'mobile#stream', :as => :mobile_stream
+      #get '/featured' => 'mobile#featured', :as => :mobile_featured
+      #get '/me(*path)' => 'mobile#me', :as => :mobile_me
     end
   end
   #######################XXX###############################
