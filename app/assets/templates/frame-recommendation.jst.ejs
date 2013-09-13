@@ -1,30 +1,6 @@
-<%
-  var dbeAction = dashboardEntry.get('action'),
-      avatar = shelby.config.recommendations.likeRecommendation,
-      color = 'red';
-
-  switch(dbeAction) {
-    case libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation:
-      avatar = shelby.config.recommendations.avatars.videoGraphRecommendation;
-      color = 'green';
-      break;
-    case libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.entertainmentGraphRecommendation:
-      avatar = shelby.config.recommendations.avatars.entertainmentGraphRecommendation;
-      color = 'green';
-      break;
-    case libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.mortarRecommendation:
-      avatar = shelby.config.recommendations.avatars.mortarRecommendation;
-      color = 'red';
-      break;
-    default:
-      avatar = shelby.config.recommendations.likeRecommendation;
-      color = 'red';
-  }
-%>
-
 <a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= "creator.get('nickname')" %>">
- <span class="image_module xuser-avatar<% if (false || 'fauxUserOrigin') { %> xuser-avatar--<%= 'fauxUserOrigin' %> icon-<%= 'fauxUserOrigin' %><% } %> media_image" style="background-image: url(<%= avatar %>);" role="img">
-   <img src="<%= avatar %>" class="visuallyhidden" title="<%= 'creatorNickname' %>" alt="<%= 'creatorNickname' %>">
+ <span class="image_module xuser-avatar media_image" style="background-image: url(<%= settings.avatar %>);" role="img">
+   <img src="<%= settings.avatar %>" class="visuallyhidden" title="<%= settings.header %>" alt="<%= settings.header %>">
  </span><!-- eo media_image -->
 </a>
 
@@ -34,8 +10,8 @@
     <%= dashboardEntry.get('frame').get('created_at') %>
   </span>
   <% } %>
-  <p class="xuser-data xuser-data--<%= color %> xuser-data--recommendation">
-    <strong>Recommended for you</strong>
+  <p class="xuser-data xuser-data--<%= settings.color %> xuser-data--recommendation">
+    <strong><%= settings.header %></strong>
   </p>
   <p class="xuser-message">
     <% if (isEntertainmentGraph) { %>
