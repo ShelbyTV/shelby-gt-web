@@ -5,10 +5,10 @@ module Shelby
     include HTTParty
     base_uri "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}"
 
-    def self.get_user(nickname_or_id)
-      uri = Addressable::URI.parse("/user/#{nickname_or_id}").normalize.to_s
-      u = get(uri).parsed_response
-      Rails.logger.info u
+    def self.get_user(nickname_or_id, cookie=nil)
+      uri = Addressable::URI.parse("/user/#{nickname_or_id}" ).normalize.to_s
+      headers = cookie ? {'Cookie' => cookie} : {}
+      u = get(uri, :headers => headers).parsed_response
       return u['status'] == 200 ? u['result'] : nil
     end
 
@@ -56,13 +56,11 @@ module Shelby
       return r['status'] == 200 ? r['result'][0] : nil
     end
 
-    def self.get_user_dasboard(user_id=nil, skip=0, limit=20)
-      base = user_id ? "/user/#{user_id}/dashboard" : '/dasboard'
-      r = get( "/#{base}?skip=#{skip}&limit=#{limit}" ).parsed_response
+    def self.get_user_dasboard(user_id, cookie, skip=0, limit=20)
+      base = user_id ? "/user/#{user_id}/dashboard" : '/dashboard'
+      r = get( "/#{base}?skip=#{skip}&limit=#{limit}", :headers => {'Cookie' => cookie} ).parsed_response
       return nil if r['status'] != 200
-      if r['result']['frames'] and r['result']['frames'].is_a?(Array)
-        roll = r['result']
-      end
+      db = r['result']
     end
 
     def self.get_roll_with_frames(roll_id, skip=0, limit=20)

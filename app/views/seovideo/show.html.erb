@@ -43,7 +43,7 @@
 
             <ul class="seovideo__list seovideo__list--social">
               <li class="seovideo__item">
-                <div class="fb-like clearfix" data-href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial" ></div>
+                <div class="fb-like clearfix" data-href="https://www.facebook.com/shelbytv" data-width="200" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false" data-height="40"></div>
               </li>
 
               <li id="twitter-intent" class="seovideo__item"></li>
@@ -172,7 +172,7 @@
     FB.Event.subscribe('edge.create',
       function(response) {
         try {
-        _gaq.push(['_trackEvent', 'SEO Video', 'FB Like', response]);
+        _gaq.push(['_trackEvent', 'SEO Video', 'Like Shelby on FB', response]);
       } catch(e) {}
       }
     );
