@@ -1,3 +1,13 @@
+This page has acces to the following variables:
+<ul>
+  <li>@current_user</li>
+  <li>@dashboard</li>
+</ul>
+
+To get more frames use:
+Shelby::API.get_user_dasboard(@current_user['id'], skip=20, limit=20)
+
+
 Hello <%= @current_user['nickname'] %>
 
 <ul>
