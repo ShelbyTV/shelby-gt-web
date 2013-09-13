@@ -24,72 +24,125 @@ $(function(){
     username              : username
   };
 
+  var currentUser = $('#current_user').html();
+      currentUser = JSON.parse(currentUser);
+    console.log(currentUser);
+  if(currentUser) {
+    for (var auth in currentUser.authentications) {
+      service = currentUser.authentications[auth];
 
-  // get user
-  $.ajax({
-    type: 'GET',
-    url: '//api.shelby.tv/v1/user/' + username,
-    dataType: "jsonp",
-    timeout: 10000,
-    crossDomain: true,
-    data: {},
-    xhrFields: {
-      withCredentials: true
-    },
-    success: function (response) {
-      user = response.result;
-
-      for (var auth in user.authentications) {
-        service = user.authentications[auth];
-
-        if(service.provider == 'twitter') {
-          data.twitter_enabled = true;
-          data.twitter_checked = user.app_progress.share_twitter_enabled;
-        }
-        else if (service.provider == 'facebook') {
-          data.facebook_enabled = true;
-          data.twitter_checked = user.app_progress.share_facebook_enabled;
-        }
+      if(service.provider == 'twitter') {
+        data.twitter_enabled = true;
+        data.twitter_checked = currentUser.app_progress.share_twitter_enabled;
       }
+      else if (service.provider == 'facebook') {
+        data.facebook_enabled = true;
+        data.twitter_checked = currentUser.app_progress.share_facebook_enabled;
+      }
+    }
 
-      // append share pane dynamically.
-      $dropdown.html(SHELBYJST['share-page-form'](data));
-      // share button shouldn't be clickable until user's data is loaded/rendered
-      $shareInitButton.removeAttr('disabled');
+    // append share pane dynamically.
+    $dropdown.html(SHELBYJST['share-page-form'](data));
+    // share button shouldn't be clickable until user's data is loaded/rendered
+    $shareInitButton.removeAttr('disabled');
 
-      $('.js-toggle-twitter-sharing, .js-toggle-facebook-sharing').on('click',function(e){
-        var $this = $(e.currentTarget),
-            network = $this.data('network');
+    $('.js-toggle-twitter-sharing, .js-toggle-facebook-sharing').on('click',function(e){
+      var $this = $(e.currentTarget),
+          network = $this.data('network');
 
-        $this.parent()
-                .toggleClass('button_gray',!$this.is(':checked'))
-                .toggleClass('button_'+network+'-blue',$this.is(':checked'));
-      });
+      $this.parent()
+              .toggleClass('button_gray',!$this.is(':checked'))
+              .toggleClass('button_'+network+'-blue',$this.is(':checked'));
+    });
 
-      // determine if Video has been liked, depends on user being loaded.
-      $.ajax({
-        type: 'GET',
-        url: '//api.shelby.tv/v1/video/queued',
-        dataType: "jsonp",
-        timeout: 10000,
-        crossDomain: true,
-        data: {},
-        xhrFields: {
-          withCredentials: true
-        },
-        success: function (response) {
-          var likes = response.result;
-          for(var i = 0; i < likes.length; i++) {
-            if(likes[i].id == video_id) {
-              $('.js-like').addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
-            }
+    // determine if Video has been liked, depends on user being loaded.
+    $.ajax({
+      type: 'GET',
+      url: '//api.shelby.tv/v1/video/queued',
+      dataType: "jsonp",
+      timeout: 10000,
+      crossDomain: true,
+      data: {},
+      xhrFields: {
+        withCredentials: true
+      },
+      success: function (response) {
+        var likes = response.result;
+        for(var i = 0; i < likes.length; i++) {
+          if(likes[i].id == video_id) {
+            $('.js-like').addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
           }
-        },
-        error: function (e) { console.log("API Error: Unabled to persist Like",e); }
-      });
-    },
-    error: function (e) { console.log("API Error: Unable to load User",e); }
-  });
+        }
+      },
+      error: function (e) { console.log("API Error: Unabled to persist Like",e); }
+    });
+  }
+  // get user
+
+  // $.ajax({
+  //   type: 'GET',
+  //   url: '//api.shelby.tv/v1/user/' + username,
+  //   dataType: "jsonp",
+  //   timeout: 10000,
+  //   crossDomain: true,
+  //   data: {},
+  //   xhrFields: {
+  //     withCredentials: true
+  //   },
+  //   success: function (response) {
+  //     user = response.result;
+
+  //     for (var auth in user.authentications) {
+  //       service = user.authentications[auth];
+
+  //       if(service.provider == 'twitter') {
+  //         data.twitter_enabled = true;
+  //         data.twitter_checked = user.app_progress.share_twitter_enabled;
+  //       }
+  //       else if (service.provider == 'facebook') {
+  //         data.facebook_enabled = true;
+  //         data.twitter_checked = user.app_progress.share_facebook_enabled;
+  //       }
+  //     }
+
+  //     // append share pane dynamically.
+  //     $dropdown.html(SHELBYJST['share-page-form'](data));
+  //     // share button shouldn't be clickable until user's data is loaded/rendered
+  //     $shareInitButton.removeAttr('disabled');
+
+  //     $('.js-toggle-twitter-sharing, .js-toggle-facebook-sharing').on('click',function(e){
+  //       var $this = $(e.currentTarget),
+  //           network = $this.data('network');
+
+  //       $this.parent()
+  //               .toggleClass('button_gray',!$this.is(':checked'))
+  //               .toggleClass('button_'+network+'-blue',$this.is(':checked'));
+  //     });
+
+  //     // determine if Video has been liked, depends on user being loaded.
+  //     $.ajax({
+  //       type: 'GET',
+  //       url: '//api.shelby.tv/v1/video/queued',
+  //       dataType: "jsonp",
+  //       timeout: 10000,
+  //       crossDomain: true,
+  //       data: {},
+  //       xhrFields: {
+  //         withCredentials: true
+  //       },
+  //       success: function (response) {
+  //         var likes = response.result;
+  //         for(var i = 0; i < likes.length; i++) {
+  //           if(likes[i].id == video_id) {
+  //             $('.js-like').addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
+  //           }
+  //         }
+  //       },
+  //       error: function (e) { console.log("API Error: Unabled to persist Like",e); }
+  //     });
+  //   },
+  //   error: function (e) { console.log("API Error: Unable to load User",e); }
+  // });
 
 
   //on Share form submit
