@@ -1,0 +1,16 @@
+This page has acces to the following variables:
+<ul>
+  <li>@current_user</li>
+  <li>@roll_type</li>
+  <li>@roll_id</li>
+  <li>@roll_with_frames</li>
+</ul>
+
+If you were to get more frames from these rolls, use:
+Shelby::API.Shelby::API.get_roll_with_frames(@roll_id, skip=20, limit=20)
+
+<% if @roll_type == "shares" %>
+  This is your shares
+<% elsif @roll_type == "likes" %>
+  This is your likes
+<% end %>
