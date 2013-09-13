@@ -30,10 +30,7 @@ class MobileController < ApplicationController
         @roll_type = "shares"
         @roll_id = @current_user['personal_roll_id']
       else
-        # TODO:
-        # Raise 404 instead of below
-        @roll_type = "shares"
-        @roll_id = @current_user['personal_roll_id']
+        raise ActionController::RoutingError.new("Route doesn't exist.")
       end
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'])
         @frames = @roll_with_frames['frames']
@@ -47,16 +44,26 @@ class MobileController < ApplicationController
     end
   end
 
-  def shares
-
+  def roll
+    @current_user = Shelby::API.get_user(current_user_id) if user_signed_in?
+    if @user = Shelby::API.get_user(params[:path])
+      @roll_id = @user['personal_roll_id']
+      if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, '')
+        @frames = @roll_with_frames['frames']
+      else
+        @frames = []
+      end
+    else
+      # TODO:
+      # add param on redirect to show what happened.
+      redirect_to :mobile_landing
+    end
   end
 
   def signout
     flash[:error] = params[:error]
-
     # def dont want this around (API tries to kill it, too)
     cookies.delete(:_shelby_gt_common)
-
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 

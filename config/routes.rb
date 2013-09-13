@@ -14,7 +14,7 @@ ShelbyGtWeb::Application.routes.draw do
     get '/m/me(*path)' => 'mobile#me', :as => :mobile_me
     get '/m/signout' => 'mobile#signout', :as => :mobile_signout
     # for user shares
-    get '/m/(*path)' => 'mobile#shares', :as => :mobile_shares
+    get '/m/(*path)' => 'mobile#roll', :as => :mobile_shares
     constraints(:subdomain => 'm.localhost') do
       #get '/' => 'mobile#landing', :as => :mobile_landing
       #get '/stream' => 'mobile#stream', :as => :mobile_stream
