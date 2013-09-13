@@ -29,8 +29,11 @@ class MobileController < ApplicationController
       elsif params[:path] == "/shares"
         @roll_type = "shares"
         @roll_id = @current_user['personal_roll_id']
-      else
+      elsif params[:path]
         raise ActionController::RoutingError.new("Route doesn't exist.")
+      else
+        @roll_type = "shares"
+        @roll_id = @current_user['personal_roll_id']
       end
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'])
         @frames = @roll_with_frames['frames']
