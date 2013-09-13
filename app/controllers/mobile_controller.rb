@@ -7,7 +7,7 @@ class MobileController < ApplicationController
   def stream
     if user_signed_in?
       @current_user = Shelby::API.get_user(current_user_id)
-      @dashboard = Shelby::API.get_user_dasboard(current_user_id)
+      @dashboard = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'])
     else
       redirect_to '/m'
     end
@@ -20,7 +20,7 @@ class MobileController < ApplicationController
 
   def me
     if user_signed_in?
-      @current_user = Shelby::API.get_user(current_user_id)
+      @current_user = Shelby::API.get_user(current_user_id, request.headers['HTTP_COOKIE'])
       # default to shares. otherwise go to likes
       if params[:path] == "likes"
         @roll_type = "likes"
