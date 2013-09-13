@@ -26,12 +26,32 @@ libs.shelbyGT.FrameRecommendationView = Support.CompositeView.extend({
       this._firstFriend.bind('change:nickname', this.render, this);
     }
     var numFriends = friendsCollection ? friendsCollection.length : 0;
+
+    // UI settings, per use-case
+    var dbeAction = this.model.get('action'),
+        settings;
+
+    switch(dbeAction) {
+      case libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation:
+        settings = shelby.config.recommendations.videoGraphRecommendation;
+        break;
+      case libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.entertainmentGraphRecommendation:
+        settings = shelby.config.recommendations.entertainmentGraphRecommendation;
+        break;
+      case libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.mortarRecommendation:
+        settings = shelby.config.recommendations.mortarRecommendation;
+        break;
+      default:
+        settings = shelby.config.recommendations.likeRecommendation.avatar;
+    }
+
     this.$el.html(this.template({
       dashboardEntry: this.model,
       firstFriend : this._firstFriend,
       numFriends : numFriends,
       isEntertainmentGraph : isEntertainmentGraph,
-      isPvi : this.options.isPvi
+      isPvi : this.options.isPvi,
+      settings: settings
     }));
 
     if (!this.options.isPvi && isEntertainmentGraph && numFriends) {
