@@ -67,7 +67,8 @@
             :frame_owner    => @frame_owner,
             :video          => @frame_video,
             :signed_in_user => @signed_in_user,
-            :is_mobile      => @is_mobile
+            :is_mobile      => @is_mobile,
+            :embed_video    => true
           } %>
 
       <%= render :partial => '/marketing/shares' if @is_mobile != 'iPhone' and !@user_signed_in %>

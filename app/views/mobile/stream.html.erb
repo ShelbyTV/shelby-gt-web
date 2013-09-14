@@ -10,7 +10,6 @@ Shelby::API.get_user_dasboard(@current_user['id'], skip=20, limit=20)
 <ul class="list">
   <% @dashboard.each do |dbe| %>
     <li class="list__item">
-
       <% if dbe['frame'] and dbe['frame']['video'] %>
         <%= render :partial => '/objects/frame',
             :locals => {
@@ -18,10 +17,10 @@ Shelby::API.get_user_dasboard(@current_user['id'], skip=20, limit=20)
               :frame_owner    => dbe['frame']['creator'],
               :video          => dbe['frame']['video'],
               :signed_in_user => @signed_in_user,
-              :is_mobile      => true
+              :is_mobile      => true,
+              :embed_video    => false
             } %>
       <% end %>
-
     </li>
   <% end %>
 </ul>
