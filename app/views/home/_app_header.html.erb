@@ -37,7 +37,7 @@
         <li class="dropdown_module list__item secondary-item guide-login">
           <button class="dropdown_button app_nav__button app_nav__button--settings js-do-nothing" data-ga_category="Share Page" data-ga_action="Settings" data-ga_label="<%= userNickname  %>" type="button">
             <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
-              <%= userNickname %> <span class="icon-carrot"></span>
+              <%= userNickname if is_mobile %> <span class="icon-carrot"></span>
           </button>
 
           <section class="dropdown_section settings-section">

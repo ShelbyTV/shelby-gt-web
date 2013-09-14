@@ -2,12 +2,20 @@
 //  Mobile Base
 //------------------------------------------------------------------------------
 .shelby--mobile {
+  .shelby-logo {
+    .icon-type {
+      display: none;
+    }
+  }
   .shelby-header {
     height: 41px;
     left: 0;
     position: fixed;
     top: 0;
     width: 100%;
+  }
+  .app_nav__button {
+    padding: 0.5em 1em;
   }
   .content_wrapper {
     margin-top: 40px;
