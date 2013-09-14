@@ -24,7 +24,8 @@
         shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname']}'" %>;
   </script>
 
-  <%= stylesheet_link_tag "screen", :media => "screen" %>
+  <%= stylesheet_link_tag "mobile", :media => "screen" %>
+
   <script>
     if (typeof(shelby) == 'undefined') {
       shelby = {};
@@ -42,7 +43,7 @@
   <%= javascript_include_tag "shares" %>
 </head>
 
-<body class="shelby shelby--shares<%= (!@is_mobile && @user_signed_in) ? ' shelby--shares_enabled' : ''%>">
+<body class="shelby shelby--shares shelby--mobile">
   <div id="js-shelby-wrapper" class="shelby-wrapper clearfix">
     <header id="js-header" class="animate_module js-app-header shelby-header clearfix js-inactivity-preemption" role="banner">
       <%= render :partial => '/home/app_header',
