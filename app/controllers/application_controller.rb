@@ -85,11 +85,8 @@ class ApplicationController < ActionController::Base
       headers['Access-Control-Request-Method'] = 'GET'
     end
 
-  unless Rails.env == 'development'
     rescue_from ActionController::RoutingError, :with => :render_error_404
     rescue_from ActionView::Template::Error, :with => :render_error_500
-    # rescue_from Exception, :with => :render_error_404
-  end
 
   def render_error_404
     error('404 Page Not Found')
