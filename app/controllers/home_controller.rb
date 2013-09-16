@@ -48,7 +48,7 @@ class HomeController < ApplicationController
 
           if user
             @user = user
-            @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
+            @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id'], request.headers['HTTP_COOKIE']) if @user
             render '/home/app' and return
           else
             raise ActionController::RoutingError.new("Not Found")
