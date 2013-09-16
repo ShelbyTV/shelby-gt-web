@@ -46,7 +46,7 @@
         userNickname = frame_owner['nickname']
       %>
       <a href="/<%= userNickname %>" class="js-track-event" data-ga_category="Share Page" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
-        <span class="image_module media_image avatar avatar--medium" style="background-image: url(<%= avatar %>);" role="img">
+        <span class="image_module media_image avatar avatar--<%= (is_mobile) ? 'small' : 'medium' %>" style="background-image: url(<%= avatar %>);" role="img">
           <img src="<%= avatar %>" class="cloaked">
         </span>
       </a>

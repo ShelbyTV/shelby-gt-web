@@ -12,4 +12,9 @@
 
 //  Screens that LESS THAN 600px wide.
 @media screen and (max-width: 600px) {
+  .frame-footer {
+    .media_body {
+      font-size: 1.1em;
+    }
+  }
 }//eo media-query///////////////////////////////////////////////////////////////

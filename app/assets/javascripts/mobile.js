@@ -8,6 +8,12 @@
 //= require ./event-tracking/mobile.tracking.js
 
 $(document).ready(function(){
+  $('.js-toggle-comment').on('click',function(){
+    var $this = $(this);
+    $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
+  });
+
+
   var user = JSON.parse($('#js-user').text());
 
   if(user) {
