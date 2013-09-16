@@ -20,4 +20,13 @@
   .content_wrapper {
     margin-top: 40px;
   }
+
+  //it's a special mod that shouldn't be downloaded outside the context of the shelby--mobile class anyway.
+  .settings-section--mobile {
+    background-color: $ui-white;
+
+    .list:last-child {
+      padding-bottom: 0.5em;
+    }
+  }
 }
