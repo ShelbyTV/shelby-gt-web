@@ -100,17 +100,17 @@ private
     begin
       video_response = Net::HTTP.get_response(URI.parse(video_url))
     rescue
-      raise ActionView::Template::Error.new("Exception while gathering video information.")
+      raise Shelby::InternalError.new("Exception while gathering video information.")
     end
 
-    raise ActionView::Template::Error.new("Received no response from API.") unless video_response
+    raise Shelby::InternalError.new("Received no response from API.") unless video_response
     raise ActionController::RoutingError.new("Not found") if video_response.code == "404"
-    raise ActionView::Template::Error.new("Received bad response code from API.") unless (video_response.code == "200")
-    raise ActionView::Template::Error.new("Received incomplete response from API.") unless video_response.body
+    raise Shelby::InternalError.new("Received bad response code from API.") unless (video_response.code == "200")
+    raise Shelby::InternalError.new("Received incomplete response from API.") unless video_response.body
 
     @video_response_body_result = ActiveSupport::JSON.decode(video_response.body)["result"]
 
-    raise ActionView::Template::Error.new("Received bad JSON from API.") unless @video_response_body_result
+    raise Shelby::InternalError.new("Received bad JSON from API.") unless @video_response_body_result
 
     @video_title = @video_response_body_result["title"]
     @video_description = @video_response_body_result["description"]

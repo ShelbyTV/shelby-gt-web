@@ -87,6 +87,7 @@ class ApplicationController < ActionController::Base
 
     rescue_from ActionController::RoutingError, :with => :render_error_404
     rescue_from ActionView::Template::Error, :with => :render_error_500
+    rescue_from Shelby::InternalError, :with => :render_error_500
 
   def render_error_404
     error('404 Page Not Found')
