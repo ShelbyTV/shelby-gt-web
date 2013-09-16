@@ -186,7 +186,7 @@ class HomeController < ApplicationController
 
     @user_signed_in = user_signed_in?
 
-    @signed_in_user = Shelby::API.get_user(current_user_id, Shelby::CookieUtils.generate_cookie_string(cookies))
+    @signed_in_user = check_for_signed_in_user
     @signed_in_user_nickname = (@signed_in_user['nickname'] if @signed_in_user) || 'Anonymous'
 
     @frame_roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user

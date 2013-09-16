@@ -2,7 +2,10 @@ require 'shelby_api'
 require 'cookie_utils'
 require 'hash_error_checker'
 
+
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+
   protect_from_forgery
 
   after_filter :set_access_control_headers

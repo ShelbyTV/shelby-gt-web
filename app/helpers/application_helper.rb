@@ -59,4 +59,14 @@ module ApplicationHelper
     end
   end
 
+  def check_for_signed_in_user
+    if user_signed_in?
+      signed_in_user = Shelby::API.get_user(current_user_id,request.headers['HTTP_COOKIE'])
+    else
+      signed_in_user = {}
+      signed_in_user['nickname'] = 'Anonymous'
+    end
+
+    return signed_in_user
+  end
 end

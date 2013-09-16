@@ -1,19 +1,17 @@
-This page has acces to the following variables:
-<ul>
-  <li>@current_user (if user_signed_in?)</li>
-  <li>@featured_dashboard</li>
-</ul>
-
-To get more frames use:
-Shelby::API.get_user_dasboard(Settings::ShelbyAPI.featured_user_id, skip=20, limit=20)
-
-
-<ul>
-  <% @featured_dashboard.each do |dbe| %>
-    <li>
+<ul class="list">
+  <li class="list__item">
+    <% @featured_dashboard.each do |dbe| %>
       <% if dbe['frame'] and dbe['frame']['video'] %>
-        <img src="<%= dbe['frame']['video']["thumbnail_url"] %>" />
+        <%= render :partial => '/objects/frame',
+          :locals => {
+            :frame          => dbe['frame'],
+            :frame_owner    => dbe['frame']['creator'],
+            :video          => dbe['frame']['video'],
+            :signed_in_user => @signed_in_user,
+            :is_mobile      => true,
+            :embed_video    => false
+          } %>
       <% end %>
-    </li>
-  <% end %>
+    <% end %>
+  <li>
 </ul>

@@ -1,15 +1,15 @@
 class MobileController < ApplicationController
-
   def landing
 
   end
 
   def stream
     if user_signed_in?
-      @signed_in_user = Shelby::API.get_user(current_user_id)
-      @dashboard = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'])
-      @is_mobile = is_mobile?
+      @signed_in_user = check_for_signed_in_user
+      @dashboard      = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'])
+      @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
+      @roll_type      = "stream"
     else
       # TODO:
       # add param on redirect to show what happened.
@@ -18,28 +18,28 @@ class MobileController < ApplicationController
   end
 
   def featured
-    @current_user = Shelby::API.get_user(current_user_id) if user_signed_in?
+    @signed_in_user     = check_for_signed_in_user
     @featured_dashboard = Shelby::API.get_user_dasboard(Settings::ShelbyAPI.featured_user_id, request.headers['HTTP_COOKIE'])
+    @roll_type          = "featured"
   end
 
   def me
     if user_signed_in?
-      @signed_in_user = Shelby::API.get_user(current_user_id, request.headers['HTTP_COOKIE'])
-
-      @is_mobile = is_mobile?
+      @signed_in_user = check_for_signed_in_user
+      @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
 
       if params[:path] == "/likes"
         @roll_type = "likes"
-        @roll_id = @signed_in_user['watch_later_roll_id']
+        @roll_id   = @signed_in_user['watch_later_roll_id']
       elsif params[:path] == "/shares"
         @roll_type = "shares"
-        @roll_id = @signed_in_user['personal_roll_id']
+        @roll_id   = @signed_in_user['personal_roll_id']
       elsif params[:path]
         raise ActionController::RoutingError.new("Route doesn't exist.")
       else
         @roll_type = "shares"
-        @roll_id = @signed_in_user['personal_roll_id']
+        @roll_id   = @signed_in_user['personal_roll_id']
       end
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'])
         @frames = @roll_with_frames['frames']
@@ -54,9 +54,11 @@ class MobileController < ApplicationController
   end
 
   def roll
-    @current_user = Shelby::API.get_user(current_user_id) if user_signed_in?
+    @signed_in_user = check_for_signed_in_user
+
     if @user = Shelby::API.get_user(params[:path])
       @roll_id = @user['personal_roll_id']
+      @roll_type = "user"
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, '')
         @frames = @roll_with_frames['frames']
       else

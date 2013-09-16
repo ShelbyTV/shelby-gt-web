@@ -9,34 +9,33 @@
 </span>
 
 <%
-  userNickname = (signed_in_user && signed_in_user['nickname']) || 'anonymous'
   avatar       = avatar_url_for_user(signed_in_user)
 %>
 <nav id="js-guide-presentation-selector" class="guide-presentation-selector">
   <ul class="js-content-selector list list--inline app_nav clearfix">
-    <% if signed_in_user %>
+    <% if signed_in_user['id'] %>
       <li class="list__item">
-        <button class="app_nav__button js-stream js-track-event" data-ga_category="Share Page" data-ga_action="Stream" data-ga_label="<%= userNickname %>">
+        <a href="/m/stream" class="app_nav__button<%= " active-item" if pathname == 'stream'%> js-stream js-track-event" data-ga_category="Share Page" data-ga_action="Stream" data-ga_label="<%= signed_in_user['nickname'] %>">
           Stream
-        </button>
+        </a>
       </li>
 
       <li class="list__item js-featured-menu">
-        <button class="app_nav__button js-featured js-track-event" data-ga_category="Share Page" data-ga_action="Featured" data-ga_label="<%= userNickname %>">
+        <a href="/m/featured" class="app_nav__button<%= " active-item" if pathname == 'featured'%> js-featured js-track-event" data-ga_category="Share Page" data-ga_action="Featured" data-ga_label="<%= signed_in_user['nickname'] %>">
           Featured
-        </button>
+        </a>
       </li>
 
-      <li class="list__item js-guide-me js-track-event" data-ga_category="Share Page" data-ga_action="Me" data-ga_label="<%= userNickname %>">
-        <button class="app_nav__button js-me">
+      <li class="list__item js-guide-me js-track-event" data-ga_category="Share Page" data-ga_action="Me" data-ga_label="<%= signed_in_user['nickname'] %>">
+        <a href="/m/me" class="app_nav__button<%= " active-item" if pathname == 'me' or pathname == 'likes' or pathname == 'shares' %> js-me">
           Me
-        </button>
+        </a>
       </li>
 
       <li class="dropdown_module list__item secondary-item guide-login">
-        <button class="dropdown_button app_nav__button app_nav__button--settings js-do-nothing" data-ga_category="Share Page" data-ga_action="Settings" data-ga_label="<%= userNickname  %>" type="button">
+        <button class="dropdown_button app_nav__button app_nav__button--settings js-do-nothing" data-ga_category="Share Page" data-ga_action="Settings" data-ga_label="<%= signed_in_user['nickname'] %>" type="button">
           <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
-            <%= userNickname if !is_mobile %> <span class="icon-carrot"></span>
+            <%= signed_in_user['nickname'] if !is_mobile %> <span class="icon-carrot"></span>
         </button>
         <% if !is_mobile %>
           <section class="dropdown_section settings-section">
@@ -44,7 +43,7 @@
 
               <%= render :partial => 'objects/user_subnav',
                   :locals => {
-                    :userNickname => userNickname
+                    :userNickname => signed_in_user['nickname']
                   } %>
 
             </div>
@@ -74,7 +73,7 @@
     <div class="settings-section settings-section--mobile hidden clearfix">
       <%= render :partial => 'objects/user_subnav',
           :locals => {
-            :userNickname => userNickname,
+            :userNickname => signed_in_user['nickname'],
             :is_mobile    => is_mobile
           } %>
     </div>
