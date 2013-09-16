@@ -62,7 +62,7 @@ $_mobile_header_height: 41px;
     position: fixed;
   }
   //videocard
-  .frame-body {
+  .video__wrapper {
     &.icon-play:before {
       color: $ui-white;
       font-size: 5em;

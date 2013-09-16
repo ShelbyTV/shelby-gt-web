@@ -6,7 +6,7 @@
   </span>
 
   <div class="frame-body-wrapper clearfix">
-    <div class="frame-body<%= (is_mobile) ? ' icon-play' : '' %>">
+    <div class="frame-body">
       <noscript>
         <!-- styles/markup for devices that prevent fun stuff from happening -->
         <style>
@@ -34,7 +34,7 @@
           <% end %>
         </div>
       <% else %>
-        <a href="#<%= video['id'] %>" style="background-image: url(<%= video['thumbnail_url'] %>);" onclick="return false;" class="video__wrapper image_module">
+        <a href="#<%= video['id'] %>" style="background-image: url(<%= video['thumbnail_url'] %>);" onclick="return false;" class="video__wrapper image_module<%= (is_mobile) ? ' icon-play' : '' %>">
           <img class="visuallyhidden" src="<%= video['thumbnail_url'] %>" title="<%- video['title'] %>" alt="<%- video['title'] %> thumbnail">
         </a>
       <% end %>
