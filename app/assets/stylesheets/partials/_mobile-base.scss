@@ -1,6 +1,8 @@
 //------------------------------------------------------------------------------
 //  Mobile Base
 //------------------------------------------------------------------------------
+$_mobile_header_height: 41px;
+
 .shelby--mobile {
   .shelby-logo {
     .icon-type {
@@ -8,7 +10,7 @@
     }
   }
   .shelby-header {
-    height: 41px;
+    height: $_mobile_header_height;
     left: 0;
     position: fixed;
     top: 0;
@@ -22,11 +24,17 @@
   }
 
   //it's a special mod that shouldn't be downloaded outside the context of the shelby--mobile class anyway.
+  .share_panel,
   .settings-section--mobile {
     background-color: $ui-white;
 
     .list:last-child {
       padding-bottom: 0.5em;
     }
+  }
+
+  .share_panel {
+    margin-top: $_mobile_header_height;
+    position: fixed;
   }
 }

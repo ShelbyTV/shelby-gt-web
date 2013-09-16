@@ -74,7 +74,8 @@
     <div class="settings-section settings-section--mobile hidden clearfix">
       <%= render :partial => 'objects/user_subnav',
           :locals => {
-            :userNickname => userNickname
+            :userNickname => userNickname,
+            :is_mobile    => is_mobile
           } %>
     </div>
   <% end %>
