@@ -72,20 +72,29 @@ class MobileController < ApplicationController
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 
-  def onboarding
-    if user_signed_in?
-      @current_user = Shelby::API.get_user(current_user_id)
-      @current_step = params[:path]
-      if [1,2,3].include? @current_step.to_i
-        render "/mobile/onboarding/step_#{@current_step.to_s}".to_sym
-      else
-        raise ActionController::RoutingError.new("That step doesnt exist.")
-      end
-    else
-      # TODO:
-      # add param on redirect to show what happened.
-      redirect_to :mobile_landing
-    end
+  def show_onboarding
+    @current_step = params[:path]
+    raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2,3].include?(@current_step.to_i)
+    # TODO:
+    # add param on redirect to show what happened.
+    redirect_to :mobile_landing unless user_signed_in?
+
+    @current_user = Shelby::API.get_user(current_user_id)
+    render "/mobile/onboarding/step_#{@current_step.to_s}".to_sym
+  end
+
+  def set_onboarding
+    @current_step = params[:path]
+    raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2,3].include?(@current_step.to_i)
+    # TODO:
+    # add param on redirect to show what happened.
+    redirect_to :mobile_landing unless user_signed_in?
+
+    @current_user = Shelby::API.get_user(current_user_id)
+
+    # TODO:
+    # 1) follow rolls, follow shelby, set open graph preference etc
+    # 2) Update user app_progress.onboarding attribute to the appropriate step
   end
 
 end
