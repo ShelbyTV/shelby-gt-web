@@ -2,6 +2,7 @@ require 'addressable/uri'
 require 'net/http'
 require 'shelby_api'
 require 'iconv'
+require 'internal_error'
 
 class SeovideoController < ApplicationController
 
