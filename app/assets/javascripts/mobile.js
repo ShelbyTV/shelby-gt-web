@@ -13,6 +13,30 @@ $(document).ready(function(){
     $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
   });
 
+  $('.js-content-selector').on('click','button',function(e){
+    e.preventDefault();
+    var $this = $(this);
+
+    if($this.hasClass('js-do-nothing')){
+      return false;
+    }
+    else if($this.hasClass('js-settings-dropdown-button')){
+      var $settingsDropdown = $('.js-settings-dropdown');
+      $settingsDropdown.toggleClass('hidden',!$settingsDropdown.hasClass('hidden'));
+    }
+    else if($this.hasClass('js-me')) {
+      var username = $('.app_nav__button--settings').text().trim();
+      window.location = '/' + username;
+    }
+    else if($this.hasClass('js-signout')) {
+      window.location = "/signout";
+    } else {
+      window.location = $this.attr('href');
+    }
+  });
+
+
+
 
   var user = JSON.parse($('#js-user').text());
 
@@ -179,8 +203,6 @@ $(document).ready(function(){
 
     var frame_id = $this.data('frame_id'),
         data = { frame_id : frame_id };
-        console.log(data);
-      return false;
 
     $.ajax({
       type: 'GET',

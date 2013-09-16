@@ -12,29 +12,31 @@
 </ul>
 
 <ul class="list">
-  <li class="list__item">
-    <a
-      href="/preferences"
-      class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
-      data-ga_category="Header"
-      data-ga_action="Preferences"
-      data-ga_label="<%= userNickname %>"
-      >
-      Preferences
-    </a>
-  </li>
+  <% if !is_mobile %>
+    <li class="list__item">
+      <a
+        href="/preferences"
+        class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
+        data-ga_category="Header"
+        data-ga_action="Preferences"
+        data-ga_label="<%= userNickname %>"
+        >
+        Preferences
+      </a>
+    </li>
 
-  <li class="list__item">
-    <a
-      href="/preferences/friends"
-      class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
-      data-ga_category="Header"
-      data-ga_action="Invite Friends"
-      data-ga_label="<%= userNickname %>"
-      >
-      Invite Friends
-    </a>
-  </li>
+    <li class="list__item">
+      <a
+        href="/preferences/friends"
+        class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
+        data-ga_category="Header"
+        data-ga_action="Invite Friends"
+        data-ga_label="<%= userNickname %>"
+        >
+        Invite Friends
+      </a>
+    </li>
+  <% end %>
 
   <li class="list__item">
     <a href="https://getsatisfaction.com/shelbytv" target="_blank" class="button_primer button_command button_command--flexible button_command--sub button_command--text ">

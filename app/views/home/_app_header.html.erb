@@ -33,7 +33,7 @@
       </li>
 
       <li class="dropdown_module list__item secondary-item guide-login">
-        <button class="dropdown_button app_nav__button app_nav__button--settings js-do-nothing" data-ga_category="Share Page" data-ga_action="Settings" data-ga_label="<%= signed_in_user['nickname'] %>" type="button">
+        <button class="dropdown_button app_nav__button app_nav__button--settings<%= (is_mobile) ? ' js-settings-dropdown-button' : ' js-do-nothing' %>" data-ga_category="Share Page" data-ga_action="Settings" data-ga_label="<%= signed_in_user['nickname'] %>" type="button">
           <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
             <%= signed_in_user['nickname'] if !is_mobile %> <span class="icon-carrot"></span>
         </button>
@@ -43,6 +43,7 @@
 
               <%= render :partial => 'objects/user_subnav',
                   :locals => {
+                    :is_mobile    => is_mobile,
                     :userNickname => signed_in_user['nickname']
                   } %>
 
@@ -70,11 +71,11 @@
 
 
   <% if is_mobile %>
-    <div class="settings-section settings-section--mobile hidden clearfix">
+    <div class="settings-section settings-section--mobile hidden clearfix js-settings-dropdown">
       <%= render :partial => 'objects/user_subnav',
           :locals => {
-            :userNickname => signed_in_user['nickname'],
-            :is_mobile    => is_mobile
+            :is_mobile    => is_mobile,
+            :userNickname => signed_in_user['nickname']
           } %>
     </div>
   <% end %>
