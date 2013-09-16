@@ -45,7 +45,7 @@
         avatar = avatar_url_for_user(frame_owner)
         userNickname = frame_owner['nickname']
       %>
-      <a href="/<%= userNickname %>" class="js-track-event" data-ga_category="Share Page" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] %>" data-user_nickname="<%= userNickname %>">
+      <a href="/<%= userNickname %>" class="js-track-event" data-ga_category="Share Page" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
         <span class="image_module media_image avatar avatar--medium" style="background-image: url(<%= avatar %>);" role="img">
           <img src="<%= avatar %>" class="cloaked">
         </span>
@@ -57,8 +57,8 @@
         </span>
 
         <p class="xuser-data">
-          <a href="/<%= userNickname %>" class="js-track-event no-faux-link" data-ga_category="Share Page" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] %>" data-user_nickname="<%= userNickname %>"<% if frame_owner['name'] %> title="<%= frame_owner['name'] %>"<%end%>><strong><%= userNickname %></strong></a>
-          <% if frame['originator'] && frame['originator']['nickname'] %> <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <a class="no-faux-link js-track-event" href="/<%= frame['originator']['nickname'] %>" title="<%= frame['originator']['name'] %>" data-ga_category="Share Page" data-ga_action="Click via Username" data-ga_label="<%= signed_in_user['nickname'] %>"><%= frame['originator']['nickname'] %></a></span><% end %>
+          <a href="/<%= userNickname %>" class="js-track-event no-faux-link" data-ga_category="Share Page" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>"<% if frame_owner['name'] %> title="<%= frame_owner['name'] %>"<%end%>><strong><%= userNickname %></strong></a>
+          <% if frame['originator'] && frame['originator']['nickname'] %> <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <a class="no-faux-link js-track-event" href="/<%= frame['originator']['nickname'] %>" title="<%= frame['originator']['name'] %>" data-ga_category="Share Page" data-ga_action="Click via Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>"><%= frame['originator']['nickname'] %></a></span><% end %>
         </p>
 
         <% message = frame['conversation']['messages'][0]['text'] if frame['conversation'] and frame['conversation']['messages'] and frame['conversation']['messages'][0] %>
@@ -71,12 +71,12 @@
 
   <div class="form_fieldset frame_interactions">
     <span class="column one-half">
-      <button class="button_primer button_command button_command--flexible button_green one-whole js-share-init js-track-event" data-ga_category="Share Page" data-ga_action="Click Share" data-ga_label="<%= signed_in_user['nickname'] %>" data-user_nickname="<%= userNickname %>">
+      <button class="button_primer button_command button_command--flexible button_green one-whole js-share-init js-track-event" data-ga_category="Share Page" data-ga_action="Click Share" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
         <span class="icon icon-roll"></span>Share…
       </button>
     </span><!--
   --><span class="column one-half">
-      <button class="button_primer button_command button_command--flexible button_gray one-whole js-like js-track-event" data-ga_category="Share Page" data-ga_action="Click Like" data-ga_label="<%= signed_in_user['nickname'] %>" data-user_nickname="<%= userNickname %>">
+      <button class="button_primer button_command button_command--flexible button_gray one-whole js-like js-track-event" data-ga_category="Share Page" data-ga_action="Click Like" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
           <span class="icon icon-like"></span>Like
       </button>
     </span>

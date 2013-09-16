@@ -40,9 +40,10 @@
     <% end %>
   </script>
   <%= javascript_include_tag "shares" %>
+  <script id="js-user-model" type="application/json"><%= raw @signed_in_user.to_json %></script>
 </head>
 
-<body class="shelby shelby--shares<%= (!@is_mobile && @user_signed_in) ? ' shelby--shares_enabled' : ''%>" data-personal_roll_id="<%= (@signed_in_user) ? @signed_in_user['personal_roll_id'] : 'null' %>" data-user_name="<%= (@signed_in_user) ? @signed_in_user['nickname'] : 'anonymous' %>">
+<body class="shelby shelby--shares<%= (@user_signed_in) ? ' shelby--shares_enabled' : ''%>" data-personal_roll_id="<%= (@signed_in_user) ? @signed_in_user['personal_roll_id'] : 'null' %>" data-user_name="<%= (@signed_in_user) ? @signed_in_user['nickname'] : 'anonymous' %>">
   <%= render :partial => "seovideo/signup_cta", :locals => { :with_js => false, :category => "Share Page" } %>
 
   <section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
@@ -56,7 +57,8 @@
           :locals => {
             :show_login     => true,
             :signed_in_user => @signed_in_user,
-            :is_mobile      => @is_mobile
+            :is_mobile      => @is_mobile,
+            :pathname       => ""
           } %>
     </header>
 

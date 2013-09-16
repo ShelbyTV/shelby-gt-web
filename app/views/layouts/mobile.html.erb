@@ -21,7 +21,7 @@
 
   <script>
     var shelbyTrackingCategory = "Mobile",
-        shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname'] if @signed_in_user}'" %>;
+        shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname']}'" %>;
   </script>
 
   <%= stylesheet_link_tag "mobile", :media => "screen" %>
@@ -43,14 +43,15 @@
   <%= javascript_include_tag "mobile" %>
 </head>
 
-<body class="shelby shelby--shares shelby--mobile">
+<body class="shelby shelby--shares shelby--mobile<% " shelby--user_signed_in" if @signed_in_user['id'] %>">
   <div id="js-shelby-wrapper" class="shelby-wrapper clearfix">
     <header id="js-header" class="animate_module js-app-header shelby-header clearfix js-inactivity-preemption" role="banner">
       <%= render :partial => '/home/app_header',
           :locals => {
             :show_login     => true,
             :signed_in_user => @signed_in_user,
-            :is_mobile      => @is_mobile
+            :is_mobile      => @is_mobile,
+            :pathname       => @roll_type
           } %>
     </header>
 

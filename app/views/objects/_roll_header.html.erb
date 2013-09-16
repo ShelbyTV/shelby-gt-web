@@ -1,0 +1,24 @@
+<div class="roll-header">
+  <%= render :partial => '/objects/user_card',
+      :locals => {
+        :avatar   => avatar_url_for_user(user),
+        :username => user['nickname'],
+        :realname => user['name']
+      } %>
+
+  <% if roll_type != "user" %>
+    <ul class="list list--fit tabs clearfix">
+      <li class="one-half">
+        <a href="/m/me/shares" class="button_standard tab<%= ' tab--active' if roll_type == "shares" %> js-track-event js-user-tab js-user-shares" data-ga_category="In App User Profile" data-ga_action="Click roll tab" data-ga_label="<%= user['nickname'] %>">
+          Shares
+        </a>
+      </li>
+
+      <li class="one-half">
+        <a href="/m/me/likes" class="button_standard tab<%= ' tab--active' if roll_type == "likes" %> js-track-event js-user-tab js-user-likes" data-ga_category="In App User Profile" data-ga_action="Click likes tab" data-ga_label="<%= user['nickname'] %>">
+          Likes
+        </a>
+      </li>
+    </ul>
+  <% end %>
+</div><!-- eo roll-header -->
