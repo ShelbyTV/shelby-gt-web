@@ -52,6 +52,24 @@ $(document).ready(function(){
 
       $('#frame_id').val(frame_id);
 
+      $.ajax({
+        type: 'GET',
+        url: '//api.shelby.tv/v1/frame/' + frame_id + '/short_link',
+        dataType: "jsonp",
+        timeout: 10000,
+        crossDomain: true,
+        data: data,
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function (response) {
+          $('#shortlink').removeAttr('disabled').val(response.result.short_link);
+        },
+        error: function () {
+          $('#shortlink').val('Error…');
+        }
+      });
+
       $sharePanel.toggleClass('hidden',!$sharePanel.hasClass('hidden'));
       $guide.toggleClass('hidden',!$guide.hasClass('hidden'));
     });
@@ -147,4 +165,44 @@ $(document).ready(function(){
       $guide.toggleClass('hidden',false);
     });
   }
+
+  //does not depend on user model
+  $('.js-like').on('click', function(e){
+    var $this = $(this);
+
+    //prevent extraneous api calls
+    if($(this).hasClass('visuallydisabled')) { return false; }
+
+    e.preventDefault();
+
+    $(this).children('.icon-like').addClass('icon-like--red');
+
+    var frame_id = $this.data('frame_id'),
+        data = { frame_id : frame_id };
+        console.log(data);
+      return false;
+
+    $.ajax({
+      type: 'GET',
+      url: '//api.shelby.tv/v1/PUT/frame/' + frame_id + '/like',
+      dataType: "jsonp",
+      timeout: 10000,
+      crossDomain: true,
+      data: data,
+      xhrFields: {
+        withCredentials: true
+      },
+      success: function () {
+        var $total = $('.js-like-total');
+
+        if($total.length){
+          $total.text( '+ ' + (+($total.text().split('+')[1].trim()) + 1 ));
+        }
+      },
+      error: function () {}
+    });
+
+    $this.addClass('visuallydisabled');
+  });
+
 });
