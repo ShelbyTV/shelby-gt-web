@@ -22,6 +22,7 @@ class MobileController < ApplicationController
 
   def featured
     @signed_in_user     = check_for_signed_in_user
+    @user_signed_in = user_signed_in?
     @featured_dashboard = Shelby::API.get_user_dasboard(Settings::ShelbyAPI.featured_user_id, request.headers['HTTP_COOKIE'])
     @roll_type          = "featured"
   end
@@ -58,6 +59,7 @@ class MobileController < ApplicationController
 
   def roll
     @signed_in_user = check_for_signed_in_user
+    @user_signed_in = user_signed_in?
 
     if @user = Shelby::API.get_user(params[:path])
       @roll_id = @user['personal_roll_id']
