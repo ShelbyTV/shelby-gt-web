@@ -1,9 +1,12 @@
 class MobileController < ApplicationController
-  def landing
+  include ApplicationHelper
 
+  def landing
+    @signed_in_user = check_for_signed_in_user
   end
 
   def stream
+    if user_signed_in?
       @signed_in_user = check_for_signed_in_user
       redirect_to :mobile_show_onboarding unless @signed_in_user['app_progress'] and @signed_in_user['app_progress']['onboarding'] == true
       @dashboard      = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'])
@@ -79,14 +82,15 @@ class MobileController < ApplicationController
   end
 
   def show_onboarding
-    @current_step = params[:path]
-    raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step.to_i)
+    @signed_in_user = check_for_signed_in_user
+    @current_step = params[:path].to_i
+    raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
     # TODO:
     # add param on redirect to show what happened.
     #(redirect_to :mobile_landing and return) unless user_signed_in?
 
     Rails.logger.info "current_step: #{@current_step}"
-    @sources = Shelby::API.get_featured_sources if @current_step == "2"
+    @sources = Shelby::API.get_featured_sources if @current_step == 2
 
     @current_user = Shelby::API.get_user(current_user_id)
     render "/mobile/onboarding/step_#{@current_step.to_s}".to_sym
