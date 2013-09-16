@@ -67,8 +67,11 @@
   }
 }
     .share_panel--fill {
-      height: 100%;
+      bottom: 0;
       left: 0;
       top: 0;
       width: 100%;
+    }
+    .share_panel--scroll {
+      overflow-y: auto;
     }

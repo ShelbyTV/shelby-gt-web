@@ -4,8 +4,22 @@
 $_mobile_header_height: 41px;
 
 .shelby--mobile {
+  &.shelby--user_signed_in {
+    //nav fittings
+    .shelby-logo {
+      .icon-type {
+        display: none;
+      }
+    }
+  }
+
   background-color: $base;
 
+  .shelby-logo {
+    .shelby_logo {
+      padding-right: 6px;
+    }
+  }
   .shelby-header {
     height: $_mobile_header_height;
     left: 0;
@@ -15,6 +29,13 @@ $_mobile_header_height: 41px;
   }
   .app_nav__button {
     padding: 0.5em 1em;
+  }
+  .app_nav__button--settings {
+    padding-right: 0.5em;
+
+    .avatar {
+      margin-right: 0;
+    }
   }
   .content_wrapper {
     margin-top: 40px;

@@ -11,6 +11,9 @@ $(document).ready(function(){
   var user = JSON.parse($('#js-user').text());
 
   if(user) {
+
+    var $guide = $('.js-guide');
+
     var data = {
         twitter_enabled       : false,
         twitter_checked       : false,
@@ -36,7 +39,7 @@ $(document).ready(function(){
 
     var $sharePanel = $('.js-share-panel').html(SHELBYJST['share-page-form'](data));
 
-    var $shareInitButton = $('.js-guide').on('click','.js-share-init',function(e){
+    var $shareInitButton = $guide.on('click','.js-share-init',function(e){
       e.preventDefault();
       var $this = $(e.currentTarget),
           frame_id = $this.data('frame_id');
@@ -44,6 +47,7 @@ $(document).ready(function(){
       $('#frame_id').val(frame_id);
 
       $sharePanel.toggleClass('hidden',!$sharePanel.hasClass('hidden'));
+      $guide.toggleClass('hidden',!$guide.hasClass('hidden'));
     });
 
     $('.js-toggle-twitter-sharing, .js-toggle-facebook-sharing').on('click',function(e){
@@ -134,6 +138,7 @@ $(document).ready(function(){
     $('.js-cancel').on('click',function(e){
       e.preventDefault();
       $sharePanel.toggleClass('hidden',true);
+      $guide.toggleClass('hidden',false);
     });
   }
 });
