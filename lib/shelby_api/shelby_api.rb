@@ -93,6 +93,15 @@ module Shelby
       end
     end
 
+    def self.get_featured_sources(segment="onboarding")
+      r = get( "/roll/featured?segment=#{segment}" ).parsed_response
+      if r['status'] == 200 and r['result'].first['rolls'].is_a?(Array)
+        return r['result'].first['rolls']
+      else
+        return nil
+      end
+    end
+
     # def self.generate_frame_route(roll_id, frame_id, protocol="http")
     def self.generate_frame_route(user_nickname, frame_id, protocol="http")
       return "#{protocol}://#{Settings::Application.domain}/#{user_nickname}/shares/#{frame_id}"
