@@ -43,8 +43,6 @@ $(function(){
 
     // append share pane dynamically.
     $dropdown.html(SHELBYJST['share-page-form'](data));
-    // share button shouldn't be clickable until user's data is loaded/rendered
-    $shareInitButton.removeAttr('disabled');
 
     $('.js-toggle-twitter-sharing, .js-toggle-facebook-sharing').on('click',function(e){
       var $this = $(e.currentTarget),
