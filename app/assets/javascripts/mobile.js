@@ -13,7 +13,7 @@ $(document).ready(function(){
     $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
   });
 
-  $('.js-content-selector').on('click','button',function(e){
+  $('.js-settings-dropdown, .js-content-selector').on('click','button',function(e){
     e.preventDefault();
     var $this = $(this);
 
