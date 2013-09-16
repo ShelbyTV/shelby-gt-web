@@ -57,7 +57,7 @@
     <div class="content_wrapper" role="main">
       <%= yield %>
     </div>
-    <script id="js-user"><%= raw @signed_in_user.to_json %></script>
+    <script id="js-user" type="application/json"><%= raw @signed_in_user.to_json %></script>
     <script>
       $(document).ready(function(){
         var user = JSON.parse($('#js-user').text());
