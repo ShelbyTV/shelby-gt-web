@@ -24,18 +24,22 @@ class MobileController < ApplicationController
 
   def me
     if user_signed_in?
-      @current_user = Shelby::API.get_user(current_user_id, request.headers['HTTP_COOKIE'])
+      @signed_in_user = Shelby::API.get_user(current_user_id, request.headers['HTTP_COOKIE'])
+
+      @is_mobile = is_mobile?
+      @user_signed_in = user_signed_in?
+
       if params[:path] == "/likes"
         @roll_type = "likes"
-        @roll_id = @current_user['watch_later_roll_id']
+        @roll_id = @signed_in_user['watch_later_roll_id']
       elsif params[:path] == "/shares"
         @roll_type = "shares"
-        @roll_id = @current_user['personal_roll_id']
+        @roll_id = @signed_in_user['personal_roll_id']
       elsif params[:path]
         raise ActionController::RoutingError.new("Route doesn't exist.")
       else
         @roll_type = "shares"
-        @roll_id = @current_user['personal_roll_id']
+        @roll_id = @signed_in_user['personal_roll_id']
       end
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'])
         @frames = @roll_with_frames['frames']
