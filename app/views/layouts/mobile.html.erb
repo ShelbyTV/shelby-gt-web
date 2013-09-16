@@ -21,10 +21,11 @@
 
   <script>
     var shelbyTrackingCategory = "Mobile",
-        shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname']}'" %>;
+        shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname'] if @signed_in_user}'" %>;
   </script>
 
-  <%= stylesheet_link_tag "screen", :media => "screen" %>
+  <%= stylesheet_link_tag "mobile", :media => "screen" %>
+
   <script>
     if (typeof(shelby) == 'undefined') {
       shelby = {};
@@ -39,10 +40,10 @@
     <% end %>
     <% end %>
   </script>
-  <%= javascript_include_tag "shares" %>
+  <%= javascript_include_tag "mobile" %>
 </head>
 
-<body class="shelby shelby--shares<%= (!@is_mobile && @user_signed_in) ? ' shelby--shares_enabled' : ''%>">
+<body class="shelby shelby--shares shelby--mobile">
   <div id="js-shelby-wrapper" class="shelby-wrapper clearfix">
     <header id="js-header" class="animate_module js-app-header shelby-header clearfix js-inactivity-preemption" role="banner">
       <%= render :partial => '/home/app_header',
@@ -55,6 +56,43 @@
 
     <div class="content_wrapper" role="main">
       <%= yield %>
+    </div>
+    <script id="js-user" type="application/json"><%= raw @signed_in_user.to_json %></script>
+    <script>
+      $(document).ready(function(){
+        var user = JSON.parse($('#js-user').text());
+
+        if(user) {
+          var data = {
+            twitter_enabled       : false,
+            twitter_checked       : false,
+            facebook_enabled      : false,
+            facebook_checked      : false,
+            currentFrameShortlink : null,
+            frameId               : 'frame_id',
+            username              : shelbyTrackingLabel
+          }
+          var $sharePanel = $('.js-share-panel').html(SHELBYJST['share-page-form'](data));
+
+          var $shareInitButton = $('.js-share-init').on('click',function(e){
+            e.preventDefault();
+            var $this = $(this);
+            $this.toggleClass('button_active',!$this.hasClass('button_active'));
+
+            $sharePanel.toggleClass('hidden',!$sharePanel.hasClass('hidden'));
+          });
+
+          $('.js-cancel').on('click',function(e){
+            e.preventDefault();
+
+            $shareInitButton.toggleClass('button_active',false);
+            $sharePanel.toggleClass('hidden',true);
+          });
+        }
+      });
+    </script>
+    <div class="share_panel share_panel--fill hidden js-share-panel">
+      <!-- filled in by underscore goodness -->
     </div>
   </div> <!-- eo ~application -->
   <% if ["production", "staging"].include? Rails.env %>

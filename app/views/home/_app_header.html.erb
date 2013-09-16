@@ -8,38 +8,37 @@
   </h1>
 </span>
 
-<% if !is_mobile %>
-  <%
-    userNickname = (signed_in_user && signed_in_user['nickname']) || 'anonymous'
-    avatar       = avatar_url_for_user(signed_in_user)
-  %>
-  <nav id="js-guide-presentation-selector" class="guide-presentation-selector">
-    <ul class="js-content-selector list list--inline app_nav clearfix">
-      <% if signed_in_user %>
-        <li class="list__item">
-          <button class="app_nav__button js-stream js-track-event" data-ga_category="Share Page" data-ga_action="Stream" data-ga_label="<%= userNickname %>">
-            Stream
-          </button>
-        </li>
+<%
+  userNickname = (signed_in_user && signed_in_user['nickname']) || 'anonymous'
+  avatar       = avatar_url_for_user(signed_in_user)
+%>
+<nav id="js-guide-presentation-selector" class="guide-presentation-selector">
+  <ul class="js-content-selector list list--inline app_nav clearfix">
+    <% if signed_in_user %>
+      <li class="list__item">
+        <button class="app_nav__button js-stream js-track-event" data-ga_category="Share Page" data-ga_action="Stream" data-ga_label="<%= userNickname %>">
+          Stream
+        </button>
+      </li>
 
-        <li class="list__item js-featured-menu">
-          <button class="app_nav__button js-featured js-track-event" data-ga_category="Share Page" data-ga_action="Featured" data-ga_label="<%= userNickname %>">
-            Featured
-          </button>
-        </li>
+      <li class="list__item js-featured-menu">
+        <button class="app_nav__button js-featured js-track-event" data-ga_category="Share Page" data-ga_action="Featured" data-ga_label="<%= userNickname %>">
+          Featured
+        </button>
+      </li>
 
-        <li class="list__item js-guide-me js-track-event" data-ga_category="Share Page" data-ga_action="Me" data-ga_label="<%= userNickname %>">
-          <button class="app_nav__button js-me">
-            Me
-          </button>
-        </li>
+      <li class="list__item js-guide-me js-track-event" data-ga_category="Share Page" data-ga_action="Me" data-ga_label="<%= userNickname %>">
+        <button class="app_nav__button js-me">
+          Me
+        </button>
+      </li>
 
-        <li class="dropdown_module list__item secondary-item guide-login">
-          <button class="dropdown_button app_nav__button app_nav__button--settings js-do-nothing" data-ga_category="Share Page" data-ga_action="Settings" data-ga_label="<%= userNickname  %>" type="button">
-            <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
-              <%= userNickname %> <span class="icon-carrot"></span>
-          </button>
-
+      <li class="dropdown_module list__item secondary-item guide-login">
+        <button class="dropdown_button app_nav__button app_nav__button--settings js-do-nothing" data-ga_category="Share Page" data-ga_action="Settings" data-ga_label="<%= userNickname  %>" type="button">
+          <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
+            <%= userNickname if !is_mobile %> <span class="icon-carrot"></span>
+        </button>
+        <% if !is_mobile %>
           <section class="dropdown_section settings-section">
             <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
 
@@ -50,23 +49,34 @@
 
             </div>
           </section>
-        </li><!-- eo login button/dropdown -->
-      <% else %>
-        <li class="dropdown_module list__item secondary-item guide-login">
-          <button class="dropdown_button app_nav__button js-do-nothing" type="button">
-            Log In <span class="icon-carrot"></span>
-          </button>
+        <% end %>
+      </li><!-- eo login button/dropdown -->
+    <% else %>
+      <li class="dropdown_module list__item secondary-item guide-login">
+        <button class="dropdown_button app_nav__button js-do-nothing" type="button">
+          Log In <span class="icon-carrot"></span>
+        </button>
 
-          <div class="dropdown_section login-section">
-            <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
+        <div class="dropdown_section login-section">
+          <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
 
-                <%= render :partial => 'objects/login_form' %>
+              <%= render :partial => 'objects/login_form' %>
 
-            </div>
           </div>
-        </li><!-- eo login button/dropdown -->
-      <% end %>
+        </div>
+      </li><!-- eo login button/dropdown -->
+    <% end %>
 
-    </ul><!-- eo guide-presentation-list -->
-  </nav>
-<% end %>
+  </ul><!-- eo guide-presentation-list -->
+
+
+  <% if is_mobile %>
+    <div class="settings-section settings-section--mobile hidden clearfix">
+      <%= render :partial => 'objects/user_subnav',
+          :locals => {
+            :userNickname => userNickname,
+            :is_mobile    => is_mobile
+          } %>
+    </div>
+  <% end %>
+</nav>

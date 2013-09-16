@@ -1,28 +1,37 @@
-This page has acces to the following variables:
-<ul>
-  <li>@current_user</li>
-  <li>@roll_type</li>
-  <li>@roll_id</li>
-  <li>@roll_with_frames</li>
-  <li>@frames</li>
-</ul>
+<!--
+  This page has acces to the following variables:
+  <ul>
+    <li>@current_user</li>
+    <li>@roll_type</li>
+    <li>@roll_id</li>
+    <li>@roll_with_frames</li>
+    <li>@frames</li>
+  </ul>
 
-If you were to get more frames from these rolls, use:
-Shelby::API.Shelby::API.get_roll_with_frames(@roll_id, skip=20, limit=20)
+  If you were to get more frames from these rolls, use:
+  Shelby::API.Shelby::API.get_roll_with_frames(@roll_id, skip=20, limit=20)
 
-<br>
-<% if @roll_type == "shares" %>
-  This is your shares
-<% elsif @roll_type == "likes" %>
-  This is your likes
-<% end %>
-
-<ul>
-  <% @frames.each do |f| %>
-    <li>
-      <% if f and f['video'] %>
-        <img src="<%=f['video']["thumbnail_url"] %>" />
-      <% end %>
-    </li>
+  <% if @roll_type == "shares" %>
+    This is your shares
+  <% elsif @roll_type == "likes" %>
+    This is your likes
   <% end %>
+
+-->
+<ul class="list">
+  <li class="list__item">
+    <% @frames.each do |frame| %>
+      <% if frame and frame['video'] %>
+        <%= render :partial => '/objects/frame',
+          :locals => {
+            :frame          => frame,
+            :frame_owner    => frame['creator'],
+            :video          => frame['video'],
+            :signed_in_user => @signed_in_user,
+            :is_mobile      => true,
+            :embed_video    => false
+          } %>
+      <% end %>
+    <% end %>
+  <li>
 </ul>

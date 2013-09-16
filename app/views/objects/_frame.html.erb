@@ -22,13 +22,22 @@
         </span>
       </noscript>
 
-      <div class="video__wrapper">
-        <% if video['provider_name'] == "youtube" %>
-          <%= render :partial => "/seovideo/youtube_embed", :locals => { :video_provider_id => video['provider_id'] } %>
-        <% else %>
-          <%= raw video['embed_url'] %>
-        <% end %>
-      </div>
+      <% if embed_video %>
+        <div class="video__wrapper">
+          <% if video['provider_name'] == "youtube" %>
+            <%= render :partial => "/seovideo/youtube_embed",
+              :locals => {
+                :video_provider_id => video['provider_id']
+              } %>
+          <% else %>
+            <%= raw video['embed_url'] %>
+          <% end %>
+        </div>
+      <% else %>
+        <a href="#<%= video['id'] %>" style="background-image: url(<%= video['thumbnail_url'] %>);" onclick="return false;" class="video__wrapper image_module">
+          <img class="visuallyhidden" src="<%= video['thumbnail_url'] %>" title="<%- video['title'] %>" alt="<%- video['title'] %> thumbnail">
+        </a>
+      <% end %>
     </div><!-- eo .frame-body -->
 
     <footer class="media_module frame-footer clearfix">
@@ -60,21 +69,19 @@
     </footer><!-- eo .media_module-->
   </div><!-- eo .frame-body-wrapper -->
 
-  <% if (!is_mobile) %>
-    <div class="form_fieldset frame_interactions">
-      <span class="column one-half">
-        <button disabled class="button_primer button_command button_command--flexible button_green one-whole js-share-init js-track-event" data-ga_category="Share Page" data-ga_action="Click Share" data-ga_label="<%= signed_in_user['nickname'] %>" data-user_nickname="<%= userNickname %>">
-          <span class="icon icon-roll"></span>Share…
-        </button>
-      </span><!--
-    --><span class="column one-half">
-        <button class="button_primer button_command button_command--flexible button_gray one-whole js-like js-track-event" data-ga_category="Share Page" data-ga_action="Click Like" data-ga_label="<%= signed_in_user['nickname'] %>" data-user_nickname="<%= userNickname %>">
-            <span class="icon icon-like"></span>Like
-        </button>
-      </span>
-      <div class="share_panel frame-body-wrapper fin fin--top_left fin--edging clearfix js-shares hidden"></div>
-    </div>
-  <% end %>
+  <div class="form_fieldset frame_interactions">
+    <span class="column one-half">
+      <button class="button_primer button_command button_command--flexible button_green one-whole js-share-init js-track-event" data-ga_category="Share Page" data-ga_action="Click Share" data-ga_label="<%= signed_in_user['nickname'] %>" data-user_nickname="<%= userNickname %>">
+        <span class="icon icon-roll"></span>Share…
+      </button>
+    </span><!--
+  --><span class="column one-half">
+      <button class="button_primer button_command button_command--flexible button_gray one-whole js-like js-track-event" data-ga_category="Share Page" data-ga_action="Click Like" data-ga_label="<%= signed_in_user['nickname'] %>" data-user_nickname="<%= userNickname %>">
+          <span class="icon icon-like"></span>Like
+      </button>
+    </span>
+    <div class="share_panel frame-body-wrapper fin fin--top_left fin--edging clearfix js-shares hidden"></div>
+  </div>
 
   <% if frame['upvoters'].length > 0 %>
     <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">

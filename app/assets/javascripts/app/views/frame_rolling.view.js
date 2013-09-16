@@ -49,27 +49,27 @@
 
     //------------------------- SELECT ROLL ----------------------------
 
-    _renderRollSelectionChild: function(){
-      //existing Rolls
-      this._rollsListView = new RollingSelectionListView(
-        {
-          model : shelby.models.rollFollowings,
-          frame : this.model,
-          doStaticRender : true
-        }
-      );
+    // _renderRollSelectionChild: function(){
+    //   //existing Rolls
+    //   this._rollsListView = new RollingSelectionListView(
+    //     {
+    //       model : shelby.models.rollFollowings,
+    //       frame : this.model,
+    //       doStaticRender : true
+    //     }
+    //   );
 
-      this.renderChildInto(this._rollsListView, this.$('.js-roll-selection'));
-    },
+    //   this.renderChildInto(this._rollsListView, this.$('.js-roll-selection'));
+    // },
 
-    _showRollSelectionChild: function(e){
-      e.preventDefault();
-      this.$el.addClass("show-roll-selection");
-    },
+    // _showRollSelectionChild: function(e){
+    //   e.preventDefault();
+    //   this.$el.addClass("show-roll-selection");
+    // },
 
-    _hideRollSelectionChild: function(){
-      this.$el.removeClass("show-roll-selection");
-    },
+    // _hideRollSelectionChild: function(){
+    //   this.$el.removeClass("show-roll-selection");
+    // },
 
     //------------------------- ROLLING DETAILS ----------------------------
 

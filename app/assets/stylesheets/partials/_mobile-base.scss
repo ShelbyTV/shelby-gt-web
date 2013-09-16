@@ -1,0 +1,40 @@
+//------------------------------------------------------------------------------
+//  Mobile Base
+//------------------------------------------------------------------------------
+$_mobile_header_height: 41px;
+
+.shelby--mobile {
+  .shelby-logo {
+    .icon-type {
+      display: none;
+    }
+  }
+  .shelby-header {
+    height: $_mobile_header_height;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  .app_nav__button {
+    padding: 0.5em 1em;
+  }
+  .content_wrapper {
+    margin-top: 40px;
+  }
+
+  //it's a special mod that shouldn't be downloaded outside the context of the shelby--mobile class anyway.
+  .share_panel,
+  .settings-section--mobile {
+    background-color: $ui-white;
+
+    .list:last-child {
+      padding-bottom: 0.5em;
+    }
+  }
+
+  .share_panel {
+    margin-top: $_mobile_header_height;
+    position: fixed;
+  }
+}

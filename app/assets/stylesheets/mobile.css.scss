@@ -36,40 +36,18 @@
 //  Shelby.tv App
 //------------------------------------------------------------------------------
 @import "partials/app.html";
-@import "partials/app_banner";
-@import "partials/banner_notification";
-@import "partials/notifications";
 @import "partials/app-header";
 @import "partials/guide-presentation-selector";
 @import "partials/guide-overlay-view";
-
-// @import "partials/landing-page";
 
 ////////////////////////////////////////////////////////////////////////////
 //  layout related
 ////////////////////////////////////////////////////////////////////////////
 @import "partials/action";
-// @import "partials/user-profile";
 
 @import "partials/frame";
 
 @import "partials/roll-header";
-@import "partials/search-header";
-
-//------------------------------------------------------------------------------
-//  videoplayer related
-//------------------------------------------------------------------------------
-@import "partials/video/video-player";
-@import "partials/video/persistent-video-info";
-@import "partials/video/dynamic-video-info";
-@import "partials/video/search-welcome";
-@import "partials/video/app-welcome";
-@import "partials/video/email-collection";
-@import "partials/video/video-controls";
-@import "partials/video/video-mini-progress";
-@import "partials/preroll-video-info";
-@import "partials/me-section";
-@import "partials/rolls-list";
 
 //------------------------------------------------------------------------------
 //  rolling and sharing
@@ -78,18 +56,10 @@
 @import "partials/rolling-form";
 @import "partials/share-panel";
 
-
-sdf
 //------------------------------------------------------------------------------
 //  peripherals
 //------------------------------------------------------------------------------
 @import "partials/onboarding";
-@import "partials/user-preferences";
-
-//------------------------------------------------------------------------------
-//  shelby genius page styles
-//------------------------------------------------------------------------------
-// @import "partials/genius.scss";
 
 //------------------------------------------------------------------------------
 //  isolated roll styles
@@ -99,36 +69,18 @@ sdf
 @import "partials/dot-tv-welcome";
 
 //------------------------------------------------------------------------------
-//  Shelby discussion rolls
 //------------------------------------------------------------------------------
-// @import "partials/discussion_roll";
-
 //------------------------------------------------------------------------------
-//  Embed
 //------------------------------------------------------------------------------
-@import "partials/embed-frame";
-
+//  Mobile Overrides
 //------------------------------------------------------------------------------
-//  The Suits
+@import "partials/mobile-base";
+@import "partials/media-queries-mobile";
 //------------------------------------------------------------------------------
-@import "partials/corporate/chips-ahoy";
-
 //------------------------------------------------------------------------------
-//  Overrides
 //------------------------------------------------------------------------------
-@import "partials/user-anonymous";
-@import "partials/hide-guide";
-@import "partials/hide-pvi";
-@import "partials/user-inactive";
-@import "partials/touch";
-
-@import "partials/lt-ie9";
-
-@import "partials/media-queries";
-
-// REMOVE PREVIOUS EASTEREGGS IN PARTIAL BEFORE UNCOMMENTING:
-// @import "partials/eastereggs";
-
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
 //  non-semantic boilerplater helper classes
