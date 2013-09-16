@@ -89,25 +89,35 @@ class MobileController < ApplicationController
     # add param on redirect to show what happened.
     #(redirect_to :mobile_landing and return) unless user_signed_in?
 
-    Rails.logger.info "current_step: #{@current_step}"
-    @sources = Shelby::API.get_featured_sources if @current_step == 2
+    if @current_step == 1
+      @services = @signed_in_user['authentications']
+    elsif @current_step == 2
+      @sources = Shelby::API.get_featured_sources
+    end
 
     @current_user = Shelby::API.get_user(current_user_id)
     render "/mobile/onboarding/step_#{@current_step.to_s}".to_sym
   end
 
   def set_onboarding
-    @current_step = params[:path]
-    raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step.to_i)
+    @current_step = params[:path].to_i
+    raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
     # TODO:
     # add param on redirect to show what happened.
-    redirect_to :mobile_landing unless user_signed_in?
+    (redirect_to :mobile_landing and return) unless user_signed_in?
 
     @current_user = Shelby::API.get_user(current_user_id)
 
     # TODO:
-    # 1) follow rolls, follow shelby, set open graph preference etc
-    # 2) Update user app_progress.onboarding attribute to the appropriate step
+    if @current_step == 1
+      # 1) follow rolls, follow shelby, set open graph preference etc
+
+    elsif @current_step == 2
+      # 2) Update user app_progress.onboarding attribute to the appropriate step
+    else
+      # 3) something went horribly wrong.
+      redirect_to :mobile_landing
+    end
   end
 
 end
