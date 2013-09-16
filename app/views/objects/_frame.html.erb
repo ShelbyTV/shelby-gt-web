@@ -6,7 +6,7 @@
   </span>
 
   <div class="frame-body-wrapper clearfix">
-    <div class="frame-body">
+    <div class="frame-body<%= (is_mobile) ? ' icon-play' : '' %>">
       <noscript>
         <!-- styles/markup for devices that prevent fun stuff from happening -->
         <style>
@@ -82,7 +82,6 @@
     </span>
     <div class="share_panel frame-body-wrapper fin fin--top_left fin--edging clearfix js-shares hidden"></div>
   </div>
-
   <% if frame['upvoters'].length > 0 %>
     <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">
       <ul class="list frame-likes-avatars js-liker-avatars-list">
