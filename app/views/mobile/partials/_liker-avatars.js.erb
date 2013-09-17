@@ -1,0 +1,42 @@
+$(document).ready(function(){
+  var likers<%= raw " = #{likers.to_json}" if likers %>,
+      $scope = $('.js-<%= frame_id %>').find('.frame-likes-link');
+
+  if(likers.length) {
+    var data = {
+      ids: likers.join(',')
+    };
+
+    $.ajax({
+      type: 'GET',
+      url: '//api.shelby.tv/v1/user',
+      dataType: "jsonp",
+      timeout: 10000,
+      crossDomain: true,
+      data: data,
+      xhrFields: {
+        withCredentials: true
+      },
+      success: function (response) {
+        console.log('scope',$scope);
+
+        for(var i = 0; i < response.result.length; i++) {
+
+          var user = response.result[i],
+              avatar;
+
+          if(user.has_shelby_avatar && !user.user_image){
+            avatar = libs.config.avatarUrlRoot + '/' + libs.config.shelbyGT.UserAvatarSizes.small + '/' + user.id + '?' + new Date(user.avatar_updated_at).getTime()
+          } else {
+            avatar = user.user_image || "/images/assets/avatar.png";
+          }
+
+          $scope.eq(i).css('background-image', 'url('+avatar+')').attr('href','/m/'+user.id);
+        }
+      },
+      error: function (e) {
+        console.log("fuck",e.statusText);
+      }
+    });
+  }
+});
