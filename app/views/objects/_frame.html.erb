@@ -34,7 +34,7 @@
           <% end %>
         </div>
       <% else %>
-        <a href="#<%= video['id'] %>" style="background-image: url(<%= video['thumbnail_url'] %>);" onclick="return false;" class="video__wrapper image_module">
+        <a href="#<%= video['id'] %>" style="background-image: url(<%= video['thumbnail_url'] %>);" onclick="return false;" class="video__wrapper image_module<%= (is_mobile) ? ' icon-play' : '' %>">
           <img class="visuallyhidden" src="<%= video['thumbnail_url'] %>" title="<%- video['title'] %>" alt="<%- video['title'] %> thumbnail">
         </a>
       <% end %>
@@ -76,13 +76,12 @@
       </button>
     </span><!--
   --><span class="column one-half">
-      <button class="button_primer button_command button_command--flexible button_gray one-whole js-like js-track-event" data-ga_category="Share Page" data-ga_action="Click Like" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
+      <button class="button_primer button_command button_command--flexible button_gray one-whole js-like js-track-event" data-frame_id="<%= frame['id'] %>" data-ga_category="Share Page" data-ga_action="Click Like" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
           <span class="icon icon-like"></span>Like
       </button>
     </span>
     <div class="share_panel frame-body-wrapper fin fin--top_left fin--edging clearfix js-shares hidden"></div>
   </div>
-
   <% if frame['upvoters'].length > 0 %>
     <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">
       <ul class="list frame-likes-avatars js-liker-avatars-list">

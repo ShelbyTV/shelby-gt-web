@@ -15,6 +15,7 @@ $_mobile_header_height: 41px;
 
   background-color: $base;
 
+  //branding + header
   .shelby-logo {
     .shelby_logo {
       padding-right: 6px;
@@ -37,6 +38,7 @@ $_mobile_header_height: 41px;
       margin-right: 0;
     }
   }
+  //framework
   .content_wrapper {
     margin-top: 40px;
   }
@@ -58,5 +60,20 @@ $_mobile_header_height: 41px;
     font-size: 1.2em;
     margin-top: $_mobile_header_height;
     position: fixed;
+  }
+  //videocard
+  .video__wrapper {
+    &.icon-play:before {
+      color: $ui-white;
+      font-size: 5em;
+      left: 0;
+      padding-top: 20%;
+      position: absolute;
+      opacity: 0.8;
+      text-align: center;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
   }
 }
