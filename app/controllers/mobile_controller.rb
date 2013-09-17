@@ -4,7 +4,9 @@ class MobileController < ApplicationController
   def landing
     @signed_in_user = check_for_signed_in_user
     if @signed_in_user['app_progress'] and @signed_in_user['app_progress']['onboarding'] != true
-      redirect_to :mobile_show_onboarding, :service => params[:service]
+      redirect_to mobile_show_onboarding_path(:service => params[:service])
+    elsif @signed_in_user
+      redirect_to mobile_stream_path
     end
   end
 
