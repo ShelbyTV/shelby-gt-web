@@ -7,7 +7,7 @@
       :user => @signed_in_user,
       :roll_type => @roll_type
     }%>
-<ul class="list">
+<ul class="list js-list">
   <li class="list__item">
     <% @frames.each do |frame| %>
       <% if frame['video'] %>
@@ -24,3 +24,8 @@
     <% end %>
   <li>
 </ul>
+<p class="center">
+  <%= link_to mobile_me_path(:page => (@page + 1)), {:class => Settings::Mobile.button_gray_flexible + " one-third js-load-more"} do %>
+    <span class="button_label">Load More</span>
+  <% end %>
+</p>
