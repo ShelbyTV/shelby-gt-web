@@ -13,9 +13,10 @@ class MobileController < ApplicationController
       @signed_in_user = check_for_signed_in_user
       redirect_to :mobile_show_onboarding unless @signed_in_user['app_progress'] and @signed_in_user['app_progress']['onboarding'] == true
 
-      skip = (params[:page] || 0) * 20
+      @page = params[:page].to_i.abs
+      @skip = convert_page_to_skip(params[:page])
 
-      @dashboard      = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'], skip, Settings::Mobile.default_limit)
+      @dashboard      = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
       @roll_type      = "stream"
@@ -27,8 +28,11 @@ class MobileController < ApplicationController
   def featured
     @signed_in_user     = check_for_signed_in_user
     @user_signed_in = user_signed_in?
-    skip = (params[:page] || 0) * 20
-    @featured_dashboard = Shelby::API.get_user_dasboard(Settings::ShelbyAPI.featured_user_id, request.headers['HTTP_COOKIE'], skip, Settings::Mobile.default_limit)
+
+    @page = params[:page].to_i.abs
+    @skip = convert_page_to_skip(params[:page])
+
+    @featured_dashboard = Shelby::API.get_user_dasboard(Settings::ShelbyAPI.featured_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
     @roll_type          = "featured"
   end
 
@@ -37,7 +41,10 @@ class MobileController < ApplicationController
       @signed_in_user = check_for_signed_in_user
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
-      skip = (params[:page] || 0) * 20
+
+      @page = params[:page].to_i.abs
+      @skip = convert_page_to_skip(params[:page])
+
       if params[:path] == "/likes"
         @roll_type = "likes"
         @roll_id   = @signed_in_user['watch_later_roll_id']
@@ -50,7 +57,7 @@ class MobileController < ApplicationController
         @roll_type = "shares"
         @roll_id   = @signed_in_user['personal_roll_id']
       end
-      if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'], skip, Settings::Mobile.default_limit)
+      if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
         @frames = @roll_with_frames['frames']
       else
         @frames = []
@@ -64,10 +71,13 @@ class MobileController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
 
+    @page = params[:page].to_i.abs
+    @skip = convert_page_to_skip(params[:page])
+
     if @user = Shelby::API.get_user(params[:path])
       @roll_id = @user['personal_roll_id']
       @roll_type = "user"
-      if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, '')
+      if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, '', @skip, Settings::Mobile.default_limit)
         @frames = @roll_with_frames['frames']
       else
         @frames = []
