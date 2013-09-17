@@ -10,7 +10,7 @@
 <ul class="list">
   <li class="list__item">
     <% @frames.each do |frame| %>
-      <% if frame['video'] %>
+      <% if frame['video'] and can_play_video(frame['video']['provider_name']) %>
         <%= render :partial => '/objects/frame',
           :locals => {
             :frame          => frame,

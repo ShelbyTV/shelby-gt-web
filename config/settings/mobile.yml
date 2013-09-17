@@ -1,6 +1,7 @@
 defaults: &defaults
   onboarding_path: "/onboarding/"
   default_limit: 10
+  supported_providers: ["youtube","vimeo", "dailymotion"]
 
 development:
   <<: *defaults
