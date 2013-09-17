@@ -3,27 +3,32 @@ class MobileController < ApplicationController
 
   def landing
     @signed_in_user = check_for_signed_in_user
+    if @signed_in_user['app_progress'] and @signed_in_user['app_progress']['onboarding'] != true
+      redirect_to :mobile_show_onboarding, :service => params[:service]
+    end
   end
 
   def stream
     if user_signed_in?
       @signed_in_user = check_for_signed_in_user
       redirect_to :mobile_show_onboarding unless @signed_in_user['app_progress'] and @signed_in_user['app_progress']['onboarding'] == true
-      @dashboard      = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'])
+
+      skip = (params[:page] || 0) * 20
+
+      @dashboard      = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'], skip, Settings::Mobile.default_limit)
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
       @roll_type      = "stream"
     else
-      # TODO:
-      # add param on redirect to show what happened.
-      redirect_to :mobile_landing
+      mobile_landing_path(:status =>"Not logged in.")
     end
   end
 
   def featured
     @signed_in_user     = check_for_signed_in_user
     @user_signed_in = user_signed_in?
-    @featured_dashboard = Shelby::API.get_user_dasboard(Settings::ShelbyAPI.featured_user_id, request.headers['HTTP_COOKIE'])
+    skip = (params[:page] || 0) * 20
+    @featured_dashboard = Shelby::API.get_user_dasboard(Settings::ShelbyAPI.featured_user_id, request.headers['HTTP_COOKIE'], skip, Settings::Mobile.default_limit)
     @roll_type          = "featured"
   end
 
@@ -32,7 +37,7 @@ class MobileController < ApplicationController
       @signed_in_user = check_for_signed_in_user
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
-
+      skip = (params[:page] || 0) * 20
       if params[:path] == "/likes"
         @roll_type = "likes"
         @roll_id   = @signed_in_user['watch_later_roll_id']
@@ -45,15 +50,13 @@ class MobileController < ApplicationController
         @roll_type = "shares"
         @roll_id   = @signed_in_user['personal_roll_id']
       end
-      if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'])
+      if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'], skip, Settings::Mobile.default_limit)
         @frames = @roll_with_frames['frames']
       else
         @frames = []
       end
     else
-        # TODO:
-        # add param on redirect to show what happened.
-      redirect_to :mobile_landing
+      redirect_to mobile_landing_path(:status =>"Not logged in.")
     end
   end
 
@@ -85,14 +88,14 @@ class MobileController < ApplicationController
 
   def show_onboarding
     @signed_in_user = check_for_signed_in_user
-    @current_step = params[:path].to_i
+    @current_step = (params[:path] || 1).to_i
     raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
     # TODO:
     # add param on redirect to show what happened.
     #(redirect_to :mobile_landing and return) unless user_signed_in?
 
     if @current_step == 1
-      @services = @signed_in_user['authentications']
+      @service = params[:service]
     elsif @current_step == 2
       @sources = Shelby::API.get_featured_sources
     end

@@ -1,5 +1,5 @@
-<% if @services.nil? %>
+<% if @service.nil? %>
   <%= render :partial => "/mobile/partials/connect_service" %>
 <% else %>
-  <%= render :partial => "/mobile/partials/connecting_service", :locals => { :currentService => @services.last['provider'] } %>
+  <%= render :partial => "/mobile/partials/connecting_service", :locals => { :currentService => @service } %>
 <% end %>
