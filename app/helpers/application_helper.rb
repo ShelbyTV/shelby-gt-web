@@ -60,10 +60,10 @@ module ApplicationHelper
   end
 
   def convert_page_to_skip(page)
-    if page = page.to_i.abs + 1
+    if page = page.to_i.abs
       return page * Settings::Mobile.default_limit
     else
-      return 1
+      return 0
     end
   end
 
