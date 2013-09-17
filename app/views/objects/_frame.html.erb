@@ -1,4 +1,4 @@
-<article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame">
+<article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame js-<%= frame['id']%>">
   <span class="frame-header js-frame-activate">
     <h1 class="frame-title" title="<%= video['title'] %>">
       <%= video['title'] %>
@@ -89,7 +89,7 @@
         <% frame['upvoters'].each do |liker| %>
         <% avatar = liker['has_shelby_avatar'] ? avatar_url_for_user(liker) : liker['user_image'] %>
           <li>
-            <a class="image_module avatar avatar--tiny frame-likes-link js-track-event" style="background-image: url(<%= avatar %>)" href="/<%= liker['nickname'] %>" data-ga_category="Share Page" data-ga_action="click avatar for liker" data-ga_label="<%= liker['nickname'] %>">
+            <a class="image_module avatar avatar--tiny frame-likes-link js-track-event" data-liker_id="<%= liker['id'] %>" style="background-image: url(<%= avatar %>)" href="/<%= liker['nickname'] %>" data-ga_category="Share Page" data-ga_action="click avatar for liker" data-ga_label="<%= liker['nickname'] %>">
               <img class="visuallyhidden" src="<%= avatar %>" title="<%= liker['name'] %>" alt="<%= liker['name'] %>">
             </a>
           </li>
@@ -105,3 +105,16 @@
     </div><!-- eo frame-likes -->
   <% end %>
 </article>
+
+<% #logic: if we're on a share page, we're embedding, so we have the liker info we need. otherwise we don't
+  unless embed_video
+  %>
+  <%= javascript_tag do %>
+    <%= render :partial => "/mobile/partials/liker-avatars",
+          :formats=>[:js],
+          :locals => {
+            :frame_id => frame['id'],
+            :likers   => frame['upvoters']
+          } %>
+  <% end %>
+<% end %>

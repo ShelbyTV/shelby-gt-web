@@ -8,8 +8,8 @@
       :roll_type => @roll_type
     }%>
 <ul class="list js-list">
-  <li class="list__item">
-    <% @frames.each do |frame| %>
+  <% @frames.each do |frame| %>
+    <li class="list__item">
       <% if frame['video'] and can_play_video(frame['video']['provider_name']) %>
         <%= render :partial => '/objects/frame',
           :locals => {
@@ -21,8 +21,8 @@
             :embed_video    => false
           } %>
       <% end %>
-    <% end %>
-  <li>
+    </li>
+  <% end %>
 </ul>
 
 <p class="center">

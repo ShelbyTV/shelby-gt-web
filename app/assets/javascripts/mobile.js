@@ -7,6 +7,18 @@
 //load event tracking js
 //= require ./event-tracking/mobile.tracking.js
 
+var libs = {
+  config : {
+    shelbyGT : {
+      UserAvatarSizes : {
+        small : "sq48x48"
+      }
+    },
+
+    avatarUrlRoot: '<%= #{Settings::Application.avatar_url_root} %>'
+  }
+};
+
 $(document).ready(function(){
   $('.js-toggle-comment').on('click',function(){
     var $this = $(this);
@@ -35,7 +47,8 @@ $(document).ready(function(){
     }
   });
 
-  var user = JSON.parse($('#js-user').text());
+  var user = JSON.parse($('#js-user').text()),
+      users = [];
 
   if(user) {
 
@@ -193,9 +206,8 @@ $(document).ready(function(){
     var $this = $(this).addClass('button_busy');
     $.get($this.attr('href'), function(data){
       $this.removeClass('button_busy');
-      var $items = $(data).find('.js-list').children(),
+      var $items = $(data).find('.js-list').children('.list__item'),
           $button = $(data).find('.js-load-more');
-
       $('.js-list').append($items);
       $('.js-load-more').attr('href',$button.attr('href'));
     });
