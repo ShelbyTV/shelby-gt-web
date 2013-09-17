@@ -9,7 +9,7 @@ Shelby::API.Shelby::API.get_roll_with_frames(@roll_id, skip=20, limit=20)
       :roll_type => @roll_type
     }%>
 
-<ul class="list">
+<ul class="list js-list">
   <li class="list__item">
     <% @frames.each do |frame| %>
       <% if frame['video'] and can_play_video(frame['video']['provider_name'])%>
@@ -26,6 +26,12 @@ Shelby::API.Shelby::API.get_roll_with_frames(@roll_id, skip=20, limit=20)
     <% end %>
   <li>
 </ul>
+
+<p class="center">
+  <%= link_to mobile_shares_path(:page => (@page + 1)), {:class => Settings::Mobile.button_gray_flexible + " one-third js-load-more"} do %>
+    <span class="button_label">Load More</span>
+  <% end %>
+</p>
 
 <%= javascript_tag do %>
   <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>

@@ -35,9 +35,6 @@ $(document).ready(function(){
     }
   });
 
-
-
-
   var user = JSON.parse($('#js-user').text());
 
   if(user) {
@@ -191,6 +188,19 @@ $(document).ready(function(){
   }
 
   //does not depend on user model
+  $('.js-load-more').on('click', function(e){
+    e.preventDefault();
+    var $this = $(this).addClass('button_busy');
+    $.get($this.attr('href'), function(data){
+      $this.removeClass('button_busy');
+      var $items = $(data).find('.js-list').children(),
+          $button = $(data).find('.js-load-more');
+
+      $('.js-list').append($items);
+      $('.js-load-more').attr('href',$button.attr('href'));
+    });
+  });
+
   $('.js-like').on('click', function(e){
     var $this = $(this);
 
