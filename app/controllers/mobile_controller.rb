@@ -15,9 +15,6 @@ class MobileController < ApplicationController
 
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
-
-      Rails.logger.info("page: #{@page}, skip: #{@skip}, #{params[:page]}")
-
       @dashboard      = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
