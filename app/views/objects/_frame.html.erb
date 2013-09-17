@@ -34,7 +34,7 @@
           <% end %>
         </div>
       <% else %>
-        <a href="#<%= video['id'] %>" style="background-image: url(<%= video['thumbnail_url'] %>);" onclick="return false;" class="video__wrapper image_module<%= (is_mobile) ? ' icon-play js-play-video' : '' %>" data-provider-name="<%= video['provider_name'] %>" data-provider-id="<%= video['provider_id'] %>" data-embed='<%= video['embed_url'] %>'>
+        <a href="#<%= video['id'] %>" style="background-image: url(<%= video['thumbnail_url'] %>);" onclick="return false;" class="video__wrapper image_module<%= (is_mobile) ? ' icon-play js-play-video' : '' %>" data-provider-name="<%= video['provider_name'] %>" data-provider-id="<%= video['provider_id'] %>" data-player-embed='<%= video['embed_url'] %>'>
           <img class="visuallyhidden" src="<%= video['thumbnail_url'] %>" title="<%- video['title'] %>" alt="<%- video['title'] %> thumbnail">
         </a>
         <div id="video-player-<%= video['provider_name'] %>-<%= video['provider_id'] %>" class="js-video-player video__wrapper visuallyhidden"></div>
