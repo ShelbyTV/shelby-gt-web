@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('a.js-play-video').on('click', function(e){
+    $('body').on('click', 'a.js-play-video', function(e){
       // start by cleaning up the page of any loaded video, add back thumbnail
       $('.js-play-video').removeClass('visuallyhidden');
       $('.js-video-player').empty().addClass("visuallyhidden");
