@@ -76,4 +76,21 @@ $_mobile_header_height: 41px;
       z-index: 1;
     }
   }
+  //onboarding
+  .modal__body {
+    font-size: 1.3em;
+
+    .user {
+      font-size: 1em;
+    }
+  }
+  .modal__foot {
+    background-color: $base;
+    bottom: 0;
+    border-top: 1px solid $inset;
+    left: 0;
+    padding: 0.5em;
+    position: fixed;
+    width: 100%;
+  }
 }
