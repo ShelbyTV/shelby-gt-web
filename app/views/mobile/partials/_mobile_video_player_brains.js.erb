@@ -1,0 +1,32 @@
+$(document).ready(function(){
+    $('a.js-play-video').on('click', function(e){
+      // start by cleaning up the page of any loaded video, add back thumbnail
+      $('.js-play-video').removeClass('visuallyhidden');
+      $('.js-video-player').empty().addClass("visuallyhidden");
+      var $clickedVid = $(e.currentTarget),
+            providerName = $clickedVid.data('provider-name'),
+            providerId = $clickedVid.data('provider-id'),
+            embed = $clickedVid.data('embed'),
+            $playerDiv = $('#video-player-'+providerName+'-'+providerId),
+            playerSrcUrl;
+      $clickedVid.addClass("visuallyhidden");
+      $playerDiv.removeClass("visuallyhidden");
+      switch (providerName) {
+        case "youtube":
+          playerSrcUrl = "//www.youtube.com/embed/"+providerId;
+          $playerDiv.html("<iframe width='530' height='298' src='"+playerSrcUrl+"?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+          break;
+        case "vimeo":
+          playerSrcUrl = "//player.vimeo.com/video/"+providerId;
+          $playerDiv.html("<iframe width='530' height='298' src='"+playerSrcUrl+"?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+          break;
+        case "dailymotion":
+          playerSrcUrl = "//www.dailymotion.com/embed/video/"+providerId;
+          $playerDiv.html("<iframe width='530' height='298' src='"+playerSrcUrl+"?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+          break;
+        default:
+          $playerDiv.html(embed);
+      }
+
+    });
+  });

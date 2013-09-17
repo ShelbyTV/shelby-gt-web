@@ -15,3 +15,7 @@
     </li>
   <% end %>
 </ul>
+
+<%= javascript_tag do %>
+  <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>
+<% end %>
