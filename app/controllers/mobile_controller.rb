@@ -72,6 +72,7 @@ class MobileController < ApplicationController
   def roll
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
+    @is_mobile      = is_mobile?
 
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
