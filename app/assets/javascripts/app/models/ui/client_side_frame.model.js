@@ -93,7 +93,7 @@ libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
   },
 
   likeMessage : function() {
-    if (this._clientSideFrameType == 'search') {
+    if (this._clientSideFrameType == 'Search') {
       return "I like this video that I found with Shelby video search.";
     } else {
       return "I like this video that Shelby recommended to me.";
@@ -109,10 +109,9 @@ libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
   },
 
   watched : function(completeWatch, startTime, endTime, onSuccess) {
-    //TODO: we need to find some way to track watches on these frames because some
-    //  recommendations will be displayed with these and we obviously want to track
-    //  watches of recommendations
-    return;
+    if (this._clientSideFrameType != 'Search') {
+      this.get('video').watched(completeWatch, startTime, endTime, onSuccess);
+    }
   },
 
   // return a boolean specifying whether this frame can be shortlinked
