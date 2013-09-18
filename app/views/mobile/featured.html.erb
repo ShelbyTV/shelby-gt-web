@@ -17,7 +17,7 @@
 </ul>
 
 <p class="center">
-  <%= link_to mobile_featured_path(:page => (@page + 1)), {:class => Settings::Mobile.button_gray_flexible + " one-third js-load-more"} do %>
+  <%= link_to mobile_featured_path(:page => (@page + 1)), {:class => Settings::Mobile.load_more_button_class} do %>
     <span class="button_label">Load More</span>
   <% end %>
 </p>
