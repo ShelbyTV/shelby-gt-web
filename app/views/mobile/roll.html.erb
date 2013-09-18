@@ -1,8 +1,3 @@
-<!--
-If you were to get more frames from these rolls, use:
-Shelby::API.Shelby::API.get_roll_with_frames(@roll_id, skip=20, limit=20)
--->
-
 <%= render :partial => '/objects/roll_header',
     :locals => {
       :user => @user,
@@ -20,7 +15,8 @@ Shelby::API.Shelby::API.get_roll_with_frames(@roll_id, skip=20, limit=20)
             :video          => frame['video'],
             :signed_in_user => @signed_in_user,
             :is_mobile      => true,
-            :embed_video    => false
+            :embed_video    => false,
+            :ga_category    => "Mobile"
           } %>
       <% end %>
     </li>
@@ -28,7 +24,15 @@ Shelby::API.Shelby::API.get_roll_with_frames(@roll_id, skip=20, limit=20)
 </ul>
 
 <p class="center">
-  <%= link_to mobile_shares_path(@user['id'], :page => (@page + 1)), {:class => Settings::Mobile.load_more_button_class} do %>
+  <%= link_to mobile_shares_path(
+        @user['id'],
+        :page => (@page + 1)),
+        {
+          :class => Settings::Mobile.load_more_button_class + " js-track-event",
+          'data-ga_category' => "Mobile",
+          'data-ga_action'   => "Click Load more on #{@roll_type}",
+          'data-ga_label'    => "#{@signed_in_user['nickname']}"
+        } do %>
     <span class="button_label">Load More</span>
   <% end %>
 </p>

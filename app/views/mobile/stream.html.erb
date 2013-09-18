@@ -3,21 +3,29 @@
     <li class="list__item">
       <% if dbe['action'] != 31 and !dbe["duplicate"] and dbe['frame'] and dbe['frame']['video'] and can_play_video(dbe['frame']['video']['provider_name']) %>
         <%= render :partial => '/objects/frame',
-            :locals => {
-              :frame          => dbe['frame'],
-              :frame_owner    => dbe['frame']['creator'],
-              :video          => dbe['frame']['video'],
-              :signed_in_user => @signed_in_user,
-              :is_mobile      => true,
-              :embed_video    => false
-            } %>
+          :locals => {
+            :frame          => dbe['frame'],
+            :frame_owner    => dbe['frame']['creator'],
+            :video          => dbe['frame']['video'],
+            :signed_in_user => @signed_in_user,
+            :is_mobile      => true,
+            :embed_video    => false,
+            :ga_category    => "Mobile"
+          } %>
       <% end %>
     </li>
   <% end %>
 </ul>
 
 <p class="center">
-  <%= link_to mobile_stream_path(:page => (@page + 1)), {:class => Settings::Mobile.load_more_button_class} do %>
+  <%= link_to mobile_stream_path(
+        :page => (@page + 1)),
+        {
+          :class => Settings::Mobile.load_more_button_class + " js-track-event",
+          'data-ga_category' => "Mobile",
+          'data-ga_action'   => "Click Load more on #{@roll_type}",
+          'data-ga_label'    => "#{@signed_in_user['nickname']}"
+        } do %>
     <span class="button_label">Load More</span>
   <% end %>
 </p>
