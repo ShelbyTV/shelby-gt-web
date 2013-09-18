@@ -26,7 +26,7 @@ class MobileController < ApplicationController
       d = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
       @dashboard = dedupe_dashboard(d)
     else
-      redirect_to mobile_landing_path(:status =>"Not logged in.")
+      redirect_to mobile_landing_path(:status =>"You must be logged in.")
     end
   end
 
@@ -93,9 +93,7 @@ class MobileController < ApplicationController
         @frames = []
       end
     else
-      # TODO:
-      # add param on redirect to show what happened.
-      redirect_to :mobile_landing
+      raise ActionController::RoutingError.new("We can't find the content you are looking for.")
     end
   end
 
@@ -110,9 +108,7 @@ class MobileController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     @current_step = (params[:step] || 1).to_i
     raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
-    # TODO:
-    # add param on redirect to show what happened.
-    #(redirect_to :mobile_landing and return) unless user_signed_in?
+    #(redirect_to mobile_landing_path(:status=> "You must be logged in.") and return) unless user_signed_in?
 
     if @current_step == 1
       @service = params[:service]
@@ -126,28 +122,23 @@ class MobileController < ApplicationController
   def set_onboarding
     @current_step = params[:step].to_i
     raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
-    # TODO:
-    # add param on redirect to show what happened.
-    (redirect_to mobile_landing_path and return) unless user_signed_in?
+    (redirect_to mobile_landing_path(:status=> "You must be logged in.") and return) unless user_signed_in?
 
     @current_user = Shelby::API.get_user(current_user_id)
 
     if @current_step == 1
-      # 1) follow shelby, set open graph preference etc
-
-      # 2) update user app progress
-      attrs = {:app_progress => {:onboarding => @current_step}}
-      Shelby::API.update_user(@current_user['id'], attrs, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
+      # follow shelby, set open graph preference etc
+      EM.next_tick { set_timeline_preference(@current_user, params[:onboarding_timeline_sharing]) }
+      EM.next_tick { follow_shelby(user, params[:onboarding_follow_shelby]) }
+      attributes = {:app_progress => {:onboarding => @current_step}}
+      update_user(@current_user, attributes)
+      redirect_to mobile_show_onboarding_path(:step => 2)
     elsif @current_step == 2 and params[:rolls]
-      # follow rolls selected
-      follow_rolls(params[:rolls])
-      # Update user app_progress.onboarding attribute to the appropriate step
+      EM.next_tick { follow_rolls(params[:rolls]) }
       attributes = {:app_progress => {:onboarding => true} }
       update_user(@current_user, attributes)
-      # send to their shiney new stream
       redirect_to mobile_stream_path
     else
-      # 3) something went horribly wrong.
       redirect_to mobile_landing_path(:status =>"Something bad just happened")
     end
   end
