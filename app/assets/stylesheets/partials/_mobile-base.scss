@@ -4,23 +4,8 @@
 $_mobile_header_height: 41px;
 
 .shelby--mobile {
-  &.shelby--user_signed_in {
-    //nav fittings
-    .shelby-logo {
-      .icon-type {
-        display: none;
-      }
-    }
-  }
-
   background-color: $base;
 
-  //branding + header
-  .shelby-logo {
-    .shelby_logo {
-      padding-right: 6px;
-    }
-  }
   .shelby-header {
     height: $_mobile_header_height;
     left: 0;
@@ -57,7 +42,7 @@ $_mobile_header_height: 41px;
   }
 
   .share_panel {
-    font-size: 1.2em;
+    font-size: 1.1em;
     margin-top: $_mobile_header_height;
     position: fixed;
   }

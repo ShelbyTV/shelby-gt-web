@@ -12,6 +12,39 @@
 
 //  Screens that LESS THAN 600px wide.
 @media screen and (max-width: 600px) {
+  .shelby--mobile {
+    &.shelby--shares {
+      .share_panel {
+        bottom: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+    }
+    &.shelby--shares_enabled {
+      .share_panel {
+        margin-top: 0;
+      }
+    }
+    //nav fittings
+    .shelby-logo {
+      .icon-type {
+        display: none;
+      }
+    }
+    //branding + header
+    .shelby-logo {
+      .shelby_logo {
+        padding-right: 6px;
+      }
+    }
+    .app_nav__button--settings {
+      .button_label {
+        display: none;
+      }
+    }
+  }
+
   .frame-footer {
     .media_body {
       font-size: 1.1em;

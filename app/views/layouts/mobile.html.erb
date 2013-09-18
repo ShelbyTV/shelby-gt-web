@@ -42,14 +42,7 @@
   </script>
   <%= javascript_include_tag "mobile" %>
 
-  <noscript>
-    <!-- styles/markup for devices that prevent fun stuff from happening -->
-    <style>
-      .video__wrapper, .frame_interactions { display: none; }
-      .line-clamp { height: auto !important; }
-      .line-clamp:after { display: none !important; }
-    </style>
-  </noscript>
+  <%= render :partial => '/objects/noscript' %>
 </head>
 
 <body class="shelby shelby--shares shelby--mobile<%= " shelby--user_signed_in" if @user_signed_in %>">

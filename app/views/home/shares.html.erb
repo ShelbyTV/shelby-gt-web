@@ -24,7 +24,7 @@
         shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname']}'" %>;
   </script>
 
-  <%= stylesheet_link_tag "screen", :media => "screen" %>
+  <%= stylesheet_link_tag "mobile", :media => "screen" %>
   <script>
     if (typeof(shelby) == 'undefined') {
       shelby = {};
@@ -42,16 +42,10 @@
   <%= javascript_include_tag "shares" %>
   <script id="js-user-model" type="application/json"><%= raw @signed_in_user.to_json %></script>
 
-  <!-- styles/markup for devices that prevent fun stuff from happening -->
-  <style>
-    .video__wrapper, .frame_interactions { display: none; }
-    .line-clamp { height: auto !important; }
-    .line-clamp:after { display: none !important; }
-  </style>
-
+  <%= render :partial => '/objects/noscript' %>
 </head>
 
-<body class="shelby shelby--shares<%= (@user_signed_in) ? ' shelby--shares_enabled' : ''%>" data-personal_roll_id="<%= (@signed_in_user) ? @signed_in_user['personal_roll_id'] : 'null' %>" data-user_name="<%= (@signed_in_user) ? @signed_in_user['nickname'] : 'anonymous' %>">
+<body class="shelby shelby--shares<%= ' shelby--shares_enabled' if @user_signed_in %><%= ' shelby--mobile' if @is_mobile %>" data-personal_roll_id="<%= (@signed_in_user) ? @signed_in_user['personal_roll_id'] : 'null' %>" data-user_name="<%= (@signed_in_user) ? @signed_in_user['nickname'] : 'anonymous' %>">
   <%= render :partial => "seovideo/signup_cta", :locals => { :with_js => false, :category => "Share Page" } %>
 
   <section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
