@@ -3,6 +3,7 @@
 //for sharing.
 //= require ./backbone/underscore.js
 //= require ../templates/share-page-form.jst.ejs
+//= require ../templates/liker-item.jst.ejs
 
 //load event tracking js
 //= require ./event-tracking/mobile.tracking.js
@@ -210,6 +211,16 @@ $(document).ready(function(){
           $button = $(data).find('.js-load-more');
       $('.js-list').append($items);
       $('.js-load-more').attr('href',$button.attr('href'));
+
+      _($items.children('.js-frame')).each(function(item){
+        var $el = $(item);
+        var $likers = $el.find('.js-likes-array');
+
+        if($likers && $likers.length){
+          $likers = JSON.parse($likers.html());
+          injectLikers($likers,$el);
+        }
+      });
     });
   });
 
@@ -249,4 +260,56 @@ $(document).ready(function(){
     $this.addClass('visuallydisabled');
   });
 
+  var injectLikers = function(likers,$scope){
+    if(likers.length) {
+      var data = {
+        ids: likers.join(',')
+      };
+
+      $.ajax({
+        type: 'GET',
+        url: '//api.shelby.tv/v1/user',
+        dataType: "jsonp",
+        timeout: 10000,
+        crossDomain: true,
+        data: data,
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function (response) {
+          $scope.find('.js-liker-avatars-list').empty();
+
+          for(var i = 0; i < response.result.length; i++) {
+
+            var user = response.result[i],
+                avatar;
+
+            if(user.has_shelby_avatar && !user.user_image){
+              avatar = libs.config.avatarUrlRoot + '/' + libs.config.shelbyGT.UserAvatarSizes.small + '/' + user.id + '?' + new Date(user.avatar_updated_at).getTime();
+            } else {
+              avatar = user.user_image || "/images/assets/avatar.png";
+            }
+
+            $scope.find('.js-liker-avatars-list').append(SHELBYJST['liker-item']({
+              avatar: avatar,
+              liker: user
+            }));
+          }
+        },
+        error: function (e) {
+          console.log("Oops!",e.statusText);
+        }
+      });
+    }
+  };
+
+  $(this).on('frameLoaded',function(e){
+    console.log('e',e);
+    var $el = $('#'+e.frame_id);
+    var likers = JSON.parse($el.find('.js-likes-array').html());
+
+    if(likers.length){
+      injectLikers(likers,$el);
+    }
+  });
 });

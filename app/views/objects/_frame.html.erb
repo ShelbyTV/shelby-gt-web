@@ -8,13 +8,6 @@
   <div class="frame-body-wrapper clearfix">
     <div class="frame-body">
       <noscript>
-        <!-- styles/markup for devices that prevent fun stuff from happening -->
-        <style>
-          .video__wrapper, .frame_interactions { display: none; }
-          .line-clamp { height: auto !important; }
-          .line-clamp:after { display: none !important; }
-        </style>
-
         <p style="text-align: center;"><strong>Please enable Javascript if your device allows it.</strong></p>
 
         <span class="image_module frame-thumbnail frame-thumbnail--tall js-frame-activate" style="background-image: url('<%= video['thumbnail_url'] %>');" role="img">
@@ -84,12 +77,27 @@
     <div class="share_panel frame-body-wrapper fin fin--top_left fin--edging clearfix js-shares hidden"></div>
   </div>
   <% if frame['upvoters'].length > 0 %>
+    <% unless embed_video %>
+      <script class="js-likes-array" data-frame_id="<%= frame['id'] %>" type="application/json">
+        <%= raw frame['upvoters'].to_json %>
+      </script>
+
+      <script>
+        $(document).ready(function(){
+          $(this).trigger({
+            type:'frameLoaded',
+            frame_id: "<%= frame['id'] %>"
+          });
+        });
+      </script>
+    <% end %>
+
     <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">
       <ul class="list frame-likes-avatars js-liker-avatars-list">
         <% frame['upvoters'].each do |liker| %>
         <% avatar = liker['has_shelby_avatar'] ? avatar_url_for_user(liker) : liker['user_image'] %>
           <li>
-            <a class="image_module avatar avatar--tiny frame-likes-link js-track-event" data-liker_id="<%= liker['id'] %>" style="background-image: url(<%= avatar %>)" href="/<%= liker['nickname'] %>" data-ga_category="Share Page" data-ga_action="click avatar for liker" data-ga_label="<%= liker['nickname'] %>">
+            <a class="image_module avatar avatar--tiny frame-likes-link js-track-event" style="background-image: url(<%= avatar %>)" href="/<%= liker['nickname'] %>" data-ga_category="Share Page" data-ga_action="click avatar for liker" data-ga_label="<%= liker['nickname'] %>">
               <img class="visuallyhidden" src="<%= avatar %>" title="<%= liker['name'] %>" alt="<%= liker['name'] %>">
             </a>
           </li>
@@ -105,16 +113,3 @@
     </div><!-- eo frame-likes -->
   <% end %>
 </article>
-
-<% #logic: if we're on a share page, we're embedding, so we have the liker info we need. otherwise we don't
-  unless embed_video
-  %>
-  <%= javascript_tag do %>
-    <%= render :partial => "/mobile/partials/liker-avatars",
-          :formats=>[:js],
-          :locals => {
-            :frame_id => frame['id'],
-            :likers   => frame['upvoters']
-          } %>
-  <% end %>
-<% end %>

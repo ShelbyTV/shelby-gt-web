@@ -41,6 +41,14 @@
   </script>
   <%= javascript_include_tag "shares" %>
   <script id="js-user-model" type="application/json"><%= raw @signed_in_user.to_json %></script>
+
+  <!-- styles/markup for devices that prevent fun stuff from happening -->
+  <style>
+    .video__wrapper, .frame_interactions { display: none; }
+    .line-clamp { height: auto !important; }
+    .line-clamp:after { display: none !important; }
+  </style>
+
 </head>
 
 <body class="shelby shelby--shares<%= (@user_signed_in) ? ' shelby--shares_enabled' : ''%>" data-personal_roll_id="<%= (@signed_in_user) ? @signed_in_user['personal_roll_id'] : 'null' %>" data-user_name="<%= (@signed_in_user) ? @signed_in_user['nickname'] : 'anonymous' %>">
