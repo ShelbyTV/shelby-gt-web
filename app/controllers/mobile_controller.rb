@@ -122,19 +122,31 @@ class MobileController < ApplicationController
     raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
     # TODO:
     # add param on redirect to show what happened.
-    (redirect_to :mobile_landing and return) unless user_signed_in?
+    (redirect_to mobile_landing_path and return) unless user_signed_in?
 
     @current_user = Shelby::API.get_user(current_user_id)
 
-    # TODO:
     if @current_step == 1
-      # 1) follow rolls, follow shelby, set open graph preference etc
+      # 1) follow shelby, set open graph preference etc
 
-    elsif @current_step == 2
+      # 2) update user app progress
+      attrs = {:app_progress => {:onboarding => @current_step}}
+      Shelby::API.update_user(@current_user['id'], attrs, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
+    elsif @current_step == 2 and params[:rolls]
+      # 1) follow rolls selected
+      EM.next_tick do
+        params[:rolls].keys.each do |id|
+          r = Shelby::API.join_roll(id, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
+          # proxy the cookies
+          Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie']) if r
+        end
+      end
       # 2) Update user app_progress.onboarding attribute to the appropriate step
+      attrs = {:app_progress => {:onboarding => true}}
+      Shelby::API.update_user(@current_user['id'], attrs, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
     else
       # 3) something went horribly wrong.
-      redirect_to :mobile_landing
+      redirect_to mobile_landing_path(:status =>"Something bad just happened")
     end
   end
 
