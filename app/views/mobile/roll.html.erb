@@ -28,7 +28,7 @@ Shelby::API.Shelby::API.get_roll_with_frames(@roll_id, skip=20, limit=20)
 </ul>
 
 <p class="center">
-  <%= link_to mobile_shares_path(:page => (@page + 1)), {:class => Settings::Mobile.load_more_button_class} do %>
+  <%= link_to mobile_shares_path(@user['id'], :page => (@page + 1)), {:class => Settings::Mobile.load_more_button_class} do %>
     <span class="button_label">Load More</span>
   <% end %>
 </p>
