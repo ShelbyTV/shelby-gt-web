@@ -21,6 +21,16 @@ var libs = {
 };
 
 $(document).ready(function(){
+  var loc = shelbyTrackingCategory || "Mobile",
+      username = shelbyTrackingLabel || "Anonymous" ;
+
+  shelby.trackEx({
+    providers : ['ga'],
+    gaCategory : loc,
+    gaAction : 'Visit page',
+    gaLabel : username
+  });
+
   $('.js-toggle-comment').on('click',function(){
     var $this = $(this);
     $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
@@ -52,7 +62,6 @@ $(document).ready(function(){
       users = [];
 
   if(user) {
-
     var $guide = $('.js-guide');
 
     var data = {

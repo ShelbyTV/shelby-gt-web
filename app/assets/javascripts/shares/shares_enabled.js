@@ -120,7 +120,7 @@ $(function(){
 
         shelby.trackEx({
           providers : ['ga', 'kmq'],
-          gaCategory : 'Share Page',
+          gaCategory : shelbyTrackingCategory,
           gaAction : 'shared',
           gaLabel : username,
           gaValue : destinations.length,
