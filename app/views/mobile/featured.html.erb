@@ -1,7 +1,7 @@
 <ul class="list js-list">
   <% @featured_dashboard.each do |dbe| %>
     <li class="list__item">
-      <% if dbe['frame'] and dbe['frame']['video'] and can_play_video(dbe['frame']['video']['provider_name']) %>
+      <% if dbe['frame'] and dbe['frame']['video'] and can_play_video(dbe['frame']['video']['provider_name']) and !dbe["duplicate"] %>
         <%= render :partial => '/objects/frame',
           :locals => {
             :frame          => dbe['frame'],

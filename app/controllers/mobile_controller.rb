@@ -16,12 +16,15 @@ class MobileController < ApplicationController
       @signed_in_user = check_for_signed_in_user
       redirect_to mobile_show_onboarding_path(:step => 1) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
 
-      @page = params[:page].to_i.abs
-      @skip = convert_page_to_skip(params[:page])
-      @dashboard      = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
       @roll_type      = "stream"
+
+      @page = params[:page].to_i.abs
+      @skip = convert_page_to_skip(params[:page])
+
+      d = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
+      @dashboard = dedupe_dashboard(d)
     else
       redirect_to mobile_landing_path(:status =>"Not logged in.")
     end
@@ -35,7 +38,8 @@ class MobileController < ApplicationController
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
 
-    @featured_dashboard = Shelby::API.get_user_dasboard(Settings::ShelbyAPI.featured_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
+    featured_dashboard = Shelby::API.get_user_dasboard(Settings::ShelbyAPI.featured_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
+    @featured_dashboard = dedupe_dashboard(featured_dashboard)
     @roll_type          = "featured"
   end
 
@@ -61,7 +65,8 @@ class MobileController < ApplicationController
         @roll_id   = @signed_in_user['personal_roll_id']
       end
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
-        @frames = @roll_with_frames['frames']
+        frames = @roll_with_frames['frames']
+        @frames = dedupe_frames(frames)
       else
         @frames = []
       end
@@ -82,7 +87,8 @@ class MobileController < ApplicationController
       @roll_id = @user['personal_roll_id']
       @roll_type = "user"
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, '', @skip, Settings::Mobile.default_limit)
-        @frames = @roll_with_frames['frames']
+        frames = @roll_with_frames['frames']
+        @frames = dedupe_frames(frames)
       else
         @frames = []
       end
