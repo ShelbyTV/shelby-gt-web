@@ -191,5 +191,6 @@ $(function(){
     $this.toggleClass('button_active',!$this.hasClass('button_active'));
 
     $dropdown.toggleClass('hidden',!$dropdown.hasClass('hidden'));
+    $dropdown.find('#frame_comment').focus();
   });
 });

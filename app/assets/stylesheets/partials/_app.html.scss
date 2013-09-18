@@ -46,6 +46,12 @@ a{
   $_singleColumn: 550px;
 
   .shelby--shares {
+    &.shelby--shares_enabled {
+      .share_panel {
+        margin-top: 2em;
+      }
+    }
+
     background-color: $ui-off-white;
     overflow: visible;
 
