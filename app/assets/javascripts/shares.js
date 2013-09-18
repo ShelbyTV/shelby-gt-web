@@ -56,7 +56,7 @@ $(document).ready(function(){
       $(this).addClass('hidden');
 
       try {
-        _gaq.push(['_trackEvent', 'SEO Video', 'Click on body with modal', "When clicking related video"]);
+        _gaq.push(['_trackEvent', 'Share Page', 'Click on body with modal', "When clicking related video"]);
       } catch(e) {}
     });
     //handle "Share" button differently, since there's no Share Pane.

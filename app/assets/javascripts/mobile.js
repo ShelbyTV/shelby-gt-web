@@ -21,17 +21,31 @@ var libs = {
 };
 
 $(document).ready(function(){
+  var loc = shelbyTrackingCategory || "Mobile",
+      username = shelbyTrackingLabel || "Anonymous" ;
+
+  shelby.trackEx({
+    providers : ['ga'],
+    gaCategory : loc,
+    gaAction : 'Visit page',
+    gaLabel : username
+  });
+
   $('.js-toggle-comment').on('click',function(){
     var $this = $(this);
     $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
   });
 
-  $('.js-settings-dropdown, .js-content-selector').on('click','button',function(e){
+  $('.js-settings-dropdown, .js-login-dropdown, .js-content-selector').on('click','button',function(e){
     e.preventDefault();
     var $this = $(this);
 
     if($this.hasClass('js-do-nothing')){
       return false;
+    }
+    if($this.hasClass('js-login-dropdown-button')){
+      var $loginDropdown = $('.js-login-dropdown');
+      $loginDropdown.toggleClass('hidden',!$loginDropdown.hasClass('hidden'));
     }
     else if($this.hasClass('js-settings-dropdown-button')){
       var $settingsDropdown = $('.js-settings-dropdown');
@@ -52,7 +66,6 @@ $(document).ready(function(){
       users = [];
 
   if(user) {
-
     var $guide = $('.js-guide');
 
     var data = {

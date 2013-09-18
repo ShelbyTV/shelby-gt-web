@@ -33,12 +33,21 @@ $_mobile_header_height: 41px;
 
   //it's a special mod that shouldn't be downloaded outside the context of the shelby--mobile class anyway.
   .share_panel,
+  .login_panel,
   .settings-section--mobile {
     background-color: $ui-white;
 
     .list:last-child {
       padding-bottom: 0.5em;
     }
+  }
+  //login_panel is non-normative
+  .login_panel {
+    font-size: 1.3em;
+    left: 0;
+    position: absolute;
+    top: $_mobile_header_height;
+    width: 100%;
   }
 
   .share_panel {
@@ -78,4 +87,7 @@ $_mobile_header_height: 41px;
     position: fixed;
     width: 100%;
   }
+}
+.empty-indicator {
+  padding: 2em;
 }
