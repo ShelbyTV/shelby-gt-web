@@ -25,11 +25,15 @@
   <% end %>
 </ul>
 
-<p class="center">
-  <%= link_to mobile_me_path(:page => (@page + 1)), {:class => Settings::Mobile.load_more_button_class} do %>
-    <span class="button_label">Load More</span>
-  <% end %>
-</p>
+<% if @frames.empty? %>
+  You should really <%= @roll_type.singularize %> something
+<% else %>
+  <p class="center">
+    <%= link_to mobile_me_path(:page => (@page + 1)), {:class => Settings::Mobile.load_more_button_class} do %>
+      <span class="button_label">Load More</span>
+    <% end %>
+  </p>
+<% end %>
 
 <%= javascript_tag do %>
   <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>

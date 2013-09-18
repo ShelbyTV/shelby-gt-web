@@ -14,7 +14,6 @@ class MobileController < ApplicationController
   def stream
     if user_signed_in?
       @signed_in_user = check_for_signed_in_user
-      Rails.logger.info @signed_in_user['app_progress']
       redirect_to mobile_show_onboarding_path(:step => 1) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
 
       @page = params[:page].to_i.abs
@@ -137,7 +136,7 @@ class MobileController < ApplicationController
       # follow rolls selected
       follow_rolls(params[:rolls])
       # Update user app_progress.onboarding attribute to the appropriate step
-      attributes = {:app_progress => {:onboarding => 4} }
+      attributes = {:app_progress => {:onboarding => true} }
       update_user(@current_user, attributes)
       # send to their shiney new stream
       redirect_to mobile_stream_path

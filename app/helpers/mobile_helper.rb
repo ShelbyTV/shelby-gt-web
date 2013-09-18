@@ -16,7 +16,6 @@ module MobileHelper
 
   def update_user(user, attrs)
     r = Shelby::API.update_user(user['id'], attrs, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
-    Rails.logger.info("result #{r}, atts: #{attrs}")
     # proxy the cookies
     Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie']) if r
   end
