@@ -18,6 +18,6 @@
   </a>
 
   <p class="modal__block modal__block--hint">
-    Or you can <%= link_to 'skip this step', mobile_show_onboarding_path+"/#{@current_step+1}" %>
+    Or you can <%= link_to 'skip this step', mobile_show_onboarding_path(:step => 2) %>
   </p>
 </div><!-- eo modal__body -->

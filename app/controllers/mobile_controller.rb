@@ -1,10 +1,11 @@
 class MobileController < ApplicationController
   include ApplicationHelper
+  include MobileHelper
 
   def landing
     @signed_in_user = check_for_signed_in_user
-    if @signed_in_user['app_progress'] and @signed_in_user['app_progress']['onboarding'] != true
-      redirect_to mobile_show_onboarding_path(:service => params[:service])
+    if user_signed_in? and @signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] != true)
+      redirect_to mobile_show_onboarding_path(:step => 1, :service => params[:service])
     elsif user_signed_in?
       redirect_to mobile_stream_path
     end
@@ -13,7 +14,8 @@ class MobileController < ApplicationController
   def stream
     if user_signed_in?
       @signed_in_user = check_for_signed_in_user
-      redirect_to :mobile_show_onboarding unless @signed_in_user['app_progress'] and @signed_in_user['app_progress']['onboarding'] == true
+      Rails.logger.info @signed_in_user['app_progress']
+      redirect_to mobile_show_onboarding_path(:step => 1) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
 
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
@@ -135,8 +137,8 @@ class MobileController < ApplicationController
       # follow rolls selected
       follow_rolls(params[:rolls])
       # Update user app_progress.onboarding attribute to the appropriate step
-      attrs = { :app_progress => {:onboarding => true} }
-      update_user(attrs)
+      attributes = {:app_progress => {:onboarding => 4} }
+      update_user(@current_user, attributes)
       # send to their shiney new stream
       redirect_to mobile_stream_path
     else

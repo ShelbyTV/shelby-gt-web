@@ -20,6 +20,7 @@ module Shelby
     def self.update_user(id, attributes, cookie, token)
       headers = { 'Cookie' => cookie }
       headers['X-CSRF-Token'] = token if token
+      Rails.logger.info("attributes: #{attributes}")
       put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}", { :body => attributes, :headers => headers })
     end
 
