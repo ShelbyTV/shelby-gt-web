@@ -13,8 +13,8 @@ ShelbyGtWeb::Application.routes.draw do
     get '/m/featured' => 'mobile#featured', :as => :mobile_featured
     get '/m/me(*path)' => 'mobile#me', :as => :mobile_me
     get '/m/signout' => 'mobile#signout', :as => :mobile_signout
-    get '/m/onboarding/(*path)' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
-    post '/m/onboarding/(*path)' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
+    get '/m/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
+    post '/m/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
     # for user shares
     get '/m/(*path)' => 'mobile#roll', :as => :mobile_shares
     constraints(:subdomain => 'm.localhost') do

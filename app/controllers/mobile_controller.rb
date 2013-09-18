@@ -5,7 +5,7 @@ class MobileController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     if @signed_in_user['app_progress'] and @signed_in_user['app_progress']['onboarding'] != true
       redirect_to mobile_show_onboarding_path(:service => params[:service])
-    elsif @signed_in_user
+    elsif user_signed_in?
       redirect_to mobile_stream_path
     end
   end
@@ -101,7 +101,7 @@ class MobileController < ApplicationController
 
   def show_onboarding
     @signed_in_user = check_for_signed_in_user
-    @current_step = (params[:path] || 1).to_i
+    @current_step = (params[:step] || 1).to_i
     raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
     # TODO:
     # add param on redirect to show what happened.
@@ -113,12 +113,11 @@ class MobileController < ApplicationController
       @sources = Shelby::API.get_featured_sources
     end
 
-    @current_user = Shelby::API.get_user(current_user_id)
     render "/mobile/onboarding/step_#{@current_step.to_s}".to_sym
   end
 
   def set_onboarding
-    @current_step = params[:path].to_i
+    @current_step = params[:step].to_i
     raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
     # TODO:
     # add param on redirect to show what happened.
@@ -133,17 +132,13 @@ class MobileController < ApplicationController
       attrs = {:app_progress => {:onboarding => @current_step}}
       Shelby::API.update_user(@current_user['id'], attrs, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
     elsif @current_step == 2 and params[:rolls]
-      # 1) follow rolls selected
-      EM.next_tick do
-        params[:rolls].keys.each do |id|
-          r = Shelby::API.join_roll(id, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
-          # proxy the cookies
-          Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie']) if r
-        end
-      end
-      # 2) Update user app_progress.onboarding attribute to the appropriate step
-      attrs = {:app_progress => {:onboarding => true}}
-      Shelby::API.update_user(@current_user['id'], attrs, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
+      # follow rolls selected
+      follow_rolls(params[:rolls])
+      # Update user app_progress.onboarding attribute to the appropriate step
+      attrs = { :app_progress => {:onboarding => true} }
+      update_user(attrs)
+      # send to their shiney new stream
+      redirect_to mobile_stream_path
     else
       # 3) something went horribly wrong.
       redirect_to mobile_landing_path(:status =>"Something bad just happened")

@@ -51,15 +51,21 @@
           roll_id = $this. data('roll_id'),
           isFollowing = !$this.hasClass('button_gray'); // button_gray == not following
 
+      //change value of hidden input associated with button
+      $('#rolls_' + roll_id).attr('checked', !isFollowing);
+      var rollsFollowing = $('.js-list-sources--onboarding input:checked').length
+
       //naively toggle state & text of button
       $this.toggleClass('button_green button_gray')
            .text(isFollowing ? 'Follow' : 'Following');
 
-      //change value of hidden input associated with button
-      $('#rolls_' + roll_id).attr('checked', !isFollowing);
       // enable submit button if following 3
-      if ($('.js-list-sources--onboarding input:checked').length == 3) {
-        $('input[type=submit]').removeAttr('disabled');
+      if (rollsFollowing == 3) {
+        $('input[type=submit]').attr('value', "Start Watching!").removeAttr('disabled');
+      } else if (rollsFollowing == 2) {
+        $('input[type=submit]').attr('value', "Follow 1 More");
+      } else if (rollsFollowing == 1) {
+        $('input[type=submit]').attr('value', "Follow 2 More");
       }
     });
   });
