@@ -101,7 +101,7 @@ class MobileController < ApplicationController
 
   def show_onboarding
     @signed_in_user = check_for_signed_in_user
-    @current_step = (params[:path] || 1).to_i
+    @current_step = (params[:step] || 1).to_i
     raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
     # TODO:
     # add param on redirect to show what happened.
@@ -118,7 +118,7 @@ class MobileController < ApplicationController
   end
 
   def set_onboarding
-    @current_step = params[:path].to_i
+    @current_step = params[:step].to_i
     raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
     # TODO:
     # add param on redirect to show what happened.
