@@ -1,0 +1,112 @@
+//------------------------------------------------------------------------------
+//  Landing Overrides
+//------------------------------------------------------------------------------
+
+//  Screens that LESS THAN 625px tall.
+@media screen and (max-height: 630px) {
+}
+
+//  Screens that LESS THAN 1100px wide.
+@media screen and (max-width: 1100px) {
+}//eo media-query///////////////////////////////////////////////////////////////
+
+//  Screens that LESS THAN 600px wide.
+@media screen and (max-width: 600px) {
+  .shelby--mobile {
+    .shelf {
+      border-left: 0;
+      border-right: 0;
+
+      &.shelf--header {
+        max-width: 100%;
+        width: 100%;
+      }
+      &.shelf--cta {
+        &.shelf--facebook-logged-out {
+          height: 690px;
+        }
+        height: 800px;
+        padding: 0;
+
+        .shelf__lining {
+          margin: 0 0 0 2em;
+          padding: 0;
+        }
+        .shelf__h1 {
+          margin-top: 2em!important;
+        }
+        .shelf__img--desktop {
+          width: 100%;
+          max-width: 90%;
+        }
+      }
+      &.shelf--social {
+        .media_image--rev {
+          float: none;
+          margin: 0;
+        }
+        .shelf__img {
+          display: block;
+          margin: 2em auto 0;
+          max-width: 90%;
+          width: 100%;
+        }
+        .shelf__h1 {
+          margin-top: 1em;
+        }
+        .shelf__lining {
+          margin: 0 0 0 2em;
+          padding: 0;
+        }
+      }
+      &.shelf--stream {
+        height: 750px;
+
+        .shelf__lining {
+          clear: both;
+          margin: 0 0 0 2em;
+          padding: 0;
+        }
+        .shelf__h1 {
+          padding-top: 2em;
+        }
+        .shelf__img--stream {
+          margin: 0;
+          width: 100%;
+        }
+      }
+      &.shelf--press {
+        .shelf__lining {
+          clear: both;
+        }
+        .shelf__h1 {
+          margin-top: 2em;
+        }
+        .list__item {
+          display: block;
+          width: 100%;
+        }
+      }
+      &.shelf--secondary-cta {
+        .shelf__button--cta {
+          display: block;
+          margin-top: 1em;
+        }
+      }
+      max-width: 600px;
+      width: auto;
+
+      .media_image,
+      .media_body,
+      .media_module {
+        overflow: visible;
+      }
+
+      .media_body,
+      .media_image {
+        display:  block;
+        width: auto;
+      }
+    }
+  }
+}//eo media-query///////////////////////////////////////////////////////////////
