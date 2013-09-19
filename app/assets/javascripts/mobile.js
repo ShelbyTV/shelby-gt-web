@@ -31,7 +31,7 @@ $(document).ready(function(){
     gaLabel : username
   });
 
-  $('.js-toggle-comment').on('click',function(){
+  $('.js-list').on('click', '.js-toggle-comment',function(){
     var $this = $(this);
     $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
   });
@@ -242,7 +242,7 @@ $(document).ready(function(){
     });
   });
 
-  $('.js-like').on('click', function(e){
+  $('.js-list').on('click', '.js-like', function(e){
     var $this = $(this);
 
     //prevent extraneous api calls

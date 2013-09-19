@@ -7,7 +7,7 @@ $(document).ready(function(){
             providerName = $clickedVid.data('provider-name'),
             providerId = $clickedVid.data('provider-id'),
             embed = $clickedVid.data('player-embed'),
-            $playerDiv = $('#video-player-'+providerName+'-'+providerId),
+            $playerDiv = $('.js-video-player-'+providerName+'-'+providerId),
             playerSrcUrl;
       $clickedVid.addClass("visuallyhidden");
       $playerDiv.removeClass("visuallyhidden");
