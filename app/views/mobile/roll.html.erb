@@ -5,7 +5,8 @@
     }%>
 
 <ul class="list js-list">
-  <% @frames.each do |frame| %>
+  <% @frames.each_index do |i| %>
+    <% frame = @frames[i] %>
     <li class="list__item">
       <% if frame['video'] and can_play_video(frame['video']['provider_name']) and !frame["duplicate"] %>
         <%= render :partial => '/objects/frame',
@@ -16,7 +17,8 @@
             :signed_in_user => @signed_in_user,
             :is_mobile      => true,
             :embed_video    => false,
-            :ga_category    => "Mobile"
+            :ga_category    => "Mobile",
+            :index => i
           } %>
       <% end %>
     </li>
