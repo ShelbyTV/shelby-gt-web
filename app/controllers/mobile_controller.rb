@@ -52,13 +52,13 @@ class MobileController < ApplicationController
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
 
-      if params[:path] == "/likes"
+      if params[:type] == "likes"
         @roll_type = "likes"
         @roll_id   = @signed_in_user['watch_later_roll_id']
-      elsif params[:path] == "/shares"
+      elsif params[:type] == "shares"
         @roll_type = "shares"
         @roll_id   = @signed_in_user['personal_roll_id']
-      elsif params[:path]
+      elsif params[:type]
         raise ActionController::RoutingError.new("Route doesn't exist.")
       else
         @roll_type = "shares"
@@ -83,7 +83,9 @@ class MobileController < ApplicationController
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
 
-    if @user = Shelby::API.get_user(params[:path])
+    if @signed_in_user['nickname'] == params[:username]
+      redirect_to mobile_me_path(:type => "shares")
+    elsif @user = Shelby::API.get_user(params[:username])
       @roll_id = @user['personal_roll_id']
       @roll_type = "user"
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, '', @skip, Settings::Mobile.default_limit)

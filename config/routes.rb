@@ -6,12 +6,11 @@ ShelbyGtWeb::Application.routes.draw do
     get '/' => 'mobile#landing', :as => :mobile_landing
     get '/stream' => 'mobile#stream', :as => :mobile_stream
     get '/featured' => 'mobile#featured', :as => :mobile_featured
-    get '/me(*path)' => 'mobile#me', :as => :mobile_me
     get '/signout' => 'mobile#signout', :as => :mobile_signout
     get '/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
     post '/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
-    # for user shares
-    get '/(*path)' => 'mobile#roll', :as => :mobile_shares
+    get '/:username/:type' => 'mobile#me', :as => :mobile_me
+    get '/:username' => 'mobile#roll', :as => :mobile_user
   end
 
   #######################XXX###############################
@@ -20,18 +19,11 @@ ShelbyGtWeb::Application.routes.draw do
     get '/m' => 'mobile#landing', :as => :mobile_landing
     get '/m/stream' => 'mobile#stream', :as => :mobile_stream
     get '/m/featured' => 'mobile#featured', :as => :mobile_featured
-    get '/m/me(*path)' => 'mobile#me', :as => :mobile_me
     get '/m/signout' => 'mobile#signout', :as => :mobile_signout
     get '/m/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
     post '/m/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
-    # for user shares
-    get '/m/(*path)' => 'mobile#roll', :as => :mobile_shares
-    constraints(:subdomain => 'm.localhost') do
-      #get '/' => 'mobile#landing', :as => :mobile_landing
-      #get '/stream' => 'mobile#stream', :as => :mobile_stream
-      #get '/featured' => 'mobile#featured', :as => :mobile_featured
-      #get '/me(*path)' => 'mobile#me', :as => :mobile_me
-    end
+    get '/m/:username/:type' => 'mobile#me', :as => :mobile_me
+    get '/m/:username' => 'mobile#roll', :as => :mobile_user
   end
   #######################XXX###############################
 

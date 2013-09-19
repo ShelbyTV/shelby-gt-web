@@ -42,7 +42,8 @@
   </ul>
 
   <p class="center">
-    <%= link_to mobile_me_path(
+    <%= link_to mobile_user_path(
+          :path => @signed_in_user['nickname'],
           :page => (@page + 1)),
           {
             :class => Settings::Mobile.load_more_button_class + " js-track-event",
