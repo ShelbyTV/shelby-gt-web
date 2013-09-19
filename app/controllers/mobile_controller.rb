@@ -8,10 +8,12 @@ class MobileController < ApplicationController
     @is_mobile      = is_mobile?
 
     if user_signed_in? and @signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] != true)
-      redirect_to mobile_show_onboarding_path(:step => 1, :service => params[:service])
+      authed_service = params[:service] || @signed_in_user['authentications'].first || "facebook"
+      redirect_to mobile_show_onboarding_path(:step => 1, :service => authed_service)
     elsif user_signed_in?
       redirect_to mobile_stream_path
     else
+      @mobile_signup_url = Settings::ShelbyAPI.url+"/auth/facebook?service=facebook&origin="+Settings::Application.mobile_url
       render '/home/landing', :layout => false
     end
   end
