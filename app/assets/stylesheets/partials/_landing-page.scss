@@ -90,21 +90,21 @@
     }
 
     .shelf--cta {
-      text-align: center;
+      height: 500px;
 
       .shelf__lining {
-        padding-top: 3em;
-        font-size: 1.1em;
+        padding-top: 4em;
+        padding-left: 3.5em;
       }
 
       .shelf__button {
-        margin: 1.5em auto 0;
+        font-size: 1.3em;
       }
 
-      .shelf__img {
-        display: block;
-        margin: 0 auto;
-        max-width: 100%;
+      .shelf__img--desktop {
+        bottom: 0;
+        position: absolute;
+        right: 0;
       }
 
       .shelf__email-signup {
