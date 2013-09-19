@@ -16,7 +16,7 @@ ShelbyGtWeb::Application.routes.draw do
 
   #######################XXX###############################
   # For development, take me out when mobile is more stable
-  if ["development", "staging"].include?(Rails.env)
+  if ["development"].include?(Rails.env)
     get '/m' => 'mobile#landing', :as => :mobile_landing
     get '/m/stream' => 'mobile#stream', :as => :mobile_stream
     get '/m/featured' => 'mobile#featured', :as => :mobile_featured
