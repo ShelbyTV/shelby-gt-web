@@ -90,6 +90,15 @@
     }
 
     .shelf--cta {
+      &.shelf--facebook-logged-out {
+        .shelf__h1 {
+          margin-top: 2em;
+        }
+        .facepile {
+          display: none;
+        }
+      }
+
       height: 500px;
 
       .shelf__lining {
