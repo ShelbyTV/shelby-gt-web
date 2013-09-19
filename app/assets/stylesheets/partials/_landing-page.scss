@@ -90,21 +90,35 @@
     }
 
     .shelf--cta {
-      text-align: center;
+      &.shelf--facebook-logged-out {
+        .shelf__h1 {
+          margin-top: 2em;
+        }
+        .facepile {
+          display: none;
+        }
+      }
+
+      height: 500px;
 
       .shelf__lining {
-        padding-top: 3em;
-        font-size: 1.1em;
+        padding-top: 4em;
+        padding-left: 3.5em;
       }
 
       .shelf__button {
-        margin: 1.5em auto 0;
+        font-size: 1.3em;
+        margin-top: 0.7em;
       }
 
-      .shelf__img {
-        display: block;
-        margin: 0 auto;
-        max-width: 100%;
+      .facepile {
+        margin-top: 1.5em;
+      }
+
+      .shelf__img--desktop {
+        bottom: 0;
+        position: absolute;
+        right: 0;
       }
 
       .shelf__email-signup {
@@ -250,22 +264,11 @@
 
     .shelf--social {
       .shelf__h1 {
-        margin-top: 1.8em;
+        margin-top: 2.5em;
       }
-
-      .shelf__img {
-        margin: 8em 3em;
-      }
-
-      &.shelf--facebook-logged-out {
-        .facepile {
-          display: none;
-        }
-
         .shelf__img {
           margin: 4em 3em;
         }
-      }
     }
 
     .shelf--press {
@@ -403,6 +406,7 @@
 }
 
 .shelf__block {
+  color: #777;
   line-height: 1.5;
 }
 

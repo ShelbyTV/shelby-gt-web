@@ -78,9 +78,9 @@
 
     FB.getLoginStatus(function (response) {
         if (response.status === 'connected') {
-            $('.shelf--social').removeClass('shelf--facebook-logged-out');
+            $('.shelf--cta').removeClass('shelf--facebook-logged-out');
         } else if (response.status === 'not_authorized') {
-            $('.shelf--social').removeClass('shelf--facebook-logged-out');
+            $('.shelf--cta').removeClass('shelf--facebook-logged-out');
         } else {
             // the user isn't logged in to Facebook. so keep the facepile hidden
         }

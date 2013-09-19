@@ -2,6 +2,7 @@ require 'addressable/uri'
 require 'net/http'
 require 'shelby_api'
 require 'iconv'
+require 'shelby/internal_error'
 
 class SeovideoController < ApplicationController
 
@@ -31,11 +32,9 @@ class SeovideoController < ApplicationController
     @is_mobile = is_mobile?
     @user_signed_in = user_signed_in?
 
-    begin
-      # sets all other @video_ variables relevant to primary video
-      getVideo(@video_provider_name, @video_provider_id)
+    # set all other @video_ variables relevant to primary video
+    getVideo(@video_provider_name, @video_provider_id)
     # if the primary video isn't available, means we can't really show a great page, rescue_from catches error
-    end
 
     # we'll return a page regardless of how successful the rest of these are
     getRecommendedVideos()
@@ -102,16 +101,17 @@ private
     begin
       video_response = Net::HTTP.get_response(URI.parse(video_url))
     rescue
-      raise "Exception while gathering video information."
+      raise Shelby::InternalError.new("Exception while gathering video information.")
     end
 
-    raise "Received no response from API." unless video_response
-    raise "Received bad response code from API." unless (video_response.code == "200")
-    raise "Received incomplete response from API." unless video_response.body
+    raise Shelby::InternalError.new("Received no response from API.") unless video_response
+    raise ActionController::RoutingError.new("Not found") if video_response.code == "404"
+    raise Shelby::InternalError.new("Received bad response code from API.") unless (video_response.code == "200")
+    raise Shelby::InternalError.new("Received incomplete response from API.") unless video_response.body
 
     @video_response_body_result = ActiveSupport::JSON.decode(video_response.body)["result"]
 
-    raise "Received bad JSON from API." unless @video_response_body_result
+    raise Shelby::InternalError.new("Received bad JSON from API.") unless @video_response_body_result
 
     @video_title = @video_response_body_result["title"]
     @video_description = @video_response_body_result["description"]

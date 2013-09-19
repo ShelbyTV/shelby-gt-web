@@ -1,5 +1,15 @@
 libs.shelbyGT.VideoModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
+  watched : function(completeWatch, startTime, endTime, onSuccess) {
+    var url = shelby.config.apiRoot + '/video/' + this.id + '/watched';
+    if(completeWatch){
+      url += "?complete=1";
+    } else if(typeof startTime != "undefined" && typeof endTime != "undefined"){
+      url += '?start_time='+startTime+'&end_time='+endTime;
+    }
+    this.save(null, {url:url, success:onSuccess});
+  },
+
   markUnplayable : function(){
     // save this model and have it self-update on return
     // not using the standard save route for unplayable
