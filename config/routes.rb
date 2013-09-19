@@ -2,7 +2,7 @@ ShelbyGtWeb::Application.routes.draw do
 
   # Genius is broken and shouldn't be publicly available.
   # get '/genius' => 'genius#index'
-  constraints(:subdomain => 'm.alpha') do
+  constraints(:subdomain => 'm') do
     get '/' => 'mobile#landing', :as => :mobile_landing
     get '/stream' => 'mobile#stream', :as => :mobile_stream
     get '/featured' => 'mobile#featured', :as => :mobile_featured
