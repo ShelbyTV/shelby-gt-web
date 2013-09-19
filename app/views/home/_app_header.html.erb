@@ -15,19 +15,19 @@
   <ul class="js-content-selector list list--inline app_nav clearfix">
     <% if user_signed_in %>
       <li class="list__item">
-        <a href="<%= "/m" unless Rails.env.production? %>/stream" class="app_nav__button<%= " active-item" if pathname == 'stream'%> js-stream js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Stream" data-ga_label="<%= signed_in_user['nickname'] %>">
+        <a href="<%= "/m" if Rails.env.development? %>/stream" class="app_nav__button<%= " active-item" if pathname == 'stream'%> js-stream js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Stream" data-ga_label="<%= signed_in_user['nickname'] %>">
           Stream
         </a>
       </li>
 
       <li class="list__item js-featured-menu">
-        <a href="<%= "/m" unless Rails.env.production? %>/featured" class="app_nav__button<%= " active-item" if pathname == 'featured'%> js-featured js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Featured" data-ga_label="<%= signed_in_user['nickname'] %>">
+        <a href="<%= "/m" if Rails.env.development? %>/featured" class="app_nav__button<%= " active-item" if pathname == 'featured'%> js-featured js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Featured" data-ga_label="<%= signed_in_user['nickname'] %>">
           Featured
         </a>
       </li>
 
       <li class="list__item js-guide-me js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Me" data-ga_label="<%= signed_in_user['nickname'] %>">
-        <a href="<%= "/m" unless Rails.env.production? %>/me" class="app_nav__button<%= " active-item" if pathname == 'me' or pathname == 'likes' or pathname == 'shares' %> js-me">
+        <a href="<%= "/m" if Rails.env.development? %>/me" class="app_nav__button<%= " active-item" if pathname == 'me' or pathname == 'likes' or pathname == 'shares' %> js-me">
           Me
         </a>
       </li>
