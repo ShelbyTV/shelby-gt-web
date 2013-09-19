@@ -36,7 +36,7 @@
   <!-- END -->
 
 </head>
-<body class="shelby<%= ' shelby--mobile' if @mobile_os %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %>">
+<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %>">
   <!-- Facebook widget -->
   <div id="fb-root"></div>
 
