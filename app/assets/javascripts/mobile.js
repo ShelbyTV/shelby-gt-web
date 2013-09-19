@@ -163,6 +163,7 @@ $(document).ready(function(){
               console.log("Share successful!");
 
               $sharePanel.toggleClass('hidden',true);
+              $guide.toggleClass('hidden',!$guide.hasClass('hidden'));
 
               var new_frame_id = response.result.id,
                   shareData    = {
