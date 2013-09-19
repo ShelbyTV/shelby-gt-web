@@ -8,6 +8,8 @@ class MobileController < ApplicationController
       redirect_to mobile_show_onboarding_path(:step => 1, :service => params[:service])
     elsif user_signed_in?
       redirect_to mobile_stream_path
+    else
+      render '/home/landing', :layout => false
     end
   end
 
