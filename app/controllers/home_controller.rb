@@ -48,7 +48,7 @@ class HomeController < ApplicationController
 
           if user
             @user = user
-            @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id'], request.headers['HTTP_COOKIE']) if @user
+            @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id'], '') if @user
             render '/home/app' and return
           else
             raise ActionController::RoutingError.new("Not Found")
@@ -189,7 +189,7 @@ class HomeController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     @signed_in_user_nickname = (@signed_in_user['nickname'] if @signed_in_user) || 'Anonymous'
 
-    @frame_roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
+    @frame_roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id'], request.headers['HTTP_COOKIE']) if @user
 
     if(params[:frame_id])
       @frame = Shelby::API.get_frame(params[:frame_id], true)
