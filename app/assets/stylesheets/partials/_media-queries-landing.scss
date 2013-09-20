@@ -1,15 +1,6 @@
 //------------------------------------------------------------------------------
 //  Landing Overrides
 //------------------------------------------------------------------------------
-
-//  Screens that LESS THAN 625px tall.
-@media screen and (max-height: 630px) {
-}
-
-//  Screens that LESS THAN 1100px wide.
-@media screen and (max-width: 1100px) {
-}//eo media-query///////////////////////////////////////////////////////////////
-
 //  Screens that LESS THAN 944px wide. (shelf-width)
 @media screen and (max-width: 944px) {
   .shelby--mobile {
