@@ -124,7 +124,11 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
           shelby.models.rollFollowings.fetch();
           shelby.models.promoRollCategories.fetch();
-          shelby.promises.dynamicRecommendationsFetch = $.when(shelby.collections.dynamicRecommendations.fetch());
+          shelby.promises.dynamicRecommendationsFetch = $.when(shelby.collections.dynamicRecommendations.fetch({
+            data: {
+              sources: '31,33,34'
+            }
+          }));
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: userModel.get('nickname')});
 

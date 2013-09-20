@@ -19,6 +19,7 @@
 	text-transform: none;
 	line-height: 1;
 	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 /* Use the following CSS code if you want to have a class per icon */
@@ -27,7 +28,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-twitter, .icon-tumblr, .icon-thumbnail, .icon-sound-on, .icon-sound-off, .icon-shortlink, .icon-share, .icon-search, .icon-roll, .icon-play, .icon-pause, .icon-like, .icon-hd, .icon-guide-out, .icon-guide-in, .icon-facebook, .icon-embed, .icon-email, .icon-close, .icon-chevron, .icon-check, .icon-carrot, .icon-avatar, .icon-arrow_up, .icon-arrow_right, .icon-arrow_left, .icon-arrow_down, .icon-whole, .icon-type, .icon-mark {
+.icon-twitter, .icon-tumblr, .icon-thumbnail, .icon-sound-on, .icon-sound-off, .icon-shortlink, .icon-share, .icon-search, .icon-roll, .icon-play, .icon-pause, .icon-like, .icon-hd, .icon-guide-out, .icon-guide-in, .icon-facebook, .icon-embed, .icon-email, .icon-close, .icon-chevron, .icon-check, .icon-carrot, .icon-avatar, .icon-arrow_up, .icon-arrow_right, .icon-arrow_left, .icon-arrow_down, .icon-whole, .icon-type, .icon-mark, .icon-star {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -126,4 +127,7 @@ you can use the generic selector below, but it's slower:
 }
 .icon-mark:before {
 	content: "\e01d";
+}
+.icon-star:before {
+	content: "\e01e";
 }

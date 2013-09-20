@@ -18,7 +18,8 @@ libs.shelbyGT.FrameRecommendationView = Support.CompositeView.extend({
     }
 
     var friendsCollection = null;
-    var isEntertainmentGraph = this.model.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.entertainmentGraphRecommendation;
+    var dbeAction = this.model.get('action');
+    var isEntertainmentGraph = dbeAction == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.entertainmentGraphRecommendation;
     if (isEntertainmentGraph) {
       friendsCollection = this.model.convertFriendIdsToUserCollection();
       friendsCollection.reset(friendsCollection.first(this.options.numAvatarsDisplayed));
@@ -28,25 +29,11 @@ libs.shelbyGT.FrameRecommendationView = Support.CompositeView.extend({
     var numFriends = friendsCollection ? friendsCollection.length : 0;
 
     // UI settings, per use-case
-    var dbeAction = this.model.get('action'),
-        settings;
-
-    switch(dbeAction) {
-      case libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation:
-        settings = shelby.config.recommendations.videoGraphRecommendation;
-        break;
-      case libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.entertainmentGraphRecommendation:
-        settings = shelby.config.recommendations.entertainmentGraphRecommendation;
-        break;
-      case libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.mortarRecommendation:
-        settings = shelby.config.recommendations.mortarRecommendation;
-        break;
-      default:
-        settings = shelby.config.recommendations.likeRecommendation.avatar;
-    }
+    var settings = shelby.config.recommendations.displaySettings[dbeAction];
 
     this.$el.html(this.template({
-      dashboardEntry: this.model,
+      dashboardEntry : this.model,
+      dbeAction :  dbeAction,
       firstFriend : this._firstFriend,
       numFriends : numFriends,
       isEntertainmentGraph : isEntertainmentGraph,
