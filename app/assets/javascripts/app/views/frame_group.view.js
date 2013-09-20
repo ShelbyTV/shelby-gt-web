@@ -97,6 +97,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
     if (this.model.get('frames').length){
 
+      var primaryDashboardEntry = this.model.get('primaryDashboardEntry');
+      var isRecommendation = primaryDashboardEntry && primaryDashboardEntry.isRecommendationEntry();
+      var isChannelRecommendation = primaryDashboardEntry && (primaryDashboardEntry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation);
+
       var frame = this.model.get('frames').at(0),
           messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection());
           //N.B. template({}) receives Models.
@@ -114,26 +118,30 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         };
       }
 
-      var primaryDashboardEntry = this.model.get('primaryDashboardEntry');
-      var isRecommendation = primaryDashboardEntry && primaryDashboardEntry.isRecommendationEntry();
-
       this.$el.html(this.template({
-        anonUserShareEmailBody : emailBody,
-        creator                : frame.get('creator'),
-        currentFrame           : frame,
-        dupeFrames             : this.model.getDuplicateFramesToDisplay(),
-        eventTrackingCategory  : '',
-        frame                  : frame,
-        frameGroup             : this.model,
-        frameOriginator        : frame.get('originator'),
-        isRecommendation       : isRecommendation,
-        messages               : messages,
-        queuedVideosModel      : shelby.models.queuedVideos,
-        options                : this.options,
-        tweetIntentQueryString : $.param(tweetIntentParams),
-        user                   : shelby.models.user,
-        video                  : frame.get('video')
+        anonUserShareEmailBody  : emailBody,
+        creator                 : frame.get('creator'),
+        currentFrame            : frame,
+        dupeFrames              : this.model.getDuplicateFramesToDisplay(),
+        eventTrackingCategory   : '',
+        frame                   : frame,
+        frameGroup              : this.model,
+        frameOriginator         : frame.get('originator'),
+        isChannelRecommendation : isChannelRecommendation,
+        isRecommendation        : isRecommendation,
+        messages                : messages,
+        queuedVideosModel       : shelby.models.queuedVideos,
+        options                 : this.options,
+        tweetIntentQueryString  : $.param(tweetIntentParams),
+        user                    : shelby.models.user,
+        video                   : frame.get('video')
       }));
+
+      if (isChannelRecommendation) {
+        var color = shelby.config.recommendations.displaySettings[libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation].color;
+        this.$('.js-xuser-data').addClass("xuser-data--" + color).addClass("xuser-data--recommendation");
+        this.$('.js-xuser-avatar').addClass("xuser-avatar--featured icon-star");
+      }
 
       this.renderChild(new libs.shelbyGT.FrameLikesView({
         el : this.$('.js-frame-likes'),
@@ -145,7 +153,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         model : this.model
       }));
 
-      if (isRecommendation && !this.model.get('collapsed')) {
+      if (isRecommendation && !isChannelRecommendation && !this.model.get('collapsed')) {
         this.renderChild(new libs.shelbyGT.FrameRecommendationView({
           el : this.$('.js-frame-recommendation'),
           model : primaryDashboardEntry

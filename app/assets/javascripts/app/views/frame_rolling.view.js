@@ -116,7 +116,7 @@
         var $shortlinkTextInput = this.$('.js-frame-shortlink');
         var fetchShortlinkUrl;
         var dbEntry = this.options.guideOverlayModel.get('activeGuideOverlayDashboardEntry');
-        if (dbEntry) {
+        if (dbEntry && !dbEntry.isRecommendationEntry()) {
           fetchShortlinkUrl = shelby.config.apiRoot + '/dashboard/' + dbEntry.id + '/short_link';
         } else {
           fetchShortlinkUrl = shelby.config.apiRoot + '/frame/' + frame.id + '/short_link';
