@@ -44,7 +44,7 @@ class SeovideoController < ApplicationController
 
     # A/B tests
     #@seo_messaging_v2 = ab_test :seo_messaging_v2
-
+=begin
     # if the referrer is google search, parse the search query out of its url
     http_referer = request.env["HTTP_REFERER"]
     if http_referer && http_referer.length > 0
@@ -83,6 +83,7 @@ class SeovideoController < ApplicationController
         end
       end
     end
+=end
 
     respond_to do |format|
       format.html { render }
