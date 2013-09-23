@@ -5,5 +5,5 @@
 <% end %>
 
 <%= javascript_tag do %>
-  <%= render "/mobile/partials/intercom", :locals => {:signed_in_user => @signed_in_user}, :formats=>[:js] %>
+  <%= render :partial => "/mobile/partials/intercom", :locals => {:signed_in_user => @signed_in_user}, :formats=>[:js] %>
 <% end %>

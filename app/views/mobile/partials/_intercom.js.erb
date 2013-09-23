@@ -1,4 +1,5 @@
-if(typeof(Intercom) !== "undefined"){
+$(document).ready(function(){
+  if(typeof(Intercom) !== "undefined" && "<%= signed_in_user['nickname'] %>" !== "Anonymous"){
 
     santizeOnboarding = function(onboarding) {
       if (onboarding === false) {
@@ -27,3 +28,4 @@ if(typeof(Intercom) !== "undefined"){
       } catch (e) {}
 
   }
+});
