@@ -64,6 +64,7 @@ module Shelby
     end
 
     def self.get_roll_with_frames(roll_id, cookie, skip=0, limit=20)
+      cookie = ' ' unless cookie
       r = get( "/roll/#{roll_id}/frames?include_children=true&skip=#{skip}&limit=#{limit}", :headers => {'Cookie' => cookie}  ).parsed_response
       return nil if r['status'] != 200
       if r['result']['frames'] and r['result']['frames'].is_a?(Array)
