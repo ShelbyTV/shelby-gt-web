@@ -39,6 +39,8 @@ module MobileHelper
   end
 
   def dedupe_dashboard(dbes)
+    return dbes unless dbes
+
     dbes.each_index do |i|
       if i > 0 and dbes[i]["frame"]["video"]["id"] == dbes[i - 1]["frame"]["video"]["id"]
         dbes[i]["duplicate"] = true
