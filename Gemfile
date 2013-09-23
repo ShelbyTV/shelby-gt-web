@@ -66,7 +66,7 @@ gem 'jquery-rails'
 # gem 'jammit'
 
 # Deploy with Capistrano
-gem 'capistrano', '~>2.12'
+gem 'capistrano', '~> 2.12.0'
 gem 'rvm-capistrano'
 group :production, :staging do
   gem "therubyracer"
