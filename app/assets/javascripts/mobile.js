@@ -16,7 +16,7 @@ var libs = {
       }
     },
 
-    avatarUrlRoot: '<%= #{Settings::Application.avatar_url_root} %>'
+    avatarUrlRoot: '//s3.amazonaws.com/shelby-gt-user-avatars'
   }
 };
 
@@ -332,10 +332,13 @@ $(document).ready(function(){
             var user = response.result[i],
                 avatar;
 
-            if(user.has_shelby_avatar && !user.user_image){
+            if( !user ){
+              avatar = "/images/assets/avatar.png";
+            }
+            else if(user.has_shelby_avatar){
               avatar = libs.config.avatarUrlRoot + '/' + libs.config.shelbyGT.UserAvatarSizes.small + '/' + user.id + '?' + new Date(user.avatar_updated_at).getTime();
             } else {
-              avatar = user.user_image || "/images/assets/avatar.png";
+              avatar = (user.user_image_original != 'null' && user.user_image_original) || (user.user_image != 'null' && user.user_image) || "/images/assets/avatar.png";
             }
 
             $scope.find('.js-liker-avatars-list').append(SHELBYJST['liker-item']({
