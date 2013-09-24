@@ -355,7 +355,6 @@ $(document).ready(function(){
   };
 
   $(this).on('frameLoaded',function(e){
-    console.log('e',e);
     var $el = $('#'+e.frame_id);
     var likers = JSON.parse($el.find('.js-likes-array').html());
 
