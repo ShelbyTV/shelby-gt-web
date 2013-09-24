@@ -87,6 +87,10 @@ $_mobile_header_height: 41px;
     position: fixed;
     width: 100%;
   }
+  .user__button {
+    display: block;
+    margin-right: 0.8em;
+  }
 }
 .empty-indicator {
   padding: 2em;

@@ -1,8 +1,10 @@
 <%= render :partial => '/objects/roll_header',
     :locals => {
-      :user => @user,
-      :roll_type => @roll_type
-    }%>
+      :ga_category  => "Mobile",
+      :is_following => @is_following,
+      :user         => @user,
+      :roll_type    => @roll_type
+    } %>
 
 <ul class="list js-list">
   <% @frames.each_index do |i| %>

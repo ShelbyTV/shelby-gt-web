@@ -214,6 +214,35 @@ $(document).ready(function(){
       $sharePanel.toggleClass('hidden',true);
       $guide.toggleClass('hidden',false);
     });
+
+    $('.js-toggle-follow').on('click',function(e){
+      e.preventDefault();
+      var $this   = $(this),
+          roll_id = $this.data('roll_id'),
+          method  = $this.hasClass('button_green') ? 'join' : 'leave';
+
+      $.ajax({
+        type: 'GET',
+        url: '//api.shelby.tv/v1/POST/roll/'+ roll_id +'/'+ method,
+        dataType: "jsonp",
+        timeout: 10000,
+        crossDomain: true,
+        data: { roll_id: roll_id },
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function (response) {
+          var text = (method == 'join') ? 'Following' : 'Follow';
+
+          method = (method == 'join') ? 'leave' : 'join';
+
+          $this.toggleClass('button_gray button_green button_active').text(text);
+        },
+        error: function (e) { console.log("API Error: Unabled to Unfollow",e); }
+      });
+
+    });
+
   }
 
   //does not depend on user model

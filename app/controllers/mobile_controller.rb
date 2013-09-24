@@ -96,6 +96,11 @@ class MobileController < ApplicationController
     elsif @user = Shelby::API.get_user(params[:username])
       @roll_id = @user['personal_roll_id']
       @roll_type = "user"
+
+      # is signed_in_user following the user being displayed?
+      @followings = Shelby::API.get_user_followings(@signed_in_user['id'], request.headers['HTTP_COOKIE'])
+      @is_following = @followings.map{ |user| user['id'] }.include?(@user['personal_roll_id'])
+
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, '', @skip, Settings::Mobile.default_limit)
         frames = @roll_with_frames['frames']
         @frames = dedupe_frames(frames)
