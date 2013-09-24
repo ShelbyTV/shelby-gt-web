@@ -79,12 +79,23 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
          // is a video recommendation and one is not - video recommendations
          // should still be shown separately even if there is another entry
          // with that same video
-         var areSameVideo = this.at(j).getFirstFrame().get('video').id == video_id;
-         var neitherAreVideoRecs = !dashboard_entry ||
-                                   (!dashboard_entry.isRecommendationEntry() &&
-                                    !this.at(j).get('primaryDashboardEntry').isRecommendationEntry());
-         if (areSameVideo && neitherAreVideoRecs) {
-            this.at(j).add(frame, dashboard_entry, options);
+         var entryToCheck = this.at(j);
+         var pdbeToCheck = entryToCheck.get('primaryDashboardEntry');
+         var areSameVideo = entryToCheck.getFirstFrame().get('video').id == video_id;
+         var neitherAreClientSideVideoRecs = !dashboard_entry ||
+                                   ((!dashboard_entry.isRecommendationEntry() || !dashboard_entry.hasClientSideFrame()) &&
+                                    (!pdbeToCheck.isRecommendationEntry() || !pdbeToCheck.hasClientSideFrame()));
+         if (areSameVideo && neitherAreClientSideVideoRecs) {
+
+            var isChannelRecommendation = dashboard_entry && dashboard_entry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation
+            // for channel recommendations, reposition the framegroup at the position where we wanted to insert the recommendation
+            if (isChannelRecommendation) {
+              Backbone.Collection.prototype.remove.call(this, entryToCheck);
+            }
+            entryToCheck.add(frame, dashboard_entry, options);
+            if (isChannelRecommendation) {
+              Backbone.Collection.prototype.add.call(this, entryToCheck, options);
+            }
             dupe = true;
          }
       }

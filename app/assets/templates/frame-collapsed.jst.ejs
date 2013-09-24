@@ -44,9 +44,13 @@
            <%= videoTitle %>
           </h1>
 
-          <% if (isRecommendation) { %>
+          <% if (isRecommendation && !isChannelRecommendation) { %>
             <div class="xuser-data">
               <span class="xuser-data--green">Recommended for you</span>
+            </div>
+          <% } else if (isChannelRecommendation) { %>
+            <div class="xuser-data">
+              <span class="xuser-data--green">Featured: <%= creatorNickname %></span>
             </div>
           <% } else if (!fauxUserOrigin) { %>
             <div class="xuser-data">

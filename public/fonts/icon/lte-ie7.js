@@ -35,10 +35,11 @@ window.onload = function() {
 			'icon-arrow_down' : '&#xe01a;',
 			'icon-whole' : '&#xe01b;',
 			'icon-type' : '&#xe01c;',
-			'icon-mark' : '&#xe01d;'
+			'icon-mark' : '&#xe01d;',
+			'icon-star' : '&#xe01e;'
 		},
 		els = document.getElementsByTagName('*'),
-		i, attr, html, c, el;
+		i, attr, c, el;
 	for (i = 0; ; i += 1) {
 		el = els[i];
 		if(!el) {
