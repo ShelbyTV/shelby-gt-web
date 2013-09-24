@@ -69,13 +69,14 @@
     <div class="content_wrapper" role="main">
       <%= render :partial => '/objects/frame',
           :locals => {
+            :embed_video    => true,
             :frame          => @frame,
             :frame_owner    => @frame_owner,
-            :video          => @frame_video,
-            :signed_in_user => @signed_in_user,
+            :ga_category    => "Share Page",
             :is_mobile      => @is_mobile,
-            :embed_video    => true,
-            :ga_category    => "Share Page"
+            :roll_type      => nil,
+            :signed_in_user => @signed_in_user,
+            :video          => @frame_video
           } %>
 
       <%= render :partial => '/marketing/shares' if @is_mobile != 'iPhone' and !@user_signed_in %>
