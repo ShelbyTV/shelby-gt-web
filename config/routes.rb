@@ -9,21 +9,21 @@ ShelbyGtWeb::Application.routes.draw do
     get '/signout' => 'mobile#signout', :as => :mobile_signout
     get '/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
     post '/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
-    get '/:username/:type' => 'mobile#me', :as => :mobile_me
-    get '/:username' => 'mobile#roll', :as => :mobile_user
+    get '/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
+    get '/:username' => 'mobile#roll', :as => :mobile_user, :constraints => { :username => /[^\/]+/ }
   end
 
   #######################XXX###############################
   # For development, take me out when mobile is more stable
-  if ["development"].include?(Rails.env)
+  if ["development","staging"].include?(Rails.env)
     get '/m' => 'mobile#landing', :as => :mobile_landing
     get '/m/stream' => 'mobile#stream', :as => :mobile_stream
     get '/m/featured' => 'mobile#featured', :as => :mobile_featured
     get '/m/signout' => 'mobile#signout', :as => :mobile_signout
     get '/m/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
     post '/m/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
-    get '/m/:username/:type' => 'mobile#me', :as => :mobile_me
-    get '/m/:username' => 'mobile#roll', :as => :mobile_user
+    get '/m/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
+    get '/m/:username' => 'mobile#roll', :as => :mobile_user, :constraints => { :username => /[^\/]+/ }
   end
   #######################XXX###############################
 

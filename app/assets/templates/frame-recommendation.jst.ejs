@@ -1,8 +1,6 @@
-<a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= "creator.get('nickname')" %>">
- <span class="image_module xuser-avatar media_image" style="background-image: url(<%= settings.avatar %>);" role="img">
-   <img src="<%= settings.avatar %>" class="visuallyhidden" title="<%= settings.header %>" alt="<%= settings.header %>">
- </span><!-- eo media_image -->
-</a>
+<span class="image_module xuser-avatar media_image" style="background-image: url(<%= settings.avatar %>);" role="img">
+ <img src="<%= settings.avatar %>" class="visuallyhidden" title="<%= settings.header %>" alt="<%= settings.header %>">
+</span><!-- eo media_image -->
 
 <div class="media_body js-frame-recommendation">
   <% if (!isPvi) { %>
@@ -22,14 +20,14 @@
           <%= SHELBYJST['user-page-link']({nickname: firstFriend.get('nickname')}) %> checked out this video
         <% } %>
       <% } %>
-    <% } else if (dashboardEntry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) { %>
+    <% } else if (dbeAction == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) { %>
       <% if (dashboardEntry.get('src_frame') && dashboardEntry.get('src_frame').has('creator')) { %>
         This video is shared by people like
           <%= SHELBYJST['user-page-link']({nickname: dashboardEntry.get('src_frame').get('creator').get('nickname')}) %>
       <% } else { %>
         Check out this video
       <% } %>
-    <% } else if (dashboardEntry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.mortarRecommendation) { %>
+    <% } else if (dbeAction == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.mortarRecommendation) { %>
       <% if (dashboardEntry.get('src_video') && dashboardEntry.get('src_video').has('title')) { %>
         Because you shared "<%= dashboardEntry.get('src_video').get('title') %>"
       <% } else { %>

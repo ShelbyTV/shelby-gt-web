@@ -55,7 +55,7 @@
       </h2>
 
       <div class="media_module persistent_video_info__body">
-        <% if (isRecommendation) { %>
+        <% if (isRecommendation && !isChannelRecommendation) { %>
           <div class="media_body js-frame-recommendation">
             <!-- content filled in by FrameRecommendationView -->
           </div><!-- eo .media_body -->
@@ -73,16 +73,20 @@
           <% } %>
           <div class="media_body">
             <% if (showNextFrame) { %>
-              <h3 class="xuser-data persistent_video_info__h4--light">
+              <h3 class="xuser-data <%= !isChannelRecommendation ? "persistent_video_info__h4--light " : "" %>js-xuser-data">
                 <% if (currentFrame.originInfoType() == libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.creator) { %>
                   <strong>
-                    <% if(clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %><%= currentCreatorNickname %><% if(clickableCreator) { %></a><% } %>
+                    <% if (!isChannelRecommendation) { %>
+                        <% if(clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %><%= currentCreatorNickname %><% if(clickableCreator) { %></a><% } %>
+                    <% } else { %>
+                      Featured: <%= currentCreatorNickname %>
+                    <% } %>
                   </strong>
                 <% } else if (currentFrame.originInfoType() == libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.videoProvider) { %>
                   <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
                 <% } %>
 
-                <% if (fauxUserOrigin) { %>
+                <% if (!isChannelRecommendation && fauxUserOrigin) { %>
                   via <span class="capitalize"><%= fauxUserOrigin %></span>
                 <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
                   via <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>

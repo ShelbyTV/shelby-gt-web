@@ -37,6 +37,14 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
         // make sure we don't already have this...
         for (var i = 0; i < this.get('frames').length; i++) {
            if (this.get('frames').at(i).get('id') == frame.get('id')) {
+              // if this is a channel recommendation, make that the primary dashboard entry for
+              // the presented frame so it will be presented as a recommendation
+              if (dashboard_entry && dashboard_entry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation) {
+                for (var j = 0; j < this.get('frames').length; j++) {
+                  this.get('frames').at(j)._primaryDashboardEntry = dashboard_entry;
+                }
+                this.set('primaryDashboardEntry', dashboard_entry);
+              }
               return;
            }
         }

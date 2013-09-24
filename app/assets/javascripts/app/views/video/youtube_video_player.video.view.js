@@ -64,7 +64,11 @@ libs.shelbyGT.YouTubeVideoPlayerView = Support.CompositeView.extend({
 
         //video id, start time, quality (https://developers.google.com/youtube/js_api_reference#loadVideoById)
         // default: YouTube selects the appropriate playback quality. (https://developers.google.com/youtube/js_api_reference#Playback_quality)
-        this._player.loadVideoById(video.get('provider_id'), 0, this._videoQuality);
+        playOptions = {videoId: video.get('provider_id'), startSeconds: 0};
+        if (this._videoQuality) {
+          playOptions.suggestedQuality = this._videoQuality;
+        }
+        this._player.loadVideoById(playOptions);
       }
     }
 

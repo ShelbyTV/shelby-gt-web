@@ -260,7 +260,8 @@
 }
     .xuser-avatar--facebook,
     .xuser-avatar--twitter,
-    .xuser-avatar--tumblr {
+    .xuser-avatar--tumblr,
+    .xuser-avatar--featured {
       &:before {
         background-color: $base-frame;
         border-radius: 4px;
@@ -291,6 +292,11 @@
     .xuser-avatar--tumblr {
       &:before {
         background-color: $tumblr-blue;
+      }
+    }
+    .xuser-avatar--featured {
+      &:before {
+        background-color: $ui-green;
       }
     }
 
