@@ -1,5 +1,13 @@
 <div class="user">
   <div class="media_module user__lining clearfix">
+    <% if is_following != nil %>
+      <div class="media_image--rev">
+        <button class="button_primer button_command button_command--flexible<%= (is_following) ? " button_gray button_active" : " button_green" %> user__button js-toggle-follow js-track-event" data-roll_id="<%= roll_id %>" data-ga_category="<%= ga_category %>" data-ga_action="Click follow source" data-ga_label="<%= username %>">
+          <span class="button_label"><%= (is_following) ? 'Following' : 'Follow' %></span>
+        </button>
+      </div><!-- eo media_image--rev -->
+    <% end %>
+
     <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(<%= avatar %>);">
       <img class="visuallyhidden" src="<%= avatar %>"/>
     </span><!-- eo media_image -->

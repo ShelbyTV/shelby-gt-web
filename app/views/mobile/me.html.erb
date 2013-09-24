@@ -1,8 +1,9 @@
 <%= render :partial => '/objects/roll_header',
     :locals => {
-      :user => @signed_in_user,
-      :roll_type => @roll_type,
-      :ga_category => "Mobile"
+      :ga_category  => "Mobile",
+      :is_following => nil,
+      :user         => @signed_in_user,
+      :roll_type    => @roll_type
     }%>
 
 <% if @frames.empty? %>
