@@ -23,6 +23,7 @@ test:
 
 staging:
   <<: *defaults
+  mobile_subdirectory: "/m"
 
 production:
   <<: *defaults
