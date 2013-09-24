@@ -190,16 +190,16 @@
     twttr.events.bind('click', function(r){
       if (!r) return;
       try {
-        _gaq.push(['_trackEvent', 'SEO Video', 'Click Tweet', r.type]);
+        _gaq.push(['_trackEvent', 'SEO Video', 'Click Twitter Follow ', r.type]);
       } catch(e) {}
     });
-    twttr.events.bind('tweet', function (r) {
+    twttr.events.bind('follow', function (r) {
       if (!r) return;
       try {
-        _gaq.push(['_trackEvent', 'SEO Video', 'Sent Tweet', r.type]);
+        _gaq.push(['_trackEvent', 'SEO Video', 'Followed Shelby', r.type]);
       } catch(e) {}
     });
-    twttr.widgets.createShareButton(
+    twttr.widgets.createFollowButton(
       "http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>",
       document.getElementById('twitter-intent'),
       function(){
@@ -208,7 +208,7 @@
       {
         count: 'none',
         text: '<%= @video_title %>',
-        via: 'Shelby',
+        screen_name: 'Shelby',
         size: "medium"
       }
     );

@@ -23,7 +23,7 @@ class FrameController < ApplicationController
     end
 
     # Get all pertinent info from the API
-    @roll = Shelby::API.get_roll_with_frames(params[:roll_id], request.headers['HTTP_COOKIE'])
+    @roll = Shelby::API.get_roll_with_frames(params[:roll_id], request.headers['HTTP_COOKIE'] || ' ')
     @frame = Shelby::API.get_frame(params[:frame_id], true)
     if @frame
       @video = @frame['video']

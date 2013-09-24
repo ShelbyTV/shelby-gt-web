@@ -69,4 +69,5 @@
       }
     });
   });
+  <%= render :partial =>"/mobile/partials/intercom", :formats=>[:js], :locals => {:signed_in_user => @signed_in_user} %>
 <% end %>

@@ -57,9 +57,6 @@ class HomeController < ApplicationController
 
         if user_signed_in?
 
-          #A/B Tests
-          @onboarding_first_step = ab_test :onboarding_first_step
-
           render '/home/app'
         else
           # Consider errors and render landing page
@@ -87,7 +84,7 @@ class HomeController < ApplicationController
           #@landing_messaging_v2 = ab_test :landing_messaging_v2
           #@signup_on_landing = ab_test :signup_on_landing
           #@signup_w_fb = ab_test :signup_w_fb
-          @onboarding_first_step = ab_test :onboarding_first_step
+          #@onboarding_first_step = ab_test :onboarding_first_step
 
           render '/home/landing'
         end
