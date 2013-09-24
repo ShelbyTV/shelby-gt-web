@@ -12,7 +12,7 @@
       You haven't <%= (@roll_type == 'likes') ? 'liked' : 'shared' %> anything yet!
     </h2>
     <p class="center">
-      <a href="<%= "/m" unless Rails.env.production? %>/featured"
+      <a href="<%= Settings::Mobile.mobile_subdirectory %>/featured"
           class="button_primer button_command button_command--flexible button_green js-track-event"
           data-ga_category="Mobile"
           data-ga_action="Click <%= @roll_type %> empty"
@@ -24,20 +24,20 @@
   </div>
 <% else %>
   <ul class="list js-list">
-    <% @frames.each_index do |i| %>
-    <% frame = @frames[i] %>
+    <% @frames.each_with_index do |frame, index| %>
       <li class="list__item">
         <% if frame['video'] and can_play_video(frame['video']['provider_name']) and !frame["duplicate"] %>
           <%= render :partial => '/objects/frame',
             :locals => {
+              :embed_video    => false,
               :frame          => frame,
               :frame_owner    => frame['creator'],
-              :video          => frame['video'],
-              :signed_in_user => @signed_in_user,
-              :is_mobile      => true,
-              :embed_video    => false,
               :ga_category    => "Mobile",
-              :index => i
+              :index          => index,
+              :is_mobile      => true,
+              :roll_type      => @roll_type,
+              :signed_in_user => @signed_in_user,
+              :video          => frame['video']
             } %>
         <% end %>
       </li>

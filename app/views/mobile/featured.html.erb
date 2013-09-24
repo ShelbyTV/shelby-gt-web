@@ -1,18 +1,18 @@
 <ul class="list js-list">
-  <% @featured_dashboard.each_index do |i| %>
-    <% dbe = @featured_dashboard[i] %>
+  <% @featured_dashboard.each_with_index do |dbe, index| %>
     <li class="list__item">
       <% if dbe['frame'] and dbe['frame']['video'] and can_play_video(dbe['frame']['video']['provider_name']) and !dbe["duplicate"] %>
         <%= render :partial => '/objects/frame',
           :locals => {
+            :embed_video    => false,
             :frame          => dbe['frame'],
             :frame_owner    => dbe['frame']['creator'],
-            :video          => dbe['frame']['video'],
-            :signed_in_user => @signed_in_user,
-            :is_mobile      => true,
-            :embed_video    => false,
             :ga_category    => "Mobile",
-            :index => i
+            :index          => index,
+            :is_mobile      => true,
+            :roll_type      => @roll_type,
+            :signed_in_user => @signed_in_user,
+            :video          => dbe['frame']['video']
           } %>
       <% end %>
     </li>
