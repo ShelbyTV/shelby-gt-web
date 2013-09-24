@@ -1,9 +1,18 @@
+
 defaults: &defaults
   mobile_subdirectory: ""
   default_limit: 10
-  supported_providers: ["youtube","vimeo", "dailymotion"]
+  supported_providers: ["youtube","vimeo","dailymotion"]
   button_gray_flexible: 'button_primer button_command button_command--flexible button_gray'
   load_more_button_class: 'button_primer button_command button_command--flexible button_gray two-thirds js-load-more'
+  roll_types: {
+    featured: 'featured',
+    likes: 'likes',
+    me: 'me',
+    shares: 'shares',
+    stream: 'stream',
+    user: 'user'
+  }
 
 development:
   <<: *defaults
