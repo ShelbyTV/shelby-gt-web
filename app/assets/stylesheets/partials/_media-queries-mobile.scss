@@ -26,6 +26,16 @@
         margin-top: 0;
       }
     }
+    //
+    .shelf--header {
+      .shelf__lining {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+    .shelf--error {
+      padding: 0 1em;
+    }
     //nav fittings
     .shelby-logo {
       .icon-type {
@@ -49,5 +59,16 @@
     .media_body {
       font-size: 1.1em;
     }
+  }
+
+  //API
+  #do-merge {
+    width: 100%;
+  }
+
+  #cancel-merge {
+    display: block;
+    margin: 1em 0;
+    text-align: center;
   }
 }//eo media-query///////////////////////////////////////////////////////////////
