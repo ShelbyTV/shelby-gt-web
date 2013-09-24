@@ -22,6 +22,11 @@ libs.shelbyGT.DashboardEntryModel = libs.shelbyGT.ShelbyBaseModel.extend({
             action <= libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation);
   },
 
+  hasClientSideFrame : function(){
+    var frame = this.get('frame');
+    return frame && (frame.prototype == libs.shelbyGT.ClientSideFrameModel);
+  },
+
   allFriendIds : function(){
     return _((this.get('friend_sharers') || []).concat(this.get('friend_viewers')).concat(this.get('friend_likers'))
                .concat(this.get('friend_rollers')).concat(this.get('complete_viewers'))).compact();

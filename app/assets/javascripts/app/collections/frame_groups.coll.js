@@ -80,10 +80,10 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
          // should still be shown separately even if there is another entry
          // with that same video
          var areSameVideo = this.at(j).getFirstFrame().get('video').id == video_id;
-         var neitherAreVideoRecs = !dashboard_entry ||
-                                   (!dashboard_entry.isRecommendationEntry() &&
-                                    !this.at(j).get('primaryDashboardEntry').isRecommendationEntry());
-         if (areSameVideo && neitherAreVideoRecs) {
+         var neitherAreClientSideVideoRecs = !dashboard_entry ||
+                                   ((!dashboard_entry.isRecommendationEntry() || !dashboard_entry.hasClientSideFrame()) &&
+                                    (!this.at(j).get('primaryDashboardEntry').isRecommendationEntry() || !this.at(j).get('primaryDashboardEntry').hasClientSideFrame()));
+         if (areSameVideo && neitherAreClientSideVideoRecs) {
             this.at(j).add(frame, dashboard_entry, options);
             dupe = true;
          }
