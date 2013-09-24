@@ -26,7 +26,7 @@ class MobileController < ApplicationController
 
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
-      @roll_type      = "stream"
+      @roll_type      = Settings::Mobile.roll_types['stream']
 
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
@@ -48,7 +48,7 @@ class MobileController < ApplicationController
 
     featured_dashboard = Shelby::API.get_user_dasboard(Settings::ShelbyAPI.featured_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
     @featured_dashboard = dedupe_dashboard(featured_dashboard)
-    @roll_type          = "featured"
+    @roll_type          = Settings::Mobile.roll_types['featured']
   end
 
   def me
@@ -60,16 +60,16 @@ class MobileController < ApplicationController
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
 
-      if params[:type] == "likes"
-        @roll_type = "likes"
+      if params[:type] == Settings::Mobile.roll_types['likes']
+        @roll_type = Settings::Mobile.roll_types['likes']
         @roll_id   = @signed_in_user['watch_later_roll_id']
-      elsif params[:type] == "shares"
-        @roll_type = "shares"
+      elsif params[:type] == Settings::Mobile.roll_types['shares']
+        @roll_type = Settings::Mobile.roll_types['shares']
         @roll_id   = @signed_in_user['personal_roll_id']
       elsif params[:type]
         raise ActionController::RoutingError.new("Route doesn't exist.")
       else
-        @roll_type = "shares"
+        @roll_type = Settings::Mobile.roll_types['shares']
         @roll_id   = @signed_in_user['personal_roll_id']
       end
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
@@ -95,7 +95,7 @@ class MobileController < ApplicationController
       redirect_to mobile_me_path(:type => "shares")
     elsif @user = Shelby::API.get_user(params[:username])
       @roll_id = @user['personal_roll_id']
-      @roll_type = "user"
+      @roll_type = Settings::Mobile.roll_types['user']
 
       # is signed_in_user following the user being displayed?
       @followings = Shelby::API.get_user_followings(@signed_in_user['id'], request.headers['HTTP_COOKIE'])
