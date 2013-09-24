@@ -12,6 +12,11 @@
       &.shelf--header {
         max-width: 100%;
         width: 100%;
+
+        .shelf__lining {
+          padding-left: 0;
+          padding-right: 0;
+        }
       }
       &.shelf--cta {
         &.shelf--facebook-logged-out {
