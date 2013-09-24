@@ -6,7 +6,8 @@
         :is_following => is_following,
         :realname     => user['name'],
         :roll_id      => user['personal_roll_id'],
-        :username     => user['nickname']
+        :username     => user['nickname'],
+        :user_type    => user['user_type']
       } %>
 
   <% if roll_type != "user" %>
