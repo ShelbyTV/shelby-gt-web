@@ -112,6 +112,7 @@ $(document).ready(function(){
         },
         success: function (response) {
           $('#shortlink').removeAttr('disabled').val(response.result.short_link);
+          $('.js-sms-share').attr("href", "sms://?body=watch%20this%20video%20:%20"+response.result.short_link);
         },
         error: function () {
           $('#shortlink').val('Error…');
