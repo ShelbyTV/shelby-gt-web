@@ -2,6 +2,8 @@ class MobileController < ApplicationController
   include ApplicationHelper
   include MobileHelper
 
+  before_filter :init_ab_tests
+
   def landing
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
@@ -31,7 +33,7 @@ class MobileController < ApplicationController
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
 
-      d = Shelby::API.get_user_dasboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
+      d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
       @dashboard = dedupe_dashboard(d)
     else
       redirect_to mobile_landing_path(:status =>"You must be logged in.")
@@ -46,7 +48,9 @@ class MobileController < ApplicationController
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
 
-    featured_dashboard = Shelby::API.get_user_dasboard(Settings::ShelbyAPI.featured_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
+    cookie = request.headers['HTTP_COOKIE'] || ' '
+
+    featured_dashboard = Shelby::API.get_user_dashboard(Settings::ShelbyAPI.featured_user_id, cookie, @skip, Settings::Mobile.default_limit)
     @featured_dashboard = dedupe_dashboard(featured_dashboard)
     @roll_type          = Settings::Mobile.roll_types['featured']
   end
@@ -103,7 +107,9 @@ class MobileController < ApplicationController
         @is_following = @followings.map{ |user| user['id'] }.include?(@user['personal_roll_id'])
       end
 
-      if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, '', @skip, Settings::Mobile.default_limit)
+      cookie = request.headers['HTTP_COOKIE'] || ' '
+
+      if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, cookie, @skip, Settings::Mobile.default_limit)
         frames = @roll_with_frames['frames']
         @frames = dedupe_frames(frames)
       else
@@ -159,5 +165,10 @@ class MobileController < ApplicationController
       redirect_to mobile_landing_path(:status =>"Something bad just happened")
     end
   end
+
+  private
+    def init_ab_tests
+      @share_button_icon = ab_test :share_button_icon
+    end
 
 end

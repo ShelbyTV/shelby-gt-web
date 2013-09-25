@@ -12,7 +12,7 @@
           <div class="media_module media_module--bare clearfix">
             <div class="media_image--rev">
               <%= check_box_tag "rolls[#{category['id']}]", nil, false, :class => "hidden" %>
-              <button class="button_primer button_command button_command--flexible button_gray user__button js-onboarding-roll-button js-track-event" data-roll_id="<%= category['id'] %>" data-ga_category="Onboarding" data-ga_action="Click follow source" data-ga_label="<%= category['display_title'] %>">
+              <button class="button_primer button_command button_command--flexible button_gray user__button js-onboarding-roll-button js-track-event" data-roll_id="<%= category['id'] %>" data-ga_category="Mobile" data-ga_action="Onboarding" data-ga_label="Click follow source">
                 <span class="button_label">Follow</span>
               </button>
             </div><!-- eo media_image--rev -->
@@ -35,7 +35,7 @@
       <% end %>
     </div>
     <div class="modal__foot modal__foot--rev clearfix">
-      <%= submit_tag("Follow 3 More", :disabled => true, :class => "button_primer button_command button_command--wide button_green js-advance-slideshow js-track-event", 'data-ga_category' => 'Mobile', 'data-ga_action' => 'Onboaring', 'data-ga_label' => 'Click Next on Step 2') %>
+      <%= submit_tag("Follow 3 More", :disabled => true, :class => "button_primer button_command button_command--wide button_green js-advance-slideshow js-track-event", 'data-ga_category' => 'Mobile', 'data-ga_action' => 'Onboarding', 'data-ga_label' => 'Click Next on Step 2') %>
     </div><!-- eo modal__foot -->
   </div><!-- eo modal__body -->
 <% end %>
