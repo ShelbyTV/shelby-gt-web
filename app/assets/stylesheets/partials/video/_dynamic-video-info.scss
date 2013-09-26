@@ -1,10 +1,11 @@
 /*
  *  Local variables
  */
-$dynamic_video_info__height: 150px;
+$dynamic_video_info__height: 160px;
 $dynamic_video_info__bottom: 0px;
 $dynamic_video_info--next-frame-width: 180px;
 $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
+$dynamic_video_info__friends-avatar-height: 40px;
 
 /*
  * Abstracts
@@ -20,13 +21,13 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 }
 
 .dynamic_video_info__h1 {
-  font-size: 1.45em;
-  font-weight: bold;
+  font-size: 2em;
 }
 
 .dynamic_video_info__h2 {
   font-size: 1.25em;
-  font-weight: bold;
+  font-weight: normal;
+  margin-top: 5px;
 }
 
 .dynamic_video_info__h3 {
@@ -64,7 +65,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 //------------------------------------------------------------------------------
 
 .dynamic_video_info__wrapper {
-  // background-color: rgba(239, 239, 239, 1);
+  border: 1px solid rgba(0,0,0,.2);
   height: $dynamic_video_info__height;
   margin: 0;
   bottom: -$dynamic_video_info__height;
@@ -140,7 +141,7 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   margin: 0;
   opacity: 1;
   position: relative;
-  text-align: center;
+  //text-align: center;
 
   // .dynamic_video_info__h1 {
   //   @include ellipsis;
@@ -178,13 +179,20 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
 
 //current frame structure
 .dynamic_video_info__lining {
-  margin: 12px 10px;
+  margin: 12px 30px;
 
   .icon-close {
     display: none;
     float: right;
   }
 
+}
+
+.dynamic_video_info__description {
+  float: left;
+  width: 350px;
+  margin-top: 16px;
+  margin-left: 10px;
 }
 
 .dynamic_video_info__body {
@@ -231,14 +239,45 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   }
 }
 
+.dynamic_video_info__friends-avatars {
+  position: absolute;
+  width: 30%;
+  right: 25px;
+  top: 27px;
+
+  .user__button {
+    position: relative;
+    display: block;
+    margin: 0em 2.5em 0 0;
+    width: 12.1em;
+  }
+
+  ul {
+    height: $dynamic_video_info__friends-avatar-height;
+    overflow: hidden;
+    padding-left: 0px;
+  }
+
+  .list__item {
+    margin: 0 0 5px;
+    img {
+      width: $dynamic_video_info__friends-avatar-height;
+      height: $dynamic_video_info__friends-avatar-height;
+    }
+  }
+}
+
+a.button_command--email {
+  margin: 35px;
+  width: 12.1em;
+  right: 50px;
+  top: 25px;
+}
 
 //list of actions for current frame
 .dynamic_video_info__commands {
   font-size: 1.2em;
   padding-left: 10px;
-
-  .list__item {
-  }
 
   .button_command {
     margin-right: 0.25em;
