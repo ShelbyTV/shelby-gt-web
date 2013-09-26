@@ -117,6 +117,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
     setTimeout(function(){
       self.$el.addClass('visible '+self._cardType);
+      $('.persistent_video_info__wrapper').addClass('quiet');
     }, delay);
 
     // hide it eventually
@@ -138,6 +139,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     this._displayedDVI = false;
     this.$el.removeClass('visible '+this._cardType);
     this.$el.find('.share_menu').toggleClass('hidden', true);
+    $('.persistent_video_info__wrapper').removeClass('quiet');
   },
 
   /*************************************************************
@@ -158,7 +160,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     if (!this._shouldShowDVI(0.5)) return;
     if (this._videoAlreadyLiked(this._currentFrame)) return;
 
-    this._cardType = 'like';
+    this._cardType = 'share';
     var _timeout = (this._currentVideoInfo && this._currentVideoInfo.duration) ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 8000;
 
     this._showCard(0, _timeout);

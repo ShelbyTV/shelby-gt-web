@@ -1,7 +1,7 @@
 /*
  *  Local variables
  */
-$dynamic_video_info__height: 180px;
+$dynamic_video_info__height: 150px;
 $dynamic_video_info__bottom: 0px;
 $dynamic_video_info--next-frame-width: 180px;
 $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
@@ -70,8 +70,8 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   bottom: -$dynamic_video_info__height;
   overflow: hidden;
   position: absolute;
-  right: 0px;
-  width: $dynamic_video_info--next-frame-width;
+  right: 20+$dynamic_video_info--next-frame-width;
+  left: 20px;
   z-index: 1;
 
   // class to toggle visibility on screen
@@ -159,19 +159,19 @@ $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   }
 }
 
+.quiet {
+  opacity: 0.6;
+}
 
 // card specific styleingz
 .like {
   .dynamic_video_info__current-frame {
-    background: #ee4c4c;
-    color: white;
+
   }
 }
 
 .share, .liked-share {
   .dynamic_video_info__current-frame {
-    color: white;
-    background: #0090c6;
     padding-top: 10px;
   }
 }
