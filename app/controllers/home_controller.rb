@@ -181,18 +181,18 @@ class HomeController < ApplicationController
   def shares
 
     user_id_or_nickname = params[:user_id_or_nickname]
-    @frame_owner = Shelby::API.get_user(user_id_or_nickname)
+    @user = Shelby::API.get_user(user_id_or_nickname)
 
     @user_signed_in = user_signed_in?
 
     @signed_in_user = check_for_signed_in_user
     @signed_in_user_nickname = (@signed_in_user['nickname'] if @signed_in_user) || 'Anonymous'
 
-    @frame_roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id'], request.headers['HTTP_COOKIE']) if @user
+    @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id'], request.headers['HTTP_COOKIE']) if @user
 
     if(params[:frame_id])
       @frame = Shelby::API.get_frame(params[:frame_id], true)
-      @frame_video = @frame['video']
+      @video = @frame['video']
 
       @is_mobile = is_mobile?
 
