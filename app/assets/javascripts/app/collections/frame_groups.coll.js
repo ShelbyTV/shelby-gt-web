@@ -87,13 +87,17 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
                                     (!pdbeToCheck.isRecommendationEntry() || !pdbeToCheck.hasClientSideFrame()));
          if (areSameVideo && neitherAreClientSideVideoRecs) {
 
-            var isChannelRecommendation = dashboard_entry && dashboard_entry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation
-            // for channel recommendations, reposition the framegroup at the position where we wanted to insert the recommendation
-            if (isChannelRecommendation) {
+            var isChannelRecommendation = dashboard_entry && dashboard_entry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation;
+            var activeFrameModel = shelby.models.guide.get('activeFrameModel');
+            var thisFrameIsPlaying = frame && activeFrameModel && (frame.id == activeFrameModel.id);
+            // for channel recommendations, reposition the framegroup at the position where we wanted to insert the recommendation,
+            // unless that frame is playing right now
+            var doRepositionFrameGroup = isChannelRecommendation && !thisFrameIsPlaying;
+            if (doRepositionFrameGroup) {
               Backbone.Collection.prototype.remove.call(this, entryToCheck);
             }
             entryToCheck.add(frame, dashboard_entry, options);
-            if (isChannelRecommendation) {
+            if (doRepositionFrameGroup) {
               Backbone.Collection.prototype.add.call(this, entryToCheck, options);
             }
             dupe = true;

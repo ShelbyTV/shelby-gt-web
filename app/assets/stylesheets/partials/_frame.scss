@@ -525,7 +525,8 @@
 }
 
 .frame-likes-avatars {
-  display: inline-block;
+  display: inline;
+  font-size: 7px;
 
   &.list {
     margin: 0 0.22em 0 0.4em;
@@ -567,6 +568,9 @@
 
 .frame-likes-link {
   display: inline-block;
+  // N.B. firefox doesn't handle inline whitespace gracefully.
+  // gross cross-browser hack, works in concert with font-size adjust on .frame-likes-avatars above.
+  font-size: 16px;
 }
 
 .frame-likes-avatar {
