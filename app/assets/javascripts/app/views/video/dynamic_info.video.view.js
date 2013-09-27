@@ -310,16 +310,15 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   _shareWithSpecificFriend : function(el){
-    if (typeof FB != "undefined") return;
+    if (typeof FB == "undefined") return;
 
     var $target = $(el.currentTarget);
     var facebookId = $target.data('facebook-id');
-    var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(_frame.id);
 
     FB.ui({
       method: 'send',
       to: facebookId,
-      link: libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup),
+      link: libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame)
       },
       function(response) {
         if (response) {
