@@ -1,7 +1,7 @@
 /*
  *  Local variables
  */
-$dynamic_video_info__height: 160px;
+$dynamic_video_info__height: 170px;
 $dynamic_video_info__bottom: 0px;
 $dynamic_video_info--next-frame-width: 180px;
 $dynamic_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
@@ -71,7 +71,7 @@ $dynamic_video_info__friends-avatar-height: 40px;
   bottom: -$dynamic_video_info__height;
   overflow: hidden;
   position: absolute;
-  right: 20+$dynamic_video_info--next-frame-width;
+  right: 20px;
   left: 20px;
   z-index: 1;
 
