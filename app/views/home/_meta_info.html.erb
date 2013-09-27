@@ -48,7 +48,7 @@
   <meta name="twitter:player" content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>">
   <meta name="twitter:player:width" content="500">
   <meta name="twitter:player:height" content="375">
-  <meta name="twitter:image:src content"="<%= @video['thumbnail_url'] %>">
+  <meta name="twitter:image:src content"="<%= @video_thumbnail_url %>">
   <meta property="og:video:url" content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>" />
   <meta property="og:video:secure_url" content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>" />
   <meta property="og:video:type" content="application/x-shockwave-flash">
