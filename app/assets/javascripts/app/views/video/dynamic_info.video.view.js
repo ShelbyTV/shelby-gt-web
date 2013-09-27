@@ -260,7 +260,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
           shelby.trackEx({
             providers : ['ga', 'kmq'],
             gaCategory : "Dynamic Video Info",
-            gaAction : 'Sent to a friend',
+            gaAction : 'Sent to a friend via generic share button',
             gaLabel : self._cardType,
             kmqName : 'Sent video to a friend via DVI '+self._cardType+' card'
           });
@@ -291,9 +291,9 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
           shelby.trackEx({
             providers : ['ga', 'kmq'],
             gaCategory : "Dynamic Video Info",
-            gaAction : 'Sent to a friend',
+            gaAction : 'Sent to a friend via clicking an avatar',
             gaLabel : self._cardType,
-            kmqName : 'Sent video to a friend via DVI '+self._cardType+' card'
+            kmqName : 'Sent video to a specific friend via DVI '+self._cardType+' card'
           });
         }
       }

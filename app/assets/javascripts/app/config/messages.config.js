@@ -10,8 +10,9 @@ shelby.config.messages = {
     "Share this. I dare you."
   ],
 
-  randomMessage : function(array){
-    var rand = _.random(0, array.length -1);
-    return array[rand];
+  randomMessage : function(arrayName){
+    var _array = this[arrayName];
+    var rand = _.random(0, _array.length -1);
+    return _array[rand];
   }
 };
