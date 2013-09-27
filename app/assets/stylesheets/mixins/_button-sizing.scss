@@ -143,7 +143,34 @@
         margin-right: 1px;
       }
     }
+    .button_command--thumbs_up,
+    .button_command--thumbs_down {
+      display: inline-block;
 
+      .icon {
+        font-size: 1.2em;
+      }
+    }
+    .button_command--thumbs_up {
+      @include roundies(left);
+
+      padding-top: 0.3em;
+
+      .icon {
+        vertical-align: 1px;
+      }
+    }
+    .button_command--thumbs_down {
+      @include roundies(right);
+
+      margin-left: 0;
+      padding-top: 0.4em;
+      padding-bottom: 0.45em;
+
+      .icon {
+        vertical-align: -3px;
+      }
+    }
   //width normalization
     .button_command--fill {
       width: 100%;

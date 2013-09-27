@@ -21,7 +21,10 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-remove-frame"                : "_onClickRemoveFrame",
     "click .js-share-frame"                 : "requestShareFrame",
     "click .js-toggle-comment"              : "_toggleComment",
-    "click .js-navigate-originator"         : "_navigateOriginator"
+    "click .js-navigate-originator"         : "_navigateOriginator",
+    "change #like"                          : "_onChangeLike",
+    "change #dislike"                       : "_onChangeDislike",
+    "change #form"                          : "_onChangeForm"
   },
 
   template : function(obj){
@@ -375,5 +378,24 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         }
       });
     }
+  },
+
+  _onChangeThumbs : function(e){
+    console.log('yes!',e.target.id);
+    var $this = $(e.currentTarget);
+
+    $this.parent().toggleClass('button_active',!$this.is(':checked'));
+  },
+
+  _onChangeDislike : function(e) {
+    console.log('dislike');
+  },
+
+  _onChangeLike : function(e) {
+    console.log('like');
+  },
+
+    _onChangeForm : function(e) {
+    console.log('form change',e,e.target);
   }
 });

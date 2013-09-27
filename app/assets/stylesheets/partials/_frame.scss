@@ -364,6 +364,24 @@
     .button_command--sub {
       margin-left: 0;
     }
+    .button_command--thumbs_down {
+      margin-left: 0;
+      border-left: none;
+    }
+    .form_input--like:checked + .button_command--thumbs_up,
+    .form_input--dislike:checked + .button_command--thumbs_down {
+      background-color: darken($ui-gray,5%);
+    }
+    .form_input--like:checked + .button_command--thumbs_up {
+      .icon {
+        color: $ui-green;
+      }
+    }
+    .form_input--dislike:checked + .button_command--thumbs_down {
+      .icon {
+        color: $ui-red;
+      }
+    }
 }
 
 
