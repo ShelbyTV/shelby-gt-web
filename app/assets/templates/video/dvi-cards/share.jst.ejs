@@ -2,8 +2,8 @@
   <h1 class="dynamic_video_info__h1"><%= type == "share" ? shelby.config.messages.randomMessage('dviSharingMessages') : "You like it!" %></h1>
   <div class="dynamic_video_info__h2">Enjoying what you're watching? Share it with your friends, family, co-workers, handymen, baristas...</div>
 </div>
-
-<% if ( _(shelby.models.user.get('authentications')).any(function(auth){ return auth.provider == 'facebook'; })  ) { %>
+<% _(shelby.models.user.get('authentications')).any(function(auth){ return auth.provider == 'facebook'; })  %>
+<% if ( false ) { %>
   <div class="dynamic_video_info__friends-avatars">
     <% if ( typeof shelby.models.user.get('autocomplete').facebook !== 'undefined' ) { %>
       <ul class="list--inline">
@@ -21,7 +21,7 @@
       </button>
   </div>
 <% } else { %>
-  <a href="mailto:?body=Check%20out%20this%20video:%20" target="_blank" class="button_primer button_command button_command--sub button_command--email  button_green user__button js-track-event" data-ga_category="Dynamic Video Info" data-ga_action="Click Send to friend via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+  <a href="mailto:?body=Check%20out%20this%20video:%20<%= libs.shelbyGT.viewHelpers.frame.permalink(currentFrame) %>?utm_campaign=email-share" target="_blank" class="button_primer button_command button_command--sub button_command--email  button_green user__button js-button_command--email js-track-event" data-ga_category="Dynamic Video Info" data-ga_action="Click Send to friend via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
       <span class="icon icon-share"></span>
       <span class="button_label">Send to a friend...</span>
   </a>

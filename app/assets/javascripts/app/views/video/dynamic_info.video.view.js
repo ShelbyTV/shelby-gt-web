@@ -207,7 +207,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
   _getFrameShortlink : function() {
     var self = this;
-    var $shortlinkTextInput = this.$('.js-frame-shortlink');
+    var $mailtoLink = $('.js-button_command--email');
     var fetchShortlinkUrl;
     var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
     var dbEntry = frameGroup.get('primaryDashboardEntry');
@@ -221,14 +221,9 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
       url: fetchShortlinkUrl,
       dataType: 'jsonp',
       success: function(r){
-        $shortlinkTextInput.val(r.result.short_link).select();
-        // save the link for future reference in case we are going to
-        // re-render without changing frames
         self._currentFrameShortlink = r.result.short_link;
       },
-      error: function(){
-        $shortlinkTextInput.val("Link Unavailable").select();
-      }
+      error: function(){  }
     });
   },
 
