@@ -17,8 +17,6 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   events : {
     "click .js-like-frame"              : "_likeFrame",
     "click .js-likes-section"           : "_navigateToLikes",
-    "click .js-share-menu"              : "_toggleShareMenu",
-    "click .js-button_share--email"     : "_requestFrameEmailView",
     "click .js-button_share--facebook"  : "_shareCurrentToFacebook",
     "click .js-button_share--friend"       : "_shareWithSpecificFriend",
     "click .js-close-dvi"               : "_hideDVI"
@@ -118,7 +116,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
     setTimeout(function(){
       self.$el.addClass('visible '+self._cardType);
-      $('.persistent_video_info__wrapper').addClass('quiet');
+      $('.persistent_video_info__wrapper').addClass('half-cloaked');
     }, delay);
 
     // hide it eventually
@@ -139,8 +137,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   _hideDVI : function(){
     this._displayedDVI = false;
     this.$el.removeClass('visible '+this._cardType);
-    this.$el.find('.share_menu').toggleClass('hidden', true);
-    $('.persistent_video_info__wrapper').removeClass('quiet');
+    $('.persistent_video_info__wrapper').removeClass('half-cloaked');
   },
 
   /*************************************************************
@@ -158,8 +155,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     }
 
     // don't always show this, should not be probabilistic in the end. should be "smart" eventually
-    if (!this._shouldShowDVI(0.5)) return;
-    if (this._videoAlreadyLiked(this._currentFrame)) return;
+    if (!this._shouldShowDVI(0.75)) return;
+    //if (this._videoAlreadyLiked(this._currentFrame)) return;
 
     this._cardType = 'share';
     var _timeout = (this._currentVideoInfo && this._currentVideoInfo.duration) ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 8000;
@@ -208,33 +205,6 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     shelby.router.navigate('likes', {trigger: true, replace: true});
   },
 
-  _toggleShareMenu : function(){
-    var $this = this.$('.js-share-menu'),
-        block = $this.siblings('.js-share-menu-block'),
-        blockHasClass = block.hasClass('hidden');
-
-    // if we're opening the menu and we don't have the shortlink
-    // yet, we need to get it now
-    if (blockHasClass && !this._currentFrameShortlink) {
-      this._getFrameShortlink();
-    }
-
-    //  toggle the "button pressed" state
-    // $this.toggleClass('button_gray',!blockHasClass)
-    //      .toggleClass('button_gray-light',blockHasClass);
-    $this.toggleClass('button_active',blockHasClass);
-
-    //  show/hide the panel
-    block.toggleClass('hidden',!blockHasClass);
-
-    // if we open the menu and we already have the shortlink,
-    // highlight it
-    if (blockHasClass && this._currentFrameShortlink) {
-      this.$('.js-frame-shortlink').select();
-    }
-
-  },
-
   _getFrameShortlink : function() {
     var self = this;
     var $shortlinkTextInput = this.$('.js-frame-shortlink');
@@ -274,30 +244,29 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   _shareCurrentToFacebook : function(e){
+    if (typeof FB == "undefined") return;
     var self = this;
-    if (typeof FB != "undefined"){
-      //pause video
-      shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
-      FB.ui(
-        {
-          method: 'send',
-          link: libs.shelbyGT.viewHelpers.frame.permalink(self._currentFrame),
-        },
-        function(response) {
-          //play video
-          shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
-          if (response) {
-            shelby.trackEx({
-              providers : ['ga', 'kmq'],
-              gaCategory : "Dynamic Video Info",
-              gaAction : 'Sent to a friend',
-              gaLabel : self._cardType,
-              kmqName : 'Sent video to a friend via DVI '+self._cardType+' card'
-            });
-          }
+    //pause video
+    shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
+    FB.ui(
+      {
+        method: 'send',
+        link: libs.shelbyGT.viewHelpers.frame.permalink(self._currentFrame),
+      },
+      function(response) {
+        //play video
+        shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
+        if (response) {
+          shelby.trackEx({
+            providers : ['ga', 'kmq'],
+            gaCategory : "Dynamic Video Info",
+            gaAction : 'Sent to a friend',
+            gaLabel : self._cardType,
+            kmqName : 'Sent video to a friend via DVI '+self._cardType+' card'
+          });
         }
-      );
-    }
+      }
+    );
   },
 
   _shareWithSpecificFriend : function(el){
@@ -329,12 +298,6 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
         }
       }
     );
-  },
-
-  _requestFrameEmailView : function(){
-    var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
-    var dbEntry = frameGroup.get('primaryDashboardEntry');
-    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, this._currentFrame, dbEntry);
   },
 
   /*************************************************************
