@@ -14,7 +14,7 @@ $(document).ready(function(){
     try {
         created_at = new Date("<%= signed_in_user['created_at'] %>");
         created_at = created_at.getTime()/1000;
-        should_send_emails = "<%= signed_in_user['preferences']['email_updates'] %>";
+        should_send_emails = "<%= signed_in_user['preferences']['email_updates'] if signed_in_user['preferences'] %>";
         Intercom('boot', {
                 app_id: 'aeb096feb787399ac1cf3985f891d0e13aa47571',
                 email: "<%= signed_in_user['primary_email'] %>",
@@ -22,7 +22,7 @@ $(document).ready(function(){
                 name: "<%= signed_in_user['name'] %>",
                 user_id: "<%= signed_in_user['id'] %>",
                 unsubscribed_from_emails : !should_send_emails,
-                onboardingProgress: santizeOnboarding(<%= signed_in_user['app_progress']['onboarding'] %>),
+                onboardingProgress: santizeOnboarding(<%= signed_in_user['app_progress']['onboarding'] if signed_in_user['onboarding'] %>),
                 tv_page: "http://shelby.tv/<%= signed_in_user['personal_roll_subdomain'] %>"
               });
       } catch (e) {}
