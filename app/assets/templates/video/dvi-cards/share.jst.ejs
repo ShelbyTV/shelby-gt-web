@@ -3,19 +3,19 @@
   <div class="dynamic_video_info__h2">Enjoying what you're watching? Share it with your friends, family, co-workers, handymen, baristas...</div>
 </div>
 
-<% if ( false  ) { %>
+<% if ( _(shelby.models.user.get('authentications')).any(function(auth){ return auth.provider == 'facebook'; })  ) { %>
   <div class="dynamic_video_info__friends-avatars">
     <% if ( typeof shelby.models.user.get('autocomplete').facebook !== 'undefined' ) { %>
       <ul class="list--inline">
         <% friends = _.shuffle(shelby.models.user.get('autocomplete').facebook) %>
         <% for(var i = 0; i < friends.length; i++) { %>
           <li class="list__item">
-            <img class="facepile" src="http://graph.facebook.com/<%= friends[i] %>/picture?type=square"></a>
+            <img class="facepile js-button_share--friend js-track-event" data-facebook-id="<%= friends[i] %>" src="http://graph.facebook.com/<%= friends[i] %>/picture?type=square"></a>
           </li>
         <% } %>
       </ul>
       <% } %>
-      <button class="button_primer button_command button_command--sub button_command--facebook  button_facebook-blue user__button js-track-event">
+      <button class="button_primer button_command button_command--sub button_command--facebook  button_facebook-blue user__button js-button_share--facebook js-track-event">
         <span class="icon icon-share"></span>
         <span class="button_label">Send to a friend...</span>
       </button>

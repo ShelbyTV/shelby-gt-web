@@ -20,6 +20,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     "click .js-share-menu"              : "_toggleShareMenu",
     "click .js-button_share--email"     : "_requestFrameEmailView",
     "click .js-button_share--facebook"  : "_shareCurrentToFacebook",
+    "click .js-button_share--friend"       : "_shareWithSpecificFriend",
     "click .js-close-dvi"               : "_hideDVI"
   },
 
@@ -276,45 +277,62 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     var _frame = this._currentFrame;
     var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(_frame.id);
     var _caption;
-    if (shelby.config.hostName) {
-      _caption = 'a video from '+shelby.config.hostname;
-    } else if (_frame.has('roll')) {
-      if (_frame.get('roll').has('subdomain')) {
-        _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
-      } else {
-        _caption = 'a video from shelby.tv';
-      }
+    if (_frame.has('roll')) {
+      _caption = 'a video from shelby.tv';
     }
     else {
       _caption = 'a video found with Shelby Video Search';
     }
 
     var rollCreatorId = this._currentFrame.has('roll') && this._currentFrame.get('roll').has('creator_id') && this._currentFrame.get('roll').get('creator_id');
-    var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: rollCreatorId});
     var description = _frame.get('video').get('description');
 
     // if there is a special message for the facebook share, use it
-    if (specialConfig && specialConfig.customShareMessages && specialConfig.customShareMessages.facebook) {
-      description = specialConfig.customShareMessages.facebook;
-    }
-
     if (typeof FB != "undefined"){
       FB.ui(
         {
-          method: 'feed',
-          name: _frame.get('video').get('title'),
+          method: 'send',
           link: libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup),
-          picture: _frame.get('video').get('thumbnail_url'),
-          description: description,
-          caption: _caption
         },
         function(response) {
-          if (response && response.post_id) {
-            // TODO:we should record that this happened.
+          if (response) {
+            shelby.trackEx({
+              providers : ['ga', 'kmq'],
+              gaCategory : "Dynamic Video Info",
+              gaAction : 'Sent to a friend',
+              gaLabel : this._cardType,
+              kmqName : 'Sent video to a friend via DVI '+this._cardType+' card'
+            });
           }
         }
       );
     }
+  },
+
+  _shareWithSpecificFriend : function(el){
+    if (typeof FB != "undefined") return;
+
+    var $target = $(el.currentTarget);
+    var facebookId = $target.data('facebook-id');
+    var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(_frame.id);
+
+    FB.ui({
+      method: 'send',
+      to: facebookId,
+      link: libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup),
+      },
+      function(response) {
+        if (response) {
+          shelby.trackEx({
+            providers : ['ga', 'kmq'],
+            gaCategory : "Dynamic Video Info",
+            gaAction : 'Sent to a friend',
+            gaLabel : this._cardType,
+            kmqName : 'Sent video to a friend via DVI '+this._cardType+' card'
+          });
+        }
+      }
+    );
   },
 
   _requestFrameEmailView : function(){
