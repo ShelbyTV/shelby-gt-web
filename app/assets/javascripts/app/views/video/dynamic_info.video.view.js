@@ -274,34 +274,25 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   _shareCurrentToFacebook : function(e){
-    var _frame = this._currentFrame;
-    var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(_frame.id);
-    var _caption;
-    if (_frame.has('roll')) {
-      _caption = 'a video from shelby.tv';
-    }
-    else {
-      _caption = 'a video found with Shelby Video Search';
-    }
-
-    var rollCreatorId = this._currentFrame.has('roll') && this._currentFrame.get('roll').has('creator_id') && this._currentFrame.get('roll').get('creator_id');
-    var description = _frame.get('video').get('description');
-
-    // if there is a special message for the facebook share, use it
+    var self = this;
     if (typeof FB != "undefined"){
+      //pause video
+      shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
       FB.ui(
         {
           method: 'send',
-          link: libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup),
+          link: libs.shelbyGT.viewHelpers.frame.permalink(self._currentFrame),
         },
         function(response) {
+          //play video
+          shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
           if (response) {
             shelby.trackEx({
               providers : ['ga', 'kmq'],
               gaCategory : "Dynamic Video Info",
               gaAction : 'Sent to a friend',
-              gaLabel : this._cardType,
-              kmqName : 'Sent video to a friend via DVI '+this._cardType+' card'
+              gaLabel : self._cardType,
+              kmqName : 'Sent video to a friend via DVI '+self._cardType+' card'
             });
           }
         }
@@ -312,8 +303,11 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   _shareWithSpecificFriend : function(el){
     if (typeof FB == "undefined") return;
 
-    var $target = $(el.currentTarget);
-    var facebookId = $target.data('facebook-id');
+    var self = this,
+          $target = $(el.currentTarget),
+          facebookId = $target.data('facebook-id');
+    //pause video
+    shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
 
     FB.ui({
       method: 'send',
@@ -321,13 +315,16 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
       link: libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame)
       },
       function(response) {
+        //play video
+        shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
+
         if (response) {
           shelby.trackEx({
             providers : ['ga', 'kmq'],
             gaCategory : "Dynamic Video Info",
             gaAction : 'Sent to a friend',
-            gaLabel : this._cardType,
-            kmqName : 'Sent video to a friend via DVI '+this._cardType+' card'
+            gaLabel : self._cardType,
+            kmqName : 'Sent video to a friend via DVI '+self._cardType+' card'
           });
         }
       }
