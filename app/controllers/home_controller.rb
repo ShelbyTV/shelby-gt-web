@@ -190,6 +190,7 @@ class HomeController < ApplicationController
 
     if(params[:frame_id])
       @frame = Shelby::API.get_frame(params[:frame_id], true)
+      @roll = @frame['roll']
       @video = @frame['video']
 
       @is_mobile = is_mobile?
