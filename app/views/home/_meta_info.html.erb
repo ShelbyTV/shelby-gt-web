@@ -4,14 +4,13 @@
 
 <% if (@frame and @video and @roll) or (@video_provider_name and @video_provider_id) or (@roll and @user) %>
   <!-- For Twitter -->
-  <meta name="twitter:card" content="<%= 'summary_large_image' #(@video or @video_embed) ? 'player' : 'summary' %>">
+  <meta name="twitter:card" content="<%= (@video or @video_embed) ? 'player' : 'summary' %>">
   <meta name="twitter:site" content="<%= Settings::Twitter.shelby_twitter_username %>">
 <% end %>
 
 <% if @frame and @video and @roll and @user %>
   <meta name="twitter:description" content="<%= @video['description'] %>">
   <meta name="twitter:player" content="<%= build_valid_video_player_url(@video['embed_url']) %>">
-  <meta name="twitter:image:src content"="<%= @video['thumbnail_url'] %>">
   <meta name="twitter:player:width" content="500">
   <meta name="twitter:player:height" content="375">
   <meta property="og:site_name" content="Shelby.tv">
@@ -48,7 +47,6 @@
   <meta name="twitter:player" content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>">
   <meta name="twitter:player:width" content="500">
   <meta name="twitter:player:height" content="375">
-  <meta name="twitter:image:src content"="<%= @video_thumbnail_url %>">
   <meta property="og:video:url" content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>" />
   <meta property="og:video:secure_url" content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>" />
   <meta property="og:video:type" content="application/x-shockwave-flash">
