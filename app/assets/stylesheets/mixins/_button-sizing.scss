@@ -152,7 +152,7 @@
       }
     }
     .button_command--thumbs_up {
-      @include roundies(left);
+      @include roundies(left-input);
 
       padding-bottom: 0.35em;
       padding-top: 0.3em;
@@ -162,7 +162,7 @@
       }
     }
     .button_command--thumbs_down {
-      @include roundies(right);
+      @include roundies(right-input);
 
       margin-left: 0;
       padding-bottom: 0.4em;

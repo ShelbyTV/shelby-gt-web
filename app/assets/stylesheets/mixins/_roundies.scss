@@ -23,4 +23,10 @@
   @else if $type == right {
     border-radius: 0 $radius $radius 0;
   }
+  @else if $type == left-input {
+    border-radius: ($radius - 2) 0 0 ($radius - 2);
+  }
+  @else if $type == right-input {
+    border-radius: 0 ($radius - 2) ($radius - 2) 0;
+  }
 }

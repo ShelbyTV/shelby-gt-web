@@ -393,6 +393,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   _onChangeLike : function(e) {
     console.log('like');
+    if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){ return; }
+
+    self = this;
+    var frame = this.model.getFirstFrame();
+    frame.like({likeOrigin: frame.getFrameDescription(this.model.get('primaryDashboardEntry'))});
   },
 
     _onChangeForm : function(e) {
