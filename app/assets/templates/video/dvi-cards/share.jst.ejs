@@ -2,8 +2,7 @@
   <h1 class="dynamic_video_info__h1"><%= type == "share" ? shelby.config.messages.randomMessage('dviSharingMessages') : "You like it!" %></h1>
   <div class="dynamic_video_info__h2">Enjoying what you're watching? Share it with your friends, family, co-workers, handymen, baristas...</div>
 </div>
-<% _(shelby.models.user.get('authentications')).any(function(auth){ return auth.provider == 'facebook'; })  %>
-<% if ( false ) { %>
+<% if ( _(shelby.models.user.get('authentications')).any(function(auth){ return auth.provider == 'facebook'; }) ) { %>
   <div class="dynamic_video_info__friends-avatars">
     <% if ( typeof shelby.models.user.get('autocomplete').facebook !== 'undefined' ) { %>
       <ul class="list--inline">
