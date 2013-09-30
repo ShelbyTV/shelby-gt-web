@@ -1,5 +1,7 @@
 libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend({
 
+  _liked : false,
+
   options : _.extend({}, libs.shelbyGT.ActiveHighlightListItemView.prototype.options, {
       activationStateProperty : 'activeFrameModel',
       guideOverlayModel : null,
@@ -22,9 +24,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-share-frame"                 : "requestShareFrame",
     "click .js-toggle-comment"              : "_toggleComment",
     "click .js-navigate-originator"         : "_navigateOriginator",
-    "change #like"                          : "_onChangeLike",
-    "change #dislike"                       : "_onChangeDislike",
-    "change #form"                          : "_onChangeForm"
+    "change .js-like-dislike-form"          : "_onChangeForm"
   },
 
   template : function(obj){
@@ -132,6 +132,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
         frameOriginator         : frame.get('originator'),
         isChannelRecommendation : isChannelRecommendation,
         isRecommendation        : isRecommendation,
+        liked                   : this._liked,
         messages                : messages,
         queuedVideosModel       : shelby.models.queuedVideos,
         options                 : this.options,
@@ -238,11 +239,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _onClickQueue : function(){
-    if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){ return; }
-
-    self = this;
-    var frame = this.model.getFirstFrame();
-    frame.like({likeOrigin: frame.getFrameDescription(this.model.get('primaryDashboardEntry'))});
+    this._doLike();
     // immediately change the button state
     this.$('.js-queue-frame').addClass('queued');
     this.$('.js-queue-frame .label').text('Liked');
@@ -380,19 +377,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     }
   },
 
-  _onChangeThumbs : function(e){
-    console.log('yes!',e.target.id);
-    var $this = $(e.currentTarget);
-
-    $this.parent().toggleClass('button_active',!$this.is(':checked'));
-  },
-
-  _onChangeDislike : function(e) {
-    console.log('dislike');
-  },
-
-  _onChangeLike : function(e) {
-    console.log('like');
+  _doLike : function(e) {
     if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){ return; }
 
     self = this;
@@ -400,7 +385,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     frame.like({likeOrigin: frame.getFrameDescription(this.model.get('primaryDashboardEntry'))});
   },
 
-    _onChangeForm : function(e) {
-    console.log('form change',e,e.target);
+  _onChangeForm : function(e) {
+    if(e.target.id.split('-')[0] == 'like' && !this._liked) {
+      this._doLike();
+
+      this._liked = true;
+    }
   }
 });

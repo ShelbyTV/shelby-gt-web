@@ -40,8 +40,8 @@
         </li>
         <li class="list__item" role="menuitem">
           <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
-          <form id="form">
-            <input type="radio" name="toggle-likes" id="like-<%= videoId %>" class="form_input--like visuallyhidden">
+          <form id="form-<%= videoId %>" class="js-like-dislike-form">
+            <input type="radio" name="toggle-likes" id="like-<%= videoId %>" class="form_input--like visuallyhidden"<% if (liked) { %> checked="checked"<% } %>>
             <label for="like-<%= videoId %>" class="button_primer button_command button_command--flexible button_gray button_command--thumbs_up js-like">
               <span class="icon icon-like-2"></span>
               <span class="visuallyhidden">Like</span>
