@@ -43,7 +43,7 @@ $(document).ready(function(){
     if($this.hasClass('js-do-nothing')){
       return false;
     }
-    if($this.hasClass('js-login-dropdown-button')){
+    else if($this.hasClass('js-login-dropdown-button')){
       var $loginDropdown = $('.js-login-dropdown');
       $loginDropdown.toggleClass('hidden',!$loginDropdown.hasClass('hidden'));
     }
