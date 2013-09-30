@@ -36,7 +36,7 @@
         </div>
         <br/>
         <div style="margin-top: 10px;">
-            or <a href="#" class="js-email-signup">signup with a email and password</a>
+            or <a href="#" class="js-email-signup js-track-event" data-ga_category="Onboarding" data-ga_action="Click Show Sign Up with Email <%= 'via invite' if @inviter %>">signup with a email and password</a>
         </div>
 
         <% form_hidden = @inviter ? " hidden" : ""  %>
