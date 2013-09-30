@@ -1,7 +1,13 @@
 # See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
 #
 # To ban all spiders from the entire site uncomment the next two lines:
-# User-Agent: *
-# Disallow: /
+
+User-Agent: *
+Disallow: /vanity/add_participant
+Disallow: /mobile
+Disallow: /channel.html
+
+Allow: /
 
 Sitemap: http://api.shelby.tv/system/sitemap_index.xml.gz
+
