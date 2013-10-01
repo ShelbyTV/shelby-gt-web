@@ -146,6 +146,8 @@
     .button_command--thumbs_up,
     .button_command--thumbs_down {
       display: inline-block;
+      height: 2.4em;
+      line-height: 27px;
 
       .icon {
         font-size: 1.2em;
@@ -167,6 +169,7 @@
       margin-left: 0;
       padding-bottom: 0.4em;
       padding-top: 0.35em;
+      vertical-align: top;
 
       .icon {
         vertical-align: -3px;
