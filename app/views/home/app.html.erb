@@ -27,11 +27,8 @@
     if (typeof(shelby.abTests) == 'undefined') {
       shelby.abTests = {};
     }
-    <% experiments = vanity_experiments %>
-    <% unless experiments.nil? %>
-    <% experiments.each do |name, alternative| %>
+    <% vanity_experiments.each do |name, alternative| %>
       shelby.abTests.<%= name.to_s.camelize(:lower) %> = '<%= alternative.value %>';
-    <% end %>
     <% end %>
   </script>
   <%= javascript_include_tag "shelby" %>
@@ -131,7 +128,7 @@
   <% end %>
   <%= vanity_js %>
   <% experiments = vanity_experiments %>
-  <% unless experiments.nil? %>
+  <% unless experiments.empty? %>
     <script>
       <% experiments.each do |name, alternative| %>
         try {
