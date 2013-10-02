@@ -188,8 +188,8 @@ class HomeController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     @signed_in_user_nickname = (@signed_in_user['nickname'] if @signed_in_user) || 'Anonymous'
 
-    if(params[:frame_id])
-      @frame = Shelby::API.get_frame(params[:frame_id], true)
+    if params[:frame_id]
+      raise Shelby::InternalError.new("Frame Not Found") unless @frame = Shelby::API.get_frame(params[:frame_id], true)
       @roll = @frame['roll']
       @video = @frame['video']
 
