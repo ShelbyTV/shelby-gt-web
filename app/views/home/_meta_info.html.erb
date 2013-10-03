@@ -15,7 +15,7 @@
   <meta name="twitter:player:height" content="375">
   <meta property="og:site_name" content="Shelby.tv">
   <meta property="og:type"    content="video" />
-  <meta property="og:url"     content="<%= Shelby::API.generate_frame_route(@roll['subdomain'], @frame['id']) %>" />
+  <meta property="og:url"     content="<%= Shelby::API.generate_frame_route(@user['nickname'], @frame['id']) %>" />
   <meta property="og:video:url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
   <meta property="og:video:secure_url" content="<%= build_valid_video_player_url(@video['embed_url']) %>" />
   <meta property="og:video:type" content="application/x-shockwave-flash">
@@ -33,7 +33,7 @@
 
 <% elsif @roll and @user %>
   <meta property="og:type"    content="video.other" />
-  <meta property="og:url"     content="http://shelby.tv/<%= @roll['subdomain'] %><%= @frame ? "/shares/"+@frame['id'] : '' %>" />
+  <meta property="og:url"     content="http://shelby.tv/<%= @user['nickname'] %><%= @frame ? "/shares/"+@frame['id'] : '' %>" />
   <meta property="og:title"   content="Videos shared by <%= "#{@user['name']} (#{@user['nickname']})" %> on Shelby.tv">
 
   <meta property="og:description" content="<%= page_description_for_roll_with_frames(@roll, @user) %>" />
@@ -43,7 +43,7 @@
 <% elsif @video_provider_name and @video_provider_id %>
   <meta property="og:site_name" content="Shelby.tv">
   <meta property="og:type"    content="video" />
-  <meta property="og:url"     content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>" />
+  <meta property="og:url"     content="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id)  %>" />
   <meta name="twitter:player" content="<%= @video_embed ? build_valid_video_player_url(@video_embed) : @video_source_url ? @video_source_url : ''  %>">
   <meta name="twitter:player:width" content="500">
   <meta name="twitter:player:height" content="375">

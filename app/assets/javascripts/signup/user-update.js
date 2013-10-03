@@ -99,12 +99,16 @@ function validateUserForm(e) {
 }
 
 $(document).ready(function() {
-  $('#user_form input:first[type="text"]').focus();
   // wire up user form validation
   $('#user_form').on('submit', validateUserForm);
   // as soon as I start typing in a text input, hide any visual error indication
   // that was displayed for it
   $('.form_fieldset').has('.form_error').on('keyup', 'input', function(e) {
     $(e.delegateTarget).removeClass('form_fieldset--error');
+  });
+
+  $('.js-email-signup').on('click', function(){
+    $('form').removeClass("hidden");
+    $('#user_form input:first[type="text"]').focus();
   });
 });

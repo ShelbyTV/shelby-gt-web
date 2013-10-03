@@ -1,41 +1,27 @@
-<h1 class="dynamic_video_info__h1"><%= type == "share" ? "Enjoying this video?" : "You like it!" %></h1>
-<button class="button_primer button_gray button_command button_command--share js-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Click share menu on current frame" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-    <span class="icon icon-share"></span>Share…
-</button>
-
-<h2 class="dynamic_video_info__h2">Share it with a friend!</h2>
-
-<div class="share_menu frame-body-wrapper js-share-menu-block hidden">
-  <h3 class="dynamic_video_info__h2">Share</h3>
-  <ul class="list">
-    <li class="list__item">
-      <% if (user.isAnonymous()) { %>
-        <a href="mailto:?subject=Check%20out%20this%20video...&body=<%= encodeURIComponent(anonUserShareEmailBody) %>">
-      <% } %>
-        <button class="button_primer button_gray button_share button_share--email js-hide-share-menu js-track-event<%= !user.isAnonymous() ? ' js-button_share--email' : ''%>" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-          <span class="icon icon-email"></span>Email
-        </button>
-      <% if (user.isAnonymous()) { %>
-        </a>
-      <% } %>
-    </li>
-    <li class="list__item">
-      <a href="https://twitter.com/intent/tweet?<%= tweetIntentQueryString %>">
-        <button class="button_primer button_gray button_share button_share--twitter js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Twitter" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-          <span class="icon icon-twitter"></span>Twitter
-        </button>
-      </a>
-    </li>
-    <li class="list__item">
-      <button class="button_primer button_gray button_share button_share--facebook js-button_share--facebook js-hide-share-menu js-track-event" data-ga_category="<%= eventTrackingCategory %>" data-ga_action="Share frame on Facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
-        <span class="icon icon-facebook"></span>Facebook
-      </button>
-    </li>
-    <li class="list__item nudge">
-      <span class="share_menu__faux-button clearfix js-button_share--shortlink">
-        <span class="icon icon-shortlink"></span>
-        <input type="text" value="Fetching..." class="form_input js-frame-shortlink" />
-      </span>
-    </li>
-  </ul>
+<div class="dynamic_video_info__description">
+  <h1 class="dynamic_video_info__h1"><%= type == "share" ? shelby.config.messages.randomMessage('dviSharingMessages') : "You like it!" %></h1>
+  <div class="dynamic_video_info__h2">Enjoying what you're watching? Share it with your friends, family, co-workers, handymen, baristas...</div>
 </div>
+<% if ( _(shelby.models.user.get('authentications')).any(function(auth){ return auth.provider == 'facebook'; }) ) { %>
+  <div class="dynamic_video_info__friends-avatars">
+    <% if ( typeof shelby.models.user.get('autocomplete').facebook !== 'undefined' ) { %>
+      <ul class="list--inline">
+        <% friends = _.shuffle(shelby.models.user.get('autocomplete').facebook) %>
+        <% for(var i = 0; i < friends.length; i++) { %>
+          <li class="list__item">
+            <img class="facepile js-button_share--friend js-track-event" data-ga_category="Dynamic Video Info" data-ga_action="Click Send to Specific friend on avatar" data-ga_label="<%= shelby.models.user.get('nickname') %>" data-facebook-id="<%= friends[i] %>" src="http://graph.facebook.com/<%= friends[i] %>/picture?type=square"></a>
+          </li>
+        <% } %>
+      </ul>
+      <% } %>
+      <button class="button_primer button_command button_command--sub button_command--facebook  button_facebook-blue user__button js-button_share--facebook js-track-event" data-ga_category="Dynamic Video Info" data-ga_action="Click Send to friend via facebook" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+        <span class="icon icon-share"></span>
+        <span class="button_label">Send to a friend...</span>
+      </button>
+  </div>
+<% } else { %>
+  <a href="mailto:?body=Check%20out%20this%20video:%20<%= libs.shelbyGT.viewHelpers.frame.permalink(currentFrame) %>?utm_campaign=email-share" target="_blank" class="button_primer button_command button_command--sub button_command--email  button_green user__button js-button_command--email js-track-event" data-ga_category="Dynamic Video Info" data-ga_action="Click Send to friend via email" data-ga_label="<%= shelby.models.user.get('nickname') %>">
+      <span class="icon icon-share"></span>
+      <span class="button_label">Send to a friend...</span>
+  </a>
+<% } %>

@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/ShelbyTV/vanity.git
-  revision: 8090027f857b5d24a732dd6bb06fafbf722c1e2c
+  remote: git://github.com/iceberg901/vanity.git
+  revision: 38ba98c17b59fe0b05cb3e8a0b30bae8e586a3f2
   branch: vanity-experiments-helper
   specs:
     vanity (1.8.0)
@@ -178,7 +178,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redis (2.2.2)
-    redis-namespace (1.0.3)
+    redis-namespace (1.0.4)
       redis (< 3.0.0)
     rspec (2.10.0)
       rspec-core (~> 2.10.0)

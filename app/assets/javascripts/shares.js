@@ -38,6 +38,10 @@ $(document).ready(function(){
       var username = $('.app_nav__button--settings').text().trim();
       window.location = '/' + username;
     }
+    else if($this.hasClass('js-login-dropdown-button')){
+      var $loginDropdown = $('.js-login-dropdown');
+      $loginDropdown.toggleClass('hidden',!$loginDropdown.hasClass('hidden'));
+    }
     else if($this.hasClass('js-signout')) {
       window.location = "/signout";
     } else {
