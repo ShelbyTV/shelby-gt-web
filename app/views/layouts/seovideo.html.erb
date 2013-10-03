@@ -37,7 +37,7 @@
     </script>
   <%= vanity_js %>
   <% experiments = vanity_experiments %>
-  <% unless experiments.nil? %>
+  <% unless experiments.empty? %>
     <script>
       <% experiments.each do |name, alternative| %>
         try {

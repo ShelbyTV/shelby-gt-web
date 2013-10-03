@@ -54,7 +54,7 @@
       </li><!-- eo login button/dropdown -->
     <% else %>
       <li class="dropdown_module list__item secondary-item guide-login">
-        <button class="dropdown_button app_nav__button<%= (user_signed_in) ? ' js-do-nothing' : ' js-login-dropdown-button' %>">
+        <button class="dropdown_button app_nav__button<%= (user_signed_in || !is_mobile) ? ' js-do-nothing' : ' js-login-dropdown-button' %>">
           Log In <span class="icon-carrot"></span>
         </button>
 
