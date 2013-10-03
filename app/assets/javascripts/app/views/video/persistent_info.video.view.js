@@ -268,7 +268,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _doLike : function(e) {
     if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-      frame.like({likeOrigin: this.options.eventTrackingCategory});
+      this._currentFrame.like({likeOrigin: this.options.eventTrackingCategory});
     }
   },
 
