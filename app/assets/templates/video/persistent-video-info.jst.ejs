@@ -1,9 +1,15 @@
+<% var userNickname = user.get('nickname') %>
+
 <% var currentCreator = currentFrame.get('creator') %>
 <% var currentCreatorNickname = currentCreator ? currentCreator.get('nickname') : null %>
 <% var currentCreatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(currentCreator) %>
+
 <% var currentVideo = currentFrame.get('video') %>
 <% var currentFramePermalink = libs.shelbyGT.viewHelpers.frame.permalink(currentFrame) %>
 <% var currentFrameHasRoll = currentFrame.has('roll') %>
+
+<% var videoId = currentFrameId = currentFrame.get('id') %>
+
 <% var currentMessages = (currentFrame.get('conversation') && currentFrame.get('conversation').get('messages')) || new Backbone.Collection() %>
 <% var currentVideoIsInQueue = queuedVideosModel.videoIsInQueue(currentVideo) %>
 
@@ -125,14 +131,19 @@
         </li>
 
         <li class="list__item clearfix">
-          <button class="button_primer button_gray button_command button_command--like js-queue-frame <%= currentVideoIsInQueue ? ' queued' : '' %> js-track-event"
-              data-ga_category="<%= eventTrackingCategory %>"
-              data-ga_action="Click like on current frame"
-              data-ga_label="<%= shelby.models.user.get('nickname') %>">
-            <span class="icon icon-like <%= currentVideoIsInQueue ? 'icon-like--red ': ''%>js-command-icon"></span><span class="label"><%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %></span>
-          </button>
+          <form id="form-<%= videoId %>" class="js-like-dislike-form">
+            <input type="radio" name="toggle-likes" id="like-<%= videoId %>" class="form_input--like visuallyhidden"<% if (liked) { %> checked="checked"<% } %>>
+            <label for="like-<%= videoId %>" class="button_primer button_command button_command--flexible button_gray button_command--thumbs_up js-like">
+              <span class="icon icon-like-2"></span>
+              <span class="visuallyhidden">Like</span>
+            </label><!--
+        --><input type="radio" name="toggle-likes" id="dislike-<%= videoId %>" class="form_input--dislike visuallyhidden"><!--
+        --><label for="dislike-<%= videoId %>" class="button_primer button_command button_command--flexible button_gray button_command--thumbs_down js-dislike js-track-event" data-ga_category="Frame" data-ca_action="Click dislike" data-ga_label="<%= userNickname %>">
+              <span class="icon icon-dislike"></span>
+              <span class="visuallyhidden">Dislike</span>
+            </label>
+          </form>
         </li>
-
       </ul>
     </div><!-- eo .persistent_video_info__foot -->
   </div><!-- eo .persistent_video_info__current-frame -->

@@ -6,6 +6,7 @@
 libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _currentFrameShortlink : null,
+  _liked : false,
 
   options : {
     eventTrackingCategory : 'Persistent Video Info' // what category events in this view will be tracked under
@@ -20,7 +21,9 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
     "click .persistent_video_info__current-frame  .js-navigate-creator"           : "_gotoCreator",
     "click .js-toggle-comment"                                                    : "_toggleComment",
     "click .js-next-video"                                                        : "_skipToNextVideo",
-    "click .js-goto-user-page"                                                    : "_goToUserPage"
+    "click .js-goto-user-page"                                                    : "_goToUserPage",
+    "change .js-like-dislike-form"                                                : "_onChangeForm"
+
   },
 
   initialize: function(){
@@ -104,6 +107,8 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       var isRecommendation = primaryDashboardEntry && primaryDashboardEntry.isRecommendationEntry();
       var isChannelRecommendation = primaryDashboardEntry && (primaryDashboardEntry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation);
 
+      console.log('liked', this._liked);
+
       this.$el.html(this.template({
         anonUserShareEmailBody  : emailBody,
         currentFrame            : this._currentFrame,
@@ -113,6 +118,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         frameGroup              : this._frameGroup,
         isChannelRecommendation : isChannelRecommendation,
         isRecommendation        : isRecommendation,
+        liked                   : this._liked,
         nextFrame               : this._nextFrame,
         queuedVideosModel       : this.options.queuedVideos,
         showNextFrame           : this.options.showNextFrame,
@@ -220,12 +226,11 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _queueFrame : function(frame, el){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-      frame.like({likeOrigin: this.options.eventTrackingCategory});
-      var $target = $(el.currentTarget);
-      $target.toggleClass('queued js-queued').find('.label').text('Liked');
-      $target.find('.icon').addClass('icon-like--red');
-    }
+    this._doLike();
+
+    var $target = $(el.currentTarget);
+    $target.toggleClass('queued js-queued').find('.label').text('Liked');
+    $target.find('.icon').addClass('icon-like--red');
   },
 
   _skipToNextVideo : function(){
@@ -259,6 +264,23 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _goToUserPage : function(e){
     shelby.router.navigate($(e.currentTarget).data('user_nickname'), {trigger:true});
+  },
+
+  _doLike : function(e) {
+    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
+      frame.like({likeOrigin: this.options.eventTrackingCategory});
+    }
+  },
+
+  _onChangeForm : function(e) {
+    if(e.target.id.split('-')[0] == 'like' && !this._liked) {
+      this._doLike();
+      this._liked = true;
+    }
+    else if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
+      this._removeFrame();
+      this._liked = false;
+    }
   }
 
 });

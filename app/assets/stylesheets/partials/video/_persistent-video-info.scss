@@ -254,23 +254,13 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
   .list__item {
   }
 
-  .button_command {
+  .button_command--roll {
     margin-right: 0.25em;
   }
-      .button_command--roll {
-      }
-      .button_command--queue {
-      }
-      .button_command--share {
-      }
-      .button_command--comment {
-      }
-      .button_command--twitter {
-      }
-      .button_command--facebook {
-      }
-      .button_command--email {
-      }
+    .button_command--thumbs_down {
+      margin-left: 0;
+      border-left: none;
+    }
       .icon {
         vertical-align: 0em;
       }
