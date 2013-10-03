@@ -42,12 +42,12 @@
           <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
             <form id="form-<%= videoId %>" class="js-like-dislike-form">
               <input type="radio" name="toggle-likes" id="like-<%= videoId %>" class="form_input--like visuallyhidden"<% if (liked) { %> checked="checked"<% } %>>
-              <label for="like-<%= videoId %>" class="button_primer button_command button_command--flexible button_gray button_command--thumbs_up js-like js-track-event" data-ga_category="Frame" data-ca_action="Click like" data-ga_label="<%= userNickname %>">
+              <label for="like-<%= videoId %>" class="button_primer button_command button_command--flexible button_gray button_command--thumbs_up js-like js-track-event" data-ga_category="Frame" data-ca_action="Click like" data-ga_label="<%= userNickname %>" title="Like">
                 <span class="icon icon-like-2"></span>
                 <span class="visuallyhidden">Like</span>
               </label><!--
           --><input type="radio" name="toggle-likes" id="dislike-<%= videoId %>" class="form_input--dislike visuallyhidden"><!--
-          --><label for="dislike-<%= videoId %>" class="button_primer button_command button_command--flexible button_gray button_command--thumbs_down js-dislike js-track-event" data-ga_category="Frame" data-ca_action="Click dislike" data-ga_label="<%= userNickname %>">
+          --><label for="dislike-<%= videoId %>" class="button_primer button_command button_command--flexible button_gray button_command--thumbs_down js-dislike js-track-event" data-ga_category="Frame" data-ca_action="Click dislike" data-ga_label="<%= userNickname %>" title="Dislike">
                 <span class="icon icon-dislike"></span>
                 <span class="visuallyhidden">Dislike</span>
               </label>
