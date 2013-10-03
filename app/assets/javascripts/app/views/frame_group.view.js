@@ -388,8 +388,11 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   _onChangeForm : function(e) {
     if(e.target.id.split('-')[0] == 'like' && !this._liked) {
       this._doLike();
-
       this._liked = true;
+    }
+    else if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
+      this._removeFrame();
+      this._liked = false;
     }
   }
 });
