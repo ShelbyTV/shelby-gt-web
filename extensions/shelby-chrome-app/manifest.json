@@ -1,0 +1,20 @@
+{
+  "name": "Shelby.tv",
+  "description": "Shelby.tv is the most amazing way to discover and enjoy web video.",
+  "version": "2.0.0",
+  "manifest_version": 2,
+  "app": {
+    "urls": [
+      "*://shelby.tv/"
+    ],
+    "launch": {
+      "web_url": "http://shelby.tv/?src=chrome-webstore"
+    }
+  },
+  "icons": {
+    "128": "shelby_logo_128.png"
+  },
+  "permissions": [
+    "notifications, geolocation"
+  ]
+}
