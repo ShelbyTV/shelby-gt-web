@@ -41,15 +41,18 @@
     var $buttonMain   = $('.js-cta'),
         $buttonHeader = $('.js-cta-header'),
         $header       = $('.js-header'),
-        $stream       = $('.js-stream');
+        $stream       = $('.js-stream'),
+        $iphone       = $('.js-iphone');
 
     var listening     = true;
 
     $(window).on('scroll',function(e){
       if($buttonMain.offset().top + $buttonMain.height() - $(this).scrollTop() - $header.height() > 0) {
         $buttonHeader.toggleClass('button_transparent',true);
+        $iphone.toggleClass('iphone--horizontal',false);
       } else {
         $buttonHeader.toggleClass('button_transparent',false);
+        $iphone.toggleClass('iphone--horizontal',true);
       }
 
       if($stream.offset().top/2 < $(this).scrollTop() && listening) {
