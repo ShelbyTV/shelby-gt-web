@@ -33,7 +33,7 @@ class MobileController < ApplicationController
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
 
-      d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
+      d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit, params[:entry])
       @dashboard = dedupe_dashboard(d)
     else
       redirect_to mobile_landing_path(:status =>"You must be logged in.")
