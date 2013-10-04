@@ -107,6 +107,13 @@ module Shelby
       put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}", { :body => attributes, :headers => headers })
     end
 
+    def self.log_session(id, cookie, token)
+      return unless user_signed_in?
+      headers = { 'Cookie' => cookie }
+      headers['X-CSRF-Token'] = token if token
+      put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}/visit", { , :headers => headers })
+    end
+
 
     # def self.generate_frame_route(roll_id, frame_id, protocol="http")
     def self.generate_frame_route(user_nickname, frame_id, protocol="http")
