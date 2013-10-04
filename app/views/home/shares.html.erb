@@ -76,6 +76,8 @@
             :video          => @video
           } %>
 
+      <div id="disqus_thread" style="max-width: 530px;margin: 1em auto;"></div>
+
       <%= render :partial => '/marketing/shares' if @is_mobile != 'iPhone' and !@user_signed_in %>
     </div>
   </div> <!-- eo ~application -->
@@ -119,5 +121,24 @@
   <% if ["production", "staging"].include? Rails.env %>
       <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://api.intercom.io/api/js/library.js';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}};})()</script>
   <% end %>
+  <script type="text/javascript">
+      var disqus_shortname = 'shelbytv';
+      var disqus_identifier = '<%= @frame["id"] %>';
+      var disqus_url = '<%= Settings::Application.url %>/<%= @user["nickname"] %>/shares/<%= @frame["id"] %>'
+
+      function disqus_config() {
+        this.callbacks.onNewComment = [function(comment) {
+          // make some API request to shelby to send a notification to owner of the frame
+          // we can access comment.text to have whats said, not who said it though.
+        }];
+      };
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
 </body>
 </html>
