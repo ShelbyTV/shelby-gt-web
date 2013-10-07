@@ -111,7 +111,7 @@ module Shelby
       return unless user_signed_in?
       headers = { 'Cookie' => cookie }
       headers['X-CSRF-Token'] = token if token
-      put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}/visit", { , :headers => headers })
+      put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}/visit", { :headers => headers })
     end
 
 
