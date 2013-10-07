@@ -207,6 +207,19 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles one-click unsubscribe from emails
+  #
+  # GET /preferences/email/unsubscribe?type=notifications
+  #
+  def unsubscribe
+    @user_signed_in = user_signed_in?
+    @signed_in_user = check_for_signed_in_user
+    @is_mobile = is_mobile?
+    @unsubscribe_type = params[:type]
+    # actually do the unsubscribe in here
+  end
+
+  ##
   # Handles "make the web" (allowing logged-out users to see it)
   #
   # GET /experience/:url
