@@ -128,8 +128,18 @@
 
       function disqus_config() {
         this.callbacks.onNewComment = [function(comment) {
-          // make some API request to shelby to send a notification to owner of the frame
-          // we can access comment.text to have whats said, not who said it though.
+          $(document).ready(function(){
+            // TODO: make some API request to shelby to send a notification to owner of the frame
+            // we can access comment.text to have whats said, not who said it though.
+
+            shelby.trackEx({
+              providers : ['ga', 'kmq'],
+              gaCategory : shelbyTrackingCategory,
+              gaAction : 'Comment on frame',
+              gaLabel : shelbyTrackingLabel || 'anonymous',
+              kmqName : 'Comment on frame on Share Page',
+            });
+          });
         }];
       };
 
