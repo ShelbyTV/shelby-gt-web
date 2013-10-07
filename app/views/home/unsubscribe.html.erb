@@ -20,7 +20,7 @@
   <link rel="icon"type="image/png" href="/favicon.png">
 
   <script>
-    var shelbyTrackingCategory = "Share Page",
+    var shelbyTrackingCategory = "Unsubscribe Page",
         shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname']}'" %>;
   </script>
 
@@ -62,7 +62,7 @@
       <div class="frame">
         <% if @user_signed_in %>
           <h1>You have been successfully unsubscribed from this Shelby.tv <%= @unsubscribe_type %></h1>
-          <p>Adjust your preferenecs at: <a href="shelby.tv/preferences/notifications">http://shelby.tv/preferences/notifications</a></p>
+          <p>Adjust your preferenecs at: <a href="<%= Settings::Application.url %>/preferences/notifications" class="js-track-event" data-ga_action="click link to change preferences in app">http://shelby.tv/preferences/notifications</a></p>
         <% else %>
             <h2 class="form_module--login-form">Log in to unsubscribe from this <%= @unsubscribe_type %></h2>
             <%= render :partial => '/objects/login_form' %>
