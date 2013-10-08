@@ -59,6 +59,10 @@
       color: darken($ui-white,33.333%);
     }
   }
+
+  &:focus {
+    outline: none;
+  }
 }
     .app_nav__button--inverted {
       color: $ui-black;
