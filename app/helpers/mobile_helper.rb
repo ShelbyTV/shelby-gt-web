@@ -58,4 +58,11 @@ module MobileHelper
     return frames
   end
 
+  def log_session
+    EM.next_tick {
+      r = Shelby::API.log_session(current_user_id, request.headers['HTTP_COOKIE'])
+      Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie']) if r
+    }
+  end
+
 end

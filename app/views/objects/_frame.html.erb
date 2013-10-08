@@ -1,3 +1,7 @@
+<% dbe = dbe ? dbe : nil %>
+<% avatar, userNickname = build_avatar_and_nickname(dbe, frame_owner) %>
+<% message = build_frame_message(frame) %>
+
 <article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame js-<%= frame['id']%>">
   <span class="frame-header js-frame-activate">
     <h1 class="frame-title" title="<%= video['title'] %>">
@@ -35,12 +39,8 @@
     </div><!-- eo .frame-body -->
 
     <footer class="media_module frame-footer clearfix">
-      <%
-        avatar = avatar_url_for_user(frame_owner)
-        userNickname = frame_owner['nickname']
-      %>
       <a href="<%= Settings::Mobile.mobile_subdirectory %>/<%= userNickname %>" class="js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
-        <span class="image_module media_image avatar avatar--<%= (is_mobile) ? 'small' : 'medium' %>" style="background-image: url(<%= avatar %>);" role="img">
+        <span class="image_module media_image avatar avatar--<%= (is_mobile) ? 'small' : 'medium' %><%= ' xuser-avatar--featured' if dbe and dbe['action'] == 34 %>" style="background-image: url(<%= avatar %>);" role="img">
           <img src="<%= avatar %>" class="cloaked">
         </span>
       </a>
@@ -51,13 +51,14 @@
         </span>
 
         <p class="xuser-data">
-          <a href="<%= Settings::Mobile.mobile_subdirectory %>/<%= userNickname %>" class="js-track-event no-faux-link" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>"<% if frame_owner['name'] %> title="<%= frame_owner['name'] %>"<%end%>><strong><%= userNickname %></strong></a>
+          <a href="<%= Settings::Mobile.mobile_subdirectory %>/<%= userNickname %>" class="js-track-event no-faux-link" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>"<% if frame_owner and frame_owner['name'] %> title="<%= frame_owner['name'] %>"<% end %>><strong><%= userNickname %></strong></a>
           <% if roll_type == Settings::Mobile.roll_types['stream'] && frame['originator'] && frame['originator']['nickname'] && frame['originator']['nickname'] != frame_owner['nickname'] %> <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <a class="no-faux-link js-track-event" href="<%= Settings::Mobile.mobile_subdirectory %>/<%= frame['originator']['nickname'] %>" title="<%= frame['originator']['name'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click via Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>"><%= frame['originator']['nickname'] %></a></span><% end %>
-          <% if frame_owner['user_type'] == 1 %><span class="xuser-data-timestamp xuser-data-timestamp--inline">via <%= frame_owner['authentications'].first['provider'].capitalize %></span><% end %>
+          <% if frame_owner and frame_owner['user_type'] == 1 %>
+            <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <%= frame_owner['authentications'].first['provider'].capitalize %></span>
+          <% end %>
         </p>
 
-        <% message = frame['conversation']['messages'][0]['text'] if frame['conversation'] and frame['conversation']['messages'] and frame['conversation']['messages'][0] %>
-        <p class="xuser-message<%= " line-clamp js-toggle-comment" if message and frame['conversation']['messages'][0]['text'].length > 265%>">
+        <p class="xuser-message<%= " line-clamp js-toggle-comment" if message and frame['conversation'] and frame['conversation']['messages'].length>0 and frame['conversation']['messages'][0]['text'].length > 265%>">
           <%= message %>
         </p>
       </div><!-- eo .media_body -->
@@ -87,7 +88,7 @@
         $(document).ready(function(){
           $(this).trigger({
             type:'frameLoaded',
-            frame_id: "<%= frame['id'] %>"
+            frame_id: "<%= frame['id'] || src_frame['id'] %>"
           });
         });
       </script>
