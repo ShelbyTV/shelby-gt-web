@@ -26,7 +26,7 @@
   <%= yield %>
 
     <script>
-      <% if Rails.env == 'production' %>
+      <% if ['production','staging'].include? Rails.env %>
         //Goog'
         var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
