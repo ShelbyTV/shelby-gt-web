@@ -257,7 +257,7 @@
           '<a href=""',
           'class="seovideo__link js-track-event" title=""',
           'data-ga_category="SEO Video"',
-          'data-ga_action=""',
+          'data-ga_action="Click on search result"',
           'data-ga_label="">',
           '<div class="related_video frame-body-wrapper clearfix">',
           '<div class="related_video__main">',
@@ -282,7 +282,8 @@
           $('.js-similar-video-list').empty();
           $.each(r.result.videos, function(index, video) {
             $newVideo = $(_listItem);
-            $newVideo.find('a').attr('href', '<%= Settings::Application.url  %>/video/'+video.provider_name+'/'+video.provider_id+'?s=1');
+            $newVideo.find('a').attr('href', '<%= Settings::Application.url  %>/video/'+video.provider_name+'/'+video.provider_id+'?s=1')
+              .attr('data-ga_label', video.title).attr('data-ga_value', index);
             $newVideo.find('.js-seovideo__thumbnail').css('background-image', 'url('+video.thumbnail_url+')');
             $newVideo.find('img').attr('src', video.thumbnail_url).attr('alt', video.title).attr('title',video.title);
             $newVideo.find('.js-seovideo-title').text(video.title);
