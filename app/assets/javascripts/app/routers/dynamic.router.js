@@ -444,17 +444,37 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
                 // if we're still showing the dashboard
                 if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
                   // if there are any recommendations available
-                  if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard && shelby.collections.dynamicRecommendations.length) {
-                    for (var i = 0; i < shelby.collections.dynamicRecommendations.length; i++) {
-                      // to get the dynamic dashboard entry to show up in the right place in the stream,
-                      // we need to give it an id just less than the item we want it to show up after
-                      var dbeToPlaceAfter = dbEntries.at(i * 2);
-                      var fakeDbeId = new ObjectId(dbeToPlaceAfter ? dbeToPlaceAfter.id : dbEntries.at(dbEntries[dbEntries.length - 1]).id);
-                      fakeDbeId.increment--;
-                      var fakeDbe = shelby.collections.dynamicRecommendations.at(i);
-                      fakeDbe.set('id', fakeDbeId.toString());
+                  var numRecsAvailable = shelby.collections.dynamicRecommendations.length;
+                  if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard && numRecsAvailable) {
+                    // for each slice of frame groups of size slice that doesn't already have a recommendation in it,
+                    // insert a new recommendation in the middle of the slice
+                    var numRecsPlaced = 0;
+                    var slicesExamined = 0;
+                    var sliceIncrement = 3;
+                    var frameGroupsCollection = shelby.models.playlistManager.get('playlistFrameGroupCollection');
+                    while ((numRecsPlaced < numRecsAvailable) && (sliceIncrement * slicesExamined < frameGroupsCollection.length)) {
+                      var startIndex = slicesExamined * sliceIncrement;
+                      var endIndex = startIndex + sliceIncrement;
+                      var slice = frameGroupsCollection.models.slice(startIndex, endIndex);
+                      var sliceContainsRecommendation = _(slice).find(function(frameGroup){
+                        return frameGroup.has('primaryDashboardEntry') && frameGroup.get('primaryDashboardEntry').isRecommendationEntry();
+                      });
 
-                      dbEntries.add(fakeDbe);
+                      slicesExamined++;
+
+                      if (!sliceContainsRecommendation) {
+                        // to get the dynamic dashboard entry to show up in the right place in the stream,
+                        // we need to give it an id just less than the item we want it to show up after
+                        var dbeToPlaceAfterId = slice[0].get('primaryDashboardEntry').id;
+                        var fakeDbeId = new ObjectId(dbeToPlaceAfterId);
+                        fakeDbeId.increment--;
+                        var fakeDbe = shelby.collections.dynamicRecommendations.at(numRecsPlaced);
+                        fakeDbe.set('id', fakeDbeId.toString());
+
+                        dbEntries.add(fakeDbe);
+                        numRecsPlaced++;
+                      }
+
                     }
                   }
                   // don't insert any more dynamic recommendations during this session
