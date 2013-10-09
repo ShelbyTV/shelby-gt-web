@@ -21,7 +21,7 @@
     var shelbyTrackingCategory = "SEO Video";
   </script>
 </head>
-<body class="shelby<%= 'shelf--user_signed_in' if @user_signed_in %><%= ' shelby--mobile' if @mobile_os %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %> shelby--seo">
+<body class="shelby<%= ' shelf--user_signed_in' if @user_signed_in %><%= ' shelby--mobile' if @mobile_os %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %> shelby--seo">
 
   <%= yield %>
 
