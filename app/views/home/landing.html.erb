@@ -45,7 +45,6 @@
   <div class="shelby__wrapper clearfix" role="main">
 
     <%= render :partial => '/home/landing_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
-    <img src="/images/full.png" style="position: absolute; z-index: 1; top:0; left: 0;" />
 
     <% #------------ Shelf Content --------------- %>
 
@@ -53,11 +52,12 @@
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
-      <%= render :partial => "/home/shelf/call_to_action" %>
-
       <%= render :partial => "/home/shelf/iphone" %>
+
+      <%= render :partial => "/home/shelf/call_to_action" %>
       <%= render :partial => "/home/shelf/stream" %>
       <%= render :partial => "/home/shelf/social" %>
+
       <%= render :partial => "/home/shelf/press" %>
       <%= render :partial => "/home/shelf/secondary_call_to_action" %>
     <% end %>

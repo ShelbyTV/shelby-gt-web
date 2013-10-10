@@ -1,31 +1,33 @@
-<div class="media_module shelf shelf--cta shelf--facebook-logged-out">
-  <div class="media_image shelf__lining one-half">
-    <h1 class="shelf__h1">
-        <%= raw Settings::Marketing.discover_and_enjoy %>
-    </h1>
+<div class="shelf__wrapper clearfix">
+  <div class="media_module shelf shelf--cta shelf--facebook-logged-out">
+    <div class="media_image shelf__lining one-half">
+      <h1 class="shelf__h1">
+          <%= raw Settings::Marketing.discover_and_enjoy %>
+      </h1>
 
-    <p class="shelf__block">
-      Imagine a new kind of TV with only one channel <br/>and it’s tuned just for you. Welcome to Shelby TV.
-    </p>
+      <p class="shelf__block">
+        Imagine a new kind of TV with only one channel <br/>and it’s tuned just for you. Welcome to Shelby TV.
+      </p>
 
-    <p class="shelf__block">
-      <a href="<%= @is_mobile ? @mobile_signup_url :  'http://api.shelby.tv/auth/facebook' %>" class="button_primer button_facebook-blue button_command button_command--sub button_command--facebook four-fifths shelf__button js-authorize js-authorize--facebook js-cta js-track-event"  data-popup_width="1000" data-popup_height="650" data-ga_action="Click Sign Up with Facebook" data-ga_label="Call to Action shelf">
-        <span class="icon icon-facebook"></span>
-        <span class="button_label">Sign Up with Facebook</span>
-      </a>
-      <% if !@is_mobile %>
-        <h3 class="shelf__email-signup">
-          or <a href="/signup" class="js-track-event" data-ga_action="Click Sign Up with Email Link" data-ga_label="Call to Action shelf">signup</a>  with your email
-        </h3>
-      <% end %>
-    </p>
+      <p class="shelf__block">
+        <a href="<%= @is_mobile ? @mobile_signup_url :  'http://api.shelby.tv/auth/facebook' %>" class="button_primer button_facebook-blue button_command button_command--sub button_command--facebook four-fifths shelf__button js-authorize js-authorize--facebook js-cta js-track-event"  data-popup_width="1000" data-popup_height="650" data-ga_action="Click Sign Up with Facebook" data-ga_label="Call to Action shelf">
+          <span class="icon icon-facebook"></span>
+          <span class="button_label">Sign Up with Facebook</span>
+        </a>
+        <% if !@is_mobile %>
+          <h3 class="shelf__email-signup">
+            or <a href="/signup" class="js-track-event" data-ga_action="Click Sign Up with Email Link" data-ga_label="Call to Action shelf">signup</a>  with your email
+          </h3>
+        <% end %>
+      </p>
 
-    <div class="facepile">
-      <iframe src="//www.facebook.com/plugins/facepile.php?app_id=115071338568035&amp;action&amp;max_rows=2&amp;size=medium&amp;show_count=true&amp;width=360&amp;colorscheme=light&amp;appId=115071338568035" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:360px;" allowTransparency="true"></iframe>
-    </div>
-  </div><!-- eo media_image -->
+      <div class="facepile">
+        <iframe src="//www.facebook.com/plugins/facepile.php?app_id=115071338568035&amp;action&amp;max_rows=2&amp;size=medium&amp;show_count=true&amp;width=360&amp;colorscheme=light&amp;appId=115071338568035" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:360px;" allowTransparency="true"></iframe>
+      </div>
+    </div><!-- eo media_image -->
 
-  <div class="media_body">
-    <img src="/images/landing/web.jpg" class="shelf__img--desktop" alt="Shelby.tv desktop screenshot" />
-  </div><!-- media_body -->
-</div><!-- eo shelf media_body -->
+    <div class="media_body">
+      <img src="/images/landing/iphone-1.png" class="shelf__img--iphone cloaked" alt="Shelby.tv ios screenshot" />
+    </div><!-- media_body -->
+  </div><!-- eo shelf media_body -->
+</div>

@@ -48,6 +48,81 @@
 //  Block
 //------------------------------------------------------------------------------
 
+.shelf__wrapper {
+  background-color: $ui-white;
+
+  .shelf {
+    background-color: transparent;
+    border: none;
+  }
+}
+        .shelf__wrapper--iphone {
+          background: transparent;
+          left: 0;
+          position: fixed;
+          -webkit-transform: translateZ(0);
+             -moz-transform: translateZ(0);
+              -ms-transform: translateZ(0);
+                  transform: translateZ(0);
+          top: 70px;
+          width: 100%;
+          z-index: 1;
+          //non-normative
+          .iphone {
+            float: right;
+            margin-right: 40px;
+    //         margin-top: 10px;
+            margin-top: 60px;
+            position: relative;
+            padding-top: 57.8%;
+            -webkit-transition: all .5s;
+            width: 259px;
+
+            img {
+              position: absolute;
+              left: 0;
+              top: 0;
+
+              &:first-child {
+                opacity: 1;
+              }
+              &:last-child {
+                opacity: 0;
+              }
+            }
+          }
+          .iphone--horizontal {
+            margin-right: 360px;
+    //         margin-top: 100px;
+            margin-top: 200px;
+            -webkit-transform: rotate(-90deg);
+
+            img {
+              &:first-child {
+                opacity: 0;
+              }
+              &:last-child {
+                opacity: 1;
+              }
+            }
+          }
+        }
+        .shelf__wrapper--stream {
+          background-image: url(/images/landing/bg-2.jpg);
+          background-repeat: no-repeat;
+          background-position: center center;
+          -webkit-background-size: cover;
+          background-size: cover;
+        }
+        .shelf__wrapper--social {
+          text-align: center;
+          .shelf__lining {
+            margin: 0 auto;
+          }
+          .shelf__img--iphone {
+          }
+        }
+
 .shelf {
   background-color: $ui-white;
   border: 1px solid $inset;
@@ -55,6 +130,11 @@
   margin: 1em auto;
   width: 944px;
 }
+    .shelf--fill {
+      border: none;
+      width: 100%;
+      height: 900px;
+    }
     .shelf--error {
       border: 1px solid $ui-red;
       color: $ui-red;
@@ -103,7 +183,7 @@
         }
       }
 
-      height: 500px;
+      // height: 500px;
 
       .shelf__lining {
         padding-top: 4em;
@@ -119,10 +199,9 @@
         margin-top: 1.5em;
       }
 
-      .shelf__img--desktop {
-        bottom: 0;
-        position: absolute;
-        right: 0;
+      .shelf__img--iphone {
+        float: right;
+        margin: 65px 39px;
       }
 
       .shelf__email-signup {
@@ -130,36 +209,6 @@
         @include basefont;
         font-size: 0.8em;
         margin-top: -0.5em;
-      }
-    }
-    .shelf__wrapper--iphone {
-      background: transparent;
-      left: 0;
-      position: fixed;
-      -webkit-transform: translateZ(0);
-         -moz-transform: translateZ(0);
-          -ms-transform: translateZ(0);
-              transform: translateZ(0);
-      top: 70px;
-      width: 100%;
-      z-index: 1;
-      //non-normative
-      .iphone {
-        background-color: black;
-        border-radius: 50px;
-        height: 546px;
-        float: right;
-        margin-right: 40px;
-//         margin-top: 10px;
-        margin-top: 60px;
-        -webkit-transition: all .5s;
-        width: 259px;
-      }
-      .iphone--horizontal {
-        margin-right: 360px;
-//         margin-top: 100px;
-        margin-top: 200px;
-        -webkit-transform: rotate(-90deg);
       }
     }
     .shelf--iphone {
@@ -227,79 +276,6 @@
       }
     }
 
-    .css-vertical-pan {
-      -webkit-animation: vertical-pan 98s infinite; /* Chrome, Safari 5+ */
-         -moz-animation: vertical-pan 98s infinite; /* Firefox 5-15 */
-           -o-animation: vertical-pan 98s infinite; /* Opera 12.00 */
-              animation: vertical-pan 98s infinite; /* Chrome, Firefox 16+, IE 10+, Opera 12.10+ */
-
-      -webkit-animation-timing-function: linear;
-         -moz-animation-timing-function: linear;
-           -o-animation-timing-function: linear;
-              animation-timing-function: linear;
-
-      -webkit-backface-visibility: hidden;
-              -webkit-perspective: 1000;
-
-      -webkit-transform: rotateZ(0deg);  -webkit-transform-style: preserve-3d;
-         -moz-transform: rotateZ(0deg);     -moz-transform-style: preserve-3d;
-          -ms-transform: rotateZ(0deg);      -ms-transform-style: preserve-3d;
-              transform: rotateZ(0deg);          transform-style: preserve-3d;
-    }
-
-    @-webkit-keyframes vertical-pan {
-      0%   { background-position: center 0; }
-      50%  { background-position: center 100%; }
-      100% { background-position: center 0; }
-    }
-    @-moz-keyframes vertical-pan {
-      0%   { background-position: center 0; }
-      50%  { background-position: center 100%; }
-      100% { background-position: center 0; }
-    }
-    @-o-keyframes vertical-pan {
-      0%   { background-position: center 0; }
-      50%  { background-position: center 100%; }
-      100% { background-position: center 0; }
-    }
-    @keyframes vertical-pan {
-      0%   { background-position: center 0; }
-      50%  { background-position: center 100%; }
-      100% { background-position: center 0; }
-    }
-    .shelf--stream {
-      height: 437px;
-
-      .shelf__h1 {
-        margin-top: 3.2em;
-      }
-
-      .shelf__img--stream {
-        background-image: url('/images/landing/stream.jpg');
-        background-repeat: none;
-        background-position: top center;
-        -webkit-background-size: 100%;
-        background-size: 100%;
-        margin: 0 1em 0 3em;
-        width: 384px;
-        height: 435px;
-
-        .img {
-          margin: 0 2em;
-          max-width: 100%;
-        }
-      }
-      .shelf__img--sources {
-        margin: 2em 0;
-        max-width: 100%;
-      }
-
-      //non-normative
-      .media_module {
-        height: inherit;
-      }
-    }
-
     .shelf--social {
       .shelf__h1 {
         margin-top: 2.5em;
@@ -308,7 +284,12 @@
           margin: 4em auto;
         }
     }
-
+    .shelf--stream {
+      .shelf__img--iphone {
+        float: right;
+        margin: 65px 39px;
+      }
+    }
     .shelf--press {
       text-align: center;
 
