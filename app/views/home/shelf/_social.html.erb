@@ -4,16 +4,16 @@
 
       <div class="shelf__lining two-thirds">
         <h2 class="shelf__h1">
-          Like a vidoe channel personalized for you. <br />
+          <%= raw Settings::Marketing.social %>
         </h2>
 
         <p class="shelf__block">
-          And it gets to know your tastes the more you Share and Like. <a href="#">Learn More</a>
+          <%= raw Settings::Marketing.social_body %><a href="#">Learn More</a>
         </p>
 
         <p class="shelf__block">
           <button class="button_primer button_command button_command--flexible button_green">
-            Get the App
+            <%= raw Settings::Marketing.social_cta %>
           </button>
         </p>
       </div>
