@@ -21,14 +21,14 @@
     var shelbyTrackingCategory = "SEO Video";
   </script>
 </head>
-<body class="shelby<%= 'shelf--user_signed_in' if @user_signed_in %><%= ' shelby--mobile' if @mobile_os %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %> shelby--seo">
+<body class="shelby<%= ' shelf--user_signed_in' if @user_signed_in %><%= ' shelby--mobile' if @mobile_os %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %> shelby--seo">
 
   <%= yield %>
 
     <script>
-      <% if Rails.env == 'production' %>
+      <% if ['production','staging'].include? Rails.env %>
         //Goog'
-        var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
+        var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s);}(document,'script'));
