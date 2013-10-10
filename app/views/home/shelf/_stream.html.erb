@@ -1,13 +1,13 @@
 <div class="shelf__wrapper shelf__wrapper--stream clearfix">
   <div class="shelf shelf--stream clearfix">
     <div class="media_module media_module--bare clearfix">
-      <div class="media_image shelf__lining">
-        <h2 class="shelf__h1">
-          <%= Settings::Marketing.stream %>
+      <div class="media_image shelf__lining two-thirds">
+        <h2 class="shelf__h1 js-target">
+          <%= raw Settings::Marketing.stream %>
         </h2>
 
         <p class="shelf__block">
-          <%= Settings::Marketing.stream_body %>
+          <%= raw Settings::Marketing.stream_body %>
         </p>
       </div>
 

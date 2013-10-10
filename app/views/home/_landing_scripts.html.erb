@@ -43,21 +43,38 @@
         $header       = $('.js-header'),
         $stream       = $('.js-stream'),
         $iphone       = $('.js-iphone');
+        $target       = $('.js-target');
 
     var listening     = true;
 
     $(window).on('scroll',function(e){
       if($buttonMain.offset().top + $buttonMain.height() - $(this).scrollTop() - $header.height() > 0) {
         $buttonHeader.toggleClass('button_transparent',true);
-        $iphone.toggleClass('iphone--horizontal',false);
       } else {
         $buttonHeader.toggleClass('button_transparent',false);
-        $iphone.toggleClass('iphone--horizontal',true);
       }
+/*
+        el.offset().top     == position from top of document, is not affected by 'scoll' event.
+        el.height()         == height of el
+     + ____________
+        basically the bottom of the button Y pos.
 
-      if($stream.offset().top/2 < $(this).scrollTop() && listening) {
-        $stream.addClass('css-vertical-pan');
-        listening = false;
+        $(this).scrollTop() == window == $(this), as you scroll ^ up, number increases
+        el.height()         == height of height
+     -____________________
+        basically offsetting scroll height by the height of the header.
+
+     total
+
+      if the scroll top is larger than zero, meaning, the target el has to
+*/
+
+      console.log('-------',$target.offset().top + $target.height() - $(this).scrollTop() - $header.height());
+
+      if($target.offset().top + $target.height() - $(this).scrollTop() - $header.height() > 0) {
+        $iphone.toggleClass('iphone--horizontal',false);
+      } else {
+        $iphone.toggleClass('iphone--horizontal',true);
       }
     });
   });

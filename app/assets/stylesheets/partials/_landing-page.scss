@@ -71,40 +71,26 @@
           .iphone {
             float: right;
             margin-right: 40px;
-    //         margin-top: 10px;
             margin-top: 60px;
             position: relative;
             padding-top: 57.8%;
-            -webkit-transition: all .5s;
+            -webkit-transition: all .25s;
             width: 259px;
 
             img {
-
-              position: absolute;
               left: 0;
+              opacity: 1;
+              position: absolute;
               top: 0;
-
-              &:first-child {
-                opacity: 1;
-              }
-              &:last-child {
-                opacity: 0;
-              }
             }
           }
           .iphone--horizontal {
-            margin-right: 360px;
-    //         margin-top: 100px;
+            margin-right: 340px;
             margin-top: 200px;
             -webkit-transform: rotate(-90deg);
 
             img {
-              &:first-child {
-                opacity: 0;
-              }
-              &:last-child {
-                opacity: 1;
-              }
+              opacity: 0;
             }
           }
         }
@@ -281,11 +267,13 @@
       .shelf__h1 {
         margin-top: 2.5em;
       }
-        .shelf__img {
-          margin: 4em auto;
+        .shelf__img--iphone {
+          -webkit-transform: rotate(-90deg);
         }
     }
     .shelf--stream {
+      color: $ui-white;
+
       .shelf__img--iphone {
         float: right;
         margin: 65px 39px;
