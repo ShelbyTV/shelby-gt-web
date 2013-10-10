@@ -240,6 +240,12 @@ class HomeController < ApplicationController
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 
+
+  # THIS IS A TEMPORARY
+  def bookmarklet
+
+  end
+
   private
 
     def init_ab_tests
