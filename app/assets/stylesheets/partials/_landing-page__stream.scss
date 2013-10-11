@@ -20,4 +20,16 @@
   .shelf__h1 {
     margin-top: 200px;
   }
+  .shelf__block {
+    margin-bottom: 30px;
+  }
+
+  .shelf__list {
+
+    img {
+      @include roundies(input);
+
+      margin-right: 7px;
+    }
+  }
 }
