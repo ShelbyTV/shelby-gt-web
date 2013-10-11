@@ -1,0 +1,46 @@
+//------------------------------------------------------------------------------
+//  Block
+//------------------------------------------------------------------------------
+.shelf__wrapper {
+  background-color: $ui-white;
+
+  .shelf {
+    background-color: transparent;
+    border: none;
+  }
+}
+
+.shelf {
+  background-color: $ui-white;
+  border: 1px solid $inset;
+  font-size: 1.5em;
+  margin: 1em auto;
+  width: 1200px;
+}
+
+//------------------------------------------------------------------------------
+//  Elements
+//------------------------------------------------------------------------------
+.shelf__lining {
+  padding: 0.7em 3em;
+}
+
+.shelf__h1 {
+  font-size: 2.2em;
+  margin-bottom: 1em;
+}
+
+.shelf__h2 {
+  margin-bottom: 1em;
+}
+
+.shelf__block {
+  color: #777;
+  line-height: 1.5;
+}
+
+.shelf__link {
+  &:hover {
+    text-decoration: underline;
+  }
+}
