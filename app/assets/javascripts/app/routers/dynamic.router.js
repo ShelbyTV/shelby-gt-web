@@ -13,7 +13,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "user/:id/personal_roll"                       : "displayUserPersonalRoll",
     "community"                                    : "displayCommunityChannel",
     "community/:entryId"                           : "displayEntryInCommunityChannel",
-    "featured"                                    : "displayFeaturedChannel",
+    "featured"                                     : "displayFeaturedChannel",
     "channels"                                     : "displayChannel",
     "channels/:channel"                            : "displayChannel",
     "channels/:channel/:entryId"                   : "displayEntryInChannel",
