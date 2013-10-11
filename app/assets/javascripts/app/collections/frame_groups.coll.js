@@ -82,24 +82,19 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
          var entryToCheck = this.at(j);
          var pdbeToCheck = entryToCheck.get('primaryDashboardEntry');
          var areSameVideo = entryToCheck.getFirstFrame().get('video').id == video_id;
-         var neitherAreClientSideVideoRecs = !dashboard_entry ||
-                                   ((!dashboard_entry.isRecommendationEntry() || !dashboard_entry.hasClientSideFrame()) &&
-                                    (!pdbeToCheck.isRecommendationEntry() || !pdbeToCheck.hasClientSideFrame()));
-         if (areSameVideo && neitherAreClientSideVideoRecs) {
-
-            var isChannelRecommendation = dashboard_entry && dashboard_entry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation;
-            var activeFrameModel = shelby.models.guide.get('activeFrameModel');
-            var thisFrameIsPlaying = frame && activeFrameModel && (frame.id == activeFrameModel.id);
-            // for channel recommendations, reposition the framegroup at the position where we wanted to insert the recommendation,
-            // unless that frame is playing right now
-            var doRepositionFrameGroup = isChannelRecommendation && !thisFrameIsPlaying;
-            if (doRepositionFrameGroup) {
-              Backbone.Collection.prototype.remove.call(this, entryToCheck);
-            }
+         var neitherAreVideoRecs = !dashboard_entry ||
+                                   (!dashboard_entry.isRecommendationEntry() && !pdbeToCheck.isRecommendationEntry());
+         var oneIsDynamicChannelRec =
+          dashboard_entry &&
+          (
+            (dashboard_entry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation &&
+             dashboard_entry.constructor == libs.shelbyGT.ClientSideDashboardEntryWithRealFrameModel)
+            ||
+            (pdbeToCheck.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation &&
+             pdbeToCheck.constructor == libs.shelbyGT.ClientSideDashboardEntryWithRealFrameModel)
+          );
+         if (areSameVideo && (neitherAreVideoRecs || oneIsDynamicChannelRec)) {
             entryToCheck.add(frame, dashboard_entry, options);
-            if (doRepositionFrameGroup) {
-              Backbone.Collection.prototype.add.call(this, entryToCheck, options);
-            }
             dupe = true;
          }
       }

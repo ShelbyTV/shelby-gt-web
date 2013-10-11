@@ -34,24 +34,24 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
         frame.get('video').bind('change:last_unplayable_at', this._handleVideoPlayability, this);
         this._handleVideoPlayability(frame.get('video'));
      } else {
-        // make sure we don't already have this...
-        for (var i = 0; i < this.get('frames').length; i++) {
-           if (this.get('frames').at(i).get('id') == frame.get('id')) {
-              // if this is a channel recommendation, make that the primary dashboard entry for
-              // the presented frame so it will be presented as a recommendation
-              if (dashboard_entry && dashboard_entry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation) {
-                for (var j = 0; j < this.get('frames').length; j++) {
-                  this.get('frames').at(j)._primaryDashboardEntry = dashboard_entry;
-                }
-                this.set('primaryDashboardEntry', dashboard_entry);
-              }
-              return;
-           }
+        var dbeIsChannelRec = dashboard_entry && dashboard_entry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation;
+        var groupFrames = this.get('frames');
+        var existingFrame = groupFrames.get(frame.id);
+        if (!existingFrame) {
+          groupFrames.add(frame, options);
         }
-        // guess we don't have this frame yet
-        this.get('frames').add(frame, options);
-        //see the comment in frame.model.js to understand what we're doing with frame._primaryDashboardEntry
-        frame._primaryDashboardEntry = this.get('primaryDashboardEntry');
+        if (!dbeIsChannelRec) {
+          if (!existingFrame) {
+            //see the comment in frame.model.js to understand what we're doing with frame._primaryDashboardEntry
+            frame._primaryDashboardEntry = this.get('primaryDashboardEntry');
+          }
+        } else {
+          // if the incoming dbe is a channel recommendation, we have to modify the frame group to display as a recommendation
+          groupFrames.each(function(frame){
+            frame._primaryDashboardEntry = dashboard_entry;
+          })
+          this.set('primaryDashboardEntry', dashboard_entry);
+        }
      }
   },
 
