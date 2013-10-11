@@ -38,11 +38,9 @@
     } catch(e) {}
 
     //button cache
-    var $header       = $('.js-header'),
-        $iphone       = $('.js-iphone');
-        $target       = $('.js-target');
-
-    var listening     = true;
+    var $header = $('.js-header'),
+        $iphone = $('.js-iphone');
+        $target = $('.js-target');
 
     $(window).on('scroll',function(e){
       //once the target scrolls off the page, do something, else undo something.
@@ -50,6 +48,7 @@
         $iphone.toggleClass('iphone--horizontal',false);
       } else {
         $iphone.toggleClass('iphone--horizontal',true);
+
       }
     });
   });

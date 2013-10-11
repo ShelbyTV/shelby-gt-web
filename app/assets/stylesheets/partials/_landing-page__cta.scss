@@ -1,4 +1,8 @@
 .shelf--cta {
+  background-image: url(/images/landing/bg-1.jpg);
+  background-position: 86% 71%;
+  background-repeat: no-repeat;
+
   &.shelf--facebook-logged-out {
     .shelf__h1 {
       margin-top: 2em;
@@ -8,7 +12,7 @@
     }
 
     .appstore {
-      margin-top: 150px;
+      margin-top: 200px;
     }
   }
 

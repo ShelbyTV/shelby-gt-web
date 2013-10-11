@@ -40,30 +40,7 @@
   padding-top: 2em;
 }
 
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//  Block
-//------------------------------------------------------------------------------
-.shelf__wrapper {
-  background-color: $ui-white;
-
-  .shelf {
-    background-color: transparent;
-    border: none;
-  }
-}
-
-.shelf {
-  background-color: $ui-white;
-  border: 1px solid $inset;
-  font-size: 1.5em;
-  margin: 1em auto;
-  width: 944px;
-}
-
+@import "partials/landing-page__shelf";
 @import "partials/landing-page__error";
 @import "partials/landing-page__fill";
 @import "partials/landing-page__iphone";
@@ -74,35 +51,10 @@
 @import "partials/landing-page__signup";
 @import "partials/landing-page__stream";
 @import "partials/landing-page__social";
-@import "partials/landing-page__slogan";
+// 10/11/2013
+// @import "partials/landing-page__slogan";
 @import "partials/landing-page__team";
 
-//------------------------------------------------------------------------------
-//  Elements
-//------------------------------------------------------------------------------
-.shelf__lining {
-  padding: 0.7em 3em;
-}
-
-.shelf__h1 {
-  font-size: 2.2em;
-  margin-bottom: 1em;
-}
-
-.shelf__h2 {
-  margin-bottom: 1em;
-}
-
-.shelf__block {
-  color: #777;
-  line-height: 1.5;
-}
-
-.shelf__link {
-  &:hover {
-    text-decoration: underline;
-  }
-}
 ////////////////////////////////////////
 //the footer isn't actually a shelf
 .shelby__foot {

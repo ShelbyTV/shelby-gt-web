@@ -7,13 +7,13 @@ defaults: &defaults
 
   cta: "Discovering new videos for you every day"
   cta_body: "Imagine a new kind of TV with only one channel <br/>and it’s tuned just for you. Welcome to Shelby TV."
+  cta_button: "Get the App"
 
   stream: "Your perfect video stream. <br/>Powered by your favorite people and networks."
   stream_body: "Shelby TV takes videos from across the web and organizes them based on importance to you. Our recommendations get better the more you watch."
 
   social: "Like a video channel personalized for you."
   social_body: "And it gets to know your tastes the more you Share and Like."
-  social_cta: "Get the App"
 development:
   <<: *defaults
 
