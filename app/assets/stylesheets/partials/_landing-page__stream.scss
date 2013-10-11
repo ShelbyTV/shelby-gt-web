@@ -1,0 +1,23 @@
+.shelf__wrapper--stream {
+  background-image: url(/images/landing/bg-2.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.shelf--stream {
+  &,
+  .shelf__block {
+    color: $ui-white;
+  }
+
+  .shelf__img--iphone {
+    float: right;
+    margin: 65px 39px;
+  }
+
+  .shelf__h1 {
+    margin-top: 200px;
+  }
+}

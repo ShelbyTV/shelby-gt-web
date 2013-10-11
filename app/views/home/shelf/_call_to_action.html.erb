@@ -14,16 +14,21 @@
           <span class="icon icon-facebook"></span>
           <span class="button_label">Sign Up with Facebook</span>
         </a>
-        <% if !@is_mobile %>
-          <h3 class="shelf__email-signup">
-            or <a href="/signup" class="js-track-event" data-ga_action="Click Sign Up with Email Link" data-ga_label="Call to Action shelf">signup</a>  with your email
-          </h3>
-        <% end %>
       </p>
+
+        <% if !@is_mobile %>
+          <p class="shelf__email-signup">
+            or <a href="/signup" class="js-track-event" data-ga_action="Click Sign Up with Email Link" data-ga_label="Call to Action shelf">signup</a>  with your email
+          </p>
+        <% end %>
 
       <div class="facepile">
         <iframe src="//www.facebook.com/plugins/facepile.php?app_id=115071338568035&amp;action&amp;max_rows=2&amp;size=medium&amp;show_count=true&amp;width=360&amp;colorscheme=light&amp;appId=115071338568035" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:360px;" allowTransparency="true"></iframe>
       </div>
+
+      <a href="#" class="appstore">
+        <img src="/images/landing/appstore-badge.png" />
+      </a>
     </div><!-- eo media_image -->
 
     <div class="media_body">

@@ -1,0 +1,55 @@
+.shelf__wrapper--iphone {
+  background: transparent;
+  left: 0;
+  position: fixed;
+  -webkit-transform: translateZ(0);
+     -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+          transform: translateZ(0);
+  top: 70px;
+  width: 100%;
+  z-index: 1;
+  //non-normative
+  .iphone {
+    float: right;
+    margin-right: 40px;
+    margin-top: 60px;
+    position: relative;
+    padding-top: 57.8%;
+    -webkit-transition: all .25s;
+    width: 259px;
+
+    img {
+      left: 0;
+      position: absolute;
+      top: 0;
+
+      &:first-child {
+        opacity: 1;
+      }
+      &:last-child {
+        opacity: 0;
+      }
+    }
+  }
+  .iphone--horizontal {
+    margin-right: 340px;
+    margin-top: 200px;
+    -webkit-transform: rotate(-90deg);
+
+    img {
+      &:first-child {
+        opacity: 0;
+      }
+      &:last-child {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.shelf--iphone {
+  background-color:transparent;
+  border: none;
+  margin: 20px auto 0;
+}

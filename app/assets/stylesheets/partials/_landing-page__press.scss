@@ -1,0 +1,20 @@
+.shelf--press {
+  text-align: center;
+
+  .shelf__img {
+    height: 40px;
+    display: block;
+    -webkit-background-size: auto;
+    background-size: auto;
+  }
+  .shelf__img--mashable {
+    background-image: url('/images/landing/mashable.png');
+  }
+  .shelf__img--tnw {
+    background-image: url('/images/landing/tnw.png');
+  }
+  .shelf__img--tc {
+    background-image: url('/images/landing/tc.png');
+  }
+}
+

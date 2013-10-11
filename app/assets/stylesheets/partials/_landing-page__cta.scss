@@ -1,0 +1,44 @@
+.shelf--cta {
+  &.shelf--facebook-logged-out {
+    .shelf__h1 {
+      margin-top: 2em;
+    }
+    .facepile {
+      display: none;
+    }
+
+    .appstore {
+      margin-top: 150px;
+    }
+  }
+
+  .shelf__lining {
+    padding-top: 4em;
+    padding-left: 3.5em;
+  }
+
+  .shelf__button {
+    font-size: 1.3em;
+    margin-top: 0.7em;
+  }
+
+  .facepile {
+    margin-top: 1.5em;
+  }
+
+  .appstore {
+    display: block;
+  }
+
+  .shelf__img--iphone {
+    float: right;
+    margin: 65px 39px;
+  }
+
+  .shelf__email-signup {
+    color: lighten($text,20%);
+    @include basefont;
+    font-size: 0.8em;
+    margin-top: -0.5em;
+  }
+}
