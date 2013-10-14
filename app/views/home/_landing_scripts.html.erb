@@ -42,9 +42,34 @@
         $iphone           = $('.js-iphone');
         $target           = $('.js-target'),
         $horizontalIphone = $('.js-horz-iphone'),
+        $nav              = $('.js-slide-navigator'),
         isHorizontal      = false;
 
+    var shelf = {
+      cta    : $('#intro').offset().top,
+      stream : $('#stream').offset().top,
+      social : $('#social').offset().top,
+      active : function($window) {
+        var index,
+            cursor = $window.scrollTop() + 100,
+            activeClass = 'list__item--selected';
+
+        if( cursor < this.stream ) {
+          index = 0;
+        } else if ( cursor > this.stream && cursor < this.social ) {
+          index = 1;
+        } else if (cursor > this.social ) {
+          index = 2;
+        }
+
+        $nav.children().siblings().removeClass(activeClass).eq(index).addClass(activeClass);
+      }
+    };
+
+
     $(window).on('scroll',function(e){
+      //handling for 'active' slideshow dot
+      shelf.active($(this));
       //once the target scrolls off the page, do something, else undo something.
       if($target.offset().top + $target.height() - $(this).scrollTop() - $header.height() > 0) {
         $iphone.toggleClass('iphone--horizontal cloaked',false);

@@ -26,16 +26,25 @@
 
 */
 
-.slide_navigator {}
+.slide_navigator {
+  .list__item--selected {
+    .slide_navigator__button {
+      background-color: darken($ui-gray,50%);
+      border-width: 2px;
+      opacity: 0.8;
+    }
+  }
+}
 
   .slide_navigator__button {
     $_circle: 15px;
 
-    background-color: $ui-gray;
-    border: 1px solid darken($ui-gray, 10%);
+    background-color: darken($ui-gray,20%);
+    border: 1px solid $ui-white;
     border-radius: $_circle / 2;
     display: block;
     height: $_circle;
     margin-bottom: 8px;
+    opacity: 0.4;
     width: $_circle;
   }
