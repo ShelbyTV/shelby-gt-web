@@ -32,6 +32,10 @@
       background-color: darken($ui-gray,50%);
       border-width: 2px;
       opacity: 0.8;
+
+      &:active {
+        background-color: $ui-black;
+      }
     }
   }
 }
@@ -47,4 +51,12 @@
     margin-bottom: 8px;
     opacity: 0.4;
     width: $_circle;
+
+    &:hover {
+      opacity: 1;
+      border-color: $ui-black;
+    }
+    &:active {
+      background-color: darken($ui-gray,75%);
+    }
   }
