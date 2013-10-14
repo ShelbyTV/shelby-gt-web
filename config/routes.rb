@@ -77,6 +77,9 @@ ShelbyGtWeb::Application.routes.draw do
   #SHARES
   get '/:user_id_or_nickname/shares(/:frame_id)' => "home#shares", :constraints => { :user_id_or_nickname => /[^\/]+/ }
 
+  # ONE CLICK UNSUBSCRIBE
+  get '/preferences/email/unsubscribe' => "home#unsubscribe"
+
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'
   get '/embed/:frame_id' => 'turbo_embed#embed'

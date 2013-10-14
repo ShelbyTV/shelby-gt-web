@@ -1,7 +1,7 @@
 require 'shelby_api'
 
 class HomeController < ApplicationController
-
+  include MobileHelper
   helper :meta_tag
 
   before_filter :init_ab_tests
@@ -203,6 +203,22 @@ class HomeController < ApplicationController
       render '/home/shares'
     else
       render '/home/app'
+    end
+  end
+
+  ##
+  # Handles one-click unsubscribe from emails
+  #
+  # GET /preferences/email/unsubscribe?type={weekly-email}
+  #
+  def unsubscribe
+    @user_signed_in = user_signed_in?
+    @signed_in_user = check_for_signed_in_user
+    @is_mobile = is_mobile?
+    @unsubscribe_type = params[:type]
+    if @user_signed_in and (@unsubscribe_type == "weekly-email") and (preferences = @signed_in_user['preferences'])
+      preferences['email_updates'] = false
+      EM.next_tick { update_user(@signed_in_user, {:preferences=>preferences}) }
     end
   end
 

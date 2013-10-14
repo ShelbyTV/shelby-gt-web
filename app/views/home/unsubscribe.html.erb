@@ -1,0 +1,110 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<%# if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+  <%= render :partial => "/home/meta_info" %>
+  <meta charset="utf-8">
+  <title>
+    <%= render :partial => "/home/title_tag" %>
+  </title>
+
+  <meta name="csrf-token" content="<%= csrf_token_from_cookie %>">
+  <meta name="rhombus-auth" content="<%= 'Basic '+Base64.strict_encode64('shelby:_rhombus_gt') %>">
+
+  <meta content="user-scalable=no, width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link rel="icon"type="image/png" href="/favicon.png">
+
+  <script>
+    var shelbyTrackingCategory = "Unsubscribe Page",
+        shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname']}'" %>;
+  </script>
+
+  <%= stylesheet_link_tag "mobile", :media => "screen" %>
+  <script>
+    if (typeof(shelby) == 'undefined') {
+      shelby = {};
+    }
+    if (typeof(shelby.abTests) == 'undefined') {
+      shelby.abTests = {};
+    }
+    <% vanity_experiments.each do |name, alternative| %>
+      shelby.abTests.<%= name.to_s.camelize(:lower) %> = '<%= alternative.value %>';
+    <% end %>
+  </script>
+  <%= javascript_include_tag "shares" %>
+  <script id="js-user-model" type="application/json"><%= raw @signed_in_user.to_json %></script>
+
+  <%= render :partial => '/objects/noscript' %>
+</head>
+
+<body class="shelby shelby--shares shelby--unsubscribe<%= ' shelby--mobile' if @is_mobile %>" data-personal_roll_id="<%= (@signed_in_user) ? @signed_in_user['personal_roll_id'] : 'null' %>" data-user_name="<%= (@signed_in_user) ? @signed_in_user['nickname'] : 'anonymous' %>">
+
+  <div id="js-shelby-wrapper" class="shelby-wrapper clearfix">
+    <header id="js-header" class="animate_module js-app-header shelby-header clearfix js-inactivity-preemption" role="banner">
+      <%= render :partial => '/home/app_header',
+          :locals => {
+            :show_login     => false,
+            :signed_in_user => @signed_in_user,
+            :is_mobile      => @is_mobile,
+            :pathname       => "",
+            :ga_category    => "Unsubscribe Page",
+            :user_signed_in => @user_signed_in
+          } %>
+    </header>
+
+    <div class="content_wrapper" role="main">
+
+      <div class="frame">
+        <% if @user_signed_in %>
+          <h1>You have been successfully unsubscribed from this Shelby.tv <%= @unsubscribe_type %></h1>
+          <p>Adjust your preferenecs at: <a href="<%= Settings::Application.url %>/preferences/notifications" class="js-track-event" data-ga_action="click link to change preferences in app">http://shelby.tv/preferences/notifications</a></p>
+        <% else %>
+            <h2 class="form_module--login-form">Log in to unsubscribe from this <%= @unsubscribe_type %></h2>
+            <%= render :partial => '/objects/login_form' %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+  <% if ["production", "staging"].include? Rails.env %>
+    <script>
+      var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+  <% end %>
+
+  <% if Rails.env == 'production' %>
+    <script>
+      var _kmq = _kmq || [];
+      var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
+      function _kms(u){
+        setTimeout(function(){
+          var d = document, f = d.getElementsByTagName('script')[0],
+          s = d.createElement('script');
+          s.type = 'text/javascript'; s.async = true; s.src = u;
+          f.parentNode.insertBefore(s, f);
+        }, 1);
+      }
+      _kms('//i.kissmetrics.com/i.js');
+      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+    </script>
+  <% end %>
+  <%= vanity_js %>
+  <% experiments = vanity_experiments %>
+  <% unless experiments.empty? %>
+    <script>
+      <% experiments.each do |name, alternative| %>
+        try {
+          _gaq.push(['_trackEvent', 'ab-testing', '<%= name %>', '<%= alternative.value %>']);
+        } catch(e) {}
+      <% end %>
+    </script>
+  <% end %>
+</body>
