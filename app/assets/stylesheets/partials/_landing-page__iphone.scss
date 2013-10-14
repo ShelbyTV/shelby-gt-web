@@ -37,6 +37,9 @@
     margin-right: 33%;
     margin-top: 75px;
     -webkit-transform: rotate(-90deg);
+       -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg);
 
     img {
       &:first-child {
@@ -52,5 +55,8 @@
 .shelf--iphone {
   background-color:transparent;
   border: none;
-  margin: 20px auto 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  position: relative;
+  width: auto;
 }

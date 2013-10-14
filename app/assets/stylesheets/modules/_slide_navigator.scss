@@ -1,0 +1,41 @@
+// slide navigator
+
+// EXAMPLE USAGE: /shelf/_iphone.html.erb
+
+/*
+
+    <nav class="slide_navigator">
+      <ul class="list">
+        <li class="list__item">
+          <a href="#intro" class="slide_navigator__button">
+            <span class="visuallyhidden">Intro</span>
+          </a>
+        </li>
+        <li class="list__item">
+          <a href="#stream" class="slide_navigator__button">
+            <span class="visuallyhidden">Stream</span>
+          </a>
+        </li>
+        <li class="list__item">
+          <a href="#social" class="slide_navigator__button">
+            <span class="visuallyhidden">Social</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+*/
+
+.slide_navigator {}
+
+  .slide_navigator__button {
+    $_circle: 15px;
+
+    background-color: $ui-gray;
+    border: 1px solid darken($ui-gray, 10%);
+    border-radius: $_circle / 2;
+    display: block;
+    height: $_circle;
+    margin-bottom: 8px;
+    width: $_circle;
+  }

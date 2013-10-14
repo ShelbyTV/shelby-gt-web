@@ -7,6 +7,9 @@
 }
 
 .shelf--stream {
+  max-width: 1200px;
+  width: auto;
+
   &,
   .shelf__block {
     color: $ui-white;

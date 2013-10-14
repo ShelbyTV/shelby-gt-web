@@ -55,9 +55,9 @@
       }
 
       if($iphone.offset().top > $horizontalIphone.offset().top) {
-        $iphone.hide();
+        $iphone.toggleClass('hidden',true);
       } else {
-        $iphone.show();
+        $iphone.toggleClass('hidden',false);
       }
     });
   });

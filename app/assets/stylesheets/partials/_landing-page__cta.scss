@@ -42,9 +42,18 @@
   }
 
   .shelf__email-signup {
-    color: lighten($text,20%);
     @include basefont;
+
+    color: lighten($text,20%);
     font-size: 0.8em;
     margin-top: -0.5em;
+  }
+
+  .slide_navigator {
+    margin-top: -50px;
+    margin-left: -50px;
+    position: fixed;
+    top: 50%;
+    z-index: 1;
   }
 }
