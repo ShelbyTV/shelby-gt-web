@@ -53,6 +53,12 @@
         $iphone.toggleClass('iphone--horizontal cloaked',true);
         isHorizontal = true;
       }
+
+      if($iphone.offset().top > $horizontalIphone.offset().top) {
+        $iphone.hide();
+      } else {
+        $iphone.show();
+      }
     });
   });
 </script>
