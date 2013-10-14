@@ -31,7 +31,8 @@ libs.shelbyGT.UserPreferencesNotificationsView = libs.shelbyGT.UserPreferencesBa
       email_updates               : $('#notificationNews').is(':checked'),
       like_notifications          : $('#notificationLikes').is(':checked'),
       reroll_notifications        : $('#notificationReRolls').is(':checked'),
-      roll_activity_notifications : $('#notificationRollActivity').is(':checked')
+      roll_activity_notifications : $('#notificationRollActivity').is(':checked'),
+      comment_notifications : $('#notificationsComments').is(':checked')
     };
 
     this._doUpdateUserPreferences(this._updatedUserPreferences);

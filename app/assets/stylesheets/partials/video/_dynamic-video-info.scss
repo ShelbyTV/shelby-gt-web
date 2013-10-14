@@ -174,18 +174,20 @@ $dynamic_video_info__friends-avatar-height: 40px;
 .share, .liked-share {
   .dynamic_video_info__current-frame {
     padding-top: 10px;
+
+    .icon-close {
+      position: absolute;
+      right: 15px;
+      padding: 5px;
+      cursor: pointer;
+    }
+
   }
 }
 
 //current frame structure
 .dynamic_video_info__lining {
   margin: 12px 30px;
-
-  .icon-close {
-    display: none;
-    float: right;
-  }
-
 }
 
 .dynamic_video_info__description {

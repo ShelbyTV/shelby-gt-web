@@ -6,12 +6,14 @@
 //---------------------------------------------------------
 
 $(document).ready(function(){
-  $('.js-track-event').on('click', function(e){
+  $('body').on('click', '.js-track-event', function(e){
     var action = $(e.currentTarget).data("ga_action");
     var category = shelbyTrackingCategory || $(e.currentTarget).data("ga_category");
     var label = $(e.currentTarget).data("ga_label");
+    var value = parseInt($(e.currentTarget).data("ga_value"), 10) || 0;
+
     try {
-      _gaq.push(['_trackEvent', category, action, label]);
+      _gaq.push(['_trackEvent', category, action, label, value]);
     }
     catch(e) {}
   });
