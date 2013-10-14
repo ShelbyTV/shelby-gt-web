@@ -6,11 +6,13 @@
 //---------------------------------------------------------
 
 $(document).ready(function(){
-  $('body').on('click', 'js-track-event', function(e){
+  $('body').on('click', '.js-track-event', function(e){
     var action = $(e.currentTarget).data("ga_action");
     var category = shelbyTrackingCategory || $(e.currentTarget).data("ga_category");
     var label = $(e.currentTarget).data("ga_label");
-    var value = $(e.currentTarget).data("ga_value") || 0;
+    var value = parseInt($(e.currentTarget).data("ga_value"), 10) || 0;
+
+    console.log("TRACKED", category, action, label, value);
 
     try {
       _gaq.push(['_trackEvent', category, action, label, value]);
