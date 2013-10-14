@@ -79,14 +79,12 @@ module ApplicationHelper
   end
 
   def build_frame_message(frame, dbe=nil)
-    if frame['conversation'] and frame['conversation']['messages'] and frame['conversation']['messages'][0]
-      message = frame['conversation']['messages'][0]['text']
-    elsif dbe and dbe['action'] == 31 # video graph
+    if dbe and dbe['action'] == 31 # video graph
       message = "This video is similar to videos "+ dbe['src_frame']['creator']['nickname'] +" has shared" if dbe['src_frame'] and dbe['src_frame']['creator']
     elsif dbe and dbe['action'] == 33 # mortar
       message = "Because you shared "+ dbe['src_video']['title'] if dbe['src_video']
-    elsif dbe and dbe['action'] == 34 # featured user
-      message = "FEATURED: "+frame['conversation']['messages'][0]['text'] if frame['conversation'] and frame['conversation']['messages'] and frame['conversation']['messages'][0]
+    elsif frame['conversation'] and frame['conversation']['messages'] and frame['conversation']['messages'][0]
+      message = frame['conversation']['messages'][0]['text']
     else
       message = "This video is similar to videos you have watched, liked and shared."
     end
@@ -94,12 +92,15 @@ module ApplicationHelper
   end
 
   def build_avatar_and_nickname(dbe=nil, frame_owner=nil)
-    if dbe and [0,1, 34].include? dbe['action']
+    if dbe and [0,1,2,3,8,9].include? dbe['action']
       avatar = avatar_url_for_user(frame_owner)
       userNickname = frame_owner['nickname']
     elsif dbe and [31,33].include? dbe['action']
       userNickname = "Recommended for you"
       avatar = 'http://shelby.tv/images/recommendations/share-2.jpg'
+    elsif dbe and dbe['action'] == 34
+      avatar = avatar_url_for_user(frame_owner)
+      userNickname = "FEATURED: "+frame_owner['nickname']
     else
       avatar = avatar_url_for_user(frame_owner)
       userNickname = frame_owner['nickname']

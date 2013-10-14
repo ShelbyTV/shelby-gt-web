@@ -1,6 +1,6 @@
 <% dbe = dbe ? dbe : nil %>
 <% avatar, userNickname = build_avatar_and_nickname(dbe, frame_owner) %>
-<% message = build_frame_message(frame) %>
+<% message = build_frame_message(frame, dbe) %>
 
 <article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame js-<%= frame['id']%>">
   <span class="frame-header js-frame-activate">
