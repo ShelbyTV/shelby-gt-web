@@ -12,8 +12,6 @@ $(document).ready(function(){
     var label = $(e.currentTarget).data("ga_label");
     var value = parseInt($(e.currentTarget).data("ga_value"), 10) || 0;
 
-    console.log("TRACKED", category, action, label, value);
-
     try {
       _gaq.push(['_trackEvent', category, action, label, value]);
     }
