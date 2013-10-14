@@ -38,17 +38,20 @@
     } catch(e) {}
 
     //button cache
-    var $header = $('.js-header'),
-        $iphone = $('.js-iphone');
-        $target = $('.js-target');
+    var $header           = $('.js-header'),
+        $iphone           = $('.js-iphone');
+        $target           = $('.js-target'),
+        $horizontalIphone = $('.js-horz-iphone'),
+        isHorizontal      = false;
 
     $(window).on('scroll',function(e){
       //once the target scrolls off the page, do something, else undo something.
       if($target.offset().top + $target.height() - $(this).scrollTop() - $header.height() > 0) {
-        $iphone.toggleClass('iphone--horizontal',false);
+        $iphone.toggleClass('iphone--horizontal cloaked',false);
+        isHorizontal = false;
       } else {
-        $iphone.toggleClass('iphone--horizontal',true);
-
+        $iphone.toggleClass('iphone--horizontal cloaked',true);
+        isHorizontal = true;
       }
     });
   });
