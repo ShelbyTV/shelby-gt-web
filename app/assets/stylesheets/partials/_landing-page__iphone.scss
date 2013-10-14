@@ -28,9 +28,9 @@
       &:first-child {
         opacity: 1;
       }
-      &:last-child {
-        opacity: 0;
-      }
+      // &:last-child {
+      //   opacity: 0;
+      // }
     }
   }
   .iphone--horizontal {
@@ -41,16 +41,51 @@
         -ms-transform: rotate(-90deg);
             transform: rotate(-90deg);
 
-    img {
-      &:first-child {
-        // opacity: 0;
+    // img {
+    //   &:first-child {
+    //     // opacity: 0;
+    //   }
+    //   &:last-child {
+    //     opacity: 1;
+    //   }
+    // }
+  }
+}
+  .iphone__viewport {
+    background-image: url(/images/landing/_CONTENT/iphone-1a.jpg);
+    background-repeat: no-repeat;
+    background-position: center -30px;
+    height: 390px;
+    left: 0;
+    margin: 111px 22px 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 218px;
+
+    .slide {
+      @include transition-property(margin-top, margin-left);
+
+      left: inherit;
+      margin-top: 179%;
+      position: inherit;
+      top: inherit;
+      width: 380px;
+
+      img:last-child {
+        margin-left: 218px;
       }
-      &:last-child {
-        opacity: 1;
+
+      &.show {
+        margin-top: -30px;
+
+        &.show--hover,
+        &:hover {
+          margin-left: -219px;
+        }
       }
     }
   }
-}
 
 .shelf--iphone {
   background-color:transparent;

@@ -41,6 +41,7 @@
     var $doc              = $('html,body'),
         $header           = $('.js-header'),
         $iphone           = $('.js-iphone');
+        $iphoneViewport   = $iphone.find('.js-iphone-viewport')
         $target           = $('.js-target'),
         $horizontalIphone = $('.js-horz-iphone'),
         $nav              = $('.js-slide-navigator'),
@@ -57,12 +58,13 @@
 
         if( cursor < this.stream ) {
           index = 0;
+          $iphoneViewport.children().eq(0).toggleClass('show show--hover',false);
         } else if ( cursor > this.stream && cursor < this.social ) {
           index = 1;
+          $iphoneViewport.children().eq(0).toggleClass('show',true);
         } else if (cursor > this.social ) {
           index = 2;
         }
-
         $nav.children().siblings().removeClass(activeClass).eq(index).addClass(activeClass);
       }
     };
@@ -76,6 +78,12 @@
       $doc.animate({
         scrollTop: target.offset().top - 69
       },1000);
+    });
+
+    $('.js-phantom-hover').on('mouseenter', function(){
+      $iphoneViewport.children().eq(0).toggleClass('show--hover',true);
+    }).on('mouseleave',function(){
+      $iphoneViewport.children().eq(0).toggleClass('show--hover',false);
     });
 
     $(window).on('scroll',function(e){
