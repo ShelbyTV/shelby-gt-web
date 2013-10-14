@@ -166,9 +166,4 @@ class MobileController < ApplicationController
     end
   end
 
-  private
-    def init_ab_tests
-      @share_button_icon = ab_test :share_button_icon
-    end
-
 end

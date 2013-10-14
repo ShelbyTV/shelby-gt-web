@@ -4,8 +4,6 @@ class HomeController < ApplicationController
   include MobileHelper
   helper :meta_tag
 
-  before_filter :init_ab_tests
-
   # In non-pushstate browsers, Backone redirects to shelby.tv/hash_app#<the original fragment>
   # Need to load the app in that case and let routing take place like normal on the hash fragment
   def hash_app
@@ -263,10 +261,6 @@ class HomeController < ApplicationController
   end
 
   private
-
-    def init_ab_tests
-      @share_button_icon = ab_test :share_button_icon
-    end
 
     def get_dot_tv_roll_from_domain(request)
       hard_coded_dot_tv_roll_id =
