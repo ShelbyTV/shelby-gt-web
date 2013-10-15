@@ -19,12 +19,38 @@
   // these nested styles are only relevant when the __wrapper is present.
   .modal_dialog {
     display: inline-block;
+    text-align: left;
     vertical-align: middle;
   }
 }
 
+    .modal_dialog__wrapper--sms {
+      .modal_dialog {
+        margin: 0 30px;
+      }
+      .search_module {
+        font-size: 10px;
+        margin-bottom: 2em;
+      }
+      .search_module__submit {
+        margin-left: 10px;
+      }
+    }
+
 // actual modal styling
 .modal_dialog {
   background-color: $ui-white;
+  font-size: 13px;
+  padding: 20px 30px;
   width: 500px;
+}
+.modal_dialog__h1 {
+  font-family: $font-family-display;
+  font-size: 1.5em;
+  font-weight: 400;
+  line-height: 1.75;
+  margin-bottom: 1em;
+}
+
+.modal_dialog__block {
 }

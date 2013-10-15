@@ -63,7 +63,9 @@
 
     <% #------------ /Shelf Content --------------- %>
 
-    <%= render :partial => '/objects/modal_dialog' %>
+    <%= render :layout => '/objects/modal_dialog', :locals => { :modifier => 'sms' } do %>
+      <%= render :partial => '/home/partials/modal__sms' %>
+    <% end %>
   </div><!-- /shelby-wrapper -->
 
   <%= render :partial => '/home/shelf/footer' %>
