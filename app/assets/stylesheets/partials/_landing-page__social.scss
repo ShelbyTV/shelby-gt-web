@@ -20,11 +20,17 @@
   .shelf__h1 {
     margin-top: 2.5em;
   }
-    .shelf__img--iphone {
-      margin-top: -100px;
-      -webkit-transform: rotate(-90deg);
-         -moz-transform: rotate(-90deg);
-          -ms-transform: rotate(-90deg);
-              transform: rotate(-90deg);
-    }
+
+  .iphone {
+    margin: -75px auto 0;
+  }
+  .iphone__viewport {
+    height: 389px;
+    margin-top: 81px;
+
+    // .slide {
+    //   height: 388px;
+    //   width: 218px;
+    // }
+  }
 }

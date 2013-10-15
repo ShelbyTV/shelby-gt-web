@@ -58,10 +58,14 @@
 
         if( cursor < this.stream ) {
           index = 0;
-          $iphoneViewport.children().eq(0).toggleClass('show show--hover',false);
+          $iphoneViewport.children().toggleClass('show show--hover',false);
         } else if ( cursor > this.stream && cursor < this.social ) {
           index = 1;
+          $iphoneViewport.children().eq(1).toggleClass('show--hover',false);
           $iphoneViewport.children().eq(0).toggleClass('show',true);
+          setTimeout(function(){
+            $iphoneViewport.children().eq(1).toggleClass('show--hover',true);
+          },1000);
         } else if ( cursor > this.social ) {
           index = 2;
         }
@@ -82,9 +86,9 @@
     });
 
     $('.js-phantom-hover').on('mouseenter', function(){
-      $iphoneViewport.children().eq(0).toggleClass('show--hover',true);
+      $iphoneViewport.children().eq(1).toggleClass('show--hover',true);
     }).on('mouseleave',function(){
-      $iphoneViewport.children().eq(0).toggleClass('show--hover',false);
+      $iphoneViewport.children().eq(1).toggleClass('show--hover',false);
     });
 
     $('.js-cta').on('click',function(e){

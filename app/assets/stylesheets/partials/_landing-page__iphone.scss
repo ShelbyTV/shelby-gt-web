@@ -17,45 +17,33 @@
     margin-top: 60px;
     position: relative;
     padding-top: 57.8%;
-    -webkit-transition: all .25s;
-    width: 259px;
-
-    img {
-      left: 0;
-      position: absolute;
-      top: 0;
-
-      &:first-child {
-        opacity: 1;
-      }
-      // &:last-child {
-      //   opacity: 0;
-      // }
-    }
   }
   .iphone--horizontal {
     margin-right: 33%;
     margin-top: 75px;
-    -webkit-transform: rotate(-90deg);
-       -moz-transform: rotate(-90deg);
-        -ms-transform: rotate(-90deg);
-            transform: rotate(-90deg);
 
-    // img {
-    //   &:first-child {
-    //     // opacity: 0;
-    //   }
-    //   &:last-child {
-    //     opacity: 1;
-    //   }
-    // }
+    .slide {
+      width: 437px;
+    }
   }
 }
-  .iphone__viewport {
-    background-image: url(/images/landing/_CONTENT/iphone-1a.jpg);
+  .iphone {
+    background-image: url('/images/landing/iphone-1.png');
     background-repeat: no-repeat;
-    background-position: center -30px;
-    height: 390px;
+    background-position: top center;
+    height: 547px;
+    -webkit-transition: all .25s;
+    width: 259px;
+  }
+      .iphone--horizontal {
+        -webkit-transform: rotate(-90deg);
+           -moz-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+                transform: rotate(-90deg);
+      }
+
+  .iphone__viewport {
+    height: 359px;
     left: 0;
     margin: 111px 22px 0;
     overflow: hidden;
@@ -67,23 +55,23 @@
       @include transition-property(margin-top, margin-left);
       @include transition-duration(0.25s);
 
+      height: inherit;
       left: inherit;
-      margin-top: 179%;
-      position: inherit;
+      position: relative;
       top: inherit;
-      width: 380px;
-
-      img:last-child {
-        margin-left: 218px;
-      }
+      width: 438px;
 
       &.show {
-        margin-top: -30px;
+        margin-top: -359px;
+      }
 
-        &.show--hover,
-        &:hover {
-          margin-left: -219px;
-        }
+      &.show--hover,
+      &:hover {
+        margin-left: -219px;
+      }
+
+      img {
+        float: left;
       }
     }
   }
