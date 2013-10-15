@@ -1,7 +1,5 @@
 class RollController < ApplicationController
 
-  before_filter :init_ab_tests
-
   ##
   # GET /roll/:roll_id
   #
