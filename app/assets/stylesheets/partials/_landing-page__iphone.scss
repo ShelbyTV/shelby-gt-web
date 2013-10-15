@@ -65,6 +65,7 @@
 
     .slide {
       @include transition-property(margin-top, margin-left);
+      @include transition-duration(0.25s);
 
       left: inherit;
       margin-top: 179%;

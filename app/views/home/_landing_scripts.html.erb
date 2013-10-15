@@ -51,9 +51,9 @@
       cta    : $('#intro').offset().top,
       stream : $('#stream').offset().top,
       social : $('#social').offset().top,
-      active : function($window) {
+      active : function($scrollTop) {
         var index,
-            cursor = $window.scrollTop() + 100,
+            cursor = $scrollTop + 100,
             activeClass = 'list__item--selected';
 
         if( cursor < this.stream ) {
@@ -62,16 +62,17 @@
         } else if ( cursor > this.stream && cursor < this.social ) {
           index = 1;
           $iphoneViewport.children().eq(0).toggleClass('show',true);
-        } else if (cursor > this.social ) {
+        } else if ( cursor > this.social ) {
           index = 2;
         }
-        $nav.children().siblings().removeClass(activeClass).eq(index).addClass(activeClass);
+        $nav.children().removeClass(activeClass).eq(index).addClass(activeClass);
       }
     };
 
     $nav.on('click','.js-scrollto',function(e){
       e.preventDefault();
 
+      // scrollto animate by chris coyier (http://css-tricks.com/snippets/jquery/smooth-scrolling/)
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 
@@ -86,9 +87,17 @@
       $iphoneViewport.children().eq(0).toggleClass('show--hover',false);
     });
 
+    $('.js-cta').on('click',function(e){
+      e.preventDefault();
+
+      $('.js-popup--sms').toggleClass('hidden');
+    });
+
+
+
     $(window).on('scroll',function(e){
       //handling for 'active' slideshow dot
-      shelf.active($(this));
+      shelf.active($(this).scrollTop());
       //once the target scrolls off the page, do something, else undo something.
       if($target.offset().top + $target.height() - $(this).scrollTop() - $header.height() > 0) {
         $iphone.toggleClass('iphone--horizontal cloaked',false);

@@ -1,0 +1,30 @@
+.modal_dialog__wrapper {
+  background-color: rgba(255,255,255,0.7);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+  }
+
+  // these nested styles are only relevant when the __wrapper is present.
+  .modal_dialog {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+// actual modal styling
+.modal_dialog {
+  background-color: $ui-white;
+  width: 500px;
+}
