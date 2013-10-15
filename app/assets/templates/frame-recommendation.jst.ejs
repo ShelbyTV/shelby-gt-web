@@ -21,10 +21,16 @@
         <% } %>
       <% } %>
     <% } else if (dbeAction == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) { %>
-      <% if (dashboardEntry.get('src_frame') && dashboardEntry.get('src_frame').has('creator')) { %>
+      <%
+        var creator = dashboardEntry.get('src_frame') && dashboardEntry.get('src_frame').get('creator');
+        if (creator) {
+      %>
         This video is similar to videos
-          <%= SHELBYJST['user-page-link']({nickname: dashboardEntry.get('src_frame').get('creator').get('nickname')}) %>
-          has shared
+        <% if (creator.id != shelby.models.user.id) { %>
+          <%= SHELBYJST['user-page-link']({nickname: creator.get('nickname')}) %> has shared
+        <% } else { %>
+          you have shared
+        <% } %>
       <% } else { %>
         Check out this video
       <% } %>
