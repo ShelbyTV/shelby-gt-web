@@ -24,8 +24,16 @@
   .iphone {
     margin: -75px auto 0;
   }
+  .iphone__header {
+    float: right;
+    margin: 81px 18px;
+  }
   .iphone__viewport {
     height: 389px;
     margin-top: 81px;
+    width: 188px;
+  }
+  .slide:hover {
+    margin-left: -188px;
   }
 }
