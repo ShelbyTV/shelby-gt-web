@@ -1,5 +1,5 @@
 <% dbe = dbe ? dbe : nil %>
-<% avatar, userNickname = build_avatar_and_nickname(dbe, frame_owner) %>
+<% avatar, linkableName, userNickname = build_avatar_and_nickname(dbe, frame_owner) %>
 <% message = build_frame_message(frame, dbe) %>
 
 <article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame js-<%= frame['id']%>">
@@ -39,11 +39,15 @@
     </div><!-- eo .frame-body -->
 
     <footer class="media_module frame-footer clearfix">
-      <a href="<%= Settings::Mobile.mobile_subdirectory %>/<%= userNickname %>" class="js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
+      <% if linkableName %>
+        <a href="<%= Settings::Mobile.mobile_subdirectory %>/<%= linkableName %>" class="js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
+      <% end %>
         <span class="image_module media_image avatar avatar--<%= (is_mobile) ? 'small' : 'medium' %><%= ' xuser-avatar--featured' if dbe and dbe['action'] == 34 %>" style="background-image: url(<%= avatar %>);" role="img">
           <img src="<%= avatar %>" class="cloaked">
         </span>
-      </a>
+      <% if linkableName %>
+        </a>
+      <% end %>
 
       <div class="media_body">
         <span class="xuser-data-timestamp">
@@ -51,7 +55,13 @@
         </span>
 
         <p class="xuser-data">
-          <a href="<%= Settings::Mobile.mobile_subdirectory %>/<%= userNickname %>" class="js-track-event no-faux-link" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>"<% if frame_owner and frame_owner['name'] %> title="<%= frame_owner['name'] %>"<% end %>><strong><%= userNickname %></strong></a>
+          <% if linkableName %>
+            <a href="<%= Settings::Mobile.mobile_subdirectory %>/<%= linkableName %>" class="js-track-event no-faux-link" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>"<% if frame_owner and frame_owner['name'] %> title="<%= frame_owner['name'] %>"<% end %>>
+          <% end %>
+          <strong><%= userNickname %></strong></a>
+          <% if linkableName %>
+            </a>
+          <% end %>
           <% if roll_type == Settings::Mobile.roll_types['stream'] && frame['originator'] && frame['originator']['nickname'] && frame['originator']['nickname'] != frame_owner['nickname'] %> <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <a class="no-faux-link js-track-event" href="<%= Settings::Mobile.mobile_subdirectory %>/<%= frame['originator']['nickname'] %>" title="<%= frame['originator']['name'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click via Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>"><%= frame['originator']['nickname'] %></a></span><% end %>
           <% if frame_owner and frame_owner['user_type'] == 1 %>
             <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <%= frame_owner['authentications'].first['provider'].capitalize %></span>

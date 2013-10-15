@@ -94,18 +94,20 @@ module ApplicationHelper
   def build_avatar_and_nickname(dbe=nil, frame_owner=nil)
     if dbe and [0,1,2,3,8,9].include? dbe['action']
       avatar = avatar_url_for_user(frame_owner)
-      userNickname = frame_owner['nickname']
+      displayName = linkableNickname = frame_owner['nickname']
     elsif dbe and [31,33].include? dbe['action']
-      userNickname = "Recommended for you"
+      displayName = "Recommended for you"
+      linkableNickname = nil
       avatar = 'http://shelby.tv/images/recommendations/share-2.jpg'
     elsif dbe and dbe['action'] == 34
       avatar = avatar_url_for_user(frame_owner)
-      userNickname = "FEATURED: "+frame_owner['nickname']
+      displayName = "FEATURED: "+frame_owner['nickname']
+      linkableNickname = frame_owner['nickname']
     else
       avatar = avatar_url_for_user(frame_owner)
-      userNickname = frame_owner['nickname']
+      linkableNickname = displayName = frame_owner['nickname']
     end
-    return avatar, userNickname
+    return avatar, linkableNickname, displayName
   end
 
 end
