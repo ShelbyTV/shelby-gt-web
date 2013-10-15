@@ -1,6 +1,7 @@
 <% dbe = dbe ? dbe : nil %>
 <% avatar, linkableName, userNickname = build_avatar_and_nickname(dbe, frame_owner) %>
 <% message = build_frame_message(frame, dbe) %>
+<% framePermalink = build_frame_permalink(frame) %>
 
 <article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame js-<%= frame['id']%>">
   <span class="frame-header js-frame-activate">
@@ -50,9 +51,9 @@
       <% end %>
 
       <div class="media_body">
-        <span class="xuser-data-timestamp">
+        <a href="<%= framePermalink %>" class="xuser-data-timestamp">
           <%= frame['created_at'] %>
-        </span>
+        </a>
 
         <p class="xuser-data">
           <% if linkableName %>

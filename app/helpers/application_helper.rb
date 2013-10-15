@@ -110,4 +110,12 @@ module ApplicationHelper
     return avatar, linkableNickname, displayName
   end
 
+  def build_frame_permalink(frame)
+    if frame['creator']
+      "http://shelby.tv/"+frame['creator']['nickname']+"/shares/"+frame['id']
+    else
+      "http://shelby.tv/video/"+frame['video']['provider_name']+'/'+frame['video']['provider_id'];
+    end
+  end
+
 end
