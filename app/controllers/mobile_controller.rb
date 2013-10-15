@@ -2,8 +2,6 @@ class MobileController < ApplicationController
   include ApplicationHelper
   include MobileHelper
 
-  before_filter :init_ab_tests
-
   def landing
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
