@@ -32,8 +32,12 @@
     height: 389px;
     margin-top: 81px;
     width: 188px;
-  }
-  .slide:hover {
-    margin-left: -188px;
+
+    .slide{
+      &:hover,
+      &.show--hover {
+        margin-left: -188px;
+      }
+    }
   }
 }
