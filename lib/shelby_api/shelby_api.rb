@@ -72,9 +72,11 @@ module Shelby
       return u['status'] == 200 ? u['result'] : nil
     end
 
-    def self.get_user_dashboard(user_id, cookie, skip=0, limit=20, since_id='')
+    def self.get_user_dashboard(user_id, cookie, skip=0, limit=20, since_id=nil)
       base = user_id ? "/user/#{user_id}/dashboard" : '/dashboard'
-      r = get( "/#{base}?skip=#{skip}&limit=#{limit}#{'&since_id=' + since_id if since_id}", :headers => {'Cookie' => cookie} ).parsed_response
+      url = "#{base}?skip=#{skip}&limit=#{limit}"
+      url += "&since_id=" + since_id if since_id
+      r = get( url, :headers => {'Cookie' => cookie} ).parsed_response
       return nil if r['status'] != 200
       db = r['result']
     end
