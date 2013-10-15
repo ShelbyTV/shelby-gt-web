@@ -34,13 +34,15 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
         frame.get('video').bind('change:last_unplayable_at', this._handleVideoPlayability, this);
         this._handleVideoPlayability(frame.get('video'));
      } else {
-        var dbeIsChannelRec = dashboard_entry && dashboard_entry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation;
+        var dbeIsDynamicChannelRec = dashboard_entry &&
+          dashboard_entry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation &&
+          dashboard_entry.constructor == libs.shelbyGT.ClientSideDashboardEntryWithRealFrameModel;
         var groupFrames = this.get('frames');
         var existingFrame = groupFrames.get(frame.id);
         if (!existingFrame) {
           groupFrames.add(frame, options);
         }
-        if (!dbeIsChannelRec) {
+        if (!dbeIsDynamicChannelRec) {
           if (!existingFrame) {
             //see the comment in frame.model.js to understand what we're doing with frame._primaryDashboardEntry
             frame._primaryDashboardEntry = this.get('primaryDashboardEntry');
