@@ -2,8 +2,6 @@ class MobileController < ApplicationController
   include ApplicationHelper
   include MobileHelper
 
-  before_filter :init_ab_tests
-
   def landing
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
@@ -165,10 +163,5 @@ class MobileController < ApplicationController
       redirect_to mobile_landing_path(:status =>"Something bad just happened")
     end
   end
-
-  private
-    def init_ab_tests
-      @share_button_icon = ab_test :share_button_icon
-    end
 
 end

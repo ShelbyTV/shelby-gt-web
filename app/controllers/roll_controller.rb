@@ -37,10 +37,6 @@ class RollController < ApplicationController
 
   private
 
-    def init_ab_tests
-      @share_button_icon = ab_test :share_button_icon
-    end
-
     def get_roll_and_roll_creator_by_roll_id
       roll_id = params[:roll_id]
       @roll = BSON::ObjectId.legal?(roll_id) ? Shelby::API.get_roll_with_frames(roll_id, '') : nil

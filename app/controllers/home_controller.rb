@@ -1,10 +1,8 @@
 require 'shelby_api'
 
 class HomeController < ApplicationController
-
+  include MobileHelper
   helper :meta_tag
-
-  before_filter :init_ab_tests
 
   # In non-pushstate browsers, Backone redirects to shelby.tv/hash_app#<the original fragment>
   # Need to load the app in that case and let routing take place like normal on the hash fragment
@@ -207,6 +205,22 @@ class HomeController < ApplicationController
   end
 
   ##
+  # Handles one-click unsubscribe from emails
+  #
+  # GET /preferences/email/unsubscribe?type={weekly-email}
+  #
+  def unsubscribe
+    @user_signed_in = user_signed_in?
+    @signed_in_user = check_for_signed_in_user
+    @is_mobile = is_mobile?
+    @unsubscribe_type = params[:type]
+    if @user_signed_in and (@unsubscribe_type == "weekly-email") and (preferences = @signed_in_user['preferences'])
+      preferences['email_updates'] = false
+      EM.next_tick { update_user(@signed_in_user, {:preferences=>preferences}) }
+    end
+  end
+
+  ##
   # Handles "make the web" (allowing logged-out users to see it)
   #
   # GET /experience/:url
@@ -247,10 +261,6 @@ class HomeController < ApplicationController
   end
 
   private
-
-    def init_ab_tests
-      @share_button_icon = ab_test :share_button_icon
-    end
 
     def get_dot_tv_roll_from_domain(request)
       hard_coded_dot_tv_roll_id =
