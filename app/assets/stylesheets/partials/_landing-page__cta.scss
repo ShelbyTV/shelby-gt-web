@@ -1,3 +1,25 @@
+.shelby--mobile {
+  .shelf__wrapper--cta {
+    background-position: center 84%;
+    -webkit-background-size: 90%;
+    background-size: 90%;
+  }
+
+  .shelf--cta {
+    &.shelf--facebook-logged-out {
+      .appstore {
+        display: none;
+      }
+    }
+  }
+
+
+  .shelf__img--iphone {
+    opacity: 1;
+    width: 40%;
+  }
+}
+
 .shelf__wrapper--cta {
   background-image: url(/images/landing/_CONTENT/laptop-1.jpg);
   background-position: 86% 71%;
@@ -51,7 +73,7 @@
 
   .slide_navigator {
     margin-top: -50px;
-    margin-left: -50px;
+    margin-left: -38px;
     position: fixed;
     top: 50%;
     z-index: 1;

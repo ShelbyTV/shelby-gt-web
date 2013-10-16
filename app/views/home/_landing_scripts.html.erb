@@ -41,11 +41,13 @@
     var $doc              = $('html,body'),
         $header           = $('.js-header'),
         $iphone           = $('.js-iphone');
+        $iphoneSouth      = $('.js-iphone-south'),
         $iphoneViewport   = $iphone.find('.js-iphone-viewport')
         $target           = $('.js-target'),
         $horizontalIphone = $('.js-horz-iphone'),
         $nav              = $('.js-slide-navigator'),
-        isHorizontal      = false;
+        isHorizontal      = false,
+        listening         = true;
 
     var shelf = {
       cta    : $('#intro').offset().top,
@@ -63,32 +65,39 @@
           index = 1;
           $iphoneViewport.children().eq(1).toggleClass('show--hover',false);
           $iphoneViewport.children().eq(0).toggleClass('show',true);
+          listening = true;
           setTimeout(function(){
             $iphoneViewport.children().eq(1).toggleClass('show--hover',true);
-          },1000);
+          },3000);
         } else if ( cursor > this.social ) {
           index = 2;
+
         }
         $nav.children().removeClass(activeClass).eq(index).addClass(activeClass);
       }
     };
 
+    var animateConfig = {
+      settings : { scrollTop : 1000 },
+      speed    : 1000,
+      callback : function(e){ console.log('callback',e); }
+    };
+
     $nav.on('click','.js-scrollto',function(e){
       e.preventDefault();
-
       // scrollto animate by chris coyier (http://css-tricks.com/snippets/jquery/smooth-scrolling/)
       var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 
-      $doc.animate({
-        scrollTop: target.offset().top - 69
-      },1000);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          animateConfig.settings.scrollTop = target.offset().top - 69;
+
+      $doc.animate(animateConfig.settings,animateConfig.speed,animateConfig.callback);
     });
 
     $('.js-phantom-hover').on('mouseenter', function(){
-      $iphoneViewport.children().eq(1).toggleClass('show--hover',true);
-    }).on('mouseleave',function(){
       $iphoneViewport.children().eq(1).toggleClass('show--hover',false);
+    }).on('mouseleave',function(){
+      $iphoneViewport.children().eq(1).toggleClass('show--hover',true);
     });
 
     $('.js-cta').on('click',function(e){
@@ -104,17 +113,16 @@
       shelf.active($(this).scrollTop());
       //once the target scrolls off the page, do something, else undo something.
       if($target.offset().top + $target.height() - $(this).scrollTop() - $header.height() > 0) {
-        $iphone.toggleClass('iphone--horizontal cloaked',false);
+        $iphone.toggleClass('iphone--horizontal',false);
         isHorizontal = false;
       } else {
-        $iphone.toggleClass('iphone--horizontal cloaked',true);
+        $iphone.toggleClass('iphone--horizontal',true);
         isHorizontal = true;
       }
 
-      if($iphone.offset().top > $horizontalIphone.offset().top) {
+      if(listening && $iphone.offset().top > $horizontalIphone.offset().top - 100) {
         $iphone.toggleClass('hidden',true);
-      } else {
-        $iphone.toggleClass('hidden',false);
+        listening = false;
       }
     });
   });

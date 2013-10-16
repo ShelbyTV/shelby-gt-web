@@ -20,8 +20,8 @@
     position: relative;
   }
   .iphone--horizontal {
-    margin-right: 33%;
-    margin-top: 75px;
+    margin-right: 39.1%;
+    margin-top: 194px;
 
     .slide {
       width: 437px;
@@ -54,7 +54,7 @@
 
     .slide {
       @include transition-property(margin-top, margin-left);
-      @include transition-duration(0.25s);
+      @include transition-duration(1s);
 
       height: inherit;
       left: inherit;

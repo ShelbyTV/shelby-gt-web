@@ -52,7 +52,7 @@
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
-      <%= render :partial => "/home/shelf/iphone" %>
+      <%= render :partial => "/home/shelf/iphone" if !(@mobile_os or @is_mobile) %>
 
       <%= render :partial => "/home/shelf/call_to_action" %>
       <%= render :partial => "/home/shelf/stream" %>
