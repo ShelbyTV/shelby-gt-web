@@ -56,7 +56,7 @@ class HomeController < ApplicationController
         end
 
         if user_signed_in?
-
+          @onboarding_with_invites = ab_test :onboarding_with_invites
           render '/home/app'
         else
           # Consider errors and render landing page
