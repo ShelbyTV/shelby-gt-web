@@ -398,6 +398,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       gaCategory : "App",
       gaAction : _action,
       gaLabel : shelby.models.user.get('nickname'),
+      gaValue : shelby.models.user.get('session_count'),
       kmqProperties : { user : shelby.models.user.get('nickname') }
     });
 
