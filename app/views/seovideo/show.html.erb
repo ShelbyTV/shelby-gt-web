@@ -262,6 +262,7 @@
           'data-ga_label="">',
           '<div class="related_video frame-body-wrapper clearfix">',
           '<div class="related_video__main">',
+          '<span class="image_module icon-play related_video__play"></span>',
           '<span role="img" class="seovideo__thumbnail js-seovideo__thumbnail" style="">',
           '<img class="visuallyhidden" src="" alt="" title="" />',
           '</span>',
@@ -279,7 +280,7 @@
             $('.js-header-text').text('Couldn\'t find any videos. Try again.');
             return;
           }
-          $('.js-header-text').text('Search results').css('color','#666');
+          $('.js-header-text').text('Search results').css('color','green');
           $('.js-similar-video-list').empty();
           $.each(r.result.videos, function(index, video) {
             $newVideo = $(_listItem);
