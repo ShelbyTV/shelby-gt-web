@@ -86,7 +86,7 @@
           // bindable. for fancy interactions.
           $.event.trigger('slideChanged',data);
 
-          var index = data.$target.index() - 3; // offset by index of shelf__wrapper--cta (that's the first slide);
+          var index = data.$target.index(); // offset by index of shelf__wrapper--cta (that's the first slide);
           $nav.children().removeClass(this._activeClass).eq(index).addClass(this._activeClass);
         }
       },
@@ -184,7 +184,7 @@
         Pass the target element along.
       */
       var $target = $(this.hash),
-          currentActive = $(this).parent().siblings('.list__item--selected').children('a')[0].hash;
+          currentActive = $(this).parent().hasClass('.list__item--selected') ? $target : $(this).parent().siblings('.list__item--selected').children('a')[0].hash;
           $prevTarget = $(currentActive);
 
       $target = $target.length ? $target : $('[name=' + this.hash.slice(1) +']');
