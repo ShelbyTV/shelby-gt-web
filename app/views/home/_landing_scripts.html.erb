@@ -118,6 +118,7 @@
         case shelf.$stream[0] :
           $.event.trigger('isHorizontal',true);
           $(this).toggleClass('iphone--horizontal',false);
+          shelf.$iphone.show();
         break;
         case shelf.$social[0] :
           $(this).toggleClass('iphone--horizontal',true).one('transitionend', function(){$.event.trigger('isHorizontal',false)});
