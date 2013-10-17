@@ -6,7 +6,7 @@ defaults: &defaults
   no_search_required: "Great video, no searching required."
 
   cta: "Discover and enjoy new videos every day"
-  cta_body: "Get the best of web video, personalized to your interests and available wherever you are."
+  cta_body: "Get the best of web video, personalized to your interests <br/>and available wherever you are."
   cta_button: "Get the App"
 
   stream: "Your perfect video stream. <br/>Powered by your favorite people and networks."

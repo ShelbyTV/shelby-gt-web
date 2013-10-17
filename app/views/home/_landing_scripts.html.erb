@@ -43,7 +43,6 @@
         scroll(e);
       }
     }).on('transitionend', function(e){
-      console.log('te',$(e.originalEvent.target));
     });
 
     try {
@@ -82,7 +81,6 @@
         },
         speed    : 800,
         callback : function(data){
-          console.log('animateCallback');
           // bindable. for fancy interactions.
           $.event.trigger('slideChanged',data);
 
@@ -131,13 +129,18 @@
           $(this).toggleClass('iphone--horizontal',true);
         break;
       }
-    }).on('transitionend', function(){
-      $.event.trigger('isHorizontal',false)
+    }).on('transitionend', function(e){
+      $.event.trigger('isHorizontal',false);
     });
 
-    $iphoneSouth.on('isHorizontal', function(e,isHorizontal){
-      $(this).toggleClass('cloaked',isHorizontal);
-      shelf.$iphone.show();
+    $iphoneSouth.on('beforeChange',function(e,data){
+      if((data.$target[0] != shelf.$press[0] && data.$prevTarget[0] != shelf.$press[0]) ) {
+        $(this).addClass('cloaked');
+      }
+    }).on('slideChanged',function(e,data){
+      if(data.$prevTarget[0] == shelf.$stream[0]) {
+        $(this).removeClass('cloaked');
+      }
     });
 
     $iphoneViewport.on('beforeChange', function(e,data){
@@ -159,8 +162,6 @@
     });
 
     shelf.$iphone.on('beforeChange',function(e,data){
-      console.log('prev target is press: ',$prevTarget[0] == shelf.$press[0])
-
       switch(data.$target[0]) {
         case shelf.$press[0] :
           $(this).hide();
