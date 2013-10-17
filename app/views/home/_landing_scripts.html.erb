@@ -42,6 +42,8 @@
       if(listenScroll) {
         scroll(e);
       }
+    }).on('transitionend', function(e){
+      console.log('te',$(e.originalEvent.target));
     });
 
     try {
@@ -80,8 +82,9 @@
         },
         speed    : 800,
         callback : function(data){
+          console.log('animateCallback');
           // bindable. for fancy interactions.
-          $.event.trigger('slideChanged',data.$target);
+          $.event.trigger('slideChanged',data);
 
           var index = data.$target.index() - 3; // offset by index of shelf__wrapper--cta (that's the first slide);
           $nav.children().removeClass(this._activeClass).eq(index).addClass(this._activeClass);
@@ -92,38 +95,44 @@
         $.event.trigger('beforeChange', $target);
       },
 
-      autoScroll : function($target){
+      autoScroll : function($target,$prevTarget){
         var destination = $target.offset().top - this._headerHeight;
 
         this.config.settings.scrollTop = destination;
 
         var data = {
-          scrollTop : destination,
-          $target  : $target
+          scrollTop   : destination,
+          $prevTarget : $prevTarget,
+          $target     : $target
         }
 
         /*
           bind an element to the "beforeChange" event for immediate handling.
           otherwise, use the animate callback event, "slideChanged"
         */
-        this.beforeChange($target);
-        $doc.animate(this.config.settings,this.config.speed,this.config.callback(data)).one('transitionend', function(){ $.event.trigger('animateDone',$target); });
+        this.beforeChange(data);
+
+        var self = this;
+
+        $doc.animate(this.config.settings,this.config.speed,function(){ self.config.callback(data) });
       }
     };
 
 
-    $iphone.on('slideChanged',function(e,$target){
-      switch($target) {
+
+    $iphone.on('beforeChange',function(e,data){
+      switch(data.$target[0]) {
         case shelf.$cta[0] :
         case shelf.$stream[0] :
           $.event.trigger('isHorizontal',true);
           $(this).toggleClass('iphone--horizontal',false);
-          shelf.$iphone.show();
         break;
         case shelf.$social[0] :
-          $(this).toggleClass('iphone--horizontal',true).one('transitionend', function(){$.event.trigger('isHorizontal',false)});
+          $(this).toggleClass('iphone--horizontal',true);
         break;
       }
+    }).on('transitionend', function(){
+      $.event.trigger('isHorizontal',false)
     });
 
     $iphoneSouth.on('isHorizontal', function(e,isHorizontal){
@@ -131,10 +140,10 @@
       shelf.$iphone.show();
     });
 
-    $iphoneViewport.on('beforeChange', function(e,$target){
+    $iphoneViewport.on('beforeChange', function(e,data){
       var $this = $(this);
 
-      switch($target) {
+      switch(data.$target[0]) {
         case shelf.$cta[0] :
           $(this).children().toggleClass('show',false);
         break;
@@ -149,16 +158,20 @@
       }
     });
 
-    shelf.$iphone.on('animateDone', function(e,$target){
-      switch($target) {
-        case shelf.$social[0] :
-          $(this).show()
-          break;
-      }
-    }).on('slideChanged',function(e,$target){
-      switch($target) {
+    shelf.$iphone.on('beforeChange',function(e,data){
+      console.log('prev target is press: ',$prevTarget[0] == shelf.$press[0])
+
+      switch(data.$target[0]) {
         case shelf.$press[0] :
           $(this).hide();
+          break;
+      }
+    }).on('slideChanged',function(e,data){
+      switch(data.$target[0]) {
+        case shelf.$social[0] :
+          if($prevTarget[0] == shelf.$press[0]) {
+            $(this).show();
+          }
           break;
       }
     });
@@ -170,11 +183,13 @@
         Grab the #name of the link clicked, parse it, then scroll to it.
         Pass the target element along.
       */
-      var $target = $(this.hash);
+      var $target = $(this.hash),
+          currentActive = $(this).parent().siblings('.list__item--selected').children('a')[0].hash;
+          $prevTarget = $(currentActive);
 
       $target = $target.length ? $target : $('[name=' + this.hash.slice(1) +']');
 
-      FANCY.autoScroll($target);
+      FANCY.autoScroll($target,$prevTarget);
     });
 
     /*
@@ -186,12 +201,6 @@
       $iphoneViewport.children().eq(1).toggleClass('show--hover',false);
     }).on('mouseleave',function(){
       $iphoneViewport.children().eq(1).toggleClass('show--hover',true);
-    });
-
-    $('.shelby__foot').on('mouseenter', function(){
-      $(this).toggleClass('hover',true);
-    }).on('mouseleave',function(){
-      $(this).toggleClass('hover',false);
     });
 
     $('.js-cta').on('click',function(e){
