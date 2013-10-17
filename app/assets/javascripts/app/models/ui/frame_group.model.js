@@ -39,11 +39,9 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
           dashboard_entry.constructor == libs.shelbyGT.ClientSideDashboardEntryWithRealFrameModel;
         var groupFrames = this.get('frames');
         var existingFrame = groupFrames.get(frame.id);
-        if (!existingFrame) {
-          groupFrames.add(frame, options);
-        }
         if (!dbeIsDynamicChannelRec) {
           if (!existingFrame) {
+            groupFrames.add(frame, options);
             //see the comment in frame.model.js to understand what we're doing with frame._primaryDashboardEntry
             frame._primaryDashboardEntry = this.get('primaryDashboardEntry');
           }
@@ -53,6 +51,11 @@ libs.shelbyGT.FrameGroupModel = Backbone.Model.extend({
             frame._primaryDashboardEntry = dashboard_entry;
           })
           this.set('primaryDashboardEntry', dashboard_entry);
+          if (existingFrame) {
+            groupFrames.remove(existingFrame);
+          }
+          options.at = 0;
+          groupFrames.add(frame, options);
         }
      }
   },
