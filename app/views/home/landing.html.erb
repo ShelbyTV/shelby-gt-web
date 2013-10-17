@@ -52,6 +52,33 @@
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
+
+      <nav class="slide_navigator">
+        <ul class="list js-slide-navigator">
+          <li class="list__item list__item--selected">
+            <a href="#intro" class="slide_navigator__button js-scrollto">
+              <span class="visuallyhidden">Intro</span>
+            </a>
+          </li>
+          <li class="list__item">
+            <a href="#stream" class="slide_navigator__button js-scrollto">
+              <span class="visuallyhidden">Stream</span>
+            </a>
+          </li>
+          <li class="list__item">
+            <a href="#social" class="slide_navigator__button js-scrollto">
+              <span class="visuallyhidden">Social</span>
+            </a>
+          </li>
+<!--           <li class="list__item">
+            <a href="#press" class="slide_navigator__button js-scrollto">
+              <span class="visuallyhidden">Press</span>
+            </a>
+          </li>
+ -->
+        </ul>
+      </nav>
+
       <%= render :partial => "/home/shelf/iphone" if !(@mobile_os or @is_mobile) %>
 
       <%= render :partial => "/home/shelf/call_to_action" %>

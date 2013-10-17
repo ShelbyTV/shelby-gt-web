@@ -8,7 +8,7 @@
           transform: translateZ(0);
   top: 70px;
   width: 100%;
-  z-index: 0;
+  z-index: 1;
 
   //non-normative
   .iphone {
@@ -29,11 +29,12 @@
   }
 }
   .iphone {
+    @include transition-duration(1s);
+
     background-image: url('/images/landing/_CONTENT/iphone.png');
     background-repeat: no-repeat;
     background-position: top center;
     height: 547px;
-    @include transition-duration(1s);
     width: 259px;
   }
       .iphone--horizontal {

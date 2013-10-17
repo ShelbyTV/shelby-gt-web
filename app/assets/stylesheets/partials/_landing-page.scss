@@ -32,6 +32,15 @@
   .app_nav {
     text-align: right;
   }
+
+  .slide_navigator {
+    margin-top: -50px;
+    margin-left: 15px;
+    position: fixed;
+    top: 50%;
+    z-index: 2;
+  }
+
 }
 
 // ----- Non-normative Overrides -----------------------------------------------

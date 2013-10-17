@@ -31,7 +31,24 @@
     _kmq.push(['record', action, {shortLink: shortLink}]);
   <% end %>
 
-  $(document).ready(function(){
+  $(document).ready(function(e){
+    var currentShelf;
+
+    var scroll = function(e){
+      if(e.originalEvent.wheelDelta > 0) {
+
+      }
+
+    }
+
+    $(this).on('mousewheel DOMMouseScroll MozMousePixelScroll',function(e){
+      // if(currentShelf)
+      console.log('mousewheel',e);
+
+      scroll(e);
+
+    });
+
     try {
       _gaq.push(['_trackEvent', 'Landing Page', 'Visit']);
     } catch(e) {}
@@ -57,7 +74,7 @@
     };
 
     var FANCY = {
-      _offsetHeight : 69, //offset by the height of the header.
+      _headerHeight : 69, //offset by the height of the header.
 
       // jQuery.animate() specific configuration/defaults
       config : {
@@ -71,9 +88,8 @@
           // bindable. for fancy interactions.
           $.event.trigger('slideChanged',data.$target);
 
-          var index = data.$target.index() - 2; // subtract the prevSiblings to actual shelves (i.e. header,iphone);
+          var index = data.$target.index() - 3; // offset by index of shelf__wrapper--cta (that's the first slide);
           $nav.children().removeClass(this._activeClass).eq(index).addClass(this._activeClass);
-          // console.log($nav, index);
         }
       },
 
@@ -82,7 +98,7 @@
       },
 
       autoScroll : function($target){
-        var destination = $target.offset().top - this._offsetHeight;
+        var destination = $target.offset().top - this._headerHeight;
 
         this.config.settings.scrollTop = destination;
 
@@ -98,7 +114,6 @@
         this.beforeChange($target);
         $doc.animate(this.config.settings,this.config.speed,this.config.callback(data)).one('transitionend', function(){ $.event.trigger('animateDone',$target); });
       }
-
     };
 
 
@@ -121,16 +136,18 @@
     });
 
     $iphoneViewport.on('beforeChange', function(e,$target){
+      var $this = $(this);
+
       switch($target) {
         case shelf.$cta[0] :
-          $(this).children().toggleClass('show show--hover',false);
+          $(this).children().toggleClass('show',false);
         break;
         case shelf.$stream[0] :
           $(this).children().eq(1).toggleClass('show--hover',false);
           $(this).children().eq(0).toggleClass('show',true);
 
           setTimeout(function(){
-            $(this).children().eq(1).toggleClass('show--hover',true);
+            $this.children().eq(1).toggleClass('show--hover',true);
           },2000);
         break;
       }

@@ -21,9 +21,11 @@
 }
 
 .shelf__wrapper--cta {
-  background-image: url(/images/landing/_CONTENT/laptop-1.jpg);
-  background-position: 86% 71%;
-  background-repeat: no-repeat;
+  .media_body {
+    background-image: url(/images/landing/_CONTENT/laptop-1.jpg);
+    background-position: 15% 68%;
+    background-repeat: no-repeat;
+  }
 }
 
 .shelf--cta {
@@ -43,6 +45,8 @@
   .shelf__lining {
     padding-top: 4em;
     padding-left: 3.5em;
+    position: relative;
+    z-index: 1;
   }
 
   .shelf__button {
@@ -69,13 +73,5 @@
     color: lighten($text,20%);
     font-size: 0.8em;
     margin-top: -0.5em;
-  }
-
-  .slide_navigator {
-    margin-top: -50px;
-    margin-left: -38px;
-    position: fixed;
-    top: 50%;
-    z-index: 1;
   }
 }
