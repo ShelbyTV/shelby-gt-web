@@ -284,7 +284,7 @@
           $('.js-similar-video-list').empty();
           $.each(r.result.videos, function(index, video) {
             $newVideo = $(_listItem);
-            $newVideo.find('a').attr('href', '<%= Settings::Application.url  %>/video/'+video.provider_name+'/'+video.provider_id+'?s=1')
+            $newVideo.find('a').attr('href', '<%= Settings::Application.url  %>/video/'+video.provider_name+'/'+video.provider_id)
               .attr('data-ga_label', video.title).attr('data-ga_value', index);
             $newVideo.find('.js-seovideo__thumbnail').css('background-image', 'url('+video.thumbnail_url+')');
             $newVideo.find('img').attr('src', video.thumbnail_url).attr('alt', video.title).attr('title',video.title);
