@@ -32,7 +32,6 @@
   <% end %>
 
   $(document).ready(function(){
-
     try {
       _gaq.push(['_trackEvent', 'Landing Page', 'Visit']);
     } catch(e) {}
@@ -50,80 +49,143 @@
         listening         = true;
 
     var shelf = {
-      cta    : $('#intro').offset().top,
-      stream : $('#stream').offset().top,
-      social : $('#social').offset().top,
-      active : function($scrollTop) {
-        var index,
-            cursor = $scrollTop + 100,
-            activeClass = 'list__item--selected';
+      $cta    : $('#intro'),
+      $iphone : $('#iphone'),
+      $press  : $('#press'),
+      $social : $('#social'),
+      $stream : $('#stream')
+    };
 
-        if( cursor < this.stream ) {
-          index = 0;
-          $iphoneViewport.children().toggleClass('show show--hover',false);
-        } else if ( cursor > this.stream && cursor < this.social ) {
-          index = 1;
-          $iphoneViewport.children().eq(1).toggleClass('show--hover',false);
-          $iphoneViewport.children().eq(0).toggleClass('show',true);
-          listening = true;
-          setTimeout(function(){
-            $iphoneViewport.children().eq(1).toggleClass('show--hover',true);
-          },3000);
-        } else if ( cursor > this.social ) {
-          index = 2;
+    var FANCY = {
+      _offsetHeight : 69, //offset by the height of the header.
 
+      // jQuery.animate() specific configuration/defaults
+      config : {
+        _activeClass : 'list__item--selected', // className to indicate active slide of carousel.
+
+        settings : {
+          scrollTop : 0,
+        },
+        speed    : 800,
+        callback : function(data){
+          // bindable. for fancy interactions.
+          $.event.trigger('slideChanged',data.$target);
+
+          var index = data.$target.index() - 2; // subtract the prevSiblings to actual shelves (i.e. header,iphone);
+          $nav.children().removeClass(this._activeClass).eq(index).addClass(this._activeClass);
+          // console.log($nav, index);
         }
-        $nav.children().removeClass(activeClass).eq(index).addClass(activeClass);
+      },
+
+      beforeChange : function($target) {
+        $.event.trigger('beforeChange', $target);
+      },
+
+      autoScroll : function($target){
+        var destination = $target.offset().top - this._offsetHeight;
+
+        this.config.settings.scrollTop = destination;
+
+        var data = {
+          scrollTop : destination,
+          $target  : $target
+        }
+
+        /*
+          bind an element to the "beforeChange" event for immediate handling.
+          otherwise, use the animate callback event, "slideChanged"
+        */
+        this.beforeChange($target);
+        $doc.animate(this.config.settings,this.config.speed,this.config.callback(data)).one('transitionend', function(){ $.event.trigger('animateDone',$target); });
       }
+
     };
 
-    var animateConfig = {
-      settings : { scrollTop : 1000 },
-      speed    : 1000,
-      callback : function(e){ console.log('callback',e); }
-    };
+
+    $iphone.on('slideChanged',function(e,$target){
+      switch($target) {
+        case shelf.$cta[0] :
+        case shelf.$stream[0] :
+          $.event.trigger('isHorizontal',true);
+          $(this).toggleClass('iphone--horizontal',false);
+        break;
+        case shelf.$social[0] :
+          $(this).toggleClass('iphone--horizontal',true).one('transitionend', function(){$.event.trigger('isHorizontal',false)});
+        break;
+      }
+    });
+
+    $iphoneSouth.on('isHorizontal', function(e,isHorizontal){
+      $(this).toggleClass('cloaked',isHorizontal);
+      shelf.$iphone.show();
+    });
+
+    $iphoneViewport.on('beforeChange', function(e,$target){
+      switch($target) {
+        case shelf.$cta[0] :
+          $(this).children().toggleClass('show show--hover',false);
+        break;
+        case shelf.$stream[0] :
+          $(this).children().eq(1).toggleClass('show--hover',false);
+          $(this).children().eq(0).toggleClass('show',true);
+
+          setTimeout(function(){
+            $(this).children().eq(1).toggleClass('show--hover',true);
+          },2000);
+        break;
+      }
+    });
+
+    shelf.$iphone.on('animateDone', function(e,$target){
+      console.log('iphone bfore change',$target);
+      switch($target) {
+        case shelf.$social[0] :
+          $(this).show()
+          break;
+      }
+    }).on('slideChanged',function(e,$target){
+      switch($target) {
+        case shelf.$press[0] :
+          $(this).hide();
+          break;
+      }
+    });
+
 
     $nav.on('click','.js-scrollto',function(e){
       e.preventDefault();
-      // scrollto animate by chris coyier (http://css-tricks.com/snippets/jquery/smooth-scrolling/)
-      var target = $(this.hash);
+      /*
+        Grab the #name of the link clicked, parse it, then scroll to it.
+        Pass the target element along.
+      */
+      var $target = $(this.hash);
 
-          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-          animateConfig.settings.scrollTop = target.offset().top - 69;
+      $target = $target.length ? $target : $('[name=' + this.hash.slice(1) +']');
 
-      $doc.animate(animateConfig.settings,animateConfig.speed,animateConfig.callback);
+      FANCY.autoScroll($target);
     });
 
+    /*
+      because of z-indexing the user can't directly interact with the fixed iphone.
+      there is a .iphone.cloaked for the necessary shelves that the user actually interacts with.
+      hence, phantom hovering.
+    */
     $('.js-phantom-hover').on('mouseenter', function(){
       $iphoneViewport.children().eq(1).toggleClass('show--hover',false);
     }).on('mouseleave',function(){
       $iphoneViewport.children().eq(1).toggleClass('show--hover',true);
     });
 
+    $('.shelby__foot').on('mouseenter', function(){
+      $(this).toggleClass('hover',true);
+    }).on('mouseleave',function(){
+      $(this).toggleClass('hover',false);
+    });
+
     $('.js-cta').on('click',function(e){
       e.preventDefault();
 
       $('.js-popup--sms').toggleClass('hidden');
-    });
-
-
-
-    $(window).on('scroll',function(e){
-      //handling for 'active' slideshow dot
-      shelf.active($(this).scrollTop());
-      //once the target scrolls off the page, do something, else undo something.
-      if($target.offset().top + $target.height() - $(this).scrollTop() - $header.height() > 0) {
-        $iphone.toggleClass('iphone--horizontal',false);
-        isHorizontal = false;
-      } else {
-        $iphone.toggleClass('iphone--horizontal',true);
-        isHorizontal = true;
-      }
-
-      if(listening && $iphone.offset().top > $horizontalIphone.offset().top - 100) {
-        $iphone.toggleClass('hidden',true);
-        listening = false;
-      }
     });
   });
 </script>

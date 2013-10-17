@@ -1,4 +1,6 @@
 .shelf__wrapper--press {
+  position: relative;
+  z-index: 5;
 }
 .shelf--press {
   max-width: 1200px;

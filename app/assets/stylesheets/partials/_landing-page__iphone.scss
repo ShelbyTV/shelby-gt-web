@@ -20,7 +20,7 @@
     position: relative;
   }
   .iphone--horizontal {
-    margin-right: 39.1%;
+    margin-right: 39%;
     margin-top: 194px;
 
     .slide {
@@ -33,7 +33,7 @@
     background-repeat: no-repeat;
     background-position: top center;
     height: 547px;
-    -webkit-transition: all .25s;
+    @include transition-duration(1s);
     width: 259px;
   }
       .iphone--horizontal {
