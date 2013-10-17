@@ -52,6 +52,7 @@
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
+      <%= render :partial => "/home/shelf/iphone" if !(@mobile_os or @is_mobile) %>
 
       <nav class="slide_navigator">
         <ul class="list js-slide-navigator">
@@ -70,16 +71,14 @@
               <span class="visuallyhidden">Social</span>
             </a>
           </li>
-<!--           <li class="list__item">
+          <li class="list__item">
             <a href="#press" class="slide_navigator__button js-scrollto">
               <span class="visuallyhidden">Press</span>
             </a>
           </li>
- -->
         </ul>
       </nav>
 
-      <%= render :partial => "/home/shelf/iphone" if !(@mobile_os or @is_mobile) %>
 
       <%= render :partial => "/home/shelf/call_to_action" %>
       <%= render :partial => "/home/shelf/stream" %>
@@ -94,7 +93,8 @@
     <% end %>
   </div><!-- /shelby-wrapper -->
 
-  <%= render :partial => '/home/shelf/footer' %>
+  <%= render :partial => "/home/shelf/press" %>
+
   <%= render :partial => '/home/landing_scripts' %>
 
 </body>

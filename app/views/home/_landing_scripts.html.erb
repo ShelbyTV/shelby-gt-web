@@ -33,20 +33,15 @@
 
   $(document).ready(function(e){
     var currentShelf;
-
+    var listenScroll = true;
     var scroll = function(e){
-      if(e.originalEvent.wheelDelta > 0) {
-
-      }
-
-    }
+      $.event.trigger(e.originalEvent.wheelDelta > 0 ? 'previousSlide' : 'nextSlide');
+    };
 
     $(this).on('mousewheel DOMMouseScroll MozMousePixelScroll',function(e){
-      // if(currentShelf)
-      console.log('mousewheel',e);
-
-      scroll(e);
-
+      if(listenScroll) {
+        scroll(e);
+      }
     });
 
     try {
@@ -154,7 +149,6 @@
     });
 
     shelf.$iphone.on('animateDone', function(e,$target){
-      console.log('iphone bfore change',$target);
       switch($target) {
         case shelf.$social[0] :
           $(this).show()

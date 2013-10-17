@@ -68,14 +68,10 @@
 .shelby__foot {
   background-color: $ui-black;
   font-size: 1.5em;
+  height: 1000px;
   line-height: 1.5;
   position: relative;
   text-align: center;
-  z-index: 5;
-
-  &.hover {
-    margin-top: -420px;
-  }
 
   .shelby__lining {
     display: inline-block;

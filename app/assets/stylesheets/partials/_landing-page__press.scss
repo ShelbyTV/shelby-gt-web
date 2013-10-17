@@ -1,6 +1,10 @@
 .shelf__wrapper--press {
+  min-height: 100%;
   position: relative;
-  z-index: 5;
+
+  .shelf__img--main {
+    width: 100%;
+  }
 }
 .shelf--press {
   max-width: 1200px;
@@ -12,7 +16,6 @@
   .shelf__lining {
     padding-top: 0.4em;
   }
-
   .shelf__img {
     height: 40px;
     display: block;
