@@ -107,7 +107,7 @@
 
     <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">
       <ul class="list frame-likes-avatars js-liker-avatars-list">
-        <% frame['upvoters'].each do |liker| %>
+        <% frame['likers'].each do |liker| %>
         <% avatar = liker['has_shelby_avatar'] ? avatar_url_for_user(liker) : liker['user_image'] %>
           <li>
             <a class="image_module avatar avatar--tiny frame-likes-link js-track-event" style="background-image: url(<%= avatar %>)" href="/<%= liker['nickname'] %>" data-ga_category="<%= ga_category %>" data-ga_action="click avatar for liker" data-ga_label="<%= liker['nickname'] %>">
