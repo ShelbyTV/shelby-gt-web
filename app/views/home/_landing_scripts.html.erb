@@ -35,7 +35,6 @@
     var listenScroll = true;
     var scroll = function(e,direction){
       var currentIndex = $nav.children('.list__item--selected').index();
-
       if(direction == 'previousSlide' && currentIndex < 1 || direction == 'nextSlide' &&  currentIndex >= $nav.children().length - 1) {
         listenScroll = true;
         return;
@@ -45,13 +44,19 @@
     };
 
     $(this).on('mousewheel DOMMouseScroll MozMousePixelScroll',function(e){
-      if(listenScroll && (e.originalEvent.wheelDelta > 100 || e.originalEvent.wheelDelta < -100)) {
+      // for firefox
+      if(e.originalEvent.type == "MozMousePixelScroll" && listenScroll && (e.originalEvent.detail > 100 || e.originalEvent.detail < -100)) {
+        listenScroll = false;
+        var direction = (e.originalEvent.detail < 0 ? 'previousSlide' : 'nextSlide');
+        scroll(e,direction);
+      }
+      // for non-firefox
+      else if(listenScroll && (e.originalEvent.wheelDelta > 100 || e.originalEvent.wheelDelta < -100)) {
         listenScroll = false;
         var direction = (e.originalEvent.wheelDelta > 0 ? 'previousSlide' : 'nextSlide');
         scroll(e,direction);
       }
     }).on('slideChanged', function(e){
-      console.log('this slideChanged');
       listenScroll = true;
     });
 
