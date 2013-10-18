@@ -34,15 +34,30 @@
   $(document).ready(function(e){
     var currentShelf;
     var listenScroll = true;
-    var scroll = function(e){
-      $.event.trigger(e.originalEvent.wheelDelta > 0 ? 'previousSlide' : 'nextSlide');
+    var scroll = function(e,direction){
+      console.log('scroll',direction,listenScroll);
+
+      var currentIndex = $nav.children('.list__item--selected').index();
+      console.log('current index',currentIndex);
+      if(direction == 'previousSlide' && currentIndex < 1 || direction == 'nextSlide' &&  currentIndex >= $nav.children().length - 1) {
+        console.log('noop');
+        listenScroll = true;
+        return;
+      }
+
+      $nav.children().eq(direction == 'previousSlide' ? currentIndex - 1 : currentIndex + 1).children('a').trigger('click');
+
     };
 
     $(this).on('mousewheel DOMMouseScroll MozMousePixelScroll',function(e){
       if(listenScroll) {
-        scroll(e);
+        listenScroll = false;
+        var direction = (e.originalEvent.wheelDelta > 0 ? 'previousSlide' : 'nextSlide');
+        scroll(e,direction);
       }
-    }).on('transitionend', function(e){
+    }).on('slideChanged', function(e){
+      console.log('this slideChanged');
+      listenScroll = true;
     });
 
     try {
