@@ -646,3 +646,36 @@ a {
 .seovideo--light {
   max-width: $seo-column-left;
 }
+
+
+
+////// TYPEAHEAD RELATED /////////
+.tt-dropdown-menu {
+  z-index: 0 !important;
+  width: 312px;
+  margin-top: 12px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestions {
+  width: 290px;
+  padding-top: 10px;
+}
+
+.tt-suggestion {
+  margin: 5px 0;
+}
+
+.tt-hint {
+  display: none;
+}
+
+.search_module__input {
+  width:310px;
+  height: 37px;
+  background-color: #fff !important;
+}
