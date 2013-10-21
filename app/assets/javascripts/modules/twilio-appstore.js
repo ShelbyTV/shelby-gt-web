@@ -1,13 +1,15 @@
 $(document).ready(function(){
-  $('.js-sms-twilio').on('submit',function(e){
-    e.preventDefault();
-    $.ajax({
-      data: {
-        to: $(this).find('#sms')
-      },
-      type: 'POST',
-      url: e.target.action
-    });
+  console.log('twilio-appstore');
+  $('#x').on('submit',function(e){
+    console.log('submit?');
+    // e.preventDefault();
+    // $.ajax({
+    //   data: {
+    //     to: $(this).find('#sms')
+    //   },
+    //   type: 'POST',
+    //   url: e.target.action
+    // });
   });
 
   $('.js-popup--sms').on('click',function(e){
