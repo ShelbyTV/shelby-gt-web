@@ -41,6 +41,7 @@ gem 'addressable' # for URI parsing
 # ---------- External Services
 #
 gem 'koala'
+gem 'twilio-ruby'
 
 #
 # -- Quiet Logging

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Gate', :type => :request do
+describe 'Gate', :pending => true, :type => :request do
   before(:each) do
     visit '/'
   end
