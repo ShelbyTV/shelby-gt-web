@@ -1,25 +1,3 @@
-.shelby--mobile {
-  .shelf__wrapper--cta {
-    background-position: center 84%;
-    -webkit-background-size: 90%;
-    background-size: 90%;
-  }
-
-  .shelf--cta {
-    &.shelf--facebook-logged-out {
-      .appstore {
-        display: none;
-      }
-    }
-  }
-
-
-  .shelf__img--iphone {
-    opacity: 1;
-    width: 40%;
-  }
-}
-
 .shelf__wrapper--cta {
   .media_module {
     background-image: url(/images/landing/_CONTENT/laptop-1.jpg);
