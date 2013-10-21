@@ -1,12 +1,12 @@
-<form action="/" class="form_module">
+<form class="js-sms-twilio" action="<%= Settings::Application.secure_form_root %>/message/send" class="form_module">
   <label for="sms" class="form_label modal_dialog__h1">
     Text iOS download link to your phone:
   </label>
 
-  <div class="search_module">
-    <input type="submit" class="button_primer button_command button_command--sub button_green search_module__submit" value="Send" tabindex="2" />
+  <div class="search_module search_module--large">
+    <input type="submit" class="button_primer button_command button_command--sub button_command--large button_green search_module__submit" value="Send" tabindex="2" />
     <span class="search_module__input_wrapper">
-      <input id="sms" name="sms" type="text" class="form_input search_module__input" placeholder="(555) 123 4567" tabindex="1" />
+      <input id="sms" name="sms" type="tel" class="form_input search_module__input" placeholder="123 456 7890" tabindex="1" required/>
     </span>
   </div>
 
