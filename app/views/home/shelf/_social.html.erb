@@ -17,16 +17,19 @@
           </button>
         </p>
 
-        <div class="iphone iphone--horizontal js-iphone-south">
-          <img src="/images/landing/_CONTENT/header-horiz.jpg" class="iphone__header" />
-          <div class="iphone__viewport">
-            <div class="slide animate_module">
-              <img src="/images/landing/_CONTENT/iphone-2c.jpg" class="shelf__img--iphone js-horz-iphone" alt="Shelby gets better when you connect your twitter, tumblr, or facebook accounts." />
-              <img src="/images/landing/_CONTENT/iphone-3.jpg" class="shelf__img--iphone js-horz-iphone" alt="Shelby gets better when you connect your twitter, tumblr, or facebook accounts." />
+        <% if mobile %>
+          <img src="/images/landing/_CONTENT/iphone-mobile.png" class="shelf__img--iphone_horizontal" />
+        <% else %>
+          <div class="iphone iphone--horizontal js-iphone-south">
+            <img src="/images/landing/_CONTENT/header-horiz.jpg" class="iphone__header" />
+            <div class="iphone__viewport">
+              <div class="slide animate_module">
+                <img src="/images/landing/_CONTENT/iphone-2c.jpg" class="shelf__img--iphone js-horz-iphone" alt="Shelby gets better when you connect your twitter, tumblr, or facebook accounts." />
+                <img src="/images/landing/_CONTENT/iphone-3.jpg" class="shelf__img--iphone js-horz-iphone" alt="Shelby gets better when you connect your twitter, tumblr, or facebook accounts." />
+              </div>
             </div>
-          </div>
-        </div><!-- eo iphone -->
-
+          </div><!-- eo iphone -->
+        <% end %>
       </div>
     </div>
   </div><!-- eo shelf -->

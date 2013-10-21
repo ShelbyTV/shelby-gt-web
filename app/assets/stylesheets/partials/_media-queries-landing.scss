@@ -20,6 +20,10 @@
         opacity: 1;
         width: 50%;
       }
+      .shelf__img--iphone_horizontal {
+        margin: 70px auto;
+        width: 90%;
+      }
 
       .shelf__lining {
         clear: both;
@@ -116,6 +120,9 @@
         }
         .shelf__img--iphone {
           float: none;
+        }
+        .button_primer {
+          display: none;
         }
       }
       &.shelf--press {
