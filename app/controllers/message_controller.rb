@@ -2,9 +2,14 @@ require 'twilio-ruby'
 
 class MessageController < ApplicationController
   def send_message
-    @status = 200
-
     to = params.delete(:to)
+    if to
+      if to[0] == '1'
+        to = "+" + to
+      elsif to[0] != '+'
+        to = "+1" + to
+      end
+    end
     @to = to
 
     @message_type = params.delete(:type).to_i
@@ -12,6 +17,7 @@ class MessageController < ApplicationController
     twilio_client = Twilio::REST::Client.new(Settings::Twilio.account_sid, Settings::Twilio.auth_token)
 
     if @message_type == 1
+      @status = 200
       begin
         twilio_client.account.sms.messages.create({
           :from => Settings::Twilio.from_number,
