@@ -60,8 +60,12 @@
 
       <div data-shelf-index>
         <%= render :partial => "/home/shelf/call_to_action" %>
-        <%= render :partial => "/home/shelf/stream", :locals => { mobile: (@mobile_os or @is_mobile) } %>
-        <%= render :partial => "/home/shelf/social", :locals => { mobile: (@mobile_os or @is_mobile) } %>
+        <%= render :partial => "/home/shelf/stream", :locals => {
+          mobile: (@mobile_os or @is_mobile)
+        } %>
+        <%= render :partial => "/home/shelf/social", :locals => {
+          mobile: (@mobile_os or @is_mobile)
+        } %>
         <%= render :partial => "/home/shelf/press" %>
       </div>
 
