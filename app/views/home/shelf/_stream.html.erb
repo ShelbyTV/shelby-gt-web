@@ -10,31 +10,33 @@
           <%= raw Settings::Marketing.stream_body %>
         </p>
 
-        <ul class="list list--inline shelf__list js-target">
-          <li class="list__item">
-            <img alt="YouTube" title="YouTube" src="/images/landing/youtube.jpg" />
-          </li>
+        <% unless mobile %>
+          <ul class="list list--inline shelf__list js-target">
+            <li class="list__item">
+              <img alt="YouTube" title="YouTube" src="/images/landing/youtube.jpg" />
+            </li>
 
-          <li class="list__item">
-            <img alt="Vimeo" title="Vimeo" src="/images/landing/vimeo.jpg" />
-          </li>
+            <li class="list__item">
+              <img alt="Vimeo" title="Vimeo" src="/images/landing/vimeo.jpg" />
+            </li>
 
-          <li class="list__item">
-            <img alt="Hulu" title="Hulu" src="/images/landing/hulu.jpg" />
-          </li>
+            <li class="list__item">
+              <img alt="Hulu" title="Hulu" src="/images/landing/hulu.jpg" />
+            </li>
 
-          <li class="list__item">
-            <img alt="BlipTv" title="BlipTv" src="/images/landing/blip.jpg" />
-          </li>
+            <li class="list__item">
+              <img alt="BlipTv" title="BlipTv" src="/images/landing/blip.jpg" />
+            </li>
 
-          <li class="list__item">
-            <img alt="Facebook" title="Facebook" src="/images/landing/facebook.jpg" />
-          </li>
+            <li class="list__item">
+              <img alt="Facebook" title="Facebook" src="/images/landing/facebook.jpg" />
+            </li>
 
-          <li class="list__item">
-            <img alt="Twitter" title="Twitter" src="/images/landing/twitter.jpg" />
-          </li>
-        </ul>
+            <li class="list__item">
+              <img alt="Twitter" title="Twitter" src="/images/landing/twitter.jpg" />
+            </li>
+          </ul>
+        <% end %>
       </div>
 
       <div class="media_body shelf__img--stream js-stream" role="img">
