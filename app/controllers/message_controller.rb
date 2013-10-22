@@ -5,6 +5,13 @@ class MessageController < ApplicationController
     @status = 200
 
     to = params.delete(:to)
+    if to
+      if to[0] == '1'
+        to = "+" + to
+      elsif to[0] != '+'
+        to = "+1" + to
+      end
+    end
     @to = to
 
     @message_type = params.delete(:type).to_i

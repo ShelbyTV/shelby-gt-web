@@ -18,9 +18,22 @@ describe MessageController do
       parse_json(response.body)["message"].should == "You must specify a valid message type"
     end
 
-    it "parses the to param" do
-      post :send_message, :to => "123-456-7890"
-      assigns(:to).should == "123-456-7890"
+    context "parses the to param" do
+      it "adds a +1 if the number starts with anything other than + or 1" do
+        post :send_message, :to => "012-345-6789"
+        assigns(:to).should == "+1012-345-6789"
+      end
+
+      it "adds a + if the number starts with a 1" do
+        post :send_message, :to => "1012-345-6789"
+        assigns(:to).should == "+1012-345-6789"
+      end
+
+      it "passes the number through untouched if it starts with a +" do
+        post :send_message, :to => "+42111111111"
+        assigns(:to).should == "+42111111111"
+      end
+
     end
 
     it "parses the type param" do
