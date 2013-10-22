@@ -2,6 +2,7 @@ defaults: &defaults
   account_sid: "AC10c8f02c58d7f7041487a14ba260331e"
   auth_token: "31ccab361d69a15e64db31d457901c8c"
   from_number : "+15005550006"
+  appstore_install_message: "Install the Shelby.tv app <<link goes here>>"
 
 development:
   <<: *defaults
@@ -9,11 +10,11 @@ development:
 test:
   <<: *defaults
 
-staging:
-  <<: *defaults
-
-production:
+staging: &staging
   <<: *defaults
   account_sid: "AC6edd44527894ab416fc45e4cb9b29e9e"
   auth_token: "12ee2862a7388ba49b9915c37c12bd50"
   from_number: "+16467620402"
+
+production:
+  <<: *staging

@@ -37,7 +37,7 @@ describe MessageController do
         @messages_endpoint.should_receive(:create).with({
           :from => Settings::Twilio.from_number,
           :to => "123-456-7890",
-          :body => "Install the Shelby.tv app"
+          :body => Settings::Twilio.appstore_install_message
         })
         post :send_message, :to => "123-456-7890", :type => 1
         response.status.should == 200
@@ -47,7 +47,7 @@ describe MessageController do
         @messages_endpoint.should_receive(:create).with({
           :from => Settings::Twilio.from_number,
           :to => "123-456-7890",
-          :body => "Install the Shelby.tv app"
+          :body => Settings::Twilio.appstore_install_message
         }).and_raise(StandardError)
         post :send_message, :to => "123-456-7890", :type => 1
         response.status.should == 500

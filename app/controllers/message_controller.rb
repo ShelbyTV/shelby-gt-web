@@ -16,7 +16,7 @@ class MessageController < ApplicationController
         twilio_client.account.sms.messages.create({
           :from => Settings::Twilio.from_number,
           :to => @to,
-          :body => "Install the Shelby.tv app"
+          :body => Settings::Twilio.appstore_install_message
         })
       rescue
         @status = 500
