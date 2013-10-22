@@ -52,13 +52,38 @@
           <% } %>
         </li>
 
-        <% if (shelby.models.user.get('admin')) { %>
+        <% if (false) { %> <!-- shelby.models.user.get('admin') -->
           <li class="list__item right" role="menuitem">
             <button class="button_primer button_red button_command button_command--cancel js-remove-frame">
               <span class="icon icon-close"></span>
             </button>
           </li>
         <% } %>
+
+        <li class="dropdown_module list__item right more-or-less-experiment">
+          <button class="dropdown_button button_primer button_gray button_command button_command--cancel button_gray" style="padding: 0.35em 0.5em 0.65em;;font-size: 1.45em;margin: 0.5em;">
+              <span class="icon-carrot"></span>
+          </button>
+          <section class="dropdown_section settings-section">
+            <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
+              <ul class="list">
+                <li class="list__item">
+                  <button class="button_primer button_command button_command--flexible button_command--sub button_command--text js-button-more">
+                    More like this
+                    <span class="icon  icon-arrow_up"></span>
+                  </a>
+                </li>
+
+                <li class="list__item">
+                  <button class="button_primer button_command button_command--flexible button_command--sub button_command--text js-button-less" >
+                    Less like this
+                    <span class="icon  icon-arrow_down"></span>
+                  </a>
+                </li>
+            </ul>
+            </div>
+          </section>
+        </li>
 
       </ul><!-- eo frame-menu -->
 

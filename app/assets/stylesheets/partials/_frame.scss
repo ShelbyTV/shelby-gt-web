@@ -600,3 +600,39 @@
 .frame.fresh-play-new {
   overflow: hidden;
 }
+
+
+//------------------------------------------------------------------------------
+//  EXPERIMENTS
+//------------------------------------------------------------------------------
+.more-or-less-experiment {
+  .settings-section {
+    right: 0em;
+  }
+  .dropdown_lining {
+    width: 11em;
+    padding:0px;
+  }
+  .fin--top_right {
+    right: 0.6em;
+    &:before {
+      right: 0.45em;
+    }
+  }
+  .button_command--text {
+    text-align: right;
+  }
+  .icon-arrow_down {
+    color: $ui-red;
+  }
+  .icon-arrow_up {
+    color: $ui-green;
+  }
+  .list__item {
+    button {
+      padding-top: 0.25em;
+      padding-bottom: 0.25em;
+      margin-top: 0;
+    }
+  }
+}
