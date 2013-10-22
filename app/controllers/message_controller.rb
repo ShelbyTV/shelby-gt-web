@@ -21,13 +21,11 @@ class MessageController < ApplicationController
       rescue
         @status = 500
       end
-
       @result = { :status => @status }
-      render json: @result, status: @status
     else
       @status = 500
       @result = { :status => @status, :message => "You must specify a valid message type"}
-      render json: @result, status: @status
     end
+    render json: @result, status: @status, :callback => params[:callback]
   end
 end

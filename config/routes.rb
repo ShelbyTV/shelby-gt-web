@@ -1,6 +1,6 @@
 ShelbyGtWeb::Application.routes.draw do
 
-  post "message/send" => "message#send_message"
+  get "POST/message/send" => "message#send_message"
 
   # Genius is broken and shouldn't be publicly available.
   # get '/genius' => 'genius#index'

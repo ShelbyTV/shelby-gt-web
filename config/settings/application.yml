@@ -18,7 +18,7 @@ development:
   url: "http://localhost.shelby.tv:3000"
   protocol_matching_url: "//localhost.shelby.tv:3000"
   mobile_url: "http://localhost.shelby.tv:3000/m"
-  secure_form_root: "https://localhost.shelby.tv:3000"
+  secure_form_root: "http://localhost.shelby.tv:3000"
   #enable this if you're using a local API
   #avatar_url_root: "http://s3.amazonaws.com/dev-shelby-gt-user-avatars"
   #mobile_url: "http://192.168.1.6:3000/m"

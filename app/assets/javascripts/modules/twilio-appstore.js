@@ -4,10 +4,17 @@ $(document).ready(function(){
     e.preventDefault();
     $.ajax({
       data: {
-        to: $(this).find('#sms')
+        to: $(this).find('#sms').val(),
+        type: 1
       },
-      type: 'POST',
-      url: e.target.action
+      dataType: 'jsonp',
+      url: e.target.action,
+      success: function(data){
+        //TODO: Display success
+      },
+      error: function(response){
+        //TODO: Tell the user to check the number and try again
+      }
     });
   });
 
