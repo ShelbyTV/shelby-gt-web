@@ -12,20 +12,20 @@
         </p>
 
         <p class="shelf__block">
-          <a href="<%= Settings::Application.ios_app_url %>" class="button_primer button_command button_command--flexible button_green js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Social shelf">
+          <a href="<%= Settings::Application.ios_app_url %>" class="button_primer button_green button_command button_command--giant button_command--facebook one-quarter shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Social shelf">
             <%= raw Settings::Marketing.cta_button %>
           </a>
         </p>
 
         <% if mobile %>
-          <img src="/images/landing/_CONTENT/iphone-mobile.png" class="shelf__img--iphone_horizontal" />
+          <img src="/images/landing/_CONTENT/iphone-mobile.png" class="shelf__img--iphone_horizontal" title="iPhone screenshot of a video recommendation" alt="iPhone screenshot of a video recommendation" />
         <% else %>
           <div class="iphone iphone--horizontal js-iphone-south">
             <img src="/images/landing/_CONTENT/header-horiz.jpg" class="iphone__header" />
             <div class="iphone__viewport">
               <div class="slide animate_module">
-                <img src="/images/landing/_CONTENT/iphone-2c.jpg" class="shelf__img--iphone js-horz-iphone" alt="Shelby gets better when you connect your twitter, tumblr, or facebook accounts." />
-                <img src="/images/landing/_CONTENT/iphone-3.jpg" class="shelf__img--iphone js-horz-iphone" alt="Shelby gets better when you connect your twitter, tumblr, or facebook accounts." />
+                <img src="/images/landing/_CONTENT/iphone-2c.jpg" class="shelf__img--iphone js-horz-iphone" alt="" />
+                <img src="/images/landing/_CONTENT/iphone-3.jpg" class="shelf__img--iphone js-horz-iphone" title="iPhone screenshot of a video recommendation" alt="iPhone screenshot of a video recommendation" />
               </div>
             </div>
           </div><!-- eo iphone -->
