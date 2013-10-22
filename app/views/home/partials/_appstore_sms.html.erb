@@ -3,12 +3,15 @@
     Text iOS download link to your phone:
   </label>
 
-  <div class="search_module">
+  <fieldset class="form_fieldset search_module">
+    <p class="form_error">
+      There was a problem sending you a text message, please try again!
+    </p>
     <input type="submit" class="button_primer button_command button_command--sub button_command--large button_green search_module__submit" value="Send" tabindex="2" />
     <span class="search_module__input_wrapper">
-      <input id="sms" name="sms" type="text" class="form_input search_module__input" placeholder="555-555-1234" tabindex="1" required />
+      <input id="sms" name="sms" type="text" class="form_input search_module__input" placeholder="+1 555 123 4567" tabindex="1" required />
     </span>
-  </div>
+  </fieldset>
 
   <p class="modal_dialog__block">
     <a href="#">Or sign up on the web</a>

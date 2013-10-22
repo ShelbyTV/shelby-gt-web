@@ -42,6 +42,16 @@
   font-size: 13px;
   padding: 20px 30px;
   width: 500px;
+
+  // non-normative, should be standardized, but no time right now.
+  .form_error {
+    display: none;
+  }
+  .form_fieldset--error {
+    .form_error {
+      display: block;
+    }
+  }
 }
 .modal_dialog__h1 {
   font-family: $font-family-display;
