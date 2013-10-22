@@ -1,7 +1,7 @@
 defaults: &defaults
-  twilio_account_sid: "AC10c8f02c58d7f7041487a14ba260331e"
-  twilio_auth_token: "31ccab361d69a15e64db31d457901c8c"
-  twilio_outgoing_number : "+15005550006"
+  account_sid: "AC10c8f02c58d7f7041487a14ba260331e"
+  auth_token: "31ccab361d69a15e64db31d457901c8c"
+  from_number : "+15005550006"
 
 development:
   <<: *defaults
@@ -14,6 +14,6 @@ staging:
 
 production:
   <<: *defaults
-  twilio_account_sid: "AC6edd44527894ab416fc45e4cb9b29e9e"
-  twilio_auth_token: "12ee2862a7388ba49b9915c37c12bd50"
-  twilio_outgoing_number: "+16467620402"
+  account_sid: "AC6edd44527894ab416fc45e4cb9b29e9e"
+  auth_token: "12ee2862a7388ba49b9915c37c12bd50"
+  from_number: "+16467620402"

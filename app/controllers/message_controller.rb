@@ -7,19 +7,27 @@ class MessageController < ApplicationController
     to = params.delete(:to)
     @to = to
 
-    twilio_client = Twilio::REST::Client.new(Settings::Twilio.twilio_account_sid, Settings::Twilio.twilio_auth_token)
+    @message_type = params.delete(:type).to_i
 
-    begin
-      twilio_client.account.sms.messages.create({
-        :from => Settings::Twilio.twilio_outgoing_number,
-        :to => @to,
-        :body => "Install the Shelby.tv app"
-      })
-    rescue
+    twilio_client = Twilio::REST::Client.new(Settings::Twilio.account_sid, Settings::Twilio.auth_token)
+
+    if @message_type == 1
+      begin
+        twilio_client.account.sms.messages.create({
+          :from => Settings::Twilio.from_number,
+          :to => @to,
+          :body => "Install the Shelby.tv app"
+        })
+      rescue
+        @status = 500
+      end
+
+      @result = { :status => @status }
+      render json: @result, status: @status
+    else
       @status = 500
+      @result = { :status => @status, :message => "You must specify a valid message type"}
+      render json: @result, status: @status
     end
-
-    @result = { :status => @status }
-    render json: @result, status: @status
   end
 end

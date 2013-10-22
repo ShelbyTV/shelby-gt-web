@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'json'
 
 describe MessageController do
 
@@ -10,10 +11,11 @@ describe MessageController do
       Twilio::REST::Client.stub(:new).and_return(@twilio_client)
     end
 
-    it "returns http success" do
+    it "returns 500 if no type is specified" do
       post :send_message
-      response.should be_success
-      puts response.inspect
+      response.status.should == 500
+      response.body.should have_json_path('message')
+      parse_json(response.body)["message"].should == "You must specify a valid message type"
     end
 
     it "parses the to param" do
@@ -21,28 +23,33 @@ describe MessageController do
       assigns(:to).should == "123-456-7890"
     end
 
-    context "valid parameters" do
+    it "parses the type param" do
+      post :send_message, :type => 1
+      assigns(:message_type).should == 1
+    end
+
+    context "valid parameters, message type 1" do
       before(:each) do
-        Twilio::REST::Client.should_receive(:new).with(Settings::Twilio.twilio_account_sid, Settings::Twilio.twilio_auth_token).and_return(@twilio_client)
+        Twilio::REST::Client.should_receive(:new).with(Settings::Twilio.account_sid, Settings::Twilio.auth_token).and_return(@twilio_client)
       end
 
       it "parses params and sends a text message" do
         @messages_endpoint.should_receive(:create).with({
-          :from => Settings::Twilio.twilio_outgoing_number,
+          :from => Settings::Twilio.from_number,
           :to => "123-456-7890",
           :body => "Install the Shelby.tv app"
         })
-        post :send_message, :to => "123-456-7890"
+        post :send_message, :to => "123-456-7890", :type => 1
         response.status.should == 200
       end
 
       it "returns a 500 status on failure" do
         @messages_endpoint.should_receive(:create).with({
-          :from => Settings::Twilio.twilio_outgoing_number,
+          :from => Settings::Twilio.from_number,
           :to => "123-456-7890",
           :body => "Install the Shelby.tv app"
         }).and_raise(StandardError)
-        post :send_message, :to => "123-456-7890"
+        post :send_message, :to => "123-456-7890", :type => 1
         response.status.should == 500
       end
     end

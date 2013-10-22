@@ -105,4 +105,5 @@ group :test, :development do
   gem 'sinon-rails'
   gem 'jasmine-sinon-rails'
   gem 'jasmine-jquery-rails'
+  gem 'json_spec'
 end
