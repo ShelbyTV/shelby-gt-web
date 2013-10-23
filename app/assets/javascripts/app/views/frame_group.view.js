@@ -11,6 +11,8 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   className : 'list__item',
 
+  _selectedMoreOrLess : null,
+
   events : {
     "click .js-creation-date"               : "_expand",
     "click .js-goto-user-page"              : "_goToUserPage",
@@ -21,7 +23,9 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
     "click .js-remove-frame"                : "_onClickRemoveFrame",
     "click .js-share-frame"                 : "requestShareFrame",
     "click .js-toggle-comment"              : "_toggleComment",
-    "click .js-navigate-originator"         : "_navigateOriginator"
+    "click .js-navigate-originator"         : "_navigateOriginator",
+    "click .js-button-more"                   : "_showMore",
+    "click .js-button-less"                   : "_showLess"
   },
 
   template : function(obj){
@@ -374,6 +378,20 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
           shelby.alert(notificationOpts);
         }
       });
+    }
+  },
+
+  _showMore : function(){
+    if (!this._selectedMoreOrLess) {
+      this.$('.js-button-less').text("Great, we'll keep our eyes peeled.").css('color', 'green');
+      this._selectedMoreOrLess = true;
+    }
+  },
+
+  _showLess : function(){
+    if (!this._selectedMoreOrLess) {
+      this.$('.js-button-more').text("OK, we'll keep that in mind!").css('color', 'red');
+      this._selectedMoreOrLess = true;
     }
   }
 });
