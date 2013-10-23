@@ -1,6 +1,24 @@
 $(document).ready(function(){
-  var $smsPopup = $('.js-popup--sms'),
-      $smsForm = $smsPopup.find('.js-sms-twilio');
+  // this convenience method ensures that you'll never see
+  // the sms form or its success msg at the same time.
+  var togglePopupViews = function(visibility) {
+    $smsForm.toggleClass('hidden',visibility);
+    $smsSuccess.toggleClass('hidden',!visibility);
+  };
+
+  // smartly caching everything that needs handling.
+  // includes the CTA button which is outside of the popup itself.
+  var $smsPopup     = $('.js-popup--sms'),
+      $smsForm      = $smsPopup.find('.js-sms-twilio'),
+      $smsSuccess   = $smsPopup.find('.js-sms-success'),
+      $smsCtaButton = $('.js-cta');
+
+  $smsCtaButton.on('click',function(e){
+    e.preventDefault();
+
+    $smsPopup.toggleClass('hidden',false);
+    togglePopupViews(false);
+  });
 
   $smsForm.on('submit',function(e){
     e.preventDefault();
@@ -10,10 +28,10 @@ $(document).ready(function(){
     var $input = $this.find('#sms').attr('disabled',true);
 
     var options = {
-      providers : ['ga'],
+      providers  : ['ga'],
       gaCategory : shelbyTrackingCategory,
-      gaAction : 'SMS Submission',
-      gaLabel : 'Success',
+      gaAction   : 'SMS Submission',
+      gaLabel    : 'Success',
     };
 
     $.ajax({
@@ -26,8 +44,8 @@ $(document).ready(function(){
       success: function(data){
         var isSuccessful = (data.status === 200);
 
-        $input.removeAttr('disabled').val(''); // isSuccessful ? clear!
-        $smsPopup.toggleClass('hidden',isSuccessful);
+        $input.removeAttr('disabled').val(''); // isSuccessful? clear!
+        togglePopupViews(true);
 
         shelby.trackEx(options);
       },
@@ -42,9 +60,13 @@ $(document).ready(function(){
   });
 
   $smsPopup.on('click',function(e){
+    // hide this pop up if you click on any area outside the popup itself.
     if(this == e.target) {
       $(this).toggleClass('hidden',true);
     }
     return;
+  }).on('click','.js-sms-retry', function(e){
+    togglePopupViews(false);
   });
+
 });

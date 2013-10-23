@@ -12,8 +12,17 @@
       <input id="sms" name="sms" type="text" class="form_input search_module__input" placeholder="+1 555 123 4567" tabindex="1" required />
     </span>
   </fieldset>
-
-  <p class="modal_dialog__block">
-    <a href="/signup" class="js-track-event" ga_action="Click Signup" ga_label="SMS popup">Or sign up on the web</a>
-  </p>
 </form>
+
+<div class="hidden js-sms-success">
+  <label class="modal_dialog__h1 modal_dialog__h1--success js-sms-retry js-track-event" data-ga_action="Click Try Again" data-ga_label="SMS popup after Send">
+    Sent!
+  </label>
+  <p class="modal_dialog__block modal_dialog__block--push">
+    Go check your texts, if you didn't get one, <a href="#" class="js-sms-retry js-track-event" data-ga_action="Click Try Again" data-ga_label="SMS popup after Send">try again</a>!
+  </p>
+</div>
+
+<p class="modal_dialog__block">
+  <a href="/signup" class="js-track-event" data-ga_action="Click Signup" data-ga_label="SMS popup">Or sign up on the web</a>
+</p>
