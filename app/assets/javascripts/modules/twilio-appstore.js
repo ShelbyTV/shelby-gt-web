@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  console.log('twilio-appstore');
   var $smsPopup = $('.js-popup--sms'),
       $smsForm = $smsPopup.find('.js-sms-twilio');
 
@@ -25,7 +24,6 @@ $(document).ready(function(){
       dataType: 'jsonp',
       url: e.target.action,
       success: function(data){
-        //TODO: Display success
         var isSuccessful = (data.status === 200);
 
         $smsPopup.toggleClass('hidden',isSuccessful);
@@ -33,7 +31,6 @@ $(document).ready(function(){
         shelby.trackEx(options);
       },
       error: function(response){
-        //TODO: Tell the user to check the number and try again
         $smsForm.find('.form_fieldset').toggleClass('form_fieldset--error',true);
         $input.removeAttr('disabled');
 
