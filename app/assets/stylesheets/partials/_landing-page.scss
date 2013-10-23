@@ -11,7 +11,6 @@
 
   background-color: $ui-off-white;
   height: auto;
-  overflow: visible;
 
   //TODO: determine why this override is necessary.
   .shelby__wrapper {
@@ -33,6 +32,15 @@
   .app_nav {
     text-align: right;
   }
+
+  .slide_navigator {
+    margin-top: -150px;
+    margin-left: 15px;
+    position: fixed;
+    top: 50%;
+    z-index: 2;
+  }
+
 }
 
 // ----- Non-normative Overrides -----------------------------------------------
@@ -40,391 +48,29 @@
   padding-top: 2em;
 }
 
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-//  Block
-//------------------------------------------------------------------------------
+@import "partials/landing-page__shelf";
+@import "partials/landing-page__error";
+@import "partials/landing-page__fill";
+@import "partials/landing-page__iphone";
+@import "partials/landing-page__header";
+@import "partials/landing-page__cta";
+@import "partials/landing-page__press";
+@import "partials/landing-page__secondary-cta";
+@import "partials/landing-page__signup";
+@import "partials/landing-page__stream";
+@import "partials/landing-page__social";
+// 10/11/2013
+// @import "partials/landing-page__slogan";
+@import "partials/landing-page__team";
 
-.shelf {
-  background-color: $ui-white;
-  border: 1px solid $inset;
-  font-size: 1.5em;
-  margin: 1em auto;
-  width: 944px;
-}
-    .shelf--error {
-      border: 1px solid $ui-red;
-      color: $ui-red;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .shelf--header {
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      left: 0;
-      max-width: none;
-      margin: 0;
-      position: fixed;
-      top: 0;
-      -webkit-transform: translateZ(0);
-         -moz-transform: translateZ(0);
-          -ms-transform: translateZ(0);
-              transform: translateZ(0);
-      width: 100%;
-      z-index: 1;
-
-      .shelf__lining {
-        padding: 0.25em 1em;
-      }
-
-      .shelf__button--cta {
-        vertical-align: -2px;
-      }
-
-      //non-normative overrides
-      .app_nav__button {
-        font-size: inherit;
-        margin-top: 0.5em;
-      }
-    }
-
-    .shelf--cta {
-      &.shelf--facebook-logged-out {
-        .shelf__h1 {
-          margin-top: 2em;
-        }
-        .facepile {
-          display: none;
-        }
-      }
-
-      height: 500px;
-
-      .shelf__lining {
-        padding-top: 4em;
-        padding-left: 3.5em;
-      }
-
-      .shelf__button {
-        font-size: 1.3em;
-        margin-top: 0.7em;
-      }
-
-      .facepile {
-        margin-top: 1.5em;
-      }
-
-      .shelf__img--desktop {
-        bottom: 0;
-        position: absolute;
-        right: 0;
-      }
-
-      .shelf__email-signup {
-        color: lighten($text,20%);
-        @include basefont;
-        font-size: 0.8em;
-        margin-top: -0.5em;
-      }
-    }
-
-    .shelf--signup {
-      height: 440px;
-      text-align: center;
-
-      .shelf__lining {
-        font-size: 1.1em;
-      }
-
-      .shelf__lining--right {
-        width: 45%;
-        float: right;
-        padding-top: 2em;
-        text-align: left;
-        font-size: 0.9em;
-      }
-
-      .shelf__lining--left {
-        width: 55%;
-        float: left;
-        padding-top: 5.75em;
-        padding-left: 66px;
-      }
-
-      .shelf__button {
-        margin: 1.5em auto 0;
-      }
-
-      .shelf__img {
-        display: block;
-        margin: 0 auto;
-        max-width: 100%;
-      }
-
-      .list--benefits {
-        margin-left: 75px;
-      }
-
-      .form_fieldset {
-        width: 255px;
-      }
-
-      .form__description {
-        font-size: 0.8em;
-        line-height: 1;
-      }
-
-      .form_fieldset--error {
-        .form_error {
-          display: block;
-        }
-      }
-
-      .form_error {
-        position: absolute;
-        margin: 0.3em 2em;
-        font-size: 0.65em;
-        display: none;
-      }
-    }
-
-    .css-vertical-pan {
-      -webkit-animation: vertical-pan 98s infinite; /* Chrome, Safari 5+ */
-         -moz-animation: vertical-pan 98s infinite; /* Firefox 5-15 */
-           -o-animation: vertical-pan 98s infinite; /* Opera 12.00 */
-              animation: vertical-pan 98s infinite; /* Chrome, Firefox 16+, IE 10+, Opera 12.10+ */
-
-      -webkit-animation-timing-function: linear;
-         -moz-animation-timing-function: linear;
-           -o-animation-timing-function: linear;
-              animation-timing-function: linear;
-
-      -webkit-backface-visibility: hidden;
-              -webkit-perspective: 1000;
-
-      -webkit-transform: rotateZ(0deg);  -webkit-transform-style: preserve-3d;
-         -moz-transform: rotateZ(0deg);     -moz-transform-style: preserve-3d;
-          -ms-transform: rotateZ(0deg);      -ms-transform-style: preserve-3d;
-              transform: rotateZ(0deg);          transform-style: preserve-3d;
-    }
-
-    @-webkit-keyframes vertical-pan {
-      0%   { background-position: center 0; }
-      50%  { background-position: center 100%; }
-      100% { background-position: center 0; }
-    }
-    @-moz-keyframes vertical-pan {
-      0%   { background-position: center 0; }
-      50%  { background-position: center 100%; }
-      100% { background-position: center 0; }
-    }
-    @-o-keyframes vertical-pan {
-      0%   { background-position: center 0; }
-      50%  { background-position: center 100%; }
-      100% { background-position: center 0; }
-    }
-    @keyframes vertical-pan {
-      0%   { background-position: center 0; }
-      50%  { background-position: center 100%; }
-      100% { background-position: center 0; }
-    }
-    .shelf--stream {
-      height: 437px;
-
-      .shelf__h1 {
-        margin-top: 3.2em;
-      }
-
-      .shelf__img--stream {
-        background-image: url('/images/landing/stream.jpg');
-        background-repeat: none;
-        background-position: top center;
-        -webkit-background-size: 100%;
-        background-size: 100%;
-        margin: 0 1em 0 3em;
-        width: 384px;
-        height: 435px;
-
-        .img {
-          margin: 0 2em;
-          max-width: 100%;
-        }
-      }
-      .shelf__img--sources {
-        margin: 2em 0;
-        max-width: 100%;
-      }
-
-      //non-normative
-      .media_module {
-        height: inherit;
-      }
-    }
-
-    .shelf--social {
-      .shelf__h1 {
-        margin-top: 2.5em;
-      }
-        .shelf__img {
-          margin: 4em auto;
-        }
-    }
-
-    .shelf--press {
-      text-align: center;
-
-      .shelf__img {
-        height: 40px;
-        display: block;
-        -webkit-background-size: auto;
-        background-size: auto;
-      }
-      .shelf__img--mashable {
-        background-image: url('/images/landing/mashable.png');
-      }
-      .shelf__img--tnw {
-        background-image: url('/images/landing/tnw.png');
-      }
-      .shelf__img--tc {
-        background-image: url('/images/landing/tc.png');
-      }
-    }
-
-    .shelf--secondary-cta {
-      text-align: center;
-
-      .shelf__h2 {
-        margin-top: 1em;
-      }
-      .shelf__button--cta {
-        margin-left: 10px;
-      }
-    }
-
-    .shelf--slogan {
-      background: transparent;
-      border: none;
-      text-align: center;
-
-      .shelf__lining {
-        padding: 0em;
-      }
-
-      .shelf__h2 {
-        margin-top: 1em;
-      }
-    }
-
-    .shelf--team {
-      background: transparent;
-      border: none;
-
-      .shelf__lining {
-        padding-left: 0;
-        padding-right: 0;
-      }
-      //non-normative
-      .shelf__item {
-        float: left;
-
-        &:nth-child(3n+1){
-          .frame {
-            padding-left: 0;
-          }
-        }
-
-        &:nth-child(3n+2) {
-          .frame {
-            padding-left: 0;
-            padding-right: 0;
-          }
-        }
-
-        &:nth-child(3n+3){
-          .frame {
-            padding-right: 0;
-          }
-        }
-      }
-      .frame {
-        font-size: 0.75em;
-        line-height: 1.4;
-      }
-      .frame-footer {
-        min-height: 8em;
-      }
-      .frame-thumbnail {
-        height: 193px;
-      }
-      .frame-subline {
-        bottom: 0;
-        margin: 0;
-        position: absolute;
-        text-align: right;
-        width: 100%;
-      }
-      .xuser-data {
-        font-family: $font-family;
-        margin-bottom: 0.5em;
-      }
-      .xuser-data-timestamp {
-        line-height: 1.8;
-      }
-
-      a {
-
-        &,
-        &:visited {
-          text-decoration: none;
-        }
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-      //hack
-      .left {
-        float: left;
-      }
-    }
-
-//------------------------------------------------------------------------------
-//  Elements
-//------------------------------------------------------------------------------
-.shelf__lining {
-  padding: 0.7em 3em;
-}
-
-.shelf__h1 {
-  font-size: 1.8em;
-  margin-bottom: 1em;
-}
-
-.shelf__h2 {
-  margin-bottom: 1em;
-}
-
-.shelf__block {
-  color: #777;
-  line-height: 1.5;
-}
-
-.shelf__link {
-  &:hover {
-    text-decoration: underline;
-  }
-}
 ////////////////////////////////////////
 //the footer isn't actually a shelf
 .shelby__foot {
   background-color: $ui-black;
   font-size: 1.5em;
+  height: 1000px;
   line-height: 1.5;
+  position: relative;
   text-align: center;
 
   .shelby__lining {

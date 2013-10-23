@@ -1,0 +1,31 @@
+.shelf__wrapper--press {
+  .shelf__img--main {
+    width: 100%;
+  }
+}
+.shelf--press {
+  padding-bottom: 1.7em;
+  padding-top: 1.7em;
+  width: auto;
+  text-align: center;
+
+  .shelf__lining {
+    padding-top: 0.4em;
+  }
+  .shelf__img {
+    height: 40px;
+    display: block;
+    -webkit-background-size: auto;
+    background-size: auto;
+  }
+  .shelf__img--mashable {
+    background-image: url('/images/landing/mashable.png');
+  }
+  .shelf__img--tnw {
+    background-image: url('/images/landing/tnw.png');
+  }
+  .shelf__img--tc {
+    background-image: url('/images/landing/tc.png');
+  }
+}
+

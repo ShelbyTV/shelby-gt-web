@@ -1,0 +1,54 @@
+.shelf__wrapper--cta {
+  .media_module {
+    background-image: url(/images/landing/_CONTENT/laptop-1.jpg);
+    background-position: 76% 68%;
+    background-repeat: no-repeat;
+  }
+}
+
+.shelf--cta {
+  &.shelf--facebook-logged-out {
+    .shelf__h1 {
+      margin-top: 2em;
+    }
+    .facepile {
+      display: none;
+    }
+
+    .appstore {
+      margin-top: 200px;
+    }
+  }
+
+  .shelf__lining {
+    padding-top: 4em;
+    padding-left: 3.5em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .shelf__button {
+    margin-top: 0.7em;
+  }
+
+  .facepile {
+    margin-top: 1.5em;
+  }
+
+  .appstore {
+    display: block;
+  }
+
+  .shelf__img--iphone {
+    float: right;
+    margin: 65px 39px;
+  }
+
+  .shelf__email-signup {
+    @include basefont;
+
+    color: lighten($text,20%);
+    font-size: 0.8em;
+    margin-top: -0.5em;
+  }
+}

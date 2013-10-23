@@ -1,18 +1,36 @@
-<div class="shelf shelf--social clearfix shelf--facebook-logged-out">
-  <div class="media_module media_module--bare clearfix">
+<div id="social" name="social" class="shelf__wrapper shelf__wrapper--social clearfix">
+  <div class="shelf shelf--social clearfix shelf--facebook-logged-out js-social">
+    <div class="media_module media_module--bare clearfix">
 
-    <div class="media_image shelf__lining one-half">
-      <h2 class="shelf__h1">
-        Powered by friends.
-      </h2>
+      <div class="shelf__lining four-fifths">
+        <h2 class="shelf__h1">
+          <%= raw Settings::Marketing.social %>
+        </h2>
 
-      <p class="shelf__block">
-        You know that feeling of laughing with friends about that video? Shelby TV makes sure you’ll always know about awesome videos important in your world.
-      </p>
+        <p class="shelf__block">
+          <%= raw Settings::Marketing.social_body %> <a href="#">Learn More</a>
+        </p>
+
+        <p class="shelf__block">
+          <a href="<%= Settings::Application.ios_app_url %>" class="button_primer button_green button_command button_command--giant button_command--flexible one-quarter shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Social shelf">
+            <%= raw Settings::Marketing.cta_button %>
+          </a>
+        </p>
+
+        <% if mobile %>
+          <img src="/images/landing/_CONTENT/iphone-mobile.png" class="shelf__img--iphone_horizontal" title="iPhone screenshot of a video recommendation" alt="iPhone screenshot of a video recommendation" />
+        <% else %>
+          <div class="iphone iphone--horizontal js-iphone-south">
+            <img src="/images/landing/_CONTENT/header-horiz.jpg" class="iphone__header" />
+            <div class="iphone__viewport">
+              <div class="slide animate_module">
+                <img src="/images/landing/_CONTENT/iphone-2c.jpg" class="shelf__img--iphone js-horz-iphone" alt="" />
+                <img src="/images/landing/_CONTENT/iphone-3.jpg" class="shelf__img--iphone js-horz-iphone" title="iPhone screenshot of a video recommendation" alt="iPhone screenshot of a video recommendation" />
+              </div>
+            </div>
+          </div><!-- eo iphone -->
+        <% end %>
+      </div>
     </div>
-
-    <div class="media_body">
-      <img src="/images/landing/social-cards.png" class="shelf__img" alt="Shelby gets better when you connect your twitter, tumblr, or facebook accounts." />
-    </div>
-  </div>
-</div><!-- eo shelf -->
+  </div><!-- eo shelf -->
+</div>

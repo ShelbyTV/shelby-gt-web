@@ -1,0 +1,31 @@
+.shelf--header {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  left: 0;
+  max-width: none;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  -webkit-transform: translateZ(0);
+     -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+          transform: translateZ(0);
+  width: 100%;
+  z-index: 2;
+
+  .shelf__lining {
+    padding: 0.25em 1em;
+  }
+
+  .shelf__button--cta {
+    vertical-align: -2px;
+  }
+
+  //non-normative overrides
+  .app_nav__button {
+    font-size: inherit;
+    margin-top: 0.5em;
+  }
+}
+

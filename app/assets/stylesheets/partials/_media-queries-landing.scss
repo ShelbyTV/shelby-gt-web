@@ -4,38 +4,92 @@
 //  Screens that LESS THAN 944px wide. (shelf-width)
 @media screen and (max-width: 944px) {
   .shelby--mobile {
+    overflow: visible;
+
+    .shelby__wrapper {
+      padding-top: 50px;
+    }
+
     .shelf {
+      //------- all shelves ------------------------
       border-left: 0;
       border-right: 0;
+      min-width: 0;
       width: auto;
+
+      .shelf__img--iphone {
+        opacity: 1;
+        width: 50%;
+      }
+      .shelf__img--iphone_horizontal {
+        margin: 70px auto;
+        width: 90%;
+      }
+
+      .shelf__lining {
+        clear: both;
+        float: none;
+        margin: 0;
+        padding: 0;
+        width: auto;
+      }
+
+      .media_image,
+      .media_body,
+      .media_module {
+        overflow: visible;
+      }
+
+      .media_body,
+      .media_image {
+        display:  block;
+      }
+      //-------- eo all shelves ------------------
 
       &.shelf--header {
         max-width: 100%;
         width: 100%;
 
-        .shelf__lining {
-          padding-left: 0;
-          padding-right: 0;
+        .shelby-logo {
+          font-size: 2.6em;
+        }
+        .app_nav__button {
+          margin-top: 0;
         }
       }
+
       &.shelf--cta {
-        &.shelf--facebook-logged-out {
-          height: 690px;
-        }
-        height: 800px;
         padding: 0;
 
-        .shelf__lining {
-          margin: 0 0 0 2em;
-          padding: 0;
-          width: auto;
+        &.shelf--facebook-logged-out {
+          height: auto;
+          background-position: center 85%;
+          -webkit-background-size: 90%;
+          background-size: 90%;
+          text-align: center;
+        }
+        .appstore {
+          display: none;
         }
         .shelf__h1 {
-          margin-top: 2em!important;
+          margin-top: 0.5em!important;
+          font-size: 2em;
+          width: auto;
+        }
+        .shelf__block {
+          margin-left: 1em;
+          margin-right: 1em;
+
+          br {
+            display: none;
+          }
         }
         .shelf__img--desktop {
           max-height: 53%;
           max-width: 93%;
+        }
+        .button_primer {
+          width: 50%;
         }
       }
       &.shelf--social {
@@ -55,73 +109,39 @@
         .shelf__h1 {
           margin-top: 1em;
         }
-        .shelf__lining {
-          float: none;
-          margin: 0 0 0 2em;
-          padding: 0;
+        .shelf__button {
           width: auto;
         }
       }
       &.shelf--stream {
-        height: 708px;
+        height: auto;
+        text-align: center;
 
-        .shelf__lining {
-          clear: both;
-          float: none;
-          margin: 0 0 0 2em;
-          padding: 0;
-        }
         .shelf__h1 {
+          font-size: 1.5em;
           margin-top: 0;
-          padding-top: 2em;
+          padding-top: 1em;
         }
-        .shelf__img--stream {
+        .shelf__block {
+          width: auto;
+        }
+        .shelf__img--iphone {
           float: none;
-          margin: 0 auto;
-          max-width: 384px;
-          width: 100%;
         }
-        .shelf__img--sources {
-          display: block;
-          left: -1.5em;
-          margin: 2em auto;
-          position: relative;
+        .button_primer {
+          display: none;
         }
       }
       &.shelf--press {
-        .shelf__lining {
-          clear: both;
-          padding-bottom: 2em;
-          padding-top: 2em;
-        }
-        .shelf__h1 {
-          margin-top: 2em;
-        }
         .list__item {
           display: block;
           width: 100%;
         }
       }
-      &.shelf--secondary-cta {
-        .shelf__button--cta {
-          display: block;
-          margin-top: 1em;
-        }
-      }
-
-      .media_image,
-      .media_body,
-      .media_module {
-        overflow: visible;
-      }
-
-      .media_body,
-      .media_image {
-        display:  block;
-        // width: auto;
-      }
     }
     .shelby__foot {
+      height: auto;
+
       .shelby__lining {
         padding-bottom: 0;
         width: 90%;

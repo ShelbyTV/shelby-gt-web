@@ -1,0 +1,71 @@
+.modal_dialog__wrapper {
+  background-color: rgba(255,255,255,0.75);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+  }
+
+  // these nested styles are only relevant when the __wrapper is present.
+  .modal_dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+  }
+}
+
+    .modal_dialog__wrapper--sms {
+      .modal_dialog {
+        margin: 0 30px;
+      }
+      .search_module {
+        margin-bottom: 2em;
+      }
+      .search_module__submit {
+        margin-left: 10px;
+      }
+    }
+
+// actual modal styling
+.modal_dialog {
+  background-color: $ui-white;
+  font-size: 13px;
+  padding: 20px 30px;
+  width: 500px;
+
+  // non-normative, should be standardized, but no time right now.
+  .form_error {
+    display: none;
+  }
+  .form_fieldset--error {
+    .form_error {
+      display: block;
+    }
+  }
+}
+.modal_dialog__h1 {
+  font-family: $font-family-display;
+  font-size: 1.5em;
+  font-weight: 400;
+  line-height: 1.75;
+  margin-bottom: 1em;
+}
+  .modal_dialog__h1--success {
+    color: $ui-green;
+  }
+
+.modal_dialog__block {
+}
+    .modal_dialog__block--push {
+      margin-bottom: 1.5em;
+    }

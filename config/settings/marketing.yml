@@ -5,6 +5,15 @@ defaults: &defaults
   powered_by_friends: "The best web video, powered by friends."
   no_search_required: "Great video, no searching required."
 
+  cta: "Discover and enjoy new videos every day"
+  cta_body: "Get the best of web video, personalized to your interests <br/>and available wherever you are."
+  cta_button: "Get the App"
+
+  stream: "Your perfect video stream. <br/>Powered by your favorite people and networks."
+  stream_body: "Shelby collects videos from across the web and organizes them in a single stream, showing you the information that matters to you."
+
+  social: "A video channel personalized for you."
+  social_body: "Shelby delivers smart recommendations that get better the more you watch, like and share videos."
 development:
   <<: *defaults
 

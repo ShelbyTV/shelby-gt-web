@@ -9,6 +9,7 @@
   <title><%= render :partial => "/home/title_tag" %></title>
 
   <%= render :partial => "/home/meta_info" %>
+  <%= csrf_meta_tags %>
   <meta content="user-scalable=no, width=device-width, initial-scale=0.8" name="viewport">
   <link rel="apple-touch-icon-precomposed" href="http://shelby.tv/apple-touch-icon-precomposed.png" />
 
@@ -52,19 +53,33 @@
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
-      <%= render :partial => "/home/shelf/call_to_action" %>
+      <% unless (@mobile_os or @is_mobile) %>
+        <%= render :partial => "/home/shelf/iphone"  %>
+        <%= render :partial => "/home/shelf/nav" %>
+      <% end %>
 
-      <%= render :partial => "/home/shelf/stream" %>
-      <%= render :partial => "/home/shelf/social" %>
-      <%= render :partial => "/home/shelf/press" %>
-      <%= render :partial => "/home/shelf/secondary_call_to_action" %>
+      <div data-shelf-index>
+        <%= render :partial => "/home/shelf/call_to_action" %>
+        <%= render :partial => "/home/shelf/stream", :locals => {
+          mobile: (@mobile_os or @is_mobile)
+        } %>
+        <%= render :partial => "/home/shelf/social", :locals => {
+          mobile: (@mobile_os or @is_mobile)
+        } %>
+        <%= render :partial => "/home/shelf/press" %>
+      </div>
+
     <% end %>
 
     <% #------------ /Shelf Content --------------- %>
 
+    <%= render :layout => '/objects/modal_dialog', :locals => { :modifier => 'sms' } do %>
+      <%= render :partial => '/home/partials/appstore_sms' %>
+    <% end %>
   </div><!-- /shelby-wrapper -->
 
   <%= render :partial => '/home/shelf/footer' %>
+
   <%= render :partial => '/home/landing_scripts' %>
 
 </body>
