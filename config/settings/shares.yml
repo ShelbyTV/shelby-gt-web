@@ -14,6 +14,9 @@ staging:
   <<: *defaults
   web_domain: 'staging.shelby.tv'
 
+production-seo-1:
+  <<: *defaults
+
 production: &production
   <<: *defaults
 
