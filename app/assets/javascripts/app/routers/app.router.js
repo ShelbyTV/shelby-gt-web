@@ -99,7 +99,9 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
             if (notEligibleForOnboarding) {
               self._reroute();
             } else if (!userOnboardingProgress) {
-              self.navigate('/onboarding/1', {trigger:true, replace:true});
+              // AB TESTING ORDER OF ONBOARDING
+              var _param = _(userModel.get('authentications')).any(function(auth){return auth.provider == 'facebook';}) ? '?authed_with=facebook' : '';
+              self.navigate('/onboarding/2'+_param, {trigger:true, replace:true});
               return;
             } else if (userOnboardingProgress !== true && userOnboardingProgress < libs.shelbyGT.OnboardingView.numOnboardingStages) {
               self.navigate('/onboarding/' + (parseInt(userOnboardingProgress,10) + 1), {trigger:true, replace:true});
@@ -118,7 +120,14 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
           shelby.models.rollFollowings.fetch();
           shelby.models.promoRollCategories.fetch();
-          shelby.promises.dynamicRecommendationsFetch = $.when(shelby.collections.dynamicRecommendations.fetch());
+          shelby.promises.dynamicRecommendationsFetch = $.when(shelby.collections.dynamicRecommendations.fetch({
+            data: {
+              limits: '3,5,2',
+              min_score: shelby.config.recommendations.videoGraph.minScore,
+              scan_limit: shelby.config.recommendations.videoGraph.dashboardScanLimit,
+              sources: '31,33,34'
+            }
+          }));
           shelby.checkFbTokenValidity();
           shelby.track('identify', {nickname: userModel.get('nickname')});
 

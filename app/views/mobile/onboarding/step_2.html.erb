@@ -1,0 +1,73 @@
+<div class="modal__body clearfix">
+  <h2 class="modal__h1">
+    Follow the best of web video
+  </h2>
+  <p class="modal__block modal__block--push">
+    Follow at least 3 of our hand-picked content sources. We'll keep your stream fresh with high quality video.
+  </p>
+  <%= form_tag(mobile_set_onboarding_path(@current_step)) do %>
+    <div class="js-list-sources--onboarding">
+      <% @sources.each do |category| %>
+        <div class="user user--no_lining user--medium_avatar clearfix">
+          <div class="media_module media_module--bare clearfix">
+            <div class="media_image--rev">
+              <%= check_box_tag "rolls[#{category['id']}]", nil, false, :class => "hidden" %>
+              <button class="button_primer button_command button_command--flexible button_gray user__button js-onboarding-roll-button js-track-event" data-roll_id="<%= category['id'] %>" data-ga_category="Mobile" data-ga_action="Onboarding" data-ga_label="Click follow source">
+                <span class="button_label">Follow</span>
+              </button>
+            </div><!-- eo media_image--rev -->
+
+            <span class="media_image image_module avatar avatar--medium user__avatar" role="img" style="background-image:url(<%= category['display_thumbnail_src'] %>);">
+              <img class="visuallyhidden" src="<%= category['display_thumbnail_src'] %>"/>
+            </span><!-- eo media_image -->
+
+            <div class="media_body">
+              <h3 class="user__h1">
+                <%= category['display_title'] %>
+              </h3>
+
+              <h4 class="user__h2">
+                <%= category['description'] %>
+              </h4>
+            </div><!-- eo media_body -->
+          </div><!-- eo media_module -->
+        </div><!-- eo user -->
+      <% end %>
+    </div>
+    <div class="modal__foot modal__foot--rev clearfix">
+      <%= submit_tag("Follow 3 More", :disabled => true, :class => "button_primer button_command button_command--wide button_green js-advance-slideshow js-track-event", 'data-ga_category' => 'Mobile', 'data-ga_action' => 'Onboarding', 'data-ga_label' => 'Click Next on Step 2') %>
+    </div><!-- eo modal__foot -->
+  </div><!-- eo modal__body -->
+<% end %>
+
+<%= javascript_tag  do %>
+  $(document).ready(function(){
+    var $followUnfollow = $('.js-onboarding-roll-button');
+
+    $followUnfollow.on('click',function(e){
+      e.preventDefault();
+
+      var $this = $(this),
+          roll_id = $this. data('roll_id'),
+          isFollowing = !$this.hasClass('button_gray'); // button_gray == not following
+
+      //change value of hidden input associated with button
+      $('#rolls_' + roll_id).attr('checked', !isFollowing);
+      var rollsFollowing = $('.js-list-sources--onboarding input:checked').length
+
+      //naively toggle state & text of button
+      $this.toggleClass('button_green button_gray')
+           .text(isFollowing ? 'Follow' : 'Following');
+
+      // enable submit button if following 3
+      if (rollsFollowing == 3) {
+        $('input[type=submit]').attr('value', "Start Watching!").removeAttr('disabled');
+      } else if (rollsFollowing == 2) {
+        $('input[type=submit]').attr('value', "Follow 1 More");
+      } else if (rollsFollowing == 1) {
+        $('input[type=submit]').attr('value', "Follow 2 More");
+      }
+    });
+  });
+  <%= render :partial =>"/mobile/partials/intercom", :formats=>[:js], :locals => {:signed_in_user => @signed_in_user} %>
+<% end %>

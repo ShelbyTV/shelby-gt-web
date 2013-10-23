@@ -28,6 +28,14 @@
   </fieldset>
 
   <fieldset class="form_fieldset">
+    <input<% if(preferences.comment_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox js-notification-checkbox" id="notificationsComments" name="notificationsComments" />
+
+    <label for="notificationsComments" class="form_label">
+      Comments<br/> <em>Notify me when someone comments on a video I share.</em>
+    </label>
+  </fieldset>
+
+  <fieldset class="form_fieldset">
     <input<% if(preferences.roll_activity_notifications){ %> checked<% } %> type="checkbox" class="form_checkbox js-notification-checkbox" id="notificationRollActivity" name="notificationRollActivity" />
 
     <label for="notificationRollActivity" class="form_label">

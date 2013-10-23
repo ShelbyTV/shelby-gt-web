@@ -1,0 +1,9 @@
+(function(){
+  var likers<%= raw " = #{likers.to_json}" if likers %>,
+      $scope = $('.js-<%= frame_id %>').find('.frame-likes-link');
+
+  $(document).bind('pageLoaded',function(){
+    window.injectLikers(likers,$scope);
+  });
+
+})();

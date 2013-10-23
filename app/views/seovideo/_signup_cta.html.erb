@@ -1,5 +1,5 @@
 <% # encoding: UTF-8 %>
-<div class="js-seo-signup-message welcome-message__wrapper welcome-message__wrapper--seo hidden">
+<div class="js-seo-signup-message frame-body-wrapper welcome-message__wrapper welcome-message__wrapper--seo hidden">
   <div class="welcome-message welcome-message--large welcome-message--seo">
     <div>
       <h2 class="welcome-message__h1--plain">
@@ -11,7 +11,7 @@
       </h3>
 
       <div class="welcome-message__button-wrapper">
-        <a href="<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.facebook_auth_path}?origin=http://shelby.tv" %>" class="button_primer button_facebook-blue button_command button_command--seo one-third button_command--facebook js-authorize js-authorize--facebook js-cta js-track-event"  data-popup_width="1000" data-popup_height="650" data-ga_category="SEO Video" data-ga_action="Click Sign Up with Facebook" data-ga_label="In Modal">
+        <a href="http://api.shelby.tv/auth/facebook" class="button_primer button_facebook-blue button_command button_command--seo one-third button_command--facebook js-authorize js-authorize--facebook js-cta js-track-event"  data-popup_width="1000" data-popup_height="650" data-ga_category="<%= category %>" data-ga_action="Click Sign Up with Facebook" data-ga_label="In Modal">
           <span class="icon-facebook"></span>
           <span class="button_label">Sign Up with Facebook</span>
         </a>
@@ -31,6 +31,8 @@
   </div><!-- eo .welcome-message -->
 </div>
 
-<%= javascript_tag do %>
-  <%= render :partial => "signup_cta_brains", :locals => {:from_similar_video=> @from_similar_video}, :formats=>[:js] %>
+<% if with_js %>
+  <%= javascript_tag do %>
+    <%= render :partial => "signup_cta_brains", :locals => {:from_similar_video=> @from_similar_video}, :formats=>[:js] %>
+  <% end %>
 <% end %>

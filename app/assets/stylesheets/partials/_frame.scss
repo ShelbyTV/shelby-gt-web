@@ -125,6 +125,9 @@
     background-size: 72px;
   }
 }
+    .frame-thumbnail--tall {
+      height: 230px;
+    }
 
 .no-faux-link {
   &:visited,
@@ -206,11 +209,12 @@
 
   color: adjust-lightness($text, 20%);
 }
-
     .xuser-data--green {
       color: adjust-lightness($ui-green, -10%);
     }
-
+    .xuser-data--red {
+      color: $ui-red;
+    }
     .xuser-data--recommendation {
       font-size: 1.1em;
     }
@@ -237,8 +241,11 @@
 
 .xuser-data-timestamp {
   float: right;
-  opacity: .5;
+  opacity: .6;
 }
+    .xuser-data-timestamp--inline {
+      float: none;
+    }
 
 .xuser-avatar {
   border-radius: 3px;
@@ -253,7 +260,8 @@
 }
     .xuser-avatar--facebook,
     .xuser-avatar--twitter,
-    .xuser-avatar--tumblr {
+    .xuser-avatar--tumblr,
+    .xuser-avatar--featured {
       &:before {
         background-color: $base-frame;
         border-radius: 4px;
@@ -284,6 +292,11 @@
     .xuser-avatar--tumblr {
       &:before {
         background-color: $tumblr-blue;
+      }
+    }
+    .xuser-avatar--featured {
+      &:before {
+        background-color: $ui-green;
       }
     }
 
@@ -512,7 +525,8 @@
 }
 
 .frame-likes-avatars {
-  display: inline-block;
+  display: inline;
+  font-size: 7px;
 
   &.list {
     margin: 0 0.22em 0 0.4em;
@@ -554,6 +568,9 @@
 
 .frame-likes-link {
   display: inline-block;
+  // N.B. firefox doesn't handle inline whitespace gracefully.
+  // gross cross-browser hack, works in concert with font-size adjust on .frame-likes-avatars above.
+  font-size: 16px;
 }
 
 .frame-likes-avatar {

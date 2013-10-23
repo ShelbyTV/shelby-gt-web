@@ -3,23 +3,28 @@ libs.shelbyGT.FrameModel = libs.shelbyGT.ShelbyBaseModel.extend({
     {
       type : Backbone.HasOne,
       key : 'creator',
-      relatedModel : 'libs.shelbyGT.UserModel'
+      relatedModel : 'libs.shelbyGT.UserModel',
+      includeInJSON : false
     },{
       type : Backbone.HasOne,
       key : 'conversation',
-      relatedModel : 'libs.shelbyGT.ConversationModel'
+      relatedModel : 'libs.shelbyGT.ConversationModel',
+      includeInJSON : false
     },{
       type : Backbone.HasOne,
       key : 'video',
-      relatedModel : 'libs.shelbyGT.VideoModel'
+      relatedModel : 'libs.shelbyGT.VideoModel',
+      includeInJSON : false
     },{
       type : Backbone.HasOne,
       key : 'roll',
-      relatedModel : 'libs.shelbyGT.RollModel'
+      relatedModel : 'libs.shelbyGT.RollModel',
+      includeInJSON : false
     },{
       type : Backbone.HasOne,
       key : 'originator',
-      relatedModel : 'libs.shelbyGT.UserModel'
+      relatedModel : 'libs.shelbyGT.UserModel',
+      includeInJSON : false
     }
   ],
 

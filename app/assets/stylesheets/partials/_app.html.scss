@@ -46,6 +46,12 @@ a{
   $_singleColumn: 550px;
 
   .shelby--shares {
+    &.shelby--shares_enabled {
+      .share_panel {
+        margin-top: 2em;
+      }
+    }
+
     background-color: $ui-off-white;
     overflow: visible;
 
@@ -59,7 +65,7 @@ a{
 
     .content_wrapper {
       margin-top: 0;
-      overflow-y: auto;
+      overflow-y: visible;
     }
 
     .frame {
@@ -78,8 +84,21 @@ a{
       }
     }
 
+    .frame_interactions {
+      //non-normative and experimental
+      & > .column {
+        display: inline-block;
+        &:first-child {
+          padding-right: 0.5em;
+        }
+        &:last-child {
+          padding-left: 0.5em;
+        }
+      }
+    }
+
     .xuser-message {
-      font-color: #555;
+      color: #555;
     }
 
     // font-size adjust for "desktop" situations

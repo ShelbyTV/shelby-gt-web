@@ -1,0 +1,57 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<%# if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+  <%= render :partial => "/home/meta_info" %>
+  <meta charset="utf-8">
+  <title>
+    <%= render :partial => "/home/title_tag" %>
+  </title>
+
+  <meta name="csrf-token" content="<%= csrf_token_from_cookie %>">
+  <meta name="rhombus-auth" content="<%= 'Basic '+Base64.strict_encode64('shelby:_rhombus_gt') %>">
+
+  <meta content="user-scalable=no, width=device-width, initial-scale=1.0" name="viewport">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link rel="icon"type="image/png" href="/favicon.png">
+
+  <script>
+    var shelbyTrackingCategory = "Temp Bookmarklet Page",
+        shelbyTrackingLabel = "";
+  </script>
+
+  <%= javascript_include_tag "shares" %>
+
+</head>
+
+<body>
+
+  <div style="color:white;text-align: center; font-size: 40px;">
+    ⬆ Drag that guy aaaalllll the way up into the bookmark bar ⬆
+  </div>
+
+  <div style="text-align:center;margin-top: 80px;">
+    <h2>Drag this link to your bookmark bar:</h2>
+
+    <a href="javascript:window.isShelbyBookmarklet=true;_sbm=document.createElement('SCRIPT');_sbm.type='text/javascript';_sbm.src='http://shelby.tv/assets/shelbify.js';document.getElementsByTagName('head')%5B0%5D.appendChild(_sbm);">+Shelby</a>
+
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      $('body').on('drag', function(){
+        $('body').css('background-color','#000');
+      });
+      $('body').on('dragend', function(){
+        $('body').css('background-color','#fff');
+      });
+
+    });
+  </script>
+
+
+</body>

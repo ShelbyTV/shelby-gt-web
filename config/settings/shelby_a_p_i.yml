@@ -7,6 +7,7 @@ defaults: &defaults
   facebook_auth_path: "/auth/facebook"
   popup_cohort_entrance_url: "https://api.shelby.tv/cohort_entrance/dottv/popup"
   version: "/v1"
+  featured_user_id: "521264b4b415cc44c9000001"
 
 development:
   <<: *defaults

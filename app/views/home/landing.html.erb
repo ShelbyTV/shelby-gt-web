@@ -9,6 +9,8 @@
   <title><%= render :partial => "/home/title_tag" %></title>
 
   <%= render :partial => "/home/meta_info" %>
+  <meta content="user-scalable=no, width=device-width, initial-scale=0.8" name="viewport">
+  <link rel="apple-touch-icon-precomposed" href="http://shelby.tv/apple-touch-icon-precomposed.png" />
 
   <%= stylesheet_link_tag "landing", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
@@ -17,8 +19,26 @@
   <script>
     var shelbyTrackingCategory = "Landing Page";
   </script>
+
+  <!-- Facebook Ad Tracking -->
+  <script type="text/javascript">
+    var fb_param = {};
+    fb_param.pixel_id = '6008900763972';
+    fb_param.value = '0.00';
+    fb_param.currency = 'USD';
+    (function(){
+      var fpw = document.createElement('script');
+      fpw.async = true;
+      fpw.src = '//connect.facebook.net/en_US/fp.js';
+      var ref = document.getElementsByTagName('script')[0];
+      ref.parentNode.insertBefore(fpw, ref);
+    })();
+  </script>
+  <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6008900763972&amp;value=0&amp;currency=USD" /></noscript>
+  <!-- END -->
+
 </head>
-<body class="shelby<%= ' shelby--mobile' if @mobile_os %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %>">
+<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %>">
   <!-- Facebook widget -->
   <div id="fb-root"></div>
 

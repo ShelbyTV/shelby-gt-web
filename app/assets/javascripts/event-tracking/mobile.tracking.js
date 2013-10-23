@@ -1,44 +1,57 @@
 //---------------------------------------------------------
-// Google Analytics and KISSMetrics Event Tracking
+// Google Analytics Event Tracking
 // bind click events to buttons and a tags
 // To Use:
 // add class 'js-track-event' to element with data attributes for a category, action and label
 //---------------------------------------------------------
+
+if (typeof(shelby) == 'undefined') {
+  shelby = {};
+}
+if (typeof(shelby.tracking) == 'undefined') {
+  shelby.tracking = {};
+}
+
+// a queue of strings, each one representing the description of a type of frame that was displayed,
+// like "Frame", "Frame - Recommended", or "Frame - Search"
+shelby.tracking.displayedFrameTypesQueue = [];
+
 $(document).ready(function(){
-	$('.js-track-event').on('click', function(e){
+  // set up click tracking handler
+  $(document).on('click', '.js-track-event', function(e){
+    try{
+      _gaq.push(['_trackEvent', $(e.currentTarget).data("ga_category"), $(e.currentTarget).data("ga_action"), $(e.currentTarget).data("ga_label")]);
+      _kmq.push(['record', $(e.currentTarget).data("ga_action")]);
+    }
+    catch(e){}
+  });
+});
 
-	  var action = $(e.currentTarget).data("ga_action");
-	  var category = $(e.currentTarget).data("ga_category");
-	  var label = $(e.currentTarget).data("ga_label");
+_(shelby).extend({
+  trackEx : function(options){
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      providers : ['ga']
+    }).value();
 
-	  switch (action){
-      case 'Clicked previous search':
-        action = 'Clicked previous search on mobile';
-        break;
-      case 'Removed previous search':
-        action = 'Removed previous search on mobile';
-        break;
-      case 'Clicked promoted search':
-        action = 'Clicked promoted search on mobile';
-        break;
-      case 'Clicked back to search':
-        action = 'Clicked back to search on mobile';
-        break;
-      case 'Clicked share button':
-        action = 'Clicked share button on mobile';
-        break;
-      case 'Clicked video to watch':
-        action = 'Clicked video to watch on mobile';
-        break;
-      case 'Clicked logo':
-        action = 'Clicked logo on mobile';
-        break;
-    };
-
- 		try{
-		  //_kmq.push(['record', action]);
-			_gaq.push(['_trackEvent', category, action, label]);
-		}
-		catch(e){};
-	});
+    if (_(options.providers).contains('ga') && options.gaCategory) {
+      try {
+        if (_(options).has('gaValue')) {
+          _gaq.push(['_trackEvent', options.gaCategory, options.gaAction, options.gaLabel, options.gaValue]);
+        } else {
+          _gaq.push(['_trackEvent', options.gaCategory, options.gaAction, options.gaLabel]);
+        }
+      } catch(e) {
+        $.noop();
+      }
+    }
+    var kmqName = options.kmqName || options.gaAction;
+    if (_(options.providers).contains('kmq') && kmqName) {
+      try {
+        _kmq.push(['record', kmqName, _({}).extend(options.kmqProperties)]);
+      } catch(e) {
+        $.noop();
+      }
+    }
+  }
 });

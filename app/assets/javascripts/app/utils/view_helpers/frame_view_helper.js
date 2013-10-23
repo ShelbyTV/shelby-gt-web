@@ -11,17 +11,15 @@ libs.shelbyGT.viewHelpers.frame = {
    *
    */
   permalink: function(frame){
-    if( frame.has('roll') && frame.get('roll').has('subdomain') ){
+    if( frame.has('creator') ){
       return this._subdomainPermalink(frame);
-    } else if (frame.has('roll') && frame.get('roll').has('id')) {
-      return this._isolatedRollPermalink(frame);
     } else {
       return this._videoPagePermalink(frame);
     }
   },
 
   _subdomainPermalink: function(frame){
-    return 'http://'+frame.get('roll').get('subdomain')+'.shelby.tv/'+frame.id;
+    return 'http://shelby.tv/'+frame.get('creator').get('nickname')+'/shares/'+frame.id;
   },
 
   _isolatedRollPermalink: function(frame){

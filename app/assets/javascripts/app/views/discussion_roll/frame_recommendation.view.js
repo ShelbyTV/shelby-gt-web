@@ -18,7 +18,8 @@ libs.shelbyGT.FrameRecommendationView = Support.CompositeView.extend({
     }
 
     var friendsCollection = null;
-    var isEntertainmentGraph = this.model.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.entertainmentGraphRecommendation;
+    var dbeAction = this.model.get('action');
+    var isEntertainmentGraph = dbeAction == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.entertainmentGraphRecommendation;
     if (isEntertainmentGraph) {
       friendsCollection = this.model.convertFriendIdsToUserCollection();
       friendsCollection.reset(friendsCollection.first(this.options.numAvatarsDisplayed));
@@ -26,12 +27,18 @@ libs.shelbyGT.FrameRecommendationView = Support.CompositeView.extend({
       this._firstFriend.bind('change:nickname', this.render, this);
     }
     var numFriends = friendsCollection ? friendsCollection.length : 0;
+
+    // UI settings, per use-case
+    var settings = shelby.config.recommendations.displaySettings[dbeAction];
+
     this.$el.html(this.template({
-      dashboardEntry: this.model,
+      dashboardEntry : this.model,
+      dbeAction :  dbeAction,
       firstFriend : this._firstFriend,
       numFriends : numFriends,
       isEntertainmentGraph : isEntertainmentGraph,
-      isPvi : this.options.isPvi
+      isPvi : this.options.isPvi,
+      settings: settings
     }));
 
     if (!this.options.isPvi && isEntertainmentGraph && numFriends) {

@@ -1,0 +1,37 @@
+<ul class="list js-list">
+  <% @featured_dashboard.each_with_index do |dbe, index| %>
+    <li class="list__item">
+      <% if dbe['frame'] and dbe['frame']['video'] and can_play_video(dbe['frame']['video']['provider_name']) and !dbe["duplicate"] %>
+        <%= render :partial => '/objects/frame',
+          :locals => {
+            :embed_video    => false,
+            :frame          => dbe['frame'],
+            :frame_owner    => dbe['frame']['creator'],
+            :ga_category    => "Mobile",
+            :index          => index,
+            :is_mobile      => true,
+            :roll_type      => @roll_type,
+            :signed_in_user => @signed_in_user,
+            :video          => dbe['frame']['video']
+          } %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<p class="center">
+  <%= link_to mobile_featured_path(
+        :page => (@page + 1)),
+        {
+          :class => Settings::Mobile.load_more_button_class + " js-track-event",
+          'data-ga_category' => "Mobile",
+          'data-ga_action'   => "Click Load more on #{@roll_type}",
+          'data-ga_label'    => "#{@signed_in_user['nickname']}"
+        } do %>
+    <span class="button_label">Load More</span>
+  <% end %>
+</p>
+
+<%= javascript_tag do %>
+  <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>
+<% end %>

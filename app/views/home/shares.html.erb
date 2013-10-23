@@ -21,10 +21,10 @@
 
   <script>
     var shelbyTrackingCategory = "Share Page",
-        shelbyTrackingLabel<%= raw " = '#{@current_user_nickname}'" %>;
+        shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname']}'" %>;
   </script>
 
-  <%= stylesheet_link_tag "screen", :media => "screen" %>
+  <%= stylesheet_link_tag "mobile", :media => "screen" %>
   <script>
     if (typeof(shelby) == 'undefined') {
       shelby = {};
@@ -32,17 +32,19 @@
     if (typeof(shelby.abTests) == 'undefined') {
       shelby.abTests = {};
     }
-    <% experiments = vanity_experiments %>
-    <% unless experiments.nil? %>
-    <% experiments.each do |name, alternative| %>
+    <% vanity_experiments.each do |name, alternative| %>
       shelby.abTests.<%= name.to_s.camelize(:lower) %> = '<%= alternative.value %>';
-    <% end %>
     <% end %>
   </script>
   <%= javascript_include_tag "shares" %>
+  <script id="js-user-model" type="application/json"><%= raw @signed_in_user.to_json %></script>
+
+  <%= render :partial => '/objects/noscript' %>
 </head>
 
-<body class="shelby shelby--shares">
+<body class="shelby shelby--shares<%= ' shelby--shares_enabled' if @user_signed_in %><%= ' shelby--mobile' if @is_mobile %>" data-personal_roll_id="<%= (@signed_in_user) ? @signed_in_user['personal_roll_id'] : 'null' %>" data-user_name="<%= (@signed_in_user) ? @signed_in_user['nickname'] : 'anonymous' %>">
+  <%= render :partial => "seovideo/signup_cta", :locals => { :with_js => false, :category => "Share Page" } %>
+
   <section id="js-notification-banner-wrapper" class="notification-banner-wrapper"></section>
   <div class="app-banner__wrapper js-app-banner">
     <% #render :partial => '/mobile/partials/app_store' if @is_mobile == 'iPhone' %>
@@ -50,11 +52,31 @@
 
   <div id="js-shelby-wrapper" class="shelby-wrapper clearfix">
     <header id="js-header" class="animate_module js-app-header shelby-header clearfix js-inactivity-preemption" role="banner">
-      <%= render :partial => '/home/app_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
+      <%= render :partial => '/home/app_header',
+          :locals => {
+            :show_login     => true,
+            :signed_in_user => @signed_in_user,
+            :is_mobile      => @is_mobile,
+            :pathname       => "",
+            :ga_category    => "Share Page",
+            :user_signed_in => @user_signed_in
+          } %>
     </header>
 
     <div class="content_wrapper" role="main">
-      <%= render :partial => '/objects/frame' %>
+      <%= render :partial => '/objects/frame',
+          :locals => {
+            :embed_video    => true,
+            :frame          => @frame,
+            :frame_owner    => @user,
+            :ga_category    => "Share Page",
+            :is_mobile      => @is_mobile,
+            :roll_type      => nil,
+            :signed_in_user => @signed_in_user,
+            :video          => @video
+          } %>
+
+      <div id="disqus_thread" style="max-width: 530px;margin: 1em auto;"></div>
 
       <%= render :partial => '/marketing/shares' if @is_mobile != 'iPhone' and !@user_signed_in %>
     </div>
@@ -63,7 +85,7 @@
     <script>
       var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
       s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
   <% end %>
@@ -86,7 +108,7 @@
   <% end %>
   <%= vanity_js %>
   <% experiments = vanity_experiments %>
-  <% unless experiments.nil? %>
+  <% unless experiments.empty? %>
     <script>
       <% experiments.each do |name, alternative| %>
         try {
@@ -99,5 +121,34 @@
   <% if ["production", "staging"].include? Rails.env %>
       <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://api.intercom.io/api/js/library.js';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}};})()</script>
   <% end %>
+  <script type="text/javascript">
+      var disqus_shortname = 'shelbytv';
+      var disqus_identifier = 'frame-<%= @frame["id"] %>';
+      var disqus_url = '<%= Settings::Application.url %>/<%= @user["nickname"] %>/shares/<%= @frame["id"] %>'
+
+      function disqus_config() {
+        this.callbacks.onNewComment = [function(comment) {
+          $(document).ready(function(){
+            // send notification after comment is posted
+            $.get("<%= Settings::ShelbyAPI.url %><%= Settings::ShelbyAPI.version %>/frame/<%= @frame['id'] %>/notify", {type:"comment"});
+
+            shelby.trackEx({
+              providers : ['ga', 'kmq'],
+              gaCategory : shelbyTrackingCategory,
+              gaAction : 'Comment on frame',
+              gaLabel : shelbyTrackingLabel || 'anonymous',
+              kmqName : 'Comment on frame on Share Page',
+            });
+          });
+        }];
+      };
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 //= require jquery
-//= require 'common/spin'
+//= require_tree ./common
 
 $(document).ready(function(){
 

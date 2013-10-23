@@ -1,8 +1,12 @@
 require 'shelby_api'
 require 'cookie_utils'
 require 'hash_error_checker'
+require 'shelby/internal_error'
+
 
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
+
   protect_from_forgery
 
   after_filter :set_access_control_headers
@@ -85,11 +89,11 @@ class ApplicationController < ActionController::Base
       headers['Access-Control-Request-Method'] = 'GET'
     end
 
-  # unless Rails.env == 'development'
+  if Rails.env.production?
     rescue_from ActionController::RoutingError, :with => :render_error_404
     rescue_from ActionView::Template::Error, :with => :render_error_500
-    # rescue_from Exception, :with => :render_error_404
-  # end
+    rescue_from Shelby::InternalError, :with => :render_error_500
+  end
 
   def render_error_404
     error('404 Page Not Found')
@@ -103,7 +107,7 @@ class ApplicationController < ActionController::Base
     render '/errors/error', :layout => 'blank', :locals => {
       :status => status,
       :message => Settings::ErrorMessages.messages.sample
-    }
+    }, :status => 404
   end
 end
 

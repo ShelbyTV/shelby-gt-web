@@ -78,7 +78,7 @@
       <footer class="media_module frame-footer clearfix">
          <% if (clickableCreator) { %>
            <a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= creator.get('nickname') %>">
-             <span class="image_module xuser-avatar<% if (fauxUserOrigin) { %> xuser-avatar--<%= fauxUserOrigin %> icon-<%= fauxUserOrigin %><% } %> media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
+             <span class="image_module xuser-avatar<% if (fauxUserOrigin && !isChannelRecommendation) { %> xuser-avatar--<%= fauxUserOrigin %> icon-<%= fauxUserOrigin %><% } %> media_image js-xuser-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
                <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
              </span>
            </a>
@@ -92,21 +92,25 @@
             <% var hasComment = messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id') %>
             <% var comment = hasComment && messages.models[0].get('text') %>
             <% var commentOverflow = comment && comment.length > 265 %>
-              <span class="xuser-data-timestamp">
+              <a href="<%= framePermalink %>" class="xuser-data-timestamp">
                  <%= frame.get('created_at') %>
-              </span>
+              </a>
 
-              <p class="xuser-data">
-                <% if (clickableCreator) { %>
-                  <a href="#" onclick="return false;" class="js-goto-user-page no-faux-link" data-user_nickname="<%= creator.get('nickname') %>"><strong><%= creatorNickname %></strong></a>
+              <p class="xuser-data js-xuser-data">
+                <% if (!isChannelRecommendation) { %>
+                  <% if (clickableCreator) { %>
+                    <a href="#" onclick="return false;" class="js-goto-user-page no-faux-link" data-user_nickname="<%= creator.get('nickname') %>"><strong><%= creatorNickname %></strong></a>
+                  <% } else { %>
+                    <%= creatorNickname %>
+                  <% } %>
+
+                  <% if (fauxUserOrigin) { %>
+                    via <span class="capitalize"><%= fauxUserOrigin %></span>
+                  <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != 1) { %>
+                    via <a class="no-faux-link js-navigate-originator" href="#"><%= frameOriginator.get('nickname') %></a>
+                  <% } %>
                 <% } else { %>
-                  <%= creatorNickname %>
-                <% } %>
-
-                <% if (fauxUserOrigin) { %>
-                  via <span class="capitalize"><%= fauxUserOrigin %></span>
-                <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != 1) { %>
-                  via <a class="no-faux-link js-navigate-originator" href="#"><%= frameOriginator.get('nickname') %></a>
+                  <strong>Featured: <%= creatorNickname %></strong>
                 <% } %>
               </p>
 
@@ -125,10 +129,8 @@
 
       </footer><!-- eo .media_module-->
     <% } else if (isRecommendation) { %>
-      <footer class="media_module frame-footer clearfix">
-        <div class="media_body js-frame-recommendation">
-          <!-- content filled in by FrameRecommendationView -->
-        </div><!-- eo .media_body -->
+      <footer class="media_module frame-footer clearfix js-frame-recommendation">
+        <!-- content filled in by FrameRecommendationView -->
       </footer><!-- eo .media_module-->
     <% } %>
   </div><!-- eo .frame-body-wrapper -->

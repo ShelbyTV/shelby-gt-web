@@ -5,33 +5,10 @@ module Shelby
     include HTTParty
     base_uri "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}"
 
-    def self.get_user(nickname_or_id)
-      uri = Addressable::URI.parse("/user/#{nickname_or_id}").normalize.to_s
-      u = get(uri).parsed_response
-      return u['status'] == 200 ? u['result'] : nil
-    end
-
-    def self.get_current_user(cookie)
-      u = get("/user", :headers => {'Cookie' => cookie}).parsed_response
-      return u['status'] == 200 ? u['result'] : nil
-    end
-
-    def self.update_user(id, attributes, cookie, token)
-      headers = { 'Cookie' => cookie }
-      headers['X-CSRF-Token'] = token if token
-      put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}", { :body => attributes, :headers => headers })
-    end
-
     def self.create_user(attributes, cookie, token)
       headers = { 'Cookie' => cookie }
       headers['X-CSRF-Token'] = token if token
       post("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user", { :body => attributes, :headers => headers })
-    end
-
-    def self.join_roll(roll_id, cookie, token)
-      headers = { 'Cookie' => cookie }
-      headers['X-CSRF-Token'] = token if token
-      post("/roll/#{roll_id}/join", { :headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
     end
 
     def self.follow_shelby_on_twitter(cookie, token)
@@ -40,9 +17,34 @@ module Shelby
       post('/twitter/follow/shelby', {:headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
     end
 
-    def self.get_user_stats(id, cookie)
-      s = get("/user/#{id}/stats?num_frames=3", :headers => {'Cookie' => cookie}).parsed_response
-      return s['status'] == 200 ? s['result'] : nil
+    def self.get_featured_sources(segment="onboarding")
+      r = get( "/roll/featured?segment=#{segment}" ).parsed_response
+      if r['status'] == 200 and r['result'].first['rolls'].is_a?(Array)
+        return r['result'].first['rolls']
+      else
+        return nil
+      end
+    end
+
+    def self.get_first_frame_on_roll(roll_id)
+      r = get( "/roll/#{roll_id}/frames?include_children=true&limit=1" ).parsed_response
+      if r['status'] == 200 and r['result']['frames'] and r['result']['frames'].is_a?(Array)
+        return r['result']['frames'][0]
+      else
+        return nil
+      end
+    end
+
+    def self.get_frame(frame_id, include_children=false)
+      route = "/frame/#{frame_id}"
+      route += "?include_children=true" if include_children
+      f = get(route).parsed_response
+      return f['status'] == 200 ? f['result'] : nil
+    end
+
+    def self.get_current_user(cookie)
+      u = get("/user", :headers => {'Cookie' => cookie}).parsed_response
+      return u['status'] == 200 ? u['result'] : nil
     end
 
     def self.get_roll(id)
@@ -55,19 +57,38 @@ module Shelby
       return r['status'] == 200 ? r['result'][0] : nil
     end
 
-    def self.get_roll_with_frames(roll_id)
-      r = get( "/roll/#{roll_id}/frames?include_children=true" ).parsed_response
+    def self.get_roll_with_frames(roll_id, cookie, skip=0, limit=20)
+      r = get( "/roll/#{roll_id}/frames?include_children=true&skip=#{skip}&limit=#{limit}", :headers => {'Cookie' => cookie}  ).parsed_response
       return nil if r['status'] != 200
       if r['result']['frames'] and r['result']['frames'].is_a?(Array)
         roll = r['result']
       end
     end
 
-    def self.get_frame(frame_id, include_children=false)
-      route = "/frame/#{frame_id}"
-      route += "?include_children=true" if include_children
-      f = get(route).parsed_response
-      return f['status'] == 200 ? f['result'] : nil
+    def self.get_user(nickname_or_id, cookie=nil)
+      uri = Addressable::URI.parse("/user/#{nickname_or_id}" ).normalize.to_s
+      headers = cookie ? {'Cookie' => cookie} : {}
+      u = get(uri, :headers => headers).parsed_response
+      return u['status'] == 200 ? u['result'] : nil
+    end
+
+    def self.get_user_dashboard(user_id, cookie, skip=0, limit=20, since_id=nil)
+      base = user_id ? "/user/#{user_id}/dashboard" : '/dashboard'
+      url = "#{base}?skip=#{skip}&limit=#{limit}"
+      url += "&since_id=" + since_id if since_id
+      r = get( url, :headers => {'Cookie' => cookie} ).parsed_response
+      return nil if r['status'] != 200
+      db = r['result']
+    end
+
+    def self.get_user_followings(user_id, cookie)
+      r = get( "/user/#{user_id}/rolls/following", :headers => {'Cookie' => cookie} ).parsed_response
+      return r['status'] == 200 ? r['result'] : nil
+    end
+
+    def self.get_user_stats(id, cookie)
+      s = get("/user/#{id}/stats?num_frames=3", :headers => {'Cookie' => cookie}).parsed_response
+      return s['status'] == 200 ? s['result'] : nil
     end
 
     def self.get_video(video_id)
@@ -76,14 +97,25 @@ module Shelby
       return v['result']
     end
 
-    def self.get_first_frame_on_roll(roll_id)
-      r = get( "/roll/#{roll_id}/frames?include_children=true&limit=1" ).parsed_response
-      if r['status'] == 200 and r['result']['frames'] and r['result']['frames'].is_a?(Array)
-        return r['result']['frames'][0]
-      else
-        return nil
-      end
+    def self.join_roll(roll_id, cookie, token)
+      headers = { 'Cookie' => cookie }
+      headers['X-CSRF-Token'] = token if token
+      post("/roll/#{roll_id}/join", { :headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
     end
+
+    def self.update_user(id, attributes, cookie, token)
+      headers = { 'Cookie' => cookie }
+      headers['X-CSRF-Token'] = token if token
+      put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}", { :body => attributes, :headers => headers })
+    end
+
+    def self.log_session(id, cookie, token)
+      return unless user_signed_in?
+      headers = { 'Cookie' => cookie }
+      headers['X-CSRF-Token'] = token if token
+      put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}/visit", { :headers => headers })
+    end
+
 
     # def self.generate_frame_route(roll_id, frame_id, protocol="http")
     def self.generate_frame_route(user_nickname, frame_id, protocol="http")

@@ -35,18 +35,15 @@
     .user--item {
       margin-top: 1px;
 
-      .user__lining {
+      &:hover {
+        background-color: $base-frame;
 
-        &:hover {
-          background-color: $base-frame;
+        .user__button {
+          display: block;
+        }
 
-          & + .user__button {
-            display: block;
-          }
-
-          .icon {
-            color: $text;
-          }
+        .icon {
+          color: $text;
         }
       }
     }
@@ -105,7 +102,7 @@
   position: absolute;
   right: 0;
   top: 0;
-
+  z-index: 1;
 }
 .user__button--follow {}
 

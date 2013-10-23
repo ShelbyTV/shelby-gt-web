@@ -31,7 +31,7 @@ gem 'youtube_it'
 
 # ---------- A/B Testing
 #
-gem 'vanity', :git => "git://github.com/ShelbyTV/vanity.git", :branch => "vanity-experiments-helper"
+gem 'vanity', :git => "git://github.com/iceberg901/vanity.git", :branch => "vanity-experiments-helper"
 
 # ---------- Other utils
 #
@@ -66,7 +66,7 @@ gem 'jquery-rails'
 # gem 'jammit'
 
 # Deploy with Capistrano
-gem 'capistrano'
+gem 'capistrano', '2.15.2'
 gem 'rvm-capistrano'
 group :production, :staging do
   gem "therubyracer"

@@ -15,7 +15,6 @@
 .app_nav__button {
   background: none;
   border: none;
-  color: darken($ui-white,33.333%);
   display: inherit;
   font-family: $font-family;
   font-size: 1.3em;
@@ -24,9 +23,23 @@
   padding: 0.5em 1.8em;
   width:100%;
 
-  &:active,
+
+  &,
+  &:link,
+  &:visited {
+    color: darken($ui-white,33.333%);
+  }
+
   &:hover {
     color: $ui-white;
+  }
+
+  &,
+  &:link,
+  &:visited,
+  &:active,
+  &:hover {
+    text-decoration: none;
   }
 
   &.active-item {
@@ -45,6 +58,10 @@
     &:hover {
       color: darken($ui-white,33.333%);
     }
+  }
+
+  &:focus {
+    outline: none;
   }
 }
     .app_nav__button--inverted {

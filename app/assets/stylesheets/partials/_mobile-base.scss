@@ -1,0 +1,97 @@
+//------------------------------------------------------------------------------
+//  Mobile Base
+//------------------------------------------------------------------------------
+$_mobile_header_height: 41px;
+
+.shelby--mobile {
+  background-color: $base;
+
+  .shelby-header {
+    height: $_mobile_header_height;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  .app_nav__button {
+    padding: 0.5em 1em;
+  }
+  .app_nav__button--settings {
+    padding-right: 0.5em;
+
+    .avatar {
+      margin-right: 0;
+    }
+  }
+  //framework
+  .content_wrapper {
+    margin-top: 40px;
+  }
+    .roll-header {
+      background-color: $ui-white;
+    }
+
+  //it's a special mod that shouldn't be downloaded outside the context of the shelby--mobile class anyway.
+  .share_panel,
+  .login_panel,
+  .settings-section--mobile {
+    background-color: $ui-white;
+
+    .list:last-child {
+      padding-bottom: 0.5em;
+    }
+  }
+  //login_panel is non-normative
+  .login_panel {
+    font-size: 1.3em;
+    left: 0;
+    position: absolute;
+    top: $_mobile_header_height;
+    width: 100%;
+  }
+
+  .share_panel {
+    font-size: 1.1em;
+    margin-top: $_mobile_header_height;
+    position: fixed;
+  }
+  //videocard
+  .video__wrapper {
+    &.icon-play:before {
+      color: $ui-white;
+      font-size: 5em;
+      left: 0;
+      padding-top: 20%;
+      position: absolute;
+      opacity: 0.8;
+      text-align: center;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+  //onboarding
+  .modal__body {
+    font-size: 1.3em;
+
+    .user {
+      font-size: 1em;
+    }
+  }
+  .modal__foot {
+    background-color: $base;
+    bottom: 0;
+    border-top: 1px solid $inset;
+    left: 0;
+    padding: 0.5em;
+    position: fixed;
+    width: 100%;
+  }
+  .user__button {
+    display: block;
+    margin-right: 0.8em;
+  }
+}
+.empty-indicator {
+  padding: 2em;
+}

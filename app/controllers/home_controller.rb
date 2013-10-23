@@ -1,7 +1,7 @@
 require 'shelby_api'
 
 class HomeController < ApplicationController
-
+  include MobileHelper
   helper :meta_tag
 
   # In non-pushstate browsers, Backone redirects to shelby.tv/hash_app#<the original fragment>
@@ -28,7 +28,6 @@ class HomeController < ApplicationController
         # Consider errors and render landing page
         @mobile_os     = detect_mobile_os
         @is_mobile     = is_mobile?
-
 
         if flash[:user_errors]
           @user_attributes = flash[:user_attributes]
@@ -71,5 +70,4 @@ class HomeController < ApplicationController
   # Static page of information
   def learn_more
   end
-
 end

@@ -1,6 +1,6 @@
 require 'shelby_api'
 
-class TurboEmbedController < ApplicationController  
+class TurboEmbedController < ApplicationController
 
   # GET /turbo_embellish
   #
@@ -22,10 +22,10 @@ class TurboEmbedController < ApplicationController
   def embellish
     # Get the given user and the frames on their public roll
     @user = Shelby::API.get_user(params[:userId])
-    @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id']) if @user
-    
+    @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id'], '') if @user
+
     render :nothing => true and return unless @user and @roll
-    
+
     @embed_attr_key = "shelby-turbo-tag"
     @embed_attr_val = params[:shelbyTurboTag]
 
@@ -39,7 +39,7 @@ class TurboEmbedController < ApplicationController
         end
       end
     end
-    
+
     # fell through
     render :nothing => true
   end
@@ -58,7 +58,7 @@ class TurboEmbedController < ApplicationController
   def embed
     if @frame = Shelby::API.get_frame(params[:frame_id], true)
       @footer_control_class = (params[:footer] == "0" ? "embedded-frame--no-footer" : "embedded-frame--with-footer")
-      
+
       render :layout => 'embed'
     else
       render :nothing => true

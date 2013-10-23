@@ -59,4 +59,63 @@ module ApplicationHelper
     end
   end
 
+  def convert_page_to_skip(page)
+    if page = page.to_i.abs
+      return page * Settings::Mobile.default_limit
+    else
+      return 0
+    end
+  end
+
+  def check_for_signed_in_user
+    if user_signed_in?
+      signed_in_user = Shelby::API.get_user(current_user_id,request.headers['HTTP_COOKIE'])
+    else
+      signed_in_user = {}
+      signed_in_user['nickname'] = 'Anonymous'
+    end
+
+    return signed_in_user
+  end
+
+  def build_frame_message(frame, dbe=nil)
+    if dbe and dbe['action'] == 31 # video graph
+      message = "This video is similar to videos "+ dbe['src_frame']['creator']['nickname'] +" has shared" if dbe['src_frame'] and dbe['src_frame']['creator']
+    elsif dbe and dbe['action'] == 33 # mortar
+      message = "Because you shared "+ dbe['src_video']['title'] if dbe['src_video']
+    elsif frame['conversation'] and frame['conversation']['messages'] and frame['conversation']['messages'][0]
+      message = frame['conversation']['messages'][0]['text']
+    else
+      message = "This video is similar to videos you have watched, liked and shared."
+    end
+    return message
+  end
+
+  def build_avatar_and_nickname(dbe=nil, frame_owner=nil)
+    if dbe and [0,1,2,3,8,9].include? dbe['action']
+      avatar = avatar_url_for_user(frame_owner)
+      displayName = linkableNickname = frame_owner['nickname']
+    elsif dbe and [31,33].include? dbe['action']
+      displayName = "Recommended for you"
+      linkableNickname = nil
+      avatar = 'http://shelby.tv/images/recommendations/share-2.jpg'
+    elsif dbe and dbe['action'] == 34
+      avatar = avatar_url_for_user(frame_owner)
+      displayName = "FEATURED: "+frame_owner['nickname']
+      linkableNickname = frame_owner['nickname']
+    else
+      avatar = avatar_url_for_user(frame_owner)
+      linkableNickname = displayName = frame_owner['nickname']
+    end
+    return avatar, linkableNickname, displayName
+  end
+
+  def build_frame_permalink(frame)
+    if frame['creator']
+      "http://shelby.tv/"+frame['creator']['nickname']+"/shares/"+frame['id']
+    else
+      "http://shelby.tv/video/"+frame['video']['provider_name']+'/'+frame['video']['provider_id'];
+    end
+  end
+
 end

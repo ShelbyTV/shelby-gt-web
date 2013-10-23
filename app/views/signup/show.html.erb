@@ -19,15 +19,28 @@
           <% end %>
 
           <% if @inviter %>
-            <%= @inviter['name'] || @inviter['nickname'] %> found the perfect stream of video on Shelby. Find Yours.
+            <%= @inviter['name'].titleize || @inviter['nickname'].capitalize %> found the perfect stream of video on Shelby. Find Yours.
           <% else %>
             Get your perfect stream of video
           <% end %>
         </h1>
       </div><!-- signup__head -->
-
+      <br/>
       <div class="signup__body">
-        <%= form_tag(request.env['PATH_INFO'], { :id => 'user_form', :class => 'form_module' }) do %>
+        <a href="http://api.shelby.tv/auth/facebook" class="button_primer button_facebook-blue button_command button_command--sub button_command--facebook one-third shelf__button js-authorize js-authorize--facebook js-track-event" data-popup_width="1000" data-popup_height="650" data-ga_category="Onboarding" data-ga_action="Click Sign Up with Facebook <%= 'via invite' if @inviter %>" style="margin-top: 30px;">
+          <span class="icon icon-facebook"></span>
+          <span class="button_label">Sign Up with Facebook</span>
+        </a>
+        <div class="facepile">
+          <div class="fb-facepile" style="margin-top: 25px;" data-action="use,like" data-width="300" data-max-rows="2" data-size="medium"></div>
+        </div>
+        <br/>
+        <div style="margin-top: 10px;">
+            or <a href="#" class="js-email-signup js-track-event" data-ga_category="Onboarding" data-ga_action="Click Show Sign Up with Email <%= 'via invite' if @inviter %>">signup with a email and password</a>
+        </div>
+
+        <% form_hidden = @inviter ? " hidden" : ""  %>
+        <%= form_tag(request.env['PATH_INFO'], { :id => 'user_form', :class => "form_module"+form_hidden }) do %>
           <fieldset class="form_fieldset">
             <div class="media_module">
               <div class="media_image media_image--rev two-fifths">

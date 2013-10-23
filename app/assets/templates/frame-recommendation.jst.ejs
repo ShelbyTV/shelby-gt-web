@@ -1,33 +1,50 @@
-<% if (!isPvi) { %>
-<span class="xuser-data-timestamp">
-  <%= dashboardEntry.get('frame').get('created_at') %>
-</span>
-<% } %>
-<p class="xuser-data xuser-data--green xuser-data--recommendation">
-  <strong>Recommended for you</strong>
-</p>
-<p class="xuser-message">
-  <% if (isEntertainmentGraph) { %>
-    <% if (firstFriend.has('nickname')) { %>
-      <% if (numFriends > 1) { %>
-        <%= SHELBYJST['user-page-link']({nickname: firstFriend.get('nickname')}) %> and <%= _.pluralize('other', numFriends - 1, true) %> are sharing, liking, and watching this video
+<span class="image_module xuser-avatar media_image" style="background-image: url(<%= settings.avatar %>);" role="img">
+ <img src="<%= settings.avatar %>" class="visuallyhidden" title="<%= settings.header %>" alt="<%= settings.header %>">
+</span><!-- eo media_image -->
+
+<div class="media_body js-frame-recommendation">
+  <% if (!isPvi) { %>
+  <span class="xuser-data-timestamp">
+    <%= dashboardEntry.get('frame').get('created_at') %>
+  </span>
+  <% } %>
+  <p class="xuser-data xuser-data--<%= settings.color %> xuser-data--recommendation">
+    <strong><%= settings.header %></strong>
+  </p>
+  <p class="xuser-message">
+    <% if (isEntertainmentGraph) { %>
+      <% if (firstFriend.has('nickname')) { %>
+        <% if (numFriends > 1) { %>
+          <%= SHELBYJST['user-page-link']({nickname: firstFriend.get('nickname')}) %> and <%= _.pluralize('other', numFriends - 1, true) %> are sharing, liking, and watching this video
+        <% } else { %>
+          <%= SHELBYJST['user-page-link']({nickname: firstFriend.get('nickname')}) %> checked out this video
+        <% } %>
+      <% } %>
+    <% } else if (dbeAction == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) { %>
+      <%
+        var creator = dashboardEntry.get('src_frame') && dashboardEntry.get('src_frame').get('creator');
+        if (creator) {
+      %>
+        This video is similar to videos
+        <% if (creator.id != shelby.models.user.id) { %>
+          <%= SHELBYJST['user-page-link']({nickname: creator.get('nickname')}) %> has shared
+        <% } else { %>
+          you have shared
+        <% } %>
       <% } else { %>
-        <%= SHELBYJST['user-page-link']({nickname: firstFriend.get('nickname')}) %> checked out this video
+        Check out this video
+      <% } %>
+    <% } else if (dbeAction == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.mortarRecommendation) { %>
+      <% if (dashboardEntry.get('src_video') && dashboardEntry.get('src_video').has('title')) { %>
+        Because you shared "<%= dashboardEntry.get('src_video').get('title') %>"
+      <% } else { %>
+        This video is similar to videos you have shared
       <% } %>
     <% } %>
-  <% } else if (dashboardEntry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation) { %>
-    <% if (dashboardEntry.get('src_frame') && dashboardEntry.get('src_frame').has('creator')) { %>
-      This video is shared by people like
-        <%= SHELBYJST['user-page-link']({nickname: dashboardEntry.get('src_frame').get('creator').get('nickname')}) %>
-    <% } else { %>
-      Check out this video
-    <% } %>
-  <% } else if (dashboardEntry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.mortarRecommendation) { %>
-    This is a Mortar recommendation.
+  </p>
+  <% if (!isPvi && isEntertainmentGraph && numFriends) { %>
+    <ul class="list frame-likes-avatars friends-avatars js-friend-avatars-list">
+      <!-- Content filled in by ListView with ActorAvatarItemView list item views -->
+    </ul>
   <% } %>
-<p>
-<% if (!isPvi && isEntertainmentGraph && numFriends) { %>
-  <ul class="list frame-likes-avatars friends-avatars js-friend-avatars-list">
-    <!-- Content filled in by ListView with ActorAvatarItemView list item views -->
-  </ul>
-<% } %>
+</div><!-- eo media_body -->

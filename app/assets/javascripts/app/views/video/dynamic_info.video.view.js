@@ -17,9 +17,8 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   events : {
     "click .js-like-frame"              : "_likeFrame",
     "click .js-likes-section"           : "_navigateToLikes",
-    "click .js-share-menu"              : "_toggleShareMenu",
-    "click .js-button_share--email"     : "_requestFrameEmailView",
     "click .js-button_share--facebook"  : "_shareCurrentToFacebook",
+    "click .js-button_share--friend"       : "_shareWithSpecificFriend",
     "click .js-close-dvi"               : "_hideDVI"
   },
 
@@ -117,6 +116,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
 
     setTimeout(function(){
       self.$el.addClass('visible '+self._cardType);
+      $('.persistent_video_info__wrapper').addClass('half-cloaked');
     }, delay);
 
     // hide it eventually
@@ -137,7 +137,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   _hideDVI : function(){
     this._displayedDVI = false;
     this.$el.removeClass('visible '+this._cardType);
-    this.$el.find('.share_menu').toggleClass('hidden', true);
+    $('.persistent_video_info__wrapper').removeClass('half-cloaked');
   },
 
   /*************************************************************
@@ -155,11 +155,11 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     }
 
     // don't always show this, should not be probabilistic in the end. should be "smart" eventually
-    if (!this._shouldShowDVI(0.5)) return;
-    if (this._videoAlreadyLiked(this._currentFrame)) return;
+    if (!this._shouldShowDVI(0.75)) return;
+    //if (this._videoAlreadyLiked(this._currentFrame)) return;
 
-    this._cardType = 'like';
-    var _timeout = (this._currentVideoInfo && this._currentVideoInfo.duration) ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 800 : 8000;
+    this._cardType = 'share';
+    var _timeout = (this._currentVideoInfo && this._currentVideoInfo.duration) ? (this._currentVideoInfo.duration - this._currentVideoInfo.currentTime) * 1100 : 8000;
 
     this._showCard(0, _timeout);
   },
@@ -205,36 +205,9 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     shelby.router.navigate('likes', {trigger: true, replace: true});
   },
 
-  _toggleShareMenu : function(){
-    var $this = this.$('.js-share-menu'),
-        block = $this.siblings('.js-share-menu-block'),
-        blockHasClass = block.hasClass('hidden');
-
-    // if we're opening the menu and we don't have the shortlink
-    // yet, we need to get it now
-    if (blockHasClass && !this._currentFrameShortlink) {
-      this._getFrameShortlink();
-    }
-
-    //  toggle the "button pressed" state
-    // $this.toggleClass('button_gray',!blockHasClass)
-    //      .toggleClass('button_gray-light',blockHasClass);
-    $this.toggleClass('button_active',blockHasClass);
-
-    //  show/hide the panel
-    block.toggleClass('hidden',!blockHasClass);
-
-    // if we open the menu and we already have the shortlink,
-    // highlight it
-    if (blockHasClass && this._currentFrameShortlink) {
-      this.$('.js-frame-shortlink').select();
-    }
-
-  },
-
   _getFrameShortlink : function() {
     var self = this;
-    var $shortlinkTextInput = this.$('.js-frame-shortlink');
+    var $mailtoLink = $('.js-button_command--email');
     var fetchShortlinkUrl;
     var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
     var dbEntry = frameGroup.get('primaryDashboardEntry');
@@ -248,14 +221,9 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
       url: fetchShortlinkUrl,
       dataType: 'jsonp',
       success: function(r){
-        $shortlinkTextInput.val(r.result.short_link).select();
-        // save the link for future reference in case we are going to
-        // re-render without changing frames
         self._currentFrameShortlink = r.result.short_link;
       },
-      error: function(){
-        $shortlinkTextInput.val("Link Unavailable").select();
-      }
+      error: function(){  }
     });
   },
 
@@ -271,54 +239,60 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   _shareCurrentToFacebook : function(e){
-    var _frame = this._currentFrame;
-    var _frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(_frame.id);
-    var _caption;
-    if (shelby.config.hostName) {
-      _caption = 'a video from '+shelby.config.hostname;
-    } else if (_frame.has('roll')) {
-      if (_frame.get('roll').has('subdomain')) {
-        _caption = 'a video from '+_frame.get('roll').get('subdomain')+'.shelby.tv';
-      } else {
-        _caption = 'a video from shelby.tv';
-      }
-    }
-    else {
-      _caption = 'a video found with Shelby Video Search';
-    }
-
-    var rollCreatorId = this._currentFrame.has('roll') && this._currentFrame.get('roll').has('creator_id') && this._currentFrame.get('roll').get('creator_id');
-    var specialConfig = _(shelby.config.dotTvNetworks.dotTvCuratorSpecialConfig).findWhere({id: rollCreatorId});
-    var description = _frame.get('video').get('description');
-
-    // if there is a special message for the facebook share, use it
-    if (specialConfig && specialConfig.customShareMessages && specialConfig.customShareMessages.facebook) {
-      description = specialConfig.customShareMessages.facebook;
-    }
-
-    if (typeof FB != "undefined"){
-      FB.ui(
-        {
-          method: 'feed',
-          name: _frame.get('video').get('title'),
-          link: libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(_frameGroup),
-          picture: _frame.get('video').get('thumbnail_url'),
-          description: description,
-          caption: _caption
-        },
-        function(response) {
-          if (response && response.post_id) {
-            // TODO:we should record that this happened.
-          }
+    if (typeof FB == "undefined") return;
+    var self = this;
+    //pause video
+    shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
+    FB.ui(
+      {
+        method: 'send',
+        link: libs.shelbyGT.viewHelpers.frame.permalink(self._currentFrame),
+      },
+      function(response) {
+        //play video
+        shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
+        if (response) {
+          shelby.trackEx({
+            providers : ['ga', 'kmq'],
+            gaCategory : "Dynamic Video Info",
+            gaAction : 'Sent to a friend via generic share button',
+            gaLabel : self._cardType,
+            kmqName : 'Sent video to a friend via DVI '+self._cardType+' card'
+          });
         }
-      );
-    }
+      }
+    );
   },
 
-  _requestFrameEmailView : function(){
-    var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
-    var dbEntry = frameGroup.get('primaryDashboardEntry');
-    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, this._currentFrame, dbEntry);
+  _shareWithSpecificFriend : function(el){
+    if (typeof FB == "undefined") return;
+
+    var self = this,
+          $target = $(el.currentTarget),
+          facebookId = $target.data('facebook-id');
+    //pause video
+    shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.paused);
+
+    FB.ui({
+      method: 'send',
+      to: facebookId,
+      link: libs.shelbyGT.viewHelpers.frame.permalink(this._currentFrame)
+      },
+      function(response) {
+        //play video
+        shelby.models.userDesires.triggerTransientChange('playbackStatus', libs.shelbyGT.PlaybackStatus.playing);
+
+        if (response) {
+          shelby.trackEx({
+            providers : ['ga', 'kmq'],
+            gaCategory : "Dynamic Video Info",
+            gaAction : 'Sent to a friend via clicking an avatar',
+            gaLabel : self._cardType,
+            kmqName : 'Sent video to a specific friend via DVI '+self._cardType+' card'
+          });
+        }
+      }
+    );
   },
 
   /*************************************************************

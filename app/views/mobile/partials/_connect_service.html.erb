@@ -1,0 +1,23 @@
+<div class="modal__body clearfix">
+  <h2 class="alpha modal__h1">
+    OK! Add videos shared by friends.
+  </h2>
+
+  <p class="modal__block modal__block--push">
+    We'll bring you the video your friends are sharing on other networks. <br/><strong>We won't post or share anything without your permission.</strong>
+  </p>
+
+  <a href="http://api.shelby.tv/auth/twitter?origin=<%= Settings::Application.mobile_url %>/onboarding?service=twitter" class="button_primer button_twitter-blue button_command button_command--sub button_command--twitter one-third js-authorize js-authorize--twitter js-track-event" data-popup_width="1000" data-popup_height="650" data-ga_category="Mobile" data-ga_action="Onboarding" data-ga_label="Click Auth Twitter on Step 3">
+    <span class="icon-twitter"></span>
+    <span class="button_label">Twitter</span>
+  </a>
+
+  <a href="http://api.shelby.tv/auth/facebook?origin=<%= Settings::Application.mobile_url %>/onboarding?service=facebook" class="button_primer button_facebook-blue button_command button_command--sub button_command--facebook one-third js-authorize js-authorize--facebook js-track-event"  data-popup_width="1000" data-popup_height="650"  data-ga_category="Mobile" data-ga_action="Onboarding" data-ga_label="Click Auth Facebook on Step 3">
+    <span class="icon-facebook"></span>
+    <span class="button_label">Facebook</span>
+  </a>
+
+  <p class="modal__block modal__block--hint">
+    Or you can <%= link_to 'skip this step', mobile_show_onboarding_path(:step => 2), :class=>"js-track-event","data-ga_category"=>"Mobile", "data-ga_action"=>"Onboarding", "data-ga_label"=>"Click Skip on Step 3" %>
+  </p>
+</div><!-- eo modal__body -->

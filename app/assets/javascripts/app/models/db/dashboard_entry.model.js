@@ -9,13 +9,17 @@ libs.shelbyGT.DashboardEntryModel = libs.shelbyGT.ShelbyBaseModel.extend({
     key : 'src_frame',
     relatedModel : 'libs.shelbyGT.FrameModel',
     createModels : true
+  },{
+    type : Backbone.HasOne,
+    key : 'src_video',
+    relatedModel : 'libs.shelbyGT.VideoModel',
+    createModels : true
   }],
 
   isRecommendationEntry : function(){
     var action = this.get('action');
-    return (action == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation ||
-            action == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.entertainmentGraphRecommendation ||
-            action == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.mortarRecommendation);
+    return (action >= libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.videoGraphRecommendation &&
+            action <= libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation);
   },
 
   allFriendIds : function(){
@@ -51,5 +55,6 @@ libs.shelbyGT.DashboardEntryModel = libs.shelbyGT.ShelbyBaseModel.extend({
 libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES = {
   videoGraphRecommendation : 31,
   entertainmentGraphRecommendation : 32,
-  mortarRecommendation : 33
+  mortarRecommendation : 33,
+  channelRecommendation : 34
 };

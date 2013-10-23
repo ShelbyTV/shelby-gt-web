@@ -1,0 +1,45 @@
+$(document).ready(function(){
+
+  var i = 0,
+        timesToPoll = 5;
+  counter = setInterval(function(){
+
+    $.ajax({
+      type: 'GET',
+      url: "http://api.shelby.tv/v1/user/<%= user['id'] %>/rolls/following",
+      dataType: "jsonp",
+      timeout: 10000,
+      data : {
+        'include_faux' : 1
+      },
+      crossDomain: true,
+      xhrFields: {
+        withCredentials: true
+      },
+      success: function (response) {
+        $('.js-num-friends').text(response.result.length - 2);
+        $('.js-num-friends').removeClass('load_progress__total--no_data');
+        var vidCount = 0;
+        _.map(response.result, function(r){
+          vidCount += r.frame_count;
+        });
+        $('.js-num-videos').text(vidCount);
+      },
+      error: function () {
+        console.log(arguments);
+      }
+    });
+
+    i += 1;
+    if (i === timesToPoll) {
+      $('.load_progress--loading:first').removeClass('load_progress--loading');
+      setTimeout(function(){
+        $('.js-num-videos').removeClass('load_progress__total--no_data');
+        $('.load_progress--loading:first').removeClass('load_progress--loading');
+        $('.js-modal-foot').removeClass('cloaked');
+      }, 500);
+      clearInterval(counter);
+    }
+  }, 1000);
+
+});
