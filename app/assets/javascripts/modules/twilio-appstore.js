@@ -26,6 +26,7 @@ $(document).ready(function(){
       success: function(data){
         var isSuccessful = (data.status === 200);
 
+        $input.removeAttr('disabled').val(''); // isSuccessful ? clear!
         $smsPopup.toggleClass('hidden',isSuccessful);
 
         shelby.trackEx(options);
