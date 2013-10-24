@@ -220,6 +220,10 @@ class HomeController < ApplicationController
     end
   end
 
+  def blitz
+    render :text => "42"
+  end
+
   ##
   # Handles "make the web" (allowing logged-out users to see it)
   #

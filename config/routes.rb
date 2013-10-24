@@ -100,8 +100,6 @@ ShelbyGtWeb::Application.routes.draw do
   get '(*path)' => 'home#index', :as => :root
 
   #for blitz io verification
-  get '/mu-4a3bea60-210d9ed2-38279c19-649e9064' do
-    '42'
-  end
+  get '/mu-4a3bea60-210d9ed2-38279c19-649e9064' => 'home#blitz'
 
 end
