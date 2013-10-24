@@ -80,7 +80,7 @@
   &.peak {
     margin-top: -20px;
     .tab {
-      margin-top: -29px;
+      margin-top: -13px;
     }
   }
 
@@ -115,6 +115,7 @@
     border: none;
     color: $ui-white;
     float: left;
+    font-size: $font-size-text;
     margin-left: 1em;
     padding: 0.25em 1em;
   }
