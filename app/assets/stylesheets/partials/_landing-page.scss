@@ -68,10 +68,25 @@
 .shelby__foot {
   background-color: $ui-black;
   font-size: 1.5em;
-  height: 1000px;
+  height: auto;
+  left: 0;
   line-height: 1.5;
-  position: relative;
+  position: fixed;
+  top: 100%;
   text-align: center;
+  width: 100%;
+  z-index: 1;
+
+  &.peak {
+    margin-top: -20px;
+    .tab {
+      margin-top: -29px;
+    }
+  }
+
+  &.show {
+    margin-top: -225px;
+  }
 
   .shelby__lining {
     display: inline-block;
@@ -91,5 +106,16 @@
     &:hover {
       color: $ui-white;
     }
+  }
+
+  .tab {
+    @include roundies;
+
+    background-color: inherit;
+    border: none;
+    color: $ui-white;
+    float: left;
+    margin-left: 1em;
+    padding: 0.25em 1em;
   }
 }

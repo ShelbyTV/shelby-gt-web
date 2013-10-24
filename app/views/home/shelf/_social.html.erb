@@ -8,7 +8,7 @@
         </h2>
 
         <p class="shelf__block">
-          <%= raw Settings::Marketing.social_body %> <a href="#">Learn More</a>
+          <%= raw Settings::Marketing.social_body %>
         </p>
 
         <p class="shelf__block">
@@ -30,6 +30,8 @@
             </div>
           </div><!-- eo iphone -->
         <% end %>
+
+        <%= render :partial => "/home/shelf/press" %>
       </div>
     </div>
   </div><!-- eo shelf -->

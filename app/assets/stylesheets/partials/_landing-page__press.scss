@@ -1,17 +1,8 @@
-.shelf__wrapper--press {
-  .shelf__img--main {
-    width: 100%;
-  }
-}
-.shelf--press {
-  padding-bottom: 1.7em;
-  padding-top: 1.7em;
-  width: auto;
-  text-align: center;
-
-  .shelf__lining {
-    padding-top: 0.4em;
-  }
+/*
+    Press used to be its own Partial
+    it might someday be again, so keeping stuff here.
+ */
+.press_list {
   .shelf__img {
     height: 40px;
     display: block;

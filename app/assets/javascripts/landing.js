@@ -43,7 +43,8 @@ $(document).ready(function(e){
   } catch(e) {}
 
   //button cache
-  var $doc              = $('html,body'),
+  var $doc              = $('body'),
+      $footerButton     = $('.js-toggle-footer'),
       $header           = $('.js-header'),
       $iphone           = $('.js-iphone');
       $iphoneSouth      = $('.js-iphone-south'),
@@ -59,7 +60,8 @@ $(document).ready(function(e){
     $iphone : $('#iphone'),
     $press  : $('#press'),
     $social : $('#social'),
-    $stream : $('#stream')
+    $stream : $('#stream'),
+    $footer : $('#footer')
   };
 
   var FANCY = {
@@ -105,7 +107,10 @@ $(document).ready(function(e){
 
       var self = this;
 
-      $doc.animate(this.config.settings,this.config.speed,function(){ self.config.callback(data); });
+
+      $doc.animate(this.config.settings,this.config.speed,function(){
+      console.log('autoscroll cb');
+      self.config.callback(data); });
     }
   };
 
@@ -125,10 +130,10 @@ $(document).ready(function(e){
   });
 
   $iphoneSouth.on('beforeChange',function(e,data){
-    //hide iphone if direction is either going-to, or, coming-from press.
-    if((data.$target[0] != shelf.$press[0] && data.$prevTarget[0] != shelf.$press[0]) ) {
-      $(this).addClass('cloaked');
-    }
+    // //hide iphone if direction is either going-to, or, coming-from press.
+    // if((data.$target[0] != shelf.$press[0] && data.$prevTarget[0] != shelf.$press[0]) ) {
+    //   $(this).addClass('cloaked');
+    // }
   }).on('slideChanged',function(e,data){
     //if coming from stream
     var $this = $(this);
@@ -165,25 +170,34 @@ $(document).ready(function(e){
     }
   });
 
-  shelf.$iphone.on('beforeChange',function(e,data){
-    switch(data.$target[0]) {
-      case shelf.$press[0] :
-        $(this).hide();
-        break;
-    }
-  }).on('slideChanged',function(e,data){
+  shelf.$iphone.on('slideChanged',function(e,data){
     switch(data.$target[0]) {
       case shelf.$cta[0]:
         $(this).show();
         break;
-      case shelf.$social[0] :
-        if($prevTarget[0] == shelf.$press[0]) {
-          $(this).show();
-        }
-        break;
     }
   });
 
+  shelf.$footer.on('slideChanged',function(e,data){
+    var $this = $(this);
+
+    switch(data.$target[0]) {
+      case shelf.$stream[0] :
+      case shelf.$cta :
+        $this.toggleClass('peak',false);
+        $footerButton.off();
+        shelf.$footer.toggleClass('peak show',false);
+        break;
+      case shelf.$social[0] :
+        $this.toggleClass('peak',true);
+        $footerButton.on('click',function(e){
+          e.preventDefault();
+          $this.toggleClass('show');
+        });
+        break;
+    }
+
+  });
 
   $nav.on('click','.js-scrollto',function(e){
     e.preventDefault();
@@ -196,7 +210,6 @@ $(document).ready(function(e){
         $prevTarget = $(currentActive);
 
     $target = $target.length ? $target : $('[name=' + this.hash.slice(1) +']');
-
     FANCY.autoScroll($target,$prevTarget);
   });
 
