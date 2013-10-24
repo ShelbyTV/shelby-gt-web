@@ -58,7 +58,7 @@
         <%= render :partial => "/home/shelf/nav" %>
       <% end %>
 
-      <div data-shelf-index>
+      <div class="shelf--index">
         <%= render :partial => "/home/shelf/call_to_action" %>
         <%= render :partial => "/home/shelf/stream", :locals => {
           mobile: (@mobile_os or @is_mobile)
