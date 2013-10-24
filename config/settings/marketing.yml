@@ -5,7 +5,7 @@ defaults: &defaults
   powered_by_friends: "The best web video, powered by friends."
   no_search_required: "Great video, no searching required."
 
-  cta: "Discover and enjoy new videos every day"
+  cta: "Discover and enjoy new videos every day."
   cta_body: "Get the best of web video, personalized to your interests <br/>and available wherever you are."
   cta_button: "Get the App"
 

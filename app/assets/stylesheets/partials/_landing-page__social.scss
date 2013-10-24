@@ -36,9 +36,16 @@
     width: 188px;
 
     .slide{
-      &:hover,
       &.show--hover {
         margin-left: -188px;
+
+        &:hover {
+          margin-left: 0;
+        }
+        &.show {
+          margin-left: 0;
+          margin-top: 0;
+        }
       }
     }
   }
