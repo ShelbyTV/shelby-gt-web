@@ -90,6 +90,9 @@ ShelbyGtWeb::Application.routes.draw do
   # allow access to the vanity dashboard in development for manually selecting test alternatives
   match '/vanity(/:action(/:id(.:format)))', :controller=>:vanity if Rails.env.development?
 
+  #for blitz io verification
+  get '/mu-4a3bea60-210d9ed2-38279c19-649e9064' => 'home#blitz'
+
   # Everything else falls through to home#index
   # This used to handle *everything* but now it's much more limited in scope
   # XXX Still handles non-shelby-domain iso rolls :(
@@ -99,7 +102,5 @@ ShelbyGtWeb::Application.routes.draw do
   # otherwise catch any multi-segment path
   get '(*path)' => 'home#index', :as => :root
 
-  #for blitz io verification
-  get '/mu-4a3bea60-210d9ed2-38279c19-649e9064' => 'home#blitz'
 
 end
