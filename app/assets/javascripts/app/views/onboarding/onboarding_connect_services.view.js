@@ -124,7 +124,7 @@ libs.shelbyGT.OnboardingConnectServicesView = Support.CompositeView.extend({
         }
 
         var recentRollFollowingCounts = _.union(previousNumRollFollowings, [numRollFollowings]);
-        if ((!numFriendRolls || recentRollFollowingCounts.length > 10) && rollFollowingFetchAttempt < 30) {
+        if ((!numFriendRolls || recentRollFollowingCounts.length > 1) && rollFollowingFetchAttempt < 30) {
           // if we think there might be more roll followings yet to be created, fetch again
           setTimeout(function(){
             rollFollowingFetchAttempt+=1;
