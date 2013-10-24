@@ -439,7 +439,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
               !shelby.models.guide.get('hasShownDynamicRec')) {
             // we're not going to do anything until we have some real dashboard entries
             var dbEntries = shelby.models.dashboard.get('dashboard_entries');
-            if (dbEntries.length) {
+            if (dbEntries.length && shelby.promises.dynamicRecommendationsFetch) {
               // if we have some real dashboard entries, then wait until the dynamic entries have been fetched, and...
               shelby.promises.dynamicRecommendationsFetch.done(function() {
                 // if we're still showing the dashboard
