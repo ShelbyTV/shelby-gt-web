@@ -19,7 +19,7 @@
 
       .shelf__img--iphone {
         opacity: 1;
-        width: 50%;
+        width: 37%;
       }
       .shelf__img--iphone_horizontal {
         margin: 70px auto;
@@ -55,6 +55,9 @@
         }
         .app_nav__button {
           margin-top: 0;
+        }
+        .shelf__button--cta {
+          display: none;
         }
       }
 
@@ -112,6 +115,9 @@
         .shelf__button {
           width: auto;
         }
+        .press_list {
+          display: none;
+        }
       }
       &.shelf--stream {
         height: auto;
@@ -132,19 +138,21 @@
           display: none;
         }
       }
-      &.shelf--press {
-        .list__item {
-          display: block;
-          width: 100%;
-        }
-      }
+    }
+    .shelf--index {
+      margin-bottom: 0;
     }
     .shelby__foot {
+      position: relative;
       height: auto;
 
       .shelby__lining {
         padding-bottom: 0;
         width: 90%;
+      }
+
+      .tab {
+        display: none;
       }
     }
   }

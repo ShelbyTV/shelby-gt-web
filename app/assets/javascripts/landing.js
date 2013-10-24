@@ -43,7 +43,7 @@ $(document).ready(function(e){
   } catch(e) {}
 
   //button cache
-  var $doc              = $('body'),
+  var $doc              = $('html,body'),
       $footerButton     = $('.js-toggle-footer'),
       $header           = $('.js-header'),
       $iphone           = $('.js-iphone');
@@ -107,10 +107,7 @@ $(document).ready(function(e){
 
       var self = this;
 
-
-      $doc.animate(this.config.settings,this.config.speed,function(){
-      console.log('autoscroll cb');
-      self.config.callback(data); });
+      $doc.animate(this.config.settings,this.config.speed,function(){ self.config.callback(data); });
     }
   };
 
@@ -129,12 +126,7 @@ $(document).ready(function(e){
     $.event.trigger('isHorizontal',false);
   });
 
-  $iphoneSouth.on('beforeChange',function(e,data){
-    // //hide iphone if direction is either going-to, or, coming-from press.
-    // if((data.$target[0] != shelf.$press[0] && data.$prevTarget[0] != shelf.$press[0]) ) {
-    //   $(this).addClass('cloaked');
-    // }
-  }).on('slideChanged',function(e,data){
+  $iphoneSouth.on('slideChanged',function(e,data){
     //if coming from stream
     var $this = $(this);
 
@@ -185,18 +177,18 @@ $(document).ready(function(e){
       case shelf.$stream[0] :
       case shelf.$cta :
         $this.toggleClass('peak',false);
-        $footerButton.off();
         shelf.$footer.toggleClass('peak show',false);
         break;
       case shelf.$social[0] :
         $this.toggleClass('peak',true);
-        $footerButton.on('click',function(e){
-          e.preventDefault();
-          $this.toggleClass('show');
-        });
         break;
     }
 
+  });
+
+  $footerButton.on('click',function(e){
+    e.preventDefault();
+    shelf.$footer.toggleClass('show');
   });
 
   $nav.on('click','.js-scrollto',function(e){

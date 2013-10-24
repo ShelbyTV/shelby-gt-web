@@ -41,14 +41,14 @@
 }
 
   .slide_navigator__button {
-    $_circle: 15px;
+    $_circle: 14px;
 
     background-color: darken($ui-gray,20%);
     border: 1px solid $ui-white;
     border-radius: $_circle / 2;
     display: block;
     height: $_circle;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     opacity: 0.4;
     width: $_circle;
 
