@@ -99,4 +99,9 @@ ShelbyGtWeb::Application.routes.draw do
   # otherwise catch any multi-segment path
   get '(*path)' => 'home#index', :as => :root
 
+  #for blitz io verification
+  get '/mu-4a3bea60-210d9ed2-38279c19-649e9064' do
+    '42'
+  end
+
 end
