@@ -192,8 +192,10 @@ $(document).ready(function(e){
   });
 
   $footerButton.on('click',function(e){
-    e.preventDefault();
-    shelf.$footer.toggleClass('show');
+    if( !$(e.target).is('a') ) {
+      e.preventDefault();
+    }
+    shelf.$footer.toggleClass('show').find('.icon').toggleClass('icon-arrow_up icon-arrow_down');
   });
 
   $nav.on('click','.js-scrollto',function(e){

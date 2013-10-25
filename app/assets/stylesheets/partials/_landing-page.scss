@@ -118,5 +118,17 @@
     font-size: $font-size-text;
     margin-left: 1em;
     padding: 0.25em 1em;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    .tab__link {
+      text-decoration: underline;
+    }
+
+    .icon {
+      margin-right: 0.5em;
+    }
   }
 }
