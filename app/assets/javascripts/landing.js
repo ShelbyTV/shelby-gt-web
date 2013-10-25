@@ -59,7 +59,7 @@ $(document).ready(function(e){
 
   if(window.innerHeight < 850) {
     console.log('window.innerHeight: ',window.innerHeight);
-    var adjust = ((850 - window.innerHeight)) * (0.425) + ((850 - window.innerHeight) / 16); // I'm not entirely sure why this works out... but it does.
+    var adjust = ((850 - window.innerHeight)) * (0.425) + ((850 - window.innerHeight) / 5); // I'm not entirely sure why this works out... but it does.
     $('#js-css-iphone-adjust').html(".shelf__wrapper--iphone .iphone--horizontal { top: " +adjust+ "px;}");
   }
 
