@@ -17,6 +17,7 @@ $(document).ready(function(){
     e.preventDefault();
 
     $smsPopup.toggleClass('hidden',false);
+    $smsForm.find('#sms').focus();
     togglePopupViews(false);
   });
 
