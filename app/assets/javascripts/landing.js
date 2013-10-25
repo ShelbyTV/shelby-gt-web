@@ -126,7 +126,12 @@ $(document).ready(function(e){
     $.event.trigger('isHorizontal',false);
   });
 
-  $iphoneSouth.on('slideChanged',function(e,data){
+  $iphoneSouth.on('beforeChange',function(e,data){
+    //hide iphone if direction is either going-to, or, coming-from press.
+    if((data.$target[0] != shelf.$press[0] && data.$prevTarget[0] != shelf.$press[0])) {
+      $(this).addClass('cloaked');
+    }
+  }).on('slideChanged',function(e,data){
     //if coming from stream
     var $this = $(this);
 
