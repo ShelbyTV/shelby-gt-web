@@ -34,11 +34,12 @@
   }
 
   .slide_navigator {
-    margin-top: -150px;
     margin-left: 15px;
     position: fixed;
-    top: 50%;
+    top: 0;
     z-index: 2;
+    height: 100%;
+    left: 0;
   }
 
 }
