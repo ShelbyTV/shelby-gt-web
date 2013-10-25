@@ -8,6 +8,10 @@
 
 .shelf--stream {
   max-width: 1200px;
+  .shelf__lining {
+    position: relative;
+    z-index: 1;
+  }
 
   &,
   .shelf__block {
