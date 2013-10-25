@@ -16,21 +16,21 @@
   <meta name="apple-itunes-app" content="app-id=556665733">
   <%= stylesheet_link_tag "seovideo", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
-  <%= javascript_include_tag "seovideo" %>
+  <%= javascript_include_tag "seovideo", "//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.2/handlebars.js", "//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js" %>
   <script>
     var shelbyTrackingCategory = "SEO Video";
   </script>
 </head>
-<body class="shelby<%= 'shelf--user_signed_in' if @user_signed_in %><%= ' shelby--mobile' if @mobile_os %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %> shelby--seo">
+<body class="shelby<%= ' shelf--user_signed_in' if @user_signed_in %><%= ' shelby--mobile' if @mobile_os %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %> shelby--seo">
 
   <%= yield %>
 
     <script>
-      <% if Rails.env == 'production' %>
+      <% if ['production','staging'].include? Rails.env %>
         //Goog'
-        var _gaq=[['_setAccount','UA-21191360-6'],['_setDomainName','shelby.tv'],['_trackPageview']];
+        var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
         s.parentNode.insertBefore(g,s);}(document,'script'));
         _gaq.push(['_trackEvent', "SEO Video", "Visit page"]);
       <% end %>

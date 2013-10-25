@@ -72,9 +72,11 @@ module Shelby
       return u['status'] == 200 ? u['result'] : nil
     end
 
-    def self.get_user_dashboard(user_id, cookie, skip=0, limit=20)
+    def self.get_user_dashboard(user_id, cookie, skip=0, limit=20, since_id=nil)
       base = user_id ? "/user/#{user_id}/dashboard" : '/dashboard'
-      r = get( "/#{base}?skip=#{skip}&limit=#{limit}", :headers => {'Cookie' => cookie} ).parsed_response
+      url = "#{base}?skip=#{skip}&limit=#{limit}"
+      url += "&since_id=" + since_id if since_id
+      r = get( url, :headers => {'Cookie' => cookie} ).parsed_response
       return nil if r['status'] != 200
       db = r['result']
     end
@@ -105,6 +107,13 @@ module Shelby
       headers = { 'Cookie' => cookie }
       headers['X-CSRF-Token'] = token if token
       put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}", { :body => attributes, :headers => headers })
+    end
+
+    def self.log_session(id, cookie, token)
+      return unless user_signed_in?
+      headers = { 'Cookie' => cookie }
+      headers['X-CSRF-Token'] = token if token
+      put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}/visit", { :headers => headers })
     end
 
 

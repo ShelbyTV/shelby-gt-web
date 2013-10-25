@@ -79,6 +79,9 @@ ShelbyGtWeb::Application.routes.draw do
   #SHARES
   get '/:user_id_or_nickname/shares(/:frame_id)' => "home#shares", :constraints => { :user_id_or_nickname => /[^\/]+/ }
 
+  # ONE CLICK UNSUBSCRIBE
+  get '/preferences/email/unsubscribe' => "home#unsubscribe"
+
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'
   get '/embed/:frame_id' => 'turbo_embed#embed'
@@ -89,6 +92,9 @@ ShelbyGtWeb::Application.routes.draw do
   # allow access to the vanity dashboard in development for manually selecting test alternatives
   match '/vanity(/:action(/:id(.:format)))', :controller=>:vanity if Rails.env.development?
 
+  #for blitz io verification
+  get '/mu-4a3bea60-210d9ed2-38279c19-649e9064' => 'home#blitz'
+
   # Everything else falls through to home#index
   # This used to handle *everything* but now it's much more limited in scope
   # XXX Still handles non-shelby-domain iso rolls :(
@@ -97,5 +103,6 @@ ShelbyGtWeb::Application.routes.draw do
   get '(*path)' => 'home#index', :as => :root, :constraints => { :path => /[^\/]+/ }
   # otherwise catch any multi-segment path
   get '(*path)' => 'home#index', :as => :root
+
 
 end

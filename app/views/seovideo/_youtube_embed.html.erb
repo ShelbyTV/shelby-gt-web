@@ -32,11 +32,15 @@
 
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.ENDED) {
+          try {
+            _gaq.push(['_trackEvent', 'SEO Video', 'Video Completed', '']);
+          } catch(e) {}
           showModal();
         }
       }
 
       function showModal() {
+        if ( <%= @user_signed_in %> ) return;
         try {
           _gaq.push(['_trackEvent', 'SEO Video', 'Show signup modal', "On video finish"]);
         } catch(e) {}

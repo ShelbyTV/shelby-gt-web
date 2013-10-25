@@ -122,6 +122,9 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
           shelby.models.promoRollCategories.fetch();
           shelby.promises.dynamicRecommendationsFetch = $.when(shelby.collections.dynamicRecommendations.fetch({
             data: {
+              limits: '3,5,2',
+              min_score: shelby.config.recommendations.videoGraph.minScore,
+              scan_limit: shelby.config.recommendations.videoGraph.dashboardScanLimit,
               sources: '31,33,34'
             }
           }));

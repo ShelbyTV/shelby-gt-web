@@ -27,7 +27,7 @@ libs.shelbyGT.OnboardingView = Support.CompositeView.extend({
     if (currentStage == libs.shelbyGT.OnboardingView.numOnboardingStages) {
       shelby.models.user.get('app_progress').advanceStage('onboarding', true);
       shelby.models.guide.set('onboardingStage', null);
-      shelby.router.navigate('', {trigger: true, replace: true});
+      shelby.router.navigate('/stream', {trigger: true, replace: true});
 
       // track an event containing the total number of rolls followed
       shelby.models.rollFollowingsIncludingFauxUsers.fetch({

@@ -6,8 +6,7 @@ shelby.config.messages = {
     "Stop. Sharing time.",
     "Who else would watch this? No really, who else would?",
     "Simon says: share this with a friend.",
-    "Share this. We won't run out.",
-    "Share this. I dare you."
+    "Share this. We won't run out."
   ],
 
   randomMessage : function(arrayName){
