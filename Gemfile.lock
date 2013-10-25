@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/iceberg901/vanity.git
-  revision: 38ba98c17b59fe0b05cb3e8a0b30bae8e586a3f2
-  branch: vanity-experiments-helper
-  specs:
-    vanity (1.8.0)
-      redis (~> 2.0)
-      redis-namespace (~> 1.0.0)
-
-GIT
   remote: git://github.com/pivotal/jasmine-gem.git
   revision: 73ea302cb663a6aef00b9a08222c75662f0f117c
   specs:
@@ -237,6 +228,9 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    vanity (1.8.1)
+      redis (~> 2.0)
+      redis-namespace (~> 1.0.0)
     xpath (0.1.4)
       nokogiri (~> 1.3)
     youtube_it (2.1.7)
@@ -288,6 +282,6 @@ DEPENDENCIES
   turbo-sprockets-rails3
   uglifier
   unicorn
-  vanity!
+  vanity (~> 1.8.1)
   youtube_it
   yui-compressor
