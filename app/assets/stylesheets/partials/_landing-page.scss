@@ -65,7 +65,12 @@
 
 ////////////////////////////////////////
 //the footer isn't actually a shelf
+
 .shelby__foot {
+  &:hover {
+    cursor: pointer;
+  }
+
   background-color: $ui-black;
   font-size: 1.5em;
   height: auto;
@@ -119,14 +124,15 @@
     margin-left: 1em;
     padding: 0.25em 1em;
 
-    &:hover {
+    &:link {
       text-decoration: none;
     }
 
-    .tab__link {
-      text-decoration: underline;
+    &:hover {
+      .tab__link {
+        text-decoration: underline;
+      }
     }
-
     .icon {
       margin-right: 0.5em;
     }

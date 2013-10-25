@@ -1,4 +1,6 @@
 .shelf__wrapper--cta {
+  text-align: center;
+
   .media_module {
     background-image: url(/images/landing/_CONTENT/laptop-1.jpg);
     background-position: 76% 68%;
@@ -8,9 +10,6 @@
 
 .shelf--cta {
   &.shelf--facebook-logged-out {
-    .shelf__h1 {
-      margin-top: 2em;
-    }
     .facepile {
       display: none;
     }

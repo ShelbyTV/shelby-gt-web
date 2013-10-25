@@ -55,14 +55,24 @@ $(document).ready(function(e){
       isHorizontal      = false,
       listening         = true;
 
+  var windowHeight = window.innerHeight - $('.js-header').height();
+
+  if(window.innerHeight < 850) {
+    console.log('window.innerHeight: ',window.innerHeight);
+    var adjust = ((850 - window.innerHeight)) * (0.425) + ((850 - window.innerHeight) / 16); // I'm not entirely sure why this works out... but it does.
+    $('#js-css-iphone-adjust').html(".shelf__wrapper--iphone .iphone--horizontal { top: " +adjust+ "px;}");
+  }
+
   var shelf = {
-    $cta    : $('#intro'),
-    $iphone : $('#iphone'),
-    $press  : $('#press'),
-    $social : $('#social'),
-    $stream : $('#stream'),
-    $footer : $('#footer')
+    $cta    : $('#intro').height(windowHeight),
+    $iphone : $('#iphone').height(windowHeight),
+    $press  : $('#press').height(windowHeight),
+    $social : $('#social').height(windowHeight),
+    $stream : $('#stream').height(windowHeight),
+    $footer : $('#footer').addClass('animate_module')
   };
+
+
 
   var FANCY = {
     _headerHeight : 65, //offset by the height of the header.

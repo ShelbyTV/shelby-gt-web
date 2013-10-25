@@ -1,4 +1,6 @@
 .modal_dialog__wrapper {
+  @include vertical-align-hack;
+
   background-color: rgba(255,255,255,0.75);
   height: 100%;
   left: 0;
@@ -7,14 +9,6 @@
   top: 0;
   width: 100%;
   z-index: 1;
-
-  &:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    margin-right: -0.25em; /* Adjusts for spacing */
-  }
 
   // these nested styles are only relevant when the __wrapper is present.
   .modal_dialog {

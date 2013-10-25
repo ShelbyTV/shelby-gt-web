@@ -1,5 +1,5 @@
-<div id="social" name="social" class="shelf__wrapper shelf__wrapper--social clearfix">
-  <div class="shelf shelf--social clearfix shelf--facebook-logged-out js-social">
+<div id="social" name="social" class="shelf__wrapper shelf__wrapper--social vertical-align-hack">
+  <div class="shelf shelf--social clearfix shelf--facebook-logged-out vertical-align-hack__el js-social">
     <div class="media_module media_module--bare clearfix">
 
       <div class="shelf__lining four-fifths">
@@ -12,7 +12,7 @@
         </p>
 
         <p class="shelf__block">
-          <a href="<%= Settings::Application.ios_app_url %>" class="button_primer button_green button_command button_command--giant button_command--flexible one-quarter shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Social shelf">
+          <a href="/signup" data-href="<%= Settings::Application.ios_app_url %>" class="button_primer button_green button_command button_command--giant button_command--flexible one-quarter shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Social shelf">
             <%= raw Settings::Marketing.cta_button %>
           </a>
         </p>

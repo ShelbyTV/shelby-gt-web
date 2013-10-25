@@ -1,0 +1,23 @@
+// citation: http://css-tricks.com/centering-in-the-unknown/
+
+@mixin vertical-align-hack {
+  text-align: center;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+  }
+
+  & > .vertical-align-hack__el {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+  }
+}
+
+.vertical-align-hack {
+  @include vertical-align-hack;
+}

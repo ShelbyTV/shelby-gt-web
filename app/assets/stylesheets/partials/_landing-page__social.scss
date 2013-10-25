@@ -4,9 +4,10 @@
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
-  border-bottom: 1px solid $inset;
-  text-align: center;
 
+  .shelf {
+    text-align: center;
+  }
   .shelf__lining {
     margin: 0 auto;
   }
