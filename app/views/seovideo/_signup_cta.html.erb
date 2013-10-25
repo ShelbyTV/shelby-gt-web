@@ -3,7 +3,13 @@
   <div class="welcome-message welcome-message--large welcome-message--seo">
     <div>
       <h2 class="welcome-message__h1--plain">
-        Want more video?
+        <% if @seo_popup_headline == :discover_and_enjoy %>
+          Discover and enjoy the best of web video.
+        <% elsif @seo_popup_headline == :new_video_every_day %>
+          Discover and enjoy new videos every day.
+        <% elsif %>
+          Want more video?
+        <% end %>
       </h2>
 
       <h3 class="welcome-message__h2">

@@ -2,8 +2,6 @@ class MobileController < ApplicationController
   include ApplicationHelper
   include MobileHelper
 
-  before_filter :init_ab_tests
-
   def landing
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
@@ -14,6 +12,7 @@ class MobileController < ApplicationController
       authed_service = params[:service] || users_first_auth['provider'] || "facebook"
       redirect_to mobile_show_onboarding_path(:step => 1, :service => authed_service)
     elsif user_signed_in?
+      log_session()
       redirect_to mobile_stream_path
     else
       @mobile_signup_url = Settings::ShelbyAPI.url+"/auth/facebook?service=facebook&origin="+Settings::Application.mobile_url
@@ -33,7 +32,7 @@ class MobileController < ApplicationController
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
 
-      d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
+      d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit, params[:entry])
       @dashboard = dedupe_dashboard(d)
     else
       redirect_to mobile_landing_path(:status =>"You must be logged in.")
@@ -164,10 +163,5 @@ class MobileController < ApplicationController
       redirect_to mobile_landing_path(:status =>"Something bad just happened")
     end
   end
-
-  private
-    def init_ab_tests
-      @share_button_icon = ab_test :share_button_icon
-    end
 
 end

@@ -1,7 +1,5 @@
 class RollController < ApplicationController
 
-  before_filter :init_ab_tests
-
   ##
   # GET /roll/:roll_id
   #
@@ -36,10 +34,6 @@ class RollController < ApplicationController
   end
 
   private
-
-    def init_ab_tests
-      @share_button_icon = ab_test :share_button_icon
-    end
 
     def get_roll_and_roll_creator_by_roll_id
       roll_id = params[:roll_id]

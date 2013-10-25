@@ -2,6 +2,8 @@ class SignupController < ApplicationController
   include SignupHelper
 
   def show
+    @onboarding_with_invites = ab_test :onboarding_with_invites
+
     # just show the freakin form.
     if params[:code]
       @inviter = Shelby::API.get_user(params[:code])
