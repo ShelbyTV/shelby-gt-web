@@ -1,47 +1,49 @@
 <div id="stream" name="stream" class="shelf__wrapper shelf__wrapper--stream vertical-align-hack">
-  <div class="shelf shelf--stream clearfix vertical-align-hack__el">
-    <div class="media_module media_module--bare clearfix">
-      <div class="media_image shelf__lining two-thirds">
-        <h2 class="shelf__h1">
-          <%= raw Settings::Marketing.stream %>
-        </h2>
+  <div class="vertical-align-hack__el">
+    <div class="shelf shelf--stream clearfix">
+      <div class="media_module media_module--bare clearfix">
+        <div class="media_image shelf__lining two-thirds">
+          <h2 class="shelf__h1">
+            <%= raw Settings::Marketing.stream %>
+          </h2>
 
-        <p class="shelf__block four-fifths">
-          <%= raw Settings::Marketing.stream_body %>
-        </p>
+          <p class="shelf__block four-fifths">
+            <%= raw Settings::Marketing.stream_body %>
+          </p>
 
-        <% unless mobile %>
-          <ul class="list list--inline shelf__list js-target">
-            <li class="list__item">
-              <img alt="YouTube" title="YouTube" src="/images/landing/youtube.jpg" />
-            </li>
+          <% unless mobile %>
+            <ul class="list list--inline shelf__list js-target">
+              <li class="list__item">
+                <img alt="YouTube" title="YouTube" src="/images/landing/youtube.jpg" />
+              </li>
 
-            <li class="list__item">
-              <img alt="Vimeo" title="Vimeo" src="/images/landing/vimeo.jpg" />
-            </li>
+              <li class="list__item">
+                <img alt="Vimeo" title="Vimeo" src="/images/landing/vimeo.jpg" />
+              </li>
 
-            <li class="list__item">
-              <img alt="Hulu" title="Hulu" src="/images/landing/hulu.jpg" />
-            </li>
+              <li class="list__item">
+                <img alt="Hulu" title="Hulu" src="/images/landing/hulu.jpg" />
+              </li>
 
-            <li class="list__item">
-              <img alt="BlipTv" title="BlipTv" src="/images/landing/blip.jpg" />
-            </li>
+              <li class="list__item">
+                <img alt="BlipTv" title="BlipTv" src="/images/landing/blip.jpg" />
+              </li>
 
-            <li class="list__item">
-              <img alt="Facebook" title="Facebook" src="/images/landing/facebook.jpg" />
-            </li>
+              <li class="list__item">
+                <img alt="Facebook" title="Facebook" src="/images/landing/facebook.jpg" />
+              </li>
 
-            <li class="list__item">
-              <img alt="Twitter" title="Twitter" src="/images/landing/twitter.jpg" />
-            </li>
-          </ul>
-        <% end %>
+              <li class="list__item">
+                <img alt="Twitter" title="Twitter" src="/images/landing/twitter.jpg" />
+              </li>
+            </ul>
+          <% end %>
+        </div>
+
+        <div class="media_body shelf__img--stream js-stream" role="img">
+          <img src="/images/landing/_CONTENT/iphone-mobile-2.png" class="shelf__img--iphone cloaked js-phantom-hover" alt="" title="" />
+        </div>
       </div>
-
-      <div class="media_body shelf__img--stream js-stream" role="img">
-        <img src="/images/landing/_CONTENT/iphone-mobile-2.png" class="shelf__img--iphone cloaked js-phantom-hover" alt="" title="" />
-      </div>
-    </div>
-  </div><!-- eo shelf -->
-</div>
+    </div><!-- eo shelf -->
+  </div><!-- eo positioning el -->
+</div><!-- eo shelf__wrapper -->

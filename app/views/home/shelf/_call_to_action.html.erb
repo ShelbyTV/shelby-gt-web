@@ -1,31 +1,33 @@
 <div id="intro" name="intro" class="shelf__wrapper shelf__wrapper--cta vertical-align-hack">
-  <div class="media_module shelf shelf--cta shelf--facebook-logged-out clearfix vertical-align-hack__el">
-    <div class="media_image shelf__lining one-half">
-      <h1 class="shelf__h1 four-fifths">
-        <%= raw Settings::Marketing.cta %>
-      </h1>
+  <div class="vertical-align-hack__el">
+    <div class="media_module shelf shelf--cta shelf--facebook-logged-out clearfix">
+      <div class="media_image shelf__lining one-half">
+        <h1 class="shelf__h1 four-fifths">
+          <%= raw Settings::Marketing.cta %>
+        </h1>
 
-      <p class="shelf__block">
-        <%= raw Settings::Marketing.cta_body %>
-      </p>
+        <p class="shelf__block">
+          <%= raw Settings::Marketing.cta_body %>
+        </p>
 
-      <p class="shelf__block">
-        <a href="signup" data-href="<%= Settings::Application.ios_app_url %>" class="button_primer button_green button_command button_command--giant button_command--facebook two-fifths shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Call to Action shelf">
-          <span class="button_label"><%= raw Settings::Marketing.cta_button %></span>
+        <p class="shelf__block">
+          <a href="signup" data-href="<%= Settings::Application.ios_app_url %>" class="button_primer button_green button_command button_command--giant button_command--facebook two-fifths shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Call to Action shelf">
+            <span class="button_label"><%= raw Settings::Marketing.cta_button %></span>
+          </a>
+        </p>
+
+        <div class="facepile">
+          <iframe src="//www.facebook.com/plugins/facepile.php?app_id=115071338568035&amp;action&amp;max_rows=2&amp;size=medium&amp;show_count=true&amp;width=360&amp;colorscheme=light&amp;appId=115071338568035" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:360px;" allowTransparency="true"></iframe>
+        </div>
+
+        <a href="<%= Settings::Application.ios_app_url %>" class="appstore js-track-event" data-ga_action="Click open App Store" data-ga_label="Call to Action shelf">
+          <img src="/images/landing/appstore-badge.png" />
         </a>
-      </p>
+      </div><!-- eo media_image -->
 
-      <div class="facepile">
-        <iframe src="//www.facebook.com/plugins/facepile.php?app_id=115071338568035&amp;action&amp;max_rows=2&amp;size=medium&amp;show_count=true&amp;width=360&amp;colorscheme=light&amp;appId=115071338568035" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:360px;" allowTransparency="true"></iframe>
-      </div>
-
-      <a href="<%= Settings::Application.ios_app_url %>" class="appstore js-track-event" data-ga_action="Click open App Store" data-ga_label="Call to Action shelf">
-        <img src="/images/landing/appstore-badge.png" />
-      </a>
-    </div><!-- eo media_image -->
-
-    <div class="media_body">
-      <img src="/images/landing/_CONTENT/iphone-mobile-3.png" class="shelf__img--iphone cloaked" alt="Shelby.tv ios screenshot" />
-    </div><!-- media_body -->
-  </div><!-- eo shelf media_body -->
-</div>
+      <div class="media_body">
+        <img src="/images/landing/_CONTENT/iphone-mobile-3.png" class="shelf__img--iphone cloaked" alt="Shelby.tv ios screenshot" />
+      </div><!-- media_body -->
+    </div><!-- eo shelf media_body -->
+  </div><!-- positioning el -->
+</div><!-- wrapper -->

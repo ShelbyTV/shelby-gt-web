@@ -1,19 +1,16 @@
-// citation: http://css-tricks.com/centering-in-the-unknown/
+/*
+  citation: http://css-tricks.com/centering-in-the-unknown/
+
+  went with the table hack because the :before pseudo element isn't reponsively-friendly
+*/
 
 @mixin vertical-align-hack {
-  text-align: center;
-
-  &:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    margin-right: -0.25em; /* Adjusts for spacing */
-  }
+  display: table;
+  width:100%;
 
   & > .vertical-align-hack__el {
-    display: inline-block;
-    text-align: left;
+    display: table-cell;
+    text-align: center;
     vertical-align: middle;
   }
 }

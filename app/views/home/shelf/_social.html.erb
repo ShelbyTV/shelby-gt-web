@@ -1,38 +1,40 @@
 <div id="social" name="social" class="shelf__wrapper shelf__wrapper--social vertical-align-hack">
-  <div class="shelf shelf--social clearfix shelf--facebook-logged-out vertical-align-hack__el js-social">
-    <div class="media_module media_module--bare clearfix">
+  <div class="vertical-align-hack__el">
+    <div class="shelf shelf--social clearfix shelf--facebook-logged-out js-social">
+      <div class="media_module media_module--bare clearfix">
 
-      <div class="shelf__lining four-fifths">
-        <h2 class="shelf__h1">
-          <%= raw Settings::Marketing.social %>
-        </h2>
+        <div class="shelf__lining four-fifths">
+          <h2 class="shelf__h1">
+            <%= raw Settings::Marketing.social %>
+          </h2>
 
-        <p class="shelf__block">
-          <%= raw Settings::Marketing.social_body %>
-        </p>
+          <p class="shelf__block">
+            <%= raw Settings::Marketing.social_body %>
+          </p>
 
-        <p class="shelf__block">
-          <a href="/signup" data-href="<%= Settings::Application.ios_app_url %>" class="button_primer button_green button_command button_command--giant button_command--flexible one-quarter shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Social shelf">
-            <%= raw Settings::Marketing.cta_button %>
-          </a>
-        </p>
+          <p class="shelf__block">
+            <a href="/signup" data-href="<%= Settings::Application.ios_app_url %>" class="button_primer button_green button_command button_command--giant button_command--flexible one-quarter shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Social shelf">
+              <%= raw Settings::Marketing.cta_button %>
+            </a>
+          </p>
 
-        <% if mobile %>
-          <img src="/images/landing/_CONTENT/iphone-mobile.png" class="shelf__img--iphone_horizontal" title="iPhone screenshot of a video recommendation" alt="iPhone screenshot of a video recommendation" />
-        <% else %>
-          <div class="iphone iphone--horizontal js-iphone-south">
-            <img src="/images/landing/_CONTENT/header-horiz.jpg" class="iphone__header" />
-            <div class="iphone__viewport">
-              <div class="slide show--hover animate_module">
-                <img src="/images/landing/_CONTENT/iphone-3.jpg" class="shelf__img--iphone js-horz-iphone" title="iPhone screenshot of a video recommendation" alt="iPhone screenshot of a video recommendation" />
-                <img src="/images/landing/_CONTENT/iphone-2c.jpg" class="shelf__img--iphone js-horz-iphone" alt="" />
+          <% if mobile %>
+            <img src="/images/landing/_CONTENT/iphone-mobile.png" class="shelf__img--iphone_horizontal" title="iPhone screenshot of a video recommendation" alt="iPhone screenshot of a video recommendation" />
+          <% else %>
+            <div class="iphone iphone--horizontal js-iphone-south">
+              <img src="/images/landing/_CONTENT/header-horiz.jpg" class="iphone__header" />
+              <div class="iphone__viewport">
+                <div class="slide show--hover animate_module">
+                  <img src="/images/landing/_CONTENT/iphone-3.jpg" class="shelf__img--iphone js-horz-iphone" title="iPhone screenshot of a video recommendation" alt="iPhone screenshot of a video recommendation" />
+                  <img src="/images/landing/_CONTENT/iphone-2c.jpg" class="shelf__img--iphone js-horz-iphone" alt="" />
+                </div>
               </div>
-            </div>
-          </div><!-- eo iphone -->
-        <% end %>
+            </div><!-- eo iphone -->
+          <% end %>
 
-        <%= render :partial => "/home/shelf/press" %>
+          <%= render :partial => "/home/shelf/press" %>
+        </div>
       </div>
-    </div>
-  </div><!-- eo shelf -->
-</div>
+    </div><!-- eo shelf -->
+  </div><!-- eo positioning el -->
+</div><!-- eo shelf__wrapper -->
