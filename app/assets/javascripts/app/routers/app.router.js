@@ -88,7 +88,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
         success: function(userModel, response) {
 
           // users created on iOS are not eligible to be re-onboarded
-          var notEligibleForOnboarding = (userModel.get('app_progress').get('client_identifier') == "iOS_iPhone");
+          var notEligibleForOnboarding = (userModel.get('app_progress').get('onboarding') == "iOS_iPhone");
 
           // if the user is trying to view an isolated roll, don't show onboarding right now.
           if (/isolated-roll/.test(url)){
