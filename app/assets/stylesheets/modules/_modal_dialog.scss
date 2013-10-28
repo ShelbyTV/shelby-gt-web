@@ -1,6 +1,4 @@
 .modal_dialog__wrapper {
-  @include vertical-align-hack;
-
   background-color: rgba(255,255,255,0.75);
   height: 100%;
   left: 0;
@@ -9,18 +7,12 @@
   top: 0;
   width: 100%;
   z-index: 1;
-
-  // these nested styles are only relevant when the __wrapper is present.
-  .modal_dialog {
-    display: inline-block;
-    text-align: left;
-    vertical-align: middle;
-  }
 }
 
     .modal_dialog__wrapper--sms {
       .modal_dialog {
-        margin: 0 30px;
+        margin: 0 auto;
+        text-align: left;
       }
       .search_module {
         margin-bottom: 2em;
