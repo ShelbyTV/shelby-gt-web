@@ -46,7 +46,7 @@ $(document).ready(function(e){
   var $doc              = $('html,body'),
       $footerButton     = $('.js-toggle-footer'),
       $header           = $('.js-header'),
-      $iphone           = $('.js-iphone');
+      $iphone           = $('.js-iphone'),
       $iphoneSouth      = $('.js-iphone-south'),
       $iphoneViewport   = $iphone.find('.js-iphone-viewport'),
       $target           = $('.js-target'),
@@ -57,11 +57,11 @@ $(document).ready(function(e){
 
   var windowHeight = window.innerHeight - $('.js-header').height();
 
-  if(window.innerHeight < 850) {
-    console.log('window.innerHeight: ',window.innerHeight);
-    var adjust = ((850 - window.innerHeight)) * (0.425) + ((850 - window.innerHeight) / 5); // I'm not entirely sure why this works out... but it does.
-    $('#js-css-iphone-adjust').html(".shelf__wrapper--iphone .iphone--horizontal { top: " +adjust+ "px;}");
-  }
+  // if(window.innerHeight < 850) {
+  //   console.log('window.innerHeight: ',window.innerHeight);
+  //   var adjust = ((850 - window.innerHeight)) * (0.425) + ((850 - window.innerHeight) / 5); // I'm not entirely sure why this works out... but it does.
+  //   $('#js-css-iphone-adjust').html(".shelf__wrapper--iphone .iphone--horizontal { top: " +adjust+ "px;}");
+  // }
 
   var shelf = {
     $cta    : $('#intro').height(windowHeight),
@@ -134,6 +134,18 @@ $(document).ready(function(e){
     }
   }).on('transitionend', function(e){
     $.event.trigger('isHorizontal',false);
+  }).on('slideChanged',function(e,data){
+    var $this = $(this);
+    switch(data.$target[0]) {
+      case shelf.$cta[0] :
+      case shelf.$stream[0] :
+        $(this).removeAttr('style');
+      break;
+      case shelf.$social[0] :
+        $(this).offset({ top: $iphoneSouth.offset().top - 11 });
+      break;
+    }
+
   });
 
   $iphoneSouth.on('beforeChange',function(e,data){
