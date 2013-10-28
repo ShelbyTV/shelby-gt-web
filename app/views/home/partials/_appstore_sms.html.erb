@@ -1,4 +1,4 @@
-<form class="form_module js-sms-twilio" action="<%= Settings::Application.secure_form_root %>/POST/message/send">
+<form class="hidden form_module js-sms-twilio" action="<%= Settings::Application.secure_form_root %>/POST/message/send">
   <label for="sms" class="form_label modal_dialog__h1">
     Text iOS download link to your phone:
   </label>
@@ -14,7 +14,7 @@
   </fieldset>
 
   <p class="modal_dialog__block">
-    Don't have an iPhone? No problem, <a href="/signup" class="js-track-event" data-ga_action="Click Signup" data-ga_label="SMS popup">Sign up on the web</a>.
+    Don't have an iPhone? No problem, <a href="#" class="js-show-web-choices js-track-event" data-ga_action="Click Signup" data-ga_label="SMS popup">Sign up on the web</a>.
   </p>
 </form>
 
@@ -27,6 +27,25 @@
   </p>
 
   <p class="modal_dialog__block">
-    Didn't get one? <a href="#" class="js-sms-retry js-track-event" data-ga_action="Click Try Again" data-ga_label="SMS popup after Send">Try again</a> or <a href="/signup" class="js-track-event" data-ga_action="Click Signup" data-ga_label="SMS popup">Sign up on the web</a>.
+    Didn't get one? <a href="#" class="js-sms-retry js-track-event" data-ga_action="Click Try Again" data-ga_label="SMS popup after Send">Try again</a> or <a href="#" class="js-show-web-choices js-track-event" data-ga_action="Click Signup" data-ga_label="SMS popup">Sign up on the web</a>.
+  </p>
+</div>
+
+<div class="hidden js-sms-signup-web">
+  <label class="modal_dialog__h1">
+    Sign up on the web
+  </label>
+  <p class="modal_dialog__block modal_dialog__block--push">
+    <a href="#" class="button_primer button_command button_facebook-blue one-half js-signup-facebook js-track-event" data-ga_action="Click Signup with Facebook" data-ga_label="SMS popup">
+      <span class="icon icon-facebook"></span>
+      <span class="button_label">Sign up with Facebook</span>
+    </a>
+    <a href="/signup" class="button_primer button_command two-fifths button_gray js-email-signup js-track-event" data-ga_action="Click Signup with Email" data-ga_label="SMS popup">
+      Sign up with Email
+    </a>
+  </p>
+
+  <p class="modal_dialog__block">
+    <a href="/signup" class="js-cta" data-ga_action="Click Signup" data-ga_label="SMS popup">Send an SMS Message</a>
   </p>
 </div>

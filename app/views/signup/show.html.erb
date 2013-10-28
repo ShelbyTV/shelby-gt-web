@@ -3,7 +3,8 @@
 
   <%= render :partial => '/home/shelf/errors' if @social_signup_error %>
 
-  <div class="shelf">
+<div class="shelf__wrapper clearfix">
+  <div class="shelf shelf--signup">
     <div class="shelf__lining">
       <div class="signup__head">
 
@@ -25,9 +26,8 @@
           <% end %>
         </h1>
       </div><!-- signup__head -->
-      <br/>
       <div class="signup__body">
-        <a href="http://api.shelby.tv/auth/facebook" class="button_primer button_facebook-blue button_command button_command--sub button_command--facebook one-third shelf__button js-authorize js-authorize--facebook js-track-event" data-popup_width="1000" data-popup_height="650" data-ga_category="Onboarding" data-ga_action="Click Sign Up with Facebook <%= 'via invite' if @inviter %>" style="margin-top: 30px;">
+        <a href="http://api.shelby.tv/auth/facebook" class="button_primer button_facebook-blue button_command button_command--large button_command--facebook one-quarter shelf__button js-authorize js-authorize--facebook js-track-event" data-popup_width="1000" data-popup_height="650" data-ga_category="Onboarding" data-ga_action="Click Sign Up with Facebook <%= 'via invite' if @inviter %>" style="margin-top: 30px;">
           <span class="icon icon-facebook"></span>
           <span class="button_label">Sign Up with Facebook</span>
         </a>
@@ -109,6 +109,8 @@
     </div><!-- shelf -->
   </div>
 </div>
+</div>
+
 
 <%= javascript_tag do %>
   $(document).ready(function(){

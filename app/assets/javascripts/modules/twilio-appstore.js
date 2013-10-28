@@ -4,6 +4,7 @@ $(document).ready(function(){
   var togglePopupViews = function(visibility) {
     $smsForm.toggleClass('hidden',visibility);
     $smsSuccess.toggleClass('hidden',!visibility);
+    $smsWebSignup.toggleClass('hidden',true);
   };
 
   // smartly caching everything that needs handling.
@@ -11,6 +12,7 @@ $(document).ready(function(){
   var $smsPopup     = $('.js-popup--sms'),
       $smsForm      = $smsPopup.find('.js-sms-twilio'),
       $smsSuccess   = $smsPopup.find('.js-sms-success'),
+      $smsWebSignup = $smsPopup.find('.js-sms-signup-web'),
       $smsCtaButton = $('.js-cta');
 
   $smsCtaButton.on('click',function(e){
@@ -68,6 +70,9 @@ $(document).ready(function(){
     return;
   }).on('click','.js-sms-retry', function(e){
     togglePopupViews(false);
+  }).on('click','.js-show-web-choices',function(e){
+    e.preventDefault();
+    $smsPopup.find($smsWebSignup).toggleClass('hidden',false).siblings().toggleClass('hidden',true);
   });
 
 });
