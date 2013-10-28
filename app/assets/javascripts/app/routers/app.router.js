@@ -87,8 +87,8 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       shelby.models.user.fetch({
         success: function(userModel, response) {
 
-          // users created before the new onboarding was deployed are not eligible to be re-onboarded
-          var notEligibleForOnboarding = false;//new Date(userModel.get('created_at')) < new Date("Thu, 01 Aug 2013 13:00:00 GMT-0400");
+          // users created on iOS are not eligible to be re-onboarded
+          var notEligibleForOnboarding = (userModel.get('app_progress').get('client_identifier') == "iOS_iPhone");
 
           // if the user is trying to view an isolated roll, don't show onboarding right now.
           if (/isolated-roll/.test(url)){
