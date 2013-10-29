@@ -43,8 +43,7 @@ class SeovideoController < ApplicationController
     setMetaDescription()
 
     # A/B tests
-    @seo_show_play_on_related = ab_test :seo_show_play_on_related
-    @seo_popup_headline = ab_test :seo_popup_headline
+    #@seo_show_play_on_related = ab_test :seo_show_play_on_related
     #@seo_messaging_v2 = ab_test :seo_messaging_v2
 =begin
     # if the referrer is google search, parse the search query out of its url

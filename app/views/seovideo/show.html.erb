@@ -87,9 +87,7 @@
                   data-ga_label="<%= @video_title %>">
                   <div class="related_video frame-body-wrapper clearfix">
                     <div class="related_video__main">
-                      <% if @seo_show_play_on_related == :true %>
-                        <span class="image_module icon-play related_video__play"></span>
-                      <% end %>
+                      <span class="image_module icon-play related_video__play"></span>
                       <span role="img" class="seovideo__thumbnail js-seovideo__thumbnail" style="background-image: url(<%= related_video["thumbnail_url"] %>);">
                         <img class="visuallyhidden" src="<%= related_video["thumbnail_url"] %>" alt="<%= related_video["title"] %>" title="<%= related_video["title"] %>" />
                       </span>
