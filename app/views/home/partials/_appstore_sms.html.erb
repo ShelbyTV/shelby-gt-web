@@ -36,7 +36,14 @@
     Sign up on the web
   </label>
   <p class="modal_dialog__block modal_dialog__block--push">
-    <a href="#" class="button_primer button_command button_facebook-blue one-half js-signup-facebook js-track-event js-authorize js-authorize--facebook" data-ga_action="Click Signup with Facebook" data-ga_label="SMS popup">
+    <a  href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>"
+        data-ga_action="Signup with Facebook"
+        data-popup_height="700"
+        data-popup_width="600"
+        data-ga_action="Click Signup with Facebook"
+        data-ga_label="SMS popup"
+        class="button_primer button_command button_facebook-blue one-half js-signup-facebook js-track-event js-authorize js-authorize--facebook"
+      >
       <span class="icon icon-facebook"></span>
       <span class="button_label">Sign up with Facebook</span>
     </a>
