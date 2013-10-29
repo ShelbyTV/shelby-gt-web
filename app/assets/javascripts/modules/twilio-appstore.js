@@ -64,10 +64,9 @@ $(document).ready(function(){
 
   $smsPopup.on('click',function(e){
     // hide this pop up if you click on any area outside the popup itself.
-    if(this == e.target) {
+    if($(this).children()[0] == $(e.target)[0]) { //this is complicated because it has to account for the vertical-align-hack__el
       $(this).toggleClass('hidden',true);
     }
-    return;
   }).on('click','.js-sms-retry', function(e){
     togglePopupViews(false);
   }).on('click','.js-show-web-choices',function(e){
