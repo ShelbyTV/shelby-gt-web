@@ -8,14 +8,13 @@ class SignupController < ApplicationController
     if params[:code]
       @inviter = Shelby::API.get_user(params[:code])
       @og_url = request.original_url
+      @referer = @inviter
       session[:invite_code] = params[:code]
     end
 
     if params[:email]
-      @email = :email
+      @referer = 'email'
     end
-
-    @referer = @inviter or @email
 
     if flash[:user_errors]
       @user_attributes = flash[:user_attributes]

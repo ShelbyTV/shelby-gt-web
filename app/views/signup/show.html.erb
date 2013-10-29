@@ -1,7 +1,7 @@
 <%= render :partial => '/home/landing_header', :locals => {:show_login => false, :user_signed_in => @user_signed_in} %>
 <%= render :partial => '/home/shelf/errors' if @social_signup_error %>
 
-<div class="shelf__wrapper shelf__wrapper--signup clearfix<%= ' shelf--inviter' if @inviter %>" role="main">
+<div class="shelf__wrapper shelf__wrapper--signup clearfix<%= ' shelf__wrapper--inviter' if @inviter %>" role="main">
   <div class="shelf shelf--signup clearfix">
     <div class="shelf__lining clearfix">
       <div class="shelf__head">
@@ -28,13 +28,16 @@
           <span class="icon icon-facebook"></span>
           <span class="button_label">Sign Up with Facebook</span>
         </a>
+
         <div class="facepile">
           <div class="fb-facepile" style="margin-top: 25px;" data-action="use,like" data-width="300" data-max-rows="2" data-size="medium"></div>
         </div>
+
         <br/>
-        <div style="margin-top: 10px;">
-            or <a href="#" class="js-email-signup js-track-event" data-ga_category="Onboarding" data-ga_action="Click Show Sign Up with Email <%= 'via invite' if @inviter %>">sign up with email address</a>.
-        </div>
+
+        <p<%= raw " class=\"hidden\"" if @referer == 'email' %>>
+          or <a href="#" class="js-email-signup js-track-event" data-ga_category="Onboarding" data-ga_action="Click Show Sign Up with Email <%= 'via invite' if @inviter %>">sign up with email address</a>.
+        </p>
       </div><!-- shelf__head -->
 
       <div class="shelf__body">
