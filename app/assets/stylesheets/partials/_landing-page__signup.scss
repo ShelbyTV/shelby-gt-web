@@ -1,24 +1,21 @@
+.shelf__wrapper--signup {
+  background-color: transparent;
+  padding-top: 70px;
+}
+    .shelf__wrapper--inviter {
+    }
+
 .shelf--signup {
-  height: 440px;
   text-align: center;
 
-  .shelf__lining {
-    font-size: 1.1em;
-  }
-
-  .shelf__lining--right {
-    width: 45%;
-    float: right;
-    padding-top: 2em;
+  .shelf__body {
     text-align: left;
-    font-size: 0.9em;
   }
 
-  .shelf__lining--left {
-    width: 55%;
-    float: left;
-    padding-top: 5.75em;
-    padding-left: 66px;
+  .shelf__h1 {
+    font-family: $font-family-display;
+    font-weight: 400;
+    margin-top: 40px;
   }
 
   .shelf__button {
@@ -32,34 +29,41 @@
   }
 
   .list--benefits {
+    font-size: 13px;
     margin-left: 75px;
+    margin-top: 40px;
   }
 
+  .avatar {
+    margin-bottom: 0.5em;
+  }
+
+  // form stuff
   .form_module {
     font-size: 13px;
     margin: 0 auto;
-    width: 260px;
   }
 
   .form_fieldset {
+    position: relative;
     width: 255px;
+  }
+      .form_fieldset--error {
+        .form_error {
+          display: block;
+        }
+      }
+
+  .form_error {
+    font-size: 0.7em;
+    display: none;
+    margin: 0.2em 0.4em;
+    position: absolute;
+    right: 0;
   }
 
   .form__description {
     font-size: 0.8em;
     line-height: 1;
-  }
-
-  .form_fieldset--error {
-    .form_error {
-      display: block;
-    }
-  }
-
-  .form_error {
-    position: absolute;
-    margin: 0.3em 2em;
-    font-size: 0.65em;
-    display: none;
   }
 }

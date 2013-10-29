@@ -1,14 +1,12 @@
-<div class="signup signup--profile<%= ' signup--inviter' if @inviter %>" role="main">
-  <%= render :partial => '/home/landing_header', :locals => {:show_login => false, :user_signed_in => @user_signed_in} %>
+<%= render :partial => '/home/landing_header', :locals => {:show_login => false, :user_signed_in => @user_signed_in} %>
+<%= render :partial => '/home/shelf/errors' if @social_signup_error %>
 
-  <%= render :partial => '/home/shelf/errors' if @social_signup_error %>
+<div class="shelf__wrapper shelf__wrapper--signup clearfix<%= ' shelf--inviter' if @inviter %>" role="main">
+  <div class="shelf shelf--signup clearfix">
+    <div class="shelf__lining clearfix">
+      <div class="shelf__head">
 
-<div class="shelf__wrapper clearfix">
-  <div class="shelf shelf--signup">
-    <div class="shelf__lining">
-      <div class="signup__head">
-
-        <h1 class="signup__h1">
+        <h1 class="shelf__h1">
           <% if @inviter %>
             <span class="image_module avatar avatar--small" style="background-image: url(<%= avatar_url_for_user(@inviter) %>);">
               <%= image_tag avatar_url_for_user(@inviter),
@@ -25,8 +23,7 @@
             Get your perfect stream of video
           <% end %>
         </h1>
-      </div><!-- signup__head -->
-      <div class="signup__body">
+
         <a href="http://api.shelby.tv/auth/facebook" class="button_primer button_facebook-blue button_command button_command--large button_command--facebook one-quarter shelf__button js-authorize js-authorize--facebook js-track-event" data-popup_width="1000" data-popup_height="650" data-ga_category="Onboarding" data-ga_action="Click Sign Up with Facebook <%= 'via invite' if @inviter %>" style="margin-top: 30px;">
           <span class="icon icon-facebook"></span>
           <span class="button_label">Sign Up with Facebook</span>
@@ -36,14 +33,14 @@
         </div>
         <br/>
         <div style="margin-top: 10px;">
-            or <a href="#" class="js-email-signup js-track-event" data-ga_category="Onboarding" data-ga_action="Click Show Sign Up with Email <%= 'via invite' if @inviter %>">signup with a email and password</a>
+            or <a href="#" class="js-email-signup js-track-event" data-ga_category="Onboarding" data-ga_action="Click Show Sign Up with Email <%= 'via invite' if @inviter %>">sign up with email address</a>.
         </div>
+      </div><!-- shelf__head -->
 
-        <% form_hidden = @inviter ? " hidden" : ""  %>
-        <%= form_tag(request.env['PATH_INFO'], { :id => 'user_form', :class => "form_module"+form_hidden }) do %>
-          <fieldset class="form_fieldset">
+      <div class="shelf__body">
+        <%= form_tag(request.env['PATH_INFO'], { :id => 'user_form', :class => form_class(@referer) }) do %>
             <div class="media_module">
-              <div class="media_image media_image--rev two-fifths">
+              <div class="media_image media_image--rev three-fifths">
                 <ul class="list list--benefits">
                   <li class="benefit benefit--smart icon-like">
                     <h2 class="benefit__h1">Personal recommendations</h2>
@@ -103,47 +100,44 @@
                 </fieldset>
               </div><!-- eo media_body -->
             </div><!-- eo media_module -->
-          </fieldset>
         <% end %>
       </div><!-- eo shelf__lining -->
     </div><!-- shelf -->
   </div>
 </div>
-</div>
-
 
 <%= javascript_tag do %>
-  $(document).ready(function(){
+$(document).ready(function(){
 
-      <% if @inviter %>
-        shelby.trackEx({
-          providers : ['ga', 'kmq'],
-          gaCategory : "Onboarding",
-          gaAction : 'Started via Invite',
-          kmqName : 'Started Onboarding via Invite'
-        });
-
-        $('.js-submit-signup').on('click', function(){
-          shelby.trackEx({
-            providers : ['ga', 'kmq'],
-            gaCategory : "Onboarding",
-            gaAction : 'Clicked sign up via an invite',
-            gaLabel : 'via <%= @inviter['nickname'] %>',
-            kmqName : 'Clicked sign up via invite',
-            kmqProperties : {
-              inviter: '<%= @inviter['nickname'] %>'
-            }
-          });
-        });
-      <% end %>
-
+    <% if @inviter %>
       shelby.trackEx({
         providers : ['ga', 'kmq'],
         gaCategory : "Onboarding",
-        gaAction : 'Started',
-        kmqName : 'Started Onboarding'
+        gaAction : 'Started via Invite',
+        kmqName : 'Started Onboarding via Invite'
       });
-  });
+
+      $('.js-submit-signup').on('click', function(){
+        shelby.trackEx({
+          providers : ['ga', 'kmq'],
+          gaCategory : "Onboarding",
+          gaAction : 'Clicked sign up via an invite',
+          gaLabel : 'via <%= @inviter['nickname'] %>',
+          kmqName : 'Clicked sign up via invite',
+          kmqProperties : {
+            inviter: '<%= @inviter['nickname'] %>'
+          }
+        });
+      });
+    <% end %>
+
+    shelby.trackEx({
+      providers : ['ga', 'kmq'],
+      gaCategory : "Onboarding",
+      gaAction : 'Started',
+      kmqName : 'Started Onboarding'
+    });
+});
 <% end %>
 
 

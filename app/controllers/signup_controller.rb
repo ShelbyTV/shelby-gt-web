@@ -11,6 +11,12 @@ class SignupController < ApplicationController
       session[:invite_code] = params[:code]
     end
 
+    if params[:email]
+      @email = :email
+    end
+
+    @referer = @inviter or @email
+
     if flash[:user_errors]
       @user_attributes = flash[:user_attributes]
       @email_error = flash[:user_errors_email]
