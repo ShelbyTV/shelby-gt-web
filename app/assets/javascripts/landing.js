@@ -131,7 +131,7 @@ $(document).ready(function(e){
   /*
     Set shelf height to fill window, minus header.
   */
-  var windowHeight = window.innerHeight - $('.js-header').height(),
+  var windowHeight = window.innerHeight - $('.js-header').height() - 50,
       shelf = {
         $cta    : $('#intro').height(windowHeight),
         $iphone : $('#iphone').height(windowHeight),
