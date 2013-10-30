@@ -155,7 +155,7 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
     }
 
     // don't always show this, should not be probabilistic in the end. should be "smart" eventually
-    if (!this._shouldShowDVI(0.75)) return;
+    if (!this._shouldShowDVI(0.1)) return;
     //if (this._videoAlreadyLiked(this._currentFrame)) return;
 
     this._cardType = 'share';
