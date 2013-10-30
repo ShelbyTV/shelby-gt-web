@@ -9,40 +9,113 @@
 //= require ./modules/twilio-appstore.js
 
 $(document).ready(function(e){
-  var listenScroll = true;
-  var scroll = function(e,direction){
-    var currentIndex = $nav.children('.list__item--selected').index();
-    if(direction == 'previousSlide' && currentIndex < 1 || direction == 'nextSlide' &&  currentIndex >= $nav.children().length - 1) {
+  var listenScroll = true,
+      scroll = function(e,direction){
+        // scrolling is hinged on the slideshow dots.
+        var currentIndex = $nav.children('.list__item--selected').index();
+
+        // NOOP at head and tail, keep listening for scroll events.
+        if(direction == 'previousSlide' && currentIndex < 1 || direction == 'nextSlide' &&  currentIndex >= $nav.children().length - 1) {
+          listenScroll = true;
+          return;
+        }
+
+        $nav.children().eq(direction == 'previousSlide' ? currentIndex - 1 : currentIndex + 1).children('a').trigger('click');
+      };
+
+  /*
+    This isn't sexy but whatever:
+    Determine if touch device (tablet, really)
+
+    Only do touchy stuff if Modernizr says to.
+  */
+  if(Modzernir.touch) {
+    /*------------------------------------------------------------------------*/
+    /*  Credit: Eike Send for the awesome swipe event                         */
+    /*  via:    https://github.com/peachananr/onepage-scroll/                 */
+    /*------------------------------------------------------------------------*/
+    $.fn.swipeEvents = function() {
+      return this.each(function() {
+
+        var startX,
+            startY,
+            $this = $(this);
+
+        $this.bind('touchstart', touchstart);
+
+        function touchstart(event) {
+          var touches = event.originalEvent.touches;
+          if (touches && touches.length) {
+            startX = touches[0].pageX;
+            startY = touches[0].pageY;
+            $this.bind('touchmove', touchmove);
+          }
+          event.preventDefault();
+        }
+
+        function touchmove(event) {
+          var touches = event.originalEvent.touches;
+          if (touches && touches.length) {
+            var deltaX = startX - touches[0].pageX;
+            var deltaY = startY - touches[0].pageY;
+
+            if (deltaX >= 50) {
+              $this.trigger("swipeLeft");
+            }
+            if (deltaX <= -50) {
+              $this.trigger("swipeRight");
+            }
+            if (deltaY >= 50) {
+              $this.trigger("swipeUp");
+            }
+            if (deltaY <= -50) {
+              $this.trigger("swipeDown");
+            }
+            if (Math.abs(deltaX) >= 50 || Math.abs(deltaY) >= 50) {
+              $this.unbind('touchmove', touchmove);
+            }
+          }
+          event.preventDefault();
+        }
+
+      });
+    };
+
+    $(this)
+      .swipeEvents()
+      .on('swipeDown',function(e){
+        scroll(e,'previousSlide');
+      })
+      .on('swipeUp',function(e){
+        scroll(e,'nextSlide');
+      });
+  } else {
+    $(this).on('mousewheel DOMMouseScroll MozMousePixelScroll',function(e){
+      var direction;
+      // for firefox
+      if(e.originalEvent.type == "MozMousePixelScroll" && listenScroll && (e.originalEvent.detail > 50 || e.originalEvent.detail < -50)) {
+        listenScroll = false;
+        direction = (e.originalEvent.detail < 0 ? 'previousSlide' : 'nextSlide');
+        scroll(e,direction);
+      }
+      // for non-firefox
+      else if(listenScroll && (e.originalEvent.wheelDelta > 100 || e.originalEvent.wheelDelta < -100)) {
+        listenScroll = false;
+        direction = (e.originalEvent.wheelDelta > 0 ? 'previousSlide' : 'nextSlide');
+        scroll(e,direction);
+      }
+    });
+  }
+
+  $(this).on('slideChanged', function(e){
       listenScroll = true;
-      return;
-    }
-
-    $nav.children().eq(direction == 'previousSlide' ? currentIndex - 1 : currentIndex + 1).children('a').trigger('click');
-  };
-
-  $(this).on('mousewheel DOMMouseScroll MozMousePixelScroll',function(e){
-    var direction;
-    // for firefox
-    if(e.originalEvent.type == "MozMousePixelScroll" && listenScroll && (e.originalEvent.detail > 50 || e.originalEvent.detail < -50)) {
-      listenScroll = false;
-      direction = (e.originalEvent.detail < 0 ? 'previousSlide' : 'nextSlide');
-      scroll(e,direction);
-    }
-    // for non-firefox
-    else if(listenScroll && (e.originalEvent.wheelDelta > 100 || e.originalEvent.wheelDelta < -100)) {
-      listenScroll = false;
-      direction = (e.originalEvent.wheelDelta > 0 ? 'previousSlide' : 'nextSlide');
-      scroll(e,direction);
-    }
-  }).on('slideChanged', function(e){
-    listenScroll = true;
   });
 
   try {
     _gaq.push(['_trackEvent', 'Landing Page', 'Visit']);
   } catch(e) {}
 
-  //button cache
+  // cache objects that need handling!
   var $doc              = $('html,body'),
       $footerButton     = $('.js-toggle-footer'),
       $header           = $('.js-header'),
@@ -52,32 +125,27 @@ $(document).ready(function(e){
       $target           = $('.js-target'),
       $horizontalIphone = $('.js-horz-iphone'),
       $nav              = $('.js-slide-navigator'),
-      isHorizontal      = false,
-      listening         = true;
-
-  var windowHeight = window.innerHeight - $('.js-header').height();
-
-  // if(window.innerHeight < 850) {
-  //   console.log('window.innerHeight: ',window.innerHeight);
-  //   var adjust = ((850 - window.innerHeight)) * (0.425) + ((850 - window.innerHeight) / 5); // I'm not entirely sure why this works out... but it does.
-  //   $('#js-css-iphone-adjust').html(".shelf__wrapper--iphone .iphone--horizontal { top: " +adjust+ "px;}");
-  // }
-
-  var shelf = {
-    $cta    : $('#intro').height(windowHeight),
-    $iphone : $('#iphone').height(windowHeight),
-    $press  : $('#press').height(windowHeight),
-    $social : $('#social').height(windowHeight),
-    $stream : $('#stream').height(windowHeight),
-    $footer : $('#footer').addClass('animate_module')
-  };
+      isHorizontal      = false;
 
 
+  /*
+    Set shelf height to fill window, minus header.
+  */
+  var windowHeight = window.innerHeight - $('.js-header').height(),
+      shelf = {
+        $cta    : $('#intro').height(windowHeight),
+        $iphone : $('#iphone').height(windowHeight),
+        $press  : $('#press').height(windowHeight),
+        $social : $('#social').height(windowHeight),
+        $stream : $('#stream').height(windowHeight),
+        $footer : $('#footer').addClass('animate_module') //add class dynamically, or you get weird ghosting effect.
+      };
 
   var FANCY = {
-    _headerHeight : 65, //offset by the height of the header.
+    // offset by the height of the header.
+    _headerHeight : 65,
 
-    // jQuery.animate() specific configuration/defaults
+    // jQuery.animate specific configuration/defaults
     config : {
       _activeClass : 'list__item--selected', // className to indicate active slide of carousel.
 
@@ -86,10 +154,11 @@ $(document).ready(function(e){
       },
       speed    : 800,
       callback : function(data){
-        // bindable. for fancy interactions.
         $.event.trigger('slideChanged',data);
 
-        var index = data.$target.index(); // offset by index of shelf__wrapper--cta (that's the first slide);
+        // offset by index of shelf__wrapper--cta (that's the first slide);
+        var index = data.$target.index();
+
         $nav.children().removeClass(this._activeClass).eq(index).addClass(this._activeClass);
       }
     },
@@ -103,6 +172,10 @@ $(document).ready(function(e){
 
       this.config.settings.scrollTop = destination;
 
+      /*
+        scrolltop is the most important piece of information.
+        $target and $prevTarget are datapoints that let you know what's going on.
+      */
       var data = {
         scrollTop   : destination,
         $prevTarget : $prevTarget,
