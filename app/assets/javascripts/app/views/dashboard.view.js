@@ -4,6 +4,7 @@
   var DashboardEmptyIndicatorView = libs.shelbyGT.DashboardEmptyIndicatorView;
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
   var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
+  var recommendationPlacer = libs.utils.recommendationPlacer;
 
   libs.shelbyGT.DashboardView = FrameGroupPlayPagingListView.extend({
 
@@ -12,6 +13,8 @@
     options : _.extend({}, FrameGroupPlayPagingListView.prototype.options, {
       collectionAttribute : 'dashboard_entries',
       doCheck : SmartRefreshCheckType.headAndTail,
+      doLoadRecommendationsPerPage : false, // whether or not new recommendations should be fetched and inserted into each newly loaded page
+                                            // of dashboard entries
       doSmartRefresh : true,
       emptyIndicatorViewProto : DashboardEmptyIndicatorView,
       mobileVideoFilter : function(dbEntry) {
@@ -50,6 +53,34 @@
 
     _doesResponseContainListCollection : function(response) {
       return $.isArray(response.result);
+    },
+
+    // PagingListView overrides
+    _onFetchSuccess : function(model, response, numItemsDisplayedBeforeCurrentPage) {
+      FrameGroupPlayPagingListView.prototype._onFetchSuccess.call(this, model, response, numItemsDisplayedBeforeCurrentPage);
+
+      // if the option has been specified, fetch some more recommendations and insert them in the newly loaded page
+      // of dashboard entries
+      if (this.options.doLoadRecommendationsPerPage) {
+        var self = this;
+        shelby.collections.dynamicRecommendations.fetch({
+          add : true,
+          data : {
+            limits: '3,5',
+            min_score: shelby.config.recommendations.videoGraph.minScore,
+            scan_limit: shelby.config.recommendations.videoGraph.dashboardScanLimit,
+            sources: '31,33'
+          },
+          success : function(dynamicRecommendationsCollection, response) {
+            recommendationPlacer.placeRecs(
+              shelby.collections.dynamicRecommendations,
+              self.options.collection ? self.options.collection : self.model.get(self.options.collectionAttribute),
+              self.frameGroupCollection,
+              numItemsDisplayedBeforeCurrentPage
+            );
+          }
+        });
+      }
     }
 
   });

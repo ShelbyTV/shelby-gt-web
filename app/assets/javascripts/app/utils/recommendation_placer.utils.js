@@ -7,15 +7,20 @@ libs.utils.recommendationPlacer = {
         of a ListView, into which the recommendations will be inserted
       frameGroupsCollection - must be a frameGroupsCollection that is the display collection of the destinationCollection's
         ListView, which will be examined in order to space the recommendations evenly in the resulting visual output
+      frameGroupsStartIndex - the index in the frameGroupsCollection at which to start looking for spots to insert the recommendations,
+        default is 0
   */
-  placeRecs : function(recommendationsCollection, destinationCollection, frameGroupsCollection){
+  placeRecs : function(recommendationsCollection, destinationCollection, frameGroupsCollection, frameGroupsStartIndex){
+    if (typeof(frameGroupsStartIndex) == "undefined") {
+      frameGroupsStartIndex = 0;
+    }
+
     // for each slice of frame groups of size slice in the frameGroupsCollection that doesn't already have a recommendation in it,
     // insert a new recommendation in the middle of the slice
-    var numRecsPlaced = 0;
     var slicesExamined = 0;
     var sliceIncrement = 2;
-    while ((numRecsPlaced < recommendationsCollection.length) && (sliceIncrement * slicesExamined < frameGroupsCollection.length)) {
-      var startIndex = slicesExamined * (sliceIncrement + 1);
+    while (recommendationsCollection.length && (frameGroupsStartIndex + (sliceIncrement * slicesExamined) < frameGroupsCollection.length)) {
+      var startIndex = frameGroupsStartIndex + (slicesExamined * (sliceIncrement + 1));
       var endIndex = startIndex + sliceIncrement;
       var slice = frameGroupsCollection.models.slice(startIndex, endIndex);
       var sliceContainsRecommendation = _(slice).find(function(frameGroup){
@@ -26,7 +31,7 @@ libs.utils.recommendationPlacer = {
 
       if (slice.length && !sliceContainsRecommendation) {
         // get a recommendation to insert
-        var recToInsert = recommendationsCollection.at(numRecsPlaced);
+        var recToInsert = recommendationsCollection.first();
         // to get the dynamic dashboard entry to show up in the right place in the stream,
         // we'll need to give it a fake id in the right place in the id sequence that the view sorts by
         var fakeDbeId = null;
@@ -60,7 +65,6 @@ libs.utils.recommendationPlacer = {
         recToInsert.set('id', fakeDbeId);
         destinationCollection.add(recToInsert);
         recommendationsCollection.remove(recToInsert);
-        numRecsPlaced++;
         // if we deduplicated a channel recommendation, it may not have been placed in the slice where
         // we specified, so examine this slice again to see if it still needs a recommendation
         if (channelRecDeduplicated) {
