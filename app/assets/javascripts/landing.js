@@ -99,7 +99,7 @@ $(document).ready(function(e){
         scroll(e,direction);
       }
       // for non-firefox
-      else if(listenScroll && (e.originalEvent.wheelDelta > 100 || e.originalEvent.wheelDelta < -100)) {
+      else if(listenScroll && (e.originalEvent.wheelDelta > 50 || e.originalEvent.wheelDelta < -50)) {
         listenScroll = false;
         direction = (e.originalEvent.wheelDelta > 0 ? 'previousSlide' : 'nextSlide');
         scroll(e,direction);

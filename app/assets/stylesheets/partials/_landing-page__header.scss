@@ -1,7 +1,5 @@
-.shelf--header {
-  border-top: none;
-  border-left: none;
-  border-right: none;
+.shelf__wrapper--header {
+  border-bottom: 1px solid $inset;
   left: 0;
   max-width: none;
   margin: 0;
@@ -13,9 +11,13 @@
           transform: translateZ(0);
   width: 100%;
   z-index: 2;
+}
+
+.shelf--header {
+  background-color: $ui-white;
 
   .shelf__lining {
-    padding: 0.25em 1em;
+    padding: 0 2.6em;
   }
 
   .shelf__button--cta {
@@ -25,7 +27,7 @@
   //non-normative overrides
   .app_nav__button {
     font-size: inherit;
-    margin-top: 0.5em;
+    margin-top: 0.9em;
   }
 }
 

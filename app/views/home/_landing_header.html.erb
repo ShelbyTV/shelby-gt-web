@@ -2,46 +2,48 @@
   <span class="shelby-title-staging"><%= Settings::Branch.branch %></span>
 <% end %>
 
-<header class="shelf shelf--header shelby__head clearfix js-header" role="banner">
-  <div class="shelf__lining">
-    <a href="/" class="button_primer shelby-logo">
-      <span class="shelby_logo shelby_logo--inverted">
-        <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
-      </span>
-    </a>
+<div class="shelf__wrapper shelf__wrapper--header">
+  <header class="shelf shelf--header shelby__head clearfix js-header" role="banner">
+    <div class="shelf__lining">
+      <a href="/" class="button_primer shelby-logo">
+        <span class="shelby_logo shelby_logo--inverted">
+          <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+        </span>
+      </a>
 
-    <nav role="navigation">
-      <ul class="list list--inline app_nav clearfix">
-        <% if show_login %>
-          <% if !user_signed_in %>
-            <li class="list__item">
-              <a
-                href="<%= @seo_video ? '/' : '/signup' %>"
-                class="animate_module button_primer button_command button_command--flexible button_green shelf__button--cta js-cta-header js-cta js-track-event"
-                data-ga_action="Click Sign Up"
-                data-ga_label="Header"
-                >
-                Get the App
-              </a>
-            </li>
+      <nav role="navigation">
+        <ul class="list list--inline app_nav clearfix">
+          <% if show_login %>
+            <% if !user_signed_in %>
+              <li class="list__item">
+                <a
+                  href="<%= @seo_video ? '/' : '/signup' %>"
+                  class="animate_module button_primer button_command button_command--flexible button_green shelf__button--cta js-cta-header js-cta js-track-event"
+                  data-ga_action="Click Sign Up"
+                  data-ga_label="Header"
+                  >
+                  Get the App
+                </a>
+              </li>
 
-            <li class="dropdown_module list__item">
-              <button class="dropdown_button button_primer button_command button_command--flexible button_command--text app_nav__button app_nav__button--inverted">
-                Log In
-                <i class="icon-carrot"></i>
-              </button>
+              <li class="dropdown_module list__item">
+                <button class="dropdown_button button_primer button_command button_command--flexible button_command--text app_nav__button app_nav__button--inverted">
+                  Log In
+                  <i class="icon-carrot"></i>
+                </button>
 
-              <div class="dropdown_section login-section">
-                <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
+                <div class="dropdown_section login-section">
+                  <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
 
-                  <%= render :partial => 'objects/login_form' %>
+                    <%= render :partial => 'objects/login_form' %>
 
+                  </div>
                 </div>
-              </div>
-            </li><!-- eo login button/dropdown -->
+              </li><!-- eo login button/dropdown -->
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
-    </nav>
+        </ul>
+      </nav>
+    </div>
+  </header><!-- eo shelf -->
   </div>
-</header><!-- eo shelf -->
