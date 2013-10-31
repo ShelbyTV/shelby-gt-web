@@ -30,7 +30,7 @@
                 <%= content_tag(:h4,member["name"], :class => "member__h1") %>
                 <%= content_tag(:h5,member["title"],:class => "member__h2") %>
                 <%= content_tag(:p,member['description'],:class => "shelf__block member__block") %>
-                <%= content_tag(:p,link_to(member["url"],member["url"],:class => "member__link hover_link"),:class => "shelf__block") %>
+                <%= content_tag(:p,link_to("shelby.tv/"+member["url"],"//shelby.tv/"+member["url"],:class => "member__link hover_link"),:class => "shelf__block") %>
               </div>
             </div>
           </li>
