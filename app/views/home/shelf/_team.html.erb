@@ -19,10 +19,10 @@
         <% end %>
       </div>
 
-      <ul class="list shelf__list clearfix">
+      <ul class="list shelf__list push--bottom clearfix">
         <% Settings::Team.members.each do |member| %>
-          <li class="list__item member clearfix">
-            <div class="media_module">
+          <li class="list__item member push--bottom clearfix">
+            <div class="media_module media_module--bare push--bottom clearfix">
               <div class="media_image one-third">
                 <%= tag("img", :src => member['image'],:class => "member__img") %>
               </div>
@@ -30,7 +30,7 @@
                 <%= content_tag(:h4,member["name"], :class => "member__h1") %>
                 <%= content_tag(:h5,member["title"],:class => "member__h2") %>
                 <%= content_tag(:p,member['description'],:class => "shelf__block member__block") %>
-                <%= content_tag(:p,link_to(member["url"],member["url"],:class => "member__link"),:class => "shelf__block") %>
+                <%= content_tag(:p,link_to(member["url"],member["url"],:class => "member__link hover_link"),:class => "shelf__block") %>
               </div>
             </div>
           </li>

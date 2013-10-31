@@ -94,10 +94,10 @@ defaults: &defaults
       name : "Michael Matyus ",
       description: "Front-end Engineer who sacrifices sleep for reading and collecting old books. The beard stays.",
       image : "/images/team/mike-small2.jpg",
-      url : "shelby.tv/matyus",
+      url : "shelby.tv/html5",
       email : "michael@shelby.tv",
       twitter : "mmatyus",
-      title : "DOM Wizard"
+      title : "Lead Front-end Engineer"
     },
     {
       name : "Keren Pinkas",
