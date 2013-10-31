@@ -131,13 +131,13 @@ $(document).ready(function(e){
   /*
     Set shelf height to fill window, minus header.
   */
-  var windowHeight = window.innerHeight - $('.js-header').height() - 50,
+  var windowHeight = window.innerHeight - $('.js-header').height(),
       shelf = {
-        $cta    : $('#intro').height(windowHeight),
+        $cta    : $('#intro').height(windowHeight - 50),
         $iphone : $('#iphone').height(windowHeight),
-        $press  : $('#press').height(windowHeight),
-        $social : $('#social').height(windowHeight),
+        $social : $('#social').height(windowHeight - 50),
         $stream : $('#stream').height(windowHeight),
+        $press  : $('#press').height(windowHeight),
         $footer : $('#footer').addClass('animate_module') //add class dynamically, or you get weird ghosting effect.
       };
 
