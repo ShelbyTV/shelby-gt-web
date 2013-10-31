@@ -1,0 +1,132 @@
+defaults: &defaults
+  about: [
+    "To us, video is the best way to tell a story. It’s how billions of people around the world get their news, discover the world beyond them, or kick back at the end of a tough day. The internet gives creators the ability to distribute their content to a massive audience, and on YouTube alone, there are over 100 hours of video uploaded a minute! Then there’s Vimeo, Hulu, and a ton of other video platforms, not to mention video coming at you from Facebook, Twitter, and Tumblr… it’s simply overwhelming.",
+    "So, we are building Shelby.tv to be a simple a simple way for you to discover the videos that matter in your world.",
+    "Shelby recommends you videos based upon your interests and the stuff your friends watch, and it gets smarter the more you watch."
+  ]
+
+  our_team: [
+    "Cumulatively, our tight team of 9 people has over 24 years of experience working in video and 45 years in engineering with experience at a number of startups (and even some big companies like Cisco, Razorfish, Fox Sports and Dreamworks)."
+  ]
+
+  investors: [
+    "We are proud to have Rich Levandov and Brady Bohrmann of Avalon Ventures as our lead investors and board members, along with the support of some awesome angel investors in technology and media."
+  ]
+
+  culture: [
+    "We work and play in the heart of New York City’s Flatiron district. We’re a team of smart builders, with our feet on the ground and our eyes to the sky. We’re a healthy company at heart, but we’re occasionally wooed by the siren song of Shake Shack."
+  ]
+
+  work: [
+    "At Shelby, we are passionately building a technology-driven media company for the people and by the people.",
+    "Breaking that vision down, there are three things we must build - a great product, a great brand, and a great company. Separately they present unique challenges, yet each is integral to the success of the other. It is only through building a great company, however, that we will achieve greatness as a product and brand.",
+    "To that end, we feel strongly about the values and are proud of the culture we have created at this company to date. Together, we wrote and continually confirm <a href=#>these values</a> which represent the way we work and live, and we hope they resonate with you, too."
+  ]
+
+  job_links : [
+    "#",
+    "#",
+    "#"
+  ]
+
+  press_links : [
+    "#",
+    "#",
+    "#"
+  ]
+
+  members : [
+    {
+      name : "Reece Pacheco",
+      description : "Reece is often made fun of for his enchantment with (seemingly) every video that comes through Shelby. That passion for great visual storytelling and the power of video as a communication medium is what has driven Reece through a storied career in production/editing for national TV programs and in Hollywood. Previously, Reece was also the cofounder/CEO of TeamHomeField.com (now Rightplay.com), a SaaS video platform for sports. Originally a townie from Cape Cod, MA, he now perks up life in NYC with the adrenaline rush of biking past cabs and surfing around garbage in Rockaway.",
+      image : "/images/team/reece-small2.jpg",
+      url : "shelby.tv/reece",
+      email : "r@shelby.tv",
+      twitter : "reece",
+      title : "CEO, Co-Founder"
+    },
+    {
+      name : "Dan Spinosa",
+      description : "Creation is the most rewarding, interesting and curious noun/verb Dan can think of.  He's been building everything from go-karts, rockets and potato guns to enterprise VoIP solutions, web apps and iPhone apps.  From IOS (Cisco's Internet Operating Systems) to iOS (Apple's iPhone Operating System), with 2 startups (previously cofounded RightPlay.com, also with Reece), 1 accelerator (TechStars NYC, first class), and 5 years of long hair, he is full stack engineer/founder/CTO.  Dan is always trying to better understand our existence, loves any opportunity to teach people about their world, and is most excited by the science that hasn't been figured out.  You can find him in Brooklyn, where he has the best views of NYC.",
+      image : "/images/team/dan-small2.jpg",
+      url : "danspinosa.tv",
+      email : "dan@shelby.tv",
+      twitter : "spinosa",
+      title : "CTO, Co-Founder"
+    },
+    {
+      name : "Henry Sztul",
+      description: "Henry, a retired rocket scientist, is the resident entertainment scientist at Shelby. What does that mean? Well, he is learning about ways to make people happy through video. His deep passion for learning guides him to uncharted territory daily. In fact, he once literally helped guide a group of hikers into the only part of the Adirondacks that is actually uncharted. Everyone got out ok though, don't worry. Henry comes to Shelby with a Ph.D. in Physics from the City University of New York and a B.A. from Colgate University. He has two children and a wife who inspire him to build new and interesting things.",
+      image : "/images/team/henry-small2.jpg",
+      url : "shelby.tv/henry",
+      email : "h@shelby.tv",
+      twitter : "sztul",
+      title : "Entertainment Scientist"
+    },
+    {
+      name : "Chris Kurdziel",
+      description : "After proving his worth as a jean-short model and planning and executing the world's first-ever video hackathon, Chris joined Shelby full time. As an engineer-turned-MBA with a penchant for digging up the most obscure videos this side of Reddit, he leads partnerships and product management. Before joining the team, Chris spent time in the seed investing world and in healthcare, where he worked with hospital CIOs to implement, maintain and customize their electronic medical record solutions. Chris has an MBA from Cornell University and BS in Computer Science from Vanderbilt University. Someday, he hopes to go to Mars but until then he is content spending time on the Internet.",
+      image : "/images/team/chris-small2.jpg",
+      url : "shelby.tv/chris",
+      email : "c@shelby.tv",
+      twitter : "ckurdziel",
+      title : "Product & Partnerships"
+    },
+    {
+      name : "Joshua Samberg ",
+      description: "Finds your futuristic world strange/frightening.  Knows 2 things: 1) Code should be written the right way. 2) No such thing as a bad joke.",
+      image : "/images/team/josh-small2.jpg",
+      url : "shelby.tv/iceberg901",
+      email : "josh@shelby.tv",
+      twitter: nil,
+      title : "Hair/Software Engineer"
+    },
+    {
+      name : "Vincent Iadevaia",
+      description : "Vincent likes comic books, videos of giant robots, and awesome movie trailers.",
+      image : "/images/team/vincent-small2.jpg",
+      url : "shelby.tv/vondoom",
+      email : "v@shelby.tv",
+      twitter : "vondoom",
+      title : "Product Designer"
+    },
+    {
+      name : "Michael Matyus ",
+      description: "Front-end Engineer who sacrifices sleep for reading and collecting old books. The beard stays.",
+      image : "/images/team/mike-small2.jpg",
+      url : "shelby.tv/matyus",
+      email : "michael@shelby.tv",
+      twitter : "mmatyus",
+      title : "DOM Wizard"
+    },
+    {
+      name : "Keren Pinkas",
+      description: "Tiny. Redhead. Vegetarian. Beatlefan. Geek.",
+      image : "/images/team/keren-small2.jpg",
+      url : "shelby.tv/keren",
+      email : "keren@shelby.tv",
+      twitter : "kepsolution",
+      title : "iOS Developer"
+    },
+    {
+      name : "Edon Ophir",
+      description: "People person. Voracious reader. Israeli/American in NYC. Take me to the beach!",
+      image : "/images/team/edon-small2.jpg",
+      url : "shelby.tv/edon",
+      email : "edon@shelby.tv",
+      twitter : "edonophir",
+      title : "Community Manager"
+    }
+  ]
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
