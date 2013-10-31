@@ -24,23 +24,24 @@ defaults: &defaults
   ]
 
   job_links : [
-    "#",
-    "#",
-    "#"
+    {
+      href: "//shelby.tv/blog/hiring",
+      text: "Hiring at Shelby"
+    },
+    {
+      href: "//shelby.tv/blog/designer",
+      text: "Designer (Mobile & TV)"
+    }
   ]
 
-  press_links : [
-    "#",
-    "#",
-    "#"
-  ]
+  press_link : "//press.shelby.tv"
 
   members : [
     {
       name : "Reece Pacheco",
       description : "Reece is often made fun of for his enchantment with (seemingly) every video that comes through Shelby. That passion for great visual storytelling and the power of video as a communication medium is what has driven Reece through a storied career in production/editing for national TV programs and in Hollywood. Previously, Reece was also the cofounder/CEO of TeamHomeField.com (now Rightplay.com), a SaaS video platform for sports. Originally a townie from Cape Cod, MA, he now perks up life in NYC with the adrenaline rush of biking past cabs and surfing around garbage in Rockaway.",
       image : "/images/team/reece-small2.jpg",
-      url : "shelby.tv/reece",
+      url : "//shelby.tv/reece",
       email : "r@shelby.tv",
       twitter : "reece",
       title : "CEO, Co-Founder"
@@ -58,7 +59,7 @@ defaults: &defaults
       name : "Henry Sztul",
       description: "Henry, a retired rocket scientist, is the resident entertainment scientist at Shelby. What does that mean? Well, he is learning about ways to make people happy through video. His deep passion for learning guides him to uncharted territory daily. In fact, he once literally helped guide a group of hikers into the only part of the Adirondacks that is actually uncharted. Everyone got out ok though, don't worry. Henry comes to Shelby with a Ph.D. in Physics from the City University of New York and a B.A. from Colgate University. He has two children and a wife who inspire him to build new and interesting things.",
       image : "/images/team/henry-small2.jpg",
-      url : "shelby.tv/henry",
+      url : "//shelby.tv/henry",
       email : "h@shelby.tv",
       twitter : "sztul",
       title : "Entertainment Scientist"
@@ -67,7 +68,7 @@ defaults: &defaults
       name : "Chris Kurdziel",
       description : "After proving his worth as a jean-short model and planning and executing the world's first-ever video hackathon, Chris joined Shelby full time. As an engineer-turned-MBA with a penchant for digging up the most obscure videos this side of Reddit, he leads partnerships and product management. Before joining the team, Chris spent time in the seed investing world and in healthcare, where he worked with hospital CIOs to implement, maintain and customize their electronic medical record solutions. Chris has an MBA from Cornell University and BS in Computer Science from Vanderbilt University. Someday, he hopes to go to Mars but until then he is content spending time on the Internet.",
       image : "/images/team/chris-small2.jpg",
-      url : "shelby.tv/chris",
+      url : "//shelby.tv/chris",
       email : "c@shelby.tv",
       twitter : "ckurdziel",
       title : "Product & Partnerships"
@@ -76,7 +77,7 @@ defaults: &defaults
       name : "Joshua Samberg ",
       description: "Finds your futuristic world strange/frightening.  Knows 2 things: 1) Code should be written the right way. 2) No such thing as a bad joke.",
       image : "/images/team/josh-small2.jpg",
-      url : "shelby.tv/iceberg901",
+      url : "//shelby.tv/iceberg901",
       email : "josh@shelby.tv",
       twitter: nil,
       title : "Hair/Software Engineer"
@@ -85,7 +86,7 @@ defaults: &defaults
       name : "Vincent Iadevaia",
       description : "Vincent likes comic books, videos of giant robots, and awesome movie trailers.",
       image : "/images/team/vincent-small2.jpg",
-      url : "shelby.tv/vondoom",
+      url : "//shelby.tv/vondoom",
       email : "v@shelby.tv",
       twitter : "vondoom",
       title : "Product Designer"
@@ -94,7 +95,7 @@ defaults: &defaults
       name : "Michael Matyus ",
       description: "Front-end Engineer who sacrifices sleep for reading and collecting old books. The beard stays.",
       image : "/images/team/mike-small2.jpg",
-      url : "shelby.tv/html5",
+      url : "//shelby.tv/html5",
       email : "michael@shelby.tv",
       twitter : "mmatyus",
       title : "Lead Front-end Engineer"
@@ -103,7 +104,7 @@ defaults: &defaults
       name : "Keren Pinkas",
       description: "Tiny. Redhead. Vegetarian. Beatlefan. Geek.",
       image : "/images/team/keren-small2.jpg",
-      url : "shelby.tv/keren",
+      url : "//shelby.tv/keren",
       email : "keren@shelby.tv",
       twitter : "kepsolution",
       title : "iOS Developer"
@@ -112,7 +113,7 @@ defaults: &defaults
       name : "Edon Ophir",
       description: "People person. Voracious reader. Israeli/American in NYC. Take me to the beach!",
       image : "/images/team/edon-small2.jpg",
-      url : "shelby.tv/edon",
+      url : "//shelby.tv/edon",
       email : "edon@shelby.tv",
       twitter : "edonophir",
       title : "Community Manager"

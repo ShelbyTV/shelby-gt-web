@@ -45,8 +45,8 @@
         <% end %>
 
         <ul class="list">
-          <% Settings::Team.job_links.each do |href| %>
-            <%= content_tag(:li,link_to(href,:class => "shelf__link"),:class => 'list__item') %>
+          <% Settings::Team.job_links.each do |link| %>
+            <%= content_tag(:li,link_to(link['text'], link['href'], :class => "shelf__link"),:class => 'list__item') %>
           <% end %>
         </ul>
       </div>
@@ -67,16 +67,9 @@
       <div class="float--left one-half">
         <% Settings::Team.culture.each do |p| %>
           <%= content_tag(:p,p,:class => 'shelf__block') %>
-        <% end %>
-      </div>
 
-      <div class="float--left one-half push--bottom">
-        <%= content_tag(:strong,"Press Links") %>
-        <ul class="list">
-          <% Settings::Team.press_links.each do |href| %>
-            <%= content_tag(:li,link_to(href, :class => 'shelf__link'),:class => "list__item") %>
-          <% end %>
-        </ul>
+          <%= content_tag(:p,("For more information about Shelby.tv, mentions in the media and for press inquiries, "+link_to("please see our Press page", Settings::Team.press_link)).html_safe,:class => 'shelf__block') %>
+        <% end %>
       </div>
     </div><!-- eo shelf__lining -->
   </div><!-- eo shelf -->
