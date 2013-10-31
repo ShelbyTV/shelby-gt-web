@@ -135,8 +135,8 @@ $(document).ready(function(e){
       shelf = {
         $cta    : $('#intro').height(windowHeight - 50),
         $iphone : $('#iphone').height(windowHeight),
-        $social : $('#social').height(windowHeight - 50),
-        $stream : $('#stream').height(windowHeight),
+        $social : $('#social').height(windowHeight),
+        $stream : $('#stream').height(windowHeight - 50),
         $press  : $('#press').height(windowHeight),
         $footer : $('#footer').addClass('animate_module') //add class dynamically, or you get weird ghosting effect.
       };

@@ -7,13 +7,13 @@ defaults: &defaults
 
   cta: "Discover and enjoy new videos every day."
   cta_body: "Get the best of web video, personalized to your interests <br/>and available wherever you are."
-  cta_button: "Get the App"
+  cta_button: "Get the Free App"
 
-  stream: "Your perfect video stream. <br/>Powered by your favorite people and networks."
-  stream_body: "Shelby collects videos from across the web and organizes them in a single stream, showing you the information that matters to you."
+  stream: "Your perfect video stream. <br/>Powered by your favorite people."
+  stream_body: "Shelby.tv collects videos from across the web and organizes them into <br/>a single stream, showing you the information that matters to you."
 
   social: "A video channel personalized for you."
-  social_body: "Shelby delivers smart recommendations that get better the more you watch, like and share videos."
+  social_body: "Shelby.tv delivers smart recommendations that get better the more you Watch, Like and Share videos."
 development:
   <<: *defaults
 
