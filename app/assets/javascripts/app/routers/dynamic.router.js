@@ -442,8 +442,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
               // if we have some real dashboard entries, then wait until the dynamic entries have been fetched, and...
               shelby.promises.dynamicRecommendationsFetch.done(function() {
                 // if we're still showing the dashboard and there are any recommendations available
-                var numRecsAvailable = shelby.collections.dynamicRecommendations.length;
-                if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard && numRecsAvailable) {
+                if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
                   libs.utils.recommendationPlacer.placeRecs(
                     shelby.collections.dynamicRecommendations,
                     shelby.models.dashboard.get('dashboard_entries'),

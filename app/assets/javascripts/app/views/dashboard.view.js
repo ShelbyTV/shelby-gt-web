@@ -66,10 +66,10 @@
         shelby.collections.dynamicRecommendations.fetch({
           add : true,
           data : {
-            limits: '3,5',
+            limits: shelby.config.recommendations.limits.morePages,
             min_score: shelby.config.recommendations.videoGraph.minScore,
             scan_limit: shelby.config.recommendations.videoGraph.dashboardScanLimit,
-            sources: '31,33'
+            sources: shelby.config.recommendations.sources.morePages
           },
           success : function(dynamicRecommendationsCollection, response) {
             recommendationPlacer.placeRecs(
