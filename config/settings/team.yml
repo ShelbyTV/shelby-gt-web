@@ -82,7 +82,7 @@ defaults: &defaults
     },
     {
       name : "Joshua Samberg ",
-      description: "Finds your futuristic world strange/frightening.  Knows 2 things: 1) Code should be written the right way. 2) No such thing as a bad joke.",
+      description: "In spite of his degree in computer science and years of work as a software engineer, Joshua finds your futuristic world strange and frightening.  He has built diverse applications and platforms including a distributed workforce management and timekeeping system for public assembly venues, a major sports news website, and the risk management system of the Frankfurt Stock Exchange.  Meanwhile, he constantly thirsts after creative outlets to balance the dark pull of coding, which he has found in a variety pack of roles: college radio DJ, interactive installation engineer, dance performance artist, and trilingual expatriate in Sweden and the Czech Republic.",
       image : "josh.jpg",
       url : "iceberg901",
       email : "josh@shelby.tv",
