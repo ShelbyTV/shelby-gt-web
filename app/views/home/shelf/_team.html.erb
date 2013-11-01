@@ -23,7 +23,7 @@
         <% Settings::Team.members.each do |member| %>
           <li class="list__item member push--bottom clearfix">
             <div class="media_module media_module--bare push--bottom clearfix">
-              <div class="media_image one-third">
+              <div class="media_image">
                 <%= tag("img", :src => member['image'], :class => "member__img") %>
               </div>
               <div class="media_body">
