@@ -21,11 +21,12 @@ defaults: &defaults
     "We are proud to have Rich Levandov and Brady Bohrmann of Avalon Ventures as our lead investors and board members, along with the support of some awesome angel investors in technology and media."
   ]
 
-  culture: [
-    "We work and play in the heart of New York City’s Flatiron district. We’re a team of smart builders, with our feet on the ground and our eyes to the sky. We’re a healthy company at heart, but we’re occasionally wooed by the siren song of Shake Shack."
+  press: [
+    "For more information about Shelby.tv, mentions in the media and for press inquiries, <a href=\"//press.shelby.tv\">please see our Press page</a>"
   ]
 
   work: [
+    "We work and play in the heart of New York City’s Flatiron district. We’re a team of smart builders, with our feet on the ground and our eyes to the sky. We’re a healthy company at heart, but we’re occasionally wooed by the siren song of Shake Shack.",
     "At Shelby, we are passionately building a technology-driven media company for the people and by the people.",
     "Breaking that vision down, there are three things we must build - a great product, a great brand, and a great company. Separately they present unique challenges, yet each is integral to the success of the other. It is only through building a great company, however, that we will achieve greatness as a product and brand.",
     "To that end, we feel strongly about the values and are proud of the culture we have created at this company to date. Together, we wrote and continually confirm <a href=#>these values</a> which represent the way we work and live, and we hope they resonate with you, too."
@@ -41,11 +42,6 @@ defaults: &defaults
       text: "Designer (Mobile & TV)"
     }
   ]
-
-  press_link : {
-    href: "//press.shelby.tv",
-    text: "please see our Press page"
-  }
 
   members : [
     {
