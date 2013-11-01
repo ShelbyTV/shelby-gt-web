@@ -134,7 +134,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     }
   },
 
-  _onFetchSuccess : function(model, response){
+  _onFetchSuccess : function(model, response, numItemsDisplayedBeforeCurrentPage){
     var self = this;
     if (!this._doesResponseContainListCollection(response)) {
       // special case - if a given load returns everything up to exactly the last item
@@ -202,10 +202,11 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
       this._numItemsRequested = fetchData.limit;
       this.$('.js-load-more').addClass('js-loading');
       this.$('.js-load-more-button').html('Loading...');
+      var numItemsDisplayedBeforeCurrentPage = this._displayCollection.length;
       this.model.fetch({
         add : true,
         data : fetchData,
-        success: function(model, response){self._onFetchSuccess(model, response);}
+        success: function(model, response){self._onFetchSuccess(model, response, numItemsDisplayedBeforeCurrentPage);}
       });
     }
   },

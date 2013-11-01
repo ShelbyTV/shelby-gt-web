@@ -84,10 +84,12 @@
           var masterCollection;
           var _playlistType;
           if (currentDisplayState == DisplayState.dashboard) {
+            doLoadRecommendationsPerPage = true;
             doSmartRefresh = true;
             masterCollection = this._dashboardMasterCollection;
             _playlistType = libs.shelbyGT.PlaylistType.dashboard;
           } else {
+            doLoadRecommendationsPerPage = false;
             doSmartRefresh = false;
             masterCollection = this._currentChannelMasterCollection = new Backbone.Collection();
             _playlistType = libs.shelbyGT.PlaylistType.channel;
@@ -96,8 +98,9 @@
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
-              doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
               doubleCheckExistingItem : true,
+              doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
+              doLoadRecommendationsPerPage : doLoadRecommendationsPerPage,
               doSmartRefresh : doSmartRefresh,
               doStaticRender : true,
               fetchParams : {
