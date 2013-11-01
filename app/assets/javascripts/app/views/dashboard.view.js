@@ -63,14 +63,27 @@
       // of dashboard entries
       if (this.options.doLoadRecommendationsPerPage) {
         var self = this;
+        // get the ids of the videos that have already been recommended in the stream in this session
+        var recommendedVideoIds = this._simulatedMasterCollection.chain().filter(function(dbe){
+          return dbe.isRecommendationEntry();
+        }).map(function(dbe){
+          return dbe.get('frame').get('video').id;
+        }).value();
+        // prepare the parameters for the API request
+        var requestData = {
+          limits: shelby.config.recommendations.limits.morePages,
+          min_score: shelby.config.recommendations.videoGraph.minScore,
+          scan_limit: shelby.config.recommendations.videoGraph.dashboardScanLimit,
+          sources: shelby.config.recommendations.sources.morePages
+        };
+        // tell the api which videos we've already recommended during this session so it doesn't
+        // recommend them again on later pages
+        if (recommendedVideoIds.length) {
+          requestData['excluded_video_ids'] = recommendedVideoIds.join(",");
+        }
         shelby.collections.dynamicRecommendations.fetch({
           add : true,
-          data : {
-            limits: shelby.config.recommendations.limits.morePages,
-            min_score: shelby.config.recommendations.videoGraph.minScore,
-            scan_limit: shelby.config.recommendations.videoGraph.dashboardScanLimit,
-            sources: shelby.config.recommendations.sources.morePages
-          },
+          data : requestData,
           success : function(dynamicRecommendationsCollection, response) {
             recommendationPlacer.placeRecs(
               shelby.collections.dynamicRecommendations,
