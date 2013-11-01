@@ -92,7 +92,7 @@ defaults: &defaults
     {
       name : "Vincent Iadevaia",
       description : "As a kid, Vincent watched way too many science fiction films and, before long, became obsessed with beautiful interfaces. He also touched a Picasso at the Guggenheim and somehow got away with it, but that's another story. Now he spends his days and nights in Photoshop as Product Designer at Shelby, analyzing every project pixel by pixel. Before joining Shelby, he worked in digital advertising at The Barbarian Group, and mobile game design at Vostu. In his free time you can find him collecting and documenting his silver-age comic book collection.",
-      image : "//placehold.it/280x214",
+      image : "//placehold.it/280x214&text=Vincent+Iadevaia",
       url : "vondoom",
       email : "v@shelby.tv",
       twitter : "vondoom",
@@ -110,7 +110,7 @@ defaults: &defaults
     {
       name : "Keren Pinkas",
       description: "Tiny. Redhead. Vegetarian. Beatlefan. Geek.",
-      image : "//placehold.it/280x214",
+      image : "//placehold.it/280x214&text=Keren+Pinkas",
       url : "keren",
       email : "keren@shelby.tv",
       twitter : "kepsolution",
@@ -118,7 +118,7 @@ defaults: &defaults
     },
     {
       name : "Edon Ophir",
-      description: "People person. Voracious reader. Israeli/American in NYC. Take me to the beach!",
+      description: "It's probably no coincidence that Edon Ophir is the Head of Community at Shelby.tv, since his friends and family have been calling him a “people person” since before he can remember. When he's not engaging with Shelby's awesome and passionate community of video curators, you can probably find him at a yoga studio or with his nose in a book somewhere. He previously served as a Community Manager at Waze and before that, FashionTV, where his team built up the number one fashion channel on YouTube. You can follow him on Twitter and on the Shelby.tv blog.",
       image : "/images/team/edon.jpg",
       url : "edon",
       email : "edon@shelby.tv",
