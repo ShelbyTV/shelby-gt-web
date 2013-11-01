@@ -50,7 +50,8 @@ ShelbyGtWeb::Application.configure do
   #config.action_controller.asset_host = "//staging.shelby.tv"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile = %w(common.js deferred.js landing.js seovideo.js shares.js shares/shares_enabled.js shelby.js shelbify.js extension/includes.js mobile.js turbo.js experience.js signup.js png.css print.css screen.css landing.css seovideo.css extension.css experience.css mobile.css signup.css)
+  # "all non-JS/CSS" seems to be a lie.
+  config.assets.precompile = %w(*.gif *.jpg *.jpeg *.png common.js deferred.js landing.js seovideo.js shares.js shares/shares_enabled.js shelby.js shelbify.js extension/includes.js mobile.js turbo.js experience.js signup.js png.css print.css screen.css landing.css seovideo.css extension.css experience.css mobile.css signup.css)
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
