@@ -438,76 +438,16 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard &&
               !shelby.models.guide.get('hasShownDynamicRec')) {
             // we're not going to do anything until we have some real dashboard entries
-            var dbEntries = shelby.models.dashboard.get('dashboard_entries');
-            if (dbEntries.length && shelby.promises.dynamicRecommendationsFetch) {
+            if (shelby.models.dashboard.get('dashboard_entries').length && shelby.promises.dynamicRecommendationsFetch) {
               // if we have some real dashboard entries, then wait until the dynamic entries have been fetched, and...
               shelby.promises.dynamicRecommendationsFetch.done(function() {
-                // if we're still showing the dashboard
+                // if we're still showing the dashboard and there are any recommendations available
                 if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
-                  // if there are any recommendations available
-                  var numRecsAvailable = shelby.collections.dynamicRecommendations.length;
-                  if (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard && numRecsAvailable) {
-                    // for each slice of frame groups of size slice that doesn't already have a recommendation in it,
-                    // insert a new recommendation in the middle of the slice
-                    var numRecsPlaced = 0;
-                    var slicesExamined = 0;
-                    var sliceIncrement = 2;
-                    var frameGroupsCollection = shelby.models.playlistManager.get('playlistFrameGroupCollection');
-                    while ((numRecsPlaced < numRecsAvailable) && (sliceIncrement * slicesExamined < frameGroupsCollection.length)) {
-                      var startIndex = slicesExamined * (sliceIncrement + 1);
-                      var endIndex = startIndex + sliceIncrement;
-                      var slice = frameGroupsCollection.models.slice(startIndex, endIndex);
-                      var sliceContainsRecommendation = _(slice).find(function(frameGroup){
-                        return frameGroup.has('primaryDashboardEntry') && frameGroup.get('primaryDashboardEntry').isRecommendationEntry();
-                      });
-
-                      slicesExamined++;
-
-                      if (slice.length && !sliceContainsRecommendation) {
-                        // get a recommendation to insert
-                        var recToInsert = shelby.collections.dynamicRecommendations.at(numRecsPlaced);
-                        // to get the dynamic dashboard entry to show up in the right place in the stream,
-                        // we'll need to give it a fake id in the right place in the id sequence that the view sorts by
-                        var fakeDbeId = null;
-                        // if this is a channel recommendation, it may need to be de-duplicated
-                        // since Mark's frame groups collection doesn't allow this to be synchronized automatically
-                        // between the ListView simulated master collection and the frame groups collection,
-                        // we must take care of the master collection part manually here
-                        var channelRecDeduplicated = false;
-                        if (recToInsert.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation) {
-                          var firstDuplicateVideoEntry = dbEntries.find(function(dbe){
-                            return dbe.get('frame').get('video').id == recToInsert.get('frame').get('video').id;
-                          });
-                          if (firstDuplicateVideoEntry) {
-                            // there's a duplicate video for this recommendation, so we'll need
-                            // to set the dbentry with a fake id just before the item it will deduplicate with
-                            var duplicateVideoEntryId = new ObjectId(firstDuplicateVideoEntry.id);
-                            duplicateVideoEntryId.increment++;
-                            fakeDbeId = duplicateVideoEntryId.toString();
-                            channelRecDeduplicated = true;
-                          }
-                        }
-
-                        if (!fakeDbeId) {
-                          // aside from the special case above, we'll otherwise set an id just past the item
-                          // we want this recommendation to show up after
-                          var dbeToPlaceAfterId = new ObjectId(slice[0].get('primaryDashboardEntry').id);
-                          dbeToPlaceAfterId.increment--;
-                          fakeDbeId = dbeToPlaceAfterId.toString();
-                        }
-
-                        recToInsert.set('id', fakeDbeId);
-                        dbEntries.add(recToInsert);
-                        numRecsPlaced++;
-                        // if we deduplicated a channel recommendation, it may not have been placed in the slice where
-                        // we specified, so examine this slice again to see if it still needs a recommendation
-                        if (channelRecDeduplicated) {
-                          slicesExamined--;
-                        }
-                      }
-
-                    }
-                  }
+                  libs.utils.recommendationPlacer.placeRecs(
+                    shelby.collections.dynamicRecommendations,
+                    shelby.models.dashboard.get('dashboard_entries'),
+                    shelby.models.playlistManager.get('playlistFrameGroupCollection')
+                  );
                   // don't insert any more dynamic recommendations during this session
                   shelby.models.guide.set('hasShownDynamicRec', true);
                 }

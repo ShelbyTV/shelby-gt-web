@@ -1,9 +1,17 @@
 shelby.config.recommendations = {
+  displaySettings : {},
+  limits : {
+    firstPage : '3,5,2',
+    morePages : '4,6'
+  },
+  sources : {
+    firstPage : '31,33,34',
+    morePages : '31,33'
+  },
   videoGraph : {
     dashboardScanLimit : 20,
     minScore : 40.0
-  },
-  displaySettings : {}
+  }
 };
 
 shelby.config.recommendations.displaySettings[libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.entertainmentGraphRecommendation] = {
