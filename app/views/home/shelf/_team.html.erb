@@ -68,7 +68,7 @@
         <% Settings::Team.culture.each do |p| %>
           <%= content_tag(:p, p, :class => 'shelf__block') %>
 
-          <%= content_tag(:p,("For more information about Shelby.tv, mentions in the media and for press inquiries, "+link_to("please see our Press page", Settings::Team.press_link)).html_safe, :class => 'shelf__block') %>
+          <%= content_tag(:p,("For more information about Shelby.tv, mentions in the media and for press inquiries, "+link_to(Settings::Team.press_link.text, Settings::Team.press_link.href)).html_safe, :class => 'shelf__block') %>
         <% end %>
       </div>
     </div><!-- eo shelf__lining -->

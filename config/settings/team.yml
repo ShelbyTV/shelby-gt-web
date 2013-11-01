@@ -1,4 +1,12 @@
 defaults: &defaults
+
+  # Multi-paragraph regions are turned into arrays,
+  # one indice per paragaph in the given array.
+  # use .html_safe in the view if any given paragraph has html directly in it.
+
+  # links should have the minimum standards requirements:
+  # href="" title="" and text, title should give additional info that the text doesn't provide
+
   about: [
     "To us, video is the best way to tell a story. It’s how billions of people around the world get their news, discover the world beyond them, or kick back at the end of a tough day. The internet gives creators the ability to distribute their content to a massive audience, and on YouTube alone, there are over 100 hours of video uploaded a minute! Then there’s Vimeo, Hulu, and a ton of other video platforms, not to mention video coming at you from Facebook, Twitter, and Tumblr… it’s simply overwhelming.",
     "So, we are building Shelby.tv to be a simple a simple way for you to discover the videos that matter in your world.",
@@ -34,7 +42,10 @@ defaults: &defaults
     }
   ]
 
-  press_link : "//press.shelby.tv"
+  press_link : {
+    href: "//press.shelby.tv",
+    text: "please see our Press page"
+  }
 
   members : [
     {
@@ -84,7 +95,7 @@ defaults: &defaults
     },
     {
       name : "Vincent Iadevaia",
-      description : "Vincent likes comic books, videos of giant robots, and awesome movie trailers.",
+      description : "As a kid, Vincent watched way too many science fiction films and, before long, became obsessed with beautiful interfaces. He also touched a Picasso at the Guggenheim and somehow got away with it, but that's another story. Now he spends his days and nights in Photoshop as Product Designer at Shelby, analyzing every project pixel by pixel. Before joining Shelby, he worked in digital advertising at The Barbarian Group, and mobile game design at Vostu. In his free time you can find him collecting and documenting his silver-age comic book collection.",
       image : "/images/team/vincent-small2.jpg",
       url : "vondoom",
       email : "v@shelby.tv",
