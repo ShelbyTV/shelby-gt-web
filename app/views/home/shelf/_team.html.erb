@@ -1,21 +1,21 @@
 <div class="shelf__wrapper shelf__wrapper--team clearfix">
   <div class="shelf shelf--team clearfix">
     <div class="shelf__lining">
-      <%= tag("img",src: "http://placehold.it/1000x250",:class => "img img--fill img--banner push--bottom")%>
+      <%= tag("img", src: "http://placehold.it/1000x250", :class => "img img--fill img--banner push--bottom")%>
 
-      <%= content_tag(:h3,"About",:class => "shelf__h2") %>
+      <%= content_tag(:h3,"About", :class => "shelf__h2") %>
 
       <div class="text-columns text-columns--2">
         <% Settings::Team.about.each do |p| %>
-          <%= content_tag(:p,p,:class => 'shelf__block') %>
+          <%= content_tag(:p, p, :class => 'shelf__block') %>
         <% end %>
       </div>
 
-      <%= content_tag(:h3,"Our Team",:class => "shelf__h2") %>
+      <%= content_tag(:h3,"Our Team", :class => "shelf__h2") %>
 
       <div class="text-columns">
         <% Settings::Team.our_team.each do |p| %>
-          <%= content_tag(:p,p,:class => 'shelf__block') %>
+          <%= content_tag(:p, p, :class => 'shelf__block') %>
         <% end %>
       </div>
 
@@ -24,51 +24,51 @@
           <li class="list__item member push--bottom clearfix">
             <div class="media_module media_module--bare push--bottom clearfix">
               <div class="media_image one-third">
-                <%= tag("img", :src => member['image'],:class => "member__img") %>
+                <%= tag("img", :src => member['image'], :class => "member__img") %>
               </div>
               <div class="media_body">
                 <%= content_tag(:h4,member["name"], :class => "member__h1") %>
-                <%= content_tag(:h5,member["title"],:class => "member__h2") %>
-                <%= content_tag(:p,member['description'],:class => "shelf__block member__block") %>
-                <%= content_tag(:p,link_to("shelby.tv/"+member["url"],"//shelby.tv/"+member["url"],:class => "member__link hover_link"),:class => "shelf__block") %>
+                <%= content_tag(:h5,member["title"], :class => "member__h2") %>
+                <%= content_tag(:p,member['description'], :class => "shelf__block member__block") %>
+                <%= content_tag(:p,link_to("shelby.tv/"+member["url"],"//shelby.tv/"+member["url"], :class => "member__link hover_link"), :class => "shelf__block") %>
               </div>
             </div>
           </li>
         <% end %>
       </ul>
 
-      <%= content_tag(:h3,"Work at Shelby",:class => "shelf__h2") %>
+      <%= content_tag(:h3,"Work at Shelby", :class => "shelf__h2") %>
 
       <div class="text-columns text-columns--2">
         <% Settings::Team.work.each do |p| %>
-          <%= content_tag(:p,p.html_safe,:class => 'shelf__block') %>
+          <%= content_tag(:p, p.html_safe, :class => 'shelf__block') %>
         <% end %>
 
         <ul class="list">
           <% Settings::Team.job_links.each do |link| %>
-            <%= content_tag(:li,link_to(link['text'], link['href'], :class => "shelf__link"),:class => 'list__item') %>
+            <%= content_tag(:li,link_to(link['text'], link['href'], :class => "shelf__link"), :class => 'list__item') %>
           <% end %>
         </ul>
       </div>
 
 
       <div class="text-columns">
-        <%= tag("img",src: "http://placehold.it/1000x200",:class => "img img--fill img--banner")%>
+        <%= tag("img", src: "http://placehold.it/1000x200", :class => "img img--fill img--banner")%>
       </div>
 
       <div class="text-columns text-columns--2">
-        <%= tag("img",src: "http://placehold.it/500x250",:class => "img img--fill one-half")%>
-        <%= tag("img",src: "http://placehold.it/500x250",:class => "img img--fill one-half")%>
+        <%= tag("img", src: "http://placehold.it/500x250", :class => "img img--fill one-half")%>
+        <%= tag("img", src: "http://placehold.it/500x250", :class => "img img--fill one-half")%>
       </div>
 
 
-      <%= content_tag(:h3,"Press",:class => "shelf__h2") %>
+      <%= content_tag(:h3,"Press", :class => "shelf__h2") %>
 
       <div class="float--left one-half">
         <% Settings::Team.culture.each do |p| %>
-          <%= content_tag(:p,p,:class => 'shelf__block') %>
+          <%= content_tag(:p, p, :class => 'shelf__block') %>
 
-          <%= content_tag(:p,("For more information about Shelby.tv, mentions in the media and for press inquiries, "+link_to("please see our Press page", Settings::Team.press_link)).html_safe,:class => 'shelf__block') %>
+          <%= content_tag(:p,("For more information about Shelby.tv, mentions in the media and for press inquiries, "+link_to("please see our Press page", Settings::Team.press_link)).html_safe, :class => 'shelf__block') %>
         <% end %>
       </div>
     </div><!-- eo shelf__lining -->
