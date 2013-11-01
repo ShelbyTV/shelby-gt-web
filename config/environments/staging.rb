@@ -11,7 +11,7 @@ ShelbyGtWeb::Application.configure do
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = true
+  config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
@@ -19,7 +19,7 @@ ShelbyGtWeb::Application.configure do
   config.assets.css_compressor = YUI::CssCompressor.new( :jar_file => "lib/yui-compressor/yuicompressor-2.4.7.jar" )
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -47,7 +47,7 @@ ShelbyGtWeb::Application.configure do
   # config.cache_store = :mem_cache_store
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
-  config.action_controller.asset_host = "//staging.shelby.tv"
+  #config.action_controller.asset_host = "//staging.shelby.tv"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   config.assets.precompile = %w(common.js deferred.js landing.js seovideo.js shares.js shares/shares_enabled.js shelby.js shelbify.js extension/includes.js mobile.js turbo.js experience.js signup.js png.css print.css screen.css landing.css seovideo.css extension.css experience.css mobile.css signup.css)
