@@ -24,7 +24,7 @@
           <li class="list__item member push--bottom clearfix">
             <div class="media_module media_module--bare push--bottom clearfix">
               <div class="media_image">
-                <%= tag("img", :src => member['image'], :class => "member__img") %>
+                <%= image_tag(member['image'], :class => "member__img") %>
               </div>
               <div class="media_body">
                 <%= content_tag(:h4,member["name"], :class => "member__h1") %>
