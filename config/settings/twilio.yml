@@ -2,7 +2,7 @@ defaults: &defaults
   account_sid: "AC10c8f02c58d7f7041487a14ba260331e"
   auth_token: "31ccab361d69a15e64db31d457901c8c"
   from_number : "+15005550006"
-  appstore_install_message: "Download Shelby.tv for iOS here: http://shl.by/iphonebeta12"
+  appstore_install_message: "Download Shelby.tv for iOS here:"
 
 development:
   <<: *defaults

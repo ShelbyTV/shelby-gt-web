@@ -22,7 +22,7 @@ class MessageController < ApplicationController
         twilio_client.account.sms.messages.create({
           :from => Settings::Twilio.from_number,
           :to => @to,
-          :body => Settings::Twilio.appstore_install_message
+          :body => "#{Settings::Twilio.appstore_install_message} #{Settings::Application.ios_app_url}"
         })
       rescue
         @status = 500

@@ -50,7 +50,7 @@ describe MessageController do
         @messages_endpoint.should_receive(:create).with({
           :from => Settings::Twilio.from_number,
           :to => "+1012-345-6789",
-          :body => Settings::Twilio.appstore_install_message
+          :body => "#{Settings::Twilio.appstore_install_message} #{Settings::Application.ios_app_url}"
         })
         get :send_message, :to => "012-345-6789", :type => 1
         response.status.should == 200
@@ -60,7 +60,7 @@ describe MessageController do
         @messages_endpoint.should_receive(:create).with({
           :from => Settings::Twilio.from_number,
           :to => "+1012-345-6789",
-          :body => Settings::Twilio.appstore_install_message
+          :body => "#{Settings::Twilio.appstore_install_message} #{Settings::Application.ios_app_url}"
         }).and_raise(StandardError)
         get :send_message, :to => "012-345-6789", :type => 1
         response.status.should == 500
