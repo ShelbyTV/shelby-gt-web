@@ -20,13 +20,13 @@
     background-size: auto;
   }
   .shelf__img--mashable {
-    background-image: url('/images/landing/mashable.png');
+    background-image: image-url('mashable.png');
   }
   .shelf__img--tnw {
-    background-image: url('/images/landing/tnw.png');
+    background-image: image-url('tnw.png');
   }
   .shelf__img--tc {
-    background-image: url('/images/landing/tc.png');
+    background-image: image-url('tc.png');
   }
 }
 

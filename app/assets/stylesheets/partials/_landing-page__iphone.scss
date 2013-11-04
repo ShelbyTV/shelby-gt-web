@@ -31,7 +31,7 @@
   .iphone {
     @include transition-duration(1s);
 
-    background-image: url('/images/landing/_CONTENT/iphone.png');
+    background-image: image-url('iphone.png');
     background-repeat: no-repeat;
     background-position: top center;
     height: 547px;
@@ -83,7 +83,5 @@
   background-color:transparent;
   border: none;
   margin: 0 auto;
-  // max-width: 1200px;
   position: relative;
-  // width: auto;
 }
