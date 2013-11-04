@@ -92,7 +92,7 @@ defaults: &defaults
     {
       name : "Vincent Iadevaia",
       description : "As a kid, Vincent watched way too many science fiction films and, before long, became obsessed with beautiful interfaces. He also touched a Picasso at the Guggenheim and somehow got away with it, but that's another story. Now he spends his days and nights in Photoshop as Product Designer at Shelby, analyzing every project pixel by pixel. Before joining Shelby, he worked in digital advertising at The Barbarian Group, and mobile game design at Vostu. In his free time you can find him collecting and documenting his silver-age comic book collection.",
-      image : "//placehold.it/280x214&text=Vincent+Iadevaia",
+      image : "vincent.jpg",
       url : "vondoom",
       email : "v@shelby.tv",
       twitter : "vondoom",
