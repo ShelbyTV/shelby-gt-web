@@ -14,34 +14,34 @@
           <% unless mobile %>
             <ul class="list list--inline shelf__list js-target">
               <li class="list__item">
-                <img alt="YouTube" title="YouTube" src="/images/landing/youtube.jpg" />
+                <%= image_tag "youtube.jpg", :title => "YouTube", :alt => "YouTube" %>
               </li>
 
               <li class="list__item">
-                <img alt="Vimeo" title="Vimeo" src="/images/landing/vimeo.jpg" />
+                <%= image_tag "vimeo.jpg", :title => "Vimeo", :alt => "Vimeo" %>
               </li>
 
               <li class="list__item">
-                <img alt="Hulu" title="Hulu" src="/images/landing/hulu.jpg" />
+                <%= image_tag "hulu.jpg", :title => "Hulu", :alt => "Hulu" %>
               </li>
 
               <li class="list__item">
-                <img alt="BlipTv" title="BlipTv" src="/images/landing/blip.jpg" />
+                <%= image_tag "blip.jpg", :title => "BlipTv", :alt => "BlipTv" %>
               </li>
 
               <li class="list__item">
-                <img alt="Facebook" title="Facebook" src="/images/landing/facebook.jpg" />
+                <%= image_tag "facebook.jpg", :title => "Facebook", :alt => "Facebook" %>
               </li>
 
               <li class="list__item">
-                <img alt="Twitter" title="Twitter" src="/images/landing/twitter.jpg" />
+                <%= image_tag "twitter.jpg", :title => "Twitter", :alt => "Twitter" %>
               </li>
             </ul>
           <% end %>
         </div>
 
         <div class="media_body shelf__img--stream js-stream" role="img">
-          <img src="/images/landing/_CONTENT/iphone-mobile-2.png" class="shelf__img--iphone cloaked js-phantom-hover" alt="" title="" />
+          <%= image_tag "iphone-mobile-2.png", :class => "shelf__img--iphone cloaked js-phantom-hover", :alt => "", :title => "" %>
         </div>
       </div>
     </div><!-- eo shelf -->

@@ -19,14 +19,14 @@
           </p>
 
           <% if mobile %>
-            <img src="/images/landing/_CONTENT/iphone-mobile.png" class="shelf__img--iphone_horizontal" title="iPhone screenshot of a video recommendation" alt="iPhone screenshot of a video recommendation" />
+            <%= image_tag "iphone-mobile.png", :class => "shelf__img--iphone_horizontal", :title => "iPhone screenshot of a video recommendation", :alt => "iPhone screenshot of a video recommendation" %>
           <% else %>
             <div class="iphone iphone--horizontal js-iphone-south">
-              <img src="/images/landing/_CONTENT/header-horiz.jpg" class="iphone__header" />
+              <%= image_tag "header-horiz.jpg", :class => "iphone__header" %>
               <div class="iphone__viewport">
                 <div class="slide show--hover animate_module">
-                  <img src="/images/landing/_CONTENT/iphone-3.jpg" class="shelf__img--iphone js-horz-iphone" title="iPhone screenshot of a video recommendation" alt="iPhone screenshot of a video recommendation" />
-                  <img src="/images/landing/_CONTENT/iphone-2c.jpg" class="shelf__img--iphone js-horz-iphone" alt="" />
+                  <%= image_tag "iphone-3.jpg", :class => "shelf__img--iphone js-horz-iphone", :title => "iPhone screenshot of a video recommendation", :alt => "iPhone screenshot of a video recommendation" %>
+                  <%= image_tag "iphone-2c.jpg", :class => "shelf__img--iphone js-horz-iphone", :alt => "" %>
                 </div>
               </div>
             </div><!-- eo iphone -->
