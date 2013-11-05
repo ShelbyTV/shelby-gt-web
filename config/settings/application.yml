@@ -31,7 +31,8 @@ staging:
   <<: *defaults
   protocol_matching_url: "//staging.shelby.tv"
   mobile_url: "http://m.shelby.tv"
-  secure_form_root: "http://staging.shelby.tv"
+  secure_form_root: "http://alpha.shelby.tv"
+  # secure_form_root: "http://staging.shelby.tv"
 
 production:
   <<: *defaults
