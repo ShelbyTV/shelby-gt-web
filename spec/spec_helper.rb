@@ -38,10 +38,20 @@ class WarningSuppressor
     end
   end
 end
+
+class LogKiller
+  class << self
+    def write(message)
+      0
+    end
+  end
+end
 #END bunch of crap to silence annoying CoreText warnings on Mac OS X Mavericks
 
+#NOTE: Switch from LogKiller to WarningSuppressor as the :phantomjs_logger if you want to see console.log output and other debug output
+# => from phantomjs
 Capybara.register_driver :poltergeist_custom do |app|
-  Capybara::Poltergeist::Driver.new(app, {phantomjs_logger: WarningSuppressor, :phantomjs_options => ['--ignore-ssl-errors=yes', '--local-to-remote-url-access=yes']})
+  Capybara::Poltergeist::Driver.new(app, {phantomjs_logger: LogKiller, :phantomjs_options => ['--ignore-ssl-errors=yes', '--local-to-remote-url-access=yes']})
 end
 
 Capybara.javascript_driver = :poltergeist_custom
