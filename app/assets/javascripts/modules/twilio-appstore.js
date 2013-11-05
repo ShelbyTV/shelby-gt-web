@@ -15,7 +15,7 @@ $(document).ready(function(){
       $smsWebSignup = $smsPopup.find('.js-sms-signup-web'),
       $smsCtaButton = $('.js-cta');
 
-  $smsCtaButton.on('click',function(e){
+  $smsCtaButton.on('touchstart click',function(e){
     e.preventDefault();
 
     $smsPopup.toggleClass('hidden',false);
@@ -62,7 +62,7 @@ $(document).ready(function(){
     });
   });
 
-  $smsPopup.on('click',function(e){
+  $smsPopup.on('touchstart click',function(e){
     // hide this pop up if you click on any area outside the popup itself.
     if($(this).children()[0] == $(e.target)[0]) { //this is complicated because it has to account for the vertical-align-hack__el
       $(this).toggleClass('hidden',true);
