@@ -131,190 +131,192 @@ $(document).ready(function(e){
   /*
     Set shelf height to fill window, minus header.
   */
-  var windowHeight = window.innerHeight - $('.js-header').height(),
-      shelf = {
-        $cta    : $('#intro').height(windowHeight - 50),
-        $iphone : $('#iphone').height(windowHeight),
-        $social : $('#social').height(windowHeight),
-        $stream : $('#stream').height(windowHeight - 50),
-        $press  : $('#press').height(windowHeight),
-        $footer : $('#footer').addClass('animate_module') //add class dynamically, or you get weird ghosting effect.
-      };
+  if( !$doc.hasClass('shelby--mobile') || Browser.isIpad() ){
+    var windowHeight = window.innerHeight - $('.js-header').height(),
+        shelf = {
+          $cta    : $('#intro').height(windowHeight - 50),
+          $iphone : $('#iphone').height(windowHeight),
+          $social : $('#social').height(windowHeight),
+          $stream : $('#stream').height(windowHeight - 50),
+          $press  : $('#press').height(windowHeight),
+          $footer : $('#footer').addClass('animate_module') //add class dynamically, or you get weird ghosting effect.
+        };
 
-  var FANCY = {
-    // offset by the height of the header.
-    _headerHeight : 65,
+    var FANCY = {
+      // offset by the height of the header.
+      _headerHeight : 65,
 
-    // jQuery.animate specific configuration/defaults
-    config : {
-      _activeClass : 'list__item--selected', // className to indicate active slide of carousel.
+      // jQuery.animate specific configuration/defaults
+      config : {
+        _activeClass : 'list__item--selected', // className to indicate active slide of carousel.
 
-      settings : {
-        scrollTop : 0,
+        settings : {
+          scrollTop : 0,
+        },
+        speed    : 800,
+        callback : function(data){
+          $.event.trigger('slideChanged',data);
+
+          // offset by index of shelf__wrapper--cta (that's the first slide);
+          var index = data.$target.index();
+
+          $nav.children().removeClass(this._activeClass).eq(index).addClass(this._activeClass);
+        }
       },
-      speed    : 800,
-      callback : function(data){
-        $.event.trigger('slideChanged',data);
 
-        // offset by index of shelf__wrapper--cta (that's the first slide);
-        var index = data.$target.index();
+      beforeChange : function($target) {
+        $.event.trigger('beforeChange', $target);
+      },
 
-        $nav.children().removeClass(this._activeClass).eq(index).addClass(this._activeClass);
+      autoScroll : function($target,$prevTarget){
+        var destination = $target.offset().top - this._headerHeight;
+
+        this.config.settings.scrollTop = destination;
+
+        /*
+          scrolltop is the most important piece of information.
+          $target and $prevTarget are datapoints that let you know what's going on.
+        */
+        var data = {
+          scrollTop   : destination,
+          $prevTarget : $prevTarget,
+          $target     : $target
+        };
+
+        /*
+          bind an element to the "beforeChange" event for immediate handling.
+          otherwise, use the animate callback event, "slideChanged"
+        */
+        this.beforeChange(data);
+
+        var self = this;
+
+        $doc.animate(this.config.settings,this.config.speed,function(){ self.config.callback(data); });
       }
-    },
+    };
 
-    beforeChange : function($target) {
-      $.event.trigger('beforeChange', $target);
-    },
-
-    autoScroll : function($target,$prevTarget){
-      var destination = $target.offset().top - this._headerHeight;
-
-      this.config.settings.scrollTop = destination;
-
-      /*
-        scrolltop is the most important piece of information.
-        $target and $prevTarget are datapoints that let you know what's going on.
-      */
-      var data = {
-        scrollTop   : destination,
-        $prevTarget : $prevTarget,
-        $target     : $target
-      };
-
-      /*
-        bind an element to the "beforeChange" event for immediate handling.
-        otherwise, use the animate callback event, "slideChanged"
-      */
-      this.beforeChange(data);
-
-      var self = this;
-
-      $doc.animate(this.config.settings,this.config.speed,function(){ self.config.callback(data); });
-    }
-  };
-
-  $iphone.on('beforeChange',function(e,data){
-    switch(data.$target[0]) {
-      case shelf.$cta[0] :
-      case shelf.$stream[0] :
-        $.event.trigger('isHorizontal',true);
-        $(this).toggleClass('iphone--horizontal',false);
-      break;
-      case shelf.$social[0] :
-        $(this).toggleClass('iphone--horizontal',true);
-      break;
-    }
-  }).on('transitionend', function(e){
-    $.event.trigger('isHorizontal',false);
-  }).on('slideChanged',function(e,data){
-    var $this = $(this);
-    switch(data.$target[0]) {
-      case shelf.$cta[0] :
-      case shelf.$stream[0] :
-        $(this).removeAttr('style');
-      break;
-      case shelf.$social[0] :
-        $(this).offset({ top: $iphoneSouth.offset().top - 11 });
-      break;
-    }
-
-  });
-
-  $iphoneSouth.on('beforeChange',function(e,data){
-    //hide iphone if direction is either going-to, or, coming-from press.
-    if((data.$target[0] != shelf.$press[0] && data.$prevTarget[0] != shelf.$press[0])) {
-      $(this).addClass('cloaked');
-    }
-  }).on('slideChanged',function(e,data){
-    //if coming from stream
-    var $this = $(this);
-
-    switch(data.$prevTarget[0]){
-      case shelf.$stream[0] :
-        $this.removeClass('cloaked');
-        setTimeout(function(){
-          $this.children('.iphone__viewport').children('.slide').toggleClass('show',true);
-        },2000);
+    $iphone.on('beforeChange',function(e,data){
+      switch(data.$target[0]) {
+        case shelf.$cta[0] :
+        case shelf.$stream[0] :
+          $.event.trigger('isHorizontal',true);
+          $(this).toggleClass('iphone--horizontal',false);
         break;
-      case shelf.$cta[0] :
-      case shelf.$social[0] :
-          $this.children('.iphone__viewport').children('.slide').toggleClass('show',false);
-      break;
-    }
-  });
-
-  $iphoneViewport.on('beforeChange', function(e,data){
-    var $this = $(this);
-
-    switch(data.$target[0]) {
-      case shelf.$cta[0] :
-        $(this).children().toggleClass('show',false);
-      break;
-      case shelf.$stream[0] :
-        $(this).children().eq(1).toggleClass('show--hover',false);
-        $(this).children().eq(0).toggleClass('show',true);
-
-        setTimeout(function(){
-          $this.children().eq(1).toggleClass('show--hover',true);
-        },2000);
-      break;
-    }
-  });
-
-  shelf.$iphone.on('slideChanged',function(e,data){
-    switch(data.$target[0]) {
-      case shelf.$cta[0]:
-        $(this).show();
+        case shelf.$social[0] :
+          $(this).toggleClass('iphone--horizontal',true);
         break;
-    }
-  });
-
-  shelf.$footer.on('slideChanged',function(e,data){
-    var $this = $(this);
-
-    switch(data.$target[0]) {
-      case shelf.$stream[0] :
-      case shelf.$cta :
-        $this.toggleClass('peak',false);
-        shelf.$footer.toggleClass('peak show',false);
+      }
+    }).on('transitionend', function(e){
+      $.event.trigger('isHorizontal',false);
+    }).on('slideChanged',function(e,data){
+      var $this = $(this);
+      switch(data.$target[0]) {
+        case shelf.$cta[0] :
+        case shelf.$stream[0] :
+          $(this).removeAttr('style');
         break;
-      case shelf.$social[0] :
-        $this.toggleClass('peak',true);
+        case shelf.$social[0] :
+          $(this).offset({ top: $iphoneSouth.offset().top - 11 });
         break;
-    }
+      }
 
-  });
+    });
 
-  $footerButton.on('click',function(e){
-    if( !$(e.target).is('a') ) {
+    $iphoneSouth.on('beforeChange',function(e,data){
+      //hide iphone if direction is either going-to, or, coming-from press.
+      if((data.$target[0] != shelf.$press[0] && data.$prevTarget[0] != shelf.$press[0])) {
+        $(this).addClass('cloaked');
+      }
+    }).on('slideChanged',function(e,data){
+      //if coming from stream
+      var $this = $(this);
+
+      switch(data.$prevTarget[0]){
+        case shelf.$stream[0] :
+          $this.removeClass('cloaked');
+          setTimeout(function(){
+            $this.children('.iphone__viewport').children('.slide').toggleClass('show',true);
+          },2000);
+          break;
+        case shelf.$cta[0] :
+        case shelf.$social[0] :
+            $this.children('.iphone__viewport').children('.slide').toggleClass('show',false);
+        break;
+      }
+    });
+
+    $iphoneViewport.on('beforeChange', function(e,data){
+      var $this = $(this);
+
+      switch(data.$target[0]) {
+        case shelf.$cta[0] :
+          $(this).children().toggleClass('show',false);
+        break;
+        case shelf.$stream[0] :
+          $(this).children().eq(1).toggleClass('show--hover',false);
+          $(this).children().eq(0).toggleClass('show',true);
+
+          setTimeout(function(){
+            $this.children().eq(1).toggleClass('show--hover',true);
+          },2000);
+        break;
+      }
+    });
+
+    shelf.$iphone.on('slideChanged',function(e,data){
+      switch(data.$target[0]) {
+        case shelf.$cta[0]:
+          $(this).show();
+          break;
+      }
+    });
+
+    shelf.$footer.on('slideChanged',function(e,data){
+      var $this = $(this);
+
+      switch(data.$target[0]) {
+        case shelf.$stream[0] :
+        case shelf.$cta :
+          $this.toggleClass('peak',false);
+          shelf.$footer.toggleClass('peak show',false);
+          break;
+        case shelf.$social[0] :
+          $this.toggleClass('peak',true);
+          break;
+      }
+
+    });
+
+    $footerButton.on('click',function(e){
+      if( !$(e.target).is('a') ) {
+        e.preventDefault();
+      }
+      shelf.$footer.toggleClass('show').find('.icon').toggleClass('icon-arrow_up icon-arrow_down');
+    });
+
+    $nav.on('click','.js-scrollto',function(e){
       e.preventDefault();
-    }
-    shelf.$footer.toggleClass('show').find('.icon').toggleClass('icon-arrow_up icon-arrow_down');
-  });
+      /*
+        Grab the #name of the link clicked, parse it, then scroll to it.
+        Pass the target element along.
+      */
+      var $target = $(this.hash),
+          currentActive = $(this).parent().hasClass('.list__item--selected') ? $target : $(this).parent().siblings('.list__item--selected').children('a')[0].hash;
+          $prevTarget = $(currentActive);
 
-  $nav.on('click','.js-scrollto',function(e){
-    e.preventDefault();
+      $target = $target.length ? $target : $('[name=' + this.hash.slice(1) +']');
+      FANCY.autoScroll($target,$prevTarget);
+    });
+
     /*
-      Grab the #name of the link clicked, parse it, then scroll to it.
-      Pass the target element along.
+      because of z-indexing the user can't directly interact with the fixed iphone.
+      there is a .iphone.cloaked for the necessary shelves that the user actually interacts with.
+      hence, phantom hovering.
     */
-    var $target = $(this.hash),
-        currentActive = $(this).parent().hasClass('.list__item--selected') ? $target : $(this).parent().siblings('.list__item--selected').children('a')[0].hash;
-        $prevTarget = $(currentActive);
-
-    $target = $target.length ? $target : $('[name=' + this.hash.slice(1) +']');
-    FANCY.autoScroll($target,$prevTarget);
-  });
-
-  /*
-    because of z-indexing the user can't directly interact with the fixed iphone.
-    there is a .iphone.cloaked for the necessary shelves that the user actually interacts with.
-    hence, phantom hovering.
-  */
-  $('.js-phantom-hover').on('mouseenter', function(){
-    $iphoneViewport.children().eq(1).toggleClass('show--hover',false);
-  }).on('mouseleave',function(){
-    $iphoneViewport.children().eq(1).toggleClass('show--hover',true);
-  });
+    $('.js-phantom-hover').on('mouseenter', function(){
+      $iphoneViewport.children().eq(1).toggleClass('show--hover',false);
+    }).on('mouseleave',function(){
+      $iphoneViewport.children().eq(1).toggleClass('show--hover',true);
+    });
+  }
 });
