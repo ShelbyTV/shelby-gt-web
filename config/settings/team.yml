@@ -9,7 +9,7 @@ defaults: &defaults
 
   about: [
     "To us, video is the best way to tell a story. It’s how billions of people around the world get their news, discover the world beyond them, or kick back at the end of a tough day. The internet gives creators the ability to distribute their content to a massive audience, and on YouTube alone, there are over 100 hours of video uploaded a minute! Then there’s Vimeo, Hulu, and a ton of other video platforms, not to mention video coming at you from Facebook, Twitter, and Tumblr… it’s simply overwhelming.",
-    "So, we are building Shelby.tv to be a simple a simple way for you to discover the videos that matter in your world.",
+    "So, we are building Shelby.tv to be a simple way for you to discover the videos that matter in your world.",
     "Shelby recommends you videos based upon your interests and the stuff your friends watch, and it gets smarter the more you watch."
   ]
 
