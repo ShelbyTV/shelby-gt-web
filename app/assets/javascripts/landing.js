@@ -29,7 +29,7 @@ $(document).ready(function(e){
 
     Only do touchy stuff if Modernizr says to.
   */
-  if(Modernizr.touch) {
+  if( Modernizr.touch && Browser.isIos() ){
     /*------------------------------------------------------------------------*/
     /*  Credit: Eike Send for the awesome swipe event                         */
     /*  via:    https://github.com/peachananr/onepage-scroll/                 */
