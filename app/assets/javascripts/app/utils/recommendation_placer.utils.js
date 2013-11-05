@@ -65,6 +65,7 @@ libs.utils.recommendationPlacer = {
         recToInsert.set('id', fakeDbeId);
         destinationCollection.add(recToInsert);
         recommendationsCollection.remove(recToInsert);
+        console.log("Rec placed at", destinationCollection.indexOf(recToInsert));
         // if we deduplicated a channel recommendation, it may not have been placed in the slice where
         // we specified, so examine this slice again to see if it still needs a recommendation
         if (channelRecDeduplicated) {

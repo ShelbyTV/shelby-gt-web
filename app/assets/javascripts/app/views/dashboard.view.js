@@ -94,6 +94,20 @@
           }
         });
       }
+    },
+
+    _prepareMasterCollection : function() {
+      FrameGroupPlayPagingListView.prototype._prepareMasterCollection.call(this);
+
+      if (this.options.doStaticRender) {
+        // previous fetches of recommendations may have returned while no dashboard view was present
+        // so, go through again and see if any recommendations need to be placed now
+        recommendationPlacer.placeRecs(
+          shelby.collections.dynamicRecommendations,
+          this.options.collection ? this.options.collection : this.model.get(this.options.collectionAttribute),
+          this.frameGroupCollection
+        );
+      }
     }
 
   });
