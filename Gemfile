@@ -96,10 +96,8 @@ gem 'exception_notification', :require => "exception_notifier"
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test, :development do
-  gem 'capybara'
-  gem 'capybara-webkit'
-  gem 'mini_magick' # for rendering screenshots from capybara webkit
-  gem 'headless'
+  gem 'capybara', '~>2.1.0'
+  gem 'poltergeist'
   gem 'rspec-rails'
   gem 'jasmine', :git => "git://github.com/pivotal/jasmine-gem.git"
   gem 'sinon-rails'

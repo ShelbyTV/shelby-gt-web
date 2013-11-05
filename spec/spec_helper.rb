@@ -5,12 +5,56 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
 
-Capybara.register_driver :webkit_silent do |app|
-  Capybara::Driver::Webkit.new(app, :stdout => nil)
+#BEGIN bunch of crap to silence annoying CoreText warnings on Mac OS X Mavericks
+module Capybara::Poltergeist
+  class Client
+    private
+    def redirect_stdout
+      prev = STDOUT.dup
+      prev.autoclose = false
+      $stdout = @write_io
+      STDOUT.reopen(@write_io)
+
+      prev = STDERR.dup
+      prev.autoclose = false
+      $stderr = @write_io
+      STDERR.reopen(@write_io)
+      yield
+    ensure
+      STDOUT.reopen(prev)
+      $stdout = STDOUT
+      STDERR.reopen(prev)
+      $stderr = STDERR
+    end
+  end
 end
 
-Capybara.javascript_driver = :webkit_silent
+class WarningSuppressor
+  class << self
+    def write(message)
+      if message =~ /QFont::setPixelSize: Pixel size <= 0/ || message =~/CoreText performance note:/ then 0 else puts(message);1;end
+    end
+  end
+end
+
+class LogKiller
+  class << self
+    def write(message)
+      0
+    end
+  end
+end
+#END bunch of crap to silence annoying CoreText warnings on Mac OS X Mavericks
+
+#NOTE: Switch from LogKiller to WarningSuppressor as the :phantomjs_logger if you want to see console.log output and other debug output
+# => from phantomjs
+Capybara.register_driver :poltergeist_custom do |app|
+  Capybara::Poltergeist::Driver.new(app, {phantomjs_logger: LogKiller, :phantomjs_options => ['--ignore-ssl-errors=yes', '--local-to-remote-url-access=yes']})
+end
+
+Capybara.javascript_driver = :poltergeist_custom
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -40,8 +84,4 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
-
-  config.before(:suite) do
-    Headless.new(:destroy_on_exit => false).start
-  end
 end
