@@ -30,6 +30,11 @@ var Browser = {
     else{ return false; }
   },
 
+  isTablet: function(){
+    if (navigator.platform.match(/^(iPad|Kindle)$/)){ return true; }
+    else{ return false; }
+  },
+
   isMobile: function(){
     if (navigator.platform.match(/^(iPad|iPod|iPhone|Android)$/)){ return true; }
     else{ return false; }
