@@ -73,7 +73,7 @@ group :production, :staging do
   gem "uglifier"
 end
 group :development do
-  gem 'capistrano-unicorn', :require => false
+  gem 'capistrano-unicorn', '0.1.10', :require => false
   gem 'thin'
 end
 

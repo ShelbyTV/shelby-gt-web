@@ -34,6 +34,7 @@ before_fork do |server, worker|
     rescue Errno::ENOENT, Errno::ESRCH
       # someone else did our job for us
     end
+  end
 end
 
 after_fork do |server, worker|
