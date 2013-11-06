@@ -214,7 +214,7 @@ class HomeController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     @is_mobile = is_mobile?
     @unsubscribe_type = params[:type]
-    if @user_signed_in and (@unsubscribe_type == "weekly-email") and (preferences = @signed_in_user['preferences'])
+    if @user_signed_in and @signed_in_user and (@unsubscribe_type == "weekly-email") and (preferences = @signed_in_user['preferences'])
       preferences['email_updates'] = false
       EM.next_tick { update_user(@signed_in_user, {:preferences=>preferences}) }
     end

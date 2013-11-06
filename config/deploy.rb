@@ -25,3 +25,4 @@ set :stages, %w(staging production)
 set :default_stage, 'staging'
 require 'capistrano/ext/multistage'
 require 'capistrano-unicorn'
+after 'deploy:restart', 'unicorn:duplicate'

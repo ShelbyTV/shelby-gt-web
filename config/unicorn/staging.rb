@@ -25,8 +25,6 @@ stdout_path "#{app_path}/log/unicorn.log"
 pid "/home/gt/web/shared/pids/unicorn.pid"
 
 before_fork do |server, worker|
-  EM.stop if EM.reactor_running?
-
   old_pid = "#{server.config[:pid]}.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
@@ -38,5 +36,17 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  Thread.new { EM.run }
+  Vanity.playground.reconnect!
+
+  unless EM.reactor_running? && EM.reactor_thread.alive?
+    if EM.reactor_running?
+      EM.stop_event_loop
+      EM.release_machine
+      EM.instance_variable_set("@reactor_running",false)
+    end
+    Thread.new { EM.run }
+  end
+
+  Signal.trap("INT") { EM.stop }
+  Signal.trap("TERM") { EM.stop }
 end
