@@ -36,6 +36,7 @@ gem 'vanity', "~> 1.8.1"
 # ---------- Other utils
 #
 gem 'addressable' # for URI parsing
+gem 'newrelic_rpm'
 
 #
 # ---------- External Services
