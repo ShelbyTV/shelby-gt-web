@@ -36,8 +36,6 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  Vanity.playground.reconnect!
-
   unless EM.reactor_running? && EM.reactor_thread.alive?
     if EM.reactor_running?
       EM.stop_event_loop
