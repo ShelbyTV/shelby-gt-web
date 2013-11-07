@@ -11,7 +11,7 @@ namespace :icon_font do
     begin
       File.open(document, 'r') do |f|
         f.each_line do |line|
-          document_tmp.puts(line.gsub("url('","x-url('"))
+          document_tmp.puts(line.gsub("url('","font-url('icon/"))
         end
       end
     rescue
