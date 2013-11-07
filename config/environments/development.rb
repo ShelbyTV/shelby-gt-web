@@ -36,4 +36,5 @@ ShelbyGtWeb::Application.configure do
 
   # black magic
   config.assets.cache_store = :null_store
+  config.assets.paths << Rails.root.join('app','assets','fonts','icon','fonts').to_s
 end
