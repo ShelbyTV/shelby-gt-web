@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Home Page', :type => :feature do
+describe 'Login Process', :type => :feature do
   before(:each) do
     visit('/')
   end
