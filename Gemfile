@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', "~> 3.2.13"
 # json is a dependency of rails, want to make sure we are secure with at least 1.7.7
