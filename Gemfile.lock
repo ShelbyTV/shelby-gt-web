@@ -122,7 +122,7 @@ GEM
     net-ssh (2.7.0)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    newrelic_rpm (3.6.8.168)
+    newrelic_rpm (3.6.9.171)
     nokogiri (1.5.10)
     oauth (0.4.6)
     oauth2 (0.8.0)
