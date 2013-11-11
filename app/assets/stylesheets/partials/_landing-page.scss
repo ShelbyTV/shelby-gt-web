@@ -10,7 +10,8 @@
   }
 
   background-color: $ui-off-white;
-  height: auto;
+  height: 100%;
+  position: relative;
 
   //TODO: determine why this override is necessary.
   .shelby__wrapper {
