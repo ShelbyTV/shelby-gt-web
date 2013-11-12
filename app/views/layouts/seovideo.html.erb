@@ -14,6 +14,8 @@
   <link rel="icon"type="image/png" href="/favicon.png">
   <link rel="canonical" href="http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>">
   <meta name="apple-itunes-app" content="app-id=<%= Settings::Application.ios_app_id %>">
+  <meta name="twitter:app:name:iphone" content="Shelby.tv"/>
+  <meta name="twitter:app:id:iphone" content="<%= Settings::Application.ios_app_id %>"/>
   <%= stylesheet_link_tag "seovideo", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
   <%= javascript_include_tag "seovideo", "//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.2/handlebars.js", "//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js" %>
