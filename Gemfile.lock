@@ -48,7 +48,7 @@ GEM
     bson_ext (1.6.2)
       bson (~> 1.6.2)
     builder (3.0.4)
-    capistrano (2.15.2)
+    capistrano (2.15.3)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -249,8 +249,8 @@ DEPENDENCIES
   addressable
   bson
   bson_ext
-  capistrano (= 2.15.2)
-  capistrano-unicorn (= 0.1.10)
+  capistrano (= 2.15.3)
+  capistrano-unicorn
   capybara (~> 2.1.0)
   compass-rails (~> 1.0.3)
   cookiejar
