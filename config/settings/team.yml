@@ -110,7 +110,7 @@ defaults: &defaults
     {
       name : "Keren Pinkas",
       description: "After years of being a Java developer and swearing never to return to C and C++, the first iPhone came out. From that point on, it was pretty obvious that Keren’s career was going to take a new direction. She became an iOS developer in the early days of iOS 2 and has been releasing apps since iOS 3. Her latest App, Capsule, even got featured by Apple as a top banner in the App Store’s Travel category. In the rare event that Keren is not writing code, it is safe to assume you can find her at a rock concert somewhere in NYC or around the world.",
-      image : "//placehold.it/280x214&text=Keren+Pinkas",
+      image : "keren.jpg",
       url : "keren",
       email : "keren@shelby.tv",
       twitter : "kepsolution",
