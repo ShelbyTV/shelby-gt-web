@@ -1,0 +1,32 @@
+/*
+    Press used to be its own Partial
+    it might someday be again, so keeping stuff here.
+ */
+.press_list {
+  margin: 0 auto;
+  opacity: 0.8;
+  position: relative;
+  text-align: center;
+  top: -70px;
+
+  .list__item {
+    // width: 33.333333%;
+    // float: left;
+  }
+  .shelf__img {
+    height: 40px;
+    display: inline-block;
+    -webkit-background-size: auto;
+    background-size: auto;
+  }
+  .shelf__img--mashable {
+    background-image: image-url('mashable.png');
+  }
+  .shelf__img--tnw {
+    background-image: image-url('tnw.png');
+  }
+  .shelf__img--tc {
+    background-image: image-url('tc.png');
+  }
+}
+

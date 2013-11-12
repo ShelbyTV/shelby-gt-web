@@ -40,4 +40,13 @@ module SignupHelper
     facebook_auth && "http://graph.facebook.com/#{facebook_auth['uid']}/picture?type=large"
   end
 
+  def form_class(referer)
+    class_list = "form_module two-thirds js-form"
+
+    unless referer == 'email'
+      class_list << " hidden"
+    end
+
+    class_list
+  end
 end

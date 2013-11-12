@@ -9,6 +9,7 @@
   <title><%= render :partial => "/home/title_tag" %></title>
 
   <%= render :partial => "/home/meta_info" %>
+  <%= csrf_meta_tags %>
   <meta content="user-scalable=no, width=device-width, initial-scale=0.8" name="viewport">
   <link rel="apple-touch-icon-precomposed" href="http://shelby.tv/apple-touch-icon-precomposed.png" />
 
@@ -36,9 +37,8 @@
   </script>
   <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6008900763972&amp;value=0&amp;currency=USD" /></noscript>
   <!-- END -->
-
 </head>
-<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %>">
+<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %><%= " shelby--team" if @team %>">
   <!-- Facebook widget -->
   <div id="fb-root"></div>
 
@@ -52,19 +52,32 @@
     <%= render :partial => "/home/shelf/team" if @team %>
 
     <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
-      <%= render :partial => "/home/shelf/call_to_action" %>
+      <% unless (@mobile_os or @is_mobile) %>
+        <%= render :partial => "/home/shelf/iphone"  %>
+        <%= render :partial => "/home/shelf/nav" %>
+      <% end %>
 
-      <%= render :partial => "/home/shelf/stream" %>
-      <%= render :partial => "/home/shelf/social" %>
-      <%= render :partial => "/home/shelf/press" %>
-      <%= render :partial => "/home/shelf/secondary_call_to_action" %>
+      <div class="shelf--index">
+        <%= render :partial => "/home/shelf/call_to_action" %>
+        <%= render :partial => "/home/shelf/stream", :locals => {
+          mobile: (@mobile_os or @is_mobile)
+        } %>
+        <%= render :partial => "/home/shelf/social", :locals => {
+          mobile: (@mobile_os or @is_mobile)
+        } %>
+      </div>
+
     <% end %>
 
     <% #------------ /Shelf Content --------------- %>
 
+    <%= render :layout => '/objects/modal_dialog', :locals => { :modifier => 'sms' } do %>
+      <%= render :partial => '/home/partials/appstore_sms' %>
+    <% end %>
   </div><!-- /shelby-wrapper -->
 
   <%= render :partial => '/home/shelf/footer' %>
+
   <%= render :partial => '/home/landing_scripts' %>
 
 </body>

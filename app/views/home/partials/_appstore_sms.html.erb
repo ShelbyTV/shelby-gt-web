@@ -1,0 +1,58 @@
+<form class="hidden form_module js-sms-twilio" action="<%= Settings::Application.secure_form_root %>/POST/message/send">
+  <label for="sms" class="form_label modal_dialog__h1">
+    Text iOS download link to your phone:
+  </label>
+
+  <fieldset class="form_fieldset search_module">
+    <p class="form_error">
+      There was a problem sending you a text message, please try again!
+    </p>
+    <input type="submit" class="button_primer button_command button_command--sub button_command--large button_green search_module__submit" value="Send" tabindex="2"/>
+    <span class="search_module__input_wrapper">
+      <input id="sms" name="sms" type="text" class="form_input search_module__input" placeholder="+1 555 123 4567" tabindex="1" required />
+    </span>
+  </fieldset>
+
+  <p class="modal_dialog__block">
+    Don't have an iPhone? No problem, <a href="/signup?email=1" class="js-show-web-choices js-track-event" data-ga_action="Click Signup" data-ga_label="SMS popup">Sign up on the web</a>.
+  </p>
+</form>
+
+<div class="hidden js-sms-success">
+  <label class="modal_dialog__h1 modal_dialog__h1--success js-sms-retry js-track-event" data-ga_action="Click Try Again" data-ga_label="SMS popup after Send">
+    SMS Message Sent!
+  </label>
+  <p class="modal_dialog__block modal_dialog__block--push">
+    Check your text messages for a link to the app.
+  </p>
+
+  <p class="modal_dialog__block">
+    Didn't get one? <a href="#" class="js-sms-retry js-track-event" data-ga_action="Click Try Again" data-ga_label="SMS popup after Send">Try again</a> or <a href="#" class="js-show-web-choices js-track-event" data-ga_action="Click Signup" data-ga_label="SMS popup">Sign up on the web</a>.
+  </p>
+</div>
+
+<div class="hidden js-sms-signup-web">
+  <label class="modal_dialog__h1">
+    Sign up on the web
+  </label>
+  <p class="modal_dialog__block modal_dialog__block--push">
+    <a  href="<%= "#{Settings::ShelbyAPI.url}/auth/facebook" %>"
+        data-ga_action="Signup with Facebook"
+        data-popup_height="700"
+        data-popup_width="600"
+        data-ga_action="Click Signup with Facebook"
+        data-ga_label="SMS popup"
+        class="button_primer button_command button_facebook-blue one-half js-signup-facebook js-track-event js-authorize js-authorize--facebook"
+      >
+      <span class="icon icon-facebook"></span>
+      <span class="button_label">Sign up with Facebook</span>
+    </a>
+    <a href="/signup?email=1" class="button_primer button_command two-fifths button_gray js-email-signup js-track-event" data-ga_action="Click Signup with Email" data-ga_label="SMS popup">
+      Sign up with Email
+    </a>
+  </p>
+
+  <p class="modal_dialog__block">
+    <a href="/signup" class="js-cta" data-ga_action="Click Signup" data-ga_label="SMS popup">Send an SMS Message</a>
+  </p>
+</div>

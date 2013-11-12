@@ -1,0 +1,63 @@
+.shelf__wrapper--social {
+  background-image: image-url("bg-3.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+  .shelf {
+    text-align: center;
+  }
+  .shelf__lining {
+    margin: 0 auto;
+  }
+  .shelf__img--iphone {
+  }
+}
+
+.shelf--social {
+  max-width: 1200px;
+  width: auto;
+
+  .shelf__h1 {
+    margin-top: 1em;
+  }
+  .shelf__h2 {
+    clear: both;
+    position: relative;
+    text-align: center;
+    top: -78px;
+  }
+  .shelf__button {
+    margin-top: 0.7em;
+  }
+  .iphone {
+    margin: -101px auto 0;
+  }
+  .iphone__header {
+    float: right;
+    margin: 81px 18px;
+  }
+  .iphone__viewport {
+    height: 389px;
+    margin-top: 81px;
+    width: 188px;
+
+    .slide{
+      &.show--hover {
+        margin-left: -188px;
+
+        &:hover {
+          margin-left: 0;
+        }
+        &.show {
+          margin-left: 0;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+  .media_module {
+    z-index: 1;
+  }
+}

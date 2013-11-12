@@ -1,0 +1,72 @@
+.shelf__wrapper--signup {
+  background-color: transparent;
+  padding-top: 70px;
+}
+    .shelf__wrapper--inviter {
+      .shelf__h1 {
+        font-size: 1.5em;
+      }
+    }
+
+.shelf--signup {
+  text-align: center;
+
+  .shelf__body {
+    text-align: left;
+  }
+
+  .shelf__h1 {
+    font-family: $font-family-display;
+    font-weight: 400;
+    margin-top: 40px;
+  }
+
+  .shelf__button {
+    margin: 1.5em auto 0;
+  }
+
+  .shelf__img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .list--benefits {
+    font-size: 13px;
+    margin-left: 75px;
+    margin-top: 40px;
+  }
+
+  .avatar {
+    margin-bottom: 0.5em;
+  }
+
+  // form stuff
+  .form_module {
+    font-size: 13px;
+    margin: 0 auto;
+  }
+
+  .form_fieldset {
+    position: relative;
+    width: 255px;
+  }
+      .form_fieldset--error {
+        .form_error {
+          display: block;
+        }
+      }
+
+  .form_error {
+    font-size: 0.7em;
+    display: none;
+    margin: 0.2em 0.4em;
+    position: absolute;
+    right: 0;
+  }
+
+  .form__description {
+    font-size: 0.8em;
+    line-height: 1;
+  }
+}

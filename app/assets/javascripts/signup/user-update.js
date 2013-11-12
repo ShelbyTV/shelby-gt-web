@@ -108,7 +108,8 @@ $(document).ready(function() {
   });
 
   $('.js-email-signup').on('click', function(){
-    $('form').removeClass("hidden");
+    $(this).parent().toggleClass('hidden',true);
+    $('.js-form').toggleClass("hidden",false);
     $('#user_form input:first[type="text"]').focus();
   });
 });

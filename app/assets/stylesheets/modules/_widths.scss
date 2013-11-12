@@ -47,7 +47,34 @@
     .three-fifths      { width:60%; }
     .four-fifths       { width:80%; }
 
+   /**
+    * Sixths
+    */
+    .one-sixth         { width:16.666%; }
+    .five-sixths       { width:83.333%; }
+
     /**
     * Eighths
     */
-    .one-eighth         { width:12.5%; }
+    .one-eighth        { width:12.5%; }
+    .three-eighths     { width:37.5%; }
+    .five-eighths      { width:62.5%; }
+    .seven-eighths     { width:87.5%; }
+
+
+    /**
+    * Tenths
+    */
+    .one-tenth         { width:10%; }
+    .three-tenths      { width:30%; }
+    .seven-tenths      { width:70%; }
+    .nine-tenths       { width:90%; }
+
+
+    /**
+    * Twelfths
+    */
+    .one-twelfth       { width:8.333%; }
+    .five-twelfths     { width:41.666%; }
+    .seven-twelfths    { width:58.333%; }
+    .eleven-twelfths   { width:91.666%; }

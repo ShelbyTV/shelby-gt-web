@@ -42,6 +42,7 @@ gem 'newrelic_rpm'
 # ---------- External Services
 #
 gem 'koala'
+gem 'twilio-ruby'
 
 #
 # -- Quiet Logging
@@ -103,4 +104,5 @@ group :test, :development do
   gem 'sinon-rails'
   gem 'jasmine-sinon-rails'
   gem 'jasmine-jquery-rails'
+  gem 'json_spec'
 end

@@ -1,19 +1,49 @@
-<div class="shelf shelf--stream clearfix">
-  <div class="media_module media_module--bare clearfix">
-    <div class="media_image media_image--rev shelf__lining">
-      <h2 class="shelf__h1">
-        Your perfect video stream.
-      </h2>
+<div id="stream" name="stream" class="shelf__wrapper shelf__wrapper--stream vertical-align-hack">
+  <div class="vertical-align-hack__el">
+    <div class="shelf shelf--stream clearfix">
+      <div class="media_module media_module--bare clearfix">
+        <div class="media_image shelf__lining two-thirds">
+          <h2 class="shelf__h1">
+            <%= raw Settings::Marketing.stream %>
+          </h2>
 
-      <p class="shelf__block">
-        Shelby TV takes videos from across the web <br/>and organizes them based on importance to you. <br/>Our recommendations get better the more you watch.
-      </p>
+          <p class="shelf__block four-fifths">
+            <%= raw Settings::Marketing.stream_body %>
+          </p>
 
-      <img src="/images/landing/sources.png" class="shelf__img--sources" alt="Screenshot of the Stream, in app" />
-    </div>
+          <% unless mobile %>
+            <ul class="list list--inline shelf__list js-target">
+              <li class="list__item">
+                <%= image_tag "youtube.jpg", :title => "YouTube", :alt => "YouTube" %>
+              </li>
 
-    <div class="media_body shelf__img--stream js-stream" role="img">
-      <img src="/images/landing/stream.jpg" class="shelf__img visuallyhidden" alt="Screenshot of the in-app video stream" />
-    </div>
-  </div>
-</div><!-- eo shelf -->
+              <li class="list__item">
+                <%= image_tag "vimeo.jpg", :title => "Vimeo", :alt => "Vimeo" %>
+              </li>
+
+              <li class="list__item">
+                <%= image_tag "hulu.jpg", :title => "Hulu", :alt => "Hulu" %>
+              </li>
+
+              <li class="list__item">
+                <%= image_tag "blip.jpg", :title => "BlipTv", :alt => "BlipTv" %>
+              </li>
+
+              <li class="list__item">
+                <%= image_tag "facebook.jpg", :title => "Facebook", :alt => "Facebook" %>
+              </li>
+
+              <li class="list__item">
+                <%= image_tag "twitter.jpg", :title => "Twitter", :alt => "Twitter" %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+
+        <div class="media_body shelf__img--stream js-stream" role="img">
+          <%= image_tag "iphone-mobile-2.png", :class => "shelf__img--iphone cloaked js-phantom-hover", :alt => "", :title => "" %>
+        </div>
+      </div>
+    </div><!-- eo shelf -->
+  </div><!-- eo positioning el -->
+</div><!-- eo shelf__wrapper -->

@@ -1,0 +1,27 @@
+/*
+    Modernizr switches the default html.no-js class to html.js onLoad if JS is enabled.
+    So, these are inverse overrides for when the class change doesn't happen.
+*/
+
+.no-js {
+  .shelby {
+    overflow: visible;
+  }
+
+  .shelby__foot {
+    position: relative;
+
+    .tab {
+      display: none;
+    }
+  }
+
+  .shelf__wrapper--iphone,
+  .slide_navigator {
+    display: none;
+  }
+
+  .shelf__img--iphone.cloaked {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,17 @@
+/*
+    Link Helpers
+ */
+
+
+
+.hover_link {
+  &:visited,
+  &:link {
+    text-decoration: none;
+  }
+
+  &:active,
+  &:hover {
+    text-decoration: underline;
+  }
+}

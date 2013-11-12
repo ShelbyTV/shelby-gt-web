@@ -1,0 +1,74 @@
+.shelby--team {
+  overflow: visible;
+
+  .shelby__foot {
+    position: relative;
+
+    .tab {
+      display: none;
+    }
+  }
+}
+
+.shelf__wrapper--team {
+
+}
+
+.shelf--team {
+  .shelf__h2 {
+    font-size: 1.5em;
+  }
+  .shelf__link {
+    font-weight: bold;
+  }
+  .shelf__block {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .list__item {
+    margin-bottom: 1em;
+  }
+  // non-normative
+  .img--fill {
+    width: 100%;
+  }
+  .img--banner {
+    margin-top: 2em;
+  }
+  .text-columns {
+    margin-bottom: 2em;
+  }
+}
+
+
+//------------------------------------------------------------------------------
+//  TEAM MEMBER LAYOUT
+//------------------------------------------------------------------------------
+
+// block
+.member {
+  color: #777;
+
+  // elements
+  .member__h1 {
+    font-family: $font-family;
+    font-size: 1em;
+    line-height: 1.5;
+  }
+  .member__h2 {
+    font-family: $font-family;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-bottom: 1em;
+  }
+  .member__block {
+  }
+  .member__link {
+    font-weight: bold;
+  }
+  .member__img {
+    margin-right: 10px;
+  }
+}

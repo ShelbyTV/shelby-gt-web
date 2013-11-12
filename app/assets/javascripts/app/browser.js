@@ -30,6 +30,11 @@ var Browser = {
     else{ return false; }
   },
 
+  isTablet: function(){
+    if (navigator.platform.match(/^(iPad|Kindle)$/)){ return true; }
+    else{ return false; }
+  },
+
   isMobile: function(){
     if (navigator.platform.match(/^(iPad|iPod|iPhone|Android)$/)){ return true; }
     else{ return false; }
@@ -77,10 +82,10 @@ var Browser = {
     return (typeof document.webkitIsFullScreen != "undefined");
   },
 
-	supportsAuthPopup: function(){
-	  // this.isIframe() used to be included in this, currently removed it for signup popup functionality
-		return !(this.isBoxee() || this.isMobile());
-	},
+  supportsAuthPopup: function(){
+    // this.isIframe() used to be included in this, currently removed it for signup popup functionality
+    return !(this.isBoxee() || this.isMobile());
+  },
 
   _corsSupport: null,
 

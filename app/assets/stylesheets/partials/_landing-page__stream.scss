@@ -1,0 +1,43 @@
+.shelf__wrapper--stream {
+  background-image: image-url("bg-2.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.shelf--stream {
+  max-width: 1200px;
+
+  .shelf__lining {
+    position: relative;
+    z-index: 1;
+  }
+
+  &,
+  .shelf__block {
+    color: $ui-white;
+  }
+
+  .shelf__img--iphone {
+    float: right;
+    margin: 65px 39px;
+  }
+
+  .shelf__h1 {
+    font-size: 1.8em;
+    margin-top: 200px;
+  }
+  .shelf__block {
+    margin-bottom: 30px;
+  }
+
+  .shelf__list {
+
+    img {
+      @include roundies(input);
+
+      margin-right: 7px;
+    }
+  }
+}
