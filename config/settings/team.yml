@@ -99,7 +99,7 @@ defaults: &defaults
       title : "Product Designer"
     },
     {
-      name : "Michael Matyus ",
+      name : "Michael Matyus",
       description: "Michael learned early on, while studying design here in New York that usable interfaces strike the perfect balance between form and function (something that is easier said than done). So when Michael isn't experimenting with new ideas on how to build and maintain our ever-growing code base, he's figuring out how to gain a deeper understanding of how people interact with Shelby. This usually starts by closely collaborating with the rest of the team and devising ways to run UX tests on new, old, and prospective users. When he's not building Shelby, chances are he's hiding behind a huge stack of classic literature.",
       image : "michael.jpg",
       url : "html5",
@@ -108,9 +108,9 @@ defaults: &defaults
       title : "Lead Front-end Engineer"
     },
     {
-      name : "Keren Pinkas",
-      description: "Tiny. Redhead. Vegetarian. Beatlefan. Geek.",
-      image : "//placehold.it/280x214&text=Keren+Pinkas",
+      name : "Keren",
+      description: "After years of being a Java developer and swearing never to return to C and C++, the first iPhone came out. From that point on, it was pretty obvious that Keren’s career was going to take a new direction. She became an iOS developer in the early days of iOS 2 and has been releasing apps since iOS 3. Her latest App, Capsule, even got featured by Apple as a top banner in the App Store’s Travel category. In the rare event that Keren is not writing code, it is safe to assume you can find her at a rock concert somewhere in NYC or around the world.",
+      image : "keren.jpg",
       url : "keren",
       email : "keren@shelby.tv",
       twitter : "kepsolution",
