@@ -37,6 +37,11 @@
     margin-top: 2em;
   }
   .text-columns {
+    -webkit-column-gap: 4em;
+    -moz-column-gap: 4em;
+    -ms-column-gap: 4em;
+    -o-column-gap: 4em;
+    column-gap: 4em;
     margin-bottom: 2em;
   }
 }
@@ -69,6 +74,6 @@
     font-weight: bold;
   }
   .member__img {
-    margin-right: 10px;
+    margin-right: 20px;
   }
 }
