@@ -16,11 +16,13 @@ $(document).ready(function(){
       $smsCtaButton = $('.js-cta');
 
   $smsCtaButton.on('touchstart click',function(e){
-    e.preventDefault();
+    if(Browser.isIos()) {
+      e.preventDefault();
 
-    $smsPopup.toggleClass('hidden',false);
-    $smsForm.find('#sms').focus();
-    togglePopupViews(false);
+      $smsPopup.toggleClass('hidden',false);
+      $smsForm.find('#sms').focus();
+      togglePopupViews(false);
+    }
   });
 
   $smsForm.on('submit',function(e){
