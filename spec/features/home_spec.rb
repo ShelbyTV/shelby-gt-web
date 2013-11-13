@@ -6,24 +6,43 @@ describe 'Go to Home Page', :type => :feature do
     visit('/')
   end
 
-  context 'select CTA', :js => true do
+  context 'selects CTA', :js => true do
     it 'loads the proper components' do
       page.should have_selector('.js')
     end
 
     it 'from an iOS device' do
       page.driver.headers = { "User-Agent" => Settings::Acceptance.ua_safari_mobile }
-      within('#intro') do
-        click_link(Settings::Marketing.cta_button)
-      end
+      find('#js-cta--main').click
     end
 
     it 'from a non-iOS device' do
       page.driver.headers = { "User-Agent" => Settings::Acceptance.ua_android_nexus }
-      within('#intro') do
-        click_link(Settings::Marketing.cta_button)
-        find('.js-popup--sms').should be_visible
+      find('#js-cta--main').click
+      page.should have_content('Text iOS download link to your phone:')
+    end
+
+    context 'and fills out the SMS form' do
+      before(:each) do
+        find('#js-cta--main').click
+      end
+
+      it 'successfully' do
+        fill_in('sms', :with => '9178285740')
+        click_button('Send')
+        sleep(2)
+        # page.should have_content('SMS Message Sent!')
+        find('.js-sms-success').should be_visible
+      end
+
+      it 'unsuccessfully' do
+        fill_in('sms', :with => 'invalidphonenumber')
+        click_button('Send')
+        sleep(2)
+        # page.should have_content('There was a problem sending you a text message, please try again!')
+        find('.js-sms-success').should be_visible
       end
     end
+
   end
 end

@@ -16,7 +16,7 @@ $(document).ready(function(){
       $smsCtaButton = $('.js-cta');
 
   $smsCtaButton.on('touchstart click',function(e){
-    if(Browser.isIos()) {
+    if(!Browser.isIos()) {
       e.preventDefault();
 
       $smsPopup.toggleClass('hidden',false);
