@@ -68,14 +68,14 @@ gem 'jquery-rails'
 # gem 'jammit'
 
 # Deploy with Capistrano
-gem 'capistrano', '2.15.2'
+gem 'capistrano', '2.15.3'
 gem 'rvm-capistrano'
 group :production, :staging do
   gem "therubyracer"
   gem "uglifier"
 end
 group :development do
-  gem 'capistrano-unicorn', '0.1.10', :require => false
+  gem 'capistrano-unicorn', :require => false
   gem 'thin'
 end
 
