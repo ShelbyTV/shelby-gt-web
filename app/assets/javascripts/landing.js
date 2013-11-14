@@ -122,6 +122,7 @@ $(document).ready(function(e){
       $iphone           = $('.js-iphone'),
       $iphoneSouth      = $('.js-iphone-south'),
       $iphoneViewport   = $iphone.find('.js-iphone-viewport'),
+      $loginButton      = $('.js-dropdown_module'),
       $target           = $('.js-target'),
       $horizontalIphone = $('.js-horz-iphone'),
       $nav              = $('.js-slide-navigator'),
@@ -293,6 +294,21 @@ $(document).ready(function(e){
       }
       shelf.$footer.toggleClass('show').find('.icon').toggleClass('icon-arrow_up icon-arrow_down');
     });
+
+    if(Modernizr.touch) {
+      $(this).on('touchmove',function(){
+        $('.dropdown_section').hide().find('input').blur();
+      });
+
+      $loginButton.removeClass('dropdown_module').css('position','relative').children('.dropdown_button').on('touchstart',function(e){
+        $(this).siblings('.dropdown_section').toggle();
+        if($('.dropdown_section').is(':visible')) {
+          $('#username').focus();
+        } else {
+          $('#username').blur();
+        }
+      });
+    }
 
     $nav.on('click','.js-scrollto',function(e){
       e.preventDefault();
