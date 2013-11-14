@@ -22,6 +22,8 @@ $(document).ready(function(){
       $smsPopup.toggleClass('hidden',false);
       $smsForm.find('#sms').focus();
       togglePopupViews(false);
+    } else {
+      window.location = $(this).attr('href');
     }
   });
 
