@@ -2,7 +2,7 @@
   oAuth via popup window
 **/
 $(function(){
-  $('body').on('click','.js-authorize',function(e){
+  $('body').on('touchstart click','.js-authorize',function(e){
 
     if($(this).hasClass('disabled')) {
       return false;
