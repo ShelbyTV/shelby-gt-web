@@ -15,20 +15,23 @@
     -webkit-background-size: auto;
     background-size: auto;
   }
-  .shelf__img--verge {
-    background-image: image-url('theverge.png');
+  .shelf__img--gigaom {
+    background-image: image-url('gigaom.png');
   }
   .shelf__img--video_ink {
     background-image: image-url('videoink.png');
   }
+  .shelf__img--tc {
+    background-image: image-url('tc.png');
+  }
+  // .shelf__img--verge {
+  //   background-image: image-url('theverge.png');
+  // }
   // .shelf__img--mashable {
   //   background-image: image-url('mashable.png');
   // }
   // .shelf__img--tnw {
   //   background-image: image-url('tnw.png');
   // }
-  .shelf__img--tc {
-    background-image: image-url('tc.png');
-  }
 }
 
