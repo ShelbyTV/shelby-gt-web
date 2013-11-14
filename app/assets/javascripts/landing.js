@@ -291,6 +291,8 @@ $(document).ready(function(e){
     $footerButton.on('touchstart click',function(e){
       if( !$(e.target).is('a') ) {
         e.preventDefault();
+      } else {
+        window.location = $(e.target).attr('href')
       }
       shelf.$footer.toggleClass('show').find('.icon').toggleClass('icon-arrow_up icon-arrow_down');
     });
