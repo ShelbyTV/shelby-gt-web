@@ -51,6 +51,9 @@
   }
 
 .modal_dialog__block {
+  .br--hidden {
+    display: none;
+  }
 }
     .modal_dialog__block--push {
       margin-bottom: 1.5em;

@@ -167,6 +167,18 @@
     .modal_dialog {
       text-align: center;
       width: auto;
+
+      .br--hidden {
+        display: block;
+      }
+    }
+
+    .modal_dialog__section--success {
+      .button_primer {
+        display: block;
+        margin-bottom: 1em;
+        width: 100%;
+      }
     }
   }
 }
