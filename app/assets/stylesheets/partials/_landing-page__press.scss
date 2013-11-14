@@ -15,6 +15,12 @@
     -webkit-background-size: auto;
     background-size: auto;
   }
+  .shelf__img--verge {
+    background-image: image-url('theverge.png');
+  }
+  .shelf__img--video_ink {
+    background-image: image-url('');
+  }
   .shelf__img--mashable {
     background-image: image-url('mashable.png');
   }
