@@ -29,6 +29,13 @@ $(document).ready(function(e){
 
     Only do touchy stuff if Modernizr says to.
   */
+  if( Modernizr.touch ){
+    $('.js-dropdown_module').removeClass('dropdown_module').css('position','relative')
+                            .children('.dropdown_button').on('touchstart',function(e){
+                              $('.dropdown_section').toggle();
+                            });
+  }
+
   if( Modernizr.touch && Browser.isTablet() ){
     /*------------------------------------------------------------------------*/
     /*  Credit: Eike Send for the awesome swipe event                         */
