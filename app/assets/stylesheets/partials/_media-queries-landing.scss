@@ -158,3 +158,12 @@
     }
   }
 }//eo media-query///////////////////////////////////////////////////////////////
+
+@media screen and (max-width: 500px) {
+  .modal_dialog__wrapper--sms {
+    .modal_dialog {
+      text-align: center;
+      width: auto;
+    }
+  }
+}
