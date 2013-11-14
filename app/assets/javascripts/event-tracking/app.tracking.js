@@ -18,7 +18,7 @@ shelby.tracking.displayedFrameTypesQueue = [];
 
 $(document).ready(function(){
   // set up click tracking handler
-  $(document).on('click', '.js-track-event', function(e){
+  $(document).on('touchstart click', '.js-track-event', function(e){
     try{
       _gaq.push(['_trackEvent', $(e.currentTarget).data("ga_category"), $(e.currentTarget).data("ga_action"), $(e.currentTarget).data("ga_label")]);
       _kmq.push(['record', $(e.currentTarget).data("ga_action")]);

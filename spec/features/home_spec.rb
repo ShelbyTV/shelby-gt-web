@@ -27,20 +27,18 @@ describe 'Go to Home Page', :type => :feature do
         find('#js-cta--main').click
       end
 
-      xit 'successfully' do
+      it 'successfully' do
         fill_in('sms', :with => '9178285740')
         click_on('Send')
         sleep(5)
-        # page.should have_content('SMS Message Sent!')
         find('.js-sms-success').should be_visible
       end
 
-      xit 'unsuccessfully' do
+      it 'unsuccessfully' do
         fill_in('sms', :with => 'invalidphonenumber')
         click_on('Send')
         sleep(5)
-        # page.should have_content('There was a problem sending you a text message, please try again!')
-        find('.js-sms-success').should be_visible
+        page.has_css?('.form_fieldset--error')
       end
     end
 
