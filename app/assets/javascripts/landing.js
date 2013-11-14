@@ -287,7 +287,7 @@ $(document).ready(function(e){
 
     });
 
-    $footerButton.on('click',function(e){
+    $footerButton.on('touchstart click',function(e){
       if( !$(e.target).is('a') ) {
         e.preventDefault();
       }
