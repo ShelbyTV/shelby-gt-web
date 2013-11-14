@@ -29,7 +29,7 @@ $(document).ready(function(){
   };
 
 
-  $('.js-track-event').on('click', function(e){
+  $('.js-track-event').on('touchstart click', function(e){
     shelbyTrackEventWithGlobalCategory($(e.currentTarget).data("ga_action"),
                                        $(e.currentTarget).data("ga_label"));
   });

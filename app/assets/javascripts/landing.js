@@ -29,10 +29,23 @@ $(document).ready(function(e){
 
     Only do touchy stuff if Modernizr says to.
   */
-  if( Modernizr.touch ){
+  if( Modernizr.touch && Browser.isIpad() ){
+      var $loginForm = $('#login_form'),
+          $username  = $('#username').on('touchstart', function(){
+            $(this).focus();
+          }),
+          $password  = $('#password').on('touchstart', function(){
+            $(this).focus();
+          }),
+          $submit    = $('#submit').on('touchstart', function(){
+            $('input').blur();
+            $loginForm.submit();
+          });
+
     $('.js-dropdown_module').removeClass('dropdown_module').css('position','relative')
                             .children('.dropdown_button').on('touchstart',function(e){
-                              $('.dropdown_section').toggle();
+                              $('.js-dropdown_section').toggle();
+                              $('#username').focus();
                             });
   }
 
@@ -319,7 +332,7 @@ $(document).ready(function(e){
       });
     }
 
-    $nav.on('click','.js-scrollto',function(e){
+    $nav.on('touchstart click','.js-scrollto',function(e){
       e.preventDefault();
       /*
         Grab the #name of the link clicked, parse it, then scroll to it.
