@@ -86,6 +86,20 @@ class MobileController < ApplicationController
     end
   end
 
+  def preferences
+    if user_signed_in?
+      @signed_in_user = check_for_signed_in_user
+      @is_mobile      = is_mobile?
+      @user_signed_in = user_signed_in?
+
+      @section = params[:section]
+
+      @sources = Shelby::API.get_featured_sources
+    else
+      redirect_to mobile_landing_path(:status =>"Not logged in.")
+    end
+  end
+
   def roll
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
