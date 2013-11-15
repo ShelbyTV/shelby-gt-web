@@ -49,7 +49,7 @@ $(document).ready(function(e){
                             });
   }
 
-  if( Modernizr.touch && Browser.isTablet() && !$('body').hasClass('shelby--team') ){
+  if( Modernizr.touch && Browser.isTablet() && !$('body').hasClass('shelby--team') && !$('body').hasClass('shelby--seovideo') ){
     /*------------------------------------------------------------------------*/
     /*  Credit: Eike Send for the awesome swipe event                         */
     /*  via:    https://github.com/peachananr/onepage-scroll/                 */
