@@ -15,7 +15,7 @@
   <% if !is_mobile %>
     <li class="list__item">
       <a
-        href="/preferences"
+        href="<%= is_mobile ? Settings::Mobile.mobile_subdirectory : '' %>/preferences"
         class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
         data-ga_category="Header"
         data-ga_action="Preferences"
@@ -27,13 +27,25 @@
 
     <li class="list__item">
       <a
-        href="/preferences/friends"
+        href="<%= is_mobile ? Settings::Mobile.mobile_subdirectory : '' %>/preferences/friends"
         class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
         data-ga_category="Header"
         data-ga_action="Invite Friends"
         data-ga_label="<%= userNickname %>"
         >
         Invite Friends
+      </a>
+    </li>
+  <% else %>
+    <li class="list__item">
+      <a
+        href="<%= is_mobile ? Settings::Mobile.mobile_subdirectory : '' %>/preferences/sources"
+        class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
+        data-ga_category="Header"
+        data-ga_action="Follow Sources"
+        data-ga_label="<%= userNickname %>"
+        >
+        Follow Sources
       </a>
     </li>
   <% end %>

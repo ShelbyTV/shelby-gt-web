@@ -6,8 +6,9 @@ ShelbyGtWeb::Application.routes.draw do
   # get '/genius' => 'genius#index'
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#landing', :as => :mobile_landing
-    get '/stream' => 'mobile#stream', :as => :mobile_stream
     get '/featured' => 'mobile#featured', :as => :mobile_featured
+    get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
+    get '/stream' => 'mobile#stream', :as => :mobile_stream
     get '/signout' => 'mobile#signout', :as => :mobile_signout
     get '/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
     post '/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
@@ -19,8 +20,9 @@ ShelbyGtWeb::Application.routes.draw do
   # For development, take me out when mobile is more stable
   if ["development","staging"].include?(Rails.env)
     get '/m' => 'mobile#landing', :as => :mobile_landing
-    get '/m/stream' => 'mobile#stream', :as => :mobile_stream
     get '/m/featured' => 'mobile#featured', :as => :mobile_featured
+    get '/m/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
+    get '/m/stream' => 'mobile#stream', :as => :mobile_stream
     get '/m/signout' => 'mobile#signout', :as => :mobile_signout
     get '/m/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
     post '/m/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding

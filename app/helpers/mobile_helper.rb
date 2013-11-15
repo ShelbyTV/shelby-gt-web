@@ -60,7 +60,7 @@ module MobileHelper
 
   def log_session
     EM.next_tick {
-      r = Shelby::API.log_session(current_user_id, request.headers['HTTP_COOKIE'])
+      r = Shelby::API.log_session(current_user_id, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
       Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie']) if r
     }
   end
