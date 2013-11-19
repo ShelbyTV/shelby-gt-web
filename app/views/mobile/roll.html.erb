@@ -28,7 +28,8 @@
 </ul>
 
 <p class="center">
-  <%= link_to mobile_user_path(
+  <% if !@frames.empty? %>
+    <%= link_to mobile_user_path(
         @user['id'],
         :page => (@page + 1)),
         {
@@ -39,7 +40,13 @@
         } do %>
     <span class="button_label">Load More</span>
   <% end %>
-</p>
+<% else %>
+  <h3 class="user__h1 center">
+    <%= @user['name'] %> hasn't shared any video yet :(
+  </h3>
+
+<% end %>
+
 
 <%= javascript_tag do %>
   <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>
