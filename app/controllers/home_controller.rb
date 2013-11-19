@@ -174,6 +174,9 @@ class HomeController < ApplicationController
     @auth_failure  = params[:auth_failure] == '1'
     @auth_strategy = params[:auth_strategy]
 
+    @mobile_os     = detect_mobile_os
+    @is_mobile     = is_mobile?
+
     render  '/home/landing'
   end
 
