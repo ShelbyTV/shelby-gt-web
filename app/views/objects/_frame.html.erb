@@ -35,7 +35,7 @@
         <a href="#<%= video['id'] %>" style="background-image: url(<%= video['thumbnail_url'] %>);" onclick="return false;" class="video__wrapper image_module<%= (is_mobile) ? ' icon-play js-play-video' : '' %>" data-provider-name="<%= video['provider_name'] %>" data-provider-id="<%= video['provider_id'] %>" data-player-embed='<%= video['embed_url'] %>' data-index='<%= index ? index : '' %>'>
           <img class="visuallyhidden" src="<%= video['thumbnail_url'] %>" title="<%- video['title'] %>" alt="<%- video['title'] %> thumbnail">
         </a>
-        <div class="js-video-player-<%= video['provider_name'] %>-<%= video['provider_id'] %><%= '-'+index.to_s if index %> js-video-player video__wrapper visuallyhidden"></div>
+        <div id="js-video-player-<%= video['provider_name'] %>-<%= video['provider_id'] %><%= '-'+index.to_s if index %>"  class="js-video-player-<%= video['provider_name'] %>-<%= video['provider_id'] %><%= '-'+index.to_s if index %> js-video-player  visuallyhidden"></div>
       <% end %>
     </div><!-- eo .frame-body -->
 
