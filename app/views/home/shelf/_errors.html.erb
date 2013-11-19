@@ -1,4 +1,4 @@
-<% if @social_signup_error or @access_error or @invite_error or @auth_failure or (flash[:error] == "401") %>
+<% if @social_signup_error or @access_error or @invite_error or @auth_failure or @status or (flash[:error] == "401") %>
   <div class="shelf__wrapper shelf__wrapper--error clearfix">
     <div class="shelf shelf--error clearfix">
       <% if @access_error or @invite_error %>
@@ -17,6 +17,12 @@
       <% if (flash[:error] == "401") %>
         <p class="js-signin-error">
           Session expired, please log in again!
+        </p>
+      <% end %>
+
+      <% if (@status == "401") %>
+        <p class="js-signin-error">
+          <%= @msg %>
         </p>
       <% end %>
 

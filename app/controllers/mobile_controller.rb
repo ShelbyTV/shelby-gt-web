@@ -3,9 +3,17 @@ class MobileController < ApplicationController
   include MobileHelper
 
   def landing
+    ## handle possible error messages ##########
+    @status, @msg = params[:status], params[:msg]
+    @auth_failure  = params[:auth_failure] == '1'
+    @auth_strategy = params[:auth_strategy]
+    #####################################
+
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
     @is_mobile      = is_mobile?
+
+    Rails.logger.info "user_signed_in: #{user_signed_in?}, signed_in_user: #{check_for_signed_in_user}"
 
     if user_signed_in? and @signed_in_user and @signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] != true)
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
@@ -35,7 +43,7 @@ class MobileController < ApplicationController
       d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit, params[:entry])
       @dashboard = dedupe_dashboard(d)
     else
-      redirect_to mobile_landing_path(:status =>"You must be logged in.")
+      redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401)
     end
   end
 
