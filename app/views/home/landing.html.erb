@@ -38,7 +38,7 @@
   <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6008900763972&amp;value=0&amp;currency=USD" /></noscript>
   <!-- END -->
 </head>
-<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %><%= " shelby--team" if @team %>">
+<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %><%= " shelby--team" if @team %><%= " shelby--login" if @login %>">
   <!-- Facebook widget -->
   <div id="fb-root"></div>
 
@@ -51,22 +51,26 @@
     <%= render :partial => '/home/shelf/errors' %>
     <%= render :partial => "/home/shelf/team" if @team %>
 
-    <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
-      <% unless (@mobile_os or @is_mobile) %>
-        <%= render :partial => "/home/shelf/iphone"  %>
-        <%= render :partial => "/home/shelf/nav" %>
+    <% if @login %>
+      <%= render :partial => '/home/shelf/login' %>
+    <% else %>
+      <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
+        <% unless (@mobile_os or @is_mobile) %>
+          <%= render :partial => "/home/shelf/iphone"  %>
+          <%= render :partial => "/home/shelf/nav" %>
+        <% end %>
+
+        <div class="shelf--index">
+          <%= render :partial => "/home/shelf/call_to_action" %>
+          <%= render :partial => "/home/shelf/stream", :locals => {
+            mobile: (@mobile_os or @is_mobile)
+          } %>
+          <%= render :partial => "/home/shelf/social", :locals => {
+            mobile: (@mobile_os or @is_mobile)
+          } %>
+        </div>
+
       <% end %>
-
-      <div class="shelf--index">
-        <%= render :partial => "/home/shelf/call_to_action" %>
-        <%= render :partial => "/home/shelf/stream", :locals => {
-          mobile: (@mobile_os or @is_mobile)
-        } %>
-        <%= render :partial => "/home/shelf/social", :locals => {
-          mobile: (@mobile_os or @is_mobile)
-        } %>
-      </div>
-
     <% end %>
 
     <% #------------ /Shelf Content --------------- %>

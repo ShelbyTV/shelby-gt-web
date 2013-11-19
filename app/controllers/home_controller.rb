@@ -163,11 +163,25 @@ class HomeController < ApplicationController
   def learn_more
   end
 
+  ##
+  # Login has its own page for touch devices, like buggy ios7 tablets.
+  #
+  # GET /log_in
+  #
+  def log_in
+    @login = :true
+
+    @auth_failure  = params[:auth_failure] == '1'
+    @auth_strategy = params[:auth_strategy]
+
+    render  '/home/landing'
+  end
+
   # Static page with stats on a users recent activity
   def stats
     # lookup user + stats via api
     if user_signed_in? and request.headers['HTTP_COOKIE'] and @user = Shelby::API.get_user(params['user_id'])
-      @frames = Shelby::API.get_user_stats(params['user_id'], request.headers['HTTP_COOKIE'])
+      @frames = Shelby::API.get_user_stats(params['user_id'], req0uest.headers['HTTP_COOKIE'])
     end
   end
 

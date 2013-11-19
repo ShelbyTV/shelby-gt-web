@@ -58,6 +58,9 @@ ShelbyGtWeb::Application.routes.draw do
   get "signup/:code" => 'signup#show'
   post "signup" => 'signup#create'
 
+  # LOG IN
+  get '/log_in' => "home#log_in"
+
 
   # HOME
   get '/team' => 'home#team'

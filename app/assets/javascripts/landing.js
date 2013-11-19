@@ -29,24 +29,8 @@ $(document).ready(function(e){
 
     Only do touchy stuff if Modernizr says to.
   */
-  if( Modernizr.touch && Browser.isIpad() ){
-      var $loginForm = $('#login_form'),
-          $username  = $('#username').on('touchstart', function(){
-            $(this).focus();
-          }),
-          $password  = $('#password').on('touchstart', function(){
-            $(this).focus();
-          }),
-          $submit    = $('#submit').on('touchstart', function(){
-            $('input').blur();
-            $loginForm.submit();
-          });
-
-    $('.js-dropdown_module').removeClass('dropdown_module').css('position','relative')
-                            .children('.dropdown_button').on('touchstart',function(e){
-                              $('.js-dropdown_section').toggle();
-                              $('#username').focus();
-                            });
+  if( !Modernizr.touch ){
+    $('.js-log_in').on('click', function(e) { e.preventDefault(); });
   }
 
   if( Modernizr.touch && Browser.isTablet() && !$('body').hasClass('shelby--team') && !$('body').hasClass('shelby--seovideo') ){
