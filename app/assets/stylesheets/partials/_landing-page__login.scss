@@ -1,0 +1,22 @@
+// global scoping
+.shelby--login {
+  .shelf__wrapper--error {
+    background-color: transparent;
+  }
+}
+
+//------------------------------------------------------------------------------
+//  Block
+//------------------------------------------------------------------------------
+.shelf__wrapper--login {
+  background: transparent;
+}
+
+.shelf--login {
+  font-size: 1.3em;
+
+  .shelf__lining {
+    margin: 20px auto 0;
+    padding: 1em 2em;
+  }
+}

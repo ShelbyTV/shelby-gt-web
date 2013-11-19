@@ -51,3 +51,13 @@
   //i.e. class="dropdown_lining nowplaying-section-lining",
   //.nowplaying-section-lining applies offset.
 }
+
+.touch {
+  .dropdown_module {
+    &:hover {
+      .dropdown_section {
+        display: none;
+      }
+    }
+  }
+}
