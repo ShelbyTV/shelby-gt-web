@@ -13,6 +13,12 @@ defaults: &defaults
     stream: 'stream',
     user: 'user'
   }
+  preferences_sections: {
+    notifications: 'notifications',
+    profile: 'profile',
+    sources: 'sources'
+  }
+
 
 development:
   <<: *defaults
