@@ -85,3 +85,18 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 end
+
+def user_card(quantity)
+  cards = []
+
+  (1..quantity).each do |index|
+    cards << {
+      :display_thumbnail_src => "avatar-#{index}.png",
+      :display_title => "Roll Title #{index}",
+      :description => "This is the #{index} description",
+      :id => "#{index}234abcd"
+    }
+  end
+
+  cards
+end

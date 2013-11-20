@@ -100,9 +100,16 @@ class MobileController < ApplicationController
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
 
-      @section = params[:section]
+      @section = params[:section] || Settings::Mobile.preferences_sections.profile
 
-      @sources = Shelby::API.get_featured_sources
+      case @section
+        when Settings::Mobile.preferences_sections.sources
+          @sources = Shelby::API.get_featured_sources
+        when Settings::Mobile.preferences_sections.notifications
+        else
+      end
+
+      render "/mobile/preferences_#{@section}"
     else
       redirect_to mobile_landing_path(:status =>"Not logged in.")
     end
