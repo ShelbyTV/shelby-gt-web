@@ -27,15 +27,18 @@ $(document).ready(function(){
             embed = $clickedVid.data('player-embed'),
             index = $clickedVid.data('index'),
             playerClass = 'js-video-player-'+providerName+'-'+providerId+'-'+index,
-            $playerDiv = $('.'+playerClass),
             playerSrcUrl;
 
       // start by cleaning up the page of any loaded video, add back thumbnail
       $('.js-play-video').removeClass('visuallyhidden');
-      $('.js-video-player').empty().addClass("visuallyhidden");
+      $('.js-video-player').remove().addClass("visuallyhidden");
+      $("<div id='js-video-player-"+providerName+"-"+providerId+"-"+index+"' class='js-video-player-"+providerName+"-"+providerId+"-"+index+" js-video-player video__wrapper without_video visuallyhidden'></div>").insertAfter($clickedVid);
 
       $clickedVid.addClass("visuallyhidden");
+
+      var $playerDiv = $('.'+playerClass);
       $playerDiv.removeClass("visuallyhidden").addClass('playing');
+
       switch (providerName) {
         case "youtube":
           shelby.player = new YT.Player(playerClass, {
