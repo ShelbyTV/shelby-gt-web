@@ -69,6 +69,7 @@ module Shelby
       uri = Addressable::URI.parse("/user/#{nickname_or_id}" ).normalize.to_s
       headers = cookie ? {'Cookie' => cookie} : {}
       u = get(uri, :headers => headers).parsed_response
+      #Rails.logger.info(u)
       return u['status'] == 200 ? u['result'] : nil
     end
 
