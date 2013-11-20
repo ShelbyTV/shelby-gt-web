@@ -15,7 +15,6 @@ function onPlayerReady(event) {
 }
 
 function onPlayerStateChange(event) {
-  console.log(event);
   if (event.data == YT.PlayerState.ENDED) {
   }
 }
@@ -36,7 +35,7 @@ $(document).ready(function(){
       $('.js-video-player').empty().addClass("visuallyhidden");
 
       $clickedVid.addClass("visuallyhidden");
-      $playerDiv.removeClass("visuallyhidden");
+      $playerDiv.removeClass("visuallyhidden").addClass('playing');
       switch (providerName) {
         case "youtube":
           shelby.player = new YT.Player(playerClass, {
