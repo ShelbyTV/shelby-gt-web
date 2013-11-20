@@ -60,7 +60,7 @@
       <%= yield %>
     </div>
 
-    <script id="js-user" type="application/json"><%= raw @signed_in_user.to_json %></script>
+    <script id="js-user" type="application/json"><%= raw @signed_in_user.as_json %></script>
     <div class="share_panel share_panel--fill share_panel--scroll hidden js-share-panel">
       <!-- filled in by underscore goodness -->
     </div>
