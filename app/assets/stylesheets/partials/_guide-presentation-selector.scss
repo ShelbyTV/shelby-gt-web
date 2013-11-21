@@ -27,7 +27,7 @@
   &,
   &:link,
   &:visited {
-    color: $ui-black;
+    color: darken($ui-white,33.333%);
   }
 
   &:hover {

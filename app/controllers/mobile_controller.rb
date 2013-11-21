@@ -106,6 +106,7 @@ class MobileController < ApplicationController
         when Settings::Mobile.preferences_sections.sources
           @sources = Shelby::API.get_featured_sources
         when Settings::Mobile.preferences_sections.notifications
+          @preferences = @signed_in_user['preferences']
         else
       end
 
@@ -113,6 +114,17 @@ class MobileController < ApplicationController
     else
       redirect_to mobile_landing_path(:status =>"Not logged in.")
     end
+  end
+
+  def notifications
+    @signed_in_user = check_for_signed_in_user
+    @is_mobile      = is_mobile?
+    @user_signed_in = user_signed_in?
+
+    @section = Settings::Mobile.preferences_sections.notifications
+    @preferences = @signed_in_user['preferences']
+
+    render "/mobile/preferences_#{@section}"
   end
 
   def roll

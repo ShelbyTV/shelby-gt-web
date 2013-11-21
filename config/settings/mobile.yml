@@ -1,4 +1,3 @@
-
 defaults: &defaults
   mobile_subdirectory: ""
   default_limit: 10
@@ -13,12 +12,19 @@ defaults: &defaults
     stream: 'stream',
     user: 'user'
   }
+
   preferences_sections: {
     notifications: 'notifications',
     profile: 'profile',
     sources: 'sources'
   }
 
+  email_notifications:
+    email_updates: News and Updates<br/> <em>Keep me updated with new stuff from Shelby.</em>
+    like_notifications: Likes<br/> <em>Notify me when someone Likes my videos.</em>
+    reroll_notifications: Shares<br/> <em>Notify me when someone Re-Shares my video.</em>
+    comment_notifications: Comments<br/> <em>Notify me when someone comments on a video I share.</em>
+    roll_activity_notifications: Profile Activity<br/> <em>Notify me when someone new Follows me.</em>
 
 development:
   <<: *defaults
