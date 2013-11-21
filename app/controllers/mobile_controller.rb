@@ -29,9 +29,12 @@ class MobileController < ApplicationController
   def stream
     if user_signed_in?
       @signed_in_user = check_for_signed_in_user
-      Rails.logger.info "SIGNED IN USER USER: #{@signed_in_user}"
-      (redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401) and return) if (@signed_in_user['nickname'] == 'Anonymous')
-      (redirect_to mobile_show_onboarding_path(:step => 1) and return) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
+      if @signed_in_user['app_progress'].nil?
+        cookies.delete(:_shelby_gt_common)
+        (redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401) and return)
+      end
+
+      (redirect_to mobile_show_onboarding_path(:step => 1) and return) unless (!@signed_in_user.nil? and (@signed_in_user['app_progress']['onboarding'] == true))
 
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
