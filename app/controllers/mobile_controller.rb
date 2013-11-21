@@ -13,6 +13,7 @@ class MobileController < ApplicationController
     @user_signed_in = user_signed_in?
     @is_mobile      = is_mobile?
 
+    # this means that the user isn't *really* logged in, delete the cookie and reassign variables appropriatly.
     if @signed_in_user['app_progress'].nil?
       cookies.delete(:_shelby_gt_common)
       @signed_in_user = check_for_signed_in_user
@@ -35,6 +36,8 @@ class MobileController < ApplicationController
   def stream
     if user_signed_in?
       @signed_in_user = check_for_signed_in_user
+
+      # this means that the user isn't *really* logged in, delete the cookie and redirect to landing
       if @signed_in_user['app_progress'].nil?
         cookies.delete(:_shelby_gt_common)
         (redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401) and return)
