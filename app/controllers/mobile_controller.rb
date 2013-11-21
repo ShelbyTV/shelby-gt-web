@@ -29,8 +29,7 @@ class MobileController < ApplicationController
   end
 
   def stream
-    if user_signed_in?
-      @signed_in_user = check_for_signed_in_user
+    if user_signed_in? and @signed_in_user = check_for_signed_in_user
       redirect_to mobile_show_onboarding_path(:step => 1) if (!@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] != true))
 
       @is_mobile      = is_mobile?
