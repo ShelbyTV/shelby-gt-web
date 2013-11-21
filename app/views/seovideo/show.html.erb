@@ -47,7 +47,7 @@
 
             <ul class="seovideo__list seovideo__list--social">
               <li class="seovideo__item">
-                <div class="fb-like clearfix" data-width="200" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false" data-height="40"></div>
+                <div class="fb-like clearfix" data-href="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id) %>" data-width="200" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false" data-height="40"></div>
               </li>
 
               <li id="twitter-intent" class="seovideo__item"></li>
