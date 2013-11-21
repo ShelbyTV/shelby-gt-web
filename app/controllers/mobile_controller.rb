@@ -13,8 +13,6 @@ class MobileController < ApplicationController
     @user_signed_in = user_signed_in?
     @is_mobile      = is_mobile?
 
-    Rails.logger.info "user_signed_in: #{user_signed_in?}, signed_in_user: #{check_for_signed_in_user}"
-
     if user_signed_in? and @signed_in_user and @signed_in_user.has_key?("app_progress") and (@signed_in_user['app_progress']['onboarding'] != true)
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
       authed_service = params[:service] || users_first_auth['provider'] || "facebook"
@@ -31,7 +29,7 @@ class MobileController < ApplicationController
   def stream
     if user_signed_in?
       @signed_in_user = check_for_signed_in_user
-
+      Rails.logger.info "SIGNED IN USER USER: #{@signed_in_user}"
       (redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401) and return) if (@signed_in_user['nickname'] == 'Anonymous')
       (redirect_to mobile_show_onboarding_path(:step => 1) and return) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
 
