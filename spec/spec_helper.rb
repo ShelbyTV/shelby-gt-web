@@ -88,7 +88,7 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 end
 
-def user_card(quantity)
+def sources(quantity)
   cards = []
 
   (1..quantity).each do |index|
