@@ -29,8 +29,9 @@ class MobileController < ApplicationController
   end
 
   def stream
-    if user_signed_in? and @signed_in_user = check_for_signed_in_user
-      redirect_to mobile_show_onboarding_path(:step => 1) if (!@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] != true))
+    if user_signed_in? and (@signed_in_user = check_for_signed_in_user) and @signed_in_user.has_key('app_progress')
+      Rails.logger.info "signed_in_user: #{@signed_in_user}, app_progress: #{@signed_in_user['app_progress']}"
+      redirect_to mobile_show_onboarding_path(:step => 1) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
 
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
