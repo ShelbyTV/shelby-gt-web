@@ -13,6 +13,12 @@ class MobileController < ApplicationController
     @user_signed_in = user_signed_in?
     @is_mobile      = is_mobile?
 
+    if @signed_in_user['app_progress'].nil?
+      cookies.delete(:_shelby_gt_common)
+      @signed_in_user = check_for_signed_in_user
+      @user_signed_in = user_signed_in?
+    end
+
     if user_signed_in? and @signed_in_user and @signed_in_user.has_key?("app_progress") and (@signed_in_user['app_progress']['onboarding'] != true)
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
       authed_service = params[:service] || users_first_auth['provider'] || "facebook"
