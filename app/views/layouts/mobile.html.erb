@@ -61,6 +61,9 @@
     </div>
 
     <script id="js-user" type="application/json"><%= raw @signed_in_user.to_json %></script>
+    <!-- for debugging -->
+    <script id="js-user-app_progress" type="application/json"><%= raw @signed_in_user['app_progress'] if @signed_in_user %></script>
+
     <div class="share_panel share_panel--fill share_panel--scroll hidden js-share-panel">
       <!-- filled in by underscore goodness -->
     </div>
