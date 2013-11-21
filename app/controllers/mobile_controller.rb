@@ -32,7 +32,7 @@ class MobileController < ApplicationController
     if user_signed_in?
       @signed_in_user = check_for_signed_in_user
 
-      (redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401) and return) unless (@signed_in_user['nickname'] == 'Anonymous')
+      (redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401) and return) if (@signed_in_user['nickname'] == 'Anonymous')
       (redirect_to mobile_show_onboarding_path(:step => 1) and return) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
 
       @is_mobile      = is_mobile?
