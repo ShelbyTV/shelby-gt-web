@@ -7,6 +7,8 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 
+include ApplicationHelper
+
 #BEGIN bunch of crap to silence annoying CoreText warnings on Mac OS X Mavericks
 module Capybara::Poltergeist
   class Client
@@ -86,7 +88,7 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 end
 
-def user_card(quantity)
+def sources(quantity)
   cards = []
 
   (1..quantity).each do |index|
@@ -99,4 +101,14 @@ def user_card(quantity)
   end
 
   cards
+end
+
+def user
+  {
+    :nickname => "nickname"
+  }
+end
+
+def user_signed_in
+  true
 end
