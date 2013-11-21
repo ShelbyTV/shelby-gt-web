@@ -19,7 +19,7 @@ class MobileController < ApplicationController
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
       authed_service = params[:service] || users_first_auth['provider'] || "facebook"
       redirect_to mobile_show_onboarding_path(:step => 1, :service => authed_service)
-    elsif user_signed_in?
+    elsif user_signed_in? and (@signed_in_user['nickname'] != "Anonymous")
       log_session()
       redirect_to mobile_stream_path
     else
@@ -32,7 +32,7 @@ class MobileController < ApplicationController
     if user_signed_in?
       @signed_in_user = check_for_signed_in_user
 
-      redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401) unless @signed_in_user['nickname'] == 'Anonymous'
+      redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401) unless (@signed_in_user['nickname'] == 'Anonymous')
 
       redirect_to mobile_show_onboarding_path(:step => 1) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
 
