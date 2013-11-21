@@ -18,9 +18,10 @@ describe "/m/preferences/sources" do
     end
 
     it "renders the sources" do
-      assign(:sources, sources(2))
+      @quantity = 2
+      assign(:sources, sources(@quantity))
       render :template => "mobile/preferences_sources", :layout => "layouts/mobile"
-      rendered.should have_selector('.user', :count => 2)
+      rendered.should have_selector('.user', :count => @quantity)
     end
   end
 end
