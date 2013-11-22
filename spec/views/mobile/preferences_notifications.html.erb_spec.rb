@@ -29,7 +29,9 @@ describe "/m/preferences/notifications" do
 
       render :template => "mobile/preferences_notifications", :layout => "layouts/mobile"
 
-      rendered.should have_selector('.form_label',@user_preferences.count)
+      rendered.should have_selector('.form_label', @user_preferences.count)
+
+      #TODO: test <label></label> "content"
     end
   end
 end
