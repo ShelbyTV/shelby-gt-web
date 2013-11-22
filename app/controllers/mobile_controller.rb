@@ -7,6 +7,13 @@ class MobileController < ApplicationController
     @user_signed_in = user_signed_in?
     @is_mobile      = is_mobile?
 
+    # this means that the user isn't *really* logged in, delete the cookie and reassign variables appropriatly.
+    if @signed_in_user['app_progress'].nil?
+      cookies.delete(:_shelby_gt_common)
+      @signed_in_user = check_for_signed_in_user
+      @user_signed_in = user_signed_in?
+    end
+
     if user_signed_in? and @signed_in_user and @signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] != true)
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
       authed_service = params[:service] || users_first_auth['provider'] || "facebook"
@@ -23,6 +30,13 @@ class MobileController < ApplicationController
   def stream
     if user_signed_in?
       @signed_in_user = check_for_signed_in_user
+
+      # this means that the user isn't *really* logged in, delete the cookie and redirect to landing
+      if @signed_in_user['app_progress'].nil?
+        cookies.delete(:_shelby_gt_common)
+        (redirect_to mobile_landing_path(:msg =>"Eeek, Something went wrong. Try logging in again.", :status => 401) and return)
+      end
+
       redirect_to mobile_show_onboarding_path(:step => 1) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
 
       @is_mobile      = is_mobile?
@@ -57,6 +71,13 @@ class MobileController < ApplicationController
   def me
     if user_signed_in?
       @signed_in_user = check_for_signed_in_user
+
+            # this means that the user isn't *really* logged in, delete the cookie and redirect to landing
+      if @signed_in_user['app_progress'].nil?
+        cookies.delete(:_shelby_gt_common)
+        (redirect_to mobile_landing_path(:msg =>"Eeek, Something went wrong. Try logging in again.", :status => 401) and return)
+      end
+
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
 

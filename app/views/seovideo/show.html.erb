@@ -25,15 +25,15 @@
 
         <div class="seovideo__video_wrapper frame-body-wrapper">
           <div class="video__wrapper">
-            <%# if @video_available %>
+            <% if @video_available %>
               <% if @video_provider_name == "youtube" %>
                 <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
               <% else %>
                 <%= raw @video_embed %>
               <% end %>
-            <%# else %>
-
-            <%# end %>
+            <% else %>
+              <%= image_tag('video-unavailable.jpg', :style=>'margin-top:-59.5%') %>
+            <% end %>
           </div>
 
           <div class="seovideo__video_details">
