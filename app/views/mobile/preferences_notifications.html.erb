@@ -7,7 +7,7 @@
     <% @preferences.each do |key,value| %>
       <% if Settings::Mobile.email_notifications.key?(key) %>
         <fieldset class="form_fieldset">
-          <%= check_box_tag key, key, value, :class => "form_checkbox js-notification-checkbox"  %>
+          <%= check_box_tag key, 1, value, :class => "form_checkbox js-notification-checkbox"  %>
 
           <%= label_tag key, nil, :class => "form_label" do %>
             <%= raw Settings::Mobile.email_notifications[key] %>

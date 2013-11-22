@@ -17,16 +17,19 @@ describe "/m/preferences/notifications" do
     end
 
     it "renders the notifications" do
-      # suspect that rspec's assign method doesn't deep clone… or stringifies things inappropriately.
-      assign(:preferences, {
+      @user_preferences = {
         :email_updates               => "true",
         :like_notifications          => "true",
         :reroll_notifications        => "true",
         :comment_notifications       => "true",
         :roll_activity_notifications => "true"
-      })
+      }
+
+      assign(:preferences, @user_preferences)
 
       render :template => "mobile/preferences_notifications", :layout => "layouts/mobile"
+
+      rendered.should have_selector('.form_label',@user_preferences.count)
     end
   end
 end

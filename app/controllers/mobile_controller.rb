@@ -136,6 +136,14 @@ class MobileController < ApplicationController
     @section = Settings::Mobile.preferences_sections.notifications
     @preferences = @signed_in_user['preferences']
 
+    @preferences.each do |preference,value|
+      @preferences[preference] = params.has_key?(preference)
+    end
+
+    update_user(@signed_in_user, {:preferences => @preferences})
+
+    #TODO: this needs error/success handling
+
     render "/mobile/preferences_#{@section}"
   end
 
