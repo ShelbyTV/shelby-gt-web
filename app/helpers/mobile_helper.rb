@@ -51,7 +51,7 @@ module MobileHelper
 
   def dedupe_frames(frames)
     frames.each_index do |i|
-      if i > 0 and frames[i]["video"]["id"] == frames[i - 1]["video"]["id"]
+      if (i > 0) and frames[i] and frames[i]["video"] and (frames[i]["video"]["id"] == frames[i - 1]["video"]["id"])
         frames[i]["duplicate"] = true
       end
     end
