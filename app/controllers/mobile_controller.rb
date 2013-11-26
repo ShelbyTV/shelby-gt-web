@@ -119,6 +119,8 @@ class MobileController < ApplicationController
           @sources = Shelby::API.get_featured_sources
         when Settings::Mobile.preferences_sections.notifications
           @preferences = @signed_in_user['preferences']
+        when Settings::Mobile.preferences_sections.profile
+          @user = @signed_in_user
         else
       end
 
