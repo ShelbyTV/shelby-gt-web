@@ -109,6 +109,16 @@ def user
   }
 end
 
+def user_preferences
+  {
+    :email_updates               => "true",
+    :like_notifications          => "true",
+    :reroll_notifications        => "true",
+    :comment_notifications       => "true",
+    :roll_activity_notifications => "true"
+  }
+end
+
 def user_signed_in
   true
 end

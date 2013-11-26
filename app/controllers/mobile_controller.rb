@@ -133,12 +133,20 @@ class MobileController < ApplicationController
     @is_mobile      = is_mobile?
     @user_signed_in = user_signed_in?
 
+    puts "pre: : : : :  #{@signed_in_user['preferences']}"
+
     @section = Settings::Mobile.preferences_sections.notifications
     @preferences = @signed_in_user['preferences']
 
-    @preferences.each do |preference,value|
-      @preferences[preference] = params.has_key?(preference)
+    @preferences.each do |preference|
+      @preferences[preference] = params.has_key?(preference.to_s)
     end
+
+    # @preferences.shift
+
+    # Rails.logger.info "params: #{params}, prefs: #{@preferences}"
+
+    flash.now[:error] = Settings::ErrorMessages.problem_refresh if @preferences.count != Settings::Mobile.email_notifications.count
 
     update_user(@signed_in_user, {:preferences => @preferences})
 

@@ -7,6 +7,7 @@ ShelbyGtWeb::Application.routes.draw do
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#landing', :as => :mobile_landing
     get '/featured' => 'mobile#featured', :as => :mobile_featured
+    get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
     get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
     post '/preferences/notifications' => 'mobile#notifications', :as => :mobile_preferences
     get '/stream' => 'mobile#stream', :as => :mobile_stream
