@@ -26,6 +26,7 @@ development:
 
 test:
   <<: *defaults
+  secure_form_root: "https://staging.shelby.tv"
 
 staging:
   <<: *defaults
