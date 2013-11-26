@@ -421,6 +421,14 @@ a {
       margin-bottom: 2em;
     }
   }
+
+  .welcome-message--large {
+    width: 360px;
+    margin-left: -180px;
+    .welcome-message__h1--plain {
+      font-size: 1.4em;
+    }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////
