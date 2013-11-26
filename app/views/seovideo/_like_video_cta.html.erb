@@ -1,0 +1,28 @@
+<% # encoding: UTF-8 %>
+<div class="js-seo-like-video-message frame-body-wrapper welcome-message__wrapper welcome-message__wrapper--seo hidden">
+  <div class="welcome-message welcome-message--large welcome-message--seo">
+    <div>
+      <h2 class="welcome-message__h1--plain">
+        Did you like that video?
+      </h2>
+
+      <div class="welcome-message__button-wrapper">
+        <a href="#" class="button_primer button_command two-fifths button_command--like_video js-like-video js-cta js-track-event"  data-ga_category="<%= category %>" data-ga_action="Click YES I LIKE" data-ga_label="In Modal">
+          <span class="button_label">Yes</span>
+        </a>
+
+        <a href="#" class="button_primer button_command two-fifths button_command--dont_like_video js-dont-like-video js-cta js-track-event"  data-ga_category="<%= category %>" data-ga_action="Click NO I LIKE" data-ga_label="In Modal">
+          <span class="button_label">No</span>
+        </a>
+
+      </div>
+    </div><!-- eo welcome-message__head -->
+
+  </div><!-- eo .welcome-message -->
+</div>
+
+<% if with_js %>
+  <%= javascript_tag do %>
+    <%= render :partial => "like_message_cta_brains", :locals => {:from_similar_video=> @from_similar_video}, :formats=>[:js] %>
+  <% end %>
+<% end %>

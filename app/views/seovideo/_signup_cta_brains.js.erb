@@ -13,14 +13,13 @@ $(document).on('ready', function(){
     } catch(e) {}
     // show this bad boy
     $('.js-seo-signup-message').removeClass('hidden');
-    // let em close it
-    $('body').on('click', function(){
-      $('.js-seo-signup-message').addClass('hidden');
-      try {
-        _gaq.push(['_trackEvent', 'SEO Video', 'Click on body with modal', "When clicking related video"]);
-      } catch(e) {}
-    });
   }
+
+  // let em close it
+  $('body').on('click', '.js-seo-signup-message', function(){
+    $('.js-seo-signup-message').addClass('hidden');
+  });
+
 });
 
 

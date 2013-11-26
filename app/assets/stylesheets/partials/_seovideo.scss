@@ -181,6 +181,25 @@ a {
 
 }
 
+// like cta related
+.button_command--like_video {
+  margin: 30px 10px 20px;
+  background-color: rgba(111, 190, 71, 0.9);
+  &:hover {
+    background-color: $ui-green;
+  }
+}
+
+.button_command--dont_like_video {
+  margin: 30px 10px 20px;
+  background-color: rgba(238, 76, 76, 0.9);
+  color: rgba(0, 0, 0, 0.5) !important;
+  &:hover {
+    background-color: $ui-red;
+    color: $ui-white;
+  }
+}
+
 //------------------------------------------------------------------------------
 //  seovideo related
 //------------------------------------------------------------------------------
