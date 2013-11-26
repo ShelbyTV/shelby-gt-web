@@ -75,7 +75,7 @@ libs.shelbyGT.FollowSourcesView = Support.CompositeView.extend({
           success : function(){
             if (shelby.models.dashboard.get('dashboard_entries').length <= dbeCountBeforeFollow) {
               // if we haven't found any new videos from the backfill yet, keep polling
-              self._pollingTimeout = setTimeout(onRollJoined, 500);
+              self._pollingTimeout = setTimeout(onRollJoined, 250);
             } else {
               // we've found some video, polling is done
               self._pollingTimeout = null;
