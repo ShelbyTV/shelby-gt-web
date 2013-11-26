@@ -20,6 +20,8 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _emptyIndicatorView : null,
 
+  _noMoreResultsView : null,
+
   events : function() {
     var events = {
       "click .js-load-more:not(.js-loading)" : "_loadMore"
@@ -91,7 +93,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     if (this.options.doStaticRender &&
         this.options.showEmptyIndicatorOnStaticRender &&
         this.options.emptyIndicatorViewProto &&
-        this._numItemsLoaded == 0) {
+        this._numItemsLoaded === 0) {
         this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
         this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
     }
@@ -113,7 +115,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     this.$('.js-load-more').removeClass('js-loading').show();
     this.$('.js-load-more-button').html(this.options.loadMoreCopy);
     if (this.options.emptyIndicatorViewProto) {
-      if (this._numItemsLoaded == 0 && !items.length && !this._emptyIndicatorView) {
+      if (this._numItemsLoaded === 0 && !items.length && !this._emptyIndicatorView) {
         this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
         this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
       } else if (items.length && this._emptyIndicatorView) {
@@ -126,8 +128,9 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
       // if the load returned less items than we requested, there are no more items to
       // be loaded and we hide the DOM element that is clicked for more loading
       this._disableLoadMore();
-      if (this.options.noMoreResultsViewProto && (this._numItemsLoaded != 0 || items.length)) {
-        this.appendChild(new this.options.noMoreResultsViewProto());
+      if (this.options.noMoreResultsViewProto && (this._numItemsLoaded !== 0 || items.length) && !this._noMoreResultsView) {
+        this._noMoreResultsView = new this.options.noMoreResultsViewProto();
+        this.appendChild(this._noMoreResultsView);
       }
     } else {
       this._loadMoreEnabled = true;
