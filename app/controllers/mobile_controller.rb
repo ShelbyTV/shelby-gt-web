@@ -149,6 +149,26 @@ class MobileController < ApplicationController
     render "/mobile/preferences_#{@section}"
   end
 
+  def profile
+    @signed_in_user = check_for_signed_in_user
+    @is_mobile      = is_mobile?
+    @user_signed_in = user_signed_in?
+
+    @section = Settings::Mobile.preferences_sections.profile
+
+    data = {}
+
+    data[:name] = params['userFullname'] if params['userFullname']
+    data[:nickname] = params['userNickname'] if params['userNickname']
+    data[:primary_email] = params['userEmail'] if params['userEmail']
+
+    update_user(@signed_in_user, data)
+
+    #TODO: this needs error/success handling
+
+    redirect_to Settings::Mobile.mobile_subdirectory + "/preferences/" + Settings::Mobile.preferences_sections.profile
+  end
+
   def roll
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?

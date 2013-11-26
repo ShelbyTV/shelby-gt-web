@@ -10,6 +10,7 @@ ShelbyGtWeb::Application.routes.draw do
     get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
     get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
     post '/preferences/notifications' => 'mobile#notifications', :as => :mobile_preferences
+    post '/preferences/profile' => 'mobile#profile', :as => :mobile_preferences
     get '/stream' => 'mobile#stream', :as => :mobile_stream
     get '/signout' => 'mobile#signout', :as => :mobile_signout
     get '/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
@@ -26,6 +27,7 @@ ShelbyGtWeb::Application.routes.draw do
     get '/m/preferences' => 'mobile#preferences', :as => :mobile_preferences
     get '/m/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
     post '/m/preferences/notifications' => 'mobile#notifications', :as => :mobile_preferences
+    post '/m/preferences/profile' => 'mobile#profile', :as => :mobile_preferences
     get '/m/stream' => 'mobile#stream', :as => :mobile_stream
     get '/m/signout' => 'mobile#signout', :as => :mobile_signout
     get '/m/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
