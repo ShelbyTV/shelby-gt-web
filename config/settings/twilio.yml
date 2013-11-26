@@ -10,11 +10,11 @@ development:
 test:
   <<: *defaults
 
-staging: &staging
+staging:
+  <<: *defaults
+
+production:
   <<: *defaults
   account_sid: "AC6edd44527894ab416fc45e4cb9b29e9e"
   auth_token: "12ee2862a7388ba49b9915c37c12bd50"
   from_number: "+16467620402"
-
-production:
-  <<: *staging
