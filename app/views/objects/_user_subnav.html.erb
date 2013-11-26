@@ -6,7 +6,7 @@
       data-ga_action="Profile"
       data-ga_label="<%= userNickname %>"
     >
-      Profile
+      Me
     </button>
   </li>
 </ul>
@@ -37,6 +37,17 @@
       </a>
     </li>
   <% else %>
+    <li class="list__item">
+      <a
+        href="<%= is_mobile ? Settings::Mobile.mobile_subdirectory : '' %>/preferences/profile"
+        class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
+        data-ga_category="Header"
+        data-ga_action="Profile"
+        data-ga_label="<%= userNickname %>"
+        >
+        Edit Profile
+      </a>
+    </li>
     <li class="list__item">
       <a
         href="<%= is_mobile ? Settings::Mobile.mobile_subdirectory : '' %>/preferences/sources"
