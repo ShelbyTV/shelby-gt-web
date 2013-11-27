@@ -4,20 +4,7 @@ describe MobileController do
 
   context "preferences" do
     before(:each) do
-      @user = {
-        'nickname' => "Username",
-        'name' => "Jean Luc Picard",
-        'primary_email' => "jlpicard@tng.com",
-        'preferences' => {
-          'email_updates'               => "true",
-          'like_notifications'          => "true",
-          'reroll_notifications'        => "true",
-          'comment_notifications'       => "true",
-          'roll_activity_notifications' => "true"
-        }
-      }
-
-      controller.stub(:check_for_signed_in_user).and_return(@user)
+      controller.stub(:check_for_signed_in_user).and_return(user)
       controller.stub(:user_signed_in?).and_return(true)
     end
 

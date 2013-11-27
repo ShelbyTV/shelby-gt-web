@@ -107,6 +107,7 @@ def user
   {
     "avatar_updated_at"   => "2012-10-26 11:49:39 -0400",
     "has_shelby_avatar"   => true,
+    "name"                => "Jean Luc Picard",
     "nickname"            => "nickname",
     "user_image_original" => nil,
     "user_image"          => nil,
@@ -117,6 +118,7 @@ def user
       'reroll_notifications'        => "true",
       'comment_notifications'       => "true",
       'roll_activity_notifications' => "true"
-    }
+    },
+    "primary_email"       => "jlpicard@starfleet.com"
   }
 end

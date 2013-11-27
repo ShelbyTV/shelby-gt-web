@@ -4,6 +4,7 @@ describe 'Login Process', :type => :feature do
 
   before(:each) do
     visit('/')
+    page
   end
 
   context 'when initially logged out' do
@@ -20,7 +21,7 @@ describe 'Login Process', :type => :feature do
     context 'after hovering over Log In', :js => true do
 
       before(:each) do
-        page.driver.resize(1100,800)
+        page.driver.resize(1200,800)
         find('.dropdown_module').hover
       end
 
