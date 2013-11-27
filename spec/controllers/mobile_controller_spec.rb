@@ -25,7 +25,7 @@ describe MobileController do
     describe "GET 'notifications'" do
 
       it 'loads successfully loads the proper template' do
-        get :notifications, user_preferences
+        get :notifications, user['preferences']
 
         response.should be_success
         response.should render_template "preferences_notifications"
@@ -36,7 +36,7 @@ describe MobileController do
     describe "POST 'notifications'" do
 
       it "when it receives the expected params" do
-        post :notifications, user_preferences
+        post :notifications, user['preferences']
 
         response.should be_success
         response.should render_template "preferences_notifications"

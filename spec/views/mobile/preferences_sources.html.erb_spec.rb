@@ -13,7 +13,7 @@ describe "/m/preferences/sources" do
   context "when page is visited" do
     before(:each) do
       view.stub(:csrf_token_from_cookie).and_return(true)
-      view.stub(:signed_in_user).and_return(user_signed_in)
+      view.stub(:signed_in_user).and_return(true)
       assign(:signed_in_user, user)
     end
 

@@ -105,20 +105,18 @@ end
 
 def user
   {
-    :nickname => "nickname"
+    "avatar_updated_at"   => "2012-10-26 11:49:39 -0400",
+    "has_shelby_avatar"   => true,
+    "nickname"            => "nickname",
+    "user_image_original" => nil,
+    "user_image"          => nil,
+    "user_type"           => 0,
+    "preferences"         => {
+      'email_updates'               => "true",
+      'like_notifications'          => "true",
+      'reroll_notifications'        => "true",
+      'comment_notifications'       => "true",
+      'roll_activity_notifications' => "true"
+    }
   }
-end
-
-def user_preferences
-  {
-    'email_updates'               => "true",
-    'like_notifications'          => "true",
-    'reroll_notifications'        => "true",
-    'comment_notifications'       => "true",
-    'roll_activity_notifications' => "true"
-  }
-end
-
-def user_signed_in
-  true
 end
