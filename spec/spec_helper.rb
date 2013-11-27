@@ -53,7 +53,7 @@ end
 #NOTE: Switch from LogKiller to WarningSuppressor as the :phantomjs_logger if you want to see console.log output and other debug output
 # => from phantomjs
 Capybara.register_driver :poltergeist_custom do |app|
-  Capybara::Poltergeist::Driver.new(app, {phantomjs_logger: LogKiller, :phantomjs_options => ['--ignore-ssl-errors=yes', '--local-to-remote-url-access=yes']})
+  Capybara::Poltergeist::Driver.new(app, {phantomjs: '/usr/local/bin/phantomjs', phantomjs_logger: LogKiller, :phantomjs_options => ['--ignore-ssl-errors=yes', '--local-to-remote-url-access=yes']})
 end
 
 Capybara.javascript_driver = :poltergeist_custom
@@ -114,9 +114,9 @@ def user
     "user_type"           => 0,
     "preferences"         => {
       'email_updates'               => "true",
+      'comment_notifications'       => "true",
       'like_notifications'          => "true",
       'reroll_notifications'        => "true",
-      'comment_notifications'       => "true",
       'roll_activity_notifications' => "true"
     },
     "primary_email"       => "jlpicard@starfleet.com"
