@@ -14,18 +14,21 @@ describe "/m/preferences/notifications" do
     before(:each) do
       view.stub(:csrf_token_from_cookie).and_return(true)
       assign(:signed_in_user,user)
-    end
 
-    it "renders the notifications" do
       @user_preferences = user_preferences
-
       assign(:preferences, @user_preferences)
 
       render :template => "mobile/preferences_notifications", :layout => "layouts/mobile"
+    end
 
-      rendered.should have_selector('.form_label', @user_preferences.count)
+    it "renders the expected number of notifications" do
+      rendered.should have_selector('label', Settings::Mobile.email_notifications.count)
+    end
 
-      #TODO: test <label></label> "content"
+    it "renders the labels appropriately" do
+      Settings::Mobile.email_notifications.each do |notification,label|
+        rendered.should =~ /#{label}/
+      end
     end
   end
 end

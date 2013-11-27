@@ -111,11 +111,11 @@ end
 
 def user_preferences
   {
-    :email_updates               => "true",
-    :like_notifications          => "true",
-    :reroll_notifications        => "true",
-    :comment_notifications       => "true",
-    :roll_activity_notifications => "true"
+    'email_updates'               => "true",
+    'like_notifications'          => "true",
+    'reroll_notifications'        => "true",
+    'comment_notifications'       => "true",
+    'roll_activity_notifications' => "true"
   }
 end
 
