@@ -4,6 +4,7 @@
   "launch_path" : "/?src=amazon-app",
   "type" : "web",
   "permissions": [
+    "auth"
   ],
-  "last_update" : "2013-10-14 16:08:08+0000"
+  "last_update" : "2013-12-1 16:08:08+0000"
 }
