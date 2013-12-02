@@ -15,13 +15,14 @@ describe "/m/preferences/profile" do
       view.stub(:csrf_token_from_cookie).and_return(true)
       view.stub(:signed_in_user).and_return(true)
       assign(:signed_in_user, user)
+      assign(:user, user)
     end
 
-    it "renders the sources" do
-      @quantity = 2
-      assign(:sources, sources(@quantity))
-      render :template => "mobile/preferences_sources", :layout => "layouts/mobile"
-      rendered.should have_selector('.user', :count => @quantity)
+    it "renders the profile" do
+      render :template => "mobile/preferences_profile", :layout => "layouts/mobile"
+      rendered.should have_content user['email']
+      rendered.should have_content user['name']
+      rendered.should have_content user['nickname']
     end
   end
 end
