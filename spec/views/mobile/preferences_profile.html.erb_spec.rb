@@ -18,7 +18,7 @@ describe "/m/preferences/profile" do
       assign(:user, user)
     end
 
-    it "renders the profile" do
+    it "renders the user's profile" do
       render :template => "mobile/preferences_profile", :layout => "layouts/mobile"
       rendered.should have_content user['email']
       rendered.should have_content user['name']
