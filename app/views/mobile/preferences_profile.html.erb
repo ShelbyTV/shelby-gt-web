@@ -1,28 +1,8 @@
-<div class="preferences_page preferences_page--notifications">
+<div class="preferences_page preferences_page--profile">
   <form action="<%= Settings::Mobile.mobile_subdirectory %>/preferences/profile" class="form_module js-submit-profile" method="POST">
     <h1 class="form__legend">
       Update Profile
     </h1>
-
-    <fieldset class="form_fieldset">
-      <label for="avatar" class="form_label">
-        Avatar
-      </label>
-
-      <div class="media_module media_module--bare avatar-section-body clearfix">
-        <div id="js-dynamic-user-avatar" class="media_image avatar-section-viewport">
-          <!-- filled in by UserAvatarPresenterView -->
-        </div>
-
-        <div id="js-user-avatar-uploader" class="media_body avatar-section-input">
-          <!-- filled in by UserAvatarUploaderView -->
-        </div>
-
-        <button class="button_primer button_command button_command--flexible button_gray avatar-section-button js-choose-file">
-          Choose Avatar
-        </button>
-      </div><!-- eo media_module -->
-    </fieldset>
 
     <fieldset class="form_fieldset">
       <label for="userFullname" class="form_label">

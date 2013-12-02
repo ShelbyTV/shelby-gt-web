@@ -11,7 +11,7 @@ describe MobileController do
 
     describe "GET 'notifications'" do
 
-      it 'loads successfully loads the proper template' do
+      it 'loads successfully, loads the proper template' do
         get :notifications, user['preferences']
 
         response.should be_success
