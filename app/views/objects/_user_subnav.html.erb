@@ -59,6 +59,17 @@
         Follow Sources
       </a>
     </li>
+    <li class="list__item">
+      <a
+        href="<%= is_mobile ? Settings::Mobile.mobile_subdirectory : '' %>/preferences/notifications"
+        class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
+        data-ga_category="Header"
+        data-ga_action="Notifications"
+        data-ga_label="<%= userNickname %>"
+        >
+        Notifications
+      </a>
+    </li>
   <% end %>
 
   <li class="list__item">
