@@ -122,3 +122,95 @@ def user
     "primary_email"       => "jlpicard@starfleet.com"
   }
 end
+
+def dbe
+  {
+    "id"       : "529cb5d759b052171500068b",
+    "user_id"  : "508ab05eb415cc777c003e4d",
+    "action"   : 1,
+    "actor_id" : "4f907a9a9a725b46010005c5",
+    "frame"    : {
+      "id"                  : "529cb5d559b0523f1902a77d",
+      "score"               : 1247.4017111111111,
+      "view_count"          : 1,
+      "creator_id"          : "4f907a9a9a725b46010005c5",
+      "conversation_id"     : "529cb5d559b0523f1902a77b",
+      "roll_id"             : "4f907a9b9a725b46010005c7",
+      "video_id"            : "529cb5d559b0523f1902a778",
+      "upvoters"            : [ ],
+      "like_count"          : 0,
+      "originator_id"       : null,
+      "originator"          : null,
+      "created_at"          : "42m ago",
+      "creator"             : {
+      "has_shelby_avatar"   : false,
+      "id"                  : "4f907a9a9a725b46010005c5",
+      "name"                : null,
+      "nickname"            : "VICE",
+      "user_image_original" : "http://graph.facebook.com/167115176655082/picture",
+      "user_image"          : "http://graph.facebook.com/167115176655082/picture",
+      "user_type"           : 3,
+      "public_roll_id"      : "4f907a9b9a725b46010005c7",
+      "gt_enabled"          : false,
+      "authentications"     : [
+        {
+        "uid"                 : "167115176655082",
+        "provider"            : "facebook",
+        "nickname"            : "VICE"
+        }
+      ]
+    },
+    "roll" : {
+      "id"                        : "4f907a9b9a725b46010005c7",
+      "collaborative"             : false,
+      "public"                    : true,
+      "creator_id"                : "4f907a9a9a725b46010005c5",
+      "origin_network"            : "facebook",
+      "genius"                    : false,
+      "frame_count"               : 475,
+      "first_frame_thumbnail_url" : "http://i1.ytimg.com/vi/fANM7Yooiw8/0.jpg",
+      "title"                     : "VICE",
+      "roll_type"                 : 16,
+      "thumbnail_url"             : "http://b.vimeocdn.com/ts/308/025/308025790_960.jpg"
+    },
+    "video" : {
+      "id"                  : "529cb5d559b0523f1902a778",
+      "provider_name"       : "youtube",
+      "provider_id"         : "fANM7Yooiw8",
+      "title"               : "Fresh Off The Boat With Eddie Huang: Moscow (Part 1)",
+      "description"         : "In part one of Fresh Off the Boat - Moscow, Eddie takes his first shot of Russian vodka, chows down on some \"communist dogs\" with one of the few black Muscovites, and discusses the country's diverse generation of millennials and their evolving ideologies. Miss out on Season 1? Watch it here! http://bit.ly/Fresh-Off-The-Boat-S1 Buy Eddie's book here! http://www.FreshOffTheBoatBook.com Check out Eddie's blog: http://thepopchef.blogspot.com Follow Eddie on Twitter here: http://twitter.com/MrEddieHuang Subscribe to VICE here! http://bit.ly/Subscribe-to-VICE Check out our full video catalog: http://bit.ly/VICE-Videos Videos, daily editorial and more: http://vice.com Like VICE on Facebook: http://fb.com/vice Follow VICE on Twitter: http://twitter.com/vice Read our tumblr: http://vicemag.tumblr.com",
+      "duration"            : "753",
+      "author"              : "VICE",
+      "thumbnail_url"       : "http://i1.ytimg.com/vi/fANM7Yooiw8/0.jpg",
+      "source_url"          : "http://www.youtube.com/watch?v=fANM7Yooiw8&feature=youtube_gdata_player",
+      "embed_url"           : "http://www.youtube.com/v/fANM7Yooiw8&feature=youtube_gdata_player",
+      "view_count"          : 1,
+      "like_count"          : 0,
+      "tags"                : [ ],
+      "categories"          : [ "Entertainment" ],
+      "first_unplayable_at" : null,
+      "last_unplayable_at"  : null,
+      "recs"                : [ ]
+    },
+    "conversation" : {
+      "id"                     : "529cb5d559b0523f1902a77b",
+      "public"                 : true,
+      "messages"               : [
+        {
+          "id"                     : "529cb5d559b0523f1902a77a",
+          "nickname"               : "VICE",
+          "realname"               : null,
+          "user_image_url"         : "http://graph.facebook.com/167115176655082/picture",
+          "text"                   : "In part one of Fresh Off the Boat - Moscow, Eddie takes his first shot of Russian vodka, chows down on some \"communist dogs\" with one of the few black Muscovites, and discusses the country's diverse generation of millennials and their evolving ideologies. Miss out on Season 1? Watch it here! http://bit.ly/Fresh-Off-The-Boat-S1 Buy Eddie's book here! http://www.FreshOffTheBoatBook.com Check out Eddie's blog: http://thepopchef.blogspot.com Follow Eddie on Twitter here: http://twitter.com/MrEddieHuang Subscribe to VICE here! http://bit.ly/Subscribe-to-VICE Check out our full video catalog: http://bit.ly/VICE-Videos Videos, daily editorial and more: http://vice.com Like VICE on Facebook: http://fb.com/vice Follow VICE on Twitter: http://twitter.com/vice Read our tumblr: http://vicemag.tumblr.com",
+          "origin_network"         : null,
+          "origin_id"              : null,
+          "origin_user_id"         : null,
+          "user_id"                : "4f907a9a9a725b46010005c5",
+          "user_has_shelby_avatar" : false,
+          "public"                 : true,
+          "created_at"             : "42m ago"
+        }
+      ]
+    }
+  }
+end

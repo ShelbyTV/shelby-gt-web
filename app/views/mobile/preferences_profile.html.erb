@@ -4,6 +4,9 @@
       Update Profile
     </h1>
 
+    <%= content_tag :div, "Username #{flash[:errors_nickname]}", :class => "form_fieldset form_fieldset--error" if flash[:errors_nickname] %>
+    <%= content_tag :div, "Email #{flash[:errors_primary_email]}", :class => "form_fieldset form_fieldset--error" if flash[:errors_primary_email] %>
+
     <fieldset class="form_fieldset">
       <label for="userFullname" class="form_label">
         Full Name
@@ -12,7 +15,7 @@
       <input required type="text" class="form_input" id="userFullname" name="userFullname" placeholder="First Name, Last Name" value="<%= @user['name'] if @user['name'] %>" />
     </fieldset>
 
-    <fieldset class="form_fieldset">
+    <fieldset class="form_fieldset<%= " form_fieldset--error" if flash[:errors_nickname] %>">
       <label for="userNickname" class="form_label">
         Username
       </label>
@@ -20,7 +23,7 @@
       <input required type="text" class="form_input" id="userNickname" name="userNickname" value="<%= @user['nickname'] if @user['nickname'] %>" />
     </fieldset>
 
-    <fieldset class="form_fieldset">
+    <fieldset class="form_fieldset<%= " form_fieldset--error" if flash[:errors_primary_email] %>">
       <label for="userEmail" class="form_label">
         Email
       </label>

@@ -36,6 +36,8 @@ module MobileHelper
     r = Shelby::API.update_user(user['id'], attrs, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
     # proxy the cookies
     Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie']) if r
+
+    r
   end
 
   def dedupe_dashboard(dbes)
