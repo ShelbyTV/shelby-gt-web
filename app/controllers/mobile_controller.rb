@@ -40,7 +40,7 @@ class MobileController < ApplicationController
       # this means that the user isn't *really* logged in, delete the cookie and redirect to landing
       if @signed_in_user['app_progress'].nil?
         cookies.delete(:_shelby_gt_common)
-        (redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401) and return)
+        (redirect_to mobile_landing_path(:msg => Settings::ErrorMessages.must_be_logged_in, :status => 401) and return)
       end
 
       (redirect_to mobile_show_onboarding_path(:step => 1) and return) unless (!@signed_in_user.nil? and (@signed_in_user['app_progress']['onboarding'] == true))
@@ -55,7 +55,7 @@ class MobileController < ApplicationController
       d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit, params[:entry])
       @dashboard = dedupe_dashboard(d)
     else
-      redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401)
+      redirect_to mobile_landing_path(:msg => Settings::ErrorMessages.must_be_logged_in, :status => 401)
     end
   end
 
@@ -131,11 +131,11 @@ class MobileController < ApplicationController
   end
 
   def notifications
-    @signed_in_user = check_for_signed_in_user
-    @is_mobile      = is_mobile?
-    @user_signed_in = user_signed_in?
+    if user_signed_in?
+      @signed_in_user = check_for_signed_in_user
+      @is_mobile      = is_mobile?
+      @user_signed_in = user_signed_in?
 
-    if @user_signed_in
       @section = Settings::Mobile.preferences_sections.notifications
       @preferences = @signed_in_user['preferences']
 
@@ -155,27 +155,31 @@ class MobileController < ApplicationController
   end
 
   def profile
-    @signed_in_user = check_for_signed_in_user
-    @is_mobile      = is_mobile?
-    @user_signed_in = user_signed_in?
+    if user_signed_in?
+      @signed_in_user = check_for_signed_in_user
+      @is_mobile      = is_mobile?
+      @user_signed_in = user_signed_in?
 
-    @section = Settings::Mobile.preferences_sections.profile
+      @section = Settings::Mobile.preferences_sections.profile
 
-    data = {}
+      data = {}
 
-    data[:name] = params['userFullname'] if params['userFullname']
-    data[:nickname] = params['userNickname'] if params['userNickname']
-    data[:primary_email] = params['userEmail'] if params['userEmail']
+      data[:name] = params['userFullname'] if params['userFullname']
+      data[:nickname] = params['userNickname'] if params['userNickname']
+      data[:primary_email] = params['userEmail'] if params['userEmail']
 
-    response = update_user(@signed_in_user, data)
-    errors = response.parsed_response['errors']
+      response = update_user(@signed_in_user, data)
+      errors = response.parsed_response['errors']
 
-    flash[:errors_primary_email] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])
-    flash[:errors_nickname] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])
+      flash[:errors_primary_email] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])
+      flash[:errors_nickname] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])
 
-    #TODO: this needs error/success handling
+      #TODO: this needs error/success handling
 
-    redirect_to Settings::Mobile.mobile_subdirectory + "/preferences/" + Settings::Mobile.preferences_sections.profile
+      redirect_to Settings::Mobile.mobile_subdirectory + "/preferences/" + Settings::Mobile.preferences_sections.profile
+    else
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+    end
   end
 
   def roll
@@ -206,7 +210,7 @@ class MobileController < ApplicationController
         @frames = []
       end
     else
-      raise ActionController::RoutingError.new("We can't find the content you are looking for.")
+      raise ActionController::RoutingError.new(Settings::ErrorMessages.content_not_found)
     end
   end
 
@@ -220,7 +224,7 @@ class MobileController < ApplicationController
   def show_onboarding
     @signed_in_user = check_for_signed_in_user
     @current_step = (params[:step] || 1).to_i
-    raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
+    raise ActionController::RoutingError.new(Settings::ErrorMessages.step_does_not_exist) unless [1,2].include?(@current_step)
     #(redirect_to mobile_landing_path(:status=> "You must be logged in.") and return) unless user_signed_in?
 
     if @current_step == 1
@@ -234,8 +238,8 @@ class MobileController < ApplicationController
 
   def set_onboarding
     @current_step = params[:step].to_i
-    raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
-    (redirect_to mobile_landing_path(:status=> "You must be logged in.") and return) unless user_signed_in?
+    raise ActionController::RoutingError.new(Settings::ErrorMessages.step_does_not_exist) unless [1,2].include?(@current_step)
+    (redirect_to mobile_landing_path(:status=> Settings::ErrorMessages.must_be_logged_in) and return) unless user_signed_in?
 
     @current_user = Shelby::API.get_user(current_user_id)
 
@@ -252,7 +256,7 @@ class MobileController < ApplicationController
       update_user(@current_user, attributes)
       redirect_to mobile_stream_path
     else
-      redirect_to mobile_landing_path(:status =>"Something bad just happened")
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.step_does_not_exist)
     end
   end
 
