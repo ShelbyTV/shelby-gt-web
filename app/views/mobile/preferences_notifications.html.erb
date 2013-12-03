@@ -4,10 +4,6 @@
       Email Notifications
     </h1>
 
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
-
     <% @preferences.each do |key,value| %>
       <% if Settings::Mobile.email_notifications.key?(key) %>
         <fieldset class="form_fieldset">

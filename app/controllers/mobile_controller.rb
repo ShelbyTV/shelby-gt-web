@@ -102,7 +102,7 @@ class MobileController < ApplicationController
         @frames = []
       end
     else
-      redirect_to mobile_landing_path(:status =>"Not logged in.")
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
     end
   end
 
@@ -126,7 +126,7 @@ class MobileController < ApplicationController
 
       render "/mobile/preferences_#{@section}"
     else
-      redirect_to mobile_landing_path(:status =>"Not logged in.")
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
     end
   end
 
@@ -135,18 +135,23 @@ class MobileController < ApplicationController
     @is_mobile      = is_mobile?
     @user_signed_in = user_signed_in?
 
-    @section = Settings::Mobile.preferences_sections.notifications
-    @preferences = @signed_in_user['preferences']
+    if @user_signed_in
+      @section = Settings::Mobile.preferences_sections.notifications
+      @preferences = @signed_in_user['preferences']
 
-    @preferences.each do |preference,value|
-      @preferences[preference] = params.has_key?(preference)
-    end
+
+      @preferences.each do |preference,value|
+        @preferences[preference] = params.has_key?(preference)
+      end
 
     update_user(@signed_in_user, {:preferences => @preferences})
 
     #TODO: this needs error/success handling
 
-    render "/mobile/preferences_#{@section}"
+      render "/mobile/preferences_#{@section}"
+    else
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+    end
   end
 
   def profile

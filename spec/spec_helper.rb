@@ -103,6 +103,12 @@ def sources(quantity)
   cards
 end
 
+def anonymous_user
+  {
+    "nickname" => "Anonymous"
+  }
+end
+
 def user
   {
     "avatar_updated_at"   => "2012-10-26 11:49:39 -0400",

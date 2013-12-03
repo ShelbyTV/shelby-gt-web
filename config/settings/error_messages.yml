@@ -11,6 +11,7 @@ defaults: &defaults
   ]
 
   problem_refresh: There was a problem updating your settings. Please refresh the page and try again.
+  not_logged_in: Not logged in.
 
 development:
   <<: *defaults
