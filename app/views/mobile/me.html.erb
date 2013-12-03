@@ -3,28 +3,41 @@
       :ga_category     => Settings::Mobile.ga_category,
       :is_following    => nil,
       :user            => @signed_in_user,
-      :roll_type       => @roll_type,
-      :show_followings => true
+      :roll_type       => @roll_type
     }%>
 
 <% if @roll_type == Settings::Mobile.roll_followings %>
-    <%= render :partial => '/mobile/partials/users',
-        :locals => {
-          :ga_category    => Settings::Mobile.ga_category,
-          :is_following   => nil,
-          :signed_in_user => @signed_in_user,
-          :users          => @users
-        }
-    %>
+  <%= render :partial => '/mobile/partials/users',
+      :locals => {
+        :ga_category    => Settings::Mobile.ga_category,
+        :is_following   => nil,
+        :signed_in_user => @signed_in_user,
+        :users          => @users
+      }
+  %>
 <% else %>
-    <%= render :partial => '/mobile/partials/roll',
-        :locals => {}
-    %>
+  <%= render :partial => '/mobile/partials/roll',
+      :locals => {
+        :frames         => @frames,
+        :page           => @page,
+        :roll_type      => @roll_type,
+        :signed_in_user => @signed_in_user,
+        :user           => @user
+      }
+  %>
+
   <%= javascript_tag do %>
-    <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>
+    <%= render :partial => "/mobile/partials/mobile_video_player_brains",
+               :formats=>[:js]
+     %>
   <% end %>
 <% end %>
 
 <%= javascript_tag do %>
-  <%= render :partial => "/mobile/partials/intercom", :locals => {:signed_in_user => @signed_in_user}, :formats=>[:js] %>
+  <%= render :partial => "/mobile/partials/intercom",
+             :locals => {
+              :signed_in_user => @signed_in_user
+             },
+             :formats=>[:js]
+   %>
 <% end %>
