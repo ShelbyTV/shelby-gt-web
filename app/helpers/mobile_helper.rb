@@ -65,4 +65,13 @@ module MobileHelper
     }
   end
 
+  def strip_protocol_from_url(url)
+    if url.include? "http://"
+      stripped_url = url.sub(/http\:/, '')
+    elsif url.include? "https://"
+      stripped_url = url.sub(/https\:/, '')
+    end
+    return stripped_url
+  end
+
 end
