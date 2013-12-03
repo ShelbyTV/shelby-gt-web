@@ -1,66 +1,30 @@
 <%= render :partial => '/objects/roll_header',
     :locals => {
-      :ga_category  => "Mobile",
-      :is_following => nil,
-      :user         => @signed_in_user,
-      :roll_type    => @roll_type
+      :ga_category     => Settings::Mobile.ga_category,
+      :is_following    => nil,
+      :user            => @signed_in_user,
+      :roll_type       => @roll_type,
+      :show_followings => true
     }%>
 
-<% if @frames.empty? %>
-  <div class="empty-indicator">
-    <h2 class="center">
-      You haven't <%= (@roll_type == 'likes') ? 'liked' : 'shared' %> anything yet!
-    </h2>
-    <p class="center">
-      <a href="<%= Settings::Mobile.mobile_subdirectory %>/featured"
-          class="button_primer button_command button_command--flexible button_green js-track-event"
-          data-ga_category="Mobile"
-          data-ga_action="Click <%= @roll_type %> empty"
-          data-ga_value="<%= @signed_in_user['nickname'] %>"
-          >
-        Go to Featured <span class="icon icon-arrow_right"></span>
-      </a>
-    </p>
-  </div>
+<% if @roll_type == Settings::Mobile.roll_followings %>
+    <%= render :partial => '/mobile/partials/users',
+        :locals => {
+          :ga_category    => Settings::Mobile.ga_category,
+          :is_following   => nil,
+          :signed_in_user => @signed_in_user,
+          :users          => @users
+        }
+    %>
 <% else %>
-  <ul class="list js-list">
-    <% @frames.each_with_index do |frame, index| %>
-      <li class="list__item">
-        <% if frame['video'] and can_play_video(frame['video']['provider_name']) and !frame["duplicate"] %>
-          <%= render :partial => '/objects/frame',
-            :locals => {
-              :embed_video    => false,
-              :frame          => frame,
-              :frame_owner    => frame['creator'],
-              :ga_category    => "Mobile",
-              :index          => index,
-              :is_mobile      => true,
-              :roll_type      => @roll_type,
-              :signed_in_user => @signed_in_user,
-              :video          => frame['video']
-            } %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-
-  <p class="center">
-    <%= link_to mobile_user_path(
-          :path => @signed_in_user['nickname'],
-          :page => (@page + 1)),
-          {
-            :class => Settings::Mobile.load_more_button_class + " js-track-event",
-            'data-ga_category' => "Mobile",
-            'data-ga_action'   => "Click Load more on #{@roll_type}",
-            'data-ga_label'    => "#{@signed_in_user['nickname']}"
-          } do %>
-      <span class="button_label">Load More</span>
-    <% end %>
-  </p>
+    <%= render :partial => '/mobile/partials/roll',
+        :locals => {}
+    %>
+  <%= javascript_tag do %>
+    <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>
+  <% end %>
 <% end %>
 
 <%= javascript_tag do %>
-  <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>
   <%= render :partial => "/mobile/partials/intercom", :locals => {:signed_in_user => @signed_in_user}, :formats=>[:js] %>
 <% end %>
-

@@ -83,24 +83,42 @@ class MobileController < ApplicationController
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
 
-      if params[:type] == Settings::Mobile.roll_types['likes']
-        @roll_type = Settings::Mobile.roll_types['likes']
-        @roll_id   = @signed_in_user['watch_later_roll_id']
-      elsif params[:type] == Settings::Mobile.roll_types['shares']
-        @roll_type = Settings::Mobile.roll_types['shares']
-        @roll_id   = @signed_in_user['personal_roll_id']
-      elsif params[:type]
-        raise ActionController::RoutingError.new("Route doesn't exist.")
-      else
-        @roll_type = Settings::Mobile.roll_types['shares']
-        @roll_id   = @signed_in_user['personal_roll_id']
+      case params[:type]
+        when Settings::Mobile.roll_types['likes']
+          @roll_type = Settings::Mobile.roll_types['likes']
+          @roll_id   = @signed_in_user['watch_later_roll_id']
+        when Settings::Mobile.roll_types['shares']
+          @roll_type = Settings::Mobile.roll_types['shares']
+          @roll_id   = @signed_in_user['personal_roll_id']
+        else
+          raise ActionController::RoutingError.new(Settings::ErrorMessages.route_does_not_exist)
       end
+
+
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
         frames = @roll_with_frames['frames']
         @frames = dedupe_frames(frames)
       else
         @frames = []
       end
+    else
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+    end
+  end
+
+  def following
+    # this method is basically the same as mobile#me in this controller.
+    # keeping the logic that grabs users from the logic that grabs frames, rolls, etc.
+
+    if user_signed_in?
+      @signed_in_user = check_for_signed_in_user
+      @is_mobile      = is_mobile?
+      @user_signed_in = user_signed_in?
+
+      @roll_type = Settings::Mobile.roll_followings
+      @users = Shelby::API.get_user_followings(@signed_in_user['id'],request.headers['HTTP_COOKIE'])
+
+      render "/mobile/me" #same template as mobile#me method
     else
       redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
     end

@@ -1,0 +1,18 @@
+<ul class="list">
+  <% users.each do |user| %>
+    <% if [15,16].include?(user['roll_type']) and (user['creator_nickname'] != signed_in_user['nickname']) %>
+      <li class="list__item" data-user="<%= "#{user['creator_avatar_updated_at']}" %>">
+        <%= render :partial => '/objects/user_card',
+            :locals => {
+              :avatar       => avatar_url_for_roll(user),
+              :ga_category  => ga_category,
+              :is_following => is_following,
+              :realname     => user['creator_name'],
+              :roll_id      => user['id'],
+              :username     => user['creator_nickname'],
+              :user_type    => user['roll_type']
+            } %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

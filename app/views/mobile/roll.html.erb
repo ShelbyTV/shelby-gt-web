@@ -1,11 +1,3 @@
-<%= render :partial => '/objects/roll_header',
-    :locals => {
-      :ga_category  => "Mobile",
-      :is_following => @is_following,
-      :user         => @user,
-      :roll_type    => @roll_type
-    } %>
-
 <ul class="list js-list">
   <% @frames.each_with_index do |frame, index| %>
     <li class="list__item">
@@ -38,15 +30,14 @@
           'data-ga_action'   => "Click Load more on #{@roll_type}",
           'data-ga_label'    => "#{@signed_in_user['nickname']}"
         } do %>
-    <span class="button_label">Load More</span>
+      <span class="button_label">Load More</span>
+    <% end %>
+  <% else %>
+    <h3 class="user__h1 center">
+      <%= @user['name'] %> hasn't shared any video yet :(
+    </h3>
   <% end %>
-<% else %>
-  <h3 class="user__h1 center">
-    <%= @user['name'] %> hasn't shared any video yet :(
-  </h3>
-
-<% end %>
-
+</p>
 
 <%= javascript_tag do %>
   <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>
