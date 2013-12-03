@@ -1,11 +1,14 @@
 $(document).on('ready', function(){
   // avoiding bots:
   // add parameter to all videos in similar section to trigger display of signup cta.
-  var $similar_videos = $('.js-similar-video-list a')
-  $similar_videos.each(function(i, a){
-    $(a).attr('href', $(a).attr('href') + '?s=1');
-  });
-
+    var $similar_videos = $('.js-similar-video-list a')
+    $similar_videos.each(function(i, a){
+      <% if @user_signed_in or params[:source] == "email" %>
+        $(a).attr('href', $(a).attr('href') + '?source=email');
+      <% else %>
+        $(a).attr('href', $(a).attr('href') + '?s=1');
+      <% end %>
+    });
 
   if (<%= from_similar_video ? true : false %> == true) {
     try {
