@@ -2,7 +2,9 @@ $(document).on('ready', function(){
 
   $('.js-dont-like-video, .js-like-video').on('click', function(){
     $('.js-seo-like-video-message').addClass('hidden');
-    $('.js-seo-signup-message').removeClass('hidden');
+    <% unless @user_signed_in or params[:source] == 'email' %>
+      $('.js-seo-signup-message').removeClass('hidden');
+    <% end %>
   });
 
   // let em close it
