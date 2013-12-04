@@ -27,7 +27,7 @@
       </li>
 
       <li class="list__item js-guide-me js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Me" data-ga_label="<%= signed_in_user['nickname'] %>">
-        <a href="<%= appropriate_subdirectory %>/<%= signed_in_user['nickname'] %>" class="app_nav__button<%= " active-item" if pathname == 'me' or pathname == 'likes' or pathname == 'shares' %> js-me">
+        <a href="<%= appropriate_subdirectory %>/<%= signed_in_user['nickname'] %><%= "/shares" if is_mobile %>" class="app_nav__button<%= " active-item" if pathname == 'me' or pathname == 'likes' or pathname == 'shares' %> js-me">
           Me
         </a>
       </li>
