@@ -1,4 +1,5 @@
 //= require jquery
+//= require ./app/browser.js
 
 //for sharing.
 //= require ./backbone/underscore.js
@@ -53,10 +54,12 @@ $(document).ready(function(){
     }
     else if($this.hasClass('js-me')) {
       var username = $('.app_nav__button--settings').text().trim();
-      window.location = '/' + username;
+      var path = Browser.isAmazonWebApp() ? '/amazonapp' : '';
+      window.location = path + '/' + username;
     }
     else if($this.hasClass('js-signout')) {
-      window.location = "/signout";
+      var path = Browser.isAmazonWebApp() ? '/amazonapp' : '';
+      window.location = path + "/signout";
     } else {
       window.location = $this.attr('href');
     }
@@ -343,7 +346,8 @@ $(document).ready(function(){
 
             $scope.find('.js-liker-avatars-list').append(SHELBYJST['liker-item']({
               avatar: avatar,
-              liker: user
+              liker: user,
+              isAmazonWebApp: Browser.isAmazonWebApp()
             }));
           }
         },

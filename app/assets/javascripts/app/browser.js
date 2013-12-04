@@ -40,6 +40,11 @@ var Browser = {
     else{ return false; }
   },
 
+  isAmazonWebApp: function(){
+    if (navigator.platform.match(/^(AmazonWebAppPlatform)$/)){ return true; }
+    else{ return false; }
+  },
+
   isBoxee: function(){
     if (window.boxee !== undefined){ return true; }
     else{ return false; }
