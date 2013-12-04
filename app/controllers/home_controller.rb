@@ -258,6 +258,10 @@ class HomeController < ApplicationController
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 
+  def login
+    @session_error = params[:status]
+  end
+
 
   # THIS IS A TEMPORARY
   def bookmarklet

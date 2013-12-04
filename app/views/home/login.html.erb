@@ -1,56 +1,80 @@
 <!doctype html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
+
+<% # if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#" profile="http://www.w3.org/2005/10/profile">
   <meta charset="utf-8">
 
-  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
-       More info: h5bp.com/i/378 -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><%= render :partial => "/home/title_tag" %></title>
 
-  <title>Shelby.tv</title>
-  <meta name="description" content="">
+  <%= render :partial => "/home/meta_info" %>
+  <%= csrf_meta_tags %>
+  <meta content="user-scalable=no, width=device-width, initial-scale=0.8" name="viewport">
+  <link rel="apple-touch-icon-precomposed" href="http://shelby.tv/apple-touch-icon-precomposed.png" />
 
-  <!-- Mobile viewport optimized: h5bp.com/viewport -->
-  <meta name="viewport" content="width=device-width">
+  <%= stylesheet_link_tag "landing", :media => "screen" %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+  <%= javascript_include_tag "common", "landing" %>
 
-  <head profile="http://www.w3.org/2005/10/profile">
-  <link rel="icon"type="image/png" href="/favicon.png">
-
-  <%= stylesheet_link_tag "screen", :media => "screen" %>
-  <%= javascript_include_tag "shelby" %>
-
-</head>
-<body>
-  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-       chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-  <header>
-		
-  </header>
-  <div role="main" style="position: absolute; left: 300px; top: 300px; font-size: 33px;">
-		
-		<%= link_to 'login w/ twitter', "#{Settings::ShelbyAPI.url}/auth/twitter", :id => 'signin', :class => 'auth-popup' , "popup-width"=>"600" , "popup-height"=>"700" %>
-		
-  </div>
-
-
-  <footer>
-		
-  </footer>
-
-  <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
-       mathiasbynens.be/notes/async-analytics-snippet 
   <script>
-    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
+    var shelbyTrackingCategory = "Login Page";
   </script>
-	-->
+
+  <!-- Facebook Ad Tracking -->
+  <script type="text/javascript">
+    var fb_param = {};
+    fb_param.pixel_id = '6008900763972';
+    fb_param.value = '0.00';
+    fb_param.currency = 'USD';
+    (function(){
+      var fpw = document.createElement('script');
+      fpw.async = true;
+      fpw.src = '//connect.facebook.net/en_US/fp.js';
+      var ref = document.getElementsByTagName('script')[0];
+      ref.parentNode.insertBefore(fpw, ref);
+    })();
+  </script>
+  <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6008900763972&amp;value=0&amp;currency=USD" /></noscript>
+  <!-- END -->
+</head>
+<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %><%= " shelby--team" if @team %>">
+  <!-- Facebook widget -->
+  <div id="fb-root"></div>
+
+  <div class="shelby__wrapper clearfix" role="main">
+
+    <%= render :partial => '/home/landing_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
+
+    <% #------------ Shelf Content --------------- %>
+
+    <%= render :partial => '/home/shelf/errors' %>
+
+      <div class="shelf shelby__wrapper shelf__wrapper--login clearfix">
+        <div class="shelf__lining">
+          <h2 class="shelf__h2" style="text-align: center;">
+            Log in to find all the video's you and your friends will love.
+          </h2>
+
+          <ul class="list shelf__list clearfix">
+            <li class="secondary-item guide-login" style="float: none; margin: 0px auto; font-size: 1.2em; width: 310px;">
+              <section class=" login-section">
+                <div class="frame-body-wrapper clearfix">
+                  <%= render :partial => '/objects/login_form' %>
+                </div>
+              </section>
+            </li><!-- eo login button/dropdown -->
+          </ul>
+        </div><!-- eo shelf__lining -->
+      </div><!-- eo shelf -->
+
+
+    <% #------------ /Shelf Content --------------- %>
+  </div><!-- /shelby-wrapper -->
+
+  <%= render :partial => '/home/shelf/footer' %>
+
+  <%= render :partial => '/home/landing_scripts' %>
+
 </body>
 </html>

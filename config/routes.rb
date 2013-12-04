@@ -84,6 +84,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/experience' => "home#experience"
 
   get '/signout' => "home#signout", :as => :signout
+  get '/login' => "home#login"
 
   # THIS IS A TEMPORARY ROUTE to give the bookmarklet to someone (for reece)
   get '/herebedragons' => "home#bookmarklet"

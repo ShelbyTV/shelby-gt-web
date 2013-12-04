@@ -15,19 +15,8 @@ libs.shelbyGT.Ajax = {
     switch(jqXHR.status){
       case 401:
       case 403:
-        shelby.alert(msg,
-          function(returnValue){
-            var href = "/signout";
-
-            if(returnValue == libs.shelbyGT.notificationStateModel.ReturnValueButtonPrimary) {
-              href = "/signout";
-            } else {
-              href = "/signup";
-            }
-
-            document.location = href;
-          }
-        );
+        cookies.set('_shelby_gt_common', '');
+        document.location.href = "/login?status=401";
         break;
     }
   },
