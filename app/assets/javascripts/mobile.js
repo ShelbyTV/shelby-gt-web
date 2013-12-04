@@ -346,8 +346,7 @@ $(document).ready(function(){
 
             $scope.find('.js-liker-avatars-list').append(SHELBYJST['liker-item']({
               avatar: avatar,
-              liker: user,
-              isAmazonWebApp: Browser.isAmazonWebApp()
+              liker: user
             }));
           }
         },
