@@ -345,6 +345,7 @@ $(document).ready(function(){
             }
 
             var appropriatePath = Browser.isAmazonWebApp() ? '/amazonapp' : '';
+            console.log(appropriatePath);
 
             $scope.find('.js-liker-avatars-list').append(SHELBYJST['liker-item']({
               avatar: avatar,
