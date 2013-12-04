@@ -90,6 +90,7 @@ class MobileController < ApplicationController
         when Settings::Mobile.roll_types['shares']
           @roll_type = Settings::Mobile.roll_types['shares']
           @roll_id   = @signed_in_user['personal_roll_id']
+          @user      = @signed_in_user
         else
           raise ActionController::RoutingError.new(Settings::ErrorMessages.route_does_not_exist)
       end
@@ -227,6 +228,8 @@ class MobileController < ApplicationController
       else
         @frames = []
       end
+
+      # render "/mobile/me" #same template as mobile#me method
     else
       raise ActionController::RoutingError.new(Settings::ErrorMessages.content_not_found)
     end

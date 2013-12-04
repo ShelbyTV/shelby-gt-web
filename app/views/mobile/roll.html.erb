@@ -1,34 +1,31 @@
-<ul class="list js-list">
-  <% frames.each_with_index do |frame, index| %>
-    <li class="list__item">
-      <% if frame['video'] and can_play_video(frame['video']['provider_name']) and !frame["duplicate"] %>
-        <%= render :partial => '/objects/frame',
-          :locals => {
-            :embed_video    => false,
-            :frame          => frame,
-            :frame_owner    => frame['creator'],
-            :ga_category    => "Mobile",
-            :index          => index,
-            :is_mobile      => true,
-            :roll_type      => roll_type,
-            :signed_in_user => signed_in_user,
-            :video          => frame['video']
-          } %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<%= render :partial => '/objects/roll_header',
+    :locals => {
+      :ga_category     => Settings::Mobile.ga_category,
+      :is_following    => nil,
+      :user            => @user,
+      :roll_type       => @roll_type
+    }%>
+
+<%= render :partial => '/mobile/partials/list',
+    :locals => {
+      :frames         => @frames,
+      :page           => @page,
+      :roll_type      => @roll_type,
+      :signed_in_user => @signed_in_user,
+      :user           => @user
+    }
+%>
 
 <p class="center">
-  <% if !frames.empty? %>
+  <% if !@frames.empty? %>
     <%= link_to mobile_user_path(
-        user['id'],
-        :page => (page + 1)),
+        @user['id'],
+        :page => (@page + 1)),
         {
           :class => Settings::Mobile.load_more_button_class + " js-track-event",
           'data-ga_category' => "Mobile",
-          'data-ga_action'   => "Click Load more on #{roll_type}",
-          'data-ga_label'    => "#{signed_in_user['nickname']}"
+          'data-ga_action'   => "Click Load more on #{@roll_type}",
+          'data-ga_label'    => "#{@signed_in_user['nickname']}"
         } do %>
       <span class="button_label">Load More</span>
     <% end %>
@@ -41,5 +38,5 @@
 
 <%= javascript_tag do %>
   <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>
-  <%= render :partial => "/mobile/partials/intercom", :locals => {:signed_in_user => signed_in_user}, :formats=>[:js] %>
+  <%= render :partial => "/mobile/partials/intercom", :locals => {:signed_in_user => @signed_in_user}, :formats=>[:js] %>
 <% end %>
