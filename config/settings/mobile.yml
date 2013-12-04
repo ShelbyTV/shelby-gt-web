@@ -1,6 +1,7 @@
 
 defaults: &defaults
   mobile_subdirectory: ""
+  amazon_subdirectory: "/amazonapp"
   default_limit: 10
   supported_providers: ["youtube","vimeo","dailymotion"]
   button_gray_flexible: 'button_primer button_command button_command--flexible button_gray'
