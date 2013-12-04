@@ -261,14 +261,12 @@ class HomeController < ApplicationController
   def login
     @mobile_os     = detect_mobile_os
     @is_mobile     = is_mobile?
-
     @session_error = params[:status]
     if flash[:user_errors]
       @user_attributes = flash[:user_attributes]
       @email_error = flash[:user_errors_email]
       @nickname_error = flash[:user_errors_nickname]
     end
-
   end
 
 
