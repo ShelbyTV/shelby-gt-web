@@ -110,7 +110,7 @@ module Shelby
     end
 
     def self.log_session(id, cookie, csrf_token)
-      return unless user_signed_in?
+      #return unless user_signed_in?
       headers = { 'Cookie' => cookie }
       headers['X-CSRF-Token'] = csrf_token if csrf_token
       put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}/visit", { :headers => headers })
