@@ -91,7 +91,8 @@ $(document).ready(function(){
       }
     }
 
-    var $sharePanel = $('.js-share-panel').html(SHELBYJST['share-page-form'](data));
+    var $sharePanel   = $('.js-share-panel').html(SHELBYJST['share-page-form'](data)),
+        $notification = $('.js-notification');
 
     var $shareInitButton = $guide.on('click','.js-share-init',function(e){
       e.preventDefault();
@@ -161,6 +162,12 @@ $(document).ready(function(){
             },
             success: function (response) {
               console.log("Share successful!");
+
+              $notification.removeClass('hidden');
+
+              setTimeout(function(){
+                $notification.addClass('hidden');
+              },3000);
 
               $sharePanel.toggleClass('hidden',true);
               $guide.toggleClass('hidden',!$guide.hasClass('hidden'));

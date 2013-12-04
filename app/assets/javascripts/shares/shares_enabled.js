@@ -7,6 +7,7 @@ $(function(){
   var $dropdown        = $('.js-shares'),
       $frame           = $('.js-frame'),
       $body            = $('body'),
+      $notification    = $('.js-notification'),
       $shareInitButton = $('.js-share-init'),
       frame_id         = $frame.attr('id'),
       video_id         = $frame.data('video_id'),
@@ -108,6 +109,12 @@ $(function(){
       success: function (response) {
         console.log("Share successful!");
 
+        $notification.removeClass('hidden');
+
+        setTimeout(function(){
+          $notification.addClass('hidden');
+        },3000);
+
         $shareInitButton.toggleClass('button_active',false);
         $dropdown.toggleClass('hidden',true);
 
@@ -141,6 +148,7 @@ $(function(){
               withCredentials: true
             },
             success: function (response) {
+
               console.log("Social Share successful!");
             },
             error: function () {
