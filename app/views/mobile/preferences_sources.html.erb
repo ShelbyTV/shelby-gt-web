@@ -3,6 +3,7 @@
     <%= content_tag :li, :id => roll['id'], :class => 'list__item', :data => { :title => roll['display_title']} do %>
       <%= render :partial => '/objects/user_card', :locals => {
         :avatar       => roll['display_thumbnail_src'],
+        :clickable    => true,
         :ga_category  => 'Mobile',
         :is_following => false,
         :realname     => roll['description'],

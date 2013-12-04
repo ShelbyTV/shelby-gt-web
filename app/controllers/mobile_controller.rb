@@ -79,6 +79,7 @@ class MobileController < ApplicationController
       @signed_in_user = check_for_signed_in_user
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
+      @user           = @signed_in_user
 
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
@@ -90,7 +91,6 @@ class MobileController < ApplicationController
         when Settings::Mobile.roll_types['shares']
           @roll_type = Settings::Mobile.roll_types['shares']
           @roll_id   = @signed_in_user['personal_roll_id']
-          @user      = @signed_in_user
         else
           raise ActionController::RoutingError.new(Settings::ErrorMessages.route_does_not_exist)
       end
@@ -109,7 +109,7 @@ class MobileController < ApplicationController
 
   def following
     # this method is basically the same as mobile#me in this controller.
-    # keeping the logic that grabs users from the logic that grabs frames, rolls, etc.
+    # separating the logic that grabs Users from the logic that grabs Frames, Rolls, etc.
 
     if user_signed_in?
       @signed_in_user = check_for_signed_in_user
