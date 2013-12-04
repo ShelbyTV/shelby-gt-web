@@ -2,6 +2,7 @@
   <%= render :partial => '/objects/user_card',
       :locals => {
         :avatar       => avatar_url_for_user(user),
+        :clickable    => false,
         :ga_category  => ga_category,
         :is_following => is_following,
         :realname     => user['name'],
