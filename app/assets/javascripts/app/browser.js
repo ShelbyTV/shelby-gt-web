@@ -41,7 +41,7 @@ var Browser = {
   },
 
   isAmazonWebApp: function(){
-    if (navigator.userAgent.match(/^(AmazonWebAppPlatform)$/)){ return true; }
+    if (navigator.userAgent.match(/(AmazonWebAppPlatform)/)){ return true; }
     else{ return false; }
   },
 
