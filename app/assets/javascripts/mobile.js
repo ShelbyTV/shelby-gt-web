@@ -344,9 +344,12 @@ $(document).ready(function(){
               avatar = (user.user_image_original != 'null' && user.user_image_original) || (user.user_image != 'null' && user.user_image) || "/images/assets/avatar.png";
             }
 
+            var appropriatePath = Browser.isAmazonWebApp() ? '/amazonapp' : '';
+
             $scope.find('.js-liker-avatars-list').append(SHELBYJST['liker-item']({
               avatar: avatar,
-              liker: user
+              liker: user,
+              appropriatePath: appropriatePath
             }));
           }
         },
