@@ -306,7 +306,32 @@ $(document).ready(function(){
     });
 
     $this.addClass('visuallydisabled');
+
+    appendAvatar(frame_id);
   });
+
+  var $frameLikeList = $('#js-frame-like').html(),
+      $userLike      = $('#js-user-like').html();
+
+  var appendAvatar = function(frame_id) {
+    var $frame = $('#'+frame_id);
+        $likes = $frame.find('.js-frame-likes');
+
+    if(!$likes.length) {
+      //if no one Liked the Frame, add the Like list container:
+      $frame.append($frameLikeList);
+      // re-cache the newly added Likes list container:
+      $likes = $frame.find('.js-frame-likes');
+    } else {
+      // if the logged in user is already in the list, don't add that user again
+      if( _( JSON.parse($frame.find('.js-likes-array').html()) ).indexOf(user.id) != -1 ) {
+        return;
+      }
+    }
+
+    // append the user to the list:
+    $likes.children('.js-liker-avatars-list').append($userLike);
+  };
 
   var injectLikers = function(likers,$scope){
     if(likers.length) {
