@@ -15,28 +15,3 @@
       :user           => @user
     }
 %>
-
-<p class="center">
-  <% if !@frames.empty? %>
-    <%= link_to mobile_user_path(
-        @user['id'],
-        :page => (@page + 1)),
-        {
-          :class => Settings::Mobile.load_more_button_class + " js-track-event",
-          'data-ga_category' => "Mobile",
-          'data-ga_action'   => "Click Load more on #{@roll_type}",
-          'data-ga_label'    => "#{@signed_in_user['nickname']}"
-        } do %>
-      <span class="button_label">Load More</span>
-    <% end %>
-  <% else %>
-    <h3 class="user__h1 center">
-      <%= user['name'] %> hasn't shared any video yet :(
-    </h3>
-  <% end %>
-</p>
-
-<%= javascript_tag do %>
-  <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>
-  <%= render :partial => "/mobile/partials/intercom", :locals => {:signed_in_user => @signed_in_user}, :formats=>[:js] %>
-<% end %>
