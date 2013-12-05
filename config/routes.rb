@@ -6,6 +6,7 @@ ShelbyGtWeb::Application.routes.draw do
   # get '/genius' => 'genius#index'
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#landing', :as => :mobile_landing
+    get '/log_in' => "home#log_in"
     get '/featured' => 'mobile#featured', :as => :mobile_featured
     get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
     get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
@@ -18,11 +19,11 @@ ShelbyGtWeb::Application.routes.draw do
     get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
     get '/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
     get '/:username' => 'mobile#roll', :as => :mobile_user, :constraints => { :username => /[^\/]+/ }
-    get '/log_in' => "home#log_in"
   end
 
   scope "/amazonapp" do
     get '/' => 'mobile#landing', :as => :mobile_landing
+    get '/log_in' => "home#log_in"
     get '/featured' => 'mobile#featured', :as => :mobile_featured
     get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
     get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
@@ -35,7 +36,6 @@ ShelbyGtWeb::Application.routes.draw do
     get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
     get '/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
     get '/:username' => 'mobile#roll', :as => :mobile_user, :constraints => { :username => /[^\/]+/ }
-    get '/log_in' => "home#log_in"
   end
 
   #######################XXX###############################
@@ -43,6 +43,7 @@ ShelbyGtWeb::Application.routes.draw do
   if ["development","staging"].include?(Rails.env)
     scope "/m" do
       get '/' => 'mobile#landing', :as => :mobile_landing
+      get '/log_in' => "home#log_in"
       get '/featured' => 'mobile#featured', :as => :mobile_featured
       get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
       get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
@@ -55,7 +56,6 @@ ShelbyGtWeb::Application.routes.draw do
       get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
       get '/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
       get '/:username' => 'mobile#roll', :as => :mobile_user, :constraints => { :username => /[^\/]+/ }
-      get '/log_in' => "home#log_in"
     end
   end
   #######################XXX###############################
