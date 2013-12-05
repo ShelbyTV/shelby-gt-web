@@ -20,11 +20,11 @@
           <% if @inviter %>
             <%= @inviter['name'].titleize || @inviter['nickname'].capitalize %> found the perfect stream of video on Shelby. Find Yours.
           <% else %>
-            Get your perfect stream of video
+            <%= Settings::Marketing.discover_love %>
           <% end %>
         </h1>
 
-        <a href="http://api.shelby.tv/auth/facebook" class="button_primer button_facebook-blue button_command button_command--large button_command--facebook one-quarter shelf__button js-authorize js-authorize--facebook js-track-event" data-popup_width="1000" data-popup_height="650" data-ga_category="Onboarding" data-ga_action="Click Sign Up with Facebook <%= 'via invite' if @inviter %>" style="margin-top: 30px;">
+        <a href="http://api.shelby.tv/auth/facebook" class="button_primer button_facebook-blue button_command button_command--large button_command--facebook one-half shelf__button js-authorize js-authorize--facebook js-track-event" data-popup_width="1000" data-popup_height="650" data-ga_category="Onboarding" data-ga_action="Click Sign Up with Facebook <%= 'via invite' if @inviter %>" style="margin-top: 30px;">
           <span class="icon icon-facebook"></span>
           <span class="button_label">Sign Up with Facebook</span>
         </a>
@@ -44,22 +44,24 @@
         <%= form_tag(request.env['PATH_INFO'], { :id => 'user_form', :class => form_class(@referer) }) do %>
             <div class="media_module">
               <div class="media_image media_image--rev three-fifths">
-                <ul class="list list--benefits">
-                  <li class="benefit benefit--smart icon-like">
-                    <h2 class="benefit__h1">Personal recommendations</h2>
-                    <p class="benefit__block">Our recommendations get better as <br/>you and your friends Like, Share, and <br/>watch video on Shelby.</p>
-                  </li>
+                <% if !@is_mobile %>
+                  <ul class="list list--benefits">
+                    <li class="benefit benefit--smart icon-like">
+                      <h2 class="benefit__h1">Personal recommendations</h2>
+                      <p class="benefit__block">Our recommendations get better as <br/>you and your friends Like, Share, and <br/>watch video on Shelby.</p>
+                    </li>
 
-                  <li class="benefit benefit--share icon-facebook">
-                    <h2 class="benefit__h1">People that matter</h2>
-                    <p class="benefit__block">Connect Facebook or Twitter <br/>and see how much great content <br/>your friends are sharing daily.</p>
-                  </li>
+                    <li class="benefit benefit--share icon-facebook">
+                      <h2 class="benefit__h1">People that matter</h2>
+                      <p class="benefit__block">Connect Facebook or Twitter <br/>and see how much great content <br/>your friends are sharing daily.</p>
+                    </li>
 
-                  <li class="benefit benefit--save icon-roll">
-                    <h2 class="benefit__h1">Pay it forward</h2>
-                    <p class="benefit__block">When you find something awesome, <br/>share it with your friends!</p>
-                  </li>
-                </ul>
+                    <li class="benefit benefit--save icon-roll">
+                      <h2 class="benefit__h1">Pay it forward</h2>
+                      <p class="benefit__block">When you find something awesome, <br/>share it with your friends!</p>
+                    </li>
+                  </ul>
+                <% end %>
               </div><!-- eo media_image -->
 
               <div class="media_body">

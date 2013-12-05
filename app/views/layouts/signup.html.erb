@@ -4,12 +4,13 @@
   <title>shelby.tv | sign up</title>
   <meta name="description" content="Sign up for Shelby.tv">
   <meta name="shelby-token" content="<%= csrf_token_from_cookie %>">
+  <meta content="user-scalable=no, width=device-width, initial-scale=0.8" name="viewport">
   <%= render :partial => '/signup/og_tags' if @inviter %>
 
   <%= stylesheet_link_tag "signup" %>
   <%= javascript_include_tag "signup" %>
 </head>
-<body class="shelby shelby--signup">
+<body class="shelby shelby--signup<%= ' shelby--mobile' if @mobile_os or @is_mobile %>">
   <div id="fb-root"></div>
   <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];

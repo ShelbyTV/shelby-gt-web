@@ -7,11 +7,13 @@
     <p class="shelf__block">
       Imagine a new kind of TV with only one channel <br>and it’s tuned just for you. Welcome to Shelby TV.
     </p>
-    <ul class="list list--benefits">
+    <% if !@is_mobile %>
+      <ul class="list list--benefits">
         <li class="benefit benefit--smart icon-like js-track-event" data-ga_category="Landing" data-ga_action="Click like icon"></li>
         <li class="benefit benefit--share icon-facebook js-track-event" data-ga_category="Landing" data-ga_action="Click fb icon"></li>
         <li class="benefit benefit--save icon-roll js-track-event" data-ga_category="Landing" data-ga_action="Click share icon"></li>
-    </ul>
+      </ul>
+    <% end %>
   </div>
 
   <div class="shelf__lining shelf__lining--right">
