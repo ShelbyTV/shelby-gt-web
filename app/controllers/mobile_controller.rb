@@ -224,6 +224,22 @@ class MobileController < ApplicationController
       end
 
       # render "/mobile/me" #same template as mobile#me method
+    elsif @roll = Shelby::API.get_roll(params[:username])
+      @user = Shelby::API.get_user(@roll['creator_id'])
+      @roll_type = Settings::Mobile.roll_types['user']
+
+      # is signed_in_user following the user being displayed?
+      if user_signed_in? and @followings = Shelby::API.get_user_followings(@signed_in_user['id'], request.headers['HTTP_COOKIE'])
+        @is_following = @followings.map{ |user| user['id'] }.include?(@user['personal_roll_id'])
+      end
+
+      cookie = request.headers['HTTP_COOKIE'] || ' '
+      if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll['id'], cookie, @skip, Settings::Mobile.default_limit)
+        frames = @roll_with_frames['frames']
+        @frames = dedupe_frames(frames)
+      else
+        @frames = []
+      end
     else
       raise ActionController::RoutingError.new(Settings::ErrorMessages.content_not_found)
     end
