@@ -1,31 +1,20 @@
 <%= render :partial => '/objects/roll_header',
     :locals => {
-      :ga_category  => "Mobile",
-      :is_following => @is_following,
-      :user         => @user,
-      :roll_type    => @roll_type
-    } %>
+      :ga_category     => Settings::Mobile.ga_category,
+      :is_following    => nil,
+      :user            => @user,
+      :roll_type       => @roll_type
+    }%>
 
-<ul class="list js-list">
-  <% @frames.each_with_index do |frame, index| %>
-    <li class="list__item">
-      <% if frame['video'] and can_play_video(frame['video']['provider_name']) and !frame["duplicate"] %>
-        <%= render :partial => '/objects/frame',
-          :locals => {
-            :embed_video    => false,
-            :frame          => frame,
-            :frame_owner    => frame['creator'],
-            :ga_category    => "Mobile",
-            :index          => index,
-            :is_mobile      => true,
-            :roll_type      => @roll_type,
-            :signed_in_user => @signed_in_user,
-            :video          => frame['video']
-          } %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<%= render :partial => '/mobile/partials/list',
+    :locals => {
+      :frames         => @frames,
+      :page           => @page,
+      :roll_type      => @roll_type,
+      :signed_in_user => @signed_in_user,
+      :user           => @user
+    }
+%>
 
 <p class="center">
   <% if !@frames.empty? %>
@@ -38,15 +27,14 @@
           'data-ga_action'   => "Click Load more on #{@roll_type}",
           'data-ga_label'    => "#{@signed_in_user['nickname']}"
         } do %>
-    <span class="button_label">Load More</span>
+      <span class="button_label">Load More</span>
+    <% end %>
+  <% else %>
+    <h3 class="user__h1 center">
+      <%= user['name'] %> hasn't shared any video yet :(
+    </h3>
   <% end %>
-<% else %>
-  <h3 class="user__h1 center">
-    <%= @user['name'] %> hasn't shared any video yet :(
-  </h3>
-
-<% end %>
-
+</p>
 
 <%= javascript_tag do %>
   <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>

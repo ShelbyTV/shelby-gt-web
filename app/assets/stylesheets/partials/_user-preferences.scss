@@ -39,6 +39,8 @@
   }
 
   .form_fieldset--error {
+    color: $shelby-red;
+
     .form_error {
       display: block;
 

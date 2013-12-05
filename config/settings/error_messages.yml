@@ -10,7 +10,12 @@ defaults: &defaults
     "I know I've made some very poor decisions recently, but I can give you my complete assurance that my work will be back to normal. I've still got the greatest enthusiasm and confidence in the mission. And I want to help you."
   ]
 
+  content_not_found: We can't find the content you are looking for.
+  must_be_logged_in: You must be logged in.
+  not_logged_in: Not logged in.
   problem_refresh: There was a problem updating your settings. Please refresh the page and try again.
+  route_does_not_exist: Route doesn't exist.
+  step_does_not_exist: That step doesnt exist.
 
 development:
   <<: *defaults

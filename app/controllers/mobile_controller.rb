@@ -49,7 +49,7 @@ class MobileController < ApplicationController
       d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit, params[:entry])
       @dashboard = dedupe_dashboard(d)
     else
-      redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401)
+      redirect_to mobile_landing_path(:msg => Settings::ErrorMessages.must_be_logged_in, :status => 401)
     end
   end
 
@@ -76,22 +76,23 @@ class MobileController < ApplicationController
   def me
     if user_signed_in?
       check_for_signed_in_user_and_issues
+      @user           = @signed_in_user
 
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
 
-      if params[:type] == Settings::Mobile.roll_types['likes']
-        @roll_type = Settings::Mobile.roll_types['likes']
-        @roll_id   = @signed_in_user['watch_later_roll_id']
-      elsif params[:type] == Settings::Mobile.roll_types['shares']
-        @roll_type = Settings::Mobile.roll_types['shares']
-        @roll_id   = @signed_in_user['personal_roll_id']
-      elsif params[:type]
-        raise ActionController::RoutingError.new("Route doesn't exist.")
-      else
-        @roll_type = Settings::Mobile.roll_types['shares']
-        @roll_id   = @signed_in_user['personal_roll_id']
+      case params[:type]
+        when Settings::Mobile.roll_types['likes']
+          @roll_type = Settings::Mobile.roll_types['likes']
+          @roll_id   = @signed_in_user['watch_later_roll_id']
+        when Settings::Mobile.roll_types['shares']
+          @roll_type = Settings::Mobile.roll_types['shares']
+          @roll_id   = @signed_in_user['personal_roll_id']
+        else
+          raise ActionController::RoutingError.new(Settings::ErrorMessages.route_does_not_exist)
       end
+
+
       if @roll_with_frames = Shelby::API.get_roll_with_frames(@roll_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit)
         frames = @roll_with_frames['frames']
         @frames = dedupe_frames(frames)
@@ -99,7 +100,23 @@ class MobileController < ApplicationController
         @frames = []
       end
     else
-      redirect_to mobile_landing_path(:status =>"Not logged in.")
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+    end
+  end
+
+  def following
+    # this method is basically the same as mobile#me in this controller.
+    # separating the logic that grabs Users from the logic that grabs Frames, Rolls, etc.
+
+    if user_signed_in?
+      check_for_signed_in_user_and_issues
+
+      @roll_type = Settings::Mobile.roll_followings
+      @users = Shelby::API.get_user_followings(@signed_in_user['id'],request.headers['HTTP_COOKIE'])
+
+      render "/mobile/me" #same template as mobile#me method
+    else
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
     end
   end
 
@@ -121,43 +138,56 @@ class MobileController < ApplicationController
 
       render "/mobile/preferences_#{@section}"
     else
-      redirect_to mobile_landing_path(:status =>"Try logging in first.")
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
     end
   end
 
   def notifications
-    check_for_signed_in_user_and_issues
+    if user_signed_in?
+      check_for_signed_in_user_and_issues
 
-    @section = Settings::Mobile.preferences_sections.notifications
-    @preferences = @signed_in_user['preferences']
+      @section = Settings::Mobile.preferences_sections.notifications
+      @preferences = @signed_in_user['preferences']
 
-    @preferences.each do |preference,value|
-      @preferences[preference] = params.has_key?(preference)
-    end
+
+      @preferences.each do |preference,value|
+        @preferences[preference] = params.has_key?(preference)
+      end
 
     update_user(@signed_in_user, {:preferences => @preferences})
 
     #TODO: this needs error/success handling
 
-    render "/mobile/preferences_#{@section}"
+      render "/mobile/preferences_#{@section}"
+    else
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+    end
   end
 
   def profile
-    check_for_signed_in_user_and_issues
+    if user_signed_in?
+      check_for_signed_in_user_and_issues
 
-    @section = Settings::Mobile.preferences_sections.profile
+      @section = Settings::Mobile.preferences_sections.profile
 
-    data = {}
+      data = {}
 
-    data[:name] = params['userFullname'] if params['userFullname']
-    data[:nickname] = params['userNickname'] if params['userNickname']
-    data[:primary_email] = params['userEmail'] if params['userEmail']
+      data[:name] = params['userFullname'] if params['userFullname']
+      data[:nickname] = params['userNickname'] if params['userNickname']
+      data[:primary_email] = params['userEmail'] if params['userEmail']
 
-    update_user(@signed_in_user, data)
+      response = update_user(@signed_in_user, data)
+      errors = response.parsed_response['errors']
 
-    #TODO: this needs error/success handling
+      flash[:errors_primary_email] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])
+      flash[:errors_nickname] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])
 
-    redirect_to Settings::Mobile.mobile_subdirectory + "/preferences/" + Settings::Mobile.preferences_sections.profile
+      #TODO: this needs error/success handling
+
+      redirect_to Settings::Mobile.mobile_subdirectory + "/preferences/" + Settings::Mobile.preferences_sections.profile
+    else
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+    end
   end
 
   def roll
@@ -185,8 +215,10 @@ class MobileController < ApplicationController
       else
         @frames = []
       end
+
+      # render "/mobile/me" #same template as mobile#me method
     else
-      raise ActionController::RoutingError.new("We can't find the content you are looking for.")
+      raise ActionController::RoutingError.new(Settings::ErrorMessages.content_not_found)
     end
   end
 
@@ -200,7 +232,7 @@ class MobileController < ApplicationController
   def show_onboarding
     @signed_in_user = check_for_signed_in_user
     @current_step = (params[:step] || 1).to_i
-    raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
+    raise ActionController::RoutingError.new(Settings::ErrorMessages.step_does_not_exist) unless [1,2].include?(@current_step)
     #(redirect_to mobile_landing_path(:status=> "You must be logged in.") and return) unless user_signed_in?
 
     if @current_step == 1
@@ -214,8 +246,8 @@ class MobileController < ApplicationController
 
   def set_onboarding
     @current_step = params[:step].to_i
-    raise ActionController::RoutingError.new("That step doesnt exist.") unless [1,2].include?(@current_step)
-    (redirect_to mobile_landing_path(:status=> "You must be logged in.") and return) unless user_signed_in?
+    raise ActionController::RoutingError.new(Settings::ErrorMessages.step_does_not_exist) unless [1,2].include?(@current_step)
+    (redirect_to mobile_landing_path(:status=> Settings::ErrorMessages.must_be_logged_in) and return) unless user_signed_in?
 
     @current_user = Shelby::API.get_user(current_user_id)
 
@@ -232,7 +264,7 @@ class MobileController < ApplicationController
       update_user(@current_user, attributes)
       redirect_to mobile_stream_path
     else
-      redirect_to mobile_landing_path(:status =>"Something bad just happened")
+      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.step_does_not_exist)
     end
   end
 

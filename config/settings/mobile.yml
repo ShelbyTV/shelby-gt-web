@@ -14,6 +14,8 @@ defaults: &defaults
     user: 'user'
   }
 
+  roll_followings: following
+
   preferences_sections: {
     notifications: 'notifications',
     profile: 'profile',
@@ -26,6 +28,10 @@ defaults: &defaults
     reroll_notifications: Shares<br/> <em>Notify me when someone Re-Shares my video.</em>
     comment_notifications: Comments<br/> <em>Notify me when someone comments on a video I share.</em>
     roll_activity_notifications: Profile Activity<br/> <em>Notify me when someone new Follows me.</em>
+
+  ga_category: Mobile
+
+
 
 development:
   <<: *defaults

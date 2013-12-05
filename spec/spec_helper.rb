@@ -88,7 +88,7 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 end
 
-def sources(quantity)
+def sources(quantity=1)
   cards = []
 
   (1..quantity).each do |index|
@@ -101,6 +101,12 @@ def sources(quantity)
   end
 
   cards
+end
+
+def anonymous_user
+  {
+    "nickname" => "Anonymous"
+  }
 end
 
 def user
@@ -121,4 +127,30 @@ def user
     },
     "primary_email"       => "jlpicard@starfleet.com"
   }
+end
+
+def creator(quantity=1)
+  creators = []
+
+  (1..quantity).each do |index|
+    creators << {
+      "id"=>"#{index}",
+      "creator_id"=>"#{index}#{index}",
+      "origin_network"=>"shelby_person",
+      "title"=>"lifeandtimes",
+      "roll_type"=>15,
+      "subdomain"=>"lifeandtimes",
+      "creator_nickname"=>"lifeandtimes",
+      "creator_name"=>"JayZ",
+      "creator_has_shelby_avatar"=>false,
+      "creator_avatar_updated_at"=>nil,
+      "creator_image_original"=>nil,
+      "creator_image"=>"http://i3.ytimg.com/i/N-sc1xJr-QQNj_uNIM9wTA/mq1.jpg",
+      "thumbnail_url"=>"http://i.ytimg.com/vi/k-CW3WYMF_Q/0.jpg"
+    }
+
+  creators
+end
+
+def dbe
 end
