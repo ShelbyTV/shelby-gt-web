@@ -51,7 +51,7 @@ module MobileHelper
 
   def dedupe_frames(frames)
     frames.each_index do |i|
-      if i > 0 and frames[i]["video"]["id"] == frames[i - 1]["video"]["id"]
+      if (i > 0) and frames[i] and frames[i]["video"] and (frames[i]["video"]["id"] == frames[i - 1]["video"]["id"])
         frames[i]["duplicate"] = true
       end
     end
@@ -63,6 +63,15 @@ module MobileHelper
       r = Shelby::API.log_session(current_user_id, request.headers['HTTP_COOKIE'], csrf_token_from_cookie)
       Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie']) if r
     }
+  end
+
+  def strip_protocol_from_url(url)
+    if url.include? "http://"
+      stripped_url = url.sub(/http\:/, '')
+    elsif url.include? "https://"
+      stripped_url = url.sub(/https\:/, '')
+    end
+    return stripped_url
   end
 
 end

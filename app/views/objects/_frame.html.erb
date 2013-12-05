@@ -41,7 +41,7 @@
 
     <footer class="media_module frame-footer clearfix">
       <% if linkableName %>
-        <a href="<%= Settings::Mobile.mobile_subdirectory %>/<%= linkableName %>" class="js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
+        <a href="<%= appropriate_subdirectory %>/<%= linkableName %>" class="js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
       <% end %>
         <span class="image_module media_image avatar avatar--<%= (is_mobile) ? 'small' : 'medium' %><%= ' xuser-avatar--featured' if dbe and dbe['action'] == 34 %>" style="background-image: url(<%= avatar %>);" role="img">
           <img src="<%= avatar %>" class="cloaked">
@@ -57,13 +57,13 @@
 
         <p class="xuser-data">
           <% if linkableName %>
-            <a href="<%= Settings::Mobile.mobile_subdirectory %>/<%= linkableName %>" class="js-track-event no-faux-link" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>"<% if frame_owner and frame_owner['name'] %> title="<%= frame_owner['name'] %>"<% end %>>
+            <a href="<%= appropriate_subdirectory %>/<%= linkableName %>" class="js-track-event no-faux-link" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>"<% if frame_owner and frame_owner['name'] %> title="<%= frame_owner['name'] %>"<% end %>>
           <% end %>
           <strong><%= userNickname %></strong></a>
           <% if linkableName %>
             </a>
           <% end %>
-          <% if roll_type == Settings::Mobile.roll_types['stream'] && frame['originator'] && frame['originator']['nickname'] && frame['originator']['nickname'] != frame_owner['nickname'] %> <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <a class="no-faux-link js-track-event" href="<%= Settings::Mobile.mobile_subdirectory %>/<%= frame['originator']['nickname'] %>" title="<%= frame['originator']['name'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click via Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>"><%= frame['originator']['nickname'] %></a></span><% end %>
+          <% if roll_type == Settings::Mobile.roll_types['stream'] && frame['originator'] && frame['originator']['nickname'] && frame['originator']['nickname'] != frame_owner['nickname'] %> <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <a class="no-faux-link js-track-event" href="<%= appropriate_subdirectory %>/<%= frame['originator']['nickname'] %>" title="<%= frame['originator']['name'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click via Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>"><%= frame['originator']['nickname'] %></a></span><% end %>
           <% if frame_owner and frame_owner['user_type'] == 1 %>
             <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <%= frame_owner['authentications'].first['provider'].capitalize %></span>
           <% end %>
@@ -111,7 +111,7 @@
           <% frame['likers'].each do |liker| %>
           <% avatar = liker['has_shelby_avatar'] ? avatar_url_for_user(liker) : liker['user_image'] %>
             <li>
-              <a class="image_module avatar avatar--tiny frame-likes-link js-track-event" style="background-image: url(<%= avatar %>)" href="/<%= liker['nickname'] %>" data-ga_category="<%= ga_category %>" data-ga_action="click avatar for liker" data-ga_label="<%= liker['nickname'] %>">
+              <a class="image_module avatar avatar--tiny frame-likes-link js-track-event" style="background-image: url(<%= avatar %>)" href="<%= appropriate_subdirectory %>/<%= liker['nickname'] %>" data-ga_category="<%= ga_category %>" data-ga_action="click avatar for liker" data-ga_label="<%= liker['nickname'] %>">
                 <img class="visuallyhidden" src="<%= avatar %>" title="<%= liker['name'] %>" alt="<%= liker['name'] %>">
               </a>
             </li>

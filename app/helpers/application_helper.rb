@@ -118,4 +118,28 @@ module ApplicationHelper
     end
   end
 
+  # Mobile detection
+  def is_mobile?
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android|Kindle|Silk)/]
+  end
+
+  def detect_mobile_os
+    return :ios if (request.user_agent=~/iPhone/)
+    return :amazon if (request.user_agent=~/AmazonWebAppPlatform/)
+    return :android if (request.user_agent=~/Android/)
+    return :tablet if (request.user_agent=~/Kindle|Silk/)
+    return :generic if is_mobile?
+    return nil
+  end
+
+  def appropriate_subdirectory
+    if detect_mobile_os == :amazon
+      Settings::Mobile.amazon_subdirectory
+    elsif is_mobile?
+      Settings::Mobile.mobile_subdirectory
+    else
+      '' # empty string
+    end
+  end
+
 end

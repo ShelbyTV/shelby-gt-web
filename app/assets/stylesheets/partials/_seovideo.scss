@@ -181,6 +181,25 @@ a {
 
 }
 
+// like cta related
+.button_command--like_video {
+  margin: 30px 10px 20px;
+  background-color: rgba(111, 190, 71, 0.9);
+  &:hover {
+    background-color: $ui-green;
+  }
+}
+
+.button_command--dont_like_video {
+  margin: 30px 10px 20px;
+  background-color: rgba(238, 76, 76, 0.9);
+  color: rgba(0, 0, 0, 0.5) !important;
+  &:hover {
+    background-color: $ui-red;
+    color: $ui-white;
+  }
+}
+
 //------------------------------------------------------------------------------
 //  seovideo related
 //------------------------------------------------------------------------------
@@ -401,6 +420,18 @@ a {
     .seovideo__list {
       margin-bottom: 2em;
     }
+  }
+
+  .welcome-message--large {
+    width: 360px;
+    margin-left: -180px;
+    .welcome-message__h1--plain {
+      font-size: 1.4em;
+    }
+  }
+
+  #disqus_thread {
+    width: 350px;
   }
 }
 

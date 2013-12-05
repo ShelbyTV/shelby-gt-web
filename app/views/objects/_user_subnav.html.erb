@@ -15,7 +15,7 @@
   <% if !is_mobile %>
     <li class="list__item">
       <a
-        href="<%= is_mobile ? Settings::Mobile.mobile_subdirectory : '' %>/preferences"
+        href="<%= appropriate_subdirectory %>/preferences"
         class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
         data-ga_category="Header"
         data-ga_action="Preferences"
@@ -27,7 +27,7 @@
 
     <li class="list__item">
       <a
-        href="<%= is_mobile ? Settings::Mobile.mobile_subdirectory : '' %>/preferences/friends"
+        href="<%= appropriate_subdirectory %>/preferences/friends"
         class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
         data-ga_category="Header"
         data-ga_action="Invite Friends"
@@ -39,7 +39,7 @@
   <% else %>
     <li class="list__item">
       <a
-        href="<%= is_mobile ? Settings::Mobile.mobile_subdirectory : '' %>/preferences/profile"
+        href="<%= appropriate_subdirectory %>/preferences/profile"
         class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
         data-ga_category="Header"
         data-ga_action="Profile"
@@ -50,7 +50,7 @@
     </li>
     <li class="list__item">
       <a
-        href="<%= is_mobile ? Settings::Mobile.mobile_subdirectory : '' %>/preferences/sources"
+        href="<%= appropriate_subdirectory %>/preferences/sources"
         class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
         data-ga_category="Header"
         data-ga_action="Follow Sources"
@@ -61,7 +61,7 @@
     </li>
     <li class="list__item">
       <a
-        href="<%= is_mobile ? Settings::Mobile.mobile_subdirectory : '' %>/preferences/notifications"
+        href="<%= appropriate_subdirectory %>/preferences/notifications"
         class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
         data-ga_category="Header"
         data-ga_action="Notifications"

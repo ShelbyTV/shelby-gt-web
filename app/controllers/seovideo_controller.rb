@@ -115,7 +115,7 @@ private
 
     raise Shelby::InternalError.new("Received bad JSON from API.") unless @video_response_body_result
 
-    raise ActionController::RoutingError.new("Video unavailable") if @video_response_body_result["available"] == false
+    @video_available = @video_response_body_result["available"]
 
     @video_title = @video_response_body_result["title"]
     @video_description = @video_response_body_result["description"]

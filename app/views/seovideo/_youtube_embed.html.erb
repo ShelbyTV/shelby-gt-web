@@ -40,19 +40,12 @@
       }
 
       function showModal() {
-        if ( <%= @user_signed_in %> ) return;
+        //if ( <%= @user_signed_in %> ) return;
         try {
-          _gaq.push(['_trackEvent', 'SEO Video', 'Show signup modal', "On video finish"]);
+          _gaq.push(['_trackEvent', 'SEO Video', 'Show like modal', "On video finish"]);
         } catch(e) {}
         // show this bad boy
-        $('.js-seo-signup-message').removeClass('hidden');
-        // let em close it
-        $('body').on('click', function(){
-          $('.js-seo-signup-message').addClass('hidden');
-          try {
-            _gaq.push(['_trackEvent', 'SEO Video', 'Click on body with modal', "On video finish"]);
-          } catch(e) {}
-        });
+        $('.js-seo-like-video-message').removeClass('hidden');
       }
     </script>
 </iframe>

@@ -1,0 +1,19 @@
+$(document).on('ready', function(){
+
+  $('.js-dont-like-video, .js-like-video').on('click', function(){
+    $('.js-seo-like-video-message').addClass('hidden');
+    <% unless @user_signed_in or params[:source] == 'email' %>
+      $('.js-seo-signup-message').removeClass('hidden');
+    <% end %>
+  });
+
+  // let em close it
+  $('.js-seo-like-video-message').on('click', function(){
+    //$('.js-seo-like-video-message').addClass('hidden');
+    try {
+      _gaq.push(['_trackEvent', 'SEO Video', 'Click on body with modal', "When video finished"]);
+    } catch(e) {}
+  });
+});
+
+

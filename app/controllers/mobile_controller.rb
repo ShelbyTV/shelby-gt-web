@@ -35,15 +35,9 @@ class MobileController < ApplicationController
 
   def stream
     if user_signed_in?
-      @signed_in_user = check_for_signed_in_user
+      check_for_signed_in_user_and_issues
 
-      # this means that the user isn't *really* logged in, delete the cookie and redirect to landing
-      if @signed_in_user['app_progress'].nil?
-        cookies.delete(:_shelby_gt_common)
-        (redirect_to mobile_landing_path(:msg =>"You must be logged in.", :status => 401) and return)
-      end
-
-      (redirect_to mobile_show_onboarding_path(:step => 1) and return) unless (!@signed_in_user.nil? and (@signed_in_user['app_progress']['onboarding'] == true))
+      redirect_to mobile_show_onboarding_path(:step => 1) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
 
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
@@ -64,21 +58,24 @@ class MobileController < ApplicationController
     @user_signed_in = user_signed_in?
     @is_mobile      = is_mobile?
 
+    # this means that the user isn't *really* logged in, delete the cookie and let the person be
+    if @signed_in_user['app_progress'].nil?
+      cookies.delete(:_shelby_gt_common)
+    end
+
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
 
     cookie = request.headers['HTTP_COOKIE'] || ' '
 
-    featured_dashboard = Shelby::API.get_user_dashboard(Settings::ShelbyAPI.featured_user_id, cookie, @skip, Settings::Mobile.default_limit)
-    @featured_dashboard = dedupe_dashboard(featured_dashboard)
+    @featured_dashboard = Shelby::API.get_user_dashboard(Settings::ShelbyAPI.featured_user_id, cookie, @skip, Settings::Mobile.default_limit)
+    @featured_dashboard = dedupe_dashboard(@featured_dashboard)
     @roll_type          = Settings::Mobile.roll_types['featured']
   end
 
   def me
     if user_signed_in?
-      @signed_in_user = check_for_signed_in_user
-      @is_mobile      = is_mobile?
-      @user_signed_in = user_signed_in?
+      check_for_signed_in_user_and_issues
 
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
@@ -108,9 +105,7 @@ class MobileController < ApplicationController
 
   def preferences
     if user_signed_in?
-      @signed_in_user = check_for_signed_in_user
-      @is_mobile      = is_mobile?
-      @user_signed_in = user_signed_in?
+      check_for_signed_in_user_and_issues
 
       @section = params[:section] || Settings::Mobile.preferences_sections.profile
 
@@ -126,14 +121,12 @@ class MobileController < ApplicationController
 
       render "/mobile/preferences_#{@section}"
     else
-      redirect_to mobile_landing_path(:status =>"Not logged in.")
+      redirect_to mobile_landing_path(:status =>"Try logging in first.")
     end
   end
 
   def notifications
-    @signed_in_user = check_for_signed_in_user
-    @is_mobile      = is_mobile?
-    @user_signed_in = user_signed_in?
+    check_for_signed_in_user_and_issues
 
     @section = Settings::Mobile.preferences_sections.notifications
     @preferences = @signed_in_user['preferences']
@@ -150,9 +143,7 @@ class MobileController < ApplicationController
   end
 
   def profile
-    @signed_in_user = check_for_signed_in_user
-    @is_mobile      = is_mobile?
-    @user_signed_in = user_signed_in?
+    check_for_signed_in_user_and_issues
 
     @section = Settings::Mobile.preferences_sections.profile
 
@@ -170,9 +161,7 @@ class MobileController < ApplicationController
   end
 
   def roll
-    @signed_in_user = check_for_signed_in_user
-    @user_signed_in = user_signed_in?
-    @is_mobile      = is_mobile?
+    check_for_signed_in_user_and_issues
 
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
@@ -244,6 +233,20 @@ class MobileController < ApplicationController
       redirect_to mobile_stream_path
     else
       redirect_to mobile_landing_path(:status =>"Something bad just happened")
+    end
+  end
+
+  private
+
+  def check_for_signed_in_user_and_issues
+    @signed_in_user = check_for_signed_in_user
+    @user_signed_in = user_signed_in?
+    @is_mobile      = is_mobile?
+
+    # this means that the user isn't *really* logged in, delete the cookie and redirect to landing
+    if @signed_in_user['app_progress'].nil?
+      cookies.delete(:_shelby_gt_common)
+      (redirect_to mobile_landing_path(:msg =>"Eeek, Something went wrong. Try logging in again.", :status => 401) and return)
     end
   end
 

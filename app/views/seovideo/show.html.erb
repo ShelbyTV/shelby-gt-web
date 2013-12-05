@@ -8,6 +8,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
+<%= render :partial => "like_video_cta", :locals => { :with_js => true, :category => 'SEO Video' } %>
 <%= render :partial => "signup_cta", :locals => { :with_js => true, :category => 'SEO Video' } %>
 
 <div class="shelby__wrapper clearfix">
@@ -25,10 +26,14 @@
 
         <div class="seovideo__video_wrapper frame-body-wrapper">
           <div class="video__wrapper">
-            <% if @video_provider_name == "youtube" %>
-              <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
+            <% if @video_available %>
+              <% if @video_provider_name == "youtube" %>
+                <%= render :partial => "youtube_embed", :locals => { :video_provider_id => @video_provider_id } %>
+              <% else %>
+                <%= raw @video_embed %>
+              <% end %>
             <% else %>
-              <%= raw @video_embed %>
+              <%= image_tag('video-unavailable.jpg', :style=>'margin-top:-59.5%') %>
             <% end %>
           </div>
 
@@ -43,7 +48,7 @@
 
             <ul class="seovideo__list seovideo__list--social">
               <li class="seovideo__item">
-                <div class="fb-like clearfix" data-href="https://www.facebook.com/shelbytv" data-width="200" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false" data-height="40"></div>
+                <div class="fb-like clearfix" data-href="<%= Shelby::API.generate_video_route(@video_provider_name, @video_provider_id) %>" data-width="200" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false" data-height="40"></div>
               </li>
 
               <li id="twitter-intent" class="seovideo__item"></li>
@@ -61,15 +66,15 @@
       </div><!-- eo .seovideo__main -->
 
 
-      <aside class="seovideo__aside clearfix">
+      <!-- <aside class="seovideo__aside clearfix">
         <div class="seovideo__aside_lining">
           <form id="js-video-search-form" class="video-search-form" style="margin: 22px 0;">
             <fieldset class="form_fieldset search_module">
                 <input name="search" type="text" class="form_input search_module__input" id="seovideo-search-input" placeholder="Search for more video" value="">
-            </fieldset><!-- eo search_module -->
+            </fieldset>
           </form>
         </div>
-      </aside>
+      </aside> -->
 
       <aside class="seovideo__aside clearfix js-related-videos">
         <div class="seovideo__aside_lining">
@@ -110,7 +115,9 @@
         </div>
       </aside><!-- eo .seovideo__aside -->
 
-      <div class="seovideo__messages clearfix">
+      <div id="disqus_thread"></div>
+
+      <div class="seovideo__messages clearfix <%= 'hidden' if params[:source] == 'email' %>">
         <% if @messages %>
           <% if @messages[:shelby].length > 0 %>
             <h3 class="seovideo__h3">
@@ -181,7 +188,7 @@
     FB.Event.subscribe('edge.create',
       function(response) {
         try {
-        _gaq.push(['_trackEvent', 'SEO Video', 'Like Shelby on FB', response]);
+        _gaq.push(['_trackEvent', 'SEO Video', 'Like Video on FB', response]);
       } catch(e) {}
       }
     );
@@ -199,16 +206,16 @@
     twttr.events.bind('click', function(r){
       if (!r) return;
       try {
-        _gaq.push(['_trackEvent', 'SEO Video', 'Click Twitter Follow ', r.type]);
+        _gaq.push(['_trackEvent', 'SEO Video', 'Click Tweet', r.type]);
       } catch(e) {}
     });
-    twttr.events.bind('follow', function (r) {
+    twttr.events.bind('tweet', function (r) {
       if (!r) return;
       try {
-        _gaq.push(['_trackEvent', 'SEO Video', 'Followed Shelby', r.type]);
+        _gaq.push(['_trackEvent', 'SEO Video', 'Tweeted', r.type]);
       } catch(e) {}
     });
-    twttr.widgets.createFollowButton(
+    twttr.widgets.createShareButton(
       "http://shelby.tv/video/<%= @video_provider_name %>/<%= @video_provider_id %>/<%= hyphenateString(@video_title) %>",
       document.getElementById('twitter-intent'),
       function(){
@@ -217,7 +224,7 @@
       {
         count: 'none',
         text: '<%= @video_title %>',
-        screen_name: 'Shelby',
+        via: 'Shelby',
         size: "medium"
       }
     );
@@ -237,76 +244,26 @@
         _gaq.push(['_trackEvent', 'SEO Video', '+1 on Google', event.href]);
       } catch(e) {}
   };
-
-  $(document).ready(function(){
-
-    var _listItem = [
-          '<div class="seovideo__item">',
-          '<a href="<%= Settings::Application.url  %>/video/{{provider_name}}/{{provider_id}}"',
-          'class="seovideo__link js-track-event" title=""',
-          'data-ga_category="SEO Video"',
-          'data-ga_action="Click on search result"',
-          'data-ga_value=""',
-          'data-ga_label="">',
-          '<div class="related_video frame-body-wrapper clearfix">',
-          '<div class="related_video__main">',
-          '<span class="image_module icon-play related_video__play"></span>',
-          '<span role="img" class="seovideo__thumbnail js-seovideo__thumbnail" style="background-image:url({{thumbnail_url}})">',
-          '<img class="visuallyhidden" src="" alt="" title="" />',
-          '</span>',
-          '</div>',
-          '<div class="related_video__footer">',
-          '<div class="related_video__footer-lining">',
-          '<h4 class="seovideo__h4 js-seovideo-title">{{title}}</h4>',
-          '<span class="icon icon-chevron"></span>',
-          '</div></div></div></a>',
-          '</div>',
-        ].join('\n');
-
-    $('input#seovideo-search-input').typeahead([{
-      name: 'youtubeVideo',
-      valueKey: 'title',
-      remote: {
-        url: 'http://api.shelby.tv/v1/video/search?provider=youtube&q=%QUERY',
-        filter: function(resp){
-          return resp.result.videos;
-        }
-      },
-      limit: 3, // limit to show only 10 results
-      minLength: 2, // send AJAX request only after user type in at least 3 characters
-      engine: Handlebars,
-      template: Handlebars.compile(_listItem),
-      header: '<h3 class="seovideo__h3">Search Resuts:</h2>'
-    },
-    {
-      name: 'vimeoVideo',
-      valueKey: 'title',
-      remote: {
-        url: 'http://api.shelby.tv/v1/video/search?provider=vimeo&q=%QUERY',
-        limit: 3, // limit to show only 10 results
-        filter: function(resp){
-          return resp.result.videos;
-        }
-      },
-      limit: 2, // limit to show only 10 results
-      minLength: 2, // send AJAX request only after user type in at least 3 characters
-      engine: Handlebars,
-      template: Handlebars.compile(_listItem),
-      header: ''
-    }]).bind('typeahead:opened', function(){
-      $('.js-related-videos').addClass('hidden');
-      try {
-          _gaq.push(['_trackEvent', 'SEO Video', 'Search', 'typeahead:opened']);
-        } catch(e) {}
-    }).bind('typeahead:closed', function(){
-      $('.js-related-videos').removeClass('hidden');
-      try {
-          _gaq.push(['_trackEvent', 'SEO Video', 'Search', 'typeahead:closed']);
-        } catch(e) {}
-    }).bind('typeahead:selected', function (obj, datum) {
-      try {
-          _gaq.push(['_trackEvent', 'SEO Video', 'Search', 'typeahead:selected']);
-        } catch(e) {}
-    });
-  });
 </script>
+<script type="text/javascript">
+      var disqus_shortname = 'shelbytv';
+      var disqus_identifier = 'video-<%= @video_provider_id %>';
+      var disqus_url = '<%= Settings::Application.url %>/video/<%= @video_provider_name %>/<%= @video_provider_id %>'
+
+      function disqus_config() {
+        this.callbacks.onNewComment = [function(comment) {
+          $(document).ready(function(){
+            try {
+              _gaq.push(['_trackEvent', 'SEO Video', 'Commented']);
+            } catch(e) {}
+          });
+        }];
+      };
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
