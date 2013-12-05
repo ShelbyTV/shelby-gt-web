@@ -191,7 +191,14 @@ class MobileController < ApplicationController
   end
 
   def roll
-    check_for_signed_in_user_and_issues
+    @signed_in_user = check_for_signed_in_user
+    @user_signed_in = user_signed_in?
+    @is_mobile      = is_mobile?
+
+    # this means that the user isn't *really* logged in, delete the cookie and let the person be
+    if @signed_in_user['app_progress'].nil?
+      cookies.delete(:_shelby_gt_common)
+    end
 
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])

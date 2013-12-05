@@ -8,7 +8,7 @@
       </div><!-- eo media_image--rev -->
     <% end %>
 
-    <%= "<a href=\"#{Settings::Mobile.mobile_subdirectory}/#{username}\" class=\"user__link\">".html_safe if clickable %>
+    <%= "<a href=\"#{appropriate_subdirectory}/#{username}\" class=\"user__link\">".html_safe if clickable %>
       <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(<%= avatar %>);">
         <img class="visuallyhidden" src="<%= avatar %>"/>
       </span><!-- eo media_image -->

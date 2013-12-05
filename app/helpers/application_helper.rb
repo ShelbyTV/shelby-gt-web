@@ -121,7 +121,7 @@ module ApplicationHelper
       linkableNickname = frame_owner['nickname']
     else
       avatar = avatar_url_for_user(frame_owner)
-      linkableNickname = displayName = frame_owner['nickname']
+      linkableNickname = displayName = frame_owner['nickname'] if frame_owner
     end
     return avatar, linkableNickname, displayName
   end
