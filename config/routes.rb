@@ -18,6 +18,24 @@ ShelbyGtWeb::Application.routes.draw do
     get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
     get '/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
     get '/:username' => 'mobile#roll', :as => :mobile_user, :constraints => { :username => /[^\/]+/ }
+    get '/log_in' => "home#log_in"
+  end
+
+  scope "/amazonapp" do
+    get '/' => 'mobile#landing', :as => :mobile_landing
+    get '/featured' => 'mobile#featured', :as => :mobile_featured
+    get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
+    get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
+    post '/preferences/notifications' => 'mobile#notifications', :as => :mobile_preferences
+    post '/preferences/profile' => 'mobile#profile', :as => :mobile_preferences
+    get '/stream' => 'mobile#stream', :as => :mobile_stream
+    get '/signout' => 'mobile#signout', :as => :mobile_signout
+    get '/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
+    post '/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
+    get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
+    get '/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
+    get '/:username' => 'mobile#roll', :as => :mobile_user, :constraints => { :username => /[^\/]+/ }
+    get '/log_in' => "home#log_in"
   end
 
   #######################XXX###############################
@@ -37,22 +55,8 @@ ShelbyGtWeb::Application.routes.draw do
       get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
       get '/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
       get '/:username' => 'mobile#roll', :as => :mobile_user, :constraints => { :username => /[^\/]+/ }
+      get '/log_in' => "home#log_in"
     end
-  end
-  scope "/amazonapp" do
-    get '/' => 'mobile#landing', :as => :mobile_landing
-    get '/featured' => 'mobile#featured', :as => :mobile_featured
-    get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
-    get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
-    post '/preferences/notifications' => 'mobile#notifications', :as => :mobile_preferences
-    post '/preferences/profile' => 'mobile#profile', :as => :mobile_preferences
-    get '/stream' => 'mobile#stream', :as => :mobile_stream
-    get '/signout' => 'mobile#signout', :as => :mobile_signout
-    get '/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
-    post '/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
-    get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
-    get '/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
-    get '/:username' => 'mobile#roll', :as => :mobile_user, :constraints => { :username => /[^\/]+/ }
   end
   #######################XXX###############################
 
