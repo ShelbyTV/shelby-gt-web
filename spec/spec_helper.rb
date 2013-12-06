@@ -7,6 +7,8 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 
+include ApplicationHelper
+
 #BEGIN bunch of crap to silence annoying CoreText warnings on Mac OS X Mavericks
 module Capybara::Poltergeist
   class Client
@@ -51,7 +53,7 @@ end
 #NOTE: Switch from LogKiller to WarningSuppressor as the :phantomjs_logger if you want to see console.log output and other debug output
 # => from phantomjs
 Capybara.register_driver :poltergeist_custom do |app|
-  Capybara::Poltergeist::Driver.new(app, {phantomjs_logger: LogKiller, :phantomjs_options => ['--ignore-ssl-errors=yes', '--local-to-remote-url-access=yes']})
+  Capybara::Poltergeist::Driver.new(app, {phantomjs: '/usr/local/bin/phantomjs', phantomjs_logger: LogKiller, :phantomjs_options => ['--ignore-ssl-errors=yes', '--local-to-remote-url-access=yes']})
 end
 
 Capybara.javascript_driver = :poltergeist_custom
@@ -84,4 +86,71 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+end
+
+def sources(quantity=1)
+  cards = []
+
+  (1..quantity).each do |index|
+    cards << {
+      :display_thumbnail_src => "avatar-#{index}.png",
+      :display_title => "Roll Title #{index}",
+      :description => "This is the #{index} description",
+      :id => "#{index}234abcd"
+    }
+  end
+
+  cards
+end
+
+def anonymous_user
+  {
+    "nickname" => "Anonymous"
+  }
+end
+
+def user
+  {
+    "avatar_updated_at"   => "2012-10-26 11:49:39 -0400",
+    "has_shelby_avatar"   => true,
+    "name"                => "Jean Luc Picard",
+    "nickname"            => "nickname",
+    "user_image_original" => nil,
+    "user_image"          => nil,
+    "user_type"           => 0,
+    "preferences"         => {
+      'email_updates'               => "true",
+      'comment_notifications'       => "true",
+      'like_notifications'          => "true",
+      'reroll_notifications'        => "true",
+      'roll_activity_notifications' => "true"
+    },
+    "primary_email"       => "jlpicard@starfleet.com"
+  }
+end
+
+def creator(quantity=1)
+  creators = []
+
+  (1..quantity).each do |index|
+    creators << {
+      "id"=>"#{index}",
+      "creator_id"=>"#{index}#{index}",
+      "origin_network"=>"shelby_person",
+      "title"=>"lifeandtimes",
+      "roll_type"=>15,
+      "subdomain"=>"lifeandtimes",
+      "creator_nickname"=>"lifeandtimes",
+      "creator_name"=>"JayZ",
+      "creator_has_shelby_avatar"=>false,
+      "creator_avatar_updated_at"=>nil,
+      "creator_image_original"=>nil,
+      "creator_image"=>"http://i3.ytimg.com/i/N-sc1xJr-QQNj_uNIM9wTA/mq1.jpg",
+      "thumbnail_url"=>"http://i.ytimg.com/vi/k-CW3WYMF_Q/0.jpg"
+    }
+
+  creators
+end
+
+def dbe
 end

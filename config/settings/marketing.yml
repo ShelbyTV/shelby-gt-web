@@ -4,6 +4,7 @@ defaults: &defaults
   just_for_you: "A personal channel of video, picked just for you."
   powered_by_friends: "The best web video, powered by friends."
   no_search_required: "Great video, no searching required."
+  discover_love: "Discover videos you and your friends will love."
 
   cta: "Discover and enjoy new videos every day."
   cta_body: "Get the best of web video, personalized to your interests <br/>and available wherever you are."

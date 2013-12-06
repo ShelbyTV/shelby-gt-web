@@ -1,9 +1,9 @@
 module ApplicationHelper
 
   #valid avatar_size options are "sq192x192", "sq48x48", and "original"
-  def avatar_url_for_user(user, avatar_size="sq48x48")
+  def avatar_url_for_user(user, avatar_size="#{Settings::Avatar.small}")
 
-    return "/images/assets/avatar.png" unless user
+    return Settings::Avatar.missing unless user
 
     if user['has_shelby_avatar']
       return "#{Settings::Application.avatar_url_root}/#{avatar_size}/#{user['id']}"
@@ -11,6 +11,22 @@ module ApplicationHelper
       avatar_url = user['user_image_original'] || user['user_image']
       avatar_url = "/images/assets/avatar.png" if (!avatar_url || (avatar_url == 'null'))
       return avatar_url
+    end
+  end
+
+  def avatar_url_for_roll(roll, avatar_size="#{Settings::Avatar.small}")
+
+    if roll && roll['creator_has_shelby_avatar']
+      date = DateTime.parse(roll['creator_avatar_updated_at'])
+      "#{Settings::Application.avatar_url_root}/#{avatar_size}/#{roll['creator_id']}?#{date.to_i}"
+    elsif roll['creator_image_original']
+      roll['creator_image_original']
+    elsif roll['creator_image']
+      roll['creator_image']
+    elsif roll && roll['thumbnail_url']
+      roll['thumbnail_url']
+    else
+      Settings::Avatar.missing
     end
   end
 
@@ -82,7 +98,7 @@ module ApplicationHelper
     if dbe and dbe['action'] == 31 # video graph
       message = "This video is similar to videos "+ dbe['src_frame']['creator']['nickname'] +" has shared" if dbe['src_frame'] and dbe['src_frame']['creator']
     elsif dbe and dbe['action'] == 33 # mortar
-      message = "Because you shared "+ dbe['src_video']['title'] if dbe['src_video']
+      message = "Because you shared "+ dbe['src_video']['title'] if dbe['src_video'] and dbe['src_video']['title']
     elsif frame['conversation'] and frame['conversation']['messages'] and frame['conversation']['messages'][0]
       message = frame['conversation']['messages'][0]['text']
     else
@@ -105,7 +121,7 @@ module ApplicationHelper
       linkableNickname = frame_owner['nickname']
     else
       avatar = avatar_url_for_user(frame_owner)
-      linkableNickname = displayName = frame_owner['nickname']
+      linkableNickname = displayName = frame_owner['nickname'] if frame_owner
     end
     return avatar, linkableNickname, displayName
   end

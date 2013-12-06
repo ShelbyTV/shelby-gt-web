@@ -134,6 +134,28 @@ module Shelby
       return "#{protocol}://#{Settings::Application.domain}/video/#{video_provider_name}/#{video_provider_id}"
     end
 
+  def self.user_signed_in?
+    id = current_user_id
+    id ? id != "nil" : false
+  end
+
+  def self.current_user_id
+    cookie_to_hash(cookies[:_shelby_gt_common])[:authenticated_user_id]
+  end
+
+  def self.cookie_to_hash(c, delim=",", split="=")
+    entries = c.blank? ? nil : c.split(delim)
+    h = {}
+    return h if entries.blank?
+
+    entries.each do |entry|
+      key, val = entry.split("=", 2)
+      h[key.to_sym] = val
+    end
+
+    h
+  end
+
     #UNUSED
     def self.post_to_genius(term, urls)
       r = post("/roll/genius", { :query => {'search' => term, 'urls' => urls}}).parsed_response

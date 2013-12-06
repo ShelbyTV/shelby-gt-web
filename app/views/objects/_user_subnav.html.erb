@@ -6,7 +6,7 @@
       data-ga_action="Profile"
       data-ga_label="<%= userNickname %>"
     >
-      Profile
+      Me
     </button>
   </li>
 </ul>
@@ -39,6 +39,17 @@
   <% else %>
     <li class="list__item">
       <a
+        href="<%= appropriate_subdirectory %>/preferences/profile"
+        class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
+        data-ga_category="Header"
+        data-ga_action="Profile"
+        data-ga_label="<%= userNickname %>"
+        >
+        Edit Profile
+      </a>
+    </li>
+    <li class="list__item">
+      <a
         href="<%= appropriate_subdirectory %>/preferences/sources"
         class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
         data-ga_category="Header"
@@ -46,6 +57,17 @@
         data-ga_label="<%= userNickname %>"
         >
         Follow Sources
+      </a>
+    </li>
+    <li class="list__item">
+      <a
+        href="<%= appropriate_subdirectory %>/preferences/notifications"
+        class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
+        data-ga_category="Header"
+        data-ga_action="Notifications"
+        data-ga_label="<%= userNickname %>"
+        >
+        Notifications
       </a>
     </li>
   <% end %>

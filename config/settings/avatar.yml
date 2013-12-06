@@ -1,0 +1,19 @@
+defaults: &defaults
+  #valid avatar_size options
+  large: sq192x192
+  small: sq48x48
+  original: original
+
+  missing: /images/assets/avatar.png
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults

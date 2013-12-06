@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Login Process', :type => :feature do
+describe 'Login Process', :type => :feature, :js => true do
 
   before(:each) do
     visit('/')
@@ -11,17 +11,17 @@ describe 'Login Process', :type => :feature do
     it "loads the home page with all necessary elements" do
       page.should have_field('username')
       page.should have_field('password')
-      page.should have_button('Log In')
+      page.should have_link('Log In')
       page.should have_button('Login')
       page.should have_selector('.login-section')
-      page.should have_selector('.dropdown_module')
+      page.should have_selector('.js-dropdown_module')
     end
 
-    context 'after hovering over Log In', :js => true do
+    context 'after hovering over Log In' do
 
       before(:each) do
-        page.driver.resize(1100,800)
-        find('.dropdown_module').hover
+        page.driver.resize(1200,800)
+        find('.js-dropdown_module').hover
       end
 
       it "reveals the login options" do
