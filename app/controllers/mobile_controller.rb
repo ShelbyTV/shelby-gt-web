@@ -26,7 +26,7 @@ class MobileController < ApplicationController
       redirect_to mobile_show_onboarding_path(:step => 1, :service => authed_service)
     elsif user_signed_in?
       log_session()
-      redirect_to mobile_stream_path
+      redirect_to appropriate_subdirectory+mobile_stream_path
     else
       @mobile_signup_url = Settings::ShelbyAPI.url+"/auth/facebook?service=facebook&origin="+Settings::Application.mobile_url
       render '/home/landing', :layout => false
@@ -37,7 +37,7 @@ class MobileController < ApplicationController
     if user_signed_in?
       check_for_signed_in_user_and_issues
 
-      redirect_to mobile_show_onboarding_path(:step => 1) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
+      redirect_to appropriate_subdirectory+mobile_show_onboarding_path(:step => 1) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
 
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
@@ -49,7 +49,7 @@ class MobileController < ApplicationController
       d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit, params[:entry])
       @dashboard = dedupe_dashboard(d)
     else
-      redirect_to mobile_landing_path(:msg => Settings::ErrorMessages.must_be_logged_in, :status => 401)
+      redirect_to appropriate_subdirectory+mobile_landing_path(:msg => Settings::ErrorMessages.must_be_logged_in, :status => 401)
     end
   end
 
@@ -100,7 +100,7 @@ class MobileController < ApplicationController
         @frames = []
       end
     else
-      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
     end
   end
 
@@ -116,7 +116,7 @@ class MobileController < ApplicationController
 
       render "/mobile/me" #same template as mobile#me method
     else
-      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
     end
   end
 
@@ -138,7 +138,7 @@ class MobileController < ApplicationController
 
       render "/mobile/preferences_#{@section}"
     else
-      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
     end
   end
 
@@ -160,7 +160,7 @@ class MobileController < ApplicationController
 
       render "/mobile/preferences_#{@section}"
     else
-      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
     end
   end
 
@@ -186,7 +186,7 @@ class MobileController < ApplicationController
 
       redirect_to Settings::Mobile.mobile_subdirectory + "/preferences/" + Settings::Mobile.preferences_sections.profile
     else
-      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
     end
   end
 
@@ -204,7 +204,7 @@ class MobileController < ApplicationController
     @skip = convert_page_to_skip(params[:page])
 
     if @signed_in_user['nickname'] == params[:username]
-      redirect_to mobile_me_path(:type => "shares")
+      redirect_to appropriate_subdirectory+mobile_me_path(:type => "shares")
     elsif @user = Shelby::API.get_user(params[:username])
       @roll_id = @user['personal_roll_id']
       @roll_type = Settings::Mobile.roll_types['user']
@@ -270,7 +270,7 @@ class MobileController < ApplicationController
   def set_onboarding
     @current_step = params[:step].to_i
     raise ActionController::RoutingError.new(Settings::ErrorMessages.step_does_not_exist) unless [1,2].include?(@current_step)
-    (redirect_to mobile_landing_path(:status=> Settings::ErrorMessages.must_be_logged_in) and return) unless user_signed_in?
+    (redirect_to appropriate_subdirectory+mobile_landing_path(:status=> Settings::ErrorMessages.must_be_logged_in) and return) unless user_signed_in?
 
     @current_user = Shelby::API.get_user(current_user_id)
 
@@ -280,14 +280,14 @@ class MobileController < ApplicationController
       EM.next_tick { follow_shelby(user, params[:onboarding_follow_shelby]) }
       attributes = {:app_progress => {:onboarding => @current_step}}
       update_user(@current_user, attributes)
-      redirect_to mobile_show_onboarding_path(:step => 2)
+      redirect_to appropriate_subdirectory+mobile_show_onboarding_path(:step => 2)
     elsif @current_step == 2 and params[:rolls]
       EM.next_tick { follow_rolls(params[:rolls]) }
       attributes = {:app_progress => {:onboarding => true} }
       update_user(@current_user, attributes)
-      redirect_to mobile_stream_path
+      redirect_to appropriate_subdirectory+mobile_stream_path
     else
-      redirect_to mobile_landing_path(:status => Settings::ErrorMessages.step_does_not_exist)
+      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.step_does_not_exist)
     end
   end
 
@@ -301,7 +301,7 @@ class MobileController < ApplicationController
     # this means that the user isn't *really* logged in, delete the cookie and redirect to landing
     if @signed_in_user['app_progress'].nil?
       cookies.delete(:_shelby_gt_common)
-      (redirect_to mobile_landing_path(:msg =>"Eeek, Something went wrong. Try logging in again.", :status => 401) and return)
+      (redirect_to appropriate_subdirectory+mobile_landing_path(:msg =>"Eeek, Something went wrong. Try logging in again.", :status => 401) and return)
     end
   end
 
