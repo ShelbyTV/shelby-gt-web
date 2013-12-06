@@ -106,10 +106,6 @@ ShelbyGtWeb::Application.routes.draw do
   get "signup/:code" => 'signup#show'
   post "signup" => 'signup#create'
 
-  # LOG IN
-  get '/log_in' => "home#log_in"
-
-
   # HOME
   get '/team' => 'home#team'
   get '/hash_app' => 'home#hash_app'
@@ -123,6 +119,7 @@ ShelbyGtWeb::Application.routes.draw do
 
   get '/signout' => "home#signout", :as => :signout
   get '/login' => "home#login"
+  get '/log_in' => "home#log_in"
 
   # THIS IS A TEMPORARY ROUTE to give the bookmarklet to someone (for reece)
   get '/herebedragons' => "home#bookmarklet"
