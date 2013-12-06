@@ -101,6 +101,8 @@ module ApplicationHelper
       message = "Because you shared "+ dbe['src_video']['title'] if dbe['src_video'] and dbe['src_video']['title']
     elsif frame['conversation'] and frame['conversation']['messages'] and frame['conversation']['messages'][0]
       message = frame['conversation']['messages'][0]['text']
+    elsif frame['frame_type'] == 1
+      message = ''
     else
       message = "This video is similar to videos you have watched, liked and shared."
     end

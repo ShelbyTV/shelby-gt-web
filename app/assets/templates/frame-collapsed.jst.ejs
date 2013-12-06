@@ -17,6 +17,8 @@
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
 
+<% var creatorIsLiker = (frame.get('frame_type') == libs.shelbyGT.FrameModel.FRAME_TYPE.light_weight) %>
+
 <% var browserNeedsFlash = libs.utils.flash.noFlashno264Support() && video.get('provider_name') == 'vimeo' %>
 <!-- collapsed videocard -->
 
@@ -56,8 +58,10 @@
             <div class="xuser-data">
               <%= creatorNickname %><% if (!_(dupeFrames).isEmpty()) { %><%= ", " + _('other').pluralize(dupeFrames.length, true) %>
               <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != 1) { %>
-                <%= 'via ' + frameOriginator.get('nickname') %>
-            <% } %>
+                <%= (creatorIsLiker ? "liked via" : "via") + " " + frameOriginator.get('nickname') %>
+              <% } else if (creatorIsLiker) { %>
+                liked this
+              <% } %>
             </div>
           <% } else { %>
             <p class="xuser-data xuser-message--faux">

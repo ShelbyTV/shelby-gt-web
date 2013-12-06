@@ -261,7 +261,8 @@
     .xuser-avatar--facebook,
     .xuser-avatar--twitter,
     .xuser-avatar--tumblr,
-    .xuser-avatar--featured {
+    .xuser-avatar--featured,
+    .xuser-avatar--liker {
       &:before {
         background-color: $base-frame;
         border-radius: 4px;
@@ -297,6 +298,13 @@
     .xuser-avatar--featured {
       &:before {
         background-color: $ui-green;
+      }
+    }
+    .xuser-avatar--liker {
+      &:before {
+        background-color: $ui-red;
+        padding-left: 0.1em;
+        padding-right: 0.5em;
       }
     }
 

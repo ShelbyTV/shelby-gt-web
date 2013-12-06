@@ -13,6 +13,8 @@
 <% var fauxUserOrigin = !isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(currentCreator) : null %>
 
+<% var creatorIsLiker = (currentFrame.get('frame_type') == libs.shelbyGT.FrameModel.FRAME_TYPE.light_weight) %>
+
 <%
   var currentCreatorNickname;
 
@@ -89,7 +91,9 @@
                 <% if (!isChannelRecommendation && fauxUserOrigin) { %>
                   via <span class="capitalize"><%= fauxUserOrigin %></span>
                 <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
-                  via <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>
+                  <%= creatorIsLiker ? "liked this via" : "via" %> <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>
+                <% } else if (creatorIsLiker) { %>
+                  liked this
                 <% } %>
               </h3>
             <% } %>

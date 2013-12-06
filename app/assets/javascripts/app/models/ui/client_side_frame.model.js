@@ -60,10 +60,6 @@ libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
       // TODO: also find a way to increment the new frame's like count
       var _wl_roll = shelby.models.user.get('watch_later_roll');
       var _ajaxData = {url: this.get('video').get('source_url'), source: 'webapp'};
-      var _message = this.likeMessage();
-      if (_message) {
-        _ajaxData.text = _message;
-      }
       _newFrame.save(
         _ajaxData,
         {url: shelby.config.apiRoot + '/roll/'+_wl_roll.id+'/frames',
