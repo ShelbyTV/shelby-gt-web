@@ -278,6 +278,7 @@ class HomeController < ApplicationController
     @mobile_os     = detect_mobile_os
     @is_mobile     = is_mobile?
     @session_error = params[:status]
+    cookies.delete(:_shelby_gt_common, :domain => ".shelby.tv")
     if flash[:user_errors]
       @user_attributes = flash[:user_attributes]
       @email_error = flash[:user_errors_email]

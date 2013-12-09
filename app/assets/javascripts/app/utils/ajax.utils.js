@@ -15,7 +15,6 @@ libs.shelbyGT.Ajax = {
     switch(jqXHR.status){
       case 401:
       case 403:
-        cookies.set('_shelby_gt_common', '');
         document.location.href = "/login?status=401";
         break;
     }
