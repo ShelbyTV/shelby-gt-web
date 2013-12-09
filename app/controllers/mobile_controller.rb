@@ -224,7 +224,7 @@ class MobileController < ApplicationController
       end
 
       # render "/mobile/me" #same template as mobile#me method
-    elsif !(params[:username]=~/.jpg|.png/) and (@roll = Shelby::API.get_roll(params[:username]))
+    elsif !(params[:username]=~/.jpg|.png|.gif/) and (@roll = Shelby::API.get_roll(params[:username]))
       @user = Shelby::API.get_user(@roll['creator_id'])
       @roll_type = Settings::Mobile.roll_types['user']
 
