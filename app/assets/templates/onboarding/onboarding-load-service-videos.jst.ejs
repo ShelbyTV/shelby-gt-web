@@ -52,8 +52,7 @@
         <label class="form_label form_label--inline" for="onboarding-timeline-sharing">Publish activity to Facebook Timeline</label>
       </fieldset>
     </form>
-    <% var _onboardingWithInvites; if (shelby.abTests.onboardingWithInvites == "yes") { _onboardingWithInvites = true; } else if (shelby.abTests.onboardingWithInvites == "no") { _onboardingWithInvites = false; } %>
-    <a class="button_primer button_command button_command--flexible button_green <%= _onboardingWithInvites ? 'js-invite-friends' : 'js-onboarding-advance-stage' %>">
+    <a class="button_primer button_command button_command--flexible button_green js-invite-friends">
       <span class="button_label">Next</span>
       <span class="icon icon-arrow_right"></span>
     </a>

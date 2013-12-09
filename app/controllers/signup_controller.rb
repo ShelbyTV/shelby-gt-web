@@ -2,7 +2,6 @@ class SignupController < ApplicationController
   include SignupHelper
 
   def show
-    @onboarding_with_invites = ab_test :onboarding_with_invites
     @is_mobile      = is_mobile?
 
     # just show the freakin form.
