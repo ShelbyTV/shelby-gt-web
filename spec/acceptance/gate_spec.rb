@@ -71,7 +71,7 @@ describe 'Gate', :pending => true, :type => :request do
           page.should have_selector('#js-email-submit', :visible => true)
         end
 
-    end
+      end
 
     end
   end
