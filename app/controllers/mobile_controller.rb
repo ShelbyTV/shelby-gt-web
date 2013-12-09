@@ -15,7 +15,7 @@ class MobileController < ApplicationController
 
     # this means that the user isn't *really* logged in, delete the cookie and reassign variables appropriatly.
     if @signed_in_user['app_progress'].nil?
-      cookies.delete(:_shelby_gt_common)
+      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
       @signed_in_user = check_for_signed_in_user
       @user_signed_in = user_signed_in?
     end
@@ -60,7 +60,7 @@ class MobileController < ApplicationController
 
     # this means that the user isn't *really* logged in, delete the cookie and let the person be
     if @signed_in_user['app_progress'].nil?
-      cookies.delete(:_shelby_gt_common)
+      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
     end
 
     @page = params[:page].to_i.abs
@@ -197,7 +197,7 @@ class MobileController < ApplicationController
 
     # this means that the user isn't *really* logged in, delete the cookie and let the person be
     if @signed_in_user['app_progress'].nil?
-      cookies.delete(:_shelby_gt_common)
+      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
     end
 
     @page = params[:page].to_i.abs
@@ -248,7 +248,7 @@ class MobileController < ApplicationController
   def signout
     flash[:error] = params[:error]
     # def dont want this around (API tries to kill it, too)
-    cookies.delete(:_shelby_gt_common)
+    cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
 
@@ -300,7 +300,7 @@ class MobileController < ApplicationController
 
     # this means that the user isn't *really* logged in, delete the cookie and redirect to landing
     if @signed_in_user['app_progress'].nil?
-      cookies.delete(:_shelby_gt_common)
+      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
       (redirect_to appropriate_subdirectory+mobile_landing_path(:msg =>"Eeek, Something went wrong. Try logging in again.", :status => 401) and return)
     end
   end

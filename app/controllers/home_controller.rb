@@ -269,7 +269,7 @@ class HomeController < ApplicationController
     flash[:error] = params[:error]
 
     # def dont want this around (API tries to kill it, too)
-    cookies.delete(:_shelby_gt_common)
+    cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
 
     redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
   end
