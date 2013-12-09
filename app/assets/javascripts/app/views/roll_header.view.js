@@ -6,7 +6,6 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
 
   events : {
     "click .js-user-shares"    : "_goToUserShares",
-    "click .js-user-likes"     : "_goToLikes",
     "click .js-user-following" : "_goToRollFollowings"
   },
 
@@ -36,9 +35,9 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     }
 
     if (this.model.has('roll_type')) {
-      var isInAppUserProfile = this.options.guideModel.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll ||
-                               this.options.guideModel.get('displayState') == libs.shelbyGT.DisplayState.rollList ||
-                               this.model.get('creator_id') == shelby.models.user.id;
+      var userPersonalRollId = shelby.models.user.get('personal_roll_id');
+      var isInAppUserProfile = this.options.guideModel.get('displayState') == libs.shelbyGT.DisplayState.rollList ||
+                               (userPersonalRollId && this.model.id == userPersonalRollId);
       this.$el.html(this.template({
         isInAppUserProfile : isInAppUserProfile,
         roll : this.model,
@@ -56,11 +55,10 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
     this._clearSelected();
 
     var $setSelectedClassOn = null;
-    if (this.options.guideModel.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
-      $setSelectedClassOn = this.$('.js-user-likes');
-    } else if (this.options.guideModel.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
+    var userPersonalRollId = shelby.models.user.get('personal_roll_id');
+    if (this.options.guideModel.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
       $setSelectedClassOn = this.$('.js-user-following');
-    } else if (this.model.get('creator_id') == shelby.models.user.id) {
+    } else if (userPersonalRollId && this.model.id == userPersonalRollId) {
       $setSelectedClassOn = this.$('.js-user-shares');
     }
 
@@ -76,11 +74,6 @@ libs.shelbyGT.RollHeaderView = Support.CompositeView.extend({
   _goToUserShares : function(e){
     e.preventDefault();
     shelby.router.navigate(this.model.get('creator_nickname'), {trigger: true});
-  },
-
-  _goToLikes : function(e){
-    e.preventDefault();
-    shelby.router.navigate('likes', {trigger: true});
   },
 
   _goToRollFollowings : function(e){

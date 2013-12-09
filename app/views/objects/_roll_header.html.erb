@@ -13,19 +13,13 @@
 
   <% if roll_type != Settings::Mobile.roll_types['user'] %>
     <ul class="list list--fit tabs clearfix">
-      <li class="one-third">
-        <a href="<%= appropriate_subdirectory %>/<%= user['nickname'] %>/shares" class="button_standard tab<%= ' tab--active' if roll_type == Settings::Mobile.roll_types['shares'] %> js-track-event js-user-tab js-user-shares" data-ga_category="<%= ga_category %>" data-ga_action="Click shares tab" data-ga_label="<%= user['nickname'] %>">
-          Shares
+      <li class="one-half">
+        <a href="<%= appropriate_subdirectory %>/<%= user['nickname'] %>/activity" class="button_standard tab<%= ' tab--active' if roll_type == Settings::Mobile.roll_types['activity'] %> js-track-event js-user-tab js-user-shares" data-ga_category="<%= ga_category %>" data-ga_action="Click activity tab" data-ga_label="<%= user['nickname'] %>">
+          Activity
         </a>
       </li>
 
-      <li class="one-third">
-        <a href="<%= appropriate_subdirectory %>/<%= user['nickname'] %>/likes" class="button_standard tab<%= ' tab--active' if roll_type == Settings::Mobile.roll_types['likes'] %> js-track-event js-user-tab js-user-likes" data-ga_category="<%= ga_category %>" data-ga_action="Click likes tab" data-ga_label="<%= user['nickname'] %>">
-          Likes
-        </a>
-      </li>
-
-      <li class="one-third">
+      <li class="one-half">
         <a href="<%= appropriate_subdirectory %>/<%= user['nickname'] %>/following" class="button_standard tab<%= ' tab--active' if roll_type == Settings::Mobile.roll_followings %> js-track-event js-user-tab js-user-likes" data-ga_category="<%= ga_category %>" data-ga_action="Click following tab" data-ga_label="<%= user['nickname'] %>">
           Following
         </a>

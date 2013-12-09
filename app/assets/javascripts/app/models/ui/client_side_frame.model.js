@@ -18,33 +18,6 @@ libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
     libs.shelbyGT.FrameModel.apply(this, arguments);
   },
 
-  /*
-  --saveToWatchLater currently deprecated as its functionality is subsumed under the next method, like()--
-  saveToWatchLater : function(onSuccess) {
-    var _newFrame = new libs.shelbyGT.FrameModel();
-    var _wl_roll = shelby.models.user.get('watch_later_roll');
-    var _ajaxData = {url: this.get('video').get('source_url'), source: 'webapp'};
-    var _message = this.likeMessage();
-    if (_message) {
-        _ajaxData.text = _message;
-      }
-    _newFrame.save(
-      _ajaxData,
-      {url: shelby.config.apiRoot + '/roll/'+_wl_roll.id+'/frames',
-      success: function(newFrame){
-        // we only want to update the set of queued videos if the ajax call succeeds,
-        // that's the only way that the Queued state of a video will persist across navigation
-        // around the app
-        shelby.models.queuedVideos.get('queued_videos').add(newFrame.get('video'));
-        if (onSuccess) onSuccess();
-      }
-    });
-
-    shelby.track( 'add_to_queue', { frameId: this.id, userName: shelby.models.user.get('nickname') });
-  },
-  --saveToWatchLater currently deprecated as its functionality is subsumed under the next method, like()--
-  */
-
   like : function(options) {
     // default options
     options = _.chain({}).extend(options).defaults({
