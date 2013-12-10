@@ -248,6 +248,12 @@
 
       this._listView = new displayParams.viewProto(childViewOptions);
 
+      if (currentDisplayState == DisplayState.dashboard) {
+        shelby.collections.dashboardFrameGroupsCollection = this._listView.frameGroupCollection;
+      } else {
+        shelby.collections.dashboardFrameGroupsCollection = null;
+      }
+
       // cancel any other previous ajax requests' ability to hide the spinner
       shelby.views.guideSpinner.setModel(null);
       shelby.views.guideSpinner.hide();

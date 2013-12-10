@@ -66,6 +66,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
     shelby.collections.videoSearchResultFrames = new libs.shelbyGT.FramesCollection();
     shelby.collections.dynamicRecommendations = new libs.shelbyGT.DynamicRecommendationsCollection();
+    shelby.collections.dashboardFrameGroupsCollection = null;
 
     libs.utils.rhombus.login.init_login();
     libs.utils.rhombus.videos_watched.init_videos_watched();
