@@ -6,15 +6,15 @@ defaults: &defaults
   no_search_required: "Great video, no searching required."
   discover_love: "Discover videos you and your friends will love."
 
-  cta: "Discover and enjoy new videos every day."
+  cta: "Discover videos you and your friends will love."
   cta_body: "Get the best of web video, personalized to your interests <br/>and available wherever you are."
   cta_button: "Get the Free App"
 
-  stream: "Your perfect video stream. <br/>Powered by your favorite people."
+  stream: "See what video your friends like,<br/>from all over the web."
   stream_body: "Shelby.tv collects videos from across the web and organizes them into <br/>a single stream, showing you the information that matters to you."
 
-  social: "A video channel personalized for you."
-  social_body: "Shelby.tv delivers smart recommendations that get better the more you Watch, Like and Share videos."
+  social: "Like videos and Shelby uncovers more to watch."
+  social_body: "Shelby.tv delivers smart recommendations based on your behavior and gets better over time."
 development:
   <<: *defaults
 
