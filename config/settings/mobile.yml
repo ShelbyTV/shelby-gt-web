@@ -9,7 +9,7 @@ defaults: &defaults
     featured: 'featured',
     likes: 'likes',
     me: 'me',
-    shares: 'shares',
+    activity: 'activity',
     stream: 'stream',
     user: 'user'
   }

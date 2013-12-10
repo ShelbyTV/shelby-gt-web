@@ -13,6 +13,8 @@
 <% var fauxUserOrigin = !isFauxUser ? null : (currentFrameHasRoll ? currentFrame.get('roll').get('origin_network') : null ) %>
 <% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(currentCreator) : null %>
 
+<% var creatorIsLiker = (currentFrame.get('frame_type') == libs.shelbyGT.FrameModel.FRAME_TYPE.light_weight) %>
+
 <%
   var currentCreatorNickname;
 
@@ -61,9 +63,17 @@
           </div><!-- eo .media_body -->
         <% } else { %>
           <% if (showNextFrame) { %>
-            <% if (currentFrame.originInfoType() == libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.creator) { %>
+            <% if (currentFrame.originInfoType() == libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.creator) {
+                 var avatarClass = "";
+                 if (!isChannelRecommendation) {
+                  if (creatorIsLiker) {
+                   avatarClass = " xuser-avatar--liker icon-like";
+                   }
+                 }
+            %>
               <% if (clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %>
-                <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+
+                <div class="image_module xuser-avatar<%= avatarClass %> media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
                   <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
                 </div>
               <% if (clickableCreator) { %></a><% } %>
@@ -89,7 +99,9 @@
                 <% if (!isChannelRecommendation && fauxUserOrigin) { %>
                   via <span class="capitalize"><%= fauxUserOrigin %></span>
                 <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
-                  via <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>
+                  <%= creatorIsLiker ? "liked this via" : "via" %> <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>
+                <% } else if (creatorIsLiker) { %>
+                  liked this
                 <% } %>
               </h3>
             <% } %>

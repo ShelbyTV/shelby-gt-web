@@ -10,14 +10,14 @@ window.onerror = function(errorMsg, file, lineNumber) {
     window.shelby_errorCount += 1;
 
     // will re-post to newrelic
-    jQuery.post(shelby.config.apiRoot+'/js_err', 
-      { error_message: errorMsg, 
+    jQuery.post(shelby.config.apiRoot+'/js_err',
+      { error_message: errorMsg,
         uri: window.location.href,
         client: "WebFrontEnd",
         ua: navigator.userAgent,
-        file: file, 
-        lineNumber: lineNumber, 
-        documentReady: window.shelby_onreadyFired, 
+        file: file,
+        lineNumber: lineNumber,
+        documentReady: window.shelby_onreadyFired,
       });
   }
 };

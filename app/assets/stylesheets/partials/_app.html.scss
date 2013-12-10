@@ -74,6 +74,8 @@ a{
       .frame-footer {
         .avatar {
           margin-right: 1em;
+          overflow : visible;
+          position : relative;
         }
       }
       .frame-likes {

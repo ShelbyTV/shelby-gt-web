@@ -241,3 +241,8 @@ libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE = {
   creator : 'creator',
   videoProvider : 'videoProvider'
 };
+
+libs.shelbyGT.FrameModel.FRAME_TYPE = {
+  heavy_weight : 0,
+  light_weight : 1
+};

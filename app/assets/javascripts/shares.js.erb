@@ -5,7 +5,8 @@
 
 $(document).ready(function(){
   var loc = shelbyTrackingCategory || "Share Page",
-      username = shelbyTrackingLabel || "Anonymous" ;
+      username = shelbyTrackingLabel || "Anonymous",
+      apiRoot = '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>';
 
   shelby.trackEx({
     providers : ['ga'],
@@ -85,7 +86,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: 'GET',
-      url: '//api.shelby.tv/v1/PUT/frame/' + frame_id + '/like',
+      url: apiRoot + '/PUT/frame/' + frame_id + '/like',
       dataType: "jsonp",
       timeout: 10000,
       crossDomain: true,

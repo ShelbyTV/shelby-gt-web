@@ -87,8 +87,8 @@ class MobileController < ApplicationController
         when Settings::Mobile.roll_types['likes']
           @roll_type = Settings::Mobile.roll_types['likes']
           @roll_id   = @signed_in_user['watch_later_roll_id']
-        when Settings::Mobile.roll_types['shares']
-          @roll_type = Settings::Mobile.roll_types['shares']
+        when Settings::Mobile.roll_types['activity']
+          @roll_type = Settings::Mobile.roll_types['activity']
           @roll_id   = @signed_in_user['personal_roll_id']
         else
           raise ActionController::RoutingError.new(Settings::ErrorMessages.route_does_not_exist)

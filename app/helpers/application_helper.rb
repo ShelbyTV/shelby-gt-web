@@ -96,11 +96,16 @@ module ApplicationHelper
 
   def build_frame_message(frame, dbe=nil)
     if dbe and dbe['action'] == 31 # video graph
-      message = "This video is similar to videos "+ dbe['src_frame']['creator']['nickname'] +" has shared" if dbe['src_frame'] and dbe['src_frame']['creator']
+      if dbe['src_frame'] and dbe['src_frame']['creator']
+        verb = (dbe['src_frame']['frame_type'] == 1 ? 'liked' : 'shared')
+        message = "This video is similar to videos "+ dbe['src_frame']['creator']['nickname'] +" has #{verb}"
+      end
     elsif dbe and dbe['action'] == 33 # mortar
-      message = "Because you shared "+ dbe['src_video']['title'] if dbe['src_video'] and dbe['src_video']['title']
+      message = "Because you liked "+ dbe['src_video']['title'] if dbe['src_video'] and dbe['src_video']['title']
     elsif frame['conversation'] and frame['conversation']['messages'] and frame['conversation']['messages'][0]
       message = frame['conversation']['messages'][0]['text']
+    elsif frame['frame_type'] == 1
+      message = ''
     else
       message = "This video is similar to videos you have watched, liked and shared."
     end

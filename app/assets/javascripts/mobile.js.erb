@@ -12,6 +12,7 @@
 var libs = {
   config : {
     shelbyGT : {
+      apiRoot : '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>',
       UserAvatarSizes : {
         small : "sq48x48"
       }
@@ -106,7 +107,7 @@ $(document).ready(function(){
 
       $.ajax({
         type: 'GET',
-        url: '//api.shelby.tv/v1/frame/' + frame_id + '/short_link',
+        url: libs.config.shelbyGT.apiRoot + '/frame/' + frame_id + '/short_link',
         dataType: "jsonp",
         timeout: 10000,
         crossDomain: true,
@@ -155,7 +156,7 @@ $(document).ready(function(){
 
           $.ajax({
             type: 'GET',
-            url: '//api.shelby.tv/v1/POST/roll/' + user.personal_roll_id + '/frames',
+            url: libs.config.shelbyGT.apiRoot + '/POST/roll/' + user.personal_roll_id + '/frames',
             dataType: "jsonp",
             timeout: 10000,
             crossDomain: true,
@@ -195,8 +196,8 @@ $(document).ready(function(){
 
               if(shareData.destination.length > 0) {
                 $.ajax({
-                  type: 'POST',
-                  url: '//api.shelby.tv/v1/POST/frame/' + new_frame_id + '/share',
+                  type: 'GET',
+                  url: libs.config.shelbyGT.apiRoot + '/POST/frame/' + new_frame_id + '/share',
                   dataType: "jsonp",
                   timeout: 10000,
                   crossDomain: true,
@@ -233,7 +234,7 @@ $(document).ready(function(){
 
       $.ajax({
         type: 'GET',
-        url: '//api.shelby.tv/v1/POST/roll/'+ roll_id +'/'+ method,
+        url: libs.config.shelbyGT.apiRoot + '/POST/roll/'+ roll_id +'/'+ method,
         dataType: "jsonp",
         timeout: 10000,
         crossDomain: true,
@@ -297,7 +298,7 @@ $(document).ready(function(){
 
     $.ajax({
       type: 'GET',
-      url: '//api.shelby.tv/v1/PUT/frame/' + frame_id + '/like',
+      url: libs.config.shelbyGT.apiRoot + '/PUT/frame/' + frame_id + '/like',
       dataType: "jsonp",
       timeout: 10000,
       crossDomain: true,
@@ -351,7 +352,7 @@ $(document).ready(function(){
 
       $.ajax({
         type: 'GET',
-        url: '//api.shelby.tv/v1/user',
+        url: libs.config.shelbyGT.apiRoot + '/user',
         dataType: "jsonp",
         timeout: 10000,
         crossDomain: true,

@@ -13,7 +13,8 @@ $(function(){
       video_id         = $frame.data('video_id'),
       personal_roll_id = $body.data('personal_roll_id'),
       username         = $body.data('user_name'),
-      user             = JSON.parse($('#js-user-model').html()) || {};
+      user             = JSON.parse($('#js-user-model').html()) || {},
+      apiRoot          = '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>';
 
   // share pane template data
   var data = {
@@ -57,7 +58,7 @@ $(function(){
     // determine if Video has been liked, depends on user being loaded.
     $.ajax({
       type: 'GET',
-      url: '//api.shelby.tv/v1/video/queued',
+      url: apiRoot + '/video/queued',
       dataType: "jsonp",
       timeout: 10000,
       crossDomain: true,
@@ -98,7 +99,7 @@ $(function(){
 
     $.ajax({
       type: 'GET',
-      url: '//api.shelby.tv/v1/POST/roll/' + personal_roll_id + '/frames',
+      url: apiRoot + '/POST/roll/' + personal_roll_id + '/frames',
       dataType: "jsonp",
       timeout: 10000,
       crossDomain: true,
@@ -138,8 +139,8 @@ $(function(){
 
         if(shareData.destination.length > 0) {
           $.ajax({
-            type: 'POST',
-            url: '//api.shelby.tv/v1/POST/frame/' + new_frame_id + '/share',
+            type: 'GET',
+            url: apiRoot + '/POST/frame/' + new_frame_id + '/share',
             dataType: "jsonp",
             timeout: 10000,
             crossDomain: true,
@@ -179,7 +180,7 @@ $(function(){
 
     $.ajax({
       type: 'GET',
-      url: '//api.shelby.tv/v1/frame/' + data.frame_id + '/short_link',
+      url: apiRoot + '/frame/' + data.frame_id + '/short_link',
       dataType: "jsonp",
       timeout: 10000,
       crossDomain: true,
