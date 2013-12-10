@@ -148,6 +148,7 @@ def creator(quantity=1)
       "creator_image"=>"http://i3.ytimg.com/i/N-sc1xJr-QQNj_uNIM9wTA/mq1.jpg",
       "thumbnail_url"=>"http://i.ytimg.com/vi/k-CW3WYMF_Q/0.jpg"
     }
+  end
 
   creators
 end
