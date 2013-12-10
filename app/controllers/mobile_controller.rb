@@ -23,10 +23,10 @@ class MobileController < ApplicationController
     if user_signed_in? and @signed_in_user and @signed_in_user.has_key?("app_progress") and (@signed_in_user['app_progress']['onboarding'] != true)
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
       authed_service = params[:service] || users_first_auth['provider'] || "facebook"
-      redirect_to mobile_show_onboarding_path(:step => 1, :service => authed_service)
+      redirect_to mobile_show_onboarding_path(:step => 1, :service => authed_service) and return
     elsif user_signed_in?
       log_session()
-      redirect_to appropriate_subdirectory+mobile_stream_path
+      redirect_to (appropriate_subdirectory+mobile_stream_path) and return
     else
       @mobile_signup_url = Settings::ShelbyAPI.url+"/auth/facebook?service=facebook&origin="+Settings::Application.mobile_url
       render '/home/landing', :layout => false
@@ -37,7 +37,9 @@ class MobileController < ApplicationController
     if user_signed_in?
       check_for_signed_in_user_and_issues
 
-      redirect_to appropriate_subdirectory+mobile_show_onboarding_path(:step => 1) unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
+      unless (@signed_in_user['app_progress'] and (@signed_in_user['app_progress']['onboarding'] == true))
+        redirect_to(appropriate_subdirectory+mobile_show_onboarding_path(:step => 1)) and return
+      end
 
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
@@ -116,7 +118,7 @@ class MobileController < ApplicationController
 
       render "/mobile/me" #same template as mobile#me method
     else
-      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+      redirect_to(appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)) and return
     end
   end
 
@@ -138,7 +140,7 @@ class MobileController < ApplicationController
 
       render "/mobile/preferences_#{@section}"
     else
-      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+      redirect_to(appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)) and return
     end
   end
 
