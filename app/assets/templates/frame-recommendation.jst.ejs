@@ -24,21 +24,22 @@
       <%
         var creator = dashboardEntry.get('src_frame') && dashboardEntry.get('src_frame').get('creator');
         if (creator) {
+          var verb = (dashboardEntry.get('src_frame').get('frame_type') == libs.shelbyGT.FrameModel.FRAME_TYPE.light_weight ? 'liked' : 'shared');
       %>
         This video is similar to videos
         <% if (creator.id != shelby.models.user.id) { %>
-          <%= SHELBYJST['user-page-link']({nickname: creator.get('nickname')}) %> has shared
+          <%= SHELBYJST['user-page-link']({nickname: creator.get('nickname')}) %> has <%= verb %>
         <% } else { %>
-          you have shared
+          you have <%= verb %>
         <% } %>
       <% } else { %>
         Check out this video
       <% } %>
     <% } else if (dbeAction == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.mortarRecommendation) { %>
       <% if (dashboardEntry.get('src_video') && dashboardEntry.get('src_video').has('title')) { %>
-        Because you shared "<%= dashboardEntry.get('src_video').get('title') %>"
+        Because you liked "<%= dashboardEntry.get('src_video').get('title') %>"
       <% } else { %>
-        This video is similar to videos you have shared
+        This video is similar to videos you have liked
       <% } %>
     <% } %>
   </p>
