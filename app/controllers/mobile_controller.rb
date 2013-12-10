@@ -23,10 +23,10 @@ class MobileController < ApplicationController
     if user_signed_in? and @signed_in_user and @signed_in_user.has_key?("app_progress") and (@signed_in_user['app_progress']['onboarding'] != true)
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
       authed_service = params[:service] || users_first_auth['provider'] || "facebook"
-      redirect_to mobile_show_onboarding_path(:step => 1, :service => authed_service) and return
+      redirect_to(mobile_show_onboarding_path(:step => 1, :service => authed_service)) and return
     elsif user_signed_in?
       log_session()
-      redirect_to (appropriate_subdirectory+mobile_stream_path) and return
+      redirect_to(appropriate_subdirectory+mobile_stream_path) and return
     else
       @mobile_signup_url = Settings::ShelbyAPI.url+"/auth/facebook?service=facebook&origin="+Settings::Application.mobile_url
       render '/home/landing', :layout => false
@@ -51,7 +51,7 @@ class MobileController < ApplicationController
       d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit, params[:entry])
       @dashboard = dedupe_dashboard(d)
     else
-      redirect_to appropriate_subdirectory+mobile_landing_path(:msg => Settings::ErrorMessages.must_be_logged_in, :status => 401)
+      redirect_to(appropriate_subdirectory+mobile_landing_path(:msg => Settings::ErrorMessages.must_be_logged_in, :status => 401)) and return
     end
   end
 
@@ -102,7 +102,7 @@ class MobileController < ApplicationController
         @frames = []
       end
     else
-      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+      redirect_to(appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)) and return
     end
   end
 
@@ -162,7 +162,7 @@ class MobileController < ApplicationController
 
       render "/mobile/preferences_#{@section}"
     else
-      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+      redirect_to(appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)) and return
     end
   end
 
@@ -186,9 +186,9 @@ class MobileController < ApplicationController
 
       #TODO: this needs error/success handling
 
-      redirect_to Settings::Mobile.mobile_subdirectory + "/preferences/" + Settings::Mobile.preferences_sections.profile
+      redirect_to(appropriate_subdirectory + "/preferences/" + Settings::Mobile.preferences_sections.profile) and return
     else
-      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+      redirect_to(appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)) and return
     end
   end
 
@@ -206,7 +206,7 @@ class MobileController < ApplicationController
     @skip = convert_page_to_skip(params[:page])
 
     if @signed_in_user['nickname'] == params[:username]
-      redirect_to appropriate_subdirectory+mobile_me_path(:type => "shares")
+      redirect_to(appropriate_subdirectory+mobile_me_path(:type => "shares")) and return
     elsif @user = Shelby::API.get_user(params[:username])
       @roll_id = @user['personal_roll_id']
       @roll_type = Settings::Mobile.roll_types['user']
@@ -251,7 +251,7 @@ class MobileController < ApplicationController
     flash[:error] = params[:error]
     # def dont want this around (API tries to kill it, too)
     cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
-    redirect_to Settings::ShelbyAPI.url + "/sign_out_user"
+    redirect_to(Settings::ShelbyAPI.url + "/sign_out_user") and return
   end
 
   def show_onboarding
@@ -272,7 +272,7 @@ class MobileController < ApplicationController
   def set_onboarding
     @current_step = params[:step].to_i
     raise ActionController::RoutingError.new(Settings::ErrorMessages.step_does_not_exist) unless [1,2].include?(@current_step)
-    (redirect_to appropriate_subdirectory+mobile_landing_path(:status=> Settings::ErrorMessages.must_be_logged_in) and return) unless user_signed_in?
+    (redirect_to(appropriate_subdirectory+mobile_landing_path(:status=> Settings::ErrorMessages.must_be_logged_in)) and return) unless user_signed_in?
 
     @current_user = Shelby::API.get_user(current_user_id)
 
@@ -282,14 +282,14 @@ class MobileController < ApplicationController
       EM.next_tick { follow_shelby(user, params[:onboarding_follow_shelby]) }
       attributes = {:app_progress => {:onboarding => @current_step}}
       update_user(@current_user, attributes)
-      redirect_to appropriate_subdirectory+mobile_show_onboarding_path(:step => 2)
+      redirect_to(appropriate_subdirectory+mobile_show_onboarding_path(:step => 2)) and return
     elsif @current_step == 2 and params[:rolls]
       EM.next_tick { follow_rolls(params[:rolls]) }
       attributes = {:app_progress => {:onboarding => true} }
       update_user(@current_user, attributes)
-      redirect_to appropriate_subdirectory+mobile_stream_path
+      redirect_to(appropriate_subdirectory+mobile_stream_path) and return
     else
-      redirect_to appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.step_does_not_exist)
+      redirect_to(appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.step_does_not_exist)) and return
     end
   end
 
@@ -300,10 +300,12 @@ class MobileController < ApplicationController
     @user_signed_in = user_signed_in?
     @is_mobile      = is_mobile?
 
+    puts "signed_in_user: #{@signed_in_user}"
+
     # this means that the user isn't *really* logged in, delete the cookie and redirect to landing
     if @signed_in_user['app_progress'].nil?
       cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
-      (redirect_to appropriate_subdirectory+mobile_landing_path(:msg =>"Eeek, Something went wrong. Try logging in again.", :status => 401) and return)
+      redirect_to(appropriate_subdirectory+mobile_landing_path(:msg =>"Eeek, Something went wrong. Try logging in again.", :status => 401)) and return
     end
   end
 

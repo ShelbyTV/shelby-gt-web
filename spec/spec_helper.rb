@@ -125,7 +125,8 @@ def user
       'reroll_notifications'        => "true",
       'roll_activity_notifications' => "true"
     },
-    "primary_email"       => "jlpicard@starfleet.com"
+    "primary_email"       => "jlpicard@starfleet.com",
+    "app_progress" => {"something" => "here"}
   }
 end
 
