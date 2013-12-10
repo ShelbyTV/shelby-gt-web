@@ -189,6 +189,13 @@ $persistent_video_info__shadow: 0 0 4px 0 rgba(0,0,0,.4);
     height: 3.5em;
     width: 3.5em;
   }
+
+  .xuser-avatar--liker {
+    &:before {
+      padding-left: 0.05em;
+      padding-right: 0.55em;
+    }
+  }
 }
 
 //current frame structure

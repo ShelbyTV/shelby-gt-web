@@ -63,9 +63,17 @@
           </div><!-- eo .media_body -->
         <% } else { %>
           <% if (showNextFrame) { %>
-            <% if (currentFrame.originInfoType() == libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.creator) { %>
+            <% if (currentFrame.originInfoType() == libs.shelbyGT.FrameModel.ORIGIN_INFO_TYPE.creator) {
+                 var avatarClass = "";
+                 if (!isChannelRecommendation) {
+                  if (creatorIsLiker) {
+                   avatarClass = " xuser-avatar--liker icon-like";
+                   }
+                 }
+            %>
               <% if (clickableCreator) { %><a href="/<%= currentCreatorNickname %>" class="no-faux-link js-navigate-creator"><% } %>
-                <div class="image_module xuser-avatar media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
+
+                <div class="image_module xuser-avatar<%= avatarClass %> media_image" style="background-image: url(<%= currentCreatorAvatar %>);" role="img">
                   <img src="<%= currentCreatorAvatar %>" class="visuallyhidden" title="<%= currentCreatorNickname %>" alt="<%= currentCreatorNickname %>">
                 </div>
               <% if (clickableCreator) { %></a><% } %>
