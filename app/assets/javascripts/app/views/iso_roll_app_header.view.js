@@ -92,7 +92,7 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
      var wasFollow = !isFollow;
      // even though the inverse action is now described by the button, we prevent click handling
      // with class js-busy until the ajax completes
-     $thisButton.text(isFollow ? 'Follow' : 'Unfollow').addClass('js-busy');
+     $thisButton.text(isFollow ? 'Follow' : 'Following').addClass('js-busy');
 
      // now that we've told the user that their action has succeeded, let's fire off the ajax to
      // actually do what they want, which will very likely succeed
@@ -141,7 +141,7 @@ libs.shelbyGT.IsoRollAppHeaderView = Support.CompositeView.extend({
      } else {
        var userFollowingRoll = shelby.models.rollFollowings.containsRoll(this._currentRoll);
        this.$('.js-follow-button').toggleClass('button-active', !userFollowingRoll)
-         .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
+         .text(userFollowingRoll ? 'Following' : 'Follow').show();
      }
    },
 

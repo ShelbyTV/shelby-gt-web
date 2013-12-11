@@ -1,5 +1,7 @@
 libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
+  _currentRollModel : null,
+
   events : {
     "click .js-roll-add-leave-button:not(.js-busy)" : "_followOrUnfollowRoll"
   },
@@ -13,13 +15,14 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   initialize : function(){
     this.model.bind('change', this._onGuideModelChange, this);
     this.model.bind('change:currentRollModel', this._onRollModelChange, this);
-    shelby.models.rollFollowings.bind('change:initialized', this._onRollFollowingsInitialized, this);
   },
 
   _cleanup : function(){
     this.model.unbind('change', this._onGuideModelChange, this);
     this.model.unbind('change:currentRollModel', this._onRollModelChange, this);
-    shelby.models.rollFollowings.unbind('change:initialized', this._onRollFollowingsInitialized, this);
+    if (this._currentRollModel) {
+      this._currentRollModel.unbind('change:creator_id', this._updateJoinButton, this);
+    }
   },
 
   render : function(){
@@ -62,7 +65,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
     var wasUnfollow = !isUnfollow;
     // even though the inverse action is now described by the button, we prevent click handling
     // with class js-busy until the ajax completes
-    $thisButton.text(isUnfollow ? 'Unfollow' : 'Follow').toggleClass('button_enabled',isUnfollow).addClass('js-busy');
+    $thisButton.text(isUnfollow ? 'Following' : 'Follow').toggleClass('button_enabled',isUnfollow).addClass('js-busy');
     // now that we've told the user that their action has succeeded, let's fire off the ajax to
     // actually do what they want, which will very likely succeed
     var clearBusyFunction = function() {
@@ -76,30 +79,58 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
   },
 
   _updateJoinButton : function(){
-    var currentRollModel = this.model.get('currentRollModel');
-    if (libs.shelbyGT.viewHelpers.roll.isFaux(currentRollModel)){
-      this.$('.js-roll-add-leave-button').hide();
-      shelby.models.guide.trigger('reposition');
-      return;
-    }
-    if (!currentRollModel || currentRollModel.get('creator_id') === shelby.models.user.id ||
-        !shelby.models.rollFollowings.has('initialized')){
+    var currentRollModel = this._currentRollModel;
+    if (shelby.models.user.isAnonymous() ||
+        libs.shelbyGT.viewHelpers.roll.isFaux(currentRollModel) ||
+        !currentRollModel ||
+        !currentRollModel.has('creator_id') ||
+        currentRollModel.get('creator_id') == shelby.models.user.id){
       this.$('.js-roll-add-leave-button').hide();
     } else {
       var userFollowingRoll = shelby.models.rollFollowings.containsRoll(currentRollModel);
       this.$('.js-roll-add-leave-button').toggleClass('js-rolls-leave button_enabled', userFollowingRoll)
-        .text(userFollowingRoll ? 'Unfollow' : 'Follow').show();
+        .text(userFollowingRoll ? 'Following' : 'Follow').show();
     }
     shelby.models.guide.trigger('reposition');
   },
 
   _onRollModelChange : function(guideModel, currentRollModel) {
-    this._updateJoinButton();
-  },
+    var self = this;
+    if (this._currentRollModel) {
+      this._currentRollModel.unbind('change:creator_id', this._updateJoinButton, this);
+      this._currentRollModel = null;
+    }
 
-  _onRollFollowingsInitialized : function(rollFollowingsModel, initialized) {
-    if (initialized) {
-      this._updateJoinButton();
+    this.$('.js-roll-add-leave-button').hide();
+    shelby.models.guide.trigger('reposition');
+
+    // for logged in users we need to handle the update of the follow/unfollow button
+    // the button is never shown for logged out users
+    if (currentRollModel && !shelby.models.user.isAnonymous()) {
+      this._currentRollModel = currentRollModel;
+      this._currentRollModel.bind('change:creator_id', this._updateJoinButton, this);
+      // check if the user is following this roll so we can render the follow/unfollow button appropriately
+      rollFollowing = new libs.shelbyGT.RollModel();
+      var rollId = currentRollModel.id;
+      rollFollowing.fetch({
+        url : shelby.config.apiRoot + '/user/' + shelby.models.user.id + '/roll/' + rollId +'/following',
+        success : function(rollModel, response) {
+          if (response.status == 200) {
+            // if we don't already have this roll following, insert it
+            existingFollowing = shelby.models.rollFollowings.get('rolls').find(function(roll){
+              return roll.id == rollId;
+            });
+            if (!existingFollowing) {
+              libs.utils.BackboneCollectionUtils.insertAtSortedIndex(rollModel,
+                shelby.models.rollFollowings.get('rolls'),
+                  {searchOffset:shelby.config.db.rollFollowings.numSpecialRolls,
+                    sortAttribute:shelby.config.db.rollFollowings.sortAttribute,
+                    sortDirection:shelby.config.db.rollFollowings.sortDirection});
+            }
+          }
+          self._updateJoinButton();
+        }
+      });
     }
   }
 
