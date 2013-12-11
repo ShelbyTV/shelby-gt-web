@@ -26,7 +26,7 @@ class MobileController < ApplicationController
       redirect_to(mobile_show_onboarding_path(:step => 1, :service => authed_service)) and return
     elsif user_signed_in?
       log_session()
-      redirect_to(appropriate_subdirectory+mobile_stream_path) and return
+      redirect_to(mobile_stream_path) and return
     else
       @mobile_signup_url = Settings::ShelbyAPI.url+"/auth/facebook?service=facebook&origin="+Settings::Application.mobile_url
       render '/home/landing', :layout => false
@@ -299,8 +299,6 @@ class MobileController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
     @is_mobile      = is_mobile?
-
-    puts "signed_in_user: #{@signed_in_user}"
 
     # this means that the user isn't *really* logged in, delete the cookie and redirect to landing
     if @signed_in_user['app_progress'].nil?
