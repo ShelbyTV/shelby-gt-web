@@ -37,7 +37,7 @@ class MobileController < ApplicationController
     if user_signed_in?
       check_for_signed_in_user_and_issues
 
-      unless (@signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress'['onboarding'] == "iOS_iPhone"])
+      unless (@signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress'['onboarding'] == "iOS_iPhone"]))
         redirect_to(appropriate_subdirectory+mobile_show_onboarding_path(:step => 1)) and return
       end
 
