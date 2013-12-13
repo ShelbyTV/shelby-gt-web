@@ -38,7 +38,7 @@ class MobileController < ApplicationController
     if user_signed_in?
       check_for_signed_in_user_and_issues
 
-      unless (@signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress'['onboarding'] == "iOS_iPhone"]))
+      if (@signed_in_user['app_progress'] and (!(@signed_in_user['app_progress']['onboarding'] == true) or !@signed_in_user['app_progress'['onboarding'] == "iOS_iPhone"]))
         redirect_to(appropriate_subdirectory+mobile_show_onboarding_path(:step => 1)) and return
       end
 
@@ -207,7 +207,7 @@ class MobileController < ApplicationController
     @skip = convert_page_to_skip(params[:page])
 
     if @signed_in_user['nickname'] == params[:username]
-      redirect_to(appropriate_subdirectory+mobile_me_path(:type => "shares")) and return
+      redirect_to(appropriate_subdirectory+mobile_me_path(:type => "activity")) and return
     elsif @user = Shelby::API.get_user(params[:username])
       @roll_id = @user['personal_roll_id']
       @roll_type = Settings::Mobile.roll_types['user']
@@ -259,7 +259,7 @@ class MobileController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     @current_step = (params[:step] || 1).to_i
     raise ActionController::RoutingError.new(Settings::ErrorMessages.step_does_not_exist) unless [1,2].include?(@current_step)
-    #(redirect_to mobile_landing_path(:status=> "You must be logged in.") and return) unless user_signed_in?
+    (redirect_to mobile_landing_path(:status=> "You must be logged in.") and return) if !user_signed_in?
 
     if @current_step == 1
       @service = params[:service]
