@@ -96,12 +96,14 @@
                   <strong><%= _(currentVideo.get('provider_name')).capitalize() %></strong>
                 <% } %>
 
-                <% if (!isChannelRecommendation && fauxUserOrigin) { %>
-                  via <span class="capitalize"><%= fauxUserOrigin %></span>
-                <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
-                  <%= creatorIsLiker ? "liked this via" : "via" %> <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>
-                <% } else if (creatorIsLiker) { %>
-                  liked this
+                <% if (!isChannelRecommendation) { %>
+                  <% if (fauxUserOrigin) { %>
+                    via <span class="capitalize"><%= fauxUserOrigin %></span>
+                  <% } else if(currentFrameOriginator && (currentFrameOriginator.get('nickname') != currentCreatorNickname) && (currentFrameOriginator.get('user_type') != 1)) { %>
+                    <%= creatorIsLiker ? "liked this via" : "via" %> <a class="js-navigate-originator no-faux-link" href="/<%= currentFrameOriginator.get('nickname') %>"><%= currentFrameOriginator.get('nickname') %></a>
+                  <% } else if (creatorIsLiker) { %>
+                    liked this
+                  <% } %>
                 <% } %>
               </h3>
             <% } %>
