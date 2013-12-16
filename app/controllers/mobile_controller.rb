@@ -139,7 +139,7 @@ class MobileController < ApplicationController
         else
       end
 
-      render "/mobile/preferences_#{@section}"
+      render "/mobile/preferences_#{@section}" and return
     else
       redirect_to(appropriate_subdirectory+mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)) and return
     end
@@ -197,6 +197,9 @@ class MobileController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
     @is_mobile      = is_mobile?
+
+    # don't look up any data that looks like an asset file
+    raise ActionController::RoutingError.new(Settings::ErrorMessages.content_not_found) if (params[:username]=~/.jpg|.png|.gif|.js/)
 
     # this means that the user isn't *really* logged in, delete the cookie and let the person be
     if @signed_in_user['app_progress'].nil?

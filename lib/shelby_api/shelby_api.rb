@@ -61,7 +61,7 @@ module Shelby
       r = get( "/roll/#{roll_id}/frames?include_children=true&skip=#{skip}&limit=#{limit}", :headers => {'Cookie' => cookie}  ).parsed_response
       return nil if r['status'] != 200
       if r['result']['frames'] and r['result']['frames'].is_a?(Array)
-        roll = r['result']
+        r['result']
       end
     end
 
