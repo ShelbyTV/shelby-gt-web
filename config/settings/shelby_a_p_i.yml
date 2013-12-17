@@ -9,15 +9,21 @@ defaults: &defaults
   version: "/v1"
   featured_user_id: "521264b4b415cc44c9000001"
 
-development:
+development: &development
   <<: *defaults
-  login_form_url: "https://api.shelby.tv/authentications/login?redir=http://localhost.shelby.tv:3000"
+  url: "http://api.staging.shelby.tv"
+  secure_url: "https://api.staging.shelby.tv"
+  protocol_matching_url: "//api.staging.shelby.tv"
+  login_form_url: "https://api.staging.shelby.tv/authentications/login?redir=http://localhost.shelby.tv:3000"
+  signup_form_url: "https://api.staging.shelby.tv/user/sign_in"
+  popup_cohort_entrance_url: "https://api.staging.shelby.tv/cohort_entrance/dottv/popup"
 
 test:
   <<: *defaults
 
 staging:
-  <<: *defaults
+  <<: *development
+  login_form_url: "https://api.staging.shelby.tv/authentications/login"
 
 production:
   <<: *defaults
