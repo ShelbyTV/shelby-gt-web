@@ -53,6 +53,7 @@ libs.shelbyGT.DashboardEntryModel = libs.shelbyGT.ShelbyBaseModel.extend({
 });
 
 libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES = {
+  likeNotification : 11,
   videoGraphRecommendation : 31,
   entertainmentGraphRecommendation : 32,
   mortarRecommendation : 33,
