@@ -10,27 +10,6 @@
       padding-top: 50px;
     }
 
-    .shelf__wrapper--signup {
-      padding-top: 0;
-
-      .shelf--signup {
-        .shelf__h1 {
-          font-size: 1.6em;
-        }
-
-        .form_module,
-        .form_fieldset {
-          width: auto;
-        }
-
-        .shelf__button {
-          width: auto;
-          padding-left: 1em;
-          padding-right: 1em;
-        }
-      }
-    }
-
     .shelf {
       //------- all shelves ------------------------
       border-left: 0;
@@ -184,6 +163,12 @@
 }//eo media-query///////////////////////////////////////////////////////////////
 
 @media screen and (max-width: 500px) {
+  .shelf__wrapper--signup {
+    .form_module {
+      width: auto;
+    }
+  }
+
   .modal_dialog__wrapper--sms {
     .modal_dialog {
       text-align: center;
