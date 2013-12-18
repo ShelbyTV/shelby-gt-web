@@ -129,6 +129,8 @@ ShelbyGtWeb::Application.routes.draw do
   #for blitz io verification
   get '/mu-4a3bea60-210d9ed2-38279c19-649e9064' => 'home#blitz'
 
+  get '/web-app-manifest' => 'home#amazonapp', :format => true
+
   # Everything else falls through to home#index
   # This used to handle *everything* but now it's much more limited in scope
   # XXX Still handles non-shelby-domain iso rolls :(

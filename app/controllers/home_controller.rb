@@ -286,6 +286,24 @@ class HomeController < ApplicationController
     end
   end
 
+  def amazonapp
+    respond_to do |format|
+      format.json {
+        manifest = {
+          "verification_key" => "562513e4-f6d1-4a4d-a7fc-828814946ea8",
+          "version" => "0.10(0)",
+          "launch_path" => "amazonapp?mobile=false",
+          "type" => "web",
+          "permissions" => [
+            "auth"
+          ],
+          "last_update"  => "2013-12-17 16:08:08+0000"
+        }
+
+        render :json => manifest.to_json
+      }
+    end
+  end
 
   # THIS IS A TEMPORARY
   def bookmarklet
