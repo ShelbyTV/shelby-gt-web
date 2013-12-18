@@ -22,6 +22,12 @@ libs.shelbyGT.DashboardEntryModel = libs.shelbyGT.ShelbyBaseModel.extend({
             action <= libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation);
   },
 
+  isNotificationEntry : function(){
+    var action = this.get('action');
+    return (action >= libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.likeNotification &&
+            action <= libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.followNotification);
+  },
+
   allFriendIds : function(){
     return _((this.get('friend_sharers') || []).concat(this.get('friend_viewers')).concat(this.get('friend_likers'))
                .concat(this.get('friend_rollers')).concat(this.get('complete_viewers'))).compact();
@@ -54,6 +60,9 @@ libs.shelbyGT.DashboardEntryModel = libs.shelbyGT.ShelbyBaseModel.extend({
 
 libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES = {
   likeNotification : 11,
+  anonymousLikeNotification : 12,
+  shareNotification : 13,
+  followNotification : 14,
   videoGraphRecommendation : 31,
   entertainmentGraphRecommendation : 32,
   mortarRecommendation : 33,

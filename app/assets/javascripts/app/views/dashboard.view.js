@@ -97,7 +97,7 @@
     },
 
     _filter : function(dbEntry){
-      return dbEntry.get('action') && dbEntry.get('action') != libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.likeNotification;
+      return !dbEntry.isNotificationEntry();
     }
 
   });
