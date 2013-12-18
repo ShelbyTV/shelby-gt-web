@@ -163,6 +163,12 @@
 }//eo media-query///////////////////////////////////////////////////////////////
 
 @media screen and (max-width: 500px) {
+  .shelf__wrapper--signup {
+    .form_module {
+      width: auto;
+    }
+  }
+
   .modal_dialog__wrapper--sms {
     .modal_dialog {
       text-align: center;
