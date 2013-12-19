@@ -14,6 +14,8 @@ ShelbyGtWeb::Application.routes.draw do
     post '/preferences/profile' => 'mobile#profile', :as => :mobile_preferences
     get '/stream' => 'mobile#stream', :as => :mobile_stream
     get '/signout' => 'mobile#signout', :as => :mobile_signout
+    get '/signup' => 'signup#show', :as => :signup
+    get '/signup/:code' => 'signup#show'
     get '/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
     post '/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
     get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
@@ -31,6 +33,9 @@ ShelbyGtWeb::Application.routes.draw do
     post '/preferences/profile' => 'mobile#profile'
     get '/stream' => 'mobile#stream'
     get '/signout' => 'mobile#signout'
+    get '/signup' => 'signup#show', :as => :signup
+    get '/signup/:code' => 'signup#show'
+
     get '/onboarding/:step' => 'mobile#show_onboarding'
     post '/onboarding/:step' => 'mobile#set_onboarding'
     get '/:username/following' => 'mobile#following', :constraints => { :username => /[^\/]+/ }
@@ -51,6 +56,8 @@ ShelbyGtWeb::Application.routes.draw do
       post '/preferences/profile' => 'mobile#profile', :as => :mobile_preferences
       get '/stream' => 'mobile#stream', :as => :mobile_stream
       get '/signout' => 'mobile#signout', :as => :mobile_signout
+      get '/signup' => 'signup#show', :as => :signup
+      get '/signup/:code' => 'signup#show'
       get '/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
       post '/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
       get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
