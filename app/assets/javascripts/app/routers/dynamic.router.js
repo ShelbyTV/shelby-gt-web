@@ -446,7 +446,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
                   libs.utils.recommendationPlacer.placeRecs(
                     shelby.collections.dynamicRecommendations,
                     shelby.models.dashboard.get('dashboard_entries'),
-                    shelby.collections.dashboardFrameGroupsCollection
+                    shelby.collections.dashboardFrameGroupsCollection,
+                    {
+                      destinationCollectionFilter: function(dbe){
+                        return !dbe.isNotificationEntry();
+                      }
+                    }
                   );
                   // don't insert any more dynamic recommendations during this session
                   shelby.models.guide.set('hasShownDynamicRec', true);
