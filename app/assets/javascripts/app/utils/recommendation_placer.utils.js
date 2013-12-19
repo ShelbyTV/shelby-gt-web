@@ -7,20 +7,25 @@ libs.utils.recommendationPlacer = {
         of a ListView, into which the recommendations will be inserted
       frameGroupsCollection - must be a frameGroupsCollection that is the display collection of the destinationCollection's
         ListView, which will be examined in order to space the recommendations evenly in the resulting visual output
+    Options:
+      destinationCollectionFilter - a filter function to apply to the destinationCollection to make it look like what's displayed by its
+        corresponding list view when searching it for de-duplication
       frameGroupsStartIndex - the index in the frameGroupsCollection at which to start looking for spots to insert the recommendations,
         default is 0
   */
-  placeRecs : function(recommendationsCollection, destinationCollection, frameGroupsCollection, frameGroupsStartIndex){
-    if (typeof(frameGroupsStartIndex) == "undefined") {
-      frameGroupsStartIndex = 0;
-    }
+  placeRecs : function(recommendationsCollection, destinationCollection, frameGroupsCollection, options){
+    // default options
+    options = _.chain({}).extend(options).defaults({
+      destinationCollectionFilter : null,
+      frameGroupsStartIndex : 0
+    }).value();
 
     // for each slice of frame groups of size slice in the frameGroupsCollection that doesn't already have a recommendation in it,
     // insert a new recommendation in the middle of the slice
     var slicesExamined = 0;
     var sliceIncrement = 2;
-    while (recommendationsCollection.length && (frameGroupsStartIndex + (sliceIncrement * slicesExamined) < frameGroupsCollection.length)) {
-      var startIndex = frameGroupsStartIndex + (slicesExamined * (sliceIncrement + 1));
+    while (recommendationsCollection.length && (options.frameGroupsStartIndex + (sliceIncrement * slicesExamined) < frameGroupsCollection.length)) {
+      var startIndex = options.frameGroupsStartIndex + (slicesExamined * (sliceIncrement + 1));
       var endIndex = startIndex + sliceIncrement;
       var slice = frameGroupsCollection.models.slice(startIndex, endIndex);
       var sliceContainsRecommendation = _(slice).find(function(frameGroup){
@@ -41,9 +46,15 @@ libs.utils.recommendationPlacer = {
         // we must take care of the master collection part manually here
         var channelRecDeduplicated = false;
         if (recToInsert.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation) {
-          var firstDuplicateVideoEntry = destinationCollection.find(function(dbe){
+          var collectionToSearch;
+          if (options.destinationCollectionFilter) {
+            collectionToSearch = destinationCollection.chain().filter(options.destinationCollectionFilter);
+          } else {
+            collectionToSearch = destinationCollection.chain();
+          }
+          var firstDuplicateVideoEntry = collectionToSearch.find(function(dbe){
             return dbe.get('frame').get('video').id == recToInsert.get('frame').get('video').id;
-          });
+          }).value();
           if (firstDuplicateVideoEntry) {
             // there's a duplicate video for this recommendation, so we'll need
             // to set the dbentry with a fake id just before the item it will deduplicate with

@@ -89,7 +89,10 @@
               shelby.collections.dynamicRecommendations,
               self.options.collection ? self.options.collection : self.model.get(self.options.collectionAttribute),
               self.frameGroupCollection,
-              numItemsDisplayedBeforeCurrentPage
+              {
+                destinationCollectionFilter : self._filter,
+                frameGroupsStartIndex : numItemsDisplayedBeforeCurrentPage
+              }
             );
           }
         });
