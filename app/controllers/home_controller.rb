@@ -26,7 +26,7 @@ class HomeController < ApplicationController
 
         # redirect to mobile web if on amazon platform
         if detect_mobile_os == :amazon
-          redirect_to('/amazonapp/stream' ) and return
+          redirect_to('/amazonapp' ) and return
         end
 
         #XXX .TV subdomains
