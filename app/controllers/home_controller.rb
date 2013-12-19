@@ -24,6 +24,11 @@ class HomeController < ApplicationController
       # only meant to handle requests for html pages
       format.html {
 
+        # redirect to mobile web if on amazon platform
+        if detect_mobile_os == :amazon
+          redirect_to('/amazonapp/stream' ) and return
+        end
+
         #XXX .TV subdomains
         # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
         # controller, but until that's built, we just short-circuit right here
