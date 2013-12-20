@@ -24,6 +24,11 @@ class HomeController < ApplicationController
       # only meant to handle requests for html pages
       format.html {
 
+        # redirect to mobile web if on amazon platform
+        if detect_mobile_os == :amazon
+          redirect_to('/amazonapp' ) and return
+        end
+
         #XXX .TV subdomains
         # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
         # controller, but until that's built, we just short-circuit right here
@@ -291,13 +296,13 @@ class HomeController < ApplicationController
       format.json {
         manifest = {
           "verification_key" => "562513e4-f6d1-4a4d-a7fc-828814946ea8",
-          "version" => "0.10(0)",
+          "version" => "0.11(0)",
           "launch_path" => "amazonapp?mobile=false",
           "type" => "web",
           "permissions" => [
-            "auth"
+
           ],
-          "last_update"  => "2013-12-17 16:08:08+0000"
+          "last_update"  => "2013-12-19 16:08:08+0000"
         }
 
         render :json => manifest.to_json

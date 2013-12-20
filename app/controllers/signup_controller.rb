@@ -2,7 +2,7 @@ class SignupController < ApplicationController
   include SignupHelper
 
   def show
-    @is_mobile      = is_mobile?
+    @is_mobile = is_mobile?
 
     # just show the freakin form.
     if params[:code]
