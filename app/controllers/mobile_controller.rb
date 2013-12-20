@@ -24,7 +24,8 @@ class MobileController < ApplicationController
     if user_signed_in? and @signed_in_user and @signed_in_user.has_key?("app_progress") and ((@signed_in_user['app_progress']['onboarding'] != true) or @signed_in_user['app_progress'['onboarding'] != "iOS_iPhone"])
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
       authed_service = params[:service] || users_first_auth['provider']
-      redirect_to(appropriate_subdirectory + "/onboarding/1?service=#{authed_service || ''}") and return
+
+      redirect_to(appropriate_subdirectory + "/onboarding/1?#{authed_service ? 'service='+authed_service : ''}") and return
     elsif user_signed_in?
       log_session()
       redirect_to(mobile_stream_path) and return
