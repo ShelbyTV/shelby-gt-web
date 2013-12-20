@@ -16,9 +16,9 @@
               <span class="icon-facebook"></span>
               <span class="button_label">Sign Up with Facebook</span>
             </a>
-            <!-- <h3 class="shelf__email-signup">
+            <h3 class="shelf__email-signup">
               or <a href="/signup?email=1" class="js-track-event" data-ga_action="Click Sign Up with Email Link" data-ga_label="<%= request.referer || 'direct' %>">signup</a>  with your email
-            </h3> -->
+            </h3>
           <% else %>
             <a href="<%= Settings::Application.ios_app_url %>" id="js-cta--main" class="button_primer button_green button_command button_command--giant button_command--flexible shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Call to Action shelf">
               <span class="button_label"><%= raw Settings::Marketing.cta_button %></span>
