@@ -5,7 +5,7 @@
   <p class="modal__block modal__block--push">
     Follow at least 3 of our hand-picked content sources. We'll keep your stream fresh with high quality video.
   </p>
-  <%= form_tag(mobile_set_onboarding_path(@current_step)) do %>
+  <%= form_tag(appropriate_subdirectory + "/onboarding/" + @current_step.to_s) do %>
     <div class="js-list-sources--onboarding">
       <% @sources.each do |category| %>
         <div class="user user--no_lining user--medium_avatar clearfix">
