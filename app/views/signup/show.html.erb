@@ -35,8 +35,8 @@
 
         <br/>
 
-        <p<%= raw " class=\"hidden\"" if @referer == 'email' %>>
-          or <a href="#" class="js-email-signup js-track-event" data-ga_category="Onboarding" data-ga_action="Click Show Sign Up with Email <%= 'via invite' if @inviter %>">sign up with email address</a>.
+        <p>
+          or <a href="#" class="js-email-signup js-track-event<%= ' hidden' if @referer == 'email' %>" data-ga_category="Onboarding" data-ga_action="Click Show Sign Up with Email <%= 'via invite' if @inviter %>">sign up with email address.</a>
         </p>
       </div><!-- shelf__head -->
 
