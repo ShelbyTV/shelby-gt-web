@@ -21,8 +21,7 @@
 </ul>
 
 <p class="center">
-  <%= link_to mobile_stream_path(
-        :page => (@page + 1)),
+  <%= link_to appropriate_subdirectory + "/stream?page=#{@page+1}",
         {
           :class => Settings::Mobile.load_more_button_class + " js-track-event",
           'data-ga_category' => "Mobile",
