@@ -12,7 +12,7 @@
           <div class="media_module media_module--bare clearfix">
             <div class="media_image--rev">
               <%= check_box_tag "rolls[#{category['id']}]", nil, false, :class => "hidden" %>
-              <button class="button_primer button_command button_command--flexible button_gray user__button js-onboarding-roll-button js-track-event" data-roll_id="<%= category['id'] %>" data-ga_category="Mobile" data-ga_action="Onboarding" data-ga_label="Click follow source">
+              <button class="button_primer button_command button_command--flexible button_gray user__button js-onboarding-roll-button js-track-event" data-roll_id="<%= category['id'] %>" data-ga_category="Mobile" data-ga_action="Onboarding" data-ga_label="Click follow source: <%= category['display_title'] %>">
                 <span class="button_label">Follow</span>
               </button>
             </div><!-- eo media_image--rev -->
