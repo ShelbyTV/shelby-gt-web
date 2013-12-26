@@ -16,57 +16,96 @@ function onPlayerReady(event) {
 
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.ENDED) {
+    var indexOfPlaying = $('.js-video-player').parent().find('a').data('index');
     $('.js-play-video').removeClass('visuallyhidden');
     $('.js-video-player').remove().addClass("visuallyhidden");
+    shelby.trackEx({
+      gaCategory : 'Mobile',
+      gaAction : 'Finish Video',
+      gaLabel : "<%= @signed_in_user['nickname'] || 'Anonymous' %>"
+    });
+    // auto advance to next video
+    switchToVideo(indexOfPlaying);
+    // end auto advance
   }
 }
 
+function switchToVideo(e) {
+  var $clickedVid, j;
+  if (typeof e.currentTarget == 'undefined') {
+    j = 1;
+    $clickedVid = $("a[data-index='" + (e+j) + "']:last");
+    while ($clickedVid.length == 0) {
+      j+=1;
+      $clickedVid = $("a[data-index='" + (e+j) + "']:last");
+      if (j>10) { break; }
+    }
+    shelby.trackEx({
+        gaCategory : 'Mobile',
+        gaAction : 'Video auto advance::'+$clickedVid.data('provider-name'),
+        gaLabel : "<%= @signed_in_user['nickname'] || 'Anonymous' %>"
+      });
+  }
+  else {
+    $clickedVid = $(e.currentTarget);
+  }
+
+  var providerName = $clickedVid.data('provider-name'),
+        providerId = $clickedVid.data('provider-id'),
+        embed = $clickedVid.data('player-embed'),
+        index = $clickedVid.data('index'),
+        playerClass = 'js-video-player-'+providerName+'-'+providerId+'-'+index,
+        playerSrcUrl;
+
+  // start by cleaning up the page of any loaded video, add back thumbnail
+  $('.js-play-video').removeClass('visuallyhidden');
+  $('.js-video-player').remove().addClass("visuallyhidden");
+  $("<div id='js-video-player-"+providerName+"-"+providerId+"-"+index+"' class='js-video-player-"+providerName+"-"+providerId+"-"+index+" js-video-player video__wrapper without_video visuallyhidden'></div>").insertAfter($clickedVid);
+
+  $clickedVid.addClass("visuallyhidden");
+
+  var $playerDiv = $('.'+playerClass);
+  $playerDiv.removeClass("visuallyhidden").addClass('playing');
+
+  switch (providerName) {
+    case "youtube":
+      shelby.player = new YT.Player(playerClass, {
+          height: '298',
+          width: '530',
+          showinfo : 0,
+          videoId: providerId,
+          modestbranding: 1,
+          origin: window.location.host,
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      break;
+    case "vimeo":
+      playerSrcUrl = "//player.vimeo.com/video/"+providerId;
+      $playerDiv.html("<iframe width='530' height='298' src='"+playerSrcUrl+"?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+      break;
+    case "dailymotion":
+      playerSrcUrl = "//www.dailymotion.com/embed/video/"+providerId;
+      $playerDiv.html("<iframe width='530' height='298' src='"+playerSrcUrl+"?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+      break;
+    default:
+      $playerDiv.html(embed);
+  }
+  return {providerName: providerName, index: index};
+};
+
 $(document).ready(function(){
     $('body').on('click', '.js-play-video', function(e){
-      var $clickedVid = $(e.currentTarget),
-            providerName = $clickedVid.data('provider-name'),
-            providerId = $clickedVid.data('provider-id'),
-            embed = $clickedVid.data('player-embed'),
-            index = $clickedVid.data('index'),
-            playerClass = 'js-video-player-'+providerName+'-'+providerId+'-'+index,
-            playerSrcUrl;
 
-      // start by cleaning up the page of any loaded video, add back thumbnail
-      $('.js-play-video').removeClass('visuallyhidden');
-      $('.js-video-player').remove().addClass("visuallyhidden");
-      $("<div id='js-video-player-"+providerName+"-"+providerId+"-"+index+"' class='js-video-player-"+providerName+"-"+providerId+"-"+index+" js-video-player video__wrapper without_video visuallyhidden'></div>").insertAfter($clickedVid);
+      videoPlaying = switchToVideo(e);
 
-      $clickedVid.addClass("visuallyhidden");
-
-      var $playerDiv = $('.'+playerClass);
-      $playerDiv.removeClass("visuallyhidden").addClass('playing');
-
-      switch (providerName) {
-        case "youtube":
-          shelby.player = new YT.Player(playerClass, {
-              height: '298',
-              width: '530',
-              showinfo : 0,
-              videoId: providerId,
-              modestbranding: 1,
-              origin: window.location.host,
-              events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-              }
-            });
-          break;
-        case "vimeo":
-          playerSrcUrl = "//player.vimeo.com/video/"+providerId;
-          $playerDiv.html("<iframe width='530' height='298' src='"+playerSrcUrl+"?autoplay=1' frameborder='0' allowfullscreen></iframe>");
-          break;
-        case "dailymotion":
-          playerSrcUrl = "//www.dailymotion.com/embed/video/"+providerId;
-          $playerDiv.html("<iframe width='530' height='298' src='"+playerSrcUrl+"?autoplay=1' frameborder='0' allowfullscreen></iframe>");
-          break;
-        default:
-          $playerDiv.html(embed);
-      }
+      shelby.trackEx({
+        gaCategory : 'Mobile',
+        gaAction : 'Click video to play::'+videoPlaying.providerName,
+        gaLabel : "<%= @signed_in_user['nickname'] || 'Anonymous' %>"
+      });
 
     });
   });
