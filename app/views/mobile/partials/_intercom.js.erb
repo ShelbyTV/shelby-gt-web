@@ -23,7 +23,8 @@ $(document).ready(function(){
                 user_id: "<%= signed_in_user['id'] %>",
                 unsubscribed_from_emails : !should_send_emails,
                 onboardingProgress: santizeOnboarding(<%= signed_in_user['app_progress']['onboarding'] if signed_in_user['onboarding'] %>),
-                tv_page: "http://shelby.tv/<%= signed_in_user['personal_roll_subdomain'] %>"
+                tv_page: "http://shelby.tv/<%= signed_in_user['personal_roll_subdomain'] %>",
+                viaAmazon: Browser.isAmazonWebApp()
               });
       } catch (e) {}
 

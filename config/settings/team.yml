@@ -115,15 +115,6 @@ defaults: &defaults
       email : "keren@shelby.tv",
       twitter : "kepsolution",
       title : "iOS Developer"
-    },
-    {
-      name : "Edon Ophir",
-      description: "It's probably no coincidence that Edon Ophir is the Head of Community at Shelby.tv, since his friends and family have been calling him a “people person” since before he can remember. When he's not engaging with Shelby's awesome and passionate community of video curators, you can probably find him at a yoga studio or with his nose in a book somewhere. He previously served as a Community Manager at Waze and before that, FashionTV, where his team built up the number one fashion channel on YouTube. You can follow him on Twitter and on the Shelby.tv blog.",
-      image : "edon.jpg",
-      url : "edon",
-      email : "edon@shelby.tv",
-      twitter : "edonophir",
-      title : "Community Manager"
     }
   ]
 

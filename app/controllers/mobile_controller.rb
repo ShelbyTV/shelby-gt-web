@@ -28,7 +28,7 @@ class MobileController < ApplicationController
       redirect_to(appropriate_subdirectory + "/onboarding/1?#{authed_service ? 'service='+authed_service : ''}") and return
     elsif user_signed_in?
       log_session()
-      redirect_to(mobile_stream_path) and return
+      redirect_to(appropriate_subdirectory + '/stream') and return
     else
       @mobile_signup_url = Settings::ShelbyAPI.url+"/auth/facebook?service=facebook&origin="+Settings::Application.mobile_url
       render '/home/landing', :layout => false

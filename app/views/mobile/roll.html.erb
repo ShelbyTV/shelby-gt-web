@@ -1,7 +1,7 @@
 <%= render :partial => '/objects/roll_header',
     :locals => {
       :ga_category     => Settings::Mobile.ga_category,
-      :is_following    => nil,
+      :is_following    => @is_following,
       :user            => @user,
       :roll_type       => @roll_type
     }%>
