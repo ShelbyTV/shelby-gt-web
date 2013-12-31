@@ -1,0 +1,16 @@
+defaults: &defaults
+  video_ids: video_ids
+
+development:
+  <<: *defaults
+  mobile_subdirectory: "/m"
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+  mobile_subdirectory: "/m"
+
+production:
+  <<: *defaults
