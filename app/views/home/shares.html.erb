@@ -17,7 +17,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <meta name="apple-itunes-app" content="app-id=<%= Settings::Application.ios_app_id %>">
+  <meta name="apple-itunes-app" content="app-id=<%= Settings::Application.ios_app_id %>, app-argument=<%= Settings::Application.ios_url_scheme %>frame/<%= @frame['id'] %>">
   <meta name="twitter:app:name:iphone" content="Shelby.tv"/>
   <meta name="twitter:app:id:iphone" content="<%= Settings::Application.ios_app_id %>"/>
 
