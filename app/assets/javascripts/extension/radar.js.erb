@@ -1,0 +1,165 @@
+(function(win,doc,opts){
+  /*
+   * Aspects of the script loading were inspired by:
+   *
+   * jQuery Bookmarklet - version 1.0
+   * Originally written by: Brett Barros
+   * Heavily modified by: Paul Irish
+   *
+   * If you use this script, please link back to the source
+   *
+   * Copyright (c) 2010 Latent Motion (http://latentmotion.com/how-to-create-a-jquery-bookmarklet/)
+   * Released under the Creative Commons Attribution 3.0 Unported License,
+   * as defined here: http://creativecommons.org/licenses/by/3.0/
+   *
+   */
+
+  var radar = {
+    providers : [
+      {
+        "provider"  : "blip",
+        "domain"    : "blip.tv",
+        "regex"     : ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/", "\\\/players\\\/xplayer\\\?id=([\\\w-]*)"],
+        "url_regex" : "([0-9]+)"
+      }, {
+        "provider"  : "brightcove",
+        "domain"    : "brightcove.com",
+        "regex"     : ["brightcove.com\\\/services\\\/viewer"]
+      }, {
+        "provider"  : "collegehumor",
+        "domain"    : "collegehumor.com",
+        "regex"     : ["videoid([0-9]+)", "clip_id=([0-9]+)"],
+        "url_regex" : "([0-9]+)"
+      }, {
+        "provider"  : "dailymotion",
+        "domain"    : "dailymotion.com",
+        "regex"     : ["videoId%22%3A%22([a-zA-Z0-9]+)", "dailymotion.com%2Fvideo%2F([a-zA-Z0-9]+)_", "dailymotion\\.com\\\/embed\\\/video\\/([a-zA-Z0-9]+)", "dailymotion\\.com\\\/swf\\\/([a-zA-Z0-9]+)", "www.dailymotion.com\\\/video\\\/([a-zA-Z0-9]+)_"]
+      },
+      /*
+        {
+          "domain"    : "hulu.com",
+          "regex"     : ["http:\\\/\\\/player\\.hulu\\.com\\\/express\\\/.*?"]
+        },
+      */
+      {
+        "provider"  : "hulu",
+        "domain"    : "hulu.com",
+        "regex"     : ["\/site-player\/(\\d*)\/player"]
+      },
+      /*
+        {
+          "provider"  : "pbs",
+          "domain"    : "video.pbs.org",
+          "regex"     : ["width=512&height=288.*&video=.*?\\\/([0-9]+)"]
+        },
+        {
+          "provider"  : "techcrunch",
+          "domain"    : "techcrunch.tv",
+          "regex"     : ["embedCode=(\\w*)"]
+        },
+      */
+      {
+        "provider"  : "ted",
+        "domain"    : "ted.com",
+        "regex"     : ["&amp;su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&amp;", "&su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&", "vu=http:\\\/\\\/video\\.ted\\.com\\\/.*?&su"]
+      }, {
+        "provider"  : "vimeo",
+        "domain"    : "vimeo.com",
+        "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com\\\/([0-9]+)|http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com.*clip_id=([0-9]+)",
+        "regex"     : ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)[^_]", "player_(\\d+)_\\d+"],
+        "elements"  : "div.player.f:not(:has(video)):not(:has(object))"
+      }, {
+        "provider"  : "youtube",
+        "domain"    : "youtube.com",
+        "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*youtube\\.com.*v=([\\_\\-a-zA-Z0-9]+)",
+        "regex"     : ["&video_id=([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\-nocookie\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)"]
+      }, {
+        "provider"  : "bloomberg",
+        "domain"    : "bloomberg.com",
+        "regex"     : ["embedCode=(\\w*)"]
+      }, {
+        "provider"    : "espn",
+        "domain"    : "espn.com,espn.go.com",
+        "regex"     : ["espn%3A([0-9]+)&"]
+      }
+    ],
+
+    debug: function(data) {
+      opts.debug && win.console && win.console.log && console.log(data);
+    },
+
+    scanForVideos : function(){
+      var media = this.$(opts.videoEls);
+      this.debug(['els that might have video:',media]);
+
+
+    },
+
+    Video : {
+      formatAjax : function(url, provider_name, provider_id){
+        return {
+          'provider_name' : provider_name,
+          'provider_id'   : provider_id,
+          'url'           : url
+        }
+      }
+    }
+
+    loadjQuery : function(opts){
+      var self = this;
+
+      var fileref = document.createElement('script');
+
+      fileref.type   = 'text/javascript';
+      fileref.src    = "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js";
+      fileref.onload = function(){
+        //scope & namespace this jquery within `radar`
+        self.$ = $.noConflict(true);
+
+        self.loadStyles(opts.styles);
+        self.loadScripts(opts.scripts);
+      };
+
+      document.body.appendChild(fileref);
+    },
+
+    loadStyles : function(styles){
+      var self = this;
+
+      self.$(styles).each(function(stylesheet){
+        self.$('<link>').attr({
+          href: stylesheet,
+          rel: 'stylesheet'
+        }).appendTo('head');
+      });
+    },
+
+    loadScripts : function(scripts){
+      if (scripts.length === 0) {
+        this.ready();
+        return false;
+      }
+
+      this.$.getScript(scripts[0],  function(){
+        getJS(scripts.slice(1));
+      })
+    },
+
+    init : function(){
+      // rely on jquery for convenient parsing and manipulation
+      this.loadjQuery(opts);
+    },
+
+    ready : function(){
+      this.scanForVideos();
+    }
+  };
+
+  radar.init();
+
+})(window,document,{
+  debug   : true,
+  scripts : [],
+  styles  : [],
+  videoEls: 'embed, iframe, object, video'
+});

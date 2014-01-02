@@ -14,4 +14,5 @@ describe "radar/index" do
 
     rendered.should have_selector(".frame", :count => @qty)
   end
+
 end
