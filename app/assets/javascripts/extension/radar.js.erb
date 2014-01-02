@@ -21,16 +21,19 @@
         "domain"    : "blip.tv",
         "regex"     : ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/", "\\\/players\\\/xplayer\\\?id=([\\\w-]*)"],
         "url_regex" : "([0-9]+)"
-      }, {
+      },
+      {
         "provider"  : "brightcove",
         "domain"    : "brightcove.com",
         "regex"     : ["brightcove.com\\\/services\\\/viewer"]
-      }, {
+      },
+      {
         "provider"  : "collegehumor",
         "domain"    : "collegehumor.com",
         "regex"     : ["videoid([0-9]+)", "clip_id=([0-9]+)"],
         "url_regex" : "([0-9]+)"
-      }, {
+      },
+      {
         "provider"  : "dailymotion",
         "domain"    : "dailymotion.com",
         "regex"     : ["videoId%22%3A%22([a-zA-Z0-9]+)", "dailymotion.com%2Fvideo%2F([a-zA-Z0-9]+)_", "dailymotion\\.com\\\/embed\\\/video\\/([a-zA-Z0-9]+)", "dailymotion\\.com\\\/swf\\\/([a-zA-Z0-9]+)", "www.dailymotion.com\\\/video\\\/([a-zA-Z0-9]+)_"]
@@ -62,48 +65,129 @@
         "provider"  : "ted",
         "domain"    : "ted.com",
         "regex"     : ["&amp;su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&amp;", "&su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&", "vu=http:\\\/\\\/video\\.ted\\.com\\\/.*?&su"]
-      }, {
+      },
+      {
         "provider"  : "vimeo",
         "domain"    : "vimeo.com",
         "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com\\\/([0-9]+)|http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com.*clip_id=([0-9]+)",
         "regex"     : ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)[^_]", "player_(\\d+)_\\d+"],
         "elements"  : "div.player.f:not(:has(video)):not(:has(object))"
-      }, {
+      },
+      {
         "provider"  : "youtube",
         "domain"    : "youtube.com",
         "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*youtube\\.com.*v=([\\_\\-a-zA-Z0-9]+)",
         "regex"     : ["&video_id=([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\-nocookie\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)"]
-      }, {
+      },
+      {
         "provider"  : "bloomberg",
         "domain"    : "bloomberg.com",
         "regex"     : ["embedCode=(\\w*)"]
-      }, {
+      },
+      {
         "provider"    : "espn",
         "domain"    : "espn.com,espn.go.com",
         "regex"     : ["espn%3A([0-9]+)&"]
       }
     ],
 
-    debug: function(data) {
-      opts.debug && win.console && win.console.log && console.log(data);
+    debug: function() {
+      opts.debug && win.console && win.console.log && console.log(arguments);
     },
 
-    scanForVideos : function(){
-      var media = this.$(opts.videoEls);
-      this.debug(['els that might have video:',media]);
+    getValue: function (obj, id) {
+      var value = '';
+      for (var i = 0; i < obj.attributes.length; i++) {
+        if (obj.attributes[i].nodeName === id) {
+          value += obj.attributes[i].nodeValue;
+          break;
+        }
+      }
 
+      var params = this.$(obj).children('param');
+      for (var i = 0; i < params.length; i++) {
+        if (params[i].name == id) {
+          value += params[i].value;
+          break;
+        }
+      }
+      return value;
+    },
+
+
+    scanForVideos : function(){
+      var self = this;
+      var media = this.$(opts.videoEls);
+
+      data = [];
+
+      media.each(function(key,obj){
+        //different elements use different attributes:
+        //iframe = src
+        //embed  = src
+        //video  = src
+        //object = data, has children
+        var $obj = self.$(obj);
+
+        if ($obj.is('object')){
+          $obj.children().each(function(key,child){
+            if(opts.validChildren.test(child)){
+              data.push(child);
+            }
+          });
+        } else {
+          data.push(obj);
+        }
+      });
+
+      this.parseNode(data);
+    },
+
+    parseNode: function(data){
+      var self = this,
+          videos = [];
+
+      this.$(data).each(function(key,video){
+        if(self.getValue(video,'data-youtube-id')) {
+          videos.push(self.Video.format('x','y','z',{}));
+        } else {
+          self.providers.each(function(key,provider){
+
+          });
+        }
+      });
+
+      console.log('videos',videos);
 
     },
 
     Video : {
-      formatAjax : function(url, provider_name, provider_id){
-        return {
+      formatData : function(url, provider_name, providerrovider_id, opts){
+        //required for any video
+        var data = {
           'provider_name' : provider_name,
           'provider_id'   : provider_id,
           'url'           : url
+        };
+
+        //optional, depending on the provider
+        if (opts){
+          if(opts.domain){
+            data.domain = opts.domain;
+          }
+
+          if (opts.embed){
+          data.embed = opts.embed;
+          }
+
+          if (opts.known_url){
+            data.known_url = opts.known_url;
+          }
         }
+
+        return data;
       }
-    }
+    },
 
     loadjQuery : function(opts){
       var self = this;
@@ -140,7 +224,7 @@
         return false;
       }
 
-      this.$.getScript(scripts[0],  function(){
+      this.$.getScript(scripts[0], function(){
         getJS(scripts.slice(1));
       })
     },
@@ -158,8 +242,10 @@
   radar.init();
 
 })(window,document,{
-  debug   : true,
-  scripts : [],
-  styles  : [],
-  videoEls: 'embed, iframe, object, video'
+  //one must test an <object> found on the page using the `validChildren` regex
+  validChildren : /embed|video\.pbs\.org|vimeo\.com|<oolaya|ooyala/i,
+  debug         : true,
+  scripts       : [],
+  styles        : [],
+  videoEls      : 'embed, iframe, object, video'
 });
