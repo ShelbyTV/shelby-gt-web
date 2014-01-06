@@ -14,6 +14,9 @@
   <meta name="rhombus-auth" content="<%= 'Basic '+Base64.strict_encode64('shelby:_rhombus_gt') %>">
 
   <meta content="user-scalable=no, width=device-width, initial-scale=1.0" name="viewport">
+  <% if @include_smart_app_banner %>
+    <meta name="apple-itunes-app" content="app-id=<%= Settings::Application.ios_app_id %>, app-argument=<%= Settings::Application.ios_url_scheme %>user/<%= @user['id'] %>">
+  <% end %>
 
   <link rel="apple-touch-icon-precomposed" href="http://shelby.tv/apple-touch-icon-precomposed.png" />
   <link rel="apple-touch-icon" href="http://shelby.tv/apple-touch-icon-precomposed.png"/>
