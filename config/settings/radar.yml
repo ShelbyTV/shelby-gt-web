@@ -1,5 +1,5 @@
 defaults: &defaults
-  video_ids: video_ids
+  video_providers: ['youtube', 'vimeo', 'dailymotion', 'hulu']
 
 development:
   <<: *defaults

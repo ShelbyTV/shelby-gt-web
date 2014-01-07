@@ -18,15 +18,6 @@ describe RadarController do
         response.should render_template "index"
       end
 
-      context "parses params" do
-
-        it "parses multiple video_ids" do
-          get :index, { :video_ids => "52c2d8f088ba6b351b6a5cce,52c28dc31c1cf475db130763"}
-          response.should be_success
-        end
-
-      end
-
     end
 
   end
@@ -40,7 +31,7 @@ describe RadarController do
 
     describe "GET 'index'" do
 
-      xit 'redirects to a login page' do
+      it 'redirects to a login page' do
       end
 
     end

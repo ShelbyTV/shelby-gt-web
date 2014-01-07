@@ -78,7 +78,7 @@ module Shelby
       url += "&since_id=" + since_id if since_id
       r = get( url, :headers => {'Cookie' => cookie} ).parsed_response
       return nil if r['status'] != 200
-      db = r['result']
+      r['result']
     end
 
     def self.get_user_followings(user_id, cookie)
@@ -93,6 +93,12 @@ module Shelby
 
     def self.get_video(video_id)
       v = get( "/video/#{video_id}" ).parsed_response
+      return nil if v['status'] != 200
+      return v['result']
+    end
+
+    def self.find_or_create_video(video_provider_name, video_provider_id)
+      v = get( "/video/find_or_create?provider_name=#{video_provider_name}&provider_id=#{video_provider_id}" ).parsed_response
       return nil if v['status'] != 200
       return v['result']
     end

@@ -1,6 +1,5 @@
 <% if @videos %>
-  <% @videos.each_with_index do |video,index| %>
-
+  <% @videos.each_with_index do |video, index| %>
     <%= render :partial => '/objects/video',
         :locals => {
           :embed_video    => true,
