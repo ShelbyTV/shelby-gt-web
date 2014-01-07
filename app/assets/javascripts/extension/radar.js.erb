@@ -85,15 +85,11 @@
         "regex"     : ["embedCode=(\\w*)"]
       },
       {
-        "provider"    : "espn",
+        "provider"  : "espn",
         "domain"    : "espn.com,espn.go.com",
         "regex"     : ["espn%3A([0-9]+)&"]
       }
     ],
-
-    debug: function() {
-      opts.debug && win.console && win.console.log && console.log(arguments);
-    },
 
     getValue: function (obj, id) {
       var value = '';
@@ -114,12 +110,152 @@
       return value;
     },
 
+    composeKnownUrl : function (domain, videoId) {
+      var knownUrl = "";
+
+      switch (domain) {
+        case 'blip.tv':
+          knownUrl = "http://blip.tv/episode/" + videoId;
+          break;
+        case 'youtube.com':
+          knownUrl = "http://www.youtube.com/watch?v=" + videoId;
+          break;
+        case 'dailymotion.com':
+          knownUrl = "http://www.dailymotion.com/video/" + videoId + "?";
+          break;
+        case 'vimeo.com':
+          knownUrl = "http://vimeo.com/" + videoId;
+          break;
+        case 'techcrunch.tv':
+          knownUrl = "http://techcrunch.tv/watch?id=" + videoId;
+          break;
+        case 'video.pbs.org':
+          knownUrl = "http://video.pbs.org/video/" + videoId;
+          break;
+        case 'collegehumor.com':
+          knownUrl = (opts.useUrl) ? document.location.href : knownUrl = "http://collegehumor.com/video/" + videoId;
+          break;
+        case 'hulu.com':
+          //HACK (For now).
+          // the videoId is the content_id, not useful when hitting embedly or our link cache
+          // so using the page location for now
+          knownUrl = document.location.href;
+          break;
+        case 'bloomberg.com':
+          //HACK (For now).
+          // so using the page location + the provider id
+          knownUrl = document.location.href + "?bloomberg_ooyala_id="+ videoId;
+          break;
+        case "espn.com,espn.go.com":
+          knownUrl = "http://espn.go.com/video/clip?id=" + videoId;
+          break;
+        default:
+          knownUrl = false;
+      }
+
+      return knownUrl;
+    },
+
+    filter: function (possibleVideos) {
+
+      var videosToAdd  = [],
+          foundElements = possibleVideos;
+
+      for (var i=0; i < this.providers.length; i++) {
+          if (this.providers[i].elements) {
+              var domainSplit = this.providers[i].domain.split(',');
+              for (var j = 0; j < domainSplit.length; j++) {
+                  if (window.location.hostname == domainSplit[j]) {
+                      var domainSpecificPossibleVideos = this.$(this.providers[i].elements);
+                      for (var k = 0; k < domainSpecificPossibleVideos.length; k++) {
+                          foundElements.push(domainSpecificPossibleVideos[k]);
+                      }
+                      break;
+                  }
+              }
+          }
+      }
+
+      for (var i = 0; i < foundElements.length; i++) {
+        if (this.getValue(foundElements[i], 'data-youtube-id')) {
+          var obj = this.$(foundElements[i]);
+
+          if (obj.height() < 100 && obj.width() < 100) { continue; }
+
+            var videoId = this.getValue(foundElements[i], 'data-youtube-id');
+
+            videosToAdd.push({
+                embed     : obj,
+                domain    : "youtube.com",
+                provider  : "youtube",
+                video_id  : videoId,
+                known_url : this.composeKnownUrl("youtube.com", videoId)
+            });
+
+        } else {
+          var str = this.getValue(foundElements[i], 'flashvars') + '&amp;' + this.getValue(foundElements[i], 'src') + this.getValue(foundElements[i], 'data') + this.getValue(foundElements[i], 'name') + foundElements[i].innerHTML + foundElements[i].id;
+
+          for (var j = 0; j < this.providers.length; j++) {
+            if (!(opts.useUrl && this.providers[j].provider)) { continue; }
+
+            for (var k = 0; k < this.providers[j].regex.length; k++) {
+                var reg          = new RegExp(this.providers[j].regex[k]),
+                    domainSplit = this.providers[j].domain.split(','),
+                    valid_domain = false;
+
+              for (var l = 0; l < domainSplit.length; l++) {
+                var domain_reg = new RegExp(this.$.trim(domainSplit[l]));
+
+                if (domain_reg.test(str) || domain_reg.test(window.location)) {
+                  valid_domain = true;
+                  break;
+                }
+              }
+
+              if (reg.test(str) && valid_domain) {
+                var match = reg.exec(str);
+                var obj = this.$(foundElements[i]);
+                if (obj.width() == 0) {
+                  obj = obj.parent();
+                }
+                if (match[2] == undefined) {
+                  if (match[1] == undefined) {
+                    match[1] = window.location.href;
+                  } else {
+                    match[2] = match[1];
+                  }
+                }
+
+                var provider = this.providers[j].provider,
+                    videoId = match[2];
+
+                if (opts.useUrl) {
+                  var match = new RegExp(this.providers[j].url_regex).exec(window.location.href);
+                  videoId = match[1];
+                }
+
+                videosToAdd.push({
+                  embed     : obj,
+                  domain    : this.providers[j].domain,
+                  video_id  : videoId,
+                  provider  : provider,
+                  known_url : this.composeKnownUrl(this.providers[j].domain, match[2])
+                });
+
+                break;
+              }
+            }
+          }
+        }
+      }
+
+      return videosToAdd;
+    },
 
     scanForVideos : function(){
-      var self = this;
-      var media = this.$(opts.videoEls);
-
-      data = [];
+      var self  = this,
+          media = this.$(opts.videoEls),
+          data  = [];
 
       media.each(function(key,obj){
         //different elements use different attributes:
@@ -132,61 +268,23 @@
         if ($obj.is('object')){
           $obj.children().each(function(key,child){
             if(opts.validChildren.test(child)){
+              console.log('object child: ',child);
               data.push(child);
             }
           });
         } else {
+          console.log('object: ',obj);
           data.push(obj);
         }
       });
 
-      this.parseNode(data);
+      var foundVideos = this.filter(data);
+      //if videos found, insert iframe
+      //else, update banner.
     },
 
-    parseNode: function(data){
-      var self = this,
-          videos = [];
+    Banner : {
 
-      this.$(data).each(function(key,video){
-        if(self.getValue(video,'data-youtube-id')) {
-          videos.push(self.Video.format('x','y','z',{}));
-        } else {
-          self.providers.each(function(key,provider){
-
-          });
-        }
-      });
-
-      console.log('videos',videos);
-
-    },
-
-    Video : {
-      formatData : function(url, provider_name, providerrovider_id, opts){
-        //required for any video
-        var data = {
-          'provider_name' : provider_name,
-          'provider_id'   : provider_id,
-          'url'           : url
-        };
-
-        //optional, depending on the provider
-        if (opts){
-          if(opts.domain){
-            data.domain = opts.domain;
-          }
-
-          if (opts.embed){
-          data.embed = opts.embed;
-          }
-
-          if (opts.known_url){
-            data.known_url = opts.known_url;
-          }
-        }
-
-        return data;
-      }
     },
 
     loadjQuery : function(opts){
@@ -235,6 +333,9 @@
     },
 
     ready : function(){
+      //kick it off:
+      //show loading banner,
+      //scan
       this.scanForVideos();
     }
   };
@@ -244,8 +345,8 @@
 })(window,document,{
   //one must test an <object> found on the page using the `validChildren` regex
   validChildren : /embed|video\.pbs\.org|vimeo\.com|<oolaya|ooyala/i,
-  debug         : true,
   scripts       : [],
   styles        : [],
+  useUrl        : true,
   videoEls      : 'embed, iframe, object, video'
 });
