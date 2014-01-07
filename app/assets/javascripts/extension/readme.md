@@ -2,10 +2,9 @@
 
 Assets:
 
-* 
-includes.js a list of JST's needed for the extension
+* includes.js a list of JST's needed for the extension
 Some of the JST's are used in both the web app and the extension.
-All of the JST's that don't begin with bookmarklet is used in the web app also. 
+All of the JST's that don't begin with bookmarklet is used in the web app also.
 
 
 * radar.css is a list of partials in assets/stylesheets/extension.scss

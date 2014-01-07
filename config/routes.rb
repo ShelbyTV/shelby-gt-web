@@ -67,7 +67,9 @@ ShelbyGtWeb::Application.routes.draw do
   end
   #######################XXX###############################
 
+  # Shelby Radar
 
+  get '/radar' => 'radar#index'
 
   # SEO PAGES
   get '/video/:provider_name/:provider_id(/*title)' => 'seovideo#show'

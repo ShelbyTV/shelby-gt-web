@@ -156,3 +156,21 @@ end
 
 def dbe
 end
+
+def video(quantity=1)
+  videos = []
+
+  (1..quantity).each do |index|
+    videos << {
+    "embed_url"     => "http://www.youtube.com/v/IWGxQEFqIEY&feature=youtube_gdata_player",
+    "id"            => "52c28dc31c1cf475db13076#{index}",
+    "source_url"    => "http://www.youtube.com/watch?v=IWGxQEFqIEY&feature=youtube_gdata_player",
+    "title"         => "#{index}: Cats and Dogs living together",
+    "thumbnail_url" => "http://i1.ytimg.com/vi/IWGxQEFqIEY/0.jpg",
+    "provider_id"   => "IWGxQEFqIEY",
+    "provider_name" => "youtube"
+    }
+  end
+
+  videos
+end
