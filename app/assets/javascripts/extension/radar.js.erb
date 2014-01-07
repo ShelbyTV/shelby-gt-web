@@ -100,7 +100,7 @@
         }
       }
 
-      var params = this.$(obj).children('param');
+      var params = $(obj).children('param');
       for (var i = 0; i < params.length; i++) {
         if (params[i].name == id) {
           value += params[i].value;
@@ -166,7 +166,7 @@
               var domainSplit = this.providers[i].domain.split(',');
               for (var j = 0; j < domainSplit.length; j++) {
                   if (window.location.hostname == domainSplit[j]) {
-                      var domainSpecificPossibleVideos = this.$(this.providers[i].elements);
+                      var domainSpecificPossibleVideos = $(this.providers[i].elements);
                       for (var k = 0; k < domainSpecificPossibleVideos.length; k++) {
                           foundElements.push(domainSpecificPossibleVideos[k]);
                       }
@@ -178,19 +178,23 @@
 
       for (var i = 0; i < foundElements.length; i++) {
         if (this.getValue(foundElements[i], 'data-youtube-id')) {
-          var obj = this.$(foundElements[i]);
+          var obj = $(foundElements[i]);
 
           if (obj.height() < 100 && obj.width() < 100) { continue; }
 
             var videoId = this.getValue(foundElements[i], 'data-youtube-id');
 
-            videosToAdd.push({
-                embed     : obj,
-                domain    : "youtube.com",
-                provider  : "youtube",
-                video_id  : videoId,
-                known_url : this.composeKnownUrl("youtube.com", videoId)
-            });
+            //api specific
+            // videosToAdd.push({
+            //     embed     : obj,
+            //     domain    : "youtube.com",
+            //     provider  : "youtube",
+            //     video_id  : videoId,
+            //     known_url : this.composeKnownUrl("youtube.com", videoId)
+            // });
+
+            //bookmarklet url builder
+            videosToAdd.push("youtube[]="+videoId);
 
         } else {
           var str = this.getValue(foundElements[i], 'flashvars') + '&amp;' + this.getValue(foundElements[i], 'src') + this.getValue(foundElements[i], 'data') + this.getValue(foundElements[i], 'name') + foundElements[i].innerHTML + foundElements[i].id;
@@ -204,7 +208,7 @@
                     valid_domain = false;
 
               for (var l = 0; l < domainSplit.length; l++) {
-                var domain_reg = new RegExp(this.$.trim(domainSplit[l]));
+                var domain_reg = new RegExp($.trim(domainSplit[l]));
 
                 if (domain_reg.test(str) || domain_reg.test(window.location)) {
                   valid_domain = true;
@@ -214,7 +218,7 @@
 
               if (reg.test(str) && valid_domain) {
                 var match = reg.exec(str);
-                var obj = this.$(foundElements[i]);
+                var obj = $(foundElements[i]);
                 if (obj.width() == 0) {
                   obj = obj.parent();
                 }
@@ -234,13 +238,16 @@
                   videoId = match[1];
                 }
 
-                videosToAdd.push({
-                  embed     : obj,
-                  domain    : this.providers[j].domain,
-                  video_id  : videoId,
-                  provider  : provider,
-                  known_url : this.composeKnownUrl(this.providers[j].domain, match[2])
-                });
+                ///api
+                // videosToAdd.push({
+                //   embed     : obj,
+                //   domain    : this.providers[j].domain,
+                //   video_id  : videoId,
+                //   provider  : provider,
+                //   known_url : this.composeKnownUrl(this.providers[j].domain, match[2])
+                // });
+
+                videosToAdd.push(provider+"[]="+videoId);
 
                 break;
               }
@@ -252,9 +259,10 @@
       return videosToAdd;
     },
 
+
     scanForVideos : function(){
       var self  = this,
-          media = this.$(opts.videoEls),
+          media = $(opts.videoEls),
           data  = [];
 
       media.each(function(key,obj){
@@ -263,17 +271,15 @@
         //embed  = src
         //video  = src
         //object = data, has children
-        var $obj = self.$(obj);
+        var $obj = $(obj);
 
         if ($obj.is('object')){
           $obj.children().each(function(key,child){
             if(opts.validChildren.test(child)){
-              console.log('object child: ',child);
               data.push(child);
             }
           });
         } else {
-          console.log('object: ',obj);
           data.push(obj);
         }
       });
@@ -281,10 +287,70 @@
       var foundVideos = this.filter(data);
       //if videos found, insert iframe
       //else, update banner.
+
+      console.log('ayo!',foundVideos);
     },
 
     Banner : {
+      el : function(message){
+        return "<div id=\"shelby-banner\" style="+ this.css(this.styles.banner) +"><span id=\"shelby-banner__logo\" style="+ this.css(this.styles.logo) +"></span><span id=\"shelby-banner__message\" style="+ this.css(this.styles.message)+">"+ message +"</span></div>";
+      },
 
+      css: function(styles) {
+        var inlined = '';
+
+        for (var style in styles) {
+          if(styles.hasOwnProperty(style)) {
+            inlined += style+":"+styles[style]+";";
+          }
+        }
+
+        return inlined;
+      },
+
+      styles : {
+        banner : {
+          'background-color' : '<%= Settings::Styles.ui_green %>',
+          'color'            : '<%= Settings::Styles.ui_white %>',
+          'font-family'      : 'Helvetica',
+          'font-size'        : '13px',
+          'font-weight'      : 'bold',
+          'height'           : '70px',
+          'left'             : '0',
+          'position'         : 'fixed',
+          'right'            : '0',
+          'top'              : '0',
+          'z-index'          : '2147483641'
+        },
+        logo : {
+          'background-image'      : 'url(//<%= Settings::Extension.web_domain %>/assets/shelby_white.svg)',
+          'background-position-y' : 'center',
+          'background-position-x' : 'center',
+          'background-repeat'     : 'no-repeat',
+          'display'               : 'inline-block',
+          'height'                : '66px',
+          'margin-left'           : '20px',
+          'margin-right'          : '20px',
+          'width'                 : '100px',
+          'vertical-align'        : 'middle'
+        },
+        message: {
+          'vertical-align' : 'middle',
+          'display'        : 'inline-block'
+        }
+      },
+      template : function(message){
+        return this.el(message);
+      },
+      insert : function(){
+        return this.template('Scanning for video…');
+      },
+      update : function(message){
+        this.insert(this.template(message));
+      },
+      close : function(){
+        $('#shelby-banner').hide();
+      }
     },
 
     loadjQuery : function(opts){
@@ -296,7 +362,6 @@
       fileref.src    = "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js";
       fileref.onload = function(){
         //scope & namespace this jquery within `radar`
-        self.$ = $.noConflict(true);
 
         self.loadStyles(opts.styles);
         self.loadScripts(opts.scripts);
@@ -308,8 +373,8 @@
     loadStyles : function(styles){
       var self = this;
 
-      self.$(styles).each(function(stylesheet){
-        self.$('<link>').attr({
+      $(styles).each(function(stylesheet){
+        $('<link>').attr({
           href: stylesheet,
           rel: 'stylesheet'
         }).appendTo('head');
@@ -322,7 +387,7 @@
         return false;
       }
 
-      this.$.getScript(scripts[0], function(){
+      $.getScript(scripts[0], function(){
         getJS(scripts.slice(1));
       })
     },
@@ -335,16 +400,18 @@
     ready : function(){
       //kick it off:
       //show loading banner,
+      $('body').prepend(this.Banner.insert());
       //scan
       this.scanForVideos();
     }
   };
 
   radar.init();
+  console.log('radar',radar);
 
 })(window,document,{
   //one must test an <object> found on the page using the `validChildren` regex
-  validChildren : /embed|video\.pbs\.org|vimeo\.com|<oolaya|ooyala/i,
+  validChildren : /embed|video\.pbs\.org|vimeo\.com|<ooyala|ooyala/i,
   scripts       : [],
   styles        : [],
   useUrl        : true,
