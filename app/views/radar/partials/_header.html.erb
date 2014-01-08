@@ -15,15 +15,3 @@
     </li>
   </ul><!-- eo guide-presentation-list -->
 </nav>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-
-    parent.postMessage("ready","*");
-
-    $(".js-close").on('click', function(e){
-      e.preventDefault();
-      parent.postMessage("close","*");
-    })
-  });
-</script>

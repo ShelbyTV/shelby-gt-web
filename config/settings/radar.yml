@@ -1,5 +1,6 @@
 defaults: &defaults
   video_providers: ['youtube', 'vimeo', 'dailymotion', 'hulu']
+  radar_path: '/radar'
 
 development:
   <<: *defaults

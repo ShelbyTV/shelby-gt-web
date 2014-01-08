@@ -70,7 +70,7 @@
         "provider"  : "vimeo",
         "domain"    : "vimeo.com",
         "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com\\\/([0-9]+)|http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com.*clip_id=([0-9]+)",
-        "regex"     : ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)[^_]", "player_(\\d+)_\\d+"],
+        "regex"     : ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/v2\\/video\\/)(\\d*)","(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)[^_]", "player_(\\d+)_\\d+"],
         "elements"  : "div.player.f:not(:has(video)):not(:has(object))"
       },
       {
@@ -161,6 +161,8 @@
       var videosToAdd  = [],
           foundElements = possibleVideos;
 
+          console.log(possibleVideos);
+
       for (var i=0; i < this.providers.length; i++) {
           if (this.providers[i].elements) {
               var domainSplit = this.providers[i].domain.split(',');
@@ -196,6 +198,9 @@
             //bookmarklet url builder
             videosToAdd.push("youtube[]="+videoId);
 
+        } else if (/(vimeo.com\/)(\d*)/.test(foundElements[i].baseURI)) {
+          var vimeoVideoId = /vimeo.com\/(\d*)/.exec(foundElements[i].baseURI)
+          videosToAdd.push("vimeo[]="+vimeoVideoId);
         } else {
           var str = this.getValue(foundElements[i], 'flashvars') + '&amp;' + this.getValue(foundElements[i], 'src') + this.getValue(foundElements[i], 'data') + this.getValue(foundElements[i], 'name') + foundElements[i].innerHTML + foundElements[i].id;
 
@@ -256,7 +261,7 @@
         }
       }
 
-      return videosToAdd;
+      return _.uniq(videosToAdd);
     },
 
     scanForVideos : function(){
@@ -284,21 +289,57 @@
       });
 
       var foundVideos = this.filter(data);
-      //if videos found, insert iframe
-      //else, update banner.
-      console.log(foundVideos);
-      if(foundVideos.length > 0){
-        this.displayVideos();
+      //if videos found,
+      if (foundVideos.length > 0 ){
+        var urlParams = foundVideos.join('&');
+        var iframeSrc = "<%= Settings::Application.url %><%= Settings::Radar.radar_path %>?"+urlParams
+        console.log(urlParams, iframeSrc)
+        this.Iframe.insert(iframeSrc);
+      }
+      else {
+        this.Banner.update("We didn't find anything... is there a YouTube, Vimeo, Hulu, Blip, or Dailymotion video on the page?")
       }
     },
 
-    displayVideos : function(videos) {
-      var $iframe = $('<iframe/>');
+    Iframe : {
+      insert : function(srcUrl) {
+        console.log("inserting");
+        var $el = $('<iframe class="'+opts.iframeClass+'"src="'+srcUrl+'" style="'+this.css(this.styles.iframe)+'"/>');
+        // insert it
+        $('body').append($el);
+      },
+
+      css: function(styles) {
+        var inlined = "";
+
+        for (var style in styles) {
+          if ( styles.hasOwnProperty(style) ) {
+            inlined += style+":"+styles[style]+";";
+          }
+        }
+        return inlined;
+      },
+
+      styles : {
+        iframe : {
+          'border' : 'none',
+          'display'  : 'none',
+          'bottom' : '0',
+          'left' : '0',
+          'position' : 'fixed',
+          'right' : '0',
+          'top' : '0',
+          'z-index'          : '2147483641',
+          'width' : '100%',
+          'height' : '100%'
+        }
+      }
+
     },
 
     Banner : {
       el : function(message){
-        return "<div id=\"shelby-banner\" style="+ this.css(this.styles.banner) +"><span id=\"shelby-banner__logo\" style="+ this.css(this.styles.logo) +"></span><span id=\"shelby-banner__message\" style="+ this.css(this.styles.message)+">"+ message +"</span></div>";
+        return "<div class=\"shelbyBanner\" style="+ this.css(this.styles.banner) +"><span id=\"shelby-banner__logo\" style="+ this.css(this.styles.logo) +"></span><span id=\"shelby-banner__message\" style="+ this.css(this.styles.message)+">"+ message +"</span></div>";
       },
 
       css: function(styles) {
@@ -354,7 +395,7 @@
         this.insert(this.template(message));
       },
       close : function(){
-        $('#shelby-banner').hide();
+        $('.shelbyBanner').hide();
       }
     },
 
@@ -362,16 +403,21 @@
       var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
       var eventer = window[eventMethod];
       var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-
+      var self = this;
       // Listen to message from iframe
       eventer(messageEvent,function(e) {
-        console.log(e)
+        console.log("SHELBY IFRAME COMMS", e);
+        console.log(opts.iframeClass);
         if (e.data == "close") {
           // also make sure the banner is hidden
-          $("#shelbyRadar").remove();
+          $("."+opts.iframeClass).remove();
         }
         else if (e.data == "ready") {
-          $("#shelbyRadar").show();
+          $("."+opts.iframeClass).show();
+          self.Banner.close();
+          if (typeof yt !== 'undefined') {
+            yt.www.watch.player.pause()
+          }
         }
       }, false);
 
@@ -441,5 +487,6 @@
   scripts       : [],
   styles        : [],
   useUrl        : true,
-  videoEls      : 'embed, iframe, object, video'
+  videoEls      : 'embed, iframe, object, video',
+  iframeClass : 'shelbyRadar'
 });
