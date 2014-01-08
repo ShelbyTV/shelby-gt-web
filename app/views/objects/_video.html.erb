@@ -17,11 +17,13 @@
 
       <% if embed_video %>
         <div class="video__wrapper">
-          <% if video['provider_name'] == "youtube" %>
+          <% if video['provider_name'] == "youtube" && ga_category == "Radar" %>
+            <%= render :partial => "/radar/partials/youtube_iframe_embed", :locals => {:video_provider_id => video['provider_id']} %>
+          <% elsif video["provider_name"] == "youtube" %>
             <%= render :partial => "/seovideo/youtube_embed",
-              :locals => {
-                :video_provider_id => video['provider_id']
-              } %>
+                :locals => {
+                  :video_provider_id => video['provider_id']
+                } %>
           <% else %>
             <%= raw video['embed_url'] %>
           <% end %>

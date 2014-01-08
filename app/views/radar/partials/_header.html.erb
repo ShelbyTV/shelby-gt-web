@@ -8,10 +8,22 @@
   <ul class="js-content-selector list list--inline app_nav clearfix">
     <li class="list__item"></li>
     <li class="list__item secondary-item">
-      <button class="button_primer button_command button_command--flexible button_gray">
+      <button class="button_primer button_command button_command--flexible button_gray js-close">
         <span class="icon icon-close"></span>
-        <span class="button_label">Cancel</span>
+        <span class="button_label">Close</span>
       </button>
     </li>
   </ul><!-- eo guide-presentation-list -->
 </nav>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    parent.postMessage("ready","*");
+
+    $(".js-close").on('click', function(e){
+      e.preventDefault();
+      parent.postMessage("close","*");
+    })
+  });
+</script>
