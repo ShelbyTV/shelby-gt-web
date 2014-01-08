@@ -16,6 +16,11 @@ function onPlayerReady(event) {
 
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.ENDED) {
+    shelby.trackEx({
+        gaCategory : 'Mobile',
+        gaAction : 'Video finished playing::Youtube',
+        gaLabel : "<%= @signed_in_user['nickname'] || 'Anonymous' %>"
+      });
     $('.js-play-video').removeClass('visuallyhidden');
     $('.js-video-player').remove().addClass("visuallyhidden");
   }
@@ -40,6 +45,12 @@ $(document).ready(function(){
 
       var $playerDiv = $('.'+playerClass);
       $playerDiv.removeClass("visuallyhidden").addClass('playing');
+
+      shelby.trackEx({
+        gaCategory : 'Mobile',
+        gaAction : 'Click video to play::'+providerName,
+        gaLabel : "<%= @signed_in_user['nickname'] || 'Anonymous' %>"
+      });
 
       switch (providerName) {
         case "youtube":

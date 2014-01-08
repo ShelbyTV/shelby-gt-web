@@ -82,7 +82,8 @@ class MobileController < ApplicationController
   def me
     if user_signed_in?
       check_for_signed_in_user_and_issues
-      @user           = @signed_in_user
+      @user = @signed_in_user
+      @include_smart_app_banner = true
 
       @page = params[:page].to_i.abs
       @skip = convert_page_to_skip(params[:page])
@@ -215,6 +216,7 @@ class MobileController < ApplicationController
     if @signed_in_user['nickname'] == params[:username]
       redirect_to(appropriate_subdirectory+mobile_me_path(:type => "activity")) and return
     elsif @user = Shelby::API.get_user(params[:username])
+      @include_smart_app_banner = true
       @roll_id = @user['personal_roll_id']
       @roll_type = Settings::Mobile.roll_types['user']
 
@@ -235,6 +237,7 @@ class MobileController < ApplicationController
       # render "/mobile/me" #same template as mobile#me method
     elsif !(params[:username]=~/.jpg|.png|.gif|.js/) and (@roll = Shelby::API.get_roll(params[:username]))
       @user = Shelby::API.get_user(@roll['creator_id'])
+      @include_smart_app_banner = true
       @roll_type = Settings::Mobile.roll_types['user']
 
       # is signed_in_user following the user being displayed?

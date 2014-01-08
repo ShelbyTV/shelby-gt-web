@@ -16,9 +16,9 @@
               <span class="icon-facebook"></span>
               <span class="button_label">Sign Up with Facebook</span>
             </a>
-            <h3 class="shelf__email-signup">
+            <!-- <h3 class="shelf__email-signup">
               or <a href="/signup?email=1" class="js-track-event" data-ga_action="Click Sign Up with Email Link" data-ga_label="<%= request.referer || 'direct' %>">signup</a>  with your email
-            </h3>
+            </h3> -->
           <% else %>
             <a href="<%= Settings::Application.ios_app_url %>" id="js-cta--main" class="button_primer button_green button_command button_command--giant button_command--flexible shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Call to Action shelf">
               <span class="button_label"><%= raw Settings::Marketing.cta_button %></span>
@@ -30,7 +30,18 @@
           <iframe src="//www.facebook.com/plugins/facepile.php?app_id=115071338568035&amp;action&amp;max_rows=2&amp;size=medium&amp;show_count=true&amp;width=360&amp;colorscheme=light&amp;appId=115071338568035" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:360px;" allowTransparency="true"></iframe>
         </div>
 
-        <% unless [:android, :amazon].include? @mobile_os %>
+        <% if :amazon == @mobile_os %>
+          <a href="<%= Settings::Application.amazon_app_url %>" class="appstore js-track-event" data-ga_action="Click open Amazon App Store" data-ga_label="Call to Action shelf">
+            <%= image_tag "amazon-apps-store-us-white.png" %>
+          </a>
+        <% elsif :android == @mobile_os %>
+          <a href="<%= Settings::Application.ios_app_url %>" class="appstore android js-track-event" data-ga_action="Click open App Store" data-ga_label="Call to Action shelf">
+            <%= image_tag "appstore-badge.png" %>
+          </a>
+          <a href="<%= Settings::Application.amazon_app_url %>" class="appstore amazon android js-track-event" data-ga_action="Click open Amazon App Store" data-ga_label="Call to Action shelf">
+            <%= image_tag "amazon-apps-store-us-white.png" %>
+          </a>
+        <% else %>
           <a href="<%= Settings::Application.ios_app_url %>" class="appstore js-track-event" data-ga_action="Click open App Store" data-ga_label="Call to Action shelf">
             <%= image_tag "appstore-badge.png" %>
           </a>

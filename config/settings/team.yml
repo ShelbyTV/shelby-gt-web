@@ -90,15 +90,6 @@ defaults: &defaults
       title : "Hair/Software Engineer"
     },
     {
-      name : "Vincent Iadevaia",
-      description : "As a kid, Vincent watched way too many science fiction films and, before long, became obsessed with beautiful interfaces. He also touched a Picasso at the Guggenheim and somehow got away with it, but that's another story. Now he spends his days and nights in Photoshop as Product Designer at Shelby, analyzing every project pixel by pixel. Before joining Shelby, he worked in digital advertising at The Barbarian Group, and mobile game design at Vostu. In his free time you can find him collecting and documenting his silver-age comic book collection.",
-      image : "vincent.jpg",
-      url : "vondoom",
-      email : "v@shelby.tv",
-      twitter : "vondoom",
-      title : "Product Designer"
-    },
-    {
       name : "Michael Matyus",
       description: "Michael learned early on, while studying design here in New York that usable interfaces strike the perfect balance between form and function (something that is easier said than done). So when Michael isn't experimenting with new ideas on how to build and maintain our ever-growing code base, he's figuring out how to gain a deeper understanding of how people interact with Shelby. This usually starts by closely collaborating with the rest of the team and devising ways to run UX tests on new, old, and prospective users. When he's not building Shelby, chances are he's hiding behind a huge stack of classic literature.",
       image : "michael.jpg",
@@ -115,15 +106,6 @@ defaults: &defaults
       email : "keren@shelby.tv",
       twitter : "kepsolution",
       title : "iOS Developer"
-    },
-    {
-      name : "Edon Ophir",
-      description: "It's probably no coincidence that Edon Ophir is the Head of Community at Shelby.tv, since his friends and family have been calling him a “people person” since before he can remember. When he's not engaging with Shelby's awesome and passionate community of video curators, you can probably find him at a yoga studio or with his nose in a book somewhere. He previously served as a Community Manager at Waze and before that, FashionTV, where his team built up the number one fashion channel on YouTube. You can follow him on Twitter and on the Shelby.tv blog.",
-      image : "edon.jpg",
-      url : "edon",
-      email : "edon@shelby.tv",
-      twitter : "edonophir",
-      title : "Community Manager"
     }
   ]
 

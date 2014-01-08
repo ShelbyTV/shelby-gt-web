@@ -7,6 +7,8 @@ defaults: &defaults
   mobile_url: "http://m.shelby.tv"
   ios_app_url: "http://shl.by/iphone"
   ios_app_id: "732244981"
+  ios_url_scheme: "shelbytv://"
+  amazon_app_url: "http://www.amazon.com/gp/product/B00HCOMTV0/ref=mas_pm_shelbytv"
   avatar_url_root: "//s3.amazonaws.com/shelby-gt-user-avatars"
   roll_images_url_root: "//s3.amazonaws.com/shelby-gt-roll-images"
   missing_thumb_url: "http://shelby.tv/images/assets/missing_thumb.png"
