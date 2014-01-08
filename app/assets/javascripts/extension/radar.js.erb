@@ -259,7 +259,6 @@
       return videosToAdd;
     },
 
-
     scanForVideos : function(){
       var self  = this,
           media = $(opts.videoEls),
@@ -287,8 +286,14 @@
       var foundVideos = this.filter(data);
       //if videos found, insert iframe
       //else, update banner.
+      console.log(foundVideos);
+      if(foundVideos.length > 0){
+        this.displayVideos();
+      }
+    },
 
-      console.log('ayo!',foundVideos);
+    displayVideos : function(videos) {
+      var $iframe = $('<iframe/>');
     },
 
     Banner : {
@@ -353,6 +358,25 @@
       }
     },
 
+    initMessageHandler : function(){
+      var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+      var eventer = window[eventMethod];
+      var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+      // Listen to message from iframe
+      eventer(messageEvent,function(e) {
+        console.log(e)
+        if (e.data == "close") {
+          // also make sure the banner is hidden
+          $("#shelbyRadar").remove();
+        }
+        else if (e.data == "ready") {
+          $("#shelbyRadar").show();
+        }
+      }, false);
+
+    },
+
     loadjQuery : function(opts){
       var self = this;
 
@@ -398,6 +422,9 @@
     },
 
     ready : function(){
+      //prepare iframe communication, etc.
+      this.initMessageHandler();
+
       //kick it off:
       //show loading banner,
       $('body').prepend(this.Banner.insert());
@@ -407,7 +434,6 @@
   };
 
   radar.init();
-  console.log('radar',radar);
 
 })(window,document,{
   //one must test an <object> found on the page using the `validChildren` regex
