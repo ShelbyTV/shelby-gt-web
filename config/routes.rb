@@ -70,7 +70,6 @@ ShelbyGtWeb::Application.routes.draw do
   # Shelby Radar
 
   get '/radar' => 'radar#index', :as =>:radar
-  get '/radar/test' => 'radar#test'
 
   # SEO PAGES
   get '/video/:provider_name/:provider_id(/*title)' => 'seovideo#show'
