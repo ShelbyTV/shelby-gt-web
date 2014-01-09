@@ -27,10 +27,4 @@ class RadarController < ApplicationController
     end
   end
 
-  def test
-    @signed_in_user = check_for_signed_in_user
-    @user_signed_in = user_signed_in?
-    render 'test', :layout => false
-  end
-
 end
