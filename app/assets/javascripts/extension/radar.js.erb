@@ -14,7 +14,7 @@
    *
    */
 
-  var radar = {
+  var Radar = {
     providers : [
       {
         "provider"  : "blip",
@@ -90,6 +90,18 @@
         "regex"     : ["espn%3A([0-9]+)&"]
       }
     ],
+
+    css: function(styles) {
+      var inlined = "";
+
+      for (var style in styles) {
+        if ( styles.hasOwnProperty(style) ) {
+          inlined += style+":"+styles[style]+";";
+        }
+      }
+      return inlined;
+    },
+
 
     getValue: function (obj, id) {
       var value = '';
@@ -259,7 +271,7 @@
         }
       }
 
-      return _.uniq(videosToAdd);
+      return $.unique(videosToAdd);
     },
 
     scanForVideos : function(){
@@ -290,7 +302,7 @@
       //if videos found,
       if (foundVideos.length > 0 ){
         var urlParams = foundVideos.join('&');
-        var iframeSrc = "<%= Settings::Application.url %><%= Settings::Radar.radar_path %>?"+urlParams
+        var iframeSrc = opts.iframeUrl+"?"+urlParams
         console.log(urlParams, iframeSrc)
         this.Iframe.insert(iframeSrc);
       }
@@ -301,33 +313,24 @@
 
     Iframe : {
       insert : function(srcUrl) {
-        var $el = $('<iframe class="'+opts.iframeClass+'"src="'+srcUrl+'" style="'+this.css(this.styles.iframe)+'"/>');
+        var $el = $('<iframe class="'+opts.iframeClass+'" src="'+srcUrl+'" style="'+Radar.css(this.styles.iframe)+'"/>');
         $('body').append($el);
-      },
-
-      css: function(styles) {
-        var inlined = "";
-
-        for (var style in styles) {
-          if ( styles.hasOwnProperty(style) ) {
-            inlined += style+":"+styles[style]+";";
-          }
-        }
-        return inlined;
       },
 
       styles : {
         iframe : {
-          'border' : 'none',
-          'display'  : 'none',
-          'bottom' : '0',
-          'left' : '0',
-          'position' : 'fixed',
-          'right' : '0',
-          'top' : '0',
-          'z-index'          : '2147483641',
-          'width' : '100%',
-          'height' : '100%'
+          'border-bottom' : 'none',
+          'border-left'   : '1px solid #ddd',
+          'border-right'  : 'none',
+          'border-top'    : 'none',
+          'display'       : 'none',
+          'bottom'        : '0',
+          'position'      : 'fixed',
+          'right'         : '0',
+          'top'           : '0',
+          'z-index'       : '2147483641',
+          'width'         : '370px',
+          'height'        : '100%'
         }
       }
 
@@ -335,19 +338,7 @@
 
     Banner : {
       el : function(message){
-        return "<div class=\"shelbyBanner\" style="+ this.css(this.styles.banner) +"><span id=\"shelby-banner__logo\" style="+ this.css(this.styles.logo) +"></span><span id=\"shelby-banner__message\" style="+ this.css(this.styles.message)+">"+ message +"</span></div>";
-      },
-
-      css: function(styles) {
-        var inlined = '';
-
-        for (var style in styles) {
-          if(styles.hasOwnProperty(style)) {
-            inlined += style+":"+styles[style]+";";
-          }
-        }
-
-        return inlined;
+        return "<div class=\"shelbyBanner\" style="+ Radar.css(this.styles.banner) +"><span id=\"shelby-banner__logo\" style="+ Radar.css(this.styles.logo) +"></span><span id=\"shelby-banner__message\" style="+ Radar.css(this.styles.message)+">"+ message +"</span></div>";
       },
 
       styles : {
@@ -422,7 +413,7 @@
       fileref.type   = 'text/javascript';
       fileref.src    = "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js";
       fileref.onload = function(){
-        //scope & namespace this jquery within `radar`
+        //scope & namespace this jquery within `Radar`
 
         self.loadStyles(opts.styles);
         self.loadScripts(opts.scripts);
@@ -470,14 +461,16 @@
     }
   };
 
-  radar.init();
+  Radar.init();
 
 })(window,document,{
   //one must test an <object> found on the page using the `validChildren` regex
-  validChildren : /embed|video\.pbs\.org|vimeo\.com|<ooyala|ooyala/i,
+  bannerClass   : 'shelbyBanner',
+  iframeClass   : 'shelbyRadar',
+  iframeUrl     : "<%= Settings::Application.url %><%= Settings::Radar.radar_path %>",
   scripts       : [],
   styles        : [],
   useUrl        : true,
+  validChildren : /embed|video\.pbs\.org|vimeo\.com|<ooyala|ooyala/i,
   videoEls      : 'embed, iframe, object, video',
-  iframeClass : 'shelbyRadar'
 });

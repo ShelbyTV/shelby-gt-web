@@ -10,8 +10,8 @@
 
 @each $name in $color-names {
   .button_#{$name} {
-    $base: name-to-value($name);
+    $button-base: name-to-value($name);
     //take the color-name and look up the corresponding color-value
-    @include button($name,$base);
+    @include button($name,$button-base);
   }//eo .button_#{$name}
 }

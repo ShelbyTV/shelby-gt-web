@@ -1,12 +1,25 @@
 .shelby--radar {
   .shelby-header {
-    background: transparent;
+    background: $base;
     border: none;
+    height: auto;
   }
 
   .shelby-header__lining {
-    margin: 20px auto 0;
+    margin: 10px auto 0;
     max-width: 550px;
+  }
+
+  .shelby-logo {
+    .icon-type {
+      display: inline !important;
+    }
+  }
+
+  .app_nav {
+    .list__item.secondary-item {
+      margin-right: 6px;
+    }
   }
 
   .content_wrapper {

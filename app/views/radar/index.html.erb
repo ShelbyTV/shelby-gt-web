@@ -1,17 +1,21 @@
-<% if @videos %>
-  <% @videos.each_with_index do |video, index| %>
-    <%= render :partial => '/objects/video',
-        :locals => {
-          :embed_video    => true,
-          :ga_category    => "Radar",
-          :index          => index,
-          :signed_in_user => @signed_in_user,
-          :userNickname   => @signed_in_user['nickname'],
-          :video          => video
-        }
-    %>
 
-  <% end %>
+<% if @videos %>
+  <ol class="list">
+    <% @videos.each_with_index do |video, index| %>
+      <li class="list__item">
+        <%= render :partial => '/objects/video',
+            :locals => {
+              :embed_video    => true,
+              :ga_category    => "Radar",
+              :index          => index,
+              :signed_in_user => @signed_in_user,
+              :userNickname   => @signed_in_user['nickname'],
+              :video          => video
+            }
+        %>
+      </li>
+    <% end %>
+  </ol>
 <% end %>
 
 

@@ -1,4 +1,3 @@
 //This is loaded by the extenion and bookmerklet via the route /assets/shelbify.js
 //Anything needed to run the extension should be in the javascripts/extension directory and included in here
-//= require ./backbone/underscore.js
 //= require ./extension/radar.js.erb
