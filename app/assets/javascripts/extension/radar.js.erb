@@ -77,7 +77,7 @@
         "provider"  : "youtube",
         "domain"    : "youtube.com",
         "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*youtube\\.com.*v=([\\_\\-a-zA-Z0-9]+)",
-        "regex"     : ["&video_id=([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\-nocookie\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)"]
+        "regex"     : ["&video_id=([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "www.youtube\\-nocookie\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)","youtube\\-nocookie\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)"]
       },
       {
         "provider"  : "bloomberg",
@@ -160,8 +160,6 @@
 
       var videosToAdd  = [],
           foundElements = possibleVideos;
-
-          console.log(possibleVideos);
 
       for (var i=0; i < this.providers.length; i++) {
           if (this.providers[i].elements) {
@@ -297,15 +295,13 @@
         this.Iframe.insert(iframeSrc);
       }
       else {
-        this.Banner.update("We didn't find anything... is there a YouTube, Vimeo, Hulu, Blip, or Dailymotion video on the page?")
+        this.Banner.update("We didn't find anything... is there a YouTube, Vimeo, Hulu, Blip, or Dailymotion video on the page? <a style='color:black;text-decoration:underline;' href='mailto:bookmarklet@shelby.tv?subject=Hey%20I%20found%20a%20video%20but%20Shelby%20missed%20it&body=\n[page: "+window.location.hostname+"]'>Let us know</a>")
       }
     },
 
     Iframe : {
       insert : function(srcUrl) {
-        console.log("inserting");
         var $el = $('<iframe class="'+opts.iframeClass+'"src="'+srcUrl+'" style="'+this.css(this.styles.iframe)+'"/>');
-        // insert it
         $('body').append($el);
       },
 
@@ -392,7 +388,7 @@
         return this.template('Scanning for video…');
       },
       update : function(message){
-        this.insert(this.template(message));
+        $('#shelby-banner__message').html(message);
       },
       close : function(){
         $('.shelbyBanner').hide();
@@ -406,8 +402,6 @@
       var self = this;
       // Listen to message from iframe
       eventer(messageEvent,function(e) {
-        console.log("SHELBY IFRAME COMMS", e);
-        console.log(opts.iframeClass);
         if (e.data == "close") {
           // also make sure the banner is hidden
           $("."+opts.iframeClass).remove();
@@ -415,9 +409,6 @@
         else if (e.data == "ready") {
           $("."+opts.iframeClass).show();
           self.Banner.close();
-          if (typeof yt !== 'undefined') {
-            yt.www.watch.player.pause()
-          }
         }
       }, false);
 
