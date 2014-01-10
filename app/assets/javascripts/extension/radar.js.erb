@@ -122,28 +122,18 @@
       return value;
     },
 
-    // testUrl : function(){
-    //   for (var i = 0; i < this.providers.length; i++) {
-    //     var domain_split = this.providers[i].domain.split(',');
-    //     var valid_domain = false;
-    //     for (var l = 0; l < domain_split.length; l++) {
-    //       var domain_reg = new RegExp(domain_split[l]);
-    //       if (domain_reg.test(window.location.href)) {
-    //         valid_domain = true;
-    //         break;
-    //       }
-    //     }
+    parseUrl : function(url){
+      console.log('parseURL,',url);
+    //   var url = window.location;
 
-    //     if (valid_domain) {
-    //       var provider = this.providers[i];
-    //       if (provider.url_regex) {
-    //         if (new RegExp(provider.url_regex).test(window.location.href)) {
-    //           opts.useUrl = true;
-    //         }
-    //       }
+    //   $(this.providers).each(function(index,provider){
+    //     //we only care about single youtube pages:
+
+    //     if(provider.provider == 'youtube' && url.host == provider.domain && url.pathname == '/watch') {
+    //       return window.location.href.split('&')[0]; //the first param is always v=, subsequent params aren't necessary.
     //     }
-    //   }
-    // },
+    //   });
+    },
 
     composeKnownUrl : function (domain, videoId) {
       var knownUrl = "";
@@ -198,17 +188,17 @@
           foundElements = possibleVideos;
 
       for (var i=0; i < this.providers.length; i++) {
-        console.log(this.providers[i].provider);
+        // console.log(this.providers[i].provider);
 
         if (this.providers[i].elements) {
           //right now this only matters for Vimeo.com
-          console.log('elements',this.providers[i].domain);
+          // console.log('elements',this.providers[i].domain);
 
           var domainSplit = this.providers[i].domain.split(',');
 
           for (var j = 0; j < domainSplit.length; j++) {
             if (window.location.hostname == domainSplit[j]) {
-              console.log('we are on the domain that we are looking for');
+              // console.log('we are on the domain that we are looking for');
 
               var domainSpecificPossibleVideos = $(this.providers[i].elements);
 
@@ -224,7 +214,7 @@
 
       for (var i = 0; i < foundElements.length; i++) {
         if (this.getValue(foundElements[i], 'data-youtube-id')) {
-          console.log('data-youtube-id --  is this obsolete?');
+          // console.log('data-youtube-id --  is this obsolete?');
 
           var obj = $(foundElements[i]);
 
@@ -245,31 +235,31 @@
             videosToAdd.push("youtube[]="+videoId);
 
         } else if (/(vimeo.com\/)(\d*)/.test(foundElements[i].baseURI)) {
-          console.log('vimeo, redundancy, because of the provider.elements');
+          // console.log('vimeo, redundancy, because of the provider.elements');
 
           var vimeoVideoId = /vimeo.com\/(\d*)/.exec(foundElements[i].baseURI)
           videosToAdd.push("vimeo[]="+vimeoVideoId);
 
         } else {
           var str = this.getValue(foundElements[i], 'flashvars') + '&amp;' + this.getValue(foundElements[i], 'src') + this.getValue(foundElements[i], 'data') + this.getValue(foundElements[i], 'name') + foundElements[i].innerHTML + foundElements[i].id;
-          console.log('-strrrriinngg',str);
+          // console.log('-strrrriinngg',str);
 
           for (var j = 0; j < this.providers.length; j++) {
-            console.log('providers', this.providers[j].provider);
+            // console.log('providers', this.providers[j].provider);
 
             // if (!(opts.useUrl && this.providers[j].provider)) { continue; }
 
             for (var k = 0; k < this.providers[j].regex.length; k++) {
-                console.log('provider regex',this.providers[j].regex);
+                // console.log('provider regex',this.providers[j].regex);
 
                 var reg          = new RegExp(this.providers[j].regex[k]),
                     domainSplit = this.providers[j].domain.split(','),
                     valid_domain = false;
 
-              console.log('match',match);
+              // console.log('match',match);
 
               for (var l = 0; l < domainSplit.length; l++) {
-                console.log('ds',domainSplit[l]);
+                // console.log('ds',domainSplit[l]);
                 var domain_reg = new RegExp($.trim(domainSplit[l]));
 
                 if (domain_reg.test(str) || domain_reg.test(window.location)) {
@@ -278,12 +268,12 @@
                 }
               }
 
-              console.log('valid domain', valid_domain);
+              // console.log('valid domain', valid_domain);
 
               if (reg.test(str) && valid_domain) {
                 var match = reg.exec(str);
                 var obj = $(foundElements[i]);
-                console.log('match',match,'------------------');
+                // console.log('match',match,'------------------');
                 if (obj.width() == 0) {
                   obj = obj.parent();
                 }
@@ -324,10 +314,14 @@
       return $.unique(videosToAdd);
     },
 
-    scanForVideos : function(){
+    scanForVideos : function(url){
       var self  = this,
           media = $(opts.videoEls),
           data  = [];
+
+      if(url){
+        data.push(this.parseUrl(url));
+      }
 
       media.each(function(key,obj){
         //different elements use different attributes:
@@ -353,7 +347,7 @@
       if (foundVideos.length > 0){
         var urlParams = foundVideos.join('&');
         var iframeSrc = opts.iframeUrl+"?"+urlParams
-        console.log(urlParams, iframeSrc)
+        // console.log(urlParams, iframeSrc)
         this.Iframe.insert({srcUrl: iframeSrc});
       }
       else {
@@ -366,7 +360,12 @@
         return '<iframe class="'+opts.iframeClass+'" src="'+data.srcUrl+'" style="'+Radar.css(this.styles.iframe)+'"/>';
       },
       insert : function(data) {
-        $('body').append($(this.el(data)));
+        var $body   = $('body'),
+            $iframe = $body.find('.'+opts.iframeClass);
+
+        if($body.find('.'+opts.iframeClass).length === 0){
+          $('.'+opts.baseClass).append($(this.el(data)));
+        }
       },
 
       styles : {
@@ -389,10 +388,6 @@
     },
 
     Banner : {
-      el : function(message){
-        return "<div class=\"shelbyBanner\" style="+ Radar.css(this.styles.banner) +"><span id=\"shelby-banner__logo\" style="+ Radar.css(this.styles.logo) +"></span><span id=\"shelby-banner__message\" style="+ Radar.css(this.styles.message)+">"+ message +"</span></div>";
-      },
-
       styles : {
         banner : {
           'background-color' : '<%= Settings::Styles.ui_green %>',
@@ -424,6 +419,9 @@
           'display'        : 'inline-block'
         }
       },
+      el : function(message){
+        return "<div class=\"shelbyBanner\" style="+ Radar.css(this.styles.banner) +"><span id=\"shelby-banner__logo\" style="+ Radar.css(this.styles.logo) +"></span><span id=\"shelby-banner__message\" style="+ Radar.css(this.styles.message)+">"+ message +"</span></div>";
+      },
       template : function(message){
         return this.el(message);
       },
@@ -436,6 +434,26 @@
       close : function(){
         $('.shelbyBanner').hide();
       }
+    },
+
+    initUrlListener : function(){
+      var self = this;
+      // // crazy djeng-code pushstate handling.
+      (function(history,self) {
+          var pushState = history.pushState;
+          history.pushState = function(state) {
+              if (typeof history.onpushstate == "function") {
+                  history.onpushstate({state: state});
+              }
+
+              console.log('pushy');
+              self.scanForVideos(window.location.href);
+              // this.scanForVideos();
+
+
+              return pushState.apply(history, arguments);
+          }
+      })(window.history,self);
     },
 
     initMessageHandler : function(){
@@ -464,7 +482,7 @@
       var fileref = document.createElement('script');
 
       fileref.type   = 'text/javascript';
-      fileref.src    = "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js";
+      fileref.src    = opts.jquery;
       fileref.onload = function(){
         //scope & namespace this jquery within `Radar`
 
@@ -498,19 +516,31 @@
     },
 
     init : function(){
+      console.log('init');
       // rely on jquery for convenient parsing and manipulation
+
       this.loadjQuery(opts);
     },
 
     ready : function(){
+      //websites that use pushState will not re-render the DOM, thus unecessarily preserving the bookmarklet
+      this.initUrlListener();
+
       //determine if useUrl is necessary
-      // this.testUrl();
+      // this.parseUrl();
       //prepare iframe communication, etc.
       this.initMessageHandler();
 
       //kick it off:
       //show loading banner,
-      $('body').prepend(this.Banner.insert());
+      var $body = $('body'),
+          baseClass = '.'+opts.baseClass;
+
+      if($body.find(baseClass).length === 0){
+        $body.prepend('<div class="'+opts.baseClass+'"/>');
+        $(baseClass).prepend(this.Banner.insert());
+      }
+
       //scan
       this.scanForVideos();
     }
@@ -520,12 +550,13 @@
 
 })(window,document,{
   //one must test an <object> found on the page using the `validChildren` regex
+  baseClass     : 'shelby',
   bannerClass   : 'shelbyBanner',
   iframeClass   : 'shelbyRadar',
   iframeUrl     : "<%= Settings::Application.url %><%= Settings::Radar.radar_path %>",
+  jquery        : "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js",
   scripts       : [],
   styles        : [],
-  // useUrl        : false,
   validChildren : /embed|video\.pbs\.org|vimeo\.com|<ooyala|ooyala/i,
   videoEls      : 'embed, iframe, object, video',
 });
