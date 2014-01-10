@@ -114,7 +114,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/log_in' => "home#log_in"
 
   # THIS IS A TEMPORARY ROUTE to give the bookmarklet to someone (for reece)
-  get '/herebedragons' => "home#bookmarklet"
+  get '/bookmarklet' => "home#bookmarklet"
 
   #STATS
   get '/user/:user_id/stats' => "home#stats"

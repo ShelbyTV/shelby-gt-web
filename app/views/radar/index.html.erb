@@ -18,7 +18,11 @@
   </ol>
 <% end %>
 
-
 <script type="text/javascript">
-
+  shelby.trackEx({
+      providers : ['ga'],
+      gaCategory : "Radar",
+      gaAction : "<%= @found_video ? 'Radar found video' : 'Radar found NO video' %>",
+      gaValue : "<%= @videos.length %>"
+    });
 </script>
