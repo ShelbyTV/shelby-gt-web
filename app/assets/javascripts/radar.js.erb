@@ -101,8 +101,8 @@ $(document).ready(function(){
         $self = $(this);
 
     $.ajax({
-      type: 'POST',
-      url: libs.config.shelbyGT.apiRoot + '/roll/' + user['watch_later_roll_id'] + '/frames',
+      type: 'GET',
+      url: libs.config.shelbyGT.apiRoot + '/POST/roll/' + user['watch_later_roll_id'] + '/frames',
       dataType: "jsonp",
       timeout: 10000,
       crossDomain: true,
