@@ -70,8 +70,10 @@ var libs = {
 };
 
 $(document).ready(function(){
+  //using Rails to dump out the User object as stringified JSON, then cache it with JSON, asap!
   var user = JSON.parse( $('#js-user').text() );
 
+  // track clean visits
   var loc = shelbyTrackingCategory || "Mobile",
       username = shelbyTrackingLabel || "Anonymous" ;
 
@@ -82,22 +84,24 @@ $(document).ready(function(){
     gaLabel : username
   });
 
-  parent.postMessage("ready", "*");
-  console.log("IFRAME READY, MESSAGE SENT");
+  //----------------------------------------------------------------------------
+  // this fanciness lets the parent of iframe know about document.ready
+    parent.postMessage("ready", "*");
 
-  $(".js-close").on('click', function(e){
-    e.preventDefault();
-    parent.postMessage("close", "*");
-    console.log("IFRAME CLOSE CLICKED, MESSAGE SENT");
-  });
+    $(".js-close").on('click', function(e){
+      e.preventDefault();
+      parent.postMessage("close", "*");
+    });
+  //----------------------------------------------------------------------------
 
   $('.js-like').on('click',function(e){
     e.preventDefault();
 
-    var data = $(this).data();
+    var data = $(this).data(),
+        $self = $(this);
 
     $.ajax({
-      type: 'GET',
+      type: 'POST',
       url: libs.config.shelbyGT.apiRoot + '/roll/' + user['watch_later_roll_id'] + '/frames',
       dataType: "jsonp",
       timeout: 10000,
@@ -110,12 +114,7 @@ $(document).ready(function(){
         withCredentials: true
       },
       success: function (response) {
-        var likes = response.result;
-        for(var i = 0; i < likes.length; i++) {
-          if(likes[i].id == video_id) {
-            $('.js-like').addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
-          }
-        }
+        $self.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
       },
       error: function (e) { console.log("API Error: Unabled to persist Like",e); }
     });
