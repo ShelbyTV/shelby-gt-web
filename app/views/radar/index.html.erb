@@ -20,15 +20,5 @@
 
 
 <script type="text/javascript">
-  $(document).ready(function(){
 
-    parent.postMessage("ready", "*");
-    console.log("IFRAME READY, MESSAGE SENT");
-
-    $(".js-close").on('click', function(e){
-      e.preventDefault();
-      parent.postMessage("close", "*");
-      console.log("IFRAME CLOSE CLICKED, MESSAGE SENT");
-    })
-  });
 </script>

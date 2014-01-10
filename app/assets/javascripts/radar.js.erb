@@ -1,0 +1,125 @@
+//= require jquery
+//= require ./app/browser.js
+
+//for sharing.
+//= require ./backbone/underscore.js
+//= require ../templates/share-page-form.jst.ejs
+//= require ../templates/liker-item.jst.ejs
+
+//load event tracking js
+//= require ./event-tracking/mobile.tracking.js
+
+var libs = {
+  config : {
+    shelbyGT : {
+      apiRoot : '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>',
+      UserAvatarSizes : {
+        small : "sq48x48"
+      }
+    },
+    avatarUrlRoot: '//s3.amazonaws.com/shelby-gt-user-avatars'
+  },
+  utils : {
+    composeKnownUrl : function (domain, videoId) {
+      var knownUrl = "";
+
+      switch (domain) {
+        case 'blip.tv':
+          knownUrl = "http://blip.tv/episode/" + videoId;
+          break;
+        case 'youtube.com':
+          knownUrl = "http://www.youtube.com/watch?v=" + videoId;
+          break;
+        case 'dailymotion.com':
+          knownUrl = "http://www.dailymotion.com/video/" + videoId + "?";
+          break;
+        case 'vimeo.com':
+          knownUrl = "http://vimeo.com/" + videoId;
+          break;
+        case 'techcrunch.tv':
+          knownUrl = "http://techcrunch.tv/watch?id=" + videoId;
+          break;
+        case 'video.pbs.org':
+          knownUrl = "http://video.pbs.org/video/" + videoId;
+          break;
+        case 'collegehumor.com':
+          // knownUrl = (opts.useUrl) ? document.location.href : knownUrl = "http://collegehumor.com/video/" + videoId;
+          knownUrl = "http://collegehumor.com/video/" + videoId;
+          break;
+        case 'hulu.com':
+          //HACK (For now).
+          // the videoId is the content_id, not useful when hitting embedly or our link cache
+          // so using the page location for now
+          knownUrl = document.location.href;
+          break;
+        case 'bloomberg.com':
+          //HACK (For now).
+          // so using the page location + the provider id
+          knownUrl = document.location.href + "?bloomberg_ooyala_id="+ videoId;
+          break;
+        case "espn.com,espn.go.com":
+          knownUrl = "http://espn.go.com/video/clip?id=" + videoId;
+          break;
+        default:
+          knownUrl = false;
+      }
+
+      return knownUrl;
+    }
+  }
+};
+
+$(document).ready(function(){
+  var user = JSON.parse( $('#js-user').text() );
+
+  var loc = shelbyTrackingCategory || "Mobile",
+      username = shelbyTrackingLabel || "Anonymous" ;
+
+  shelby.trackEx({
+    providers : ['ga'],
+    gaCategory : loc,
+    gaAction : 'Visit page',
+    gaLabel : username
+  });
+
+  parent.postMessage("ready", "*");
+  console.log("IFRAME READY, MESSAGE SENT");
+
+  $(".js-close").on('click', function(e){
+    e.preventDefault();
+    parent.postMessage("close", "*");
+    console.log("IFRAME CLOSE CLICKED, MESSAGE SENT");
+  });
+
+  $('.js-like').on('click',function(e){
+    e.preventDefault();
+
+    var data = $(this).data();
+
+    $.ajax({
+      type: 'GET',
+      url: libs.config.shelbyGT.apiRoot + '/roll/' + user['watch_later_roll_id'] + '/frames',
+      dataType: "jsonp",
+      timeout: 10000,
+      crossDomain: true,
+      data: {
+        provider_id   : data.provider_id,
+        provider_name : data.provider_name
+      },
+      xhrFields: {
+        withCredentials: true
+      },
+      success: function (response) {
+        var likes = response.result;
+        for(var i = 0; i < likes.length; i++) {
+          if(likes[i].id == video_id) {
+            $('.js-like').addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
+          }
+        }
+      },
+      error: function (e) { console.log("API Error: Unabled to persist Like",e); }
+    });
+
+  });
+
+});
