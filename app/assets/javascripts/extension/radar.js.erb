@@ -346,18 +346,20 @@
       //if videos found,
       if (foundVideos.length > 0){
         var urlParams = foundVideos.join('&');
-        var iframeSrc = opts.iframeUrl+"?"+urlParams
-        // console.log(urlParams, iframeSrc)
+        var iframeSrc = opts.iframeUrl+"?"+urlParams+"&found_video=true"
         this.Iframe.insert({srcUrl: iframeSrc});
       }
       else {
         this.Banner.update("We didn't find anything... is there a YouTube, Vimeo, Hulu, Blip, or Dailymotion video on the page? <a style='color:black;text-decoration:underline;' href='mailto:bookmarklet@shelby.tv?subject=Hey%20I%20found%20a%20video%20but%20Shelby%20missed%20it&body=\n[page: "+window.location.hostname+"]'>Let us know</a>")
+        var iframeSrc = opts.iframeUrl+"?"+"found_video=false"
+        //insert but it wont show itself. for tracking porpuse
+        this.Iframe.insert({srcUrl: iframeSrc, style: {'display': 'none', 'width': '1px', 'height': '1px'}});
       }
     },
 
     Iframe : {
       el : function(data){
-        return '<iframe class="'+opts.iframeClass+'" src="'+data.srcUrl+'" style="'+Radar.css(this.styles.iframe)+'"/>';
+        return '<iframe class="'+opts.iframeClass+'" src="'+data.srcUrl+'" style="'+Radar.css(data.style || this.styles.iframe)+'"/>';
       },
       insert : function(data) {
         var $body   = $('body'),
@@ -468,9 +470,14 @@
           // also make sure the banner is hidden
           $("."+opts.iframeClass).remove();
         }
-        else if (e.data == "ready") {
+        else if (e.data == "ready.withVideo") {
           $("."+opts.iframeClass).show();
           self.Banner.close();
+        }
+        else if (e.data == "ready.withoutVideo") {
+          setTimeout(function(){
+            self.Banner.close();
+          }, 5000);
         }
       }, false);
 

@@ -1,6 +1,7 @@
 class RadarController < ApplicationController
 
   def index
+    @found_video = params[:found_video] == "true" ? true : false
     @signed_in_user = check_for_signed_in_user
     # this means that the user isn't *really* logged in, delete the cookie and reassign variables appropriatly.
     if @signed_in_user['app_progress'].nil?
