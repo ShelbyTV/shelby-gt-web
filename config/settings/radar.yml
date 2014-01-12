@@ -1,0 +1,18 @@
+defaults: &defaults
+  bookmarklet_url_encoded: javascript%3Avoid%28%28function%28d%29%7Bwindow.isShelbyBookmarklet%3Dtrue%3B_sbm%3Dd.createElement%28%27SCRIPT%27%29%3B_sbm.type%3D%27text/javascript%27%3B_sbm.src%3D%27//shelby.tv/assets/shelbify.js%27%3Bd.getElementsByTagName%28%27head%27%29%5B0%5D.appendChild%28_sbm%29%3B%7D%29%28document%29%29%3B%0A
+  video_providers: ['youtube', 'vimeo', 'dailymotion', 'hulu']
+  radar_path: '/radar'
+
+development:
+  <<: *defaults
+  mobile_subdirectory: "/m"
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+  mobile_subdirectory: "/m"
+
+production:
+  <<: *defaults

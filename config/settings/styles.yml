@@ -1,0 +1,28 @@
+defaults: &defaults
+  ui_white      : '#ffffff'
+  ui_off_white  : '#f4f4f4'
+
+  ui_black      : '#333333'
+  ui_soft_black : '#555555'
+  ui_gray       : '#f1f1f1'
+
+  ui_green      : '#6fbe47'
+  ui_red        : '#ee4c4c'
+  ui_blue       : '#0590c4'
+
+  facebook_blue : '#013e80'
+  twitter_blue  : '#2CAAE1'
+  tumblr_blue   : '#2f445b'
+
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults

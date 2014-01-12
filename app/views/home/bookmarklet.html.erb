@@ -24,21 +24,69 @@
         shelbyTrackingLabel = "";
   </script>
 
-  <%= javascript_include_tag "shares" %>
+  <%= stylesheet_link_tag "seovideo", :media => "screen" %>
+
+  <style type="text/css">
+  .shelby--bookmarklet {
+    background-color: #fff;
+  }
+
+  .shelf--bookmarklet .shelf__h1 {
+    font-size: 1.5em;
+    margin-top: 2em;
+  }
+
+  .shelby--bookmarklet .media_image {
+    margin-right: 40px;
+  }
+
+  .button_command--radar:hover {
+    cursor: move;
+  }
+  </style>
 
 </head>
 
-<body>
+<body class="shelby shelby--landing  shelby--bookmarklet">
+  <div class="shelby__wrapper clearfix">
+    <%= render :partial => '/home/landing_header', :locals => {:show_login => true, :user_signed_in => @user_signed_in} %>
+        <div class="shelf__wrapper vertical-align-hack">
+          <div class="verical-align-hack__el">
+            <div class="shelf shelf--bookmarklet">
+              <div class="shelf__lining">
+                <h2 class="shelf__h1">The Video Radar Button</h2>
 
-  <div style="color:white;text-align: center; font-size: 40px;">
-    ⬆ Drag that guy aaaalllll the way up into the bookmark bar ⬆
-  </div>
 
-  <div style="text-align:center;margin-top: 80px;">
-    <h2>Drag this link to your bookmark bar:</h2>
 
-    <a href="javascript:window.isShelbyBookmarklet=true;_sbm=document.createElement('SCRIPT');_sbm.type='text/javascript';_sbm.src='http://shelby.tv/assets/shelbify.js';document.getElementsByTagName('head')%5B0%5D.appendChild(_sbm);">+Shelby</a>
+                <div class="media_module">
+                  <div class="media_image">
+                    <%= image_tag "shelby-radar.png" %>
+                  </div>
 
+                  <div class="media_body">
+                    <p class="shelf__block">Gather all the videos from a web page into a single stream!<p>
+                    <p class="shelf__block">
+                      <br/>
+                      <a class="button_primer button_command button_command--flexible button_green button_command--radar" href="<%= Settings::Radar.bookmarklet_url_encoded %>">
+                        <span class="button_label">Video Radar</span>
+                      </a>
+                      <em>&larr; Click and drag this button to your bookmarks bar</em>
+                      <br/><br/>
+                    </p>
+
+                    <p class="shelf__block">
+                      The Radar button will help you Like and Share videos you find from anywhere on the internet.
+                    </p>
+
+                    <p class="shelf__block">
+                      Click this button from your bookmarks bar whenever you see a video you like.
+                    </p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
   </div>
 
   <script>

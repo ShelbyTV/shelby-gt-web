@@ -1,0 +1,47 @@
+<article id="<%= video['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame js-<%= video['id']%>">
+  <span class="frame-header js-frame-activate">
+    <h1 class="frame-title" title="<%= video['title'] %>">
+      <%= video['title'] %>
+    </h1>
+  </span>
+
+  <div class="frame-body-wrapper clearfix">
+    <div class="frame-body">
+      <noscript>
+        <p style="text-align: center;"><strong>Please enable Javascript if your device allows it.</strong></p>
+
+        <span class="image_module frame-thumbnail frame-thumbnail--tall js-frame-activate" style="background-image: url('<%= video['thumbnail_url'] %>');" role="img">
+          <img class="visuallyhidden" src="<%= video['thumbnail_url'] %>" title="<%- video['title'] %>" alt="<%- video['title'] %> thumbnail">
+        </span>
+      </noscript>
+
+      <% if embed_video %>
+        <div class="video__wrapper">
+          <% if video['provider_name'] == "youtube" && ga_category == "Radar" %>
+            <%= render :partial => "/radar/partials/youtube_iframe_embed", :locals => {:video_provider_id => video['provider_id']} %>
+          <% elsif video["provider_name"] == "youtube" %>
+            <%= render :partial => "/seovideo/youtube_embed",
+                :locals => {
+                  :video_provider_id => video['provider_id']
+                } %>
+          <% else %>
+            <%= raw video['embed_url'] %>
+          <% end %>
+        </div>
+      <% else %>
+        <a href="#<%= video['id'] %>" style="background-image: url(<%= video['thumbnail_url'] %>);" onclick="return false;" class="video__wrapper image_module<%= (is_mobile) ? ' icon-play js-play-video' : '' %>" data-provider-name="<%= video['provider_name'] %>" data-provider-id="<%= video['provider_id'] %>" data-player-embed='<%= video['embed_url'] %>' data-index='<%= index ? index : '' %>'>
+          <img class="visuallyhidden" src="<%= video['thumbnail_url'] %>" title="<%- video['title'] %>" alt="<%- video['title'] %> thumbnail">
+        </a>
+        <div id="js-video-player-<%= video['provider_name'] %>-<%= video['provider_id'] %><%= '-'+index.to_s if index %>"  class="js-video-player-<%= video['provider_name'] %>-<%= video['provider_id'] %><%= '-'+index.to_s if index %> js-video-player video__wrapper without_video visuallyhidden"></div>
+      <% end %>
+    </div><!-- eo .frame-body -->
+  </div><!-- eo .frame-body-wrapper -->
+
+  <div class="form_fieldset frame_interactions">
+    <span class="one-whole">
+      <button class="button_primer button_command button_command--flexible button_gray one-whole js-like js-track-event" data-provider_id="<%= video['provider_id'] %>" data-provider_name="<%= video['provider_name'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click Like" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
+          <span class="icon icon-like"></span>Like
+      </button>
+    </span>
+  </div>
+</article>

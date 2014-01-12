@@ -1,0 +1,28 @@
+
+<% if @videos %>
+  <ol class="list">
+    <% @videos.each_with_index do |video, index| %>
+      <li class="list__item">
+        <%= render :partial => '/objects/video',
+            :locals => {
+              :embed_video    => true,
+              :ga_category    => "Radar",
+              :index          => index,
+              :signed_in_user => @signed_in_user,
+              :userNickname   => @signed_in_user['nickname'],
+              :video          => video
+            }
+        %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
+
+<script type="text/javascript">
+  shelby.trackEx({
+      providers : ['ga'],
+      gaCategory : "Radar",
+      gaAction : "<%= @found_video ? 'Radar found video' : 'Radar found NO video' %>",
+      gaValue : "<%= @videos.length %>"
+    });
+</script>
