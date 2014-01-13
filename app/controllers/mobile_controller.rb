@@ -21,14 +21,19 @@ class MobileController < ApplicationController
       @user_signed_in = user_signed_in?
     end
 
-    if user_signed_in? and @signed_in_user and @signed_in_user.has_key?("app_progress") and ((@signed_in_user['app_progress']['onboarding'] != true) or @signed_in_user['app_progress'['onboarding'] != "iOS_iPhone"])
+#####  User is logged in, but they haven't gone through onboarding, send them there.  #####
+#####  KEEP IN CASE PEOPLE ARE IN THIS STATE FROM DAYS OF YORE  #####
+    if @user_signed_in and @signed_in_user and @signed_in_user.has_key?("app_progress") and ((@signed_in_user['app_progress']['onboarding'] != true) or @signed_in_user['app_progress'['onboarding'] != "iOS_iPhone"])
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
       authed_service = params[:service] || users_first_auth['provider']
-
       redirect_to(appropriate_subdirectory + "/onboarding/1?#{authed_service ? 'service='+authed_service : ''}") and return
-    elsif user_signed_in?
+
+#####  User is logged in, send them to the right mobile stream path  #####
+    elsif @user_signed_in
       log_session()
       redirect_to(appropriate_subdirectory + '/stream') and return
+
+#####  User is NOT logged in, send them to the landing page  #####
     else
       @mobile_signup_url = Settings::ShelbyAPI.url+"/auth/facebook?service=facebook&origin="+Settings::Application.mobile_url
       render '/home/landing', :layout => false
@@ -262,6 +267,10 @@ class MobileController < ApplicationController
     # def dont want this around (API tries to kill it, too)
     cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
     redirect_to(Settings::ShelbyAPI.url + "/sign_out_user") and return
+  end
+
+  def create_user
+
   end
 
   def show_onboarding
