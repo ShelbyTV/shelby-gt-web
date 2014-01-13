@@ -27,13 +27,6 @@
         width: 90%;
       }
 
-      .shelf__lining {
-        clear: both;
-        float: none;
-        margin: 0;
-        padding: 0;
-        width: auto;
-      }
 
       .media_image,
       .media_body,
@@ -47,20 +40,6 @@
       }
       //-------- eo all shelves ------------------
 
-      &.shelf--header {
-        max-width: 100%;
-        width: 100%;
-
-        .shelby-logo {
-          font-size: 2.6em;
-        }
-        .app_nav__button {
-          margin-top: 0;
-        }
-        .shelf__button--cta {
-          display: none;
-        }
-      }
 
       &.shelf--cta {
         padding: 0;
