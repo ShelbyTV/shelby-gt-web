@@ -12,6 +12,7 @@
 var libs = {
   config : {
     shelbyGT : {
+      root : '<%= "#{Settings::Application.url}" %>',
       apiRoot : '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>',
       UserAvatarSizes : {
         small : "sq48x48"
@@ -124,7 +125,7 @@ $(document).ready(function(){
       });
     } else {
       var redirectUrl = window.location.href;
-      window.location = 'http://shelby.tv/log_in?auth_failure=1&amp;redir=' + redirectUrl;
+      window.location = libs.config.shelbyGT.root + '/log_in?auth_failure=1&amp;redir=' + redirectUrl;
     }
 
   });
