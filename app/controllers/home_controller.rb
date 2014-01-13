@@ -312,7 +312,12 @@ class HomeController < ApplicationController
 
   # THIS IS A TEMPORARY
   def bookmarklet
-    @found_video = params[:found_video] == "true" ? true : false
+    # bahhh, this sucks. fix me.
+    found_video = params.delete(:found_video)
+    params.delete(:controller)
+    params.delete(:action)
+    #######################
+    @found_video = found_video == "true" ? true : false
 
     if @found_video
 
@@ -328,7 +333,7 @@ class HomeController < ApplicationController
 
       params.each do |provider_name, provider_ids|
         # dont look at shit we dont support
-        next if Settings::Radar.video_providers.include?(provider_name)
+        next unless Settings::Radar.video_providers.include?(provider_name)
 
         provider_ids = params[provider_name]
         provider_ids.each do |provider_id|
