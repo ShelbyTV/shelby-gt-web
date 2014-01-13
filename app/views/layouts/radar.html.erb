@@ -38,11 +38,11 @@
     <% end %>
   </script>
   <%= javascript_include_tag "radar" %>
-  <meta name="foundVideo" content="<%= @found_video %>">
+  <meta name="foundVideo" content="<%= !@found_video_providers.empty? %>">
   <%= render :partial => '/objects/noscript' %>
 </head>
 
-<body class="shelby shelby--shares shelby--mobile shelby--radar<%= " shelby--user_signed_in" if @user_signed_in %><%= " hidden" unless @found_video %>">
+<body class="shelby shelby--shares shelby--mobile shelby--radar<%= " shelby--user_signed_in" if @user_signed_in %><%= " hidden" if @found_video_providers.empty? %>">
   <div id="js-shelby-wrapper" class="shelby-wrapper clearfix">
     <header id="js-header" class="animate_module js-app-header shelby-header clearfix js-inactivity-preemption" role="banner">
       <div class="shelby-header__lining">

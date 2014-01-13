@@ -319,10 +319,11 @@ class HomeController < ApplicationController
     params.delete(:controller)
     params.delete(:action)
     #######################
-    @found_video = found_video == "false" ? false : true
 
-    if @found_video
+    # match params to support providers, if we have at least 1 provider name in the params then we have at least 1 video.
+    @found_video_providers = params.keep_if { |provider_name| Settings::Radar.video_providers.include?(provider_name) }
 
+    unless @found_video_providers.empty?
       @signed_in_user = check_for_signed_in_user
       # this means that the user isn't *really* logged in, delete the cookie and reassign variables appropriatly.
       if @signed_in_user['app_progress'].nil?
