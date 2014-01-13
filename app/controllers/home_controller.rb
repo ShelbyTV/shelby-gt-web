@@ -319,7 +319,7 @@ class HomeController < ApplicationController
     params.delete(:controller)
     params.delete(:action)
     #######################
-    @found_video = found_video == "true" ? true : false
+    @found_video = found_video == "false" ? false : true
 
     if @found_video
 
