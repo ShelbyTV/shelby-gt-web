@@ -181,6 +181,8 @@ class HomeController < ApplicationController
     @mobile_os     = detect_mobile_os
     @is_mobile     = is_mobile?
 
+    @redirect_loc = params[:redir] if params[:redir]
+
     render  '/home/landing'
   end
 
