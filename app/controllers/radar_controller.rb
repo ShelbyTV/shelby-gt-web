@@ -14,7 +14,7 @@ class RadarController < ApplicationController
 
     params.each do |provider_name, provider_ids|
       # dont look at shit we dont support
-      break unless Settings::Radar.video_providers.include?(provider_name)
+      next if Settings::Radar.video_providers.include?(provider_name)
 
       provider_ids = params[provider_name]
       provider_ids.each do |provider_id|
