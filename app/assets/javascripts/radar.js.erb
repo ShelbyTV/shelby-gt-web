@@ -99,28 +99,33 @@ $(document).ready(function(){
   $('.js-like').on('click',function(e){
     e.preventDefault();
 
-    var data = $(this).data(),
-        $self = $(this);
+    if(user && user['watch_later_roll_id']) {
+      var data  = $(this).data(),
+          $self = $(this);
 
-    $.ajax({
-      type: 'GET',
-      url: libs.config.shelbyGT.apiRoot + '/POST/roll/' + user['watch_later_roll_id'] + '/frames',
-      dataType: "jsonp",
-      timeout: 10000,
-      crossDomain: true,
-      data: {
-        provider_id   : data.provider_id,
-        provider_name : data.provider_name,
-        url           : libs.utils.composeKnownUrl(data.provider_name,data.provider_id)
-      },
-      xhrFields: {
-        withCredentials: true
-      },
-      success: function (response) {
-        $self.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
-      },
-      error: function (e) { console.log("API Error: Unabled to persist Like",e); }
-    });
+      $.ajax({
+        type: 'GET',
+        url: libs.config.shelbyGT.apiRoot + '/POST/roll/' + user['watch_later_roll_id'] + '/frames',
+        dataType: "jsonp",
+        timeout: 10000,
+        crossDomain: true,
+        data: {
+          provider_id   : data.provider_id,
+          provider_name : data.provider_name,
+          url           : libs.utils.composeKnownUrl(data.provider_name,data.provider_id)
+        },
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function (response) {
+          $self.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
+        },
+        error: function (e) { console.log("API Error: Unabled to persist Like",e); }
+      });
+    } else {
+      var redirectUrl = window.location.href;
+      window.location = 'http://shelby.tv/log_in?auth_failure=1&amp;redir=' + redirectUrl;
+    }
 
   });
 
