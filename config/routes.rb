@@ -67,9 +67,6 @@ ShelbyGtWeb::Application.routes.draw do
   end
   #######################XXX###############################
 
-  # Shelby Radar
-
-  get '/videoradar' => 'radar#index', :as =>:videoradar
 
   # SEO PAGES
   get '/video/:provider_name/:provider_id(/*title)' => 'seovideo#show'
@@ -115,6 +112,7 @@ ShelbyGtWeb::Application.routes.draw do
 
   # THIS IS A TEMPORARY ROUTE to give the bookmarklet to someone (for reece)
   get '/bookmarklet' => "home#bookmarklet"
+  get '/bookmarklet/radar' => 'radar#index'
 
   #STATS
   get '/user/:user_id/stats' => "home#stats"
