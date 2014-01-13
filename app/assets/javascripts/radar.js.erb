@@ -119,7 +119,7 @@ $(document).ready(function(){
           withCredentials: true
         },
         success: function (response) {
-          $self.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
+          $self.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red').siblings('.button_label').text('Liked');
         },
         error: function (e) { console.log("API Error: Unabled to persist Like",e); }
       });
