@@ -11,7 +11,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  login_form_url: "https://api.shelby.tv/authentications/login?redir=http://localhost.shelby.tv:3000"
+  login_form_url: "https://api.shelby.tv/authentications/login"
 
 test:
   <<: *defaults
