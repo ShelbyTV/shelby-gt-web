@@ -271,6 +271,13 @@ class MobileController < ApplicationController
 
   def create_user
 
+    # user ShelbyAPI wrapper to hit: POST http://api.shelby.tv/v1/user/create?anonymous=true
+
+    # if we get a real user with a good session back then redirect to appropriate_subdirectory + "/stream"
+    # else redirect to appropriate_subdirectory + "/stream?error=true" with a message explainging what happened
+
+
+
   end
 
   def show_onboarding

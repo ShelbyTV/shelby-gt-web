@@ -6,6 +6,7 @@ ShelbyGtWeb::Application.routes.draw do
   # get '/genius' => 'genius#index'
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#landing', :as => :mobile_landing
+    post '/user/create' => 'mobile#create_user'
     get '/log_in' => "home#log_in"
     get '/featured' => 'mobile#featured', :as => :mobile_featured
     get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
@@ -25,6 +26,7 @@ ShelbyGtWeb::Application.routes.draw do
 
   scope "/amazonapp" do
     get '/' => 'mobile#landing'
+    post '/user/create' => 'mobile#create_user'
     get '/log_in' => "home#log_in"
     get '/featured' => 'mobile#featured'
     get '/preferences' => 'mobile#preferences'
