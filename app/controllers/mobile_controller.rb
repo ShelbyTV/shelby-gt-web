@@ -264,7 +264,7 @@ class MobileController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     (redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return) unless user_signed_in?
     @service = params[:service]
-    render "/mobile/partials/connecting_service"
+    render "mobile/partials/connecting_service"
   end
 
   # Route to set timeline preference or follow shelby depending on the service & update users app progress appropriatly
