@@ -38,7 +38,6 @@ defaults: &defaults
       message: <em>Check out</em> a few areas of content to personalize your video stream.
     social:
       hook: social
-      image_url:
       message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
 
 development:
