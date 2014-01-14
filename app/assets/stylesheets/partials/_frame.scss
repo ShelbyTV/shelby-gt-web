@@ -85,6 +85,23 @@
         border-bottom: none;
       }
     }
+    .frame--inline_cta {
+
+    }
+    .frame--sources_cta {
+      em {
+        color: $ui-green;
+        font-style: normal;
+        font-weight: bold;
+      }
+    }
+    .frame--social_cta {
+      em {
+        color: $facebook-blue;
+        font-style: normal;
+        font-weight: bold;
+      }
+    }
 
 .frame-list-item {
   border-bottom: 1px solid $inset;
