@@ -39,7 +39,7 @@ defaults: &defaults
     social:
       hook: social
       image_url: social.jpg
-      message: <em>Connect to social</em> to see videos your friends are sharing and so others known who you are.
+      message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
 
 development:
   <<: *defaults
