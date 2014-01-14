@@ -31,7 +31,13 @@ defaults: &defaults
 
   ga_category: Mobile
 
-
+  inline_cta:
+    sources:
+      title: Sources
+      message: "Omg so cool, look at all these new sources"
+    social:
+      title: Social
+      message: "Your friends have the best video, k?"
 
 development:
   <<: *defaults
