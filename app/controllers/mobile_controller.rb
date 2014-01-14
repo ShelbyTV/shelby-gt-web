@@ -270,14 +270,11 @@ class MobileController < ApplicationController
   end
 
   def create_user
-
-    # user ShelbyAPI wrapper to hit: POST http://api.shelby.tv/v1/user/create?anonymous=true
-
-    # if we get a real user with a good session back then redirect to appropriate_subdirectory + "/stream"
-    # else redirect to appropriate_subdirectory + "/stream?error=true" with a message explainging what happened
-
-
-
+    if create_anon_user!(cookies)
+      redirect_to(appropriate_subdirectory+"/stream") and return
+    else
+      redirect_to(appropriate_subdirectory+"?status=409&msg=Uh%20Oh.%20Something%20went%20wrong.%20Give%20that%20another%20shot...") and return
+    end
   end
 
   def show_onboarding
@@ -330,6 +327,18 @@ class MobileController < ApplicationController
     if @signed_in_user['app_progress'].nil?
       cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
       redirect_to(appropriate_subdirectory+mobile_landing_path(:msg =>"Eeek, Something went wrong. Try logging in again.", :status => 401)) and return
+    end
+  end
+
+  def create_anon_user!(cookies)
+    r = Shelby::API.create_user({:anonymous => true}, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
+    # proxy the cookies
+    Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
+    if r.code != 200
+      return false
+    else
+      @user = r['result']
+      return true
     end
   end
 
