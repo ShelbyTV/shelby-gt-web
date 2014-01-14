@@ -269,6 +269,8 @@ class MobileController < ApplicationController
     redirect_to(Settings::ShelbyAPI.url + "/sign_out_user") and return
   end
 
+  # POST route to create ONLY an anonymous type user
+  # Requires: params[:anonymous] = true
   def create_user
     if params[:anonymous] != "true"
       redirect_to(appropriate_subdirectory+"?status=409&msg=Something%20has%20gone%20really%20really%20wrong!") and return
