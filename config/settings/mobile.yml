@@ -6,10 +6,10 @@ defaults: &defaults
   button_gray_flexible: 'button_primer button_command button_command--flexible button_gray'
   load_more_button_class: 'button_primer button_command button_command--flexible button_gray two-thirds js-load-more'
   roll_types: {
+    activity: 'activity',
     featured: 'featured',
     likes: 'likes',
     me: 'me',
-    activity: 'activity',
     stream: 'stream',
     user: 'user'
   }
@@ -33,11 +33,13 @@ defaults: &defaults
 
   inline_cta:
     sources:
-      title: Sources
-      message: "Omg so cool, look at all these new sources"
+      hook: sources
+      image_url: sources.jpg
+      message: <em>Check out</em> a few areas of content to personalize your video stream.
     social:
-      title: Social
-      message: "Your friends have the best video, k?"
+      hook: social
+      image_url: social.jpg
+      message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
 
 development:
   <<: *defaults

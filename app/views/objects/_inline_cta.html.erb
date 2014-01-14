@@ -1,42 +1,15 @@
-<article id="" class="animate_module frame js-inline_sources_cta">
-  <span class="frame-header js-frame-activate">
-    <h1 class="frame-title" title="">
-      <%= cta.title %>
-    </h1>
-  </span>
-
+<article id="" class="animate_module frame frame--inline_cta<%= " frame--#{cta.hook}_cta" %> js-inline_sources_cta">
   <div class="frame-body-wrapper clearfix">
     <div class="frame-body">
-      <a href="#" style="background-image: url();" onclick="return false;" class="video__wrapper image_module">
-        <img class="visuallyhidden" src="" title="" alt="">
+      <a href="#" style="background-image: url(<%= asset_path cta.image_url %>);" onclick="return false;" class="video__wrapper image_module">
+        <%= image_tag cta.image_url, :class => "visuallyhidden" %>
       </a>
     </div><!-- eo .frame-body -->
 
     <footer class="media_module frame-footer clearfix">
-      <a href="" class="js-track-event" data-ga_category="<%#= ga_category %>" data-ga_action="Click Inline CTA: " data-ga_label="<%#= signed_in_user['nickname'] || "anonymous" %>">
-        <span class="image_module media_image avatar avatar--<%#= (is_mobile) ? 'small' : 'medium' %>" style="background-image: url();" role="img">
-          <img src="<%#= avatar %>" class="cloaked">
-        </span>
-      </a>
-
       <div class="media_body">
-        <p class="xuser-data">
-          <a href="" class="js-track-event no-faux-link" data-ga_category="<%#= ga_category %>" data-ga_action="Click Username" data-ga_label="<%#= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%#= userNickname %>">
-            <strong><%#= userNickname %></strong>
-          </a>
-
-          <span class="xuser-data-timestamp xuser-data-timestamp--inline">
-            via
-            <a class="no-faux-link js-track-event" href="<%#= appropriate_subdirectory %>/<%#= frame['originator']['nickname'] %>" title="<%#= frame['originator']['name'] %>" data-ga_category="<%#= ga_category %>" data-ga_action="Click via Username" data-ga_label="<%#= signed_in_user['nickname'] || "anonymous" %>">
-              <%#= frame['originator']['nickname'] %>
-            </a>
-          </span>
-
-          <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <%#= frame_owner['authentications'].first['provider'].capitalize %></span>
-        </p>
-
         <p class="xuser-message<%#= " line-clamp js-toggle-comment" if message and frame['conversation'] and frame['conversation']['messages'].length>0 and frame['conversation']['messages'][0]['text'].length > 265%>">
-          <%= cta.message %>
+          <%= cta.message.html_safe %>
         </p>
       </div><!-- eo .media_body -->
     </footer><!-- eo .media_module-->

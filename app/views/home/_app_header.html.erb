@@ -32,6 +32,12 @@
         </a>
       </li>
 
+      <li class="list__item js-guide-me js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Sources" data-ga_label="<%= signed_in_user['nickname'] %>">
+        <a href="<%= appropriate_subdirectory %>/preferences/sources" class="app_nav__button<%= " active-item" if pathname == 'sources' %> js-sources">
+          Sources
+        </a>
+      </li>
+
 
       <li class="dropdown_module list__item secondary-item guide-login">
         <button class="dropdown_button app_nav__button app_nav__button--settings<%= (is_mobile) ? ' js-settings-dropdown-button' : ' js-do-nothing' %>" data-ga_category="<%= ga_category %>" data-ga_action="Click Settings" data-ga_label="<%= signed_in_user['nickname'] %>" type="button">
