@@ -38,10 +38,11 @@ class MobileController < ApplicationController
     if user_signed_in?
       check_for_signed_in_user_and_issues({:redirect_if_issue => true})
 
-      unless (@signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress'['onboarding'] == "iOS_iPhone"]))
+      # A User with user_type == 4 should not go into "onboarding"
+      unless ((@signed_in_user['user_type'] == 4) and @signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress'['onboarding'] == "iOS_iPhone"]))
         users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
         authed_service = params[:service] || users_first_auth['provider']
-        redirect_to(appropriate_subdirectory + "/connecting/#{authed_service || ''}") and return
+        redirect_to(appropriate_subdirectory + "/connecting/#{authed_service}") and return
       end
 
       @is_mobile      = is_mobile?
@@ -280,7 +281,7 @@ class MobileController < ApplicationController
     elsif params[:service] == "twitter"
       EM.next_tick { follow_shelby(@signed_in_user, params[:onboarding_follow_shelby]) }
     end
-    attributes = {:app_progress => {:connected_service => params[:service]}}
+    attributes = {:app_progress => {:connectedFacbeook => true}}
     update_user(@signed_in_user, attributes)
     redirect_to(appropriate_subdirectory + "/stream") and return
   end
