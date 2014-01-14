@@ -126,7 +126,7 @@ def user
       'roll_activity_notifications' => "true"
     },
     "primary_email"       => "jlpicard@starfleet.com",
-    "app_progress" => {"something" => "here"}
+    "app_progress"        => {"something" => "here"}
   }
 end
 
@@ -135,24 +135,94 @@ def creator(quantity=1)
 
   (1..quantity).each do |index|
     creators << {
-      "id"=>"#{index}",
-      "creator_id"=>"#{index}#{index}",
-      "origin_network"=>"shelby_person",
-      "title"=>"lifeandtimes",
-      "roll_type"=>15,
-      "subdomain"=>"lifeandtimes",
-      "creator_nickname"=>"lifeandtimes",
-      "creator_name"=>"JayZ",
-      "creator_has_shelby_avatar"=>false,
-      "creator_avatar_updated_at"=>nil,
-      "creator_image_original"=>nil,
-      "creator_image"=>"http://i3.ytimg.com/i/N-sc1xJr-QQNj_uNIM9wTA/mq1.jpg",
-      "thumbnail_url"=>"http://i.ytimg.com/vi/k-CW3WYMF_Q/0.jpg"
+      "id"                        => "#{index}",
+      "creator_id"                => "#{index}#{index}",
+      "origin_network"            => "shelby_person",
+      "title"                     => "lifeandtimes",
+      "roll_type"                 => 15,
+      "subdomain"                 => "lifeandtimes",
+      "creator_nickname"          => "lifeandtimes",
+      "creator_name"              => "JayZ",
+      "creator_has_shelby_avatar" => false,
+      "creator_avatar_updated_at" => nil,
+      "creator_image_original"    => nil,
+      "creator_image"             => "http://i3.ytimg.com/i/N-sc1xJr-QQNj_uNIM9wTA/mq1.jpg",
+      "thumbnail_url"             => "http://i.ytimg.com/vi/k-CW3WYMF_Q/0.jpg"
     }
   end
 
   creators
 end
 
-def dbe
+def dbe(quantity=1)
+  dbes = [];
+
+  (1..quantity).each do |index|
+    dbes << {
+      "id" => "#{index}",
+      "duplicate" => false,
+      "action" => 0,
+      "read" => nil,
+      "frame" => {
+        "id"              => "52d563b325dcca1d1200ae33",
+        "score"          => 1330.9467333333334,
+        "view_count"      => 0,
+        "creator_id"      => "4d7d154ff6db244f5e000001",
+        "conversation_id" => "52d563b325dcca1d1200ae35",
+        "roll_id"         => "4f900d56b415cc6614056681",
+        "video_id"        => "52c6fb029a725b64030e2e42",
+        "upvoters"        => [
+          "4f0752daad9f11092800012b"
+        ],
+        "like_count"      => 1,
+        "frame_type"      => 0,
+        "originator_id"   => "4d9b43d2f6db2474cc000010",
+        "originator"      => {
+          "id"        => "4d9b43d2f6db2474cc000010",
+          "name"      => "Jordan",
+          "nickname"  => "imnotjk",
+          "user_type" => 0
+        },
+        "created_at" => "14m ago",
+        "creator" => {
+          "authentications" => [
+            {
+              "uid"      => "1003838",
+              "provider" => "facebook",
+              "nickname" => "reecepacheco"
+            }, {
+              "uid"      => "13127812",
+              "provider" => "twitter",
+              "nickname" => "reece"
+            }
+          ],
+          "name" => "reece",
+          "nickname" => "reece",
+          "user_type" => 0
+        },
+        "video" => {
+          "id"                  => "52c6fb029a725b64030e2e42",
+          "embed_url"           => "http://www.youtube.com/v/xNZrYqYuB6g&feature=youtube_gdata_player",
+          "like_count"          => 1,
+          "provider_id"         => "xNZrYqYuB6g",
+          "provider_name"       => "youtube",
+          "thumbnail_url"       => "http://i1.ytimg.com/vi/xNZrYqYuB6g/0.jpg",
+          "title"               => "Kiwi Move - One Wearable. Many Apps. from Kiwi Wearables",
+          "tracked_liker_count" => 1,
+          "view_count"          => 2
+        },
+        "conversation" => {
+          "id"       => "52d563b325dcca1d1200ae35",
+          "public"   => true,
+          "messages" => [
+            {
+              "text" => "Great articulation of a 'wearable' vision. I have no doubt all of this is possible, but still probably a long way off, and maybe a little scary. ",
+            }
+          ]
+        }
+      }
+    }
+  end
+
+  dbes
 end
