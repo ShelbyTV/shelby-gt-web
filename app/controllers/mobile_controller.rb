@@ -141,6 +141,7 @@ class MobileController < ApplicationController
       case @section
         when Settings::Mobile.preferences_sections.sources
           @sources = Shelby::API.get_featured_sources
+          @roll_type = Settings::Mobile.preferences_sections.sources
         when Settings::Mobile.preferences_sections.notifications
           @preferences = @signed_in_user['preferences']
         when Settings::Mobile.preferences_sections.profile

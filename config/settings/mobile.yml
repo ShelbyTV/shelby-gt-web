@@ -6,10 +6,10 @@ defaults: &defaults
   button_gray_flexible: 'button_primer button_command button_command--flexible button_gray'
   load_more_button_class: 'button_primer button_command button_command--flexible button_gray two-thirds js-load-more'
   roll_types: {
+    activity: 'activity',
     featured: 'featured',
     likes: 'likes',
     me: 'me',
-    activity: 'activity',
     stream: 'stream',
     user: 'user'
   }
