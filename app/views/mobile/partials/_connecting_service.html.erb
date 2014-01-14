@@ -1,6 +1,6 @@
-<div class="modal__body modal__body--bare modal__body--<%= currentService %> clearfix">
+<div class="modal__body modal__body--bare modal__body--<%= @service %> clearfix">
     <h1 class="alpha modal__h1 modal__h1--padding">
-      Connecting <%= currentService.capitalize %>
+      Connecting <%= @service.capitalize %>
     </h1>
 
     <ol class="list js-progress-list">
@@ -10,8 +10,8 @@
             <span class="icon icon-check"></span>
           </span>
           <span class="beta load_progress__label">
-            <span>Connecting <%= currentService.capitalize() %></span>
-            <span>Connected <%= currentService.capitalize() %></span>
+            <span>Connecting <%= @service.capitalize() %></span>
+            <span>Connected <%= @service.capitalize() %></span>
           </span>
         </h2>
       </li>
@@ -44,9 +44,8 @@
   </div><!-- eo modal__body -->
 
   <div class="animate_module modal__foot modal__foot--rev cloaked clearfix js-modal-foot">
-    <% if (currentService == 'facebook') %>
-      <img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6008900191372&amp;value=0&amp;currency=USD" />
-      <%= form_tag(appropriate_subdirectory + "/onboarding/" + @current_step.to_s) do %>
+    <% if (@service == 'facebook') %>
+      <%= form_tag(appropriate_subdirectory + "/connecting/" + @service) do %>
         <fieldset class="form_fieldset form_fieldset--rev">
           <input class="form_checkbox form_checkbox--inline" type="checkbox" name="onboarding_timeline_sharing" id="onboarding-timeline-sharing" checked="checked" />
           <label class="form_label form_label--inline" for="onboarding-timeline-sharing">Publish activity to Facebook Timeline</label>
@@ -56,8 +55,8 @@
           <span class="icon icon-arrow_right"></span>
         </button>
       <% end %>
-    <% elsif (currentService == 'twitter') %>
-      <%= form_tag(appropriate_subdirectory + "/onboarding/" + @current_step) do %>
+    <% elsif (@service == 'twitter') %>
+      <%= form_tag(appropriate_subdirectory + "/connecting/" + @service) do %>
         <fieldset class="form_fieldset form_fieldset--rev">
           <input class="form_checkbox form_checkbox--inline" type="checkbox" name="onboarding_follow_shelby" id="onboarding-follow-shelby" checked="checked" />
           <label class="form_label form_label--inline" for="onboarding-follow-shelby">Follow @Shelby on Twitter</label>
@@ -72,4 +71,5 @@
 
 <%= javascript_tag do %>
   <%= render :partial => "/mobile/onboarding/connecting_services", :locals => {:user => @signed_in_user}, :formats=>[:js] %>
+  <%= render :partial => "/mobile/partials/intercom", :locals => {:signed_in_user => @signed_in_user}, :formats=>[:js] %>
 <% end %>
