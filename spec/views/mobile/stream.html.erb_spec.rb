@@ -27,5 +27,10 @@ describe "/m/stream" do
 
       rendered.should have_selector('.frame', :count => 2)
     end
+
+    context "when onboarding is incomplete" do
+
+    end
+
   end
 end

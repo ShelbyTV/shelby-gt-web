@@ -94,7 +94,37 @@
         font-style: normal;
         font-weight: bold;
       }
-    }
+      .icon__wrapper {
+        height: 10em;
+        left: 50%;
+        margin-left: -8em;
+        margin-top: -5em;
+        position: absolute;
+        top: 50%;
+        width: 16em;
+      }
+      .icon-add:before {
+        background-image: image-url('icon-add.png');
+        background-position: top center;
+        background-repeat: no-repeat;
+        content: "\0020";
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+      .icon-add:after {
+        bottom: 0;
+        color: $ui-white;
+        content: "Add Video";
+        font-size: 2em;
+        font-weight: bold;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+      }
     .frame--social_cta {
       em {
         color: $facebook-blue;
@@ -102,6 +132,7 @@
         font-weight: bold;
       }
     }
+  }
 
 .frame-list-item {
   border-bottom: 1px solid $inset;

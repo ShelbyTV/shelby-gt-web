@@ -1,9 +1,17 @@
 <article id="" class="animate_module frame frame--inline_cta<%= " frame--#{cta.hook}_cta" %> js-inline_sources_cta">
   <div class="frame-body-wrapper clearfix">
     <div class="frame-body">
-      <a href="#" style="background-image: url(<%= asset_path cta.image_url %>);" onclick="return false;" class="video__wrapper image_module">
-        <%= image_tag cta.image_url, :class => "visuallyhidden" %>
-      </a>
+      <% if cta.hook == Settings::Mobile.inline_cta.sources.hook %>
+        <a href="#" style="background-image: url(<%= asset_path cta.image_url %>);" onclick="return false;" class="video__wrapper image_module">
+          <div class="icon__wrapper">
+            <span class="icon icon-add"></span>
+            <%= image_tag cta.image_url, :class => "visuallyhidden" %>
+          </div>
+        </a>
+      <% else %>
+        <div class="image_module--fill">
+        </div>
+      <% end %>
     </div><!-- eo .frame-body -->
 
     <footer class="media_module frame-footer clearfix">
