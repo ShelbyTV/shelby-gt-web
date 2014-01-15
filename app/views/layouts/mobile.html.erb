@@ -83,6 +83,10 @@
       <!-- filled in by underscore goodness -->
     </div>
 
+    <div class="notification js-flash">
+      <%= render :partial => "/mobile/partials/flash_messages" if !flash.empty? %>
+    </div>
+
     <div class="notification js-notification hidden">
       <p><strong>Share successful!</strong></p>
     </div>

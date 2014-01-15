@@ -1,0 +1,11 @@
+<% flash.each do |key, value| %>
+  <p><strong><%= raw value %></strong></p>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    setTimeout(function(){
+      $(".js-flash").fadeOut(1000);
+    }, 6000);
+  });
+</script>

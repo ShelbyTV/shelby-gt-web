@@ -39,7 +39,7 @@ defaults: &defaults
       label: Add Video
       message: <em>Check out</em> a few areas of content to personalize your video stream.
     social:
-      path: //api.shelby.tv/auth/fb?redir_query=connecting%3Dfacebook
+      path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
       hook: social
       label: Facebook
       message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
@@ -56,7 +56,7 @@ development:
       label: Add Video
       message: <em>Check out</em> a few areas of content to personalize your video stream.
     social:
-      path: //api.shelby.tv/auth/fb?redir_query=connecting%3Dfacebook
+      path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
       hook: social
       label: Facebook
       message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
@@ -76,7 +76,7 @@ staging:
       label: Add Video
       message: <em>Check out</em> a few areas of content to personalize your video stream.
     social:
-      path: //api.shelby.tv/auth/fb?redir_query=connecting%3Dfacebook
+      path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
       hook: social
       label: Facebook
       message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
