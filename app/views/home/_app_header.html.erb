@@ -34,7 +34,7 @@
 
       <li class="list__item js-guide-me js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Sources" data-ga_label="<%= signed_in_user['nickname'] %>">
         <a href="<%= appropriate_subdirectory %>/preferences/sources" class="app_nav__button<%= " active-item" if pathname == 'sources' %> js-sources">
-          Sources
+          Channels
         </a>
       </li>
 
@@ -52,7 +52,8 @@
               <%= render :partial => 'objects/user_subnav',
                   :locals => {
                     :is_mobile    => is_mobile,
-                    :userNickname => signed_in_user['nickname']
+                    :userNickname => signed_in_user['nickname'],
+                    :user_type => signed_in_user['user_type']
                   } %>
 
             </div>
@@ -93,7 +94,8 @@
       <%= render :partial => 'objects/user_subnav',
           :locals => {
             :is_mobile    => is_mobile,
-            :userNickname => signed_in_user['nickname']
+            :userNickname => signed_in_user['nickname'],
+            :user_type => signed_in_user['user_type']
           } %>
     </div>
   <% end %>

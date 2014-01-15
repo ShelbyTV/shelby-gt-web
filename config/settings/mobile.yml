@@ -37,7 +37,7 @@ defaults: &defaults
       hook: sources
       image_url: add-video-bkgd.png
       label: Add Video
-      message: <em>Check out</em> a few areas of content to personalize your video stream.
+      message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
       path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
       hook: social
@@ -54,7 +54,7 @@ development:
       hook: sources
       image_url: add-video-bkgd.png
       label: Add Video
-      message: <em>Check out</em> a few areas of content to personalize your video stream.
+      message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
       path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
       hook: social
@@ -74,7 +74,7 @@ staging:
       hook: sources
       image_url: add-video-bkgd.png
       label: Add Video
-      message: <em>Check out</em> a few areas of content to personalize your video stream.
+      message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
       path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
       hook: social

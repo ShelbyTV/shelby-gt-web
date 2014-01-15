@@ -17,7 +17,7 @@ class MobileController < ApplicationController
 
   #####  User is logged in, but they haven't gone through onboarding, send them there.  #####
   #####  KEEP IN CASE PEOPLE ARE IN THIS STATE FROM DAYS OF YORE  #####
-    elsif @user_signed_in and @signed_in_user and @signed_in_user.has_key?("app_progress") and ((@signed_in_user['app_progress']['onboarding'] != true) or @signed_in_user['app_progress'['onboarding'] != "iOS_iPhone"])
+    elsif @user_signed_in and @signed_in_user and (@signed_in_user['user_type'] != 4) and @signed_in_user.has_key?("app_progress") and ((@signed_in_user['app_progress']['onboarding'] != true) or @signed_in_user['app_progress'['onboarding'] != "iOS_iPhone"])
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
       authed_service = params[:service] || users_first_auth['provider']
       redirect_to(appropriate_subdirectory + "/connecting/"+authed_service) and return
@@ -39,7 +39,7 @@ class MobileController < ApplicationController
       check_for_signed_in_user_and_issues({:redirect_if_issue => true})
 
       # A User with user_type == 4 should not go into "onboarding"
-      unless ((@signed_in_user['user_type'] != 4) and @signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress'['onboarding'] == "iOS_iPhone"]))
+      unless (@signed_in_user['user_type'] == 4) or (@signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress'['onboarding'] == "iOS_iPhone"]))
         users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
         authed_service = params[:service] || users_first_auth['provider']
         redirect_to(appropriate_subdirectory + "/connecting/#{authed_service}") and return
@@ -61,10 +61,6 @@ class MobileController < ApplicationController
 
   def featured
     check_for_signed_in_user_and_issues({:redirect_if_issue => false})
-
-    if (@signed_in_user['user_type'] == 4) and (@signed_in_user['app_progress']['followedSources'] != "true")
-      flash.now[:notice] = "Build out your stream. </br> Follow as many channels as you like!"
-    end
 
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
@@ -132,6 +128,9 @@ class MobileController < ApplicationController
 
       case @section
         when Settings::Mobile.preferences_sections.sources
+          if (@signed_in_user['user_type'] == 4) and (@signed_in_user['app_progress']['followedSources'] != "true")
+            flash.now[:notice] = "Follow Channels! </br> Follow as many channels as you like! All video ends up in your stream"
+          end
           @sources = Shelby::API.get_featured_sources
           @roll_type = Settings::Mobile.preferences_sections.sources
         when Settings::Mobile.preferences_sections.notifications
@@ -260,7 +259,8 @@ class MobileController < ApplicationController
     if params[:anonymous] != "true"
       redirect_to(appropriate_subdirectory+"?status=409&msg=Something%20has%20gone%20really%20really%20wrong!") and return
     elsif create_anon_user!(cookies)
-      flash.now[:notice] = "Welcome to Shelby.tv! <br/> Add some video to get started."
+      flash[:notice] = "Welcome to Shelby.tv! <br/> Add some video to get started."
+      Rails.logger.info "NEW USER CREATED: #{@user}"
       redirect_to(appropriate_subdirectory+"/stream") and return
     else
       redirect_to(appropriate_subdirectory+"?status=409&msg=Uh%20Oh.%20Something%20went%20wrong.%20Give%20that%20another%20shot...") and return
@@ -300,7 +300,7 @@ class MobileController < ApplicationController
     @is_mobile      = is_mobile?
     @mobile_os = detect_mobile_os
 
-    if @signed_in_user['user_type'] == 4
+    if @signed_in_user['user_type'] == 4 and !@user_signed_in
       # login and redirect to /stream
       Shelby::API.login(@signed_in_user['nickname'], 'anonymous')
       redirect_to(appropriate_subdirectory+"/stream") and return

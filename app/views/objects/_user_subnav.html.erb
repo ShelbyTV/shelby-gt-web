@@ -1,15 +1,18 @@
-<ul class="list">
-  <li class="list__item">
-    <button
-      class="button_primer button_command button_command--flexible button_command--sub button_command--text js-me"
-      data-ga_category="Header"
-      data-ga_action="Profile"
-      data-ga_label="<%= userNickname %>"
-    >
-      Me
-    </button>
-  </li>
-</ul>
+<% anonymous = user_type == Settings::Application.user_type.anonymous %>
+<% unless anonymous %>
+  <ul class="list">
+    <li class="list__item">
+      <button
+        class="button_primer button_command button_command--flexible button_command--sub button_command--text js-me"
+        data-ga_category="Header"
+        data-ga_action="Profile"
+        data-ga_label="<%= userNickname %>"
+      >
+        Me
+      </button>
+    </li>
+  </ul>
+<% end %>
 
 <ul class="list">
   <% if !is_mobile %>
@@ -48,28 +51,19 @@
         Edit Profile
       </a>
     </li>
-    <li class="list__item">
-      <a
-        href="<%= appropriate_subdirectory %>/preferences/sources"
-        class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
-        data-ga_category="Header"
-        data-ga_action="Follow Sources"
-        data-ga_label="<%= userNickname %>"
-        >
-        Follow Sources
-      </a>
-    </li>
-    <li class="list__item">
-      <a
-        href="<%= appropriate_subdirectory %>/preferences/notifications"
-        class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
-        data-ga_category="Header"
-        data-ga_action="Notifications"
-        data-ga_label="<%= userNickname %>"
-        >
-        Notifications
-      </a>
-    </li>
+    <% unless anonymous %>
+      <li class="list__item">
+        <a
+          href="<%= appropriate_subdirectory %>/preferences/notifications"
+          class="button_primer button_command button_command--flexible button_command--sub button_command--text js-navigate"
+          data-ga_category="Header"
+          data-ga_action="Notifications"
+          data-ga_label="<%= userNickname %>"
+          >
+          Notifications
+        </a>
+      </li>
+    <% end %>
   <% end %>
 
   <li class="list__item">
@@ -85,15 +79,17 @@
   </li>
 </ul>
 
-<ul class="list">
-<li class="list__item">
-  <button
-    class="button_primer button_command button_command--flexible button_command--sub button_command--text js-signout"
-    data-ga_category="Header"
-    data-ga_action="Logout"
-    data-ga_label="<%= userNickname %>"
-    >
-    Logout
-  </button>
-</li>
-</ul>
+<% unless anonymous %>
+  <ul class="list">
+    <li class="list__item">
+      <button
+        class="button_primer button_command button_command--flexible button_command--sub button_command--text js-signout"
+        data-ga_category="Header"
+        data-ga_action="Logout"
+        data-ga_label="<%= userNickname %>"
+        >
+        Logout
+      </button>
+    </li>
+    </ul>
+<% end %>
