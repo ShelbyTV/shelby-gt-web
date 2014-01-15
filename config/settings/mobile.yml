@@ -33,11 +33,13 @@ defaults: &defaults
 
   inline_cta:
     sources:
+      path: /preferences/sources
       hook: sources
       image_url: add-video-bkgd.png
       label: Add Video
       message: <em>Check out</em> a few areas of content to personalize your video stream.
     social:
+      path: //api.shelby.tv/auth/fb?redir_query=connecting%3Dfacebook
       hook: social
       label: Facebook
       message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
@@ -46,12 +48,38 @@ development:
   <<: *defaults
   mobile_subdirectory: "/m"
 
+  inline_cta:
+    sources:
+      path: /m/preferences/sources
+      hook: sources
+      image_url: add-video-bkgd.png
+      label: Add Video
+      message: <em>Check out</em> a few areas of content to personalize your video stream.
+    social:
+      path: //api.shelby.tv/auth/fb?redir_query=connecting%3Dfacebook
+      hook: social
+      label: Facebook
+      message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
+
 test:
   <<: *defaults
 
 staging:
   <<: *defaults
   mobile_subdirectory: "/m"
+
+  inline_cta:
+    sources:
+      path: /m/preferences/sources
+      hook: sources
+      image_url: add-video-bkgd.png
+      label: Add Video
+      message: <em>Check out</em> a few areas of content to personalize your video stream.
+    social:
+      path: //api.shelby.tv/auth/fb?redir_query=connecting%3Dfacebook
+      hook: social
+      label: Facebook
+      message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
 
 production:
   <<: *defaults

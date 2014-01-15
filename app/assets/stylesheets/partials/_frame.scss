@@ -21,6 +21,14 @@
 //------------------------------------------------------------------------------
 //  frame natural state
 //------------------------------------------------------------------------------
+// Experimenting with making .frame an <a>, instead of an <article>,
+// so, any time it's an anchor, make sure it acts like a block-level element.
+
+a.frame {
+  display: block;
+  text-decoration: none;
+}
+
 .frame {
   padding: 0.8em;
 
