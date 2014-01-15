@@ -62,6 +62,10 @@ class MobileController < ApplicationController
   def featured
     check_for_signed_in_user_and_issues({:redirect_if_issue => false})
 
+    if (@signed_in_user['user_type'] == 4) and (@signed_in_user['app_progress']['followedSources'] != "true")
+      flash.now[:notice] = "Build out your stream. </br> Follow as many channels as you like!"
+    end
+
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
 
@@ -256,6 +260,7 @@ class MobileController < ApplicationController
     if params[:anonymous] != "true"
       redirect_to(appropriate_subdirectory+"?status=409&msg=Something%20has%20gone%20really%20really%20wrong!") and return
     elsif create_anon_user!(cookies)
+      flash.now[:notice] = "Welcome to Shelby.tv! <br/> Add some video to get started."
       redirect_to(appropriate_subdirectory+"/stream") and return
     else
       redirect_to(appropriate_subdirectory+"?status=409&msg=Uh%20Oh.%20Something%20went%20wrong.%20Give%20that%20another%20shot...") and return
@@ -266,6 +271,7 @@ class MobileController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     (redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return) unless user_signed_in?
     @service = params[:service]
+    flash.now[:notice] = "Awesome, you'll start seeing video you're friends are sharing soon!"
     render "mobile/partials/connecting_service"
   end
 
@@ -281,7 +287,7 @@ class MobileController < ApplicationController
     elsif params[:service] == "twitter"
       EM.next_tick { follow_shelby(@signed_in_user, params[:onboarding_follow_shelby]) }
     end
-    attributes = {:app_progress => {:connectedFacbeook => true}}
+    attributes = {:app_progress => {"connected#{params[:service].capitalize}".to_sym => true}}
     update_user(@signed_in_user, attributes)
     redirect_to(appropriate_subdirectory + "/stream") and return
   end
