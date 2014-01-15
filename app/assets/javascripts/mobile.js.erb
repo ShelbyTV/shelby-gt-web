@@ -226,6 +226,28 @@ $(document).ready(function(){
       $guide.toggleClass('hidden',false);
     });
 
+    var updateUserAppProgress = function(user_id, app_progress_key) {
+      var data = {app_progress: {} };
+      data['app_progress'][app_progress_key]= true;
+      $.ajax({
+        type: 'GET',
+        url: libs.config.shelbyGT.apiRoot + "/PUT/user/" + user_id,
+        dataType: "jsonp",
+        timeout: 10000,
+        crossDomain: true,
+        data: data,
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function () {
+          console.log("successful user update:", app_progress_key)
+        },
+        error: function () {
+          console.log("unsuccessful user update:", app_progress_key)
+        }
+      });
+    };
+
     $('.js-toggle-follow').on('click',function(e){
       e.preventDefault();
       var $this   = $(this),
