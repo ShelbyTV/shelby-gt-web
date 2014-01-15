@@ -262,7 +262,6 @@ class MobileController < ApplicationController
       redirect_to(appropriate_subdirectory+"?status=409&msg=Something%20has%20gone%20really%20really%20wrong!") and return
     elsif create_anon_user!(cookies)
       flash[:notice] = "Welcome to Shelby.tv! <br/> Add some video to get started."
-      Rails.logger.info "NEW USER CREATED: #{@user}"
       redirect_to(appropriate_subdirectory+"/stream") and return
     else
       redirect_to(appropriate_subdirectory+"?status=409&msg=Uh%20Oh.%20Something%20went%20wrong.%20Give%20that%20another%20shot...") and return
