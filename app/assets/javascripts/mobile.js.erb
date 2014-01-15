@@ -56,7 +56,7 @@ $(document).ready(function(){
     else if($this.hasClass('js-me')) {
       var username = $('.app_nav__button--settings').text().trim();
       var path = Browser.isAmazonWebApp() ? '/amazonapp' : '';
-      window.location = path + '/' + username;
+      window.location = path + '/' + username + '/activity';
     }
     else if($this.hasClass('js-signout')) {
       var path = Browser.isAmazonWebApp() ? '/amazonapp' : '';
