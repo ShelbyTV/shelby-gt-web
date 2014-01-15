@@ -35,9 +35,11 @@ defaults: &defaults
     sources:
       hook: sources
       image_url: add-video-bkgd.png
+      label: Add Video
       message: <em>Check out</em> a few areas of content to personalize your video stream.
     social:
       hook: social
+      label: Facebook
       message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
 
 development:

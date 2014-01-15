@@ -39,7 +39,7 @@ class MobileController < ApplicationController
       check_for_signed_in_user_and_issues({:redirect_if_issue => true})
 
       # A User with user_type == 4 should not go into "onboarding"
-      unless ((@signed_in_user['user_type'] == 4) and @signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress'['onboarding'] == "iOS_iPhone"]))
+      unless ((@signed_in_user['user_type'] != 4) and @signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress'['onboarding'] == "iOS_iPhone"]))
         users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
         authed_service = params[:service] || users_first_auth['provider']
         redirect_to(appropriate_subdirectory + "/connecting/#{authed_service}") and return
