@@ -1,17 +1,17 @@
-<article id="" class="animate_module frame frame--inline_cta<%= " frame--#{cta.hook}_cta" %> js-inline_sources_cta">
+<a href="<%= cta.path %>" id="" class="animate_module frame frame--inline_cta<%= " frame--#{cta.hook}_cta" %> js-inline_sources_cta">
   <div class="frame-body-wrapper clearfix">
     <div class="frame-body">
       <% if cta.hook == Settings::Mobile.inline_cta.sources.hook %>
-        <a href="#" style="background-image: url(<%= asset_path cta.image_url %>);" onclick="return false;" class="video__wrapper image_module">
+        <span style="background-image: url(<%= asset_path cta.image_url %>);" onclick="return false;" class="video__wrapper image_module">
           <div class="icon__wrapper">
-            <span class="icon icon-add"></span>
+            <span class="icon icon-add" data-label="<%= cta.label %>"></span>
             <%= image_tag cta.image_url, :class => "visuallyhidden" %>
           </div>
-        </a>
+        </span>
       <% else %>
         <div class="video__wrapper image_module">
           <div class="icon__wrapper">
-            <span class="icon icon-facebook"></span>
+            <span class="icon icon-facebook" data-label="<%= cta.label %>"></span>
           </div>
         </div>
       <% end %>
@@ -25,4 +25,4 @@
       </div><!-- eo .media_body -->
     </footer><!-- eo .media_module-->
   </div><!-- eo .frame-body-wrapper -->
-</article>
+</a>

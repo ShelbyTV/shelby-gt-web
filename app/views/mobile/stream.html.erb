@@ -1,19 +1,19 @@
 <ul class="list js-list">
-    <li class="list__item">
-      <%= render :partial => '/objects/inline_cta',
-                  :locals => {
-                    :cta => Settings::Mobile.inline_cta.social
-                  }
-      %>
-    </li>
+  <li class="list__item">
+    <%= render :partial => '/objects/inline_cta',
+                :locals => {
+                  :cta => Settings::Mobile.inline_cta.sources
+                }
+    %>
+  </li>
 
-    <li class="list__item">
-      <%= render :partial => '/objects/inline_cta',
-                  :locals => {
-                    :cta => Settings::Mobile.inline_cta.sources
-                  }
-      %>
-    </li>
+  <li class="list__item">
+    <%= render :partial => '/objects/inline_cta',
+                :locals => {
+                  :cta => Settings::Mobile.inline_cta.social
+                }
+    %>
+  </li>
 
   <% @dashboard.each_with_index do |dbe, index| %>
     <li class="list__item">

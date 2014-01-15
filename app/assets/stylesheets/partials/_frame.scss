@@ -21,6 +21,14 @@
 //------------------------------------------------------------------------------
 //  frame natural state
 //------------------------------------------------------------------------------
+// Experimenting with making .frame an <a>, instead of an <article>,
+// so, any time it's an anchor, make sure it acts like a block-level element.
+
+a.frame {
+  display: block;
+  text-decoration: none;
+}
+
 .frame {
   padding: 0.8em;
 
@@ -120,28 +128,26 @@
         top: 0;
         width: 100%;
       }
+
       .icon:after {
         bottom: 0;
         color: $ui-white;
-        content: "Add Video";
+        content: attr(data-label);
         font-size: 1.5em;
         font-weight: bold;
         position: absolute;
         text-align: center;
         width: 100%;
       }
-    }
-    .frame--sources_cta {
       em {
         color: $ui-green;
         font-style: normal;
         font-weight: bold;
       }
+    }
+    .frame--sources_cta {
       .icon__wrapper {
         height: 5.6em;
-      }
-      .icon:after {
-        content: "Add Video";
       }
     }
 
@@ -151,8 +157,6 @@
       }
       em {
         color: $facebook-blue;
-        font-style: normal;
-        font-weight: bold;
       }
       .icon:before {
         color: $ui-white;
@@ -160,9 +164,6 @@
         font-size: 4em;
         line-height: 0.6;
         text-align: center;
-      }
-      .icon:after {
-        content: "Facebook";
       }
     }
 
