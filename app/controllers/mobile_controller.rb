@@ -131,7 +131,7 @@ class MobileController < ApplicationController
           if (@signed_in_user['user_type'] == 4) and (@signed_in_user['app_progress']['followedSources'] != "true")
             flash.now[:notice] = "Follow Channels! </br> Follow as many channels as you like! All video ends up in your stream"
           end
-          @sources = Shelby::API.get_featured_sources
+          @sources = Shelby::API.get_featured_sources("onboarding",request.headers['HTTP_COOKIE'])
           @roll_type = Settings::Mobile.preferences_sections.sources
         when Settings::Mobile.preferences_sections.notifications
           @preferences = @signed_in_user['preferences']
