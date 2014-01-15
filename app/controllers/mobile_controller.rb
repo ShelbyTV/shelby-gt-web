@@ -135,7 +135,7 @@ class MobileController < ApplicationController
 
       case @section
         when Settings::Mobile.preferences_sections.sources
-          @sources = Shelby::API.get_featured_sources
+          @sources = Shelby::API.get_featured_sources("onboarding",request.headers['HTTP_COOKIE'])
         when Settings::Mobile.preferences_sections.notifications
           @preferences = @signed_in_user['preferences']
         when Settings::Mobile.preferences_sections.profile
@@ -273,7 +273,7 @@ class MobileController < ApplicationController
     if @current_step == 1
       @service = params[:service]
     elsif @current_step == 2
-      @sources = Shelby::API.get_featured_sources
+      @sources = Shelby::API.get_featured_sources("onboarding",request.headers['HTTP_COOKIE'])
     end
 
     render "/mobile/onboarding/step_#{@current_step.to_s}".to_sym

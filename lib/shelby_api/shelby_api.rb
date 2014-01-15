@@ -17,8 +17,9 @@ module Shelby
       post('/twitter/follow/shelby', {:headers => {'Cookie' => cookie, 'X-CSRF-Token' => token} })
     end
 
-    def self.get_featured_sources(segment="onboarding")
-      r = get( "/roll/featured?segment=#{segment}" ).parsed_response
+    def self.get_featured_sources(segment, cookie)
+      headers = { 'Cookie' => cookie }
+      r = get("/roll/featured?segment=#{segment}", {:headers => {'Cookie' => cookie} }).parsed_response
       if r['status'] == 200 and r['result'].first['rolls'].is_a?(Array)
         return r['result'].first['rolls']
       else
