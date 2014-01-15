@@ -10,14 +10,13 @@ class MobileController < ApplicationController
     #####################################
 
     check_for_signed_in_user_and_issues({:redirect_if_issue => false})
-
   #####  User is logged in, sent back from authenticating with facebook or twitter, send them to see status of connecting network  #####
     if @user_signed_in and params[:connecting]
       redirect_to(appropriate_subdirectory + "/connecting/#{params[:connecting]}") and return
 
   #####  User is logged in, but they haven't gone through onboarding, send them there.  #####
   #####  KEEP IN CASE PEOPLE ARE IN THIS STATE FROM DAYS OF YORE  #####
-    elsif @user_signed_in and (@signed_in_user['user_type'] != 4) and @signed_in_user.has_key?("app_progress") and ((@signed_in_user['app_progress']['onboarding'] != true) or (@signed_in_user['app_progress']['onboarding'] != "iOS_iPhone"))
+    if @user_signed_in and (@signed_in_user['user_type'] != 4) and @signed_in_user.has_key?("app_progress") and ((@signed_in_user['app_progress']['onboarding'] != true) or (@signed_in_user['app_progress']['onboarding'] != "iOS_iPhone"))
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
       authed_service = params[:service] || users_first_auth['provider']
       redirect_to(appropriate_subdirectory + "/connecting/"+authed_service) and return
@@ -35,7 +34,10 @@ class MobileController < ApplicationController
   end
 
   def stream
-    if user_signed_in?
+    #####  User is logged in, sent back from authenticating with facebook or twitter, send them to see status of connecting network  #####
+    if user_signed_in? and params[:connecting]
+      redirect_to(appropriate_subdirectory + "/connecting/#{params[:connecting]}") and return
+    elsif user_signed_in?
       check_for_signed_in_user_and_issues({:redirect_if_issue => true})
 
       # A User with user_type == 4 should not go into "onboarding"
