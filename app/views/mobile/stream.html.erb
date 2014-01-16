@@ -1,23 +1,37 @@
-<ul class="list js-list">
-  <% if @signed_in_user['user_type'] == Settings::User.user_type.anonymous && @signed_in_user['session_count'] < Settings::User.anon_banner_session_count %>
-    <li class="list__item">
+
+<ul id="callouts" class="list">
+  <% if @banners[:sources] %>
+    <li id="inline-cta--sources" class="list__item">
       <%= render :partial => '/objects/inline_cta',
                   :locals => {
                     :cta => Settings::Mobile.inline_cta.sources
                   }
       %>
     </li>
+  <% end %>
 
-    <%# if user_typer['user_type'] == Settings::User.user_type.anonymous && user['app_progress'] && user['app_progress']['followedSources'] == false %>
-    <li class="list__item">
+  <% if @banners[:facebook] %>
+    <li id="inline-cta--social" class="list__item">
       <%= render :partial => '/objects/inline_cta',
                   :locals => {
                     :cta => Settings::Mobile.inline_cta.social
                   }
       %>
     </li>
-  <% end %>
+  <% end%>
 
+</ul>
+<% unless @banners[:anchor].nil? %>
+  <script>
+    $(document).ready(function(e){
+      <%= raw "window.location.hash = '#{@banners[:anchor]}';" %>
+    });
+  </script>
+
+  <%= tag :hr, { :id => 'stream', :class => 'push--bottom_deep'} %>
+<% end %>
+
+<ul class="list js-list">
   <% @dashboard.each_with_index do |dbe, index| %>
     <li class="list__item">
       <% if [0,1,2,31,33,34].include?(dbe['action']) and !dbe["duplicate"] and dbe['frame'] and dbe['frame']['video'] and can_play_video(dbe['frame']['video']['provider_name']) %>
@@ -32,7 +46,7 @@
             :roll_type      => @roll_type,
             :signed_in_user => @signed_in_user,
             :video          => dbe['frame']['video'],
-            :dbe => dbe
+            :dbe            => dbe
           } %>
       <% end %>
     </li>

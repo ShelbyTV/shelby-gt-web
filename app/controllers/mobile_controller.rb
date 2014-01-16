@@ -56,6 +56,10 @@ class MobileController < ApplicationController
 
       d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit, params[:entry])
       @dashboard = dedupe_dashboard(d)
+
+      @banners = display_banners(@signed_in_user)
+
+      puts "ban: #{@banners}"
     else
       redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return
     end
@@ -295,6 +299,50 @@ class MobileController < ApplicationController
   end
 
   private
+
+  def display_banners(user)
+    case user
+      #if anon AND you haven't connectedFB AND followedSources
+    when user['user_type'] == Settings::User.user_type.anonymous && (user['app_progress']['connectedFacebook'].nil? && user['app_progress']['followedSources'].nil?)
+      #show everything
+      {
+        :anchor   => nil,
+        :facebook => true,
+        :sources  => true
+      }
+
+    when user['user_type'] == Settings::User.user_type.anonymous && ((user['app_progress']['connectedFacebook'] == true) && user['app_progress']['followedSources'].nil?)
+      #prevent FB from rendering, show sources
+      {
+        :anchor   => nil,
+        :facebook => false,
+        :sources  => true
+      }
+
+    when user['user_type'] == Settings::User.user_type.anonymous && (user['app_progress']['connectedFacebook'].nil? && (user['app_progress']['followedSources'] == true))
+      #scroll to FB
+      {
+        :anchor   => 'inline-cta--social',
+        :facebook => true,
+        :sources  => true
+      }
+    when (user['user_type'] == Settings::User.user_type.converted && (user['session_count'] > Settings::User.anon_banner_session_count) && (user['app_progress']['connectedFacebook'].nil?))
+      #scroll to First Frame
+      {
+        :anchor   => 'stream',
+        :facebook => false,
+        :sources  => true
+      }
+    else
+      #prevent FB from rendering
+      #scroll to First Frame
+      {
+        :anchor   => 'stream',
+        :facebook => false,
+        :sources  => true
+      }
+    end
+  end
 
   def check_for_signed_in_user_and_issues(options)
     @signed_in_user = check_for_signed_in_user
