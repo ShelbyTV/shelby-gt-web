@@ -130,6 +130,32 @@ def user
   }
 end
 
+def user_type_anonymous(opts)
+  {
+    "id"                      => "52d7ffa259b05248e0004c75",
+    "name"                    => nil,
+    "nickname"                => "cobra.1389887394.9464488",
+    "primary_email"           => nil,
+    "user_image_original"     => nil,
+    "user_image"              => nil,
+    "user_type"               => 4,
+    "has_shelby_avatar"       => false,
+    "avatar_updated_at"       => nil,
+    "authentication_token"    => "NcR7JEz2ZYxqyrJHtzuC",
+    "session_count"           => (opts[:session] or 0),
+    "personal_roll_id"        => "52d7ffa759b05248e0004c7b",
+    "personal_roll_subdomain" => nil,
+    "watch_later_roll_id"     => "52d7ffa759b05248e0004c97",
+    "heart_roll_id"           => "52d7ffa759b05248e0004c88",
+    "viewed_roll_id"          => "52d7ffa759b05248e0004ca7",
+    "app_progress"            => {
+      "id"                    => "52d7ffa759b05248e0004c79",
+      "onboarding"            => false
+    },
+    "authentications"         => []
+  }
+end
+
 def creator(quantity=1)
   creators = []
 

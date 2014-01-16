@@ -15,13 +15,6 @@ defaults: &defaults
   meta_description: "Watch the perfect stream of videos built for you and powered by your friends. Videos from Twitter, Facebook, Tumblr, YouTube, Vimeo, Hulu and the rest of the web."
   title: "Shelby.tv | The perfect stream of videos built for you and powered by your friends."
   root_paths: ['featured','community', 'channels', 'help', 'legal', 'search', 'following', 'preferences', 'likes', 'saves', 'stream']
-  #fe fi fo faux fum, I smell a user_type of user_type 1
-  user_type:
-    real: 0
-    faux: 1
-    converted: 2
-    service: 3
-    anonymous: 4
 
 development:
   <<: *defaults

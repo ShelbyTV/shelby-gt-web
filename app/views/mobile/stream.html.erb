@@ -1,19 +1,22 @@
 <ul class="list js-list">
-  <li class="list__item">
-    <%= render :partial => '/objects/inline_cta',
-                :locals => {
-                  :cta => Settings::Mobile.inline_cta.sources
-                }
-    %>
-  </li>
+  <% if @signed_in_user['user_type'] == Settings::User.user_type.anonymous && @signed_in_user['session_count'] > Settings::User.anon_banner_session_count %>
+    <li class="list__item">
+      <%= render :partial => '/objects/inline_cta',
+                  :locals => {
+                    :cta => Settings::Mobile.inline_cta.sources
+                  }
+      %>
+    </li>
 
-  <li class="list__item">
-    <%= render :partial => '/objects/inline_cta',
-                :locals => {
-                  :cta => Settings::Mobile.inline_cta.social
-                }
-    %>
-  </li>
+    <%# if user_typer['user_type'] == Settings::User.user_type.anonymous && user['app_progress'] && user['app_progress']['followedSources'] == false %>
+    <li class="list__item">
+      <%= render :partial => '/objects/inline_cta',
+                  :locals => {
+                    :cta => Settings::Mobile.inline_cta.social
+                  }
+      %>
+    </li>
+  <% end %>
 
   <% @dashboard.each_with_index do |dbe, index| %>
     <li class="list__item">
