@@ -33,12 +33,14 @@ defaults: &defaults
 
   inline_cta:
     sources:
+      id: inline-cta--sources
       path: /preferences/sources
       hook: sources
       image_url: add-video-bkgd.png
       label: Add Video
       message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
+      id: inline-cta--social
       path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
       hook: social
       label: Facebook
@@ -50,12 +52,14 @@ development:
 
   inline_cta:
     sources:
+      id: inline-cta--sources
       path: /m/preferences/sources
       hook: sources
       image_url: add-video-bkgd.png
       label: Add Video
       message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
+      id: inline-cta--social
       path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
       hook: social
       label: Facebook
@@ -70,12 +74,14 @@ staging:
 
   inline_cta:
     sources:
+      id: inline-cta--sources
       path: /m/preferences/sources
       hook: sources
       image_url: add-video-bkgd.png
       label: Add Video
       message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
+      id: inline-cta--social
       path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
       hook: social
       label: Facebook

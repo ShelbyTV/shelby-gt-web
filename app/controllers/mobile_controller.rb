@@ -327,7 +327,14 @@ class MobileController < ApplicationController
     elsif (user['user_type'] == Settings::User.user_type.anonymous) && (user['app_progress']['connectedFacebook'].nil? && (user['app_progress']['followedSources'] == true))
       #scroll to FB
       {
-        :anchor   => 'inline-cta--social',
+        :anchor   => Settings::Mobile.inline_cta.social.id,
+        :facebook => true,
+        :sources  => true
+      }
+    elsif ((user['user_type'] == Settings::User.user_type.converted) && (user['session_count'] <= Settings::User.anon_banner_session_count) && (user['app_progress']['connectedFacebook'].nil?))
+      #scroll to First Frame
+      {
+        :anchor   => Settings::Mobile.inline_cta.social.id,
         :facebook => true,
         :sources  => true
       }
@@ -353,7 +360,7 @@ class MobileController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
     @is_mobile      = is_mobile?
-    @mobile_os = detect_mobile_os
+    @mobile_os      = detect_mobile_os
 
     if @signed_in_user['user_type'] == Settings::User.user_type.anonymous and !@user_signed_in
       # login and redirect to /stream
