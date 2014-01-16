@@ -190,9 +190,8 @@ class MobileController < ApplicationController
       response = update_user(@signed_in_user, data)
       errors = response.parsed_response['errors']
 
-      flash.now[:errors_primary_email] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])
-      flash.now[:errors_nickname] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])
-      flash.now[:errors_password] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'password'])
+      flash[:errors_nickname] = "#{data[:nickname]} #{Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])}" if Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])
+      flash[:errors_primary_email] = "#{data[:primary_email]} #{Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])}" if Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])
 
       #TODO: this needs error/success handling
 
