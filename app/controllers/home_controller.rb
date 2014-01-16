@@ -68,6 +68,7 @@ class HomeController < ApplicationController
           @auth_strategy = params[:auth_strategy]
           @access_error  = params[:access] == "nos"
           @invite_error  = params[:invite] == "invalid"
+          @status = params[:status]
           @mobile_os     = detect_mobile_os
           @is_mobile     = is_mobile?
 

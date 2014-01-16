@@ -1,0 +1,49 @@
+<div class="preferences_page preferences_page--profile">
+  <%= form_tag "#{Settings::Mobile.mobile_subdirectory}/preferences/profile", :class => "form_module js-submit-profile" do %>
+    <h1 class="form__legend">
+      Signup to update your profile
+    </h1>
+
+    <%= content_tag :div, "Username #{flash[:errors_nickname]}", :class => "form_fieldset form_fieldset--error" if flash[:errors_nickname] %>
+    <%= content_tag :div, "Email #{flash[:errors_primary_email]}", :class => "form_fieldset form_fieldset--error" if flash[:errors_primary_email] %>
+    <%= content_tag :div, "Password #{flash[:password]}", :class => "form_fieldset form_fieldset--error" if flash[:password] %>
+
+    <fieldset class="form_fieldset">
+      <label for="userFullname" class="form_label">
+        Full Name
+      </label>
+      <span class="form_error" data-error="You must provide your full name"></span>
+      <input required type="text" class="form_input" id="userFullname" name="userFullname" placeholder="First Name, Last Name" value="" />
+    </fieldset>
+
+    <fieldset class="form_fieldset<%= " form_fieldset--error" if flash[:errors_nickname] %>">
+      <label for="userNickname" class="form_label">
+        Username
+      </label>
+      <span class="form_error" data-error="You must provide a username"></span>
+      <input required type="text" class="form_input" id="userNickname" name="userNickname" value="" />
+    </fieldset>
+
+    <fieldset class="form_fieldset<%= " form_fieldset--error" if flash[:errors_primary_email] %>">
+      <label for="userEmail" class="form_label">
+        Email
+      </label>
+      <span class="form_error" data-error="You must provide an email address"></span>
+      <input required type="email" class="form_input" id="userEmail" name="userEmail" placeholder="email@address.com" value="<%= @user['primary_email'] if @user['primary_email'] %>" />
+    </fieldset>
+
+    <fieldset class="form_fieldset">
+      <%= label_tag 'password', 'Password', :class => 'form_label' %>
+      <span class="form_error js-form-error">Password must be at least five characters</span>
+      <%= password_field_tag 'password', nil, :placeholder => '*****', :class => 'form_input', :required => true %>
+      <span class="form__description">We never spam.</span>
+    </fieldset>
+
+
+    <fieldset class="form_fieldset">
+      <button type="submit" class="button_primer button_command button_command--submit button_green">
+        Signup
+      </button>
+    </fieldset>
+  <% end %>
+</div>

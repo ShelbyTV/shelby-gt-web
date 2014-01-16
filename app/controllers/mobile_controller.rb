@@ -143,6 +143,10 @@ class MobileController < ApplicationController
           @preferences = @signed_in_user['preferences']
         when Settings::Mobile.preferences_sections.profile
           @user = @signed_in_user
+          if @signed_in_user['user_type'] == Settings::Application.user_type['anonymous']
+            # considering this a signup
+            render "/mobile/preferences_profile_for_anonymous" and return
+          end
         else
       end
 
@@ -184,12 +188,14 @@ class MobileController < ApplicationController
       data[:name] = params['userFullname'] if params['userFullname']
       data[:nickname] = params['userNickname'] if params['userNickname']
       data[:primary_email] = params['userEmail'] if params['userEmail']
+      data[:password] = params['password'] if params['password']
+      data[:password_confirmation] = params['password'] if params['password']
 
       response = update_user(@signed_in_user, data)
       errors = response.parsed_response['errors']
 
-      flash[:errors_primary_email] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])
-      flash[:errors_nickname] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])
+      flash[:errors_nickname] = "#{data[:nickname]} #{Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])}" if Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])
+      flash[:errors_primary_email] = "#{data[:primary_email]} #{Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])}" if Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])
 
       #TODO: this needs error/success handling
 
