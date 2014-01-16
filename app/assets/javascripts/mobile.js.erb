@@ -238,12 +238,6 @@ $(document).ready(function(){
         data: data,
         xhrFields: {
           withCredentials: true
-        },
-        success: function () {
-          console.log("successful user update:", app_progress_key)
-        },
-        error: function () {
-          console.log("unsuccessful user update:", app_progress_key)
         }
       });
     };
@@ -270,6 +264,11 @@ $(document).ready(function(){
           method = (method == 'join') ? 'leave' : 'join';
 
           $this.toggleClass('button_gray button_green button_active').text(text);
+
+          var user = JSON.parse($('#js-user').text());
+          if (user.user_type == 4 && typeof user.app_progress.followedSource == "undefined"){
+            updateUserAppProgress(user.id, "followedSources");
+          }
         },
         error: function (e) { console.log("API Error: Unabled to Unfollow",e); }
       });
