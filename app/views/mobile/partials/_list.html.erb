@@ -32,7 +32,11 @@
     <% end %>
   <% else %>
     <h3 class="user__h1 center">
-      <%= user['name'] %> hasn't shared any video yet :(
+      <% if signed_in_user['id'] == user['id'] # current_user viewing own profile %>
+        Any video you like or share shows up here... go get 'em tiger!
+      <% else %>
+        <%= user['name'] %> hasn't shared any video yet :(
+      <% end %>
     </h3>
   <% end %>
 </p>
