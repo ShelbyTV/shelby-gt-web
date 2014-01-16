@@ -10,7 +10,7 @@
             </span>
 
             <span class="isoroll-nav__title">
-              <%= ((roll.get('roll_type') == 15 || roll.get('roll_type') == 16) && shelby.config.hostName) ? shelby.config.hostName : roll.get('title') %>
+              <%= ((roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user || roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded) && shelby.config.hostName) ? shelby.config.hostName : roll.get('title') %>
             </span>
           </a>
         </li>

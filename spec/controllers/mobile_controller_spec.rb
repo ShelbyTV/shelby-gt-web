@@ -57,7 +57,7 @@ describe MobileController do
         get :notifications
 
         response.should be_redirect
-        response.should redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+        response.should redirect_to mobile_landing_path(:status => Settings::ErrorMessages.must_be_logged_in)
       end
 
     end
@@ -68,7 +68,7 @@ describe MobileController do
         get :preferences, :section => "profile"
 
         response.should be_redirect
-        response.should redirect_to mobile_landing_path(:status => Settings::ErrorMessages.not_logged_in)
+        response.should redirect_to mobile_landing_path(:status => Settings::ErrorMessages.must_be_logged_in)
       end
 
     end

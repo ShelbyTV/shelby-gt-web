@@ -60,11 +60,6 @@
         frame : this._frame,
         video : this._video,
         roll : this._roll,
-        rollOptions : {
-          pathForDisplay : RollViewHelpers.pathForDisplay(this._roll),
-          titleWithoutPath : RollViewHelpers.titleWithoutPath(this._roll),
-          urlForRoll : RollViewHelpers.urlForRoll(this._roll)
-        },
         user : shelby.models.user,
         userLoggedIn : !shelby.models.user.isAnonymous()
       }));
