@@ -10,7 +10,6 @@
 <% var isGenius = frameHasRoll && frame.get('roll').get('genius') %>
 <% var isViaSearch = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) ? true : false %>
 
-<% var userIsAnonymous = user.isAnonymous() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
 <% var isFauxUser = creator && creator.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.faux %>
@@ -57,7 +56,9 @@
           <% } else if (!fauxUserOrigin) { %>
             <div class="xuser-data">
               <%= creatorNickname %><% if (!_(dupeFrames).isEmpty()) { %><%= ", " + _('other').pluralize(dupeFrames.length, true) %>
-              <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != 1) { %>
+              <% } else if (frameOriginator &&
+                            frameOriginator.get('nickname') != creatorNickname &&
+                            frameOriginator.get('user_type') != libs.shelbyGT.UserModel.USER_TYPE.faux) { %>
                 <%= (creatorIsLiker ? "liked via" : "via") + " " + frameOriginator.get('nickname') %>
               <% } else if (creatorIsLiker) { %>
                 liked this

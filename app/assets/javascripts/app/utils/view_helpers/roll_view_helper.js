@@ -26,6 +26,7 @@ libs.shelbyGT.viewHelpers.roll = {
       rollName = "Queue";
     }
     else if(
+      roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public ||
       roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_real_user ||
       roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public_upgraded ){
       rollName = "Personal Roll";
@@ -73,7 +74,7 @@ libs.shelbyGT.viewHelpers.roll = {
     else if(shelby.models.user && roll.id == shelby.models.user.get('personal_roll_id')){
       return "Personal Roll";
     }
-    else if(libs.shelbyGT.viewHelpers.roll.isRealUserRoll(roll)){
+    else if(libs.shelbyGT.viewHelpers.roll.isRealUserRoll(roll) || roll.get('origin_network') == 'shelby_person'){
       return roll.get('creator_nickname') || roll.get('title');
     }
     else if(libs.shelbyGT.viewHelpers.roll.isFaux(roll)){

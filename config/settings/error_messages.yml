@@ -12,7 +12,6 @@ defaults: &defaults
 
   content_not_found: We can't find the content you are looking for.
   must_be_logged_in: You must be logged in.
-  not_logged_in: Not logged in.
   problem_refresh: There was a problem updating your settings. Please refresh the page and try again.
   route_does_not_exist: Route doesn't exist.
   step_does_not_exist: That step doesnt exist.

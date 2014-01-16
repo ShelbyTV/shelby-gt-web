@@ -1,0 +1,29 @@
+defaults: &defaults
+  special_roll: 10
+  special_public: 11
+  special_upvoted: 12
+  special_watch_later: 13
+  special_viewed: 14
+  special_public_real_user: 15
+  special_public_upgraded: 16
+  user_public: 30
+  global_public: 31
+  user_private: 50
+  user_discussion_roll: 51
+  hashtag: 69
+  genius: 70
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
+
+arnold:
+  <<: *defaults
