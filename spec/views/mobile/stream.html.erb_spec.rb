@@ -23,20 +23,22 @@ describe "/m/stream" do
       before(:each) do
         assign(:signed_in_user, user)
         assign(:user, user)
+        assign(:banners, { :anchor => 'stream', :facebook => false, :sources => true })
       end
 
       it "renders the /objects/frame for each frame" do
         render :template => "mobile/stream", :layout => "layouts/mobile"
-
-        rendered.should have_selector('.frame', :count => 2)
+        #search for js-frame, since inline-ctas render with .frame but aren't actually "frames"
+        rendered.should have_selector('.js-frame', :count => 2)
       end
 
     end
 
-    context "anonymous user with less than #{Settings::User.anon_banner_session_count} sessions" do
+    context "initial visit by an anonymous user" do
       before(:each) do
         assign(:signed_in_user, user_type_anonymous)
         assign(:user, user_type_anonymous)
+        assign(:banners, { :anchor => nil, :facebook => true, :sources => true })
       end
 
       it "shows the inline cta for authenticating social networks" do
@@ -52,10 +54,11 @@ describe "/m/stream" do
       end
     end
 
-    context "anonymous user with more than #{Settings::User.anon_banner_session_count} sessions" do
+    context "visit by an anonymous user after #{(Settings::User.anon_banner_session_count + 1)} visits" do
       before(:each) do
-        assign(:signed_in_user, user_type_anonymous({:session => Settings::User.anon_banner_session_count}))
-        assign(:user, user_type_anonymous({:session => Settings::User.anon_banner_session_count}))
+        assign(:signed_in_user, user_type_anonymous({:session => (Settings::User.anon_banner_session_count + 1)}))
+        assign(:user, user_type_anonymous({:session => (Settings::User.anon_banner_session_count + 1)}))
+        assign(:banners, { :anchor => 'stream', :facebook => false, :sources => true })
       end
 
       it "shows the inline cta for authenticating social networks" do
@@ -67,10 +70,9 @@ describe "/m/stream" do
       it "shows the inline cta for adding sources" do
         render :template => "mobile/stream", :layout => "layouts/mobile"
 
-        rendered.should_not have_selector('.frame--sources_cta')
+        rendered.should have_selector('.frame--sources_cta')
       end
     end
-
   end
 
 end
