@@ -14,7 +14,7 @@ shelby.config.welcomeMessages = {
     message: "Here you can find the videos you've shared and liked on Shelby.tv",
     button: "Got it!"
   },
-  loggetOutShares : {
+  loggedOutShares : {
     header: "Welcome to Shelby.tv",
     message : " uses Shelby to watch, share and discover amazing video.",
     button: "Play"

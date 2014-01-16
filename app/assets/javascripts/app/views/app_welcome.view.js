@@ -60,7 +60,7 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
           return this.render('ownShares');
         }
         else if (!this._hasBeenWelcomedLoggedOut() && shelby.models.user.isAnonymous()){
-          return this.render('loggetOutShares');
+          return this.render('loggedOutShares');
         }
         else { this._resetVideoPlayerOperation(); }
         break;

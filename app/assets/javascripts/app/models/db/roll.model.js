@@ -34,7 +34,7 @@
 
       return ShelbyBaseModel.prototype.sync.call(this, method, model, options);
     },
-    
+
     updateUrl : function(){
       return shelby.config.apiRoot + '/roll/' + this.id;
     },
@@ -94,19 +94,19 @@
         this.joinRoll();
       }
     },
-    
+
     isPostableBy: function(user){
       //can't post to discussion rolls
       if (this.get('roll_type') == libs.shelbyGT.RollModel.TYPES.user_discussion_roll){
         return false;
       }
-      
+
       // user can post to their hearts
       if (this.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_hearted &&
           this.get('creator_id') == user.id ){
         return true;
       }
-      
+
       // anything user created or is collaborative
       if (this.get('creator_id') == user.id || this.get('collaborative')) {
         return true;
@@ -117,11 +117,11 @@
     }
 
   });
-  
+
   libs.shelbyGT.RollModel.TYPES = {
     // special rolls that have not yet been updated to their specific type default to :special_roll
     special_roll : 10,    // <-- faux
-    special_public : 11,  // <-- faux
+    special_public : 11,  // <-- faux or anonymous
     special_hearted : 12,
     special_watch_later : 13,
     //Differentiate special_public rolls of real shelby users and those faux-users whome we deem special
