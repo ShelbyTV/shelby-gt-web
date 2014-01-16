@@ -130,7 +130,7 @@ def user
   }
 end
 
-def user_type_anonymous(opts)
+def user_type_anonymous(opts={})
   {
     "id"                      => "52d7ffa259b05248e0004c75",
     "name"                    => nil,

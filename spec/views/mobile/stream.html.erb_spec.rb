@@ -33,7 +33,7 @@ describe "/m/stream" do
 
     end
 
-    context "anonymous user with less than 3 sessions" do
+    context "anonymous user with less than #{Settings::User.anon_banner_session_count} sessions" do
       before(:each) do
         assign(:signed_in_user, user_type_anonymous)
         assign(:user, user_type_anonymous)
@@ -52,7 +52,7 @@ describe "/m/stream" do
       end
     end
 
-    context "anonymous user with more than X sessions" do
+    context "anonymous user with more than #{Settings::User.anon_banner_session_count} sessions" do
       before(:each) do
         assign(:signed_in_user, user_type_anonymous({:session => Settings::User.anon_banner_session_count}))
         assign(:user, user_type_anonymous({:session => Settings::User.anon_banner_session_count}))
