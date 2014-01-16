@@ -1,0 +1,21 @@
+defaults: &defaults
+  anon_banner_session_count: 3
+  #fe fi fo faux fum, I smell a user_type of user_type 1
+  user_type:
+    real: 0
+    faux: 1
+    converted: 2
+    service: 3
+    anonymous: 4
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
