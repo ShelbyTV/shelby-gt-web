@@ -143,7 +143,7 @@ class MobileController < ApplicationController
           @preferences = @signed_in_user['preferences']
         when Settings::Mobile.preferences_sections.profile
           @user = @signed_in_user
-          if @signed_in_user['user_type'] == Settings::Application.user_type['anonymous']
+          if @signed_in_user['user_type'] == Settings::User.user_type['anonymous']
             # considering this a signup
             render "/mobile/preferences_profile_for_anonymous" and return
           end
