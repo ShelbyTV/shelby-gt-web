@@ -86,8 +86,7 @@ module ApplicationHelper
   def check_for_signed_in_user
     if user_signed_in?
       signed_in_user = Shelby::API.get_user(current_user_id,request.headers['HTTP_COOKIE'])
-
-      if signed_in_user['user_type'] && signed_in_user['user_type'] == Settings::User.user_type.anonymous
+      if signed_in_user['user_type'] and (signed_in_user['user_type'] == Settings::User.user_type.anonymous)
         signed_in_user['nickname'] = 'Xxxxxxx'
         signed_in_user['name'] = 'Xxx Xxxx'
         signed_in_user['thumbnail_url'] = 'http://shelby.tv/assets/images/henry.jpg'
