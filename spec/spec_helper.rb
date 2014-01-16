@@ -117,7 +117,7 @@ def user
     "nickname"            => "nickname",
     "user_image_original" => nil,
     "user_image"          => nil,
-    "user_type"           => 0,
+    "user_type"           => Settings::User.user_type.real,
     "preferences"         => {
       'email_updates'               => "true",
       'comment_notifications'       => "true",
@@ -138,7 +138,7 @@ def user_type_anonymous(opts={})
     "primary_email"           => nil,
     "user_image_original"     => nil,
     "user_image"              => nil,
-    "user_type"               => 4,
+    "user_type"               => Settings::User.user_type.anonymous,
     "has_shelby_avatar"       => false,
     "avatar_updated_at"       => nil,
     "authentication_token"    => "NcR7JEz2ZYxqyrJHtzuC",
@@ -165,7 +165,7 @@ def creator(quantity=1)
       "creator_id"                => "#{index}#{index}",
       "origin_network"            => "shelby_person",
       "title"                     => "lifeandtimes",
-      "roll_type"                 => 15,
+      "roll_type"                 => Settings::RollTypes.special_public_real_user,
       "subdomain"                 => "lifeandtimes",
       "creator_nickname"          => "lifeandtimes",
       "creator_name"              => "JayZ",
@@ -207,7 +207,7 @@ def dbe(quantity=1)
           "id"        => "4d9b43d2f6db2474cc000010",
           "name"      => "Jordan",
           "nickname"  => "imnotjk",
-          "user_type" => 0
+          "user_type" => Settings::User.user_type.real
         },
         "created_at" => "14m ago",
         "creator" => {
@@ -224,7 +224,7 @@ def dbe(quantity=1)
           ],
           "name" => "reece",
           "nickname" => "reece",
-          "user_type" => 0
+          "user_type" => Settings::User.user_type.real
         },
         "video" => {
           "id"                  => "52c6fb029a725b64030e2e42",

@@ -16,7 +16,7 @@ class MobileController < ApplicationController
 
   #####  User is logged in, but they haven't gone through onboarding, send them there.  #####
   #####  KEEP IN CASE PEOPLE ARE IN THIS STATE FROM DAYS OF YORE  #####
-    elsif @user_signed_in and (@signed_in_user['user_type'] != 4) and @signed_in_user.has_key?("app_progress") and ((@signed_in_user['app_progress']['onboarding'] != true) or (@signed_in_user['app_progress']['onboarding'] != "iOS_iPhone"))
+    elsif @user_signed_in and (@signed_in_user['user_type'] != Settings::User.user_type.anonymous) and @signed_in_user.has_key?("app_progress") and ((@signed_in_user['app_progress']['onboarding'] != true) or (@signed_in_user['app_progress']['onboarding'] != "iOS_iPhone"))
       users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
       authed_service = params[:service] || users_first_auth['provider']
       redirect_to(appropriate_subdirectory + "/connecting/"+authed_service) and return
@@ -40,8 +40,8 @@ class MobileController < ApplicationController
     elsif user_signed_in?
       check_for_signed_in_user_and_issues({:redirect_if_issue => true})
 
-      # A User with user_type == 4 should not go into "onboarding"
-      unless ([2,4].include?(@signed_in_user['user_type'])) or (@signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress']['onboarding'] == "iOS_iPhone"))
+      # A User with user_type == Settings::User.user_type.anonymous should not go into "onboarding"
+      unless ([Settings::User.user_type.converted,Settings::User.user_type.anonymous].include?(@signed_in_user['user_type'])) or (@signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress']['onboarding'] == "iOS_iPhone"))
         users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
         authed_service = params[:service] || users_first_auth['provider']
         redirect_to(appropriate_subdirectory + "/connecting/#{authed_service}") and return
@@ -134,7 +134,7 @@ class MobileController < ApplicationController
 
       case @section
         when Settings::Mobile.preferences_sections.sources
-          if (@signed_in_user['user_type'] == 4) and (@signed_in_user['app_progress']['followedSources'] != "true")
+          if (@signed_in_user['user_type'] == Settings::User.user_type.anonymous) and (@signed_in_user['app_progress']['followedSources'] != "true")
             flash.now[:notice] = "Follow Channels! </br> Follow as many channels as you like! All video ends up in your stream"
           end
           @sources = Shelby::API.get_featured_sources("onboarding",request.headers['HTTP_COOKIE'])
@@ -143,7 +143,7 @@ class MobileController < ApplicationController
           @preferences = @signed_in_user['preferences']
         when Settings::Mobile.preferences_sections.profile
           @user = @signed_in_user
-          if @signed_in_user['user_type'] == Settings::User.user_type['anonymous']
+          if @signed_in_user['user_type'] == Settings::User.user_type.anonymous
             # considering this a signup
             render "/mobile/preferences_profile_for_anonymous" and return
           end
@@ -355,7 +355,7 @@ class MobileController < ApplicationController
     @is_mobile      = is_mobile?
     @mobile_os = detect_mobile_os
 
-    if @signed_in_user['user_type'] == 4 and !@user_signed_in
+    if @signed_in_user['user_type'] == Settings::User.user_type.anonymous and !@user_signed_in
       # login and redirect to /stream
       Shelby::API.login(@signed_in_user['nickname'], 'anonymous')
       redirect_to(appropriate_subdirectory+"/stream") and return

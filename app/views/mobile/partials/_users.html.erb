@@ -1,6 +1,6 @@
 <ul class="list">
   <% users.each do |user| %>
-    <% if [15,16].include?(user['roll_type']) and (user['creator_nickname'] != signed_in_user['nickname']) %>
+    <% if [Settings::RollTypes.special_public_real_user, Settings::RollTypes.special_public_upgraded].include?(user['roll_type']) and (user['creator_nickname'] != signed_in_user['nickname']) %>
       <li class="list__item" data-user="<%= "#{user}" %>">
         <%= render :partial => '/objects/user_card',
             :locals => {
@@ -11,7 +11,7 @@
               :realname     => user['creator_name'],
               :roll_id      => user['id'],
               :username     => user['creator_nickname'],
-              :user_type    => user['roll_type']
+              :user_type    => user['user_type']
             } %>
       </li>
     <% end %>
