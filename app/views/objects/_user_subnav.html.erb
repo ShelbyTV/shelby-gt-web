@@ -1,4 +1,4 @@
-<% anonymous = user_type == Settings::Application.user_type.anonymous %>
+<% anonymous = user_type == Settings::User.user_type.anonymous %>
 <% unless anonymous %>
   <ul class="list">
     <li class="list__item">
