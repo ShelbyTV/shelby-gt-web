@@ -5,7 +5,7 @@
     </h2>
 
     <h3 class="welcome-message__h2--plain">
-      <% if (shelby.models.user.isAnonymous() && currentDisplayState == 'loggetOutShares') { %>
+      <% if (shelby.models.user.isAnonymous() && currentDisplayState == 'loggedOutShares') { %>
         <b><%= shelby.models.guide.get('currentRollModel').get('creator_name')  %></b>
       <% } %>
       <%= shelby.config.welcomeMessages[currentDisplayState].message %>
