@@ -355,8 +355,13 @@
       else {
         this.Banner.update("We didn't find anything... is there a YouTube, Vimeo, Hulu, Blip, or Dailymotion video on the page? <a style='color:black;text-decoration:underline;' href='mailto:bookmarklet@shelby.tv?subject=Hey%20I%20found%20a%20video%20but%20Shelby%20missed%20it&body=\n[page: "+window.location.hostname+"]'>Let us know</a>")
         var iframeSrc = opts.iframeUrl+"?"+"found_video=false"
-        //insert but it wont show itself. for tracking porpuse
+        //insert but it wont show itself. for tracking purposes
         this.Iframe.insert({srcUrl: iframeSrc, style: {'display': 'none', 'width': '1px', 'height': '1px'}});
+
+        //CLICK TO DISMISS
+        win.$('.'+opts.bannerClass).one('click',function(e){
+          $(this).slideUp();
+        });
       }
     },
 
