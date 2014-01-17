@@ -272,7 +272,7 @@ class MobileController < ApplicationController
       redirect_to(appropriate_subdirectory+"?status=409&msg=Something%20has%20gone%20really%20really%20wrong!") and return
     elsif create_anon_user!(cookies)
       flash[:notice] = "Welcome to Shelby.tv! <br/> Add some video to get started."
-      Rails.logger.info "NEW USER CREATED: #{@user}"
+      log_session()
       redirect_to(appropriate_subdirectory+"/stream") and return
     else
       redirect_to(appropriate_subdirectory+"?status=409&msg=Uh%20Oh.%20Something%20went%20wrong.%20Give%20that%20another%20shot...") and return
@@ -307,7 +307,7 @@ class MobileController < ApplicationController
   private
 
   def display_banners(user)
-      #if anon AND you haven't connectedFB AND followedSources
+    #if anon AND you haven't connectedFB AND followedSources
     if ((user['user_type'] == Settings::User.user_type.anonymous) && (user['app_progress']['connectedFacebook'].nil? && user['app_progress']['followedSources'].nil?))
       #show everything
       {
@@ -316,7 +316,7 @@ class MobileController < ApplicationController
         :sources  => true
       }
 
-    elsif (user['user_type'] == Settings::User.user_type.anonymous) && ((user['app_progress']['connectedFacebook'] == true) && user['app_progress']['followedSources'].nil?)
+    elsif (user['user_type'] == Settings::User.user_type.anonymous) && ((user['app_progress']['connectedFacebook'] == "true") && user['app_progress']['followedSources'].nil?)
       #prevent FB from rendering, show sources
       {
         :anchor   => nil,
@@ -324,7 +324,7 @@ class MobileController < ApplicationController
         :sources  => true
       }
 
-    elsif (user['user_type'] == Settings::User.user_type.anonymous) && (user['app_progress']['connectedFacebook'].nil? && (user['app_progress']['followedSources'] == true))
+    elsif (user['user_type'] == Settings::User.user_type.anonymous) && (user['app_progress']['connectedFacebook'].nil? && (user['app_progress']['followedSources'] == "true"))
       #scroll to FB
       {
         :anchor   => Settings::Mobile.inline_cta.social.id,
