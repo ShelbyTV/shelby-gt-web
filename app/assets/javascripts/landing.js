@@ -130,15 +130,17 @@ $(document).ready(function(e){
       $target           = $('.js-target'),
       $horizontalIphone = $('.js-horz-iphone'),
       $nav              = $('.js-slide-navigator'),
-      $getStartedForm   = $('.js-get-started-form'),
+      $getStartedButton = $('.js-get-started-button'),
       isHorizontal      = false;
 
-  $getStartedForm.on('submit', function(e){
+  $getStartedButton.on('click', function(e){
+    e.preventDefault();
     var $target = $(e.currentTarget);
-    if ($target.hasClass('js-busy')) {
-      e.preventDefault();
-    } else {
-      $target.addClass('js-busy').find('.js-get-started-button').addClass('button_busy');
+    if (!$target.hasClass('button_busy')) {
+      $target.addClass('button_busy');
+      window.setTimeout(function(){
+        $('.js-get-started-form').submit();
+      }, 500);
     }
   });
 
