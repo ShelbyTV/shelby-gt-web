@@ -238,7 +238,10 @@
           // console.log('vimeo, redundancy, because of the provider.elements');
 
           var vimeoVideoId = /vimeo.com\/(\d*)/.exec(foundElements[i].baseURI)
-          videosToAdd.push("vimeo[]="+vimeoVideoId);
+
+          if(vimeoVideoId[1].length){
+            videosToAdd.push("vimeo[]="+vimeoVideoId);
+          }
 
         } else {
           var str = this.getValue(foundElements[i], 'flashvars') + '&amp;' + this.getValue(foundElements[i], 'src') + this.getValue(foundElements[i], 'data') + this.getValue(foundElements[i], 'name') + foundElements[i].innerHTML + foundElements[i].id;
