@@ -1,0 +1,573 @@
+(function(win,doc,opts){
+  /*
+   * Aspects of the script loading were inspired by:
+   *
+   * jQuery Bookmarklet - version 1.0
+   * Originally written by: Brett Barros
+   * Heavily modified by: Paul Irish
+   *
+   * If you use this script, please link back to the source
+   *
+   * Copyright (c) 2010 Latent Motion (http://latentmotion.com/how-to-create-a-jquery-bookmarklet/)
+   * Released under the Creative Commons Attribution 3.0 Unported License,
+   * as defined here: http://creativecommons.org/licenses/by/3.0/
+   *
+   */
+
+  var Radar = {
+    providers : [
+      {
+        "provider"  : "blip",
+        "domain"    : "blip.tv",
+        "regex"     : ["flash\\\/stratos\\.swf", "http:\\\/\\\/blip\\.tv\\\/play\\\/", "\\\/players\\\/xplayer\\\?id=([\\\w-]*)"],
+        "url_regex" : "([0-9]+)"
+      },
+      {
+        "provider"  : "brightcove",
+        "domain"    : "brightcove.com",
+        "regex"     : ["brightcove.com\\\/services\\\/viewer"]
+      },
+      {
+        "provider"  : "collegehumor",
+        "domain"    : "collegehumor.com",
+        "regex"     : ["videoid([0-9]+)", "clip_id=([0-9]+)"],
+        "url_regex" : "([0-9]+)"
+      },
+      {
+        "provider"  : "dailymotion",
+        "domain"    : "dailymotion.com",
+        "regex"     : ["videoId%22%3A%22([a-zA-Z0-9]+)", "dailymotion.com%2Fvideo%2F([a-zA-Z0-9]+)_", "dailymotion\\.com\\\/embed\\\/video\\/([a-zA-Z0-9]+)", "dailymotion\\.com\\\/swf\\\/([a-zA-Z0-9]+)", "www.dailymotion.com\\\/video\\\/([a-zA-Z0-9]+)_"]
+      },
+      /*
+        {
+          "domain"    : "hulu.com",
+          "regex"     : ["http:\\\/\\\/player\\.hulu\\.com\\\/express\\\/.*?"]
+        },
+      */
+      {
+        "provider"  : "hulu",
+        "domain"    : "hulu.com",
+        "regex"     : ["\/site-player\/(\\d*)\/player"]
+      },
+      /*
+        {
+          "provider"  : "pbs",
+          "domain"    : "video.pbs.org",
+          "regex"     : ["width=512&height=288.*&video=.*?\\\/([0-9]+)"]
+        },
+        {
+          "provider"  : "techcrunch",
+          "domain"    : "techcrunch.tv",
+          "regex"     : ["embedCode=(\\w*)"]
+        },
+      */
+      {
+        "provider"  : "ted",
+        "domain"    : "ted.com",
+        "regex"     : ["&amp;su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&amp;", "&su=(http:\\\/\\\/www\\.ted\\.com.*?\\.html)&", "vu=http:\\\/\\\/video\\.ted\\.com\\\/.*?&su"]
+      },
+      {
+        "provider"  : "vimeo",
+        "domain"    : "vimeo.com",
+        "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com\\\/([0-9]+)|http:\\\/\\\/(?:\\w+\\.)*vimeo\\.com.*clip_id=([0-9]+)",
+        "regex"     : ["vimeo\\.com\\\/moogaloop\\.swf\\?clip_id=([0-9]+)", "clip_id=([0-9]+)&server=vimeo\\.com", "clip_id=([0-9]+)", "(player.vimeo.com\\/v2\\/video\\/)(\\d*)","(player.vimeo.com\\/video\\/)(\\d*)", "(player)(\\d*)[^_]", "player_(\\d+)_\\d+"],
+        "elements"  : "div.player.f:not(:has(video)):not(:has(object))"
+      },
+      {
+        "provider"  : "youtube",
+        "domain"    : "youtube.com",
+        "scrape_url": "http:\\\/\\\/(?:\\w+\\.)*youtube\\.com.*v=([\\_\\-a-zA-Z0-9]+)",
+        "regex"     : ["&video_id=([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "www.youtube\\-nocookie\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)","youtube\\-nocookie\\.com\/v\/([\\_\\-a-zA-Z0-9]+)", "youtube\\.com\/embed\/([\\_\\-a-zA-Z0-9]+)"]
+      },
+      {
+        "provider"  : "bloomberg",
+        "domain"    : "bloomberg.com",
+        "regex"     : ["embedCode=(\\w*)"]
+      },
+      {
+        "provider"  : "espn",
+        "domain"    : "espn.com,espn.go.com",
+        "regex"     : ["espn%3A([0-9]+)&"]
+      }
+    ],
+
+    css: function(styles) {
+      var inlined = "";
+
+      for (var style in styles) {
+        if ( styles.hasOwnProperty(style) ) {
+          inlined += style+":"+styles[style]+";";
+        }
+      }
+      return inlined;
+    },
+
+
+    getValue: function (obj, id) {
+      var value = '';
+      for (var i = 0; i < obj.attributes.length; i++) {
+        if (obj.attributes[i].nodeName === id) {
+          value += obj.attributes[i].nodeValue;
+          break;
+        }
+      }
+
+      var params = $(obj).children('param');
+      for (var i = 0; i < params.length; i++) {
+        if (params[i].name == id) {
+          value += params[i].value;
+          break;
+        }
+      }
+      return value;
+    },
+
+    parseUrl : function(url){
+      console.log('parseURL,',url);
+    //   var url = window.location;
+
+    //   $(this.providers).each(function(index,provider){
+    //     //we only care about single youtube pages:
+
+    //     if(provider.provider == 'youtube' && url.host == provider.domain && url.pathname == '/watch') {
+    //       return window.location.href.split('&')[0]; //the first param is always v=, subsequent params aren't necessary.
+    //     }
+    //   });
+    },
+
+    composeKnownUrl : function (domain, videoId) {
+      var knownUrl = "";
+
+      switch (domain) {
+        case 'blip.tv':
+          knownUrl = "http://blip.tv/episode/" + videoId;
+          break;
+        case 'youtube.com':
+          knownUrl = "http://www.youtube.com/watch?v=" + videoId;
+          break;
+        case 'dailymotion.com':
+          knownUrl = "http://www.dailymotion.com/video/" + videoId + "?";
+          break;
+        case 'vimeo.com':
+          knownUrl = "http://vimeo.com/" + videoId;
+          break;
+        case 'techcrunch.tv':
+          knownUrl = "http://techcrunch.tv/watch?id=" + videoId;
+          break;
+        case 'video.pbs.org':
+          knownUrl = "http://video.pbs.org/video/" + videoId;
+          break;
+        case 'collegehumor.com':
+          // knownUrl = (opts.useUrl) ? document.location.href : knownUrl = "http://collegehumor.com/video/" + videoId;
+          knownUrl = "http://collegehumor.com/video/" + videoId;
+          break;
+        case 'hulu.com':
+          //HACK (For now).
+          // the videoId is the content_id, not useful when hitting embedly or our link cache
+          // so using the page location for now
+          knownUrl = document.location.href;
+          break;
+        case 'bloomberg.com':
+          //HACK (For now).
+          // so using the page location + the provider id
+          knownUrl = document.location.href + "?bloomberg_ooyala_id="+ videoId;
+          break;
+        case "espn.com,espn.go.com":
+          knownUrl = "http://espn.go.com/video/clip?id=" + videoId;
+          break;
+        default:
+          knownUrl = false;
+      }
+
+      return knownUrl;
+    },
+
+    filter: function (possibleVideos) {
+
+      var videosToAdd   = [],
+          foundElements = possibleVideos;
+
+      for (var i=0; i < this.providers.length; i++) {
+        // console.log(this.providers[i].provider);
+
+        if (this.providers[i].elements) {
+          //right now this only matters for Vimeo.com
+          // console.log('elements',this.providers[i].domain);
+
+          var domainSplit = this.providers[i].domain.split(',');
+
+          for (var j = 0; j < domainSplit.length; j++) {
+            if (window.location.hostname == domainSplit[j]) {
+              // console.log('we are on the domain that we are looking for');
+
+              var domainSpecificPossibleVideos = $(this.providers[i].elements);
+
+              for (var k = 0; k < domainSpecificPossibleVideos.length; k++) {
+                foundElements.push(domainSpecificPossibleVideos[k]);
+              }
+
+              break;
+            }
+          }
+        }
+      }
+
+      for (var i = 0; i < foundElements.length; i++) {
+        if (this.getValue(foundElements[i], 'data-youtube-id')) {
+          // console.log('data-youtube-id --  is this obsolete?');
+
+          var obj = $(foundElements[i]);
+
+          if (obj.height() < 100 && obj.width() < 100) { continue; }
+
+            var videoId = this.getValue(foundElements[i], 'data-youtube-id');
+
+            //api specific
+            // videosToAdd.push({
+            //     embed     : obj,
+            //     domain    : "youtube.com",
+            //     provider  : "youtube",
+            //     video_id  : videoId,
+            //     known_url : this.composeKnownUrl("youtube.com", videoId)
+            // });
+
+            //bookmarklet url builder
+            videosToAdd.push("youtube[]="+videoId);
+
+        } else if (/(vimeo.com\/)(\d*)/.test(foundElements[i].baseURI)) {
+          // console.log('vimeo, redundancy, because of the provider.elements');
+
+          var vimeoVideoId = /vimeo.com\/(\d*)/.exec(foundElements[i].baseURI)
+
+          if(vimeoVideoId[1].length){
+            videosToAdd.push("vimeo[]="+vimeoVideoId);
+          }
+
+        } else {
+          var str = this.getValue(foundElements[i], 'flashvars') + '&amp;' + this.getValue(foundElements[i], 'src') + this.getValue(foundElements[i], 'data') + this.getValue(foundElements[i], 'name') + foundElements[i].innerHTML + foundElements[i].id;
+          // console.log('-strrrriinngg',str);
+
+          for (var j = 0; j < this.providers.length; j++) {
+            // console.log('providers', this.providers[j].provider);
+
+            // if (!(opts.useUrl && this.providers[j].provider)) { continue; }
+
+            for (var k = 0; k < this.providers[j].regex.length; k++) {
+                // console.log('provider regex',this.providers[j].regex);
+
+                var reg          = new RegExp(this.providers[j].regex[k]),
+                    domainSplit = this.providers[j].domain.split(','),
+                    valid_domain = false;
+
+              // console.log('match',match);
+
+              for (var l = 0; l < domainSplit.length; l++) {
+                // console.log('ds',domainSplit[l]);
+                var domain_reg = new RegExp($.trim(domainSplit[l]));
+
+                if (domain_reg.test(str) || domain_reg.test(window.location)) {
+                  valid_domain = true;
+                  break;
+                }
+              }
+
+              // console.log('valid domain', valid_domain);
+
+              if (reg.test(str) && valid_domain) {
+                var match = reg.exec(str);
+                var obj = $(foundElements[i]);
+                // console.log('match',match,'------------------');
+                if (obj.width() == 0) {
+                  obj = obj.parent();
+                }
+                if (match[2] == undefined) {
+                  if (match[1] == undefined) {
+                    match[1] = window.location.href;
+                  } else {
+                    match[2] = match[1];
+                  }
+                }
+
+                var provider = this.providers[j].provider,
+                    videoId = match[2];
+
+                // if (opts.useUrl) {
+                //   var match = new RegExp(this.providers[j].url_regex).exec(window.location.href);
+                //   videoId = match[1];
+                // }
+
+                ///api
+                // videosToAdd.push({
+                //   embed     : obj,
+                //   domain    : this.providers[j].domain,
+                //   video_id  : videoId,
+                //   provider  : provider,
+                //   known_url : this.composeKnownUrl(this.providers[j].domain, match[2])
+                // });
+
+                videosToAdd.push(provider+"[]="+videoId);
+
+                break;
+              }
+            }
+          }
+        }
+      }
+
+      return $.unique(videosToAdd);
+    },
+
+    scanForVideos : function(url){
+      var self  = this,
+          media = $(opts.videoEls),
+          data  = [];
+
+      if(url){
+        data.push(this.parseUrl(url));
+      }
+
+      media.each(function(key,obj){
+        //different elements use different attributes:
+        //iframe = src
+        //embed  = src
+        //video  = src
+        //object = data, has children
+        var $obj = $(obj);
+
+        if ($obj.is('object')){
+          $obj.children().each(function(key,child){
+            if(opts.validChildren.test(child)){
+              data.push(child);
+            }
+          });
+        } else {
+          data.push(obj);
+        }
+      });
+
+      var foundVideos = this.filter(data);
+      //if videos found,
+      if (foundVideos.length > 0){
+        var urlParams = foundVideos.join('&');
+        var iframeSrc = opts.iframeUrl+"?"+urlParams+"&found_video=true"
+        this.Iframe.insert({srcUrl: iframeSrc});
+      }
+      else {
+        this.Banner.update("We didn't find anything... is there a YouTube, Vimeo, Hulu, Blip, or Dailymotion video on the page? <a style='color:black;text-decoration:underline;' href='mailto:bookmarklet@shelby.tv?subject=Hey%20I%20found%20a%20video%20but%20Shelby%20missed%20it&body=\n[page: "+window.location.hostname+"]'>Let us know</a>")
+        var iframeSrc = opts.iframeUrl+"?"+"found_video=false"
+        //insert but it wont show itself. for tracking porpuse
+        this.Iframe.insert({srcUrl: iframeSrc, style: {'display': 'none', 'width': '1px', 'height': '1px'}});
+      }
+    },
+
+    Iframe : {
+      el : function(data){
+        return '<iframe class="'+opts.iframeClass+'" src="'+data.srcUrl+'" style="'+Radar.css(data.style || this.styles.iframe)+'"/>';
+      },
+      insert : function(data) {
+        var $body   = $('body'),
+            $iframe = $body.find('.'+opts.iframeClass);
+
+        if($body.find('.'+opts.iframeClass).length === 0){
+          $('.'+opts.baseClass).append($(this.el(data)));
+        }
+      },
+
+      styles : {
+        iframe : {
+          'background-color' : '#f1f1f1',
+          'border-bottom'    : 'none',
+          'border-left'      : '1px solid #ddd',
+          'border-right'     : 'none',
+          'border-top'       : 'none',
+          'display'          : 'none',
+          'bottom'           : '0',
+          'position'         : 'fixed',
+          'right'            : '0',
+          'top'              : '0',
+          'z-index'          : '2147483641',
+          'width'            : '370px',
+          'height'           : '100%'
+        }
+      }
+    },
+
+    Banner : {
+      styles : {
+        banner : {
+          'background-color' : '<%= Settings::Styles.ui_green %>',
+          'color'            : '<%= Settings::Styles.ui_white %>',
+          'font-family'      : 'Helvetica',
+          'font-size'        : '13px',
+          'font-weight'      : 'bold',
+          'left'             : '0',
+          'padding-bottom'   : '20px',
+          'padding-top'      : '18px',
+          'position'         : 'fixed',
+          'right'            : '0',
+          'top'              : '0',
+          'z-index'          : '2147483641'
+        },
+        logo : {
+          'background-image'      : 'url(//<%= Settings::Extension.web_domain %>/assets/shelby_white.svg)',
+          'background-position-y' : 'center',
+          'background-position-x' : 'center',
+          'background-repeat'     : 'no-repeat',
+          'display'               : 'inline-block',
+          'height'                : '27px',
+          'margin-left'           : '20px',
+          'margin-right'          : '20px',
+          'width'                 : '100px',
+          'vertical-align'        : 'middle'
+        },
+        message: {
+          'vertical-align' : 'middle',
+          'display'        : 'inline-block'
+        }
+      },
+      el : function(message){
+        return "<div class=\"shelbyBanner\" style="+ Radar.css(this.styles.banner) +"><span id=\"shelby-banner__logo\" style="+ Radar.css(this.styles.logo) +"></span><span id=\"shelby-banner__message\" style="+ Radar.css(this.styles.message)+">"+ message +"</span></div>";
+      },
+      template : function(message){
+        return this.el(message);
+      },
+      insert : function(){
+        return this.template('Scanning for video…');
+      },
+      update : function(message){
+        $('#shelby-banner__message').html(message);
+      },
+      close : function(){
+        $('.shelbyBanner').hide();
+      }
+    },
+
+    initUrlListener : function(){
+      var self = this;
+      // // crazy djeng-code pushstate handling.
+      (function(history,self) {
+          var pushState = history.pushState;
+          history.pushState = function(state) {
+              if (typeof history.onpushstate == "function") {
+                  history.onpushstate({state: state});
+              }
+
+              console.log('pushy');
+              self.scanForVideos(window.location.href);
+              // this.scanForVideos();
+
+
+              return pushState.apply(history, arguments);
+          }
+      })(window.history,self);
+    },
+
+    initMessageHandler : function(){
+      var eventMethod  = window.addEventListener ? "addEventListener" : "attachEvent",
+          eventer      = window[eventMethod],
+          messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message",
+          self         = this;
+
+      // Listen to message from iframe
+      eventer(messageEvent,function(e) {
+        if (e.data == "close") {
+          // also make sure the banner is hidden
+          $("."+opts.iframeClass).remove();
+        }
+        else if (e.data == "ready.withVideo") {
+          $("."+opts.iframeClass).show();
+          self.Banner.close();
+        }
+        else if (e.data == "ready.withoutVideo") {
+          setTimeout(function(){
+            self.Banner.close();
+          }, 5000);
+        }
+      }, false);
+
+    },
+
+    loadjQuery : function(opts){
+      var self = this;
+
+      var fileref = document.createElement('script');
+
+      fileref.type   = 'text/javascript';
+      fileref.src    = opts.jquery;
+      fileref.onload = function(){
+        //scope & namespace this jquery within `Radar`
+
+        self.loadStyles(opts.styles);
+        self.loadScripts(opts.scripts);
+      };
+
+      document.body.appendChild(fileref);
+    },
+
+    loadStyles : function(styles){
+      var self = this;
+
+      $(styles).each(function(stylesheet){
+        $('<link>').attr({
+          href: stylesheet,
+          rel: 'stylesheet'
+        }).appendTo('head');
+      });
+    },
+
+    loadScripts : function(scripts){
+      if (scripts.length === 0) {
+        this.ready();
+        return false;
+      }
+
+      $.getScript(scripts[0], function(){
+        getJS(scripts.slice(1));
+      })
+    },
+
+    init : function(){
+      console.log('init');
+      // rely on jquery for convenient parsing and manipulation
+
+      this.loadjQuery(opts);
+    },
+
+    ready : function(){
+      //websites that use pushState will not re-render the DOM, thus unecessarily preserving the bookmarklet
+      this.initUrlListener();
+
+      //determine if useUrl is necessary
+      // this.parseUrl();
+      //prepare iframe communication, etc.
+      this.initMessageHandler();
+
+      //kick it off:
+      //show loading banner,
+      var $body = $('body'),
+          baseClass = '.'+opts.baseClass;
+
+      if($body.find(baseClass).length === 0){
+        $body.prepend('<div class="'+opts.baseClass+'"/>');
+        $(baseClass).prepend(this.Banner.insert());
+      }
+
+      //scan
+      this.scanForVideos();
+    }
+  };
+
+  Radar.init();
+
+})(window,document,{
+  //one must test an <object> found on the page using the `validChildren` regex
+  baseClass     : 'shelby',
+  bannerClass   : 'shelbyBanner',
+  iframeClass   : 'shelbyRadar',
+  iframeUrl     : "<%= Settings::Application.protocol_matching_url %><%= Settings::Radar.radar_path %>",
+  jquery        : "//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js",
+  scripts       : [],
+  styles        : [],
+  validChildren : /embed|video\.pbs\.org|vimeo\.com|<ooyala|ooyala/i,
+  videoEls      : 'embed, iframe, object, video',
+});

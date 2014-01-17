@@ -9,7 +9,29 @@ $seo-column-right: 200px;
 $related_video__height: 195px;
 
 .shelby--seo {
-  overflow:visible;
+  overflow: visible;
+
+  @media screen and (max-width: 640px) {
+    .shelf--header {
+      width: auto;
+      min-width: 0;
+
+      .shelf__lining {
+        padding: 0;
+      }
+
+      .shelby-logo {
+        font-size: $logo-font-size-small;
+      }
+    }
+    .shelby__wrapper {
+      padding-top: 48px;
+    }
+
+    #disqus_thread {
+      width: 100%;
+    }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -287,8 +309,8 @@ a {
   position: absolute;
   background-color: rgba(0,0,0,0);
   color: #fff;
-  top: 28px;
-  left: 120px;
+  top: 30px;
+  left: 40%;
   font-size: 60px;
 }
 
@@ -375,7 +397,6 @@ a {
       width: 430px;
       margin: 0 auto;
     }
-    .seovideo__h2 {display: none;}
   }
 
   .seovideo__video {
@@ -446,7 +467,6 @@ a {
     }
   }
   .seovideo__h1 { font-size: 1.9em !important; }
-  .seovideo__h2 { display: none; }
 }
 ////////////////////////////////////////////////////////////////////////////
 //  for wide screens

@@ -3,6 +3,38 @@
   .shelf__wrapper--error {
     background-color: transparent;
   }
+
+  @media screen and (max-width: 944px) {
+    .shelf {
+      border-left: 0;
+      border-right: 0;
+      min-width: 0;
+      width: auto;
+
+      &.shelf--header {
+        max-width: 100%;
+        width: 100%;
+
+        .shelby-logo {
+          font-size: 2.6em;
+        }
+        .app_nav__button {
+          margin-top: 0;
+        }
+        .shelf__button--cta {
+          display: none;
+        }
+      }
+
+      .shelf__lining {
+        clear: both;
+        float: none;
+        margin: 0;
+        padding: 0;
+        width: auto;
+      }
+    }
+  }
 }
 
 //------------------------------------------------------------------------------

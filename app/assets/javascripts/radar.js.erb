@@ -1,0 +1,133 @@
+//= require jquery
+//= require ./app/browser.js
+
+//for sharing.
+//= require ./backbone/underscore.js
+//= require ../templates/share-page-form.jst.ejs
+//= require ../templates/liker-item.jst.ejs
+
+//load event tracking js
+//= require ./event-tracking/mobile.tracking.js
+
+var libs = {
+  config : {
+    shelbyGT : {
+      root : '<%= "#{Settings::Application.url}" %>',
+      apiRoot : '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>',
+      UserAvatarSizes : {
+        small : "sq48x48"
+      }
+    },
+    avatarUrlRoot: '//s3.amazonaws.com/shelby-gt-user-avatars'
+  },
+  utils : {
+    composeKnownUrl : function (provideName, videoId) {
+      var knownUrl = "";
+
+      switch (provideName) {
+        case 'blip':
+          knownUrl = "http://blip.tv/episode/" + videoId;
+          break;
+        case 'youtube':
+          knownUrl = "http://www.youtube.com/watch?v=" + videoId;
+          break;
+        case 'dailymotion':
+          knownUrl = "http://www.dailymotion.com/video/" + videoId + "?";
+          break;
+        case 'vimeo':
+          knownUrl = "http://vimeo.com/" + videoId;
+          break;
+        case 'techcrunch':
+          knownUrl = "http://techcrunch.tv/watch?id=" + videoId;
+          break;
+        case 'collegehumor':
+          // knownUrl = (opts.useUrl) ? document.location.href : knownUrl = "http://collegehumor.com/video/" + videoId;
+          knownUrl = "http://collegehumor.com/video/" + videoId;
+          break;
+        case 'hulu':
+          //HACK (For now).
+          // the videoId is the content_id, not useful when hitting embedly or our link cache
+          // so using the page location for now
+          knownUrl = document.location.href;
+          break;
+        case 'bloomberg':
+          //HACK (For now).
+          // so using the page location + the provider id
+          knownUrl = document.location.href + "?bloomberg_ooyala_id="+ videoId;
+          break;
+        default:
+          knownUrl = false;
+      }
+
+      return knownUrl;
+    }
+  }
+};
+
+$(document).ready(function(){
+  //using Rails to dump out the User object as stringified JSON, then cache it with JSON, asap!
+  var user = JSON.parse( $('#js-user').text() );
+
+  // track clean visits
+  var loc = shelbyTrackingCategory || "Radar",
+      username = shelbyTrackingLabel || "Anonymous" ;
+
+  shelby.trackEx({
+    providers : ['ga'],
+    gaCategory : loc,
+    gaAction : 'Radar Loaded',
+    gaLabel : username
+  });
+
+  //----------------------------------------------------------------------------
+  // this fanciness lets the parent of iframe know about document.ready
+    var foundVideo = $('meta[name=foundVideo]').attr("content") == "true" ? true : false;
+    parent.postMessage("ready."+(foundVideo ? 'with' : 'without')+"Video", "*");
+
+    shelby.trackEx({
+      providers : ['ga'],
+      gaCategory : loc,
+      gaAction : foundVideo ? 'Radar found video' : 'Radar found NO video',
+      gaLabel : username
+    });
+
+    $(".js-close").on('click', function(e){
+      e.preventDefault();
+      parent.postMessage("close", "*");
+    });
+  //----------------------------------------------------------------------------
+
+  $('.js-like').on('click',function(e){
+    e.preventDefault();
+
+    if(user && user['watch_later_roll_id']) {
+      var data  = $(this).data(),
+          $self = $(this);
+
+      $.ajax({
+        type: 'GET',
+        url: libs.config.shelbyGT.apiRoot + '/POST/roll/' + user['watch_later_roll_id'] + '/frames',
+        dataType: "jsonp",
+        timeout: 10000,
+        crossDomain: true,
+        data: {
+          provider_id   : data.provider_id,
+          provider_name : data.provider_name,
+          url           : libs.utils.composeKnownUrl(data.provider_name,data.provider_id)
+        },
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function (response) {
+          $self.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red').siblings('.button_label').text('Liked');
+        },
+        error: function (e) { console.log("API Error: Unabled to persist Like",e); }
+      });
+    } else {
+      var redirectUrl = window.location.href;
+      window.location = libs.config.shelbyGT.root + '/log_in?auth_failure=1&redir=' + redirectUrl;
+    }
+
+  });
+
+});
