@@ -195,8 +195,11 @@ a.button_primer,
 //  sometimes you need a button with a spinner.
 /////////////////////////////////////////////////////////////////////////////
 .button_busy {
-  background-repeat: no-repeat;
-  background-position: center;
+  &,
+  &:hover {
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
   .button_label {
     visibility: hidden;
@@ -205,6 +208,17 @@ a.button_primer,
   // mad hacky.
   &.button_gray {
     background-color: #e7e7e7;
-    background-image: url($icon-signup-spinner);
+    background-image: $icon-signup-spinner;
   }
+
+  &.button_green {
+    &,
+    &:hover {
+      background-color: #e7e7e7;
+      background-image: $icon-signup-spinner;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+
 }

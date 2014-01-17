@@ -12,9 +12,9 @@
 
         <p class="shelf__block">
           <% if [:android, :amazon].include? @mobile_os %>
-            <%= form_tag "#{Settings::Mobile.mobile_subdirectory}/user/create", :class => "form_module" do %>
+            <%= form_tag "#{Settings::Mobile.mobile_subdirectory}/user/create", :class => "form_module js-get-started-form" do %>
               <%= hidden_field_tag 'anonymous', true %>
-              <button class="button_primer button_green button_command button_command--sub button_command--facebook one-half js-track-event" data-ga_action="Click Get Started" data-ga_label="<%= request.referer || 'direct' %>">Get Started</button>
+              <button type="submit" class="button_primer button_green button_command button_command--sub button_command--facebook one-half js-track-event js-get-started-button" data-ga_action="Click Get Started" data-ga_label="<%= request.referer || 'direct' %>"><span class="button_label">Get Started</span></button>
             <% end %>
             <!-- <a href="http://api.shelby.tv/auth/facebook" class="button_primer button_facebook-blue button_command button_command--sub button_command--facebook one-half js-track-event" data-ga_action="Click Sign Up with Facebook" data-ga_label="<%= request.referer || 'direct' %>">
               <span class="icon-facebook"></span>

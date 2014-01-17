@@ -130,8 +130,17 @@ $(document).ready(function(e){
       $target           = $('.js-target'),
       $horizontalIphone = $('.js-horz-iphone'),
       $nav              = $('.js-slide-navigator'),
+      $getStartedForm   = $('.js-get-started-form'),
       isHorizontal      = false;
 
+  $getStartedForm.on('submit', function(e){
+    var $target = $(e.currentTarget);
+    if ($target.hasClass('js-busy')) {
+      e.preventDefault();
+    } else {
+      $target.addClass('js-busy').find('.js-get-started-button').addClass('button_busy');
+    }
+  });
 
   /*
     Set shelf height to fill window, minus header.
