@@ -40,13 +40,6 @@ class MobileController < ApplicationController
     elsif user_signed_in?
       check_for_signed_in_user_and_issues({:redirect_if_issue => true})
 
-      # A User with user_type == Settings::User.user_type.anonymous should not go into "onboarding"
-      unless ([Settings::User.user_type.converted,Settings::User.user_type.anonymous].include?(@signed_in_user['user_type'])) or (@signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress']['onboarding'] == "iOS_iPhone"))
-        users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
-        authed_service = params[:service] || users_first_auth['provider']
-        redirect_to(appropriate_subdirectory + "/connecting/#{authed_service}") and return
-      end
-
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
       @roll_type      = Settings::Mobile.roll_types['stream']
