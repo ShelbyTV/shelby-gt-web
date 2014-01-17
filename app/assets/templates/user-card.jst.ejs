@@ -2,8 +2,8 @@
   <div class="user user--no_lining user--medium_avatar clearfix">
     <div class="media_module media_module--bare clearfix">
       <div class="media_image--rev">
-        <button class="button_primer button_command button_command--flexible button_gray user__button js-roll-button js-track-event" data-roll_id="<%= category.id %>" data-ga_category="<%= context %>" data-ga_action="Click follow source" data-ga_label="<%= category.get('display_title') %>">
-          <span class="button_label">Follow</span>
+        <button class="button_primer button_command button_command--flexible button_gray user__button js-roll-button js-track-event<%= category.get('following') ? ' button_enabled visuallydisabled js-busy' : '' %>" data-roll_id="<%= category.id %>" data-ga_category="<%= context %>" data-ga_action="Click follow source" data-ga_label="<%= category.get('display_title') %>">
+          <span class="button_label"><%= category.get('following') ? 'Following' : 'Follow' %></span>
         </button>
       </div><!-- eo media_image--rev -->
 
