@@ -285,7 +285,7 @@ class MobileController < ApplicationController
     elsif params[:service] == "twitter"
       EM.next_tick { follow_shelby(@signed_in_user, params[:onboarding_follow_shelby]) }
     end
-    attributes = {:app_progress => {"connected#{params[:service].capitalize}".to_sym => true}}
+    attributes = {:app_progress => {"connected#{params[:service].capitalize}".to_sym => true, 'onboarding'  => true}}
     update_user(@signed_in_user, attributes)
     redirect_to(appropriate_subdirectory + "/stream") and return
   end
