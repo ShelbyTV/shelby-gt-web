@@ -2,7 +2,6 @@
 <% avatar, linkableName, userNickname = build_avatar_and_nickname(dbe, frame_owner) %>
 <% message = build_frame_message(frame, dbe) %>
 <% framePermalink = build_frame_permalink(frame) %>
-<% isLike = (frame['frame_type'] == 1) %>
 
 <article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame js-<%= frame['id']%>">
   <span class="frame-header js-frame-activate">

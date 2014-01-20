@@ -126,4 +126,7 @@ module MobileHelper
     end
   end
 
+  def is_frame_like?(frame)
+    frame['frame_type'] == Settings::Frame.frame_type.light_weight
+  end
 end
