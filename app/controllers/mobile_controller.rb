@@ -259,7 +259,7 @@ class MobileController < ApplicationController
     if params[:anonymous] != "true"
       redirect_to(appropriate_subdirectory+"?status=409&msg=Something%20has%20gone%20really%20really%20wrong!") and return
     elsif create_anon_user!(cookies)
-      flash[:notice] = "Welcome to Shelby.tv! <br/> Add some video to get started."
+      flash[:notice] = "Welcome to Shelby.tv! <br/> <a href=\"#{appropriate_subdirectory}/preferences/sources\" class=\"js-track-event\" data-ga_category=\"Mobile\" data-ga_action=\"Click Add in Banner\">Add Channels</a> to get started."
       log_session()
       redirect_to(appropriate_subdirectory+"/stream") and return
     else
