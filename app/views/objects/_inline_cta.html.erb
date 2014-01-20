@@ -23,6 +23,7 @@
           <%= cta.message.html_safe %>
         </p>
       </div><!-- eo .media_body -->
+      <%= raw "<i id=\"foobar\" style=\"margin-top:40px;position: absolute;\"></i>" if cta.hook == Settings::Mobile.inline_cta.sources.hook %>
     </footer><!-- eo .media_module-->
   </div><!-- eo .frame-body-wrapper -->
 </a>
