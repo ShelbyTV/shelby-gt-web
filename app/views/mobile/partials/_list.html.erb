@@ -21,7 +21,7 @@
 </ul>
 
 <p class="center">
-  <% if !frames.empty? %>
+  <% if !frames.empty? and (roll['frame_count'] > 9) %>
     <%= link_to appropriate_subdirectory + "/#{user['id']}?page=#{@page+1}",
         {
           :class => Settings::Mobile.load_more_button_class + " js-track-event",
@@ -31,7 +31,7 @@
         } do %>
       <span class="button_label">Load More</span>
     <% end %>
-  <% else %>
+  <% elsif roll['frame_count'] == 0 %>
     <h3 class="user__h1 center">
       <% if signed_in_user['id'] == user['id'] # current_user viewing own profile %>
         Any video you like or share shows up here... go get 'em tiger!

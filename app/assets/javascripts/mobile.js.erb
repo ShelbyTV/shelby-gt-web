@@ -66,7 +66,7 @@ $(document).ready(function(){
     }
   });
 
-  $('a').on('click', function(e){
+  $('body').on('click', 'a:not(.js-play-video,.js-load-more)', function(e){
     var self = this;
     // click on any link, replace the logo with a spinner so the user can tell something is happening
     e.preventDefault();
@@ -253,11 +253,17 @@ $(document).ready(function(){
       });
     };
 
-    $('.js-toggle-follow').on('click',function(e){
+    $('.js-sources-list,.js-roll-header').on('click', '.js-toggle-follow:not(.js-busy)', function(e){
       e.preventDefault();
       var $this   = $(this),
           roll_id = $this.data('roll_id'),
           method  = $this.hasClass('button_green') ? 'join' : 'leave';
+
+      $this.addClass('js-busy');
+
+      // immediately toggle the button - if the ajax fails, we'll update the next time we render
+      var newButtonText = (method == 'join') ? 'Following' : 'Follow';
+      $this.toggleClass('button_gray button_green button_active').text(newButtonText);
 
       $.ajax({
         type: 'GET',
@@ -270,18 +276,15 @@ $(document).ready(function(){
           withCredentials: true
         },
         success: function (response) {
-          var text = (method == 'join') ? 'Following' : 'Follow';
-
-          method = (method == 'join') ? 'leave' : 'join';
-
-          $this.toggleClass('button_gray button_green button_active').text(text);
-
           var user = JSON.parse($('#js-user').text());
           if (user.user_type == 4 && typeof user.app_progress.followedSource == "undefined"){
             updateUserAppProgress(user.id, "followedSources");
           }
+          $this.removeClass('js-busy');
         },
-        error: function (e) { console.log("API Error: Unabled to Unfollow",e); }
+        error: function (e) {
+          $this.removeClass('js-busy');
+        }
       });
 
     });
@@ -294,25 +297,27 @@ $(document).ready(function(){
 
     var $this = $(this).addClass('button_busy');
 
-    $.get($this.attr('href'), function(data){
-      $this.removeClass('button_busy');
+    window.setTimeout(function(){
+      $.get($this.attr('href'), function(data){
+        $this.removeClass('button_busy');
 
-      var $items  = $(data).find('.js-list').children('.list__item'),
-          $button = $(data).find('.js-load-more');
+        var $items  = $(data).find('.js-list').children('.list__item'),
+            $button = $(data).find('.js-load-more');
 
-      $('.js-list').append($items);
-      $('.js-load-more').attr('href',$button.attr('href'));
+        $('.js-list').append($items);
+        $('.js-load-more').attr('href',$button.attr('href'));
 
-      _($items.children('.js-frame')).each(function(item){
-        var $el = $(item);
-        var $likers = $el.find('.js-likes-array');
+        _($items.children('.js-frame')).each(function(item){
+          var $el = $(item);
+          var $likers = $el.find('.js-likes-array');
 
-        if($likers && $likers.length){
-          $likers = JSON.parse($likers.html());
-          injectLikers($likers,$el);
-        }
+          if($likers && $likers.length){
+            $likers = JSON.parse($likers.html());
+            injectLikers($likers,$el);
+          }
+        });
       });
-    });
+    }, 100);
   });
 
   $('.js-list').on('click', '.js-like', function(e){
