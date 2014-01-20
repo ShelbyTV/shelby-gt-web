@@ -66,6 +66,17 @@ $(document).ready(function(){
     }
   });
 
+  $('a').on('click', function(e){
+    var self = this;
+    // click on any link, replace the logo with a spinner so the user can tell something is happening
+    e.preventDefault();
+    $('#js-header').find('.icon-mark').addClass('icon-mark--spinner');
+    window.setTimeout(function(){
+      window.location = $(self).attr('href');
+    }, 100);
+  });
+
+
   var user = JSON.parse($('#js-user').text()),
       users = [];
 
