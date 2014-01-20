@@ -31,7 +31,7 @@
         } do %>
       <span class="button_label">Load More</span>
     <% end %>
-  <% elsif roll['frame_count'] > 1 %>
+  <% elsif roll['frame_count'] == 0 %>
     <h3 class="user__h1 center">
       <% if signed_in_user['id'] == user['id'] # current_user viewing own profile %>
         Any video you like or share shows up here... go get 'em tiger!
