@@ -153,3 +153,9 @@ $guide-width                   : $_unit * 37; //if you use this, make sure you a
 $persistent_video_info--height : 180px;
 $logo-font-size                : 57px;
 $logo-font-size-small          : 37px;
+
+
+//------------------------------------------------------------------------------
+//  Breakpoints for nested Media Queries
+//------------------------------------------------------------------------------
+$mq-nine-ish : 944px;

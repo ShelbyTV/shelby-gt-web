@@ -3,7 +3,6 @@
 <% userNickname = "You" if (signed_in_user['user_type'] == Settings::User.user_type[:anonymous]) and (roll_type == Settings::Mobile.roll_types['activity']) %>
 <% message = build_frame_message(frame, dbe) %>
 <% framePermalink = build_frame_permalink(frame) %>
-<% isLike = (frame['frame_type'] == 1) %>
 
 <article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame js-<%= frame['id']%>">
   <span class="frame-header js-frame-activate">
@@ -49,7 +48,7 @@
             avatarModifierClass = ''
             if dbe and dbe['action'] == 34
               avatarModifierClass = ' xuser-avatar--featured icon-star'
-            elsif isLike
+            elsif is_like
               avatarModifierClass = ' xuser-avatar--liker icon-like'
             end
         %>
@@ -69,7 +68,7 @@
           <% if linkableName %>
             <a href="<%= appropriate_subdirectory %>/<%= linkableName %>" class="js-track-event no-faux-link" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>"<% if frame_owner and frame_owner['name'] %> title="<%= frame_owner['name'] %>"<% end %>>
           <% end %>
-          <strong><%= userNickname %></strong><% if isLike %> liked this<% end %>
+          <strong><%= userNickname %></strong><% if is_like %> liked this<% end %>
           <% if linkableName %>
             </a>
           <% end %>
