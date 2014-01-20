@@ -61,7 +61,7 @@
 
     <div class="content_wrapper clearfix js-guide" role="main">
       <div class="notification clearfix js-flash">
-        <%= render :partial => "/mobile/partials/flash_messages" if !flash.empty? %>
+        <%= render :partial => "/mobile/partials/flash_messages", :locals => { :ga_category => "Mobile"} if !flash.empty? %>
       </div>
 
       <%= yield %>

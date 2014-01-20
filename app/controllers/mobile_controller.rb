@@ -45,7 +45,7 @@ class MobileController < ApplicationController
 
       @banners = display_banners(@signed_in_user)
 
-      flash.now[:notice] = 'Whatever I want<br/><u>Click here</u> to do it.'
+      flash.now[:notice] = 'Whatever I want<br/><a href="#">Click here</a> to do it.'
 
       puts "ban: #{@banners}"
     else
