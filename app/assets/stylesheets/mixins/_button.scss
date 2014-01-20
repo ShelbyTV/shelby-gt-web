@@ -216,9 +216,13 @@ a.button_primer,
     }
   }
 
+  // this is specifically a hack for the Get Started button on the landing page,
+  // otherwise we would figure out why erroneous pseudo-elements were getting applied
+  // rather than just overriding them all here
   &.button_green {
     &,
-    &:hover {
+    &:hover,
+    &:active {
       background-color: #e7e7e7;
       background-image: $icon-signup-spinner;
       background-position: center;
