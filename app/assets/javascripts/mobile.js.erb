@@ -66,7 +66,7 @@ $(document).ready(function(){
     }
   });
 
-  $('a').on('click', function(e){
+  $('body').on('click', 'a:not(.js-play-video,.js-load-more)', function(e){
     var self = this;
     // click on any link, replace the logo with a spinner so the user can tell something is happening
     e.preventDefault();
