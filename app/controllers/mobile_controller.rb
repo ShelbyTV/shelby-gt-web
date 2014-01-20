@@ -44,8 +44,6 @@ class MobileController < ApplicationController
       @dashboard = dedupe_dashboard(d)
 
       @banners = display_banners(@signed_in_user)
-
-      puts "ban: #{@banners}"
     else
       redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return
     end
