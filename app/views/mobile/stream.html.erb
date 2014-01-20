@@ -1,7 +1,7 @@
 
 <ul id="callouts" class="list">
   <% if @banners[:sources] %>
-    <li id="<%= Settings::Mobile.inline_cta.sources.id %>" class="list__item">
+    <li id="" class="list__item">
       <%= render :partial => '/objects/inline_cta',
                   :locals => {
                     :cta => Settings::Mobile.inline_cta.sources
