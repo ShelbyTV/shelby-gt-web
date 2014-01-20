@@ -2,6 +2,7 @@ defaults: &defaults
   #this setting is the threshold for when to show/hide the inline CTAs
   #after the specified amount of times a user has seen the stream, hide the CTAs
   anon_banner_session_count: 3
+  anonymous_user_nickname: 'Anonymous'
   #fe fi fo faux fum, I smell a user_type of user_type 1
   user_type:
     real: 0
