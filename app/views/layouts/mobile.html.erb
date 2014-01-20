@@ -60,6 +60,10 @@
     </header>
 
     <div class="content_wrapper clearfix js-guide" role="main">
+      <div class="notification clearfix js-flash">
+        <%= render :partial => "/mobile/partials/flash_messages" if !flash.empty? %>
+      </div>
+
       <%= yield %>
     </div>
 
@@ -81,10 +85,6 @@
 
     <div class="share_panel share_panel--fill share_panel--scroll hidden js-share-panel">
       <!-- filled in by underscore goodness -->
-    </div>
-
-    <div class="notification js-flash">
-      <%= render :partial => "/mobile/partials/flash_messages" if !flash.empty? %>
     </div>
 
     <div class="notification js-notification hidden">

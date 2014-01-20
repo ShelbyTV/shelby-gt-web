@@ -45,6 +45,8 @@ class MobileController < ApplicationController
 
       @banners = display_banners(@signed_in_user)
 
+      flash.now[:notice] = 'Whatever I want<br/><u>Click here</u> to do it.'
+
       puts "ban: #{@banners}"
     else
       redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return

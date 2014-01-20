@@ -1,11 +1,11 @@
 <% flash.each do |key, value| %>
-  <p><strong><%= raw value %></strong></p>
-<% end %>
+  <div class="media_image media_image--rev">
+    <button class="notification__button">
+      <span class="icon icon-close"></span>
+    </button>
+  </div>
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    setTimeout(function(){
-      $(".js-flash").slideUp(400);
-    }, 5000);
-  });
-</script>
+  <p class="media_body notification__message">
+    <strong><%= raw value %></strong>
+  </p>
+<% end %>
