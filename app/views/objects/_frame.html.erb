@@ -130,13 +130,10 @@
           <% end %>
         <% end %>
       </ul>
-      <%
-        remainingLikes = frame['like_count'] - frame['upvoters'].length
-        if remainingLikes > 0 %>
-        <span class="frame-likes-count frame-external-subline-text js-like-total">
-          <%= "+ #{remainingLikes}" %>
-        </span>
-      <% end %>
+      <% remainingLikes = frame['like_count'] - frame['upvoters'].length %>
+      <span class="frame-likes-count frame-external-subline-text <%= (remainingLikes > 0) ? '' : 'invisible ' %>js-like-total">
+        <%= "+ #{remainingLikes}" %>
+      </span>
     </div><!-- eo frame-likes -->
   <% end %>
 </article>
