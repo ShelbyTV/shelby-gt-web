@@ -101,8 +101,8 @@
     </span>
     <div class="share_panel frame-body-wrapper fin fin--top_left fin--edging clearfix js-shares hidden"></div>
   </div>
-  <% if frame['upvoters'].length > 0 %>
-    <% unless embed_video %>
+  <% if (frame['upvoters'].length > 0) || (frame['like_count'] > 0) %>
+    <% unless embed_video || (frame['upvoters'].length == 0) %>
       <script class="js-likes-array" data-frame_id="<%= frame['id'] %>" type="application/json">
         <%= raw frame['upvoters'].to_json %>
       </script>
