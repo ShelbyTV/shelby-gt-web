@@ -21,14 +21,20 @@
       </li>
 
       <li class="list__item js-featured-menu">
-        <a href="<%= appropriate_subdirectory %>/featured" class="app_nav__button<%= " active-item" if pathname == 'featured'%> js-featured js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Featured" data-ga_label="<%= signed_in_user['nickname'] %>">
-          Featured
+        <a href="<%= appropriate_subdirectory %>/explore" class="app_nav__button<%= " active-item" if pathname == 'featured'%> js-featured js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Explore" data-ga_label="<%= signed_in_user['nickname'] %>">
+          Explore
         </a>
       </li>
 
       <li class="list__item js-guide-me js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Me" data-ga_label="<%= signed_in_user['nickname'] %>">
-        <a href="<%= appropriate_subdirectory %>/<%= signed_in_user['nickname'] %><%= "/activity" if is_mobile %>" class="app_nav__button<%= " active-item" if pathname == 'me' or pathname == 'likes' or pathname == 'shares' %> js-me">
+        <a href="<%= appropriate_subdirectory %>/<%= signed_in_user['nickname'] %><%= "/activity" if is_mobile %>" class="app_nav__button<%= " active-item" if pathname == 'me' or pathname == 'following' or pathname == 'activity' %> js-me">
           Me
+        </a>
+      </li>
+
+      <li class="list__item js-guide-me js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Sources" data-ga_label="<%= signed_in_user['nickname'] %>">
+        <a href="<%= appropriate_subdirectory %>/preferences/sources" class="app_nav__button<%= " active-item" if pathname == 'sources' %> js-sources">
+          Channels
         </a>
       </li>
 
@@ -46,7 +52,8 @@
               <%= render :partial => 'objects/user_subnav',
                   :locals => {
                     :is_mobile    => is_mobile,
-                    :userNickname => signed_in_user['nickname']
+                    :userNickname => signed_in_user['nickname'],
+                    :user_type => signed_in_user['user_type']
                   } %>
 
             </div>
@@ -87,7 +94,8 @@
       <%= render :partial => 'objects/user_subnav',
           :locals => {
             :is_mobile    => is_mobile,
-            :userNickname => signed_in_user['nickname']
+            :userNickname => signed_in_user['nickname'],
+            :user_type => signed_in_user['user_type']
           } %>
     </div>
   <% end %>

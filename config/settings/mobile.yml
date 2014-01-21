@@ -6,10 +6,10 @@ defaults: &defaults
   button_gray_flexible: 'button_primer button_command button_command--flexible button_gray'
   load_more_button_class: 'button_primer button_command button_command--flexible button_gray two-thirds js-load-more'
   roll_types: {
+    activity: 'activity',
     featured: 'featured',
     likes: 'likes',
     me: 'me',
-    activity: 'activity',
     stream: 'stream',
     user: 'user'
   }
@@ -31,11 +31,39 @@ defaults: &defaults
 
   ga_category: Mobile
 
-
+  inline_cta:
+    sources:
+      id: inline-cta--sources
+      path: /preferences/sources
+      hook: sources
+      image_url: add-video-bkgd.png
+      label: Add Video
+      message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
+    social:
+      id: inline-cta--social
+      path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
+      hook: social
+      label: Facebook
+      message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
 
 development:
   <<: *defaults
   mobile_subdirectory: "/m"
+
+  inline_cta:
+    sources:
+      id: inline-cta--sources
+      path: /m/preferences/sources
+      hook: sources
+      image_url: add-video-bkgd.png
+      label: Add Video
+      message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
+    social:
+      id: inline-cta--social
+      path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
+      hook: social
+      label: Facebook
+      message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
 
 test:
   <<: *defaults
@@ -43,6 +71,21 @@ test:
 staging:
   <<: *defaults
   mobile_subdirectory: "/m"
+
+  inline_cta:
+    sources:
+      id: inline-cta--sources
+      path: /m/preferences/sources
+      hook: sources
+      image_url: add-video-bkgd.png
+      label: Add Video
+      message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
+    social:
+      id: inline-cta--social
+      path: //api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
+      hook: social
+      label: Facebook
+      message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
 
 production:
   <<: *defaults

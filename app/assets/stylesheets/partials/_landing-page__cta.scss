@@ -15,7 +15,7 @@
     }
 
     .appstore {
-      margin-top: 200px;
+      margin-top: 175px;
     }
   }
 
@@ -26,7 +26,8 @@
   }
 
   .shelf__button {
-    margin-top: 0.7em;
+    font-size: 1.5em;
+    margin-top: 1em;
   }
 
   .facepile {
@@ -56,5 +57,11 @@
     color: lighten($text,20%);
     font-size: 0.8em;
     margin-top: -0.5em;
+  }
+
+  @media screen and (max-width:  $mq-nine-ish) {
+    .shelf__lining {
+      width: auto;
+    }
   }
 }

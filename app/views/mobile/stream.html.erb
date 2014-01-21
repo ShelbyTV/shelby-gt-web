@@ -1,3 +1,36 @@
+
+<ul id="callouts" class="list">
+  <% if @banners[:sources] %>
+    <li id="<%= Settings::Mobile.inline_cta.sources.id %>" class="list__item">
+      <%= render :partial => '/objects/inline_cta',
+                  :locals => {
+                    :cta => Settings::Mobile.inline_cta.sources
+                  }
+      %>
+    </li>
+  <% end %>
+
+  <% if @banners[:facebook] %>
+    <li id="" class="list__item">
+      <%= render :partial => '/objects/inline_cta',
+                  :locals => {
+                    :cta => Settings::Mobile.inline_cta.social
+                  }
+      %>
+    </li>
+  <% end%>
+
+</ul>
+<% unless @banners[:anchor].nil? %>
+  <script>
+    $(document).ready(function(e){
+      <%= raw "window.location.hash = '#{@banners[:anchor]}';" %>
+    });
+  </script>
+
+  <%= tag :hr, { :id => 'stream', :class => 'push--bottom_deep'} %>
+<% end %>
+
 <ul class="list js-list">
   <% @dashboard.each_with_index do |dbe, index| %>
     <li class="list__item">
@@ -10,10 +43,11 @@
             :ga_category    => "Mobile",
             :index          => index,
             :is_mobile      => true,
+            :is_like        => is_frame_like?(dbe['frame']),
             :roll_type      => @roll_type,
             :signed_in_user => @signed_in_user,
             :video          => dbe['frame']['video'],
-            :dbe => dbe
+            :dbe            => dbe
           } %>
       <% end %>
     </li>

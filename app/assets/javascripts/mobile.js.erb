@@ -18,7 +18,14 @@ var libs = {
       }
     },
 
-    avatarUrlRoot: '//s3.amazonaws.com/shelby-gt-user-avatars'
+    avatarUrlRoot: '//s3.amazonaws.com/shelby-gt-user-avatars',
+    userTypes: {
+      real : 0,
+      faux : 1,
+      converted : 2,
+      service : 3,
+      anonymous : 4
+    }
   }
 };
 
@@ -56,13 +63,34 @@ $(document).ready(function(){
     else if($this.hasClass('js-me')) {
       var username = $('.app_nav__button--settings').text().trim();
       var path = Browser.isAmazonWebApp() ? '/amazonapp' : '';
-      window.location = path + '/' + username;
+      window.location = path + '/' + username + '/activity';
     }
     else if($this.hasClass('js-signout')) {
       var path = Browser.isAmazonWebApp() ? '/amazonapp' : '';
       window.location = path + "/signout";
     } else {
       window.location = $this.attr('href');
+    }
+  });
+
+  $('body').on('click', 'a:not(.js-play-video,.js-load-more)', function(e){
+    var self = this;
+    // click on any link, replace the logo with a spinner so the user can tell something is happening
+    e.preventDefault();
+    $('#js-header').find('.icon-mark').addClass('icon-mark--spinner');
+    window.setTimeout(function(){
+      window.location = $(self).attr('href');
+    }, 100);
+  });
+
+  $('.js-signup-submit').on('click', function(e){
+    e.preventDefault();
+    var $target = $(e.currentTarget);
+    if (!$target.hasClass('button_busy')) {
+      $target.addClass('button_busy');
+      window.setTimeout(function(){
+        $(e.currentTarget.form).submit();
+      }, 500);
     }
   });
 
@@ -226,11 +254,33 @@ $(document).ready(function(){
       $guide.toggleClass('hidden',false);
     });
 
-    $('.js-toggle-follow').on('click',function(e){
+    var updateUserAppProgress = function(user_id, app_progress_key) {
+      var data = {app_progress: {} };
+      data['app_progress'][app_progress_key]= true;
+      $.ajax({
+        type: 'GET',
+        url: libs.config.shelbyGT.apiRoot + "/PUT/user/" + user_id,
+        dataType: "jsonp",
+        timeout: 10000,
+        crossDomain: true,
+        data: data,
+        xhrFields: {
+          withCredentials: true
+        }
+      });
+    };
+
+    $('.js-sources-list,.js-roll-header').on('click', '.js-toggle-follow:not(.js-busy)', function(e){
       e.preventDefault();
       var $this   = $(this),
           roll_id = $this.data('roll_id'),
           method  = $this.hasClass('button_green') ? 'join' : 'leave';
+
+      $this.addClass('js-busy');
+
+      // immediately toggle the button - if the ajax fails, we'll update the next time we render
+      var newButtonText = (method == 'join') ? 'Following' : 'Follow';
+      $this.toggleClass('button_gray button_green button_active').text(newButtonText);
 
       $.ajax({
         type: 'GET',
@@ -243,13 +293,15 @@ $(document).ready(function(){
           withCredentials: true
         },
         success: function (response) {
-          var text = (method == 'join') ? 'Following' : 'Follow';
-
-          method = (method == 'join') ? 'leave' : 'join';
-
-          $this.toggleClass('button_gray button_green button_active').text(text);
+          var user = JSON.parse($('#js-user').text());
+          if (user.user_type == libs.config.userTypes.anonymous && typeof user.app_progress.followedSource == "undefined"){
+            updateUserAppProgress(user.id, "followedSources");
+          }
+          $this.removeClass('js-busy');
         },
-        error: function (e) { console.log("API Error: Unabled to Unfollow",e); }
+        error: function (e) {
+          $this.removeClass('js-busy');
+        }
       });
 
     });
@@ -262,39 +314,60 @@ $(document).ready(function(){
 
     var $this = $(this).addClass('button_busy');
 
-    $.get($this.attr('href'), function(data){
-      $this.removeClass('button_busy');
+    window.setTimeout(function(){
+      $.get($this.attr('href'), function(data){
+        $this.removeClass('button_busy');
 
-      var $items  = $(data).find('.js-list').children('.list__item'),
-          $button = $(data).find('.js-load-more');
+        var $items  = $(data).find('.js-list').children('.list__item'),
+            $button = $(data).find('.js-load-more');
 
-      $('.js-list').append($items);
-      $('.js-load-more').attr('href',$button.attr('href'));
+        $('.js-list').append($items);
+        $('.js-load-more').attr('href',$button.attr('href'));
 
-      _($items.children('.js-frame')).each(function(item){
-        var $el = $(item);
-        var $likers = $el.find('.js-likes-array');
+        _($items.children('.js-frame')).each(function(item){
+          var $el = $(item);
+          var $likers = $el.find('.js-likes-array');
 
-        if($likers && $likers.length){
-          $likers = JSON.parse($likers.html());
-          injectLikers($likers,$el);
-        }
+          if($likers && $likers.length){
+            $likers = JSON.parse($likers.html());
+            injectLikers($likers,$el);
+          }
+        });
       });
-    });
+    }, 100);
   });
+
+  var $frameLikeList = $('#js-frame-like').html();
 
   $('.js-list').on('click', '.js-like', function(e){
     var $this = $(this);
 
     //prevent extraneous api calls
-    if($(this).hasClass('visuallydisabled')) { return false; }
+    if($this.hasClass('visuallydisabled')) { return false; }
 
     e.preventDefault();
 
-    $(this).children('.icon-like').addClass('icon-like--red');
-
     var frame_id = $this.data('frame_id'),
+        $frame = $(e.delegateTarget).find('#' + frame_id),
+        $likes = $frame.find('.js-frame-likes'),
         data = { frame_id : frame_id };
+
+    //modify the button state/appearance
+    $this.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
+
+    if (!$likes.length) {
+      //if no one Liked the Frame yet, add the Like list container:
+      $frame.append($frameLikeList);
+    }
+
+    if (user && user.nickname != "Anonymous" && user.user_type != libs.config.userTypes.anonymous) {
+      //non-anonymous users get their avatar added to the liker list
+      appendAvatar(frame_id)
+    } else {
+      //anonymous users get added to the liker count
+      var $total = $frame.find('.js-like-total');
+      $total.text('+ ' + (parseInt($total.text().split('+')[1].trim()) + 1)).removeClass('invisible');
+    }
 
     $.ajax({
       type: 'GET',
@@ -306,38 +379,21 @@ $(document).ready(function(){
       xhrFields: {
         withCredentials: true
       },
-      success: function () {
-        var $total = $('.js-like-total');
-
-        if($total.length){
-          $total.text( '+ ' + (+($total.text().split('+')[1].trim()) + 1 ));
-        }
-      },
+      success: function () {},
       error: function () {}
     });
 
-    $this.addClass('visuallydisabled');
-
-    appendAvatar(frame_id);
   });
 
-  var $frameLikeList = $('#js-frame-like').html(),
-      $userLike      = $('#js-user-like').html();
+  var $userLike = $('#js-user-like').html();
 
   var appendAvatar = function(frame_id) {
     var $frame = $('#'+frame_id);
         $likes = $frame.find('.js-frame-likes');
 
-    if(!$likes.length) {
-      //if no one Liked the Frame, add the Like list container:
-      $frame.append($frameLikeList);
-      // re-cache the newly added Likes list container:
-      $likes = $frame.find('.js-frame-likes');
-    } else {
-      // if the logged in user is already in the list, don't add that user again
-      if( _( JSON.parse($frame.find('.js-likes-array').html()) ).indexOf(user.id) != -1 ) {
-        return;
-      }
+    // if the logged in user is already in the list, don't add that user again
+    if( _( JSON.parse($frame.find('.js-likes-array').html()) ).indexOf(user.id) != -1 ) {
+      return;
     }
 
     // append the user to the list:

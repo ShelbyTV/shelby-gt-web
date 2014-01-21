@@ -44,7 +44,8 @@ $icon-share-facebook-on         : "#{$path}share_facebook_on#{$extension}";
 $icon-share-facebook-off        : "#{$path}share_facebook_off#{$extension}";
 $icon-share-twitter-on          : "#{$path}share_twitter_on#{$extension}";
 $icon-share-twitter-off         : "#{$path}share_twitter_off#{$extension}";
-$icon-signup-spinner            : "#{$path}signup-loader.gif";
+$icon-signup-spinner            : image-url("signup-loader.gif");
+$icon-logo-spinner              : image-url("shelby-logo-spinner.gif");
 $icon-social-facebook           : "#{$path}social_facebook#{$extension}";
 $icon-social-tumblr             : "#{$path}social_tumblr#{$extension}";
 $icon-social-twitter            : "#{$path}social_twitter#{$extension}";
@@ -152,3 +153,9 @@ $guide-width                   : $_unit * 37; //if you use this, make sure you a
 $persistent_video_info--height : 180px;
 $logo-font-size                : 57px;
 $logo-font-size-small          : 37px;
+
+
+//------------------------------------------------------------------------------
+//  Breakpoints for nested Media Queries
+//------------------------------------------------------------------------------
+$mq-nine-ish : 944px;
