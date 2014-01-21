@@ -303,7 +303,7 @@ class MobileController < ApplicationController
     end
 
     # redirect if told to via options
-    if options[:redirect_if_issue] and @signed_in_user['app_progress'].nil?
+    if options[:redirect_if_issue] and @signed_in_user and @signed_in_user['app_progress'].nil?
       cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
       redirect_to(appropriate_subdirectory+"/?msg=Eeek,%20Something%20went%20wrong.%20Try%20logging%20in%20again.&status=401") and return
 
