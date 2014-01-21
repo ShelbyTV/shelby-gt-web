@@ -13,7 +13,7 @@
         Full Name
       </label>
       <span class="form_error" data-error="You must provide your full name"></span>
-      <input required type="text" class="form_input" id="userFullname" name="userFullname" placeholder="First Name, Last Name" value="" />
+      <input required type="text" class="form_input" id="userFullname" name="userFullname" value="" />
     </fieldset>
 
     <fieldset class="form_fieldset<%= " form_fieldset--error" if flash[:errors_nickname] %>">
@@ -41,7 +41,7 @@
 
 
     <fieldset class="form_fieldset">
-      <button type="submit" class="button_primer button_command button_command--submit button_green">
+      <button type="submit" class="button_primer button_command button_command--submit button_green js-signup-submit">
         Signup
       </button>
     </fieldset>
