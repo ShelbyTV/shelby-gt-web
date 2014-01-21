@@ -1,7 +1,7 @@
 
 <ul id="callouts" class="list">
   <% if @banners[:sources] %>
-    <li id="" class="list__item">
+    <li id="<%= Settings::Mobile.inline_cta.sources.id %>" class="list__item">
       <%= render :partial => '/objects/inline_cta',
                   :locals => {
                     :cta => Settings::Mobile.inline_cta.sources
@@ -11,7 +11,7 @@
   <% end %>
 
   <% if @banners[:facebook] %>
-    <li id="<%= Settings::Mobile.inline_cta.social.id %>" class="list__item">
+    <li id="" class="list__item">
       <%= render :partial => '/objects/inline_cta',
                   :locals => {
                     :cta => Settings::Mobile.inline_cta.social
@@ -25,7 +25,6 @@
   <script>
     $(document).ready(function(e){
       <%= raw "window.location.hash = '#{@banners[:anchor]}';" %>
-      $('body').scrollTop(180); // a hack to "make this work" until @matyus says otherwise
     });
   </script>
 
