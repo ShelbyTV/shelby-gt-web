@@ -53,7 +53,7 @@ development:
   inline_cta:
     sources:
       id: inline-cta--sources
-      path: /m/preferences/sources
+      path: /preferences/sources
       hook: sources
       image_url: add-video-bkgd.png
       label: Add Video
