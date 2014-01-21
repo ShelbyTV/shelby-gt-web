@@ -139,7 +139,7 @@ $(document).ready(function(e){
     if (!$target.hasClass('button_busy')) {
       $target.addClass('button_busy');
       window.setTimeout(function(){
-        $('.js-get-started-form').submit();
+        $(e.currentTarget.form).submit();
       }, 500);
     }
   });
