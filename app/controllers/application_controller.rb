@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
 
   def detect_mobile_os
     return :ios if (request.user_agent=~/iPhone/)
-    return :amazon if (request.user_agent=~/AmazonWebAppPlatform|Kindle/)
+    return :amazon if (request.user_agent=~/AmazonWebAppPlatform/)
     return :android if (request.user_agent=~/Android/)
     return :tablet if (request.user_agent=~/Silk/)
     return :generic if is_mobile?
