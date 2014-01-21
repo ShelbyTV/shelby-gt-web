@@ -312,6 +312,10 @@ class MobileController < ApplicationController
       cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
       @signed_in_user = check_for_signed_in_user
       @user_signed_in = user_signed_in?
+    elsif @user_signed_in and (@signed_in_user['nickname'] == "Anonymous")
+      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
+      @signed_in_user = check_for_signed_in_user
+      @user_signed_in = user_signed_in?
     end
   end
 
