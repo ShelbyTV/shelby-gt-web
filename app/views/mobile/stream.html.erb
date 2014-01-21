@@ -25,6 +25,7 @@
   <script>
     $(document).ready(function(e){
       <%= raw "window.location.hash = '#{@banners[:anchor]}';" %>
+      $('body').scrollTop(180); // a hack to "make this work" until @matyus says otherwise
     });
   </script>
 
