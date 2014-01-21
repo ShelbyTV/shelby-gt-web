@@ -91,7 +91,9 @@ module ApplicationHelper
         signed_in_user['name'] = ""
         signed_in_user['thumbnail_url'] = 'http://shelby.tv/assets/images/henry.jpg'
       end
-    else
+    end
+
+    unless signed_in_user
       signed_in_user = {}
       signed_in_user['nickname'] = 'Anonymous'
     end

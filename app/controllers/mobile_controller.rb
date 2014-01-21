@@ -296,7 +296,7 @@ class MobileController < ApplicationController
     @is_mobile      = is_mobile?
     @mobile_os      = detect_mobile_os
 
-    if @signed_in_user and @signed_in_user['user_type'] == Settings::User.user_type.anonymous and !@user_signed_in
+    if @signed_in_user and @signed_in_user['user_type'] == Settings::User.user_type.anonymous
       # login and redirect to /stream
       Shelby::API.login(@signed_in_user['nickname'], 'anonymous')
       redirect_to(appropriate_subdirectory+"/stream") and return
