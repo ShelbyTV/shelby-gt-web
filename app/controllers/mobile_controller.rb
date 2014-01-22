@@ -296,7 +296,7 @@ class MobileController < ApplicationController
     @is_mobile      = is_mobile?
     @mobile_os      = detect_mobile_os
 
-    if @signed_in_user and @signed_in_user['user_type'] == Settings::User.user_type.anonymous
+    if @signed_in_user and @signed_in_user['user_type'] == Settings::User.user_type.anonymous and !@user_signed_in
       # login and redirect to /stream
       r = Shelby::API.login(@signed_in_user['nickname'], 'anonymous', request.headers['HTTP_COOKIE'])
       Shelby::CookieUtils.proxy_cookies(options[:cookies], r.headers['set-cookie'])
