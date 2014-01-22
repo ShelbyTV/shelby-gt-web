@@ -299,13 +299,13 @@ class HomeController < ApplicationController
       format.json {
         manifest = {
           "verification_key" => "562513e4-f6d1-4a4d-a7fc-828814946ea8",
-          "version" => "0.10(0)",
+          "version" => "0.50(0)",
           "launch_path" => "amazonapp?mobile=false",
           "type" => "web",
           "permissions" => [
             "auth"
           ],
-          "last_update"  => "2013-12-17 16:08:08+0000"
+          "last_update"  => "2014-01-22 12:00:21+0000"
         }
 
         render :json => manifest.to_json
