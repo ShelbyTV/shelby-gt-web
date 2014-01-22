@@ -5,6 +5,7 @@
       <%= render :partial => '/objects/inline_cta',
                   :locals => {
                     :cta => Settings::Mobile.inline_cta.sources
+                    :subdirectory => appropriate_subdirectory
                   }
       %>
     </li>
