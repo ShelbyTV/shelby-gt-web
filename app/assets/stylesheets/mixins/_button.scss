@@ -67,13 +67,13 @@
 
   &.button_selected,
   &:hover {
-    background: lighten($base, 10.25%);
+    background-color: lighten($base, 10.25%);
   }
 
   &.button_active,
   &.button_enabled:active,
   &:active {
-    background: darken($base, 5.5%);
+    background-color: darken($base, 5.5%);
   }
 
   &.button_enabled {
@@ -89,7 +89,7 @@
     &:hover {
       $_disabled-color: #aaaaaa;
 
-      background: $_disabled-color;
+      background-color: $_disabled-color;
       border: 1px solid $_disabled-color;
       color: darken($_disabled-color, 13.5%);
     }
@@ -195,8 +195,11 @@ a.button_primer,
 //  sometimes you need a button with a spinner.
 /////////////////////////////////////////////////////////////////////////////
 .button_busy {
-  background-repeat: no-repeat;
-  background-position: center;
+  &,
+  &:hover {
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
   .button_label {
     visibility: hidden;
@@ -204,7 +207,28 @@ a.button_primer,
 
   // mad hacky.
   &.button_gray {
-    background-color: #e7e7e7;
-    background-image: url($icon-signup-spinner);
+    &,
+    &:hover {
+      background-color: #e7e7e7;
+      background-image: $icon-signup-spinner;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
   }
+
+  // this is specifically a hack for the Get Started button on the landing page,
+  // otherwise we would figure out why erroneous pseudo-elements were getting applied
+  // rather than just overriding them all here
+  &.button_green {
+    &,
+    &:hover,
+    &:active {
+      background-color: #e7e7e7;
+      background-image: $icon-signup-spinner;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: transparent;
+    }
+  }
+
 }

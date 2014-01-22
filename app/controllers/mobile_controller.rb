@@ -9,26 +9,17 @@ class MobileController < ApplicationController
     @auth_strategy = params[:auth_strategy]
     #####################################
 
-    @signed_in_user = check_for_signed_in_user
-    @user_signed_in = user_signed_in?
-    @is_mobile      = is_mobile?
-    @mobile_os = detect_mobile_os
+    check_for_signed_in_user_and_issues({:redirect_if_issue => false, :cookies => cookies})
+  #####  User is logged in, sent back from authenticating with facebook or twitter, send them to see status of connecting network  #####
+    if @user_signed_in and params[:connecting]
+      redirect_to(appropriate_subdirectory + "/connecting/#{params[:connecting]}") and return
 
-    # this means that the user isn't *really* logged in, delete the cookie and reassign variables appropriatly.
-    if @signed_in_user['app_progress'].nil?
-      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
-      @signed_in_user = check_for_signed_in_user
-      @user_signed_in = user_signed_in?
-    end
-
-    if user_signed_in? and @signed_in_user and @signed_in_user.has_key?("app_progress") and ((@signed_in_user['app_progress']['onboarding'] != true) or @signed_in_user['app_progress'['onboarding'] != "iOS_iPhone"])
-      users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
-      authed_service = params[:service] || users_first_auth['provider']
-
-      redirect_to(appropriate_subdirectory + "/onboarding/1?#{authed_service ? 'service='+authed_service : ''}") and return
-    elsif user_signed_in?
+  #####  User is logged in, send them to the right mobile stream path  #####
+    elsif @user_signed_in
       log_session()
       redirect_to(appropriate_subdirectory + '/stream') and return
+
+  #####  User is NOT logged in, send them to the landing page  #####
     else
       @mobile_signup_url = Settings::ShelbyAPI.url+"/auth/facebook?service=facebook&origin="+Settings::Application.mobile_url
       render '/home/landing', :layout => false
@@ -36,14 +27,11 @@ class MobileController < ApplicationController
   end
 
   def stream
-    if user_signed_in?
-      check_for_signed_in_user_and_issues
-
-      unless (@signed_in_user['app_progress'] and ((@signed_in_user['app_progress']['onboarding'] == true) or @signed_in_user['app_progress'['onboarding'] == "iOS_iPhone"]))
-        users_first_auth = !@signed_in_user['authentications'].empty? ? @signed_in_user['authentications'].first : {}
-        authed_service = params[:service] || users_first_auth['provider']
-        redirect_to(appropriate_subdirectory + "/onboarding/1?service=#{authed_service || ''}") and return
-      end
+    #####  User is logged in, sent back from authenticating with facebook or twitter, send them to see status of connecting network  #####
+    if user_signed_in? and params[:connecting]
+      redirect_to(appropriate_subdirectory + "/connecting/#{params[:connecting]}") and return
+    elsif user_signed_in?
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
@@ -54,20 +42,15 @@ class MobileController < ApplicationController
 
       d = Shelby::API.get_user_dashboard(current_user_id, request.headers['HTTP_COOKIE'], @skip, Settings::Mobile.default_limit, params[:entry])
       @dashboard = dedupe_dashboard(d)
+
+      @banners = display_banners(@signed_in_user)
     else
       redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return
     end
   end
 
   def featured
-    @signed_in_user = check_for_signed_in_user
-    @user_signed_in = user_signed_in?
-    @is_mobile      = is_mobile?
-
-    # this means that the user isn't *really* logged in, delete the cookie and let the person be
-    if @signed_in_user['app_progress'].nil?
-      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
-    end
+    check_for_signed_in_user_and_issues({:redirect_if_issue => false, :cookies => cookies})
 
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
@@ -81,7 +64,7 @@ class MobileController < ApplicationController
 
   def me
     if user_signed_in?
-      check_for_signed_in_user_and_issues
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
       @user = @signed_in_user
       @include_smart_app_banner = true
 
@@ -116,7 +99,7 @@ class MobileController < ApplicationController
     # separating the logic that grabs Users from the logic that grabs Frames, Rolls, etc.
 
     if user_signed_in?
-      check_for_signed_in_user_and_issues
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
       @roll_type = Settings::Mobile.roll_followings
       @users = Shelby::API.get_user_followings(@signed_in_user['id'],request.headers['HTTP_COOKIE'])
@@ -129,17 +112,25 @@ class MobileController < ApplicationController
 
   def preferences
     if user_signed_in?
-      check_for_signed_in_user_and_issues
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
       @section = params[:section] || Settings::Mobile.preferences_sections.profile
 
       case @section
         when Settings::Mobile.preferences_sections.sources
+          if (@signed_in_user['user_type'] == Settings::User.user_type.anonymous) and (@signed_in_user['app_progress']['followedSources'] != "true")
+            flash.now[:notice] = "Follow Channels! </br> Follow as many channels as you like! All video ends up in your stream"
+          end
           @sources = Shelby::API.get_featured_sources("onboarding",request.headers['HTTP_COOKIE'])
+          @roll_type = Settings::Mobile.preferences_sections.sources
         when Settings::Mobile.preferences_sections.notifications
           @preferences = @signed_in_user['preferences']
         when Settings::Mobile.preferences_sections.profile
           @user = @signed_in_user
+          if @signed_in_user['user_type'] == Settings::User.user_type.anonymous
+            # considering this a signup
+            render "/mobile/preferences_profile_for_anonymous" and return
+          end
         else
       end
 
@@ -151,19 +142,18 @@ class MobileController < ApplicationController
 
   def notifications
     if user_signed_in?
-      check_for_signed_in_user_and_issues
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
       @section = Settings::Mobile.preferences_sections.notifications
       @preferences = @signed_in_user['preferences']
-
 
       @preferences.each do |preference,value|
         @preferences[preference] = params.has_key?(preference)
       end
 
-    update_user(@signed_in_user, {:preferences => @preferences})
+      update_user(@signed_in_user, {:preferences => @preferences})
 
-    #TODO: this needs error/success handling
+      #TODO: this needs error/success handling
 
       render "/mobile/preferences_#{@section}"
     else
@@ -173,7 +163,7 @@ class MobileController < ApplicationController
 
   def profile
     if user_signed_in?
-      check_for_signed_in_user_and_issues
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
       @section = Settings::Mobile.preferences_sections.profile
 
@@ -182,12 +172,14 @@ class MobileController < ApplicationController
       data[:name] = params['userFullname'] if params['userFullname']
       data[:nickname] = params['userNickname'] if params['userNickname']
       data[:primary_email] = params['userEmail'] if params['userEmail']
+      data[:password] = params['password'] if params['password']
+      data[:password_confirmation] = params['password'] if params['password']
 
       response = update_user(@signed_in_user, data)
       errors = response.parsed_response['errors']
 
-      flash[:errors_primary_email] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])
-      flash[:errors_nickname] = Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])
+      flash[:errors_nickname] = "#{data[:nickname]} #{Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])}" if Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'nickname'])
+      flash[:errors_primary_email] = "#{data[:primary_email]} #{Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])}" if Shelby::HashErrorChecker.get_hash_error(errors, ['user', 'primary_email'])
 
       #TODO: this needs error/success handling
 
@@ -198,17 +190,10 @@ class MobileController < ApplicationController
   end
 
   def roll
-    @signed_in_user = check_for_signed_in_user
-    @user_signed_in = user_signed_in?
-    @is_mobile      = is_mobile?
+    check_for_signed_in_user_and_issues({:redirect_if_issue => false, :cookies => cookies})
 
     # don't look up any data that looks like an asset file
     raise ActionController::RoutingError.new(Settings::ErrorMessages.content_not_found) if (params[:username]=~/.jpg|.png|.gif|.js/)
-
-    # this means that the user isn't *really* logged in, delete the cookie and let the person be
-    if @signed_in_user['app_progress'].nil?
-      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
-    end
 
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
@@ -264,56 +249,86 @@ class MobileController < ApplicationController
     redirect_to(Settings::ShelbyAPI.url + "/sign_out_user") and return
   end
 
-  def show_onboarding
-    @signed_in_user = check_for_signed_in_user
-    @current_step = (params[:step] || 1).to_i
-    raise ActionController::RoutingError.new(Settings::ErrorMessages.step_does_not_exist) unless [1,2].include?(@current_step)
-    (redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return) unless user_signed_in?
-
-    if @current_step == 1
-      @service = params[:service]
-    elsif @current_step == 2
-      @sources = Shelby::API.get_featured_sources("onboarding",request.headers['HTTP_COOKIE'])
+  # POST route to create ONLY an anonymous type user
+  # Requires: params[:anonymous] = true
+  def create_user
+    if params[:anonymous] != "true"
+      redirect_to(appropriate_subdirectory+"?status=409&msg=Something%20has%20gone%20really%20really%20wrong!") and return
+    elsif create_anon_user!(cookies)
+      flash[:notice] = "Welcome to Shelby.tv! <br/> <a href=\"#{appropriate_subdirectory}/preferences/sources\" class=\"js-track-event\" data-ga_category=\"Mobile\" data-ga_action=\"Click Add in Banner\">Add Channels</a> to get started."
+      log_session()
+      redirect_to(appropriate_subdirectory+"/stream") and return
+    else
+      redirect_to(appropriate_subdirectory+"?status=409&msg=Uh%20Oh.%20Something%20went%20wrong.%20Give%20that%20another%20shot...") and return
     end
-
-    render "/mobile/onboarding/step_#{@current_step.to_s}".to_sym
   end
 
-  def set_onboarding
-    @current_step = params[:step].to_i
-    raise ActionController::RoutingError.new(Settings::ErrorMessages.step_does_not_exist) unless [1,2].include?(@current_step)
+  def show_connecting_service
+    @signed_in_user = check_for_signed_in_user
+    (redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return) unless user_signed_in?
+    @service = params[:service]
+    flash.now[:notice] = "Awesome, you'll start seeing video you're friends are sharing soon!"
+    render "mobile/partials/connecting_service"
+  end
+
+  # Route to set timeline preference or follow shelby depending on the service & update users app progress appropriatly
+  def set_connected_service
     (redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return) unless user_signed_in?
 
-    @current_user = Shelby::API.get_user(current_user_id)
+    check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
-    if @current_step == 1
-      # follow shelby, set open graph preference etc
-      EM.next_tick { set_timeline_preference(@current_user, params[:onboarding_timeline_sharing]) }
-      EM.next_tick { follow_shelby(@current_user, params[:onboarding_follow_shelby]) }
-      attributes = {:app_progress => {:onboarding => @current_step}}
-      update_user(@current_user, attributes)
-      redirect_to(appropriate_subdirectory + "/onboarding/2") and return
-    elsif @current_step == 2 and params[:rolls]
-      EM.next_tick { follow_rolls(params[:rolls]) }
-      attributes = {:app_progress => {:onboarding => true} }
-      update_user(@current_user, attributes)
-      redirect_to(appropriate_subdirectory + "/stream") and return
-    else
-      redirect_to(appropriate_subdirectory+ "/?status=#{Settings::ErrorMessages.step_does_not_exist}") and return
+    # follow shelby, set open graph preference etc
+    if params[:service] == "facebook"
+      EM.next_tick { set_timeline_preference(@signed_in_user, params[:onboarding_timeline_sharing]) }
+    elsif params[:service] == "twitter"
+      EM.next_tick { follow_shelby(@signed_in_user, params[:onboarding_follow_shelby]) }
     end
+    attributes = {:app_progress => {"connected#{params[:service].capitalize}".to_sym => true, 'onboarding'  => true}}
+    update_user(@signed_in_user, attributes)
+    redirect_to(appropriate_subdirectory + "/stream") and return
   end
 
   private
 
-  def check_for_signed_in_user_and_issues
+  def check_for_signed_in_user_and_issues(options)
     @signed_in_user = check_for_signed_in_user
     @user_signed_in = user_signed_in?
     @is_mobile      = is_mobile?
+    @mobile_os      = detect_mobile_os
 
-    # this means that the user isn't *really* logged in, delete the cookie and redirect to landing
-    if @signed_in_user['app_progress'].nil?
+    if @signed_in_user and @signed_in_user['user_type'] == Settings::User.user_type.anonymous and !@user_signed_in
+      # login and redirect to /stream
+      r = Shelby::API.login(@signed_in_user['nickname'], 'anonymous', request.headers['HTTP_COOKIE'])
+      Shelby::CookieUtils.proxy_cookies(options[:cookies], r.headers['set-cookie'])
+      redirect_to(appropriate_subdirectory+"/stream") and return
+    end
+
+    # redirect if told to via options
+    if options[:redirect_if_issue] and @signed_in_user and @signed_in_user['app_progress'].nil?
       cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
-      redirect_to(appropriate_subdirectory+mobile_landing_path(:msg =>"Eeek, Something went wrong. Try logging in again.", :status => 401)) and return
+      redirect_to(appropriate_subdirectory+"/?msg=Eeek,%20Something%20went%20wrong.%20Try%20logging%20in%20again.&status=401") and return
+
+    # just reset user state as seen by app
+    elsif @signed_in_user and (@signed_in_user['user_type'] != Settings::User.user_type[:anonymous]) and @signed_in_user['app_progress'].nil?
+      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
+      @signed_in_user = check_for_signed_in_user
+      @user_signed_in = user_signed_in?
+    elsif @user_signed_in and (@signed_in_user['user_type'] != Settings::User.user_type[:anonymous]) and (@signed_in_user['nickname'] == "Anonymous")
+      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
+      @signed_in_user = check_for_signed_in_user
+      @user_signed_in = user_signed_in?
+    end
+  end
+
+  def create_anon_user!(cookies)
+    r = Shelby::API.create_user({:anonymous => true}, Shelby::CookieUtils.generate_cookie_string(cookies), csrf_token_from_cookie)
+    # proxy the cookies
+    Shelby::CookieUtils.proxy_cookies(cookies, r.headers['set-cookie'])
+    if r.code != 200
+      return false
+    else
+      @user = r['result']
+      return true
     end
   end
 

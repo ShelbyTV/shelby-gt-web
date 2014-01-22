@@ -21,6 +21,16 @@
 
   .icon-mark {
     color: $ui-green;
+
+    &.icon-mark--spinner {
+      background-image: $icon-logo-spinner;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      &:before {
+        opacity: 0;
+      }
+    }
   }
 
   .icon-type {

@@ -17,14 +17,10 @@
             <% if !user_signed_in %>
               <% if [:android, :amazon].include? @mobile_os %>
                 <li class="list__item">
-                  <a
-                    href="/signup?email=1"
-                    class="animate_module button_primer button_command button_command--flexible button_green shelf__button--cta js-track-event"
-                    data-ga_action="Click Sign Up on Amazon device"
-                    data-ga_label="Header"
-                    >
-                    Signup
-                  </a>
+                  <%= form_tag "#{appropriate_subdirectory}/user/create", :class => "form_module js-get-started-form" do %>
+                    <%= hidden_field_tag 'anonymous', true %>
+                    <button class="animate_module button_primer button_command button_command--flexible button_green shelf__button--cta js-track-event js-get-started-button" data-ga_action="Click Get Started" data-ga_label="<%= request.referer || 'direct' %>"><span class="button_label">Get Started</span></button>
+                  <% end %>
                 </li>
               <% else %>
                 <li class="list__item">

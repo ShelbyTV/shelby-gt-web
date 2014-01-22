@@ -1,12 +1,45 @@
 
 .notification {
-  background-color: $ui-green;
+  background-color: $ui-blue;
+  border-bottom: solid 1px darken($ui-blue,5%);
+  border-left: solid 1px darken($ui-blue,5%);
+  border-right: solid 1px darken($ui-blue,5%);
   color: $ui-white;
-  font-size: 1.3em;
+  font-size: 1.5em;
   left: 0;
   line-height: 1.2;
-  position: absolute;
-  text-align: center;
-  top: 41px;
-  width: 100%;
+  margin: 0 auto;
+  opacity: 0.95;
+  padding-left: 1em;
+  position: relative;
+  z-index: 1;
+
+  a {
+    &,
+    &:active,
+    &:hover,
+    &:visited {
+      color: $ui-white;
+      text-decoration: underline;
+    }
+  }
 }
+
+    .notification__message {
+
+    }
+
+    .notification__button {
+      border: none;
+      background: transparent;
+      color: $ui-white;
+      margin: 0;
+      padding: 1em;
+
+      &:hover {
+        color: $ui-soft-black;
+      }
+      &:active {
+        color: $ui-black;
+      }
+    }
