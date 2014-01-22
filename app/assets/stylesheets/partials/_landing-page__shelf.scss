@@ -18,6 +18,14 @@
   min-width: 1150px;
   text-align: left;
   width: 1150px;
+
+  @media screen and (max-width: $mq-nine-ish) {
+    .shelf__lining {
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 }
 
 //------------------------------------------------------------------------------

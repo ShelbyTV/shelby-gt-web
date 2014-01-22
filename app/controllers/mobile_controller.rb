@@ -9,7 +9,7 @@ class MobileController < ApplicationController
     @auth_strategy = params[:auth_strategy]
     #####################################
 
-    check_for_signed_in_user_and_issues({:redirect_if_issue => false})
+    check_for_signed_in_user_and_issues({:redirect_if_issue => false, :cookies => cookies})
   #####  User is logged in, sent back from authenticating with facebook or twitter, send them to see status of connecting network  #####
     if @user_signed_in and params[:connecting]
       redirect_to(appropriate_subdirectory + "/connecting/#{params[:connecting]}") and return
@@ -31,7 +31,7 @@ class MobileController < ApplicationController
     if user_signed_in? and params[:connecting]
       redirect_to(appropriate_subdirectory + "/connecting/#{params[:connecting]}") and return
     elsif user_signed_in?
-      check_for_signed_in_user_and_issues({:redirect_if_issue => true})
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
       @is_mobile      = is_mobile?
       @user_signed_in = user_signed_in?
@@ -50,7 +50,7 @@ class MobileController < ApplicationController
   end
 
   def featured
-    check_for_signed_in_user_and_issues({:redirect_if_issue => false})
+    check_for_signed_in_user_and_issues({:redirect_if_issue => false, :cookies => cookies})
 
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
@@ -64,7 +64,7 @@ class MobileController < ApplicationController
 
   def me
     if user_signed_in?
-      check_for_signed_in_user_and_issues({:redirect_if_issue => true})
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
       @user = @signed_in_user
       @include_smart_app_banner = true
 
@@ -99,7 +99,7 @@ class MobileController < ApplicationController
     # separating the logic that grabs Users from the logic that grabs Frames, Rolls, etc.
 
     if user_signed_in?
-      check_for_signed_in_user_and_issues({:redirect_if_issue => true})
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
       @roll_type = Settings::Mobile.roll_followings
       @users = Shelby::API.get_user_followings(@signed_in_user['id'],request.headers['HTTP_COOKIE'])
@@ -112,7 +112,7 @@ class MobileController < ApplicationController
 
   def preferences
     if user_signed_in?
-      check_for_signed_in_user_and_issues({:redirect_if_issue => true})
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
       @section = params[:section] || Settings::Mobile.preferences_sections.profile
 
@@ -142,7 +142,7 @@ class MobileController < ApplicationController
 
   def notifications
     if user_signed_in?
-      check_for_signed_in_user_and_issues({:redirect_if_issue => true})
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
       @section = Settings::Mobile.preferences_sections.notifications
       @preferences = @signed_in_user['preferences']
@@ -163,7 +163,7 @@ class MobileController < ApplicationController
 
   def profile
     if user_signed_in?
-      check_for_signed_in_user_and_issues({:redirect_if_issue => true})
+      check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
       @section = Settings::Mobile.preferences_sections.profile
 
@@ -190,7 +190,7 @@ class MobileController < ApplicationController
   end
 
   def roll
-    check_for_signed_in_user_and_issues({:redirect_if_issue => false})
+    check_for_signed_in_user_and_issues({:redirect_if_issue => false, :cookies => cookies})
 
     # don't look up any data that looks like an asset file
     raise ActionController::RoutingError.new(Settings::ErrorMessages.content_not_found) if (params[:username]=~/.jpg|.png|.gif|.js/)
@@ -275,7 +275,7 @@ class MobileController < ApplicationController
   def set_connected_service
     (redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return) unless user_signed_in?
 
-    check_for_signed_in_user_and_issues({:redirect_if_issue => true})
+    check_for_signed_in_user_and_issues({:redirect_if_issue => true, :cookies => cookies})
 
     # follow shelby, set open graph preference etc
     if params[:service] == "facebook"
@@ -296,9 +296,10 @@ class MobileController < ApplicationController
     @is_mobile      = is_mobile?
     @mobile_os      = detect_mobile_os
 
-    if @signed_in_user and @signed_in_user['user_type'] == Settings::User.user_type.anonymous
+    if @signed_in_user and @signed_in_user['user_type'] == Settings::User.user_type.anonymous and !@user_signed_in
       # login and redirect to /stream
-      Shelby::API.login(@signed_in_user['nickname'], 'anonymous')
+      r = Shelby::API.login(@signed_in_user['nickname'], 'anonymous', request.headers['HTTP_COOKIE'])
+      Shelby::CookieUtils.proxy_cookies(options[:cookies], r.headers['set-cookie'])
       redirect_to(appropriate_subdirectory+"/stream") and return
     end
 

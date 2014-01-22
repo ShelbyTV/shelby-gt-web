@@ -123,7 +123,7 @@ module Shelby
       put("#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}/user/#{id}/visit", { :headers => headers })
     end
 
-    def self.login(nickname, password, csrf_token)
+    def self.login(nickname, password, cookie, csrf_token=nil)
       #return unless user_signed_in?
       headers = { 'Cookie' => cookie }
       headers['X-CSRF-Token'] = csrf_token if csrf_token
