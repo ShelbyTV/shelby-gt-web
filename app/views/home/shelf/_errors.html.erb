@@ -1,9 +1,9 @@
 <% if @social_signup_error or @access_error or @invite_error or @auth_failure or @status or @session_error or (flash[:error] == "401") %>
   <div class="shelf__wrapper shelf__wrapper--error clearfix">
     <div class="shelf shelf--error clearfix">
-      <% if @access_error or @invite_error %>
+      <% if @access_error or @invite_error or @status %>
         <p class="js-signin-error">
-          Please Sign up or Log in
+          Please Get Started or Log in
         </p>
       <% end %>
 

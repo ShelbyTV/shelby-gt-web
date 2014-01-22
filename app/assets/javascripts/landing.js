@@ -132,6 +132,30 @@ $(document).ready(function(e){
       $nav              = $('.js-slide-navigator'),
       isHorizontal      = false;
 
+  $('.js-get-started-button,#login-submit-android').on('click', function(e){
+    e.preventDefault();
+    var $target = $(e.currentTarget);
+    if (!$target.hasClass('button_busy')) {
+      $target.addClass('button_busy');
+      window.setTimeout(function(){
+        $(e.currentTarget.form).submit();
+      }, 500);
+    }
+  });
+
+  $('.js-login-oauth:not(.js-authorize)').on('click', function(e){
+    var self = this;
+
+    // click on oauth redirector link button, put a spinner on the button
+    e.preventDefault();
+    var $target = $(e.currentTarget);
+    if (!$target.hasClass('button_busy')) {
+      $target.addClass('button_busy');
+      window.setTimeout(function(){
+        window.location = $(self).attr('href');
+      }, 100);
+    }
+  });
 
   /*
     Set shelf height to fill window, minus header.

@@ -19,7 +19,11 @@
         </h3>
 
         <h4 class="user__h2">
-          <%= realname %>
+          <% if user_type == Settings::User.user_type.anonymous %>
+            <a href="<%= appropriate_subdirectory %>/preferences/profile" class="js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Edit profile from Header">Edit your profile</a>
+          <% else %>
+            <%= realname.html_safe if realname %>
+          <% end %>
         </h4>
       </div><!-- eo media_body -->
     <%= "</a>".html_safe if clickable %>

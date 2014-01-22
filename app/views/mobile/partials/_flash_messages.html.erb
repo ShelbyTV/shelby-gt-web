@@ -1,0 +1,21 @@
+<% flash.each do |key, value| %>
+  <div class="media_image media_image--rev">
+    <button class="notification__button js-track-event js-dismiss-notification" data-ga_category="<%= ga_category %>" data-ga_action="Click dismiss Notification">
+      <span class="icon icon-close"></span>
+    </button>
+  </div>
+
+  <p class="media_body notification__message">
+    <strong><%= raw value %></strong>
+  </p>
+<% end %>
+
+<script>
+  $(document).ready(function(e){
+    $('.js-dismiss-notification').on('click',function(e){
+      e.preventDefault();
+
+      $('.js-flash').slideUp();
+    });
+  });
+</script>

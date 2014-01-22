@@ -1,4 +1,4 @@
-<ol class="list list--stacked">
+<ol class="list list--stacked js-sources-list">
   <% @sources.each_with_index do |roll,index| %>
     <%= content_tag :li, :id => roll['id'], :class => 'list__item', :data => { :title => roll['display_title']} do %>
       <%= render :partial => '/objects/user_card', :locals => {

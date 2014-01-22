@@ -104,5 +104,6 @@ libs.shelbyGT.UserModel.USER_TYPE = {
   real : 0,
   faux : 1,
   converted : 2,
-  service : 3
+  service : 3,
+  anonymous : 4
 };

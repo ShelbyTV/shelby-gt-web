@@ -6,8 +6,10 @@ ShelbyGtWeb::Application.routes.draw do
   # get '/genius' => 'genius#index'
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#landing', :as => :mobile_landing
+    post '/user/create' => 'mobile#create_user'
     get '/log_in' => "home#log_in"
     get '/featured' => 'mobile#featured', :as => :mobile_featured
+    get '/explore' => 'mobile#featured', :as => :mobile_featured
     get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
     get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
     post '/preferences/notifications' => 'mobile#notifications', :as => :mobile_preferences
@@ -16,8 +18,8 @@ ShelbyGtWeb::Application.routes.draw do
     get '/signout' => 'mobile#signout', :as => :mobile_signout
     get '/signup' => 'signup#show', :as => :signup
     get '/signup/:code' => 'signup#show'
-    get '/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
-    post '/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
+    get '/connecting/:service' => 'mobile#show_connecting_service'
+    post '/connecting/:service' => 'mobile#set_connected_service'
     get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
     get '/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
     get '/:username' => 'mobile#roll', :as => :mobile_user, :constraints => { :username => /[^\/]+/ }
@@ -25,7 +27,9 @@ ShelbyGtWeb::Application.routes.draw do
 
   scope "/amazonapp" do
     get '/' => 'mobile#landing'
+    post '/user/create' => 'mobile#create_user'
     get '/log_in' => "home#log_in"
+    get '/explore' => 'mobile#featured'
     get '/featured' => 'mobile#featured'
     get '/preferences' => 'mobile#preferences'
     get '/preferences/:section' => 'mobile#preferences'
@@ -35,9 +39,8 @@ ShelbyGtWeb::Application.routes.draw do
     get '/signout' => 'mobile#signout'
     get '/signup' => 'signup#show', :as => :signup
     get '/signup/:code' => 'signup#show'
-
-    get '/onboarding/:step' => 'mobile#show_onboarding'
-    post '/onboarding/:step' => 'mobile#set_onboarding'
+    get '/connecting/:service' => 'mobile#show_connecting_service'
+    post '/connecting/:service' => 'mobile#set_connected_service'
     get '/:username/following' => 'mobile#following', :constraints => { :username => /[^\/]+/ }
     get '/:username/:type' => 'mobile#me', :constraints => { :username => /[^\/]+/ }
     get '/:username' => 'mobile#roll', :constraints => { :username => /[^\/]+/ }
@@ -48,7 +51,9 @@ ShelbyGtWeb::Application.routes.draw do
   if ["development","staging"].include?(Rails.env)
     scope "/m" do
       get '/' => 'mobile#landing', :as => :mobile_landing
+      post '/user/create' => 'mobile#create_user'
       get '/log_in' => "home#log_in"
+      get '/explore' => 'mobile#featured', :as => :mobile_featured
       get '/featured' => 'mobile#featured', :as => :mobile_featured
       get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
       get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
@@ -58,8 +63,8 @@ ShelbyGtWeb::Application.routes.draw do
       get '/signout' => 'mobile#signout', :as => :mobile_signout
       get '/signup' => 'signup#show', :as => :signup
       get '/signup/:code' => 'signup#show'
-      get '/onboarding/:step' => 'mobile#show_onboarding', :as => :mobile_show_onboarding
-      post '/onboarding/:step' => 'mobile#set_onboarding', :as => :mobile_set_onboarding
+      get '/connecting/:service' => 'mobile#show_connecting_service'
+      post '/connecting/:service' => 'mobile#set_connected_service'
       get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
       get '/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
       get '/:username' => 'mobile#roll', :as => :mobile_user, :constraints => { :username => /[^\/]+/ }

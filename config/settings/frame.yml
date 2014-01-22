@@ -1,0 +1,16 @@
+defaults: &defaults
+  frame_type:
+    heavy_weight: 0
+    light_weight: 1
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults

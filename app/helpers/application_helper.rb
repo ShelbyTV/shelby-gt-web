@@ -86,7 +86,14 @@ module ApplicationHelper
   def check_for_signed_in_user
     if user_signed_in?
       signed_in_user = Shelby::API.get_user(current_user_id,request.headers['HTTP_COOKIE'])
-    else
+      if signed_in_user and signed_in_user['user_type'] and (signed_in_user['user_type'] == Settings::User.user_type.anonymous)
+        signed_in_user['nickname'] = Settings::User.anonymous_user_nickname
+        signed_in_user['name'] = ""
+        signed_in_user['thumbnail_url'] = 'http://shelby.tv/assets/images/henry.jpg'
+      end
+    end
+
+    unless signed_in_user
       signed_in_user = {}
       signed_in_user['nickname'] = 'Anonymous'
     end
@@ -148,7 +155,7 @@ module ApplicationHelper
     return :ios if (request.user_agent=~/iPhone/)
     return :amazon if (request.user_agent=~/AmazonWebAppPlatform/)
     return :android if (request.user_agent=~/Android/)
-    return :tablet if (request.user_agent=~/Kindle|Silk/)
+    return :tablet if (request.user_agent=~/Silk/)
     return :generic if is_mobile?
     return nil
   end
