@@ -44,7 +44,7 @@ $icon-share-facebook-on         : "#{$path}share_facebook_on#{$extension}";
 $icon-share-facebook-off        : "#{$path}share_facebook_off#{$extension}";
 $icon-share-twitter-on          : "#{$path}share_twitter_on#{$extension}";
 $icon-share-twitter-off         : "#{$path}share_twitter_off#{$extension}";
-$icon-signup-spinner            : image-url("signup-loader.gif");
+$icon-signup-spinner            : asset-data-url("signup-loader.gif");
 $icon-logo-spinner              : asset-data-url("shelby-logo-spinner.gif");
 $icon-social-facebook           : "#{$path}social_facebook#{$extension}";
 $icon-social-tumblr             : "#{$path}social_tumblr#{$extension}";
