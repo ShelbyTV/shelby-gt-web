@@ -309,11 +309,11 @@ class MobileController < ApplicationController
       redirect_to(appropriate_subdirectory+"/?msg=Eeek,%20Something%20went%20wrong.%20Try%20logging%20in%20again.&status=401") and return
 
     # just reset user state as seen by app
-    elsif @signed_in_user and @signed_in_user['app_progress'].nil?
+    elsif @signed_in_user and (@signed_in_user['user_type'] != Settings::User.user_type[:anonymous]) and @signed_in_user['app_progress'].nil?
       cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
       @signed_in_user = check_for_signed_in_user
       @user_signed_in = user_signed_in?
-    elsif @user_signed_in and (@signed_in_user['nickname'] == "Anonymous")
+    elsif @user_signed_in and (@signed_in_user['user_type'] != Settings::User.user_type[:anonymous]) and (@signed_in_user['nickname'] == "Anonymous")
       cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
       @signed_in_user = check_for_signed_in_user
       @user_signed_in = user_signed_in?

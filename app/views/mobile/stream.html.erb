@@ -4,7 +4,7 @@
     <li id="<%= Settings::Mobile.inline_cta.sources.id %>" class="list__item">
       <%= render :partial => '/objects/inline_cta',
                   :locals => {
-                    :cta => Settings::Mobile.inline_cta.sources
+                    :cta => Settings::Mobile.inline_cta.sources,
                     :subdirectory => appropriate_subdirectory
                   }
       %>
@@ -15,7 +15,8 @@
     <li id="" class="list__item">
       <%= render :partial => '/objects/inline_cta',
                   :locals => {
-                    :cta => Settings::Mobile.inline_cta.social
+                    :cta => Settings::Mobile.inline_cta.social,
+                    :subdirectory => appropriate_subdirectory
                   }
       %>
     </li>
