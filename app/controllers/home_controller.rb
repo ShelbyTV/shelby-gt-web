@@ -299,7 +299,7 @@ class HomeController < ApplicationController
       format.json {
         manifest = {
           "verification_key" => "562513e4-f6d1-4a4d-a7fc-828814946ea8",
-          "version" => "0.50(0)",
+          "version" => "1.0(0)",
           "launch_path" => "amazonapp?mobile=false",
           "type" => "web",
           "permissions" => [
