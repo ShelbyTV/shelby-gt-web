@@ -249,18 +249,17 @@ $(document).ready(function() {
             $guide.toggleClass('hidden', false);
         });
 
-        var updateUserAppProgress = function(user_id, app_progress_key) {
-            var data = {
-                app_progress: {}
-            };
-            data['app_progress'][app_progress_key] = true;
+        var updateUserAppProgress = function(user, app_progress_key) {
+            user['app_progress'][app_progress_key] = true;
             $.ajax({
                 type: 'GET',
-                url: libs.config.shelbyGT.apiRoot + "/PUT/user/" + user_id,
+                url: libs.config.shelbyGT.apiRoot + "/PUT/user/" + user.id,
                 dataType: "jsonp",
                 timeout: 10000,
                 crossDomain: true,
-                data: data,
+                data: {
+                    'app_progress': user['app_progress']
+                },
                 xhrFields: {
                     withCredentials: true
                 }
@@ -294,7 +293,7 @@ $(document).ready(function() {
                 success: function(response) {
                     var user = JSON.parse($('#js-user').text());
                     if (user.user_type == libs.config.userTypes.anonymous && typeof user.app_progress.followedSource == "undefined") {
-                        updateUserAppProgress(user.id, "followedSources");
+                        updateUserAppProgress(user, "followedSources");
                     }
                     $this.removeClass('js-busy');
                 },
