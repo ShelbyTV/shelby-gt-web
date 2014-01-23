@@ -37,7 +37,7 @@ defaults: &defaults
       path: /preferences/sources
       hook: sources
       image_url: add-video-bkgd.png
-      label: Add Video
+      label: Channels
       message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
       id: inline-cta--social
@@ -56,7 +56,7 @@ development:
       path: /preferences/sources
       hook: sources
       image_url: add-video-bkgd.png
-      label: Add Video
+      label: Channels
       message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
       id: inline-cta--social
@@ -78,7 +78,7 @@ staging:
       path: /preferences/sources
       hook: sources
       image_url: add-video-bkgd.png
-      label: Add Video
+      label: Channels
       message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
       id: inline-cta--social
