@@ -10,451 +10,453 @@
 //= require ./event-tracking/mobile.tracking.js
 
 var libs = {
-  config : {
-    shelbyGT : {
-      apiRoot : '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>',
-      UserAvatarSizes : {
-        small : "sq48x48"
-      }
-    },
+    config: {
+        shelbyGT: {
+            apiRoot: '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>',
+            UserAvatarSizes: {
+                small: "sq48x48"
+            }
+        },
 
-    avatarUrlRoot: '//s3.amazonaws.com/shelby-gt-user-avatars',
-    userTypes: {
-      real : 0,
-      faux : 1,
-      converted : 2,
-      service : 3,
-      anonymous : 4
+        avatarUrlRoot: '//s3.amazonaws.com/shelby-gt-user-avatars',
+        userTypes: {
+            real: 0,
+            faux: 1,
+            converted: 2,
+            service: 3,
+            anonymous: 4
+        }
     }
-  }
 };
 
-$(document).ready(function(){
-  var loc = shelbyTrackingCategory || "Mobile",
-      username = shelbyTrackingLabel || "Anonymous" ;
+$(document).ready(function() {
+    var loc = shelbyTrackingCategory || "Mobile",
+        username = shelbyTrackingLabel || "Anonymous";
 
-  shelby.trackEx({
-    providers : ['ga'],
-    gaCategory : loc,
-    gaAction : 'Visit page',
-    gaLabel : username
-  });
+    shelby.trackEx({
+        providers: ['ga'],
+        gaCategory: loc,
+        gaAction: 'Visit page',
+        gaLabel: username
+    });
 
-  $('.js-list').on('click', '.js-toggle-comment',function(){
-    var $this = $(this);
-    $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
-  });
+    $('.js-list').on('click', '.js-toggle-comment', function() {
+        var $this = $(this);
+        $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
+    });
 
-  $('.js-settings-dropdown, .js-login-dropdown, .js-content-selector').on('click','button',function(e){
-    e.preventDefault();
-    var $this = $(this);
+    $('.js-settings-dropdown, .js-login-dropdown, .js-content-selector').on('click', 'button', function(e) {
+        e.preventDefault();
+        var $this = $(this);
 
-    if($this.hasClass('js-do-nothing')){
-      return false;
-    }
-    else if($this.hasClass('js-login-dropdown-button')){
-      var $loginDropdown = $('.js-login-dropdown');
-      $loginDropdown.toggleClass('hidden',!$loginDropdown.hasClass('hidden'));
-    }
-    else if($this.hasClass('js-settings-dropdown-button')){
-      var $settingsDropdown = $('.js-settings-dropdown');
-      $settingsDropdown.toggleClass('hidden',!$settingsDropdown.hasClass('hidden'));
-    }
-    else if($this.hasClass('js-me')) {
-      var username = $('.app_nav__button--settings').text().trim();
-      var path = Browser.isAmazonWebApp() ? '/amazonapp' : '';
-      window.location = path + '/' + username + '/activity';
-    }
-    else if($this.hasClass('js-signout')) {
-      var path = Browser.isAmazonWebApp() ? '/amazonapp' : '';
-      window.location = path + "/signout";
-    } else {
-      window.location = $this.attr('href');
-    }
-  });
-
-  $('body').on('click', 'a:not(.js-play-video,.js-load-more)', function(e){
-    var self = this;
-    // click on any link, replace the logo with a spinner so the user can tell something is happening
-    e.preventDefault();
-    $('#js-header').find('.icon-mark').addClass('icon-mark--spinner');
-    window.setTimeout(function(){
-      window.location = $(self).attr('href');
-    }, 100);
-  });
-
-  $('.js-signup-submit').on('click', function(e){
-    e.preventDefault();
-    var $target = $(e.currentTarget);
-    if (!$target.hasClass('button_busy')) {
-      $target.addClass('button_busy');
-      window.setTimeout(function(){
-        $(e.currentTarget.form).submit();
-      }, 500);
-    }
-  });
-
-  var user = JSON.parse($('#js-user').text()),
-      users = [];
-
-  if(user) {
-    var $guide = $('.js-guide');
-
-    var data = {
-        twitter_enabled       : false,
-        twitter_checked       : false,
-        facebook_enabled      : false,
-        facebook_checked      : false,
-        currentFrameShortlink : null,
-        frameId               : null,
-        username              : shelbyTrackingLabel
-      };
-
-    for (var auth in user.authentications) {
-      service = user.authentications[auth];
-
-      if(service.provider == 'twitter') {
-        data.twitter_enabled = true;
-        data.twitter_checked = user.app_progress.share_twitter_enabled;
-      }
-      else if (service.provider == 'facebook') {
-        data.facebook_enabled = true;
-        data.twitter_checked = user.app_progress.share_facebook_enabled;
-      }
-    }
-
-    var $sharePanel   = $('.js-share-panel').html(SHELBYJST['share-page-form'](data)),
-        $notification = $('.js-notification');
-
-    var $shareInitButton = $guide.on('click','.js-share-init',function(e){
-      e.preventDefault();
-      var $this = $(e.currentTarget),
-          frame_id = $this.data('frame_id');
-
-      $('#frame_id').val(frame_id);
-
-      $.ajax({
-        type: 'GET',
-        url: libs.config.shelbyGT.apiRoot + '/frame/' + frame_id + '/short_link',
-        dataType: "jsonp",
-        timeout: 10000,
-        crossDomain: true,
-        data: data,
-        xhrFields: {
-          withCredentials: true
-        },
-        success: function (response) {
-          $('#shortlink').removeAttr('disabled').val(response.result.short_link);
-        },
-        error: function () {
-          $('#shortlink').val('Error…');
+        if ($this.hasClass('js-do-nothing')) {
+            return false;
+        } else if ($this.hasClass('js-login-dropdown-button')) {
+            var $loginDropdown = $('.js-login-dropdown');
+            $loginDropdown.toggleClass('hidden', !$loginDropdown.hasClass('hidden'));
+        } else if ($this.hasClass('js-settings-dropdown-button')) {
+            var $settingsDropdown = $('.js-settings-dropdown');
+            $settingsDropdown.toggleClass('hidden', !$settingsDropdown.hasClass('hidden'));
+        } else if ($this.hasClass('js-me')) {
+            var username = $('.app_nav__button--settings').text().trim();
+            var path = Browser.isAmazonWebApp() ? '/amazonapp' : '';
+            window.location = path + '/' + username + '/activity';
+        } else if ($this.hasClass('js-signout')) {
+            var path = Browser.isAmazonWebApp() ? '/amazonapp' : '';
+            window.location = path + "/signout";
+        } else {
+            window.location = $this.attr('href');
         }
-      });
-
-      $sharePanel.toggleClass('hidden',!$sharePanel.hasClass('hidden'));
-      $guide.toggleClass('hidden',!$guide.hasClass('hidden'));
-      $sharePanel.find('#frame_comment').focus();
     });
 
-    $('.js-toggle-twitter-sharing, .js-toggle-facebook-sharing').on('click',function(e){
-      var $this = $(e.currentTarget),
-          network = $this.data('network');
-
-      $this.parent()
-              .toggleClass('button_gray',!$this.is(':checked'))
-              .toggleClass('button_'+network+'-blue',$this.is(':checked'));
+    $('body').on('click', 'a:not(.js-play-video,.js-load-more)', function(e) {
+        var self = this;
+        // click on any link, replace the logo with a spinner so the user can tell something is happening
+        e.preventDefault();
+        $('#js-header').find('.icon-mark').addClass('icon-mark--spinner');
+        window.setTimeout(function() {
+            window.location = $(self).attr('href');
+        }, 100);
     });
 
-    var $submitShareForm = $('#share-it').on('submit', function(e){
-      e.preventDefault();
-          var data = {
-            frame_id: $sharePanel.find('#frame_id').val(),
-            source: 'share',
-            text: $sharePanel.find('#frame_comment').val(),
-          },
-          destinations = [];
+    $('.js-signup-submit').on('click', function(e) {
+        e.preventDefault();
+        var $target = $(e.currentTarget);
+        if (!$target.hasClass('button_busy')) {
+            $target.addClass('button_busy');
+            window.setTimeout(function() {
+                $(e.currentTarget.form).submit();
+            }, 500);
+        }
+    });
 
-          if($sharePanel.find('#share-on-facebook').is(':checked')) {
-            destinations.push('facebook');
-          }
+    var user = JSON.parse($('#js-user').text()),
+        users = [];
 
-          if($sharePanel.find('#share-on-twitter').is(':checked')) {
-            destinations.push('twitter');
-          }
+    if (user) {
+        var $guide = $('.js-guide');
 
-          $.ajax({
+        var data = {
+            twitter_enabled: false,
+            twitter_checked: false,
+            facebook_enabled: false,
+            facebook_checked: false,
+            currentFrameShortlink: null,
+            frameId: null,
+            username: shelbyTrackingLabel
+        };
+
+        for (var auth in user.authentications) {
+            service = user.authentications[auth];
+
+            if (service.provider == 'twitter') {
+                data.twitter_enabled = true;
+                data.twitter_checked = user.app_progress.share_twitter_enabled;
+            } else if (service.provider == 'facebook') {
+                data.facebook_enabled = true;
+                data.twitter_checked = user.app_progress.share_facebook_enabled;
+            }
+        }
+
+        var $sharePanel = $('.js-share-panel').html(SHELBYJST['share-page-form'](data)),
+            $notification = $('.js-notification');
+
+        var $shareInitButton = $guide.on('click', '.js-share-init', function(e) {
+            e.preventDefault();
+            var $this = $(e.currentTarget),
+                frame_id = $this.data('frame_id');
+
+            $('#frame_id').val(frame_id);
+
+            $.ajax({
+                type: 'GET',
+                url: libs.config.shelbyGT.apiRoot + '/frame/' + frame_id + '/short_link',
+                dataType: "jsonp",
+                timeout: 10000,
+                crossDomain: true,
+                data: data,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function(response) {
+                    $('#shortlink').removeAttr('disabled').val(response.result.short_link);
+                },
+                error: function() {
+                    $('#shortlink').val('Error…');
+                }
+            });
+
+            $sharePanel.toggleClass('hidden', !$sharePanel.hasClass('hidden'));
+            $guide.toggleClass('hidden', !$guide.hasClass('hidden'));
+            $sharePanel.find('#frame_comment').focus();
+        });
+
+        $('.js-toggle-twitter-sharing, .js-toggle-facebook-sharing').on('click', function(e) {
+            var $this = $(e.currentTarget),
+                network = $this.data('network');
+
+            $this.parent()
+                .toggleClass('button_gray', !$this.is(':checked'))
+                .toggleClass('button_' + network + '-blue', $this.is(':checked'));
+        });
+
+        var $submitShareForm = $('#share-it').on('submit', function(e) {
+            e.preventDefault();
+            var data = {
+                frame_id: $sharePanel.find('#frame_id').val(),
+                source: 'share',
+                text: $sharePanel.find('#frame_comment').val(),
+            },
+                destinations = [];
+
+            if ($sharePanel.find('#share-on-facebook').is(':checked')) {
+                destinations.push('facebook');
+            }
+
+            if ($sharePanel.find('#share-on-twitter').is(':checked')) {
+                destinations.push('twitter');
+            }
+
+            $.ajax({
+                type: 'GET',
+                url: libs.config.shelbyGT.apiRoot + '/POST/roll/' + user.personal_roll_id + '/frames',
+                dataType: "jsonp",
+                timeout: 10000,
+                crossDomain: true,
+                data: data,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function(response) {
+                    console.log("Share successful!");
+
+                    $notification.removeClass('hidden');
+
+                    setTimeout(function() {
+                        $notification.addClass('hidden');
+                    }, 3000);
+
+                    $sharePanel.toggleClass('hidden', true);
+                    $guide.toggleClass('hidden', !$guide.hasClass('hidden'));
+
+                    var new_frame_id = response.result.id,
+                        shareData = {
+                            destination: destinations,
+                            frame_id: new_frame_id,
+                            text: data.text
+                        };
+
+                    shelby.trackEx({
+                        providers: ['ga', 'kmq'],
+                        gaCategory: shelbyTrackingCategory,
+                        gaAction: 'shared',
+                        gaLabel: shelbyTrackingLabel,
+                        gaValue: destinations.length,
+                        kmqProperties: {
+                            'outbound destination': destinations.join(", "),
+                        }
+                    });
+
+                    if (shareData.destination.length > 0) {
+                        $.ajax({
+                            type: 'GET',
+                            url: libs.config.shelbyGT.apiRoot + '/POST/frame/' + new_frame_id + '/share',
+                            dataType: "jsonp",
+                            timeout: 10000,
+                            crossDomain: true,
+                            data: shareData,
+                            xhrFields: {
+                                withCredentials: true
+                            },
+                            success: function(response) {
+                                console.log("Social Share successful!");
+                            },
+                            error: function() {
+                                console.log("Social Sharing failed.");
+                            }
+                        });
+                    }
+                },
+                error: function(e) {
+                    console.log("Share unsuccessful: ", e);
+                }
+            });
+        });
+
+        $('.js-cancel').on('click', function(e) {
+            e.preventDefault();
+            $sharePanel.toggleClass('hidden', true);
+            $guide.toggleClass('hidden', false);
+        });
+
+        var updateUserAppProgress = function(user_id, app_progress_key) {
+            var data = {
+                app_progress: {}
+            };
+            data['app_progress'][app_progress_key] = true;
+            $.ajax({
+                type: 'GET',
+                url: libs.config.shelbyGT.apiRoot + "/PUT/user/" + user_id,
+                dataType: "jsonp",
+                timeout: 10000,
+                crossDomain: true,
+                data: data,
+                xhrFields: {
+                    withCredentials: true
+                }
+            });
+        };
+
+        $('.js-sources-list,.js-roll-header').on('click', '.js-toggle-follow:not(.js-busy)', function(e) {
+            e.preventDefault();
+            var $this = $(this),
+                roll_id = $this.data('roll_id'),
+                method = $this.hasClass('button_green') ? 'join' : 'leave';
+
+            $this.addClass('js-busy');
+
+            // immediately toggle the button - if the ajax fails, we'll update the next time we render
+            var newButtonText = (method == 'join') ? 'Following' : 'Follow';
+            $this.toggleClass('button_gray button_green button_active').text(newButtonText);
+
+            $.ajax({
+                type: 'GET',
+                url: libs.config.shelbyGT.apiRoot + '/POST/roll/' + roll_id + '/' + method,
+                dataType: "jsonp",
+                timeout: 10000,
+                crossDomain: true,
+                data: {
+                    roll_id: roll_id
+                },
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function(response) {
+                    var user = JSON.parse($('#js-user').text());
+                    if (user.user_type == libs.config.userTypes.anonymous && typeof user.app_progress.followedSource == "undefined") {
+                        updateUserAppProgress(user.id, "followedSources");
+                    }
+                    $this.removeClass('js-busy');
+                },
+                error: function(e) {
+                    $this.removeClass('js-busy');
+                }
+            });
+
+        });
+
+    }
+
+    //does not depend on user model
+    $('.js-load-more').on('click', function(e) {
+        e.preventDefault();
+
+        var $this = $(this).addClass('button_busy');
+
+        window.setTimeout(function() {
+            $.get($this.attr('href'), function(data) {
+                $this.removeClass('button_busy');
+
+                var $items = $(data).find('.js-list').children('.list__item'),
+                    $button = $(data).find('.js-load-more');
+
+                $('.js-list').append($items);
+                $('.js-load-more').attr('href', $button.attr('href'));
+
+                _($items.children('.js-frame')).each(function(item) {
+                    var $el = $(item);
+                    var $likers = $el.find('.js-likes-array');
+
+                    if ($likers && $likers.length) {
+                        $likers = JSON.parse($likers.html());
+                        injectLikers($likers, $el);
+                    }
+                });
+            });
+        }, 100);
+    });
+
+    var $frameLikeList = $('#js-frame-like').html();
+
+    $('.js-list').on('click', '.js-like', function(e) {
+        var $this = $(this);
+
+        //prevent extraneous api calls
+        if ($this.hasClass('visuallydisabled')) {
+            return false;
+        }
+
+        e.preventDefault();
+
+        var frame_id = $this.data('frame_id'),
+            $frame = $(e.delegateTarget).find('#' + frame_id),
+            $likes = $frame.find('.js-frame-likes'),
+            data = {
+                frame_id: frame_id
+            };
+
+        //modify the button state/appearance
+        $this.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
+
+        if (!$likes.length) {
+            //if no one Liked the Frame yet, add the Like list container:
+            $frame.append($frameLikeList);
+        }
+
+        if (user && user.nickname != "Anonymous" && user.user_type != libs.config.userTypes.anonymous) {
+            //non-anonymous users get their avatar added to the liker list
+            appendAvatar(frame_id)
+        } else {
+            //anonymous users get added to the liker count
+            var $total = $frame.find('.js-like-total');
+            $total.text('+ ' + (parseInt($total.text().split('+')[1].trim()) + 1)).removeClass('invisible');
+        }
+
+        $.ajax({
             type: 'GET',
-            url: libs.config.shelbyGT.apiRoot + '/POST/roll/' + user.personal_roll_id + '/frames',
+            url: libs.config.shelbyGT.apiRoot + '/PUT/frame/' + frame_id + '/like',
             dataType: "jsonp",
             timeout: 10000,
             crossDomain: true,
             data: data,
             xhrFields: {
-              withCredentials: true
+                withCredentials: true
             },
-            success: function (response) {
-              console.log("Share successful!");
-
-              $notification.removeClass('hidden');
-
-              setTimeout(function(){
-                $notification.addClass('hidden');
-              },3000);
-
-              $sharePanel.toggleClass('hidden',true);
-              $guide.toggleClass('hidden',!$guide.hasClass('hidden'));
-
-              var new_frame_id = response.result.id,
-                  shareData    = {
-                    destination: destinations,
-                    frame_id: new_frame_id,
-                    text: data.text
-                  };
-
-              shelby.trackEx({
-                providers : ['ga', 'kmq'],
-                gaCategory : shelbyTrackingCategory,
-                gaAction : 'shared',
-                gaLabel : shelbyTrackingLabel,
-                gaValue : destinations.length,
-                kmqProperties : {
-                  'outbound destination': destinations.join(", "),
-                }
-              });
-
-              if(shareData.destination.length > 0) {
-                $.ajax({
-                  type: 'GET',
-                  url: libs.config.shelbyGT.apiRoot + '/POST/frame/' + new_frame_id + '/share',
-                  dataType: "jsonp",
-                  timeout: 10000,
-                  crossDomain: true,
-                  data: shareData,
-                  xhrFields: {
-                    withCredentials: true
-                  },
-                  success: function (response) {
-                    console.log("Social Share successful!");
-                  },
-                  error: function () {
-                    console.log("Social Sharing failed.");
-                  }
-                });
-              }
-            },
-            error: function (e) {
-              console.log("Share unsuccessful: ",e);
-            }
-          });
-    });
-
-    $('.js-cancel').on('click',function(e){
-      e.preventDefault();
-      $sharePanel.toggleClass('hidden',true);
-      $guide.toggleClass('hidden',false);
-    });
-
-    var updateUserAppProgress = function(user_id, app_progress_key) {
-      var data = {app_progress: {} };
-      data['app_progress'][app_progress_key]= true;
-      $.ajax({
-        type: 'GET',
-        url: libs.config.shelbyGT.apiRoot + "/PUT/user/" + user_id,
-        dataType: "jsonp",
-        timeout: 10000,
-        crossDomain: true,
-        data: data,
-        xhrFields: {
-          withCredentials: true
-        }
-      });
-    };
-
-    $('.js-sources-list,.js-roll-header').on('click', '.js-toggle-follow:not(.js-busy)', function(e){
-      e.preventDefault();
-      var $this   = $(this),
-          roll_id = $this.data('roll_id'),
-          method  = $this.hasClass('button_green') ? 'join' : 'leave';
-
-      $this.addClass('js-busy');
-
-      // immediately toggle the button - if the ajax fails, we'll update the next time we render
-      var newButtonText = (method == 'join') ? 'Following' : 'Follow';
-      $this.toggleClass('button_gray button_green button_active').text(newButtonText);
-
-      $.ajax({
-        type: 'GET',
-        url: libs.config.shelbyGT.apiRoot + '/POST/roll/'+ roll_id +'/'+ method,
-        dataType: "jsonp",
-        timeout: 10000,
-        crossDomain: true,
-        data: { roll_id: roll_id },
-        xhrFields: {
-          withCredentials: true
-        },
-        success: function (response) {
-          var user = JSON.parse($('#js-user').text());
-          if (user.user_type == libs.config.userTypes.anonymous && typeof user.app_progress.followedSource == "undefined"){
-            updateUserAppProgress(user.id, "followedSources");
-          }
-          $this.removeClass('js-busy');
-        },
-        error: function (e) {
-          $this.removeClass('js-busy');
-        }
-      });
-
-    });
-
-  }
-
-  //does not depend on user model
-  $('.js-load-more').on('click', function(e){
-    e.preventDefault();
-
-    var $this = $(this).addClass('button_busy');
-
-    window.setTimeout(function(){
-      $.get($this.attr('href'), function(data){
-        $this.removeClass('button_busy');
-
-        var $items  = $(data).find('.js-list').children('.list__item'),
-            $button = $(data).find('.js-load-more');
-
-        $('.js-list').append($items);
-        $('.js-load-more').attr('href',$button.attr('href'));
-
-        _($items.children('.js-frame')).each(function(item){
-          var $el = $(item);
-          var $likers = $el.find('.js-likes-array');
-
-          if($likers && $likers.length){
-            $likers = JSON.parse($likers.html());
-            injectLikers($likers,$el);
-          }
+            success: function() {},
+            error: function() {}
         });
-      });
-    }, 100);
-  });
 
-  var $frameLikeList = $('#js-frame-like').html();
-
-  $('.js-list').on('click', '.js-like', function(e){
-    var $this = $(this);
-
-    //prevent extraneous api calls
-    if($this.hasClass('visuallydisabled')) { return false; }
-
-    e.preventDefault();
-
-    var frame_id = $this.data('frame_id'),
-        $frame = $(e.delegateTarget).find('#' + frame_id),
-        $likes = $frame.find('.js-frame-likes'),
-        data = { frame_id : frame_id };
-
-    //modify the button state/appearance
-    $this.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
-
-    if (!$likes.length) {
-      //if no one Liked the Frame yet, add the Like list container:
-      $frame.append($frameLikeList);
-    }
-
-    if (user && user.nickname != "Anonymous" && user.user_type != libs.config.userTypes.anonymous) {
-      //non-anonymous users get their avatar added to the liker list
-      appendAvatar(frame_id)
-    } else {
-      //anonymous users get added to the liker count
-      var $total = $frame.find('.js-like-total');
-      $total.text('+ ' + (parseInt($total.text().split('+')[1].trim()) + 1)).removeClass('invisible');
-    }
-
-    $.ajax({
-      type: 'GET',
-      url: libs.config.shelbyGT.apiRoot + '/PUT/frame/' + frame_id + '/like',
-      dataType: "jsonp",
-      timeout: 10000,
-      crossDomain: true,
-      data: data,
-      xhrFields: {
-        withCredentials: true
-      },
-      success: function () {},
-      error: function () {}
     });
 
-  });
+    var $userLike = $('#js-user-like').html();
 
-  var $userLike = $('#js-user-like').html();
-
-  var appendAvatar = function(frame_id) {
-    var $frame = $('#'+frame_id);
+    var appendAvatar = function(frame_id) {
+        var $frame = $('#' + frame_id);
         $likes = $frame.find('.js-frame-likes');
 
-    // if the logged in user is already in the list, don't add that user again
-    if( _( JSON.parse($frame.find('.js-likes-array').html()) ).indexOf(user.id) != -1 ) {
-      return;
-    }
-
-    // append the user to the list:
-    $likes.children('.js-liker-avatars-list').append($userLike);
-  };
-
-  var injectLikers = function(likers,$scope){
-    if(likers.length) {
-      var data = {
-        ids: likers.join(',')
-      };
-
-      $.ajax({
-        type: 'GET',
-        url: libs.config.shelbyGT.apiRoot + '/user',
-        dataType: "jsonp",
-        timeout: 10000,
-        crossDomain: true,
-        data: data,
-        xhrFields: {
-          withCredentials: true
-        },
-        success: function (response) {
-          $scope.find('.js-liker-avatars-list').empty();
-
-          for(var i = 0; i < response.result.length; i++) {
-
-            var user = response.result[i],
-                avatar;
-
-            if( !user ){
-              avatar = "/images/assets/avatar.png";
-            }
-            else if(user.has_shelby_avatar){
-              avatar = libs.config.avatarUrlRoot + '/' + libs.config.shelbyGT.UserAvatarSizes.small + '/' + user.id + '?' + new Date(user.avatar_updated_at).getTime();
-            } else {
-              avatar = (user.user_image_original != 'null' && user.user_image_original) || (user.user_image != 'null' && user.user_image) || "/images/assets/avatar.png";
-            }
-
-            var appropriatePath = Browser.isAmazonWebApp() ? '/amazonapp' : '';
-
-            $scope.find('.js-liker-avatars-list').append(SHELBYJST['liker-item']({
-              avatar: avatar,
-              liker: user,
-              appropriatePath: appropriatePath
-            }));
-          }
-        },
-        error: function (e) {
-          console.log("Oops!",e.statusText);
+        // if the logged in user is already in the list, don't add that user again
+        if (_(JSON.parse($frame.find('.js-likes-array').html())).indexOf(user.id) != -1) {
+            return;
         }
-      });
-    }
-  };
 
-  $(this).on('frameLoaded',function(e){
-    var $el = $('#'+e.frame_id);
-    var likers = JSON.parse($el.find('.js-likes-array').html());
+        // append the user to the list:
+        $likes.children('.js-liker-avatars-list').append($userLike);
+    };
 
-    if(likers.length){
-      injectLikers(likers,$el);
-    }
-  });
+    var injectLikers = function(likers, $scope) {
+        if (likers.length) {
+            var data = {
+                ids: likers.join(',')
+            };
+
+            $.ajax({
+                type: 'GET',
+                url: libs.config.shelbyGT.apiRoot + '/user',
+                dataType: "jsonp",
+                timeout: 10000,
+                crossDomain: true,
+                data: data,
+                xhrFields: {
+                    withCredentials: true
+                },
+                success: function(response) {
+                    $scope.find('.js-liker-avatars-list').empty();
+
+                    for (var i = 0; i < response.result.length; i++) {
+
+                        var user = response.result[i],
+                            avatar;
+
+                        if (!user) {
+                            avatar = "/images/assets/avatar.png";
+                        } else if (user.has_shelby_avatar) {
+                            avatar = libs.config.avatarUrlRoot + '/' + libs.config.shelbyGT.UserAvatarSizes.small + '/' + user.id + '?' + new Date(user.avatar_updated_at).getTime();
+                        } else {
+                            avatar = (user.user_image_original != 'null' && user.user_image_original) || (user.user_image != 'null' && user.user_image) || "/images/assets/avatar.png";
+                        }
+
+                        var appropriatePath = appropriateSubdirectory;
+
+                        $scope.find('.js-liker-avatars-list').append(SHELBYJST['liker-item']({
+                            avatar: avatar,
+                            liker: user,
+                            appropriatePath: appropriatePath
+                        }));
+                    }
+                },
+                error: function(e) {
+                    console.log("Oops!", e.statusText);
+                }
+            });
+        }
+    };
+
+    $(this).on('frameLoaded', function(e) {
+        var $el = $('#' + e.frame_id);
+        var likers = JSON.parse($el.find('.js-likes-array').html());
+
+        if (likers.length) {
+            injectLikers(likers, $el);
+        }
+    });
 });

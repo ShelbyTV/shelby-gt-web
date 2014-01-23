@@ -24,7 +24,8 @@
 
   <script>
     var shelbyTrackingCategory = "Mobile",
-        shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname']}'" %>;
+        shelbyTrackingLabel<%= raw " = '#{@signed_in_user['nickname']}'" %>,
+        appropriateSubdirectory = '<%= appropriate_subdirectory %>';
   </script>
 
   <%= stylesheet_link_tag "mobile", :media => "screen" %>

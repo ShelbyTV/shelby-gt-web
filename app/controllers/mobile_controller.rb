@@ -198,8 +198,8 @@ class MobileController < ApplicationController
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
 
-    if @signed_in_user['nickname'] == params[:username]
-      redirect_to(appropriate_subdirectory+mobile_me_path(:type => "activity")) and return
+    if (@signed_in_user['nickname'] == params[:username]) or (@signed_in_user['id'] == params[:username])
+      redirect_to(appropriate_subdirectory+"/"+params[:username]+"/activity") and return
     elsif @user = Shelby::API.get_user(params[:username])
       @include_smart_app_banner = true
       @roll_id = @user['personal_roll_id']

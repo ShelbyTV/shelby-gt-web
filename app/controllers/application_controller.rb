@@ -45,7 +45,12 @@ class ApplicationController < ActionController::Base
   end
 
   def detect_mobile_os
+    if params[:amazon] == "true"
+      session[:amazon] = true
+    end
+
     return :ios if (request.user_agent=~/iPhone/)
+    return :amazon if (session[:amazon])
     return :amazon if (request.user_agent=~/AmazonWebAppPlatform/)
     return :android if (request.user_agent=~/Android/)
     return :tablet if (request.user_agent=~/Silk/)

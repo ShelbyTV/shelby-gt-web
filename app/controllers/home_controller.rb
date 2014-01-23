@@ -174,6 +174,8 @@ class HomeController < ApplicationController
   # GET /log_in
   #
   def log_in
+    (redirect_to "/" and return) if user_signed_in?
+
     @login = :true
 
     @auth_failure  = params[:auth_failure] == '1'
