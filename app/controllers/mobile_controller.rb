@@ -267,7 +267,7 @@ class MobileController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     (redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return) unless user_signed_in?
     @service = params[:service]
-    flash.now[:notice] = "Awesome, you'll start seeing video you're friends are sharing soon!"
+    flash.now[:notice] = "Awesome, you'll start seeing video your friends are sharing soon! <br/> <small>We'll never post anything to #{params[:service].capitalize} without your permission!</small>"
     render "mobile/partials/connecting_service"
   end
 
