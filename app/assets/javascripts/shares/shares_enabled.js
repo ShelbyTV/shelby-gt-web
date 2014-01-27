@@ -4,17 +4,17 @@
 //INIT
 $(function() {
   // "globals"
-  var $dropdown = $('.js-shares'),
-    $frame = $('.js-frame'),
-    $body = $('body'),
-    $notification = $('.js-notification'),
+  var $dropdown      = $('.js-shares'),
+    $frame           = $('.js-frame'),
+    $body            = $('body'),
+    $notification    = $('.js-notification'),
     $shareInitButton = $('.js-share-init'),
-    frame_id = $frame.attr('id'),
-    video_id = $frame.data('video_id'),
+    frame_id         = $frame.attr('id'),
+    video_id         = $frame.data('video_id'),
     personal_roll_id = $body.data('personal_roll_id'),
-    username = $body.data('user_name'),
-    user = JSON.parse($('#js-user-model').html()) || {},
-    apiRoot = '//api.shelby.tv/v1';
+    username         = $body.data('user_name'),
+    user             = JSON.parse($('#js-user-model').html()) || {},
+    apiRoot          = '//api.shelby.tv/v1';
 
   // share pane template data
   var data = {
@@ -53,35 +53,6 @@ $(function() {
       $this.parent()
         .toggleClass('button_gray', !$this.is(':checked'))
         .toggleClass('button_' + network + '-blue', $this.is(':checked'));
-    });
-
-    $('.js-tweet-intent').on('click',function(e){
-      e.preventDefault();
-
-      var url = 'https://twitter.com/intent/tweet?related=shelby&via=shelby&url=' + "this._shortlink" + '&text=' + encodeURIComponent('Video Title');
-      window.open(url, "twitterShare", "");
-    });
-
-    $('.js-facebook-msg').on('click',function(e){
-      e.preventDefault();
-
-      FB.ui(
-        {
-          caption     : 'Shelby.tv',
-          description : "video.get('description')",
-          display     : 'popup',
-          link        : "this._shortlink",
-          method      : 'feed',
-          name        : "video.get('title')",
-          picture     : "video.get('thumbnail_url')"
-        },
-        function(response) {
-          if (response && response.post_id) {
-            // TODO:we should record that this happened.
-          }
-        }
-      );
-
     });
 
     // determine if Video has been liked, depends on user being loaded.

@@ -4,7 +4,7 @@
 <% message = build_frame_message(frame, dbe) %>
 <% framePermalink = build_frame_permalink(frame) %>
 
-<article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame js-<%= frame['id']%>">
+<article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" data-video="<%= video.to_json %>" class="animate_module frame js-frame js-<%= frame['id']%>">
   <span class="frame-header js-frame-activate">
     <h1 class="frame-title" title="<%= video['title'] %>">
       <%= video['title'] %>

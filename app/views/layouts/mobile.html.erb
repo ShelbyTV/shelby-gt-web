@@ -47,6 +47,9 @@
 </head>
 
 <body class="shelby shelby--shares shelby--mobile<%= " shelby--user_signed_in" if @user_signed_in %>">
+  <!-- Facebook widget -->
+  <div id="fb-root"></div>
+
   <div id="js-shelby-wrapper" class="shelby-wrapper clearfix">
     <header id="js-header" class="animate_module js-app-header shelby-header clearfix js-inactivity-preemption" role="banner">
       <%= render :partial => '/home/app_header',
@@ -137,5 +140,15 @@
       <% end %>
     </script>
   <% end %>
+
+  <script>
+  (function(d){
+     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));
+  </script>
+
 </body>
 </html>
