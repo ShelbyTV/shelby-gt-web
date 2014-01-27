@@ -30,8 +30,8 @@ var libs = {
 };
 
 $(document).ready(function() {
-  var loc = shelbyTrackingCategory || "Mobile",
-    username = shelbyTrackingLabel || "Anonymous";
+  var loc      = shelbyTrackingCategory || "Mobile",
+      username = shelbyTrackingLabel || "Anonymous";
 
   shelby.trackEx({
     providers: ['ga'],
@@ -90,19 +90,20 @@ $(document).ready(function() {
     }
   });
 
-  var user = JSON.parse($('#js-user').text()),
-    users = [];
+  var user  = JSON.parse($('#js-user').text()),
+      users = [];
 
   if (user) {
     var $guide = $('.js-guide');
 
     var data = {
-      twitter_enabled       : false,
-      twitter_checked       : false,
+      anonymous             : (user.user_type == libs.config.userTypes.anonymous),
+      currentFrameShortlink : null,
       facebook_enabled      : false,
       facebook_checked      : false,
-      currentFrameShortlink : null,
       frameId               : null,
+      twitter_enabled       : false,
+      twitter_checked       : false,
       username              : shelbyTrackingLabel
     };
 

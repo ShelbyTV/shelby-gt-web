@@ -1,4 +1,4 @@
-0<% dbe = dbe ? dbe : nil %>
+<% dbe = dbe ? dbe : nil %>
 <% avatar, linkableName, userNickname = build_avatar_and_nickname(dbe, frame_owner) %>
 <% userNickname = "You" if (signed_in_user['user_type'] == Settings::User.user_type[:anonymous]) and (roll_type == Settings::Mobile.roll_types['activity']) %>
 <% message = build_frame_message(frame, dbe) %>
