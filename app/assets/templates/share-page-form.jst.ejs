@@ -7,19 +7,19 @@
 <div class="guide-overlay__body guide-overlay__body--frame-sharing">
   <% var anonymous = true; %>
   <% if (anonymous) { %>
-    <div id="share-it" class="form_module rolling-form js-share-submit">
-      <div class="js-guide-overlay-main guide-overlay__main">
+    <div class="form_module rolling-form">
+      <div class="guide-overlay__main">
         <div class="rolling-option">
           <fieldset class="clearfix">
-            <a href="#" tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--twitter button_twitter-blue one-fourth">
+            <button tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--twitter button_twitter-blue one-fourth js-tweet-intent">
               <span class="icon icon-twitter"></span>
               <span class="button_label">Twitter</span>
-            </a>
+            </button>
 
-            <a href="#" tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--facebook button_facebook-blue one-fourth">
+            <button tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--facebook button_facebook-blue one-fourth js-facebook-msg">
               <span class="icon icon-facebook"></span>
               <span class="button_label">Facebook</span>
-            </a>
+            </button>
           </fieldset>
 
           <fieldset class="form_fieldset form_fieldset--submit clearfix">
