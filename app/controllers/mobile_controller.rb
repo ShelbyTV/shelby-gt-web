@@ -198,8 +198,8 @@ class MobileController < ApplicationController
     @page = params[:page].to_i.abs
     @skip = convert_page_to_skip(params[:page])
 
-    if @signed_in_user['nickname'] == params[:username]
-      redirect_to(appropriate_subdirectory+mobile_me_path(:type => "activity")) and return
+    if (@signed_in_user['nickname'] == params[:username]) or (@signed_in_user['id'] == params[:username])
+      redirect_to(appropriate_subdirectory+"/"+params[:username]+"/activity") and return
     elsif @user = Shelby::API.get_user(params[:username])
       @include_smart_app_banner = true
       @roll_id = @user['personal_roll_id']
@@ -267,7 +267,7 @@ class MobileController < ApplicationController
     @signed_in_user = check_for_signed_in_user
     (redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.must_be_logged_in}") and return) unless user_signed_in?
     @service = params[:service]
-    flash.now[:notice] = "Awesome, you'll start seeing video you're friends are sharing soon!"
+    flash.now[:notice] = "Awesome, you'll start seeing video your friends are sharing soon! <br/> <small>We'll never post anything to #{params[:service].capitalize} without your permission!</small>"
     render "mobile/partials/connecting_service"
   end
 
@@ -283,8 +283,10 @@ class MobileController < ApplicationController
     elsif params[:service] == "twitter"
       EM.next_tick { follow_shelby(@signed_in_user, params[:onboarding_follow_shelby]) }
     end
-    attributes = {:app_progress => {"connected#{params[:service].capitalize}".to_sym => true, 'onboarding'  => true}}
-    update_user(@signed_in_user, attributes)
+    app_progress = @signed_in_user['app_progress']
+    app_progress["connected#{params[:service].capitalize}"] = true
+    app_progress['onboarding'] = true
+    update_user(@signed_in_user, {'app_progress' => app_progress})
     redirect_to(appropriate_subdirectory + "/stream") and return
   end
 

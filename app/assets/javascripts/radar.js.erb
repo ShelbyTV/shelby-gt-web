@@ -68,6 +68,8 @@ $(document).ready(function(){
   //using Rails to dump out the User object as stringified JSON, then cache it with JSON, asap!
   var user = JSON.parse( $('#js-user').text() );
 
+  $('#login_form').attr('action',function(index,action){ return action + '?redir=' + encodeURIComponent(document.location.href) });
+
   // track clean visits
   var loc = shelbyTrackingCategory || "Radar",
       username = shelbyTrackingLabel || "Anonymous" ;

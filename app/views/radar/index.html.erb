@@ -1,28 +1,35 @@
 
-<% if @videos %>
-  <ol class="list">
-    <% @videos.each_with_index do |video, index| %>
-      <li class="list__item">
-        <%= render :partial => '/objects/video',
-            :locals => {
-              :embed_video    => true,
-              :ga_category    => "Radar",
-              :index          => index,
-              :signed_in_user => @signed_in_user,
-              :user_signed_in => @user_signed_in,
-              :video          => video
-            }
-        %>
-      </li>
-    <% end %>
-  </ol>
-<% end %>
+<% if @user_signed_in %>
+  <% if @videos %>
+    <ol class="list">
+      <% @videos.each_with_index do |video, index| %>
+        <li class="list__item">
+          <%= render :partial => '/objects/video',
+              :locals => {
+                :embed_video    => true,
+                :ga_category    => "Radar",
+                :index          => index,
+                :signed_in_user => @signed_in_user,
+                :user_signed_in => @user_signed_in,
+                :video          => video
+              }
+          %>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
 
+<% else %>
+  <div class="login">
+    <%= render :partial => 'objects/login_form', :locals => {} %>
+  </div>
+
+<% end %>
 <script type="text/javascript">
   shelby.trackEx({
-      providers : ['ga'],
-      gaCategory : "Radar",
-      gaAction : "<%= @found_video_providers.empty? ? 'Radar found NO video' : 'Radar found video' %>",
-      gaValue : "<%= @videos.length %>"
-    });
+    providers : ['ga'],
+    gaCategory : "Radar",
+    gaAction : "<%= @found_video_providers.empty? ? 'Radar found NO video' : 'Radar found video' %>",
+    gaValue : "<%= @videos.length %>"
+  });
 </script>

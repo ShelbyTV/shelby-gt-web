@@ -5,7 +5,7 @@
       <%= render :partial => '/objects/inline_cta',
                   :locals => {
                     :cta => Settings::Mobile.inline_cta.sources,
-                    :subdirectory => appropriate_subdirectory
+                    :href_location => appropriate_subdirectory+Settings::Mobile.inline_cta.sources.path
                   }
       %>
     </li>
@@ -16,7 +16,7 @@
       <%= render :partial => '/objects/inline_cta',
                   :locals => {
                     :cta => Settings::Mobile.inline_cta.social,
-                    :subdirectory => appropriate_subdirectory
+                    :href_location => Settings::Mobile.inline_cta.social.path
                   }
       %>
     </li>
