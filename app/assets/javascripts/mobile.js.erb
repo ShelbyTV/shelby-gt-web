@@ -187,42 +187,42 @@ $(document).ready(function() {
       }
     });
 
+    //------FB + TWEET INTENTS ---------------//
+
     var $TweetIntentButton = $('.js-tweet-intent'),
         $FacebookMessageButton = $('.js-facebook-msg');
 
-    var setTweetIntent = function(data){
-      var url = 'https://twitter.com/intent/tweet?related=shelby&via=shelby&url=' + data.url + '&text=' + encodeURIComponent('video.title');
-      $TweetIntentButton.data('href',url);
-    }
-
     $TweetIntentButton.on('click',function(e){
       e.preventDefault();
-
-      var url = $(this).data('href');
+      var $this = $(this),
+          url   = 'https://twitter.com/intent/tweet?related=shelby&via=shelby&url=' + $this.data('url') + '&text=' + encodeURIComponent( $this.data('video_title') );
 
       window.open(url,'twitterShare','');
     }).on('short_link',function(e){
       var $this = $(this);
 
-      setTweetIntent({url:e.message});
-
       if(e.code == 200) {
         $this.removeAttr('disabled');
+
+        $(this).data({
+          url         : e.message,
+          video_title : ''
+        });
       }
     });;
 
     $FacebookMessageButton.on('click',function(e){
       e.preventDefault();
-
+      var $this = $(this).data();
       FB.ui(
         {
           caption     : 'Shelby.tv',
-          description : "video.get('description')",
+          description : $this.data('description'),
           display     : 'popup',
-          link        : "this._shortlink",
+          link        : $this.data('short_link'),
           method      : 'feed',
-          name        : "video.get('title')",
-          picture     : "video.get('thumbnail_url')"
+          name        : $this.data('video_title'),
+          picture     : $this.data('thumbnail_url')
         },
         function(response) {
           if (response && response.post_id) {
@@ -235,35 +235,17 @@ $(document).ready(function() {
       var $this = $(this);
 
       if(e.code == 200) {
-        $this.removeAttr('disabled');
+        $this.removeAttr('disabled')
+             .data({
+                description   : '',
+                thumbnail_url : '',
+                short_link    : e.message,
+                video_title   : ''
+              });
       }
     });
 
-    //   var video = getVideoModel(e),
-    //       shortlink = getShortLink();
-
-
-    // $('.js-facebook-msg').on('click',function(e){
-    //   e.preventDefault();
-
-    //   FB.ui(
-    //     {
-    //       caption     : 'Shelby.tv',
-    //       description : "video.get('description')",
-    //       display     : 'popup',
-    //       link        : "this._shortlink",
-    //       method      : 'feed',
-    //       name        : "video.get('title')",
-    //       picture     : "video.get('thumbnail_url')"
-    //     },
-    //     function(response) {
-    //       if (response && response.post_id) {
-    //         // TODO:we should record that this happened.
-    //       }
-    //     }
-    //   );
-
-    // });
+    //---------END FB + TWEET INTENTS ----------//
 
     var $submitShareForm = $('#share-it').on('submit', function(e) {
       e.preventDefault();
