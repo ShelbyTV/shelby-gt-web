@@ -1,0 +1,39 @@
+<ul class="list js-list">
+  <% @dashboard.each_with_index do |dbe, index| %>
+    <li class="list__item">
+      <% if [0,1,2,31,33,34,99].include?(dbe['action']) and !dbe["duplicate"] and dbe['frame'] and dbe['frame']['video'] and can_play_video(dbe['frame']['video']['provider_name']) %>
+        <%= render :partial => '/objects/frame',
+          :locals => {
+            :embed_video    => false,
+            :frame          => dbe['frame'],
+            :frame_owner    => dbe['frame']['creator'],
+            :ga_category    => "Mobile",
+            :index          => index,
+            :is_mobile      => true,
+            :is_like        => is_frame_like?(dbe['frame']),
+            :roll_type      => @roll_type,
+            :signed_in_user => @signed_in_user,
+            :video          => dbe['frame']['video'],
+            :dbe            => dbe
+          } %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<p class="center">
+  <%= link_to appropriate_subdirectory + "/search/#{params[:query]}?page=#{@page+1}",
+        {
+          :class => Settings::Mobile.load_more_button_class + " js-track-event",
+          'data-ga_category' => "Mobile",
+          'data-ga_action'   => "Click Load more on #{@roll_type}",
+          'data-ga_label'    => "#{@signed_in_user['nickname']}"
+        } do %>
+    <span class="button_label">Load More</span>
+  <% end %>
+</p>
+
+<%= javascript_tag do %>
+  <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>
+  <%= render :partial => "/mobile/partials/intercom", :locals => {:signed_in_user => @signed_in_user}, :formats=>[:js] %>
+<% end %>

@@ -104,6 +104,14 @@ module Shelby
       return v['result']
     end
 
+    def self.search(query, options={})
+      limit = options[:limit] || 10
+      page = options[:page] || 1
+      v = get( "/video/search?q=#{query}&limit=#{limit}&page=#{page}" ).parsed_response
+      return nil if v['status'] != 200
+      return v['result']['videos']
+    end
+
     def self.join_roll(roll_id, cookie, token)
       headers = { 'Cookie' => cookie }
       headers['X-CSRF-Token'] = token if token

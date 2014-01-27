@@ -290,6 +290,26 @@ class MobileController < ApplicationController
     redirect_to(appropriate_subdirectory + "/stream") and return
   end
 
+  def search
+    check_for_signed_in_user_and_issues({:redirect_if_issue => false, :cookies => cookies})
+    @page = params[:page] ? params[:page].to_i : 1
+    @videos = Shelby::API.search(params[:query], {:limit =>5, :page => @page}) || []
+    @roll_type = Settings::Mobile.roll_types['stream']
+    @roll_with_frames = {'frame_count' => 10}
+    @dashboard = []
+    @videos.each do |v|
+      frame = {
+        'upvoters' => [],
+        'like_count' => 0,
+        'frame_type' => 2,
+        'created_at' => "Just now",
+        'roll' => { 'frame_count' => 10 },
+        'video' => v
+      }
+      @dashboard << {'action' => 99, 'frame' => frame}
+    end
+  end
+
   private
 
   def check_for_signed_in_user_and_issues(options)
