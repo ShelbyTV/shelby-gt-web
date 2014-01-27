@@ -206,6 +206,13 @@ $(document).ready(function() {
 
       window.open(url,'twitterShare','');
     }).on('short_link',function(e){
+      shelby.trackEx({
+        providers: ['ga'],
+        gaCategory: loc,
+        gaAction: 'Anonymous Tweet Intent',
+        gaLabel: username
+      });
+
       var $this = $(this);
 
       if(e.code == 200) {
@@ -233,7 +240,12 @@ $(document).ready(function() {
         },
         function(response) {
           if (response && response.post_id) {
-            // TODO:we should record that this happened.
+            shelby.trackEx({
+              providers: ['ga'],
+              gaCategory: loc,
+              gaAction: 'Anonymous Facebook Share',
+              gaLabel: username
+            });
           }
         }
       );
