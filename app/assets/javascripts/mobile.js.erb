@@ -119,7 +119,10 @@ $(document).ready(function() {
       }
     }
 
-    var $sharePanel   = $('.js-share-panel').html(SHELBYJST['share-page-form'](data)),
+    var $sharePanel = $('.js-share-panel').html(SHELBYJST['share-page-form'](data)).on('reset',function(e){
+          //reset event re-disables buttons when js-cancel is clicked.
+          $(this).find('.js-tweet-intent, .js-facebook-msg, .js-frame-shortlink').attr('disabled',true);
+        }),
         $notification = $('.js-notification');
 
     var $shareInitButton = $guide.on('click', '.js-share-init', function(e) {
@@ -336,7 +339,7 @@ $(document).ready(function() {
 
     $('.js-cancel').on('click', function(e) {
       e.preventDefault();
-      $sharePanel.toggleClass('hidden', true);
+      $sharePanel.toggleClass('hidden', true).trigger('reset');
       $guide.toggleClass('hidden', false);
     });
 
