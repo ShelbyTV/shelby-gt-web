@@ -147,17 +147,20 @@ $(document).ready(function() {
         },
         success: function(response) {
           $shortLinkListeners.trigger({
-            'type' : 'short_link',
-            'code' : 200,
-            'message' : response.result.short_link
+            'code'          : 200,
+            'description'   : $video['description'],
+            'message'       : response.result.short_link,
+            'thumbnail_url' : $video['thumbnail_url'],
+            'type'          : 'short_link',
+            'video_title'   : $video['title']
           });
           // $('#shortlink').removeAttr('disabled').val(response.result.short_link);
         },
         error: function() {
           $shortLinkListeners.trigger({
-            'type' : 'short_link',
-            'code' : 500,
-            'message' : 'Error…'
+            'code'    : 500,
+            'message' : 'Error…',
+            'type'    : 'short_link'
           });
           // $('#shortlink').val('Error…');
         }
@@ -206,23 +209,23 @@ $(document).ready(function() {
 
         $(this).data({
           url         : e.message,
-          video_title : ''
+          video_title : e.video_title
         });
       }
     });;
 
     $FacebookMessageButton.on('click',function(e){
       e.preventDefault();
-      var $this = $(this).data();
+      var $data = $(this).data();
       FB.ui(
         {
           caption     : 'Shelby.tv',
-          description : $this.data('description'),
+          description : $data['description'],
           display     : 'popup',
-          link        : $this.data('short_link'),
+          link        : $data['short_link'],
           method      : 'feed',
-          name        : $this.data('video_title'),
-          picture     : $this.data('thumbnail_url')
+          name        : $data['video_title'],
+          picture     : $data['thumbnail_url'],
         },
         function(response) {
           if (response && response.post_id) {
@@ -237,10 +240,10 @@ $(document).ready(function() {
       if(e.code == 200) {
         $this.removeAttr('disabled')
              .data({
-                description   : '',
-                thumbnail_url : '',
+                description   : e.description,
+                thumbnail_url : e.thumbnail_url,
                 short_link    : e.message,
-                video_title   : ''
+                video_title   : e.video_title
               });
       }
     });
