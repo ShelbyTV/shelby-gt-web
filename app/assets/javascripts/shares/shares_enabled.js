@@ -18,14 +18,15 @@ $(function() {
 
   // share pane template data
   var data = {
-    twitter_enabled: false,
-    twitter_checked: false,
+    anonymous: false,
+    currentFrameShortlink: null,
     facebook_enabled: false,
     facebook_checked: false,
-    currentFrameShortlink: null,
     frameId: frame_id,
-    username: username,
-    twitter_intent: "#tweet"
+    twitter_enabled: false,
+    twitter_checked: false,
+    twitter_intent: "#tweet",
+    username: username
   };
 
 
