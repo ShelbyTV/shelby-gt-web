@@ -325,6 +325,8 @@ class HomeController < ApplicationController
       @found_video_providers = params.keep_if { |provider_name| Settings::Radar.video_providers.include?(provider_name) }
     end
 
+    render and return if @found_video_providers.empty?
+
     # @user_signed_in = user_signed_in?
     # @signed_in_user = check_for_signed_in_user
 
@@ -332,13 +334,9 @@ class HomeController < ApplicationController
 
     if !user_signed_in?
       session[:found_video_providers] = @found_video_providers
+      render(:layout => 'radar', :template => 'radar/index') and return
     else
       unless @found_video_providers.empty?
-        # this means that the user isn't *really* logged in, delete the cookie and reassign variables appropriatly.
-        if @signed_in_user['app_progress'].nil?
-          cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
-          @signed_in_user = check_for_signed_in_user
-        end
 
         @videos = []
 
@@ -359,12 +357,9 @@ class HomeController < ApplicationController
 
         @videos.reverse!
 
-        #use the "radar" layout/template if there are params the signify found videos
-        #otherwise, default layout is 'home/bookmarklet'
+        render(:layout => 'radar', :template => 'radar/index') and return
       end
     end
-
-    render :layout => 'radar', :template => 'radar/index'
 
   end
 
