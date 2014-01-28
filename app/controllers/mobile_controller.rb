@@ -117,21 +117,22 @@ class MobileController < ApplicationController
       @section = params[:section] || Settings::Mobile.preferences_sections.profile
 
       case @section
-        when Settings::Mobile.preferences_sections.sources
-          if (@signed_in_user['user_type'] == Settings::User.user_type.anonymous) and (@signed_in_user['app_progress']['followedSources'] != "true")
-            flash.now[:notice] = "Follow Channels! </br> Follow as many channels as you like! All video ends up in your stream"
-          end
-          @sources = Shelby::API.get_featured_sources("onboarding",request.headers['HTTP_COOKIE'])
-          @roll_type = Settings::Mobile.preferences_sections.sources
-        when Settings::Mobile.preferences_sections.notifications
-          @preferences = @signed_in_user['preferences']
-        when Settings::Mobile.preferences_sections.profile
-          @user = @signed_in_user
-          if @signed_in_user['user_type'] == Settings::User.user_type.anonymous
-            # considering this a signup
-            render "/mobile/preferences_profile_for_anonymous" and return
-          end
-        else
+      when Settings::Mobile.preferences_sections.sources
+        if (@signed_in_user['user_type'] == Settings::User.user_type.anonymous) and (@signed_in_user['app_progress']['followedSources'] != "true")
+          flash.now[:notice] = "Follow Channels! </br> Follow as many channels as you like! All video ends up in your stream"
+        end
+        @sources = Shelby::API.get_featured_sources("onboarding",request.headers['HTTP_COOKIE'])
+        @roll_type = Settings::Mobile.preferences_sections.sources
+      when Settings::Mobile.preferences_sections.notifications
+        @preferences = @signed_in_user['preferences']
+      when Settings::Mobile.preferences_sections.profile
+        @user = @signed_in_user
+        if @signed_in_user['user_type'] == Settings::User.user_type.anonymous
+          # considering this a signup
+          render "/mobile/preferences_profile_for_anonymous" and return
+        end
+      else
+        (redirect_to(appropriate_subdirectory+"/?status=#{Settings::ErrorMessages.route_does_not_exist}")) and return
       end
 
       render "/mobile/preferences_#{@section}" and return
