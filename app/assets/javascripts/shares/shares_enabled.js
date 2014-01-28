@@ -218,7 +218,8 @@ $(function() {
     var $this = $(this);
     $this.toggleClass('button_active', !$this.hasClass('button_active'));
 
-    $dropdown.toggleClass('hidden', !$dropdown.hasClass('hidden'));
-    $dropdown.find('#frame_comment').focus();
+    var _$dropdown = $this.closest('.frame_interactions').find('.share_panel');
+    _$dropdown.toggleClass('hidden', !_$dropdown.hasClass('hidden'));
+    _$dropdown.find('#frame_comment').focus();
   });
 });

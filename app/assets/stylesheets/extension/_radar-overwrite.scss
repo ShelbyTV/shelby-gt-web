@@ -35,4 +35,13 @@
     font-size: $font-size-text;
     max-width: 320px;
   }
+
+  .share_panel {
+    &:before {
+      content: "";
+    }
+
+    bottom: 0;
+    position: relative;
+  }
 }
