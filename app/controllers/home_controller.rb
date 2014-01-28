@@ -325,8 +325,10 @@ class HomeController < ApplicationController
       @found_video_providers = params.keep_if { |provider_name| Settings::Radar.video_providers.include?(provider_name) }
     end
 
-    @user_signed_in = user_signed_in?
-    @signed_in_user = check_for_signed_in_user
+    # @user_signed_in = user_signed_in?
+    # @signed_in_user = check_for_signed_in_user
+
+    check_for_signed_in_user_and_issues
 
     if !user_signed_in?
       session[:found_video_providers] = @found_video_providers
