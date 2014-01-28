@@ -40,50 +40,52 @@
       <% end %>
     </div><!-- eo .frame-body -->
 
-    <footer class="media_module frame-footer clearfix">
-      <% if linkableName %>
-        <a href="<%= appropriate_subdirectory %>/<%= linkableName %>" class="js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
-      <% end %>
-        <%
-            avatarModifierClass = ''
-            if dbe and dbe['action'] == 34
-              avatarModifierClass = ' xuser-avatar--featured icon-star'
-            elsif is_like
-              avatarModifierClass = ' xuser-avatar--liker icon-like'
-            end
-        %>
-        <span class="image_module media_image avatar avatar--<%= (is_mobile) ? 'small' : 'medium' %><%= avatarModifierClass %>" style="background-image: url(<%= avatar %>);" role="img">
-          <img src="<%= avatar %>" class="cloaked">
-        </span>
-      <% if linkableName %>
-        </a>
-      <% end %>
+    <% unless roll_type == Settings::Mobile.roll_types['search'] %>
+      <footer class="media_module frame-footer clearfix">
+        <% if linkableName %>
+          <a href="<%= appropriate_subdirectory %>/<%= linkableName %>" class="js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
+        <% end %>
+          <%
+              avatarModifierClass = ''
+              if dbe and dbe['action'] == 34
+                avatarModifierClass = ' xuser-avatar--featured icon-star'
+              elsif is_like
+                avatarModifierClass = ' xuser-avatar--liker icon-like'
+              end
+          %>
+          <span class="image_module media_image avatar avatar--<%= (is_mobile) ? 'small' : 'medium' %><%= avatarModifierClass %>" style="background-image: url(<%= avatar %>);" role="img">
+            <img src="<%= avatar %>" class="cloaked">
+          </span>
+        <% if linkableName %>
+          </a>
+        <% end %>
 
-      <div class="media_body">
-        <a href="<%= framePermalink %>" class="xuser-data-timestamp">
-          <%= frame['created_at'] %>
-        </a>
+        <div class="media_body">
+          <a href="<%= framePermalink %>" class="xuser-data-timestamp">
+            <%= frame['created_at'] %>
+          </a>
 
-        <p class="xuser-data">
-          <% if linkableName %>
-            <a href="<%= appropriate_subdirectory %>/<%= linkableName %>" class="js-track-event no-faux-link" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>"<% if frame_owner and frame_owner['name'] %> title="<%= frame_owner['name'] %>"<% end %>>
-          <% end %>
-          <strong><%= userNickname %></strong><% if is_like %> liked this<% end %>
-          <% if linkableName %>
-            </a>
-          <% end %>
-          <% if frame['originator'] && frame['originator']['nickname'] && frame['originator']['nickname'] != frame_owner['nickname'] %>
-            <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <a class="no-faux-link js-track-event" href="<%= appropriate_subdirectory %>/<%= frame['originator']['nickname'] %>" title="<%= frame['originator']['name'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click via Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>"><%= frame['originator']['nickname'] %></a></span><% end %>
-          <% if frame_owner and frame_owner['user_type'] == 1 %>
-            <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <%= frame_owner['authentications'].first['provider'].capitalize %></span>
-          <% end %>
-        </p>
+          <p class="xuser-data">
+            <% if linkableName %>
+              <a href="<%= appropriate_subdirectory %>/<%= linkableName %>" class="js-track-event no-faux-link" data-ga_category="<%= ga_category %>" data-ga_action="Click Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>"<% if frame_owner and frame_owner['name'] %> title="<%= frame_owner['name'] %>"<% end %>>
+            <% end %>
+            <strong><%= userNickname %></strong><% if is_like %> liked this<% end %>
+            <% if linkableName %>
+              </a>
+            <% end %>
+            <% if frame['originator'] && frame['originator']['nickname'] && frame['originator']['nickname'] != frame_owner['nickname'] %>
+              <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <a class="no-faux-link js-track-event" href="<%= appropriate_subdirectory %>/<%= frame['originator']['nickname'] %>" title="<%= frame['originator']['name'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click via Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>"><%= frame['originator']['nickname'] %></a></span><% end %>
+            <% if frame_owner and frame_owner['user_type'] == 1 %>
+              <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <%= frame_owner['authentications'].first['provider'].capitalize %></span>
+            <% end %>
+          </p>
 
-        <p class="xuser-message<%= " line-clamp js-toggle-comment" if message and frame['conversation'] and frame['conversation']['messages'].length>0 and frame['conversation']['messages'][0]['text'].length > 265%>">
-          <%= message %>
-        </p>
-      </div><!-- eo .media_body -->
-    </footer><!-- eo .media_module-->
+          <p class="xuser-message<%= " line-clamp js-toggle-comment" if message and frame['conversation'] and frame['conversation']['messages'].length>0 and frame['conversation']['messages'][0]['text'].length > 265%>">
+            <%= message %>
+          </p>
+        </div><!-- eo .media_body -->
+      </footer><!-- eo .media_module-->
+    <% end %>
   </div><!-- eo .frame-body-wrapper -->
 
   <div class="form_fieldset frame_interactions">

@@ -11,7 +11,8 @@ defaults: &defaults
     likes: 'likes',
     me: 'me',
     stream: 'stream',
-    user: 'user'
+    user: 'user',
+    search: 'search'
   }
 
   roll_followings: following
