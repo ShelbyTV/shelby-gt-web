@@ -70,40 +70,42 @@ $(document).ready(function(){
     });
   }
 
-  // handle liking, regardless of user anonymity
-  $('.js-like').on('click', function(e){
-    var $this = $(this);
+  if(!$('body').hasClass('shelby--radar')){
+    // handle liking, regardless of user anonymity
+    $('.js-like').on('click', function(e){
+      var $this = $(this);
 
-    //prevent extraneous api calls
-    if($(this).hasClass('visuallydisabled')) { return false; }
+      //prevent extraneous api calls
+      if($(this).hasClass('visuallydisabled')) { return false; }
 
-    e.preventDefault();
+      e.preventDefault();
 
-    $(this).children('.icon-like').addClass('icon-like--red');
+      $(this).children('.icon-like').addClass('icon-like--red');
 
-    var frame_id = $('.js-frame').attr('id'),
-        data = { frame_id : frame_id };
+      var frame_id = $('.js-frame').attr('id'),
+          data = { frame_id : frame_id };
 
-    $.ajax({
-      type: 'GET',
-      url: apiRoot + '/PUT/frame/' + frame_id + '/like',
-      dataType: "jsonp",
-      timeout: 10000,
-      crossDomain: true,
-      data: data,
-      xhrFields: {
-        withCredentials: true
-      },
-      success: function () {
-        var $total = $('.js-like-total');
+      $.ajax({
+        type: 'GET',
+        url: apiRoot + '/PUT/frame/' + frame_id + '/like',
+        dataType: "jsonp",
+        timeout: 10000,
+        crossDomain: true,
+        data: data,
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function () {
+          var $total = $('.js-like-total');
 
-        if($total.length){
-          $total.text( '+ ' + (+($total.text().split('+')[1].trim()) + 1 ));
-        }
-      },
-      error: function () {}
+          if($total.length){
+            $total.text( '+ ' + (+($total.text().split('+')[1].trim()) + 1 ));
+          }
+        },
+        error: function () {}
+      });
+
+      $this.addClass('visuallydisabled');
     });
-
-    $this.addClass('visuallydisabled');
-  });
+  }
 });
