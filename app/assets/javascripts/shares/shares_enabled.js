@@ -26,7 +26,8 @@ $(function() {
     twitter_enabled: false,
     twitter_checked: false,
     twitter_intent: "#tweet",
-    username: username
+    username: username,
+    shortlinkable: !$body.hasClass('shelby--radar')
   };
 
 
@@ -86,11 +87,16 @@ $(function() {
     e.preventDefault();
     var $this = $(this),
       data = {
-        source: 'share',
+        source: ($body.hasClass('shelby--radar') ? 'bookmarklet' : 'share'),
         text: $this.find('#frame_comment').val(),
         frame_id: $this.find('#frame_id').val()
       },
       destinations = [];
+
+    if ($body.hasClass('shelby--radar')) {
+      data.url = libs.utils.composeKnownUrl($body.data('provider_name'),$body.data('provider_id'));
+      delete data.frame_id;
+    }
 
     if ($('#share-on-facebook').is(':checked')) {
       destinations.push('facebook');
@@ -179,27 +185,35 @@ $(function() {
   $shareInitButton.on('click', function(e) {
     e.preventDefault();
 
-    var data = {
-      frame_id: frame_id
-    };
 
-    $.ajax({
-      type: 'GET',
-      url: apiRoot + '/frame/' + data.frame_id + '/short_link',
-      dataType: "jsonp",
-      timeout: 10000,
-      crossDomain: true,
-      data: data,
-      xhrFields: {
-        withCredentials: true
-      },
-      success: function(response) {
-        $('#shortlink').removeAttr('disabled').val(response.result.short_link);
-      },
-      error: function() {
-        $('#shortlink').val('Error…');
-      }
-    });
+    if( !$body.hasClass('shelby--radar') ){
+      var data = {
+        frame_id: frame_id
+      };
+
+      $.ajax({
+        type: 'GET',
+        url: apiRoot + '/frame/' + data.frame_id + '/short_link',
+        dataType: "jsonp",
+        timeout: 10000,
+        crossDomain: true,
+        data: data,
+        xhrFields: {
+          withCredentials: true
+        },
+        success: function(response) {
+          $('#shortlink').removeAttr('disabled').val(response.result.short_link);
+        },
+        error: function() {
+          $('#shortlink').val('Error…');
+        }
+      });
+    } else {
+      $body.data({
+        'provider_name'  : $(this).data('provider_name'),
+        'provider_id'    : $(this).data('provider_id')
+      });
+    }
 
     var $this = $(this);
     $this.toggleClass('button_active', !$this.hasClass('button_active'));

@@ -74,16 +74,18 @@
     </form>
   <% } %>
 
-  <div class="guide-overlay__foot guide-overlay__foot--frame-rolling clearfix">
-    <div class="guide-overlay__lining clearfix">
-      <span class="form_label">
-        Shortlink
-      </span>
+  <% if (shortlinkable) { %>
+    <div class="guide-overlay__foot guide-overlay__foot--frame-rolling clearfix">
+      <div class="guide-overlay__lining clearfix">
+        <span class="form_label">
+          Shortlink
+        </span>
 
-      <span class="share_menu__faux-button button_command--shortlink one-half clearfix">
-        <span class="icon icon-shortlink"></span>
-        <input disabled type="text" name="shortlink" id="shortlink" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
-      </span>
-    </div><!-- eo foot lining -->
-  </div><!-- eo guide-overlay__foot -->
+        <span class="share_menu__faux-button button_command--shortlink one-half clearfix">
+          <span class="icon icon-shortlink"></span>
+          <input disabled type="text" name="shortlink" id="shortlink" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
+        </span>
+      </div><!-- eo foot lining -->
+    </div><!-- eo guide-overlay__foot -->
+  <% } %>
 </div><!-- eo guide-overlay__body -->
