@@ -17,6 +17,15 @@
         </li>
       <% end %>
     </ol>
+
+    <script type="text/javascript">
+      shelby.trackEx({
+        providers : ['ga'],
+        gaCategory : "Radar",
+        gaAction : "<%= @found_video_providers.empty? ? 'Radar found NO video' : 'Radar found video' %>",
+        gaValue : "<%= @videos.length %>"
+      });
+    </script>
   <% end %>
 
 <% else %>
@@ -25,11 +34,3 @@
   </div>
 
 <% end %>
-<script type="text/javascript">
-  shelby.trackEx({
-    providers : ['ga'],
-    gaCategory : "Radar",
-    gaAction : "<%= @found_video_providers.empty? ? 'Radar found NO video' : 'Radar found video' %>",
-    gaValue : "<%= @videos.length %>"
-  });
-</script>
