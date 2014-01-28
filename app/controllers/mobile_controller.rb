@@ -293,7 +293,7 @@ class MobileController < ApplicationController
   def search
     check_for_signed_in_user_and_issues({:redirect_if_issue => false, :cookies => cookies})
     @page = params[:page] ? params[:page].to_i : 1
-    @videos = Shelby::API.search(params[:q], {:limit =>5, :page => @page}) || []
+    @videos = Shelby::API.search(URI.escape(params[:q]), {:limit =>5, :page => @page}) || []
     @roll_type = Settings::Mobile.roll_types['search']
     @roll_with_frames = {'frame_count' => 10}
     @dashboard = []
