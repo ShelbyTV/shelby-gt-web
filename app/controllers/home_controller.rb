@@ -346,12 +346,13 @@ class HomeController < ApplicationController
 
           provider_ids = @found_video_providers[provider_name]
           provider_ids.each do |provider_id|
-            video = Shelby::API.find_or_create_video(provider_name, provider_id)
-            # adding these because the find_or_create route doesn't add them :(
-            video['provider_name'] = provider_name
-            video['provider_id'] = provider_id
-            #####
-            @videos << video unless video.nil?
+            if video = Shelby::API.find_or_create_video(provider_name, provider_id)
+              # adding these because the find_or_create route doesn't add them :(
+              video['provider_name'] = provider_name
+              video['provider_id'] = provider_id
+              #####
+              @videos << video unless video.nil?
+            end
           end
         end
 
