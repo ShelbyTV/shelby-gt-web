@@ -77,8 +77,15 @@ module MobileHelper
   end
 
   def display_banners(user)
+    # if user var is nil for some reason, handle it.
+    if user.nil?
+      {
+        :anchor   => 'stream',
+        :facebook => false,
+        :sources  => false
+      }
     #if anon AND you haven't connectedFB AND followedSources
-    if ((user['user_type'] == Settings::User.user_type.anonymous) && (user['app_progress']['connectedFacebook'].nil? && user['app_progress']['followedSources'].nil?))
+    elsif ((user['user_type'] == Settings::User.user_type.anonymous) && (user['app_progress']['connectedFacebook'].nil? && user['app_progress']['followedSources'].nil?))
       #show everything
       {
         :anchor   => nil,
