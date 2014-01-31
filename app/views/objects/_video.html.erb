@@ -37,7 +37,7 @@
     </div><!-- eo .frame-body -->
   </div><!-- eo .frame-body-wrapper -->
 
-  <div class="form_fieldset frame_interactions">
+  <div class="form_fieldset frame_interactions" data-video_id="<%= video['id'] %>">
     <% if user_signed_in %>
     <span class="column one-half">
       <button class="button_primer button_command button_command--flexible button_green one-whole js-share-init js-track-event" data-provider_id="<%= video['provider_id'] %>" data-provider_name="<%= video['provider_name'] %>" data-frame_id="<%= video['id'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click Share" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= signed_in_user['nickname'] %>">
