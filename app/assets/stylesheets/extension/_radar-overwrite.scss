@@ -31,4 +31,17 @@
     margin: 70px auto 0;
     max-width: 550px;
   }
+  .login {
+    font-size: $font-size-text;
+    max-width: 320px;
+  }
+
+  .share_panel {
+    &:before {
+      content: "";
+    }
+
+    bottom: 0;
+    position: relative;
+  }
 }

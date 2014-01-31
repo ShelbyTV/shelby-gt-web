@@ -174,6 +174,8 @@ class HomeController < ApplicationController
   # GET /log_in
   #
   def log_in
+    (redirect_to "/" and return) if user_signed_in?
+
     @login = :true
 
     @auth_failure  = params[:auth_failure] == '1'
@@ -315,44 +317,50 @@ class HomeController < ApplicationController
 
   # THIS IS A TEMPORARY
   def bookmarklet
-    # bahhh, this sucks. fix me.
-    found_video = params.delete(:found_video)
-    params.delete(:controller)
-    params.delete(:action)
-    #######################
-
-    # match params to support providers, if we have at least 1 provider name in the params then we have at least 1 video.
-    @found_video_providers = params.keep_if { |provider_name| Settings::Radar.video_providers.include?(provider_name) }
-
-    unless @found_video_providers.empty?
-      @signed_in_user = check_for_signed_in_user
-      # this means that the user isn't *really* logged in, delete the cookie and reassign variables appropriatly.
-      if @signed_in_user['app_progress'].nil?
-        cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
-        @signed_in_user = check_for_signed_in_user
-      end
-
-      @user_signed_in = user_signed_in?
-      @videos = []
-
-      params.each do |provider_name, provider_ids|
-        # dont look at shit we dont support
-        next unless Settings::Radar.video_providers.include?(provider_name)
-
-        provider_ids = params[provider_name]
-        provider_ids.each do |provider_id|
-          video = Shelby::API.find_or_create_video(provider_name, provider_id)
-          # adding these because the find_or_create route doesn't add them :(
-          video['provider_name'] = provider_name
-          video['provider_id'] = provider_id
-          #####
-          @videos << video unless video.nil?
-        end
-      end
-      #use the "radar" layout/template if there are params the signify found videos
-      #otherwise, default layout is 'home/bookmarklet'
-      render :layout => 'radar', :template => 'radar/index'
+    if session[:found_video_providers]
+      @found_video_providers = session[:found_video_providers]
+      session.delete(:found_video_providers)
+    else
+      # match params to support providers, if we have at least 1 provider name in the params then we have at least 1 video.
+      @found_video_providers = params.keep_if { |provider_name| Settings::Radar.video_providers.include?(provider_name) }
     end
+
+    render and return if @found_video_providers.empty?
+
+    # @user_signed_in = user_signed_in?
+    # @signed_in_user = check_for_signed_in_user
+
+    check_for_signed_in_user_and_issues
+
+    if !user_signed_in?
+      session[:found_video_providers] = @found_video_providers
+      render(:layout => 'radar', :template => 'radar/index') and return
+    else
+      unless @found_video_providers.empty?
+
+        @videos = []
+
+        @found_video_providers.each do |provider_name, provider_ids|
+          # dont look at shit we dont support
+          next unless Settings::Radar.video_providers.include?(provider_name)
+
+          provider_ids = @found_video_providers[provider_name]
+          provider_ids.each do |provider_id|
+            video = Shelby::API.find_or_create_video(provider_name, provider_id)
+            # adding these because the find_or_create route doesn't add them :(
+            video['provider_name'] = provider_name
+            video['provider_id'] = provider_id
+            #####
+            @videos << video unless video.nil?
+          end
+        end
+
+        @videos.reverse!
+
+        render(:layout => 'radar', :template => 'radar/index') and return
+      end
+    end
+
   end
 
   private

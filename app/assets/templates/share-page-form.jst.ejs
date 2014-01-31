@@ -5,60 +5,87 @@
 </div><!-- eo guide-overlay__head--frame-rolling -->
 
 <div class="guide-overlay__body guide-overlay__body--frame-sharing">
-  <form id="share-it" class="form_module rolling-form js-share-submit">
-    <input type="hidden" id="frame_id" name="frame_id" value="<%= frameId %>" />
+  <% if (anonymous) { %>
+    <div class="form_module rolling-form">
+      <div class="guide-overlay__main">
+        <div class="rolling-option">
+          <fieldset class="clearfix">
+            <button disabled tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--twitter button_twitter-blue one-fourth js-tweet-intent">
+              <span class="icon icon-twitter"></span>
+              <span class="button_label">Twitter</span>
+            </button>
 
-    <textarea id="frame_comment" name="frame_comment" class="form_textarea js-add-message-input new-comment-input" rows="3" autofocus tabindex="0" placeholder="What do you think about this video?"></textarea>
-
-    <div class="js-guide-overlay-main guide-overlay__main">
-      <div class="rolling-option">
-        <% if(facebook_enabled || twitter_enabled) { %>
-          <fieldset class="form_fieldset form_fieldset--social clearfix">
-            <legend class="form_legend">
-              Also Share to
-            </legend>
-
-            <% if(twitter_enabled) { %>
-              <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--twitter <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %> one-fourth">
-                <input data-network="twitter" id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
-                <span class="icon icon-twitter"></span>
-                <span class="button_label">Twitter</span>
-              </label>
-            <% } %>
-
-            <% if(facebook_enabled) { %>
-              <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--facebook <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %> one-fourth">
-                <input data-network="facebook" id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
-                <span class="icon icon-facebook"></span>
-                <span class="button_label">Facebook</span>
-              </label>
-            <% } %>
+            <button disabled tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--facebook button_facebook-blue one-fourth js-facebook-msg">
+              <span class="icon icon-facebook"></span>
+              <span class="button_label">Facebook</span>
+            </button>
           </fieldset>
-        <% } %>
 
-        <fieldset class="form_fieldset form_fieldset--submit clearfix">
-          <button class="button_primer button_command button_command--wide button_green js-share-it" type="submit" tabindex="0">
-            Share
-          </button>
+          <fieldset class="form_fieldset form_fieldset--submit clearfix">
+            <button class="button_primer button_command button_command--flexible button_command--sub button_command--cancel button_gray js-cancel js-track-event" data-ga_category="Share Page" data-ga_action="Click Cancel Share" data-ga_label="<%= username %>">
+              Cancel
+            </button>
+          </fieldset>
+        </div>
+      </div><!-- eo guide-overlay__main -->
+    </div>
+  <% } else { %>
+    <form id="share-it" class="form_module rolling-form js-share-submit">
+      <input type="hidden" id="frame_id" name="frame_id" value="<%= frameId %>" />
+      <textarea id="frame_comment" name="frame_comment" class="form_textarea js-add-message-input new-comment-input" rows="3" autofocus tabindex="0" placeholder="What do you think about this video?"></textarea>
 
-          <button class="button_primer button_command button_command--flexible button_command--sub button_command--cancel button_gray js-cancel js-track-event" data-ga_category="Share Page" data-ga_action="Click Cancel Share" data-ga_label="<%= username %>">
-            Cancel
-          </button>
-        </fieldset>
-      </div>
-    </div><!-- eo guide-overlay__main -->
-  </form>
+      <div class="js-guide-overlay-main guide-overlay__main">
+        <div class="rolling-option">
+          <% if(facebook_enabled || twitter_enabled) { %>
+            <fieldset class="form_fieldset form_fieldset--social clearfix">
+              <legend class="form_legend">
+                Also Share to
+              </legend>
 
-  <div class="guide-overlay__foot guide-overlay__foot--frame-rolling clearfix">
-    <div class="guide-overlay__lining clearfix">
-      <span class="form_label">
-        Shortlink
-      </span>
+              <% if(twitter_enabled) { %>
+                <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--twitter <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %> one-fourth">
+                  <input data-network="twitter" id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
+                  <span class="icon icon-twitter"></span>
+                  <span class="button_label">Twitter</span>
+                </label>
+              <% } %>
 
-      <span class="share_menu__faux-button button_command--shortlink one-half clearfix">
-        <span class="icon icon-shortlink"></span>
-        <input disabled type="text" name="shortlink" id="shortlink" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
-      </span>
-    </div><!-- eo foot lining -->
-  </div><!-- eo guide-overlay__foot -->
+              <% if(facebook_enabled) { %>
+                <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--facebook <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %> one-fourth">
+                  <input data-network="facebook" id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
+                  <span class="icon icon-facebook"></span>
+                  <span class="button_label">Facebook</span>
+                </label>
+              <% } %>
+            </fieldset>
+          <% } %>
+
+          <fieldset class="form_fieldset form_fieldset--submit clearfix">
+            <button class="button_primer button_command button_command--wide button_green js-share-it" type="submit" tabindex="0">
+              Share
+            </button>
+
+            <button class="button_primer button_command button_command--flexible button_command--sub button_command--cancel button_gray js-cancel js-track-event" data-ga_category="Share Page" data-ga_action="Click Cancel Share" data-ga_label="<%= username %>">
+              Cancel
+            </button>
+          </fieldset>
+        </div>
+      </div><!-- eo guide-overlay__main -->
+    </form>
+  <% } %>
+
+  <% if (shortlinkable) { %>
+    <div class="guide-overlay__foot guide-overlay__foot--frame-rolling clearfix">
+      <div class="guide-overlay__lining clearfix">
+        <span class="form_label">
+          Shortlink
+        </span>
+
+        <span class="share_menu__faux-button button_command--shortlink one-half clearfix">
+          <span class="icon icon-shortlink"></span>
+          <input disabled type="text" name="shortlink" id="shortlink" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
+        </span>
+      </div><!-- eo foot lining -->
+    </div><!-- eo guide-overlay__foot -->
+  <% } %>
 </div><!-- eo guide-overlay__body -->

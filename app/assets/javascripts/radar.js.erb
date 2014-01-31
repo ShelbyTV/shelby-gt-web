@@ -68,6 +68,8 @@ $(document).ready(function(){
   //using Rails to dump out the User object as stringified JSON, then cache it with JSON, asap!
   var user = JSON.parse( $('#js-user').text() );
 
+  $('#login_form').attr('action',function(index,action){ return action + '?redir='+window.location.origin+'/bookmarklet'});
+
   // track clean visits
   var loc = shelbyTrackingCategory || "Radar",
       username = shelbyTrackingLabel || "Anonymous" ;
@@ -97,37 +99,37 @@ $(document).ready(function(){
     });
   //----------------------------------------------------------------------------
 
-  $('.js-like').on('click',function(e){
-    e.preventDefault();
+  // $('.js-like').on('click',function(e){
+  //   e.preventDefault();
 
-    if(user && user['watch_later_roll_id']) {
-      var data  = $(this).data(),
-          $self = $(this);
+  //   if(user && user['watch_later_roll_id']) {
+  //     var data  = $(this).data(),
+  //         $self = $(this);
 
-      $.ajax({
-        type: 'GET',
-        url: libs.config.shelbyGT.apiRoot + '/POST/roll/' + user['watch_later_roll_id'] + '/frames',
-        dataType: "jsonp",
-        timeout: 10000,
-        crossDomain: true,
-        data: {
-          provider_id   : data.provider_id,
-          provider_name : data.provider_name,
-          url           : libs.utils.composeKnownUrl(data.provider_name,data.provider_id)
-        },
-        xhrFields: {
-          withCredentials: true
-        },
-        success: function (response) {
-          $self.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red').siblings('.button_label').text('Liked');
-        },
-        error: function (e) { console.log("API Error: Unabled to persist Like",e); }
-      });
-    } else {
-      var redirectUrl = window.location.href;
-      window.location = libs.config.shelbyGT.root + '/log_in?auth_failure=1&redir=' + redirectUrl;
-    }
+  //     $.ajax({
+  //       type: 'GET',
+  //       url: libs.config.shelbyGT.apiRoot + '/POST/roll/' + user['watch_later_roll_id'] + '/frames',
+  //       dataType: "jsonp",
+  //       timeout: 10000,
+  //       crossDomain: true,
+  //       data: {
+  //         provider_id   : data.provider_id,
+  //         provider_name : data.provider_name,
+  //         url           : libs.utils.composeKnownUrl(data.provider_name,data.provider_id)
+  //       },
+  //       xhrFields: {
+  //         withCredentials: true
+  //       },
+  //       success: function (response) {
+  //         $self.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red').siblings('.button_label').text('Liked');
+  //       },
+  //       error: function (e) { console.log("API Error: Unabled to persist Like",e); }
+  //     });
+  //   } else {
+  //     var redirectUrl = window.location.href;
+  //     window.location = libs.config.shelbyGT.root + '/log_in?auth_failure=1&redir=' + redirectUrl;
+  //   }
 
-  });
+  // });
 
 });

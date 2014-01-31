@@ -45,7 +45,12 @@ class ApplicationController < ActionController::Base
   end
 
   def detect_mobile_os
+    if params[:amazon] == "true"
+      session[:amazon] = true
+    end
+
     return :ios if (request.user_agent=~/iPhone/)
+    return :amazon if (session[:amazon])
     return :amazon if (request.user_agent=~/AmazonWebAppPlatform/)
     return :android if (request.user_agent=~/Android/)
     return :tablet if (request.user_agent=~/Silk/)
@@ -80,6 +85,36 @@ class ApplicationController < ActionController::Base
     end
 
     h
+  end
+
+  def check_for_signed_in_user_and_issues(options={})
+    @signed_in_user = check_for_signed_in_user
+    @user_signed_in = user_signed_in?
+    @is_mobile      = is_mobile?
+    @mobile_os      = detect_mobile_os
+
+    if @signed_in_user and @signed_in_user['user_type'] == Settings::User.user_type.anonymous and !@user_signed_in
+      # login and redirect to /stream
+      r = Shelby::API.login(@signed_in_user['nickname'], 'anonymous', request.headers['HTTP_COOKIE'])
+      Shelby::CookieUtils.proxy_cookies(options[:cookies], r.headers['set-cookie'])
+      redirect_to(appropriate_subdirectory+"/stream") and return
+    end
+
+    # redirect if told to via options
+    if options[:redirect_if_issue] and @signed_in_user and @signed_in_user['app_progress'].nil?
+      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
+      redirect_to(appropriate_subdirectory+"/?msg=Eeek,%20Something%20went%20wrong.%20Try%20logging%20in%20again.&status=401") and return
+
+    # just reset user state as seen by app
+    elsif @signed_in_user and (@signed_in_user['user_type'] != Settings::User.user_type[:anonymous]) and @signed_in_user['app_progress'].nil?
+      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
+      @signed_in_user = check_for_signed_in_user
+      @user_signed_in = user_signed_in?
+    elsif @user_signed_in and (@signed_in_user['user_type'] != Settings::User.user_type[:anonymous]) and (@signed_in_user['nickname'] == "Anonymous")
+      cookies.delete(:_shelby_gt_common, :domain => '.shelby.tv')
+      @signed_in_user = check_for_signed_in_user
+      @user_signed_in = user_signed_in?
+    end
   end
 
   private

@@ -1,0 +1,33 @@
+defaults: &defaults
+  entry_type:
+    new_social_frame: 0
+    new_bookmark_frame: 1
+    new_in_app_frame: 2
+    new_genius_frame: 3
+    new_hashtag_frame: 4
+    new_email_hook_frame: 5
+    new_community_frame: 6
+    re_roll: 8
+    watch: 9
+    comment: 10
+    like_notification: 11
+    anonymous_like_notification: 12
+    share_notification: 13
+    follow_notification: 14
+    prioritized_frame: 30
+    video_graph_recommendation: 31
+    entertainment_graph_recommendation: 32
+    mortar_recommendation: 33
+    channel_recommendation: 34
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
