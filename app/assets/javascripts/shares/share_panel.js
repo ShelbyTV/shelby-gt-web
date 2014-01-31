@@ -1,6 +1,9 @@
+var user = new Backbone.Model(JSON.parse($('#js-user').html()));
+
 var Interactions = Backbone.View.extend({
   options : {
     apiRoot         : '//api.shelby.tv/v1',
+    source          : $('body').hasClass('shelby--radar') ? 'bookmarklet' : 'share',
     sharePanelClass : '.js-shares',
     sharePanelData  : {
       anonymous             : false,
@@ -11,11 +14,10 @@ var Interactions = Backbone.View.extend({
       twitter_enabled       : false,
       twitter_checked       : false,
       twitter_intent        : null,
-      username              : $('body').data('username'),
-      shortlinkable         : !$('body').hasClass('shelby--radar')
-    },
-    source         : $body.hasClass('shelby--radar') ? 'bookmarklet' : 'share',
-
+      username              : user.get('nickname'),
+      shortlinkable         : !$('body').hasClass('shelby--radar'),
+      suffix                : ''
+    }
   },
 
   el: $('.frame_interactions'),
@@ -29,19 +31,20 @@ var Interactions = Backbone.View.extend({
     'click .js-like'          : 'doLike',
     'click .js-share-it'      : 'submitShare',
     'click .js-cancel'        : 'toggleSharePanel',
-    'submit .js-share-submit' : 'submitShare'
+    'submit .js-share-submit' : 'submitShare',
+    'reset .js-share-submit'  : 'resetShare'
   },
 
   initialize : function(e){
-    this.options.sharePanelData.frameId = this.$el.data('video_id');
-    this.options.user = JSON.parse($('#js-user').html() || {});
+    this.options.video = JSON.parse(this.$el.find('.js-video').html());
+
     this.render();
   },
   _cleanup: function(){
 
   },
   render : function(){
-    var data = _(this.options.sharePanelData).extend(this._getUserAuthentications());
+    var data = _(this.options.sharePanelData).extend(this._getUserAuthentications(),{});
 
     this.$el.find(this.options.sharePanelClass).html(this.sharePaneljst(data));
   },
@@ -60,14 +63,14 @@ var Interactions = Backbone.View.extend({
 
     $.ajax({
       type: 'GET',
-      url: this.options.apiRoot + '/POST/roll/' + this.options.user['watch_later_roll_id'] + '/frames',
+      url: this.options.apiRoot + '/POST/roll/' + user.get('watch_later_roll_id') + '/frames',
       dataType: "jsonp",
       timeout: 10000,
       crossDomain: true,
       data: {
-        provider_id   : $button.data('provider_id'),
-        provider_name : $button.data('provider_name'),
-        url           : libs.utils.composeKnownUrl($button.data('provider_name'),$button.data('provider_id'))
+        provider_id   : this.options.video['provider_id'],
+        provider_name : this.options.video['provider_name'],
+        url           : libs.utils.composeKnownUrl(this.options.video['provider_name'],this.options.video['provider_id'])
       },
       xhrFields: {
         withCredentials : true
@@ -82,6 +85,12 @@ var Interactions = Backbone.View.extend({
   toggleSharePanel: function(e){
     this.$el.find(this.options.sharePanelClass).toggleClass('hidden');
   },
+  resetShare: function(e){
+    e.preventDefault();
+
+    this.$el.find('')
+
+  },
   submitShare: function(e){
     e.preventDefault();
 
@@ -94,15 +103,15 @@ var Interactions = Backbone.View.extend({
         destinations = [];
 
     if (this.options.source == 'bookmarklet') {
-      data.url = libs.utils.composeKnownUrl($button.data('provider_name'),$button.data('provider_id'));
+      data.url = libs.utils.composeKnownUrl(this.options.video['provider_name'],this.options.video['provider_id']);
       delete data.frame_id;
     }
 
-    if ($('#share-on-facebook').is(':checked')) {
+    if (this.$el.find('#share-on-facebook').is(':checked')) {
       destinations.push('facebook');
     }
 
-    if ($('#share-on-twitter').is(':checked')) {
+    if (this.$el.find('#share-on-twitter').is(':checked')) {
       destinations.push('twitter');
     }
 
