@@ -202,7 +202,28 @@ var Interactions = Backbone.View.extend({
   }
 });
 
-var FrameInteractions = new Interactions();
+var Guide = Backbone.View.extend({
+  el: $('.js-guide'),
+  events: {
+  },
+  initialize: function(){
+    console.log('init main view',this);
+    var interactions = this.$el.find('.frame_interactions');
+
+    _(interactions).each(function(el,index){
+      console.log(el,index);
+
+      new Interactions({el: el});
+
+    });
+  },
+  _cleanup: function(){},
+  render: function(){
+    console.log('render');
+  }
+});
+
+var SharePanel = new Guide();
 
 
 /*
