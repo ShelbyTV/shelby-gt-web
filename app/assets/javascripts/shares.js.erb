@@ -70,20 +70,37 @@ $(document).ready(function(){
     });
   }
 
+  var $frameLikeList = $('#js-frame-like').html();
+
   if(!$('body').hasClass('shelby--radar')){
     // handle liking, regardless of user anonymity
-    $('.js-like').on('click', function(e){
+    $('.js-frame').on('click', '.js-like', function(e) {
       var $this = $(this);
 
       //prevent extraneous api calls
-      if($(this).hasClass('visuallydisabled')) { return false; }
+      if ($this.hasClass('visuallydisabled')) {
+        return false;
+      }
 
       e.preventDefault();
 
-      $(this).children('.icon-like').addClass('icon-like--red');
+      var frame_id = $this.data('frame_id'),
+        $frame = $(e.delegateTarget),
+        $likes = $frame.find('.js-frame-likes'),
+        data = {
+          frame_id: frame_id
+        };
 
-      var frame_id = $('.js-frame').attr('id'),
-          data = { frame_id : frame_id };
+      //modify the button state/appearance
+      $this.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
+
+      if (!$likes.length) {
+        //if no one Liked the Frame yet, add the Like list container:
+        $frame.append($frameLikeList);
+      }
+
+      var $total = $frame.find('.js-like-total');
+      $total.text('+ ' + (parseInt($total.text().split('+')[1].trim()) + 1)).removeClass('invisible');
 
       $.ajax({
         type: 'GET',
@@ -95,17 +112,10 @@ $(document).ready(function(){
         xhrFields: {
           withCredentials: true
         },
-        success: function () {
-          var $total = $('.js-like-total');
-
-          if($total.length){
-            $total.text( '+ ' + (+($total.text().split('+')[1].trim()) + 1 ));
-          }
-        },
-        error: function () {}
+        success: function() {},
+        error: function() {}
       });
 
-      $this.addClass('visuallydisabled');
     });
   }
 });

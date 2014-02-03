@@ -85,6 +85,13 @@
 
       <%= render :partial => '/marketing/shares' if @is_mobile != 'iPhone' and !@user_signed_in %>
     </div>
+
+    <script id="js-frame-like" type="application/json">
+      <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">
+        <ul class="list frame-likes-avatars js-liker-avatars-list"></ul>
+        <span class="frame-likes-count frame-external-subline-text invisible js-like-total">+ 0</span>
+      </div>
+    </script>
   </div> <!-- eo ~application -->
   <% if ["production", "staging"].include? Rails.env %>
     <script>
