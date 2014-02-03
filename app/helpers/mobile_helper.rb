@@ -76,7 +76,7 @@ module MobileHelper
     return stripped_url
   end
 
-  def display_banners(user)
+  def display_banners(user=nil)
     # if user var is nil for some reason, handle it.
     if user.nil?
       {
