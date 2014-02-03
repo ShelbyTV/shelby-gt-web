@@ -44,7 +44,7 @@
 
   <div class="shelby__wrapper clearfix" role="main">
 
-    <%= render :partial => '/home/landing_header', :locals => {:show_login => !@login, :user_signed_in => @user_signed_in, :mobile_os => @mobile_os} %>
+    <%= render :partial => '/home/landing_header', :locals => {:show_login => (!@login && !@ipadbeta), :user_signed_in => @user_signed_in, :mobile_os => @mobile_os} %>
 
     <% #------------ Shelf Content --------------- %>
 

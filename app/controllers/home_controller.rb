@@ -303,7 +303,6 @@ class HomeController < ApplicationController
     @is_mobile =  is_mobile?
     @ipadbeta  = true
 
-
     @optin    = params.delete(:optin) == 'true' ? true : false
     @ga_label = params.delete(:email)
 
