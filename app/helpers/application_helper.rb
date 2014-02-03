@@ -95,7 +95,7 @@ module ApplicationHelper
 
     unless signed_in_user
       signed_in_user = {}
-      signed_in_user['nickname'] = Settings::User.user_type.anonymous_user_nickname
+      signed_in_user['nickname'] = Settings::User.anonymous_user_nickname
       signed_in_user['user_type'] = Settings::User.user_type.ghost
     end
 
