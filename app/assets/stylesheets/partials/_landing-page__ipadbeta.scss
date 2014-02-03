@@ -3,10 +3,38 @@
 
 .shelf--ipadbeta {
   margin-top: 2em;
-  text-align: center;
 
+  .shelf__lining {
+    padding: 2em 3.3em;
+  }
+
+  .shelf__block--small {
+    margin-left: 1em;
+  }
 
   .shelf__h2 {
     margin-top: 1em;
   }
+
+  .shelf__cta {
+    font-weight: bold;
+    color: darken($ui-green,5%);
+  }
+
+  .list {
+    list-style: decimal;
+    padding-left: 21px;
+  }
+
+  .list__item {
+    color: #777;
+    margin-bottom: 0.5em;
+  }
+
+  @media screen and  (max-width: 500px) {
+    .shelf__lining {
+      padding: 1em;
+    }
+  }
+
 }

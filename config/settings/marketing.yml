@@ -18,16 +18,18 @@ defaults: &defaults
 
   ipadbeta:
     optin:
-      head: Thank you for opting in!
-      message: [
-        "Visit <a href=\"/ipadbeta\" class=\"js-track-event\" data-ga_category=\"iPad Beta\" data-ga_action=\"Click to Download iPad Beta\">shelby.tv/ipadbeta</a> from your iPad",
-        "Follow the directions to install the app"
+      head: Welcome to the Shelby.tv iPad Beta
+      message: "You're one of a few to have early access."
+      directions: [
+        "Visit <a href=\"http://shl.by/ipadbeta\" class=\"shelf__cta js-track-event\" data-ga_category=\"iPad Beta\" data-ga_action=\"Click to Download iPad Beta\">shl.by/ipadbeta</a> from your iPad.",
+        "Follow the directions to install the app.",
+        "Let us know what you think!"
       ]
     optout:
       head: Thank you for your time!
       message: [
         "We're sorry to hear that you're not able to participate but hope to see you back again soon!",
-        "You're free to try out our iPad beta by visiting <a href=\"/ipadbeta\" class=\"js-track-event\" data-ga_category=\"iPad Beta\" data-ga_action=\"Click to Download iPad Beta\">shelby.tv/ipadbeta</a> from your device!"
+        "You're free to try out our iPad beta by visiting <a href=\"http://shl.by/ipadbeta\" class=\"shelf__cta js-track-event\" data-ga_category=\"iPad Beta\" data-ga_action=\"Click to Download iPad Beta\">shl.by/ipadbeta</a> from your device!"
       ]
     support: "Questions? Concerns? Comments? Feel free to <a href=\"mailto:feedback@shelby.tv\" class=\"js-track-event\" data-ga_category=\"iPad Beta\" data-ga_action=\"Click to Contact Us\">contact us</a>!"
 
