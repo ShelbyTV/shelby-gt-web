@@ -1,0 +1,32 @@
+<!-- <div class="shelf__wrapper shelf__wrapper--ipadbeta"> -->
+  <div class="shelf shelf--ipadbeta">
+    <% if optin %>
+      <div class="shelf__lining">
+        <%= content_tag :h2, Settings::Marketing.ipadbeta.optin.head, :class => "shelf__h2" %>
+
+        <% Settings::Marketing.ipadbeta.optin.message.each do |msg| %>
+          <%= content_tag :p, msg.html_safe, :class => "shelf__block" %>
+        <% end %>
+        </p>
+      </div>
+    <% else %>
+      <div class="shelf__lining">
+        <%= content_tag :h2, Settings::Marketing.ipadbeta.optout.head, :class => "shelf__h2" %>
+
+        <% Settings::Marketing.ipadbeta.optout.message.each do |msg| %>
+          <%= content_tag :p, msg.html_safe, :class => "shelf__block" %>
+        <% end %>
+        </p>
+      </div>
+    <% end %>
+  </div><!-- eo shelf -->
+<!-- </div> -->
+
+<script type="text/javascript">
+  shelby.trackEx({
+    providers : ['ga'],
+    gaCategory : "iPad Beta",
+    gaAction : "<%= optin %>",
+    gaLabel : "<%= ga_label %>"
+  });
+</script>

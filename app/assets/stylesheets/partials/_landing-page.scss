@@ -58,12 +58,13 @@
 .login-section {
   padding-top: 3em;
 }
-
 @import "partials/landing-page__shelf";
 @import "partials/landing-page__login";
 @import "partials/landing-page__error";
 @import "partials/landing-page__fill";
+//let consecutive shelves override if need be. do not disturb the four partials above.
 @import "partials/landing-page__iphone";
+@import "partials/landing-page__ipadbeta";
 @import "partials/landing-page__header";
 @import "partials/landing-page__cta";
 @import "partials/landing-page__press";

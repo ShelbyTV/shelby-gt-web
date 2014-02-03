@@ -15,6 +15,20 @@ defaults: &defaults
 
   social: "Like videos and Shelby uncovers more to watch."
   social_body: "Shelby.tv delivers smart recommendations based on your behavior and gets better over time."
+
+  ipadbeta:
+    optin:
+      head: Thank you for opting in!
+      message: [
+        "So this is what you have to do."
+      ]
+    optout:
+      head: Thank you for your time!
+      message: [
+        "We're sorry to hear that you're not able to participate but hope to see you back again soon!",
+        "You're free to try out our iPad beta by visiting <a href=\"iphonebeta\">shelby.tv/iphonebeta</a> from your device!"
+      ]
+
 development:
   <<: *defaults
 
