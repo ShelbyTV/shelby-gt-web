@@ -1,30 +1,28 @@
-<!-- <div class="shelf__wrapper shelf__wrapper--ipadbeta"> -->
-  <div class="shelf shelf--ipadbeta">
-    <% if optin %>
-      <div class="shelf__lining">
-        <%= content_tag :h2, Settings::Marketing.ipadbeta.optin.head, :class => "shelf__h2" %>
+<div class="shelf shelf--ipadbeta">
+  <% if optin %>
+    <div class="shelf__lining">
+      <%= content_tag :h2, Settings::Marketing.ipadbeta.optin.head, :class => "shelf__h2" %>
 
-        <% Settings::Marketing.ipadbeta.optin.message.each do |msg| %>
-          <%= content_tag :p, msg.html_safe, :class => "shelf__block" %>
-        <% end %>
-        </p>
-      </div>
-    <% else %>
-      <div class="shelf__lining">
-        <%= content_tag :h2, Settings::Marketing.ipadbeta.optout.head, :class => "shelf__h2" %>
+      <% Settings::Marketing.ipadbeta.optin.message.each do |msg| %>
+        <%= content_tag :p, msg.html_safe, :class => "shelf__block" %>
+      <% end %>
+      </p>
+    </div>
+  <% else %>
+    <div class="shelf__lining">
+      <%= content_tag :h2, Settings::Marketing.ipadbeta.optout.head, :class => "shelf__h2" %>
 
-        <% Settings::Marketing.ipadbeta.optout.message.each do |msg| %>
-          <%= content_tag :p, msg.html_safe, :class => "shelf__block" %>
-        <% end %>
-        </p>
-      </div>
-    <% end %>
-    <hr class="hr hr--push" />
-    <small>
-      <%= content_tag :p, Settings::Marketing.ipadbeta.support.html_safe, :class => "shelf__block" %>
-    </small>
-  </div><!-- eo shelf -->
-<!-- </div> -->
+      <% Settings::Marketing.ipadbeta.optout.message.each do |msg| %>
+        <%= content_tag :p, msg.html_safe, :class => "shelf__block" %>
+      <% end %>
+      </p>
+    </div>
+  <% end %>
+  <hr class="hr hr--push" />
+  <small>
+    <%= content_tag :p, Settings::Marketing.ipadbeta.support.html_safe, :class => "shelf__block" %>
+  </small>
+</div><!-- eo shelf -->
 
 <script type="text/javascript">
   shelby.trackEx({
