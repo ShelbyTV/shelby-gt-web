@@ -27,11 +27,13 @@ var Interactions = Backbone.View.extend({
   },
 
   events: {
-    'click .js-share-init'    : 'toggleSharePanel',
-    'click .js-like'          : 'doLike',
-    'click .js-share-it'      : 'submitShare',
-    'submit .js-share-submit' : 'submitShare',
-    'reset .js-share-submit'  : 'resetShare'
+    'click .js-share-init'               : 'toggleSharePanel',
+    'click .js-like'                     : 'doLike',
+    'click .js-share-it'                 : 'submitShare',
+    'change .js-toggle-twitter-sharing'  : 'toggleSocial',
+    'change .js-toggle-facebook-sharing' : 'toggleSocial',
+    'submit .js-share-submit'            : 'submitShare',
+    'reset .js-share-submit'             : 'resetShare'
   },
 
   initialize : function(e){
@@ -86,6 +88,16 @@ var Interactions = Backbone.View.extend({
     this.$el.find('.js-share-init').toggleClass('button_active');
     this.$el.find(this.options.sharePanelClass).toggleClass('hidden');
   },
+  toggleSocial: function(e){
+    e.preventDefault();
+
+    var $this = $(e.currentTarget),
+      network = $this.data('network');
+
+    $this.parent()
+      .toggleClass('button_gray', !$this.is(':checked'))
+      .toggleClass('button_' + network + '-blue', $this.is(':checked'));
+  },
   resetShare: function(e){
     this.toggleSharePanel();
   },
@@ -133,7 +145,7 @@ var Interactions = Backbone.View.extend({
         //   $notification.addClass('hidden');
         // }, 3000);
 
-        this.toggleSharePanel();
+        self.toggleSharePanel();
 
         var new_frame_id = response.result.id,
             shareData = {
@@ -146,7 +158,7 @@ var Interactions = Backbone.View.extend({
           providers: ['ga', 'kmq'],
           gaCategory: shelbyTrackingCategory,
           gaAction: 'shared',
-          gaLabel: username,
+          gaLabel: self.options.user.get('nickname'),
           gaValue: destinations.length,
           kmqProperties: {
             'outbound destination': destinations.join(", "),
@@ -181,17 +193,19 @@ var Interactions = Backbone.View.extend({
   },
 
   _getUserAuthentications : function(){
-    var data;
+    var data = {},
+        user_auth = this.options.user.get('authentications'),
+        app_progress = user.get('app_progress');
 
-    for (var auth in user.authentications) {
-      service = user.authentications[auth];
+    for (var network in user_auth) {
+      service = user_auth[network];
 
       if (service.provider == 'twitter') {
         data.twitter_enabled = true;
-        data.twitter_checked = user.app_progress.share_twitter_enabled;
+        data.twitter_checked = app_progress.share_twitter_enabled;
       } else if (service.provider == 'facebook') {
         data.facebook_enabled = true;
-        data.twitter_checked = user.app_progress.share_facebook_enabled;
+        data.twitter_checked = app_progress.share_facebook_enabled;
       }
     }
 
