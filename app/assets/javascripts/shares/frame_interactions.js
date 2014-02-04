@@ -1,7 +1,7 @@
 var FrameInteractions = Backbone.View.extend({
   options : {
     apiRoot         : '//api.shelby.tv/v1',
-    source          : null,
+    sources         : { bookmarklet: 'bookmarket', shares: 'shares'},
     sharePanelClass : '.js-shares',
     sharePanelData  : {
       anonymous             : false,
@@ -12,7 +12,7 @@ var FrameInteractions = Backbone.View.extend({
       twitter_enabled       : false,
       twitter_checked       : false,
       twitter_intent        : null,
-      shortlinkable         : !$('body').hasClass('shelby--radar'),
+      shortlinkable         : null,
       suffix                : ''
     }
   },
@@ -36,7 +36,7 @@ var FrameInteractions = Backbone.View.extend({
   initialize : function(e){
     //get the JSON from the <script> and store a BB model in the view.
     var video = JSON.parse(this.$el.find('.js-video').html());
-    this.options.video = new Backbone.Model(video);
+    this.options.video = new Video(video);
 
 
     this.render();
@@ -47,7 +47,8 @@ var FrameInteractions = Backbone.View.extend({
   render : function(){
     //careful, extending two things here:
     var data = _(this.options.sharePanelData).extend(this._getUserAuthentications(),{
-      username: this.options.user.get('nickname')
+      username      : this.options.user.get('nickname'),
+      shortlinkable : this.options.source == this.options.sources.shares
     });
 
     this.$el.find(this.options.sharePanelClass).html(this.sharePaneljst(data));
@@ -74,7 +75,7 @@ var FrameInteractions = Backbone.View.extend({
       data: {
         provider_id   : this.options.video.get('provider_id'),
         provider_name : this.options.video.get('provider_name'),
-        url           : libs.utils.composeKnownUrl(this.options.video.get('provider_name'),this.options.video.get('provider_id'))
+        url           : this.options.video.composeKnownUrl()
       },
       xhrFields: {
         withCredentials : true
@@ -110,12 +111,12 @@ var FrameInteractions = Backbone.View.extend({
         data = {
           source: this.options.source,
           text: this.$el.find('#frame_comment').val(),
-          frame_id: this.$el.find('#frame_id').val()
+          frame_id: this.$el.find('.js-share-init').data('frame_id')
         },
         destinations = [];
 
     if (this.options.source == this.options.sources.bookmarklet) {
-      data.url = libs.utils.composeKnownUrl(this.options.video.get('provider_name'),this.options.video.get('provider_id'));
+      data.url = this.options.video.composeKnownUrl();
       delete data.frame_id;
     }
 
@@ -129,7 +130,7 @@ var FrameInteractions = Backbone.View.extend({
 
     $.ajax({
       type: 'GET',
-      url: this.options.apiRoot + '/POST/roll/' + this.options.user.get('personal_roll_id') + '/frames',//should we make a user backbone model and injest it from a script tag? probs. globally accessible then. FTW
+      url: this.options.apiRoot + '/POST/roll/' + this.options.user.get('personal_roll_id') + '/frames',
       dataType: "jsonp",
       timeout: 10000,
       crossDomain: true,

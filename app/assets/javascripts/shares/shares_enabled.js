@@ -7,5 +7,6 @@
 
 //COMPONENTS
 //= require ./user.js
+//= require ./video.js
 //= require ./frame_interactions.js
 //= require ./guide.js

@@ -67,7 +67,7 @@
           } %>
     </header>
 
-    <div class="content_wrapper" role="main">
+    <div class="content_wrapper js-guide" role="main">
       <%= render :partial => '/objects/frame',
           :locals => {
             :embed_video    => true,
@@ -85,6 +85,8 @@
 
       <%= render :partial => '/marketing/shares' if @is_mobile != 'iPhone' and !@user_signed_in %>
     </div>
+
+    <script id="js-user" type="application/json"><%= raw @signed_in_user.to_json %></script>
 
     <script id="js-frame-like" type="application/json">
       <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">

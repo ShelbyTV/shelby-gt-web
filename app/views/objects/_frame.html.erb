@@ -98,6 +98,7 @@
       </button>
     </span>
     <div class="share_panel frame-body-wrapper fin fin--top_left fin--edging clearfix js-shares hidden"></div>
+    <script id="<%= index = 0; "#{index}_#{video['id']}" %>" class="js-video" type="application/json"><%= raw video.to_json %></script>
   </div>
   <% if (frame['upvoters'].length > 0) || (frame['like_count'] > 0) %>
     <% unless embed_video || (frame['upvoters'].length == 0) %>
