@@ -10,6 +10,8 @@ defaults: &defaults
     converted: 2
     service: 3
     anonymous: 4
+    #ghost is not a real user_type. it's a hack to alleviate an edge case where helper.display_banners breaks.
+    ghost: 99
 
 development:
   <<: *defaults
