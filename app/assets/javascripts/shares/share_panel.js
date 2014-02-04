@@ -20,7 +20,7 @@ var Interactions = Backbone.View.extend({
     }
   },
 
-  el: $('.frame_interactions'),
+  el: '.frame_interactions',
 
   sharePaneljst: function(data){
     return SHELBYJST['share-page-form'](data);
@@ -30,13 +30,14 @@ var Interactions = Backbone.View.extend({
     'click .js-share-init'    : 'toggleSharePanel',
     'click .js-like'          : 'doLike',
     'click .js-share-it'      : 'submitShare',
-    'click .js-cancel'        : 'toggleSharePanel',
     'submit .js-share-submit' : 'submitShare',
     'reset .js-share-submit'  : 'resetShare'
   },
 
   initialize : function(e){
-    this.options.video = JSON.parse(this.$el.find('.js-video').html());
+    //get the JSON from the <script> and store a BB model in the view.
+    var video = JSON.parse(this.$el.find('.js-video').html());
+    this.options.video = new Backbone.Model(video);
 
     this.render();
   },
@@ -63,14 +64,14 @@ var Interactions = Backbone.View.extend({
 
     $.ajax({
       type: 'GET',
-      url: this.options.apiRoot + '/POST/roll/' + user.get('watch_later_roll_id') + '/frames',
+      url: this.options.apiRoot + '/POST/roll/' + this.options.user.get('watch_later_roll_id') + '/frames',
       dataType: "jsonp",
       timeout: 10000,
       crossDomain: true,
       data: {
-        provider_id   : this.options.video['provider_id'],
-        provider_name : this.options.video['provider_name'],
-        url           : libs.utils.composeKnownUrl(this.options.video['provider_name'],this.options.video['provider_id'])
+        provider_id   : this.options.video.get('provider_id'),
+        provider_name : this.options.video.get('provider_name'),
+        url           : libs.utils.composeKnownUrl(this.options.video.get('provider_name'),this.options.video.get('provider_id'))
       },
       xhrFields: {
         withCredentials : true
@@ -80,21 +81,19 @@ var Interactions = Backbone.View.extend({
     });
 
     $button.addClass('visuallydisabled');
-
   },
   toggleSharePanel: function(e){
+    this.$el.find('.js-share-init').toggleClass('button_active');
     this.$el.find(this.options.sharePanelClass).toggleClass('hidden');
   },
   resetShare: function(e){
-    e.preventDefault();
-
-    this.$el.find('')
-
+    this.toggleSharePanel();
   },
   submitShare: function(e){
     e.preventDefault();
 
-    var $button = $(e.currentTarget),
+    var self = this,
+        $button = $(e.currentTarget),
         data = {
           source: this.options.source,
           text: this.$el.find('#frame_comment').val(),
@@ -103,7 +102,7 @@ var Interactions = Backbone.View.extend({
         destinations = [];
 
     if (this.options.source == 'bookmarklet') {
-      data.url = libs.utils.composeKnownUrl(this.options.video['provider_name'],this.options.video['provider_id']);
+      data.url = libs.utils.composeKnownUrl(this.options.video.get('provider_name'),this.options.video.get('provider_id'));
       delete data.frame_id;
     }
 
@@ -117,7 +116,7 @@ var Interactions = Backbone.View.extend({
 
     $.ajax({
       type: 'GET',
-      url: apiRoot + '/POST/roll/' + this.user['personal_roll_id'] + '/frames',//should we make a user backbone model and injest it from a script tag? probs. globally accessible then. FTW
+      url: this.options.apiRoot + '/POST/roll/' + this.options.user.get('personal_roll_id') + '/frames',//should we make a user backbone model and injest it from a script tag? probs. globally accessible then. FTW
       dataType: "jsonp",
       timeout: 10000,
       crossDomain: true,
@@ -128,14 +127,13 @@ var Interactions = Backbone.View.extend({
       success: function(response) {
         console.log("Share successful!");
 
-        $notification.removeClass('hidden');
+        // $notification.removeClass('hidden');
 
-        setTimeout(function() {
-          $notification.addClass('hidden');
-        }, 3000);
+        // setTimeout(function() {
+        //   $notification.addClass('hidden');
+        // }, 3000);
 
-        $shareInitButton.toggleClass('button_active', false);
-        $dropdown.toggleClass('hidden', true);
+        this.toggleSharePanel();
 
         var new_frame_id = response.result.id,
             shareData = {
@@ -158,7 +156,7 @@ var Interactions = Backbone.View.extend({
         if (shareData.destination.length > 0) {
           $.ajax({
             type: 'GET',
-            url: apiRoot + '/POST/frame/' + new_frame_id + '/share',
+            url: self.options.apiRoot + '/POST/frame/' + new_frame_id + '/share',
             dataType: "jsonp",
             timeout: 10000,
             crossDomain: true,
@@ -183,8 +181,7 @@ var Interactions = Backbone.View.extend({
   },
 
   _getUserAuthentications : function(){
-    var data,
-        user = JSON.parse($('#js-user-model').html()) || {};
+    var data;
 
     for (var auth in user.authentications) {
       service = user.authentications[auth];
@@ -208,7 +205,10 @@ var Guide = Backbone.View.extend({
     var interactions = this.$el.find('.frame_interactions');
 
     _(interactions).each(function(el,index){
-      new Interactions({el: el});
+      new Interactions({
+        el: el,
+        user: user
+      });
     });
   }
 });

@@ -1,9 +1,9 @@
-
 <% if @user_signed_in %>
   <% if @videos %>
     <ol class="list">
       <% @videos.each_with_index do |video, index| %>
         <li class="list__item">
+          <div class="js-notification"></div>
           <%= render :partial => '/objects/video',
               :locals => {
                 :embed_video    => true,
