@@ -1,10 +1,9 @@
 var Guide = Backbone.View.extend({
   options: {
-    sources : { bookmarklet: 'bookmarket', shares: 'shares'},
+    sources : { bookmarklet: 'bookmarklet', shares: 'shares'},
   },
   el: $('.js-guide'),
   initialize: function(){
-
     var self         = this,
         interactions = this.$el.find('.frame_interactions');
 

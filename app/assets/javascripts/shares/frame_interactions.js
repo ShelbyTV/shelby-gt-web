@@ -1,7 +1,7 @@
 var FrameInteractions = Backbone.View.extend({
   options : {
     apiRoot         : '//api.shelby.tv/v1',
-    sources         : { bookmarklet: 'bookmarket', shares: 'shares'},
+    sources         : { bookmarklet: 'bookmarklet', shares: 'shares'},
     sharePanelClass : '.js-shares',
     sharePanelData  : {
       anonymous             : false,
@@ -116,8 +116,8 @@ var FrameInteractions = Backbone.View.extend({
         destinations = [];
 
     if (this.options.source == this.options.sources.bookmarklet) {
-      data.url = this.options.video.composeKnownUrl();
       delete data.frame_id;
+      data.url = this.options.video.composeKnownUrl();
     }
 
     if (this.$el.find('#share-on-facebook').is(':checked')) {

@@ -2,7 +2,7 @@ var Video = Backbone.Model.extend({
   composeKnownUrl : function () {
     var knownUrl = "",
         providerName = this.get('provider_name'),
-        videoId = this.get('id');
+        videoId = this.get('provider_id');
 
     switch (providerName) {
       case 'blip':
