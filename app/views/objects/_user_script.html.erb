@@ -1,0 +1,8 @@
+<%
+  # Save the extra HTTP request: dump the user's model into the DOM and then JSON.parse it.
+%>
+
+<script id="js-user" type="application/json">
+  <%= raw user.to_json %>
+</script>
+

@@ -11,7 +11,7 @@ var Guide = Backbone.View.extend({
       new FrameInteractions({
         el     : el,
         user   : User,
-        source :$('body').hasClass('shelby--radar') ? self.options.sources.bookmarklet : self.options.sources.share
+        source : $('body').hasClass('shelby--radar') ? self.options.sources.bookmarklet : self.options.sources.share
       });
     });
   }

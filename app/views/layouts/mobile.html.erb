@@ -71,25 +71,16 @@
       <%= yield %>
     </div>
 
-    <script id="js-user" type="application/json">
-      <%= raw @signed_in_user.to_json %>
-    </script>
+    <%= render :partial => '/objects/user_script', :locals => { :user => @signed_in_user } %>
 
-    <script id="js-frame-like" type="application/json">
-      <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">
-        <ul class="list frame-likes-avatars js-liker-avatars-list"></ul>
-        <span class="frame-likes-count frame-external-subline-text invisible js-like-total">+ 0</span>
-      </div>
-    </script>
+    <%= render :partial => '/objects/liker_list_script' %>
 
     <% if @user_signed_in %>
-      <script id="js-user-like" type="application/json">
-        <li>
-          <a class="image_module avatar avatar--tiny frame-likes-link js-track-event" style="background-image: url(<%= avatar_url_for_user(@signed_in_user) %>)" href="/<%= @signed_in_user['id'] %>" data-ga_category="Share Page" data-ga_action="click avatar for liker" data-ga_label="">
-            <img class="visuallyhidden" src="<%= avatar_url_for_user(@signed_in_user) %>" title="<%= @signed_in_user['nickname'] %>" alt="<%= @signed_in_user['nickname'] %>" />
-          </a>
-        </li>
-      </script>
+      <%= render :partial => '/objects/liker_item_script',
+          :locals => {
+            :avatar => avatar_url_for_user(@signed_in_user),
+            :user => @signed_in_user
+      } %>
     <% end %>
 
     <div class="share_panel share_panel--fill share_panel--scroll hidden js-share-panel">
@@ -99,38 +90,20 @@
     <div class="notification js-notification hidden">
       <p><strong>Share successful!</strong></p>
     </div>
-
   </div> <!-- eo ~application -->
+
   <% if ["production", "staging"].include? Rails.env %>
-    <script>
-      var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
+    <%= render :partial => '/objects/google_analytics_script' %>
+    <%= render :partial => '/objects/intercom_script' %>
   <% end %>
 
-  <% if Rails.env == 'production' %>
-    <script>
-      var _kmq = _kmq || [];
-      var _kmk = _kmk || '9b8c2d291a85a66412fc8c0085125194646fd7a6';
-      function _kms(u){
-        setTimeout(function(){
-          var d = document, f = d.getElementsByTagName('script')[0],
-          s = d.createElement('script');
-          s.type = 'text/javascript'; s.async = true; s.src = u;
-          f.parentNode.insertBefore(s, f);
-        }, 1);
-      }
-      _kms('//i.kissmetrics.com/i.js');
-      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
-    </script>
+  <% if ["production"].include? Rails.env %>
+    <%= render :partial => '/objects/kiss_metrics_script' %>
   <% end %>
-  <% if ["production", "staging"].include? Rails.env %>
-    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://api.intercom.io/api/js/library.js';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}};})()</script>
-<% end %>
+
   <%= vanity_js %>
   <% experiments = vanity_experiments %>
+
   <% unless experiments.empty? %>
     <script>
       <% experiments.each do |name, alternative| %>
@@ -141,26 +114,6 @@
     </script>
   <% end %>
 
-  <script>
-  // Facebook widget -->
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '<%= Settings::Facebook.facebook_app_id %>', // App ID
-      channelURL : '//shelby.tv/channel.html', // Channel File
-      status     : true, // check login status
-      cookie     : true, // enable cookies to allow the server to access the session
-      oauth      : true, // enable OAuth 2.0
-      xfbml      : true  // parse XFBML
-    });
-  };
-
-  (function(d){
-     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-     js = d.createElement('script'); js.id = id; js.async = true;
-     js.src = "//connect.facebook.net/en_US/all.js";
-     d.getElementsByTagName('head')[0].appendChild(js);
-   }(document));
-  </script>
-
+  <%= render :partial => '/objects/facebook_widget_script' %>
 </body>
 </html>

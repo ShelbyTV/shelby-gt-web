@@ -1,0 +1,20 @@
+<script>
+// Facebook widget -->
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '<%= Settings::Facebook.facebook_app_id %>', // App ID
+    channelURL : '//shelby.tv/channel.html', // Channel File
+    status     : true, // check login status
+    cookie     : true, // enable cookies to allow the server to access the session
+    oauth      : true, // enable OAuth 2.0
+    xfbml      : true  // parse XFBML
+  });
+};
+
+(function(d){
+   var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+   js = d.createElement('script'); js.id = id; js.async = true;
+   js.src = "//connect.facebook.net/en_US/all.js";
+   d.getElementsByTagName('head')[0].appendChild(js);
+ }(document));
+</script>

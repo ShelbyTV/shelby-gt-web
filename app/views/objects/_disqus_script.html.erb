@@ -1,0 +1,29 @@
+<script type="text/javascript">
+  var disqus_shortname = 'shelbytv';
+  var disqus_identifier = 'frame-<%= @frame["id"] %>';
+  var disqus_url = '<%= Settings::Application.url %>/<%= @user["nickname"] %>/shares/<%= @frame["id"] %>'
+
+  function disqus_config() {
+    this.callbacks.onNewComment = [function(comment) {
+      $(document).ready(function(){
+        // send notification after comment is posted
+        $.get("<%= Settings::ShelbyAPI.url %><%= Settings::ShelbyAPI.version %>/frame/<%= @frame['id'] %>/notify", {type:"comment"});
+
+        shelby.trackEx({
+          providers : ['ga', 'kmq'],
+          gaCategory : shelbyTrackingCategory,
+          gaAction : 'Comment on frame',
+          gaLabel : shelbyTrackingLabel || 'anonymous',
+          kmqName : 'Comment on frame on Share Page',
+        });
+      });
+    }];
+  };
+
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
