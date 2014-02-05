@@ -10,6 +10,7 @@ ShelbyGtWeb::Application.routes.draw do
     get '/log_in' => "home#log_in"
     get '/featured' => 'mobile#featured', :as => :mobile_featured
     get '/explore' => 'mobile#featured', :as => :mobile_featured
+    get '/ipadbeta' => 'home#ipadbeta'
     get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
     get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
     post '/preferences/notifications' => 'mobile#notifications', :as => :mobile_preferences
@@ -30,6 +31,7 @@ ShelbyGtWeb::Application.routes.draw do
     post '/user/create' => 'mobile#create_user'
     get '/log_in' => "home#log_in"
     get '/explore' => 'mobile#featured'
+    get '/ipadbeta' => 'home#ipadbeta'
     get '/featured' => 'mobile#featured'
     get '/preferences' => 'mobile#preferences'
     get '/preferences/:section' => 'mobile#preferences'
@@ -54,6 +56,7 @@ ShelbyGtWeb::Application.routes.draw do
       post '/user/create' => 'mobile#create_user'
       get '/log_in' => "home#log_in"
       get '/explore' => 'mobile#featured', :as => :mobile_featured
+      get '/ipadbeta' => 'home#ipadbeta'
       get '/featured' => 'mobile#featured', :as => :mobile_featured
       get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
       get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
@@ -99,6 +102,9 @@ ShelbyGtWeb::Application.routes.draw do
   get "signup" => 'signup#show', :as => :signup
   get "signup/:code" => 'signup#show'
   post "signup" => 'signup#create'
+
+  # IPAD BETA PROGRAM
+  get '/ipadbeta' => 'home#ipadbeta'
 
   # HOME
   get '/team' => 'home#team'

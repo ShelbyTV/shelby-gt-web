@@ -44,7 +44,7 @@
 
   <div class="shelby__wrapper clearfix" role="main">
 
-    <%= render :partial => '/home/landing_header', :locals => {:show_login => !@login, :user_signed_in => @user_signed_in, :mobile_os => @mobile_os} %>
+    <%= render :partial => '/home/landing_header', :locals => {:show_login => (!@login && !@ipadbeta), :user_signed_in => @user_signed_in, :mobile_os => @mobile_os} %>
 
     <% #------------ Shelf Content --------------- %>
 
@@ -53,6 +53,11 @@
 
     <% if @login %>
       <%= render :partial => '/home/shelf/login' %>
+    <% elsif @ipadbeta %>
+      <%= render :partial => '/home/shelf/ipadbeta', :locals => {
+        optin: @optin,
+        ga_label: @ga_label
+      } %>
     <% else %>
       <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
         <% unless (@mobile_os or @is_mobile) %>
