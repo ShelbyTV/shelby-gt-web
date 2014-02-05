@@ -28,10 +28,12 @@
 </div><!-- eo shelf -->
 
 <script type="text/javascript">
+$(document).ready(function(){
   shelby.trackEx({
     providers : ['ga'],
     gaCategory : "iPad Beta",
     gaAction : "<%= optin %>",
     gaLabel : "<%= ga_label %>"
   });
+});
 </script>
