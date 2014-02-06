@@ -5,7 +5,7 @@ shelby.config.welcomeMessages = {
     button: "Play Your Stream"
   },
   channel: {
-    header: "Featured on Shelby",
+    header: "Explore Shelby.tv",
     message: "This stream is what we think of as the best video on Shelby right now. Watch, discover, enjoy!",
     button: "Play video!"
   },

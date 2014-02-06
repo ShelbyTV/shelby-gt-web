@@ -15,13 +15,13 @@
   <ul class="js-content-selector list list--inline app_nav clearfix">
     <% if user_signed_in %>
       <li class="list__item">
-        <a href="<%= appropriate_subdirectory %>/stream" class="app_nav__button<%= " active-item" if pathname == 'stream'%> js-stream js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Stream" data-ga_label="<%= signed_in_user['nickname'] %>">
+        <a href="<%= appropriate_subdirectory %>/stream" class="app_nav__button<%= " active-item" if pathname == Settings::Mobile.roll_types['stream'] %> js-stream js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Stream" data-ga_label="<%= signed_in_user['nickname'] %>">
           Stream
         </a>
       </li>
 
       <li class="list__item js-featured-menu">
-        <a href="<%= appropriate_subdirectory %>/explore" class="app_nav__button<%= " active-item" if pathname == 'featured'%> js-featured js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Explore" data-ga_label="<%= signed_in_user['nickname'] %>">
+        <a href="<%= appropriate_subdirectory %>/explore" class="app_nav__button<%= " active-item" if pathname == Settings::Mobile.roll_types['explore'] %> js-explore js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Explore" data-ga_label="<%= signed_in_user['nickname'] %>">
           Explore
         </a>
       </li>
@@ -33,7 +33,7 @@
       </li>
 
       <li class="list__item js-guide-me js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Sources" data-ga_label="<%= signed_in_user['nickname'] %>">
-        <a href="<%= appropriate_subdirectory %>/preferences/sources" class="app_nav__button<%= " active-item" if pathname == 'sources' %> js-sources">
+        <a href="<%= appropriate_subdirectory %>/preferences/channels" class="app_nav__button<%= " active-item" if pathname == Settings::Mobile.roll_types['channels'] %> js-sources">
           Channels
         </a>
       </li>

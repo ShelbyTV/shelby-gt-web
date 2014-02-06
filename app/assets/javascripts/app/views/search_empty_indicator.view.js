@@ -3,7 +3,7 @@ libs.shelbyGT.SearchEmptyIndicatorView = Support.CompositeView.extend({
   tagName : 'li',
 
   events : {
-    "click .js-featured-link"     : "_goToFeatured"
+    "click .js-featured-link"     : "_goToExplore"
   },
 
   template : function(obj){
@@ -14,8 +14,8 @@ libs.shelbyGT.SearchEmptyIndicatorView = Support.CompositeView.extend({
     this.$el.html(this.template());
   },
 
-  _goToFeatured : function() {
-    shelby.router.navigate('featured', {trigger:true});
+  _goToExplore : function() {
+    shelby.router.navigate('explore', {trigger:true});
   }
 
 });

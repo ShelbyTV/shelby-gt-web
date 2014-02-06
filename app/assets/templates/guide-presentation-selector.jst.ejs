@@ -6,8 +6,8 @@
   </li>
 
   <li class="list__item js-featured-menu">
-    <button class="app_nav__button js-featured js-track-event" data-ga_category="Header" data-ga_action="Featured" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
-      Featured
+    <button class="app_nav__button js-explore js-track-event" data-ga_category="Header" data-ga_action="Explore" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+      Explore
     </button>
   </li>
 
@@ -18,6 +18,12 @@
       </button>
     </li>
   <% } %>
+
+  <li class="list__item">
+    <button class="app_nav__button js-channels js-track-event" data-ga_category="Header" data-ga_action="Channels" data-ga_label='<%= shelby.models.user.get('nickname') %>'>
+      Channels
+    </button>
+  </li>
 
   <% if (false) {  %>
     <!-- TODO: debt -->

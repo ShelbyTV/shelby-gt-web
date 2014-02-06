@@ -59,7 +59,7 @@ class MobileController < ApplicationController
 
     @featured_dashboard = Shelby::API.get_user_dashboard(Settings::ShelbyAPI.featured_user_id, cookie, @skip, Settings::Mobile.default_limit)
     @featured_dashboard = dedupe_dashboard(@featured_dashboard)
-    @roll_type          = Settings::Mobile.roll_types['featured']
+    @roll_type          = Settings::Mobile.roll_types['explore']
   end
 
   def me
@@ -117,12 +117,12 @@ class MobileController < ApplicationController
       @section = params[:section] || Settings::Mobile.preferences_sections.profile
 
       case @section
-      when Settings::Mobile.preferences_sections.sources
+      when Settings::Mobile.preferences_sections.channels
         if (@signed_in_user['user_type'] == Settings::User.user_type.anonymous) and (@signed_in_user['app_progress']['followedSources'] != "true")
           flash.now[:notice] = "Follow Channels! </br> Follow as many channels as you like! All video ends up in your stream"
         end
         @sources = Shelby::API.get_featured_sources("onboarding",request.headers['HTTP_COOKIE'])
-        @roll_type = Settings::Mobile.preferences_sections.sources
+        @roll_type = Settings::Mobile.preferences_sections.channels
       when Settings::Mobile.preferences_sections.notifications
         @preferences = @signed_in_user['preferences']
       when Settings::Mobile.preferences_sections.profile
@@ -256,7 +256,7 @@ class MobileController < ApplicationController
     if params[:anonymous] != "true"
       redirect_to(appropriate_subdirectory+"?status=409&msg=Something%20has%20gone%20really%20really%20wrong!") and return
     elsif create_anon_user!(cookies)
-      flash[:notice] = "Welcome to Shelby.tv! <br/> <a href=\"#{appropriate_subdirectory}/preferences/sources\" class=\"js-track-event\" data-ga_category=\"Mobile\" data-ga_action=\"Click Add in Banner\">Add Channels</a> to get started."
+      flash[:notice] = "Welcome to Shelby.tv! <br/> <a href=\"#{appropriate_subdirectory}/preferences/channels\" class=\"js-track-event\" data-ga_category=\"Mobile\" data-ga_action=\"Click Add in Banner\">Add Channels</a> to get started."
       log_session()
       redirect_to(appropriate_subdirectory+"/stream") and return
     else

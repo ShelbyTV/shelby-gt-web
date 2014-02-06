@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe "/m/preferences/sources" do
+describe "/m/preferences/channels" do
 
   it "infers the controller path" do
     controller.request.path_parameters[:controller].should eq("/m/preferences")
   end
 
   it "infers the action path" do
-    controller.request.path_parameters[:action].should eq("sources")
+    controller.request.path_parameters[:action].should eq("channels")
   end
 
   context "when page is visited" do
@@ -17,7 +17,7 @@ describe "/m/preferences/sources" do
       assign(:signed_in_user, user)
     end
 
-    it "renders the sources" do
+    it "renders the channels" do
       @quantity = 2
       assign(:sources, sources(@quantity))
       render :template => "mobile/preferences_sources", :layout => "layouts/mobile"

@@ -10,8 +10,8 @@ shelby.config.channels = {
     id: '515d83ecb415cc0d1a025bfe',
     includeInNav : false
   },
-  'featured' : {
-    title : 'featured',
+  'explore' : {
+    title : 'explore',
     id: '521264b4b415cc44c9000001',
     includeInNav : true
   },
