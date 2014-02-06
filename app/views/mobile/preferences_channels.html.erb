@@ -1,0 +1,16 @@
+<ol class="list list--stacked js-sources-list">
+  <% @sources.each_with_index do |roll,index| %>
+    <%= content_tag :li, :id => roll['id'], :class => 'list__item', :data => { :title => roll['display_title']} do %>
+      <%= render :partial => '/objects/user_card', :locals => {
+        :avatar       => roll['display_thumbnail_src'],
+        :clickable    => true,
+        :ga_category  => 'Mobile',
+        :is_following => roll['following'],
+        :realname     => roll['description'],
+        :roll_id      => roll['id'],
+        :user_type    => 0,
+        :username     => roll['display_title']
+      } %>
+    <% end %>
+  <% end %>
+</ol>
