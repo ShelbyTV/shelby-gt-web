@@ -8,7 +8,6 @@ ShelbyGtWeb::Application.routes.draw do
     get '/' => 'mobile#landing', :as => :mobile_landing
     post '/user/create' => 'mobile#create_user'
     get '/log_in' => "home#log_in"
-    get '/featured' => 'mobile#featured', :as => :mobile_featured
     get '/explore' => 'mobile#featured', :as => :mobile_featured
     get '/ipadbeta' => 'home#ipadbeta'
     get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
@@ -32,7 +31,6 @@ ShelbyGtWeb::Application.routes.draw do
     get '/log_in' => "home#log_in"
     get '/explore' => 'mobile#featured'
     get '/ipadbeta' => 'home#ipadbeta'
-    get '/featured' => 'mobile#featured'
     get '/preferences' => 'mobile#preferences'
     get '/preferences/:section' => 'mobile#preferences'
     post '/preferences/notifications' => 'mobile#notifications'
@@ -57,7 +55,6 @@ ShelbyGtWeb::Application.routes.draw do
       get '/log_in' => "home#log_in"
       get '/explore' => 'mobile#featured', :as => :mobile_featured
       get '/ipadbeta' => 'home#ipadbeta'
-      get '/featured' => 'mobile#featured', :as => :mobile_featured
       get '/preferences' => 'mobile#preferences', :as => :mobile_preferences
       get '/preferences/:section' => 'mobile#preferences', :as => :mobile_preferences
       post '/preferences/notifications' => 'mobile#notifications', :as => :mobile_preferences
@@ -110,7 +107,7 @@ ShelbyGtWeb::Application.routes.draw do
   get '/team' => 'home#team'
   get '/hash_app' => 'home#hash_app'
   get '/community(/:entry_id)' => "home#community"
-  get '/featured(/:entry_id)' => "home#featured"
+  get '/explore(/:entry_id)' => "home#featured"
   get '/channels(*path)' => "home#channels"
   get '/search' => "home#search"
   get '/learn_more' => "home#learn_more"

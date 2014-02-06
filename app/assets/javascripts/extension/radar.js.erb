@@ -240,7 +240,7 @@
           var vimeoVideoId = /vimeo.com\/(\d*)/.exec(foundElements[i].baseURI)
 
           if(vimeoVideoId[1].length){
-            videosToAdd.push("vimeo[]="+vimeoVideoId);
+            videosToAdd.push("vimeo[]="+vimeoVideoId[1]);
           }
 
         } else {

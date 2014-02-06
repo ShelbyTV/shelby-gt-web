@@ -7,6 +7,8 @@ libs.shelbyGT.DisplayState = {
   rollList : 'rollList',
   search : 'search',
   channel : 'channel',
+  channels : 'channels',
+  explore : 'explore',
   standardRoll : 'standardRoll',
   team : 'team',
   tools: 'tools',

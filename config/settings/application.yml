@@ -14,7 +14,7 @@ defaults: &defaults
   missing_thumb_url: "http://shelby.tv/images/assets/missing_thumb.png"
   meta_description: "Watch the perfect stream of videos built for you and powered by your friends. Videos from Twitter, Facebook, Tumblr, YouTube, Vimeo, Hulu and the rest of the web."
   title: "Shelby.tv | The perfect stream of videos built for you and powered by your friends."
-  root_paths: ['featured','community', 'channels', 'help', 'legal', 'search', 'following', 'preferences', 'likes', 'saves', 'stream']
+  root_paths: ["channels", "community", "explore", "featured", "following", "help", "legal", "likes", "preferences", "saves", "search", "stream"]
 
 development:
   <<: *defaults

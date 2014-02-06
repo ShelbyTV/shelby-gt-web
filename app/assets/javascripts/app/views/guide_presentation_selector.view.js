@@ -8,12 +8,13 @@
   libs.shelbyGT.GuidePresentationSelectorView = Support.CompositeView.extend({
 
     events : {
-      "click .js-stream:not(.active-item)"   : "_goToStream",
-      "click .js-featured"                  : "_goToFeatured",
-      "click .js-me"                         : "_goToMe",
-      "click .js-mail"                       : "_goToMail",
-      "click .js-admin"                      : "_goToAdmin",
-      "click .js-navigate"                   : "_goToHref"
+      "click .js-stream:not(.active-item)" : "_goToStream",
+      "click .js-explore"                  : "_goToExplore",
+      "click .js-channels"                 : "_goToChannels",
+      "click .js-me"                       : "_goToMe",
+      "click .js-mail"                     : "_goToMail",
+      "click .js-admin"                    : "_goToAdmin",
+      "click .js-navigate"                 : "_goToHref"
     },
 
     /*el : '#js-guide-presentation-selector',*/
@@ -52,11 +53,12 @@
       }
     },
 
-    _goToFeatured : function(e) {
-      shelby.router.navigate(
-        "featured",
-        {trigger:true}
-      );
+    _goToExplore : function(e) {
+      shelby.router.navigate("/explore", {trigger:true});
+    },
+
+    _goToChannels : function(e) {
+      shelby.router.navigate("/preferences/channels", {trigger:true});
     },
 
     _goToMe : function(){
@@ -108,7 +110,9 @@
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.dashboard) {
         $setSelectedClassOn = this.$('.js-stream');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
-        $setSelectedClassOn = this.$('.js-featured');
+        $setSelectedClassOn = this.$('.js-explore');
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channels) {
+        $setSelectedClassOn = this.$('.js-channels');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-me');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.standardRoll &&

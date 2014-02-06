@@ -3,7 +3,7 @@ libs.shelbyGT.InlineFeaturedPromoView = Support.CompositeView.extend({
   tagName : 'li',
 
   events : {
-    "click .js-goto-featured" : "_gotoFeatured"
+    "click .js-goto-featured" : "_goToExplore"
   },
 
   template : function(obj){
@@ -15,11 +15,11 @@ libs.shelbyGT.InlineFeaturedPromoView = Support.CompositeView.extend({
     shelby.track('Show community promo');
   },
 
-  _gotoFeatured : function(){
+  _goToExplore : function(){
     if (shelby.models.guide.get('displayIsolatedRoll')) {
-      window.top.location.href = shelby.config.appUrl + '/featured';
+      window.top.location.href = shelby.config.appUrl + '/explore';
     } else {
-      shelby.router.navigate('featured', {trigger:true});
+      shelby.router.navigate('explore', {trigger:true});
     }
     shelby.track('Click community promo');
   }

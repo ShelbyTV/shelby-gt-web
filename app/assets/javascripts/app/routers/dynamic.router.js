@@ -13,7 +13,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "user/:id/personal_roll"                       : "displayUserPersonalRoll",
     "community"                                    : "displayCommunityChannel",
     "community/:entryId"                           : "displayEntryInCommunityChannel",
-    "featured"                                     : "displayFeaturedChannel",
+    "explore"                                      : "displayExploreChannel",
     "channels"                                     : "displayChannel",
     "channels/:channel"                            : "displayChannel",
     "channels/:channel/:entryId"                   : "displayEntryInChannel",
@@ -232,8 +232,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this.displayChannel('community', params);
   },
 
-  displayFeaturedChannel : function(params){
-    this.displayChannel('featured', params);
+  displayExploreChannel : function(params){
+    this.displayChannel('explore', params);
   },
 
   displayEntryInCommunityChannel : function(entryId, params) {
@@ -245,12 +245,12 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       this.displayDashboard(null, {channel: channel});
       this.navigate('community', {trigger: false, replace: true});
     }
-    else if (channel == 'featured') {
+    else if (channel == 'explore') {
       this.displayDashboard(null, {channel: channel});
-      this.navigate('featured', {trigger: false, replace: true});
+      this.navigate('explore', {trigger: false, replace: true});
     } else {
       // if the requested channel doesn't exist, just go to the first channel
-      this.navigate('featured', {trigger: true, replace: true});
+      this.navigate('explore', {trigger: true, replace: true});
     }
 
     this._doChannelTracking(channel, params);

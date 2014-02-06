@@ -16,7 +16,7 @@ libs.shelbyGT.DashboardEmptyIndicatorView = Support.CompositeView.extend({
   },
 
   _goToFeatured : function() {
-    shelby.router.navigate('featured', {trigger:true});
+    shelby.router.navigate('explore', {trigger:true});
   },
 
   _goToPreferences : function() {

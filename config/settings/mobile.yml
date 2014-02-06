@@ -7,7 +7,8 @@ defaults: &defaults
   load_more_button_class: 'button_primer button_command button_command--flexible button_gray two-thirds js-load-more'
   roll_types: {
     activity: 'activity',
-    featured: 'featured',
+    channels: 'channels',
+    explore: 'explore',
     likes: 'likes',
     me: 'me',
     stream: 'stream',
@@ -19,7 +20,7 @@ defaults: &defaults
   preferences_sections: {
     notifications: 'notifications',
     profile: 'profile',
-    sources: 'sources'
+    channels: 'channels'
   }
 
   email_notifications:
@@ -34,7 +35,7 @@ defaults: &defaults
   inline_cta:
     sources:
       id: inline-cta--sources
-      path: /preferences/sources
+      path: /preferences/channels
       hook: sources
       image_url: add-video-bkgd.png
       label: Channels
@@ -53,7 +54,7 @@ development:
   inline_cta:
     sources:
       id: inline-cta--sources
-      path: /preferences/sources
+      path: /preferences/channels
       hook: sources
       image_url: add-video-bkgd.png
       label: Channels
@@ -75,7 +76,7 @@ staging:
   inline_cta:
     sources:
       id: inline-cta--sources
-      path: /preferences/sources
+      path: /preferences/channels
       hook: sources
       image_url: add-video-bkgd.png
       label: Channels
