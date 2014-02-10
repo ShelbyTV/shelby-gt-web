@@ -93,7 +93,7 @@ defaults: &defaults
       name : "Michael Matyus",
       description: "Michael learned early on, while studying design here in New York that usable interfaces strike the perfect balance between form and function (something that is easier said than done). So when Michael isn't experimenting with new ideas on how to build and maintain our ever-growing code base, he's figuring out how to gain a deeper understanding of how people interact with Shelby. This usually starts by closely collaborating with the rest of the team and devising ways to run UX tests on new, old, and prospective users. When he's not building Shelby, chances are he's hiding behind a huge stack of classic literature.",
       image : "michael.jpg",
-      url : "html5",
+      url : "matyus",
       email : "michael@shelby.tv",
       twitter : "mmatyus",
       title : "Lead Front-end Engineer"
