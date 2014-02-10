@@ -57,7 +57,7 @@ defaults: &defaults
       name : "Dan Spinosa",
       description : "Creation is the most rewarding, interesting and curious noun/verb Dan can think of.  He's been building everything from go-karts, rockets and potato guns to enterprise VoIP solutions, web apps and iPhone apps.  From IOS (Cisco's Internet Operating Systems) to iOS (Apple's iPhone Operating System), with 2 startups (previously cofounded RightPlay.com, also with Reece), 1 accelerator (TechStars NYC, first class), and 5 years of long hair, he is a full stack engineer/founder/CTO.  Dan is always trying to better understand our existence, loves any opportunity to teach people about their world, and is most excited by the science that hasn't been figured out.  You can find him in Brooklyn, where he has the best views of NYC.",
       image : "dan.jpg",
-      url : "danspinosa.tv",
+      url : "spinosa",
       email : "dan@shelby.tv",
       twitter : "spinosa",
       title : "CTO, Co-Founder"
