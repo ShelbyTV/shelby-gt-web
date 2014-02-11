@@ -2,7 +2,7 @@
   <span class="shelby-title-staging"><%= Settings::Branch.branch %></span>
 <% end %>
 
-<a href="<%= "#{appropriate_subdirectory}" %>" class="shelby-logo visuallydisabled js-home js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Logo">
+<a href="<%= "#{appropriate_subdirectory == '' ? "/" : appropriate_subdirectory}" %>" class="shelby-logo visuallydisabled js-home js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Logo">
   <h1 class="shelby_logo">
     <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
   </h1>
