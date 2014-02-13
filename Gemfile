@@ -84,6 +84,7 @@ end
 #
 group :production, :staging do
   gem 'unicorn'
+  gem 'unicorn-worker-killer'
   gem 'kgio'
   gem 'raindrops'
 end
