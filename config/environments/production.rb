@@ -1,4 +1,5 @@
 require "yui/compressor"
+require 'unicorn/worker_killer'
 
 ShelbyGtWeb::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
