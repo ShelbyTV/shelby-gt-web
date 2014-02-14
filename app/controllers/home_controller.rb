@@ -334,6 +334,8 @@ class HomeController < ApplicationController
 
   # THIS IS A TEMPORARY
   def bookmarklet
+    Rails.logger.info "omg #{params}"
+
     if session[:found_video_providers]
       @found_video_providers = session[:found_video_providers]
       session.delete(:found_video_providers)

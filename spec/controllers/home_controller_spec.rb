@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RadarController do
+describe HomeController do
 
   context "logged in" do
     before(:each) do
@@ -9,13 +9,20 @@ describe RadarController do
     end
 
 
-    describe "GET 'index'" do
+    describe "GET 'bookmarklet'" do
 
-      it 'loads the radar template successfully' do
-        get :index
+      it 'without video parameters' do
+        get :bookmarklet
 
         response.should be_success
-        response.should render_template "index"
+        response.should render_template "home/bookmarklet"
+      end
+
+      it 'with video parameters' do
+        get :bookmarklet, :youtube => 'fiiLfzJcn6c'
+
+        response.should be_success
+        response.should render_template "radar/index"
       end
 
     end
@@ -29,7 +36,7 @@ describe RadarController do
     end
 
 
-    describe "GET 'index'" do
+    describe "GET 'bookmarklet'" do
 
       it 'redirects to a login page' do
       end
