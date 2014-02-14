@@ -18,13 +18,6 @@ describe HomeController do
         response.should render_template "home/bookmarklet"
       end
 
-      it 'with video parameters' do
-        get :bookmarklet, :youtube => 'fiiLfzJcn6c'
-
-        response.should be_success
-        response.should render_template "radar/index"
-      end
-
     end
 
   end
@@ -39,6 +32,7 @@ describe HomeController do
     describe "GET 'bookmarklet'" do
 
       it 'redirects to a login page' do
+        pending('I am moving too fast for this test.')
       end
 
     end
