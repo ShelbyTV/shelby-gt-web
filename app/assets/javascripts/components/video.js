@@ -1,4 +1,4 @@
-var Video = Backbone.Model.extend({
+var VideoModel = Backbone.Model.extend({
   composeKnownUrl : function () {
     var knownUrl = "",
         providerName = this.get('provider_name'),

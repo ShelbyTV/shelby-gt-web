@@ -1,4 +1,4 @@
-var Guide = Backbone.View.extend({
+  var GuideView = Backbone.View.extend({
   options: {
     sources : { bookmarklet: 'bookmarklet', shares: 'shares'},
   },
@@ -8,7 +8,7 @@ var Guide = Backbone.View.extend({
         interactions = this.$el.find('.frame_interactions');
 
     _(interactions).each(function(el,index){
-      new FrameInteractions({
+      new FrameInteraction({
         el     : el,
         user   : User,
         source : $('body').hasClass('shelby--radar') ? self.options.sources.bookmarklet : self.options.sources.share
@@ -16,6 +16,3 @@ var Guide = Backbone.View.extend({
     });
   }
 });
-
-var SharePanel = new Guide();
-

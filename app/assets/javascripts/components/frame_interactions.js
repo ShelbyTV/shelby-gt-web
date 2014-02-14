@@ -1,4 +1,4 @@
-var FrameInteractions = Backbone.View.extend({
+var FrameInteraction = Backbone.View.extend({
   options : {
     apiRoot         : '//api.shelby.tv/v1',
     sources         : { bookmarklet: 'bookmarklet', shares: 'shares'},
@@ -36,8 +36,7 @@ var FrameInteractions = Backbone.View.extend({
   initialize : function(e){
     //get the JSON from the <script> and store a BB model in the view.
     var video = JSON.parse(this.$el.find('.js-video').html());
-    this.options.video = new Video(video);
-
+    this.options.video = new VideoModel(video);
 
     this.render();
   },
@@ -212,5 +211,9 @@ var FrameInteractions = Backbone.View.extend({
     }
 
     return data;
-  }
+  },
+
+  _shareVideo : function(){},
+  _shareFrame : function(){},
+  _shareDashboardEntry : function(){}
 });

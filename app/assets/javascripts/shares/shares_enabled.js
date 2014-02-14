@@ -10,3 +10,5 @@
 //= require ./video.js
 //= require ./frame_interactions.js
 //= require ./guide.js
+
+var SharePanel = new GuideView();
