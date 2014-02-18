@@ -16,9 +16,11 @@
     &.shelby--shares {
       .share_panel {
         bottom: 0;
-        top: 0;
         left: 0;
-        width: 100%;
+        margin-top: 5px;
+        position: relative;
+        top: 0;
+        width: auto;
       }
     }
     &.shelby--shares_enabled {
