@@ -321,7 +321,7 @@ class HomeController < ApplicationController
 
     @interval = params[:interval] || "week"
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
-    @days = params[:days].to_i || 0
+    @days = params[:days] ? params[:days].to_i : 0
 
     @videos = {}
     (@days+1).times do |d|
