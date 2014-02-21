@@ -320,9 +320,10 @@ class HomeController < ApplicationController
     @login = false
 
     @interval = params[:interval] || "week"
-    @date = Date.parse(params[:date]) || Date.today
+    @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @days = params[:days].to_i || 0
 
+    @videos = {}
     (@days+1).times do |d|
       date = @date - d.days
       @videos[d] = Zeddmore::API.get_videos(date.to_s, @interval)

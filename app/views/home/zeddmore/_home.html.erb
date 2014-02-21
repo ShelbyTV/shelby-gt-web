@@ -1,4 +1,4 @@
-<% @days.each do |d| %>
+<% (@days + 1).times do |d| %>
   <ul class="list">
     <% @videos[d].each do |video| %>
       <li class="list__item">
