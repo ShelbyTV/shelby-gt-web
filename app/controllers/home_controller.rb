@@ -1,4 +1,5 @@
 require 'shelby_api'
+require 'zeddmore_api'
 
 class HomeController < ApplicationController
   include MobileHelper
@@ -313,9 +314,24 @@ class HomeController < ApplicationController
     render 'home/landing'
   end
 
+  def zeddmore
+    @mobile_os =  detect_mobile_os
+    @is_mobile =  is_mobile?
+    @login = false
+
+    @interval = params[:interval] || "week"
+    @date = params[:date] || "#{Date.today.to_s}"
+
+    @days = params[:days] || 1
+    @days.times do |d|
+      @videos[d] = Zeddmore::API.get_videos(@date, @interval)
+    end
+  end
+
   def amazonapp
     respond_to do |format|
       format.json {
+        Rails.logger.info @videos
         manifest = {
           "verification_key" => "562513e4-f6d1-4a4d-a7fc-828814946ea8",
           "version" => "1.0(0)",
@@ -334,7 +350,6 @@ class HomeController < ApplicationController
 
   # THIS IS A TEMPORARY
   def bookmarklet
-    Rails.logger.info "omg #{params}"
 
     if session[:found_video_providers]
       @found_video_providers = session[:found_video_providers]

@@ -1,0 +1,8 @@
+
+<ul class="list">
+  <% @videos.each do |video| %>
+    <li class="list__item">
+        <img src="<%= video['thumbnail_url'] %>" >
+    </li>
+  <% end %>
+</ul>
