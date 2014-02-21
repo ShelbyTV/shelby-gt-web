@@ -133,6 +133,7 @@ ShelbyGtWeb::Application.routes.draw do
 
   # Zeddmore
   get '/zeddmore' => "home#zeddmore"
+  get '/zeddmore/:date/:days' => "home#zeddmore"
 
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'

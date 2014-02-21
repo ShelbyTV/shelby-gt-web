@@ -1,8 +1,9 @@
-
-<ul class="list">
-  <% @videos.each do |video| %>
-    <li class="list__item">
-        <img src="<%= video['thumbnail_url'] %>" >
-    </li>
-  <% end %>
-</ul>
+<% @days.each do |d| %>
+  <ul class="list">
+    <% @videos[d].each do |video| %>
+      <li class="list__item">
+          <img src="<%= video['thumbnail_url'] %>" >
+      </li>
+    <% end %>
+  </ul>
+<% end %>
