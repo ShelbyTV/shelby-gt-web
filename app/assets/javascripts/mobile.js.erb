@@ -14,6 +14,7 @@
 //= require ./event-tracking/mobile.tracking.js
 
 //COMPONENTS
+//= require ./components/global.js
 //= require ./components/user.js
 //= require ./components/video.js
 //= require ./components/frame.js
@@ -21,8 +22,8 @@
 //= require ./components/frame_interactions.js
 //= require ./components/guide.js
 
-$(document).ready(function(){
-  var MobileGuideView = new GuideView({
+$(function(){
+  Shelby.MobileGuideView = new Shelby.GuideView({
     el: $('.js-list')
   });
 });

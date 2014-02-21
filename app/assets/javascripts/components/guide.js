@@ -1,18 +1,25 @@
-  var GuideView = Backbone.View.extend({
-  options: {
-    sources : { bookmarklet: 'bookmarklet', shares: 'shares'},
-  },
-  el: $('.js-guide'),
-  initialize: function(){
-    var self         = this,
-        interactions = this.$el.find('.frame_interactions');
+$(function(){
+  Shelby.GuideView = Backbone.View.extend({
+    options: {
+      sources : { bookmarklet: 'bookmarklet', shares: 'shares'}
+    },
+    el: $('.js-guide'),
+    initialize: function(){
+      var self         = this,
+          media = this.$el.find('.js-frame');
 
-    _(interactions).each(function(el,index){
-      new FrameInteraction({
-        el     : el,
-        user   : User,
-        source : $('body').hasClass('shelby--radar') ? self.options.sources.bookmarklet : self.options.sources.share
+      this.options.source = this._getDisplayState();
+
+      _(media).each(function(el,index){
+        new Shelby.FrameView({
+          el     : el,
+          user   : Shelby.User,
+          source : self.options.source
+        });
       });
-    });
-  }
+    },
+    _getDisplayState : function(){
+      return $('body').hasClass('shelby--radar') ? this.options.sources.bookmarklet : this.options.sources.shares;
+    }
+  });
 });
