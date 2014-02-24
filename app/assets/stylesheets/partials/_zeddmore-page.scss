@@ -4,6 +4,7 @@
 //----- Override App Base Styles -----------------------------------------
 //----- Modifiers --------------------------------------------------------
 .shelby--zeddmore {
+
   .frame-collapsed {
     border: none;
     font-size: 11px;
@@ -16,8 +17,25 @@
 
 
 .shelf--zeddmore {
-  .list--column {
+  .column {
     float: left;
   }
 }
 // ----- Non-normative Overrides -----------------------------------------------
+.frame {
+  .progress {
+    // border: 1px solid $ui-soft-black;
+    border-top: 0;
+    height: 5px;
+    margin-top: 0;
+    position: relative;
+
+    & > div {
+      background-color: $ui-green;
+      height: 100%;
+      left: 0;
+      top: 0;
+      width: 50%; //default
+    }
+  }
+}
