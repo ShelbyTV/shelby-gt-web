@@ -323,10 +323,13 @@ class HomeController < ApplicationController
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @days = params[:days] ? params[:days].to_i : 0
 
+    opts = {}
+    @sort_by = opts[:sort_by] = params[:sort_by]
+
     @videos = {}
     (@days+1).times do |d|
       date = @date - d.days
-      @videos[d] = Zeddmore::API.get_videos(date.to_s, @interval)
+      @videos[d] = Zeddmore::API.get_videos(date.to_s, @interval, opts)
     end
   end
 
