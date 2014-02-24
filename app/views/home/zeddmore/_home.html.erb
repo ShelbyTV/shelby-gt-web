@@ -1,9 +1,18 @@
-<% (@days + 1).times do |d| %>
-  <ul class="list">
-    <% @videos[d].each do |video| %>
-      <li class="list__item">
-          <img src="<%= video['thumbnail_url'] %>" >
-      </li>
+<div class="shelf__wrapper">
+  <div class="shelf">
+    <% (@days + 1).times do |d| %>
+      <ul class="list one-third">
+        <% @videos[d].each do |video| %>
+          <li class="list__item">
+            <%= render :partial => 'objects/frame_collapsed',
+               :locals => {
+                :video => video,
+                :frame => video #just tricking frame['id'] to not fail
+               }
+             %>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
+  </div><!-- eo shelf -->
+</div><!-- eo shelf__wrapper -->

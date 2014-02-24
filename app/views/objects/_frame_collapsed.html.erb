@@ -1,0 +1,33 @@
+<article id="<%= frame['id'] %>" class="animate_module frame frame-list-item frame-collapsed">
+  <div class="frame-body-wrapper clearfix js-frame-activate">
+    <div class="frame-body">
+      <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate" style="background-image: url('<%= video['thumbnail_url'] %>');" role="img">
+        <img class="visuallyhidden" src="<%= video['thumbnail_url'] %>" title="<%= video['title'] %>" alt="<%= video['title'] %> thumbnail">
+      </a>
+      <div class="xvideo-unplayable-thumbnail-overlay">⏏<br>unplayable</div>
+    </div><!-- eo .frame-body -->
+
+    <footer class="media_module frame-footer clearfix">
+      <div class="media_body">
+        <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+          <h1 class="frame-title" title="<%= video['title'] %>">
+           <%= video['title'] %>
+          </h1>
+          <%# THIS WHOLE BLOCK IS COMPLICATED
+          <div class="xuser-data">
+            "frame['originator']['nickname']"
+          </div>
+          %>
+        </a>
+      </div>
+    </footer><!-- eo .media_module-->
+  </div><!-- eo .frame-body-wrapper -->
+
+  <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes frame-likes--hide">
+    <ul class="list frame-likes-avatars js-liker-avatars-list no-liker-avatars"></ul>
+  </div><!-- eo frame-likes -->
+
+  <div class="frame-likes frame-external-subline icon-roll icon-roll--green js-frame-rollers frame-likes--hide">
+    <ul class="list frame-likes-avatars js-liker-avatars-list no-liker-avatars"></ul>
+  </div><!-- eo frame-rollers -->
+</article>
