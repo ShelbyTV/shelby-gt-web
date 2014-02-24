@@ -1,16 +1,15 @@
 <div class="shelf__wrapper">
-  <div class="shelf">
+  <div class="shelf shelf--zeddmore">
     <% (@days + 1).times do |d| %>
-      <ul class="list one-third">
+      <ul class="list list--column one-third">
         <% @videos[d].each do |video| %>
           <li class="list__item">
             <%= render :partial => 'objects/zeddmore_item',
                :locals => {
-                :video => video,
-                :frame => video #just tricking frame['id'] to not fail
+                :video => video
                }
              %>
-             <script class="js-video-json"><%= raw video.to_json %></script>
+             <script class="js-video-json" type="application/json"><%= raw video.to_json %></script>
           </li>
         <% end %>
       </ul>
