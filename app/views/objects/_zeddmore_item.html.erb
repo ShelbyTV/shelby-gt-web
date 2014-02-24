@@ -6,18 +6,18 @@
 
 %>
 
-<article id="" data-video_id="<%= video['video_id'] %>" class="animate_module frame frame-list-item frame-collapsed">
+<article id="" data-video_id="<%= video['video_id'] %>" class="animate_module frame frame-list-item frame-collapsed js-open-item">
   <div class="frame-body-wrapper clearfix js-frame-activate">
     <div class="frame-body">
-      <a href="#" onclick="return false;" class="image_module frame-thumbnail js-frame-activate" style="background-image: url('<%= video['thumbnail_url'] %>');" role="img">
+      <span class="image_module frame-thumbnail js-frame-activate" style="background-image: url('<%= video['thumbnail_url'] %>');" role="img">
         <img class="visuallyhidden" src="<%= video['thumbnail_url'] %>" title="<%= video['title'] %>" alt="<%= video['title'] %> thumbnail">
-      </a>
+      </span>
       <div class="xvideo-unplayable-thumbnail-overlay">⏏<br>unplayable</div>
     </div><!-- eo .frame-body -->
 
     <footer class="media_module frame-footer clearfix">
       <div class="media_body">
-        <a href="#" onclick="return false;" class="frame-header js-frame-activate">
+        <a class="frame-header js-frame-activate">
           <h1 class="frame-title" title="<%= video['title'] %>">
            <%= video['title'] %>
           </h1>

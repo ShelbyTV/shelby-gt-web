@@ -1,1 +1,16 @@
-//nothing
+//= require jquery
+//= require ./backbone/underscore
+//= require ./backbone/backbone
+
+//models
+//= require ./zeddmore/video.model
+
+//views
+//= require ./zeddmore/menu.view
+//= require ./zeddmore/lightbox.view
+
+window.Zeddmore = {};
+
+$(function(){
+  Zeddmore.Menu = new Zeddmore.MenuView({el: '#menu'});
+});

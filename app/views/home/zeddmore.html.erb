@@ -32,12 +32,22 @@
 
     <% #------------ Content --------------- %>
 
-        <div class="shelf--index">
+        <div id="menu" class="shelf--index">
           <%= render :partial => "/home/zeddmore/home" %>
         </div>
 
+        <div id="lightbox" class="lightbox vertical-align-hack js-playback-el hidden">
+          <div class="vertical-align-hack__el">
+            <div class="lightbox__lining">
+              <div class="lightbox__frame js-playback-frame"></div>
+              <button class="button_primer button_black button_command button_command--flexible js-close">
+                <span class="icon icon-close"></span>
+                <span class="button_label">Close</span>
+              </button>
+            </div>
+          </div>
+        </div>
     <% #------------ /Shelf Content --------------- %>
-
 
   </div><!-- /shelby-wrapper -->
 
