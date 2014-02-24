@@ -1,3 +1,11 @@
+<%#
+
+  NOTE:
+
+  This partial is currently Zeddmore specific.
+
+%>
+
 <article id="<%= frame['id'] %>" class="animate_module frame frame-list-item frame-collapsed">
   <div class="frame-body-wrapper clearfix js-frame-activate">
     <div class="frame-body">
@@ -13,21 +21,11 @@
           <h1 class="frame-title" title="<%= video['title'] %>">
            <%= video['title'] %>
           </h1>
-          <%# THIS WHOLE BLOCK IS COMPLICATED
           <div class="xuser-data">
-            "frame['originator']['nickname']"
+            <%= "count: #{video['count']} | duration: #{video['duration']}" %>
           </div>
-          %>
         </a>
       </div>
     </footer><!-- eo .media_module-->
   </div><!-- eo .frame-body-wrapper -->
-
-  <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes frame-likes--hide">
-    <ul class="list frame-likes-avatars js-liker-avatars-list no-liker-avatars"></ul>
-  </div><!-- eo frame-likes -->
-
-  <div class="frame-likes frame-external-subline icon-roll icon-roll--green js-frame-rollers frame-likes--hide">
-    <ul class="list frame-likes-avatars js-liker-avatars-list no-liker-avatars"></ul>
-  </div><!-- eo frame-rollers -->
 </article>

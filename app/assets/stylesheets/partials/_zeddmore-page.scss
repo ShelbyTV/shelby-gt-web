@@ -5,7 +5,12 @@
 //----- Modifiers --------------------------------------------------------
 .shelby--zeddmore {
   .frame-collapsed {
-    font-size: 10px;
+    border: none;
+    font-size: 11px;
+    opacity: 1;
+  }
+  .frame-title {
+    font-size: 13px;
   }
 }
 
