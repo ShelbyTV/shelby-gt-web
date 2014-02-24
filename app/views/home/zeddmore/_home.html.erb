@@ -1,15 +1,20 @@
-<div class="shelf__wrapper clearfix">
-  <div class="shelf shelf--zeddmore clearfix">
+<div class="shelf__wrapper">
+  <div class="shelf shelf--zeddmore">
     <%
         @display_date = Date.parse(params[:date])
     %>
-    <% (@days + 1).times do |d| %>
+    <%# (@days + 1).downto(1) do |d| %>
+    <% (@days).downto(0) do |d| %>
       <div class="column one-third">
         <h2 class="shelf__h2">
-          <%= Date.parse("#{@display_date.year}-#{@display_date.month}-#{(@display_date.day - d.to_i)}").strftime('%B %e, %Y') %>
-          <%# @display_date.strftime('%B %e, %Y') %>
+          <% if d == 0 %>
+            "Today"
+          <% else %>
+            <%= Date.parse("#{@display_date.year}-#{@display_date.month}-#{(@display_date.day - d.to_i)}").strftime('%B %e, %Y') %>
+          <% end %>
         </h2>
         <ul class="list">
+          <script type="application/json" id="x"><%= raw @videos.to_json %></script>
           <% @videos[d].each do |video| %>
             <li class="list__item">
               <%= render :partial => 'objects/zeddmore_item',

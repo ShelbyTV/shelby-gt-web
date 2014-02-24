@@ -4,7 +4,18 @@
 //----- Override App Base Styles -----------------------------------------
 //----- Modifiers --------------------------------------------------------
 .shelby--zeddmore {
+}
 
+.shelf--zeddmore {
+  //shelf related
+  .shelf__h2 {
+    padding: 20px 10px 0;
+  }
+
+  //unorganized
+  .column {
+    float: left;
+  }
   .frame-collapsed {
     border: none;
     font-size: 11px;
@@ -12,13 +23,6 @@
   }
   .frame-title {
     font-size: 13px;
-  }
-}
-
-
-.shelf--zeddmore {
-  .column {
-    float: left;
   }
 }
 // ----- Non-normative Overrides -----------------------------------------------
