@@ -4,6 +4,11 @@
 //----- Override App Base Styles -----------------------------------------
 //----- Modifiers --------------------------------------------------------
 .shelby--zeddmore {
+  .shelf--header {
+    .shelf__lining {
+      padding: 0;
+    }
+  }
 }
 
 .shelf--zeddmore {
