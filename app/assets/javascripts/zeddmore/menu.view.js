@@ -1,16 +1,9 @@
 $(function(){
   Zeddmore.MenuView = Backbone.View.extend({
     events: {
-
       'click .js-open-item' : '_openItem'
     },
-    initialize: function(){
-      console.log('menu!');
-    },
-    _cleanup: function(){},
-    render: function(){},
     _openItem: function(e){
-
       var $_item = $(e.currentTarget).siblings('.js-video-json');
 
           $_item = JSON.parse( $_item.html() );
