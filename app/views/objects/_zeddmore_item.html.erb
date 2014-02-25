@@ -22,7 +22,7 @@
            <%= video['title'] %>
           </h1>
           <div class="xuser-data">
-            <%= raw "#{Time.at(video['duration'].to_i).gmtime.strftime('%M:%S')}" %>
+            <%= raw "#{Time.at(video['duration'].to_i).gmtime.strftime('%M:%S')} | #{video['provider_name']}" %>
           </div>
         </a>
       </div>
