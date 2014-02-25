@@ -17,14 +17,14 @@
 
     <footer class="media_module frame-footer clearfix">
       <div class="media_body">
-        <a class="frame-header js-frame-activate">
+        <span class="frame-header js-frame-activate">
           <h1 class="frame-title" title="<%= video['title'] %>">
            <%= video['title'] %>
           </h1>
           <div class="xuser-data">
             <%= raw "#{Time.at(video['duration'].to_i).gmtime.strftime('%M:%S')} | #{video['provider_name']}" %>
           </div>
-        </a>
+        </span>
       </div>
     </footer><!-- eo .media_module-->
   </div><!-- eo .frame-body-wrapper -->

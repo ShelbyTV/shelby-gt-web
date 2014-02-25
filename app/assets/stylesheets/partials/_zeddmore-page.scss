@@ -65,7 +65,8 @@
     .lightbox__lining { //wraps the __frame and __menu
       min-height: 400px;
       margin: 0 auto;
-      min-width: 600px;
+      min-width: 500px;
+      max-width: 640px;
     }
     .lightbox__menu {
       margin: 10px;

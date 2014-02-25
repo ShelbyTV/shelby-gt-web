@@ -4,11 +4,13 @@ $(function(){
       //config
       embedContainer: '.js-playback-frame',
       iframeTemplate: '<iframe height="360" frameborder="0" src="http://www.youtube.com/embed/__ID__" width="640"></iframe>',
-      //constant
-      youtube: 'youtube'
+      providers: {
+        youtube: 'youtube'
+      }
     },
     events: {
-      'click .js-close' : '_closeLightbox'
+      'click .js-close' : 'closeButton',
+      'click .js-panel' : 'anywhereToClose'
     },
     template: function(data){
       return SHELBYJST['lightbox-frame'](data);
@@ -16,7 +18,7 @@ $(function(){
     initialize: function(){
       var _media;
 
-      if(this.model.get('provider_name') == this.options.youtube) {
+      if(this.model.get('provider_name') == this.options.providers.youtube) {
         //construct iframe if youtube
         _media = this.options.iframeTemplate.replace('__ID__',this.model.get('provider_id')); //lo-fi interpolatin
       } else {
@@ -32,8 +34,16 @@ $(function(){
       this.$el.find(this.options.embedContainer).html(data);
       this.$el.removeClass('hidden');
     },
-    _closeLightbox: function(e){
+    closeButton: function(e){
       e.preventDefault();
+      this._closeLightbox();
+    },
+    anywhereToClose: function(e){
+      if($(e.target).hasClass('js-panel')) {
+        this._closeLightbox();
+      }
+    },
+    _closeLightbox: function(){
       this.$el.find(this.options.embedContainer).children().remove();
       this.$el.addClass('hidden');
     }
