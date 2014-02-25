@@ -1,7 +1,7 @@
 <div class="shelf__wrapper">
   <div class="shelf shelf--zeddmore">
     <%
-        @display_date = Date.parse(params[:date])
+        @display_date = @date
     %>
     <%# (@days + 1).downto(1) do |d| %>
     <% (@days).downto(0) do |d| %>

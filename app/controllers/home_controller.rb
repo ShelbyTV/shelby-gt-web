@@ -319,7 +319,7 @@ class HomeController < ApplicationController
     @is_mobile =  is_mobile?
     @login = false
 
-    @interval = params[:interval] || "week"
+    @interval = params[:interval] || "day"
     @date = params[:date] ? Date.parse(params[:date]) : Date.today
     @days = params[:days] ? params[:days].to_i : 0
 
