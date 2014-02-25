@@ -12,7 +12,7 @@ $(function(){
 
       console.log('embed_url',model.get('embed_url'));
 
-      Zeddmore.Lightbox = new Zeddmore.LightboxView({el: "#lightbox",model:model});
+      Zeddmore.Lightbox = new Zeddmore.LightboxView({el: "#lightbox", model:model});
     }
   });
 });
