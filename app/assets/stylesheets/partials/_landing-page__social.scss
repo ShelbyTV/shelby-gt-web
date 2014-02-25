@@ -13,6 +13,9 @@
   }
   .shelf__img--iphone {
   }
+  .shelf__img--iphone_horizontal {
+    margin-top: 2em;
+  }
 }
 
 .shelf--social {
@@ -24,40 +27,40 @@
   }
   .shelf__h2 {
     clear: both;
+    margin: 1em 0 0;
     position: relative;
     text-align: center;
-    top: -100px;
   }
   .shelf__button {
     font-size: 1.5em;
     margin-top: 1em;
   }
-  .iphone {
-    margin: -101px auto 0;
-  }
-  .iphone__header {
-    float: right;
-    margin: 81px 18px;
-  }
-  .iphone__viewport {
-    height: 389px;
-    margin-top: 81px;
-    width: 188px;
+  // .iphone {
+  //   margin: -101px auto 0;
+  // }
+  // .iphone__header {
+  //   float: right;
+  //   margin: 81px 18px;
+  // }
+  // .iphone__viewport {
+  //   height: 389px;
+  //   margin-top: 81px;
+  //   width: 188px;
 
-    .slide{
-      &.show--hover {
-        margin-left: -188px;
+  //   .slide{
+  //     &.show--hover {
+  //       margin-left: -188px;
 
-        &:hover {
-          margin-left: 0;
-        }
-        &.show {
-          margin-left: 0;
-          margin-top: 0;
-        }
-      }
-    }
-  }
+  //       &:hover {
+  //         margin-left: 0;
+  //       }
+  //       &.show {
+  //         margin-left: 0;
+  //         margin-top: 0;
+  //       }
+  //     }
+  //   }
+  // }
   .media_module {
     z-index: 1;
   }

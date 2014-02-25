@@ -10,6 +10,7 @@
   max-width: 1200px;
 
   .shelf__lining {
+    padding-right: 0;
     position: relative;
     z-index: 1;
   }
@@ -21,7 +22,7 @@
 
   .shelf__img--iphone {
     float: right;
-    margin: 65px 39px;
+    margin: 65px 190px 39px 0;
   }
 
   .shelf__h1 {

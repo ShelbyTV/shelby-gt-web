@@ -60,11 +60,6 @@
       } %>
     <% else %>
       <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
-        <% unless (@mobile_os or @is_mobile) %>
-          <%= render :partial => "/home/shelf/iphone"  %>
-          <%= render :partial => "/home/shelf/nav" %>
-        <% end %>
-
         <div class="shelf--index">
           <%= render :partial => "/home/shelf/call_to_action" %>
           <%= render :partial => "/home/shelf/stream", :locals => {

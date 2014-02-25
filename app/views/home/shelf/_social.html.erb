@@ -32,16 +32,7 @@
           <% if mobile %>
             <%= image_tag "iphone-mobile.png", :class => "shelf__img--iphone_horizontal", :title => "iPhone screenshot of a video recommendation", :alt => "iPhone screenshot of a video recommendation" %>
           <% else %>
-            <div class="iphone iphone--horizontal js-iphone-south">
-              <%= image_tag "header-horiz.jpg", :class => "iphone__header" %>
-              <div class="iphone__viewport">
-                <div class="slide show--hover animate_module">
-                  <%= image_tag "iphone-3.jpg", :class => "shelf__img--iphone js-horz-iphone", :title => "iPhone screenshot of a video recommendation", :alt => "iPhone screenshot of a video recommendation" %>
-                  <%= image_tag "iphone-2c.jpg", :class => "shelf__img--iphone js-horz-iphone", :alt => "" %>
-                </div>
-              </div>
-            </div><!-- eo iphone -->
-
+            <%= image_tag "iphone-mobile.png", :class => "shelf__img--iphone_horizontal", :title => "iPhone screenshot of a video recommendation", :alt => "iPhone screenshot of a video recommendation" %>
             <h4 class="shelf__h2">Featured by</h4>
 
             <%= render :partial => "/home/shelf/press" %>
