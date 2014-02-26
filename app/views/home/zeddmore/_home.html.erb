@@ -8,7 +8,7 @@
       <div class="column one-third">
         <h2 class="shelf__h2">
           <% if d == 0 %>
-            "Today"
+            Today
           <% else %>
             <%= Date.parse("#{@display_date.year}-#{@display_date.month}-#{(@display_date.day - d.to_i)}").strftime('%B %e, %Y') %>
           <% end %>

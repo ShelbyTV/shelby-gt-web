@@ -132,8 +132,9 @@ ShelbyGtWeb::Application.routes.draw do
   get '/preferences/email/unsubscribe' => "home#unsubscribe"
 
   # Zeddmore
-  get '/zeddmore' => "home#zeddmore"
-  get '/zeddmore/:date/:days' => "home#zeddmore"
+  get '/trending' => "home#zeddmore"
+  get '/trending/:days' => "home#zeddmore"
+  get '/trending/:date/:days' => "home#zeddmore"
 
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'
