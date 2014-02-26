@@ -28,5 +28,5 @@
       </div>
     </footer><!-- eo .media_module-->
   </div><!-- eo .frame-body-wrapper -->
-  <div class="progress frame-body-wrapper"><div style="width: <%= raw "#{video['count_as_ratio'] * 100 * 4}" %>%"></div></div>
+  <div class="progress frame-body-wrapper<%if video['trend']%><%= ' progress--green' if (video['trend'] > 0) %><%= ' progress--red' if (video['trend'] < 0) %><%end%>"><div style="width: <%= raw "#{video['count_as_ratio'] * 100 * 4}" %>%"></div></div>
 </article>

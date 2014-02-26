@@ -40,13 +40,23 @@
     position: relative;
 
     & > div {
-      background-color: $ui-green;
+      background-color: $ui-blue;
       height: 100%;
       left: 0;
       top: 0;
       width: 50%; //default
     }
   }
+      .progress--green {
+        & > div {
+          background-color: $ui-green;
+        }
+      }
+      .progress--red {
+        & > div {
+          background-color: $ui-red;
+        }
+      }
 }
 
 
