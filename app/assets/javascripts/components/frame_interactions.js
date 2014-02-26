@@ -2,7 +2,6 @@ $(function(){
   Shelby.FrameInteraction = Backbone.View.extend({
     options : {
       apiRoot         : '//api.shelby.tv/v1',
-      sources         : { bookmarklet: 'bookmarklet', shares: 'shares'},
       sharePanelClass : '.js-shares',
       sharePanelData  : {
         anonymous             : false,
@@ -17,7 +16,7 @@ $(function(){
         suffix                : ''
       },
       doLikeAjaxConfig : function(){
-        if(this.source == this.sources.shares){
+        if(this.source == Shelby.libs.sources.shares){
          return {
           // this.media == frame, video is nested: frame.video
             data: {
@@ -39,7 +38,7 @@ $(function(){
       },
       doShareAjaxConfig : function(){
         // Shares & Mobile pages handle frame_ids
-        if(this.source == this.sources.shares){
+        if(this.source == Shelby.libs.sources.shares){
           return {
             source   : this.source,
             text     : null, //needs to spec'd in the function
@@ -83,7 +82,7 @@ $(function(){
       //careful, extending two things here:
       var data = _(this.options.sharePanelData).extend(this._getUserAuthentications(),{
         username      : this.options.user.get('nickname'),
-        shortlinkable : this.options.source == this.options.sources.shares
+        shortlinkable : this.options.source == Shelby.libs.sources.shares
       });
 
       this.$el.find(this.options.sharePanelClass).html(this.sharePaneljst(data));
@@ -99,7 +98,7 @@ $(function(){
       //get the JSON from the <script> and store a BB model in the view.
       var selector,media;
 
-      if(this.options.source == this.options.sources.shares) {
+      if(this.options.source == Shelby.libs.sources.shares) {
         selector = '.js-frame-json';
         model    = 'FrameModel';
       } else {

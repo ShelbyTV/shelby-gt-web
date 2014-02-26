@@ -1,74 +1,114 @@
+//dependencies
 //= require jquery
-//= require ./jquery-plugins/jquery.urlparams.js
 //= require ./backbone/underscore.js
-//= require ./event-tracking/landing.tracking
+//= require ./backbone/backbone.js
 
-$(document).ready(function(){
-  var loc = shelbyTrackingCategory || "Share Page",
-      username = shelbyTrackingLabel || "Anonymous",
-      apiRoot = '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>';
+//plugins
+//= require ./jquery-plugins/jquery.urlparams.js
 
-  shelby.trackEx({
-    providers : ['ga'],
-    gaCategory : loc,
-    gaAction : 'Visit page',
-    gaLabel : username
+//utils
+//= require ./app/browser.js
+
+//for sharing.
+//= require ../templates/share-page-form.jst.ejs
+// = require ../templates/liker-item.jst.ejs
+
+//load event tracking js
+//= require ./event-tracking/landing.tracking.js
+
+//COMPONENTS
+//= require ./components/global.js
+//= require ./components/user.js
+//= require ./components/video.js
+//= require ./components/frame.js
+//= require ./components/dashboard_entry.js
+//= require ./components/frame_interactions.js
+//= require ./components/guide.js
+
+$(function(){
+  Shelby.SharesGuideView = new Shelby.GuideView({
+    el: $('.js-guide')
   });
+});
 
-  //imitation handling
-  $('.js-toggle-comment').on('click',function(){
-    var $this = $(this);
-    $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
-  });
 
-  //imitation handling
-  $('.js-content-selector').on('click','button',function(e){
-    e.preventDefault();
-    var $this = $(this);
 
-    if($this.hasClass('js-do-nothing')){
-      return false;
-    }
-    else if($this.hasClass('js-stream')) {
-      window.location = "/stream";
-    }
-    else if($this.hasClass('js-explore')) {
-      window.location = "/explore";
-    }
-    else if($this.hasClass('js-me')) {
-      var username = $('.app_nav__button--settings').text().trim();
-      window.location = '/' + username;
-    }
-    else if($this.hasClass('js-login-dropdown-button')){
-      var $loginDropdown = $('.js-login-dropdown');
-      $loginDropdown.toggleClass('hidden',!$loginDropdown.hasClass('hidden'));
-    }
-    else if($this.hasClass('js-signout')) {
-      window.location = "/signout";
-    } else {
-      window.location = $this.attr('href');
-    }
-  });
 
-  // dynamically load the share pane, OR, handle for anonymous users
-  if($('body').hasClass('shelby--shares_enabled')) {
-    var c      = document.createElement("script");
-        c.type = "text/javascript";
-        c.src  = '/assets/shares/shares_enabled.js';
-    document.body.appendChild(c);
-  } else {
-    var $signupMessage = $('.js-seo-signup-message').on('click', function(){
-      $(this).addClass('hidden');
 
-      try {
-        _gaq.push(['_trackEvent', 'Share Page', 'Click on body with modal', "When clicking related video"]);
-      } catch(e) {}
-    });
-    //handle "Share" button differently, since there's no Share Pane.
-    $('.js-share-init').removeAttr('disabled').on('click',function(){
-      $signupMessage.removeClass('hidden');
-    });
-  }
+
+
+
+
+
+
+
+
+// $(document).ready(function(){
+//   var loc = shelbyTrackingCategory || "Share Page",
+//       username = shelbyTrackingLabel || "Anonymous",
+//       apiRoot = '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>';
+
+//   shelby.trackEx({
+//     providers : ['ga'],
+//     gaCategory : loc,
+//     gaAction : 'Visit page',
+//     gaLabel : username
+//   });
+
+//   //imitation handling
+//   $('.js-toggle-comment').on('click',function(){
+//     var $this = $(this);
+//     $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
+//   });
+
+//   //imitation handling
+//   $('.js-content-selector').on('click','button',function(e){
+//     e.preventDefault();
+//     var $this = $(this);
+
+//     if($this.hasClass('js-do-nothing')){
+//       return false;
+//     }
+//     else if($this.hasClass('js-stream')) {
+//       window.location = "/stream";
+//     }
+//     else if($this.hasClass('js-explore')) {
+//       window.location = "/explore";
+//     }
+//     else if($this.hasClass('js-me')) {
+//       var username = $('.app_nav__button--settings').text().trim();
+//       window.location = '/' + username;
+//     }
+//     else if($this.hasClass('js-login-dropdown-button')){
+//       var $loginDropdown = $('.js-login-dropdown');
+//       $loginDropdown.toggleClass('hidden',!$loginDropdown.hasClass('hidden'));
+//     }
+//     else if($this.hasClass('js-signout')) {
+//       window.location = "/signout";
+//     } else {
+//       window.location = $this.attr('href');
+//     }
+//   });
+
+//   // dynamically load the share pane, OR, handle for anonymous users
+//   if($('body').hasClass('shelby--shares_enabled')) {
+//     var c      = document.createElement("script");
+//         c.type = "text/javascript";
+//         c.src  = '/assets/shares/shares_enabled.js';
+//     document.body.appendChild(c);
+//   } else {
+//     var $signupMessage = $('.js-seo-signup-message').on('click', function(){
+//       $(this).addClass('hidden');
+
+//       try {
+//         _gaq.push(['_trackEvent', 'Share Page', 'Click on body with modal', "When clicking related video"]);
+//       } catch(e) {}
+//     });
+//     //handle "Share" button differently, since there's no Share Pane.
+//     $('.js-share-init').removeAttr('disabled').on('click',function(){
+//       $signupMessage.removeClass('hidden');
+//     });
+//   }
 
   // if(!$('body').hasClass('shelby--radar')){
   //   // handle liking, regardless of user anonymity
@@ -115,4 +155,4 @@ $(document).ready(function(){
 
 //     });
 //   }
-});
+// });
