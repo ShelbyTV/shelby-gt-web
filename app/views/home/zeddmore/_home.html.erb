@@ -13,7 +13,7 @@
             <%= Date.parse("#{@display_date.year}-#{@display_date.month}-#{(@display_date.day - d.to_i)}").strftime('%B %e, %Y') %>
           <% end %>
         </h2>
-        <ul class="list">
+        <ol class="list">
           <script type="application/json" id="x"><%= raw @videos.to_json %></script>
           <% @videos[d].each do |video| %>
             <li class="list__item">

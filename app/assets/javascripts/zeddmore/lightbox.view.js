@@ -16,6 +16,13 @@ $(function(){
       return SHELBYJST['lightbox-frame'](data);
     },
     initialize: function(){
+      this.model.bind('change',this.render,this);
+      this.render();
+    },
+    _cleanup: function(){
+      this.model.unbind('change',this.render,this);
+    },
+    render: function(){
       var _media;
 
       if(this.model.get('provider_name') == this.options.providers.youtube) {
