@@ -6,9 +6,9 @@
 //= require ../../templates/share-page-form.jst.ejs
 
 //COMPONENTS
-//= require ./user.js
-//= require ./video.js
-//= require ./frame_interactions.js
-//= require ./guide.js
+//= require ./components/user.js
+//= require ./components/video.js
+//= require ./components/frame_interactions.js
+//= require ./components/guide.js
 
 var SharePanel = new GuideView();
