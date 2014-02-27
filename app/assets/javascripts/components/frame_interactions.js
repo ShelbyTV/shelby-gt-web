@@ -16,24 +16,43 @@ $(function(){
         suffix                : ''
       },
       doLikeAjaxConfig : function(){
-        if(this.source == Shelby.libs.sources.shares){
-         return {
-          // this.media == frame, video is nested: frame.video
-            data: {
-              provider_id   : this.media.get('video').provider_id,
-              provider_name : this.media.get('video').provider_name,
-              url           : this.media.composeKnownUrl()
-            }
-          };
-        } else {
+        //logged out
+        if(Shelby.User.get('user_type') == Shelby.libs.User.user_types.anonymous) {
           return {
-            // this.media == video
+            url: Shelby.apiRoot + '/PUT/frame/' + this.media.get('id') + '/like',
             data: {
-              provider_id   : this.media.get('provider_id'),
-              provider_name : this.media.get('provider_name'),
-              url           : this.media.composeKnownUrl()
+              frame_id: this.media.get('id')
             }
           };
+        }
+        else {
+          //logged inkey: "value",
+          //share pages & mobile web
+          if(this.source == Shelby.libs.sources.shares){
+           return {
+            // this.media == frame, video is nested: frame.video
+              url: Shelby.apiRoot + '/POST/roll/' + Shelby.User.get('watch_later_roll_id') + '/frames',
+              data: {
+                provider_id   : this.media.get('video').provider_id,
+                provider_name : this.media.get('video').provider_name,
+                url           : this.media.composeKnownUrl()
+              }
+            };
+          }
+
+          //logged in:
+          //bookmarklet
+          else {
+            return {
+              // this.media == video
+              url: Shelby.apiRoot + '/POST/roll/' + Shelby.User.get('watch_later_roll_id') + '/frames',
+              data: {
+                provider_id   : this.media.get('provider_id'),
+                provider_name : this.media.get('provider_name'),
+                url           : this.media.composeKnownUrl()
+              }
+            };
+          }
         }
       },
       doShareAjaxConfig : function(){
@@ -117,7 +136,7 @@ $(function(){
       if(this.options.sharePanelData.shortlinkable !== false){
         $.ajax({
           type: 'GET',
-          url: this.options.apiRoot + '/frame/' + frame_id + '/short_link',
+          url: Shelby.apiRoot + '/frame/' + frame_id + '/short_link',
           dataType: "jsonp",
           timeout: 10000,
           crossDomain: true,
@@ -153,7 +172,7 @@ $(function(){
 
       $.ajax({
         type: 'GET',
-        url: this.options.apiRoot + '/POST/roll/' + this.options.user.get('watch_later_roll_id') + '/frames',
+        url: _ajax.url,
         dataType: "jsonp",
         timeout: 10000,
         crossDomain: true,
@@ -206,7 +225,7 @@ $(function(){
 
       $.ajax({
         type: 'GET',
-        url: this.options.apiRoot + '/POST/roll/' + this.options.user.get('personal_roll_id') + '/frames',
+        url: Shelby.apiRoot + '/POST/roll/' + this.options.user.get('personal_roll_id') + '/frames',
         dataType: "jsonp",
         timeout: 10000,
         crossDomain: true,
@@ -297,11 +316,7 @@ $(function(){
       }
 
       return data;
-    },
-
-    _shareVideo : function(){},
-    _shareFrame : function(){},
-    _shareDashboardEntry : function(){}
+    }
   });
 
 });
