@@ -14,7 +14,6 @@
           <% end %>
         </h2>
         <ol class="list">
-          <script type="application/json" id="x"><%= raw @videos.to_json %></script>
           <% @videos[d].each do |video| %>
             <li class="list__item">
               <%= render :partial => 'objects/zeddmore_item',
