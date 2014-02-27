@@ -114,24 +114,28 @@ $(function(){
       var self = this,
           frame_id = this.options.media.get('id');
 
-      $.ajax({
-        type: 'GET',
-        url: this.options.apiRoot + '/frame/' + frame_id + '/short_link',
-        dataType: "jsonp",
-        timeout: 10000,
-        crossDomain: true,
-        xhrFields: {
-          withCredentials: true
-        },
-        success: function(response) {
-          self.options.sharePanelData.currentFrameShortlink = response.result.short_link;
-          self.$el.find('#shortlink').removeAttr('disabled').val(response.result.short_link);
-        },
-        error: function() {
-          self.options.sharePanelData.currentFrameShortlink = null;
-          self.$el.find('#shortlink').val('Error…');
-        }
-      });
+      if(this.options.sharePanelData.shortlinkable !== false){
+        $.ajax({
+          type: 'GET',
+          url: this.options.apiRoot + '/frame/' + frame_id + '/short_link',
+          dataType: "jsonp",
+          timeout: 10000,
+          crossDomain: true,
+          xhrFields: {
+            withCredentials: true
+          },
+          success: function(response) {
+            self.options.sharePanelData.currentFrameShortlink = response.result.short_link;
+            self.$el.find('#shortlink').removeAttr('disabled').val(response.result.short_link);
+          },
+          error: function() {
+            self.options.sharePanelData.currentFrameShortlink = null;
+            self.$el.find('#shortlink').val('Error…');
+          }
+        });
+      } else {
+        console.log('Video not shortlinkable!');
+      }
     },
 
     doLike : function(e){
