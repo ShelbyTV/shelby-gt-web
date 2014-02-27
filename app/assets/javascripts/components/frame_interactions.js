@@ -171,7 +171,7 @@ $(function(){
       this.$el.find('.js-share-init').toggleClass('button_active');
       this.$el.find(this.options.sharePanelClass).toggleClass('hidden');
 
-      if(this.options.sharePanelData.currentFrameShortlink === null){
+      if(this.options.sharePanelData.currentFrameShortlink === null && this.options.sharePanelData.shortlinkable !== false){
         this._fetchShortlink();
       }
     },
