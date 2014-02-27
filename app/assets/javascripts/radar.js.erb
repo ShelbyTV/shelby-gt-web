@@ -1,72 +1,93 @@
+//dependencies
 //= require jquery
+//= require ./backbone/underscore.js
+//= require ./backbone/backbone.js
+
+//plugins
+//= require ./jquery-plugins/jquery.urlparams.js
+
+//utils
 //= require ./app/browser.js
 
 //for sharing.
-//= require ./backbone/underscore.js
 //= require ../templates/share-page-form.jst.ejs
-//= require ../templates/liker-item.jst.ejs
+// = require ../templates/liker-item.jst.ejs
 
 //load event tracking js
 //= require ./event-tracking/mobile.tracking.js
 
-var libs = {
-  config : {
-    shelbyGT : {
-      root : '<%= "#{Settings::Application.url}" %>',
-      apiRoot : '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>',
-      UserAvatarSizes : {
-        small : "sq48x48"
-      }
-    },
-    avatarUrlRoot: '//s3.amazonaws.com/shelby-gt-user-avatars'
-  },
-  utils : {
-    composeKnownUrl : function (provideName, videoId) {
-      var knownUrl = "";
+//COMPONENTS
+//= require ./components/global.js
+//= require ./components/user.js
+//= require ./components/video.js
+//= require ./components/frame.js
+//= require ./components/dashboard_entry.js
+//= require ./components/frame_interactions.js
+//= require ./components/guide.js
 
-      switch (provideName) {
-        case 'blip':
-          knownUrl = "http://blip.tv/episode/" + videoId;
-          break;
-        case 'youtube':
-          knownUrl = "http://www.youtube.com/watch?v=" + videoId;
-          break;
-        case 'dailymotion':
-          knownUrl = "http://www.dailymotion.com/video/" + videoId + "?";
-          break;
-        case 'vimeo':
-          knownUrl = "http://vimeo.com/" + videoId;
-          break;
-        case 'techcrunch':
-          knownUrl = "http://techcrunch.tv/watch?id=" + videoId;
-          break;
-        case 'collegehumor':
-          // knownUrl = (opts.useUrl) ? document.location.href : knownUrl = "http://collegehumor.com/video/" + videoId;
-          knownUrl = "http://collegehumor.com/video/" + videoId;
-          break;
-        case 'hulu':
-          //HACK (For now).
-          // the videoId is the content_id, not useful when hitting embedly or our link cache
-          // so using the page location for now
-          knownUrl = document.location.href;
-          break;
-        case 'bloomberg':
-          //HACK (For now).
-          // so using the page location + the provider id
-          knownUrl = document.location.href + "?bloomberg_ooyala_id="+ videoId;
-          break;
-        default:
-          knownUrl = false;
-      }
+// var libs = {
+//   config : {
+//     shelbyGT : {
+//       root : '<%= "#{Settings::Application.url}" %>',
+//       apiRoot : '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>',
+//       UserAvatarSizes : {
+//         small : "sq48x48"
+//       }
+//     },
+//     avatarUrlRoot: '//s3.amazonaws.com/shelby-gt-user-avatars'
+//   },
+//   utils : {
+//     composeKnownUrl : function (provideName, videoId) {
+//       var knownUrl = "";
 
-      return knownUrl;
-    }
-  }
-};
+//       switch (provideName) {
+//         case 'blip':
+//           knownUrl = "http://blip.tv/episode/" + videoId;
+//           break;
+//         case 'youtube':
+//           knownUrl = "http://www.youtube.com/watch?v=" + videoId;
+//           break;
+//         case 'dailymotion':
+//           knownUrl = "http://www.dailymotion.com/video/" + videoId + "?";
+//           break;
+//         case 'vimeo':
+//           knownUrl = "http://vimeo.com/" + videoId;
+//           break;
+//         case 'techcrunch':
+//           knownUrl = "http://techcrunch.tv/watch?id=" + videoId;
+//           break;
+//         case 'collegehumor':
+//           // knownUrl = (opts.useUrl) ? document.location.href : knownUrl = "http://collegehumor.com/video/" + videoId;
+//           knownUrl = "http://collegehumor.com/video/" + videoId;
+//           break;
+//         case 'hulu':
+//           //HACK (For now).
+//           // the videoId is the content_id, not useful when hitting embedly or our link cache
+//           // so using the page location for now
+//           knownUrl = document.location.href;
+//           break;
+//         case 'bloomberg':
+//           //HACK (For now).
+//           // so using the page location + the provider id
+//           knownUrl = document.location.href + "?bloomberg_ooyala_id="+ videoId;
+//           break;
+//         default:
+//           knownUrl = false;
+//       }
+
+//       return knownUrl;
+//     }
+//   }
+// };
 
 $(document).ready(function(){
   //using Rails to dump out the User object as stringified JSON, then cache it with JSON, asap!
-  var user = JSON.parse( $('#js-user').text() );
+  // var user = JSON.parse( $('#js-user').text() );
+
+  Shelby.SharesView = new Shelby.GuideView({
+    el: $('.js-guide')
+  });
+
 
   $('#login_form').attr('action',function(index,action){ return action + '?redir='+window.location.origin+'/bookmarklet'});
 
