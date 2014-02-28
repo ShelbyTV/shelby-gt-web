@@ -109,10 +109,6 @@ $(function(){
       // this._fetchShortlink();
     },
 
-    _staticRenderSharePanel : function(){
-      console.log('awesome');
-    },
-
     _initMediaModel : function(){
       //get the JSON from the <script> and store a BB model in the view.
       var selector,media;
