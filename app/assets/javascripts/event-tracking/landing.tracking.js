@@ -25,7 +25,7 @@ $(document).ready(function(){
     }
     catch(e){
       console.log("error posting event:", category, action, label, e);
-    };
+    }
   };
 
 
