@@ -33,7 +33,9 @@ $(function(){
 
 
 
-  //Mobile web requires more functionality
+  //Mobile Web (!SharePages && !Bookmarklet) requires more functionality,
+  //below is augmentation of above.
+
   Shelby.MobileGuideView = Shelby.GuideView.extend({
     events: _.extend({},Shelby.GuideView.prototype.events,{
       'click .js-load-more' : 'loadMore'
