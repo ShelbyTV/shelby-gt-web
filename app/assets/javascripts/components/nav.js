@@ -1,7 +1,7 @@
 $(function(){
   Shelby.Navbar = Backbone.View.extend({
     options: {
-      sources : { bookmarklet: 'bookmarklet', shares: 'shares'}
+      sources : { bookmarklet: 'bookmarklet', shares: 'shares', mobile: 'mobile'}
     },
 
     el: $('.js-content-selector'),

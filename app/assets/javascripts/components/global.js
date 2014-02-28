@@ -7,7 +7,15 @@ window.Shelby = {
     },
     User: {
       user_types: {
-        anonymous: 99
+        real: 0,
+        faux: 1,
+        converted: 2,
+        service: 3,
+        anonymous: 4,
+        ghost: 99
+      },
+      anonymous: {
+        nickname: 'Anonymous'
       }
     }
   }

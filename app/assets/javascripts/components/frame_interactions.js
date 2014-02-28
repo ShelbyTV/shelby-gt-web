@@ -17,7 +17,7 @@ $(function(){
       },
       doLikeAjaxConfig : function(){
         //logged out
-        if(Shelby.User.get('user_type') == Shelby.libs.User.user_types.anonymous) {
+        if(Shelby.User.get('nickname') == Shelby.libs.User.anonymous.nickname) {
           return {
             url: Shelby.apiRoot + '/PUT/frame/' + this.media.get('id') + '/like',
             data: {
