@@ -81,6 +81,7 @@ $(function(){
     },
 
     events: {
+      'click .js-cancel'                   : 'toggleSharePanel',
       'click .js-share-init'               : 'toggleSharePanel',
       'click .js-like'                     : 'doLike',
       'click .js-share-it'                 : 'submitShare',
@@ -198,6 +199,8 @@ $(function(){
 
       if(this.options.sharePanelData.currentFrameShortlink === null && this.options.sharePanelData.shortlinkable !== false){
         this._fetchShortlink();
+      } else if(this.options.sharePanelData.currentFrameShortlink !== null) {
+        this._shortlinkSuccess(this.options.sharePanelData.currentFrameShortlink);
       }
     },
     toggleSocial: function(e){
