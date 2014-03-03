@@ -206,12 +206,12 @@ $(function(){
     toggleSocial: function(e){
       e.preventDefault();
 
-      var $this = $(e.currentTarget),
-        network = $this.data('network');
+      var $button = $(e.currentTarget),
+          network = $button.data('network');
 
-      $this.parent()
-        .toggleClass('button_gray', !$this.is(':checked'))
-        .toggleClass('button_' + network + '-blue', $this.is(':checked'));
+      $button.parent()
+        .toggleClass('button_gray', !$button.is(':checked'))
+        .toggleClass('button_' + network + '-blue', $button.is(':checked'));
     },
     resetShare: function(e){
       this.toggleSharePanel();
