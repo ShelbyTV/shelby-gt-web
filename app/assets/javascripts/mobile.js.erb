@@ -27,6 +27,8 @@
 //= require ./components/guide.js
 //= require ./components/nav.js
 //= require ./components/roll_header.js
+//= require ./components/button.js
+
 
 $(function(){
   Shelby.MobileNav = new Shelby.Navbar({
@@ -34,10 +36,10 @@ $(function(){
   });
 
   //init roll header OR sources lists if either of them exists
-    var $userCard = $('.js-roll-header');
+    var $userCard = $('.js-sources-list, .js-roll-header');
 
     if($userCard.length) {
-      Shelby.Rollheader = new Shelby.RollheaderView({
+      Shelby.UserCard = new Shelby.RollheaderView({
         el: $userCard
       });
     }
