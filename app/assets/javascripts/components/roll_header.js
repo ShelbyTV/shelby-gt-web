@@ -18,7 +18,7 @@ $(function(){
       e.preventDefault();
 
       var self    = this,
-          $button = $(this),
+          $button = $(e.currentTarget),
           roll_id = $button.data('roll_id'),
           method  = $button.hasClass('button_green') ? 'join' : 'leave';
 

@@ -33,9 +33,15 @@ $(function(){
     el: $('.js-content-selector')
   });
 
-  Shelby.Rollheader = new Shelby.RollheaderView({
-    el: $('.js-roll-header')
-  });
+  //init roll header OR sources lists if either of them exists
+    var $userCard = $('.js-roll-header');
+
+    if($userCard.length) {
+      Shelby.Rollheader = new Shelby.RollheaderView({
+        el: $userCard
+      });
+    }
+  //eo roll header
 
   Shelby.Guide = new Shelby.MobileGuideView({
     el: $('.js-guide')
