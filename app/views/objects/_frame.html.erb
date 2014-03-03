@@ -4,7 +4,7 @@
 <% message = build_frame_message(frame, dbe) %>
 <% framePermalink = build_frame_permalink(frame) %>
 
-<article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" data-video="<%= video.to_json %>" class="animate_module frame js-frame js-<%= frame['id']%>">
+<article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame js-<%= frame['id']%>">
   <span class="frame-header js-frame-activate">
     <h1 class="frame-title" title="<%= video['title'] %>">
       <%= video['title'] %>
@@ -89,12 +89,12 @@
 
   <div class="form_fieldset frame_interactions">
     <span class="column one-half">
-      <button class="button_primer button_command button_command--flexible button_green one-whole js-share-init js-track-event" data-frame_id="<%= frame['id'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click Share" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
+      <button class="button_primer button_command button_command--flexible button_green one-whole js-share-init js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Share" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
         <span class="icon icon-roll"></span>Share…
       </button>
     </span><!--
   --><span class="column one-half">
-      <button class="button_primer button_command button_command--flexible button_gray one-whole js-like js-track-event" data-frame_id="<%= frame['id'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click Like" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
+      <button class="button_primer button_command button_command--flexible button_gray one-whole js-like js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Like" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
           <span class="icon icon-like"></span>Like
       </button>
     </span>

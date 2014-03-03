@@ -84,6 +84,8 @@ $(function(){
       'click .js-share-init'               : 'toggleSharePanel',
       'click .js-like'                     : 'doLike',
       'click .js-share-it'                 : 'submitShare',
+      'click .js-tweet-intent'             : 'tweetIntent',
+      'click .js-facebook-msg'             : 'facebookMsg',
       'change .js-toggle-twitter-sharing'  : 'toggleSocial',
       'change .js-toggle-facebook-sharing' : 'toggleSocial',
       'submit .js-share-submit'            : 'submitShare',
@@ -100,6 +102,7 @@ $(function(){
     render : function(){
       //careful, extending two things here:
       var data = _(this.options.sharePanelData).extend(this._getUserAuthentications(),{
+        anonymous     : this.options.user.is_anonymous(),
         username      : this.options.user.get('nickname'),
         shortlinkable : this.options.source == Shelby.libs.sources.shares
       });
@@ -126,7 +129,8 @@ $(function(){
     },
 
     _fetchShortlink : function(e){
-      var self = this,
+      var $el      = this.$el,
+          self     = this,
           frame_id = this.options.media.get('id');
 
       if(this.options.sharePanelData.shortlinkable !== false){
@@ -141,7 +145,8 @@ $(function(){
           },
           success: function(response) {
             self.options.sharePanelData.currentFrameShortlink = response.result.short_link;
-            self.$el.find('#shortlink').removeAttr('disabled').val(response.result.short_link);
+
+            self._shortlinkSuccess(response.result.short_link);
           },
           error: function() {
             self.options.sharePanelData.currentFrameShortlink = null;
@@ -151,6 +156,11 @@ $(function(){
       } else {
         console.log('Video not shortlinkable!');
       }
+    },
+
+    _shortlinkSuccess: function(shortlink){
+      this.$el.find('.js-tweet-intent, .js-facebook-msg, #shortlink').removeAttr('disabled');
+      this.$el.find('#shortlink').val(shortlink);
     },
 
     doLike : function(e){
@@ -312,6 +322,44 @@ $(function(){
       }
 
       return data;
+    },
+
+    //logged out social media stuff
+    tweetIntent: function(e){
+      e.preventDefault();
+
+      var $this = $(this),
+          url   = 'https://twitter.com/intent/tweet?related=shelby&via=shelby&url='
+                    + this.options.sharePanelData.currentFrameShortlink + '&text='
+                    + encodeURIComponent( this.options.media.get('video').title );
+
+      window.open(url,'twitterShare','');
+    },
+
+    facebookMsg: function(e){
+      e.preventDefault();
+      var video = this.options.media.get('video');
+      FB.ui(
+        {
+          caption     : 'Shelby.tv',
+          description : video['description'],
+          display     : 'popup',
+          link        : video['short_link'],
+          method      : 'feed',
+          name        : video['video_title'],
+          picture     : video['thumbnail_url'],
+        },
+        function(response) {
+          if (response && response.post_id) {
+            shelby.trackEx({
+              providers: ['ga'],
+              gaCategory: loc,
+              gaAction: 'Anonymous Facebook Share',
+              gaLabel: Shelby.User.get('nickname')
+            });
+          }
+        }
+      );
     }
   });
 
