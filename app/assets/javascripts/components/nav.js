@@ -1,18 +1,20 @@
 $(function(){
   Shelby.Navbar = Backbone.View.extend({
     options: {
-      sources : { bookmarklet: 'bookmarklet', shares: 'shares', mobile: 'mobile'}
+      sources : { bookmarklet: 'bookmarklet', shares: 'shares', mobile: 'mobile'},
+      $settingsDropdown: $('.js-settings-dropdown')
     },
 
     el: $('.js-content-selector'),
 
     events: {
-      'click .js-do-nothing'            : 'doNothing',
-      'click .js-stream'                : 'goToStream',
-      'click .js-explore'               : 'goToExplore',
-      'click .js-me'                    : 'goToMe',
-      'click .js-login-dropdown-button' : 'toggleDropdown',
-      'click .js-signout'               : 'goToSignout'
+      'click .js-do-nothing'               : 'doNothing',
+      'click .js-stream'                   : 'goToStream',
+      'click .js-explore'                  : 'goToExplore',
+      'click .js-me'                       : 'goToMe',
+      'click .js-login-dropdown-button'    : 'toggleLoginDropdown',
+      'click .js-settings-dropdown-button' : 'toggleSettingsDropdown',
+      'click .js-signout'                  : 'goToSignout'
     },
 
     _navigate: function(path){
@@ -43,11 +45,16 @@ $(function(){
       this._navigate('/signout');
     },
 
-    toggleDropdown: function(e){
+    toggleLoginDropdown: function(e){
       e.preventDefault();
       var $dropdown = this.$el.find('.js-login-dropdown');
 
       $dropdown.toggleClass('hidden',!$dropdown.hasClass('hidden'));
+    },
+
+    toggleSettingsDropdown: function(e){
+      e.preventDefault();
+      this.options.$settingsDropdown.toggleClass('hidden', !this.options.$settingsDropdown.hasClass('hidden'));
     }
 
   });

@@ -336,7 +336,7 @@ $(function(){
       return data;
     },
 
-    //logged out social media stuff
+//logged out social media stuff-------------------------------------------------
     tweetIntent: function(e){
       e.preventDefault();
 
