@@ -81,9 +81,22 @@ $(function(){
       return SHELBYJST['share-page-form'](data);
     },
 
-    likerItemjst: function(data){
-      return SHELBYJST['liker-item'](data);
+    // this Liker list container only exists if there's an existing Liker.
+    // user this JST to inject the container if User is the first to Like.
+    likerListjst: function(){
+      // <div><ul>…</ul></div>
+      return $('#js-frame-like').html();
     },
+
+    // pre-filled List-item with the User avatar and meta data.
+    // append this to existing frames
+    // OR
+    // append the likerListjst above, and inject this List-item
+    likerItemjst: function(){
+      // <li>…</li>
+      return $('#js-user-like').html();
+    },
+
 
     events: {
       'click .js-cancel'                   : 'toggleSharePanel',
@@ -196,12 +209,21 @@ $(function(){
         xhrFields: {
           withCredentials : true
         },
-        success: function () {},
+        success: function () {
+          var $likesContainer = self.$el.find('.js-frame-likes');
+
+          if(!$likesContainer.length) {
+            self.$el.append(self.likerListjst());
+          }
+
+          self.$el.find('.js-liker-avatars-list').append(self.likerItemjst());
+        },
         error: function () {}
       });
 
       $button.addClass('visuallydisabled');
     },
+
     toggleSharePanel: function(e){
       this.$el.find('.js-share-init').toggleClass('button_active');
       this.$el.find(this.options.sharePanelClass).toggleClass('hidden');

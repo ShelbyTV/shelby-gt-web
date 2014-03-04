@@ -54,7 +54,12 @@ $(function(){
           var $items  = $(data).find('.js-list').children('.list__item'),
               $button = $(data).find('.js-load-more');
 
-          $('.js-list').append($items);
+          // $('.js-list').append($items);
+
+          _($items).each(function(key,el){
+            console.log(key,el);
+          });
+
           $('.js-load-more').attr('href', $button.attr('href'));
         });
       }, 100);
