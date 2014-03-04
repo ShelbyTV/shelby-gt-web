@@ -66,7 +66,8 @@ $(function(){
           $items.each(function(index,el){
             $guideList.append(el);
 
-            self._initVideocard(el,{source: self.options.source});
+            //note: el.children == <article>, which is the true "el" for the view.
+            self._initVideocard(el.children,{source: self.options.source});
           });
 
           $('.js-load-more').attr('href', $button.attr('href'));
