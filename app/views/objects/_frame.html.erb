@@ -106,15 +106,6 @@
       <script class="js-likes-array" data-frame_id="<%= frame['id'] %>" type="application/json">
         <%= raw frame['upvoters'].to_json %>
       </script>
-
-      <script>
-        $(document).ready(function(){
-          $(this).trigger({
-            type:'frameLoaded',
-            frame_id: "<%= frame['id'] || src_frame['id'] %>"
-          });
-        });
-      </script>
     <% end %>
 
     <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">

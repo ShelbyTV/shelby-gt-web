@@ -56,67 +56,9 @@ $(function(){
 
           $('.js-list').append($items);
           $('.js-load-more').attr('href', $button.attr('href'));
-
-          self._processNewLikers($items);
         });
       }, 100);
-    },
-
-    _processNewLikers: function($items){
-      var self = this;
-
-      _($items.children('.js-frame')).each(function(item) {
-        var $el = $(item);
-        var $likers = $el.find('.js-likes-array');
-
-        if ($likers && $likers.length) {
-          $likers = JSON.parse($likers.html());
-          self._fetchLikers($likers, $el);
-        }
-      });
-    },
-
-    _fetchLikers: function(likers,$el){
-        var self = this,
-            data = {
-              ids: likers.join(',')
-            };
-
-        $.ajax({
-          type: 'GET',
-          url: Shelby.apiRoot + '/user',
-          dataType: "jsonp",
-          timeout: 10000,
-          crossDomain: true,
-          data: data,
-          xhrFields: {
-            withCredentials: true
-          },
-          success: function(response) {
-            var $container = $el.find('.js-liker-avatars-list').empty(),
-                likerArray = response.result;
-
-            self._appendLikers(likerArray,$container);
-          },
-          error: function(e) {
-            console.log("Oops!", e.statusText);
-          }
-        });
-      },
-
-      _appendLikers: function(likerArray, $el){
-        for (var i = 0; i < likerArray.length; i++) {
-
-          var user   = likerArray[i],
-              avatar = Shelby.libs.User.avatarUrl(user);
-
-          $el.append(SHELBYJST['liker-item']({
-            avatar          : avatar,
-            liker           : user,
-            appropriatePath : appropriateSubdirectory
-          }));
-        }
-      }
+    }
   });
 
 });

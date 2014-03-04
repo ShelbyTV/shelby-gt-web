@@ -2,6 +2,7 @@ $(function(){
   Shelby.FrameInteraction = Backbone.View.extend({
     options : {
       apiRoot         : '//api.shelby.tv/v1',
+      likerJSONClass  : '.js-likes-array',
       sharePanelClass : '.js-shares',
       sharePanelData  : {
         anonymous             : false,
@@ -74,10 +75,14 @@ $(function(){
       }
     },
 
-    el: '.frame_interactions',
+    el: '.js-frame',
 
     sharePaneljst: function(data){
       return SHELBYJST['share-page-form'](data);
+    },
+
+    likerItemjst: function(data){
+      return SHELBYJST['liker-item'](data);
     },
 
     events: {
@@ -111,6 +116,10 @@ $(function(){
       this.$el.find(this.options.sharePanelClass).html(this.sharePaneljst(data));
 
       // this._fetchShortlink();
+
+      // var likerArray = JSON.parse(this.$el.find('.js-likes-array').html());
+
+      this._processLikers();
     },
 
     _initMediaModel : function(){
@@ -363,7 +372,60 @@ $(function(){
           }
         }
       );
-    }
+    },
+
+
+//liker dynamicism  ------------------------------------------------------------
+    _processLikers: function(){
+      var $likers = this.$el.find(this.options.likerJSONClass);
+
+      if ($likers && $likers.length) {
+        $likers = JSON.parse($likers.html());
+        this._fetchLikers($likers);
+      }
+    },
+
+    _fetchLikers: function(likers){
+        var self = this,
+            data = {
+              ids: likers.join(',')
+            };
+
+        $.ajax({
+          type: 'GET',
+          url: Shelby.apiRoot + '/user',
+          dataType: "jsonp",
+          timeout: 10000,
+          crossDomain: true,
+          data: data,
+          xhrFields: {
+            withCredentials: true
+          },
+          success: function(response) {
+            var $container = self.$el.find('.js-liker-avatars-list').empty(),
+                likerArray = response.result;
+
+            self._appendLikers(likerArray,$container);
+          },
+          error: function(e) {
+            console.log("Oops!", e.statusText);
+          }
+        });
+      },
+
+      _appendLikers: function(likerArray, $el){
+        for (var i = 0; i < likerArray.length; i++) {
+
+          var user   = likerArray[i],
+              avatar = Shelby.libs.User.avatarUrl(user);
+
+          $el.append(SHELBYJST['liker-item']({
+            avatar          : avatar,
+            liker           : user,
+            appropriatePath : appropriateSubdirectory
+          }));
+        }
+      }
   });
 
 });
