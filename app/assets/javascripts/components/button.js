@@ -1,15 +1,24 @@
 $(function(){
-  Shelby.ButtonView = Backbone.View.extend({
+  Shelby.BaseButtonModel = Backbone.Model.extend({
+
+  });
+
+
+  Shelby.BaseButtonView = Backbone.View.extend({
+
+  });
+
+  Shelby.ButtonView = Shelby.BaseButtonView.extend({
 
     el: $('.js-button-view'),
 
     events: {
-      'click .js-button' : 'clickButton',
-      'dblclick .js-button' : 'log'
+      'click' : 'clickButton'
     },
 
     initialize: function(){
-      console.log('rollheaderinit',this);
+      console.log('new button',this);
+      return $('<button/>');
     },
 
     clickButton: function(){
