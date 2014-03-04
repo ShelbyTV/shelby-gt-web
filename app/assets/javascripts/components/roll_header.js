@@ -11,7 +11,6 @@ $(function(){
     },
 
     initialize: function(){
-      console.log('rollheaderinit',this);
     },
 
     followOrUnfollow: function(e){
@@ -43,7 +42,7 @@ $(function(){
         success: function(response) {
           // var user = JSON.parse($('#js-user').text());
           if (Shelby.User.get('user_type') == Shelby.libs.User.user_types.anonymous && typeof Shelby.User.get('app_progress').followedSource == "undefined") {
-            Shelby.User.updateAppProgress("followedSources",true);
+            Shelby.User.updateAppProgress('followedSources',true);
           }
           $button.removeClass('js-busy');
         },
