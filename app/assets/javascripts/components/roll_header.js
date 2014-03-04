@@ -43,7 +43,7 @@ $(function(){
         success: function(response) {
           // var user = JSON.parse($('#js-user').text());
           if (Shelby.User.get('user_type') == Shelby.libs.User.user_types.anonymous && typeof Shelby.User.get('app_progress').followedSource == "undefined") {
-            self._updateUserAppProgress(Shelby.User, "followedSources");
+            Shelby.User.updateAppProgress("followedSources",true);
           }
           $button.removeClass('js-busy');
         },
@@ -51,27 +51,6 @@ $(function(){
           $button.removeClass('js-busy');
         }
       });
-
-    },
-
-    _updateUserAppProgress: function(userModel, app_progress_key) {
-
-      userModel.get('app_progress')[app_progress_key] = true;
-
-      $.ajax({
-        type: 'GET',
-        url: Shelby.apiRoot + "/PUT/user/" + userModel.get('id'),
-        dataType: "jsonp",
-        timeout: 10000,
-        crossDomain: true,
-        data: {
-          'app_progress': userModel.get('app_progress')
-        },
-        xhrFields: {
-          withCredentials: true
-        }
-      });
     }
-
   });
 });
