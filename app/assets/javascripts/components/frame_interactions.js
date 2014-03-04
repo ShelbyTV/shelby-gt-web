@@ -210,14 +210,11 @@ $(function(){
           withCredentials : true
         },
         success: function () {
-          var $likesContainer = self.$el.find('.js-frame-likes');
-
-          if($likesContainer.length) {
-            $likesContainer.find('.js-liker-avatars-list').append(self.likerItemjst());
-          } else {
+          if(!self.$el.find('.js-frame-likes').length) {
             self.$el.append(self.likerListjst());
-            self.$el.find('.js-liker-avatars-list').append(self.likerItemjst());
           }
+
+          self.$el.find('.js-liker-avatars-list').append(self.likerItemjst());
         },
         error: function () {}
       });
