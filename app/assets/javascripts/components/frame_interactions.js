@@ -212,11 +212,12 @@ $(function(){
         success: function () {
           var $likesContainer = self.$el.find('.js-frame-likes');
 
-          if(!$likesContainer.length) {
+          if($likesContainer.length) {
+            $likesContainer.find('.js-liker-avatars-list').append(self.likerItemjst());
+          } else {
             self.$el.append(self.likerListjst());
+            self.$el.find('.js-liker-avatars-list').append(self.likerItemjst());
           }
-
-          self.$el.find('.js-liker-avatars-list').append(self.likerItemjst());
         },
         error: function () {}
       });

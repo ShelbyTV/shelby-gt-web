@@ -18,14 +18,20 @@ $(function(){
 
       this.options.source = this._getDisplayState();
 
-      _(media).each(function(el,index){
-        new Shelby.FrameView({
-          el     : el,
-          user   : Shelby.User,
-          source : self.options.source
-        });
+      _(media).each(function(el){
+        self._initVideocard(el,{source: self.options.source});
+      });
+
+    },
+
+    _initVideocard: function(el,opts){
+      new Shelby.FrameView({
+        el     : el,
+        user   : Shelby.User,
+        source : opts.source
       });
     },
+
     _getDisplayState : function(){
       return $('body').hasClass('shelby--radar') ? this.options.sources.bookmarklet : this.options.sources.shares;
     }
@@ -45,7 +51,8 @@ $(function(){
       e.preventDefault();
 
       var self = this,
-          $this = $(e.target).addClass('button_busy');
+          $this = $(e.target).addClass('button_busy'),
+          $guideList = $('.js-list');
 
       window.setTimeout(function() {
         $.get($this.attr('href'), function(data) {
@@ -56,8 +63,10 @@ $(function(){
 
           // $('.js-list').append($items);
 
-          _($items).each(function(key,el){
-            console.log(key,el);
+          $items.each(function(index,el){
+            $guideList.append(el);
+
+            self._initVideocard(el,{source: self.options.source});
           });
 
           $('.js-load-more').attr('href', $button.attr('href'));
