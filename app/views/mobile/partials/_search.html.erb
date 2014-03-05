@@ -85,7 +85,6 @@
 
 			// Record what just happened w GA/KM
 			try{
-			  _kmq.push(['record', "Searched on mobile", {term: search}]);
 				_gaq.push(['_trackEvent', "Mobile", "Searched", search]);
 			}
 			catch(e){};

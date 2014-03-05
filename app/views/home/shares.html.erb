@@ -102,10 +102,6 @@
     <%= render :partial => '/objects/intercom_script' %>
   <% end %>
 
-  <% if ["production"].include? Rails.env %>
-    <%= render :partial => '/objects/kiss_metrics_script' %>
-  <% end %>
-
   <%= vanity_js %>
   <% experiments = vanity_experiments %>
 
