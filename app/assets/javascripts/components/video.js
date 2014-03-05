@@ -52,8 +52,6 @@ $(function(){
     initialize: function(){
       console.log('init video', this);
     },
-    _cleanup: function(){},
-    render: function(){},
     _toggleComment: function(e){
       e.preventDefault();
 

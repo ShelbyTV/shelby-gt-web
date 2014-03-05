@@ -18,17 +18,17 @@ $(function(){
 
       this.options.source = this._getDisplayState();
 
-      _(media).each(function(el){
-        self._initVideocard(el,{source: self.options.source});
+      _(media).each(function(el,index){
+        self._initVideocard(el,index,{source: self.options.source});
       });
-
     },
 
-    _initVideocard: function(el,opts){
+    _initVideocard: function(el,index,opts){
       new Shelby.FrameView({
         el     : el,
-        user   : Shelby.User,
-        source : opts.source
+        index  : index,
+        source : opts.source,
+        user   : Shelby.User
       });
     },
 
@@ -43,6 +43,10 @@ $(function(){
   //below is augmentation of above.
 
   Shelby.MobileGuideView = Shelby.GuideView.extend({
+    options: _.extend({},Shelby.GuideView.prototype.options,{
+      page: 10
+    }),
+
     events: _.extend({},Shelby.GuideView.prototype.events,{
       'click .js-load-more' : 'loadMore'
     }),
@@ -56,6 +60,8 @@ $(function(){
 
       window.setTimeout(function() {
         $.get($this.attr('href'), function(data) {
+          self.options.page += 1;
+
           $this.removeClass('button_busy');
 
           var $items  = $(data).find('.js-list').children('.list__item'),
@@ -67,7 +73,7 @@ $(function(){
             $guideList.append(el);
 
             //note: el.children == <article>, which is the true "el" for the view.
-            self._initVideocard(el.children,{source: self.options.source});
+            self._initVideocard(el.children,(index*self.options.page),{source: self.options.source});
           });
 
           $('.js-load-more').attr('href', $button.attr('href'));

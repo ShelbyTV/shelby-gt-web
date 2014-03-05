@@ -55,8 +55,9 @@ $(function(){
 
         new Shelby.FrameInteraction({
           el     : this.el,
-          user   : Shelby.User,
-          source : this.options.source
+          index  : this.options.index,
+          source : this.options.source,
+          user   : Shelby.User
         });
     }
   });

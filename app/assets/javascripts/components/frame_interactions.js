@@ -119,19 +119,21 @@ $(function(){
 
     },
     render : function(){
-      //careful, extending two things here:
-      var data = _(this.options.sharePanelData).extend(this._getUserAuthentications(),{
-        anonymous     : this.options.user.is_anonymous(),
-        username      : this.options.user.get('nickname'),
-        shortlinkable : this.options.source == Shelby.libs.sources.shares
-      });
+      //careful, extending three things here:
+      var data = _(this.options.sharePanelData).extend(
+          this._getUserAuthentications(),
+          {
+          anonymous     : this.options.user.is_anonymous(),
+          username      : this.options.user.get('nickname'),
+          shortlinkable : this.options.source == Shelby.libs.sources.shares,
+          suffix        : '-'+this.options.index
+          }
+        );
 
+      //append share panel
       this.$el.find(this.options.sharePanelClass).html(this.sharePaneljst(data));
 
-      // this._fetchShortlink();
-
-      // var likerArray = JSON.parse(this.$el.find('.js-likes-array').html());
-
+      //display likers
       this._processLikers();
     },
 
@@ -277,7 +279,7 @@ $(function(){
           var newFrame = new Shelby.FrameModel(response.result);
 
           self.toggleSharePanel();
-          self.doSocialShare(newFrame,data);
+          self.shareFrameWithSocialNetwork(newFrame,data);
         },
         error: function(e) {
           console.log("Share unsuccessful: ", e);
@@ -286,7 +288,7 @@ $(function(){
 
     },
 
-    doSocialShare: function(frameModel,data){
+    shareFrameWithSocialNetwork: function(frameModel,data){
       var self         = this,
           destinations = [],
           new_frame_id = frameModel.get('id'),
@@ -296,26 +298,28 @@ $(function(){
             text        : data.text
           };
 
-      if (this.$el.find('#share-on-facebook').is(':checked')) {
+      // id's need to be unique, hence the suffix:
+      // mobile stream and bookmarklet can have more than one share pane per page.
+      if (this.$el.find('#share-on-facebook-'+this.options.index).is(':checked')) {
         destinations.push('facebook');
       }
 
-      if (this.$el.find('#share-on-twitter').is(':checked')) {
+      if (this.$el.find('#share-on-twitter-'+this.options.index).is(':checked')) {
         destinations.push('twitter');
       }
 
-      shelby.trackEx({
-        providers: ['ga', 'kmq'],
-        gaCategory: shelbyTrackingCategory,
-        gaAction: 'shared',
-        gaLabel: self.options.user.get('nickname'),
-        gaValue: destinations.length,
-        kmqProperties: {
-          'outbound destination': destinations.join(", "),
-        }
-      });
-
       if (shareData.destination.length > 0) {
+        shelby.trackEx({
+          providers: ['ga', 'kmq'],
+          gaCategory: shelbyTrackingCategory,
+          gaAction: 'shared',
+          gaLabel: self.options.user.get('nickname'),
+          gaValue: destinations.length,
+          kmqProperties: {
+            'outbound destination': destinations.join(", "),
+          }
+        });
+
         $.ajax({
           type: 'GET',
           url: self.options.apiRoot + '/POST/frame/' + new_frame_id + '/share',
