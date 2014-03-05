@@ -38,7 +38,6 @@ $(function(){
   });
 
 
-
   //Mobile Web (!SharePages && !Bookmarklet) requires more functionality,
   //below is augmentation of above.
 

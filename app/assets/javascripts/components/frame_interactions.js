@@ -154,11 +154,11 @@ $(function(){
     },
 
     _fetchShortlink : function(e){
-      var $el      = this.$el,
-          self     = this,
-          frame_id = this.options.media.get('id');
-
       if(this.options.sharePanelData.shortlinkable !== false){
+        var $el      = this.$el,
+            self     = this,
+            frame_id = this.options.media.get('id');
+
         $.ajax({
           type: 'GET',
           url: Shelby.apiRoot + '/frame/' + frame_id + '/short_link',
