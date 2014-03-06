@@ -112,6 +112,9 @@ $(function(){
     },
 
     initialize : function(e){
+      //clone the "default" options for share pane templates -- settings per instance.
+      this._sharePanelData = _.clone(this.options.sharePanelData);
+
       this.options.media = this._initMediaModel();
       this.render();
     },
@@ -120,7 +123,7 @@ $(function(){
     },
     render : function(){
       //careful, extending three things here:
-      var data = _(this.options.sharePanelData).extend(
+      var data = _(this._sharePanelData).extend(
           this._getUserAuthentications(),
           {
           anonymous     : this.options.user.is_anonymous(),
@@ -154,7 +157,7 @@ $(function(){
     },
 
     _fetchShortlink : function(e){
-      if(this.options.sharePanelData.shortlinkable !== false){
+      if(this._sharePanelData.shortlinkable !== false){
         var $el      = this.$el,
             self     = this,
             frame_id = this.options.media.get('id');
@@ -169,12 +172,12 @@ $(function(){
             withCredentials: true
           },
           success: function(response) {
-            self.options.sharePanelData.currentFrameShortlink = response.result.short_link;
+            self._sharePanelData.currentFrameShortlink = response.result.short_link;
 
             self._shortlinkSuccess(response.result.short_link);
           },
           error: function() {
-            self.options.sharePanelData.currentFrameShortlink = null;
+            self._sharePanelData.currentFrameShortlink = null;
             self.$el.find('.js-frame-shortlink').val('Error…');
           }
         });
@@ -233,10 +236,10 @@ $(function(){
       this.$el.find('.js-share-init').toggleClass('button_active');
       this.$el.find(this.options.sharePanelClass).toggleClass('hidden');
 
-      if(this.options.sharePanelData.currentFrameShortlink === null && this.options.sharePanelData.shortlinkable !== false){
+      if(this._sharePanelData.currentFrameShortlink === null && this._sharePanelData.shortlinkable !== false){
         this._fetchShortlink();
-      } else if(this.options.sharePanelData.currentFrameShortlink !== null) {
-        this._shortlinkSuccess(this.options.sharePanelData.currentFrameShortlink);
+      } else if(this._sharePanelData.currentFrameShortlink !== null) {
+        this._shortlinkSuccess(this._sharePanelData.currentFrameShortlink);
       }
     },
     toggleSocialButton: function(e){
@@ -371,7 +374,7 @@ $(function(){
 
       var $this = $(this),
           url   = 'https://twitter.com/intent/tweet?related=shelby&via=shelby&url='
-                    + this.options.sharePanelData.currentFrameShortlink + '&text='
+                    + this._sharePanelData.currentFrameShortlink + '&text='
                     + encodeURIComponent( this.options.media.get('video').title );
 
       window.open(url,'twitterShare','');
