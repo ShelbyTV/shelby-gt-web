@@ -26,7 +26,7 @@ $(function(){
           withCredentials: true
         },
         success: function(e){
-          console.log('user update success: ',e);
+          console.log('user update success');
         },
         error: function(e){
           console.log('user update fail: ',e);
