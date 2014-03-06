@@ -175,7 +175,7 @@ $(function(){
           },
           error: function() {
             self.options.sharePanelData.currentFrameShortlink = null;
-            self.$el.find('#shortlink').val('Error…');
+            self.$el.find('.js-frame-shortlink').val('Error…');
           }
         });
       } else {
@@ -184,8 +184,8 @@ $(function(){
     },
 
     _shortlinkSuccess: function(shortlink){
-      this.$el.find('.js-tweet-intent, .js-facebook-msg, #shortlink').removeAttr('disabled');
-      this.$el.find('#shortlink').val(shortlink);
+      this.$el.find('.js-tweet-intent, .js-facebook-msg, .js-frame-shortlink').removeAttr('disabled');
+      this.$el.find('.js-frame-shortlink').val(shortlink);
     },
 
     doLike : function(e){
