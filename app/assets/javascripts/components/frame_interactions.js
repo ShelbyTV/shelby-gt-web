@@ -99,14 +99,14 @@ $(function(){
 
 
     events: {
-      'click .js-cancel'                   : 'toggleSharePanel',
+      'click .js-cancel'                   : 'closeSharePanel',
       'click .js-share-init'               : 'toggleSharePanel',
       'click .js-like'                     : 'doLike',
       'click .js-share-it'                 : 'submitShare',
       'click .js-tweet-intent'             : 'tweetIntent',
       'click .js-facebook-msg'             : 'facebookMsg',
-      'change .js-toggle-twitter-sharing'  : 'toggleSocial',
-      'change .js-toggle-facebook-sharing' : 'toggleSocial',
+      'change .js-toggle-twitter-sharing'  : 'toggleSocialButton',
+      'change .js-toggle-facebook-sharing' : 'toggleSocialButton',
       'submit .js-share-submit'            : 'submitShare',
       'reset .js-share-submit'             : 'resetShare'
     },
@@ -224,6 +224,11 @@ $(function(){
       $button.addClass('visuallydisabled');
     },
 
+    closeSharePanel: function(e){
+      this.$el.find('.js-share-init').toggleClass('button_active',false);
+      this.$el.find(this.options.sharePanelClass).toggleClass('hidden',false);
+    },
+
     toggleSharePanel: function(e){
       this.$el.find('.js-share-init').toggleClass('button_active');
       this.$el.find(this.options.sharePanelClass).toggleClass('hidden');
@@ -234,7 +239,7 @@ $(function(){
         this._shortlinkSuccess(this.options.sharePanelData.currentFrameShortlink);
       }
     },
-    toggleSocial: function(e){
+    toggleSocialButton: function(e){
       e.preventDefault();
 
       var $button = $(e.currentTarget),
