@@ -4,6 +4,15 @@
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
+
+  .media_module {
+    background-image: image-url("ipad-channels.png");
+    background-position: 95% 42%;
+    background-repeat: no-repeat;
+    -webkit-background-size: 590px;
+    background-size: 590px;
+
+  }
 }
 
 .shelf--stream {
@@ -20,9 +29,11 @@
     color: $ui-white;
   }
 
-  .shelf__img--iphone {
+  .shelf__img--ipad {
     float: right;
-    margin: 65px 190px 39px 0;
+    margin: 65px 0px  39px 0;
+    visibility: hidden;
+    width: 840px;
   }
 
   .shelf__h1 {

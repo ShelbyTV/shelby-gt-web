@@ -2,9 +2,11 @@
   text-align: center;
 
   .media_module {
-    background-image: image-url("laptop-samsung.jpg");
-    background-position: 76% 68%;
+    background-image: image-url("rec-playback-tall.png");
+    background-position: 84% 68%;
     background-repeat: no-repeat;
+    -webkit-background-size: 590px;
+    background-size: 590px;
   }
 }
 
