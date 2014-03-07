@@ -37,7 +37,6 @@
     <% end %>
   </script>
   <%= javascript_include_tag "radar" %>
-  <%= javascript_include_tag "shares" %>
   <meta name="foundVideo" content="<%= !@found_video_providers.empty? %>">
   <%= render :partial => '/objects/noscript' %>
 </head>
@@ -80,10 +79,6 @@
   <% if ["production", "staging"].include? Rails.env %>
     <%= render :partial => '/objects/google_analytics_script' %>
     <%= render :partial => '/objects/intercom_script' %>
-  <% end %>
-
-  <% if ["production"].include? Rails.env %>
-    <%= render :partial => '/objects/kiss_metrics_script' %>
   <% end %>
 
   <%= vanity_js %>

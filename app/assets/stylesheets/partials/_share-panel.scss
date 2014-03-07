@@ -9,6 +9,14 @@
 */
 
 .share_panel {
+
+
+  //omg so hacky and so delicious
+  .shelby--shares & {
+    position: relative !important;
+    margin-top: 1em !important;
+  }
+
   &.fin:before {
     z-index: 1;
   }

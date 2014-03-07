@@ -87,7 +87,7 @@ module MobileHelper
       }
 
     #if anon AND you haven't connectedFB AND followedSources
-    elsif ((user['user_type'] == Settings::User.user_type.anonymous) && (user['app_progress']['connectedFacebook'].nil? && user['app_progress']['followedSources'].nil?))
+  elsif ((user['user_type'] == Settings::User.user_type.anonymous) && user['app_progress'] && (user['app_progress']['connectedFacebook'].nil? && user['app_progress']['followedSources'].nil?))
       #show everything
       {
         :anchor   => nil,
@@ -95,7 +95,7 @@ module MobileHelper
         :sources  => true
       }
 
-    elsif (user['user_type'] == Settings::User.user_type.anonymous) && ((user['app_progress']['connectedFacebook'] == "true") && user['app_progress']['followedSources'].nil?)
+    elsif (user['user_type'] == Settings::User.user_type.anonymous) && user['app_progress'] && ((user['app_progress']['connectedFacebook'] == "true") && user['app_progress']['followedSources'].nil?)
       #prevent FB from rendering, show sources
       {
         :anchor   => nil,
@@ -103,21 +103,21 @@ module MobileHelper
         :sources  => true
       }
 
-    elsif (user['user_type'] == Settings::User.user_type.anonymous) && (user['app_progress']['connectedFacebook'].nil? && (user['app_progress']['followedSources'] == "true"))
+    elsif (user['user_type'] == Settings::User.user_type.anonymous) && user['app_progress'] && (user['app_progress']['connectedFacebook'].nil? && (user['app_progress']['followedSources'] == "true"))
       #scroll to FB
       {
         :anchor   => Settings::Mobile.inline_cta.social.id,
         :facebook => true,
         :sources  => true
       }
-    elsif ((user['user_type'] == Settings::User.user_type.converted) && (user['session_count'] <= Settings::User.anon_banner_session_count) && (user['app_progress']['connectedFacebook'].nil?))
+    elsif ((user['user_type'] == Settings::User.user_type.converted) && user['app_progress'] && (user['session_count'] <= Settings::User.anon_banner_session_count) && (user['app_progress']['connectedFacebook'].nil?))
       #scroll to First Frame
       {
         :anchor   => Settings::Mobile.inline_cta.social.id,
         :facebook => true,
         :sources  => true
       }
-    elsif ((user['user_type'] == Settings::User.user_type.converted) && (user['session_count'] > Settings::User.anon_banner_session_count) && (user['app_progress']['connectedFacebook'].nil?))
+    elsif ((user['user_type'] == Settings::User.user_type.converted) && user['app_progress'] && (user['session_count'] > Settings::User.anon_banner_session_count) && (user['app_progress']['connectedFacebook'].nil?))
       #scroll to First Frame
       {
         :anchor   => 'stream',

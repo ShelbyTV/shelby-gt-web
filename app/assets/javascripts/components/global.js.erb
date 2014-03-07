@@ -1,0 +1,64 @@
+window.Shelby = {
+  apiBase                     : '<%= "#{Settings::ShelbyAPI.url}" %>',
+  apiRoot                     : '<%= "#{Settings::ShelbyAPI.url}#{Settings::ShelbyAPI.version}" %>',
+  appUrl                      : '<%= Settings::Application.url %>',
+  avatarUrlRoot               : '<%= Settings::Application.avatar_url_root %>',
+  branch                      : '<%= Settings::Branch.branch %>',
+  chromeExtensionWebStoreUrl  : '<%= Settings::Extension.chrome_web_store_url %>',
+  environment                 : '<%= Rails.env %>',
+  facebookAppId               : '<%= Settings::Facebook.facebook_app_id %>',
+  loginFormUrl                : '<%= Settings::ShelbyAPI.login_form_url %>',
+  popupCohortEntraceURL       : '<%= Settings::ShelbyAPI.popup_cohort_entrance_url %>',
+  rollImagesUrlRoot           : '<%= Settings::Application.roll_images_url_root %>',
+  secure                      : {
+    apiBase : '<%= "#{Settings::ShelbyAPI.secure_url}" %>',
+    apiRoot : '<%= "#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}" %>',
+    appUrl  : '<%= Settings::Application.secure_url %>',
+  },
+  signupFormUrl               : '<%= Settings::ShelbyAPI.signup_form_url %>',
+  signupRoute                 : '<%= Settings::ShelbyAPI.signup_route %>',
+  webDomain                   : '<%= Settings::Extension.web_domain %>',
+
+  libs : {
+    Avatar: {
+      sizes: {
+        large: "sq192x192",
+        original: "original",
+        small: "sq48x48"
+      }
+    },
+
+    sources: {
+      bookmarklet: 'bookmarklet',
+      shares: 'shares'
+    },
+
+    User: {
+      user_types: {
+        real: 0,
+        faux: 1,
+        converted: 2,
+        service: 3,
+        anonymous: 4,
+        ghost: 99
+      },
+      anonymous: {
+        nickname: 'Anonymous'
+      },
+      avatarUrl: function(user){
+        if (!user) {
+          avatar = "/images/assets/avatar.png";
+        } else if (user.has_shelby_avatar) {
+          avatar = Shelby.avatarUrlRoot + '/' + Shelby.libs.Avatar.sizes.small + '/' + user.id + '?' + new Date(user.avatar_updated_at).getTime();
+        } else {
+          avatar = (user.user_image_original != 'null' && user.user_image_original) || (user.user_image != 'null' && user.user_image) || "/images/assets/avatar.png";
+        }
+
+        return avatar;
+      }
+    }
+  }
+};
+
+$(function(){
+});

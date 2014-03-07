@@ -4,7 +4,7 @@
 <% message = build_frame_message(frame, dbe) %>
 <% framePermalink = build_frame_permalink(frame) %>
 
-<article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" data-video="<%= video.to_json %>" class="animate_module frame js-frame js-<%= frame['id']%>">
+<article id="<%= frame['id'] %>" data-video_id="<%= video['id'] %>" class="animate_module frame js-frame js-<%= frame['id']%>">
   <span class="frame-header js-frame-activate">
     <h1 class="frame-title" title="<%= video['title'] %>">
       <%= video['title'] %>
@@ -89,31 +89,22 @@
 
   <div class="form_fieldset frame_interactions">
     <span class="column one-half">
-      <button class="button_primer button_command button_command--flexible button_green one-whole js-share-init js-track-event" data-frame_id="<%= frame['id'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click Share" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
+      <button class="button_primer button_command button_command--flexible button_green one-whole js-share-init js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Share" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
         <span class="icon icon-roll"></span>Share…
       </button>
     </span><!--
   --><span class="column one-half">
-      <button class="button_primer button_command button_command--flexible button_gray one-whole js-like js-track-event" data-frame_id="<%= frame['id'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click Like" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
+      <button class="button_primer button_command button_command--flexible button_gray one-whole js-like js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click Like" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>" data-user_nickname="<%= userNickname %>">
           <span class="icon icon-like"></span>Like
       </button>
     </span>
     <div class="share_panel frame-body-wrapper fin fin--top_left fin--edging clearfix js-shares hidden"></div>
-    <script id="<%= index = 0; "#{index}_#{video['id']}" %>" class="js-video" type="application/json"><%= raw video.to_json %></script>
+    <script id="<%= index = 0; "#{index}_#{video['id']}" %>" class="js-frame-json" type="application/json"><%= raw frame.to_json %></script>
   </div>
   <% if (frame['upvoters'].length > 0) || (frame['like_count'] > 0) %>
     <% unless embed_video || (frame['upvoters'].length == 0) %>
       <script class="js-likes-array" data-frame_id="<%= frame['id'] %>" type="application/json">
         <%= raw frame['upvoters'].to_json %>
-      </script>
-
-      <script>
-        $(document).ready(function(){
-          $(this).trigger({
-            type:'frameLoaded',
-            frame_id: "<%= frame['id'] || src_frame['id'] %>"
-          });
-        });
       </script>
     <% end %>
 

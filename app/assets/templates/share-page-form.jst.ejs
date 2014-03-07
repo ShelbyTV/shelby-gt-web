@@ -30,7 +30,7 @@
       </div><!-- eo guide-overlay__main -->
     </div>
   <% } else { %>
-    <form id="share-it" class="form_module rolling-form js-share-submit">
+    <form id="share-it<%= suffix %>" class="form_module rolling-form js-share-submit">
       <input type="hidden" id="frame_id" name="frame_id" value="<%= frameId %>" />
       <textarea id="frame_comment" name="frame_comment" class="form_textarea js-add-message-input new-comment-input" rows="3" autofocus tabindex="0" placeholder="What do you think about this video?"></textarea>
 
@@ -43,16 +43,16 @@
               </legend>
 
               <% if(twitter_enabled) { %>
-                <label tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--sub button_command--twitter <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %> one-fourth">
-                  <input data-network="twitter" id="share-on-twitter" name="share-on-twitter" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
+                <label tabindex="0" for="share-on-twitter<%= suffix %>" class="button_primer button_command button_command--sub button_command--twitter <%= (twitter_checked) ? ' button_twitter-blue' : ' button_gray' %> one-fourth">
+                  <input data-network="twitter" id="share-on-twitter<%= suffix %>" name="share-on-twitter<%= suffix %>" type="checkbox" class="visuallyhidden js-toggle-twitter-sharing"<%= twitter_checked ? ' checked="true" ' : '' %>/>
                   <span class="icon icon-twitter"></span>
                   <span class="button_label">Twitter</span>
                 </label>
               <% } %>
 
               <% if(facebook_enabled) { %>
-                <label tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--sub button_command--facebook <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %> one-fourth">
-                  <input data-network="facebook" id="share-on-facebook" name="share-on-facebook" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
+                <label tabindex="0" for="share-on-facebook<%= suffix %>" class="button_primer button_command button_command--sub button_command--facebook <%= (facebook_checked) ? ' button_facebook-blue' : ' button_gray' %> one-fourth">
+                  <input data-network="facebook" id="share-on-facebook<%= suffix %>" name="share-on-facebook<%= suffix %>" type="checkbox" class="visuallyhidden js-toggle-facebook-sharing"<%= facebook_checked ? ' checked="true" ' : '' %>/>
                   <span class="icon icon-facebook"></span>
                   <span class="button_label">Facebook</span>
                 </label>
@@ -83,7 +83,7 @@
 
         <span class="share_menu__faux-button button_command--shortlink one-half clearfix">
           <span class="icon icon-shortlink"></span>
-          <input disabled type="text" name="shortlink" id="shortlink" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
+          <input disabled type="text" name="shortlink" id="shortlink<%= suffix %>" value="<%= currentFrameShortlink || 'Fetching...' %>" class="form_input js-frame-shortlink js-input-select-on-focus" />
         </span>
       </div><!-- eo foot lining -->
     </div><!-- eo guide-overlay__foot -->

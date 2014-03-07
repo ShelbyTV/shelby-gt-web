@@ -1,9 +1,41 @@
+//dependencies
 //= require jquery
-//= require ./jquery-plugins/jquery.urlparams.js
 //= require ./backbone/underscore.js
-//= require ./event-tracking/landing.tracking
+//= require ./backbone/backbone.js
 
-$(document).ready(function(){
+//plugins
+//= require ./jquery-plugins/jquery.urlparams.js
+
+//utils
+//= require ./app/browser.js
+
+//for sharing.
+//= require ../templates/share-page-form.jst.ejs
+// = require ../templates/liker-item.jst.ejs
+
+//load event tracking js
+//= require ./event-tracking/landing.tracking.js
+
+//COMPONENTS
+//= require ./components/global.js
+//= require ./components/user.js
+//= require ./components/video.js
+//= require ./components/frame.js
+//= require ./components/dashboard_entry.js
+//= require ./components/frame_interactions.js
+//= require ./components/guide.js
+//= require ./components/nav.js
+
+$(function(){
+
+  Shelby.SharesNav = new Shelby.Navbar({
+    el: $('.js-content-selector')
+  });
+
+  Shelby.SharesView = new Shelby.GuideView({
+    el: $('.js-guide')
+  });
+
   var loc = shelbyTrackingCategory || "Share Page",
       username = shelbyTrackingLabel || "Anonymous",
       apiRoot = '<%= "#{Settings::ShelbyAPI.protocol_matching_url}#{Settings::ShelbyAPI.version}" %>';
@@ -15,104 +47,5 @@ $(document).ready(function(){
     gaLabel : username
   });
 
-  //imitation handling
-  $('.js-toggle-comment').on('click',function(){
-    var $this = $(this);
-    $this.toggleClass('line-clamp--open', !$this.hasClass('line-clamp--open'));
-  });
-
-  //imitation handling
-  $('.js-content-selector').on('click','button',function(e){
-    e.preventDefault();
-    var $this = $(this);
-
-    if($this.hasClass('js-do-nothing')){
-      return false;
-    }
-    else if($this.hasClass('js-stream')) {
-      window.location = "/stream";
-    }
-    else if($this.hasClass('js-explore')) {
-      window.location = "/explore";
-    }
-    else if($this.hasClass('js-me')) {
-      var username = $('.app_nav__button--settings').text().trim();
-      window.location = '/' + username;
-    }
-    else if($this.hasClass('js-login-dropdown-button')){
-      var $loginDropdown = $('.js-login-dropdown');
-      $loginDropdown.toggleClass('hidden',!$loginDropdown.hasClass('hidden'));
-    }
-    else if($this.hasClass('js-signout')) {
-      window.location = "/signout";
-    } else {
-      window.location = $this.attr('href');
-    }
-  });
-
-  // dynamically load the share pane, OR, handle for anonymous users
-  if($('body').hasClass('shelby--shares_enabled')) {
-    var c      = document.createElement("script");
-        c.type = "text/javascript";
-        c.src  = '/assets/shares/shares_enabled.js';
-    document.body.appendChild(c);
-  } else {
-    var $signupMessage = $('.js-seo-signup-message').on('click', function(){
-      $(this).addClass('hidden');
-
-      try {
-        _gaq.push(['_trackEvent', 'Share Page', 'Click on body with modal', "When clicking related video"]);
-      } catch(e) {}
-    });
-    //handle "Share" button differently, since there's no Share Pane.
-    $('.js-share-init').removeAttr('disabled').on('click',function(){
-      $signupMessage.removeClass('hidden');
-    });
-  }
-
-  // if(!$('body').hasClass('shelby--radar')){
-  //   // handle liking, regardless of user anonymity
-    // $('.js-frame').on('click', '.js-like', function(e) {
-  //     var $this = $(this);
-
-  //     //prevent extraneous api calls
-  //     if($(this).hasClass('visuallydisabled')) { return false; }
-
-  //     e.preventDefault();
-
-
-//       var frame_id = $this.data('frame_id'),
-//         $frame = $(e.delegateTarget),
-//         $likes = $frame.find('.js-frame-likes'),
-//         data = {
-//           frame_id: frame_id
-//         };
-
-//       //modify the button state/appearance
-//       $this.addClass('visuallydisabled').children('.icon-like').addClass('icon-like--red');
-
-//       if (!$likes.length) {
-//         //if no one Liked the Frame yet, add the Like list container:
-//         $frame.append($frameLikeList);
-//       }
-
-//       var $total = $frame.find('.js-like-total');
-//       $total.text('+ ' + (parseInt($total.text().split('+')[1].trim()) + 1)).removeClass('invisible');
-
-//       $.ajax({
-//         type: 'GET',
-//         url: apiRoot + '/PUT/frame/' + frame_id + '/like',
-//         dataType: "jsonp",
-//         timeout: 10000,
-//         crossDomain: true,
-//         data: data,
-//         xhrFields: {
-//           withCredentials: true
-//         },
-//         success: function() {},
-//         error: function() {}
-//       });
-
-//     });
-//   }
 });
+

@@ -35,8 +35,8 @@
 
 <ul class="list js-list">
   <% @dashboard.each_with_index do |dbe, index| %>
-    <li class="list__item">
-      <% if [0,1,2,31,33,34].include?(dbe['action']) and !dbe["duplicate"] and dbe['frame'] and dbe['frame']['video'] and can_play_video(dbe['frame']['video']['provider_name']) %>
+    <% if [0,1,2,31,33,34].include?(dbe['action']) and !dbe["duplicate"] and dbe['frame'] and dbe['frame']['video'] and can_play_video(dbe['frame']['video']['provider_name']) %>
+      <li class="list__item">
         <%= render :partial => '/objects/frame',
           :locals => {
             :embed_video    => false,
@@ -51,8 +51,8 @@
             :video          => dbe['frame']['video'],
             :dbe            => dbe
           } %>
-      <% end %>
-    </li>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 
