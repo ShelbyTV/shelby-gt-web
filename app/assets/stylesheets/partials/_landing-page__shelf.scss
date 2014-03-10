@@ -8,6 +8,15 @@
     background-color: transparent;
     border: none;
   }
+
+  //viewports (across all devices) smaller than 500-ish pixels
+  @media screen and (max-width: $mq-five-ish) {
+    &.shelf__wrapper--signup {
+      .form_module {
+        width: auto;
+      }
+    }
+  }
 }
 
 .shelf {
@@ -15,15 +24,40 @@
   border: 1px solid $inset;
   font-size: 1.5em;
   margin: 0 auto;
-  min-width: 1150px;
   text-align: left;
-  width: 1150px;
+  max-width: 1150px;
 
   @media screen and (max-width: $mq-nine-ish) {
+    border-left: 0;
+    border-right: 0;
+    width: auto;
+
+    .media_image,
+    .media_body,
+    .media_module {
+      overflow: visible;
+    }
+
+    .media_body,
+    .media_image {
+      display:  block;
+    }
+
     .shelf__lining {
       margin: 0;
+      float: none;
       padding-left: 0;
       padding-right: 0;
+      width: auto;
+    }
+
+    .shelf__img--iphone {
+      width: 37%;
+    }
+
+    .shelf__img--iphone_horizontal {
+      margin: 70px auto;
+      width: 90%;
     }
   }
 }

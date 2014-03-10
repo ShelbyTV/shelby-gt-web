@@ -39,23 +39,20 @@
       border: 1px solid rgba(200,200,200,1);
     }
   }
-}
 
-.shelby--mobile {
-  .shelf--header {
-    @media screen and (max-width: $mq-nine-ish) {
-      .shelf__lining {
-        padding: 0;
-      }
-      .shelby-logo {
-        font-size: 40px;
-      }
-      .app_nav__button {
-        margin-top: 0;
-      }
-      .shelf__button--cta {
-        display: none;
-      }
+  //viewports (across all devices) smaller than 900-ish pixels
+  @media screen and (max-width: $mq-nine-ish) {
+    .shelf__lining {
+      padding: 0;
+    }
+    .shelby-logo {
+      font-size: 40px;
+    }
+    .app_nav__button {
+      margin-top: 0;
+    }
+    .shelf__button--cta {
+      display: none;
     }
   }
 }
