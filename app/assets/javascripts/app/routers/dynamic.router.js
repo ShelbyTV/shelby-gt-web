@@ -191,35 +191,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }, params);
   },
 
-  _prepIsolatedRoll : function(opts) {
-    // Adjust *how* a few details are displayed via CSS
-    $('body').addClass('isolated-roll');
-    $('body').addClass('js-isolated-roll');
-
-    // save current referrer host name in shelby config
-    if (opts.params && opts.params.src){ shelby.config.hostName = opts.params.src; }
-
-    shelby.views.isoRollAppHeaderView = shelby.views.isoRollAppHeaderView ||
-      new libs.shelbyGT.IsoRollAppHeaderView({guide : shelby.models.guide, rollFollowings : shelby.models.rollFollowings});
-
-    var options = {updateRollTitle:false};
-    var topLevelViewsOptions = {isIsolatedRoll : true, hostName: shelby.config.hostName};
-
-    if (opts.frameId){
-      this.displayFrameInRoll(opts.rollId, opts.frameId, opts.params, options, topLevelViewsOptions);
-    }
-    else {
-      this.displayRoll(opts.rollId, null, null, options, topLevelViewsOptions);
-    }
-    // N.B. We are hiding Frame's tool bar and conversation via CSS.
-    // Doing so programatically seemed overly involved and complex when a few CSS rules would do
-
-    //show the guide initially for iso rolls
-    if(shelby.routeHistory.length === 0){
-      shelby.models.userDesires.set({guideShown: true});
-    }
-  },
-
   // currently not in use but may become useful again
   _displayRandomChannel : function(params) {
     var channelKeys = _.keys(shelby.config.channelsForNav);

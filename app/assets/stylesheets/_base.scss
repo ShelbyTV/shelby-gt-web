@@ -17,7 +17,6 @@
   $twitter-blue  : rgba(#2CAAE1,1); //Twitter Blue
   $tumblr-blue   : rgba(#2f445b,1); //Tumblr Blue
 
-
   $ui-button-text: $ui-black;
   $ui-button-text-inverted: $ui-white;
 //------------------------------------------------------------------------------
@@ -27,30 +26,10 @@ $extension: ".svg" !default;
 $images: "/images/" !default;
 $path: "#{$images}assets/" !default;
 
-$icon-carrot                    : "#{$path}carrot#{$extension}";
-$icon-chevron-right             : "#{$path}chevron#{$extension}";
-$icon-like                      : "#{$path}heart#{$extension}";
-$icon-like-on                   : "#{$path}heart_on#{$extension}";
-$icon-like-active               : "#{$path}heart_active#{$extension}";
-$icon-missing-avatar            : "#{$path}missing_avatar.png";
-$icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
-$icon-onboarding-facebook-add   : "#{$path}onboarding_facebook_add#{$extension}";
-$icon-onboarding-facebook-added : "#{$path}onboarding_facebook_added#{$extension}";
-$icon-onboarding-tumblr-add     : "#{$path}onboarding_tumblr_add#{$extension}";
-$icon-onboarding-tumblr-added   : "#{$path}onboarding_tumblr_added#{$extension}";
-$icon-onboarding-twitter-add    : "#{$path}onboarding_twitter_add#{$extension}";
-$icon-onboarding-twitter-added  : "#{$path}onboarding_twitter_added#{$extension}";
-$icon-share-facebook-on         : "#{$path}share_facebook_on#{$extension}";
-$icon-share-facebook-off        : "#{$path}share_facebook_off#{$extension}";
-$icon-share-twitter-on          : "#{$path}share_twitter_on#{$extension}";
-$icon-share-twitter-off         : "#{$path}share_twitter_off#{$extension}";
 $icon-signup-spinner            : asset-data-url("signup-loader.gif");
 $icon-logo-spinner              : asset-data-url("shelby-logo-spinner.gif");
-$icon-social-facebook           : "#{$path}social_facebook#{$extension}";
-$icon-social-tumblr             : "#{$path}social_tumblr#{$extension}";
-$icon-social-twitter            : "#{$path}social_twitter#{$extension}";
-$icon-videocard-roll            : "#{$path}videocard_roll#{$extension}";
-$icon-videocard-roll-on         : "#{$path}videocard_roll_on#{$extension}";
+$icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
+$icon-missing-avatar            : "#{$path}missing_avatar.png";
 
 //------------------------------------------------------------------------------
 //  ANIMATION VALUES
@@ -111,19 +90,10 @@ $guide-presentation-button-active   : adjust-lightness($guide-presentation-butto
 $guide-presentation-bg-color        : #2f3233;
 $guide-presentation-tab-bg-color    : #27292a;
 $guide-presentation-tab-bg-selected : #242627;
-//  COLORS: nav
-$nav-dropdown-bg                    : $base;
-//  COLORS: list_module
-$_list-module-bg                     : $base;
-$list-item-bg                       : adjust-lightness($_list-module-bg, 5%);
-$list-item-bg-hover                 : adjust-lightness($list-item-bg, -10%);
-$list-item-border                   : adjust-lightness($_list-module-bg, -10%);
 //  COLORS: overlay
 $overlay_header_height              : 46px;
 //  COLORS: thumbnail_module
 $thumbnail_default_bg               : adjust-lightness($base, -1%);
-//  COLORS: external
-$external-bg                        : #efefef;
 //  COLORS: shelby
 $shelby-blue                        : #0590c4;
 $shelby-default                     : #eeeeee;
@@ -135,20 +105,17 @@ $shelby-purple                      : #693a7b;
 $shelby-red                         : #cc1235;
 $shelby-yellow                      : #d5cd39;
 $primer-color                       : $shelby-gray !default;
-$education-yellow                   : #f9f15c;
 //  COLORS: social media
 $facebook-blue                      : #013e80;
 $twitter-blue                       : #2CAAE1;
 $tumblr-blue                        : #2f445b;
 //  COLORS: buttons
 $button-default-color               : #eee;
-$networks-unselected                : #474747;
 
 //------------------------------------------------------------------------------
 //  Constants
 //------------------------------------------------------------------------------
 $app-header__height            : 40px;
-$app-background-color          : #e2e2e2;
 $guide-width                   : $_unit * 37; //if you use this, make sure you add a media-query to account for narrow viewports
 $persistent_video_info--height : 180px;
 $logo-font-size                : 57px;
@@ -159,3 +126,4 @@ $logo-font-size-small          : 37px;
 //  Breakpoints for nested Media Queries
 //------------------------------------------------------------------------------
 $mq-nine-ish : 944px;
+$mq-five-ish : 500px;
