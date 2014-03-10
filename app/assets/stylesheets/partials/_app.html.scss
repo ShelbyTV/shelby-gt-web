@@ -231,3 +231,66 @@ a{
   position: absolute;
   z-index: 0;
 }
+
+.main-layout {
+  //  Screens that LESS THAN 1100px wide.
+  @media screen and (max-width: 1100px) {
+    .frame-body {
+      .frame-thumbnail {
+        height: 100px;
+      }
+    }
+
+    .frame {
+      .button_command--cancel {
+        margin-top: 1.3em;
+      }
+
+      .frame__tab {
+        font-size: 0.7em;
+      }
+
+      // .share_menu {
+      //   min-width: 13em;
+      // }
+
+      .frame-footer {
+        margin: 5px 5px 2px;
+
+        .xuser-avatar {
+          height: 18px;
+          width: 18px;
+          margin-right: 5px;
+        }
+
+        .xuser-avatar--facebook,
+        .xuser-avatar--twitter,
+        .xuser-avatar--tumblr,
+        .xuser-avatar--featured,
+        .xuser-avatar--liker {
+          &:before {
+            font-size: 0.9em;
+          }
+        }
+      }
+    }
+
+    .button_command {
+      font-size: 1.1em;
+    }
+
+    .button_command--sub {
+      font-size: 1em;
+    }
+
+    // .frame-subsection {
+    //   margin-top: 0.25em;
+    // }
+
+    .frame-collapsed {
+      .frame-thumbnail {
+        height: 70px;
+      }
+    }
+  }
+}

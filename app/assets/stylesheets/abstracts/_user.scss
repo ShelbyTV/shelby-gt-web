@@ -29,6 +29,15 @@
     margin: 0;
     padding: 0.8em;
   }
+
+  //  Screens that LESS THAN 1100px wide.
+  @media screen and (max-width: 1100px) {
+    font-size: 1em;
+
+    .user__button {
+      margin-top: 1.2em;
+    }
+  }
 }
     //mods
     //enables hover fanciness + dividing border

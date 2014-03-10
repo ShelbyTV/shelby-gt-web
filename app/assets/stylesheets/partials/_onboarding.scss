@@ -16,4 +16,11 @@
     float: left;
     margin-top: 9px;
   }
+
+  //  Screens that LESS THAN 1100px wide.
+  @media screen and (max-width: 1100px) {
+    .onboarding {
+      padding-left: 300px;
+    }
+  }
 }

@@ -6,4 +6,9 @@
 
 .sidebar_module {
   width: $guide-width;
+
+  //  Screens that LESS THAN 1100px wide.
+  @media screen and (max-width: 1100px) {
+    width: 300px;
+  }
 }
