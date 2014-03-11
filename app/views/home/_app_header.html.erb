@@ -38,12 +38,11 @@
         </a>
       </li>
 
-
       <li class="dropdown_module list__item secondary-item guide-login">
         <button class="dropdown_button app_nav__button app_nav__button--settings<%= (is_mobile) ? ' js-settings-dropdown-button' : ' js-do-nothing' %>" data-ga_category="<%= ga_category %>" data-ga_action="Click Settings" data-ga_label="<%= signed_in_user['nickname'] %>" type="button">
           <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
             <span class="button_label"><%= signed_in_user['nickname']%></span>
-            <span class="icon-carrot"></span>
+            <span class="icon icon-carrot"></span>
         </button>
         <% if !is_mobile %>
           <section class="dropdown_section settings-section">
@@ -71,7 +70,7 @@
 
       <li class="dropdown_module list__item secondary-item guide-login">
         <button class="dropdown_button app_nav__button<%= (user_signed_in || !is_mobile) ? ' js-do-nothing' : ' js-login-dropdown-button' %>">
-          Log In <span class="icon-carrot"></span>
+          Log In <span class="icon icon-carrot"></span>
         </button>
 
         <% if !is_mobile %>
@@ -86,6 +85,12 @@
       </li><!-- eo login button/dropdown -->
     <% end %>
 
+    <li class="dropdown_module list__item secondary-item">
+      <button class="dropdown_button app_nav__button app_nav__button--search<%= (is_mobile) ? ' js-search-dropdown-button' : ' js-do-nothing' %>" data-ga_category="<%= ga_category %>" data-ga_action="Click Search" data-ga_label="<%= signed_in_user['nickname'] %>" type="button">
+        <span class="button_label visuallyhidden">Search</span>
+        <span class="icon icon-search"></span>
+      </button>
+    </li>
   </ul><!-- eo guide-presentation-list -->
 
 
