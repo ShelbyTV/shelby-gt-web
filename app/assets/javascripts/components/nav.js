@@ -2,7 +2,8 @@ $(function(){
   Shelby.Navbar = Backbone.View.extend({
     options: {
       sources : { bookmarklet: 'bookmarklet', shares: 'shares', mobile: 'mobile'},
-      $settingsDropdown: $('.js-settings-dropdown')
+      $settingsDropdown: $('.js-settings-dropdown'),
+      $searchDropdown: $('.js-search-dropdown')
     },
 
     el: $('.js-content-selector'),
@@ -14,6 +15,7 @@ $(function(){
       'click .js-me'                       : 'goToMe',
       'click .js-login-dropdown-button'    : 'toggleLoginDropdown',
       'click .js-settings-dropdown-button' : 'toggleSettingsDropdown',
+      'click .js-search-dropdown-button'   : 'toggleSearchDropdown',
       'click .js-signout'                  : 'goToSignout'
     },
 
@@ -55,6 +57,11 @@ $(function(){
     toggleSettingsDropdown: function(e){
       e.preventDefault();
       this.options.$settingsDropdown.toggleClass('hidden', !this.options.$settingsDropdown.hasClass('hidden'));
+    },
+
+    toggleSearchDropdown: function(e){
+      e.preventDefault();
+      this.options.$searchDropdown.toggleClass('hidden', !this.options.$searchDropdown.hasClass('hidden'));
     }
 
   });

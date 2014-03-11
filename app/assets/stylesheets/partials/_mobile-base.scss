@@ -3,6 +3,12 @@
 //------------------------------------------------------------------------------
 $_mobile_header_height: 41px;
 
+.shelby--mobile-video-search {
+  .content_wrapper > .list {
+    margin-top: 100px;
+  }
+}
+
 .shelby--mobile {
   background-color: $base;
 
