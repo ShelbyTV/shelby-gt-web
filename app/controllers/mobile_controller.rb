@@ -243,6 +243,15 @@ class MobileController < ApplicationController
     end
   end
 
+  def search
+    check_for_signed_in_user_and_issues({:redirect_if_issue => false, :cookies => cookies})
+    @mobile_video_search = true
+    @query = URI.encode params[:q]
+    @skip = params[:skip] || 0
+    @limit = params[:limit] || 10
+    @search_results = Shelby::API.video_search(@query, @skip, @limit)
+  end
+
   def signout
     flash[:error] = params[:error]
     # def dont want this around (API tries to kill it, too)

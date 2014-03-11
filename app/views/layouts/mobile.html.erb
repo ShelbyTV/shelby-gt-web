@@ -46,7 +46,7 @@
   <%= render :partial => '/objects/noscript' %>
 </head>
 
-<body class="shelby shelby--shares shelby--mobile<%= " shelby--user_signed_in" if @user_signed_in %>">
+<body class="shelby shelby--shares shelby--mobile<%= " shelby--user_signed_in" if @user_signed_in %><%= " shelby--mobile-video-search" if @mobile_video_search %>">
   <!-- Facebook widget -->
   <div id="fb-root"></div>
 

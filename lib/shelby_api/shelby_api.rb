@@ -157,6 +157,12 @@ module Shelby
     cookie_to_hash(cookies[:_shelby_gt_common])[:authenticated_user_id]
   end
 
+  def self.video_search(query, skip=0, limit=20)
+    v = get( "/video/search?q=#{query}&skip=#{skip}&limit=#{limit}" ).parsed_response
+    return nil if v['status'] != 200
+    return v['result']['videos']
+  end
+
   def self.cookie_to_hash(c, delim=",", split="=")
     entries = c.blank? ? nil : c.split(delim)
     h = {}
