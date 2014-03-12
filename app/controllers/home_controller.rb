@@ -380,7 +380,16 @@ class HomeController < ApplicationController
         render(:layout => 'radar', :template => 'radar/index') and return
       end
     end
+  end
 
+  ##
+  # Style guidance for UI and UX
+  #
+  # GET /styleguide
+  #
+  def styleguide
+
+    render 'home/styleguide'
   end
 
   private

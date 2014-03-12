@@ -26,6 +26,7 @@
 
 .form_fieldset {
   margin-top: 1em;
+  position: relative;
 }
     //modifiers
     .form_fieldset--rev {
@@ -40,6 +41,10 @@
 
 .form_error {
   color: $shelby-red;
+  font-size: 0.9em;
+  padding: 2px;
+  position: absolute;
+  right: 0;
 }
 
 .form_legend {

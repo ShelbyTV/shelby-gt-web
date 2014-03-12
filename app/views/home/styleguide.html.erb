@@ -1,0 +1,133 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<% # if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#" profile="http://www.w3.org/2005/10/profile">
+  <meta charset="utf-8">
+
+  <title><%= render :partial => "/home/title_tag" %></title>
+
+  <%= render :partial => "/home/meta_info" %>
+  <%= csrf_meta_tags %>
+  <meta content="user-scalable=no, width=device-width, initial-scale=0.8" name="viewport">
+  <link rel="apple-touch-icon-precomposed" href="http://shelby.tv/apple-touch-icon-precomposed.png" />
+
+  <%= stylesheet_link_tag "landing", :media => "screen" %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+  <%= javascript_include_tag "common", "landing" %>
+
+  <script>
+    var shelbyTrackingCategory = "Landing Page";
+  </script>
+
+  <!-- Facebook Ad Tracking -->
+  <script type="text/javascript">
+    var fb_param = {};
+    fb_param.pixel_id = '6008900763972';
+    fb_param.value = '0.00';
+    fb_param.currency = 'USD';
+    (function(){
+      var fpw = document.createElement('script');
+      fpw.async = true;
+      fpw.src = '//connect.facebook.net/en_US/fp.js';
+      var ref = document.getElementsByTagName('script')[0];
+      ref.parentNode.insertBefore(fpw, ref);
+    })();
+  </script>
+  <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6008900763972&amp;value=0&amp;currency=USD" /></noscript>
+  <!-- END -->
+</head>
+<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %><%= " shelby--team" if @team %><%= " shelby--login" if @login %>">
+  <!-- Facebook widget -->
+  <div id="fb-root"></div>
+
+  <div class="shelby__wrapper clearfix" role="main">
+
+    <%= render :partial => '/home/landing_header', :locals => {:show_login => (!@login && !@ipadbeta), :user_signed_in => @user_signed_in, :mobile_os => @mobile_os} %>
+
+    <% #------------ Shelf Content --------------- %>
+
+    <div class="shelf__wrapper">
+      <div class="shelf">
+        <div class="shelf__lining">
+          <h2 class="shelf__h1">
+            Shelby.tv Styleguide
+          </h2>
+
+          <h3>
+            Buttons
+          </h3>
+
+          <p>
+            <button class="button_primer button_command button_command--flexible button_gray">
+              <span class="button_label">Gray Button</span>
+            </button>
+            <button class="button_primer button_command button_command--flexible button_soft-black">
+              <span class="button_label">Soft Black Button</span>
+            </button>
+            <button class="button_primer button_command button_command--flexible button_black">
+              <span class="button_label">Black Button</span>
+            </button>
+          </p>
+          <p>
+            <button class="button_primer button_command button_command--flexible button_red">
+              <span class="button_label">Red Button</span>
+            </button>
+            <button class="button_primer button_command button_command--flexible button_blue">
+              <span class="button_label">Blue Button</span>
+            </button>
+            <button class="button_primer button_command button_command--flexible button_green">
+              <span class="button_label">Green Button</span>
+            </button>
+          </p>
+          <p>
+            <button class="button_primer button_command button_command--flexible button_facebook-blue">
+              <span class="button_label">Facebook Blue Button</span>
+            </button>
+            <button class="button_primer button_command button_command--flexible button_twitter-blue">
+              <span class="button_label">Twitter Blue Button</span>
+            </button>
+          </p>
+
+          <hr/>
+
+          <h3>
+            Forms
+          </h3>
+
+          <form class="form_module one-quarter">
+            <fieldset class="form_fieldset">
+              <label class="form_label" for="foo">Label</label>
+              <input type="text" class="form_input" name="foo" id="foo" />
+            </fieldset>
+
+            <fieldset class="form_fieldset">
+              <label class="form_label" for="foo">Label</label>
+              <input type="text" class="form_input" name="foo" id="foo" placeholder="Helpful text, not a label" />
+            </fieldset>
+
+            <fieldset class="form_fieldset form_fieldset--error">
+              <label class="form_label" for="foo">Label</label>
+              <span class="form_error">Please input properly.</span>
+              <input type="text" class="form_input" name="foo" id="foo" />
+            </fieldset>
+
+            <fieldset class="form_fieldset">
+              <label class="form_label" for="foo">Label</label>
+              <input type="text" class="form_input" name="foo" id="foo" disabled />
+            </fieldset>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /shelby-wrapper -->
+
+  <%= render :partial => '/home/shelf/footer' %>
+
+  <%= render :partial => '/home/landing_scripts' %>
+
+</body>
+</html>

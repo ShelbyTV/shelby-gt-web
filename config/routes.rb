@@ -72,6 +72,8 @@ ShelbyGtWeb::Application.routes.draw do
   end
   #######################XXX###############################
 
+  # STYLEGUIDE
+  get '/styleguide' => 'home#styleguide'
 
   # SEO PAGES
   get '/video/:provider_name/:provider_id(/*title)' => 'seovideo#show'
