@@ -94,20 +94,19 @@
     </li>
   </ul><!-- eo guide-presentation-list -->
 
+  <div class="settings-section settings-section--mobile<%= " hidden" unless @mobile_video_search %> clearfix js-search-dropdown">
+    <div>
+      <form action="<%= appropriate_subdirectory %>/search" method="GET" class="form_module">
+        <fieldset class="form_fieldset search_module">
+          <span class="search_module__input_wrapper">
+            <input type="text" class="form_input search_module__input" name="q" id="q"<% "autofocus=\"autofocus\"" if !@mobile_video_search %><%= raw " value='#{params[:q]}'" if params[:q] %> />
+          </span>
+        </span>
+      </form>
+    </div>
+  </div>
 
   <% if is_mobile %>
-    <div class="settings-section settings-section--mobile<%= " hidden" unless @mobile_video_search %> clearfix js-search-dropdown">
-      <div>
-        <form action="<%= appropriate_subdirectory %>/search" method="GET" class="form_module">
-          <fieldset class="form_fieldset search_module">
-            <span class="search_module__input_wrapper">
-              <input type="text" class="form_input search_module__input" name="q" id="q"<% "autofocus=\"autofocus\"" if !@mobile_video_search %><%= raw " value='#{params[:q]}'" if params[:q] %> />
-            </span>
-          </span>
-        </form>
-      </div>
-    </div>
-
     <div class="settings-section settings-section--mobile hidden clearfix js-settings-dropdown">
       <%= render :partial => 'objects/user_subnav',
           :locals => {
