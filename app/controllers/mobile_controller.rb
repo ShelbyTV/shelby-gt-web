@@ -248,7 +248,7 @@ class MobileController < ApplicationController
     @mobile_video_search = true
     @query = URI.encode params[:q]
     @skip = params[:skip] || 0
-    @limit = params[:limit] || 10
+    @limit = params[:limit] || 15
     @search_results = Shelby::API.video_search(@query, @skip, @limit)
   end
 

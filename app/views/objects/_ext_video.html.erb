@@ -27,7 +27,7 @@
           <% end %>
         </div>
       <% else %>
-        <a href="#<%= video['provider_id'] %>" style="background-image: url(<%= video['thumbnail_url'] %>);" onclick="return false;" class="video__wrapper image_module icon-play js-play-video" data-provider-name="<%= video['provider_name'] %>" data-provider-id="<%= video['provider_id'] %>" data-player-embed='<%= video['embed_url'] %>' data-index='<%= index ? index : '' %>'>
+        <a href="#<%= video['provider_id'] %>" style="background-image: url(<%= video['thumbnail_url'] %>);" onclick="return false;" class="video__wrapper image_module icon-play js-play-video js-track-event" data-ga_category="<%= ga_category %>" data-ga_action="Click play <%= 'on search result' if @mobile_video_search %>"  data-provider-name="<%= video['provider_name'] %>" data-provider-id="<%= video['provider_id'] %>" data-player-embed='<%= video['embed_url'] %>' data-index='<%= index ? index : '' %>'>
           <img class="visuallyhidden" src="<%= video['thumbnail_url'] %>" title="<%- video['title'] %>" alt="<%- video['title'] %> thumbnail">
         </a>
         <div id="js-video-player-<%= video['provider_name'] %>-<%= video['provider_id'] %><%= '-'+index.to_s if index %>"  class="js-video-player-<%= video['provider_name'] %>-<%= video['provider_id'] %><%= '-'+index.to_s if index %> js-video-player video__wrapper without_video visuallyhidden"></div>
