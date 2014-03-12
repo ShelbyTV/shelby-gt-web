@@ -21,22 +21,7 @@
     var shelbyTrackingCategory = "Login Page";
   </script>
 
-  <!-- Facebook Ad Tracking -->
-  <script type="text/javascript">
-    var fb_param = {};
-    fb_param.pixel_id = '6008900763972';
-    fb_param.value = '0.00';
-    fb_param.currency = 'USD';
-    (function(){
-      var fpw = document.createElement('script');
-      fpw.async = true;
-      fpw.src = '//connect.facebook.net/en_US/fp.js';
-      var ref = document.getElementsByTagName('script')[0];
-      ref.parentNode.insertBefore(fpw, ref);
-    })();
-  </script>
-  <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6008900763972&amp;value=0&amp;currency=USD" /></noscript>
-  <!-- END -->
+  <%= render :partial => '/home/fb_ad_tracking' %>
 </head>
 <body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %><%= " shelby--team" if @team %>">
   <!-- Facebook widget -->
