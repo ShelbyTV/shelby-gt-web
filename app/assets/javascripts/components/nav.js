@@ -55,13 +55,28 @@ $(function(){
     },
 
     toggleSettingsDropdown: function(e){
+      this.options.$searchDropdown.toggleClass('hidden',true);
+
       e.preventDefault();
+
       this.options.$settingsDropdown.toggleClass('hidden', !this.options.$settingsDropdown.hasClass('hidden'));
     },
 
     toggleSearchDropdown: function(e){
+      this.options.$settingsDropdown.toggleClass('hidden',true);
+
       e.preventDefault();
+      //clear previous entry
+      var $input = this.options.$searchDropdown.find('input');
+
+      $input.removeAttr('value');
+
       this.options.$searchDropdown.toggleClass('hidden', !this.options.$searchDropdown.hasClass('hidden'));
+
+      //autofocus if going from hidden to not hidden
+      if(!this.options.$searchDropdown.hasClass('hidden')){
+        $input.focus();
+      }
     }
 
   });

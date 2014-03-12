@@ -95,15 +95,13 @@
   </ul><!-- eo guide-presentation-list -->
 
   <div class="settings-section settings-section--mobile<%= " hidden" unless @mobile_video_search %> clearfix js-search-dropdown">
-    <div>
-      <form action="<%= appropriate_subdirectory %>/search" method="GET" class="form_module">
-        <fieldset class="form_fieldset search_module">
-          <span class="search_module__input_wrapper">
-            <input type="text" class="form_input search_module__input" name="q" id="q"<% "autofocus=\"autofocus\"" if !@mobile_video_search %><%= raw " value='#{params[:q]}'" if params[:q] %> />
-          </span>
+    <form action="<%= appropriate_subdirectory %>/search" method="GET" class="form_module js-submit-search">
+      <fieldset class="form_fieldset search_module">
+        <span class="search_module__input_wrapper">
+          <input type="text" class="form_input search_module__input" name="q" id="q"<% " autofocus=\"autofocus\"" if !@mobile_video_search %><%= raw " value='#{params[:q]}'" if params[:q] %> />
         </span>
-      </form>
-    </div>
+      </span>
+    </form>
   </div>
 
   <% if is_mobile %>
