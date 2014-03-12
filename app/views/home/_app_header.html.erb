@@ -86,7 +86,7 @@
     <% end %>
 
     <li class="dropdown_module list__item secondary-item">
-      <button class="dropdown_button app_nav__button app_nav__button--search<%= (is_mobile) ? ' js-search-dropdown-button' : ' js-do-nothing' %>" data-ga_category="<%= ga_category %>" data-ga_action="Click Search" data-ga_label="<%= signed_in_user['nickname'] %>" type="button">
+      <button class="dropdown_button app_nav__button app_nav__button--search js-search-dropdown-button" data-ga_category="<%= ga_category %>" data-ga_action="Click Search" data-ga_label="<%= signed_in_user['nickname'] %>" type="button">
         <span class="icon icon-search"></span>
         <span class="button_label visuallyhidden">Search</span>
         <span class="icon icon-carrot"></span>
@@ -94,20 +94,17 @@
     </li>
   </ul><!-- eo guide-presentation-list -->
 
+  <div class="settings-section settings-section--mobile<%= " hidden" unless @mobile_video_search %> clearfix js-search-dropdown">
+    <form action="<%= appropriate_subdirectory %>/search" method="GET" class="form_module js-submit-search">
+      <fieldset class="form_fieldset search_module">
+        <span class="search_module__input_wrapper">
+          <input type="text" class="form_input search_module__input" name="q" id="q"<% " autofocus=\"autofocus\"" if !@mobile_video_search %><%= raw " value='#{params[:q]}'" if params[:q] %> />
+        </span>
+      </span>
+    </form>
+  </div>
 
   <% if is_mobile %>
-    <div class="settings-section settings-section--mobile<%= " hidden" unless @mobile_video_search %> clearfix js-search-dropdown">
-      <div>
-        <form action="<%= appropriate_subdirectory %>/search" method="GET" class="form_module">
-          <fieldset class="form_fieldset search_module">
-            <span class="search_module__input_wrapper">
-              <input type="text" class="form_input search_module__input" name="q" id="q"<% "autofocus=\"autofocus\"" if !@mobile_video_search %><%= raw " value='#{params[:q]}'" if params[:q] %> />
-            </span>
-          </span>
-        </form>
-      </div>
-    </div>
-
     <div class="settings-section settings-section--mobile hidden clearfix js-settings-dropdown">
       <%= render :partial => 'objects/user_subnav',
           :locals => {
