@@ -1,0 +1,62 @@
+<section class="clearfix">
+  <h3 class="shelf__h2">
+    Forms
+  </h3>
+<div class="column two-thirds">
+<code class="language-markup">
+  <pre>&lt;form class="form_module one-quarter">
+    &lt;!-- text input -->
+    &lt;fieldset class="form_fieldset">
+      &lt;label class="form_label" for="foo">Label&lt;/label>
+      &lt;input type="text" class="form_input" name="foo" id="foo" />
+    &lt;/fieldset>
+
+    &lt;!-- text w/ placeholder -->
+    &lt;fieldset class="form_fieldset">
+      &lt;label class="form_label" for="foo">Label&lt;/label>
+      &lt;input type="text" class="form_input" name="foo" id="foo" placeholder="Helpful text, not a label" />
+    &lt;/fieldset>
+
+    &lt;!-- error state -->
+    &lt;fieldset class="form_fieldset form_fieldset--error">
+      &lt;label class="form_label" for="foo">Label&lt;/label>
+      &lt;span class="form_error">Please input properly.&lt;/span>
+      &lt;input type="text" class="form_input" name="foo" id="foo" />
+    &lt;/fieldset>
+
+    &lt;!-- text input disabled -->
+    &lt;fieldset class="form_fieldset">
+      &lt;label class="form_label" for="foo">Label&lt;/label>
+      &lt;input type="text" class="form_input" name="foo" id="foo" disabled />
+    &lt;/fieldset>
+  &lt;/form>
+</pre>
+</code>
+</div>
+
+<div class="column column--padding one-third">
+  <form class="form_module">
+    <fieldset class="form_fieldset">
+      <label class="form_label" for="foo1">Label</label>
+      <input type="text" class="form_input" name="foo1" id="foo1" />
+    </fieldset>
+
+    <fieldset class="form_fieldset">
+      <label class="form_label" for="foo2">Label</label>
+      <input type="text" class="form_input" name="foo2" id="foo2" placeholder="Helpful text, not a label" />
+    </fieldset>
+
+    <fieldset class="form_fieldset form_fieldset--error">
+      <label class="form_label" for="foo3">Label</label>
+      <span class="form_error">Please input properly.</span>
+      <input type="text" class="form_input" name="foo3" id="foo3" />
+    </fieldset>
+
+    <fieldset class="form_fieldset">
+      <label class="form_label" for="foo4">Label</label>
+      <input type="text" class="form_input" name="foo4" id="foo4" disabled />
+    </fieldset>
+
+  </form>
+</div>
+</section>

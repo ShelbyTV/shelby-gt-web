@@ -14,8 +14,10 @@
   <link rel="apple-touch-icon-precomposed" href="http://shelby.tv/apple-touch-icon-precomposed.png" />
 
   <%= stylesheet_link_tag "landing", :media => "screen" %>
+  <%= stylesheet_link_tag "styleguide", :media => "screen" %>
+  <%= stylesheet_link_tag "syntax", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
-  <%= javascript_include_tag "common", "landing" %>
+  <%= javascript_include_tag "common", "landing", "syntax" %>
 
   <script>
     var shelbyTrackingCategory = "Landing Page";
@@ -38,7 +40,7 @@
   <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6008900763972&amp;value=0&amp;currency=USD" /></noscript>
   <!-- END -->
 </head>
-<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %><%= " shelby--team" if @team %><%= " shelby--login" if @login %>">
+<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %> shelby--team shelby--landing shelby--styleguide">
   <!-- Facebook widget -->
   <div id="fb-root"></div>
 
@@ -48,77 +50,33 @@
 
     <% #------------ Shelf Content --------------- %>
 
-    <div class="shelf__wrapper">
+    <div class="shelf__wrapper shelf__wrapper--styleguide">
       <div class="shelf">
         <div class="shelf__lining">
           <h2 class="shelf__h1">
             Shelby.tv Styleguide
           </h2>
 
-          <h3>
-            Buttons
-          </h3>
-
-          <p>
-            <button class="button_primer button_command button_command--flexible button_gray">
-              <span class="button_label">Gray Button</span>
-            </button>
-            <button class="button_primer button_command button_command--flexible button_soft-black">
-              <span class="button_label">Soft Black Button</span>
-            </button>
-            <button class="button_primer button_command button_command--flexible button_black">
-              <span class="button_label">Black Button</span>
-            </button>
-          </p>
-          <p>
-            <button class="button_primer button_command button_command--flexible button_red">
-              <span class="button_label">Red Button</span>
-            </button>
-            <button class="button_primer button_command button_command--flexible button_blue">
-              <span class="button_label">Blue Button</span>
-            </button>
-            <button class="button_primer button_command button_command--flexible button_green">
-              <span class="button_label">Green Button</span>
-            </button>
-          </p>
-          <p>
-            <button class="button_primer button_command button_command--flexible button_facebook-blue">
-              <span class="button_label">Facebook Blue Button</span>
-            </button>
-            <button class="button_primer button_command button_command--flexible button_twitter-blue">
-              <span class="button_label">Twitter Blue Button</span>
-            </button>
-          </p>
-
+          <%#= render :partial => 'home/styleguides/brand' %>
           <hr/>
 
-          <h3>
-            Forms
-          </h3>
+          <%= render :partial => 'home/styleguides/typography' %>
+          <hr/>
 
-          <form class="form_module one-quarter">
-            <fieldset class="form_fieldset">
-              <label class="form_label" for="foo">Label</label>
-              <input type="text" class="form_input" name="foo" id="foo" />
-            </fieldset>
 
-            <fieldset class="form_fieldset">
-              <label class="form_label" for="foo">Label</label>
-              <input type="text" class="form_input" name="foo" id="foo" placeholder="Helpful text, not a label" />
-            </fieldset>
+          <%= render :partial => 'home/styleguides/buttons' %>
+          <hr/>
 
-            <fieldset class="form_fieldset form_fieldset--error">
-              <label class="form_label" for="foo">Label</label>
-              <span class="form_error">Please input properly.</span>
-              <input type="text" class="form_input" name="foo" id="foo" />
-            </fieldset>
+          <%= render :partial => 'home/styleguides/forms' %>
+          <hr/>
 
-            <fieldset class="form_fieldset">
-              <label class="form_label" for="foo">Label</label>
-              <input type="text" class="form_input" name="foo" id="foo" disabled />
-            </fieldset>
+          <%= render :partial => 'home/styleguides/dropdowns' %>
+          <hr/>
 
-          </form>
+          <%# render :partial => 'home/styleguides/videocard' %>
+          <hr/>
+
+
         </div>
       </div>
     </div>

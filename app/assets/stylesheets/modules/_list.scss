@@ -18,6 +18,10 @@
   }
 }
 
+.list--right {
+  text-align: right;
+}
+
 .list--inline {
   & > li {
     display: inline-block;

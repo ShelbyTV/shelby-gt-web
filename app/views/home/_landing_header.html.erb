@@ -6,13 +6,13 @@
   <header class="shelf shelf--header shelby__head clearfix js-header" role="banner">
     <div class="shelf__lining">
       <a href="/" class="button_primer shelby-logo">
-        <span class="shelby_logo shelby_logo--inverted">
+        <span class="shelby_logo shelby_logo--inverted shelby_logo--large">
           <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
         </span>
       </a>
 
       <nav role="navigation">
-        <ul class="list list--inline app_nav clearfix">
+        <ul class="list list--inline list--right app_nav clearfix">
           <% if show_login %>
             <% if !user_signed_in %>
               <% if [:android, :amazon].include? @mobile_os %>

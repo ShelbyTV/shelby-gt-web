@@ -18,6 +18,7 @@
 
 .shelby_logo {
   line-height: 1;
+  font-size: 36px;
 
   .icon-mark {
     color: $ui-green;
@@ -63,5 +64,9 @@
       }
     }
   }
+  .shelby_logo--large {
+    font-size: 63px;
+  }
+
 
 

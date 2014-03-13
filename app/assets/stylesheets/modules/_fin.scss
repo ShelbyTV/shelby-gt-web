@@ -66,6 +66,10 @@
     width: 1em;
     z-index: -1;
   }
+
+  // .dropdown_lining {
+
+  // }
 }
 
 .fin--top {
@@ -97,6 +101,7 @@
     &:before {
       border-top-color: inherit;
       border-left-color: inherit;
+      z-index: 0;
     }
   }
 }

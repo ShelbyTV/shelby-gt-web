@@ -1,0 +1,141 @@
+<section class="clearfix">
+  <h3 class="shelf__h2">
+    Dropdown
+  </h3>
+
+  <div class="column one-third">
+    <div class="dropdown_module">
+      <button class="dropdown_button button_primer button_command button_command--flexible button_gray" type="button">
+        <span class="button_label">Dropdown</span>
+        <span class="icon icon-carrot"></span>
+      </button>
+      <section class="dropdown-section settings-section">
+        <div class="dropdown_lining fin fin--top_left fin--edging clearfix">
+          Hello World!
+        </div>
+      </section>
+  </div>
+</div><!-- eo .column -->
+
+<div class="column column--padding two-thirds">
+<code class="language-markup">
+  <pre>&lt;!-- .dropdown_module must wrap both siblings -->
+  &lt;div class="dropdown_module">
+    &lt;button class="dropdown_button" type="button">
+      &lt;span class="button_label">Dropdown&lt;/span>
+      &lt;span class="icon-carrot">&lt;/span>
+    &lt;/button>
+    &lt;!-- .dropdown_button and .dropdown-section must be siblings -->
+    &lt;section class="dropdown-section settings-section">
+    &lt;div class="dropdown_lining fin fin--top_left fin--edging clearfix">
+      Hello World!
+    &lt;/div>
+  &lt;/section>
+  &lt;/div>
+</pre>
+</code>
+</div><!-- eo .column -->
+
+  <h3 class="shelf__h2">
+    Dropdown List
+  </h3>
+
+  <div class="column one-third">
+
+    <section class="settings-section">
+      <div class="dropdown_lining fin fin--top_right fin--edging clearfix">
+        <ul class="list">
+          <li class="list__item">
+            <button
+              class="button_primer button_command button_command--flexible button_command--sub button_command--text"
+            >
+              Me
+            </button>
+          </li>
+        </ul>
+
+        <ul class="list">
+          <li class="list__item">
+            <a
+              href="#"
+              class="button_primer button_command button_command--flexible button_command--sub button_command--text"
+              >
+              Preferences
+            </a>
+          </li>
+
+          <li class="list__item">
+            <a
+              href="#"
+              class="button_primer button_command button_command--flexible button_command--sub button_command--text"
+              >
+              Edit Profile
+            </a>
+          </li>
+
+          <li class="list__item">
+            <a
+              href="#"
+              class="button_primer button_command button_command--flexible button_command--sub button_command--text"
+              >
+              Notifications
+            </a>
+          </li>
+
+          <li class="list__item">
+            <a href="#" class="button_primer button_command button_command--flexible button_command--sub button_command--text ">
+              Support and Feedback
+            </a>
+          </li>
+
+          <li class="list__item">
+            <a href="#" class="button_primer button_command button_command--flexible button_command--sub button_command--text ">
+              Blog
+            </a>
+          </li>
+        </ul>
+
+        <ul class="list">
+          <li class="list__item">
+            <button
+              class="button_primer button_command button_command--flexible button_command--sub button_command--text"
+              >
+              Logout
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+</div><!-- eo .column -->
+
+<div class="column column--padding two-thirds">
+<code class="language-markup">
+  <pre>…
+    &lt;section class="dropdown-section settings-section">
+    &lt;div class="dropdown_lining fin fin--top_right fin--edging clearfix">
+      &lt;ul class="list">
+        &lt;li class="list__item">
+          &lt;!-- BUTTON element -->
+          &lt;button class="button_primer button_command button_command--flexible button_command--sub button_command--text">
+            Me
+          &lt;/button>
+        &lt;/li>
+      &lt;/ul>
+      &lt;!-- consecutive lists create divider automatically -->
+      &lt;ul class="list">
+        &lt;li class="list__item">
+          &lt;!-- A element -->
+          &lt;a href="#" class="button_primer button_command button_command--flexible button_command--sub button_command--text">
+            Preferences
+          &lt;/a>
+        &lt;/li>
+      &lt;/ul>
+    &lt;/div>
+  &lt;/section>
+  …
+</pre>
+</code>
+</div><!-- eo .column -->
+
+</section>
