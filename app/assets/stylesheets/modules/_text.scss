@@ -54,3 +54,7 @@
   display: inline-block;
   vertical-align: top;
 }
+
+.ellipsis {
+  @include ellipsis;
+}
