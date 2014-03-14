@@ -99,8 +99,9 @@
 .fin--top_right {
   &.fin--edging {
     &:before {
-      border-top-color: inherit;
       border-left-color: inherit;
+      border-top-color: inherit;
+      border-radius: 0 0 2em 0;
       z-index: 0;
     }
   }
