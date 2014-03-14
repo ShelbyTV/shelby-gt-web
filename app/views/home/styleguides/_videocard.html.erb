@@ -1,78 +1,101 @@
-<section class="clearfix">
+<section class="clearfix" id="videocard" name="videocard">
   <h3 class="shelf__h2">
     Videocard
   </h3>
-<div class="column two-thirds">
+<div class="column one-third" style="background-color: #f1f1f1;">
+  <article id="123" class="animate_module frame" style="font-size: 13px;">
+    <span class="frame-header">
+      <h1 class="frame-title" title="Video Title">
+        Video Title
+      </h1>
+    </span>
+
+    <div class="frame-body-wrapper clearfix">
+      <div class="frame-body">
+        <!-- … -->
+        <a href="#432" style="background-image: url(thumb.jpg);" onclick="return false;" class="video__wrapper image_module">
+          <img class="visuallyhidden" src="thumb.jpg" title="Video Title" alt="Video Title thumbnail">
+        </a>
+        <!-- … -->
+      </div><!-- eo .frame-body -->
+
+      <footer class="media_module frame-footer clearfix">
+        <a href="/username">
+          <span class="image_module media_image xuser-avatar" style="background-image: url(avatar.jpg);" role="img">
+            <img src="avatar.jpg" class="cloaked">
+          </span>
+        </a>
+
+        <div class="media_body">
+          <a href="/username/shares/123" class="xuser-data-timestamp">
+            1 min ago
+          </a>
+
+          <p class="xuser-data">
+            <a href="/username" class="no-faux-link">
+              <strong>username</strong>
+            </a>
+            <!-- … -->
+          </p>
+
+          <p class="xuser-message line-clamp">
+            A landing-party beams down and a few remaining survivors are found, including a young woman, Vina, who was born shortly before the Columbia's crash, and whose parents had died in connection with the crash. Unknown to Pike and the others, they are being monitored by the planet's native inhabitants, the Talosians, who can create very realistic illusions and wish to study the humans that have come to their planet.
+          </p>
+        </div><!-- eo .media_body -->
+      </footer><!-- eo .media_module-->
+    </div><!-- eo .frame-body-wrapper -->
+    <!-- … -->
+  </article>
+</div>
+
+<div class="column column--padding two-thirds">
 <code class="language-markup">
-  <pre>
+  <pre>&lt;article id="123" class="animate_module frame" style="font-size: 13px;">
+    &lt;span class="frame-header">
+      &lt;h1 class="frame-title" title="Video Title">
+        Video Title
+      &lt;/h1>
+    &lt;/span>
+
+    &lt;div class="frame-body-wrapper clearfix">
+      &lt;div class="frame-body">
+        …
+        &lt;a href="#432" style="background-image: url(thumb.jpg);" onclick="return false;" class="video__wrapper image_module">
+          &lt;img class="visuallyhidden" src="thumb.jpg" title="Video Title" alt="Video Title thumbnail">
+        &lt;/a>
+        …
+      &lt;/div>&lt;!-- eo .frame-body -->
+
+      &lt;footer class="media_module frame-footer clearfix">
+        &lt;a href="/username">
+          &lt;span class="image_module media_image xuser-avatar" style="background-image: url(avatar.jpg);" role="img">
+            &lt;img src="avatar.jpg" class="cloaked">
+          &lt;/span>
+        &lt;/a>
+
+        &lt;div class="media_body">
+          &lt;a href="/username/shares/123" class="xuser-data-timestamp">
+            1 min ago
+          &lt;/a>
+
+          &lt;p class="xuser-data">
+            &lt;a href="/username" class="no-faux-link">
+              &lt;strong>username&lt;/strong>
+            &lt;/a>
+            …
+          &lt;/p>
+
+          &lt;p class="xuser-message line-clamp">
+            A landing-party beams down and a few remaining survivors are found, including a young woman, Vina, who was born shortly before the Columbia's crash, and whose parents had died in connection with the crash. Unknown to Pike and the others, they are being monitored by the planet's native inhabitants, the Talosians, who can create very realistic illusions and wish to study the humans that have come to their planet.
+          &lt;/p>
+        &lt;/div>&lt;!-- eo .media_body -->
+      &lt;/footer>&lt;!-- eo .media_module-->
+    &lt;/div>&lt;!-- eo .frame-body-wrapper -->
+    …
+  &lt;/article>
+
 </pre>
 </code>
 </div>
 
-<div class="column one-third">
-  <article id="123" class="animate_module frame">
-  <span class="frame-header">
-    <h1 class="frame-title" title="Video Title">
-      Video Title
-    </h1>
-  </span>
-
-  <div class="frame-body-wrapper clearfix">
-    <div class="frame-body">
-      <!-- … -->
-      <a href="#432" style="background-image: url(thumb.jpg);" onclick="return false;" class="video__wrapper image_module">
-        <img class="visuallyhidden" src="thumb.jpg" title="Video Title" alt="Video Title thumbnail">
-      </a>
-      <!-- … -->
-    </div><!-- eo .frame-body -->
-
-    <footer class="media_module frame-footer clearfix">
-      <a href="/username">
-        <span class="image_module media_image avatar avatar--small" style="background-image: url(avatar.jpg);" role="img">
-          <img src="avatar.jpg" class="cloaked">
-        </span>
-      </a>
-
-      <div class="media_body">
-        <a href="/username/shares/123" class="xuser-data-timestamp">
-          1 min ago
-        </a>
-
-        <p class="xuser-data">
-          <a href="/username" class="no-faux-link">
-            <strong>username</strong>
-          </a>
-          <!-- … -->
-        </p>
-
-        <p class="xuser-message">
-          Comment
-        </p>
-      </div><!-- eo .media_body -->
-    </footer><!-- eo .media_module-->
-  </div><!-- eo .frame-body-wrapper -->
-
-  <div class="form_fieldset frame_interactions">
-    <span class="column one-half">
-      <button class="button_primer button_command button_command--flexible button_green one-whole">
-        <span class="icon icon-roll"></span>Share…
-      </button>
-    </span><!--
-  --><span class="column one-half">
-      <button class="button_primer button_command button_command--flexible button_gray one-whole">
-          <span class="icon icon-like"></span>Like
-      </button>
-    </span>
-    <div class="share_panel frame-body-wrapper fin fin--top_left fin--edging clearfix js-shares hidden"></div>
-    <!-- … -->
-  </div>
-  <!-- … -->
-  <div class="frame-likes frame-external-subline icon-like icon-like--red js-frame-likes">
-    <ul class="list frame-likes-avatars js-liker-avatars-list">…</ul>
-    <!-- … -->
-  </div><!-- eo frame-likes -->
-</article>
-
-
-</div>
 </section>
