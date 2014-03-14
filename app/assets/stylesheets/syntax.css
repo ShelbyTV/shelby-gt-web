@@ -11,10 +11,11 @@ pre[class*="language-"] {
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
   font-size: 12px;
   direction: ltr;
+  overflow-x: auto;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
-  word-break: break-word;
+  word-break: normal;
 
   -moz-tab-size: 2;
   -o-tab-size: 2;
