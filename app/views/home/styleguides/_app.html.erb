@@ -1,0 +1,100 @@
+<section class="clearfix" name="app-ui" id="app-ui">
+  <h3 class="shelf__h2">
+    App UI
+  </h3>
+
+  <h4 class="shelf__h3">
+    User Card
+  </h4>
+  <p>User card is UI component for Profile headers and Following lists.</p>
+
+  <div class="column one-third">
+    <div class="frame-body-wrapper">
+    <div class="user" style="font-size: 12px;">
+      <div class="media_module user__lining clearfix">
+        <div class="media_image--rev">
+          <button class="button_primer button_command button_command--flexible button_gray button_active user__button" style="display:block;margin-right: 0.5em; margin-top: 0.5em;">
+            <span class="button_label">Following</span>
+          </button>
+        </div><!-- eo media_image--rev -->
+
+        <a href="#/username/123" class="user__link">
+          <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(avatar.jpg);">
+            <img class="visuallyhidden" src="avatar.jpg"/>
+          </span><!-- eo media_image -->
+
+          <div class="media_body">
+            <h3 class="user__h1">
+              MrSpock1969
+            </h3>
+
+            <h4 class="user__h2" style="font-weight: normal;">
+              Leonard Nimoy
+            </h4>
+          </div><!-- eo media_body -->
+        </a>
+      </div><!-- eo media_module -->
+    </div><!-- eo user -->
+
+    <div class="user" style="font-size: 12px;">
+      <div class="media_module user__lining clearfix">
+        <div class="media_image--rev">
+          <button class="button_primer button_command button_command--flexible button_green user__button" style="display:block;margin-right: 0.5em; margin-top: 0.5em;">
+            <span class="button_label">Follow</span>
+          </button>
+        </div><!-- eo media_image--rev -->
+
+        <a href="#/username/123" class="user__link">
+          <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(avatar.jpg);">
+            <img class="visuallyhidden" src="avatar.jpg"/>
+          </span><!-- eo media_image -->
+
+          <div class="media_body">
+            <h3 class="user__h1">
+              ImADoctor
+            </h3>
+
+            <h4 class="user__h2" style="font-weight: normal;">
+              DeForest Kelley
+            </h4>
+          </div><!-- eo media_body -->
+        </a>
+      </div><!-- eo media_module -->
+    </div><!-- eo user -->
+  </div><!-- eo frame-body-wrapper, purely for display purposes -->
+
+
+  </div><!-- eo .column -->
+
+  <div class="column column--padding two-thirds">
+<code class="language-markup">
+  <pre>&lt;div class="user">
+    &lt;div class="media_module user__lining clearfix">
+      &lt;div class="media_image--rev">
+        &lt;!-- button states: (is_following) ? 'button_gray button_active' : 'button_green' -->
+        &lt;button class="button_primer button_command button_command--flexible button_gray button_active user__button">
+          &lt;span class="button_label">Following&lt;/span>
+        &lt;/button>
+      &lt;/div>&lt;!-- eo media_image--rev -->
+
+      &lt;a href="/MySpock1969" class="user__link">
+        &lt;span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(avatar.jpg);">
+          &lt;img class="visuallyhidden" src="avatar.jpg"/>
+        &lt;/span>&lt;!-- eo media_image -->
+
+        &lt;div class="media_body">
+          &lt;h3 class="user__h1">
+            MrSpock1969
+          &lt;/h3>
+
+          &lt;h4 class="user__h2">
+            Leonard Nimoy
+          &lt;/h4>
+        &lt;/div>&lt;!-- eo media_body -->
+      &lt;/a>
+    &lt;/div>&lt;!-- eo media_module -->
+  &lt;/div><!-- eo user -->
+</pre>
+</code>
+  </div>
+</section>
