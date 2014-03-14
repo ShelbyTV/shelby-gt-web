@@ -1,4 +1,16 @@
+@import "base";
+
 .shelby--styleguide {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $font-family;
+    font-weight: bold;
+  }
+
   pre {
     code {
       display: block;
