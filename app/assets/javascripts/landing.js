@@ -6,7 +6,6 @@
 //= require ./app/utils/cookies.js
 //= require ./backbone/underscore.js
 //= require ./signup/user-update
-//= require ./modules/twilio-appstore.js
 
 $(document).ready(function(e){
   /*
