@@ -7,7 +7,7 @@ defaults: &defaults
   discover_love: "Discover videos you and your friends will love."
 
   cta: "Discover videos you and your friends will love."
-  cta_body: "Get the best of web video, personalized to your interests <br/>and available wherever you are."
+  cta_body: "Get the best of web video, personalized to <br/>your interests and available wherever you are."
   cta_button: "Get the Free App"
 
   stream: "The freshest video from your <br/>favorite people and places."
