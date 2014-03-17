@@ -229,7 +229,7 @@ $(function(){
 
     closeSharePanel: function(e){
       this.$el.find('.js-share-init').toggleClass('button_active',false);
-      this.$el.find(this.options.sharePanelClass).toggleClass('hidden',false);
+      this.$el.find(this.options.sharePanelClass).toggleClass('hidden',true);
     },
 
     toggleSharePanel: function(e){

@@ -6,10 +6,12 @@
   float: left;
 
   @media screen and (max-width: $mq-nine-ish) {
-    float: none !important;
-    width: auto !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    &:not(.column--immune) {
+      float: none !important;
+      width: auto !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
   }
 }
 

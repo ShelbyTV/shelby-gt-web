@@ -89,7 +89,8 @@ a{
     .frame_interactions {
       //non-normative and experimental
       & > .column {
-        display: inline-block;
+        // display: inline-block;
+
         &:first-child {
           padding-right: 0.5em;
         }
