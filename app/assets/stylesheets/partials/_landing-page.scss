@@ -17,11 +17,6 @@
   //TODO: determine why this override is necessary.
   .shelby__wrapper {
     padding-top: 70px;
-
-    &.shelf__wrapper--login {
-      margin: 50px auto;
-      padding: 50px;
-    }
   }
 
   .shelby__head {
@@ -49,9 +44,7 @@
 }
 
 // ----- Non-normative Overrides -----------------------------------------------
-.login-section {
-  padding-top: 3em;
-}
+
 @import "partials/landing-page__shelf";
 @import "partials/landing-page__login";
 @import "partials/landing-page__error";

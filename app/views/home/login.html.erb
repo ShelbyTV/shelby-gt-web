@@ -38,7 +38,7 @@
   <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6008900763972&amp;value=0&amp;currency=USD" /></noscript>
   <!-- END -->
 </head>
-<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %><%= " shelby--team" if @team %>">
+<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %><%= " shelby--team" if @team %> shelby--login">
   <!-- Facebook widget -->
   <div id="fb-root"></div>
 
@@ -52,19 +52,15 @@
 
       <div class="shelf shelby__wrapper shelf__wrapper--login clearfix">
         <div class="shelf__lining">
-          <h2 class="shelf__h2" style="text-align: center;">
+          <h2 class="shelf__h2">
             Log in to find all the videos you and your friends will love.
           </h2>
 
-          <ul class="list shelf__list clearfix">
-            <li class="secondary-item guide-login" style="float: none; margin: 0px auto; font-size: 1.2em; width: 310px;">
-              <section class=" login-section">
-                <div class="frame-body-wrapper clearfix">
-                  <%= render :partial => '/objects/login_form' %>
-                </div>
-              </section>
-            </li><!-- eo login button/dropdown -->
-          </ul>
+          <section class=" login-section">
+            <div class="frame-body-wrapper clearfix">
+              <%= render :partial => '/objects/login_form' %>
+            </div>
+          </section>
         </div><!-- eo shelf__lining -->
       </div><!-- eo shelf -->
 
