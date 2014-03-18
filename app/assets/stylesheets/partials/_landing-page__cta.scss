@@ -67,14 +67,16 @@
     padding: 0;
     text-align: center;
 
-    &.shelf--facebook-logged-out {
+    .facepile {display: none;}
+
+    &.media_module {
       height: auto;
       background-position: center 85%;
       -webkit-background-size: 80%;
       background-size: 80%;
-      // below is used for macbook, above is used for samsung laptop
-      // -webkit-background-size: 90%;
-      // background-size: 90%;
+    }
+    &.shelf--facebook-logged-out {
+      background-position: center 78%;
     }
     .appstore {
       display: none;
@@ -88,66 +90,30 @@
       width: auto;
     }
     .shelf__block {
-
-      br {
-        display: none;
-      }
     }
     .shelf__img--ipad {
       display: block;
     }
-
-//     .media_module {
-//       background: none;
-//     }
-
-//     .ipad {
-//       &:before {
-
-// background-image: url(/assets/iPad-main.png);
-// background-position: center center;
-// background-repeat: no-repeat;
-// -webkit-background-size: cover;
-// background-size: cover;
-// content: "\0020";
-// display: block;
-// /* position: absolute; */
-// top: 0;
-// left: 0;
-// /* max-height: 500px; */
-// width: 100%;
-// max-width: 450px;
-// /* height: 500px; */
-// margin: 0 auto;
-// padding-top: 280px;
-
-//       }
-//     }
     .shelf__img--iphone {
-      // margin-top: 100px;
       margin-right: 10%;
       margin-top: 0;
       width: 22%;
     }
-    // .shelf__img--desktop {
-    //   max-height: 53%;
-    //   max-width: 93%;
-    // }
-
     .shelf__button {
       width: auto;
     }
 
-    &.media_module {
-      background-position: center 78%;
-    }
   }
   //viewports (across all devices) smaller than 500-ish pixels
   @media screen and (max-width:  $mq-five-ish) {
-    &.shelf--facebook-logged-out {
+    &.media_module {
       -webkit-background-size: 90%;
       background-size: 90%;
       background-position: center 85%;
+
+      .shelf__img--iphone {
+        margin-right: 7%;
+      }
     }
   }
 }

@@ -11,8 +11,6 @@
   .shelf__lining {
     margin: 0 auto;
   }
-  .shelf__img--iphone {
-  }
   .shelf__img--iphone_horizontal {
     margin-top: 2em;
   }
@@ -85,6 +83,9 @@
     }
     .shelf__button {
       width: auto;
+    }
+    .shelf__img--iphone_horizontal {
+      max-width: 550px;
     }
     .press_list {
       display: none;

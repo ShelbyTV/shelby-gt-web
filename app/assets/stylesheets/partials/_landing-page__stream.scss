@@ -92,4 +92,10 @@
       visibility: visible;
     }
   }
+  //viewports (across all devices) smaller than 500-ish pixels
+  @media screen and (max-width: $mq-five-ish) {
+    .shelf__img--stream {
+      padding: 0;
+    }
+  }
 }
