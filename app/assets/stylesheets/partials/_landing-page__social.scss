@@ -13,6 +13,7 @@
   }
   .shelf__img--iphone_horizontal {
     margin-top: 2em;
+    margin-bottom: 2em;
   }
 }
 
@@ -87,8 +88,17 @@
     .shelf__img--iphone_horizontal {
       max-width: 550px;
     }
+    .shelf__h2,
     .press_list {
       display: none;
     }
+  }
+  @media screen and (max-width: $mq-nine-ish) {
+    //elements
+    .shelf__h1 {
+      font-size: 1.5em;
+
+    }
+
   }
 }
