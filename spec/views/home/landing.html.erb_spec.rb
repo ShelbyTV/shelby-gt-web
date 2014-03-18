@@ -55,6 +55,7 @@ describe "home/landing" do
           render
           rendered.should =~ /#{Settings::Marketing.cta_body}/
           rendered.should =~ /#{Settings::Marketing.cta_button}/
+          rendered.should =~ /#{Settings::Marketing.cta_alternative_button}/
         end
       end
     end
@@ -84,6 +85,7 @@ describe "home/landing" do
           render
           rendered.should =~ /#{Settings::Application.ios_app_url}/
           rendered.should =~ /#{Settings::Marketing.cta_button}/
+          rendered.should =~ /#{Settings::Marketing.cta_alternative_button}/
         end
 
         it "renders the proper copy from marketing.yml" do
