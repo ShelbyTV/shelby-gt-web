@@ -2,6 +2,19 @@ require 'spec_helper'
 
 describe "home/landing" do
 
+  context "team page" do
+    before(:all) do
+      assign(:team,:true)
+    end
+
+    describe "home/shelf/team" do
+      it "renders the correct number of employees" do
+        render
+        rendered.should have_selector('.member', :count => Settings::Team.members.count)
+      end
+    end
+  end
+
   context "landing header" do
     before(:all) do
       assign(:mobile_os,nil)
