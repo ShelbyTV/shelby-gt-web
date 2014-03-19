@@ -7,6 +7,8 @@
   .shelf {
     background-color: transparent;
     border: none;
+    position: relative;
+    top: -1em;
   }
 
   //viewports (across all devices) smaller than 500-ish pixels
