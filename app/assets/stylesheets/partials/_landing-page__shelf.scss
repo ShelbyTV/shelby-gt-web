@@ -12,6 +12,12 @@
     &:not(.shelf--header) {
       top: -1em;
     }
+
+    @media screen and (max-width: $mq-nine-ish) {
+      &:not(.shelf--header) {
+        top: 0;
+      }
+    }
   }
 
 
