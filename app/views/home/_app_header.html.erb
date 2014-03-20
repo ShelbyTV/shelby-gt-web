@@ -38,12 +38,11 @@
         </a>
       </li>
 
-
       <li class="dropdown_module list__item secondary-item guide-login">
         <button class="dropdown_button app_nav__button app_nav__button--settings<%= (is_mobile) ? ' js-settings-dropdown-button' : ' js-do-nothing' %>" data-ga_category="<%= ga_category %>" data-ga_action="Click Settings" data-ga_label="<%= signed_in_user['nickname'] %>" type="button">
           <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
             <span class="button_label"><%= signed_in_user['nickname']%></span>
-            <span class="icon-carrot"></span>
+            <span class="icon icon-carrot"></span>
         </button>
         <% if !is_mobile %>
           <section class="dropdown_section settings-section">
@@ -71,7 +70,7 @@
 
       <li class="dropdown_module list__item secondary-item guide-login">
         <button class="dropdown_button app_nav__button<%= (user_signed_in || !is_mobile) ? ' js-do-nothing' : ' js-login-dropdown-button' %>">
-          Log In <span class="icon-carrot"></span>
+          Log In <span class="icon icon-carrot"></span>
         </button>
 
         <% if !is_mobile %>
@@ -86,8 +85,26 @@
       </li><!-- eo login button/dropdown -->
     <% end %>
 
-  </ul><!-- eo guide-presentation-list -->
+    <% if is_mobile %>
+      <li class="dropdown_module list__item secondary-item">
+        <button class="dropdown_button app_nav__button app_nav__button--search js-track-event js-search-dropdown-button" data-ga_category="<%= ga_category %>" data-ga_action="Click Search" data-ga_label="<%= signed_in_user['nickname'] %>" type="button">
+          <span class="icon icon-search"></span>
+          <span class="button_label visuallyhidden">Search</span>
+          <span class="icon icon-carrot"></span>
+        </button>
+      </li>
+    </ul><!-- eo guide-presentation-list -->
 
+    <div class="settings-section settings-section--mobile<%= " hidden" unless @mobile_video_search %> clearfix js-search-dropdown">
+      <form action="<%= appropriate_subdirectory %>/search" method="GET" class="form_module js-submit-search">
+        <fieldset class="form_fieldset search_module">
+          <span class="search_module__input_wrapper">
+            <input type="text" class="form_input search_module__input" name="q" id="q"<% " autofocus=\"autofocus\"" if !@mobile_video_search %><%= raw " value='#{params[:q]}'" if params[:q] %> />
+          </span>
+        </span>
+      </form>
+    </div>
+  <% end %>
 
   <% if is_mobile %>
     <div class="settings-section settings-section--mobile hidden clearfix js-settings-dropdown">

@@ -1,4 +1,3 @@
-
 // make first video ready to play in stream
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -11,73 +10,73 @@ function onYouTubeIframeAPIReady() {
 
 
 function onPlayerReady(event) {
-  event.target.playVideo();
+    event.target.playVideo();
 }
 
 function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.ENDED) {
-    shelby.trackEx({
-        gaCategory : 'Mobile',
-        gaAction : 'Video finished playing::Youtube',
-        gaLabel : "<%= @signed_in_user['nickname'] || 'Anonymous' %>"
-      });
-    $('.js-play-video').removeClass('visuallyhidden');
-    $('.js-video-player').remove().addClass("visuallyhidden");
-  }
+    if (event.data == YT.PlayerState.ENDED) {
+        shelby.trackEx({
+            gaCategory: 'Mobile',
+            gaAction: 'Video finished playing::Youtube',
+            gaLabel: "<%= @signed_in_user['nickname'] || 'Anonymous' %>"
+        });
+        $('.js-play-video').removeClass('visuallyhidden');
+        $('.js-video-player').remove().addClass("visuallyhidden");
+    }
 }
 
-$(document).ready(function(){
-    $('body').on('click', '.js-play-video', function(e){
-      var $clickedVid = $(e.currentTarget),
+$(document).ready(function() {
+    $('body').on('click', '.js-play-video', function(e) {
+        var $clickedVid = $(e.currentTarget),
             providerName = $clickedVid.data('provider-name'),
             providerId = $clickedVid.data('provider-id'),
             embed = $clickedVid.data('player-embed'),
             index = $clickedVid.data('index'),
-            playerClass = 'js-video-player-'+providerName+'-'+providerId+'-'+index,
+            playerClass = 'js-video-player-' + providerName + '-' + providerId + '-' + index,
             playerSrcUrl;
 
-      // start by cleaning up the page of any loaded video, add back thumbnail
-      $('.js-play-video').removeClass('visuallyhidden');
-      $('.js-video-player').remove().addClass("visuallyhidden");
-      $("<div id='js-video-player-"+providerName+"-"+providerId+"-"+index+"' class='js-video-player-"+providerName+"-"+providerId+"-"+index+" js-video-player video__wrapper without_video visuallyhidden'></div>").insertAfter($clickedVid);
+        // start by cleaning up the page of any loaded video, add back thumbnail
+        $('.js-play-video').removeClass('visuallyhidden');
+        $('.js-video-player').remove().addClass("visuallyhidden");
+        $("<div id='js-video-player-" + providerName + "-" + providerId + "-" + index + "' class='js-video-player-" + providerName + "-" + providerId + "-" + index + " js-video-player video__wrapper without_video visuallyhidden'></div>").insertAfter($clickedVid);
 
-      $clickedVid.addClass("visuallyhidden");
+        $clickedVid.addClass("visuallyhidden");
 
-      var $playerDiv = $('.'+playerClass);
-      $playerDiv.removeClass("visuallyhidden").addClass('playing');
+        var $playerDiv = $('.' + playerClass);
+        $playerDiv.removeClass("visuallyhidden").addClass('playing');
 
-      shelby.trackEx({
-        gaCategory : 'Mobile',
-        gaAction : 'Click video to play::'+providerName,
-        gaLabel : "<%= @signed_in_user['nickname'] || 'Anonymous' %>"
-      });
+        shelby.trackEx({
+            gaCategory: 'Mobile',
+            gaAction: 'Click video to play::' + providerName,
+            gaLabel: "<%= @signed_in_user['nickname'] || 'Anonymous' %>"
+        });
 
-      switch (providerName) {
-        case "youtube":
-          shelby.player = new YT.Player(playerClass, {
-              height: '298',
-              width: '530',
-              showinfo : 0,
-              videoId: providerId,
-              modestbranding: 1,
-              origin: window.location.host,
-              events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-              }
-            });
-          break;
-        case "vimeo":
-          playerSrcUrl = "//player.vimeo.com/video/"+providerId;
-          $playerDiv.html("<iframe width='530' height='298' src='"+playerSrcUrl+"?autoplay=1' frameborder='0' allowfullscreen></iframe>");
-          break;
-        case "dailymotion":
-          playerSrcUrl = "//www.dailymotion.com/embed/video/"+providerId;
-          $playerDiv.html("<iframe width='530' height='298' src='"+playerSrcUrl+"?autoplay=1' frameborder='0' allowfullscreen></iframe>");
-          break;
-        default:
-          $playerDiv.html(embed);
-      }
+        switch (providerName) {
+            case "youtube":
+                shelby.player = new YT.Player(playerClass, {
+                    height: '298',
+                    width: '530',
+                    showinfo: 0,
+                    videoId: providerId,
+                    modestbranding: 1,
+                    origin: window.location.host,
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+                break;
+            case "vimeo":
+                playerSrcUrl = "//player.vimeo.com/video/" + providerId;
+                $playerDiv.html("<iframe width='530' height='298' src='" + playerSrcUrl + "?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+                break;
+            case "dailymotion":
+                playerSrcUrl = "//www.dailymotion.com/embed/video/" + providerId;
+                $playerDiv.html("<iframe width='530' height='298' src='" + playerSrcUrl + "?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+                break;
+            default:
+                $playerDiv.html(embed);
+        }
 
     });
-  });
+});

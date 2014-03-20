@@ -49,11 +49,21 @@ $(function(){
     el: $('.js-guide')
   });
 
+  $('#js-header').on('loadingspinner', function(e){
+    $(this).find('.icon-mark').addClass('icon-mark--spinner');
+  });
+
+  $('.js-submit-search').on('submit',function(e){
+    $('#js-header').trigger('loadingspinner');
+  });
+
   $('body').on('click', 'a:not(.js-play-video,.js-load-more)', function(e) {
     var self = this;
     // click on any link, replace the logo with a spinner so the user can tell something is happening
     e.preventDefault();
-    $('#js-header').find('.icon-mark').addClass('icon-mark--spinner');
+
+    $('#js-header').trigger('loadingspinner');
+
     window.setTimeout(function() {
       window.location = $(self).attr('href');
     }, 100);
