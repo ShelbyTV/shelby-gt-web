@@ -6,15 +6,18 @@ defaults: &defaults
   no_search_required: "Great video, no searching required."
   discover_love: "Discover videos you and your friends will love."
 
+
+
   cta: "Discover videos you and your friends will love."
-  cta_body: "Get the best of web video, personalized to your interests <br/>and available wherever you are."
+  cta_body: "Get the best of web video, personalized to <br/>your interests and available wherever you are."
   cta_button: "Get the Free App"
+  cta_alternative_button: "Sign up on the Web"
 
-  stream: "See what video your friends like,<br/>from all over the web."
-  stream_body: "Shelby.tv collects videos from across the web and organizes them into <br/>a single stream, showing you the information that matters to you."
+  stream: "The freshest video from your <br/>favorite people and places."
+  stream_body: "Shelby.tv collects and organizes the latest videos from <br/>YouTube, Vimeo and your friends on Facebook and Twitter."
 
-  social: "Like videos and Shelby uncovers more to watch."
-  social_body: "Shelby.tv delivers smart recommendations based on your behavior and gets better over time."
+  social: "Shelby learns what you like."
+  social_body: "The more videos you Watch, Like, and Share, the better your recommendations get."
 
   ipadbeta:
     optin:

@@ -86,13 +86,6 @@
 @import "partials/genius.scss";
 
 //------------------------------------------------------------------------------
-//  isolated roll styles
-//------------------------------------------------------------------------------
-@import "partials/isolated-roll";
-@import "partials/dot-tv";
-@import "partials/dot-tv-welcome";
-
-//------------------------------------------------------------------------------
 //  Shelby discussion rolls
 //------------------------------------------------------------------------------
 // @import "partials/discussion_roll";
@@ -119,7 +112,7 @@
 
 @import "partials/lt-ie9";
 
-@import "partials/media-queries";
+// @import "partials/media-queries";
 
 //------------------------------------------------------------------------------
 //  non-semantic boilerplater helper classes

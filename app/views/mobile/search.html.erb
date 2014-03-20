@@ -1,0 +1,32 @@
+<ol class="list js-list">
+  <% @search_results.each_with_index do |video, index| %>
+    <li class="list__item">
+      <div class="js-notification"></div>
+      <%= render :partial => '/objects/ext_video',
+          :locals => {
+            :embed_video    => false,
+            :ga_category    => "Mobile",
+            :index          => index,
+            :signed_in_user => @signed_in_user,
+            :user_signed_in => @user_signed_in,
+            :video          => video
+          }
+      %>
+    </li>
+  <% end %>
+</ol>
+
+
+<%= javascript_tag do %>
+  <%= render :partial => "/mobile/partials/mobile_video_player_brains", :formats=>[:js] %>
+  <%= render :partial => "/mobile/partials/intercom", :locals => {:signed_in_user => @signed_in_user}, :formats=>[:js] %>
+
+  $(document).ready( function(){
+    shelby.trackEx({
+      gaCategory: "Mobile",
+      gaAction: "Performed search",
+      gaLabel: "<%= params[:q] %>"
+    });
+  });
+
+<% end %>

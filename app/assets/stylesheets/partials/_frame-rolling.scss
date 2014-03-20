@@ -11,23 +11,10 @@
 //  HEAD
 
 .guide-overlay__head--frame-rolling {
-  .guide-over__title--inline {
-
-  }
-
-  .destination {
-    font-weight: bold;
-    font-size: 1.1em;
-    line-height: 1;
-  }
-
-  .destination-modifier {
-
-  }
 }
 
 //------------------------------------------------------------------------------
-//  HEAD
+//  BODY
 
 .guide-overlay__body--frame-rolling {
   padding:1.5em 8px;
@@ -48,3 +35,12 @@
   }
 }
 
+//------------------------------------------------------------------------------
+// FOOT
+
+.guide-overlay__foot--frame-rolling {
+  @media screen and (max-height: 630px) {
+    //share pane shortlink hack
+    top: 460px;
+  }
+}

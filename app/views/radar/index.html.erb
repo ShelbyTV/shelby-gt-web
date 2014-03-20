@@ -19,11 +19,13 @@
     </ol>
 
     <script type="text/javascript">
-      shelby.trackEx({
-        providers : ['ga'],
-        gaCategory : "Radar",
-        gaAction : "<%= @found_video_providers.empty? ? 'Radar found NO video' : 'Radar found video' %>",
-        gaValue : "<%= @videos.length %>"
+      $(document).ready( function(){
+        shelby.trackEx({
+          providers : ['ga'],
+          gaCategory : "Radar",
+          gaAction : "<%= @found_video_providers.empty? ? 'Radar found NO video' : 'Radar found video' %>",
+          gaValue : "<%= @videos.length %>"
+        });
       });
     </script>
   <% end %>

@@ -7,6 +7,28 @@
   top: 0;
   width: 100%;
   z-index: 1;
+
+  //viewports (across all devices) smaller than 500-ish pixels
+  @media screen and (max-width: $mq-five-ish) {
+    &.modal_dialog__wrapper--sms {
+      .modal_dialog {
+        text-align: center;
+        width: auto;
+
+        .br--hidden {
+          display: block;
+        }
+      }
+
+      .modal_dialog__section--success {
+        .button_primer {
+          display: block;
+          margin-bottom: 1em;
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
     .modal_dialog__wrapper--sms {

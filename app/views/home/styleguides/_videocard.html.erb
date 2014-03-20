@@ -2,52 +2,53 @@
   <h3 class="shelf__h2">
     Videocard
   </h3>
-  <div class="column one-third" style="background-color: #f1f1f1;">
-    <article id="123" class="animate_module frame" style="font-size: 11px; line-height: 1.5">
-      <span class="frame-header">
-        <h1 class="frame-title" title="Video Title">
-          Video Title
-        </h1>
-      </span>
+  <div class="column one-third">
+    <div class="push--bottom" style="background-color: #f1f1f1;">
+      <article id="123" class="animate_module frame" style="font-size: 11px; line-height: 1.5">
+        <span class="frame-header">
+          <h1 class="frame-title" title="Video Title">
+            Video Title
+          </h1>
+        </span>
 
-      <div class="frame-body-wrapper clearfix">
-        <div class="frame-body">
-          <!-- … -->
-          <a href="#432" style="background-image: url(thumb.jpg);" onclick="return false;" class="video__wrapper image_module">
-            <img class="visuallyhidden" src="thumb.jpg" title="Video Title" alt="Video Title thumbnail">
-          </a>
-          <!-- … -->
-        </div><!-- eo .frame-body -->
+        <div class="frame-body-wrapper clearfix">
+          <div class="frame-body">
+            <!-- … -->
+            <a href="#432" style="background-image: url(thumb.jpg);" onclick="return false;" class="video__wrapper image_module">
+              <img class="visuallyhidden" src="thumb.jpg" title="Video Title" alt="Video Title thumbnail">
+            </a>
+            <!-- … -->
+          </div><!-- eo .frame-body -->
 
-        <footer class="media_module frame-footer clearfix">
-          <a href="/username">
-            <span class="image_module media_image xuser-avatar" style="background-image: url(avatar.jpg);" role="img">
-              <img src="avatar.jpg" class="cloaked">
-            </span>
-          </a>
-
-          <div class="media_body">
-            <a href="/username/shares/123" class="xuser-data-timestamp">
-              1 min ago
+          <footer class="media_module frame-footer clearfix">
+            <a href="/username">
+              <span class="image_module media_image xuser-avatar" style="background-image: url(avatar.jpg);" role="img">
+                <img src="avatar.jpg" class="visuallyhidden">
+              </span>
             </a>
 
-            <p class="xuser-data">
-              <a href="/username" class="no-faux-link">
-                <strong>username</strong>
+            <div class="media_body">
+              <a href="/username/shares/123" class="xuser-data-timestamp">
+                1 min ago
               </a>
-              <!-- … -->
-            </p>
 
-            <p class="xuser-message line-clamp js-line-clamp">
-              A landing-party beams down and a few remaining survivors are found, including a young woman, Vina, who was born shortly before the Columbia's crash, and whose parents had died in connection with the crash. Unknown to Pike and the others, they are being monitored by the planet's native inhabitants, the Talosians, who can create very realistic illusions and wish to study the humans that have come to their planet.
-            </p>
-          </div><!-- eo .media_body -->
-        </footer><!-- eo .media_module-->
-      </div><!-- eo .frame-body-wrapper -->
-      <!-- … -->
-    </article>
+              <p class="xuser-data">
+                <a href="/username" class="no-faux-link">
+                  <strong>username</strong>
+                </a>
+                <!-- … -->
+              </p>
+
+              <p class="xuser-message line-clamp js-line-clamp">
+                A landing-party beams down and a few remaining survivors are found, including a young woman, Vina, who was born shortly before the Columbia's crash, and whose parents had died in connection with the crash. Unknown to Pike and the others, they are being monitored by the planet's native inhabitants, the Talosians, who can create very realistic illusions and wish to study the humans that have come to their planet.
+              </p>
+            </div><!-- eo .media_body -->
+          </footer><!-- eo .media_module-->
+        </div><!-- eo .frame-body-wrapper -->
+        <!-- … -->
+      </article>
+    </div>
   </div>
-
   <div class="column column--padding two-thirds">
 <code class="language-markup">
     <pre>&lt;article id="123" class="animate_module frame" style="font-size: 13px;">
@@ -69,7 +70,7 @@
         &lt;footer class="media_module frame-footer clearfix">
           &lt;a href="/username">
             &lt;span class="image_module media_image xuser-avatar" style="background-image: url(avatar.jpg);" role="img">
-              &lt;img src="avatar.jpg" class="cloaked">
+              &lt;img src="avatar.jpg" class="visuallyhidden">
             &lt;/span>
           &lt;/a>
 
@@ -93,9 +94,267 @@
       &lt;/div>&lt;!-- eo .frame-body-wrapper -->
       …
     &lt;/article>
+
+    &lt;!-- truncated for brevity: -->
+    &lt;span class="… xuser-avatar xuser-avatar--twitter  icon-twitter" >
+    &lt;span class="… xuser-avatar xuser-avatar--facebook icon-facebook" >
+    &lt;span class="… xuser-avatar xuser-avatar--liker    icon-like" >
+    &lt;span class="… xuser-avatar xuser-avatar--featured icon-star" >
+
 </pre>
 </code>
   </div>
+
+  <h4 class="shelf__h3 clearfix">
+    Videocard liked by User
+  </h4>
+
+  <div class="column one-third">
+    <div class="push--bottom" style="background-color: #f1f1f1;">
+      <article id="123" class="animate_module frame" style="font-size: 11px; line-height: 1.5">
+        <div class="frame-body-wrapper clearfix">
+          <footer class="media_module frame-footer clearfix">
+            <a href="/username">
+              <span class="image_module media_image xuser-avatar xuser-avatar--liker icon-like" style="background-image: url(<%= asset_path 'avatar.jpg' %>);" role="img">
+                <img src="<%= asset_path 'avatar.jpg' %>" class="visuallyhidden">
+              </span>
+            </a>
+
+            <div class="media_body">
+              <a href="/username/shares/123" class="xuser-data-timestamp">
+                1 min ago
+              </a>
+
+              <p class="xuser-data">
+                <a href="/username" class="no-faux-link">
+                  <strong>username</strong>
+                </a>
+                like this via <a class="no-faux-link" href="#">otheruser</a>
+                <!-- … -->
+              </p>
+
+              <p class="xuser-message">
+                This is highly illogical.
+              </p>
+            </div><!-- eo .media_body -->
+          </footer><!-- eo .media_module-->
+        </div><!-- eo .frame-body-wrapper -->
+        <!-- … -->
+      </article>
+    </div><!-- eo push -->
+  </div><!-- eo column -->
+  <div class="column column--padding two-thirds">
+<code class="language-markup">
+  <pre>&lt;footer class="media_module frame-footer clearfix">
+    &lt;a href="/username">
+      &lt;span class="image_module media_image xuser-avatar" style="background-image: url(avatar.jpg);" role="img">
+        &lt;img src="avatar.jpg" class="visuallyhidden">
+      &lt;/span>
+    &lt;/a>
+  </pre>
+</code>
+  </div>
+<div class="clearfix">
+  <h4 class="shelf__h3 clearfix">
+    Users from external social networks
+  </h4>
+
+    <div class="column one-third">
+      <div class="push--bottom" style="background-color: #f1f1f1;">
+        <article id="123" class="animate_module frame" style="font-size: 11px; line-height: 1.5">
+          <div class="frame-body-wrapper clearfix">
+            <footer class="media_module frame-footer clearfix">
+              <a href="/username">
+                <span class="image_module media_image xuser-avatar xuser-avatar--twitter icon-twitter" style="background-image: url(<%= asset_path 'avatar.jpg' %>);" role="img">
+                  <img src="<%= asset_path 'avatar.jpg' %>" class="visuallyhidden">
+                </span>
+              </a>
+
+              <div class="media_body">
+                <a href="/username/shares/123" class="xuser-data-timestamp">
+                  1 min ago
+                </a>
+
+                <p class="xuser-data">
+                  <a href="/username" class="no-faux-link">
+                    <strong>username</strong>
+                  </a>
+                  via <span class="capitalize">twitter</span>
+                  <!-- … -->
+                </p>
+
+                <p class="xuser-message">
+                  This is highly illogical.
+                </p>
+              </div><!-- eo .media_body -->
+            </footer><!-- eo .media_module-->
+          </div><!-- eo .frame-body-wrapper -->
+          <!-- … -->
+        </article>
+
+      <article id="123" class="animate_module frame" style="font-size: 11px; line-height: 1.5">
+        <div class="frame-body-wrapper clearfix">
+          <footer class="media_module frame-footer clearfix">
+            <a href="/username">
+              <span class="image_module media_image xuser-avatar xuser-avatar--facebook icon-facebook" style="background-image: url(<%= asset_path 'avatar.jpg' %>);" role="img">
+                <img src="<%= asset_path 'avatar.jpg' %>" class="visuallyhidden">
+              </span>
+            </a>
+
+            <div class="media_body">
+              <a href="/username/shares/123" class="xuser-data-timestamp">
+                1 min ago
+              </a>
+
+              <p class="xuser-data">
+                <a href="/username" class="no-faux-link">
+                  <strong>username</strong>
+                </a>
+                via <span class="capitalize">facebook</span>
+                <!-- … -->
+              </p>
+
+              <p class="xuser-message">
+                This is also highly illogical.
+              </p>
+            </div><!-- eo .media_body -->
+          </footer><!-- eo .media_module-->
+        </div><!-- eo .frame-body-wrapper -->
+        <!-- … -->
+      </article>
+    </div>
+  </div>
+  <div class="column column--padding two-thirds">
+<code class="language-markup">
+  <pre>&lt;!-- Twitter -->
+  &lt;footer class="media_module frame-footer clearfix">
+  &lt;a href="/username">
+    &lt;span class="image_module media_image xuser-avatar xuser-avatar--twitter icon-twitter" style="background-image: url(avatar.jpg);" role="img">
+      &lt;img src="avatar.jpg" class="visuallyhidden">
+    &lt;/span>
+  &lt;/a>
+  …
+
+
+  &lt;!-- Facebook -->
+  &lt;footer class="media_module frame-footer clearfix">
+  &lt;a href="/username">
+    &lt;span class="image_module media_image xuser-avatar xuser-avatar--facebook icon-facebook" style="background-image: url(avatar.jpg);" role="img">
+      &lt;img src="avatar.jpg" class="visuallyhidden">
+    &lt;/span>
+  &lt;/a>
+  …
+  </pre>
+</code>
+  </div>
+</div>
+
+<div class="clearfix">
+  <h4 class="shelf__h3 clearfix">
+    Featured User
+  </h4>
+  <div class="column one-third">
+    <div class="push--bottom" style="background-color: #f1f1f1;">
+      <article id="123" class="animate_module frame" style="font-size: 11px; line-height: 1.5">
+        <div class="frame-body-wrapper clearfix">
+          <footer class="media_module frame-footer clearfix">
+            <!-- <a href="/username"> -->
+              <span class="image_module media_image xuser-avatar xuser-avatar--featured icon-star" style="background-image: url(<%= asset_path 'avatar.jpg' %>);" role="img">
+                <img src="<%= asset_path 'avatar.jpg' %>" class="visuallyhidden">
+              </span>
+            <!-- </a> -->
+
+            <div class="media_body">
+  <!--             <a href="/username/shares/123" class="xuser-data-timestamp">
+                1 min ago
+              </a>
+   -->
+              <p class="xuser-data xuser-data--green xuser-data--recommendation">
+                <!-- <a href="/username" class="no-faux-link"> -->
+                  <strong>Featured: username</strong>
+                <!-- </a> -->
+                <!-- … -->
+              </p>
+
+              <p class="xuser-message">
+                Because you liked "Star Trek TOS: The Menagerie"
+              </p>
+            </div><!-- eo .media_body -->
+          </footer><!-- eo .media_module-->
+        </div><!-- eo .frame-body-wrapper -->
+        <!-- … -->
+      </article>
+    </div>
+  </div>
+  <div class="column column--padding two-thirds">
+<code class="language-markup">
+  <pre>&lt;footer class="media_module frame-footer clearfix">
+    &lt;a href="/username">
+      &lt;span class="image_module media_image xuser-avatar xuser-avatar--featured icon-star" style="background-image: url(avatar.jpg);" role="img">
+        &lt;img src="avatar.jpg" class="visuallyhidden">
+      &lt;/span>
+    &lt;/a>
+    …
+  </pre>
+</code>
+  </div>
+</div>
+
+  <h4 class="shelf__h3 clearfix">
+    Recommendations
+  </h4>
+  <div class="column one-third">
+    <div style="background-color: #f1f1f1;">
+      <article id="123" class="animate_module frame" style="font-size: 11px; line-height: 1.5">
+        <div class="frame-body-wrapper clearfix">
+          <footer class="media_module frame-footer clearfix">
+            <!-- <a href="/username"> -->
+              <span class="image_module media_image xuser-avatar" style="background-image: url(<%= asset_path '/images/recommendations/share-2.jpg' %>);" role="img">
+                <img src="<%= asset_path '/images/recommendations/share-2.jpg' %>" class="visuallyhidden">
+              </span>
+            <!-- </a> -->
+
+            <div class="media_body">
+  <!--             <a href="/username/shares/123" class="xuser-data-timestamp">
+                1 min ago
+              </a>
+   -->
+              <p class="xuser-data xuser-data--green xuser-data--recommendation">
+                <!-- <a href="/username" class="no-faux-link"> -->
+                  <strong>Recommended for you</strong>
+                <!-- </a> -->
+                <!-- … -->
+              </p>
+
+              <p class="xuser-message">
+                Because you liked "Star Trek TOS: The Menagerie"
+              </p>
+            </div><!-- eo .media_body -->
+          </footer><!-- eo .media_module-->
+        </div><!-- eo .frame-body-wrapper -->
+        <!-- … -->
+      </article>
+    </div>
+  </div>
+  <div class="column column--padding two-thirds">
+<code class="language-markup">
+  <pre>&lt;footer class="media_module frame-footer clearfix">
+    &lt;a href="/username">
+      &lt;span class="image_module media_image xuser-avatar" style="background-image: url(/images/recommendations/share-2.jpg);" role="img">
+        &lt;img src="/images/recommendations/share-2.jpg" class="visuallyhidden">
+      &lt;/span>
+    &lt;/a>
+
+    &lt;div class="media_body">
+      &lt;p class="xuser-data xuser-data--green xuser-data--recommendation">
+        &lt;strong>Recommended for you&lt;/strong>
+      &lt;/p>
+
+    …
+  </pre>
+</code>
+</div>
+</div>
 </section>
 
 <script>

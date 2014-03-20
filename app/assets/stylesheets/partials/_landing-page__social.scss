@@ -11,7 +11,10 @@
   .shelf__lining {
     margin: 0 auto;
   }
-  .shelf__img--iphone {
+  .shelf__img--iphone_horizontal {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    max-width: 600px;
   }
 }
 
@@ -24,41 +27,79 @@
   }
   .shelf__h2 {
     clear: both;
+    margin: 1em 0 0;
     position: relative;
     text-align: center;
-    top: -100px;
   }
   .shelf__button {
     font-size: 1.5em;
     margin-top: 1em;
   }
-  .iphone {
-    margin: -101px auto 0;
-  }
-  .iphone__header {
-    float: right;
-    margin: 81px 18px;
-  }
-  .iphone__viewport {
-    height: 389px;
-    margin-top: 81px;
-    width: 188px;
+  // .iphone {
+  //   margin: -101px auto 0;
+  // }
+  // .iphone__header {
+  //   float: right;
+  //   margin: 81px 18px;
+  // }
+  // .iphone__viewport {
+  //   height: 389px;
+  //   margin-top: 81px;
+  //   width: 188px;
 
-    .slide{
-      &.show--hover {
-        margin-left: -188px;
+  //   .slide{
+  //     &.show--hover {
+  //       margin-left: -188px;
 
-        &:hover {
-          margin-left: 0;
-        }
-        &.show {
-          margin-left: 0;
-          margin-top: 0;
-        }
-      }
-    }
-  }
+  //       &:hover {
+  //         margin-left: 0;
+  //       }
+  //       &.show {
+  //         margin-left: 0;
+  //         margin-top: 0;
+  //       }
+  //     }
+  //   }
+  // }
   .media_module {
     z-index: 1;
+  }
+
+  //viewports (across all devices) smaller than 900-ish pixels
+  @media screen and (max-width: $mq-nine-ish) {
+    .media_image--rev {
+      float: none;
+      margin: 0;
+    }
+    .media_body {
+      margin: 1em;
+    }
+    .shelf__img {
+      display: block;
+      margin: 2em auto 2em;
+      max-width: 423px;
+      width: 100%;
+    }
+    .shelf__h1 {
+      margin-top: 1em;
+    }
+    .shelf__button {
+      width: auto;
+    }
+    .shelf__img--iphone_horizontal {
+      max-width: 550px;
+    }
+    .shelf__h2,
+    .press_list {
+      display: none;
+    }
+  }
+  @media screen and (max-width: $mq-nine-ish) {
+    //elements
+    .shelf__h1 {
+      font-size: 1.5em;
+
+    }
+
   }
 }

@@ -19,6 +19,7 @@ ShelbyGtWeb::Application.routes.draw do
     get '/signup' => 'signup#show', :as => :signup
     get '/signup/:code' => 'signup#show'
     get '/connecting/:service' => 'mobile#show_connecting_service'
+    get '/search' => 'mobile#search'
     post '/connecting/:service' => 'mobile#set_connected_service'
     get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }
     get '/:username/:type' => 'mobile#me', :as => :mobile_me, :constraints => { :username => /[^\/]+/ }
@@ -39,6 +40,7 @@ ShelbyGtWeb::Application.routes.draw do
     get '/signout' => 'mobile#signout'
     get '/signup' => 'signup#show', :as => :signup
     get '/signup/:code' => 'signup#show'
+    get '/search' => 'mobile#search'
     get '/connecting/:service' => 'mobile#show_connecting_service'
     post '/connecting/:service' => 'mobile#set_connected_service'
     get '/:username/following' => 'mobile#following', :constraints => { :username => /[^\/]+/ }
@@ -63,6 +65,7 @@ ShelbyGtWeb::Application.routes.draw do
       get '/signout' => 'mobile#signout', :as => :mobile_signout
       get '/signup' => 'signup#show', :as => :signup
       get '/signup/:code' => 'signup#show'
+      get '/search' => 'mobile#search'
       get '/connecting/:service' => 'mobile#show_connecting_service'
       post '/connecting/:service' => 'mobile#set_connected_service'
       get '/:username/following' => 'mobile#following', :as => :mobile_following, :constraints => { :username => /[^\/]+/ }

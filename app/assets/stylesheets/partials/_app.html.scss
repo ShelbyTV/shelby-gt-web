@@ -104,28 +104,7 @@ a{
       color: #555;
     }
 
-    // font-size adjust for "desktop" situations
-    @media screen and (min-width: 600px) {
-      .frame-title {
-        font-size: 1.7em;
-      }
-      .frame-footer {
-        font-size: 1.4em;
-        line-height: 1.3;
-        margin: 1em;
 
-        //non-normative overrides
-        .avatar {
-          font-size: 0.8em;
-        }
-        .line-clamp {
-          height: 4.6em;
-        }
-        .line-clamp--open {
-          height: auto;
-        }
-      }
-    }
     .frame-likes {
       font-size: 1.4em;
     }
@@ -150,6 +129,56 @@ a{
     }
     .shelf__block--center {
       text-align: center;
+    }
+    // font-size adjust for "desktop" situations
+    @media screen and (min-width: 600px) {
+      .frame-title {
+        font-size: 1.7em;
+      }
+      .frame-footer {
+        font-size: 1.4em;
+        line-height: 1.3;
+        margin: 1em;
+
+        //non-normative overrides
+        .avatar {
+          font-size: 0.8em;
+        }
+        .line-clamp {
+          height: 4.6em;
+        }
+        .line-clamp--open {
+          height: auto;
+        }
+      }
+    }//eo media-query
+    @media screen and (max-width: $mq-five-ish) {
+      //nav bar fixings
+      .shelby-logo {
+        .icon-type {
+          display: none;
+        }
+      }
+      .app_nav__button--settings {
+        .button_label {
+          display: none;
+        }
+      }
+      //eo nav bar fixings
+
+      .share_panel {
+        bottom: 0;
+        left: 0;
+        margin-top: 5px;
+        position: relative;
+        top: 0;
+        width: auto;
+      }
+      .frame-footer {
+        .media_body {
+          font-size: 1.1em;
+        }
+      }
     }
   }// eo shares
 
@@ -202,4 +231,67 @@ a{
   margin-top: 100px;
   position: absolute;
   z-index: 0;
+}
+
+.main-layout {
+  //  Screens that LESS THAN 1100px wide.
+  @media screen and (max-width: 1100px) {
+    .frame-body {
+      .frame-thumbnail {
+        height: 100px;
+      }
+    }
+
+    .frame {
+      .button_command--cancel {
+        margin-top: 1.3em;
+      }
+
+      .frame__tab {
+        font-size: 0.7em;
+      }
+
+      // .share_menu {
+      //   min-width: 13em;
+      // }
+
+      .frame-footer {
+        margin: 5px 5px 2px;
+
+        .xuser-avatar {
+          height: 18px;
+          width: 18px;
+          margin-right: 5px;
+        }
+
+        .xuser-avatar--facebook,
+        .xuser-avatar--twitter,
+        .xuser-avatar--tumblr,
+        .xuser-avatar--featured,
+        .xuser-avatar--liker {
+          &:before {
+            font-size: 0.9em;
+          }
+        }
+      }
+    }
+
+    .button_command {
+      font-size: 1.1em;
+    }
+
+    .button_command--sub {
+      font-size: 1em;
+    }
+
+    // .frame-subsection {
+    //   margin-top: 0.25em;
+    // }
+
+    .frame-collapsed {
+      .frame-thumbnail {
+        height: 70px;
+      }
+    }
+  }
 }

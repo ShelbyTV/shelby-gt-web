@@ -4,22 +4,15 @@
 //----- Override App Base Styles -----------------------------------------
 //----- Modifiers --------------------------------------------------------
 .shelby--landing {
-  &.shelby--mobile {
-    overflow: scroll;
-
-    .shelf__img--iphone {
-      opacity: 1;
-    }
-  }
+  background-color: $ui-off-white;
+  height: auto;
+  overflow: scroll;
+  position: relative;
 
   h1,h2,h3,h4,h5,h6 {
     font-family: $font-family-display;
     font-weight: 500;
   }
-
-  background-color: $ui-off-white;
-  height: auto;
-  position: relative;
 
   //TODO: determine why this override is necessary.
   .shelby__wrapper {
@@ -42,28 +35,22 @@
   //   text-align: right;
   // }
 
-  .slide_navigator {
-    height: 100%;
-    left: 0;
-    margin-left: 15px;
-    position: fixed;
-    top: 0;
-    width: 15px;
-    z-index: 2;
+  //viewports (across all devices) smaller than 900-ish pixels
+  @media screen and (max-width: $mq-nine-ish) {
+    .shelby__wrapper {
+      padding-top: 50px;
+    }
   }
-
 }
 
 // ----- Non-normative Overrides -----------------------------------------------
-.login-section {
-  padding-top: 3em;
-}
+
 @import "partials/landing-page__shelf";
 @import "partials/landing-page__login";
 @import "partials/landing-page__error";
 @import "partials/landing-page__fill";
 //let consecutive shelves override if need be. do not disturb the four partials above.
-@import "partials/landing-page__iphone";
+// @import "partials/landing-page__iphone";
 @import "partials/landing-page__ipadbeta";
 @import "partials/landing-page__header";
 @import "partials/landing-page__cta";
@@ -80,32 +67,13 @@
 //the footer isn't actually a shelf
 
 .shelby__foot {
-  &:hover {
-    cursor: pointer;
-  }
-
   background-color: $ui-black;
   font-size: 1.5em;
   height: auto;
-  left: 0;
   line-height: 1.5;
   padding: 0 0 20px;
-  position: fixed;
-  top: 100%;
   text-align: center;
-  width: 100%;
   z-index: 1;
-
-  &.peak {
-    margin-top: -20px;
-    .tab {
-      margin-top: -22px;
-    }
-  }
-
-  &.show {
-    margin-top: -265px;
-  }
 
   small {
     color: $ui-white;
@@ -133,33 +101,15 @@
     }
   }
 
-  .tab {
-    @include roundies;
+  //viewports (across all devices) smaller than 900-ish pixels
+  @media screen and (max-width: $mq-nine-ish) {
+    position: relative;
+    height: auto;
 
-    background-color: inherit;
-    border: none;
-    color: $ui-white;
-    float: left;
-    font-size: $font-size-text;
-    margin-left: 1em;
-    padding: 0.3em 1em 1em 0.5em;
-
-    &:link {
-      text-decoration: none;
-    }
-
-    &:hover {
-      .tab__link {
-        text-decoration: underline;
-      }
-    }
-    .icon {
-      margin-right: 0.5em;
+    .shelby__lining {
+      padding: 2em 0;
+      width: 90%;
     }
   }
 }
 
-.shelby__wrapper.shelf__wrapper--login {
-  margin: 50px auto;
-  padding: 50px;
-}

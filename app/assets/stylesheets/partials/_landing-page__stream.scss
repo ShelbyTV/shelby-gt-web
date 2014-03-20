@@ -4,12 +4,21 @@
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
+
+  .media_module {
+    background-image: image-url("ipad-channels.png");
+    background-position: 95% 42%;
+    background-repeat: no-repeat;
+    -webkit-background-size: 47%;
+    background-size: 47%;
+  }
 }
 
 .shelf--stream {
   max-width: 1200px;
 
   .shelf__lining {
+    padding-right: 0;
     position: relative;
     z-index: 1;
   }
@@ -19,14 +28,16 @@
     color: $ui-white;
   }
 
-  .shelf__img--iphone {
+  .shelf__img--ipad {
     float: right;
-    margin: 65px 39px;
+    margin: 0px 0px  39px 0;
+    visibility: hidden;
+    width: 100%;
   }
 
   .shelf__h1 {
     font-size: 1.8em;
-    margin-top: 200px;
+    margin-top: 90px;
   }
   .shelf__block {
     margin-bottom: 30px;
@@ -41,10 +52,50 @@
     }
   }
 
+  //viewports (across all devices) smaller than 900-ish pixels
   @media screen and (max-width: $mq-nine-ish) {
+    height: auto;
+    text-align: center;
+
+    .media_module {
+      background-image: none;
+    }
+
+    .button_primer {
+      display: none;
+    }
+
+    //framework
     .shelf__lining {
-      margin: 2em auto 0;
-      float: none;
+      margin-top: 2em;
+    }
+
+    //elements
+    .shelf__h1 {
+      font-size: 1.5em;
+      margin-top: 0;
+      padding-top: 1em;
+    }
+    .shelf__block {
+      width: auto;
+
+      br {
+        display: none;
+      }
+    }
+    //positioning wrapper for .shelf__img--ipad:
+    .shelf__img--stream {
+      padding: 0 6%;
+    }
+
+    .shelf__img--ipad {
+      visibility: visible;
+    }
+  }
+  //viewports (across all devices) smaller than 500-ish pixels
+  @media screen and (max-width: $mq-five-ish) {
+    .shelf__img--stream {
+      padding: 0;
     }
   }
 }

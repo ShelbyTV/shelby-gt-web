@@ -3,6 +3,12 @@
 //------------------------------------------------------------------------------
 $_mobile_header_height: 41px;
 
+.shelby--mobile-video-search {
+  .content_wrapper > .list {
+    margin-top: 100px;
+  }
+}
+
 .shelby--mobile {
   background-color: $base;
 
@@ -32,6 +38,10 @@ $_mobile_header_height: 41px;
         width: 1.7em;
       }
     }
+  }
+  .app_nav__button--search {
+    padding-right: 0;
+    padding-left: 0;
   }
   //framework
   .content_wrapper {
@@ -100,7 +110,7 @@ $_mobile_header_height: 41px;
   }
   .user__button {
     display: block;
-    margin-right: 0.8em;
+    margin-right: 0.5em;
   }
   //preferences
   .preferences_page {
