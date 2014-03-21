@@ -273,7 +273,7 @@ $(function(){
 
       $.ajax({
         type: 'GET',
-        url: Shelby.apiRoot + '/POST/roll/' + this.options.user.get('personal_roll_id') + '/frames',
+        url: Shelby.secure.apiRoot + '/POST/roll/' + this.options.user.get('personal_roll_id') + '/frames',
         dataType: "jsonp",
         timeout: 10000,
         crossDomain: true,
