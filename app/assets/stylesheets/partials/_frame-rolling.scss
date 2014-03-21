@@ -39,6 +39,10 @@
 // FOOT
 
 .guide-overlay__foot--frame-rolling {
+  .guide-overlay__lining {
+    margin: 8px;
+  }
+
   @media screen and (max-height: 630px) {
     //share pane shortlink hack
     top: 460px;

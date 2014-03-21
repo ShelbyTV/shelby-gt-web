@@ -2,50 +2,231 @@
   <h3 class="shelf__h2">
     Widths
   </h3>
-<div class="column one-whole">
-  <code>.one-whole</code>
-  <div class="frame-body-wrapper one-whole clearfix">
-  </div>
-  <code>.one-half</code>
-  <div class="frame-body-wrapper one-half clearfix">
-  </div>
-  <code>.one-third</code>
-  <div class="frame-body-wrapper one-third clearfix">
-  </div>
-  <code>.one-quarter</code>
-  <div class="frame-body-wrapper one-quarter clearfix">
-  </div>
-  <code>.one-fifth</code>
-  <div class="frame-body-wrapper one-fifth clearfix">
-  </div>
-  <code>.one-sixth</code>
-  <div class="frame-body-wrapper one-sixth clearfix">
-  </div>
-  <code>.one-eighth</code>
-  <div class="frame-body-wrapper one-eighth clearfix">
-  </div>
-  <code>.two-thirds</code>
-  <div class="frame-body-wrapper two-thirds clearfix">
-  </div>
-  <code>.three-fifths</code>
-  <div class="frame-body-wrapper three-fifths clearfix">
-  </div>
+  <div class="column one-half">
+    <div class="push--bottom">
+      <div class="push--bottom">
+      <h4 class="shelf__h3">
+        Whole
+      </h4>
+
+      <p>
+        .one-whole
+      </p>
+      <div class="frame-body-wrapper one-whole"></div>
+    </div>
+
+    <div class="push--bottom">
+      <h4 class="shelf__h3">
+        Halves
+      </h4>
+
+      <p>
+        .two-quarters,<br/>
+        .one-half
+      </p>
+      <div class="frame-body-wrapper one-half"></div>
+    </div>
+
+    <div class="push--bottom">
+      <h4 class="shelf__h3">
+        Thirds
+      </h4>
+      <p>
+        .one-third
+      </p>
+      <div class="frame-body-wrapper one-third"></div>
+
+      <p>
+        .two-thirds
+      </p>
+      <div class="frame-body-wrapper two-thirds"></div>
+    </div>
+
+    </div>
+    <div class="push--bottom">
+      <h4 class="shelf__h3">
+        Quarters
+      </h4>
+
+      <p>
+       .one-quarter
+      </p>
+      <div class="frame-body-wrapper one-quarter"></div>
+      <p>
+       .three-quarters
+      </p>
+      <div class="frame-body-wrapper three-quarters"></div>
+    </div>
+
+    <div class="push--bottom">
+      <h4 class="shelf__h3">
+        Fifths
+      </h4>
+
+      <p>
+       .one-fifth
+      </p>
+      <div class="frame-body-wrapper one-fifth"></div>
+      <p>
+       .two-fifths
+      </p>
+      <div class="frame-body-wrapper two-fifths"></div>
+      <p>
+       .three-fifths
+      </p>
+      <div class="frame-body-wrapper three-fifths"></div>
+      <p>
+       .four-fifths
+      </p>
+      <div class="frame-body-wrapper four-fifths"></div>
+    </div>
+
+    <div class="push--bottom">
+      <h4 class="shelf__h3">
+         Sixths
+      </h4>
+
+      <p>
+       .one-sixth
+      </p>
+      <div class="frame-body-wrapper one-sixth"></div>
+      <p>
+       .five-sixths
+      </p>
+      <div class="frame-body-wrapper five-sixths"></div>
+    </div>
+
+    <div class="push--bottom">
+      <h4 class="shelf__h3">
+        Eighths
+      </h4>
+
+      <p>
+       .one-eighth
+      </p>
+      <div class="frame-body-wrapper one-eighth"></div>
+      <p>
+       .three-eighths
+      </p>
+      <div class="frame-body-wrapper three-eighths"></div>
+      <p>
+       .five-eighths
+      </p>
+      <div class="frame-body-wrapper five-eighths"></div>
+      <p>
+       .seven-eighths
+      </p>
+      <div class="frame-body-wrapper seven-eighths"></div>
+    </div>
+
+    <div class="push--bottom">
+      <h4 class="shelf__h3">
+        Tenths
+      </h4>
+
+      <p>
+       .one-tenth
+      </p>
+      <div class="frame-body-wrapper one-tenth"></div>
+      <p>
+       .three-tenths
+      </p>
+      <div class="frame-body-wrapper three-tenths"></div>
+      <p>
+       .seven-tenths
+      </p>
+      <div class="frame-body-wrapper seven-tenths"></div>
+      <p>
+       .nine-tenths
+      </p>
+      <div class="frame-body-wrapper nine-tenths"></div>
+    </div>
+
+    <div class="push--bottom">
+      <h4 class="shelf__h3">
+        Twelfths
+      </h4>
+
+      <p>
+       .one-twelfth
+      </p>
+      <div class="frame-body-wrapper one-twelfth"></div>
+      <p>
+       .five-twelfths
+      </p>
+      <div class="frame-body-wrapper five-twelths"></div>
+      <p>
+       .seven-twelfths
+      </p>
+      <div class="frame-body-wrapper seven-twelfths"></div>
+      <p>
+       .eleven-twelfths
+      </p>
+      <div class="frame-body-wrapper eleven-twelfths"></div>
+    </div>
 
 </div>
-<!--
-<div class="column column--padding three-fifths">
-<code class="language-markup">
-  <pre>
-    .one-whole
-    .one-half
-    .one-third
-    .one-quarter
-    .one-fifth
-    .one-sixth
-    .one-eighth
 
+<div class="column column--padding one-half">
+<code class="language-css">
+    <pre>/* Widths model adapted from inuit.css framework */
+
+    .one-whole         { width:100%; }
+
+
+    /* Halves */
+    .two-quarters,
+    .one-half          { width:50%; }
+
+
+
+    /* Thirds */
+    .one-third         { width:33.333%; }
+    .two-thirds        { width:66.666%; }
+
+
+
+    /* Quarters */
+    .one-quarter       { width:25%; }
+    .three-quarters    { width:75%; }
+
+
+
+    /* Fifths */
+    .one-fifth         { width:20%; }
+    .two-fifths        { width:40%; }
+    .three-fifths      { width:60%; }
+    .four-fifths       { width:80%; }
+
+
+    /* Sixths */
+    .one-sixth         { width:16.666%; }
+    .five-sixths       { width:83.333%; }
+
+
+    /* Eighths */
+    .one-eighth        { width:12.5%; }
+    .three-eighths     { width:37.5%; }
+    .five-eighths      { width:62.5%; }
+    .seven-eighths     { width:87.5%; }
+
+
+
+    /* Tenths */
+    .one-tenth         { width:10%; }
+    .three-tenths      { width:30%; }
+    .seven-tenths      { width:70%; }
+    .nine-tenths       { width:90%; }
+
+
+
+    /* Twelfths */
+    .one-twelfth       { width:8.333%; }
+    .five-twelfths     { width:41.666%; }
+    .seven-twelfths    { width:58.333%; }
+    .eleven-twelfths   { width:91.666%; }
     </pre>
 </code>
 </div>
--->
+
 </section>

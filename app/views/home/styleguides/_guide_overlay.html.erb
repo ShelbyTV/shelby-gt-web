@@ -1,0 +1,104 @@
+<section class="clearfix" id="guide-overlay" name="guide-overlay">
+  <h3 class="shelf__h2">
+    Guide Overlay
+  </h3>
+
+  <div class="column one-third">
+    <div class="frame-body-wrapper" style="font-size: 11px; position: relative; height: 500px; width: 330px;">
+      <div class="guide-overlay__head">
+        <h2 class="guide-overlay__h1">
+          Header
+        </h2>
+      </div><!-- eo guide-overlay__head--frame-rolling -->
+
+      <div class="guide-overlay__body" style="overflow-x: hidden;">
+        <div class="guide-overlay__lining clearfix">
+          <p>Body</p>
+        </div>
+
+        <div class="guide-overlay__foot clearfix">
+          <div class="guide-overlay__lining clearfix">
+            Footer
+          </div>
+        </div>
+      </div><!-- eo guide-overlay__body -->
+
+    </div><!-- shell -->
+
+
+  </div><!-- eo .column -->
+
+  <div class="column column--padding two-thirds">
+<code class="language-markup">
+  <pre>…
+  &lt;!-- HEADER -->
+  &lt;div class="guide-overlay__head guide-overlay__head--frame-rolling">
+    &lt;h2 class="guide-overlay__h1">
+      Share this Video
+    &lt;/h2>
+  &lt;/div>
+
+  &lt;!-- BODY -->
+  &lt;div class="guide-overlay__body guide-overlay__body--frame-sharing">
+    &lt;form id="share-it-01" class="form_module rolling-form">
+      &lt;input type="hidden" id="frame_id" name="frame_id" value="123" />
+      &lt;textarea id="frame_comment" name="frame_comment" class="form_textarea new-comment-input" rows="3" autofocus tabindex="0" placeholder="What do you think about this video?">&lt;/textarea>
+
+      &lt;div class="js-guide-overlay-main guide-overlay__main">
+        &lt;div class="rolling-option">
+          &lt;fieldset class="form_fieldset form_fieldset--social clearfix">
+            &lt;legend class="form_legend">
+              Also Share to
+            &lt;/legend>
+
+            &lt;label tabindex="0" for="share-on-twitter-01" class="button_primer … button_command--twitter …">
+              &lt;input id="share-on-twitter-01" name="share-on-twitter-01" type="checkbox" class="visuallyhidden" checked="true" />
+              &lt;span class="icon icon-twitter">&lt;/span>
+              &lt;span class="button_label">Twitter&lt;/span>
+            &lt;/label>
+
+            &lt;label tabindex="0" for="share-on-facebook-01" class="button_primer … button_command--facebook …" >
+              &lt;input id="share-on-facebook-01" name="share-on-facebook-01" type="checkbox" class="visuallyhidden" checked="true" />
+              &lt;span class="icon icon-facebook">&lt;/span>
+              &lt;span class="button_label">Facebook&lt;/span>
+            &lt;/label>
+          &lt;/fieldset>
+
+          &lt;fieldset class="form_fieldset form_fieldset--submit clearfix">
+            &lt;button class="button_primer … button_green" type="submit" tabindex="0">
+              Share
+            &lt;/button>
+
+            &lt;button type="reset" class="button_primer … button_command--cancel …">
+              Cancel
+            &lt;/button>
+          &lt;/fieldset>
+        &lt;/div>
+      &lt;/div>
+    &lt;/form>
+
+    &lt;!-- FOOTER -->
+    &lt;div class="guide-overlay__foot guide-overlay__foot--frame-rolling clearfix">
+      &lt;div class="guide-overlay__lining clearfix">
+        &lt;span class="form_label">
+          Shortlink
+        &lt;/span>
+
+        &lt;span class="share_menu__faux-button button_command--shortlink one-half clearfix">
+          &lt;span class="icon icon-shortlink">&lt;/span>
+          &lt;input type="text" name="shortlink" id="shortlink-01" value="http://shl.by/123" class="form_input" />
+        &lt;/span>
+      &lt;/div>
+    &lt;/div>
+  &lt;/div>
+…
+</pre>
+</code>
+  </div>
+
+  <hr class="clearfix" />
+
+  <h4 class="shelf__h3">
+
+  </h4>
+</section>
