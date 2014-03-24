@@ -42,7 +42,7 @@ defaults: &defaults
       message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
       id: inline-cta--social
-      path: http://api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
+      path: http://api.shelby.tv/auth/facebook?redir_query=authed_with%3Dfacebook
       hook: social
       label: Facebook
       message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
@@ -61,7 +61,7 @@ development:
       message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
       id: inline-cta--social
-      path: http://api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
+      path: http://api.shelby.tv/auth/facebook?redir_query=authed_with%3Dfacebook
       hook: social
       label: Facebook
       message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.
@@ -83,7 +83,7 @@ staging:
       message: <em>Check out</em> a few areas of channels to add to personalize your video stream.
     social:
       id: inline-cta--social
-      path: http://api.shelby.tv/auth/facebook?redir_query=connecting%3Dfacebook
+      path: http://api.shelby.tv/auth/facebook?redir_query=authed_with%3Dfacebook
       hook: social
       label: Facebook
       message: <em>Connect to social</em> to see videos your friends are sharing and so others know who you are.

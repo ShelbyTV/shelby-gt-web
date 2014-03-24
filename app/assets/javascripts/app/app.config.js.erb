@@ -23,5 +23,6 @@ _(shelby.config).extend({
     apiBase : '<%= "#{Settings::ShelbyAPI.secure_url}" %>',
     apiRoot : '<%= "#{Settings::ShelbyAPI.secure_url}#{Settings::ShelbyAPI.version}" %>',
     appUrl : '<%= Settings::Application.secure_url %>',
-  }
+  },
+  anonBannerSessionCount : <%= Settings::User.anon_banner_session_count %>
 });
