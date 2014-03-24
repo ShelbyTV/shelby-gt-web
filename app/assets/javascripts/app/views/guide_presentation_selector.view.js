@@ -42,7 +42,7 @@
       //   model : shelby.models.invite,
       //   user : shelby.models.user
       // }));
-      if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
+      if(shelby.models.user.isNotLoggedIn()){ this._adjustForAnonymousUser(); }
       this._setSelected();
     },
 

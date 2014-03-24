@@ -18,7 +18,7 @@
 
     _post : function(cmd, args){
       if (libs.utils.environment.isDevelopment()) return false;
-      if (!shelby.models.user.isAnonymous()) return false;
+      if (!shelby.models.user.isNotLoggedIn()) return false;
       if (this._disabled) return false;
 
       var data, path;

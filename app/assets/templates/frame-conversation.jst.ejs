@@ -30,7 +30,7 @@
           title : frame.get('video').get('title') || ''
         })
       %>
-			<% if (!shelby.models.user.isAnonymous() && !shelby.config.hostName) { %>
+			<% if (!shelby.models.user.isNotLoggedIn() && !shelby.config.hostName) { %>
 	      <%=
 	        SHELBYJST['frame-conversation-form']({user: user})
 	      %>

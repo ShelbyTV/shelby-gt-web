@@ -26,7 +26,7 @@ libs.shelbyGT.ClientSideFrameModel = libs.shelbyGT.FrameModel.extend({
 
     // in the current state of things it doesn't make any sense for a logged out user to "like" a frame
     // that doesn't exist anywhere persistent
-    if (!shelby.models.user.isAnonymous()) {
+    if (!shelby.models.user.isNotLoggedIn()) {
       // liking a client side frame for a logged in user means only adding it to their watch later roll,
       // so create a persistent frame on the backend to add to that roll
       var _newFrame = new libs.shelbyGT.FrameModel();

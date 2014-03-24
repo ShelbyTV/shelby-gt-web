@@ -75,7 +75,7 @@
           <% if frame['originator'] && frame['originator']['nickname'] && frame['originator']['nickname'] != frame_owner['nickname'] %>
             <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <a class="no-faux-link js-track-event" href="<%= appropriate_subdirectory %>/<%= frame['originator']['nickname'] %>" title="<%= frame['originator']['name'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click via Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>"><%= frame['originator']['nickname'] %></a></span>
           <% end %>
-          <% if frame_owner and frame_owner['user_type'] == 1 %>
+          <% if frame_owner and frame_owner['user_type'] == Settings::User.user_type[:faux] %>
             <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <%= frame_owner['authentications'].first['provider'].capitalize %></span>
           <% end %>
         </p>

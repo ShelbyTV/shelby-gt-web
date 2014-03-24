@@ -8,7 +8,7 @@
     <%= (currentVideoIsInQueue) ? 'Liked' : 'Like' %>
   </span>
 </button>
-<% if (user.isAnonymous()) { %>
+<% if (user.isNotLoggedIn()) { %>
   <h2 class="dynamic_video_info__h2">
     Shelby learns a little with every like...
 <% } else { %>

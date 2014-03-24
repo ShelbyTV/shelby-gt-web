@@ -63,7 +63,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
       var emailBody;
       var tweetIntentParams = {};
-      if (shelby.models.user.isAnonymous()) {
+      if (shelby.models.user.isNotLoggedIn()) {
         var permalink;
         if (this._frameGroup) {
           permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this._frameGroup);

@@ -83,7 +83,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     //  make the call to add the user to the roll...
     //  then show them the roll
     // otherwise just show the roll view
-    if (!shelby.models.user.isAnonymous() && params && params.gt_ref_roll){
+    if (!shelby.models.user.isNotLoggedIn() && params && params.gt_ref_roll){
       var rollToJoin = new libs.shelbyGT.RollModel({id:params.gt_ref_roll});
       rollToJoin.joinRoll(function(){
         self._setupRollViewWithCallback(rollId, frameId, options, topLevelViewsOptions);
@@ -363,7 +363,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     this._fetchDashboard(options);
 
     //event tracking
-    var _action = shelby.models.user.isAnonymous() ? 'Load stream in app signed out' : 'Load stream in app signed in';
+    var _action = shelby.models.user.isNotLoggedIn() ? 'Load stream in app signed out' : 'Load stream in app signed in';
     shelby.trackEx({
       providers : ['ga', 'kmq'],
       gaCategory : "App",
@@ -728,7 +728,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if(!Browser.isIos()){
       ///////////////////
       // Not sure if this fits with current strategy, commenting out for now.
-      // if( !shelby.models.user.isAnonymous() ) {
+      // if( !shelby.models.user.isNotLoggedIn() ) {
       //   shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
       //     new libs.shelbyGT.ExtensionBannerNotification({
       //       guideModel : shelby.models.guide
