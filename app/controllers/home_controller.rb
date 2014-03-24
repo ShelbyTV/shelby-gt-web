@@ -332,10 +332,7 @@ class HomeController < ApplicationController
     end
   end
 
-  # THIS IS A TEMPORARY
   def bookmarklet
-    Rails.logger.info "omg #{params}"
-
     if session[:found_video_providers]
       @found_video_providers = session[:found_video_providers]
       session.delete(:found_video_providers)
@@ -381,6 +378,11 @@ class HomeController < ApplicationController
       end
     end
 
+  end
+
+  def get_started
+
+    render '/home/get-started'
   end
 
   private

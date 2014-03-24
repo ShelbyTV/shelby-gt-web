@@ -76,6 +76,9 @@ ShelbyGtWeb::Application.routes.draw do
   #######################XXX###############################
 
 
+  # IE Surface
+  get '/get-started' => 'home#get_started'
+
   # SEO PAGES
   get '/video/:provider_name/:provider_id(/*title)' => 'seovideo#show'
 
