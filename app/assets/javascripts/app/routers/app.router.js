@@ -87,37 +87,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     if (shelby.userIsCommonCookieAuthed()){
       shelby.models.user.fetch({
         success: function(userModel, response) {
-
-          // users created on iOS are not eligible to be re-onboarded
-          var notEligibleForOnboarding = (userModel.get('app_progress').get('onboarding') == "iOS_iPhone");
-
-          // if the user is trying to view an isolated roll, don't show onboarding right now.
-          if (/isolated-roll/.test(url)){
-            self._reroute();
-          } else if (url.indexOf('onboarding') == -1) {
-            var userOnboardingProgress = userModel.get('app_progress').get('onboarding');
-
-            if (notEligibleForOnboarding) {
-              self._reroute();
-            } else if (!userOnboardingProgress) {
-              // AB TESTING ORDER OF ONBOARDING
-              var _param = _(userModel.get('authentications')).any(function(auth){return auth.provider == 'facebook';}) ? '?authed_with=facebook' : '';
-              self.navigate('/onboarding/2'+_param, {trigger:true, replace:true});
-              return;
-            } else if (userOnboardingProgress !== true && userOnboardingProgress < libs.shelbyGT.OnboardingView.numOnboardingStages) {
-              self.navigate('/onboarding/' + (parseInt(userOnboardingProgress,10) + 1), {trigger:true, replace:true});
-              return;
-            } else {
-              self._reroute();
-            }
-          } else {
-            if (notEligibleForOnboarding || userModel.get('app_progress').get('onboarding') === true) {
-              self.navigate('/', {trigger:true, replace:true});
-              return;
-            } else {
-              self._reroute();
-            }
-          }
+          self._reroute();
 
           shelby.models.rollFollowings.fetch();
           shelby.models.promoRollCategories.fetch();
