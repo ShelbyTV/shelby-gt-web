@@ -61,7 +61,7 @@
         video : this._video,
         roll : this._roll,
         user : shelby.models.user,
-        userLoggedIn : !shelby.models.user.isAnonymous()
+        userLoggedIn : !shelby.models.user.isNotLoggedIn()
       }));
       this._checkAndRenderShortlink();
 

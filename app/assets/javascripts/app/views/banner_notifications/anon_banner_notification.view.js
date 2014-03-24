@@ -5,8 +5,8 @@
  * and return false (and the caller should not continue processing the action).
  *
  * For example, calling shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE)
- * when the user isAnonymous() will render an appropriate banner and return false.  If the user
- * is logged in (ie !isAnonymous()) it will not render and simply return true, indicating the user
+ * when the user isNotLoggedIn() will render an appropriate banner and return false.  If the user
+ * is logged in (ie !isNotLoggedIn()) it will not render and simply return true, indicating the user
  * should be allowed to perform the given action.
  *
  */
@@ -30,7 +30,7 @@ libs.shelbyGT.AnonBannerNotificationView = libs.shelbyGT.GenericBannerNotificati
    * Otherwise, render nothing and return false.
    */
   userIsAbleTo : function(action){
-    if( shelby.models.user.isAnonymous() && action != libs.shelbyGT.AnonymousActions.COMMENT && action != libs.shelbyGT.AnonymousActions.QUEUE){
+    if( shelby.models.user.isNotLoggedIn() && action != libs.shelbyGT.AnonymousActions.COMMENT && action != libs.shelbyGT.AnonymousActions.QUEUE){
       this._bannerType = action;
       // not rendering this banner right now
       //this.render();

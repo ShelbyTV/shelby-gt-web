@@ -109,7 +109,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
       var emailBody;
       var tweetIntentParams = {};
-      if (shelby.models.user.isAnonymous()) {
+      if (shelby.models.user.isNotLoggedIn()) {
         var permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this.model);
         emailBody = permalink + "?utm_campaign=email-share";
         tweetIntentParams = {

@@ -39,7 +39,7 @@
         frame                 : this.model,
         frameVideo            : this.model.get('video'),
         user                  : shelby.models.user,
-        userLoggedIn          : !shelby.models.user.isAnonymous()
+        userLoggedIn          : !shelby.models.user.isNotLoggedIn()
       }));
 
       // rolling details (personal roll as default)

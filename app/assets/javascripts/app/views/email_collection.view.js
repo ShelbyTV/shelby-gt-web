@@ -68,7 +68,7 @@ libs.shelbyGT.emailCollection = Support.CompositeView.extend({
   },
 
   _onShowEmailCollection : function(){
-    if (!shelby.models.user.isAnonymous()) return;
+    if (!shelby.models.user.isNotLoggedIn()) return;
 
     var self = this;
     var _emailCollectorShown = shelby.models.user.get('emailCollectorShown');

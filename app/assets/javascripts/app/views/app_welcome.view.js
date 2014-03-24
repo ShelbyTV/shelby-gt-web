@@ -48,10 +48,10 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
 
     switch  (displayState) {
       case libs.shelbyGT.DisplayState.channel:
-        if (!this._hasBeenWelcomedLoggedOut() && shelby.models.user.isAnonymous()){
+        if (!this._hasBeenWelcomedLoggedOut() && shelby.models.user.isNotLoggedIn()){
           return this.render('channel');
         }
-        else if (!shelby.models.user.get('app_progress').hasBeenWelcomed('channel') && !shelby.models.user.isAnonymous()){
+        else if (!shelby.models.user.get('app_progress').hasBeenWelcomed('channel') && !shelby.models.user.isNotLoggedIn()){
           return this.render('channel');
         }
         break;
@@ -59,7 +59,7 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
         if (shelby.models.guide.get('currentRollModel').get('creator_id') == shelby.models.user.id && !shelby.models.user.get('app_progress').hasBeenWelcomed('ownShares')) {
           return this.render('ownShares');
         }
-        else if (!this._hasBeenWelcomedLoggedOut() && shelby.models.user.isAnonymous()){
+        else if (!this._hasBeenWelcomedLoggedOut() && shelby.models.user.isNotLoggedIn()){
           return this.render('loggedOutShares');
         }
         else { this._resetVideoPlayerOperation(); }
@@ -74,7 +74,7 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
       this._resetVideoPlayerOperation();
       shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
       $('#js-welcome, .js-app-welcome').addClass('hidden');
-      if (shelby.models.user.isAnonymous()) {
+      if (shelby.models.user.isNotLoggedIn()) {
         this._markViewerWelcomedLoggedOut();
       }
       shelby.trackEx({

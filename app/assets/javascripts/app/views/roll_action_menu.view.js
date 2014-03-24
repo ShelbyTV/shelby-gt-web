@@ -80,7 +80,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
   _updateJoinButton : function(){
     var currentRollModel = this._currentRollModel;
-    if (shelby.models.user.isAnonymous() ||
+    if (shelby.models.user.isNotLoggedIn() ||
         libs.shelbyGT.viewHelpers.roll.isFaux(currentRollModel) ||
         !currentRollModel ||
         !currentRollModel.has('creator_id') ||
@@ -106,7 +106,7 @@ libs.shelbyGT.RollActionMenuView = Support.CompositeView.extend({
 
     // for logged in users we need to handle the update of the follow/unfollow button
     // the button is never shown for logged out users
-    if (currentRollModel && !shelby.models.user.isAnonymous()) {
+    if (currentRollModel && !shelby.models.user.isNotLoggedIn()) {
       this._currentRollModel = currentRollModel;
       this._currentRollModel.bind('change:creator_id', this._updateJoinButton, this);
       // check if the user is following this roll so we can render the follow/unfollow button appropriately

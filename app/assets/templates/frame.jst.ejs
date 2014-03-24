@@ -11,7 +11,7 @@
 <% var isViaSearch = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) ? true : false %>
 
 <% var frameViewed = frameGroup.get('collapsed') %>
-<% var userIsAnonymous = user.isAnonymous() %>
+<% var userisNotLoggedIn = user.isNotLoggedIn() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
 <% var isFauxUser = creator && creator.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.faux %>
@@ -116,7 +116,7 @@
 
                   <% if (fauxUserOrigin) { %>
                     via <span class="capitalize"><%= fauxUserOrigin %></span>
-                  <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != 1) { %>
+                  <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != libs.shelbyGT.UserModel.USER_TYPE.faux) { %>
                     <%= creatorIsLiker ? "liked this via" : "via" %> <a class="no-faux-link js-navigate-originator" href="#"><%= frameOriginator.get('nickname') %></a>
                   <% } else if (creatorIsLiker) { %>
                     liked this
@@ -147,7 +147,7 @@
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
 
-  <% if (inviteFauxUser && !userIsAnonymous) { %>
+  <% if (inviteFauxUser && !userisNotLoggedIn) { %>
     <a class="button_primer button_standard frame__tab frame__tab--facebook one-whole js-invite-faux-user js-track-event" data-ga_category="Frame" data-ga_action="Click Invite via Facebook" data-ga_label="<%= userNickname %>" data-faux-id="<%= originUser[0].uid %>">
       <span class="word-clamp word-clamp"><%= originUser[0].name || 'Your friend ' %></span> isn't on Shelby, <strong class="frame__link">Invite them via Facebook</strong>
     </a>

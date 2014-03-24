@@ -11,7 +11,7 @@
     </button>
   </li>
 
-  <% if (!user.isAnonymous()) { %>
+  <% if (!user.isNotLoggedIn()) { %>
     <li class="list__item js-guide-me js-track-event" data-ga_category="Header" data-ga_action="Me" data-ga_label='<%= userNickname %>'>
       <button class="app_nav__button js-me">
         Me
@@ -40,7 +40,7 @@
     </li>
   <% } %>
 
-  <% if (user.isAnonymous()) { %>
+  <% if (user.isNotLoggedIn()) { %>
     <li class="dropdown_module list__item secondary-item guide-login">
           <button class="dropdown_button app_nav__button">
             Log In <span class="icon-carrot"></span>
