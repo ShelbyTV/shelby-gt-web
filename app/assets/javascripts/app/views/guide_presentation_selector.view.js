@@ -111,7 +111,10 @@
         $setSelectedClassOn = this.$('.js-stream');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
         $setSelectedClassOn = this.$('.js-explore');
-      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channels) {
+      // n.b. when Channels is selected, the DisplayState is userPreferences
+      // however, that's not specific enough to known to display the Channels tab as "selected" in this app nav bar,
+      // hence this slightly more complicated else block:
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.userPreferences && shelby.models.userPreferencesView.get('section') == libs.shelbyGT.DisplayState.channels) {
         $setSelectedClassOn = this.$('.js-channels');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-me');
