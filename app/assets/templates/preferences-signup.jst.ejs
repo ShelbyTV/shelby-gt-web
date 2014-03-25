@@ -1,59 +1,49 @@
-<form action="/preferences/signup" class="form_module js-submit-signup">
-  <h1 class="form__legend">
-    Update Profile
-  </h1>
+<form accept-charset="UTF-8" action="/preferences/profile" class="form_module js-submit-signup" method="post">
+    <div style="margin:0;padding:0;display:inline">
+      <input name="utf8" type="hidden" value="✓">
+      <input name="authenticity_token" type="hidden" value="<%= authToken %>">
+    </div>
 
-  <fieldset class="form_fieldset">
-    <label for="avatar" class="form_label">
-      Avatar
-    </label>
+    <h1 class="form__legend">
+      Signup to update your profile
+    </h1>
 
-    <div class="media_module media_module--bare avatar-section-body clearfix">
-      <div id="js-dynamic-user-avatar" class="media_image avatar-section-viewport">
-        <!-- filled in by UserAvatarPresenterView -->
-      </div>
+    <fieldset class="form_fieldset">
+      <label for="userFullname" class="form_label">
+        Full Name
+      </label>
+      <span class="form_error" data-error="You must provide your full name"></span>
+      <input required="" type="text" class="form_input" id="userFullname" name="userFullname" value="">
+    </fieldset>
 
-      <div id="js-user-avatar-uploader" class="media_body avatar-section-input">
-        <!-- filled in by UserAvatarUploaderView -->
-      </div>
+    <fieldset class="form_fieldset">
+      <label for="userNickname" class="form_label">
+        Username
+      </label>
+      <span class="form_error" data-error="You must provide a username"></span>
+      <input required="" type="text" class="form_input" id="userNickname" name="userNickname" value="">
+    </fieldset>
 
-      <button class="button_primer button_command button_command--flexible button_gray avatar-section-button js-choose-file">
-        Choose Avatar
+    <fieldset class="form_fieldset">
+      <label for="userEmail" class="form_label">
+        Email
+      </label>
+      <span class="form_error" data-error="You must provide an email address"></span>
+      <input required="" type="email" class="form_input" id="userEmail" name="userEmail" placeholder="email@address.com" value="">
+    </fieldset>
+
+    <fieldset class="form_fieldset">
+      <label class="form_label" for="password">Password</label>
+      <span class="form_error js-form-error">Password must be at least five characters</span>
+      <input class="form_input" id="password" name="password" placeholder="*****" required="required" type="password">
+      <span class="form__description">We never spam.</span>
+    </fieldset>
+
+    <fieldset class="form_fieldset">
+      <button type="submit" class="button_primer button_command button_command--submit button_green js-signup-submit">
+        Signup
       </button>
-    </div><!-- eo media_module -->
-  </fieldset>
+    </fieldset>
+</form>
 
-  <fieldset class="form_fieldset">
-    <label for="userFullname" class="form_label">
-      Full Name
-    </label>
-    <span class="form_error" data-error="You must provide your full name"></span>
-    <input required type="text" class="form_input" id="userFullname" name="userFullname" placeholder="First Name, Last Name"<% if(userFullname){ %> value="<%= userFullname %>"<% } %> />
-  </fieldset>
-
-  <fieldset class="form_fieldset">
-    <label for="userNickname" class="form_label">
-      Username
-    </label>
-    <span class="form_error" data-error="You must provide a username"></span>
-    <input required type="text" class="form_input" id="userNickname" name="userNickname"<% if(userNickname){ %> value="<%= userNickname %>"<% } %> />
-  </fieldset>
-
-  <fieldset class="form_fieldset">
-    <label for="userEmail" class="form_label">
-      Email
-    </label>
-    <span class="form_error" data-error="You must provide an email address"></span>
-    <input required type="email" class="form_input" id="userEmail" name="userEmail" placeholder="email@address.com"<% if(userEmail){ %> value="<%= userEmail %>"<% } %> />
-  </fieldset>
-
-  <fieldset class="form_fieldset">
-    <button type="submit" class="button_primer button_command button_command--submit button_green">
-      Save
-    </button>
-
-    <button type="reset" class="button_primer button_command button_command--sub button_command--cancel button_command--submit button_gray js-cancel" title="Reset">
-      Reset
-    </button>
-  </fieldset>
 </form>
