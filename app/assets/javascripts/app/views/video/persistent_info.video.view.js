@@ -136,9 +136,9 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
     // toggle the video_controls position based on displayState, only if onboarding is incomplete
     var displayState = shelby.models.guide.get('displayState'),
-        isOnboarding = displayState == libs.shelbyGT.DisplayState.onboarding;
+        isServiceConnectingAnimation = displayState == libs.shelbyGT.DisplayState.serviceConnecting;
 
-    $('.js-video-controls-wrapper').toggleClass('video_controls__wrapper--preload', isOnboarding);
+    $('.js-video-controls-wrapper').toggleClass('video_controls__wrapper--preload', isServiceConnectingAnimation);
   },
 
   _onActiveFrameModelChange : function(guideModel, activeFrameModel){

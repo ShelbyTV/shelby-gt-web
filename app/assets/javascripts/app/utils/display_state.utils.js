@@ -3,7 +3,6 @@ libs.shelbyGT.DisplayState = {
   help : 'help',
   legal : 'legal',
   none : 'none',
-  onboarding : 'onboarding',
   rollList : 'rollList',
   search : 'search',
   channel : 'channel',
@@ -14,5 +13,6 @@ libs.shelbyGT.DisplayState = {
   tools: 'tools',
   userPreferences : 'userPreferences',
   dotTv : 'dotTv',
-  watchLaterRoll : 'watchLaterRoll'
+  watchLaterRoll : 'watchLaterRoll',
+  serviceConnecting : 'serviceConnecting'
 };

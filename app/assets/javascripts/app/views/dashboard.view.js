@@ -5,6 +5,8 @@
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
   var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
   var recommendationPlacer = libs.utils.recommendationPlacer;
+  var connectChannelsInStreamView = libs.shelbyGT.ConnectChannelsInStreamView;
+  var connectFacebookInStreamView = libs.shelbyGT.ConnectFacebookInStreamView;
 
   libs.shelbyGT.DashboardView = FrameGroupPlayPagingListView.extend({
 
@@ -26,6 +28,24 @@
       },
       fetchParams : {
         include_children : true
+      },
+      prependedViewProtos : function() {
+        var protos = [];
+
+        if (  shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.dashboard &&
+              (shelby.models.user.isAnonymous() ||
+              (shelby.models.user.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.converted && shelby.models.user.get('session_count') <= shelby.config.anonBannerSessionCount))
+           ) {
+          var appProgress = shelby.models.user.get('app_progress')
+          if ((appProgress && !appProgress.get('followedSources')) || !appProgress) {
+            protos.push(connectChannelsInStreamView);
+          }
+          if (!_(shelby.models.user.get('authentications')).any(function(auth){return auth.provider == 'facebook';})) {
+            protos.push(connectFacebookInStreamView);
+          }
+        }
+
+        return protos
       },
       sortOrder : -1
     }),

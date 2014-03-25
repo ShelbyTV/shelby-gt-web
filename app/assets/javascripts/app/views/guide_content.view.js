@@ -159,14 +159,14 @@
             spinner : true
           };
           break;
-        case DisplayState.onboarding :
+        case DisplayState.serviceConnecting :
           displayParams = {
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
               doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
               doSmartRefresh : true,
-              doStaticRender : true,
+              doStaticRender : false,
               emptyIndicatorViewProto : OnboardingGuideEmptyIndicatorView,
               noMoreResultsViewProto : null,
               showEmptyIndicatorOnStaticRender: true,
@@ -178,7 +178,8 @@
               firstFetchLimit : shelby.config.pageLoadSizes.dashboard,
               limit : shelby.config.pageLoadSizes.dashboard + 1,
               masterCollection : this._dashboardMasterCollection
-            }
+            },
+            spinner : true
           };
           break;
         case DisplayState.search :

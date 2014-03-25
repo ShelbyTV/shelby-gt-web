@@ -93,7 +93,7 @@
       var _changedAttrs = _(model.changedAttributes());
       if (_changedAttrs.has('displayState')) {
         // disable menus during onboarding, prevent hovers on dropdowns.
-        var doDisableMenus = (model.get('displayState') == libs.shelbyGT.DisplayState.onboarding);
+        var doDisableMenus = (model.get('displayState') == libs.shelbyGT.DisplayState.serviceConnecting);
 
         this.$('.js-content-selector')
               .children().toggleClass('dropdown_module', !doDisableMenus)

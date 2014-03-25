@@ -70,6 +70,10 @@
 
       </div><!-- eo .content_wrapper.main-layout -->
 
+      <div class="content_wrapper onboarding clearfix js-service-connecting-animation">
+        <!-- content filled in by ServiceConnectingAnimationView -->
+      </div><!-- eo .content_wrapper.onboarding -->
+
       <section class="content_wrapper user-channel-guide js-user-owned-roll-guide clearfix">
         <!-- content filled in by UserChannelGuideView -->
       </section><!-- eo .user-channel-guide -->
@@ -128,5 +132,22 @@
 
   <% end %>
   <%= javascript_include_tag "deferred" %>
+  <script type="text/html" id="js-channels-promo-template">
+    <%= render :partial => '/objects/inline_cta',
+               :locals => {
+                 :cta => Settings::Mobile.inline_cta.sources,
+                 :href_location => appropriate_subdirectory+Settings::Mobile.inline_cta.sources.path
+               }
+    %>
+  </script>
+
+  <script type="text/html" id="js-social-facebook-promo-template">
+    <%= render :partial => '/objects/inline_cta',
+               :locals => {
+                 :cta => Settings::Mobile.inline_cta.social,
+                 :href_location => Settings::Mobile.inline_cta.social.path
+               }
+    %>
+  </script>
 </body>
 </html>

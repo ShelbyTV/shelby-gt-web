@@ -21,7 +21,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     "legal"                                        : "displayLegal",
     "search"                                       : "displaySearch",
     "following"                                    : "displayRollList",
-    "onboarding/:stage"                            : "displayOnboardingView",
     "preferences"                                  : "displayUserPreferences",
     "preferences/:section"                         : "displayUserPreferences",
     "likes"                                        : "displaySaves",
@@ -342,22 +341,53 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
 
   displayDashboard : function(params, options){
 
-    // if there was a URL param requesting a specific dashboard entry
-    // set options appropriately to load that entry and start with it
-    if (params && params.entry) {
-      var self = this;
-      options = _.chain({}).extend(options).extend({
-        data : {
-          since_id : params.entry,
-          include_children : true
-        },
-        onDashboardFetch : function(dashboardModel, response){
-          self._activateEntryInDashboardById(dashboardModel, params.entry);
-        }
-      }).value();
+    var displayServiceConnectingAnimation = false;
+
+    if (params) {
+      if (params.entry) {
+        // if there was a URL param requesting a specific dashboard entry
+        // set options appropriately to load that entry and start with it
+        var self = this;
+        options = _.chain({}).extend(options).extend({
+          data : {
+            since_id : params.entry,
+            include_children : true
+          },
+          onDashboardFetch : function(dashboardModel, response){
+            self._activateEntryInDashboardById(dashboardModel, params.entry);
+          }
+        }).value();
+      } else if (params['authed_with']) {
+        // if the user just authorized a new service like Facebook or Twitter, we'll
+        // show the animation of Shelby discovering content from that service for the user
+        displayServiceConnectingAnimation = true;
+      }
     }
 
     this._setupTopLevelViews(options);
+
+    if (displayServiceConnectingAnimation) {
+      new libs.shelbyGT.ServiceConnectingAnimationView({
+        el : $('.js-service-connecting-animation'),
+        model : shelby.models.onboardingConnectServicesView,
+        rollFollowings : shelby.models.rollFollowingsIncludingFauxUsers
+      })
+      shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.serviceConnecting});
+
+      var attrs = { authFailure: false }; //defaults
+
+      if(params['authed_with'] && _(shelby.config.services.primaryAuth).include(params['authed_with'])) {
+        _(attrs).extend({action: 'load', service: params['authed_with']});
+      }
+
+      if(params['auth_failure']) {
+        _(attrs).extend({action: 'connect', authFailure: true});
+      }
+
+      shelby.models.onboardingConnectServicesView.set(attrs);
+      options = {serviceConnecting: true};
+    }
+
     this._fetchViewedVideos();
     this._fetchQueuedVideos();
     this._fetchDashboard(options);
@@ -394,7 +424,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   _fetchDashboard : function(options) {
     // default options
     var defaultOnDashboardFetch = null;
-    if (!shelby.models.guide.get('activeFrameModel')) {
+    if (!shelby.models.guide.get('activeFrameModel') && (!options || !options.serviceConnecting)) {
       // if nothing is already playing,
       // start playing the first frame in the dashboard on load
       defaultOnDashboardFetch = this._activateFirstDashboardVideoFrame;
@@ -443,7 +473,8 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       data: {
           include_children : true
       },
-      displayInGuide : true
+      displayInGuide : true,
+      serviceConnecting : false
     }).value();
 
     if (options.channel) {
@@ -460,7 +491,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // fetchOptions.data.limit = Math.random() < 0.6 ? 20 : 0;
 
     if (options.displayInGuide) {
-      var displayState = options.channel ? libs.shelbyGT.DisplayState.channel : libs.shelbyGT.DisplayState.dashboard;
+      var displayState;
+      if (options.channel) {
+        displayState = libs.shelbyGT.DisplayState.channel
+      } else if (options.serviceConnecting) {
+        displayState = libs.shelbyGT.DisplayState.serviceConnecting;
+      } else {
+        displayState = libs.shelbyGT.DisplayState.dashboard;
+      }
       var channel = options.channel;
 
       shelby.models.guide.set({
@@ -492,25 +530,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           _gaq.push(['_trackPageview', '/following']);
         } catch(e) {}
       }
-  },
-
-  displayOnboardingView : function(stage, params){
-    this._setupTopLevelViews({onboarding: true});
-    shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.onboarding, onboardingStage:stage});
-
-    var attrs = { authFailure: false }; //defaults
-
-    if (stage == 2 && params) {
-      if(params['authed_with'] && _(shelby.config.services.primaryAuth).include(params['authed_with'])) {
-        _(attrs).extend({action: 'load', service: params['authed_with']});
-      }
-
-      if(params['auth_failure']) {
-        _(attrs).extend({action: 'connect', authFailure: true});
-      }
-
-      shelby.models.onboardingConnectServicesView.set(attrs);
-    }
   },
 
   displaySaves : function(){
@@ -695,7 +714,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     // default options
     options = _.chain({}).extend(options).defaults({
       isIsolatedRoll : false,
-      onboarding: false,
       openInvite : false
     }).value();
 
@@ -720,10 +738,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
           guideModel : shelby.models.guide,
           model : shelby.models.playlistManager
         });
-    if(options.onboarding) {
-      shelby.views.onboarding = shelby.views.onboarding ||
-        new libs.shelbyGT.OnboardingView();
-    }
 
     if(!Browser.isIos()){
       ///////////////////
