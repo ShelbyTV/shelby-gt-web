@@ -1,13 +1,15 @@
 defaults: &defaults
-  url: "http://api.shelby.tv"
-  secure_url: "https://api.shelby.tv"
-  protocol_matching_url: "//api.shelby.tv"
+  auth_facebook: http://api.shelby.tv/auth/facebook
+  auth_twitter: http://api.shelby.tv/auth/twitter
+  featured_user_id: "521264b4b415cc44c9000001"
   login_form_url: "https://api.shelby.tv/authentications/login"
+  popup_cohort_entrance_url: "https://api.shelby.tv/cohort_entrance/dottv/popup"
+  protocol_matching_url: "//api.shelby.tv"
+  secure_url: "https://api.shelby.tv"
   signup_form_url: "https://api.shelby.tv/user/sign_in"
   signup_route: "/signup"
-  popup_cohort_entrance_url: "https://api.shelby.tv/cohort_entrance/dottv/popup"
+  url: "http://api.shelby.tv"
   version: "/v1"
-  featured_user_id: "521264b4b415cc44c9000001"
 
 development:
   <<: *defaults
