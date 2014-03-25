@@ -50,6 +50,9 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
     //render selected section
     switch(section) {
+      case 'signup':
+        this.renderChildInto(new libs.shelbyGT.UserPreferencesSignupView(viewData),this._container);
+        break;
       case 'profile':
         this.renderChildInto(new libs.shelbyGT.UserPreferencesProfileView(viewData),this._container);
         break;
