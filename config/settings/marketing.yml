@@ -11,6 +11,7 @@ defaults: &defaults
   cta: "Discover videos you and your friends will love."
   cta_body: "Get the best of web video, personalized to <br/>your interests and available wherever you are."
   cta_button: "Get the Free App"
+  cta_button_short: "Get the App"
   cta_alternative_button: "Sign up on the Web"
 
   stream: "The freshest video from your <br/>favorite people and places."
