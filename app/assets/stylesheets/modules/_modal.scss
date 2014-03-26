@@ -15,7 +15,7 @@
 .modal {
   background-color: $ui-gray;
   font-size: $font-size-fixed;
-  margin: 0 auto;
+  margin: 4em 1.25em;
   padding: $defaultMargin;
   text-align: left;
   width: 465px;
@@ -35,6 +35,7 @@
   }
 }
     .modal--center {
+      margin: 0 auto;
       padding-top: 2em;
       text-align: center;
     }
