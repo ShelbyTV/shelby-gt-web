@@ -56,7 +56,7 @@
 
   <li class="dropdown_module list__item secondary-item js-guide-settings">
     <button class="dropdown_button app_nav__button app_nav__button--settings js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= userNickname %>">
-      <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrl(user,libs.shelbyGT.UserAvatarSizes.small)%>
+      <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrl(user,libs.shelbyGT.UserAvatarSizes.small) %>
       <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
         <%= userNickname %> <span class="icon-carrot"></span>
     </button>

@@ -1,19 +1,16 @@
-<div class="welcome-message fin fin--left_top welcome-message--large">
-  <div>
-    <h2 class="welcome-message__h1--plain">
-      <%= shelby.config.welcomeMessages[currentDisplayState].header %>
-    </h2>
+<div class="modal modal--padding fin fin--left_top">
+  <h2 class="alpha">
+    <%= shelby.config.welcomeMessages[currentDisplayState].header %>
+  </h2>
 
-    <h3 class="welcome-message__h2--plain">
-      <% if (shelby.models.user.isNotLoggedIn() && currentDisplayState == 'loggedOutShares') { %>
-        <b><%= shelby.models.guide.get('currentRollModel').get('creator_name')  %></b>
-      <% } %>
-      <%= shelby.config.welcomeMessages[currentDisplayState].message %>
-    </h3>
+  <p class="modal__block delta">
+    <% if (shelby.models.user.isNotLoggedIn() && currentDisplayState == 'loggedOutShares') { %>
+      <b><%= shelby.models.guide.get('currentRollModel').get('creator_name')  %></b>
+    <% } %>
+    <%= shelby.config.welcomeMessages[currentDisplayState].message %>
+  </p>
 
-    <div class="welcome-message__button-wrapper">
-      <button class="js-dismiss button_primer button_command button_command--flexible button_green"><%= shelby.config.welcomeMessages[currentDisplayState].button %></button>
-    </div>
-  </div><!-- eo welcome-message__head -->
-
-</div><!-- eo .welcome-message -->
+  <button class="js-dismiss button_primer button_command button_command--flexible button_green">
+    <%= shelby.config.welcomeMessages[currentDisplayState].button %>
+  </button>
+</div><!-- eo .modal -->
