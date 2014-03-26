@@ -13,7 +13,8 @@ libs.shelbyGT.UserPreferencesSignupView = libs.shelbyGT.UserPreferencesBaseView.
 
   render : function(){
     var viewData = {
-      authToken    : "$('meta[name=csrf-token]').attr('content')",
+      authToken    : $('meta[name=csrf-token]').attr('content'),
+      csrfParam    : $('meta[name=csrf-param]').attr('content'),
       userEmail    : "this.model.get('primary_email')",
       userFullname : "this.model.get('name')",
       userNickname : "this.model.get('nickname')",
