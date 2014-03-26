@@ -25,12 +25,12 @@
               <% else %>
                 <li class="list__item">
                   <a
-                    href="<%= @seo_video ? '/' : Settings::Application.ios_app_url %>"
+                    href="<%= Settings::Application.ios_app_url %>"
                     class="animate_module button_primer button_command button_command--flexible button_green shelf__button--cta js-cta-header js-cta js-track-event"
-                    data-ga_action="Click Sign Up"
+                    data-ga_action="Click <%= Settings::Marketing.cta_button_short %>"
                     data-ga_label="Header"
                     >
-                    Get the App
+                    <%= Settings::Marketing.cta_button_short %>
                   </a>
                 </li>
               <% end %>
