@@ -199,6 +199,11 @@ a{
   top: 0;
 }
 
+.welcome-message-layout{
+  background-color: rgba(0,0,0,0.6);
+  z-index: 4;
+}
+
 .welcome-message__wrapper,
 .notification__wrapper,
 .notifications-wrapper,
