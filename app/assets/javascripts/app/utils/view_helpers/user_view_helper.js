@@ -63,6 +63,22 @@ libs.shelbyGT.viewHelpers.user = {
     } else {
       return null;
     }
+  },
+
+  //this is probably gonna be the ultimate username retrieval system for displaying a user's name properly
+  displayUsername: function(user){
+    if(typeof user === 'undefined') {
+      user = shelby.models.user;
+    }
+
+    switch(user) {
+      case user.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.anonymous :
+        return 'Anonymous';
+      default:
+        return user.get('username');
+    }
   }
+
+
 
 };
