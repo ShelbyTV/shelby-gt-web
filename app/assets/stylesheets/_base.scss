@@ -118,6 +118,7 @@ $button-default-color               : #eee;
 //------------------------------------------------------------------------------
 $app-header__height            : 40px;
 $guide-width                   : $_unit * 37; //if you use this, make sure you add a media-query to account for narrow viewports
+$guide-narrow-width            : $_unit * 30; //ahem
 $persistent_video_info--height : 180px;
 $logo-font-size                : 57px;
 $logo-font-size-small          : 37px;
