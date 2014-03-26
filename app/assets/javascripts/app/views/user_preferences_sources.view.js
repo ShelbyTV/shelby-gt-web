@@ -19,7 +19,7 @@ libs.shelbyGT.UserPreferencesSourcesView = libs.shelbyGT.UserPreferencesBaseView
       this.appendChildInto(new libs.shelbyGT.FollowSourcesView({
         clickableUser: true,
         context: 'Preferences',
-        model : new libs.shelbyGT.OnboardingFollowSourcesViewModel(),
+        model : new libs.shelbyGT.FollowSourcesModel(),
         rollCategories: _rollCategories
       }), '.js-sources-list--preferences');
     }

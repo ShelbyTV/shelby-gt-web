@@ -134,7 +134,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       }
     }
 
-    // toggle the video_controls position based on displayState, only if onboarding is incomplete
+    // toggle the video_controls position based on displayState, only if the service connecting animation is running
     var displayState = shelby.models.guide.get('displayState'),
         isServiceConnectingAnimation = displayState == libs.shelbyGT.DisplayState.serviceConnecting;
 

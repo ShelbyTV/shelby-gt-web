@@ -92,7 +92,7 @@
       // cetain updates only necessary if displayState has changed
       var _changedAttrs = _(model.changedAttributes());
       if (_changedAttrs.has('displayState')) {
-        // disable menus during onboarding, prevent hovers on dropdowns.
+        // disable menus during service connection animation, prevent hovers on dropdowns.
         var doDisableMenus = (model.get('displayState') == libs.shelbyGT.DisplayState.serviceConnecting);
 
         this.$('.js-content-selector')

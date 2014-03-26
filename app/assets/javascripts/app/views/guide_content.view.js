@@ -4,7 +4,6 @@
   var DisplayState = libs.shelbyGT.DisplayState;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
-  var OnboardingGuideEmptyIndicatorView = libs.shelbyGT.OnboardingGuideEmptyIndicatorView;
   var RollListView = libs.shelbyGT.RollListView;
   var RollListFilterType = libs.shelbyGT.RollListFilterType;
   var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
@@ -167,7 +166,6 @@
               doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
               doSmartRefresh : true,
               doStaticRender : false,
-              emptyIndicatorViewProto : OnboardingGuideEmptyIndicatorView,
               noMoreResultsViewProto : null,
               showEmptyIndicatorOnStaticRender: true,
               fetchParams : {

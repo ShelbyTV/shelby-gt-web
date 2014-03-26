@@ -1,18 +1,16 @@
-libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend({
+libs.shelbyGT.InviteFriendItemView = libs.shelbyGT.ListItemView.extend({
 
   events : {
-    "click .js-onboarding-roll-button:not(.js-busy)" : "_inviteFriend",
+    "click .js-invite-friend:not(.js-busy)" : "_inviteFriend",
     "click .js-navigate-roll" : "_navigateRoll"
   },
 
   template : function(obj) {
-        return SHELBYJST['onboarding/onboarding-invite-friend-item'](obj);
+        return SHELBYJST['invite-friend-item'](obj);
   },
 
   render : function(){
     this.$el.html(this.template({
-      onboarding    : this.options.onboarding,
-      clickableUser : !this.options.onboarding,
       roll          : this.model
     }));
   },
@@ -29,16 +27,6 @@ libs.shelbyGT.OnboardingInviteFriendItemView = libs.shelbyGT.ListItemView.extend
           to          : _(this.model.get('creator_authentications')).find(function(a){ return a.provider == 'facebook'; }).uid
         },
         function(response) {
-          if (response) {
-            if (response.success && self.options.onboarding) {
-              var viewModel = self.options.onboardingConnectServicesViewModel;
-              viewModel.set('numInvitesSent', viewModel.get('numInvitesSent') + 1);
-
-              $thisButton.removeClass('button_busy').children('.button_label').text('Invited');
-              $('.modal__foot').find('.js-onboarding-advance-stage').removeClass('button_gray').addClass('button_green').find('.button_label').text('Next');
-              return;
-            }
-          }
           // if we didn't successfully invite the person, make the invite button usable again
           $thisButton.toggleClass('button_busy js-busy button_enabled visuallydisabled');
         }

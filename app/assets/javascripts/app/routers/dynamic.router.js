@@ -369,7 +369,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     if (displayServiceConnectingAnimation) {
       new libs.shelbyGT.ServiceConnectingAnimationView({
         el : $('.js-service-connecting-animation'),
-        model : shelby.models.onboardingConnectServicesView,
+        model : shelby.models.serviceConnectingAnimationView,
         rollFollowings : shelby.models.rollFollowingsIncludingFauxUsers
       })
       shelby.models.guide.set({displayState:libs.shelbyGT.DisplayState.serviceConnecting});
@@ -384,7 +384,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         _(attrs).extend({action: 'connect', authFailure: true});
       }
 
-      shelby.models.onboardingConnectServicesView.set(attrs);
+      shelby.models.serviceConnectingAnimationView.set(attrs);
       options = {serviceConnecting: true};
     }
 

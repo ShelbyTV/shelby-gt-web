@@ -16,7 +16,6 @@
       'channelWelcomed' : false,
       'ownSharesWelcomed' : false,
       'othersSharesWelcomed' : false,
-      'onboarding' : false
       //has this user seen and dismissed the extension/bookmarket notification?
       //'extension' : false
     },
@@ -29,10 +28,6 @@
         this.set(attribute, stage);
         this.saveMe();
       }
-    },
-
-    hasCompletedOnboarding : function(){
-      return this.get('onboarding') !== false;
     },
 
     hasBeenWelcomed : function(section){

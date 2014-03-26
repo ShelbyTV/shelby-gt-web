@@ -10,7 +10,7 @@
           <%= raw Settings::Marketing.cta_body %>
         </p>
 
-        <p class="shelf__block">
+        <div class="shelf__block">
           <% if [:android,:amazon].include? @mobile_os %>
             <%= form_tag "#{appropriate_subdirectory}/user/create", :class => "form_module js-get-started-form" do %>
               <%= hidden_field_tag 'anonymous', true %>
@@ -25,11 +25,14 @@
           <br/>
           <small>
             or
-            <a href="/signup?email=1" class="js-track-event" data-ga_action="Click Signup with Email" data-ga_label="CTA Shelf">
-              <%= Settings::Marketing.cta_alternative_button %>
-            </a>
+              <%= form_tag "#{appropriate_subdirectory}/user/create", :class => "form_module form_module--inline js-get-started-form" do %>
+                <%= hidden_field_tag 'anonymous', true %>
+                <button type="submit" class="js-track-event button_text" data-ga_action="Click Get Started" data-ga_label="Social Shelf">
+                  <%= Settings::Marketing.cta_alternative_button %>
+                </button>
+              <% end %>
           </small>
-        </p>
+        </div>
 
         <div class="facepile">
           <iframe src="//www.facebook.com/plugins/facepile.php?app_id=115071338568035&amp;action&amp;max_rows=2&amp;size=medium&amp;show_count=true&amp;width=360&amp;colorscheme=light&amp;appId=115071338568035" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:360px;" allowTransparency="true"></iframe>

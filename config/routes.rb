@@ -75,6 +75,7 @@ ShelbyGtWeb::Application.routes.draw do
   end
   #######################XXX###############################
 
+  post '/user/create' => 'mobile#create_user'
 
   # IE Surface
   get '/get-started' => 'home#get_started'
@@ -97,14 +98,6 @@ ShelbyGtWeb::Application.routes.draw do
 
   # DISCUSSION ROLLS
   get '/mail/:roll_id' => 'discussion_roll#show'
-
-  # INVITES
-  get '/invite/:invite_id' => "signup#show"
-  get "invite" => 'signup#show', :as => :invite
-  post "invite" => 'signup#create'
-  get "signup" => 'signup#show', :as => :signup
-  get "signup/:code" => 'signup#show'
-  post "signup" => 'signup#create'
 
   # IPAD BETA PROGRAM
   get '/ipadbeta' => 'home#ipadbeta'

@@ -162,11 +162,11 @@ libs.shelbyGT.ServiceConnectingAnimationView = Support.CompositeView.extend({
     var _auths = shelby.models.user.get('authentications') || [];
     shelby.trackEx({
       providers : ['ga', 'kmq'],
-      gaCategory : "Onboarding",
-      gaAction : 'Step 3 Complete',
+      gaCategory : "Get Started",
+      gaAction : 'Auth Connected',
       gaLabel : shelby.models.user.get('nickname'),
       gaValue : _auths.length,
-      kmqName : "Onboarding Step 3 Complete",
+      kmqName : "Get Started Auth Connected",
       kmqProperties : {
         nickname: shelby.models.user.get('nickname'),
         authenticationsCount : _auths.length
@@ -181,7 +181,7 @@ libs.shelbyGT.ServiceConnectingAnimationView = Support.CompositeView.extend({
     if(this.model.get('service') == 'twitter' &&
        _(shelby.models.user.get('authentications')).any(function(auth){return auth.provider == 'twitter';})) {
       // if the user checked the box to do so
-      if(this.$('#onboarding-follow-shelby').is(':checked')) {
+      if(this.$('#twitter-follow-shelby').is(':checked')) {
         // make the user follow Shelby on twitter
         // TODO make this an actual model subclass if we need to do this anywhere else in the app
         var userToFollow = new libs.shelbyGT.ShelbyBaseModel();
@@ -196,7 +196,7 @@ libs.shelbyGT.ServiceConnectingAnimationView = Support.CompositeView.extend({
     // if we just authenticated facebook, update the user's timeline sharing preference
     if (this.model.get('service') == 'facebook') {
       var _prefs = _.clone(shelby.models.user.get('preferences'));
-      _prefs['open_graph_posting'] = this.$('#onboarding-timeline-sharing').is(':checked');
+      _prefs['open_graph_posting'] = this.$('#fb-timeline-sharing').is(':checked');
       shelby.models.user.save({preferences: _prefs});
       shelby.track('FB Timeline App Preference set to '+_prefs['open_graph_posting'],{userName: shelby.models.user.get('nickname')});
     }
