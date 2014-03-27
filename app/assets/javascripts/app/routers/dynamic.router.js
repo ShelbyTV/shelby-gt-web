@@ -555,8 +555,14 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
   displayUserPreferences : function(section){
     this._setupTopLevelViews();
 
+    //this could probably be more elegant...
+
     if(!section) { //if `section` is undefined, route to profile as a default
-      section = 'profile';
+      section = (shelby.models.user.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.anonymous) ? 'signup' : 'profile';
+      shelby.router.navigate('/preferences/' + section);
+    } else if(section == 'profile' && shelby.models.user.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.anonymous) {
+      //force anonymous users into the signup view, even they ask for the profile view.
+      section = 'signup';
       shelby.router.navigate('/preferences/' + section);
     }
 

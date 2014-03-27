@@ -50,31 +50,31 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
 
     //render selected section
     switch(section) {
-      case 'signup':
+      case libs.shelbyGT.UserPreferencesView.SECTIONS.signup:
         this.renderChildInto(new libs.shelbyGT.UserPreferencesSignupView(viewData),this._container);
         break;
-      case 'profile':
+      case libs.shelbyGT.UserPreferencesView.SECTIONS.profile:
         this.renderChildInto(new libs.shelbyGT.UserPreferencesProfileView(viewData),this._container);
         break;
-      case 'password':
+      case libs.shelbyGT.UserPreferencesView.SECTIONS.password:
         this.renderChildInto(new libs.shelbyGT.UserPreferencesPasswordView(viewData),this._container);
         break;
-      case 'networks':
+      case libs.shelbyGT.UserPreferencesView.SECTIONS.networks:
         this.renderChildInto(new libs.shelbyGT.UserPreferencesNetworksView(viewData),this._container);
         break;
-      case 'notifications':
+      case libs.shelbyGT.UserPreferencesView.SECTIONS.notifications:
         this.renderChildInto(new libs.shelbyGT.UserPreferencesNotificationsView(viewData),this._container);
         break;
-      case 'friends':
+      case libs.shelbyGT.UserPreferencesView.SECTIONS.friends:
         viewData.rollFollowings = shelby.models.rollFollowings;
         this.renderChildInto(new libs.shelbyGT.UserPreferencesFriendsView(viewData),this._container);
         break;
-      case 'channels':
+      case libs.shelbyGT.UserPreferencesView.SECTIONS.channels:
         viewData.rollCategories = shelby.models.rollCategories;
         this.renderChildInto(new libs.shelbyGT.UserPreferencesSourcesView(viewData),this._container);
         break;
       default:
-        shelby.router.navigate('/preferences/profile',{trigger:true});
+        shelby.router.navigate('/preferences/'+libs.shelbyGT.UserPreferencesView.SECTIONS.profile,{trigger:true});
         break;
     }
   },
@@ -88,3 +88,13 @@ libs.shelbyGT.UserPreferencesView = Support.CompositeView.extend({
   }
 
 });
+
+libs.shelbyGT.UserPreferencesView.SECTIONS = {
+  channels:      'channels',
+  friends:       'friends',
+  networks:      'networks',
+  notifications: 'notifications',
+  password:      'password',
+  profile:       'profile',
+  signup:        'signup',
+};
