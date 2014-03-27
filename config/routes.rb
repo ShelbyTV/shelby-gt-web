@@ -130,6 +130,9 @@ ShelbyGtWeb::Application.routes.draw do
   # ONE CLICK UNSUBSCRIBE
   get '/preferences/email/unsubscribe' => "home#unsubscribe"
 
+  # UPDATE USER
+  post '/preferences/profile' => 'mobile#profile'
+
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'
   get '/embed/:frame_id' => 'turbo_embed#embed'

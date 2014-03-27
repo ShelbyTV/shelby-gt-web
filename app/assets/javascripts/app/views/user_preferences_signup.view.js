@@ -1,6 +1,7 @@
 libs.shelbyGT.UserPreferencesSignupView = libs.shelbyGT.UserPreferencesBaseView.extend({
 
   events : {
+    'click .js-signup-submit' : 'howYouLikeDatVisualFeedback'
   },
 
   className: 'content_lining preferences_page preferences_page--signup',
@@ -31,7 +32,17 @@ libs.shelbyGT.UserPreferencesSignupView = libs.shelbyGT.UserPreferencesBaseView.
 
   _onSubmit : function(e){
     e.preventDefault();
-  }//,
+  },
+
+  howYouLikeDatVisualFeedback : function(e){
+    var $button = $(e.currentTarget);
+
+    if ($button.hasClass('button_busy')) {
+      e.preventDefault();
+    } else {
+      $button.addClass('button_busy');
+    }
+  }
 
   // _updateUser : function(updates) {
   //   var self = this;
