@@ -66,16 +66,22 @@ libs.shelbyGT.viewHelpers.user = {
   },
 
   //this is probably gonna be the ultimate username retrieval system for displaying a user's name properly
-  displayUsername: function(user){
-    if(typeof user === 'undefined') {
-      user = shelby.models.user;
+  displayUsername: function(userModel){
+    //default to the logged in user
+    if(typeof userModel === 'undefined') {
+      userModel = shelby.models.user;
     }
 
-    switch(user) {
-      case user.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.anonymous :
+    //key off the user_type!
+    switch(userModel.get('user_type')) {
+      case libs.shelbyGT.UserModel.USER_TYPE.faux :
+        var userAuths = userModel.get('authentications');
+        return (userAuths && userAuths.length) ? userAuths[0].nickname : null;
+      case libs.shelbyGT.UserModel.USER_TYPE.anonymous :
         return 'Anonymous';
       default:
-        return user.get('username');
+        //if it's a true Backbone Model then we 'get' the val. otherwise it's a Obj literal
+        return ('attributes' in userModel) ? userModel.get('nickname') : userModel.nickname;
     }
   }
 

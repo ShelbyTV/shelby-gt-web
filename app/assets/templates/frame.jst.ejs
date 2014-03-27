@@ -19,7 +19,7 @@
 <% var inviteFauxUser = isFauxUser && originUser.length %>
 
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
-<% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
+<% var fauxUserNickname = libs.shelbyGT.viewHelpers.user.displayUsername(creator) %>
 
 <% var creatorIsLiker = (frame.get('frame_type') == libs.shelbyGT.FrameModel.FRAME_TYPE.light_weight) %>
 
@@ -73,7 +73,7 @@
       </div><!-- eo .frame-body -->
 
     <% if (!isGenius && creator) {
-      var creatorNickname = fauxUserOrigin && fauxUserNickname ? fauxUserNickname : creator.get('nickname');
+      var creatorNickname = fauxUserOrigin && fauxUserNickname ? fauxUserNickname : libs.shelbyGT.viewHelpers.user.displayUsername(creator);
       var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator);
       var clickableCreator = (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.standardRoll);
       var avatarClass = "";
