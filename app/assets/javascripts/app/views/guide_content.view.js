@@ -9,9 +9,9 @@
   var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
   var RollView = libs.shelbyGT.RollView;
   var VideoSearchView = libs.shelbyGT.VideoSearchView;
-  var HelpView = libs.shelbyGT.HelpView;
-  var TeamView = libs.shelbyGT.TeamView;
-  var LegalView = libs.shelbyGT.LegalView;
+  // var HelpView = libs.shelbyGT.HelpView;
+  // var TeamView = libs.shelbyGT.TeamView;
+  // var LegalView = libs.shelbyGT.LegalView;
   var SpinnerStateModel = libs.shelbyGT.SpinnerStateModel;
   var QueueEmptyIndicatorView = libs.shelbyGT.QueueEmptyIndicatorView;
 
@@ -219,24 +219,24 @@
             }
           };
           break;
-        case DisplayState.help :
-          displayParams = {
-            viewProto : HelpView,
-            model : shelby.models.user
-          };
-          break;
-        case DisplayState.team :
-          displayParams = {
-            viewProto : TeamView,
-            model : shelby.models.user
-          };
-          break;
-        case DisplayState.legal :
-          displayParams = {
-            viewProto : LegalView,
-            model : shelby.models.user
-          };
-          break;
+        // case DisplayState.help :
+        //   displayParams = {
+        //     viewProto : HelpView,
+        //     model : shelby.models.user
+        //   };
+        //   break;
+        // case DisplayState.team :
+        //   displayParams = {
+        //     viewProto : TeamView,
+        //     model : shelby.models.user
+        //   };
+        //   break;
+        // case DisplayState.legal :
+        //   displayParams = {
+        //     viewProto : LegalView,
+        //     model : shelby.models.user
+        //   };
+        //   break;
       }
 
       var childViewOptions = {

@@ -36,13 +36,13 @@ describe("GuideOverlayManagerView", function() {
       this.user = BackboneFactory.create('user');
       this.rollFollowings = BackboneFactory.create('rollscollection');
       sinon.stub(this.rollFollowings, 'getRollModelById').returns(this.user.get('personalRoll'));
-      
+
       shelby.models = {
           rollFollowings : this.rollFollowings,
           user : this.user
       };
 
-      this.FrameConversationViewStub = sinon.stub(libs.shelbyGT, 'FrameConversationView').returns(this.GuideOverlayViewStub);
+      // this.FrameConversationViewStub = sinon.stub(libs.shelbyGT, 'FrameConversationView').returns(this.GuideOverlayViewStub);
       this.FrameRollingViewStub = sinon.stub(libs.shelbyGT, 'FrameRollingView').returns(this.GuideOverlayViewStub);
       this.FrameSharingInGuideViewStub = sinon.stub(libs.shelbyGT, 'FrameSharingInGuideView').returns(this.GuideOverlayViewStub);
 
@@ -50,7 +50,7 @@ describe("GuideOverlayManagerView", function() {
     });
 
     afterEach(function() {
-      this.FrameConversationViewStub.restore();
+      // this.FrameConversationViewStub.restore();
       this.FrameRollingViewStub.restore();
       this.FrameSharingInGuideViewStub.restore();
 
@@ -71,7 +71,7 @@ describe("GuideOverlayManagerView", function() {
       expect(this.GuideOverlayViewStub.reveal).toHaveBeenCalled();
       expect(this.view.$el).toContain(this.GuideOverlayViewStub.el);
     });
-        
+
     it("should create, insert, and reveal correct overlay view when guide overlay model changes to rolling", function() {
       this.guideOverlayModel.set({
         activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.rolling,
@@ -169,7 +169,7 @@ describe("GuideOverlayManagerView", function() {
       expect(this.hideSpy.callCount).toEqual(childCount);
       this.hideSpy.restore();
       this.hideSpy = sinon.spy(this.GuideOverlayViewStub, 'hide');
-      
+
       childCount = this.view.children.value().length;
       this.guideOverlayModel.set({
         activeGuideOverlayType : libs.shelbyGT.GuideOverlayType.rolling,

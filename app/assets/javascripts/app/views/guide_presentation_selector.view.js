@@ -47,10 +47,10 @@
     },
 
     _goToStream : function(e){
-      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
+      // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
         shelby.router.navigate('stream', {trigger: true});
         shelby.models.userDesires.set({guideShown: true});
-      }
+      // }
     },
 
     _goToExplore : function(e) {
@@ -62,16 +62,16 @@
     },
 
     _goToMe : function(){
-      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
+      // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
         shelby.router.navigate(shelby.models.user.get('nickname'), {trigger:true});
         shelby.models.userDesires.set({guideShown: true});
-      }
+      // }
     },
 
     _goToMail : function(){
-      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.MAIL) ){
+      // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.MAIL) ){
         window.open("/mail", "_shelbyMail");
-      }
+      // }
     },
 
     _goToAdmin : function(){

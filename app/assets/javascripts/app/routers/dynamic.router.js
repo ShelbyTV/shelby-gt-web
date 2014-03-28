@@ -726,7 +726,7 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     shelby.models.guide.set('displayIsolatedRoll', options.isIsolatedRoll);
     shelby.models.guide.set('hostName', options.hostName);
 
-    this._setupAnonUserViews(options);
+    // this._setupAnonUserViews(options);
     //--------------------------------------//
 
     shelby.views.layoutSwitcher = shelby.views.layoutSwitcher ||
@@ -746,15 +746,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
         });
 
     if(!Browser.isIos()){
-      ///////////////////
-      // Not sure if this fits with current strategy, commenting out for now.
-      // if( !shelby.models.user.isNotLoggedIn() ) {
-      //   shelby.views.extensionBannerNotification = shelby.views.extensionBannerNotification ||
-      //     new libs.shelbyGT.ExtensionBannerNotification({
-      //       guideModel : shelby.models.guide
-      //     });
-      // }
-
       shelby.views.keyboardControls = shelby.views.keyboardControls ||
           new libs.shelbyGT.KeyboardControlsView();
     }
@@ -782,10 +773,10 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
     }
   },
 
-  _setupAnonUserViews : function(options){
-    //this view will not ever render if user is not anonymous
-    shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerNotificationView();
-  },
+  // _setupAnonUserViews : function(options){
+  //   //this view will not ever render if user is not anonymous
+  //   shelby.views.anonBanner = shelby.views.anonBanner || new libs.shelbyGT.AnonBannerNotificationView();
+  // },
 
   _setupRollView : function(roll, title, options, topLevelViewsOptions){
     // default options

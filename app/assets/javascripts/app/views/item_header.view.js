@@ -3,7 +3,7 @@
   // shorten names of included library prototypes
   var RollHeaderView = libs.shelbyGT.RollHeaderView;
   var SearchHeaderView = libs.shelbyGT.SearchHeaderView;
-  var IsoRollHeaderView = libs.shelbyGT.IsoRollHeaderView;
+  // var IsoRollHeaderView = libs.shelbyGT.IsoRollHeaderView;
 
   libs.shelbyGT.ItemHeaderView = Support.CompositeView.extend({
 
@@ -33,12 +33,12 @@
 
     _mapInsertContentsView : function(){
       this._leaveChildren();
-      if (this.model.get('displayIsolatedRoll')) {
-        //isolated roll also uses full app width IsoRollAppHeaderView, see dynamic.router.js
-        if (this.model.has('currentRollModel')) {
-          this.appendChild(new IsoRollHeaderView({model:this.model.get('currentRollModel')}));
-        }
-      } else {
+      // if (this.model.get('displayIsolatedRoll')) {
+      //   //isolated roll also uses full app width IsoRollAppHeaderView, see dynamic.router.js
+      //   if (this.model.has('currentRollModel')) {
+      //     this.appendChild(new IsoRollHeaderView({model:this.model.get('currentRollModel')}));
+      //   }
+      // } else {
         switch (this.model.get('displayState')) {
           case libs.shelbyGT.DisplayState.standardRoll :
           case libs.shelbyGT.DisplayState.watchLaterRoll :
@@ -63,7 +63,7 @@
             this.appendChild(new SearchHeaderView({}));
             break;
         }
-      }
+      // }
     }
 
   });

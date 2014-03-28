@@ -82,9 +82,9 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   },
 
   _showHome : function(){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
+    // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
       shelby.router.navigate('stream', {trigger:true});
-    }
+    // }
   },
 
   _showUserPreferences : function(){
