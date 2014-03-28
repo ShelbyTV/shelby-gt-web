@@ -8,8 +8,10 @@
 
   background-color: $base;
   border: 1px solid #DDD;
+  height: 3em;
   position: relative;
   overflow: visible;
+  width: 3em;
 
   img {
     max-width: 100%;
@@ -17,6 +19,11 @@
 
   &.missing-avatar {
     background-image: url($icon-missing-avatar) !important;
+  }
+
+  @media screen and (max-width: $mq-five-ish){
+    height: 2em;
+    width: 2em;
   }
 }
   //mods
@@ -45,19 +52,13 @@
   }
 
   .avatar--small {
-    height: 3em;
-    width: 3em;
-
-    @media screen and (max-width: $mq-five-ish){
-      height: 2em;
-      width: 2em;
-    }
   }
 
   .avatar--tiny {
     height: 2em;
     width: 2em;
   }
+  //badges for special-cases
   .avatar--facebook,
   .avatar--twitter,
   .avatar--tumblr,
@@ -66,7 +67,6 @@
     &:before {
       background-color: $base-frame;
       border-radius: 4px;
-      // box-shadow: -1px -1px 1px 0 rgba(0,0,0,0.1);
       bottom: -4px;
       color: $button-color;
       height: 1em;
@@ -74,9 +74,8 @@
       padding: 0.3em;
       position: absolute;
       right: -4px;
-      width: 1em;
       text-align: center;
-      // text-shadow: $shadow-text;
+      width: 1em;
       z-index: 1;
     }
   }

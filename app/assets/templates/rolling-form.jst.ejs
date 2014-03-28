@@ -1,5 +1,5 @@
 <% if (isAnonymous) { %>
-  <% if(!dashboardEntry.isRecommendationEntry()) { %>
+  <% if(dashboardEntry && !dashboardEntry.isRecommendationEntry()) { %>
     <footer class="media_module frame-footer clearfix">
       <%= SHELBYJST['user-avatar']({
         avatar    : libs.shelbyGT.viewHelpers.user.avatarUrl(frame.get('creator')),
