@@ -34,7 +34,7 @@
     render : function(){
       this.$el.html(this.template({
         user: shelby.models.user,
-        userNickname: libs.shelbyGT.viewHelpers.user.displayUsername()
+        userNickname: libs.shelbyGT.viewHelpers.user.displayUsername(shelby.models.user)
       }));
       // not rendering this right now. coming back to it when we can focus on optimizing. -his
       // this.renderChild(new libs.shelbyGT.InviteFormView({

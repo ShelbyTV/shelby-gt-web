@@ -35,11 +35,13 @@
   <div class="frame-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
     <div class="frame-body">
       <ul class="list list--inline frame-menu" role="menubar">
-        <li class="list__item" role="menuitem">
-          <button class="button_primer button_green button_command button_command--roll js-share-frame">
-            <span class="icon icon-roll"></span>Share…
-          </button>
-        </li>
+        <% if(!(isRecommendation && user.isAnonymous)){ %>
+          <li class="list__item" role="menuitem">
+            <button class="button_primer button_green button_command button_command--roll js-share-frame">
+              <span class="icon icon-roll"></span>Share…
+            </button>
+          </li>
+        <% } %>
 
         <li class="list__item" role="menuitem">
           <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
@@ -86,17 +88,12 @@
       }
     %>
       <footer class="media_module frame-footer clearfix">
-         <% if (clickableCreator) { %>
-           <a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= creator.get('nickname') %>">
-             <span class="image_module xuser-avatar<%= avatarClass %> media_image js-xuser-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
-               <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-             </span>
-           </a>
-         <% } else { %>
-           <span class="image_module xuser-avatar<%= avatarClass %> media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
-             <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-           </span>
-         <% } %>
+          <%=  SHELBYJST['user-avatar']({
+            avatar    : libs.shelbyGT.viewHelpers.user.avatarUrl(creator),
+            clickable : clickableCreator,
+            modifier  : avatarClass,
+            nickname  : creatorNickname,
+          }) %>
 
           <div class="media_body">
             <% var hasComment = messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id') %>

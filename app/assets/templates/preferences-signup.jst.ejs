@@ -1,49 +1,49 @@
 <form accept-charset="UTF-8" action="/preferences/profile" class="form_module js-submit-signup" method="post">
-    <div style="margin:0;padding:0;display:inline">
-      <input name="utf8" type="hidden" value="✓">
-      <input name="<%= csrfParam %>" type="hidden" value="<%= authToken %>">
-    </div>
+  <div style="margin:0;padding:0;display:inline">
+    <input name="utf8" type="hidden" value="✓">
+    <input name="<%= csrfParam %>" type="hidden" value="<%= authToken %>">
+  </div>
 
-    <h1 class="form__legend">
-      Signup to update your profile
-    </h1>
+  <h1 class="form__legend">
+    Signup to update your profile
+  </h1>
 
-    <fieldset class="form_fieldset">
-      <label for="userFullname" class="form_label">
-        Full Name
-      </label>
-      <span class="form_error" data-error="You must provide your full name"></span>
-      <input required="" type="text" class="form_input" id="userFullname" name="userFullname" value="">
-    </fieldset>
+  <fieldset class="form_fieldset">
+    <label for="userFullname" class="form_label">
+      Full Name
+    </label>
+    <span class="form_error" data-error="You must provide your full name"></span>
+    <input required="" type="text" class="form_input" id="userFullname" name="userFullname" value="">
+  </fieldset>
 
-    <fieldset class="form_fieldset">
-      <label for="userNickname" class="form_label">
-        Username
-      </label>
-      <span class="form_error" data-error="You must provide a username"></span>
-      <input required="" type="text" class="form_input" id="userNickname" name="userNickname" value="">
-    </fieldset>
+  <fieldset class="form_fieldset">
+    <label for="userNickname" class="form_label">
+      Username
+    </label>
+    <span class="form_error" data-error="You must provide a username"></span>
+    <input required="" type="text" class="form_input" id="userNickname" name="userNickname" value="">
+  </fieldset>
 
-    <fieldset class="form_fieldset">
-      <label for="userEmail" class="form_label">
-        Email
-      </label>
-      <span class="form_error" data-error="You must provide an email address"></span>
-      <input required="" type="email" class="form_input" id="userEmail" name="userEmail" placeholder="email@address.com" value="">
-    </fieldset>
+  <fieldset class="form_fieldset">
+    <label for="userEmail" class="form_label">
+      Email
+    </label>
+    <span class="form_error" data-error="You must provide an email address"></span>
+    <input required="" type="email" class="form_input" id="userEmail" name="userEmail" placeholder="email@address.com" value="">
+  </fieldset>
 
-    <fieldset class="form_fieldset">
-      <label class="form_label" for="password">Password</label>
-      <span class="form_error js-form-error">Password must be at least five characters</span>
-      <input class="form_input" id="password" name="password" placeholder="*****" required="required" type="password">
-      <span class="form__description">We never spam.</span>
-    </fieldset>
+  <fieldset class="form_fieldset">
+    <label class="form_label" for="password">Password</label>
+    <span class="form_error js-form-error">Password must be at least five characters</span>
+    <input class="form_input" id="password" name="password" placeholder="*****" required="required" type="password">
+    <span class="form__description">We never spam.</span>
+  </fieldset>
 
-    <fieldset class="form_fieldset">
-      <button type="submit" class="button_primer button_command button_command--submit button_green js-signup-submit">
-        Signup
-      </button>
-    </fieldset>
+  <fieldset class="form_fieldset">
+    <button type="submit" class="button_primer button_command button_command--submit button_green js-signup-submit">
+      Signup
+    </button>
+  </fieldset>
 </form>
 
 </form>

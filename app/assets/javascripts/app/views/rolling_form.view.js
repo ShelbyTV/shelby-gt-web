@@ -20,11 +20,12 @@
   libs.shelbyGT.RollingFormView = Support.CompositeView.extend({
 
     events : {
-      "click .js-share-it"                  : '_doShare',
+      "click .js-share-it"                 : '_doShare',
       "focus #js-sharing-message"          : '_clearErrors',
       "click .js-facebook-post"            : '_shareToFacebook',
       "change .js-toggle-twitter-sharing"  : '_toggleCheckboxButton',
-      "change .js-toggle-facebook-sharing" : '_toggleCheckboxButton'
+      "change .js-toggle-facebook-sharing" : '_toggleCheckboxButton',
+      "click .js-toggle-comment"           : "_toggleComment",
     },
 
     className : 'rolling-form',
@@ -56,12 +57,15 @@
       }
 
       this.$el.html(this.template({
+        dashboardEntry      : this._dashboardEntry,
         enabledDestinations : enabledDestinations,
-        frame : this._frame,
-        video : this._video,
-        roll : this._roll,
-        user : shelby.models.user,
-        userLoggedIn : !shelby.models.user.isNotLoggedIn()
+        frame               : this._frame,
+        isAnonymous         : shelby.models.user.isAnonymous(),
+        messages            : libs.shelbyGT.viewHelpers.frame.getMessages(this._frame),
+        video               : this._video,
+        roll                : this._roll,
+        user                : shelby.models.user,
+        userLoggedIn        : !shelby.models.user.isNotLoggedIn()
       }));
       this._checkAndRenderShortlink();
 
@@ -79,6 +83,14 @@
 
     setRoll: function(roll){
       this._roll = roll;
+    },
+
+    _toggleComment : function(e){
+      // if the click was on an anchor within the frame comment just let the normal
+      // link handling occur without showing/hiding the rest of the comment
+      if (!$(e.target).is('a')) {
+        $(e.currentTarget).toggleClass('line-clamp--open');
+      }
     },
 
     _doShare : function(e){
