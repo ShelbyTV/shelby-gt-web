@@ -8,13 +8,22 @@
 
   background-color: $base;
   border: 1px solid #DDD;
-  margin: 0 auto;
+  position: relative;
+  overflow: visible;
 
   img {
     max-width: 100%;
   }
+
+  &.missing-avatar {
+    background-image: url($icon-missing-avatar) !important;
+  }
 }
   //mods
+  .avatar--center {
+    margin: 0 auto;
+  }
+
   .avatar--inline {
     display: inline-block;
     vertical-align: middle;
@@ -28,14 +37,74 @@
   .avatar--medium {
     height: 4em;
     width: 4em;
+
+    @media screen and (max-width: $mq-five-ish){
+      height: 3em;
+      width: 3em;
+    }
   }
 
   .avatar--small {
     height: 3em;
     width: 3em;
+
+    @media screen and (max-width: $mq-five-ish){
+      height: 2em;
+      width: 2em;
+    }
   }
 
   .avatar--tiny {
     height: 2em;
     width: 2em;
   }
+  .avatar--facebook,
+  .avatar--twitter,
+  .avatar--tumblr,
+  .avatar--featured,
+  .avatar--liker {
+    &:before {
+      background-color: $base-frame;
+      border-radius: 4px;
+      // box-shadow: -1px -1px 1px 0 rgba(0,0,0,0.1);
+      bottom: -4px;
+      color: $button-color;
+      height: 1em;
+      font-size: 1.2em;
+      padding: 0.3em;
+      position: absolute;
+      right: -4px;
+      width: 1em;
+      text-align: center;
+      // text-shadow: $shadow-text;
+      z-index: 1;
+    }
+  }
+  .avatar--facebook {
+    &:before {
+      background-color: $facebook-blue;
+    }
+  }
+  .avatar--twitter {
+    &:before {
+      background-color: $twitter-blue;
+    }
+  }
+  .avatar--tumblr {
+    &:before {
+      background-color: $tumblr-blue;
+    }
+  }
+  .avatar--featured {
+    &:before {
+      background-color: $ui-green;
+    }
+  }
+  .avatar--liker {
+    &:before {
+      background-color: $ui-red;
+      padding-left: 0.1em;
+      padding-right: 0.5em;
+    }
+  }
+

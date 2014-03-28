@@ -1,17 +1,18 @@
 <%
   var
       nickname = libs.shelbyGT.viewHelpers.user.displayUsername(shelby.models.user),
-      avatar   = libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll),
       username = (isInAppUserProfile) ? nickname : (libs.shelbyGT.viewHelpers.roll.titleForDisplay(roll) || ''),
       realname = (isInAppUserProfile) ? shelby.models.user.get('name') : (user.get('name') || '');
 %>
 
 <div class="user clearfix">
   <div class="media_module user__lining clearfix">
-    <span class="media_image image_module avatar avatar--small user__avatar" role="img" style="background-image:url(<%= avatar %>);">
-      <img class="visuallyhidden" src="<%= avatar %>"/>
-    </span><!-- eo media_image -->
-
+    <%= SHELBYJST['user-avatar']({
+      avatar    : libs.shelbyGT.viewHelpers.user.avatarUrlForRoll(roll),
+      clickable : false,
+      modifier  : '',
+      nickname  : username
+    }) %>
     <div class="media_body">
       <h3 class="user__h1">
         <%= username %>

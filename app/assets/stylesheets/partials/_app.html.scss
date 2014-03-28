@@ -262,17 +262,17 @@ a{
       .frame-footer {
         margin: 5px 5px 2px;
 
-        .xuser-avatar {
+        .avatar {
           height: 18px;
           width: 18px;
           margin-right: 5px;
         }
 
-        .xuser-avatar--facebook,
-        .xuser-avatar--twitter,
-        .xuser-avatar--tumblr,
-        .xuser-avatar--featured,
-        .xuser-avatar--liker {
+        .avatar--facebook,
+        .avatar--twitter,
+        .avatar--tumblr,
+        .avatar--featured,
+        .avatar--liker {
           &:before {
             font-size: 0.9em;
           }

@@ -9,7 +9,7 @@
   <form class="new-comment clearfix">
     <div class="media_module clearfix">
       <a href="#" onclick="return false;" class="media_image">
-        <span class="image_module xuser-avatar<%= (!userAvatar) ? ' missing-avatar' : ''%>" style="background-image: url(<%= userAvatar %>);" role="img">
+        <span class="image_module avatar<%= (!userAvatar) ? ' missing-avatar' : ''%>" style="background-image: url(<%= userAvatar %>);" role="img">
           <img src="<%= userAvatar %>" class="visuallyhidden" title="<%= user.get('nickname') %>" alt="<%= user.get('nickname') %>">
         </span>
       </a>

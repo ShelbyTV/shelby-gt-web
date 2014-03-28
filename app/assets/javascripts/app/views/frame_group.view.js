@@ -140,7 +140,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       if (isChannelRecommendation) {
         var color = shelby.config.recommendations.displaySettings[libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation].color;
         this.$('.js-xuser-data').addClass("xuser-data--" + color).addClass("xuser-data--recommendation");
-        this.$('.js-xuser-avatar').addClass("xuser-avatar--featured icon-star");
+        this.$('.js-xuser-avatar').addClass("avatar--featured icon-star");
       }
 
       this.renderChild(new libs.shelbyGT.FrameLikesView({

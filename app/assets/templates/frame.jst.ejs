@@ -14,7 +14,7 @@
 <% var userisNotLoggedIn = user.isNotLoggedIn() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
-<% var isFauxUser = creator && creator.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.faux %>
+<% var isFauxUser = libs.shelbyGT.viewHelpers.user.isFaux(creator) %>
 <% var originUser = creator && _(creator.get('authentications')).where({ provider : 'facebook' }) %>
 <% var inviteFauxUser = isFauxUser && originUser.length %>
 
@@ -81,9 +81,9 @@
       var avatarClass = "";
       if (!isChannelRecommendation) {
         if (creatorIsLiker) {
-          avatarClass = " xuser-avatar--liker icon-like";
+          avatarClass = " avatar--liker icon-like";
         } else if (fauxUserOrigin) {
-          avatarClass = " xuser-avatar--" + fauxUserOrigin + " icon-" + fauxUserOrigin;
+          avatarClass = " avatar--" + fauxUserOrigin + " icon-" + fauxUserOrigin;
         }
       }
     %>

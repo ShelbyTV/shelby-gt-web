@@ -72,11 +72,11 @@ a.frame {
       .frame-likes {
         color: #bbb;
       }
-      .frame-likes-avatar {
-        background-color: #ddd;
-        display: inline-block;
-        vertical-align: -9px;
-      }
+      // .frame-likes-avatar {
+      //   background-color: #ddd;
+      //   display: inline-block;
+      //   vertical-align: -9px;
+      // }
       .xuser-message {
         background-color: #bbb;
         color: #bbb;
@@ -328,66 +328,66 @@ a.frame {
       float: none;
     }
 
-.xuser-avatar {
-  border-radius: 3px;
-  height: 33px;
-  width: 33px;
-  position: relative;
-  overflow: visible;
+// .xuser-avatar {
+//   border-radius: 3px;
+//   height: 33px;
+//   width: 33px;
+//   position: relative;
+//   overflow: visible;
 
-  &.missing-avatar {
-    background-image: url($icon-missing-avatar) !important;
-  }
-}
-    .xuser-avatar--facebook,
-    .xuser-avatar--twitter,
-    .xuser-avatar--tumblr,
-    .xuser-avatar--featured,
-    .xuser-avatar--liker {
-      &:before {
-        background-color: $base-frame;
-        border-radius: 4px;
-        // box-shadow: -1px -1px 1px 0 rgba(0,0,0,0.1);
-        bottom: -4px;
-        color: $button-color;
-        height: 1em;
-        font-size: 1.2em;
-        padding: 0.3em;
-        position: absolute;
-        right: -4px;
-        width: 1em;
-        text-align: center;
-        // text-shadow: $shadow-text;
-        z-index: 1;
-      }
-    }
-    .xuser-avatar--facebook {
-      &:before {
-        background-color: $facebook-blue;
-      }
-    }
-    .xuser-avatar--twitter {
-      &:before {
-        background-color: $twitter-blue;
-      }
-    }
-    .xuser-avatar--tumblr {
-      &:before {
-        background-color: $tumblr-blue;
-      }
-    }
-    .xuser-avatar--featured {
-      &:before {
-        background-color: $ui-green;
-      }
-    }
-    .xuser-avatar--liker {
-      &:before {
-        background-color: $ui-red;
-        padding-left: 0.1em;
-        padding-right: 0.5em;
-      }
-    }
+//   &.missing-avatar {
+//     background-image: url($icon-missing-avatar) !important;
+//   }
+// }
+    // .xuser-avatar--facebook,
+    // .xuser-avatar--twitter,
+    // .xuser-avatar--tumblr,
+    // .xuser-avatar--featured,
+    // .xuser-avatar--liker {
+    //   &:before {
+    //     background-color: $base-frame;
+    //     border-radius: 4px;
+    //     // box-shadow: -1px -1px 1px 0 rgba(0,0,0,0.1);
+    //     bottom: -4px;
+    //     color: $button-color;
+    //     height: 1em;
+    //     font-size: 1.2em;
+    //     padding: 0.3em;
+    //     position: absolute;
+    //     right: -4px;
+    //     width: 1em;
+    //     text-align: center;
+    //     // text-shadow: $shadow-text;
+    //     z-index: 1;
+    //   }
+    // }
+    // .xuser-avatar--facebook {
+    //   &:before {
+    //     background-color: $facebook-blue;
+    //   }
+    // }
+    // .xuser-avatar--twitter {
+    //   &:before {
+    //     background-color: $twitter-blue;
+    //   }
+    // }
+    // .xuser-avatar--tumblr {
+    //   &:before {
+    //     background-color: $tumblr-blue;
+    //   }
+    // }
+    // .xuser-avatar--featured {
+    //   &:before {
+    //     background-color: $ui-green;
+    //   }
+    // }
+    // .xuser-avatar--liker {
+    //   &:before {
+    //     background-color: $ui-red;
+    //     padding-left: 0.1em;
+    //     padding-right: 0.5em;
+    //   }
+    // }
 
 //------------------------------------------------------------------------------
 //  faux users have special frames
@@ -659,15 +659,15 @@ a.frame {
   display: inline-block;
   // N.B. firefox doesn't handle inline whitespace gracefully.
   // gross cross-browser hack, works in concert with font-size adjust on .frame-likes-avatars above.
-  font-size: 16px;
+  font-size: 13px;
 }
 
-.frame-likes-avatar {
-  @include roundies(avatar);
+// .frame-likes-avatar {
+//   @include roundies(avatar);
 
-  height: 26px;
-  width: 26px;
-}
+//   height: 26px;
+//   width: 26px;
+// }
 
 //------------------------------------------------------------------------------
 //  frame via search (not a "real" frame, really just a video)

@@ -1,11 +1,11 @@
 <% if (clickable) { %>
   <a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= nickname %>">
-    <span class="image_module xuser-avatar<%= modifier %> media_image js-xuser-avatar" style="background-image: url(<%= avatar %>);" role="img">
+    <span class="media_image image_module avatar<%= modifier %> avatar avatar--small user__avatar js-xuser-avatar" style="background-image: url(<%= avatar %>);" role="img">
       <img src="<%= avatar %>" class="visuallyhidden" title="<%= nickname %>" alt="<%= nickname %>">
     </span>
   </a>
 <% } else { %>
-  <span class="image_module xuser-avatar<%= modifier %> media_image" style="background-image: url(<%= avatar %>);" role="img">
+  <span class="media_image image_module avatar<%= modifier %> avatar avatar--small user__avatar" style="background-image: url(<%= avatar %>);" role="img">
     <img src="<%= avatar %>" class="visuallyhidden" title="<%= nickname %>" alt="<%= nickname %>">
   </span>
 <% } %>

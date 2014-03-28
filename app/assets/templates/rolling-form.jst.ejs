@@ -5,14 +5,12 @@
         avatar    : libs.shelbyGT.viewHelpers.user.avatarUrl(frame.get('creator')),
         clickable : false,
         modifier  : '',
-        nickname  : user.get('nickname') || '',
+        nickname  : user.get('nickname') || ''
       }) %>
 
       <div class="media_body">
         <p class="xuser-data js-xuser-data">
-          <strong>
-              <%= frame.get('creator').get('nickname') %>
-          </strong>
+          <strong><%= frame.get('creator').get('nickname') %></strong>
         </p>
 
         <% var hasComment = messages.models.length > 0 && frame.get('creator').get('id') == messages.models[0].get('user_id') %>
