@@ -26,7 +26,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   template : function(obj){
     try {
-    if (obj.frameGroup.get('collapsed')) {
+      if (obj.frameGroup.get('collapsed')) {
         return SHELBYJST['frame-collapsed'](obj);
       }
       else {
