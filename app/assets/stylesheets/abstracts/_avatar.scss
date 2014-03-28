@@ -21,10 +21,10 @@
     background-image: url($icon-missing-avatar) !important;
   }
 
-  @media screen and (max-width: $mq-five-ish){
-    height: 2em;
-    width: 2em;
-  }
+  // @media screen and (max-width: $mq-five-ish){
+  //   height: 2em;
+  //   width: 2em;
+  // }
 }
   //mods
   .avatar--center {
@@ -44,11 +44,6 @@
   .avatar--medium {
     height: 4em;
     width: 4em;
-
-    @media screen and (max-width: $mq-five-ish){
-      height: 3em;
-      width: 3em;
-    }
   }
 
   .avatar--small {

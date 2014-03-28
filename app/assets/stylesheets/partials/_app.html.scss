@@ -262,10 +262,15 @@ a{
       .frame-footer {
         margin: 5px 5px 2px;
 
-        .avatar {
-          height: 18px;
-          width: 18px;
-          margin-right: 5px;
+        .avatar--small {
+          height: 2em;
+          width: 2em;
+          margin-right: 0.8em;
+        }
+        .avatar--medium {
+          height: 3em;
+          width: 3em;
+          margin-right: 0.8em;
         }
 
         .avatar--facebook,
