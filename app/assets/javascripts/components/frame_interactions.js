@@ -46,7 +46,7 @@ $(function(){
           else {
             return {
               // this.media == video
-              url: Shelby.apiRoot + '/POST/roll/' + Shelby.User.get('watch_later_roll_id') + '/frames',
+              url: Shelby.secure.apiRoot + '/POST/roll/' + Shelby.User.get('watch_later_roll_id') + '/frames',
               data: {
                 provider_id   : this.media.get('provider_id'),
                 provider_name : this.media.get('provider_name'),
@@ -273,7 +273,7 @@ $(function(){
 
       $.ajax({
         type: 'GET',
-        url: Shelby.apiRoot + '/POST/roll/' + this.options.user.get('personal_roll_id') + '/frames',
+        url: Shelby.secure.apiRoot + '/POST/roll/' + this.options.user.get('personal_roll_id') + '/frames',
         dataType: "jsonp",
         timeout: 10000,
         crossDomain: true,

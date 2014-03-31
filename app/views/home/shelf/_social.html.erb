@@ -13,7 +13,7 @@
           </p>
 
           <p class="shelf__block">
-            <% if [:amazon].include? @mobile_os %>
+            <% if [:android,:amazon].include? @mobile_os %>
               <%= form_tag "#{appropriate_subdirectory}/user/create", :class => "form_module js-get-started-form" do %>
                 <%= hidden_field_tag 'anonymous', true %>
                 <button class="button_primer button_green button_command button_command--flexible one-half shelf__button js-track-event js-get-started-button" data-ga_action="Click Get Started" data-ga_label="<%= request.referer || 'direct' %>"><span class="button_label">Get Started</span></button>

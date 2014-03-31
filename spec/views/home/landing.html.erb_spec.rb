@@ -33,6 +33,28 @@ describe "home/landing" do
         rendered.should =~ /#{Settings::ShelbyAPI.url}\/auth\/facebook/
         rendered.should =~ /#{Settings::ShelbyAPI.url}\/user\/password\/new/
       end
+
+      context "logged in" do
+        before(:all) do
+          assign(:user_signed_in, :true)
+        end
+
+        it "doesn't have a CTA button" do
+          render
+          rendered.should_not =~ /#{Settings::Marketing.cta_button_short}/
+        end
+      end
+
+      context "logged out" do
+        before(:all) do
+          assign(:user_signed_in, nil)
+        end
+
+        it "has a CTA button" do
+          render
+          rendered.should =~ /#{Settings::Marketing.cta_button_short}/
+        end
+      end
     end
   end
 
