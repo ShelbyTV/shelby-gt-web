@@ -33,4 +33,24 @@
   }
 }
 
+//annotations!
+.css-tag:after {
+  background: violet;
+  border-radius: 10px;
+  color: white;
+  content: attr(data-note);
+  font-size: 11px;
+  font-weight: bold;
+  height: 12px;
+  line-height: 1;
+  margin-top: -3px;
+  position: absolute;
+  padding: 3px;
+  text-align: center;
+  width: 12px;
+  z-index: 100;
+}
 
+//sections
+#videocard {
+}

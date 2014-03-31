@@ -7,12 +7,13 @@
       <article id="123" class="animate_module frame" style="font-size: 11px; line-height: 1.5">
         <span class="frame-header">
           <h1 class="frame-title" title="Video Title">
-            Video Title
+            Video Title <span class="css-tag" data-note="A"></span>
           </h1>
         </span>
 
         <div class="frame-body-wrapper clearfix">
           <div class="frame-body">
+            <span class="css-tag" data-note="B"></span>
             <!-- … -->
             <a href="#432" style="background-image: url(thumb.jpg);" onclick="return false;" class="video__wrapper image_module">
               <img class="visuallyhidden" src="thumb.jpg" title="Video Title" alt="Video Title thumbnail">
@@ -20,6 +21,7 @@
             <!-- … -->
           </div><!-- eo .frame-body -->
 
+          <span class="css-tag" data-note="C"></span>
           <footer class="media_module frame-footer clearfix">
             <a href="#/username">
               <span class="image_module media_image xuser-avatar" style="background-image: url(avatar.jpg);" role="img">
@@ -29,6 +31,7 @@
 
             <div class="media_body">
               <a href="#/username/shares/123" class="xuser-data-timestamp">
+                <span class="css-tag" data-note="D"></span>
                 1 min ago
               </a>
 
@@ -40,8 +43,9 @@
               </p>
 
               <p class="xuser-message line-clamp js-line-clamp">
-                A landing-party beams down and a few remaining survivors are found, including a young woman, Vina, who was born shortly before the Columbia's crash, and whose parents had died in connection with the crash. Unknown to Pike and the others, they are being monitored by the planet's native inhabitants, the Talosians, who can create very realistic illusions and wish to study the humans that have come to their planet.
+                 A landing-party beams down and a few remaining survivors are found, including a young woman, Vina, who was born shortly before the Columbia's crash, and whose parents had died in connection with the crash. Unknown to Pike and the others, they are being monitored by the planet's native inhabitants, the Talosians, who can create very realistic illusions and wish to study the humans that have come to their planet.
               </p>
+              <span class="css-tag" data-note="F" style="float:right;margin-top: -10px;margin-left: -10px;"></span>
             </div><!-- eo .media_body -->
           </footer><!-- eo .media_module-->
         </div><!-- eo .frame-body-wrapper -->
@@ -49,6 +53,15 @@
       </article>
       <span style="float:right;margin-right:30px;font-size:10px;line-height: 2;"><small>Expand/Collapse by clicking 'More…' &uarr;</small></span>
     </div>
+    <small style="color:purple">
+      <ol type="A">
+        <li>Video titles are extremely valuable bits of information and cannot be truncated. For instance, it is common for multi-part videos to have their signifiers (ie. A long title like 'Star Trek TOS, "For the World Is Hollow and I Have Touched the Sky", S3Ep8, <em>part 2 of 4</em>') at the end of the title. To truncate this information would negatively impact the experience. </li>
+        <li>It is often the case with Youtube videos that video thumbnails are formatted into a 4:3 rectangle have distracting letterboxing on the top and bottom, so constraining all thumbnails to the 19:6 ratio and trimming off the bottom ensures that the entire thumbnail is used. The information lost by this cropping method does not negatively impact the experience. </li>
+        <li>The relationship between a user's avatar, name, and what they said are considered an atomic unit of information. Disrupting this lock-up makes it harder to understand the user and their relationship to the associated video content.</li>
+        <li>The relative time stamp is easier to process, additionally, it is a permalink. Every videocard has a unique URL for sharing.</li>
+        <li>To ensure a consistent vertical rhythm, abnormally long comments are tucked in. Obfuscating a user's comment would hurt the experience of understanding the video card in it's entirety. We make it as easy as possible to get to the remainding text.</li>
+      </ol>
+    </small>
   </div>
   <div class="column column--padding two-thirds">
 <code class="language-markup">
@@ -98,7 +111,7 @@
 </pre>
 </code>
   </div>
-
+<div class="clearfix"></div>
   <h4 class="shelf__h3 clearfix">
     Videocard liked by User
   </h4>
