@@ -192,23 +192,23 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _requestCurrentFrameShareView : function(){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+    // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
       this._requestFrameShareView(this._currentFrame);
-    }
+    // }
   },
 
   _requestNextFrameShareView : function(){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+    // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
       this._requestFrameShareView(this._nextFrame);
-    }
+    // }
   },
 
   _requestFrameShareView: function(frame){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
-      var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
-      var dbEntry = frameGroup.get('primaryDashboardEntry');
-      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, frame, dbEntry);
-    }
+    // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
+    var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
+    var dbEntry = frameGroup.get('primaryDashboardEntry');
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, frame, dbEntry);
+    // }
   },
 
   _queueCurrentFrame : function(el){
@@ -220,12 +220,12 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _queueFrame : function(frame, el){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-      frame.like({likeOrigin: this.options.eventTrackingCategory});
-      var $target = $(el.currentTarget);
-      $target.toggleClass('queued js-queued').find('.label').text('Liked');
-      $target.find('.icon').addClass('icon-like--red');
-    }
+    // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
+    frame.like({likeOrigin: this.options.eventTrackingCategory});
+    var $target = $(el.currentTarget);
+    $target.toggleClass('queued js-queued').find('.label').text('Liked');
+    $target.find('.icon').addClass('icon-like--red');
+    // }
   },
 
   _skipToNextVideo : function(){
