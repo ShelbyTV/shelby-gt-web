@@ -1,4 +1,6 @@
 //= require jquery
+//= require ./jquery-plugins/jquery.urlparams
+
 $(function(){
   $('.js-shelf').height(window.innerHeight);
 
