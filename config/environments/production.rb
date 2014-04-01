@@ -51,7 +51,7 @@ ShelbyGtWeb::Application.configure do
   config.action_controller.asset_host = "//shelby.tv"
 
   # Precompile additional assets (application.js, application.css, image files must be included if they're going to be cache-busted)
-  config.assets.precompile = %w(*.eot *.woff *.ttf *.svg *.gif *.jpg *.jpeg *.png common.js deferred.js landing.js radar.js seovideo.js shares.js shares/shares_enabled.js shelby.js shelbify.js extension/includes.js mobile.js turbo.js experience.js signup.js syntax.js png.css print.css screen.css landing.css seovideo.css extension.css experience.css mobile.css radar.css signup.css styleguide.css syntax.css)
+  config.assets.precompile = %w(*.eot *.woff *.ttf *.svg *.gif *.jpg *.jpeg *.png common.js deferred.js landing.js radar.js seovideo.js shares.js shares/shares_enabled.js shelby.js shelbify.js styleguide.js extension/includes.js mobile.js turbo.js experience.js signup.js syntax.js png.css print.css screen.css landing.css seovideo.css extension.css experience.css mobile.css radar.css signup.css styleguide.css syntax.css)
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
