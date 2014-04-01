@@ -17,7 +17,7 @@
   <%= stylesheet_link_tag "styleguide", :media => "screen" %>
   <%= stylesheet_link_tag "syntax", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
-  <%= javascript_include_tag "common", "landing", "syntax" %>
+  <%= javascript_include_tag "common", "landing", "styleguide","syntax" %>
 
   <script>
     var shelbyTrackingCategory = "Landing Page";
@@ -84,13 +84,16 @@
           <%= render :partial => 'home/styleguides/modal' %>
           <hr/>
 
-          <%= render :partial => 'home/styleguides/guide_overlay' %>
-          <hr/>
+          <%#= render :partial => 'home/styleguides/guide_overlay' %>
+          <!-- <hr/> -->
 
           <%= render :partial => 'home/styleguides/share_panel' %>
           <hr/>
 
           <%= render :partial => 'home/styleguides/videocard' %>
+          <hr/>
+
+          <%= render :partial => 'home/styleguides/share_page' %>
           <hr/>
 
 

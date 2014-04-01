@@ -45,7 +45,7 @@
               <p class="xuser-message line-clamp js-line-clamp">
                  A landing-party beams down and a few remaining survivors are found, including a young woman, Vina, who was born shortly before the Columbia's crash, and whose parents had died in connection with the crash. Unknown to Pike and the others, they are being monitored by the planet's native inhabitants, the Talosians, who can create very realistic illusions and wish to study the humans that have come to their planet.
               </p>
-              <span class="css-tag" data-note="F" style="float:right;margin-top: -10px;margin-left: -10px;"></span>
+              <span class="css-tag" data-note="E" style="float:right;margin-top: -10px;margin-left: -10px;"></span>
             </div><!-- eo .media_body -->
           </footer><!-- eo .media_module-->
         </div><!-- eo .frame-body-wrapper -->
@@ -54,12 +54,13 @@
       <span style="float:right;margin-right:30px;font-size:10px;line-height: 2;"><small>Expand/Collapse by clicking 'More…' &uarr;</small></span>
     </div>
     <small style="color:purple">
-      <ol type="A">
+      <ol type="A" class="js-videocard-annotations">
         <li>Video titles are extremely valuable bits of information and cannot be truncated. For instance, it is common for multi-part videos to have their signifiers (ie. A long title like 'Star Trek TOS, "For the World Is Hollow and I Have Touched the Sky", S3Ep8, <em>part 2 of 4</em>') at the end of the title. To truncate this information would negatively impact the experience. </li>
-        <li>It is often the case with Youtube videos that video thumbnails are formatted into a 4:3 rectangle have distracting letterboxing on the top and bottom, so constraining all thumbnails to the 19:6 ratio and trimming off the bottom ensures that the entire thumbnail is used. The information lost by this cropping method does not negatively impact the experience. </li>
+        <li>Youtube videos that video thumbnails formatted into a 4:3 rectangle often have distracting letterboxing on the top and bottom. Constraining all thumbnails to the 19:6 ratio and trimming off the bottom ensures that the entire thumbnail is used.</li>
         <li>The relationship between a user's avatar, name, and what they said are considered an atomic unit of information. Disrupting this lock-up makes it harder to understand the user and their relationship to the associated video content.</li>
         <li>The relative time stamp is easier to process, additionally, it is a permalink. Every videocard has a unique URL for sharing.</li>
         <li>To ensure a consistent vertical rhythm, abnormally long comments are tucked in. Obfuscating a user's comment would hurt the experience of understanding the video card in it's entirety. We make it as easy as possible to get to the remainding text.</li>
+
       </ol>
     </small>
   </div>
@@ -360,12 +361,6 @@
     …
   </pre>
 </code>
-</div>
-</div>
+  </div>
 </section>
 
-<script>
-  $('.js-line-clamp').on('click',function(){
-    $(this).toggleClass('line-clamp--open');
-  });
-</script>
