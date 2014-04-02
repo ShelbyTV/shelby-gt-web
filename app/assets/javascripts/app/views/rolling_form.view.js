@@ -320,18 +320,19 @@
         },
 
         _checkAndRenderShortlink: function() {
-            var shortlink = this.options.currentFrameShortlink;
+            var twitterHref,
+                shortlink = this.options.currentFrameShortlink;
 
             if (shortlink) {
                 //this is called in this.render(), as well as change:shortlink on the frame
                 //because the pvi share button and frame button can call it separately
-                var twitterHref = this._buildTweetUrl(shortlink);
+                twitterHref = this._buildTweetUrl(shortlink);
 
                 this.$el.find('.js-tweet-share').removeClass('disabled').attr('href', twitterHref);
                 this.$el.find('.js-facebook-post').removeClass('disabled');
             } else if (this._frame._clientSideFrameType == "Search") {
                 var _searchFrameUrl = libs.shelbyGT.viewHelpers.frame.permalink(this._frame);
-                var twitterHref = this._buildTweetUrl(_searchFrameUrl);
+                twitterHref = this._buildTweetUrl(_searchFrameUrl);
                 // set tweet and fb intents to something else!
                 this.$el.find('.js-tweet-share').removeClass('disabled').attr('href', twitterHref);
                 this.$el.find('.js-facebook-post').removeClass('disabled');
