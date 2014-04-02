@@ -25,13 +25,6 @@
     </button>
   </li>
 
-  <% if (false) {  %>
-    <!-- TODO: debt -->
-    <li class="dropdown_module--no-hover dropdown_module--invite-user list__item js-guide-invite">
-      <!-- Content filled in by InviteFormView -->
-    </li>
-  <% } %>
-
   <% if (user.get('admin')) { %>
     <li class="list__item js-admin">
       <button class="app_nav__button">
@@ -53,6 +46,7 @@
           </section>
         </li><!-- eo login button/dropdown -->
   <% } %>
+
 
   <li class="dropdown_module list__item secondary-item js-guide-settings">
     <button class="dropdown_button app_nav__button app_nav__button--settings js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= userNickname %>">
@@ -127,5 +121,12 @@
         </ul>
       </div>
     </section>
+  </li>
+
+  <li class="list__item secondary-item js-search">
+    <span class="search__wrapper animate_module">
+      <span class="icon icon-search"></span>
+      <input type="text" class="search" placeholder="Search"/>
+    </span>
   </li>
 </ul><!-- eo guide-presentation-list -->

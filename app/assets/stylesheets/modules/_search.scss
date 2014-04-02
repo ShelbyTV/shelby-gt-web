@@ -4,6 +4,41 @@
 //  i.e. http://jsfiddle.net/matyus/GkcNz/
 //------------------------------------------------------------------------------
 
+.search__wrapper {
+  @include roundies;
+
+  background-color: $ui-white;
+  display: inline-block;
+  max-width: 200px;
+  position: relative;
+  width: 300px;
+
+  & > .icon {
+    color: $ui-black;
+    position: absolute;
+    right: 0.5em;
+    z-index: 1;
+  }
+
+  & > .search {
+
+    border: none;
+    font-size: 13px;
+    left: 0;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+  }
+}
+    .search__wrapper--focused {
+      max-width: 300px;
+    }
+
+.search {
+
+}
+
+
 .search_module {
   margin: 0;
 }
