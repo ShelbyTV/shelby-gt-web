@@ -22,7 +22,7 @@ class MobileController < ApplicationController
   #####  User is NOT logged in, send them to the landing page  #####
     else
       @mobile_signup_url = Settings::ShelbyAPI.url+"/auth/facebook?service=facebook&origin="+Settings::Application.mobile_url
-      if @mobile_os == :amazon
+      if @mobile_os == :amazon # add msft devices here as well.
         redirect_to '/get-started'
       else
         render '/home/landing', :layout => false
