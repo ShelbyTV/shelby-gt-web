@@ -16,7 +16,8 @@
       "click .js-admin"                    : "_goToAdmin",
       "click .js-navigate"                 : "_goToHref",
       "focus .js-search"                   : "_onFocusSearch",
-      "blur .js-search"                    : "_onBlurSearch"
+      "blur .js-search"                    : "_onBlurSearch",
+      "submit .js-search-form"             : "_onSubmitSearchForm"
     },
 
     /*el : '#js-guide-presentation-selector',*/
@@ -27,10 +28,12 @@
 
     initialize : function(){
       this.model.bind('change:displayState change:currentRollModel', this._onGuideModelChanged, this);
+      shelby.models.videoSearch.bind("change:query", this.render, this);
     },
 
     _cleanup : function(){
       this.model.unbind('change:displayState change:currentRollModel', this._onGuideModelChanged, this);
+      shelby.models.videoSearch.unbind("change:query", this.render, this);
     },
 
     render : function(){
@@ -55,6 +58,21 @@
 
     _onBlurSearch : function(e){
       this._searchInput.removeClass('focus');
+    },
+
+    _onSubmitSearchForm : function(e){
+      var query = _(this.$el.find('.js-search').find('input').val()).clean();
+      if (query) {
+        shelby.models.videoSearch.set('query', query);
+        shelby.models.videoSearch.trigger('search');
+        // event tracking
+        shelby.trackEx({
+          gaCategory : 'search',
+          gaAction : query.toLowerCase(),
+          gaLabel : shelby.models.user.get('nickname')
+        });
+      }
+      return false;
     },
 
     _goToStream : function(e){
