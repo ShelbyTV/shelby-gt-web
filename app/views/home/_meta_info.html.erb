@@ -31,7 +31,7 @@
   <% else %>
     <% description = @video['description'] %>
     <meta property="og:description" content="<%= description %>" />
-    <meta name="description"        content="<%= URI.escape(description) %>" />
+    <meta name="description"        content="<%= URI.escape(description) if description %>" />
   <% end %>
   <meta property="og:image" content="<%= @video['thumbnail_url'] %>" />
 
