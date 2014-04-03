@@ -15,7 +15,9 @@
       "click .js-mail"                     : "_goToMail",
       "click .js-admin"                    : "_goToAdmin",
       "click .js-navigate"                 : "_goToHref",
-      "focus .js-search"                   : "_onFocusSearch",
+      //----search-----------------------------------------------------
+      "click .js-search"                   : "_focusSearch",
+      "focusin .js-search"                   : "_onFocusSearch",
       "blur .js-search"                    : "_onBlurSearch",
       "submit .js-search-form"             : "_onSubmitSearchForm"
     },
@@ -49,22 +51,29 @@
       // }));
       if(shelby.models.user.isNotLoggedIn()){ this._adjustForAnonymousUser(); }
       this._setSelected();
-      this._searchInput = this.$el.find('.js-search').children(); //.js-search is the List item, get the innards.
+      this._$searchInput = this.$el.find('.js-search').find('.search__wrapper'); //.js-search is the List item, get the innards.
+    },
+
+    _focusSearch : function(e){
+      this._$searchInput.addClass('focus');
+      this.$el.find('input').focus();
     },
 
     _onFocusSearch : function(e){
-      this._searchInput.addClass('focus');
+      this._$searchInput.addClass('focus');
     },
 
     _onBlurSearch : function(e){
-      this._searchInput.removeClass('focus');
+      this._$searchInput.removeClass('focus');
     },
 
     _onSubmitSearchForm : function(e){
       var query = _(this.$el.find('.js-search').find('input').val()).clean();
       if (query) {
-        shelby.models.videoSearch.set('query', query);
-        shelby.models.videoSearch.trigger('search');
+
+        shelby.router.navigate('search?query=' + encodeURIComponent(query), {trigger: true});
+        shelby.models.userDesires.set({guideShown: true});
+        this._$searchInput.val('');
         // event tracking
         shelby.trackEx({
           gaCategory : 'search',
