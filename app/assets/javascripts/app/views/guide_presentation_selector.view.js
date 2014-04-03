@@ -14,7 +14,9 @@
       "click .js-me"                       : "_goToMe",
       "click .js-mail"                     : "_goToMail",
       "click .js-admin"                    : "_goToAdmin",
-      "click .js-navigate"                 : "_goToHref"
+      "click .js-navigate"                 : "_goToHref",
+      "focus .js-search"                   : "_onFocusSearch",
+      "blur .js-search"                    : "_onBlurSearch"
     },
 
     /*el : '#js-guide-presentation-selector',*/
@@ -44,6 +46,15 @@
       // }));
       if(shelby.models.user.isNotLoggedIn()){ this._adjustForAnonymousUser(); }
       this._setSelected();
+      this._searchInput = this.$el.find('.js-search').children(); //.js-search is the List item, get the innards.
+    },
+
+    _onFocusSearch : function(e){
+      this._searchInput.addClass('focus');
+    },
+
+    _onBlurSearch : function(e){
+      this._searchInput.removeClass('focus');
     },
 
     _goToStream : function(e){

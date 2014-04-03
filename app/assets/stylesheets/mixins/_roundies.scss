@@ -23,4 +23,7 @@
   @else if $type == right {
     border-radius: 0 $radius $radius 0;
   }
+  @else if $type == search {
+    border-radius: 12px;
+  }
 }

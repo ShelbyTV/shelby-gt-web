@@ -5,37 +5,63 @@
 //------------------------------------------------------------------------------
 
 .search__wrapper {
-  @include roundies;
+  @include roundies(search);
 
   background-color: $ui-white;
   display: inline-block;
+  height: 24px;
   max-width: 200px;
   position: relative;
-  width: 300px;
+  width: 250px;
 
   & > .icon {
     color: $ui-black;
+    font-size: 18px;
     position: absolute;
-    right: 0.5em;
+    right: 0.2em;
     z-index: 1;
   }
 
   & > .search {
-
+    background: transparent;
     border: none;
+    border-radius: inherit;
+    height: inherit;
     font-size: 13px;
     left: 0;
     margin: 0;
+    padding-left: 0.8em;
     position: absolute;
     width: 100%;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
-    .search__wrapper--focused {
-      max-width: 300px;
+    .search__wrapper--nav {
+      opacity: 0.5;
+
+      &.focus,
+      &:hover {
+        background-color: $ui-white;
+        opacity: 1;
+        width: 350px;
+      }
+
+      &.focus {
+        box-shadow: 0 0 5px $ui-white;
+      }
     }
 
 .search {
+  @include roundies(search);
 
+  border: 1px solid $ui-black;
+  border-radius: inherit;
+  font-size: 13px;
+  margin: 0;
+  padding-left: 0.8em;
 }
 
 
