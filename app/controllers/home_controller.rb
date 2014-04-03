@@ -27,6 +27,8 @@ class HomeController < ApplicationController
         # redirect to mobile web if on amazon platform
         if detect_mobile_os == :amazon
           redirect_to('/amazonapp' ) and return
+        elsif (detect_mobile_os == :windows) and !user_signed_in?
+          redirect_to('/get-started' ) and return
         end
 
         #XXX .TV subdomains
