@@ -21,10 +21,14 @@
   <link rel="icon"type="image/png" href="/favicon.png">
   <%= stylesheet_link_tag "screen", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+
   <script>
     if (typeof(shelby) == 'undefined') {
       shelby = {};
     }
+
+    <%= render :partial => '/home/partials/mobile_os_config', :formats => :js, :locals => {:mobile_os => @mobile_os} %>
+
     if (typeof(shelby.abTests) == 'undefined') {
       shelby.abTests = {};
     }

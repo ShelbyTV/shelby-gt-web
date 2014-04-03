@@ -31,6 +31,8 @@ class HomeController < ApplicationController
           redirect_to('/get-started' ) and return
         end
 
+        @mobile_os = detect_mobile_os
+
         #XXX .TV subdomains
         # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
         # controller, but until that's built, we just short-circuit right here
