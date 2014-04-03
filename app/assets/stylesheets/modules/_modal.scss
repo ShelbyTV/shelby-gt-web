@@ -1,6 +1,20 @@
+.modal__wrapper {
+  background-color: rgba(0,0,0,0.5);
+  bottom: 0;
+  left: 0;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+    .modal__wrapper--light {
+      background-color: rgba(255,255,255,0.5);
+    }
+
+
 .modal {
   background-color: $ui-gray;
-  font-size: 13px;
+  font-size: $font-size-fixed;
   margin: 4em 1.25em;
   padding: $defaultMargin;
   text-align: left;
@@ -14,7 +28,17 @@
   .user {
     font-size: 1em;
   }
+
+  //headers
+  .alpha {
+    margin-bottom: 1em;
+  }
 }
+    .modal--center {
+      margin: 0 auto;
+      padding-top: 2em;
+      text-align: center;
+    }
 
 .modal__body {
   background-color: $ui-white;
