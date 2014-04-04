@@ -85,7 +85,8 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
   _resetVideoPlayerOperation : function(){
       $('#js-welcome, .js-app-welcome').addClass('hidden');
       shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
-      if(shelby.config.ua.isAppEnabled()) {
+      //n.b. this checking for appenabled is to disable the inactivity when the guide is open for Windows Surface (or whatever other devices are deemed "app enabled")
+      if(shelby.config.ua.isAppEnabled() && shelby.models.userDesires.get('guideShown') === true) {
         shelby.userInactivity.disableUserActivityDetection();
       } else {
         shelby.userInactivity.enableUserActivityDetection();
