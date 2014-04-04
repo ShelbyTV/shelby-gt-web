@@ -17,5 +17,8 @@ shelby.config.ua = {
     android : "android",
     tablet  : "tablet",
     generic : "generic"
+  },
+  isAppEnabled: function(){
+    return this.mobileOs == this.TYPES.windows;
   }
 };
