@@ -53,7 +53,7 @@
       </article>
       <span style="float:right;margin-right:30px;font-size:10px;line-height: 2;"><small>Expand/Collapse by clicking 'More…' &uarr;</small></span>
     </div>
-    <small style="color:purple">
+    <small class="annotation">
       <ol type="A" class="js-videocard-annotations">
         <li>Video titles are extremely valuable bits of information and cannot be truncated. For instance, it is common for multi-part videos to have their signifiers (ie. A long title like 'Star Trek TOS, "For the World Is Hollow and I Have Touched the Sky", S3Ep8, <em>part 2 of 4</em>') at the end of the title. To truncate this information would negatively impact the experience. </li>
         <li>Youtube videos that video thumbnails formatted into a 4:3 rectangle often have distracting letterboxing on the top and bottom. Constraining all thumbnails to the 19:6 ratio and trimming off the bottom ensures that the entire thumbnail is used.</li>
@@ -113,9 +113,25 @@
 </code>
   </div>
 <div class="clearfix"></div>
+  <h3 class="shelf__h2 clearfix">
+    Videocard Use Cases
+  </h3>
+
+  <div class="one-third">
+    <p>
+      There are a number of use cases below, where a Videocard needs to indicate why exactly a particular card is in the user's stream.
+    </p>
+  </div>
+<div class="clearfix"></div>
   <h4 class="shelf__h3 clearfix">
     Videocard liked by User
   </h4>
+
+  <small>
+    <p class="annotation">
+
+    </p>
+  </small>
 
   <div class="column one-third">
     <div class="push--bottom" style="background-color: #f1f1f1;">
@@ -140,10 +156,6 @@
                 like this via <a class="no-faux-link" href="#">otheruser</a>
                 <!-- … -->
               </p>
-
-              <p class="xuser-message">
-                This is highly illogical.
-              </p>
             </div><!-- eo .media_body -->
           </footer><!-- eo .media_module-->
         </div><!-- eo .frame-body-wrapper -->
@@ -167,38 +179,38 @@
     Users from external social networks
   </h4>
 
-    <div class="column one-third">
-      <div class="push--bottom" style="background-color: #f1f1f1;">
-        <article id="123" class="animate_module frame" style="font-size: 11px; line-height: 1.5">
-          <div class="frame-body-wrapper clearfix">
-            <footer class="media_module frame-footer clearfix">
-              <a href="#/username">
-                <span class="image_module media_image avatar avatar--twitter icon-twitter" style="background-image: url(<%= asset_path 'avatar.jpg' %>);" role="img">
-                  <img src="<%= asset_path 'avatar.jpg' %>" class="visuallyhidden">
-                </span>
+  <div class="column one-third">
+    <div class="push--bottom" style="background-color: #f1f1f1;">
+      <article id="123" class="animate_module frame" style="font-size: 11px; line-height: 1.5">
+        <div class="frame-body-wrapper clearfix">
+          <footer class="media_module frame-footer clearfix">
+            <a href="#/username">
+              <span class="image_module media_image avatar avatar--twitter icon-twitter" style="background-image: url(<%= asset_path 'avatar.jpg' %>);" role="img">
+                <img src="<%= asset_path 'avatar.jpg' %>" class="visuallyhidden">
+              </span>
+            </a>
+
+            <div class="media_body">
+              <a href="#/username/shares/123" class="xuser-data-timestamp">
+                1 min ago
               </a>
 
-              <div class="media_body">
-                <a href="#/username/shares/123" class="xuser-data-timestamp">
-                  1 min ago
+              <p class="xuser-data">
+                <a href="#/username" class="no-faux-link">
+                  <strong>username</strong>
                 </a>
+                via <span class="capitalize">twitter</span>
+                <!-- … -->
+              </p>
 
-                <p class="xuser-data">
-                  <a href="#/username" class="no-faux-link">
-                    <strong>username</strong>
-                  </a>
-                  via <span class="capitalize">twitter</span>
-                  <!-- … -->
-                </p>
-
-                <p class="xuser-message">
-                  This is highly illogical.
-                </p>
-              </div><!-- eo .media_body -->
-            </footer><!-- eo .media_module-->
-          </div><!-- eo .frame-body-wrapper -->
-          <!-- … -->
-        </article>
+              <p class="xuser-message">
+                This is highly illogical.
+              </p>
+            </div><!-- eo .media_body -->
+          </footer><!-- eo .media_module-->
+        </div><!-- eo .frame-body-wrapper -->
+        <!-- … -->
+      </article>
 
       <article id="123" class="animate_module frame" style="font-size: 11px; line-height: 1.5">
         <div class="frame-body-wrapper clearfix">
@@ -232,6 +244,7 @@
       </article>
     </div>
   </div>
+
   <div class="column column--padding two-thirds">
 <code class="language-markup">
   <pre>&lt;!-- Twitter -->
@@ -285,7 +298,7 @@
               </p>
 
               <p class="xuser-message">
-                Because you liked "Star Trek TOS: The Menagerie"
+                Damnit Jim, I'm a doctor!
               </p>
             </div><!-- eo .media_body -->
           </footer><!-- eo .media_module-->
