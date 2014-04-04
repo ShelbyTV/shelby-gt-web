@@ -85,7 +85,11 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
   _resetVideoPlayerOperation : function(){
       $('#js-welcome, .js-app-welcome').addClass('hidden');
       shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
-      shelby.userInactivity.enableUserActivityDetection();
+      if(shelby.config.ua.isAppEnabled()) {
+        shelby.userInactivity.disableUserActivityDetection();
+      } else {
+        shelby.userInactivity.enableUserActivityDetection();
+      }
   }
 
 
