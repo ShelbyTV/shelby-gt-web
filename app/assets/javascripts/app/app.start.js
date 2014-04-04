@@ -44,7 +44,7 @@ $(document).ready(function(){
   }
   Backbone.history.start(historyOptions);
 
-  if(!Browser.isMobile() && shelby.config.ua.mobileOs !== shelby.config.ua.TYPES.windows){
+  if(!Browser.isMobile()){
     shelby.userInactivity.init();
   }
 });
