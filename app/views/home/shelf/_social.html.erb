@@ -26,12 +26,9 @@
             </br>
             <small>
               or
-              <%= form_tag "#{appropriate_subdirectory}/user/create", :class => "form_module form_module--inline js-get-started-form" do %>
-                <%= hidden_field_tag 'anonymous', true %>
-                <button type="submit" class="js-track-event button_text" data-ga_action="Click Get Started" data-ga_label="Social Shelf">
-                  <%= Settings::Marketing.cta_alternative_button %>
-                </button>
-              <% end %>
+              <a href="<%= appropriate_subdirectory %>/get-started" class="js-track-event button_text" data-ga_action="Click Try on Web" data-ga_label="Social Shelf">
+                <%= Settings::Marketing.cta_alternative_button %>
+              </a>
             </small>
           </div>
 
