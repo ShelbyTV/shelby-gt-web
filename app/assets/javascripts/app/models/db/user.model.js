@@ -71,8 +71,12 @@ libs.shelbyGT.UserModel = libs.shelbyGT.ShelbyBaseModel.extend({
       _.contains(this.get('additional_abilities'), ability);
   },
 
-  isAnonymous : function(){
+  isNotLoggedIn : function(){
     return this.get('anon');
+  },
+
+  isAnonymous : function(){
+    return this.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.anonymous;
   },
 
   trackSessionCount : function(onSuccess){

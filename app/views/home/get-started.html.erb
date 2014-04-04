@@ -1,0 +1,73 @@
+<!doctype html>
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<% # if we got any meta tag info from request display it, otherwise just render head normally %>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#" profile="http://www.w3.org/2005/10/profile">
+  <meta charset="utf-8">
+
+  <title><%= render :partial => "/home/title_tag" %></title>
+
+  <%= render :partial => "/home/meta_info" %>
+  <%= csrf_meta_tags %>
+  <meta content="user-scalable=no, width=device-width, initial-scale=0.8" name="viewport">
+  <link rel="apple-touch-icon-precomposed" href="http://shelby.tv/apple-touch-icon-precomposed.png" />
+
+  <%= stylesheet_link_tag "get-started", :media => "screen" %>
+  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+  <%= javascript_include_tag "common", "get_started" %>
+
+  <script>
+    var shelbyTrackingCategory = "Get Started Page";
+  </script>
+
+  <%= render :partial => '/home/fb_ad_tracking' %>
+</head>
+<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %> shelby--get-started image_module image_module--fill <%= ['orange','green','purple','blue'].sample %>">
+  <!-- Facebook widget -->
+  <div id="fb-root"></div>
+
+  <div class="shelby__wrapper clearfix" role="main">
+
+    <div class="shelf__wrapper vertical-align-hack js-shelf">
+      <div class="vertical-align-hack__el">
+        <div class="shelf clearfix">
+          <div class="shelf__lining">
+            <h1 class="shelf__h1">
+              <span class="shelby_logo">
+                <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+              </span>
+            </h1>
+
+            <h2 class="shelf__h2">
+              <%= Settings::Marketing.discover_love %>
+            </h2>
+
+            <div class="shelf__foot">
+              <p>
+                <%= form_tag "#{appropriate_subdirectory}/user/create", :class => "form_module js-get-started-form" do %>
+                  <%= hidden_field_tag 'anonymous', true %>
+                  <button class="button_primer button_command button_command--giant button_green shelf__button one-third js-track-event js-get-started-button" data-ga_action="Click Get Started" data-ga_label="<%= request.referer || 'direct' %>">
+                    Get Started
+                  </button>
+                <% end %>
+              </p>
+
+              <p>
+                <a href="/log_in" class="button_primer button_command button_command--giant button_blue one-third shelf__button js-track-event" data-ga_action="Click Log In">
+                  Log In
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% #------------ /Shelf Content --------------- %>
+  </div><!-- /shelby-wrapper -->
+
+  <%= render :partial => '/home/landing_scripts' %>
+
+</body>
+</html>

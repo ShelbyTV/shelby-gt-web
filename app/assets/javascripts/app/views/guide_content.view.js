@@ -4,15 +4,14 @@
   var DisplayState = libs.shelbyGT.DisplayState;
   var DashboardModel = libs.shelbyGT.DashboardModel;
   var DashboardView = libs.shelbyGT.DashboardView;
-  var OnboardingGuideEmptyIndicatorView = libs.shelbyGT.OnboardingGuideEmptyIndicatorView;
   var RollListView = libs.shelbyGT.RollListView;
   var RollListFilterType = libs.shelbyGT.RollListFilterType;
   var FreshPlayRollView = libs.shelbyGT.FreshPlayRollView;
   var RollView = libs.shelbyGT.RollView;
   var VideoSearchView = libs.shelbyGT.VideoSearchView;
-  var HelpView = libs.shelbyGT.HelpView;
-  var TeamView = libs.shelbyGT.TeamView;
-  var LegalView = libs.shelbyGT.LegalView;
+  // var HelpView = libs.shelbyGT.HelpView;
+  // var TeamView = libs.shelbyGT.TeamView;
+  // var LegalView = libs.shelbyGT.LegalView;
   var SpinnerStateModel = libs.shelbyGT.SpinnerStateModel;
   var QueueEmptyIndicatorView = libs.shelbyGT.QueueEmptyIndicatorView;
 
@@ -159,15 +158,14 @@
             spinner : true
           };
           break;
-        case DisplayState.onboarding :
+        case DisplayState.serviceConnecting :
           displayParams = {
             viewProto : DashboardView,
             model : shelby.models.dashboard,
             options : {
               doCheck : libs.shelbyGT.SmartRefreshCheckType.binarySearch,
               doSmartRefresh : true,
-              doStaticRender : true,
-              emptyIndicatorViewProto : OnboardingGuideEmptyIndicatorView,
+              doStaticRender : false,
               noMoreResultsViewProto : null,
               showEmptyIndicatorOnStaticRender: true,
               fetchParams : {
@@ -178,7 +176,8 @@
               firstFetchLimit : shelby.config.pageLoadSizes.dashboard,
               limit : shelby.config.pageLoadSizes.dashboard + 1,
               masterCollection : this._dashboardMasterCollection
-            }
+            },
+            spinner : true
           };
           break;
         case DisplayState.search :
@@ -220,24 +219,24 @@
             }
           };
           break;
-        case DisplayState.help :
-          displayParams = {
-            viewProto : HelpView,
-            model : shelby.models.user
-          };
-          break;
-        case DisplayState.team :
-          displayParams = {
-            viewProto : TeamView,
-            model : shelby.models.user
-          };
-          break;
-        case DisplayState.legal :
-          displayParams = {
-            viewProto : LegalView,
-            model : shelby.models.user
-          };
-          break;
+        // case DisplayState.help :
+        //   displayParams = {
+        //     viewProto : HelpView,
+        //     model : shelby.models.user
+        //   };
+        //   break;
+        // case DisplayState.team :
+        //   displayParams = {
+        //     viewProto : TeamView,
+        //     model : shelby.models.user
+        //   };
+        //   break;
+        // case DisplayState.legal :
+        //   displayParams = {
+        //     viewProto : LegalView,
+        //     model : shelby.models.user
+        //   };
+        //   break;
       }
 
       var childViewOptions = {

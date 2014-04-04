@@ -26,7 +26,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
 
   template : function(obj){
     try {
-    if (obj.frameGroup.get('collapsed')) {
+      if (obj.frameGroup.get('collapsed')) {
         return SHELBYJST['frame-collapsed'](obj);
       }
       else {
@@ -102,14 +102,14 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       var isChannelRecommendation = primaryDashboardEntry && (primaryDashboardEntry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation);
 
       var frame = this.model.get('frames').at(0),
-          messages = ((frame.get('conversation') && frame.get('conversation').get('messages')) || new Backbone.Collection());
+          messages = libs.shelbyGT.viewHelpers.frame.getMessages(frame);
           //N.B. template({}) receives Models.
           //i.e. frame, video, user, creator, messages, etc.
           //so, JST should only .get() object vals from models
 
       var emailBody;
       var tweetIntentParams = {};
-      if (shelby.models.user.isAnonymous()) {
+      if (shelby.models.user.isNotLoggedIn()) {
         var permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this.model);
         emailBody = permalink + "?utm_campaign=email-share";
         tweetIntentParams = {
@@ -140,7 +140,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
       if (isChannelRecommendation) {
         var color = shelby.config.recommendations.displaySettings[libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation].color;
         this.$('.js-xuser-data').addClass("xuser-data--" + color).addClass("xuser-data--recommendation");
-        this.$('.js-xuser-avatar').addClass("xuser-avatar--featured icon-star");
+        this.$('.js-xuser-avatar').addClass("avatar--featured icon-star");
       }
 
       this.renderChild(new libs.shelbyGT.FrameLikesView({
@@ -235,7 +235,7 @@ libs.shelbyGT.FrameGroupView = libs.shelbyGT.ActiveHighlightListItemView.extend(
   },
 
   _onClickQueue : function(){
-    if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){ return; }
+    // if( !shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){ return; }
 
     self = this;
     var frame = this.model.getFirstFrame();

@@ -77,6 +77,10 @@ ShelbyGtWeb::Application.routes.draw do
 
   # STYLEGUIDE
   get '/styleguide' => 'home#styleguide'
+  post '/user/create' => 'mobile#create_user'
+
+  # IE Surface
+  get '/get-started' => 'home#get_started'
 
   # SEO PAGES
   get '/video/:provider_name/:provider_id(/*title)' => 'seovideo#show'
@@ -96,14 +100,6 @@ ShelbyGtWeb::Application.routes.draw do
 
   # DISCUSSION ROLLS
   get '/mail/:roll_id' => 'discussion_roll#show'
-
-  # INVITES
-  get '/invite/:invite_id' => "signup#show"
-  get "invite" => 'signup#show', :as => :invite
-  post "invite" => 'signup#create'
-  get "signup" => 'signup#show', :as => :signup
-  get "signup/:code" => 'signup#show'
-  post "signup" => 'signup#create'
 
   # IPAD BETA PROGRAM
   get '/ipadbeta' => 'home#ipadbeta'
@@ -135,6 +131,9 @@ ShelbyGtWeb::Application.routes.draw do
 
   # ONE CLICK UNSUBSCRIBE
   get '/preferences/email/unsubscribe' => "home#unsubscribe"
+
+  # UPDATE USER
+  post '/preferences/profile' => 'mobile#profile'
 
   # TURBO EMBED
   get '/turbo_embellish' => 'turbo_embed#embellish'

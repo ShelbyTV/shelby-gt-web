@@ -7,42 +7,62 @@
 
   <div class="guide-overlay__body guide-overlay__body--preferences">
     <ul class="list guide-overlay__list">
+      <% if (user.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.anonymous) { %>
+        <li class="list__item">
+          <a href="/preferences/signup" class="button_primer button_command button_gray<%= (section == libs.shelbyGT.UserPreferencesView.SECTIONS.signup) ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
+            <span class="icon icon-chevron"></span>
+            <span class="button_label capitalize"><%= libs.shelbyGT.UserPreferencesView.SECTIONS.profile %></span>
+          </a>
+        </li>
+      <% } else { %>
+        <li class="list__item">
+          <a href="/preferences/profile" class="button_primer button_command button_gray<%= (section == libs.shelbyGT.UserPreferencesView.SECTIONS.profile) ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
+            <span class="icon icon-chevron"></span>
+            <span class="button_label capitalize"><%= libs.shelbyGT.UserPreferencesView.SECTIONS.profile %></span>
+          </a>
+        </li>
+      <% } %>
+
+      <% if (user.get('user_type') != libs.shelbyGT.UserModel.USER_TYPE.anonymous) { %>
+        <li class="list__item">
+          <a href="/preferences/password" class="button_primer button_command button_gray<%= (section == libs.shelbyGT.UserPreferencesView.SECTIONS.password) ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
+            <span class="icon icon-chevron"></span>
+            <span class="button_label capitalize"><%= libs.shelbyGT.UserPreferencesView.SECTIONS.password %></span>
+          </a>
+        </li>
+      <% } %>
+
       <li class="list__item">
-        <a href="/preferences/profile" class="button_primer button_command button_gray<%= (section == 'profile') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
+        <a href="/preferences/networks" class="button_primer button_command button_gray<%= (section == libs.shelbyGT.UserPreferencesView.SECTIONS.networks) ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
           <span class="icon icon-chevron"></span>
-          <span class="button_label">Profile</span>
+          <span class="button_label capitalize"><%= libs.shelbyGT.UserPreferencesView.SECTIONS.networks %></span>
         </a>
       </li>
+
+      <% if (user.get('user_type') != libs.shelbyGT.UserModel.USER_TYPE.anonymous) { %>
+        <li class="list__item">
+          <a href="/preferences/notifications" class="button_primer button_command button_gray<%= (section == libs.shelbyGT.UserPreferencesView.SECTIONS.notifications) ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
+            <span class="icon icon-chevron"></span>
+            <span class="button_label capitalize"><%= libs.shelbyGT.UserPreferencesView.SECTIONS.notifications %></span>
+          </a>
+        </li>
+      <% } %>
+
       <li class="list__item">
-        <a href="/preferences/password" class="button_primer button_command button_gray<%= (section == 'password') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
+        <a href="/preferences/channels" class="button_primer button_command button_gray<%= (section == libs.shelbyGT.UserPreferencesView.SECTIONS.channels) ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
           <span class="icon icon-chevron"></span>
-          <span class="button_label">Password</span>
+          <span class="button_label capitalize"><%= libs.shelbyGT.UserPreferencesView.SECTIONS.channels %></span>
         </a>
       </li>
-      <li class="list__item">
-        <a href="/preferences/networks" class="button_primer button_command button_gray<%= (section == 'networks') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
-          <span class="icon icon-chevron"></span>
-          <span class="button_label">Networks</span>
-        </a>
-      </li>
-      <li class="list__item">
-        <a href="/preferences/notifications" class="button_primer button_command button_gray<%= (section == 'notifications') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
-          <span class="icon icon-chevron"></span>
-          <span class="button_label">Notifications</span>
-        </a>
-      </li>
-      <li class="list__item">
-        <a href="/preferences/channels" class="button_primer button_command button_gray<%= (section == 'channels') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
-          <span class="icon icon-chevron"></span>
-          <span class="button_label">Channels</span>
-        </a>
-      </li>
-      <li class="list__item">
-        <a href="/preferences/friends" class="button_primer button_command button_gray<%= (section == 'friends') ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
-          <span class="icon icon-chevron"></span>
-          <span class="button_label">Friends</span>
-        </a>
-      </li>
+
+      <% if (user.get('user_type') != libs.shelbyGT.UserModel.USER_TYPE.anonymous) { %>
+        <li class="list__item">
+          <a href="/preferences/friends" class="button_primer button_command button_gray<%= (section == libs.shelbyGT.UserPreferencesView.SECTIONS.friends) ? ' button_selected' : ''%> button_command--fill button_command--flexible js-preferences-navigate">
+            <span class="icon icon-chevron"></span>
+            <span class="button_label capitalize"><%= libs.shelbyGT.UserPreferencesView.SECTIONS.friends %></span>
+          </a>
+        </li>
+      <% } %>
     </ul>
   </div><!-- eo guide-overlay__body -->
 </div><!-- eo sidebar_module-->

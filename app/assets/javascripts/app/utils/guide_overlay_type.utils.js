@@ -1,6 +1,6 @@
 libs.shelbyGT.GuideOverlayType = {
   none : 'none',
-  conversation : 'conversation',
+  // conversation : 'conversation',
   rolling : 'rolling',
   share : 'share'
 };

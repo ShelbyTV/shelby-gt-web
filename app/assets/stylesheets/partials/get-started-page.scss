@@ -1,0 +1,60 @@
+//------------------------------------------------------------------------------
+//  OVERRIDES
+//------------------------------------------------------------------------------
+//----- Override App Base Styles -----------------------------------------
+//----- Modifiers --------------------------------------------------------
+html {
+  min-height: 100%;
+}
+
+.shelby--get-started {
+  //array of background images randomly selected
+  &.orange {
+    background-image: image-url("iPadWelcome1.png");
+  }
+  &.green {
+    background-image: image-url("iPadWelcome2.png");
+  }
+  &.purple {
+    background-image: image-url("iPadWelcome3.png");
+  }
+  &.blue {
+    background-image: image-url("iPadWelcome4.png");
+  }
+
+  //n.b. for now this "shelf" is a one-off for the get started page. so there's no need for abstraction.
+  //framework
+  .shelf__wrapper {
+    height: 600px;
+  }
+  .shelf {
+    color: $ui-white;
+    //optical-centering trick: pos, rel, nudge up 1em;
+    position: relative;
+    top: -1em;
+
+    .shelby_logo {
+      font-size: 150px;
+    }
+  }
+  .shelf__foot {
+    margin-top: 200px;
+  }
+  //elements
+  .shelf__button {
+    line-height: normal;
+  }
+  .shelf__h1 {
+    margin-bottom: 0;
+  }
+
+  .shelf__h2 {
+    font-weight: normal;
+    font-size: 1.2em;
+    margin-top: 0;
+  }
+
+  //viewports (across all devices) smaller than 900-ish pixels
+  @media screen and (max-width: $mq-nine-ish) {
+  }
+}

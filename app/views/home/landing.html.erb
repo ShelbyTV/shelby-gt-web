@@ -19,6 +19,10 @@
 
   <script>
     var shelbyTrackingCategory = "Landing Page";
+
+    <%= render :partial => '/home/partials/mobile_os_config', :formats => :js, :locals => {:mobile_os => @mobile_os} %>
+
+
   </script>
 
   <%= render :partial => '/home/fb_ad_tracking' %>

@@ -71,8 +71,8 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   },
 
   _updateHomeLinkState : function(){
-    var isOnboarding = this.options.guide.get('displayState') == libs.shelbyGT.DisplayState.onboarding;
-    this.$('.js-home').toggleClass('visuallydisabled', isOnboarding);
+    var isServiceConnectingAnimation = this.options.guide.get('displayState') == libs.shelbyGT.DisplayState.serviceConnecting;
+    this.$('.js-home').toggleClass('visuallydisabled', isServiceConnectingAnimation);
   },
 
   _closeMenus : function(){
@@ -82,9 +82,9 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   },
 
   _showHome : function(){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
+    // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
       shelby.router.navigate('stream', {trigger:true});
-    }
+    // }
   },
 
   _showUserPreferences : function(){

@@ -39,6 +39,14 @@
   text-align: left;
   max-width: 1150px;
 
+  // non-normative, text links on shelves actually have to be buttons
+  // so that they can submit forms
+  .button_text {
+    color: #666;
+    padding: 0;
+    text-decoration: underline;
+  }
+
   @media screen and (max-width: $mq-nine-ish) {
     border-left: 0;
     border-right: 0;

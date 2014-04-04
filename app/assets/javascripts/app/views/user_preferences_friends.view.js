@@ -33,7 +33,7 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
                (roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_roll || roll.get('roll_type') == libs.shelbyGT.RollModel.TYPES.special_public);
           });
           // notify the view of the friends we found
-          self.model.trigger('onboarding:invite:fetchedFriends', friendFauxUserRolls);
+          self.model.trigger('invite:fetchedFriends', friendFauxUserRolls);
         }
       });
 
@@ -49,11 +49,11 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
 
   initialize : function(){
     this._facebookConnected = _(shelby.models.user.get('authentications')).any(function(auth){ return auth.provider == 'facebook'; });
-    this.model.bind('onboarding:invite:fetchedFriends', this._onFetchedFriends, this);
+    this.model.bind('invite:fetchedFriends', this._onFetchedFriends, this);
   },
 
   _cleanup : function(){
-    this.model.unbind('onboarding:invite:fetchedFriends', this._onFetchedFriends, this);
+    this.model.unbind('invite:fetchedFriends', this._onFetchedFriends, this);
   },
 
   _buildTweetUrl : function() {
@@ -98,10 +98,7 @@ libs.shelbyGT.UserPreferencesFriendsView = libs.shelbyGT.UserPreferencesBaseView
           return -roll.get('frame_count');
         },
         doStaticRender  : true,
-        listItemView    : 'OnboardingInviteFriendItemView',
-        listItemViewAdditionalParams : {
-          onboarding : false
-        },
+        listItemView    : 'InviteFriendItemView',
         simulateAddTrue : false
       }), '.js-invite-friends-body');
     } else {

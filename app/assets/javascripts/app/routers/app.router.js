@@ -44,13 +44,13 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     shelby.models.guide = new libs.shelbyGT.GuideModel();
     shelby.models.playlistManager = new libs.shelbyGT.PlaylistManagerModel();
     shelby.models.guideOverlay = new libs.shelbyGT.GuideOverlayModel();
-    shelby.models.dotTvWelcome = new libs.shelbyGT.DotTvWelcomeModel();
+    // shelby.models.dotTvWelcome = new libs.shelbyGT.DotTvWelcomeModel();
     shelby.models.dashboard = new libs.shelbyGT.DashboardModel();
     shelby.models.viewedVideos = new libs.shelbyGT.ViewedVideosModel();
     shelby.models.queuedVideos = new libs.shelbyGT.QueuedVideosModel();
     shelby.models.invite = new libs.shelbyGT.InviteModel();
     shelby.models.videoSearch = new libs.shelbyGT.VideoSearchModel();
-    shelby.models.userProfile = new libs.shelbyGT.UserProfileModel();
+    // shelby.models.userProfile = new libs.shelbyGT.UserProfileModel();
     shelby.models.userPreferencesView = new libs.shelbyGT.UserPreferencesViewModel();
 
     shelby.models.playbackState = new libs.shelbyGT.PlaybackStateModel();
@@ -59,8 +59,8 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
 
     shelby.models.rollFollowings = new libs.shelbyGT.RollsCollectionModel();
     shelby.models.rollFollowingsIncludingFauxUsers = new libs.shelbyGT.RollsCollectionModel();
-    shelby.models.onboardingRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});
-    shelby.models.onboardingConnectServicesView = new libs.shelbyGT.OnboardingConnectServicesViewModel();
+    shelby.models.rollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'onboarding'});
+    shelby.models.serviceConnectingAnimationView = new libs.shelbyGT.ServiceConnectingAnimationViewModel();
     shelby.models.promoRollCategories = new libs.shelbyGT.RollCategoriesCollectionModel({segment: 'in_line_promos'});
     shelby.models.userOwnedRolls = new libs.shelbyGT.AssociatedRollsCollectionModel();
 
@@ -87,37 +87,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
     if (shelby.userIsCommonCookieAuthed()){
       shelby.models.user.fetch({
         success: function(userModel, response) {
-
-          // users created on iOS are not eligible to be re-onboarded
-          var notEligibleForOnboarding = (userModel.get('app_progress').get('onboarding') == "iOS_iPhone");
-
-          // if the user is trying to view an isolated roll, don't show onboarding right now.
-          if (/isolated-roll/.test(url)){
-            self._reroute();
-          } else if (url.indexOf('onboarding') == -1) {
-            var userOnboardingProgress = userModel.get('app_progress').get('onboarding');
-
-            if (notEligibleForOnboarding) {
-              self._reroute();
-            } else if (!userOnboardingProgress) {
-              // AB TESTING ORDER OF ONBOARDING
-              var _param = _(userModel.get('authentications')).any(function(auth){return auth.provider == 'facebook';}) ? '?authed_with=facebook' : '';
-              self.navigate('/onboarding/2'+_param, {trigger:true, replace:true});
-              return;
-            } else if (userOnboardingProgress !== true && userOnboardingProgress < libs.shelbyGT.OnboardingView.numOnboardingStages) {
-              self.navigate('/onboarding/' + (parseInt(userOnboardingProgress,10) + 1), {trigger:true, replace:true});
-              return;
-            } else {
-              self._reroute();
-            }
-          } else {
-            if (notEligibleForOnboarding || userModel.get('app_progress').get('onboarding') === true) {
-              self.navigate('/', {trigger:true, replace:true});
-              return;
-            } else {
-              self._reroute();
-            }
-          }
+          self._reroute();
 
           shelby.models.rollFollowings.fetch();
           shelby.models.promoRollCategories.fetch();

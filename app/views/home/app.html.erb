@@ -10,7 +10,8 @@
     <%= render :partial => "/home/title_tag" %>
   </title>
 
-  <meta name="csrf-token" content="<%= csrf_token_from_cookie %>">
+  <%= csrf_meta_tags %>
+  <meta name="shelby-api-csrf-token" content="<%= csrf_token_from_cookie %>">
   <meta name="rhombus-auth" content="<%= 'Basic '+Base64.strict_encode64('shelby:_rhombus_gt') %>">
 
   <meta content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
@@ -20,10 +21,14 @@
   <link rel="icon"type="image/png" href="/favicon.png">
   <%= stylesheet_link_tag "screen", :media => "screen" %>
   <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+
   <script>
     if (typeof(shelby) == 'undefined') {
       shelby = {};
     }
+
+    <%= render :partial => '/home/partials/mobile_os_config', :formats => :js, :locals => {:mobile_os => @mobile_os} %>
+
     if (typeof(shelby.abTests) == 'undefined') {
       shelby.abTests = {};
     }
@@ -46,9 +51,6 @@
       <header id="js-header" class="animate_module js-app-header shelby-header js-inactivity-preemption" role="banner">
         <!-- contents in AppHeaderView -->
       </header>
-      <div id="js-iso-roll-header" class="animate_module js-app-header shelby-header isoroll__header js-inactivity-preemption" role="banner" hidden>
-        <!-- contents in IsoRollAppHeaderView -->
-      </div>
 
       <div class="animate_module content_wrapper main-layout js-main-layout">
         <section class="js-inactivity-preemption js-guide sidebar_module guide-wrapper hide-guide clearfix" role="sidebar">
@@ -60,19 +62,14 @@
         </section><!-- eo .user-info-lining -->
 
         <section class="content_lining videoplayer__wrapper animate_module" role="main">
-          <span class="videoplayer__badge">
-            <a href="http://shelby.tv" target="_top">
-              Powered by <span class="shelby_logo shelby_logo--inverted shelby_logo--plain"><span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span></span>
-            </a>
-          </span>
           <!-- content filled in by children of MainLayoutView -->
         </section><!-- eo .content_lining -->
 
       </div><!-- eo .content_wrapper.main-layout -->
 
-      <section class="content_wrapper user-channel-guide js-user-owned-roll-guide clearfix">
-        <!-- content filled in by UserChannelGuideView -->
-      </section><!-- eo .user-channel-guide -->
+      <div class="content_wrapper service-connecting clearfix js-service-connecting-animation">
+        <!-- content filled in by ServiceConnectingAnimationView -->
+      </div><!-- eo .content_wrapper.service-connecting -->
 
       <div class="content_wrapper preferences-layout hidden js-preferences-layout">
         <!-- content filled in by PreferencesLayoutView -->
@@ -88,10 +85,8 @@
       <div class="js-isolated-roll-welcome notifications-wrapper welcome-message__wrapper"></div>
 
       <!-- welcome message specific happenings -->
-      <div id="js-welcome" class="hidden">
-        <!-- <div class="js-channels-welcome welcome-message__wrapper welcome-message__wrapper--channels hidden"></div> -->
-        <div class="js-search-welcome welcome-message__wrapper welcome-message__wrapper--search hidden"></div>
-        <div class="js-app-welcome welcome-message__wrapper welcome-message__wrapper--app hidden"></div>
+      <div id="js-welcome" class="content_wrapper welcome-message-layout hidden">
+        <div class="js-app-welcome animate_module modal__wrapper modal__wrapper--app hidden"></div>
       </div>
 
       <div class="js-email-collection welcome-message__wrapper welcome-message__wrapper--email_collection hidden"></div>
@@ -128,5 +123,22 @@
 
   <% end %>
   <%= javascript_include_tag "deferred" %>
+  <script type="text/html" id="js-channels-promo-template">
+    <%= render :partial => '/objects/inline_cta',
+               :locals => {
+                 :cta => Settings::Mobile.inline_cta.sources,
+                 :href_location => appropriate_subdirectory+Settings::Mobile.inline_cta.sources.path
+               }
+    %>
+  </script>
+
+  <script type="text/html" id="js-social-facebook-promo-template">
+    <%= render :partial => '/objects/inline_cta',
+               :locals => {
+                 :cta => Settings::Mobile.inline_cta.social,
+                 :href_location => Settings::Mobile.inline_cta.social.path
+               }
+    %>
+  </script>
 </body>
 </html>

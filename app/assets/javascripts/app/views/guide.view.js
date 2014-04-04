@@ -28,8 +28,6 @@ libs.shelbyGT.GuideView = Support.CompositeView.extend({
     this.renderChild(new libs.shelbyGT.RollActionMenuView({
       model : shelby.models.guide
     }));
-    //TODO: this is like not being used right now but probably will be.
-    // this.renderChild(new libs.shelbyGT.addVideoView({model:this.model}));
     this.renderChild(new libs.shelbyGT.GuideContentView({
       model : this.model,
       playlistManager : shelby.models.playlistManager

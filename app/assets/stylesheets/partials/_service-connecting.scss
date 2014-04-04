@@ -1,0 +1,27 @@
+.service-connecting {
+  background-color: rgba(0,0,0,0.1);
+  display: none;
+  height: 100%;
+  left: 0;
+  padding-left: $guide-width;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 3;
+
+  .button_command--facebook {
+    margin-left: 0.45em;
+  }
+
+  form {
+    float: left;
+    margin-top: 9px;
+  }
+
+  //  Screens that LESS THAN 1100px wide.
+  @media screen and (max-width: 1100px) {
+    .service-connecting {
+      padding-left: 300px;
+    }
+  }
+}

@@ -50,6 +50,9 @@
               {searchOffset:rollFollowingsConfig.numSpecialRolls,
                 sortAttribute:rollFollowingsConfig.sortAttribute,
                 sortDirection:rollFollowingsConfig.sortDirection});
+          var appProgress = shelby.models.user.get('app_progress');
+          appProgress.set('followedSources',true);
+          appProgress.saveMe();
           if (onSuccess) {
             onSuccess(rollModel, response);
           }

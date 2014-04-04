@@ -19,7 +19,7 @@ describe("InlineRollPromoView", function() {
   });
 
   describe("Rendering", function() {
-  
+
     beforeEach(function() {
       shelby.track = sinon.spy();
     });
@@ -41,7 +41,7 @@ describe("InlineRollPromoView", function() {
 
     it("renders the promoAvatarSrc", function() {
       this.view.render();
-      expect(this.view.$('.xuser-avatar img')).toHaveAttr('src', '/images/assets/matyus.png');
+      expect(this.view.$('.user-avatar img')).toHaveAttr('src', '/images/assets/matyus.png');
     });
   });
 });

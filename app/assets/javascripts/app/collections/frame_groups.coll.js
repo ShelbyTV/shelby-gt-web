@@ -88,7 +88,8 @@ libs.shelbyGT.FrameGroupsCollection = Backbone.Collection.extend({
           dashboard_entry &&
           (dashboard_entry.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation ||
            pdbeToCheck.get('action') == libs.shelbyGT.DashboardEntryModel.ENTRY_TYPES.channelRecommendation);
-         if (areSameVideo && (neitherAreVideoRecs || oneIsChannelRec)) {
+        var areSameDbe = dashboard_entry && (dashboard_entry.id == pdbeToCheck.id);
+         if ((areSameVideo && (neitherAreVideoRecs || oneIsChannelRec)) || areSameDbe) {
             entryToCheck.add(frame, dashboard_entry, options);
             dupe = true;
          }

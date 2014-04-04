@@ -5,7 +5,7 @@
 libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
 
   events : {
-    "click"                                                   : "_dismissWelcomeBanner",
+    // "click"                                                   : "_dismissWelcomeBanner",
     "click .js-videoplayer-playback"                          : "_togglePlayback",
     "click .js-videoplayer-mute"                              : "_toggleMute",
     "click .js-videoplayer-hd.video_controls__button--hd-on"  : "_hdOff",
@@ -196,10 +196,10 @@ libs.shelbyGT.VideoControlsView = Support.CompositeView.extend({
   // Handle user events on the player controls
   //--------------------------------------
 
-  _dismissWelcomeBanner : function(){
-    // dismiss the dot tv welcome banner if its still there
-    shelby.models.dotTvWelcome.trigger('dismiss');
-  },
+  // _dismissWelcomeBanner : function(){
+  //   // dismiss the dot tv welcome banner if its still there
+  //   shelby.models.dotTvWelcome.trigger('dismiss');
+  // },
 
   _togglePlayback : function(){
     var activePlayerState = this._playbackState.get('activePlayerState');

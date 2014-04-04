@@ -10,6 +10,25 @@
     .modal__wrapper--light {
       background-color: rgba(255,255,255,0.5);
     }
+    .modal__wrapper--app {
+      left: $guide-width;
+      padding-top: $app-header__height;
+      right: 0; //should probably be in the root styling, but haven't needed it globally yet, because of the .vertical-align-hack
+
+      @media screen and (max-width: 1100px) {
+        left: 300px;
+      }
+    }
+    .modal__wrapper--search {
+      //non-normative
+      .tooltip--search {
+        width: 250px;
+        margin-left: 1em;
+      }
+      .modal {
+        margin-top: 100px;
+      }
+    }
 
 
 .modal {
@@ -38,6 +57,9 @@
       margin: 0 auto;
       padding-top: 2em;
       text-align: center;
+    }
+    .modal--padding {
+      padding: 2em;
     }
 
 .modal__body {

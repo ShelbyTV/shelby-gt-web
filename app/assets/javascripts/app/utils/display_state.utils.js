@@ -1,18 +1,18 @@
 libs.shelbyGT.DisplayState = {
   dashboard : 'dashboard',
-  help : 'help',
-  legal : 'legal',
+  // help : 'help',
+  // legal : 'legal',
   none : 'none',
-  onboarding : 'onboarding',
   rollList : 'rollList',
   search : 'search',
   channel : 'channel',
   channels : 'channels',
   explore : 'explore',
   standardRoll : 'standardRoll',
-  team : 'team',
+  // team : 'team',
   tools: 'tools',
   userPreferences : 'userPreferences',
-  dotTv : 'dotTv',
-  watchLaterRoll : 'watchLaterRoll'
+  // dotTv : 'dotTv',
+  watchLaterRoll : 'watchLaterRoll',
+  serviceConnecting : 'serviceConnecting'
 };

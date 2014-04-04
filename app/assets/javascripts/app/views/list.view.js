@@ -78,6 +78,14 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     insertIntervalViewsIncrementally : true,
 
     /*
+      prependedViewProtos - returns an ordered array of view prototypes to be prepended before any of the list view's
+        contents from its collection; subclasses can override to return a non-empty array of prototypes
+    */
+    prependedViewProtos : function() {
+      return [];
+    },
+
+    /*
       listItemView - a factory method for creating the view for each individual list item given its model
       this can be either:
         1) a string referring to a member of libs.shelbyGT that contains a prototype for a View class
@@ -130,6 +138,13 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
     if(this.model){
       this.model.bind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
+    }
+
+    var prependedViewProtos = this.options.prependedViewProtos();
+    if (prependedViewProtos.length) {
+      for (var i = prependedViewProtos.length - 1; i >= 0 ; i--) {
+        this.prependChild(new prependedViewProtos[i]);
+      }
     }
 
     this._displayCollection.bind('add', this.internalAddOne, this);

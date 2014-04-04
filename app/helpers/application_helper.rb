@@ -153,6 +153,7 @@ module ApplicationHelper
   end
 
   def detect_mobile_os
+    return :windows if (request.user_agent=~/MSAppHost/)
     return :ios if (request.user_agent=~/iPhone/)
     return :amazon if (session[:amazon])
     return :amazon if (request.user_agent=~/AmazonWebAppPlatform/)

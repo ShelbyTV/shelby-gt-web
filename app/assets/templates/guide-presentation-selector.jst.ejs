@@ -11,7 +11,7 @@
     </button>
   </li>
 
-  <% if (!user.isAnonymous()) { %>
+  <% if (!user.isNotLoggedIn()) { %>
     <li class="list__item js-guide-me js-track-event" data-ga_category="Header" data-ga_action="Me" data-ga_label='<%= userNickname %>'>
       <button class="app_nav__button js-me">
         Me
@@ -25,13 +25,6 @@
     </button>
   </li>
 
-  <% if (false) {  %>
-    <!-- TODO: debt -->
-    <li class="dropdown_module--no-hover dropdown_module--invite-user list__item js-guide-invite">
-      <!-- Content filled in by InviteFormView -->
-    </li>
-  <% } %>
-
   <% if (user.get('admin')) { %>
     <li class="list__item js-admin">
       <button class="app_nav__button">
@@ -40,7 +33,7 @@
     </li>
   <% } %>
 
-  <% if (user.isAnonymous()) { %>
+  <% if (user.isNotLoggedIn()) { %>
     <li class="dropdown_module list__item secondary-item guide-login">
           <button class="dropdown_button app_nav__button">
             Log In <span class="icon-carrot"></span>
@@ -54,9 +47,10 @@
         </li><!-- eo login button/dropdown -->
   <% } %>
 
+
   <li class="dropdown_module list__item secondary-item js-guide-settings">
     <button class="dropdown_button app_nav__button app_nav__button--settings js-track-event" data-ga_category="Header" data-ga_action="Settings" data-ga_label="<%= userNickname %>">
-      <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrl(user,libs.shelbyGT.UserAvatarSizes.small)%>
+      <% var avatar = libs.shelbyGT.viewHelpers.user.avatarUrl(user,libs.shelbyGT.UserAvatarSizes.small) %>
       <span style="background-image: url('<%= avatar %>');" class="image_module avatar avatar--inline avatar--tiny" role="img"><img src="<%= avatar %>" class="visuallyhidden"/></span>
         <%= userNickname %> <span class="icon-carrot"></span>
     </button>
@@ -127,5 +121,14 @@
         </ul>
       </div>
     </section>
+  </li>
+
+  <li class="list__item secondary-item js-search">
+    <form action="/search" method="POST" class="js-search-form">
+      <span class="search__wrapper search__wrapper--nav animate_module">
+        <span class="icon icon-search"></span>
+        <input type="text" class="search" placeholder="Search"/>
+      </span>
+    </form>
   </li>
 </ul><!-- eo guide-presentation-list -->

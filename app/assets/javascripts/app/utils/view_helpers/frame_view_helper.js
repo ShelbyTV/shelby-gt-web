@@ -5,6 +5,24 @@
  */
 libs.shelbyGT.viewHelpers.frame = {
 
+  getMessages: function(frameModel){
+    return ((frameModel.get('conversation') && frameModel.get('conversation').get('messages')) || new Backbone.Collection());
+  },
+
+  //is frame lightweight?
+  isLightWeight: function(frameModel) {
+    return (frameModel.get('frame_type') == libs.shelbyGT.FrameModel.FRAME_TYPE.light_weight);
+  },
+
+  // //formats the classname modifier: should an avatar have a special badge?
+  // avatarModifier: function(model){
+  //   var modifier = '';
+
+
+
+  //   return modifier;
+  // }
+
   /*
    * Mimicks the same permalink you would get from the backend, except
    * this will not be shortened.
@@ -36,6 +54,6 @@ libs.shelbyGT.viewHelpers.frame = {
     } else {
       return 'http://shelby.tv/rollFromFrame/'+frame.id;
     }
-  }
+  },
 
 };

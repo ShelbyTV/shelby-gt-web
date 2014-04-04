@@ -12,7 +12,7 @@ defaults: &defaults
   cta_body: "Get the best of web video, personalized to <br/>your interests and available wherever you are."
   cta_button: "Get the Free App"
   cta_button_short: "Get the App"
-  cta_alternative_button: "Sign up on the Web"
+  cta_alternative_button: "Try it on the Web"
 
   stream: "The freshest video from your <br/>favorite people and places."
   stream_body: "Shelby.tv collects and organizes the latest videos from <br/>YouTube, Vimeo and your friends on Facebook and Twitter."

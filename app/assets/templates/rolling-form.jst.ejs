@@ -1,4 +1,37 @@
-<% if (userLoggedIn) { %>
+<% if (isAnonymous) { %>
+  <% if(dashboardEntry && !dashboardEntry.isRecommendationEntry()) { %>
+    <footer class="media_module frame-footer clearfix">
+      <%= SHELBYJST['user-avatar']({
+        avatar    : libs.shelbyGT.viewHelpers.user.avatarUrl(frame.get('creator')),
+        clickable : false,
+        modifier  : '',
+        nickname  : user.get('nickname') || ''
+      }) %>
+
+      <div class="media_body">
+        <p class="xuser-data js-xuser-data">
+          <strong><%= frame.get('creator').get('nickname') %></strong>
+        </p>
+
+        <% var hasComment = messages.models.length > 0 && frame.get('creator').get('id') == messages.models[0].get('user_id') %>
+        <% var comment = hasComment && messages.models[0].get('text') %>
+        <% var commentOverflow = comment && comment.length > 265 %>
+
+        <p class="xuser-message<%= commentOverflow ? ' line-clamp js-toggle-comment' : '' %>">
+          <% if(hasComment) { %>
+            <%=
+              libs.utils.String.linkifySafeWithClickTracking(comment, {
+                link : {
+                  gaAction : 'Click on link in comment'
+                }
+              })
+            %>
+          <% } %>
+        </p>
+      </div>
+    </footer>
+  <% } %>
+<% } else if(userLoggedIn) { %>
   <%=  SHELBYJST['media-module']({
     userAvatar   : libs.shelbyGT.viewHelpers.user.avatarUrl(user),
     userNickname : user.get('nickname') || '',
@@ -23,7 +56,7 @@
 %>
 
 <div class="rolling-option">
-  <% if (!userLoggedIn) { %>
+  <% if (!userLoggedIn || isAnonymous) { %>
     <fieldset class="form_fieldset form_fieldset--social clearfix">
       <legend class="form_legend">
         Share to
@@ -64,7 +97,7 @@
   <% } %>
 
   <fieldset class="form_fieldset form_fieldset--submit clearfix">
-    <% if (userLoggedIn) { %>
+    <% if (userLoggedIn && !isAnonymous) { %>
       <button class="button_primer button_command button_command--wide button_green js-share-it" type="submit" tabindex="0" onclick="return false;">
         Share
       </button>

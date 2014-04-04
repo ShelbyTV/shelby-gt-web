@@ -125,7 +125,7 @@
                 <% channel["likers"].each do |liker| %>
                   <li>
                     <span class="frame-likes-link js-track-event" data-ga_action="Click liker" data-ga_label="<%= channel["title"] %>">
-                      <img class="frame-likes-avatar" src="<%= liker["avatar"]%>" title="<%= liker["name"] %>" alt="<%= liker["name"] %>">
+                      <img class="avatar avatar--tiny" src="<%= liker["avatar"]%>" title="<%= liker["name"] %>" alt="<%= liker["name"] %>">
                     </span>
                   </li>
                 <% end %>

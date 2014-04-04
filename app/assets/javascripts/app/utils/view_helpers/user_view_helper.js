@@ -6,6 +6,10 @@
 */
 libs.shelbyGT.viewHelpers.user = {
 
+  isFaux: function(user) {
+    return user && user.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.faux;
+  },
+
   undefinedAvatarUrl: "/images/assets/avatar.png",
 
   // Use this when you have a User
@@ -62,6 +66,26 @@ libs.shelbyGT.viewHelpers.user = {
       return userAuths[0].nickname;
     } else {
       return null;
+    }
+  },
+
+  //this is probably gonna be the ultimate username retrieval system for displaying a user's name properly
+  displayUsername: function(userModel){
+    if(userModel === null) {
+      return null;
+    } else if('attributes' in userModel) {
+      switch(userModel.get('user_type')) {
+        case libs.shelbyGT.UserModel.USER_TYPE.faux :
+          var userAuths = userModel.get('authentications');
+          return (userAuths && userAuths.length) ? userAuths[0].nickname : null;
+        case libs.shelbyGT.UserModel.USER_TYPE.anonymous :
+          return 'Anonymous';
+        default:
+            return userModel.get('nickname');
+      }
+    } else {
+      //just check to see if it's an Obj literal.
+      return ('nickname' in userModel) ? userModel.nickname : null;
     }
   }
 

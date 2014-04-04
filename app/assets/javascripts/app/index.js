@@ -27,8 +27,9 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./utils/recommendation_placer.utils.js
 //= require ./views/frame_group_play_paging_list.view.js
 //= require ./views/dashboard_empty_indicator.view.js
-//= require ./views/onboarding_guide_empty_indicator.view.js
 //= require ./views/search_empty_indicator.view.js
+//= require ./views/connect_channels_in_stream.view.js
+//= require ./views/connect_facebook_in_stream.view.js
 //= require ./views/dashboard.view.js
 //= require ./views/guide_overlay.view.js
 //= require ./views/roll_list.view.js
@@ -36,13 +37,9 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./views/video_search.view.js
 //= require ./views/user_preferences.view.js
 //= require ./views/scrolling_guide.view.js
-//= require ./views/help.view.js
-//= require ./views/team.view.js
-//= require ./views/legal.view.js
 //= require ./views/roll_action_menu.view.js
 //= require ./views/roll_header.view.js
 //= require ./views/search_header.view.js
-//= require ./views/iso_roll_header.view.js
 //= require ./views/item_header.view.js
 //= require ./views/autocomplete.view.js
 //= require ./views/email_address_autocomplete.view.js

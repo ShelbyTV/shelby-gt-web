@@ -2,5 +2,5 @@
 _.mixin({
   capitalize: _.str.capitalize,
   clean: _.str.clean,
-  endsWith : _.str.endsWith
+  endsWith: _.str.endsWith
 });

@@ -11,15 +11,15 @@
 <% var isViaSearch = (shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.search) ? true : false %>
 
 <% var frameViewed = frameGroup.get('collapsed') %>
-<% var userIsAnonymous = user.isAnonymous() %>
+<% var userisNotLoggedIn = user.isNotLoggedIn() %>
 <% var framePermalink = libs.shelbyGT.viewHelpers.frame.permalink(frame) %>
 
-<% var isFauxUser = creator && creator.get('user_type') == libs.shelbyGT.UserModel.USER_TYPE.faux %>
+<% var isFauxUser = libs.shelbyGT.viewHelpers.user.isFaux(creator) %>
 <% var originUser = creator && _(creator.get('authentications')).where({ provider : 'facebook' }) %>
 <% var inviteFauxUser = isFauxUser && originUser.length %>
 
 <% var fauxUserOrigin = !isFauxUser ? null : (frameHasRoll ? frame.get('roll').get('origin_network') : null) %>
-<% var fauxUserNickname = isFauxUser ? libs.shelbyGT.viewHelpers.user.userOriginNickname(creator) : null %>
+<% var fauxUserNickname = libs.shelbyGT.viewHelpers.user.displayUsername(creator) %>
 
 <% var creatorIsLiker = (frame.get('frame_type') == libs.shelbyGT.FrameModel.FRAME_TYPE.light_weight) %>
 
@@ -35,11 +35,13 @@
   <div class="frame-body-wrapper clearfix<%= (frameViewed) ? ' js-frame-activate' : ''%>">
     <div class="frame-body">
       <ul class="list list--inline frame-menu" role="menubar">
-        <li class="list__item" role="menuitem">
-          <button class="button_primer button_green button_command button_command--roll js-share-frame">
-            <span class="icon icon-roll"></span>Share…
-          </button>
-        </li>
+        <% if(!(isRecommendation && !isChannelRecommendation && user.isAnonymous())){ %>
+          <li class="list__item" role="menuitem">
+            <button class="button_primer button_green button_command button_command--roll js-share-frame">
+              <span class="icon icon-roll"></span>Share…
+            </button>
+          </li>
+        <% } %>
 
         <li class="list__item" role="menuitem">
           <% if (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.watchLaterRoll) { %>
@@ -73,30 +75,25 @@
       </div><!-- eo .frame-body -->
 
     <% if (!isGenius && creator) {
-      var creatorNickname = fauxUserOrigin && fauxUserNickname ? fauxUserNickname : creator.get('nickname');
+      var creatorNickname = fauxUserOrigin && fauxUserNickname ? fauxUserNickname : libs.shelbyGT.viewHelpers.user.displayUsername(creator);
       var creatorAvatar = libs.shelbyGT.viewHelpers.user.avatarUrl(creator);
       var clickableCreator = (shelby.models.guide.get('displayState') != libs.shelbyGT.DisplayState.standardRoll);
       var avatarClass = "";
       if (!isChannelRecommendation) {
         if (creatorIsLiker) {
-          avatarClass = " xuser-avatar--liker icon-like";
+          avatarClass = " avatar--liker icon-like";
         } else if (fauxUserOrigin) {
-          avatarClass = " xuser-avatar--" + fauxUserOrigin + " icon-" + fauxUserOrigin;
+          avatarClass = " avatar--" + fauxUserOrigin + " icon-" + fauxUserOrigin;
         }
       }
     %>
       <footer class="media_module frame-footer clearfix">
-         <% if (clickableCreator) { %>
-           <a href="#" onclick="return false;" class="js-goto-user-page" data-user_nickname="<%= creator.get('nickname') %>">
-             <span class="image_module xuser-avatar<%= avatarClass %> media_image js-xuser-avatar" style="background-image: url(<%= creatorAvatar %>);" role="img">
-               <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-             </span>
-           </a>
-         <% } else { %>
-           <span class="image_module xuser-avatar<%= avatarClass %> media_image" style="background-image: url(<%= creatorAvatar %>);" role="img">
-             <img src="<%= creatorAvatar %>" class="visuallyhidden" title="<%= creatorNickname %>" alt="<%= creatorNickname %>">
-           </span>
-         <% } %>
+          <%=  SHELBYJST['user-avatar']({
+            avatar    : libs.shelbyGT.viewHelpers.user.avatarUrl(creator),
+            clickable : clickableCreator,
+            modifier  : avatarClass,
+            nickname  : creatorNickname,
+          }) %>
 
           <div class="media_body">
             <% var hasComment = messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id') %>
@@ -116,7 +113,7 @@
 
                   <% if (fauxUserOrigin) { %>
                     via <span class="capitalize"><%= fauxUserOrigin %></span>
-                  <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != 1) { %>
+                  <% } else if (frameOriginator && frameOriginator.get('nickname') != creatorNickname && frameOriginator.get('user_type') != libs.shelbyGT.UserModel.USER_TYPE.faux) { %>
                     <%= creatorIsLiker ? "liked this via" : "via" %> <a class="no-faux-link js-navigate-originator" href="#"><%= frameOriginator.get('nickname') %></a>
                   <% } else if (creatorIsLiker) { %>
                     liked this
@@ -147,7 +144,7 @@
     <% } %>
   </div><!-- eo .frame-body-wrapper -->
 
-  <% if (inviteFauxUser && !userIsAnonymous) { %>
+  <% if (inviteFauxUser && !userisNotLoggedIn) { %>
     <a class="button_primer button_standard frame__tab frame__tab--facebook one-whole js-invite-faux-user js-track-event" data-ga_category="Frame" data-ga_action="Click Invite via Facebook" data-ga_label="<%= userNickname %>" data-faux-id="<%= originUser[0].uid %>">
       <span class="word-clamp word-clamp"><%= originUser[0].name || 'Your friend ' %></span> isn't on Shelby, <strong class="frame__link">Invite them via Facebook</strong>
     </a>

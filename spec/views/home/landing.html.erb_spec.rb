@@ -68,7 +68,7 @@ describe "home/landing" do
         it "renders the CTA with the amazon-specific url" do
           render
           #amazon view uses a form with the route /user/create
-          rendered.should have_selector('.js-get-started-form')
+          rendered.should have_selector('.shelf__block > .js-get-started-form')
           rendered.should =~ /user\/create/
         end
       end
@@ -106,7 +106,7 @@ describe "home/landing" do
         it "renders the CTA with the amazon-specific url" do
           render
           #amazon view uses a form with the route /user/create
-          rendered.should have_selector('.js-get-started-form')
+          rendered.should have_selector('.shelf__block > .js-get-started-form')
           rendered.should =~ /user\/create/
         end
       end

@@ -3,7 +3,7 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
   _appProgressKey : null,
 
   events : {
-    "click .js-play"        :       "_onClickPlay"
+    "click .js-dismiss" : "_onClickDismiss"
   },
 
   template : function(obj){
@@ -46,41 +46,26 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
       return;
     }
 
-    switch  (displayState) {
-      case libs.shelbyGT.DisplayState.channel:
-        if (!this._hasBeenWelcomedLoggedOut() && shelby.models.user.isAnonymous()){
-          return this.render('channel');
+    switch (displayState) {
+      case libs.shelbyGT.DisplayState.dashboard:
+        if (!shelby.models.user.get('app_progress').hasBeenWelcomed(displayState) && shelby.models.user.isAnonymous()){
+          return this.render(displayState);
         }
-        else if (!shelby.models.user.get('app_progress').hasBeenWelcomed('channel') && !shelby.models.user.isAnonymous()){
-          return this.render('channel');
-        }
-        break;
-      case libs.shelbyGT.DisplayState.standardRoll:
-        if (shelby.models.guide.get('currentRollModel').get('creator_id') == shelby.models.user.id && !shelby.models.user.get('app_progress').hasBeenWelcomed('ownShares')) {
-          return this.render('ownShares');
-        }
-        else if (!this._hasBeenWelcomedLoggedOut() && shelby.models.user.isAnonymous()){
-          return this.render('loggedOutShares');
-        }
-        else { this._resetVideoPlayerOperation(); }
         break;
     }
     this._resetVideoPlayerOperation();
   },
 
-  _onClickPlay : function() {
+  _onClickDismiss : function() {
       var _progress = this._appProgressKey+'Welcomed';
       this._updateAppProgress(_progress, true);
       this._resetVideoPlayerOperation();
       shelby.models.userDesires.set('playbackStatus',libs.shelbyGT.PlaybackStatus.playing);
       $('#js-welcome, .js-app-welcome').addClass('hidden');
-      if (shelby.models.user.isAnonymous()) {
-        this._markViewerWelcomedLoggedOut();
-      }
       shelby.trackEx({
         providers : ['ga', 'kmq'],
         gaCategory : "App",
-        gaAction : "Click play in "+this._appProgressKey+" welcome",
+        gaAction : "Click dismiss in "+this._appProgressKey+" welcome",
         gaLabel : shelby.models.user.get('nickname'),
         kmqProperties : { user : shelby.models.user.get('nickname') }
       });
@@ -100,15 +85,13 @@ libs.shelbyGT.welcomeMessages = Support.CompositeView.extend({
   _resetVideoPlayerOperation : function(){
       $('#js-welcome, .js-app-welcome').addClass('hidden');
       shelby.models.playbackState.set('autoplayOnVideoDisplay', true);
-      shelby.userInactivity.enableUserActivityDetection();
-  },
-
-  _markViewerWelcomedLoggedOut : function(){
-    cookies.set('welcomedToShelby', true);
-  },
-
-  _hasBeenWelcomedLoggedOut : function(){
-    return cookies.get('welcomedToShelby') !== "" ? true : false;
+      //n.b. this checking for appenabled is to disable the inactivity when the guide is open for Windows Surface (or whatever other devices are deemed "app enabled")
+      if(shelby.config.ua.isAppEnabled() && shelby.models.userDesires.get('guideShown') === true) {
+        shelby.userInactivity.disableUserActivityDetection();
+      } else {
+        shelby.userInactivity.enableUserActivityDetection();
+      }
   }
+
 
 });

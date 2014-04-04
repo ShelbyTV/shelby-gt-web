@@ -1,0 +1,24 @@
+if (typeof(shelby) == 'undefined') {
+    shelby = {};
+}
+
+if (typeof(shelby.config) == 'undefined') {
+    shelby.config = {};
+}
+
+//consult: ApplicationController#detect_mobile_os
+//for the code that determines the User Agent stuff
+shelby.config.ua = {
+  mobileOs: "<%= @mobile_os.to_s %>",
+  TYPES : {
+    windows : "windows",
+    ios     : "ios",
+    amazon  : "amazon",
+    android : "android",
+    tablet  : "tablet",
+    generic : "generic"
+  },
+  isAppEnabled: function(){
+    return this.mobileOs == this.TYPES.windows;
+  }
+};

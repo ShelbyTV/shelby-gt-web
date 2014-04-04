@@ -63,7 +63,7 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
       var emailBody;
       var tweetIntentParams = {};
-      if (shelby.models.user.isAnonymous()) {
+      if (shelby.models.user.isNotLoggedIn()) {
         var permalink;
         if (this._frameGroup) {
           permalink = libs.shelbyGT.viewHelpers.frameGroup.contextAppropriatePermalink(this._frameGroup);
@@ -134,11 +134,11 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
       }
     }
 
-    // toggle the video_controls position based on displayState, only if onboarding is incomplete
+    // toggle the video_controls position based on displayState, only if the service connecting animation is running
     var displayState = shelby.models.guide.get('displayState'),
-        isOnboarding = displayState == libs.shelbyGT.DisplayState.onboarding;
+        isServiceConnectingAnimation = displayState == libs.shelbyGT.DisplayState.serviceConnecting;
 
-    $('.js-video-controls-wrapper').toggleClass('video_controls__wrapper--preload', isOnboarding);
+    $('.js-video-controls-wrapper').toggleClass('video_controls__wrapper--preload', isServiceConnectingAnimation);
   },
 
   _onActiveFrameModelChange : function(guideModel, activeFrameModel){
@@ -192,23 +192,23 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _requestCurrentFrameShareView : function(){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+    // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
       this._requestFrameShareView(this._currentFrame);
-    }
+    // }
   },
 
   _requestNextFrameShareView : function(){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
+    // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ROLL) ){
       this._requestFrameShareView(this._nextFrame);
-    }
+    // }
   },
 
   _requestFrameShareView: function(frame){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
-      var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
-      var dbEntry = frameGroup.get('primaryDashboardEntry');
-      this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, frame, dbEntry);
-    }
+    // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.COMMENT) ){
+    var frameGroup = this.options.playlistManager.get('playlistFrameGroupCollection').getFrameGroupByFrameId(this._currentFrame.id);
+    var dbEntry = frameGroup.get('primaryDashboardEntry');
+    this.options.guideOverlayModel.switchOrHideOverlay(libs.shelbyGT.GuideOverlayType.share, frame, dbEntry);
+    // }
   },
 
   _queueCurrentFrame : function(el){
@@ -220,12 +220,12 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
   },
 
   _queueFrame : function(frame, el){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
-      frame.like({likeOrigin: this.options.eventTrackingCategory});
-      var $target = $(el.currentTarget);
-      $target.toggleClass('queued js-queued').find('.label').text('Liked');
-      $target.find('.icon').addClass('icon-like--red');
-    }
+    // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
+    frame.like({likeOrigin: this.options.eventTrackingCategory});
+    var $target = $(el.currentTarget);
+    $target.toggleClass('queued js-queued').find('.label').text('Liked');
+    $target.find('.icon').addClass('icon-like--red');
+    // }
   },
 
   _skipToNextVideo : function(){

@@ -27,7 +27,11 @@ class HomeController < ApplicationController
         # redirect to mobile web if on amazon platform
         if detect_mobile_os == :amazon
           redirect_to('/amazonapp' ) and return
+        elsif (detect_mobile_os == :windows) and !user_signed_in?
+          redirect_to('/get-started' ) and return
         end
+
+        @mobile_os = detect_mobile_os
 
         #XXX .TV subdomains
         # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
@@ -332,10 +336,7 @@ class HomeController < ApplicationController
     end
   end
 
-  # THIS IS A TEMPORARY
   def bookmarklet
-    Rails.logger.info "omg #{params}"
-
     if session[:found_video_providers]
       @found_video_providers = session[:found_video_providers]
       session.delete(:found_video_providers)
@@ -390,6 +391,11 @@ class HomeController < ApplicationController
   def styleguide
 
     render 'home/styleguide'
+  end
+
+  def get_started
+
+    render '/home/get-started'
   end
 
   private

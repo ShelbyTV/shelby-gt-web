@@ -63,8 +63,8 @@
 @import "partials/video/email-collection";
 @import "partials/video/video-controls";
 @import "partials/video/video-mini-progress";
-@import "partials/preroll-video-info";
-@import "partials/me-section";
+// @import "partials/preroll-video-info";
+// @import "partials/me-section";
 @import "partials/rolls-list";
 
 //------------------------------------------------------------------------------
@@ -77,28 +77,14 @@
 //------------------------------------------------------------------------------
 //  peripherals
 //------------------------------------------------------------------------------
-@import "partials/onboarding";
+@import "partials/service-connecting";
 @import "partials/user-preferences";
-
-//------------------------------------------------------------------------------
-//  shelby genius page styles
-//------------------------------------------------------------------------------
-@import "partials/genius.scss";
-
-//------------------------------------------------------------------------------
-//  Shelby discussion rolls
-//------------------------------------------------------------------------------
-// @import "partials/discussion_roll";
 
 //------------------------------------------------------------------------------
 //  Embed
 //------------------------------------------------------------------------------
 @import "partials/embed-frame";
 
-//------------------------------------------------------------------------------
-//  The Suits
-//------------------------------------------------------------------------------
-@import "partials/corporate/chips-ahoy";
 // @import "partials/eastereggs";
 
 //------------------------------------------------------------------------------

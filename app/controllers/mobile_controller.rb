@@ -22,7 +22,11 @@ class MobileController < ApplicationController
   #####  User is NOT logged in, send them to the landing page  #####
     else
       @mobile_signup_url = Settings::ShelbyAPI.url+"/auth/facebook?service=facebook&origin="+Settings::Application.mobile_url
-      render '/home/landing', :layout => false
+      if @mobile_os == :amazon # add msft devices here as well.
+        redirect_to '/get-started'
+      else
+        render '/home/landing', :layout => false
+      end
     end
   end
 
@@ -246,7 +250,7 @@ class MobileController < ApplicationController
   def search
     check_for_signed_in_user_and_issues({:redirect_if_issue => false, :cookies => cookies})
     @mobile_video_search = true
-    @query = URI.encode params[:q]
+    @query = URI.encode(params[:q] || params[:query])
     @skip = params[:skip] || 0
     @limit = params[:limit] || 15
     @search_results = Shelby::API.video_search(@query, @skip, @limit)

@@ -47,12 +47,12 @@
         <%
           avatarModifierClass = ''
           if dbe and dbe['action'] == Settings::Dbe.entry_type.channel_recommendation
-            avatarModifierClass = ' xuser-avatar--featured icon-star'
+            avatarModifierClass = ' avatar--featured icon-star'
           elsif is_like
-            avatarModifierClass = ' xuser-avatar--liker icon-like'
+            avatarModifierClass = ' avatar--liker icon-like'
           end
         %>
-        <span class="image_module media_image avatar avatar--<%= (is_mobile) ? 'small' : 'medium' %><%= avatarModifierClass %>" style="background-image: url(<%= avatar %>);" role="img">
+        <span class="image_module media_image avatar avatar--medium <%= avatarModifierClass %>" style="background-image: url(<%= avatar %>);" role="img">
           <img src="<%= avatar %>" class="cloaked">
         </span>
       <% if linkableName %>
@@ -75,7 +75,7 @@
           <% if frame['originator'] && frame['originator']['nickname'] && frame['originator']['nickname'] != frame_owner['nickname'] %>
             <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <a class="no-faux-link js-track-event" href="<%= appropriate_subdirectory %>/<%= frame['originator']['nickname'] %>" title="<%= frame['originator']['name'] %>" data-ga_category="<%= ga_category %>" data-ga_action="Click via Username" data-ga_label="<%= signed_in_user['nickname'] || "anonymous" %>"><%= frame['originator']['nickname'] %></a></span>
           <% end %>
-          <% if frame_owner and frame_owner['user_type'] == 1 %>
+          <% if frame_owner and frame_owner['user_type'] == Settings::User.user_type[:faux] %>
             <span class="xuser-data-timestamp xuser-data-timestamp--inline">via <%= frame_owner['authentications'].first['provider'].capitalize %></span>
           <% end %>
         </p>

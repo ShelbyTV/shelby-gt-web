@@ -228,14 +228,14 @@ libs.shelbyGT.DynamicVideoInfoView = Support.CompositeView.extend({
   },
 
   _likeFrame : function(el){
-    if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
+    // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.QUEUE) ){
       // do like
       this._currentFrame.like({likeOrigin: this.options.eventTrackingCategory});
       // update UI that like occured
       var $target = $(el.currentTarget);
       $target.toggleClass('queued js-queued').find('.label').text('Liked');
       $target.find('i').addClass('icon-like--red');
-    }
+    // }
   },
 
   _shareCurrentToFacebook : function(e){

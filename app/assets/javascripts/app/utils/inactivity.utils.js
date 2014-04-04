@@ -40,8 +40,24 @@ $.extend(shelby.userInactivity, {
     }
   },
 
+  toggleUserActivityDetection: function(userDesires){
+    var guideIsShowing = userDesires.get('guideShown');
+
+    if(guideIsShowing) {
+      this.disableUserActivityDetection();
+    } else {
+      this.enableUserActivityDetection();
+    }
+  },
+
   init: function(){
     var self = this;
+
+    this._userDesires = shelby.models.userDesires;
+
+    if(shelby.config.ua.isAppEnabled()) {
+      this._userDesires.bind('change:guideShown',this.toggleUserActivityDetection,this);
+    }
 
     //listen for activity
     $(document).bind('focus focusin focusout resize scroll click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup', function(){
@@ -83,6 +99,13 @@ $.extend(shelby.userInactivity, {
       self._userHoveringActivityIgnore = false;
       });
 
+  },
+
+  _cleanup: function(){
+    if(shelby.config.ua.mobileOs == shelby.config.ua.windows) {
+      this._userDesires.unbind('change:guideShown',this.toggleUserActivityDetection,this);
+    }
   }
+
 
 });

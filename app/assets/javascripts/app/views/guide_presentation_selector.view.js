@@ -14,7 +14,12 @@
       "click .js-me"                       : "_goToMe",
       "click .js-mail"                     : "_goToMail",
       "click .js-admin"                    : "_goToAdmin",
-      "click .js-navigate"                 : "_goToHref"
+      "click .js-navigate"                 : "_goToHref",
+      //----search-----------------------------------------------------
+      "click .js-search"                   : "_focusSearch",
+      "focusin .js-search"                   : "_onFocusSearch",
+      "blur .js-search"                    : "_onBlurSearch",
+      "submit .js-search-form"             : "_onSubmitSearchForm"
     },
 
     /*el : '#js-guide-presentation-selector',*/
@@ -25,16 +30,18 @@
 
     initialize : function(){
       this.model.bind('change:displayState change:currentRollModel', this._onGuideModelChanged, this);
+      shelby.models.videoSearch.bind("change:query", this.render, this);
     },
 
     _cleanup : function(){
       this.model.unbind('change:displayState change:currentRollModel', this._onGuideModelChanged, this);
+      shelby.models.videoSearch.unbind("change:query", this.render, this);
     },
 
     render : function(){
       this.$el.html(this.template({
         user: shelby.models.user,
-        userNickname: shelby.models.user.get('nickname')
+        userNickname: libs.shelbyGT.viewHelpers.user.displayUsername(shelby.models.user)
       }));
       // not rendering this right now. coming back to it when we can focus on optimizing. -his
       // this.renderChild(new libs.shelbyGT.InviteFormView({
@@ -42,15 +49,46 @@
       //   model : shelby.models.invite,
       //   user : shelby.models.user
       // }));
-      if(shelby.models.user.isAnonymous()){ this._adjustForAnonymousUser(); }
+      if(shelby.models.user.isNotLoggedIn()){ this._adjustForAnonymousUser(); }
       this._setSelected();
+      this._$searchInput = this.$el.find('.js-search').find('.search__wrapper'); //.js-search is the List item, get the innards.
+    },
+
+    _focusSearch : function(e){
+      this._$searchInput.addClass('focus');
+      this.$el.find('input').focus();
+    },
+
+    _onFocusSearch : function(e){
+      this._$searchInput.addClass('focus');
+    },
+
+    _onBlurSearch : function(e){
+      this._$searchInput.removeClass('focus');
+    },
+
+    _onSubmitSearchForm : function(e){
+      var query = _(this.$el.find('.js-search').find('input').val()).clean();
+      if (query) {
+
+        shelby.router.navigate('search?query=' + encodeURIComponent(query), {trigger: true});
+        shelby.models.userDesires.set({guideShown: true});
+        this._$searchInput.val('');
+        // event tracking
+        shelby.trackEx({
+          gaCategory : 'search',
+          gaAction : query.toLowerCase(),
+          gaLabel : shelby.models.user.get('nickname')
+        });
+      }
+      return false;
     },
 
     _goToStream : function(e){
-      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
+      // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.STREAM) ){
         shelby.router.navigate('stream', {trigger: true});
         shelby.models.userDesires.set({guideShown: true});
-      }
+      // }
     },
 
     _goToExplore : function(e) {
@@ -62,16 +100,16 @@
     },
 
     _goToMe : function(){
-      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
+      // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.ME) ){
         shelby.router.navigate(shelby.models.user.get('nickname'), {trigger:true});
         shelby.models.userDesires.set({guideShown: true});
-      }
+      // }
     },
 
     _goToMail : function(){
-      if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.MAIL) ){
+      // if( shelby.views.anonBanner.userIsAbleTo(libs.shelbyGT.AnonymousActions.MAIL) ){
         window.open("/mail", "_shelbyMail");
-      }
+      // }
     },
 
     _goToAdmin : function(){
@@ -92,8 +130,8 @@
       // cetain updates only necessary if displayState has changed
       var _changedAttrs = _(model.changedAttributes());
       if (_changedAttrs.has('displayState')) {
-        // disable menus during onboarding, prevent hovers on dropdowns.
-        var doDisableMenus = (model.get('displayState') == libs.shelbyGT.DisplayState.onboarding);
+        // disable menus during service connection animation, prevent hovers on dropdowns.
+        var doDisableMenus = (model.get('displayState') == libs.shelbyGT.DisplayState.serviceConnecting);
 
         this.$('.js-content-selector')
               .children().toggleClass('dropdown_module', !doDisableMenus)
@@ -111,7 +149,10 @@
         $setSelectedClassOn = this.$('.js-stream');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channel) {
         $setSelectedClassOn = this.$('.js-explore');
-      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.channels) {
+      // n.b. when Channels is selected, the DisplayState is userPreferences
+      // however, that's not specific enough to known to display the Channels tab as "selected" in this app nav bar,
+      // hence this slightly more complicated else block:
+      } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.userPreferences && shelby.models.userPreferencesView.get('section') == libs.shelbyGT.DisplayState.channels) {
         $setSelectedClassOn = this.$('.js-channels');
       } else if (this.model.get('displayState') == libs.shelbyGT.DisplayState.watchLaterRoll) {
         $setSelectedClassOn = this.$('.js-me');

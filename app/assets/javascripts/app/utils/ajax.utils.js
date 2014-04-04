@@ -15,7 +15,7 @@ libs.shelbyGT.Ajax = {
     switch(jqXHR.status){
       case 401:
       case 403:
-        document.location.href = "/login?status=401";
+        document.location.href = "/log_in?status=401";
         break;
     }
   },
