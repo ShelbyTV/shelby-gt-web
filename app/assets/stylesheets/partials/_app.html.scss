@@ -283,7 +283,13 @@ a{
           }
         }
       }
-    }
+      .frame-likes {
+        .avatar {
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }//eo .frame
 
     .button_command {
       font-size: 1.1em;
