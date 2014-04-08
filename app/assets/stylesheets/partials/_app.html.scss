@@ -130,7 +130,7 @@ a{
       text-align: center;
     }
     // font-size adjust for "desktop" situations
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: $mq-five-ish) {
       .frame-title {
         font-size: 1.7em;
       }
@@ -243,7 +243,7 @@ a{
 
 .main-layout {
   //  Screens that LESS THAN 1100px wide.
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: $mq-eleven-ish) {
     .frame-body {
       .frame-thumbnail {
         height: 100px;
