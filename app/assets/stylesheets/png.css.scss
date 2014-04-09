@@ -3,3 +3,135 @@
     PNG Fallbacks for browsers that don't support SVG/icon-fonts
 
 */
+.icon-twitter, .icon-tumblr, .icon-thumbnail, .icon-sound-on, .icon-sound-off, .icon-shortlink, .icon-share, .icon-search, .icon-roll, .icon-play, .icon-pause, .icon-like, .icon-hd, .icon-guide-out, .icon-guide-in, .icon-facebook, .icon-embed, .icon-email, .icon-close, .icon-chevron, .icon-check, .icon-carrot, .icon-avatar, .icon-arrow_up, .icon-arrow_right, .icon-arrow_left, .icon-arrow_down, .icon-whole, .icon-type, .icon-mark, .icon-star {
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+}
+
+
+.icon-twitter:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-tumblr:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-thumbnail:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-sound-on:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-sound-off:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-shortlink:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-share:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-search:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-roll:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-play:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-pause:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-like:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-hd:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-guide-out:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-guide-in:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-facebook:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-embed:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-email:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-close:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-chevron:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-check:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-carrot:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-avatar:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-arrow_up:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-arrow_right:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-arrow_left:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-arrow_down:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-whole:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-type:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-mark:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
+.icon-star:before {
+  content: "\0020";
+  background-image: <%= asset-data-url("icons/light/xx.png") %>
+}
