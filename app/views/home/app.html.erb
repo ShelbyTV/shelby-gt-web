@@ -4,7 +4,7 @@
 
 <%# if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
-  <%= javascript_include_tag '<script src="http://192.168.2.19:8080/target/target-script-min.js#anonymous"></script>' unless Rails.env.production? %>
+  <%= javascript_include_tag "http://192.168.2.19:8080/target/target-script-min.js#anonymous" unless Rails.env.production? %>
   <%= render :partial => "/home/meta_info" %>
   <meta charset="utf-8">
   <title>
