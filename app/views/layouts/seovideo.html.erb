@@ -4,6 +4,8 @@
 
 <% # if we got any meta tag info from request display it, otherwise just render head normally %>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# shelbytv: http://ogp.me/ns/fb/shelbytv#">
+  <%= javascript_include_tag Settings::Application.weinre unless Rails.env.production? %>
+
   <%= render :partial => "/home/meta_info" %>
   <meta name="description" content="<%= @meta_description %>">
   <meta charset="utf-8">
