@@ -1,19 +1,13 @@
-<section class="clearfix" id="<%= File.basename __FILE__, ".html.erb" %>" name="<%= File.basename __FILE__, ".html.erb" %>">
-  <h3 class="beta">
-    Share Page
-  </h3>
+<div class="one-half clearfix">
+  <p>We see the Share Pages as having a number benefits:</p>
+  <ul class="ul">
+    <li><strong>Linkability:</strong> A videocard is a unique unit of information, and should have its own location (permalink).</li>
+    <li><strong>Isolation:</strong> We found that deep-linking into the full web app confusing for the people that were receiving a shortlink.</li>
+    <li><strong>Lightweight:</strong> A content-first approach gets the users to video without having to load a javascript heavy web app.</li>
+    <li><strong>Cross-platform:</strong> We don't have control over how a user shares a permalink, so we need a way for any device on any platform to enjoy a specific video.</li>
+  </ul>
+</div>
 
-  <div class="one-half clearfix">
-    <p>We see the Share Pages as having a number benefits:</p>
-    <ul class="ul">
-      <li><strong>Linkability:</strong> A videocard is a unique unit of information, and should have its own location (permalink).</li>
-      <li><strong>Isolation:</strong> We found that deep-linking into the full web app confusing for the people that were receiving a shortlink.</li>
-      <li><strong>Lightweight:</strong> A content-first approach gets the users to video without having to load a javascript heavy web app.</li>
-      <li><strong>Cross-platform:</strong> We don't have control over how a user shares a permalink, so we need a way for any device on any platform to enjoy a specific video.</li>
-    </ul>
-  </div>
-
-  <center>
-    <%= image_tag "share_page.png", :class => "two-thirds" %>
-  </center>
-</section>
+<center>
+  <%= image_tag "share_page.png", :class => "two-thirds" %>
+</center>

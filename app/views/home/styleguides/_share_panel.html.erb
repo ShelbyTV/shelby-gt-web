@@ -1,111 +1,105 @@
-<section class="clearfix" id="forms" name="forms">
-  <h3 class="beta">
-    Share Panel (guide-overlay module)
-  </h3>
-  <div>
-    <p>
+<div>
+  <p>
 
-    </p>
-  </div>
+  </p>
+</div>
 
-  <div class="column one-third">
+<div class="column one-third">
 
+  <div class="frame-body-wrapper" style="font-size: 11px; position: relative; height: 500px; width: 330px;">
 
-    <div class="frame-body-wrapper" style="font-size: 11px; position: relative; height: 500px; width: 330px;">
+    <div class="guide-overlay__head guide-overlay__head--frame-rolling">
+      <h2 class="guide-overlay__h1">
+        Share this Video
+      </h2>
+    </div><!-- eo guide-overlay__head--frame-rolling -->
 
+    <div class="guide-overlay__body guide-overlay__body--frame-sharing" style="overflow-x: hidden;">
+      <!-- IF LOGGED OUT -->
+        <div class="form_module rolling-form hidden">
+          <div class="guide-overlay__main">
+            <div class="rolling-option">
+              <fieldset class="clearfix">
+                <button disabled tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--twitter button_twitter-blue one-fourth">
+                  <span class="icon icon-twitter"></span>
+                  <span class="button_label">Twitter</span>
+                </button>
 
-      <div class="guide-overlay__head guide-overlay__head--frame-rolling">
-        <h2 class="guide-overlay__h1">
-          Share this Video
-        </h2>
-      </div><!-- eo guide-overlay__head--frame-rolling -->
+                <button disabled tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--facebook button_facebook-blue one-fourth">
+                  <span class="icon icon-facebook"></span>
+                  <span class="button_label">Facebook</span>
+                </button>
+              </fieldset>
 
-      <div class="guide-overlay__body guide-overlay__body--frame-sharing" style="overflow-x: hidden;">
-        <!-- IF LOGGED OUT -->
-          <div class="form_module rolling-form hidden">
-            <div class="guide-overlay__main">
-              <div class="rolling-option">
-                <fieldset class="clearfix">
-                  <button disabled tabindex="0" for="share-on-twitter" class="button_primer button_command button_command--twitter button_twitter-blue one-fourth">
-                    <span class="icon icon-twitter"></span>
-                    <span class="button_label">Twitter</span>
-                  </button>
-
-                  <button disabled tabindex="0" for="share-on-facebook" class="button_primer button_command button_command--facebook button_facebook-blue one-fourth">
-                    <span class="icon icon-facebook"></span>
-                    <span class="button_label">Facebook</span>
-                  </button>
-                </fieldset>
-
-                <fieldset class="form_fieldset form_fieldset--submit clearfix">
-                  <button class="button_primer button_command button_command--flexible button_command--sub button_command--cancel button_gray">
-                    Cancel
-                  </button>
-                </fieldset>
-              </div>
-            </div><!-- eo guide-overlay__main -->
-          </div>
-        <!-- END IF LOGGED OUT -->
-
-        <!-- IF LOGGED IN -->
-          <form id="share-it-01" class="form_module rolling-form" style="font-size: 10px; margin: 1em;">
-            <input type="hidden" id="frame_id" name="frame_id" value="123" />
-            <textarea id="frame_comment" name="frame_comment" class="form_textarea new-comment-input" rows="3" autofocus tabindex="0" placeholder="What do you think about this video?"></textarea>
-
-            <div class="js-guide-overlay-main guide-overlay__main">
-              <div class="rolling-option">
-                <fieldset class="form_fieldset form_fieldset--social clearfix">
-                  <legend class="form_legend">
-                    Also Share to
-                  </legend>
-
-                  <label tabindex="0" for="share-on-twitter-01" class="button_primer button_command button_command--sub button_command--twitter button_twitter-blue one-fourth" style="display: inline-block;">
-                    <input data-network="twitter" id="share-on-twitter-01" name="share-on-twitter-01" type="checkbox" class="visuallyhidden" checked="true" />
-                    <span class="icon icon-twitter"></span>
-                    <span class="button_label">Twitter</span>
-                  </label>
-
-                  <label tabindex="0" for="share-on-facebook-01" class="button_primer button_command button_command--sub button_command--facebook button_facebook-blue one-fourth" style="display: inline-block;">
-                    <input data-network="facebook" id="share-on-facebook-01" name="share-on-facebook-01" type="checkbox" class="visuallyhidden" checked="true" />
-                    <span class="icon icon-facebook"></span>
-                    <span class="button_label">Facebook</span>
-                  </label>
-                </fieldset>
-
-                <fieldset class="form_fieldset form_fieldset--submit clearfix">
-                  <button class="button_primer button_command button_command--wide button_green js-share-it" type="submit" tabindex="0">
-                    Share
-                  </button>
-
-                  <button type="reset" class="button_primer button_command button_command--flexible button_command--sub button_command--cancel button_gray">
-                    Cancel
-                  </button>
-                </fieldset>
-              </div>
+              <fieldset class="form_fieldset form_fieldset--submit clearfix">
+                <button class="button_primer button_command button_command--flexible button_command--sub button_command--cancel button_gray">
+                  Cancel
+                </button>
+              </fieldset>
             </div>
-          </form>
-          <!-- END IF LOGGED IN -->
+          </div><!-- eo guide-overlay__main -->
+        </div>
+      <!-- END IF LOGGED OUT -->
 
-          <div class="guide-overlay__foot guide-overlay__foot--frame-rolling clearfix">
-            <div class="guide-overlay__lining clearfix">
-              <span class="form_label">
-                Shortlink
-              </span>
+      <!-- IF LOGGED IN -->
+        <form id="share-it-01" class="form_module rolling-form" style="font-size: 10px; margin: 1em;">
+          <input type="hidden" id="frame_id" name="frame_id" value="123" />
+          <textarea id="frame_comment" name="frame_comment" class="form_textarea new-comment-input" rows="3" autofocus tabindex="0" placeholder="What do you think about this video?"></textarea>
 
-              <span class="share_menu__faux-button button_command--shortlink one-half clearfix">
-                <span class="icon icon-shortlink"></span>
-                <input type="text" name="shortlink" id="shortlink-01" value="http://shl.by/123" class="form_input" />
-              </span>
+          <div class="js-guide-overlay-main guide-overlay__main">
+            <div class="rolling-option">
+              <fieldset class="form_fieldset form_fieldset--social clearfix">
+                <legend class="form_legend">
+                  Also Share to
+                </legend>
+
+                <label tabindex="0" for="share-on-twitter-01" class="button_primer button_command button_command--sub button_command--twitter button_twitter-blue one-fourth" style="display: inline-block;">
+                  <input data-network="twitter" id="share-on-twitter-01" name="share-on-twitter-01" type="checkbox" class="visuallyhidden" checked="true" />
+                  <span class="icon icon-twitter"></span>
+                  <span class="button_label">Twitter</span>
+                </label>
+
+                <label tabindex="0" for="share-on-facebook-01" class="button_primer button_command button_command--sub button_command--facebook button_facebook-blue one-fourth" style="display: inline-block;">
+                  <input data-network="facebook" id="share-on-facebook-01" name="share-on-facebook-01" type="checkbox" class="visuallyhidden" checked="true" />
+                  <span class="icon icon-facebook"></span>
+                  <span class="button_label">Facebook</span>
+                </label>
+              </fieldset>
+
+              <fieldset class="form_fieldset form_fieldset--submit clearfix">
+                <button class="button_primer button_command button_command--wide button_green js-share-it" type="submit" tabindex="0">
+                  Share
+                </button>
+
+                <button type="reset" class="button_primer button_command button_command--flexible button_command--sub button_command--cancel button_gray">
+                  Cancel
+                </button>
+              </fieldset>
             </div>
           </div>
-      </div><!-- eo guide-overlay__body -->
+        </form>
+        <!-- END IF LOGGED IN -->
 
-    </div><!-- shell -->
+        <div class="guide-overlay__foot guide-overlay__foot--frame-rolling clearfix">
+          <div class="guide-overlay__lining clearfix">
+            <span class="form_label">
+              Shortlink
+            </span>
+
+            <span class="share_menu__faux-button button_command--shortlink one-half clearfix">
+              <span class="icon icon-shortlink"></span>
+              <input type="text" name="shortlink" id="shortlink-01" value="http://shl.by/123" class="form_input" />
+            </span>
+          </div>
+        </div>
+    </div><!-- eo guide-overlay__body -->
+
+  </div><!-- shell -->
 
 
-  </div><!-- eo .column -->
+</div><!-- eo .column -->
 
-  <div class="column column--padding two-thirds">
+<div class="column column--padding two-thirds">
 <code class="language-markup">
   <pre>…
   &lt;!-- HEADER -->
@@ -171,11 +165,10 @@
 …
 </pre>
 </code>
-  </div>
+</div>
 
-  <hr class="clearfix" />
+<hr class="clearfix" />
 
-  <h4 class="shelf__h3">
+<h4 class="shelf__h3">
 
-  </h4>
-</section>
+</h4>

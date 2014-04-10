@@ -53,47 +53,102 @@
     <div class="shelf__wrapper shelf__wrapper--styleguide">
       <div class="shelf">
         <div class="shelf__lining">
-          <h2 class="alpha">
+          <h2 class="alpha alpha--display">
             Shelby.tv Styleguide
           </h2>
 
           <%#= render :partial => 'home/styleguides/brand' %>
           <hr/>
 
-          <%= render :partial => 'home/styleguides/widths' %>
+          <%= render  partial: 'home/styleguides/logo',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "Logo"
+                      } %>
           <hr/>
 
-          <%= render :partial => 'home/styleguides/typography' %>
+          <%= render  partial: 'home/styleguides/widths',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "Widths"
+                      } %>
           <hr/>
 
-          <%= render :partial => 'home/styleguides/avatar' %>
+          <%= render  partial: 'home/styleguides/typography',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "Typography"
+                      } %>
           <hr/>
 
-          <%= render :partial => 'home/styleguides/buttons' %>
+          <%= render  partial: 'home/styleguides/avatar',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "Avatar"
+                      } %>
           <hr/>
 
-          <%= render :partial => 'home/styleguides/forms' %>
+          <%= render  partial: 'home/styleguides/buttons',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "Buttons"
+                      } %>
           <hr/>
 
-          <%= render :partial => 'home/styleguides/dropdowns' %>
+          <%= render  partial: 'home/styleguides/forms',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "Forms"
+                      } %>
           <hr/>
 
-          <%= render :partial => 'home/styleguides/app' %>
+          <%= render  partial: 'home/styleguides/dropdowns',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "Dropdowns"
+                      } %>
           <hr/>
 
-          <%= render :partial => 'home/styleguides/modal' %>
+          <%= render  partial: 'home/styleguides/app',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "App"
+                      } %>
           <hr/>
 
-          <%#= render :partial => 'home/styleguides/guide_overlay' %>
+          <%= render  partial: 'home/styleguides/modal',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "Modal"
+                      } %>
+          <hr/>
+
+          <%#= render  partial: 'home/styleguides/guide_overlay',
+                      layout: 'home/styleguides/section',
+                      locals: {
+  title: ""
+                    } %>
           <!-- <hr/> -->
 
-          <%= render :partial => 'home/styleguides/share_panel' %>
+          <%= render  partial: 'home/styleguides/share_panel',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "Share Panel"
+                      } %>
           <hr/>
 
-          <%= render :partial => 'home/styleguides/videocard' %>
+          <%= render  partial: 'home/styleguides/videocard',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "Videocard"
+                      } %>
           <hr/>
 
-          <%= render :partial => 'home/styleguides/share_page' %>
+          <%= render  partial: 'home/styleguides/share_page',
+                      layout: 'home/styleguides/section',
+                      locals: {
+                        title: "Share Page"
+                      } %>
           <hr/>
 
 
