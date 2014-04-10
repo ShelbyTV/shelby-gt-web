@@ -9,12 +9,12 @@
     border: none;
     position: relative;
 
-    &:not(.shelf--header) {
+    &:not(.shelf--header):not(.shelf--error) {
       top: -1em;
     }
 
     @media screen and (max-width: $mq-nine-ish) {
-      &:not(.shelf--header) {
+      &:not(.shelf--header):not(.shelf--error) {
         top: 0;
       }
     }
