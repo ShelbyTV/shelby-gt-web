@@ -20,6 +20,9 @@ defaults: &defaults
   social: "Shelby learns what you like."
   social_body: "The more videos you Watch, Like, and Share, the better your recommendations get."
 
+  seo_modal_header: "Want a better way to discover and enjoy video?"
+  seo_modal_button: "Try Shelby.tv"
+
   ipadbeta:
     optin:
       head: Welcome to the Shelby.tv iPad Beta

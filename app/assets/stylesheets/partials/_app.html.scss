@@ -131,7 +131,7 @@ a{
       text-align: center;
     }
     // font-size adjust for "desktop" situations
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: $mq-five-ish) {
       .frame-title {
         font-size: 1.7em;
       }
@@ -175,6 +175,10 @@ a{
         width: auto;
       }
       .frame-footer {
+        .avatar {
+          height: 3em;
+          width: 3em;
+        }
         .media_body {
           font-size: 1.1em;
         }
@@ -240,7 +244,7 @@ a{
 
 .main-layout {
   //  Screens that LESS THAN 1100px wide.
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: $mq-eleven-ish) {
     .frame-body {
       .frame-thumbnail {
         height: 100px;
@@ -284,7 +288,13 @@ a{
           }
         }
       }
-    }
+      .frame-likes {
+        .avatar {
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }//eo .frame
 
     .button_command {
       font-size: 1.1em;

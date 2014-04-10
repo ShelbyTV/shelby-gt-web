@@ -54,6 +54,13 @@ a.frame {
     min-width: 160px;
     position: absolute;
   }
+
+  // @media screen and (max-width: $mq-eleven-ish){
+  //   .avatar {
+  //     width: 50%;
+  //     height: 50%;
+  //   }
+  // }
 }
     // modifiers
     .frame--abstract {
