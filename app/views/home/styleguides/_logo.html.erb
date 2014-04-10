@@ -1,14 +1,23 @@
-<div class="clearfix">
-  <div class="column column--padding one-half" style="background-color: black;">
-    <p style="color:white;">
+  <div class="column one-half">
+    <p>
       Regular, for dark backgrounds:
     </p>
 
-    <p>
-      <span class="shelby_logo">
-        <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
-      </span>
-    </p>
+    <div style="background-color: black;">
+      <p class="push--bottom">
+        <span class="shelby_logo">
+          <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
+        </span>
+      </p>
+    </div>
+  <code class="language-markup">
+  <pre>&lt;!-- More often, the logo is white-on-black -->
+  &lt;span class="shelby_logo">
+    &lt;span class="icon-mark">&lt;/span>
+    &lt;span class="icon-type">&lt;/span>
+    &lt;span class="ir">Shelby.tv&lt;/span>
+  &lt;/span></pre>
+  </code>
   </div>
 
   <div class="column one-half">
@@ -16,10 +25,18 @@
       Inverted, for light backgrounds:
     </p>
 
-    <p>
+    <p class="push--bottom">
       <span class="shelby_logo shelby_logo--inverted">
         <span class="icon-mark"></span><span class="icon-type"></span><span class="ir">Shelby.tv</span>
       </span>
     </p>
+
+    <code class="language-markup">
+  <pre>&lt;!-- Used mostly out-of-app -->
+  &lt;span class="shelby_logo shelby_logo--inverted">
+    &lt;span class="icon-mark">&lt;/span>
+    &lt;span class="icon-type">&lt;/span>
+    &lt;span class="ir">Shelby.tv&lt;/span>
+  &lt;/span></pre>
+    </code>
   </div>
-</div>
