@@ -9,10 +9,8 @@
   overflow: scroll;
   position: relative;
 
-  h1,h2,h3,h4,h5,h6 {
-    font-family: $font-family-display;
-    font-weight: 500;
-  }
+  // h1,h2,h3,h4,h5,h6 {
+  // }
 
   //TODO: determine why this override is necessary.
   .shelby__wrapper {

@@ -47,6 +47,23 @@
     text-decoration: underline;
   }
 
+  .alpha {
+    font-size: 2.2em;
+    margin-bottom: 1em;
+  }
+
+  .beta {
+    margin-bottom: 1em;
+  }
+
+  .gamma {
+    margin-bottom: 1em;
+  }
+
+  .delta {
+    margin-bottom: 1em;
+  }
+
   @media screen and (max-width: $mq-nine-ish) {
     border-left: 0;
     border-right: 0;
@@ -87,23 +104,6 @@
 //------------------------------------------------------------------------------
 .shelf__lining {
   padding: 0em 3.5em;
-}
-
-.shelf__h1 {
-  font-size: 2.2em;
-  margin-bottom: 1em;
-}
-
-.shelf__h2 {
-  margin-bottom: 1em;
-}
-
-.shelf__h3 {
-  margin-bottom: 1em;
-}
-
-.shelf__h4 {
-  margin-bottom: 1em;
 }
 
 .shelf__block {

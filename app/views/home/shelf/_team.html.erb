@@ -3,7 +3,7 @@
     <div class="shelf__lining">
       <%= image_tag("team-1.jpg", :class => "img img--fill img--banner push--bottom") %>
 
-      <%= content_tag(:h3,"About", :class => "shelf__h2") %>
+      <%= content_tag(:h3,"About", :class => "beta beta--display") %>
 
       <div class="text-columns text-columns--2">
         <% Settings::Team.about.each do |p| %>
@@ -11,7 +11,7 @@
         <% end %>
       </div>
 
-      <%= content_tag(:h3,"Our Team", :class => "shelf__h2") %>
+      <%= content_tag(:h3,"Our Team", :class => "beta beta--display") %>
 
       <div class="text-columns">
         <% Settings::Team.our_team.each do |p| %>
@@ -37,7 +37,7 @@
         <% end %>
       </ul>
 
-      <%= content_tag(:h3,"Work at Shelby", :class => "shelf__h2") %>
+      <%= content_tag(:h3,"Work at Shelby", :class => "beta beta--display") %>
 
       <div class="text-columns text-columns--2">
         <% Settings::Team.work.each do |p| %>
@@ -62,7 +62,7 @@
       </div>
 
 
-      <%= content_tag(:h3,"Press", :class => "shelf__h2") %>
+      <%= content_tag(:h3,"Press", :class => "beta beta--display") %>
 
       <div class="float--left one-half push--bottom">
         <% Settings::Team.press.each do |p| %>

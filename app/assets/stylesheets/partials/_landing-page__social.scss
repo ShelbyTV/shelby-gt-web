@@ -22,10 +22,10 @@
   max-width: 1200px;
   width: auto;
 
-  .shelf__h1 {
+  .alpha {
     margin-top: 1em;
   }
-  .shelf__h2 {
+  .beta {
     clear: both;
     margin: 1em 0 0;
     position: relative;
@@ -54,7 +54,7 @@
       max-width: 423px;
       width: 100%;
     }
-    .shelf__h1 {
+    .alpha {
       margin-top: 1em;
     }
     .shelf__button {
@@ -63,14 +63,14 @@
     .shelf__img--iphone_horizontal {
       max-width: 550px;
     }
-    .shelf__h2,
+    .beta,
     .press_list {
       display: none;
     }
   }
   @media screen and (max-width: $mq-nine-ish) {
     //elements
-    .shelf__h1 {
+    .alpha {
       font-size: 1.5em;
 
     }

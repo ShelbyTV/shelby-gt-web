@@ -1,7 +1,7 @@
 <div class="shelf shelf--ipadbeta">
   <% if optin %>
     <div class="shelf__lining">
-      <%= content_tag :h2, Settings::Marketing.ipadbeta.optin.head, :class => "shelf__h2" %>
+      <%= content_tag :h2, Settings::Marketing.ipadbeta.optin.head, :class => "beta" %>
 
       <%= content_tag :p, Settings::Marketing.ipadbeta.optin.message, :class => "shelf__block" %>
 
@@ -13,7 +13,7 @@
     </div>
   <% else %>
     <div class="shelf__lining">
-      <%= content_tag :h2, Settings::Marketing.ipadbeta.optout.head, :class => "shelf__h2" %>
+      <%= content_tag :h2, Settings::Marketing.ipadbeta.optout.head, :class => "beta" %>
 
       <% Settings::Marketing.ipadbeta.optout.message.each do |msg| %>
         <%= content_tag :p, msg.html_safe, :class => "shelf__block" %>

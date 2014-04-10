@@ -22,3 +22,13 @@
 .zeta {
   @include header-size(12px);
 }
+
+.alpha--display,
+.beta--display,
+.gamma--display,
+.delta--display,
+.epsilon--display,
+.zeta--display {
+  font-family: $font-family-display;
+  font-weight: 500;
+}
