@@ -23,6 +23,12 @@
       font-size: 11px;
     }
   }
+
+  .ul {
+    & > li {
+      margin-bottom: 1em;
+    }
+  }
 }
 
 .shelf__wrapper--styleguide {

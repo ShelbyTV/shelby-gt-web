@@ -1,6 +1,12 @@
 //---------------------------
 //  TODO: fix this list shit
 //---------------------------
+.ul {
+  & > li {
+    margin-bottom: 1em;
+  }
+}
+
 .list,
 .rolls-list,
 .form-rolls-list,
