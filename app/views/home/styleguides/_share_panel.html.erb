@@ -178,9 +178,29 @@
     <p>
       The Share Panel was designed to be as unobtrusive as possible, after observing that it's common for a user to share a video as they're watching it.
     </p>
+
+    <small class="annotation">
+      <ol type="A" class="js-annotations-list">
+        <li>
+          <p>
+            <strong>Logged in: </strong>
+            In-app Share panels display the video <i>in situ</i> to help give the user a better idea of what they're sharing.
+          </p>
+          <p>
+            <strong>Logged out: </strong>
+            Share panels for logged out users will not have a text area because the user will be filling out a comment on a Tweet or Facebook message.
+          </p>
+          <p>
+            <strong>Mobile Web: </strong>
+            It would be redundant to show the thumbnail because the Share Panel is displayed in a dropdown below the videocard.
+          </p>
+        </li>
+      </ol>
+    </small>
   </div>
 
   <div class="column two-thirds">
+    <span class="css-tag" data-note="A" style="position: absolute; margin: 124px 13px;"></span>
     <%= image_tag "in_app_share_panel.png", :class => "one-whole" %>
   </div>
 </div>
