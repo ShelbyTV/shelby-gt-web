@@ -1,13 +1,13 @@
-<div class="three-fifths push--bottom">
+<div class="one-half push--bottom">
   <p>
     The width abstraction is extremely handy for a number of reasons:
   </p>
-  <ul>
+  <ul class="ul">
     <li>
-      It is not the job of any given component of our codebase to govern it's own width.
+      It is not the job of any given component of our codebase to depend on any set or specific width.
     </li>
     <li>
-      Given the previously rule, in responsive environments, media-queries can be hooked onto widths themselves, and not the objects.
+      In responsive environments, media-queries can be isolated to override width styles, without interferring with the objects they're containing.
     </li>
     <li>
       Abstracting a commonly used set of rules helps to keep the code base small and maintainable.
