@@ -181,6 +181,8 @@ class HomeController < ApplicationController
   # GET /log_in
   #
   def log_in
+    check_for_signed_in_user_and_issues
+
     (redirect_to "/" and return) if user_signed_in?
 
     @login = :true
