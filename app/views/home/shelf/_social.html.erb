@@ -12,26 +12,6 @@
             <%= raw Settings::Marketing.social_body %>
           </p>
 
-          <div class="shelf__block">
-            <% if [:android,:amazon].include? @mobile_os %>
-              <%= form_tag "#{appropriate_subdirectory}/user/create", :class => "form_module js-get-started-form" do %>
-                <%= hidden_field_tag 'anonymous', true %>
-                <button type="submit" class="button_primer button_green button_command button_command--flexible one-half shelf__button js-track-event js-get-started-button" data-ga_action="Click Get Started" data-ga_label="<%= request.referer || 'direct' %>"><span class="button_label">Get Started</span></button>
-              <% end %>
-            <% else %>
-              <a href="<%= Settings::Application.ios_app_url %>" class="button_primer button_green button_command button_command--giant button_command--flexible shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Social shelf">
-                <span class="button_label"><%= raw Settings::Marketing.cta_button %></span>
-              </a>
-            <% end %>
-            </br>
-            <small>
-              or
-              <a href="<%= appropriate_subdirectory %>/get-started" class="js-track-event button_text" data-ga_action="Click Try on Web" data-ga_label="Social Shelf">
-                <%= Settings::Marketing.cta_alternative_button %>
-              </a>
-            </small>
-          </div>
-
           <% if mobile %>
             <%= image_tag "3.png", :class => "shelf__img--iphone_horizontal", :title => "iPhone screenshot of a video recommendation", :alt => "iPhone screenshot of a video recommendation" %>
           <% else %>

@@ -55,6 +55,9 @@
           <%= render :partial => "/home/shelf/social", :locals => {
             mobile: (@mobile_os or @is_mobile)
           } %>
+          <%= render :partial => "/home/shelf/apps", :layout => '/home/shelf/shelf', :locals => {
+            mobile: (@mobile_os or @is_mobile)
+          } %>
         </div>
 
       <% end %>

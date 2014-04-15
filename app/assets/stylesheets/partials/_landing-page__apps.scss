@@ -1,0 +1,19 @@
+.shelf__wrapper--apps {
+  background-color: transparent;
+
+  .shelf {
+    text-align: center;
+  }
+  .shelf__lining {
+    margin: 0 auto;
+  }
+}
+
+.shelf--apps {
+  width: auto;
+
+  //viewports (across all devices) smaller than 900-ish pixels
+  @media screen and (max-width: $mq-nine-ish) {
+
+  }
+}

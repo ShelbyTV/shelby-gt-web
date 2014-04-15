@@ -1,5 +1,7 @@
 module ApplicationHelper
-
+  def yield_content!(content_key)
+    view_flow.content.delete(content_key)
+  end
   #valid avatar_size options are "sq192x192", "sq48x48", and "original"
   def avatar_url_for_user(user, avatar_size="#{Settings::Avatar.small}")
 

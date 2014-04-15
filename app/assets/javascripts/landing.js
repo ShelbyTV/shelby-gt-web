@@ -80,6 +80,7 @@ $(document).ready(function(e){
           $social : $('#social').height(windowHeight),
           $stream : $('#stream').height(windowHeight - 50),
           $press  : $('#press').height(windowHeight),
+          $apps   : $('#apps').height(windowHeight),
           $footer : $('#footer') //add class dynamically, or you get weird ghosting effect.
         };
 

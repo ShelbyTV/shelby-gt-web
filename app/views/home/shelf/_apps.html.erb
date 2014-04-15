@@ -1,0 +1,53 @@
+<%
+  #remove extension and underscores
+  @key = (File.basename __FILE__, ".html.erb")
+  @key[0] = ''
+%>
+<% content_for :thing, @key %>
+<% content_for :id, @key %>
+<% content_for :name, @key %>
+<% content_for :wrapper_modifier, @key %>
+<% content_for :block_modifier, @key %>
+<% content_for :js_handler, @key %>
+  <ul class="list list--inline">
+     <li class="list__item one-third">
+      <h2 class="shelf__h1">
+        iOS
+      </h2>
+
+      <button
+        class="button_primer button_green button_command button_command--flexible one-half shelf__button js-track-event"
+        data-ga_action="Click Download iOS"
+        data-ga_label="<%= request.referer || 'direct' %>"
+        >
+          <span class="button_label">Download Mac</span>
+      </button>
+
+     </li><!--
+  --><li class="list__item one-third">
+      <h2 class="shelf__h1">
+        Android/Kindle
+      </h2>
+
+      <button
+        class="button_primer button_green button_command button_command--flexible one-half shelf__button js-track-event"
+        data-ga_action="Click Download Android/Kindle"
+        data-ga_label="<%= request.referer || 'direct' %>"
+        >
+          <span class="button_label">Download Kindle</span>
+      </button>
+     </li><!--
+  --><li class="list__item one-third">
+      <h2 class="shelf__h1">
+        Windows8
+      </h2>
+
+      <button
+        class="button_primer button_green button_command button_command--flexible one-half shelf__button js-track-event"
+        data-ga_action="Click Download Windows"
+        data-ga_label="<%= request.referer || 'direct' %>"
+        >
+          <span class="button_label">Download Windows</span>
+      </button>
+     </li>
+  </ul>
