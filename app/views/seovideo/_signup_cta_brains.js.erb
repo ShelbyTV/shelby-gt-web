@@ -21,6 +21,7 @@ $(document).on('ready', function(){
   // let em submit the form ie click the button
   $('.js-get-started-button').on('click', function(e){
     e.preventDefault();
+    e.stopPropagation();
     var $target = $(e.currentTarget);
     if (!$target.hasClass('button_busy')) {
       $target.addClass('button_busy');
@@ -31,7 +32,7 @@ $(document).on('ready', function(){
   });
 
   // let em close it
-  $('.shelby__wrapper').on('click', '.js-seo-signup-message', function(){
+  $('body').on('click', function(){
     $('.js-seo-signup-message').addClass('hidden');
   });
 
