@@ -1,6 +1,6 @@
 .shelf__wrapper--apps {
-  background-color: transparent;
-  min-height: 350px;
+  background-color: $ui-white;
+  min-height: 400px;
 
   .shelf {
     text-align: center;
@@ -12,6 +12,10 @@
 
 .shelf--apps {
   width: auto;
+
+  & > .list {
+    margin: 0 auto;
+  }
 
   //viewports (across all devices) smaller than 900-ish pixels
   @media screen and (max-width: $mq-nine-ish) {

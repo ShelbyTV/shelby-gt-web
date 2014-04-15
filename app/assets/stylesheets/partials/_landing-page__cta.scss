@@ -67,16 +67,17 @@
     padding: 0;
     text-align: center;
 
-    .facepile {display: none;}
-
-    &.media_module {
+    &.shelf--facebook-logged-out {
+      background-position: center 78%;
+    }
+    .facepile {
+      display: none;
+    }
+    .media_module {
       height: auto;
       background-position: center 85%;
       -webkit-background-size: 80%;
       background-size: 80%;
-    }
-    &.shelf--facebook-logged-out {
-      background-position: center 78%;
     }
     .appstore {
       display: none;
@@ -106,7 +107,7 @@
   }
   //viewports (across all devices) smaller than 500-ish pixels
   @media screen and (max-width:  $mq-five-ish) {
-    &.media_module {
+    .media_module {
       -webkit-background-size: 90%;
       background-size: 90%;
       background-position: center 85%;

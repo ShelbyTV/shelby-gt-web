@@ -1,41 +1,37 @@
-<div id="stream" name="stream" class="shelf__wrapper shelf__wrapper--stream vertical-align-hack">
-  <div class="vertical-align-hack__el">
-    <div class="shelf shelf--stream clearfix">
-      <div class="media_module media_module--bare clearfix">
-        <div class="media_image shelf__lining three-fifths">
-          <h2 class="shelf__h1">
-            <%= raw Settings::Marketing.stream %>
-          </h2>
+<% format_content_for_layout __FILE__ %>
 
-          <p class="shelf__block four-fifths">
-            <%= raw Settings::Marketing.stream_body %>
-          </p>
+<div class="media_module media_module--bare clearfix">
+  <div class="media_image shelf__lining three-fifths">
+    <h2 class="shelf__h1">
+      <%= raw Settings::Marketing.stream %>
+    </h2>
 
-          <% unless mobile %>
-            <ul class="list list--inline shelf__list js-target">
-              <li class="list__item">
-                <%= image_tag "youtube.jpg", :title => "YouTube", :alt => "YouTube" %>
-              </li>
+    <p class="shelf__block four-fifths">
+      <%= raw Settings::Marketing.stream_body %>
+    </p>
 
-              <li class="list__item">
-                <%= image_tag "vimeo.jpg", :title => "Vimeo", :alt => "Vimeo" %>
-              </li>
+    <% unless mobile %>
+      <ul class="list list--inline shelf__list js-target">
+        <li class="list__item">
+          <%= image_tag "youtube.jpg", :title => "YouTube", :alt => "YouTube" %>
+        </li>
 
-              <li class="list__item">
-                <%= image_tag "facebook.jpg", :title => "Facebook", :alt => "Facebook" %>
-              </li>
+        <li class="list__item">
+          <%= image_tag "vimeo.jpg", :title => "Vimeo", :alt => "Vimeo" %>
+        </li>
 
-              <li class="list__item">
-                <%= image_tag "twitter.jpg", :title => "Twitter", :alt => "Twitter" %>
-              </li>
-            </ul>
-          <% end %>
-        </div>
+        <li class="list__item">
+          <%= image_tag "facebook.jpg", :title => "Facebook", :alt => "Facebook" %>
+        </li>
 
-        <div class="media_body shelf__img--stream js-stream" role="img">
-          <%= image_tag "ipad-channels.png", :class => "shelf__img--ipad js-phantom-hover", :alt => "", :title => "" %>
-        </div>
-      </div>
-    </div><!-- eo shelf -->
-  </div><!-- eo positioning el -->
-</div><!-- eo shelf__wrapper -->
+        <li class="list__item">
+          <%= image_tag "twitter.jpg", :title => "Twitter", :alt => "Twitter" %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="media_body shelf__img--stream js-stream" role="img">
+    <%= image_tag "ipad-channels.png", :class => "shelf__img--ipad js-phantom-hover", :alt => "", :title => "" %>
+  </div>
+</div>

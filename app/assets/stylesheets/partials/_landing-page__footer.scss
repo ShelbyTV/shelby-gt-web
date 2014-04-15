@@ -4,6 +4,7 @@
 .shelby__foot {
   @include font-size(11px);
 
+  background-color: $ui-white;
   height: auto;
   line-height: 1.5;
   padding: 20px 0;
@@ -15,7 +16,7 @@
   }
 
   .list__item {
-    padding: 0.25em;
+    padding: 0.25em 1em;
   }
 
   .shelby__lining {

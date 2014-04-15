@@ -6,6 +6,10 @@ defaults: &defaults
   no_search_required: "Great video, no searching required."
   discover_love: "Discover videos you and your friends will love."
 
+  badge:
+    ios: appstore-badge.png
+    amazon: amazon-apps-store-us-white.png
+    windows: WindowsStore_badge_en_English_Black_small_154x40.png
 
 
   cta: "Discover videos you and your friends will love."

@@ -75,7 +75,7 @@ $(document).ready(function(e){
   if( !$doc.hasClass('shelby--mobile') || Browser.isIpad() ){
     var windowHeight = window.innerHeight - $('.js-header').height(),
         shelf = {
-          $cta    : $('#intro').height(windowHeight - 50),
+          $cta    : $('#cta').height(windowHeight - 50),
           $iphone : $('#iphone').height(windowHeight),
           $social : $('#social').height(windowHeight),
           $stream : $('#stream').height(windowHeight - 50),

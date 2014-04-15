@@ -1,7 +1,32 @@
 module ApplicationHelper
   def yield_content!(content_key)
+    #USED IN LAYOUT: /home/shelf/_shelf.html.erb
+    #fixes this stupid issue where yield(:foo) doesn't work
+
     view_flow.content.delete(content_key)
   end
+
+  def format_content_for_layout(file)
+    #USED IN LAYOUT: /home/shelf/_shelf.html.erb
+
+    #remove extension
+    @key = File.basename file, ".html.erb"
+
+    #remove _ prefix
+    @key[0] = ''
+
+    # id, name, wrapper_modifier are labeled accordingly:
+    # div id=":key" name=":name" class="shelf__wrapper shelf__wrapper--:wrapper_modifier"
+    content_for :id, @key
+    content_for :name, @key
+    content_for :wrapper_modifier, @key
+
+    # block_modifier and js_handler are labeled accordingly:
+    # div class="shelf shelf--:block_modifier clearfix shelf--facebook-logged-out js-:js_handler"
+    content_for :block_modifier, @key
+    content_for :js_handler, @key
+  end
+
   #valid avatar_size options are "sq192x192", "sq48x48", and "original"
   def avatar_url_for_user(user, avatar_size="#{Settings::Avatar.small}")
 
