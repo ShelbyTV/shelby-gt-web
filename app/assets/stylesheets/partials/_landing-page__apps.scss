@@ -19,6 +19,16 @@
 
   //viewports (across all devices) smaller than 900-ish pixels
   @media screen and (max-width: $mq-nine-ish) {
-
+    .list {
+      width: 100%;
+    }
+  }
+  //viewports (across all devices) smaller than 500-ish pixels
+  @media screen and (max-width: $mq-five-ish) {
+    .list__item {
+      display: block;
+      margin-bottom: 2em;
+      width: 100%;
+    }
   }
 }
