@@ -33,7 +33,9 @@ $(document).ready(function() {
             embed = $clickedVid.data('player-embed'),
             index = $clickedVid.data('index'),
             playerClass = 'js-video-player-' + providerName + '-' + providerId + '-' + index,
-            playerSrcUrl;
+            htmlPrefix = "<iframe width='530' height='298' src='",
+            htmlSuffix = "?autoplay=1' frameborder='0' allowfullscreen></iframe>",
+            iframeSrcUrl;
 
         // start by cleaning up the page of any loaded video, add back thumbnail
         $('.js-play-video').removeClass('visuallyhidden');
@@ -67,12 +69,12 @@ $(document).ready(function() {
                 });
                 break;
             case "vimeo":
-                playerSrcUrl = "//player.vimeo.com/video/" + providerId;
-                $playerDiv.html("<iframe data-src='vimeo' width='530' height='298' src='" + playerSrcUrl + "?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+                iframeSrcUrl = "//player.vimeo.com/video/" + providerId;
+                $playerDiv.html(htmlPrefix + iframeSrcUrl + htmlSuffix);
                 break;
             case "dailymotion":
-                playerSrcUrl = "//www.dailymotion.com/embed/video/" + providerId;
-                $playerDiv.html("<iframe data-scr='dailymotion' width='530' height='298' src='" + playerSrcUrl + "?autoplay=1' frameborder='0' allowfullscreen></iframe>");
+                iframeSrcUrl = "//www.dailymotion.com/embed/video/" + providerId;
+                $playerDiv.html(htmlPrefix + iframeSrcUrl + htmlSuffix);
                 break;
             default:
                 $playerDiv.html(embed);

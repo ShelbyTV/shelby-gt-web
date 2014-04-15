@@ -73,7 +73,7 @@ RSpec.configure do |config|
 
   # use helpers included with json_spec gem:
   config.include JsonSpec::Helpers
-
+  config.include Capybara::DSL
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

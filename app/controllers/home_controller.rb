@@ -24,14 +24,13 @@ class HomeController < ApplicationController
       # only meant to handle requests for html pages
       format.html {
 
+        @mobile_os = detect_mobile_os
         # redirect to mobile web if on amazon platform
-        if detect_mobile_os == :amazon
+        if @mobile_os == :amazon
           redirect_to('/amazonapp' ) and return
-        elsif (detect_mobile_os == :windows) and !user_signed_in?
+        elsif (@mobile_os == :windows) and !user_signed_in?
           redirect_to('/get-started' ) and return
         end
-
-        @mobile_os = detect_mobile_os
 
         #XXX .TV subdomains
         # This is such a hack.  I'd like to detect this in routes.rb and handle by sending to another
@@ -182,6 +181,8 @@ class HomeController < ApplicationController
   # GET /log_in
   #
   def log_in
+    check_for_signed_in_user_and_issues
+
     (redirect_to "/" and return) if user_signed_in?
 
     @login = :true
