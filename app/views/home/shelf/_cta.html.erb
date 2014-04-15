@@ -1,0 +1,59 @@
+<% format_content_for_layout __FILE__ %>
+<div class="media_module clearfix">
+  <div class="media_image shelf__lining one-half">
+    <h1 class="shelf__h1 four-fifths">
+      <%= raw Settings::Marketing.cta %>
+    </h1>
+
+    <p class="shelf__block">
+      <%= raw Settings::Marketing.cta_body %>
+    </p>
+
+    <div class="shelf__block">
+      <% if [:android,:amazon].include? @mobile_os %>
+        <%= form_tag "#{appropriate_subdirectory}/user/create", :class => "form_module js-get-started-form" do %>
+          <%= hidden_field_tag 'anonymous', true %>
+          <button class="button_primer button_green button_command button_command--flexible one-half shelf__button js-track-event js-get-started-button" data-ga_action="Click Get Started" data-ga_label="<%= request.referer || 'direct' %>"><span class="button_label">Get Started</span></button>
+        <% end %>
+      <% else %>
+        <a href="<%= Settings::Application.ios_app_url %>" id="js-cta--main" class="button_primer button_green button_command button_command--giant button_command--flexible shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Call to Action shelf">
+          <span class="button_label"><%= raw Settings::Marketing.cta_button %></span>
+        </a>
+      <% end %>
+
+      <br/>
+      <small>
+        or
+          <a href="<%= appropriate_subdirectory %>/get-started" class="js-track-event button_text" data-ga_action="Click Try on Web" data-ga_label="Call to Action shelf">
+            <%= Settings::Marketing.cta_alternative_button %>
+          </a>
+      </small>
+    </div>
+
+    <div class="facepile">
+      <iframe src="//www.facebook.com/plugins/facepile.php?app_id=115071338568035&amp;action&amp;max_rows=2&amp;size=medium&amp;show_count=true&amp;width=360&amp;colorscheme=light&amp;appId=115071338568035" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:360px;" allowTransparency="true"></iframe>
+    </div>
+
+    <% if :amazon == @mobile_os %>
+      <a href="<%= Settings::Application.amazon_app_url %>" class="appstore js-track-event" data-ga_action="Click open Amazon App Store" data-ga_label="Call to Action shelf">
+        <%= image_tag "amazon-apps-store-us-white.png" %>
+      </a>
+    <% elsif :android == @mobile_os %>
+      <a href="<%= Settings::Application.ios_app_url %>" class="appstore android js-track-event" data-ga_action="Click open App Store" data-ga_label="Call to Action shelf">
+        <%= image_tag "appstore-badge.png" %>
+      </a>
+      <a href="<%= Settings::Application.amazon_app_url %>" class="appstore amazon android js-track-event" data-ga_action="Click open Amazon App Store" data-ga_label="Call to Action shelf">
+        <%= image_tag "amazon-apps-store-us-white.png" %>
+      </a>
+    <% else %>
+      <a href="<%= Settings::Application.ios_app_url %>" class="appstore js-track-event" data-ga_action="Click open App Store" data-ga_label="Call to Action shelf">
+        <%= image_tag "appstore-badge.png" %>
+      </a>
+    <% end %>
+
+  </div><!-- eo media_image -->
+
+  <div class="media_body">
+    <%= image_tag "1.png", :class => "shelf__img--iphone", :alt => "Shelby.tv ios screenshot" %>
+  </div><!-- media_body -->
+</div>
