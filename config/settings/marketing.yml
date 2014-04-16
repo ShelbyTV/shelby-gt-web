@@ -27,6 +27,8 @@ defaults: &defaults
   seo_modal_header: "Want a better way to discover and enjoy video?"
   seo_modal_button: "Try Shelby.tv"
 
+  apps: "Download the free app. No signup required."
+
   ipadbeta:
     optin:
       head: Welcome to the Shelby.tv iPad Beta
