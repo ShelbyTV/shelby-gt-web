@@ -1,5 +1,11 @@
 .shelf__wrapper--apps {
   background-color: $ui-white;
+  background-image: image-url("bg-3.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+
   min-height: 400px;
 
   .shelf {
