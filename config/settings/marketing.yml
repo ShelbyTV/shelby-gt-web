@@ -7,9 +7,9 @@ defaults: &defaults
   discover_love: "Discover videos you and your friends will love."
 
   badge:
-    ios: appstore-badge.png
-    amazon: amazon-apps-store-us-white.png
-    windows: WindowsStore_badge_en_English_Black_small_154x40.png
+    ios: Download_on_the_App_Store_Badge_US-UK_135x40.svg
+    amazon: amazon_app_store_black.png
+    windows: WindowsStore_badge_en_English_Black_med_258x67.png
 
 
   cta: "Discover videos you and your friends will love."

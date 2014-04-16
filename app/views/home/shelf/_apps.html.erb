@@ -1,9 +1,12 @@
 <% format_content_for_layout __FILE__ %>
 
 <div class="push--bottom clearfix">
-  <h2 class="shelf__h2 push--bottom">
+  <h2 class="shelf__h1 push--bottom">
     <%= Settings::Marketing.cta %>
   </h2>
+  <p>
+    <%= Settings::Marketing.cta_body.html_safe %>
+  </p>
 </div>
 
 <ul class="list list--inline three-fifths">
@@ -15,10 +18,10 @@
     data-ga_action="Click Download iOS"
     data-ga_label="<%= request.referer || 'direct' %>"
     >
-      <%= image_tag Settings::Marketing.badge.ios %>
       <h3 class="visuallyhidden">
         iOS
       </h3>
+      <%= image_tag Settings::Marketing.badge.ios, :class => "one-whole" %>
   </a>
 
  </li><!--
@@ -30,10 +33,10 @@
     data-ga_action="Click Download Android/Kindle"
     data-ga_label="<%= request.referer || 'direct' %>"
     >
-      <%= image_tag Settings::Marketing.badge.amazon %>
       <h3 class="visuallyhidden">
         Android/Kindle
       </h3>
+      <%= image_tag Settings::Marketing.badge.amazon, :class => "one-whole" %>
   </a>
  </li><!--
 --><li class="list__item one-third">
@@ -43,10 +46,10 @@
     data-ga_action="Click Download Windows"
     data-ga_label="<%= request.referer || 'direct' %>"
     >
-      <%= image_tag Settings::Marketing.badge.windows, :class => "shelf__img--windows" %>
       <h3 class="visuallyhidden">
         Windows8
       </h3>
+      <%= image_tag Settings::Marketing.badge.windows, :class => "one-whole" %>
   </a>
  </li>
 </ul>
