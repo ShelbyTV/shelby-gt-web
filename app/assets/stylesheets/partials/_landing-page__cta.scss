@@ -108,6 +108,10 @@
   }
   //viewports (across all devices) smaller than 500-ish pixels
   @media screen and (max-width:  $mq-five-ish) {
+    .shelby--mobile & .shelf__lining {
+      padding-top: 1em;
+    }
+
     .media_module {
       -webkit-background-size: 90%;
       background-size: 90%;

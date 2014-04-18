@@ -7,9 +7,18 @@ defaults: &defaults
   discover_love: "Discover videos you and your friends will love."
 
   badge:
-    ios: Download_on_the_App_Store_Badge_US-UK_135x40.svg
-    amazon: amazon_app_store_black.png
-    windows: WindowsStore_badge_en_English_Black_med_258x67.png
+    ios:
+      name: iOS
+      img: Download_on_the_App_Store_Badge_US-UK_135x40.svg
+      href: http://shl.by/app
+    amazon:
+      name: Android/Kindle
+      img: amazon_app_store_black.png
+      href: http://shl.by/amazonapp
+    windows:
+      name: Windows
+      img: WindowsStore_badge_en_English_Black_med_258x67.png
+      href: http://shlb.by/windowsapp
 
 
   cta: "Discover videos you and your friends will love."

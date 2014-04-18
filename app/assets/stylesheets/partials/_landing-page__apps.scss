@@ -43,15 +43,29 @@
 
   //viewports (across all devices) smaller than 900-ish pixels
   @media screen and (max-width: $mq-nine-ish) {
+    .shelby--mobile & .shelf__h1 {
+      margin-top: 2em;
+    }
+
+    .shelf__h1 {
+      font-size: 1.5em;
+    }
+
     .list {
+      max-width: 700px;
       width: 100%;
     }
   }
   //viewports (across all devices) smaller than 500-ish pixels
   @media screen and (max-width: $mq-five-ish) {
+    .shelby--mobile & .list {
+      margin-bottom: 2em;
+    }
+
     .list__item {
       display: block;
-      margin-bottom: 2em;
+      margin: 0 auto;
+      max-width: 200px;
       width: 100%;
     }
   }

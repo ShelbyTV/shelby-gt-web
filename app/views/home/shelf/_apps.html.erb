@@ -10,46 +10,18 @@
 </div>
 
 <ul class="list list--inline three-fifths">
- <li class="list__item one-third">
-
-  <a
-    href="#"
-    class="one-half shelf__button js-track-event"
-    data-ga_action="Click Download iOS"
-    data-ga_label="<%= request.referer || 'direct' %>"
-    >
-      <h3 class="visuallyhidden">
-        iOS
-      </h3>
-      <%= image_tag Settings::Marketing.badge.ios, :class => "one-whole" %>
-  </a>
-
- </li><!--
---><li class="list__item one-third">
-
-  <a
-    href="#"
-    class="one-half shelf__button js-track-event"
-    data-ga_action="Click Download Android/Kindle"
-    data-ga_label="<%= request.referer || 'direct' %>"
-    >
-      <h3 class="visuallyhidden">
-        Android/Kindle
-      </h3>
-      <%= image_tag Settings::Marketing.badge.amazon, :class => "one-whole" %>
-  </a>
- </li><!--
---><li class="list__item one-third">
-  <a
-    href="#"
-    class="one-half shelf__button js-track-event"
-    data-ga_action="Click Download Windows"
-    data-ga_label="<%= request.referer || 'direct' %>"
-    >
-      <h3 class="visuallyhidden">
-        Windows8
-      </h3>
-      <%= image_tag Settings::Marketing.badge.windows, :class => "one-whole" %>
-  </a>
- </li>
+  <% # weird formatting below because there can't be any form of whitespace between siblings: </LI><LI> %>
+  <% Settings::Marketing.badge.each do |platform| %><li class="list__item one-third">
+    <a
+      href="<%= platform[1]['href'] %>"
+      class="one-half shelf__button js-track-event"
+      data-ga_action="Click Download <%= platform[1]['name'] %>"
+      data-ga_label="<%= request.referer || 'direct' %>"
+      >
+        <h3 class="visuallyhidden">
+          iOS
+        </h3>
+        <%= image_tag platform[1]['img'], :class => "one-whole" %>
+    </a>
+   </li><% end %>
 </ul>

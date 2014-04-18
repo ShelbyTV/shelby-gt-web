@@ -35,8 +35,8 @@ staging:
   # if you're testing features that use these paths from alpha.shelby.tv, t
   # you may need to alter these values to from *staging.* to *alpha.*
   # TEMPORARY:
-  url: "http://alpha.shelby.tv"
-  # url: "http://staging.shelby.tv"
+  # url: "http://alpha.shelby.tv"
+  url: "http://staging.shelby.tv"
   protocol_matching_url: "//staging.shelby.tv"
   mobile_url: "http://m.shelby.tv"
   secure_form_root: "http://staging.shelby.tv"
