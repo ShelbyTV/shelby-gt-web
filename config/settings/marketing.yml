@@ -18,7 +18,7 @@ defaults: &defaults
     windows:
       name: Windows
       img: WindowsStore_badge_en_English_Black_med_258x67.png
-      href: http://shlb.by/windowsapp
+      href: http://shl.by/windowsapp
 
 
   cta: "Discover videos you and your friends will love."
