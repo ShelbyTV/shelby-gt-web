@@ -8,17 +8,15 @@ libs.shelbyGT.PagingMethod = {
  */
 libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
-  _numItemsLoaded : 0,
+  // _numItemsLoaded : 0,
 
-  _numItemsRequested : 0,
+  // _numItemsRequested : 0,
 
   _lastKeyValue : '',
 
   _loadMoreEnabled : false,
 
   _loadInProgress : false,
-
-  _emptyIndicatorView : null,
 
   _noMoreResultsView : null,
 
@@ -36,6 +34,12 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   options : _.extend({}, libs.shelbyGT.SmartRefreshListView.prototype.options, {
     emptyIndicatorViewProto : null,
+    /*
+      Change the copy shown in the load more button with this attribute.
+      To change the element itself: override template() and be sure to retain
+      the class .js-load-more for events to work.
+    */
+    loadMoreCopy : 'Load more',
     showEmptyIndicatorOnStaticRender : false,
     firstFetchLimit : 0,
     insert : {
@@ -44,12 +48,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     },
     infinite: false,
     limit : 5,
-    /*
-      Change the copy shown in the load more button with this attribute.
-      To change the element itself: override template() and be sure to retain
-      the class .js-load-more for events to work.
-    */
-    loadMoreCopy : 'Load more',
     noMoreResultsViewProto : null,
 
     /* TODO: needs documentation */
@@ -59,11 +57,11 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   initialize : function(){
     var self = this;
-    if (this.model) {
-      this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
-    }
-    this._numItemsLoaded = 0;
-    this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
+    // if (this.model) {
+    //   this.model.bind('relational:change:'+this.options.collectionAttribute, this.onItemsLoaded, this);
+    // }
+    // this._numItemsLoaded = 0;
+    // this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
 
     //See bottom of file for declaration and discussion
     this.appendChild(new libs.shelbyGT.PagingLoadMoreView());
@@ -73,7 +71,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _cleanup : function(){
     if (this.model) {
-      this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
+      this.model.unbind('relational:change:'+this.options.collectionAttribute, this.onItemsLoaded, this);
     }
     libs.shelbyGT.SmartRefreshListView.prototype._cleanup.call(this);
   },
@@ -111,32 +109,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     }
   },
 
-  _onItemsLoaded : function(rollModel, items){
-    this.$('.js-load-more').removeClass('js-loading').show();
-    this.$('.js-load-more-button').html(this.options.loadMoreCopy);
-    if (this.options.emptyIndicatorViewProto) {
-      if (this._numItemsLoaded === 0 && !items.length && !this._emptyIndicatorView) {
-        this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
-        this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
-      } else if (items.length && this._emptyIndicatorView) {
-        this._emptyIndicatorView.leave();
-        this._emptyIndicatorView = null;
-      }
-    }
-
-    if (items.length < this._numItemsRequested) {
-      // if the load returned less items than we requested, there are no more items to
-      // be loaded and we hide the DOM element that is clicked for more loading
-      this._disableLoadMore();
-      if (this.options.noMoreResultsViewProto && (this._numItemsLoaded !== 0 || items.length) && !this._noMoreResultsView) {
-        this._noMoreResultsView = new this.options.noMoreResultsViewProto();
-        this.appendChild(this._noMoreResultsView);
-      }
-    } else {
-      this._loadMoreEnabled = true;
-    }
-  },
-
   _onFetchSuccess : function(model, response, numItemsDisplayedBeforeCurrentPage){
     var self = this;
     if (!this._doesResponseContainListCollection(response)) {
@@ -145,7 +117,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
       // is how the API responds when the skip and limit parameters restrict the result set
       // to nothing
 
-      // since the relational:change handler (this._onItemsLoaded) will not be triggered in this case,
+      // since the relational:change handler (this.onItemsLoaded) will not be triggered in this case,
       // manually hide the DOM element that is clicked for more loading
       this._disableLoadMore();
     }
@@ -167,11 +139,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     // WE SHOULDN'T NEED TO DO THIS, THE API SHOULD RETURN AN EMPTY ARRAY FOR THE ATTRIBUTE
     // WHEN THERE ARE NO RESULTS
     console.log('Sorry, your PagingListView subclass must override _doesResponseContainListCollection');
-  },
-
-  _disableLoadMore : function(){
-    this.$('.js-load-more').hide();
-    this._loadMoreEnabled = false;
   },
 
   _addItem : function(item, collection, options, noSmartRefresh){
@@ -212,6 +179,34 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
         success: function(model, response){self._onFetchSuccess(model, response, numItemsDisplayedBeforeCurrentPage);}
       });
     }
+  },
+
+  onItemsLoaded : function(rollModel, items){
+    this._showLoadMore();
+
+    libs.shelbyGT.SmartRefreshListView.prototype.onItemsLoaded.call(this,rollModel,items);
+
+    if (items.length < this._numItemsRequested) {
+      // if the load returned less items than we requested, there are no more items to
+      // be loaded and we hide the DOM element that is clicked for more loading
+      this._disableLoadMore();
+      if (this.options.noMoreResultsViewProto && (this._numItemsLoaded !== 0 || items.length) && !this._noMoreResultsView) {
+        this._noMoreResultsView = new this.options.noMoreResultsViewProto();
+        this.appendChild(this._noMoreResultsView);
+      }
+    } else {
+      this._loadMoreEnabled = true;
+    }
+  },
+
+  _showLoadMore: function(){
+    this.$('.js-load-more').removeClass('js-loading').show();
+    this.$('.js-load-more-button').html(this.options.loadMoreCopy);
+  },
+
+  _disableLoadMore : function(){
+    this.$('.js-load-more').hide();
+    this._loadMoreEnabled = false;
   },
 
   _onLoadMoreInView : function(e, isInView) {

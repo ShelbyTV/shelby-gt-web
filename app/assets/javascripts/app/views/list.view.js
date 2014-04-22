@@ -4,6 +4,13 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   className : 'list',
 
+
+  _emptyIndicatorView : null,
+
+  _numItemsLoaded : 0,
+
+  _numItemsRequested : 0,
+
   /*
     intervalInsertViews - a function that can be overidden by subclasses to return a view or an array of views to add
     to the list and render when this.options.isIntervalComplete returns true
@@ -35,7 +42,10 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   */
 
   options : {
+    emptyIndicatorViewProto : null,     //used on watch later roll
+
     collection : null,
+    // collectionAttribute : 'frames',
     collectionAttribute : 'listCollection',
 
     /* TODO: need documentation on this... */
@@ -75,8 +85,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
      * If your item views are not rendered in natural order, make this false.
      * It indicates we need to insert interval views for the group of item views as a whole, not individually.
      */
-    insertIntervalViewsIncrementally : true,
-
+    individuallynsertIntervalViewsIncrementally : true,
     /*
       prependedViewProtos - returns an ordered array of view prototypes to be prepended before any of the list view's
         contents from its collection; subclasses can override to return a non-empty array of prototypes
@@ -107,6 +116,12 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   initialize : function(){
+    if (this.model) {
+      this.model.bind('relational:change:'+this.options.collectionAttribute, this.onItemsLoaded, this);
+    }
+    this._numItemsLoaded = 0;
+    this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
+
     if (this.options.doDynamicRender) {
       if (this.options.collection) {
         this.options.collection.bind('add', this.sourceAddOne, this);
@@ -409,6 +424,26 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   _onFetchComplete : function(){
     this._insertIntervalViewsForGroup();
+  },
+
+  onItemsLoaded : function(rollModel, items){
+    //HACK
+    //if displaystate == following tab, subtract my two personal rolls?
+    if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
+      items = [];
+    }
+
+    if (this.options.emptyIndicatorViewProto) {
+      if (this._numItemsLoaded === 0 && !items.length && !this._emptyIndicatorView) {
+        this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
+        this.appendChild(this._emptyIndicatorView);
+        // this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
+      } else if (items.length && this._emptyIndicatorView) {
+        this._emptyIndicatorView.leave();
+        this._emptyIndicatorView = null;
+      }
+    }
   }
+
 
 });

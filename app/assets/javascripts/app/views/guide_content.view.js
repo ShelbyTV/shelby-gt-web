@@ -123,6 +123,7 @@
                 return roll.get('title').toLowerCase();
               },
               doStaticRender : true,
+              emptyIndicatorViewProto : libs.shelbyGT.EmptyFollowingIndicatorView,
               rollListFilterType : RollListFilterType.following
             },
             shouldFetch : true,
