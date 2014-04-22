@@ -24,6 +24,8 @@
   }
 }
 
+.icon-activity-empty,
+.icon-following-empty,
 .icon-spinner {
   background-repeat: no-repeat;
   background-position: center center;
@@ -39,3 +41,12 @@
       height: 25px;
       width: 25px;
     }
+
+.icon-activity-empty {
+  background-image: $icon-activity-empty;
+
+}
+
+.icon-following-empty {
+  background-image: $icon-following-empty;
+}

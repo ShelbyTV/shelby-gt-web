@@ -26,10 +26,12 @@ $extension: ".svg" !default;
 $images: "/images/" !default;
 $path: "#{$images}assets/" !default;
 
-$icon-signup-spinner            : asset-data-url("signup-loader.gif");
-$icon-logo-spinner              : asset-data-url("shelby-logo-spinner.gif");
-$icon-missing-thumbnail         : "#{$path}missing_thumb#{$extension}";
-$icon-missing-avatar            : "#{$path}missing_avatar.png";
+$icon-activity-empty    : image-url("no-activity@2x.png");
+$icon-following-empty   : image-url("no-following@2x.png");
+$icon-signup-spinner    : asset-data-url("signup-loader.gif");
+$icon-logo-spinner      : asset-data-url("shelby-logo-spinner.gif");
+$icon-missing-thumbnail : "#{$path}missing_thumb#{$extension}";
+$icon-missing-avatar    : "#{$path}missing_avatar.png";
 
 //------------------------------------------------------------------------------
 //  ANIMATION VALUES

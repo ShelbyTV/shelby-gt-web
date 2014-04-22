@@ -135,6 +135,7 @@
             viewProto : FreshPlayRollView,
             model : this.model.get('currentRollModel'),
             options : {
+              emptyIndicatorViewProto : libs.shelbyGT.EmptyActivityIndicatorView,
               masterCollection : this._currentRollMasterCollection
             },
             spinner : true

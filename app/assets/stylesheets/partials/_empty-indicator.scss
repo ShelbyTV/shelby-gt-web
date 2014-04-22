@@ -15,6 +15,22 @@
       margin-top: 0;
     }
   }
+  &.empty-activity {
+    text-align: center;
+
+    .icon-activity-empty {
+      font-size: 70px;
+      margin-top: 125px;
+    }
+  }
+  &.empty-following {
+    text-align: center;
+
+    .icon-following-empty {
+      font-size: 76px;
+      margin-top: 125px;
+    }
+  }
 }
 
 .empty-indicator-header {
