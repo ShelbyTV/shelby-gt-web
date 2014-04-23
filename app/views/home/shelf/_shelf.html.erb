@@ -1,0 +1,7 @@
+<div id="<%= yield_content! :id %>" name="<%= yield_content! :name %>" class="shelf__wrapper shelf__wrapper--<%= yield_content! :wrapper_modifier %> vertical-align-hack">
+  <div class="vertical-align-hack__el">
+    <div class="shelf shelf--<%= yield_content! :block_modifier %> clearfix shelf--facebook-logged-out js-<%= yield_content! :js_handler %>">
+      <%= yield %>
+    </div><!-- eo shelf -->
+  </div><!-- eo positioning el -->
+</div><!-- eo shelf__wrapper -->

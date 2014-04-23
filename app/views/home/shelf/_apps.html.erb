@@ -1,0 +1,25 @@
+<% format_content_for_layout __FILE__ %>
+
+<div class="push--bottom clearfix">
+  <h2 class="shelf__h1 push--bottom">
+    <%= Settings::Marketing.apps.html_safe %>
+  </h2>
+  <p>
+    <%= Settings::Marketing.cta_body.html_safe %>
+  </p>
+</div>
+
+<ul class="list list--inline three-fifths">
+  <% # weird formatting below because there can't be any form of whitespace between siblings: </LI><LI> %>
+  <% Settings::Marketing.badge.each do |platform| %><li class="list__item one-third">
+    <a
+      href="<%= platform[1]['href'] %>"
+      class="one-half shelf__button js-track-event"
+      data-ga_action="Click Download <%= platform[1]['name'] %>"
+      data-ga_label="<%= request.referer || 'direct' %>"
+      >
+        <%= content_tag :h3, platform[1]['name'], :class => "visuallyhidden" %>
+        <%= image_tag platform[1]['img'], :class => "one-whole", :alt => platform[1]['alt'] %>
+    </a>
+   </li><% end %>
+</ul>

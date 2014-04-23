@@ -1,11 +1,7 @@
 <footer id="footer" class="shelby__foot clearfix js-toggle-footer">
   <nav>
-    <div class="shelby__lining one-fifth clearfix">
-      <h4 class="shelby__h4">
-        About Us
-      </h4>
-
-      <ul class="list clearfix">
+    <div class="shelby__lining clearfix">
+      <ul class="list list--inline clearfix">
         <li class="list__item">
           <a
             href="/team"
@@ -65,29 +61,6 @@
             Made in NYC
           </a>
         </li>
-      </ul>
-    </div><!-- eo lining -->
-
-  <% if @roll && ['513f4964b415cc143a00ec8b', '513f8019b415cc3b3900000d', '50f6d51cb415cc7ebd000007'].include?(@roll['id']) %>
-    <div class="shelby__lining one-fifth clearfix">
-      <h4 class="shelby__h4">
-        Disclaimer
-      </h4>
-
-       <ul class="list">
-         <li class="shelf__disclaimer-text">
-          NCAA, Final Four, March Madness, NCAA Sweet 16 and Elite 8 are trademarks of the National Collegiate Athletic Association.
-         </li>
-       </ul>
-    </div><!-- eo lining -->
-  <% end %>
-
-    <div class="shelby__lining one-fifth clearfix">
-      <h4 class="shelby__h4">
-        Help
-      </h4>
-
-      <ul class="list clearfix">
         <li class="list__item">
           <a
             href="http://shelby.tv/privacy.html"
@@ -121,34 +94,20 @@
       </ul>
     </div><!-- eo lining -->
 
-    <div class="shelby__lining one-fifth clearfix">
+  <% if @roll && ['513f4964b415cc143a00ec8b', '513f8019b415cc3b3900000d', '50f6d51cb415cc7ebd000007'].include?(@roll['id']) %>
+    <div class="shelby__lining clearfix">
       <h4 class="shelby__h4">
-        Social
+        Disclaimer
       </h4>
 
-      <ul class="list clearfix">
-        <li class="list__item">
-          <a
-            href="http://facebook.com/shelbytv"
-            target="_blank"
-            class="list__link js-track-event"
-            data-ga_action="Click Facebook"
-            >
-            Facebook
-          </a>
-        </li>
-        <li class="list__item">
-          <a
-            href="https://twitter.com/shelby"
-            target="_blank"
-            class="list__link js-track-event"
-            data-ga_action="Click Twitter"
-            >
-            Twitter
-          </a>
-        </li>
-      </ul>
+       <ul class="list">
+         <li class="shelf__disclaimer-text">
+          NCAA, Final Four, March Madness, NCAA Sweet 16 and Elite 8 are trademarks of the National Collegiate Athletic Association.
+         </li>
+       </ul>
     </div><!-- eo lining -->
+  <% end %>
+
   </nav>
 
   <small>
