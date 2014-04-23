@@ -18,10 +18,8 @@
       data-ga_action="Click Download <%= platform[1]['name'] %>"
       data-ga_label="<%= request.referer || 'direct' %>"
       >
-        <h3 class="visuallyhidden">
-          iOS
-        </h3>
-        <%= image_tag platform[1]['img'], :class => "one-whole" %>
+        <%= content_tag :h3, platform[1]['name'], :class => "visuallyhidden" %>
+        <%= image_tag platform[1]['img'], :class => "one-whole", :alt => platform[1]['alt'] %>
     </a>
    </li><% end %>
 </ul>

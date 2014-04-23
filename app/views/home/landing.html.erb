@@ -48,16 +48,16 @@
     <% else %>
       <% if !@sign_up and (!@share_type) and !@invite_id and !@team %>
         <div class="shelf--index">
-          <%= render :partial => "/home/shelf/cta", :layout => '/home/shelf/shelf', :locals => {
+          <%= render :partial => "/home/shelf/cta", :layout => Settings::Marketing.shelf_layout, :locals => {
             mobile: (@mobile_os or @is_mobile)
           } %>
-          <%= render :partial => "/home/shelf/stream", :layout => '/home/shelf/shelf', :locals => {
+          <%= render :partial => "/home/shelf/stream", :layout => Settings::Marketing.shelf_layout, :locals => {
             mobile: (@mobile_os or @is_mobile)
           } %>
-          <%= render :partial => "/home/shelf/social", :layout => '/home/shelf/shelf', :locals => {
+          <%= render :partial => "/home/shelf/social", :layout => Settings::Marketing.shelf_layout, :locals => {
             mobile: (@mobile_os or @is_mobile)
           } %>
-          <%= render :partial => "/home/shelf/apps", :layout => '/home/shelf/shelf', :locals => {
+          <%= render :partial => "/home/shelf/apps", :layout => Settings::Marketing.shelf_layout, :locals => {
             mobile: (@mobile_os or @is_mobile)
           } %>
         </div>
