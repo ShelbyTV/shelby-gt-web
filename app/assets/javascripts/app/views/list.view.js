@@ -7,10 +7,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   _emptyIndicatorView : null,
 
-  _numItemsLoaded : 0,
-
-  _numItemsRequested : 0,
-
   /*
     intervalInsertViews - a function that can be overidden by subclasses to return a view or an array of views to add
     to the list and render when this.options.isIntervalComplete returns true
@@ -119,8 +115,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     if (this.model) {
       this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     }
-    this._numItemsLoaded = 0;
-    this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
 
     if (this.options.doDynamicRender) {
       if (this.options.collection) {
@@ -429,21 +423,23 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   _onItemsLoaded : function(rollModel, items){
     //HACK
     //if displaystate == following tab, subtract my two personal rolls?
-    if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
-      items = [];
-    }
+    // if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
+    //   items = [];
+    // }
 
     if (this.options.emptyIndicatorViewProto) {
       if (this._numItemsLoaded === 0 && !items.length && !this._emptyIndicatorView) {
         this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
-        this.appendChild(this._emptyIndicatorView);
-        // this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
+        this._appendEmptyIndicatorView(this._emptyIndicatorView);
       } else if (items.length && this._emptyIndicatorView) {
         this._emptyIndicatorView.leave();
         this._emptyIndicatorView = null;
       }
     }
-  }
+  },
+  _appendEmptyIndicatorView: function(view){
+    this.appendChild(view);
+  },
 
 
 });

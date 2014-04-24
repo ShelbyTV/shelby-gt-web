@@ -8,9 +8,9 @@ libs.shelbyGT.PagingMethod = {
  */
 libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
-  // _numItemsLoaded : 0,
+  _numItemsLoaded : 0,
 
-  // _numItemsRequested : 0,
+  _numItemsRequested : 0,
 
   _lastKeyValue : '',
 
@@ -57,11 +57,11 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   initialize : function(){
     var self = this;
-    // if (this.model) {
-    //   this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
-    // }
-    // this._numItemsLoaded = 0;
-    // this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
+    if (this.model) {
+      this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
+    }
+    this._numItemsLoaded = 0;
+    this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
 
     //See bottom of file for declaration and discussion
     this.appendChild(new libs.shelbyGT.PagingLoadMoreView());
@@ -192,11 +192,15 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
       this._disableLoadMore();
       if (this.options.noMoreResultsViewProto && (this._numItemsLoaded !== 0 || items.length) && !this._noMoreResultsView) {
         this._noMoreResultsView = new this.options.noMoreResultsViewProto();
-        this.appendChild(this._noMoreResultsView);
+        this._appendEmptyIndicatorView(this._noMoreResultsView);
       }
     } else {
       this._loadMoreEnabled = true;
     }
+  },
+
+  _appendEmptyIndicatorView: function(view){
+    this.insertChildBefore(view, '.js-load-more');
   },
 
   _showLoadMore: function(){
