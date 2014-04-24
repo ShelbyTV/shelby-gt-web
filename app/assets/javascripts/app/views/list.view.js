@@ -117,7 +117,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   initialize : function(){
     if (this.model) {
-      this.model.bind('relational:change:'+this.options.collectionAttribute, this.onItemsLoaded, this);
+      this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     }
     this._numItemsLoaded = 0;
     this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
@@ -426,7 +426,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     this._insertIntervalViewsForGroup();
   },
 
-  onItemsLoaded : function(rollModel, items){
+  _onItemsLoaded : function(rollModel, items){
     //HACK
     //if displaystate == following tab, subtract my two personal rolls?
     if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.rollList) {

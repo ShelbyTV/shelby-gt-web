@@ -58,7 +58,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   initialize : function(){
     var self = this;
     // if (this.model) {
-    //   this.model.bind('relational:change:'+this.options.collectionAttribute, this.onItemsLoaded, this);
+    //   this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     // }
     // this._numItemsLoaded = 0;
     // this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
@@ -71,7 +71,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   _cleanup : function(){
     if (this.model) {
-      this.model.unbind('relational:change:'+this.options.collectionAttribute, this.onItemsLoaded, this);
+      this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     }
     libs.shelbyGT.SmartRefreshListView.prototype._cleanup.call(this);
   },
@@ -117,7 +117,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
       // is how the API responds when the skip and limit parameters restrict the result set
       // to nothing
 
-      // since the relational:change handler (this.onItemsLoaded) will not be triggered in this case,
+      // since the relational:change handler (this._onItemsLoaded) will not be triggered in this case,
       // manually hide the DOM element that is clicked for more loading
       this._disableLoadMore();
     }
@@ -181,10 +181,10 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     }
   },
 
-  onItemsLoaded : function(rollModel, items){
+  _onItemsLoaded : function(rollModel, items){
     this._showLoadMore();
 
-    libs.shelbyGT.SmartRefreshListView.prototype.onItemsLoaded.call(this,rollModel,items);
+    libs.shelbyGT.SmartRefreshListView.prototype._onItemsLoaded.call(this,rollModel,items);
 
     if (items.length < this._numItemsRequested) {
       // if the load returned less items than we requested, there are no more items to
