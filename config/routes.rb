@@ -79,7 +79,7 @@ ShelbyGtWeb::Application.routes.draw do
   #######################XXX###############################
 
   # STYLEGUIDE
-  get '/styleguide' => 'home#styleguide'
+  get '/styleguide' => 'home#styleguide' unless Rails.env.production?
   post '/user/create' => 'mobile#create_user'
 
   # IE Surface
