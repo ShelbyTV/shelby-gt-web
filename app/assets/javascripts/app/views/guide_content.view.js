@@ -28,6 +28,8 @@
     _currentRollMasterCollection : null,
 
     initialize : function(){
+      this._appHeaderLogoMark = $('.js-app-header').find('.icon-mark');
+
       this.model.bind('change', this._onGuideModelChange, this);
       this.model.bind('reposition', this._onReposition, this);
       this._dashboardMasterCollection = new Backbone.Collection();
@@ -59,9 +61,14 @@
     },
 
     _updateChild : function(guideModel) {
+        this._appHeaderLogoMark.addClass('icon-mark--spinner');
         this._leaveChildren();
         this._mapAppendChildView(guideModel);
         this.model.trigger('reposition');
+        var self = this;
+        setTimeout(function(){
+          self._appHeaderLogoMark.removeClass('icon-mark--spinner');
+        },0);
     },
 
     _onReposition : function() {

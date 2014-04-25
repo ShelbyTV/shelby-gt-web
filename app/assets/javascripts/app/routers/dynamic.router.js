@@ -48,10 +48,6 @@ libs.shelbyGT.DynamicRouter = Backbone.Router.extend({
       shelby.routeHistory.push(route);
     });
   },
-
-  _loadingSpinner: function(){
-
-  },
   //---
   //ROUTE HANDLERS
   //---

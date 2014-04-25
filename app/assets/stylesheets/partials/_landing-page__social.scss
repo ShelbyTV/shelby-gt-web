@@ -1,9 +1,5 @@
 .shelf__wrapper--social {
-  background-image: image-url("bg-3.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  background-size: cover;
+  background-color: $ui-white;
 
   .shelf {
     text-align: center;
@@ -19,7 +15,6 @@
 }
 
 .shelf--social {
-  max-width: 1200px;
   width: auto;
 
   .alpha {
@@ -72,7 +67,7 @@
     //elements
     .alpha {
       font-size: 1.5em;
-
+      margin-top: 2em;
     }
 
   }

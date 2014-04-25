@@ -1,48 +1,19 @@
-<div id="social" name="social" class="shelf__wrapper shelf__wrapper--social vertical-align-hack">
-  <div class="vertical-align-hack__el">
-    <div class="shelf shelf--social clearfix shelf--facebook-logged-out js-social">
-      <div class="media_module media_module--bare clearfix">
+<% format_content_for_layout __FILE__ %>
 
-        <div class="shelf__lining four-fifths">
-          <h2 class="alpha alpha--display">
-            <%= raw Settings::Marketing.social %>
-          </h2>
+<div class="media_module media_module--bare clearfix">
+  <div class="shelf__lining four-fifths">
+    <h2 class="shelf__h1">
+      <%= raw Settings::Marketing.social %>
+    </h2>
 
-          <p class="shelf__block">
-            <%= raw Settings::Marketing.social_body %>
-          </p>
+    <p class="shelf__block">
+      <%= raw Settings::Marketing.social_body %>
+    </p>
 
-          <div class="shelf__block">
-            <% if [:android,:amazon].include? @mobile_os %>
-              <%= form_tag "#{appropriate_subdirectory}/user/create", :class => "form_module js-get-started-form" do %>
-                <%= hidden_field_tag 'anonymous', true %>
-                <button type="submit" class="button_primer button_green button_command button_command--flexible one-half shelf__button js-track-event js-get-started-button" data-ga_action="Click Get Started" data-ga_label="<%= request.referer || 'direct' %>"><span class="button_label">Get Started</span></button>
-              <% end %>
-            <% else %>
-              <a href="<%= Settings::Application.ios_app_url %>" class="button_primer button_green button_command button_command--giant button_command--flexible shelf__button js-cta js-track-event" data-ga_action="Click open SMS" data-ga_label="Social shelf">
-                <span class="button_label"><%= raw Settings::Marketing.cta_button %></span>
-              </a>
-            <% end %>
-            </br>
-            <small>
-              or
-              <a href="<%= appropriate_subdirectory %>/get-started" class="js-track-event button_text" data-ga_action="Click Try on Web" data-ga_label="Social Shelf">
-                <%= Settings::Marketing.cta_alternative_button %>
-              </a>
-            </small>
-          </div>
+    <%= image_tag "3.png", :class => "shelf__img--iphone_horizontal", :title => "iPhone screenshot of a video recommendation", :alt => "iPhone screenshot of a video recommendation" %>
 
-          <% if mobile %>
-            <%= image_tag "3.png", :class => "shelf__img--iphone_horizontal", :title => "iPhone screenshot of a video recommendation", :alt => "iPhone screenshot of a video recommendation" %>
-          <% else %>
-            <%= image_tag "3.png", :class => "shelf__img--iphone_horizontal", :title => "iPhone screenshot of a video recommendation", :alt => "iPhone screenshot of a video recommendation" %>
-            <h4 class="beta beta--display">Featured by</h4>
+    <h4 class="shelf__h2">Featured by</h4>
 
-            <%= render :partial => "/home/shelf/press" %>
-          <% end %>
-
-        </div>
-      </div>
-    </div><!-- eo shelf -->
-  </div><!-- eo positioning el -->
-</div><!-- eo shelf__wrapper -->
+    <%= render :partial => "/home/shelf/press" %>
+  </div>
+</div>

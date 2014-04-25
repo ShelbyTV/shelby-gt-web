@@ -1,0 +1,72 @@
+.shelf__wrapper--apps {
+  background-color: $ui-white;
+  background-image: image-url("bg-3.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+  min-height: 400px;
+
+  .shelf {
+    text-align: center;
+  }
+  .shelf__lining {
+    margin: 0 auto;
+  }
+}
+
+.shelf--apps {
+  width: auto;
+
+  .shelf__h1 {
+
+  }
+
+
+  //non normative
+  p br {
+    display: none;
+  }
+
+  & > .list {
+    margin: 0 auto;
+  }
+
+  .list__item {
+    padding: 1em;
+  }
+
+  img.one-whole {
+    max-width: 100%;
+  }
+
+  //viewports (across all devices) smaller than 900-ish pixels
+  @media screen and (max-width: $mq-nine-ish) {
+    .shelby--mobile & .shelf__h1 {
+      margin-top: 2em;
+    }
+
+    .shelf__h1 {
+      font-size: 1.5em;
+    }
+
+    .list {
+      max-width: 700px;
+      width: 100%;
+    }
+  }
+  //viewports (across all devices) smaller than 500-ish pixels
+  @media screen and (max-width: $mq-five-ish) {
+    .shelby--mobile & .list {
+      margin-bottom: 2em;
+    }
+
+    .list__item {
+      display: block;
+      margin: 0 auto;
+      max-width: 200px;
+      width: 100%;
+    }
+  }
+}

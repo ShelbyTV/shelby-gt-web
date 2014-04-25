@@ -48,7 +48,6 @@
 @import "partials/landing-page__error";
 @import "partials/landing-page__fill";
 //let consecutive shelves override if need be. do not disturb the four partials above.
-// @import "partials/landing-page__iphone";
 @import "partials/landing-page__ipadbeta";
 @import "partials/landing-page__header";
 @import "partials/landing-page__cta";
@@ -57,57 +56,9 @@
 @import "partials/landing-page__signup";
 @import "partials/landing-page__stream";
 @import "partials/landing-page__social";
-// 10/11/2013
-// @import "partials/landing-page__slogan";
+@import "partials/landing-page__apps";
 @import "partials/landing-page__team";
 
-////////////////////////////////////////
-//the footer isn't actually a shelf
+@import "partials/landing-page__footer";
 
-.shelby__foot {
-  background-color: $ui-black;
-  font-size: 1.5em;
-  height: auto;
-  line-height: 1.5;
-  padding: 0 0 20px;
-  text-align: center;
-  z-index: 1;
-
-  small {
-    color: $ui-white;
-    font-size: 11px;
-    opacity: 0.2;
-  }
-
-  .shelby__lining {
-    display: inline-block;
-    text-align: left;
-    vertical-align: top;
-    padding: 3em 0;
-  }
-
-  .shelby__h4 {
-    color: $ui-soft-black;
-    margin-bottom: 1em;
-  }
-
-  .list__link {
-    &,
-    &:visited,
-    &:hover {
-      color: $ui-white;
-    }
-  }
-
-  //viewports (across all devices) smaller than 900-ish pixels
-  @media screen and (max-width: $mq-nine-ish) {
-    position: relative;
-    height: auto;
-
-    .shelby__lining {
-      padding: 2em 0;
-      width: 90%;
-    }
-  }
-}
 
