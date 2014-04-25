@@ -4,6 +4,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   className : 'list',
 
+  _numItemsDisplay : 0,
 
   _emptyIndicatorView : null,
 
@@ -421,14 +422,8 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   _onItemsLoaded : function(rollModel, items){
-    //HACK
-    //if displaystate == following tab, subtract my two personal rolls?
-    // if(shelby.models.guide.get('displayState') == libs.shelbyGT.DisplayState.rollList) {
-    //   items = [];
-    // }
-
     if (this.options.emptyIndicatorViewProto) {
-      if (this._numItemsLoaded === 0 && !items.length && !this._emptyIndicatorView) {
+      if (this._numItemsDisplay === 0 && !items.length && !this._emptyIndicatorView) {
         this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
         this._appendEmptyIndicatorView(this._emptyIndicatorView);
       } else if (items.length && this._emptyIndicatorView) {
@@ -437,9 +432,8 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       }
     }
   },
+
   _appendEmptyIndicatorView: function(view){
     this.appendChild(view);
-  },
-
-
+  }
 });
