@@ -1,0 +1,15 @@
+if (typeof(shelby) == 'undefined') {
+    shelby = {};
+}
+
+if (typeof(shelby.config) == 'undefined') {
+    shelby.config = {};
+}
+
+shelby.config.whitelabel = {
+  mode: "<%= @whitelabel_mode.to_s %>",
+  MODES : {
+    cheez : "cheez",
+    none :  ""
+  }
+};

@@ -28,6 +28,7 @@
     }
 
     <%= render :partial => '/home/partials/mobile_os_config', :formats => :js, :locals => {:mobile_os => @mobile_os} %>
+    <%= render :partial => '/home/partials/whitelabel_config', :formats => :js, :locals => {:whitelabel_mode => @whitelabel_mode} %>
 
     if (typeof(shelby.abTests) == 'undefined') {
       shelby.abTests = {};
