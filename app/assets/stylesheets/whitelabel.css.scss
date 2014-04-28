@@ -1,3 +1,20 @@
-.shelby--whitelabel-cheeze {
+.shelby--whitelabel-cheez {
+//----- APP HEADER
+  .shelby-header {
+    display: none;
+  }
+  //fix the positioning of the now-missing header
+  .content_wrapper {
+    margin-top: 0;
+  }
 
+//----- FRAME MODS
+  .frame {
+    .button_command--like {
+      display: none;
+    }
+  }
+  .frame-likes {
+    display: none;
+  }
 }

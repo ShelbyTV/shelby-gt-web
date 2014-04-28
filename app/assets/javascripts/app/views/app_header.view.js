@@ -59,7 +59,7 @@ libs.shelbyGT.AppHeaderView = Support.CompositeView.extend({
   },
 
   _updateVisibility : function(){
-    if ( this.options.guide.get('displayIsolatedRoll') ){
+    if ( this.options.guide.get('displayIsolatedRoll') || shelby.config.whitelabel.isWhitelabeled() ){
       this.$el.hide();
     } else {
       this.$el.show();

@@ -20,7 +20,7 @@
 
   <link rel="icon"type="image/png" href="/favicon.png">
   <%= stylesheet_link_tag "screen", :media => "screen" %>
-  <!--[if lt IE 9]><%= stylesheet_link_tag "png", :media => "screen, projection" %><![endif]-->
+  <%= stylesheet_link_tag "whitelabel", :media => "screen" if @whitelabel_mode %>
 
   <script>
     if (typeof(shelby) == 'undefined') {
