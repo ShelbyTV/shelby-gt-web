@@ -175,7 +175,7 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
       this._disableLoadMore();
       if (this.options.noMoreResultsViewProto && (this._numItemsLoaded !== 0 || items.length) && !this._noMoreResultsView) {
         this._noMoreResultsView = new this.options.noMoreResultsViewProto();
-        this._appendEmptyIndicatorView(this._noMoreResultsView);
+        this.appendChild(this._noMoreResultsView);
       }
     } else {
       this._loadMoreEnabled = true;
