@@ -7,6 +7,7 @@ ShelbyGtWeb::Application.routes.draw do
   constraints(:subdomain => 'm') do
     get '/' => 'mobile#landing', :as => :mobile_landing
     post '/user/create' => 'mobile#create_user'
+    get '/get-started' => 'home#get_started'
     get '/log_in' => "home#log_in"
     get '/explore' => 'mobile#featured', :as => :mobile_featured
     get '/ipadbeta' => 'home#ipadbeta'
@@ -29,6 +30,7 @@ ShelbyGtWeb::Application.routes.draw do
   scope "/amazonapp" do
     get '/' => 'mobile#landing'
     post '/user/create' => 'mobile#create_user'
+    get '/get-started' => 'home#get_started'
     get '/log_in' => "home#log_in"
     get '/explore' => 'mobile#featured'
     get '/ipadbeta' => 'home#ipadbeta'
@@ -54,6 +56,7 @@ ShelbyGtWeb::Application.routes.draw do
     scope "/m" do
       get '/' => 'mobile#landing', :as => :mobile_landing
       post '/user/create' => 'mobile#create_user'
+      get '/get-started' => 'home#get_started'
       get '/log_in' => "home#log_in"
       get '/explore' => 'mobile#featured', :as => :mobile_featured
       get '/ipadbeta' => 'home#ipadbeta'

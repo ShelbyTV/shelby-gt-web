@@ -6,6 +6,22 @@ defaults: &defaults
   no_search_required: "Great video, no searching required."
   discover_love: "Discover videos you and your friends will love."
 
+  badge:
+    ios:
+      alt: Apple App Store
+      href: http://shl.by/app
+      img: Download_on_the_App_Store_Badge_US-UK_135x40.svg
+      name: iOS
+    amazon:
+      alt: Amazon App Store
+      href: http://shl.by/amazonapp
+      img: amazon_app_store_black.png
+      name: Android/Kindle
+    windows:
+      alt: Windows Store
+      href: http://shl.by/windowsapp
+      img: WindowsStore_badge_en_English_Black_med_258x67.png
+      name: Windows
 
 
   cta: "Discover videos you and your friends will love."
@@ -23,6 +39,8 @@ defaults: &defaults
   seo_modal_header: "Want a better way to discover and enjoy video?"
   seo_modal_button: "Try Shelby.tv"
 
+  apps: "Download the free app. No signup required."
+
   ipadbeta:
     optin:
       head: Welcome to the Shelby.tv iPad Beta
@@ -39,6 +57,8 @@ defaults: &defaults
         "<small>*Feel free to try out our iPad beta by visiting <a href=\"http://shl.by/ipadbeta\" class=\"shelf__cta js-track-event\" data-ga_category=\"iPad Beta\" data-ga_action=\"Click to Download iPad Beta\">shl.by/ipadbeta</a> from your device!</small>"
       ]
     support: "Questions? Concerns? Comments? Feel free to <a href=\"mailto:feedback@shelby.tv\" class=\"js-track-event\" data-ga_category=\"iPad Beta\" data-ga_action=\"Click to Contact Us\">contact us</a>!"
+
+  shelf_layout: /home/shelf/shelf
 
 development:
   <<: *defaults
