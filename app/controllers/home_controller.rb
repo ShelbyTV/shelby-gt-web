@@ -55,6 +55,7 @@ class HomeController < ApplicationController
           user = Shelby::API.get_user(path)
 
           if user
+            @whitelabel_mode = params[:mode] if params[:mode]
             @user = user
             @roll = Shelby::API.get_roll_with_frames(@user['personal_roll_id'], '') if @user
             render '/home/app' and return
