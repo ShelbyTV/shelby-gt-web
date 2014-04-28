@@ -7,6 +7,7 @@
   var InlineDonatePromoView = libs.shelbyGT.InlineDonatePromoView;
   var FrameGroupsCollection = libs.shelbyGT.FrameGroupsCollection;
   var PlaylistType = libs.shelbyGT.PlaylistType;
+  var FrameModel = libs.shelbyGT.FrameModel;
 
   libs.shelbyGT.FrameGroupPlayPagingListView = PagingListView.extend({
 
@@ -20,16 +21,16 @@
       return _(events).extend(PagingListView.prototype.events.call(this));
     },
 
-    _nextPromoExplore: true,
+    _flashVersion : null,
+
+    _nextPromoExplore : true,
 
     frameGroupCollection : null,
 
     options : _.extend({}, PagingListView.prototype.options, {
       collapseViewedFrameGroups : true,
-      mobileVideoFilter : function(frame) {
-          return frame.get('video').canPlayMobile();
-      },
       infinite : true,
+      filterModelProto : FrameModel,
       listItemViewAdditionalParams : function(parentListView) {
         return {
           activationStateModel : shelby.models.guide,
@@ -50,11 +51,7 @@
           collapseViewedFrameGroups : this.options.collapseViewedFrameGroups
         });
 
-      // if (Browser.isMobile()) {
-      var flashVersion = swfobject.getFlashPlayerVersion();
-      if ( flashVersion.major == 0 ) {
-        this._filter = this.options.mobileVideoFilter;
-      }
+      this._flashVersion = swfobject.getFlashPlayerVersion();
 
       shelby.models.guide.bind('change:activeFrameModel', this._onActiveFrameModelChange, this);
 
@@ -190,6 +187,14 @@
           }
         }
       // }
+    },
+
+    _filter : function(frame) {
+      if ( this._flashVersion.major == 0 ) {
+        return frame.get('video').canPlayMobile();
+      } else {
+        return true;
+      }
     },
 
     _filterPromoRolls : function(roll) {

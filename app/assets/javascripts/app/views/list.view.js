@@ -4,7 +4,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
   className : 'list',
 
-  _numItemsDisplay : 0,
+  _numItemsDisplayed : 0,
 
   _emptyIndicatorView : null,
 
@@ -52,6 +52,11 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     doDynamicRender : true,
     doStaticRender : false,
 
+    // if you implment a filter function (see _filter, below) you must
+    // set this option to the class of model that the filter function expects to receive
+    // as its argument
+    filterModelProto : Backbone.Model,
+
     /*
       Where should new listItemViews be rendered?
       Valid options are 'append' (default), 'prepend', and 'before'.
@@ -82,7 +87,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
      * If your item views are not rendered in natural order, make this false.
      * It indicates we need to insert interval views for the group of item views as a whole, not individually.
      */
-    individuallynsertIntervalViewsIncrementally : true,
+    insertIntervalViewsIncrementally : true,
     /*
       prependedViewProtos - returns an ordered array of view prototypes to be prepended before any of the list view's
         contents from its collection; subclasses can override to return a non-empty array of prototypes
@@ -113,10 +118,6 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
   },
 
   initialize : function(){
-    if (this.model) {
-      this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
-    }
-
     if (this.options.doDynamicRender) {
       if (this.options.collection) {
         this.options.collection.bind('add', this.sourceAddOne, this);
@@ -148,6 +149,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
     if(this.model){
       this.model.bind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
+      this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     }
 
     var prependedViewProtos = this.options.prependedViewProtos();
@@ -178,6 +180,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
 
     if(this.model){
       this.model.unbind(libs.shelbyGT.ShelbyBaseModel.prototype.messages.fetchComplete, this._onFetchComplete, this);
+      this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
     }
 
     this._displayCollection.unbind('add', this.internalAddOne, this);
@@ -197,7 +200,15 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       if (this.options.maxDisplayedItems) {
         newContents = newContents.slice(0, this.options.maxDisplayedItems);
       }
+      this._numItemsDisplayed = newContents.length;
       this._displayCollection.reset(newContents);
+    }
+    if (this.options.doStaticRender &&
+        this.options.showEmptyIndicatorOnStaticRender &&
+        this.options.emptyIndicatorViewProto &&
+        this._numItemsDisplayed === 0) {
+        this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
+        this._appendEmptyIndicatorView(this._emptyIndicatorView);
     }
   },
 
@@ -229,6 +240,7 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
       this._simulatedMasterCollection.add(item, options);
     }
     if (!this._filter || this._filter(item)) {
+      this._numItemsDisplayed++;
       this._displayCollection.add(item, options);
     }
   },
@@ -421,9 +433,16 @@ libs.shelbyGT.ListView = Support.CompositeView.extend({
     this._insertIntervalViewsForGroup();
   },
 
-  _onItemsLoaded : function(rollModel, items){
+  _onItemsLoaded : function(model, items){
     if (this.options.emptyIndicatorViewProto) {
-      if (this._numItemsDisplay === 0 && !items.length && !this._emptyIndicatorView) {
+      if (this._filter) {
+        var itemsCollection = new Backbone.Collection([]);
+        itemsCollection.model = this.options.filterModelProto;
+        itemsCollection.add(items);
+        itemsCollection = itemsCollection.filter(this._filter, this);
+        items = itemsCollection;
+      }
+      if (this._numItemsDisplayed === 0 && !items.length && !this._emptyIndicatorView) {
         this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
         this._appendEmptyIndicatorView(this._emptyIndicatorView);
       } else if (items.length && this._emptyIndicatorView) {

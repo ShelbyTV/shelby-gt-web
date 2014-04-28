@@ -155,6 +155,11 @@ libs.shelbyGT.SmartRefreshListView = libs.shelbyGT.ListView.extend({
     if (!noSmartRefresh) {
       this._simulatedMasterCollection.add(item, options);
       if (!this._filter || this._filter(item)) {
+        // if we're smart refreshing, this is the ultimate destination of all code paths that
+        // add items to the displayCollection (superclass will not be called), so we have to take
+        // over teh responsibility of counting how many items we've displayed from the superclass
+        this._numItemsDisplayed++;
+
         if (this.options.doCheck == libs.shelbyGT.SmartRefreshCheckType.binarySearch) {
           libs.utils.BackboneCollectionUtils.insertAtSortedIndex(item, this._displayCollection,
                                                 {searchOffset : this.options.binarySearchOffset,

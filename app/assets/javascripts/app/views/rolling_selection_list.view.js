@@ -10,6 +10,7 @@
 
     options : _.extend({}, ListView.prototype.options, {
       collectionAttribute : 'rolls',
+      filterModelProto : RollModel,
       simulateAddTrue : false
     }),
 

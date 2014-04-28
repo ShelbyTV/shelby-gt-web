@@ -25,11 +25,13 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./collections/frame_groups.coll.js
 //= require ./utils/playlist_type.js
 //= require ./utils/recommendation_placer.utils.js
+//= require ./models/db/frame.model.js
 //= require ./views/frame_group_play_paging_list.view.js
 //= require ./views/dashboard_empty_indicator.view.js
 //= require ./views/search_empty_indicator.view.js
 //= require ./views/connect_channels_in_stream.view.js
 //= require ./views/connect_facebook_in_stream.view.js
+//= require ./models/db/dashboard_entry.model.js
 //= require ./views/dashboard.view.js
 //= require ./views/guide_overlay.view.js
 //= require ./views/roll_list.view.js
@@ -54,7 +56,6 @@ without triggering default app setup actions such as routing, user fetch, etc. *
 //= require ./utils/disqus.js
 //= require ./models/db/user.model.js
 //= require ./models/db/app_progress.model.js
-//= require ./models/db/dashboard_entry.model.js
 //
 //shelby backbone app - all other assets
 //= require_tree ./config

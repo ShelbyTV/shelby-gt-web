@@ -57,9 +57,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
 
   initialize : function(){
     var self = this;
-    if (this.model) {
-      this.model.bind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
-    }
     this._numItemsLoaded = 0;
     this._numItemsRequested = this.options.firstFetchLimit ? this.options.firstFetchLimit : this.options.limit;
 
@@ -70,9 +67,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   },
 
   _cleanup : function(){
-    if (this.model) {
-      this.model.unbind('relational:change:'+this.options.collectionAttribute, this._onItemsLoaded, this);
-    }
     libs.shelbyGT.SmartRefreshListView.prototype._cleanup.call(this);
   },
 
@@ -84,17 +78,6 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
   _prepareMasterCollection : function() {
     libs.shelbyGT.SmartRefreshListView.prototype._prepareMasterCollection.call(this);
     this._updatePagingParameters();
-  },
-
-  render : function(forceReRender){
-    libs.shelbyGT.SmartRefreshListView.prototype.render.call(this, forceReRender);
-    if (this.options.doStaticRender &&
-        this.options.showEmptyIndicatorOnStaticRender &&
-        this.options.emptyIndicatorViewProto &&
-        this._numItemsLoaded === 0) {
-        this._emptyIndicatorView = new this.options.emptyIndicatorViewProto();
-        this.insertChildBefore(this._emptyIndicatorView, '.js-load-more');
-    }
   },
 
   _updatePagingParameters : function() {
@@ -181,10 +164,10 @@ libs.shelbyGT.PagingListView = libs.shelbyGT.SmartRefreshListView.extend({
     }
   },
 
-  _onItemsLoaded : function(rollModel, items){
+  _onItemsLoaded : function(model, items){
     this._showLoadMore();
 
-    libs.shelbyGT.SmartRefreshListView.prototype._onItemsLoaded.call(this,rollModel,items);
+    libs.shelbyGT.SmartRefreshListView.prototype._onItemsLoaded.call(this, model, items);
 
     if (items.length < this._numItemsRequested) {
       // if the load returned less items than we requested, there are no more items to

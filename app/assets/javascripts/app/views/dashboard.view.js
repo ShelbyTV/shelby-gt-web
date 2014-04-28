@@ -1,6 +1,7 @@
 ( function(){
 
   // shorten names of included library prototypes
+  var DashboardEntryModel = libs.shelbyGT.DashboardEntryModel;
   var DashboardEmptyIndicatorView = libs.shelbyGT.DashboardEmptyIndicatorView;
   var FrameGroupPlayPagingListView = libs.shelbyGT.FrameGroupPlayPagingListView;
   var SmartRefreshCheckType = libs.shelbyGT.SmartRefreshCheckType;
@@ -19,13 +20,11 @@
                                             // of dashboard entries
       doSmartRefresh : true,
       emptyIndicatorViewProto : DashboardEmptyIndicatorView,
-      mobileVideoFilter : function(dbEntry) {
-          return dbEntry.get('frame').get('video').canPlayMobile();
-      },
       initFixedHead : true,
       isIntervalComplete : function(displayedItems) {
         return displayedItems != 0 && displayedItems % 5 == 0;
       },
+      filterModelProto : DashboardEntryModel,
       fetchParams : {
         include_children : true
       },
@@ -120,7 +119,18 @@
     },
 
     _filter : function(dbEntry){
-      return !dbEntry.isNotificationEntry();
+      // we don't show notification entries on web
+      if (dbEntry.isNotificationEntry()) {
+        return false;
+      }
+
+      // if we don't have flash available, filter out videos that can't play without flash
+      if ( this._flashVersion.major == 0 ) {
+          return dbEntry.get('frame').get('video').canPlayMobile();
+      }
+
+      // outside of those special cases, we always show db entries
+      return true;
     }
 
   });

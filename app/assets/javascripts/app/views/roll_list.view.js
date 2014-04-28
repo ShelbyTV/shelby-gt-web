@@ -14,7 +14,8 @@ libs.shelbyGT.RollListView = libs.shelbyGT.ListView.extend({
     listItemViewAdditionalParams : function() {
       return {activationStateModel:shelby.models.guide};
     },
-    rollListFilterType : null
+    rollListFilterType : null,
+    filterModelProto : libs.shelbyGT.RollModel
   }),
 
   initialize : function() {
