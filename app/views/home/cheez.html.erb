@@ -1000,17 +1000,6 @@
   <p><small>Crafted from the finest Internets.</small></p>
 </footer>
 
-
-
-
-
-
-
-    <div id="ad-trackingpx-1" class="js-ad ad ad-trackpx" data-adtype="NoneTEST_tracka_ROS" data-adsize="[1, 1]"></div>
-
-
-  <div id="chz-dialogs">
-
 <div id="js-dialog-creatememe" class="modal modal-creatememe hide fade">
   <section class="modal-creatememe-body">
     <span class="close icons" data-dismiss="modal" data-icon="X"></span>
@@ -1082,7 +1071,7 @@
 </div>
 
 
-    <div id="js-dialog-keynav" class="modal modal-keynav hide fade">
+<div id="js-dialog-keynav" class="modal modal-keynav hide fade">
   <section class="modal-keynav-body">
     <a class="close" data-dismiss="modal">×</a>
     <div class="span5 divider">
@@ -1098,7 +1087,8 @@
     </div>
   </section>
 </div>
-    <div id="js-invite-friends-gate" class="modal chz-modal hide fade">
+
+<div id="js-invite-friends-gate" class="modal chz-modal hide fade">
   <span class="close icons" data-dismiss="modal" data-icon="X"></span>
   <div class="modal-body">
     <h2>Invite Your Friends!</h2>
@@ -1156,9 +1146,15 @@
   </section>
 </div>
 <script>
-$(function(){
+$(document).ready(function(){
 
-  $('.vertical').on('mouseenter',function(){ $(this).addClass('is-open'); }).on('mouseleave',function(){ $(this).removeClass('is-open'); });
+  $('.vertical')
+    .on('mouseenter',function(){
+      $(this).addClass('is-open');
+    })
+    .on('mouseleave',function(){
+      $(this).removeClass('is-open');
+    });
 
   $('.js-video').on('click',function(e){
     e.preventDefault();

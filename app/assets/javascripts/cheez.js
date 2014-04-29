@@ -1,5 +1,3 @@
-//= require jquery
-
 //= require ./Cheez/slim_v05.js
 
 //= require ./Cheez/client.js
@@ -26,6 +24,5 @@
 //= require ./Cheez/SearchResultFilterControlsView.js
 
 //= require ./Cheez/gpt.js
-//= require ./Cheez/require.js
 
 //= require ./Cheez/main-new-search.js
