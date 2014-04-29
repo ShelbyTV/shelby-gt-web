@@ -29,6 +29,14 @@ libs.shelbyGT.viewHelpers.frame = {
    *
    */
   permalink: function(frame){
+    if (shelby.config.whitelabel.isWhitelabeled()) {
+      // if we're whitelabeled, and the frame has an original_source_url from the whitelabel partner, use that
+      // as the permalink
+      if (frame.has('original_source_url')) {
+        return frame.get('original_source_url');
+      }
+    }
+
     if( frame.has('creator') ){
       return this._subdomainPermalink(frame);
     } else {
