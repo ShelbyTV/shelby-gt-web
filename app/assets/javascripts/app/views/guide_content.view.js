@@ -142,6 +142,7 @@
             viewProto : FreshPlayRollView,
             model : this.model.get('currentRollModel'),
             options : {
+              freshPlayEnabled : !shelby.config.whitelabel.isWhitelabeled(),
               masterCollection : this._currentRollMasterCollection
             },
             spinner : true
