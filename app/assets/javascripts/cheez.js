@@ -1,3 +1,5 @@
+//= require jquery
+
 //= require ./Cheez/slim_v05.js
 
 //= require ./Cheez/client.js
