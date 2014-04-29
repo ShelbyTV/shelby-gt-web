@@ -100,6 +100,10 @@
   <% if ["production", "staging"].include? Rails.env %>
     <script>
       var _gaq=[['_setAccount','<%= Settings::GoogleAnalytics.code %>'],['_setDomainName','shelby.tv'],['_trackPageview']];
+      if (shelby.config.whitelabel.isWhitelabeled()) {
+        // set a custom variable to allow us to segment our google analytics to isolate whitelabeled properties
+        _gaq.push(['_setCustomVar', 3, 'Whitelabel Mode', shelby.config.whitelabel.mode]);
+      }
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
       g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';

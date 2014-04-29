@@ -99,7 +99,7 @@
             <% var hasComment = messages.models.length > 0 && creator.get('id') == messages.models[0].get('user_id') %>
             <% var comment = hasComment && messages.models[0].get('text') %>
             <% var commentOverflow = comment && comment.length > 265 %>
-              <a href="<%= framePermalink %>" class="xuser-data-timestamp">
+              <a href="<%= framePermalink %>" <%= shelby.config.whitelabel.isWhitelabeled() ? 'target="_blank"' : '' %>class="xuser-data-timestamp">
                  <%= frame.get('created_at') %>
               </a>
 
