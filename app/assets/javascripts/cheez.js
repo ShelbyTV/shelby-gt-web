@@ -26,3 +26,21 @@
 //= require ./Cheez/gpt.js
 
 //= require ./Cheez/main-new-search.js
+
+
+$(document).ready(function(){
+
+  $('.vertical')
+    .on('mouseenter',function(){
+      $(this).addClass('is-open');
+    })
+    .on('mouseleave',function(){
+      $(this).removeClass('is-open');
+    });
+
+  $('.js-video').on('click',function(e){
+    e.preventDefault();
+    $('#shelby').attr('src','http://alpha.shelby.tv/'+$(this).data('src')+'?mode=cheez');
+  });
+
+});

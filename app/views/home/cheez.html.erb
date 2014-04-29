@@ -18,7 +18,7 @@
   <title>Search </title>
 
   <%= stylesheet_link_tag "chzboot", :media => "screen" %>
-  <%= javascript_include_tag "cheez", "landing" %>
+  <%= javascript_include_tag "cheez" %>
 
   <script id="chz-configs" type="application/json">
   {"ClusterSiteId":null,"ContextualSiteId":null,"ProfileDomain":"http://profile.cheezburger.com","SiteName":"Search","SitePath":"/","PathWithoutPage":"/","VerticalSiteId":493,"VerticalPrefix":null,"SuperSitePrefix":"None","AdSuffix":"ROS","ShowAds":true,"ShowSponsoredPosts":false,"HasAsyncAds":true,"GAAcctId":"UA-4387187-2","Page":1,"imageDomain":"https://i.chzbgr.com","ShowEchoCommentsCount":true,"LandingPageUrl":"http://app.cheezburger.com/WhatAreCheezburgerSites","ReblogUrl":"/Shared/Add","Username":null,"UserSites":null,"KissInsightsUrl":"s3.amazonaws.com/ki.js/23712/4Ys.js","LoginMeow":"http://app.cheezburger.com/Account/LoginMeow","LoginUrl":"http://app.cheezburger.com/Account/Login?returnTo=http%3A%2F%2Fsearch.cheezburger.com%2F%3Fq%3Dgeek%20video%26ref%3Dnavbar","LoginAndRegisterUrl":"http://app.cheezburger.com/Account/RegisterAndLogin","LoginOrRegisterUrl":"http://app.cheezburger.com/Account/LoginOrRegisterV2","ForgotPasswordUrl":"http://app.cheezburger.com/Account/ForgotPassword?returnTo=http%3A%2F%2Fsearch.cheezburger.com%2F%3Fq%3Dgeek%20video%26ref%3Dnavbar","FacebookLoginAndRegisterUrl":"http://app.cheezburger.com/Account/FacebookLoginAndRegister","IsLoggedIn":false,"EnableMobileLogin":true,"FacebookLoginUrl":"http://app.cheezburger.com/Account/FacebookLogin","FacebookLoginV2Url":"http://app.cheezburger.com/Account/FacebookLoginV2","MobileLoginUrlV2":"http://app.cheezburger.com/Account/LotionLogin?returnTo=http%3A%2F%2Fsearch.cheezburger.com%2F%3Fq%3Dgeek%20video%26ref%3Dnavbar","FacebookAppId":"151927811548639","IsSinglePostPage":false,"IsSharePage":false,"IsHomePage":false,"IsProduction":true,"UserFavoritesUrl":"http://profile.cheezburger.com//favorites","UserId":null,"EnableOptimizely":false,"EnableAdSafeTracker":true,"ShowRegPopup":false,"CookieHostname":".cheezburger.com","ScoresUrl":"http://app.cheezburger.com/Rating/Scores","EchoApiUrl":"http://app.cheezburger.com/Echo","OnOCastVoteUrl":"http://app.cheezburger.com/Rating/OnoCast","EnablePerformanceLogging":false,"EnableFrameRateLogging":false,"RageFaceUrl":"https://s.chzbgr.com/s/release_20140428.294/img/rage_faces/","SoundUrl":"https://s.chzbgr.com/s/release_20140428.294/sound/","FacebookAppNamespace":"cheezburger-app","SplitTesting":{},"EnableFavoriteConversions":true,"UserEmailHash":null,"EnableOGVoting":true,"EnableOGFollow":true,"EnableOGCreateMeme":false,"EnableNewUserVotingTip":false,"EnableOGReblog":true,"EnableOGRecaption":true,"EnableOGCreateSite":false,"EnableKissInsights":false,"EnableGifPlayer":false,"EnableLazyVideos":false,"EnableAddThisButtons":true,"ViewServer":"http://cheezburger.com","DisableAnonymousComments":true,"IsNewlyCreatedAsset":false,"IsMySite":false,"HomepageUrl":"http://www.cheezburger.com","EnableVoteWidgetAd":false,"VoteWidgetAdIntervalMinutes":0,"VoteWidgetAdTag":null,"EnableMobileWebInterstitial":false,"MobileWebInterstitialIntervalMinutes":0,"UseFacebookFriendsImages":false,"EnableFanConverter":false,"EnableFreshdesk":true,"FreshdeskUrl":"http://support.cheezburger.com","EnableSlideShowMobileMVP":false,"EnableJumbotron":true,"EnableCoullVidlinkr":false,"EnableSharethroughAds":true,"VidlinkrWebsiteId":null,"EnableQuantcastAdvertise":true,"ShowViewListOverlay":true,"EnableFall2013VisualUpdates":true,"ShowSocialMediaIcons":true,"EnableTopSocialMediaIcons":true,"EnableSppAdSkinning":true,"EnableStickySidebar":false,"VisitorUserId":"63d70856-99e3-489c-ac82-9cd748cfb00c","EnableSplyt":true,"SplytCustomerId":"cheezburger-cheezburger-prod"}
@@ -1145,23 +1145,5 @@
     </form>
   </section>
 </div>
-<script>
-$(document).ready(function(){
-
-  $('.vertical')
-    .on('mouseenter',function(){
-      $(this).addClass('is-open');
-    })
-    .on('mouseleave',function(){
-      $(this).removeClass('is-open');
-    });
-
-  $('.js-video').on('click',function(e){
-    e.preventDefault();
-    $('#shelby').attr('src','http://alpha.shelby.tv/'+$(this).data('src')+'?mode=cheez');
-  });
-
-});
-</script>
 </body>
 </html>
