@@ -5,8 +5,6 @@
  */
 libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
-  _currentFrameShortlink : null,
-
   options : {
     eventTrackingCategory : 'Persistent Video Info' // what category events in this view will be tracked under
   },
@@ -108,7 +106,6 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
         anonUserShareEmailBody  : emailBody,
         currentFrame            : this._currentFrame,
         currentFrameOriginator  : currentFrameOriginator,
-        currentFrameShortlink   : this._currentFrameShortlink,
         eventTrackingCategory   : this.options.eventTrackingCategory,
         frameGroup              : this._frameGroup,
         isChannelRecommendation : isChannelRecommendation,
@@ -143,8 +140,6 @@ libs.shelbyGT.PersistentVideoInfoView = Support.CompositeView.extend({
 
   _onActiveFrameModelChange : function(guideModel, activeFrameModel){
     this._currentFrame = activeFrameModel;
-    // current frame changed, so we don't have the right shortlink anymore
-    this._currentFrameShortlink = null;
     this.render();
   },
 

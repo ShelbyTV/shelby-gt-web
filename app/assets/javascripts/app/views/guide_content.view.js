@@ -246,6 +246,12 @@
         //   break;
       }
 
+      // don't show a link to explore section at the end of the guide if we're in whitelabel mode
+      if (shelby.config.whitelabel.isWhitelabeled()) {
+        displayParams.options = displayParams.options || {};
+        displayParams.options.noMoreResultsViewProto = null;
+      }
+
       var childViewOptions = {
         model : displayParams.model,
         collection : displayParams.collection

@@ -16,6 +16,7 @@
     var ShareActionState = libs.shelbyGT.ShareActionState;
     var ShareActionStateModel = libs.shelbyGT.ShareActionStateModel;
     var ShelbyAutocompleteView = libs.shelbyGT.ShelbyAutocompleteView;
+    var FrameHelper = libs.shelbyGT.viewHelpers.frame;
 
     libs.shelbyGT.RollingFormView = Support.CompositeView.extend({
 
@@ -219,10 +220,11 @@
                 });
             }
 
-            var tweetText = encodeURIComponent(this._video.get('title')),
-                tweetUrl = shortlink;
+            var tweetText = encodeURIComponent(FrameHelper.title(this._frame)),
+                tweetUrl = shortlink,
+                twitterHandle = shelby.config.whitelabel.appOwnerTwitterHandle();
 
-            var url = 'https://twitter.com/intent/tweet?related=shelby&via=shelby&url=' + tweetUrl + '&text=' + tweetText + '';
+            var url = 'https://twitter.com/intent/tweet?related=' + twitterHandle + '&via=' + twitterHandle + '&url=' + tweetUrl + '&text=' + tweetText + '';
 
             return url;
         },
@@ -295,9 +297,9 @@
 
             var
             shortlink = this.options.currentFrameShortlink,
-                text = 'Shelby.tv',
+                text = shelby.config.whitelabel.appOwnerDomain(),
                 videoDescription = this._video.get('description'),
-                videoTitle = this._video.get('title'),
+                videoTitle = FrameHelper.title(this._frame),
                 videoThumbnail = this._video.get('thumbnail_url');
 
 

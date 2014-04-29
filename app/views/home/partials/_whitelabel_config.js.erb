@@ -14,5 +14,21 @@ shelby.config.whitelabel = {
   },
   isWhitelabeled : function() {
     return this.mode.length;
+  },
+  appOwnerTwitterHandle : function() {
+    switch (this.mode) {
+      case this.MODES.cheez:
+        return "cheezburger"
+      default:
+        return "shelby"
+    }
+  },
+  appOwnerDomain : function() {
+    switch (this.mode) {
+      case this.MODES.cheez:
+        return "Cheezburger.com"
+      default:
+        return "Shelby.tv"
+    }
   }
 };

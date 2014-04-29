@@ -84,7 +84,7 @@ libs.shelbyGT.AppRouter = Backbone.Router.extend({
       shelby.config.socialLibsLoaded = true;
     }
 
-    if (shelby.userIsCommonCookieAuthed()){
+    if (shelby.userIsCommonCookieAuthed() && !shelby.config.whitelabel.isWhitelabeled()){
       shelby.models.user.fetch({
         success: function(userModel, response) {
           self._reroute();
