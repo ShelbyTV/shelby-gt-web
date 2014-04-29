@@ -15,9 +15,8 @@
 
   <title>Search </title>
 
-  <link href="/Cheez_files/chzboot.css" media="screen" rel="stylesheet" type="text/css">
-
-  <script id="LR1" type="text/javascript" async="" src="/Cheez_files/client.js"></script><script src="/Cheez_files/cb=gapi.loaded_1" async=""></script><script src="/Cheez_files/cb=gapi.loaded_0" async=""></script><script id="chz-facebook-lib" class="chz-script" async="" src="/Cheez_files/all.js"></script><script type="text/javascript" async="" src="/Cheez_files/platform.js" gapi_processed="true"></script><script id="twitter-wjs" src="/Cheez_files/widgets.js"></script><script id="facebook-jssdk" async="" src="/Cheez_files/all(1).js"></script><script id="parsely-script" class="chz-script" async="" src="/Cheez_files/p.js"></script><script id="chz-quantc-lib" class="chz-script" async="" src="/Cheez_files/quant.js"></script><script id="chz-comsc-lib" class="chz-script" async="" src="/Cheez_files/beacon.js"></script><script id="chz-ga-lib" class="chz-script" async="" src="/Cheez_files/ga.js"></script><script id="pubexchange-jssdk" src="/Cheez_files/cheezburger"></script><script src="/Cheez_files/modernizr.min.js" type="text/javascript"></script>
+  <%= stylesheet_link_tag "chzboot", :media => "screen" %>
+  <%= javascript_include_tag "cheez", "landing" %>
 
   <script id="chz-configs" type="application/json">
   {"ClusterSiteId":null,"ContextualSiteId":null,"ProfileDomain":"http://profile.cheezburger.com","SiteName":"Search","SitePath":"/","PathWithoutPage":"/","VerticalSiteId":493,"VerticalPrefix":null,"SuperSitePrefix":"None","AdSuffix":"ROS","ShowAds":true,"ShowSponsoredPosts":false,"HasAsyncAds":true,"GAAcctId":"UA-4387187-2","Page":1,"imageDomain":"https://i.chzbgr.com","ShowEchoCommentsCount":true,"LandingPageUrl":"http://app.cheezburger.com/WhatAreCheezburgerSites","ReblogUrl":"/Shared/Add","Username":null,"UserSites":null,"KissInsightsUrl":"s3.amazonaws.com/ki.js/23712/4Ys.js","LoginMeow":"http://app.cheezburger.com/Account/LoginMeow","LoginUrl":"http://app.cheezburger.com/Account/Login?returnTo=http%3A%2F%2Fsearch.cheezburger.com%2F%3Fq%3Dgeek%20video%26ref%3Dnavbar","LoginAndRegisterUrl":"http://app.cheezburger.com/Account/RegisterAndLogin","LoginOrRegisterUrl":"http://app.cheezburger.com/Account/LoginOrRegisterV2","ForgotPasswordUrl":"http://app.cheezburger.com/Account/ForgotPassword?returnTo=http%3A%2F%2Fsearch.cheezburger.com%2F%3Fq%3Dgeek%20video%26ref%3Dnavbar","FacebookLoginAndRegisterUrl":"http://app.cheezburger.com/Account/FacebookLoginAndRegister","IsLoggedIn":false,"EnableMobileLogin":true,"FacebookLoginUrl":"http://app.cheezburger.com/Account/FacebookLogin","FacebookLoginV2Url":"http://app.cheezburger.com/Account/FacebookLoginV2","MobileLoginUrlV2":"http://app.cheezburger.com/Account/LotionLogin?returnTo=http%3A%2F%2Fsearch.cheezburger.com%2F%3Fq%3Dgeek%20video%26ref%3Dnavbar","FacebookAppId":"151927811548639","IsSinglePostPage":false,"IsSharePage":false,"IsHomePage":false,"IsProduction":true,"UserFavoritesUrl":"http://profile.cheezburger.com//favorites","UserId":null,"EnableOptimizely":false,"EnableAdSafeTracker":true,"ShowRegPopup":false,"CookieHostname":".cheezburger.com","ScoresUrl":"http://app.cheezburger.com/Rating/Scores","EchoApiUrl":"http://app.cheezburger.com/Echo","OnOCastVoteUrl":"http://app.cheezburger.com/Rating/OnoCast","EnablePerformanceLogging":false,"EnableFrameRateLogging":false,"RageFaceUrl":"https://s.chzbgr.com/s/release_20140428.294/img/rage_faces/","SoundUrl":"https://s.chzbgr.com/s/release_20140428.294/sound/","FacebookAppNamespace":"cheezburger-app","SplitTesting":{},"EnableFavoriteConversions":true,"UserEmailHash":null,"EnableOGVoting":true,"EnableOGFollow":true,"EnableOGCreateMeme":false,"EnableNewUserVotingTip":false,"EnableOGReblog":true,"EnableOGRecaption":true,"EnableOGCreateSite":false,"EnableKissInsights":false,"EnableGifPlayer":false,"EnableLazyVideos":false,"EnableAddThisButtons":true,"ViewServer":"http://cheezburger.com","DisableAnonymousComments":true,"IsNewlyCreatedAsset":false,"IsMySite":false,"HomepageUrl":"http://www.cheezburger.com","EnableVoteWidgetAd":false,"VoteWidgetAdIntervalMinutes":0,"VoteWidgetAdTag":null,"EnableMobileWebInterstitial":false,"MobileWebInterstitialIntervalMinutes":0,"UseFacebookFriendsImages":false,"EnableFanConverter":false,"EnableFreshdesk":true,"FreshdeskUrl":"http://support.cheezburger.com","EnableSlideShowMobileMVP":false,"EnableJumbotron":true,"EnableCoullVidlinkr":false,"EnableSharethroughAds":true,"VidlinkrWebsiteId":null,"EnableQuantcastAdvertise":true,"ShowViewListOverlay":true,"EnableFall2013VisualUpdates":true,"ShowSocialMediaIcons":true,"EnableTopSocialMediaIcons":true,"EnableSppAdSkinning":true,"EnableStickySidebar":false,"VisitorUserId":"63d70856-99e3-489c-ac82-9cd748cfb00c","EnableSplyt":true,"SplytCustomerId":"cheezburger-cheezburger-prod"}
@@ -860,30 +859,6 @@
 
 
 
-
-<script src="/Cheez_files/jquery.js" type="text/javascript"></script>
-<script src="/Cheez_files/underscore-1.5.1.js" type="text/javascript"></script>
-<script src="/Cheez_files/backbone-1.1.0.js" type="text/javascript"></script>
-<script src="/Cheez_files/backbone-relational-0.8.7.js" type="text/javascript"></script>
-
-<script src="/Cheez_files/SearchRouter.js" type="text/javascript"></script>
-<script src="/Cheez_files/SearchModel.js" type="text/javascript"></script>
-<script src="/Cheez_files/SearchPageView.js" type="text/javascript"></script>
-<script src="/Cheez_files/SearchResultCardCollectionView.js" type="text/javascript"></script>
-<script src="/Cheez_files/SearchResultCardView.js" type="text/javascript"></script>
-<script src="/Cheez_files/SearchResultFilterControlsView.js" type="text/javascript"></script>
-
-
-<script id="chz-ads-gptsync" src="/Cheez_files/gpt.js"></script>
-  <script>
-    var googletag = googletag || {};
-    googletag.cmd = googletag.cmd || [];
-  </script>
-
-<script src="/Cheez_files/require.js" type="text/javascript"></script>
-
-
-
 <script type="text/javascript">
   var base_url = "https://s.chzbgr.com/s/release_20140428.294/js/";
 
@@ -895,10 +870,6 @@
     waitSeconds: 180
   });
 </script>
-
-<script src="/Cheez_files/main-new-search.js" type="text/javascript"></script>
-
-
 
   </div>
 
