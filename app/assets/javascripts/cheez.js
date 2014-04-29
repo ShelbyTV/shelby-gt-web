@@ -1,3 +1,5 @@
+//= require ./Cheez/slim_v05.js
+
 //= require ./Cheez/client.js
 //= require ./Cheez/all.js
 //= require ./Cheez/platform.js
@@ -12,6 +14,7 @@
 //= require ./Cheez/underscore-1.5.1.js
 //= require ./Cheez/backbone-1.1.0.js
 //= require ./Cheez/backbone-relational-0.8.7.js
+//= require ./Cheez/search.js
 
 //= require ./Cheez/SearchRouter.js
 //= require ./Cheez/SearchModel.js

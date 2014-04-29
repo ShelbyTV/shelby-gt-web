@@ -410,7 +410,7 @@ Thumbs Up_2         		u                   content: 'u';
 */
 
 body:before {
-  content: url(../img/follow-popover-siteicons.jpg) url(/s/unversioned/img/builder_icons/sprite.png);
+  content: url(https://s.chzbgr.com/s/release_20140429.295/img/follow-popover-siteicons.jpg) url(https://s.chzbgr.com/s/unversioned/img/builder_icons/sprite.png);
   display: none;
 }
 /* STRUCTURAL LAYOUT */
@@ -428,7 +428,7 @@ body.proxima {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 body.error-page {
-  background: url(/s/unversioned/img/background_texture.png) repeat fixed 0 0;
+  background: url(https://s.chzbgr.com/s/unversioned/img/background_texture.png) repeat fixed 0 0;
   padding: 0 20px;
 }
 body.error-page img,
@@ -668,7 +668,7 @@ a.highlight:active {
 }
 .template-badge {
   float: left;
-  background: url(/s/unversioned/img/site_banners/template-badge.png) no-repeat center;
+  background: url(https://s.chzbgr.com/s/unversioned/img/site_banners/template-badge.png) no-repeat center;
   display: block;
   height: 171px;
   width: 172px;
@@ -685,7 +685,7 @@ a.highlight:active {
   padding: 17px 0 0;
 }
 .template-badge .badge-banner {
-  background: url(/s/unversioned/img/site_banners/badge-banner.png) no-repeat center top;
+  background: url(https://s.chzbgr.com/s/unversioned/img/site_banners/badge-banner.png) no-repeat center top;
   font-weight: 800;
   font-size: 18px;
   color: #d44f12;
@@ -1584,7 +1584,7 @@ cite {
   left: -25px;
   width: 20px;
   height: 20px;
-  background: url(/s/unversioned/img/loading-sm.gif) center center no-repeat;
+  background: url(https://s.chzbgr.com/s/unversioned/img/loading-sm.gif) center center no-repeat;
 }
 .t-right {
   text-align: right;
@@ -2569,7 +2569,7 @@ table .span12 {
 .sprite {
   background-repeat: no-repeat;
   display: inline-block;
-  background-image: url('/s/unversioned/img/builder_icons/sprite.png');
+  background-image: url('https://s.chzbgr.com/s/unversioned/img/builder_icons/sprite.png');
 }
 .sprite-builder-basic {
   background-position: 0 0;
@@ -2630,7 +2630,7 @@ table .span12 {
 .sprite-site-header {
   display: block;
   background-repeat: no-repeat;
-  background-image: url('/s/unversioned/img/siteheader_logos.png');
+  background-image: url('https://s.chzbgr.com/s/unversioned/img/siteheader_logos.png');
   text-indent: -999em;
   overflow: hidden;
 }
@@ -2667,7 +2667,7 @@ table .span12 {
 .sprite-super-site {
   display: block;
   background-repeat: no-repeat;
-  background-image: url('/s/unversioned/img/super_site_logos_w_espanol.png');
+  background-image: url('https://s.chzbgr.com/s/unversioned/img/super_site_logos_w_espanol.png');
   width: 120px;
   height: 79px;
   text-indent: -999em;
@@ -2720,7 +2720,7 @@ table .span12 {
   float: left;
   text-indent: -999em;
   margin-left: 13px;
-  background: url(../img/social-icons.png) no-repeat 0 0;
+  background: url(https://s.chzbgr.com/s/release_20140429.295/img/social-icons.png) no-repeat 0 0;
 }
 .chz-social .social-network {
   width: 59px;
@@ -3222,7 +3222,7 @@ table .span12 {
 .btn-chz-icon:hover.is-busy:before,
 .btn-chz-icon:active.is-busy:before {
   content: " ";
-  background: url(/s/unversioned/img/loading-sm.gif) center no-repeat;
+  background: url(https://s.chzbgr.com/s/unversioned/img/loading-sm.gif) center no-repeat;
 }
 .btn-chz-icon-edit:before {
   background-color: #fda115;
@@ -3316,7 +3316,7 @@ table .span12 {
   border-radius: 50%;
   text-decoration: none;
   font-style: normal;
-  background: white url(/s/unversioned/img/icon-btn-burger.png) center 7px no-repeat;
+  background: white url(https://s.chzbgr.com/s/unversioned/img/icon-btn-burger.png) center 7px no-repeat;
 }
 .btn-chz-share s i {
   display: block;
@@ -3332,7 +3332,7 @@ table .span12 {
   top: 1px;
 }
 .btn-chz-share.btn-chz-facebook s {
-  background-image: url(/s/unversioned/img/icon-btn-facebk.png);
+  background-image: url(https://s.chzbgr.com/s/unversioned/img/icon-btn-facebk.png);
 }
 .btn-chz-share:hover {
   color: white;
@@ -3689,7 +3689,7 @@ table .span12 {
   clear: both;
 }
 .btn-fb-reg:before {
-  content: url('/s/unversioned/img/fb-icon-large.png');
+  content: url('https://s.chzbgr.com/s/unversioned/img/fb-icon-large.png');
   float: left;
   width: 50px;
   height: 50px;
@@ -3933,7 +3933,7 @@ table .span12 {
   position: absolute;
   height: 37px;
   width: 43px;
-  background: url(../img/btn-burger-icon.png) no-repeat 0 0;
+  background: url(https://s.chzbgr.com/s/release_20140429.295/img/btn-burger-icon.png) no-repeat 0 0;
   top: -5px;
   left: -25px;
 }
@@ -5183,7 +5183,7 @@ input[type="submit"].btn.small {
   font-size: 13px;
 }
 .navbar.is-fixed .brand {
-  background: url("../img/cheezburger_logo_white.png") no-repeat;
+  background: url("https://s.chzbgr.com/s/release_20140429.295/img/cheezburger_logo_white.png") no-repeat;
   height: 39px;
   left: 0px;
   top: 4px;
@@ -5236,7 +5236,7 @@ input[type="submit"].btn.small {
   display: block;
   height: 14px;
   width: 14px;
-  background: url(/s/unversioned/img/plus-minus.png) no-repeat 0 0;
+  background: url(https://s.chzbgr.com/s/unversioned/img/plus-minus.png) no-repeat 0 0;
 }
 .btn-navbar .minus {
   background-position: 0 -15px;
@@ -5260,7 +5260,7 @@ input[type="submit"].btn.small {
   z-index: 1;
   width: 120px;
   height: 85px;
-  background: url("../img/chz-nav-logo-leader.png") no-repeat;
+  background: url("https://s.chzbgr.com/s/release_20140429.295/img/chz-nav-logo-leader.png") no-repeat;
   text-indent: -999em;
   overflow: hidden;
 }
@@ -5387,7 +5387,7 @@ input[type="submit"].btn.small {
   bottom: 0;
   width: 140px;
   height: 90px;
-  background: url("/s/unversioned/img/flyout-bottom.png") no-repeat 0 0;
+  background: url("https://s.chzbgr.com/s/unversioned/img/flyout-bottom.png") no-repeat 0 0;
 }
 .navbar .flyout.ICHC .flyout-bottom {
   background-position: -6px 0;
@@ -6444,7 +6444,7 @@ li.is-open.search {
   border: 3px solid #a8efff;
   border-radius: 1px;
   top: 40px !important;
-  background: white url(/s/unversioned/img/spaceburger-25pctOpacity.png) 96% 90% no-repeat;
+  background: white url(https://s.chzbgr.com/s/unversioned/img/spaceburger-25pctOpacity.png) 96% 90% no-repeat;
 }
 .modal-creatememe-body {
   padding: 25px 0;
@@ -7443,7 +7443,7 @@ div.center-icon {
   top: -115px;
   height: 115px;
   width: 300px;
-  background-image: url(../img/ad-geico-voting-02.png);
+  background-image: url(https://s.chzbgr.com/s/release_20140429.295/img/ad-geico-voting-02.png);
   background-position: 0 -116px;
 }
 .ad-voting-popup.ad-voting-cheerios {
@@ -7451,7 +7451,7 @@ div.center-icon {
   left: -36px;
   height: 192px;
   width: 257px;
-  background-image: url(../img/ad-cheerios-voting-02.png);
+  background-image: url(https://s.chzbgr.com/s/release_20140429.295/img/ad-cheerios-voting-02.png);
 }
 .ad-voting-popup.is-visible {
   opacity: 1;
@@ -7595,7 +7595,7 @@ div.center-icon {
   position: relative;
 }
 .ad-skin .masthead-banner-shadow {
-  background: url(../img/site_banners/site-banner-shadow.png) no-repeat 0 0;
+  background: url(https://s.chzbgr.com/s/release_20140429.295/img/site_banners/site-banner-shadow.png) no-repeat 0 0;
   display: block;
   position: absolute;
   top: 0;
@@ -7922,7 +7922,7 @@ div.center-icon {
   width: 60px;
   height: 60px;
   margin-right: 10px;
-  background-image: url(../img/follow-popover-siteicons.jpg);
+  background-image: url(https://s.chzbgr.com/s/release_20140429.295/img/follow-popover-siteicons.jpg);
   background-position: 0 0;
   background-repeat: no-repeat;
   border-radius: 5px;
@@ -7986,7 +7986,7 @@ div.center-icon {
 .follow-siteicon.source-16760,
 .follow-siteicon.source-26,
 .follow-siteicon.source-53 {
-  background-image: url(../img/follow-popover-siteicons.jpg);
+  background-image: url(https://s.chzbgr.com/s/release_20140429.295/img/follow-popover-siteicons.jpg);
 }
 .follow-siteicon.source-1 {
   background-position: -60px 0;
@@ -8901,7 +8901,7 @@ div.center-icon {
   max-width: 90%;
 }
 .post-repost #js-influencer-list #loading {
-  background: url(/s/unversioned/img/loading-sm.gif) no-repeat;
+  background: url(https://s.chzbgr.com/s/unversioned/img/loading-sm.gif) no-repeat;
   width: 16px;
   height: 16px;
 }
@@ -9436,7 +9436,7 @@ footer {
   transition: opacity 0.25s ease;
 }
 .footer-iscroll-status p {
-  background: url(../img/loading-sm.gif) 10px center no-repeat;
+  background: url(https://s.chzbgr.com/s/release_20140429.295/img/loading-sm.gif) 10px center no-repeat;
   padding: 10px;
   text-indent: 20px;
   white-space: nowrap;
@@ -9554,7 +9554,7 @@ footer {
 .asset-icons i {
   width: 22px;
   height: 22px;
-  background-image: url(/s/unversioned/img/asset-icons.png);
+  background-image: url(https://s.chzbgr.com/s/unversioned/img/asset-icons.png);
   background-repeat: no-repeat;
   margin-right: 4px;
   display: inline-block;
@@ -9626,7 +9626,7 @@ footer {
 #comments .is-loading {
   width: 550px;
   min-height: 150px;
-  background: url(/s/unversioned/img/lameloadingindicator.gif) 10px center no-repeat;
+  background: url(https://s.chzbgr.com/s/unversioned/img/lameloadingindicator.gif) 10px center no-repeat;
 }
 .echo-submit-header {
   margin-bottom: 3px;
@@ -10748,7 +10748,7 @@ span.echo-item-metadata-userID {
 }
 .profile-sub-nav .feed-tabs .feed-tab.active {
   z-index: 3;
-  background-image: url(/s/unversioned/img/skin-04-tile.png);
+  background-image: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png);
   background-repeat: repeat;
 }
 .profile-sub-nav .feed-tabs .feed-tab.active a {
@@ -10919,7 +10919,7 @@ span.echo-item-metadata-userID {
 }
 .pss-stats,
 .pss-sites {
-  background-image: url(/s/unversioned/img/skin-04-tile.png);
+  background-image: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png);
   background-repeat: repeat;
   background-position: 0 0;
   color: white;
@@ -10933,12 +10933,12 @@ span.echo-item-metadata-userID {
   color: white;
 }
 .pss-friends {
-  background: #2b2b2b url(/s/unversioned/img/skin-04-tile.png) repeat 0 0;
+  background: #2b2b2b url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0;
   background: -moz-linear-gradient(top, #292929, #2d2d2d), #2d2d2d;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, -ms-linear-gradient(top, #292929, #2d2d2d), #2d2d2d;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, -webkit-linear-gradient(top, #292929, #2d2d2d), #2d2d2d;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, -o-linear-gradient(top, #292929, #2d2d2d), #2d2d2d;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, linear-gradient(top, #292929, #2d2d2d), #2d2d2d;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, -ms-linear-gradient(top, #292929, #2d2d2d), #2d2d2d;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, -webkit-linear-gradient(top, #292929, #2d2d2d), #2d2d2d;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, -o-linear-gradient(top, #292929, #2d2d2d), #2d2d2d;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, linear-gradient(top, #292929, #2d2d2d), #2d2d2d;
   color: white;
 }
 .pss-friends h2,
@@ -10962,16 +10962,16 @@ span.echo-item-metadata-userID {
   background: #f2f2f2;
 }
 .pss-sites {
-  background: #181818 url(/s/unversioned/img/skin-04-tile.png) repeat 0 0;
+  background: #181818 url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0;
   background: -moz-linear-gradient(top, #151515, #1c1c1c), #151515;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, -ms-linear-gradient(top, #151515, #1c1c1c), #151515;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, -webkit-linear-gradient(top, #151515, #1c1c1c), #151515;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, -o-linear-gradient(top, #151515, #1c1c1c), #151515;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, linear-gradient(top, #151515, #1c1c1c), #151515;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, -ms-linear-gradient(top, #151515, #1c1c1c), #151515;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, -webkit-linear-gradient(top, #151515, #1c1c1c), #151515;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, -o-linear-gradient(top, #151515, #1c1c1c), #151515;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, linear-gradient(top, #151515, #1c1c1c), #151515;
   position: relative;
 }
 .pss-sites i {
-  background: url('../img/burger-icon.png') no-repeat 0 0;
+  background: url('https://s.chzbgr.com/s/release_20140429.295/img/burger-icon.png') no-repeat 0 0;
   display: block;
   position: absolute;
   left: 18px;
@@ -10980,12 +10980,12 @@ span.echo-item-metadata-userID {
   height: 70px;
 }
 .pss-stats {
-  background: #383838 url(/s/unversioned/img/skin-04-tile.png) repeat 0 0;
+  background: #383838 url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0;
   background: -moz-linear-gradient(top, #333333, #3f3f3f), #333333;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, -ms-linear-gradient(top, #333333, #3f3f3f), #333333;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, -webkit-linear-gradient(top, #333333, #3f3f3f), #333333;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, -o-linear-gradient(top, #333333, #3f3f3f), #333333;
-  background: url(/s/unversioned/img/skin-04-tile.png) repeat 0 0, linear-gradient(top, #333333, #3f3f3f), #333333;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, -ms-linear-gradient(top, #333333, #3f3f3f), #333333;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, -webkit-linear-gradient(top, #333333, #3f3f3f), #333333;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, -o-linear-gradient(top, #333333, #3f3f3f), #333333;
+  background: url(https://s.chzbgr.com/s/unversioned/img/skin-04-tile.png) repeat 0 0, linear-gradient(top, #333333, #3f3f3f), #333333;
 }
 .pss-stats .h4 {
   font-weight: 600;
@@ -11201,7 +11201,7 @@ li:hover .collection-controls {
   clear: both;
 }
 .pageHeader {
-  background: #cccccc url(../img/builder-header-noise.png) repeat 0 0;
+  background: #cccccc url(https://s.chzbgr.com/s/release_20140429.295/img/builder-header-noise.png) repeat 0 0;
   font-weight: 900;
   color: white;
   min-height: 88px;
@@ -11226,7 +11226,7 @@ li:hover .collection-controls {
 .pageHeader .header-inner {
   display: block;
   overflow: hidden;
-  background-image: url(../img/builder_icons/builder-header-basic.png);
+  background-image: url(https://s.chzbgr.com/s/release_20140429.295/img/builder_icons/builder-header-basic.png);
   background-repeat: no-repeat;
 }
 .pageHeader .header-inner.basic {
@@ -11237,7 +11237,7 @@ li:hover .collection-controls {
 }
 .profile-header {
   height: 140px;
-  background-image: url('../img/profile_headers/Burger%20Time.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Burger%20Time.jpg');
   background-position: right 0;
   background-repeat: no-repeat;
   box-shadow: none;
@@ -11257,108 +11257,108 @@ li:hover .collection-controls {
   line-height: 1;
 }
 .eightBit {
-  background-image: url('../img/profile_headers/8-Bit%20Internet.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/8-Bit%20Internet.png');
 }
 .alwaysWatching {
-  background-image: url('../img/profile_headers/Always%20Watching.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Always%20Watching.jpg');
 }
 .appleCatintosh {
-  background-image: url('../img/profile_headers/Apple%20Catintosh.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Apple%20Catintosh.png');
 }
 .badLuckBrian {
-  background-image: url('../img/profile_headers/Bad%20Luck%20Brian.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Bad%20Luck%20Brian.jpg');
 }
 .bowieCatInSpace {
-  background-image: url('../img/profile_headers/Bowiecat%20in%20Space.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Bowiecat%20in%20Space.jpg');
 }
 .businessCat {
-  background-image: url('../img/profile_headers/Business%20Cat.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Business%20Cat.png');
 }
 .catnarok {
-  background-image: url('../img/profile_headers/Catnarok.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Catnarok.jpg');
 }
 .doubleRainbow,
 .Paradise {
-  background-image: url('../img/profile_headers/Double%20Rainbow%20Paradise.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Double%20Rainbow%20Paradise.jpg');
 }
 .caturday {
-  background-image: url('../img/profile_headers/Everyday%20is%20Caturday.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Everyday%20is%20Caturday.jpg');
 }
 .evolution {
-  background-image: url('../img/profile_headers/Evolution%20of%20a%20Cat.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Evolution%20of%20a%20Cat.jpg');
 }
 .fail {
-  background-image: url('../img/profile_headers/FAIL.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/FAIL.png');
 }
 .foreverAlone {
-  background-image: url('../img/profile_headers/Forever%20Alone.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Forever%20Alone.jpg');
 }
 .greetingsFromSeattle {
-  background-image: url('../img/profile_headers/Greetings%20from%20Seattle.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Greetings%20from%20Seattle.jpg');
 }
 .hotdogs {
-  background-image: url('../img/profile_headers/Hotdogs.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Hotdogs.jpg');
 }
 .iHasAKarot {
-  background-image: url('../img/profile_headers/I%20Has%20a%20Karot.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/I%20Has%20a%20Karot.jpg');
 }
 .iKneadYou {
-  background-image: url('../img/profile_headers/I%20Knead%20You.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/I%20Knead%20You.png');
 }
 .kludgeBurger {
-  background-image: url('../img/profile_headers/Kludge%20Burger.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Kludge%20Burger.jpg');
 }
 .lenincat {
-  background-image: url('../img/profile_headers/Lenincat.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Lenincat.png');
 }
 .liteBurger {
-  background-image: url('../img/profile_headers/Lite%20Burger.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Lite%20Burger.png');
 }
 .meGusta {
-  background-image: url('../img/profile_headers/Me%20Gusta%20Your%20Profile.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Me%20Gusta%20Your%20Profile.jpg');
 }
 .roflcopter {
-  background-image: url('../img/profile_headers/My%20ROFLcopter.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/My%20ROFLcopter.jpg');
 }
 .newTech {
-  background-image: url('../img/profile_headers/New%20Technology.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/New%20Technology.jpg');
 }
 .orly {
-  background-image: url('../img/profile_headers/O%20RLY.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/O%20RLY.jpg');
 }
 .omNomNom {
-  background-image: url('../img/profile_headers/OM%20NOM%20NOM.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/OM%20NOM%20NOM.jpg');
 }
 .partyTime {
-  background-image: url('../img/profile_headers/Party%20Time.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Party%20Time.png');
 }
 .sociallyAwkward {
-  background-image: url('../img/profile_headers/Socially%20Awkward%20Profile.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Socially%20Awkward%20Profile.jpg');
 }
 .steamPunkWalker {
-  background-image: url('../img/profile_headers/Steampunk%20Walker.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Steampunk%20Walker.png');
 }
 .successKid {
-  background-image: url('../img/profile_headers/Success%20Kid.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Success%20Kid.jpg');
 }
 .greatCatsby {
-  background-image: url('../img/profile_headers/The%20Great%20Catsby.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/The%20Great%20Catsby.png');
 }
 .internetIsForCats {
-  background-image: url('../img/profile_headers/The%20Internet%20is%20for%20Cats.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/The%20Internet%20is%20for%20Cats.png');
 }
 .rollin,
 .Rollin {
-  background-image: url('../img/profile_headers/They%20See%20Me%20Rollin.jpg');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/They%20See%20Me%20Rollin.jpg');
 }
 .whovian {
-  background-image: url('../img/profile_headers/Timelord%20Kittehs.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Timelord%20Kittehs.png');
 }
 .toweringLongcat {
-  background-image: url('../img/profile_headers/Towering%20Longcat.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Towering%20Longcat.png');
 }
 .warhol {
-  background-image: url('../img/profile_headers/Warhol%20Happy%20Cat.png');
+  background-image: url('https://s.chzbgr.com/s/release_20140429.295/img/profile_headers/Warhol%20Happy%20Cat.png');
 }
 .site-headline {
   margin: 20px 0;
@@ -11377,7 +11377,7 @@ li:hover .collection-controls {
 .chz-modal-loginregister.is-busy button:before {
   position: absolute;
   left: -25px;
-  content: url(../img/loading-sm.gif);
+  content: url(https://s.chzbgr.com/s/release_20140429.295/img/loading-sm.gif);
 }
 .chz-modal-loginregister .divider {
   position: absolute;
@@ -11457,7 +11457,7 @@ li:hover .collection-controls {
   height: 320px;
   width: 390px;
   margin-left: -195px;
-  background: white url(../img/deliverycat-speaks.gif) 100px 100px no-repeat;
+  background: white url(https://s.chzbgr.com/s/release_20140429.295/img/deliverycat-speaks.gif) 100px 100px no-repeat;
   overflow: hidden;
 }
 .chz-modal-wetpaint .chz-modal-wetpaint-fblike {
@@ -12642,7 +12642,7 @@ body.has-slideshow {
 .pending .pending-spinner .burger-spinner {
   width: 100px;
   height: 100px;
-  background-image: url(/s/unversioned/img/burger@2X.png);
+  background-image: url(https://s.chzbgr.com/s/unversioned/img/burger@2X.png);
   background-repeat: no-repeat;
   background-position: 50% 50%;
   -webkit-animation-name: rotate;
