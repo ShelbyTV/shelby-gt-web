@@ -10,6 +10,10 @@ class HomeController < ApplicationController
     render '/home/app'
   end
 
+  def cheez
+    render '/home/cheez'
+  end
+
   ##
   # Handles logged out - static landing page
   #         logged in - js app
