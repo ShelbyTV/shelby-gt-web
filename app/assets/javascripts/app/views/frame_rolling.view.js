@@ -112,6 +112,16 @@
       var frame = this.model;
 
       if (frame.canBeShortlinked()) {
+        // if we're whitelabeled, and this frame has an original_source_url from the whitelabeled
+        // site, we can use that as the short link immediately and return
+        if (shelby.config.whitelabel.isWhitelabeled()) {
+          var originalSourceUrl = frame.get('original_source_url');
+          if (originalSourceUrl) {
+            this._currentFrameShortlink = originalSourceUrl;
+            return;
+          }
+        }
+
         var self = this;
         var $shortlinkTextInput = this.$('.js-frame-shortlink');
         var fetchShortlinkUrl;

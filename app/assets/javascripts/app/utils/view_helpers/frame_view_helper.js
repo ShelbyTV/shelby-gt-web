@@ -36,6 +36,20 @@ libs.shelbyGT.viewHelpers.frame = {
     }
   },
 
+  title: function(frame) {
+    var frameTitle;
+    if (shelby.config.whitelabel.mode == shelby.config.whitelabel.MODES.cheez) {
+        // for Cheezburger, the comment is the title that they use for the video on their site, so make that
+        // the title instead of the provider's video title
+        var firstMessage = frame.get('conversation') && frame.get('conversation').get('messages').first()
+        if (firstMessage) {
+            frameTitle = firstMessage.get('text');
+        }
+    }
+    // in any other case, the title is just the title of the video
+    return frameTitle || frame.get('video').get('title');
+  },
+
   _subdomainPermalink: function(frame){
     return 'http://shelby.tv/'+frame.get('creator').get('nickname')+'/shares/'+frame.id;
   },

@@ -9,7 +9,7 @@
 libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
 
   _persistentVideoInfoView : null,
-  _dynamicVideoInfoView : null,
+  // _dynamicVideoInfoView : null,
 
   tagName: 'section',
 
@@ -71,22 +71,22 @@ libs.shelbyGT.VideoContentPaneView = Support.CompositeView.extend({
           });
           this.insertChildBefore(this._persistentVideoInfoView, '.js-videoplayer-viewport');
         }
-        if (!this._dynamicVideoInfoView) {
-          this._dynamicVideoInfoView = new libs.shelbyGT.DynamicVideoInfoView({
-            className         : 'animate_module media_module js-inactivity-preemption dynamic_video_info__wrapper',
-            guide             : shelby.models.guide,
-            guideOverlayModel : shelby.models.guideOverlay,
-            playlistManager   : shelby.models.playlistManager,
-            queuedVideos      : shelby.models.queuedVideos,
-            userActivityModel : shelby.models.userActivity
-          });
-          this.insertChildBefore(this._dynamicVideoInfoView, '.js-videoplayer-viewport');
-        }
+        // if (!this._dynamicVideoInfoView) {
+        //   this._dynamicVideoInfoView = new libs.shelbyGT.DynamicVideoInfoView({
+        //     className         : 'animate_module media_module js-inactivity-preemption dynamic_video_info__wrapper',
+        //     guide             : shelby.models.guide,
+        //     guideOverlayModel : shelby.models.guideOverlay,
+        //     playlistManager   : shelby.models.playlistManager,
+        //     queuedVideos      : shelby.models.queuedVideos,
+        //     userActivityModel : shelby.models.userActivity
+        //   });
+        //   this.insertChildBefore(this._dynamicVideoInfoView, '.js-videoplayer-viewport');
+        // }
       } else if (this._persistentVideoInfoView) {
         this._persistentVideoInfoView.leave();
         this._persistentVideoInfoView = null;
-        this._dynamicVideoInfoView.leave();
-        this._dynamicVideoInfoView = null;
+        // this._dynamicVideoInfoView.leave();
+        // this._dynamicVideoInfoView = null;
       }
     }
   }
