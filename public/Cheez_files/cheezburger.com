@@ -1,0 +1,1 @@
+PARSELY.pInit({"apikey":"cheezburger.com","customizations":null,"bundle":"/code/slim_v05.js","settings":{"debug":false,"widget":false,"tracker":true},"uuid":"a567d982-db9c-4c0a-a2a2-e3f3bc129e4d"});
