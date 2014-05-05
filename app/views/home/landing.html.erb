@@ -25,7 +25,7 @@
 
   <%= render :partial => '/home/fb_ad_tracking' %>
 </head>
-<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %><%= " shelby--team" if @team %><%= " shelby--login" if @login %>">
+<body class="shelby<%= ' shelby--mobile' if @mobile_os or @is_mobile %><% if @sign_up %> shelby--signup<% else %> shelby--landing<% end %><%= " shelby--team" if @team %><%= " shelby--login" if @login || @personal_roll_export %>">
   <!-- Facebook widget -->
   <div id="fb-root"></div>
 
@@ -40,6 +40,10 @@
 
     <% if @login %>
       <%= render :partial => '/home/shelf/login' %>
+    <% elsif @personal_roll_export %>
+      <% if @display_export_form %>
+        <%= render :partial => '/home/shelf/personal_roll_export' %>
+      <% end %>
     <% elsif @ipadbeta %>
       <%= render :partial => '/home/shelf/ipadbeta', :locals => {
         optin: @optin,

@@ -1,0 +1,20 @@
+<div class="shelf__wrapper shelf__wrapper--export">
+  <div class="shelf shelf--export">
+    <div class="shelf__lining frame-body-wrapper one-third">
+      <% if @export_success %>
+        <h2>We're exporting your data and emailing it to <%= @export_to_email %></h2>
+      <% else %>
+        <%= form_tag('user_takeout', :method => :post, :id => "export_form", :class => "form_module form_module--export-form js-track-submit", 'data-ga_action' => "Personal roll export") do  %>
+          <fieldset class="form_fieldset">
+            <label for="email" class="form_label">Your Email</label>
+            <input required id="email" type="email" name="email" placeholder="Email address" class="form_input" />
+          </fieldset>
+
+          <fieldset class="form_fieldset">
+            <input name="commit" type="submit" value="Export" id="export-submit" class="button_primer button_command button_command--flexible button_gray" />
+          </fieldset>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

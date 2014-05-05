@@ -1,0 +1,21 @@
+//------------------------------------------------------------------------------
+//  Block
+//------------------------------------------------------------------------------
+.shelf__wrapper--export {
+  background: transparent;
+  margin: 0;
+  padding: 50px;
+}
+
+.shelf--export {
+  font-size: 1.3em;
+
+  .shelf__lining {
+    margin: 20px auto 0;
+    padding: 1em 2em;
+  }
+}
+
+.shelf__wrapper .shelf:not(.shelf--header) {
+  top: auto;
+}
