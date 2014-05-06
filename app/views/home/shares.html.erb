@@ -80,7 +80,6 @@
             :video          => @video
           } %>
 
-      <div id="disqus_thread" style="max-width: 530px;margin: 1em auto;"></div>
 
       <%= render :partial => '/marketing/shares' if @is_mobile != 'iPhone' and !@user_signed_in %>
     </div>
@@ -116,7 +115,6 @@
     </script>
   <% end %>
 
-  <%= render :partial => '/objects/disqus_script' %>
 
 </body>
 </html>

@@ -115,8 +115,6 @@
         </div>
       </aside><!-- eo .seovideo__aside -->
 
-      <div id="disqus_thread"></div>
-
       <div class="seovideo__messages clearfix <%= 'hidden' if params[:source] == 'email' %>">
         <% if @messages %>
           <% if @messages[:shelby].length > 0 %>
@@ -245,25 +243,3 @@
       } catch(e) {}
   };
 </script>
-<script type="text/javascript">
-      var disqus_shortname = 'shelbytv';
-      var disqus_identifier = 'video-<%= @video_provider_id %>';
-      var disqus_url = '<%= Settings::Application.url %>/video/<%= @video_provider_name %>/<%= @video_provider_id %>'
-
-      function disqus_config() {
-        this.callbacks.onNewComment = [function(comment) {
-          $(document).ready(function(){
-            try {
-              _gaq.push(['_trackEvent', 'SEO Video', 'Commented']);
-            } catch(e) {}
-          });
-        }];
-      };
-
-      /* * * DON'T EDIT BELOW THIS LINE * * */
-      (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-  </script>
