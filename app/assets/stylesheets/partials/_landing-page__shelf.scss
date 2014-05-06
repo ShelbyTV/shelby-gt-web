@@ -9,7 +9,7 @@
     border: none;
     position: relative;
 
-    &:not(.shelf--header) {
+    &:not(.shelf--header):not(.shelf--error) {
       top: -1em;
     }
 

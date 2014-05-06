@@ -1,0 +1,32 @@
+<% format_content_for_layout __FILE__ %>
+
+<div class="shelf__lining">
+  <% if @export_success %>
+    <h1 class="shelf__h1">
+      Success!
+    </h1>
+
+    <p class="shelf__block">
+      We're exporting your data and emailing it to <strong><%= @export_to_email %></strong>
+    </p>
+  <% else %>
+    <h1 class="shelf__h1">
+      Take Shelby with you.
+    </h1>
+
+    <p class="shelf__block">
+      Enter your email address and we'll send you a spreadsheet of all the videos you've shared and liked on Shelby.
+    </p>
+
+    <%= form_tag('user_takeout', :method => :post, :id => "export_form", :class => "form_module form_module--export-form js-track-submit", 'data-ga_action' => "Personal roll export") do  %>
+      <fieldset class="form_fieldset two-fifths">
+        <label for="email" class="form_label">Your Email</label>
+        <input required id="email" type="email" name="email" placeholder="Email address" class="form_input" />
+      </fieldset>
+
+      <fieldset class="form_fieldset">
+        <input name="commit" type="submit" value="Export" id="export-submit" class="button_primer button_command button_command--flexible button_gray" />
+      </fieldset>
+    <% end %>
+  <% end %>
+</div>
