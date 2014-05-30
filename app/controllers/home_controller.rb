@@ -198,6 +198,56 @@ class HomeController < ApplicationController
     render  '/home/landing'
   end
 
+  ##
+  # Simple form for user to enter their email address and export their Shelby info
+  # (currently the contents of their public roll)
+  #
+  # GET /user_takeout
+  #
+  def user_takeout
+
+    check_for_signed_in_user_and_issues
+
+    @personal_roll_export = :true
+
+    unless @user_signed_in
+      @custom_error = "Sorry, you must be signed in to export your data."
+    else
+      @display_export_form = :true
+    end
+
+    render '/home/landing'
+  end
+
+  ##
+  # Process the form submitted from the user_takeout page and render feedback to the user
+  #
+  # POST do_user_takeout
+  #
+  def do_user_takeout
+
+    check_for_signed_in_user_and_issues
+
+    @personal_roll_export = :true
+
+    unless @user_signed_in
+      @custom_error = "Sorry, you must be signed in to export your data."
+    else
+      @display_export_form = :true
+      if ((@export_to_email = params.delete(:email)) && (@export_to_email.length > 0))
+        if (Shelby::API.export_user_public_roll(@signed_in_user['id'], @export_to_email, request.headers['HTTP_COOKIE']))
+          @export_success = :true
+        else
+          @custom_error = "Sorry, something went wrong. Please try again."
+        end
+      else
+        @custom_error = "Please enter your email address."
+      end
+    end
+
+    render '/home/landing'
+  end
+
   # Static page with stats on a users recent activity
   def stats
     # lookup user + stats via api

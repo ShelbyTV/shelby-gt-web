@@ -1,0 +1,25 @@
+//------------------------------------------------------------------------------
+//  Block
+//------------------------------------------------------------------------------
+.shelf__wrapper--export {
+
+}
+
+.shelf--export {
+
+  .shelf__lining {
+    margin: 20px 0 0;
+  }
+
+  @media screen and (max-width: $mq-nine-ish) {
+    .shelf__lining {
+      padding: 0 20px;
+    }
+  }
+
+  @media screen and (max-width: $mq-five-ish) {
+    .form_fieldset {
+      width: auto;
+    }
+  }
+}

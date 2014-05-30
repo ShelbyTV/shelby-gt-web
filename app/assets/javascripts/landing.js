@@ -76,6 +76,7 @@ $(document).ready(function(e){
     var windowHeight = window.innerHeight - $('.js-header').height(),
         shelf = {
           $cta    : $('#cta').height(windowHeight - 50),
+          $export : $('#export').height(windowHeight - 200),
           $iphone : $('#iphone').height(windowHeight),
           $social : $('#social').height(windowHeight),
           $stream : $('#stream').height(windowHeight - 50),

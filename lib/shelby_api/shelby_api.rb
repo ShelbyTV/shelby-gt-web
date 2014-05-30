@@ -92,6 +92,12 @@ module Shelby
       return s['status'] == 200 ? s['result'] : nil
     end
 
+    def self.export_user_public_roll(user_id, email, cookie)
+      r = get( "/user/#{user_id}/public_roll_export?email=#{email}", :headers => {'Cookie' => cookie} ).parsed_response
+      Rails.logger.info r
+      return r['status'] == 200 ? r['result'] : nil
+    end
+
     def self.get_video(video_id)
       v = get( "/video/#{video_id}" ).parsed_response
       return nil if v['status'] != 200
