@@ -15,7 +15,7 @@
         <ul class="list list--inline list--right clearfix">
           <% if show_login %>
             <% if !user_signed_in %>
-              <li class="list__item">
+              <li class="list__item hidden">
                 <a
                   href="<%= Settings::Application.url %>/#apps"
                   class="animate_module button_primer button_command button_command--flexible button_green shelf__button--cta js-cta-header js-cta js-track-event"
