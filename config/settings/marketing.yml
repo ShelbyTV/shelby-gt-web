@@ -29,7 +29,7 @@ defaults: &defaults
   cta_button: "Get the Free App"
   cta_button_short: "Get the App"
   cta_alternative_button: "Try it on the Web"
-  cta_shutdown_announcment: "Read an update from the Founders"
+  cta_shutdown_announcment: "Read a message from the Founders"
 
   stream: "The freshest video from your <br/>favorite people and places."
   stream_body: "Shelby.tv collects and organizes the latest videos from <br/>YouTube, Vimeo and your friends on Facebook and Twitter."
